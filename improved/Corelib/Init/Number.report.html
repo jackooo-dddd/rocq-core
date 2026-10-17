@@ -1,0 +1,1633 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><title>Corelib.Init.Number</title><style>body{font:15px/1.65 system-ui,sans-serif;max-width:1250px;margin:35px auto;padding:0 24px;color:#23303b;background:#fbfcfe}h1{font-size:25px}h2{font-size:19px}table{border-collapse:collapse;width:100%;background:white}td,th{padding:9px;border:1px solid #dbe2e8;text-align:left;vertical-align:top}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#edf2f6;padding:14px;border-radius:6px;font:12px/1.6 ui-monospace,monospace}details{background:white;border:1px solid #dbe2e8;border-radius:7px;margin:13px 0;padding:12px}summary{font-weight:600;cursor:pointer;overflow-wrap:anywhere}input,select{padding:9px;margin:8px;border:1px solid #aab8c5;border-radius:5px}a{color:#175fa6}.note{background:#edf4ff;padding:14px}.bad{color:#ac3027}.good{color:#176d4c}</style><body><h1>Corelib.Init.Number</h1><p class="note">本文件采用逐模块独立运行。依赖随各翻译单元重复包含；不要直接把全部 .lean 一起 import。 对应 .lean 使用翻译器的 #rocq2lean_import 命令生成内核声明；实际定义以 kernel view 展示，并非人工伪造的 Lean 源码。 定理只翻译陈述；pending 是显式前提，不是已经证明；未导出的项目没有虚构 IR。</p><pre>{
+  &quot;module&quot;: &quot;Corelib.Init.Number&quot;,
+  &quot;total&quot;: 17,
+  &quot;complete&quot;: 14,
+  &quot;pending&quot;: 3,
+  &quot;blocked&quot;: 0,
+  &quot;statuses&quot;: {
+    &quot;TRANSLATED_AND_CHECKED&quot;: 8,
+    &quot;STATEMENT_KERNEL_CHECKED&quot;: 6,
+    &quot;PENDING_KERNEL_CHECKED&quot;: 3
+  },
+  &quot;run_status&quot;: &quot;MEASURED&quot;,
+  &quot;source_roundtrip&quot;: &quot;OK&quot;,
+  &quot;consumer&quot;: &quot;OK&quot;,
+  &quot;audit&quot;: &quot;OK&quot;,
+  &quot;translation_compile_exit&quot;: 0
+}</pre><p><a href="Number.lean">翻译文件</a> · <a href="Number.v">源文件副本</a> · <a href="Number.json">完整 JSON</a> · <a href="Number.report.txt">文本报告</a></p><input id="search" placeholder="搜索声明名"><select id="filter"><option value="">全部状态</option><option>TRANSLATED_AND_CHECKED</option><option>STATEMENT_KERNEL_CHECKED</option><option>PENDING_KERNEL_CHECKED</option></select><details class="decl" id="d0" data-status="TRANSLATED_AND_CHECKED"><summary>Corelib.Init.Number.int_of_int — TRANSLATED_AND_CHECKED</summary><p>类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Number.int_of_int</p><p>源文件行号候选：[38]</p><h3>实际 Lean 输出</h3><pre>def Rocq.Corelib.Init.Number.int_of_int : Rocq.Corelib.Init.Number.signed_int → Rocq.Corelib.Init.Number.signed_int :=
+fun i =&gt; i</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;definition_function&quot;,
+  &quot;source_body_state&quot;: &quot;transparent&quot;,
+  &quot;native_preparation&quot;: {
+    &quot;sealed_implementation&quot;: false,
+    &quot;lowered_ssr_have_upoly&quot;: false
+  },
+  &quot;exported&quot;: true
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {
+    &quot;type&quot;: [
+      &quot;Corelib.Init.Number.signed_int&quot;
+    ],
+    &quot;body&quot;: [
+      &quot;Corelib.Init.Number.signed_int&quot;
+    ]
+  },
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;constant/transparent&quot;,
+  &quot;source_node_counts&quot;: {
+    &quot;prod&quot;: 1,
+    &quot;ind&quot;: 3,
+    &quot;lam&quot;: 1,
+    &quot;rel&quot;: 1
+  },
+  &quot;node_rules_present&quot;: [
+    &quot;依赖函数类型 → Lean forall&quot;,
+    &quot;归纳类型引用 → 原生 bootstrap 或生成类型&quot;,
+    &quot;函数体 → Lean lambda&quot;,
+    &quot;局部变量 → Lean 绑定变量&quot;
+  ],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{
+  &quot;universe_diagnostics&quot;: [],
+  &quot;universe_checks&quot;: 0,
+  &quot;template_params&quot;: [],
+  &quot;solved_levels&quot;: [],
+  &quot;r2bp_levels&quot;: [],
+  &quot;prop_lift_coercions&quot;: 0,
+  &quot;prop_lift&quot;: null,
+  &quot;phantom_lowered&quot;: [],
+  &quot;level_split&quot;: [],
+  &quot;level_params&quot;: [],
+  &quot;level_interp&quot;: [],
+  &quot;level_copies&quot;: [],
+  &quot;delta_inlined&quot;: [],
+  &quot;admitting_levels&quot;: []
+}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;TRANSLATED_AND_CHECKED&quot;,
+  &quot;target&quot;: &quot;Rocq.Corelib.Init.Number.int_of_int&quot;,
+  &quot;target_kind&quot;: &quot;def&quot;,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: &quot;RT_OK&quot;,
+  &quot;module_roundtrip&quot;: &quot;OK&quot;,
+  &quot;consumer&quot;: &quot;OK&quot;,
+  &quot;audit&quot;: &quot;OK&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[
+  {
+    &quot;label&quot;: &quot;c[]&quot;,
+    &quot;ms&quot;: 1,
+    &quot;result&quot;: &quot;TRANSLATED_AND_CHECKED&quot;,
+    &quot;flag_descriptions&quot;: []
+  }
+]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Number/records/0000.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d1" data-status="STATEMENT_KERNEL_CHECKED"><summary>Corelib.Init.Number.internal_number_dec_bl — STATEMENT_KERNEL_CHECKED</summary><p>类别: statement；状态: STATEMENT_KERNEL_CHECKED；实际目标: Rocq.Corelib.Init.Number.internal_number_dec_bl.statement</p><p>源文件行号候选：[]</p><h3>实际 Lean 输出</h3><pre>def Rocq.Corelib.Init.Number.internal_number_dec_bl.statement : Prop :=
+∀ (x y : Rocq.Corelib.Init.Number.number),
+  @Eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Number.number_beq x y)
+      Rocq.Corelib.Init.Datatypes.bool.true →
+    @Eq.{1} Rocq.Corelib.Init.Number.number x y</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;statement&quot;,
+  &quot;source_body_state&quot;: &quot;statement_only&quot;,
+  &quot;native_preparation&quot;: {
+    &quot;sealed_implementation&quot;: false,
+    &quot;lowered_ssr_have_upoly&quot;: false
+  },
+  &quot;exported&quot;: true
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: true,
+  &quot;dependencies&quot;: {
+    &quot;type&quot;: [
+      &quot;Corelib.Init.Datatypes.bool&quot;,
+      &quot;Corelib.Init.Logic.eq&quot;,
+      &quot;Corelib.Init.Number.number&quot;,
+      &quot;Corelib.Init.Number.number_beq&quot;
+    ],
+    &quot;body&quot;: []
+  },
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;constant/transparent&quot;,
+  &quot;source_node_counts&quot;: {
+    &quot;prod&quot;: 3,
+    &quot;ind&quot;: 6,
+    &quot;app&quot;: 3,
+    &quot;const&quot;: 1,
+    &quot;rel&quot;: 4,
+    &quot;construct&quot;: 1
+  },
+  &quot;node_rules_present&quot;: [
+    &quot;依赖函数类型 → Lean forall&quot;,
+    &quot;归纳类型引用 → 原生 bootstrap 或生成类型&quot;,
+    &quot;应用 → 已翻译目标的应用&quot;,
+    &quot;全局常量 → 目标声明或显式待证明前提&quot;,
+    &quot;局部变量 → Lean 绑定变量&quot;,
+    &quot;构造子 → 对应目标构造子&quot;
+  ],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{
+  &quot;universe_diagnostics&quot;: [],
+  &quot;universe_checks&quot;: 0,
+  &quot;template_params&quot;: [],
+  &quot;solved_levels&quot;: [],
+  &quot;r2bp_levels&quot;: [],
+  &quot;prop_lift_coercions&quot;: 0,
+  &quot;prop_lift&quot;: null,
+  &quot;phantom_lowered&quot;: [],
+  &quot;level_split&quot;: [],
+  &quot;level_params&quot;: [],
+  &quot;level_interp&quot;: [],
+  &quot;level_copies&quot;: [],
+  &quot;delta_inlined&quot;: [],
+  &quot;admitting_levels&quot;: []
+}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;,
+  &quot;target&quot;: &quot;Rocq.Corelib.Init.Number.internal_number_dec_bl.statement&quot;,
+  &quot;target_kind&quot;: &quot;statement&quot;,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: &quot;RT_OK&quot;,
+  &quot;module_roundtrip&quot;: &quot;OK&quot;,
+  &quot;consumer&quot;: &quot;OK&quot;,
+  &quot;audit&quot;: &quot;OK&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[
+  {
+    &quot;label&quot;: &quot;c[]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;TRANSLATED_AND_CHECKED&quot;,
+    &quot;flag_descriptions&quot;: []
+  }
+]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Number/records/0001.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d2" data-status="STATEMENT_KERNEL_CHECKED"><summary>Corelib.Init.Number.internal_number_dec_lb — STATEMENT_KERNEL_CHECKED</summary><p>类别: statement；状态: STATEMENT_KERNEL_CHECKED；实际目标: Rocq.Corelib.Init.Number.internal_number_dec_lb.statement</p><p>源文件行号候选：[]</p><h3>实际 Lean 输出</h3><pre>def Rocq.Corelib.Init.Number.internal_number_dec_lb.statement : Prop :=
+∀ (x y : Rocq.Corelib.Init.Number.number),
+  @Eq.{1} Rocq.Corelib.Init.Number.number x y →
+    @Eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Number.number_beq x y)
+      Rocq.Corelib.Init.Datatypes.bool.true</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;statement&quot;,
+  &quot;source_body_state&quot;: &quot;statement_only&quot;,
+  &quot;native_preparation&quot;: {
+    &quot;sealed_implementation&quot;: false,
+    &quot;lowered_ssr_have_upoly&quot;: false
+  },
+  &quot;exported&quot;: true
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: true,
+  &quot;dependencies&quot;: {
+    &quot;type&quot;: [
+      &quot;Corelib.Init.Datatypes.bool&quot;,
+      &quot;Corelib.Init.Logic.eq&quot;,
+      &quot;Corelib.Init.Number.number&quot;,
+      &quot;Corelib.Init.Number.number_beq&quot;
+    ],
+    &quot;body&quot;: []
+  },
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;constant/transparent&quot;,
+  &quot;source_node_counts&quot;: {
+    &quot;prod&quot;: 3,
+    &quot;ind&quot;: 6,
+    &quot;app&quot;: 3,
+    &quot;rel&quot;: 4,
+    &quot;const&quot;: 1,
+    &quot;construct&quot;: 1
+  },
+  &quot;node_rules_present&quot;: [
+    &quot;依赖函数类型 → Lean forall&quot;,
+    &quot;归纳类型引用 → 原生 bootstrap 或生成类型&quot;,
+    &quot;应用 → 已翻译目标的应用&quot;,
+    &quot;局部变量 → Lean 绑定变量&quot;,
+    &quot;全局常量 → 目标声明或显式待证明前提&quot;,
+    &quot;构造子 → 对应目标构造子&quot;
+  ],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{
+  &quot;universe_diagnostics&quot;: [],
+  &quot;universe_checks&quot;: 0,
+  &quot;template_params&quot;: [],
+  &quot;solved_levels&quot;: [],
+  &quot;r2bp_levels&quot;: [],
+  &quot;prop_lift_coercions&quot;: 0,
+  &quot;prop_lift&quot;: null,
+  &quot;phantom_lowered&quot;: [],
+  &quot;level_split&quot;: [],
+  &quot;level_params&quot;: [],
+  &quot;level_interp&quot;: [],
+  &quot;level_copies&quot;: [],
+  &quot;delta_inlined&quot;: [],
+  &quot;admitting_levels&quot;: []
+}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;,
+  &quot;target&quot;: &quot;Rocq.Corelib.Init.Number.internal_number_dec_lb.statement&quot;,
+  &quot;target_kind&quot;: &quot;statement&quot;,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: &quot;RT_OK&quot;,
+  &quot;module_roundtrip&quot;: &quot;OK&quot;,
+  &quot;consumer&quot;: &quot;OK&quot;,
+  &quot;audit&quot;: &quot;OK&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[
+  {
+    &quot;label&quot;: &quot;c[]&quot;,
+    &quot;ms&quot;: 1,
+    &quot;result&quot;: &quot;TRANSLATED_AND_CHECKED&quot;,
+    &quot;flag_descriptions&quot;: []
+  }
+]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Number/records/0002.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d3" data-status="STATEMENT_KERNEL_CHECKED"><summary>Corelib.Init.Number.internal_signed_int_dec_bl1 — STATEMENT_KERNEL_CHECKED</summary><p>类别: statement；状态: STATEMENT_KERNEL_CHECKED；实际目标: Rocq.Corelib.Init.Number.internal_signed_int_dec_bl1.statement</p><p>源文件行号候选：[]</p><h3>实际 Lean 输出</h3><pre>def Rocq.Corelib.Init.Number.internal_signed_int_dec_bl1.statement : Prop :=
+∀ (x y : Rocq.Corelib.Init.Number.signed_int),
+  @Eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Number.signed_int_beq x y)
+      Rocq.Corelib.Init.Datatypes.bool.true →
+    @Eq.{1} Rocq.Corelib.Init.Number.signed_int x y</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;statement&quot;,
+  &quot;source_body_state&quot;: &quot;statement_only&quot;,
+  &quot;native_preparation&quot;: {
+    &quot;sealed_implementation&quot;: false,
+    &quot;lowered_ssr_have_upoly&quot;: false
+  },
+  &quot;exported&quot;: true
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: true,
+  &quot;dependencies&quot;: {
+    &quot;type&quot;: [
+      &quot;Corelib.Init.Datatypes.bool&quot;,
+      &quot;Corelib.Init.Logic.eq&quot;,
+      &quot;Corelib.Init.Number.signed_int&quot;,
+      &quot;Corelib.Init.Number.signed_int_beq&quot;
+    ],
+    &quot;body&quot;: []
+  },
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;constant/transparent&quot;,
+  &quot;source_node_counts&quot;: {
+    &quot;prod&quot;: 3,
+    &quot;ind&quot;: 6,
+    &quot;app&quot;: 3,
+    &quot;const&quot;: 1,
+    &quot;rel&quot;: 4,
+    &quot;construct&quot;: 1
+  },
+  &quot;node_rules_present&quot;: [
+    &quot;依赖函数类型 → Lean forall&quot;,
+    &quot;归纳类型引用 → 原生 bootstrap 或生成类型&quot;,
+    &quot;应用 → 已翻译目标的应用&quot;,
+    &quot;全局常量 → 目标声明或显式待证明前提&quot;,
+    &quot;局部变量 → Lean 绑定变量&quot;,
+    &quot;构造子 → 对应目标构造子&quot;
+  ],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{
+  &quot;universe_diagnostics&quot;: [],
+  &quot;universe_checks&quot;: 0,
+  &quot;template_params&quot;: [],
+  &quot;solved_levels&quot;: [],
+  &quot;r2bp_levels&quot;: [],
+  &quot;prop_lift_coercions&quot;: 0,
+  &quot;prop_lift&quot;: null,
+  &quot;phantom_lowered&quot;: [],
+  &quot;level_split&quot;: [],
+  &quot;level_params&quot;: [],
+  &quot;level_interp&quot;: [],
+  &quot;level_copies&quot;: [],
+  &quot;delta_inlined&quot;: [],
+  &quot;admitting_levels&quot;: []
+}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;,
+  &quot;target&quot;: &quot;Rocq.Corelib.Init.Number.internal_signed_int_dec_bl1.statement&quot;,
+  &quot;target_kind&quot;: &quot;statement&quot;,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: &quot;RT_OK&quot;,
+  &quot;module_roundtrip&quot;: &quot;OK&quot;,
+  &quot;consumer&quot;: &quot;OK&quot;,
+  &quot;audit&quot;: &quot;OK&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[
+  {
+    &quot;label&quot;: &quot;c[]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;TRANSLATED_AND_CHECKED&quot;,
+    &quot;flag_descriptions&quot;: []
+  }
+]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Number/records/0003.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d4" data-status="STATEMENT_KERNEL_CHECKED"><summary>Corelib.Init.Number.internal_signed_int_dec_lb1 — STATEMENT_KERNEL_CHECKED</summary><p>类别: statement；状态: STATEMENT_KERNEL_CHECKED；实际目标: Rocq.Corelib.Init.Number.internal_signed_int_dec_lb1.statement</p><p>源文件行号候选：[]</p><h3>实际 Lean 输出</h3><pre>def Rocq.Corelib.Init.Number.internal_signed_int_dec_lb1.statement : Prop :=
+∀ (x y : Rocq.Corelib.Init.Number.signed_int),
+  @Eq.{1} Rocq.Corelib.Init.Number.signed_int x y →
+    @Eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Number.signed_int_beq x y)
+      Rocq.Corelib.Init.Datatypes.bool.true</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;statement&quot;,
+  &quot;source_body_state&quot;: &quot;statement_only&quot;,
+  &quot;native_preparation&quot;: {
+    &quot;sealed_implementation&quot;: false,
+    &quot;lowered_ssr_have_upoly&quot;: false
+  },
+  &quot;exported&quot;: true
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: true,
+  &quot;dependencies&quot;: {
+    &quot;type&quot;: [
+      &quot;Corelib.Init.Datatypes.bool&quot;,
+      &quot;Corelib.Init.Logic.eq&quot;,
+      &quot;Corelib.Init.Number.signed_int&quot;,
+      &quot;Corelib.Init.Number.signed_int_beq&quot;
+    ],
+    &quot;body&quot;: []
+  },
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;constant/transparent&quot;,
+  &quot;source_node_counts&quot;: {
+    &quot;prod&quot;: 3,
+    &quot;ind&quot;: 6,
+    &quot;app&quot;: 3,
+    &quot;rel&quot;: 4,
+    &quot;const&quot;: 1,
+    &quot;construct&quot;: 1
+  },
+  &quot;node_rules_present&quot;: [
+    &quot;依赖函数类型 → Lean forall&quot;,
+    &quot;归纳类型引用 → 原生 bootstrap 或生成类型&quot;,
+    &quot;应用 → 已翻译目标的应用&quot;,
+    &quot;局部变量 → Lean 绑定变量&quot;,
+    &quot;全局常量 → 目标声明或显式待证明前提&quot;,
+    &quot;构造子 → 对应目标构造子&quot;
+  ],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{
+  &quot;universe_diagnostics&quot;: [],
+  &quot;universe_checks&quot;: 0,
+  &quot;template_params&quot;: [],
+  &quot;solved_levels&quot;: [],
+  &quot;r2bp_levels&quot;: [],
+  &quot;prop_lift_coercions&quot;: 0,
+  &quot;prop_lift&quot;: null,
+  &quot;phantom_lowered&quot;: [],
+  &quot;level_split&quot;: [],
+  &quot;level_params&quot;: [],
+  &quot;level_interp&quot;: [],
+  &quot;level_copies&quot;: [],
+  &quot;delta_inlined&quot;: [],
+  &quot;admitting_levels&quot;: []
+}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;,
+  &quot;target&quot;: &quot;Rocq.Corelib.Init.Number.internal_signed_int_dec_lb1.statement&quot;,
+  &quot;target_kind&quot;: &quot;statement&quot;,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: &quot;RT_OK&quot;,
+  &quot;module_roundtrip&quot;: &quot;OK&quot;,
+  &quot;consumer&quot;: &quot;OK&quot;,
+  &quot;audit&quot;: &quot;OK&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[
+  {
+    &quot;label&quot;: &quot;c[]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;TRANSLATED_AND_CHECKED&quot;,
+    &quot;flag_descriptions&quot;: []
+  }
+]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Number/records/0004.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d5" data-status="STATEMENT_KERNEL_CHECKED"><summary>Corelib.Init.Number.internal_uint_dec_bl1 — STATEMENT_KERNEL_CHECKED</summary><p>类别: statement；状态: STATEMENT_KERNEL_CHECKED；实际目标: Rocq.Corelib.Init.Number.internal_uint_dec_bl1.statement</p><p>源文件行号候选：[]</p><h3>实际 Lean 输出</h3><pre>def Rocq.Corelib.Init.Number.internal_uint_dec_bl1.statement : Prop :=
+∀ (x y : Rocq.Corelib.Init.Number.uint),
+  @Eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Number.uint_beq x y)
+      Rocq.Corelib.Init.Datatypes.bool.true →
+    @Eq.{1} Rocq.Corelib.Init.Number.uint x y</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;statement&quot;,
+  &quot;source_body_state&quot;: &quot;statement_only&quot;,
+  &quot;native_preparation&quot;: {
+    &quot;sealed_implementation&quot;: false,
+    &quot;lowered_ssr_have_upoly&quot;: false
+  },
+  &quot;exported&quot;: true
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: true,
+  &quot;dependencies&quot;: {
+    &quot;type&quot;: [
+      &quot;Corelib.Init.Datatypes.bool&quot;,
+      &quot;Corelib.Init.Logic.eq&quot;,
+      &quot;Corelib.Init.Number.uint&quot;,
+      &quot;Corelib.Init.Number.uint_beq&quot;
+    ],
+    &quot;body&quot;: []
+  },
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;constant/transparent&quot;,
+  &quot;source_node_counts&quot;: {
+    &quot;prod&quot;: 3,
+    &quot;ind&quot;: 6,
+    &quot;app&quot;: 3,
+    &quot;const&quot;: 1,
+    &quot;rel&quot;: 4,
+    &quot;construct&quot;: 1
+  },
+  &quot;node_rules_present&quot;: [
+    &quot;依赖函数类型 → Lean forall&quot;,
+    &quot;归纳类型引用 → 原生 bootstrap 或生成类型&quot;,
+    &quot;应用 → 已翻译目标的应用&quot;,
+    &quot;全局常量 → 目标声明或显式待证明前提&quot;,
+    &quot;局部变量 → Lean 绑定变量&quot;,
+    &quot;构造子 → 对应目标构造子&quot;
+  ],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{
+  &quot;universe_diagnostics&quot;: [],
+  &quot;universe_checks&quot;: 0,
+  &quot;template_params&quot;: [],
+  &quot;solved_levels&quot;: [],
+  &quot;r2bp_levels&quot;: [],
+  &quot;prop_lift_coercions&quot;: 0,
+  &quot;prop_lift&quot;: null,
+  &quot;phantom_lowered&quot;: [],
+  &quot;level_split&quot;: [],
+  &quot;level_params&quot;: [],
+  &quot;level_interp&quot;: [],
+  &quot;level_copies&quot;: [],
+  &quot;delta_inlined&quot;: [],
+  &quot;admitting_levels&quot;: []
+}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;,
+  &quot;target&quot;: &quot;Rocq.Corelib.Init.Number.internal_uint_dec_bl1.statement&quot;,
+  &quot;target_kind&quot;: &quot;statement&quot;,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: &quot;RT_OK&quot;,
+  &quot;module_roundtrip&quot;: &quot;OK&quot;,
+  &quot;consumer&quot;: &quot;OK&quot;,
+  &quot;audit&quot;: &quot;OK&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[
+  {
+    &quot;label&quot;: &quot;c[]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;TRANSLATED_AND_CHECKED&quot;,
+    &quot;flag_descriptions&quot;: []
+  }
+]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Number/records/0005.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d6" data-status="STATEMENT_KERNEL_CHECKED"><summary>Corelib.Init.Number.internal_uint_dec_lb1 — STATEMENT_KERNEL_CHECKED</summary><p>类别: statement；状态: STATEMENT_KERNEL_CHECKED；实际目标: Rocq.Corelib.Init.Number.internal_uint_dec_lb1.statement</p><p>源文件行号候选：[]</p><h3>实际 Lean 输出</h3><pre>def Rocq.Corelib.Init.Number.internal_uint_dec_lb1.statement : Prop :=
+∀ (x y : Rocq.Corelib.Init.Number.uint),
+  @Eq.{1} Rocq.Corelib.Init.Number.uint x y →
+    @Eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Number.uint_beq x y)
+      Rocq.Corelib.Init.Datatypes.bool.true</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;statement&quot;,
+  &quot;source_body_state&quot;: &quot;statement_only&quot;,
+  &quot;native_preparation&quot;: {
+    &quot;sealed_implementation&quot;: false,
+    &quot;lowered_ssr_have_upoly&quot;: false
+  },
+  &quot;exported&quot;: true
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: true,
+  &quot;dependencies&quot;: {
+    &quot;type&quot;: [
+      &quot;Corelib.Init.Datatypes.bool&quot;,
+      &quot;Corelib.Init.Logic.eq&quot;,
+      &quot;Corelib.Init.Number.uint&quot;,
+      &quot;Corelib.Init.Number.uint_beq&quot;
+    ],
+    &quot;body&quot;: []
+  },
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;constant/transparent&quot;,
+  &quot;source_node_counts&quot;: {
+    &quot;prod&quot;: 3,
+    &quot;ind&quot;: 6,
+    &quot;app&quot;: 3,
+    &quot;rel&quot;: 4,
+    &quot;const&quot;: 1,
+    &quot;construct&quot;: 1
+  },
+  &quot;node_rules_present&quot;: [
+    &quot;依赖函数类型 → Lean forall&quot;,
+    &quot;归纳类型引用 → 原生 bootstrap 或生成类型&quot;,
+    &quot;应用 → 已翻译目标的应用&quot;,
+    &quot;局部变量 → Lean 绑定变量&quot;,
+    &quot;全局常量 → 目标声明或显式待证明前提&quot;,
+    &quot;构造子 → 对应目标构造子&quot;
+  ],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{
+  &quot;universe_diagnostics&quot;: [],
+  &quot;universe_checks&quot;: 0,
+  &quot;template_params&quot;: [],
+  &quot;solved_levels&quot;: [],
+  &quot;r2bp_levels&quot;: [],
+  &quot;prop_lift_coercions&quot;: 0,
+  &quot;prop_lift&quot;: null,
+  &quot;phantom_lowered&quot;: [],
+  &quot;level_split&quot;: [],
+  &quot;level_params&quot;: [],
+  &quot;level_interp&quot;: [],
+  &quot;level_copies&quot;: [],
+  &quot;delta_inlined&quot;: [],
+  &quot;admitting_levels&quot;: []
+}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;,
+  &quot;target&quot;: &quot;Rocq.Corelib.Init.Number.internal_uint_dec_lb1.statement&quot;,
+  &quot;target_kind&quot;: &quot;statement&quot;,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: &quot;RT_OK&quot;,
+  &quot;module_roundtrip&quot;: &quot;OK&quot;,
+  &quot;consumer&quot;: &quot;OK&quot;,
+  &quot;audit&quot;: &quot;OK&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[
+  {
+    &quot;label&quot;: &quot;c[]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;TRANSLATED_AND_CHECKED&quot;,
+    &quot;flag_descriptions&quot;: []
+  }
+]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Number/records/0006.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d7" data-status="TRANSLATED_AND_CHECKED"><summary>Corelib.Init.Number.number — TRANSLATED_AND_CHECKED</summary><p>类别: data_inductive；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Number.number</p><p>源文件行号候选：[20]</p><h3>实际 Lean 输出</h3><pre>inductive Rocq.Corelib.Init.Number.number : Type
+number of parameters: 0
+constructors:
+Rocq.Corelib.Init.Number.number.Decimal : Rocq.Corelib.Init.Decimal.decimal → Rocq.Corelib.Init.Number.number
+Rocq.Corelib.Init.Number.number.Hexadecimal : Rocq.Corelib.Init.Hexadecimal.hexadecimal →
+  Rocq.Corelib.Init.Number.number</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;data_inductive&quot;,
+  &quot;source_body_state&quot;: null,
+  &quot;native_preparation&quot;: {},
+  &quot;exported&quot;: true
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {
+    &quot;type&quot;: [
+      &quot;Corelib.Init.Decimal.decimal&quot;,
+      &quot;Corelib.Init.Hexadecimal.hexadecimal&quot;
+    ]
+  },
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;inductive/generated&quot;,
+  &quot;source_node_counts&quot;: {
+    &quot;sort&quot;: 1,
+    &quot;ind&quot;: 4,
+    &quot;prod&quot;: 2,
+    &quot;rel&quot;: 2
+  },
+  &quot;node_rules_present&quot;: [
+    &quot;源 sort/宇宙 → Lean Sort&quot;,
+    &quot;归纳类型引用 → 原生 bootstrap 或生成类型&quot;,
+    &quot;依赖函数类型 → Lean forall&quot;,
+    &quot;局部变量 → Lean 绑定变量&quot;
+  ],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{
+  &quot;universe_diagnostics&quot;: [],
+  &quot;universe_checks&quot;: 0,
+  &quot;template_params&quot;: [],
+  &quot;solved_levels&quot;: [],
+  &quot;r2bp_levels&quot;: [],
+  &quot;prop_lift_coercions&quot;: 0,
+  &quot;prop_lift&quot;: null,
+  &quot;phantom_lowered&quot;: [],
+  &quot;level_split&quot;: [],
+  &quot;level_params&quot;: [],
+  &quot;level_interp&quot;: [],
+  &quot;level_copies&quot;: [],
+  &quot;delta_inlined&quot;: [],
+  &quot;admitting_levels&quot;: []
+}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;TRANSLATED_AND_CHECKED&quot;,
+  &quot;target&quot;: &quot;Rocq.Corelib.Init.Number.number&quot;,
+  &quot;target_kind&quot;: &quot;inductive&quot;,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: &quot;RT_OK&quot;,
+  &quot;module_roundtrip&quot;: &quot;OK&quot;,
+  &quot;consumer&quot;: &quot;OK&quot;,
+  &quot;audit&quot;: &quot;OK&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[
+  {
+    &quot;label&quot;: &quot;i[pl]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;TRANSLATED_AND_CHECKED&quot;,
+    &quot;flag_descriptions&quot;: [
+      &quot;归纳类型中表示 plain levels；常量中表示 Prop lift 尝试&quot;
+    ]
+  }
+]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Number/records/0007.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d8" data-status="TRANSLATED_AND_CHECKED"><summary>Corelib.Init.Number.number_beq — TRANSLATED_AND_CHECKED</summary><p>类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Number.number_beq</p><p>源文件行号候选：[]</p><h3>实际 Lean 输出</h3><pre>def Rocq.Corelib.Init.Number.number_beq : Rocq.Corelib.Init.Number.number →
+  Rocq.Corelib.Init.Number.number → Rocq.Corelib.Init.Datatypes.bool :=
+fun X Y =&gt;
+  @Rocq.Corelib.Init.Number.number.rec.{1} (fun t =&gt; Rocq.Corelib.Init.Datatypes.bool)
+    (fun d =&gt;
+      @Rocq.Corelib.Init.Number.number.rec.{1} (fun t =&gt; Rocq.Corelib.Init.Datatypes.bool)
+        (fun d_1 =&gt; Rocq.Corelib.Init.Decimal.decimal_beq d d_1) (fun h =&gt; Rocq.Corelib.Init.Datatypes.bool.false) Y)
+    (fun h =&gt;
+      @Rocq.Corelib.Init.Number.number.rec.{1} (fun t =&gt; Rocq.Corelib.Init.Datatypes.bool)
+        (fun d =&gt; Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun h_1 =&gt; Rocq.Corelib.Init.Hexadecimal.hexadecimal_beq h h_1) Y)
+    X</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;definition_function&quot;,
+  &quot;source_body_state&quot;: &quot;transparent&quot;,
+  &quot;native_preparation&quot;: {
+    &quot;sealed_implementation&quot;: false,
+    &quot;lowered_ssr_have_upoly&quot;: false
+  },
+  &quot;exported&quot;: true
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {
+    &quot;type&quot;: [
+      &quot;Corelib.Init.Datatypes.bool&quot;,
+      &quot;Corelib.Init.Number.number&quot;
+    ],
+    &quot;body&quot;: [
+      &quot;Corelib.Init.Datatypes.bool&quot;,
+      &quot;Corelib.Init.Decimal.decimal_beq&quot;,
+      &quot;Corelib.Init.Hexadecimal.hexadecimal_beq&quot;,
+      &quot;Corelib.Init.Number.number&quot;
+    ]
+  },
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;constant/transparent&quot;,
+  &quot;source_node_counts&quot;: {
+    &quot;prod&quot;: 2,
+    &quot;ind&quot;: 8,
+    &quot;lam&quot;: 2,
+    &quot;case&quot;: 3,
+    &quot;rel&quot;: 7,
+    &quot;app&quot;: 2,
+    &quot;const&quot;: 2,
+    &quot;construct&quot;: 2
+  },
+  &quot;node_rules_present&quot;: [
+    &quot;依赖函数类型 → Lean forall&quot;,
+    &quot;归纳类型引用 → 原生 bootstrap 或生成类型&quot;,
+    &quot;函数体 → Lean lambda&quot;,
+    &quot;模式消去 → 目标 recursor/消去表达式&quot;,
+    &quot;局部变量 → Lean 绑定变量&quot;,
+    &quot;应用 → 已翻译目标的应用&quot;,
+    &quot;全局常量 → 目标声明或显式待证明前提&quot;,
+    &quot;构造子 → 对应目标构造子&quot;
+  ],
+  &quot;actual_target_recursors&quot;: [
+    &quot;Rocq.Corelib.Init.Number.number.rec&quot;
+  ],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{
+  &quot;universe_diagnostics&quot;: [],
+  &quot;universe_checks&quot;: 0,
+  &quot;template_params&quot;: [],
+  &quot;solved_levels&quot;: [],
+  &quot;r2bp_levels&quot;: [],
+  &quot;prop_lift_coercions&quot;: 0,
+  &quot;prop_lift&quot;: null,
+  &quot;phantom_lowered&quot;: [],
+  &quot;level_split&quot;: [],
+  &quot;level_params&quot;: [],
+  &quot;level_interp&quot;: [],
+  &quot;level_copies&quot;: [],
+  &quot;delta_inlined&quot;: [],
+  &quot;admitting_levels&quot;: []
+}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;TRANSLATED_AND_CHECKED&quot;,
+  &quot;target&quot;: &quot;Rocq.Corelib.Init.Number.number_beq&quot;,
+  &quot;target_kind&quot;: &quot;def&quot;,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: &quot;RT_OK&quot;,
+  &quot;module_roundtrip&quot;: &quot;OK&quot;,
+  &quot;consumer&quot;: &quot;OK&quot;,
+  &quot;audit&quot;: &quot;OK&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[
+  {
+    &quot;label&quot;: &quot;c[]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;TRANSLATED_AND_CHECKED&quot;,
+    &quot;flag_descriptions&quot;: []
+  }
+]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Number/records/0008.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d9" data-status="PENDING_KERNEL_CHECKED"><summary>Corelib.Init.Number.number_eq_dec — PENDING_KERNEL_CHECKED</summary><p>类别: definition_function；状态: PENDING_KERNEL_CHECKED；实际目标: RocqPending.Corelib.Init.Number.number_eq_dec</p><p>源文件行号候选：[]</p><h3>实际 Lean 输出</h3><pre>def RocqPending.Corelib.Init.Number.number_eq_dec : {h_Corelib_Init_Number_number_eq_dec__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_1.statement} →
+  {h_Corelib_Init_Number_number_eq_dec__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_2.statement} →
+    {h_Corelib_Init_Number_number_eq_dec__rocq2lean_obligation_3 :
+        @RocqPending.Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_3.statement
+          h_Corelib_Init_Number_number_eq_dec__rocq2lean_obligation_1
+          h_Corelib_Init_Number_number_eq_dec__rocq2lean_obligation_2} →
+      {h_Corelib_Init_Number_number_eq_dec__rocq2lean_obligation_4 :
+          @RocqPending.Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_4.statement
+            h_Corelib_Init_Number_number_eq_dec__rocq2lean_obligation_1
+            h_Corelib_Init_Number_number_eq_dec__rocq2lean_obligation_2} →
+        (x y : Rocq.Corelib.Init.Number.number) →
+          Rocq.Corelib.Init.Specif.sumbool (@Eq.{1} Rocq.Corelib.Init.Number.number x y)
+            (Rocq.Corelib.Init.Logic.not (@Eq.{1} Rocq.Corelib.Init.Number.number x y)) :=
+fun {h_Corelib_Init_Number_number_eq_dec__rocq2lean_obligation_1}
+    {h_Corelib_Init_Number_number_eq_dec__rocq2lean_obligation_2}
+    {h_Corelib_Init_Number_number_eq_dec__rocq2lean_obligation_3}
+    {h_Corelib_Init_Number_number_eq_dec__rocq2lean_obligation_4} x y =&gt;
+  let H :=
+    let b := Rocq.Corelib.Init.Number.number_beq x y;
+    @Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+      (fun t =&gt;
+        Rocq.Corelib.Init.Specif.sumbool
+          (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool t Rocq.Corelib.Init.Datatypes.bool.true)
+          (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool t Rocq.Corelib.Init.Datatypes.bool.false))
+      (Rocq.Corelib.Init.Specif.sumbool.left
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+          Rocq.Corelib.Init.Datatypes.bool.true)
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+          Rocq.Corelib.Init.Datatypes.bool.false)
+        ⋯)
+      (Rocq.Corelib.Init.Specif.sumbool.right
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+          Rocq.Corelib.Init.Datatypes.bool.true)
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+          Rocq.Corelib.Init.Datatypes.bool.false)
+        ⋯)
+      b;
+  @Rocq.Corelib.Init.Specif.sumbool.rec.{1}
+    (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Number.number_beq x y)
+      Rocq.Corelib.Init.Datatypes.bool.true)
+    (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Number.number_beq x y)
+      Rocq.Corelib.Init.Datatypes.bool.false)
+    (fun t =&gt;
+      Rocq.Corelib.Init.Specif.sumbool (@Eq.{1} Rocq.Corelib.Init.Number.number x y)
+        (Rocq.Corelib.Init.Logic.not (@Eq.{1} Rocq.Corelib.Init.Number.number x y)))
+    (fun a =&gt;
+      (fun e =&gt;
+          Rocq.Corelib.Init.Specif.sumbool.left (@Eq.{1} Rocq.Corelib.Init.Number.number x y)
+            (Rocq.Corelib.Init.Logic.not (@Eq.{1} Rocq.Corelib.Init.Number.number x y)) ⋯)
+        a)
+    (fun a =&gt;
+      (fun H0 =&gt;
+          Rocq.Corelib.Init.Specif.sumbool.right (@Eq.{1} Rocq.Corelib.Init.Number.number x y)
+            (Rocq.Corelib.Init.Logic.not (@Eq.{1} Rocq.Corelib.Init.Number.number x y)) ⋯)
+        a)
+    H</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;definition_function&quot;,
+  &quot;source_body_state&quot;: &quot;transparent&quot;,
+  &quot;native_preparation&quot;: {
+    &quot;sealed_implementation&quot;: false,
+    &quot;lowered_ssr_have_upoly&quot;: false
+  },
+  &quot;exported&quot;: true
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {
+    &quot;type&quot;: [
+      &quot;Corelib.Init.Logic.eq&quot;,
+      &quot;Corelib.Init.Logic.not&quot;,
+      &quot;Corelib.Init.Number.number&quot;,
+      &quot;Corelib.Init.Specif.sumbool&quot;
+    ],
+    &quot;body&quot;: [
+      &quot;Corelib.Init.Datatypes.bool&quot;,
+      &quot;Corelib.Init.Logic.eq&quot;,
+      &quot;Corelib.Init.Logic.not&quot;,
+      &quot;Corelib.Init.Number.number&quot;,
+      &quot;Corelib.Init.Number.number_beq&quot;,
+      &quot;Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_1&quot;,
+      &quot;Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_2&quot;,
+      &quot;Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_3&quot;,
+      &quot;Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_4&quot;,
+      &quot;Corelib.Init.Specif.sumbool&quot;
+    ]
+  },
+  &quot;pending&quot;: [
+    &quot;Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_1&quot;,
+    &quot;Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_2&quot;,
+    &quot;Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_3&quot;,
+    &quot;Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_4&quot;
+  ],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;constant/transparent&quot;,
+  &quot;source_node_counts&quot;: {
+    &quot;prod&quot;: 2,
+    &quot;ind&quot;: 49,
+    &quot;app&quot;: 45,
+    &quot;rel&quot;: 48,
+    &quot;const&quot;: 15,
+    &quot;lam&quot;: 4,
+    &quot;let&quot;: 2,
+    &quot;case&quot;: 2,
+    &quot;construct&quot;: 20
+  },
+  &quot;node_rules_present&quot;: [
+    &quot;依赖函数类型 → Lean forall&quot;,
+    &quot;归纳类型引用 → 原生 bootstrap 或生成类型&quot;,
+    &quot;应用 → 已翻译目标的应用&quot;,
+    &quot;局部变量 → Lean 绑定变量&quot;,
+    &quot;全局常量 → 目标声明或显式待证明前提&quot;,
+    &quot;函数体 → Lean lambda&quot;,
+    &quot;局部定义 → Lean let&quot;,
+    &quot;模式消去 → 目标 recursor/消去表达式&quot;,
+    &quot;构造子 → 对应目标构造子&quot;
+  ],
+  &quot;actual_target_recursors&quot;: [
+    &quot;Rocq.Corelib.Init.Datatypes.bool.rec&quot;,
+    &quot;Rocq.Corelib.Init.Specif.sumbool.rec&quot;
+  ],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{
+  &quot;universe_diagnostics&quot;: [],
+  &quot;universe_checks&quot;: 0,
+  &quot;template_params&quot;: [],
+  &quot;solved_levels&quot;: [],
+  &quot;r2bp_levels&quot;: [],
+  &quot;prop_lift_coercions&quot;: 0,
+  &quot;prop_lift&quot;: null,
+  &quot;phantom_lowered&quot;: [],
+  &quot;level_split&quot;: [],
+  &quot;level_params&quot;: [],
+  &quot;level_interp&quot;: [],
+  &quot;level_copies&quot;: [],
+  &quot;delta_inlined&quot;: [],
+  &quot;admitting_levels&quot;: []
+}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;PENDING_KERNEL_CHECKED&quot;,
+  &quot;target&quot;: &quot;RocqPending.Corelib.Init.Number.number_eq_dec&quot;,
+  &quot;target_kind&quot;: &quot;def&quot;,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: &quot;RT_OK&quot;,
+  &quot;module_roundtrip&quot;: &quot;OK&quot;,
+  &quot;consumer&quot;: &quot;OK&quot;,
+  &quot;audit&quot;: &quot;OK&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[
+  {
+    &quot;label&quot;: &quot;c[]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;PENDING_KERNEL_CHECKED&quot;,
+    &quot;flag_descriptions&quot;: []
+  }
+]</pre><p>完整尝试结果见下方逐项 JSON。</p><h3>待证明条件</h3><pre>[
+  {
+    &quot;source&quot;: &quot;Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_1&quot;,
+    &quot;target&quot;: &quot;Rocq.Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_1.statement&quot;,
+    &quot;status&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;
+  },
+  {
+    &quot;source&quot;: &quot;Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_2&quot;,
+    &quot;target&quot;: &quot;Rocq.Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_2.statement&quot;,
+    &quot;status&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;
+  },
+  {
+    &quot;source&quot;: &quot;Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_3&quot;,
+    &quot;target&quot;: &quot;RocqPending.Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_3.statement&quot;,
+    &quot;status&quot;: &quot;STATEMENT_PENDING_KERNEL_CHECKED&quot;
+  },
+  {
+    &quot;source&quot;: &quot;Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_4&quot;,
+    &quot;target&quot;: &quot;RocqPending.Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_4.statement&quot;,
+    &quot;status&quot;: &quot;STATEMENT_PENDING_KERNEL_CHECKED&quot;
+  }
+]</pre><p>条件的完整源类型和 Lean 类型见逐项 JSON。</p><p><a href="Number/records/0009.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d10" data-status="TRANSLATED_AND_CHECKED"><summary>Corelib.Init.Number.signed_int — TRANSLATED_AND_CHECKED</summary><p>类别: data_inductive；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Number.signed_int</p><p>源文件行号候选：[17]</p><h3>实际 Lean 输出</h3><pre>inductive Rocq.Corelib.Init.Number.signed_int : Type
+number of parameters: 0
+constructors:
+Rocq.Corelib.Init.Number.signed_int.IntDecimal : Rocq.Corelib.Init.Decimal.signed_int →
+  Rocq.Corelib.Init.Number.signed_int
+Rocq.Corelib.Init.Number.signed_int.IntHexadecimal : Rocq.Corelib.Init.Hexadecimal.signed_int →
+  Rocq.Corelib.Init.Number.signed_int</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;data_inductive&quot;,
+  &quot;source_body_state&quot;: null,
+  &quot;native_preparation&quot;: {},
+  &quot;exported&quot;: true
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {
+    &quot;type&quot;: [
+      &quot;Corelib.Init.Decimal.signed_int&quot;,
+      &quot;Corelib.Init.Hexadecimal.signed_int&quot;
+    ]
+  },
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;inductive/generated&quot;,
+  &quot;source_node_counts&quot;: {
+    &quot;sort&quot;: 1,
+    &quot;ind&quot;: 4,
+    &quot;prod&quot;: 2,
+    &quot;rel&quot;: 2
+  },
+  &quot;node_rules_present&quot;: [
+    &quot;源 sort/宇宙 → Lean Sort&quot;,
+    &quot;归纳类型引用 → 原生 bootstrap 或生成类型&quot;,
+    &quot;依赖函数类型 → Lean forall&quot;,
+    &quot;局部变量 → Lean 绑定变量&quot;
+  ],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{
+  &quot;universe_diagnostics&quot;: [],
+  &quot;universe_checks&quot;: 0,
+  &quot;template_params&quot;: [],
+  &quot;solved_levels&quot;: [],
+  &quot;r2bp_levels&quot;: [],
+  &quot;prop_lift_coercions&quot;: 0,
+  &quot;prop_lift&quot;: null,
+  &quot;phantom_lowered&quot;: [],
+  &quot;level_split&quot;: [],
+  &quot;level_params&quot;: [],
+  &quot;level_interp&quot;: [],
+  &quot;level_copies&quot;: [],
+  &quot;delta_inlined&quot;: [],
+  &quot;admitting_levels&quot;: []
+}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;TRANSLATED_AND_CHECKED&quot;,
+  &quot;target&quot;: &quot;Rocq.Corelib.Init.Number.signed_int&quot;,
+  &quot;target_kind&quot;: &quot;inductive&quot;,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: &quot;RT_OK&quot;,
+  &quot;module_roundtrip&quot;: &quot;OK&quot;,
+  &quot;consumer&quot;: &quot;OK&quot;,
+  &quot;audit&quot;: &quot;OK&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[
+  {
+    &quot;label&quot;: &quot;i[pl]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;TRANSLATED_AND_CHECKED&quot;,
+    &quot;flag_descriptions&quot;: [
+      &quot;归纳类型中表示 plain levels；常量中表示 Prop lift 尝试&quot;
+    ]
+  }
+]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Number/records/0010.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d11" data-status="TRANSLATED_AND_CHECKED"><summary>Corelib.Init.Number.signed_int_beq — TRANSLATED_AND_CHECKED</summary><p>类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Number.signed_int_beq</p><p>源文件行号候选：[]</p><h3>实际 Lean 输出</h3><pre>def Rocq.Corelib.Init.Number.signed_int_beq : Rocq.Corelib.Init.Number.signed_int →
+  Rocq.Corelib.Init.Number.signed_int → Rocq.Corelib.Init.Datatypes.bool :=
+fun X Y =&gt;
+  @Rocq.Corelib.Init.Number.signed_int.rec.{1} (fun t =&gt; Rocq.Corelib.Init.Datatypes.bool)
+    (fun i =&gt;
+      @Rocq.Corelib.Init.Number.signed_int.rec.{1} (fun t =&gt; Rocq.Corelib.Init.Datatypes.bool)
+        (fun i_1 =&gt; Rocq.Corelib.Init.Decimal.signed_int_beq i i_1) (fun i =&gt; Rocq.Corelib.Init.Datatypes.bool.false) Y)
+    (fun i =&gt;
+      @Rocq.Corelib.Init.Number.signed_int.rec.{1} (fun t =&gt; Rocq.Corelib.Init.Datatypes.bool)
+        (fun i =&gt; Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun i_1 =&gt; Rocq.Corelib.Init.Hexadecimal.signed_int_beq i i_1) Y)
+    X</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;definition_function&quot;,
+  &quot;source_body_state&quot;: &quot;transparent&quot;,
+  &quot;native_preparation&quot;: {
+    &quot;sealed_implementation&quot;: false,
+    &quot;lowered_ssr_have_upoly&quot;: false
+  },
+  &quot;exported&quot;: true
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {
+    &quot;type&quot;: [
+      &quot;Corelib.Init.Datatypes.bool&quot;,
+      &quot;Corelib.Init.Number.signed_int&quot;
+    ],
+    &quot;body&quot;: [
+      &quot;Corelib.Init.Datatypes.bool&quot;,
+      &quot;Corelib.Init.Decimal.signed_int_beq&quot;,
+      &quot;Corelib.Init.Hexadecimal.signed_int_beq&quot;,
+      &quot;Corelib.Init.Number.signed_int&quot;
+    ]
+  },
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;constant/transparent&quot;,
+  &quot;source_node_counts&quot;: {
+    &quot;prod&quot;: 2,
+    &quot;ind&quot;: 8,
+    &quot;lam&quot;: 2,
+    &quot;case&quot;: 3,
+    &quot;rel&quot;: 7,
+    &quot;app&quot;: 2,
+    &quot;const&quot;: 2,
+    &quot;construct&quot;: 2
+  },
+  &quot;node_rules_present&quot;: [
+    &quot;依赖函数类型 → Lean forall&quot;,
+    &quot;归纳类型引用 → 原生 bootstrap 或生成类型&quot;,
+    &quot;函数体 → Lean lambda&quot;,
+    &quot;模式消去 → 目标 recursor/消去表达式&quot;,
+    &quot;局部变量 → Lean 绑定变量&quot;,
+    &quot;应用 → 已翻译目标的应用&quot;,
+    &quot;全局常量 → 目标声明或显式待证明前提&quot;,
+    &quot;构造子 → 对应目标构造子&quot;
+  ],
+  &quot;actual_target_recursors&quot;: [
+    &quot;Rocq.Corelib.Init.Number.signed_int.rec&quot;
+  ],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{
+  &quot;universe_diagnostics&quot;: [],
+  &quot;universe_checks&quot;: 0,
+  &quot;template_params&quot;: [],
+  &quot;solved_levels&quot;: [],
+  &quot;r2bp_levels&quot;: [],
+  &quot;prop_lift_coercions&quot;: 0,
+  &quot;prop_lift&quot;: null,
+  &quot;phantom_lowered&quot;: [],
+  &quot;level_split&quot;: [],
+  &quot;level_params&quot;: [],
+  &quot;level_interp&quot;: [],
+  &quot;level_copies&quot;: [],
+  &quot;delta_inlined&quot;: [],
+  &quot;admitting_levels&quot;: []
+}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;TRANSLATED_AND_CHECKED&quot;,
+  &quot;target&quot;: &quot;Rocq.Corelib.Init.Number.signed_int_beq&quot;,
+  &quot;target_kind&quot;: &quot;def&quot;,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: &quot;RT_OK&quot;,
+  &quot;module_roundtrip&quot;: &quot;OK&quot;,
+  &quot;consumer&quot;: &quot;OK&quot;,
+  &quot;audit&quot;: &quot;OK&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[
+  {
+    &quot;label&quot;: &quot;c[]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;TRANSLATED_AND_CHECKED&quot;,
+    &quot;flag_descriptions&quot;: []
+  }
+]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Number/records/0011.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d12" data-status="PENDING_KERNEL_CHECKED"><summary>Corelib.Init.Number.signed_int_eq_dec — PENDING_KERNEL_CHECKED</summary><p>类别: definition_function；状态: PENDING_KERNEL_CHECKED；实际目标: RocqPending.Corelib.Init.Number.signed_int_eq_dec</p><p>源文件行号候选：[]</p><h3>实际 Lean 输出</h3><pre>def RocqPending.Corelib.Init.Number.signed_int_eq_dec : {h_Corelib_Init_Number_signed_int_eq_dec__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_1.statement} →
+  {h_Corelib_Init_Number_signed_int_eq_dec__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_2.statement} →
+    {h_Corelib_Init_Number_signed_int_eq_dec__rocq2lean_obligation_3 :
+        @RocqPending.Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_3.statement
+          h_Corelib_Init_Number_signed_int_eq_dec__rocq2lean_obligation_1
+          h_Corelib_Init_Number_signed_int_eq_dec__rocq2lean_obligation_2} →
+      {h_Corelib_Init_Number_signed_int_eq_dec__rocq2lean_obligation_4 :
+          @RocqPending.Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_4.statement
+            h_Corelib_Init_Number_signed_int_eq_dec__rocq2lean_obligation_1
+            h_Corelib_Init_Number_signed_int_eq_dec__rocq2lean_obligation_2} →
+        (x y : Rocq.Corelib.Init.Number.signed_int) →
+          Rocq.Corelib.Init.Specif.sumbool (@Eq.{1} Rocq.Corelib.Init.Number.signed_int x y)
+            (Rocq.Corelib.Init.Logic.not (@Eq.{1} Rocq.Corelib.Init.Number.signed_int x y)) :=
+fun {h_Corelib_Init_Number_signed_int_eq_dec__rocq2lean_obligation_1}
+    {h_Corelib_Init_Number_signed_int_eq_dec__rocq2lean_obligation_2}
+    {h_Corelib_Init_Number_signed_int_eq_dec__rocq2lean_obligation_3}
+    {h_Corelib_Init_Number_signed_int_eq_dec__rocq2lean_obligation_4} x y =&gt;
+  let H :=
+    let b := Rocq.Corelib.Init.Number.signed_int_beq x y;
+    @Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+      (fun t =&gt;
+        Rocq.Corelib.Init.Specif.sumbool
+          (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool t Rocq.Corelib.Init.Datatypes.bool.true)
+          (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool t Rocq.Corelib.Init.Datatypes.bool.false))
+      (Rocq.Corelib.Init.Specif.sumbool.left
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+          Rocq.Corelib.Init.Datatypes.bool.true)
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+          Rocq.Corelib.Init.Datatypes.bool.false)
+        ⋯)
+      (Rocq.Corelib.Init.Specif.sumbool.right
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+          Rocq.Corelib.Init.Datatypes.bool.true)
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+          Rocq.Corelib.Init.Datatypes.bool.false)
+        ⋯)
+      b;
+  @Rocq.Corelib.Init.Specif.sumbool.rec.{1}
+    (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Number.signed_int_beq x y)
+      Rocq.Corelib.Init.Datatypes.bool.true)
+    (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Number.signed_int_beq x y)
+      Rocq.Corelib.Init.Datatypes.bool.false)
+    (fun t =&gt;
+      Rocq.Corelib.Init.Specif.sumbool (@Eq.{1} Rocq.Corelib.Init.Number.signed_int x y)
+        (Rocq.Corelib.Init.Logic.not (@Eq.{1} Rocq.Corelib.Init.Number.signed_int x y)))
+    (fun a =&gt;
+      (fun e =&gt;
+          Rocq.Corelib.Init.Specif.sumbool.left (@Eq.{1} Rocq.Corelib.Init.Number.signed_int x y)
+            (Rocq.Corelib.Init.Logic.not (@Eq.{1} Rocq.Corelib.Init.Number.signed_int x y)) ⋯)
+        a)
+    (fun a =&gt;
+      (fun H0 =&gt;
+          Rocq.Corelib.Init.Specif.sumbool.right (@Eq.{1} Rocq.Corelib.Init.Number.signed_int x y)
+            (Rocq.Corelib.Init.Logic.not (@Eq.{1} Rocq.Corelib.Init.Number.signed_int x y)) ⋯)
+        a)
+    H</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;definition_function&quot;,
+  &quot;source_body_state&quot;: &quot;transparent&quot;,
+  &quot;native_preparation&quot;: {
+    &quot;sealed_implementation&quot;: false,
+    &quot;lowered_ssr_have_upoly&quot;: false
+  },
+  &quot;exported&quot;: true
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {
+    &quot;type&quot;: [
+      &quot;Corelib.Init.Logic.eq&quot;,
+      &quot;Corelib.Init.Logic.not&quot;,
+      &quot;Corelib.Init.Number.signed_int&quot;,
+      &quot;Corelib.Init.Specif.sumbool&quot;
+    ],
+    &quot;body&quot;: [
+      &quot;Corelib.Init.Datatypes.bool&quot;,
+      &quot;Corelib.Init.Logic.eq&quot;,
+      &quot;Corelib.Init.Logic.not&quot;,
+      &quot;Corelib.Init.Number.signed_int&quot;,
+      &quot;Corelib.Init.Number.signed_int_beq&quot;,
+      &quot;Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_1&quot;,
+      &quot;Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_2&quot;,
+      &quot;Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_3&quot;,
+      &quot;Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_4&quot;,
+      &quot;Corelib.Init.Specif.sumbool&quot;
+    ]
+  },
+  &quot;pending&quot;: [
+    &quot;Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_1&quot;,
+    &quot;Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_2&quot;,
+    &quot;Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_3&quot;,
+    &quot;Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_4&quot;
+  ],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;constant/transparent&quot;,
+  &quot;source_node_counts&quot;: {
+    &quot;prod&quot;: 2,
+    &quot;ind&quot;: 49,
+    &quot;app&quot;: 45,
+    &quot;rel&quot;: 48,
+    &quot;const&quot;: 15,
+    &quot;lam&quot;: 4,
+    &quot;let&quot;: 2,
+    &quot;case&quot;: 2,
+    &quot;construct&quot;: 20
+  },
+  &quot;node_rules_present&quot;: [
+    &quot;依赖函数类型 → Lean forall&quot;,
+    &quot;归纳类型引用 → 原生 bootstrap 或生成类型&quot;,
+    &quot;应用 → 已翻译目标的应用&quot;,
+    &quot;局部变量 → Lean 绑定变量&quot;,
+    &quot;全局常量 → 目标声明或显式待证明前提&quot;,
+    &quot;函数体 → Lean lambda&quot;,
+    &quot;局部定义 → Lean let&quot;,
+    &quot;模式消去 → 目标 recursor/消去表达式&quot;,
+    &quot;构造子 → 对应目标构造子&quot;
+  ],
+  &quot;actual_target_recursors&quot;: [
+    &quot;Rocq.Corelib.Init.Datatypes.bool.rec&quot;,
+    &quot;Rocq.Corelib.Init.Specif.sumbool.rec&quot;
+  ],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{
+  &quot;universe_diagnostics&quot;: [],
+  &quot;universe_checks&quot;: 0,
+  &quot;template_params&quot;: [],
+  &quot;solved_levels&quot;: [],
+  &quot;r2bp_levels&quot;: [],
+  &quot;prop_lift_coercions&quot;: 0,
+  &quot;prop_lift&quot;: null,
+  &quot;phantom_lowered&quot;: [],
+  &quot;level_split&quot;: [],
+  &quot;level_params&quot;: [],
+  &quot;level_interp&quot;: [],
+  &quot;level_copies&quot;: [],
+  &quot;delta_inlined&quot;: [],
+  &quot;admitting_levels&quot;: []
+}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;PENDING_KERNEL_CHECKED&quot;,
+  &quot;target&quot;: &quot;RocqPending.Corelib.Init.Number.signed_int_eq_dec&quot;,
+  &quot;target_kind&quot;: &quot;def&quot;,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: &quot;RT_OK&quot;,
+  &quot;module_roundtrip&quot;: &quot;OK&quot;,
+  &quot;consumer&quot;: &quot;OK&quot;,
+  &quot;audit&quot;: &quot;OK&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[
+  {
+    &quot;label&quot;: &quot;c[]&quot;,
+    &quot;ms&quot;: 1,
+    &quot;result&quot;: &quot;PENDING_KERNEL_CHECKED&quot;,
+    &quot;flag_descriptions&quot;: []
+  }
+]</pre><p>完整尝试结果见下方逐项 JSON。</p><h3>待证明条件</h3><pre>[
+  {
+    &quot;source&quot;: &quot;Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_1&quot;,
+    &quot;target&quot;: &quot;Rocq.Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_1.statement&quot;,
+    &quot;status&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;
+  },
+  {
+    &quot;source&quot;: &quot;Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_2&quot;,
+    &quot;target&quot;: &quot;Rocq.Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_2.statement&quot;,
+    &quot;status&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;
+  },
+  {
+    &quot;source&quot;: &quot;Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_3&quot;,
+    &quot;target&quot;: &quot;RocqPending.Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_3.statement&quot;,
+    &quot;status&quot;: &quot;STATEMENT_PENDING_KERNEL_CHECKED&quot;
+  },
+  {
+    &quot;source&quot;: &quot;Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_4&quot;,
+    &quot;target&quot;: &quot;RocqPending.Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_4.statement&quot;,
+    &quot;status&quot;: &quot;STATEMENT_PENDING_KERNEL_CHECKED&quot;
+  }
+]</pre><p>条件的完整源类型和 Lean 类型见逐项 JSON。</p><p><a href="Number/records/0012.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d13" data-status="TRANSLATED_AND_CHECKED"><summary>Corelib.Init.Number.uint — TRANSLATED_AND_CHECKED</summary><p>类别: data_inductive；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Number.uint</p><p>源文件行号候选：[15]</p><h3>实际 Lean 输出</h3><pre>inductive Rocq.Corelib.Init.Number.uint : Type
+number of parameters: 0
+constructors:
+Rocq.Corelib.Init.Number.uint.UIntDecimal : Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Number.uint
+Rocq.Corelib.Init.Number.uint.UIntHexadecimal : Rocq.Corelib.Init.Hexadecimal.uint → Rocq.Corelib.Init.Number.uint</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;data_inductive&quot;,
+  &quot;source_body_state&quot;: null,
+  &quot;native_preparation&quot;: {},
+  &quot;exported&quot;: true
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {
+    &quot;type&quot;: [
+      &quot;Corelib.Init.Decimal.uint&quot;,
+      &quot;Corelib.Init.Hexadecimal.uint&quot;
+    ]
+  },
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;inductive/generated&quot;,
+  &quot;source_node_counts&quot;: {
+    &quot;sort&quot;: 1,
+    &quot;ind&quot;: 4,
+    &quot;prod&quot;: 2,
+    &quot;rel&quot;: 2
+  },
+  &quot;node_rules_present&quot;: [
+    &quot;源 sort/宇宙 → Lean Sort&quot;,
+    &quot;归纳类型引用 → 原生 bootstrap 或生成类型&quot;,
+    &quot;依赖函数类型 → Lean forall&quot;,
+    &quot;局部变量 → Lean 绑定变量&quot;
+  ],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{
+  &quot;universe_diagnostics&quot;: [],
+  &quot;universe_checks&quot;: 0,
+  &quot;template_params&quot;: [],
+  &quot;solved_levels&quot;: [],
+  &quot;r2bp_levels&quot;: [],
+  &quot;prop_lift_coercions&quot;: 0,
+  &quot;prop_lift&quot;: null,
+  &quot;phantom_lowered&quot;: [],
+  &quot;level_split&quot;: [],
+  &quot;level_params&quot;: [],
+  &quot;level_interp&quot;: [],
+  &quot;level_copies&quot;: [],
+  &quot;delta_inlined&quot;: [],
+  &quot;admitting_levels&quot;: []
+}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;TRANSLATED_AND_CHECKED&quot;,
+  &quot;target&quot;: &quot;Rocq.Corelib.Init.Number.uint&quot;,
+  &quot;target_kind&quot;: &quot;inductive&quot;,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: &quot;RT_OK&quot;,
+  &quot;module_roundtrip&quot;: &quot;OK&quot;,
+  &quot;consumer&quot;: &quot;OK&quot;,
+  &quot;audit&quot;: &quot;OK&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[
+  {
+    &quot;label&quot;: &quot;i[pl]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;TRANSLATED_AND_CHECKED&quot;,
+    &quot;flag_descriptions&quot;: [
+      &quot;归纳类型中表示 plain levels；常量中表示 Prop lift 尝试&quot;
+    ]
+  }
+]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Number/records/0013.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d14" data-status="TRANSLATED_AND_CHECKED"><summary>Corelib.Init.Number.uint_beq — TRANSLATED_AND_CHECKED</summary><p>类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Number.uint_beq</p><p>源文件行号候选：[]</p><h3>实际 Lean 输出</h3><pre>def Rocq.Corelib.Init.Number.uint_beq : Rocq.Corelib.Init.Number.uint →
+  Rocq.Corelib.Init.Number.uint → Rocq.Corelib.Init.Datatypes.bool :=
+fun X Y =&gt;
+  @Rocq.Corelib.Init.Number.uint.rec.{1} (fun t =&gt; Rocq.Corelib.Init.Datatypes.bool)
+    (fun u =&gt;
+      @Rocq.Corelib.Init.Number.uint.rec.{1} (fun t =&gt; Rocq.Corelib.Init.Datatypes.bool)
+        (fun u_1 =&gt; Rocq.Corelib.Init.Decimal.uint_beq u u_1) (fun u =&gt; Rocq.Corelib.Init.Datatypes.bool.false) Y)
+    (fun u =&gt;
+      @Rocq.Corelib.Init.Number.uint.rec.{1} (fun t =&gt; Rocq.Corelib.Init.Datatypes.bool)
+        (fun u =&gt; Rocq.Corelib.Init.Datatypes.bool.false) (fun u_1 =&gt; Rocq.Corelib.Init.Hexadecimal.uint_beq u u_1) Y)
+    X</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;definition_function&quot;,
+  &quot;source_body_state&quot;: &quot;transparent&quot;,
+  &quot;native_preparation&quot;: {
+    &quot;sealed_implementation&quot;: false,
+    &quot;lowered_ssr_have_upoly&quot;: false
+  },
+  &quot;exported&quot;: true
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {
+    &quot;type&quot;: [
+      &quot;Corelib.Init.Datatypes.bool&quot;,
+      &quot;Corelib.Init.Number.uint&quot;
+    ],
+    &quot;body&quot;: [
+      &quot;Corelib.Init.Datatypes.bool&quot;,
+      &quot;Corelib.Init.Decimal.uint_beq&quot;,
+      &quot;Corelib.Init.Hexadecimal.uint_beq&quot;,
+      &quot;Corelib.Init.Number.uint&quot;
+    ]
+  },
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;constant/transparent&quot;,
+  &quot;source_node_counts&quot;: {
+    &quot;prod&quot;: 2,
+    &quot;ind&quot;: 8,
+    &quot;lam&quot;: 2,
+    &quot;case&quot;: 3,
+    &quot;rel&quot;: 7,
+    &quot;app&quot;: 2,
+    &quot;const&quot;: 2,
+    &quot;construct&quot;: 2
+  },
+  &quot;node_rules_present&quot;: [
+    &quot;依赖函数类型 → Lean forall&quot;,
+    &quot;归纳类型引用 → 原生 bootstrap 或生成类型&quot;,
+    &quot;函数体 → Lean lambda&quot;,
+    &quot;模式消去 → 目标 recursor/消去表达式&quot;,
+    &quot;局部变量 → Lean 绑定变量&quot;,
+    &quot;应用 → 已翻译目标的应用&quot;,
+    &quot;全局常量 → 目标声明或显式待证明前提&quot;,
+    &quot;构造子 → 对应目标构造子&quot;
+  ],
+  &quot;actual_target_recursors&quot;: [
+    &quot;Rocq.Corelib.Init.Number.uint.rec&quot;
+  ],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{
+  &quot;universe_diagnostics&quot;: [],
+  &quot;universe_checks&quot;: 0,
+  &quot;template_params&quot;: [],
+  &quot;solved_levels&quot;: [],
+  &quot;r2bp_levels&quot;: [],
+  &quot;prop_lift_coercions&quot;: 0,
+  &quot;prop_lift&quot;: null,
+  &quot;phantom_lowered&quot;: [],
+  &quot;level_split&quot;: [],
+  &quot;level_params&quot;: [],
+  &quot;level_interp&quot;: [],
+  &quot;level_copies&quot;: [],
+  &quot;delta_inlined&quot;: [],
+  &quot;admitting_levels&quot;: []
+}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;TRANSLATED_AND_CHECKED&quot;,
+  &quot;target&quot;: &quot;Rocq.Corelib.Init.Number.uint_beq&quot;,
+  &quot;target_kind&quot;: &quot;def&quot;,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: &quot;RT_OK&quot;,
+  &quot;module_roundtrip&quot;: &quot;OK&quot;,
+  &quot;consumer&quot;: &quot;OK&quot;,
+  &quot;audit&quot;: &quot;OK&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[
+  {
+    &quot;label&quot;: &quot;c[]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;TRANSLATED_AND_CHECKED&quot;,
+    &quot;flag_descriptions&quot;: []
+  }
+]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Number/records/0014.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d15" data-status="PENDING_KERNEL_CHECKED"><summary>Corelib.Init.Number.uint_eq_dec — PENDING_KERNEL_CHECKED</summary><p>类别: definition_function；状态: PENDING_KERNEL_CHECKED；实际目标: RocqPending.Corelib.Init.Number.uint_eq_dec</p><p>源文件行号候选：[]</p><h3>实际 Lean 输出</h3><pre>def RocqPending.Corelib.Init.Number.uint_eq_dec : {h_Corelib_Init_Number_uint_eq_dec__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_1.statement} →
+  {h_Corelib_Init_Number_uint_eq_dec__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_2.statement} →
+    {h_Corelib_Init_Number_uint_eq_dec__rocq2lean_obligation_3 :
+        @RocqPending.Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_3.statement
+          h_Corelib_Init_Number_uint_eq_dec__rocq2lean_obligation_1
+          h_Corelib_Init_Number_uint_eq_dec__rocq2lean_obligation_2} →
+      {h_Corelib_Init_Number_uint_eq_dec__rocq2lean_obligation_4 :
+          @RocqPending.Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_4.statement
+            h_Corelib_Init_Number_uint_eq_dec__rocq2lean_obligation_1
+            h_Corelib_Init_Number_uint_eq_dec__rocq2lean_obligation_2} →
+        (x y : Rocq.Corelib.Init.Number.uint) →
+          Rocq.Corelib.Init.Specif.sumbool (@Eq.{1} Rocq.Corelib.Init.Number.uint x y)
+            (Rocq.Corelib.Init.Logic.not (@Eq.{1} Rocq.Corelib.Init.Number.uint x y)) :=
+fun {h_Corelib_Init_Number_uint_eq_dec__rocq2lean_obligation_1}
+    {h_Corelib_Init_Number_uint_eq_dec__rocq2lean_obligation_2}
+    {h_Corelib_Init_Number_uint_eq_dec__rocq2lean_obligation_3}
+    {h_Corelib_Init_Number_uint_eq_dec__rocq2lean_obligation_4} x y =&gt;
+  let H :=
+    let b := Rocq.Corelib.Init.Number.uint_beq x y;
+    @Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+      (fun t =&gt;
+        Rocq.Corelib.Init.Specif.sumbool
+          (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool t Rocq.Corelib.Init.Datatypes.bool.true)
+          (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool t Rocq.Corelib.Init.Datatypes.bool.false))
+      (Rocq.Corelib.Init.Specif.sumbool.left
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+          Rocq.Corelib.Init.Datatypes.bool.true)
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+          Rocq.Corelib.Init.Datatypes.bool.false)
+        ⋯)
+      (Rocq.Corelib.Init.Specif.sumbool.right
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+          Rocq.Corelib.Init.Datatypes.bool.true)
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+          Rocq.Corelib.Init.Datatypes.bool.false)
+        ⋯)
+      b;
+  @Rocq.Corelib.Init.Specif.sumbool.rec.{1}
+    (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Number.uint_beq x y)
+      Rocq.Corelib.Init.Datatypes.bool.true)
+    (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Number.uint_beq x y)
+      Rocq.Corelib.Init.Datatypes.bool.false)
+    (fun t =&gt;
+      Rocq.Corelib.Init.Specif.sumbool (@Eq.{1} Rocq.Corelib.Init.Number.uint x y)
+        (Rocq.Corelib.Init.Logic.not (@Eq.{1} Rocq.Corelib.Init.Number.uint x y)))
+    (fun a =&gt;
+      (fun e =&gt;
+          Rocq.Corelib.Init.Specif.sumbool.left (@Eq.{1} Rocq.Corelib.Init.Number.uint x y)
+            (Rocq.Corelib.Init.Logic.not (@Eq.{1} Rocq.Corelib.Init.Number.uint x y)) ⋯)
+        a)
+    (fun a =&gt;
+      (fun H0 =&gt;
+          Rocq.Corelib.Init.Specif.sumbool.right (@Eq.{1} Rocq.Corelib.Init.Number.uint x y)
+            (Rocq.Corelib.Init.Logic.not (@Eq.{1} Rocq.Corelib.Init.Number.uint x y)) ⋯)
+        a)
+    H</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;definition_function&quot;,
+  &quot;source_body_state&quot;: &quot;transparent&quot;,
+  &quot;native_preparation&quot;: {
+    &quot;sealed_implementation&quot;: false,
+    &quot;lowered_ssr_have_upoly&quot;: false
+  },
+  &quot;exported&quot;: true
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {
+    &quot;type&quot;: [
+      &quot;Corelib.Init.Logic.eq&quot;,
+      &quot;Corelib.Init.Logic.not&quot;,
+      &quot;Corelib.Init.Number.uint&quot;,
+      &quot;Corelib.Init.Specif.sumbool&quot;
+    ],
+    &quot;body&quot;: [
+      &quot;Corelib.Init.Datatypes.bool&quot;,
+      &quot;Corelib.Init.Logic.eq&quot;,
+      &quot;Corelib.Init.Logic.not&quot;,
+      &quot;Corelib.Init.Number.uint&quot;,
+      &quot;Corelib.Init.Number.uint_beq&quot;,
+      &quot;Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_1&quot;,
+      &quot;Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_2&quot;,
+      &quot;Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_3&quot;,
+      &quot;Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_4&quot;,
+      &quot;Corelib.Init.Specif.sumbool&quot;
+    ]
+  },
+  &quot;pending&quot;: [
+    &quot;Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_1&quot;,
+    &quot;Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_2&quot;,
+    &quot;Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_3&quot;,
+    &quot;Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_4&quot;
+  ],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;constant/transparent&quot;,
+  &quot;source_node_counts&quot;: {
+    &quot;prod&quot;: 2,
+    &quot;ind&quot;: 49,
+    &quot;app&quot;: 45,
+    &quot;rel&quot;: 48,
+    &quot;const&quot;: 15,
+    &quot;lam&quot;: 4,
+    &quot;let&quot;: 2,
+    &quot;case&quot;: 2,
+    &quot;construct&quot;: 20
+  },
+  &quot;node_rules_present&quot;: [
+    &quot;依赖函数类型 → Lean forall&quot;,
+    &quot;归纳类型引用 → 原生 bootstrap 或生成类型&quot;,
+    &quot;应用 → 已翻译目标的应用&quot;,
+    &quot;局部变量 → Lean 绑定变量&quot;,
+    &quot;全局常量 → 目标声明或显式待证明前提&quot;,
+    &quot;函数体 → Lean lambda&quot;,
+    &quot;局部定义 → Lean let&quot;,
+    &quot;模式消去 → 目标 recursor/消去表达式&quot;,
+    &quot;构造子 → 对应目标构造子&quot;
+  ],
+  &quot;actual_target_recursors&quot;: [
+    &quot;Rocq.Corelib.Init.Datatypes.bool.rec&quot;,
+    &quot;Rocq.Corelib.Init.Specif.sumbool.rec&quot;
+  ],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{
+  &quot;universe_diagnostics&quot;: [],
+  &quot;universe_checks&quot;: 0,
+  &quot;template_params&quot;: [],
+  &quot;solved_levels&quot;: [],
+  &quot;r2bp_levels&quot;: [],
+  &quot;prop_lift_coercions&quot;: 0,
+  &quot;prop_lift&quot;: null,
+  &quot;phantom_lowered&quot;: [],
+  &quot;level_split&quot;: [],
+  &quot;level_params&quot;: [],
+  &quot;level_interp&quot;: [],
+  &quot;level_copies&quot;: [],
+  &quot;delta_inlined&quot;: [],
+  &quot;admitting_levels&quot;: []
+}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;PENDING_KERNEL_CHECKED&quot;,
+  &quot;target&quot;: &quot;RocqPending.Corelib.Init.Number.uint_eq_dec&quot;,
+  &quot;target_kind&quot;: &quot;def&quot;,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: &quot;RT_OK&quot;,
+  &quot;module_roundtrip&quot;: &quot;OK&quot;,
+  &quot;consumer&quot;: &quot;OK&quot;,
+  &quot;audit&quot;: &quot;OK&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[
+  {
+    &quot;label&quot;: &quot;c[]&quot;,
+    &quot;ms&quot;: 1,
+    &quot;result&quot;: &quot;PENDING_KERNEL_CHECKED&quot;,
+    &quot;flag_descriptions&quot;: []
+  }
+]</pre><p>完整尝试结果见下方逐项 JSON。</p><h3>待证明条件</h3><pre>[
+  {
+    &quot;source&quot;: &quot;Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_1&quot;,
+    &quot;target&quot;: &quot;Rocq.Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_1.statement&quot;,
+    &quot;status&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;
+  },
+  {
+    &quot;source&quot;: &quot;Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_2&quot;,
+    &quot;target&quot;: &quot;Rocq.Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_2.statement&quot;,
+    &quot;status&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;
+  },
+  {
+    &quot;source&quot;: &quot;Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_3&quot;,
+    &quot;target&quot;: &quot;RocqPending.Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_3.statement&quot;,
+    &quot;status&quot;: &quot;STATEMENT_PENDING_KERNEL_CHECKED&quot;
+  },
+  {
+    &quot;source&quot;: &quot;Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_4&quot;,
+    &quot;target&quot;: &quot;RocqPending.Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_4.statement&quot;,
+    &quot;status&quot;: &quot;STATEMENT_PENDING_KERNEL_CHECKED&quot;
+  }
+]</pre><p>条件的完整源类型和 Lean 类型见逐项 JSON。</p><p><a href="Number/records/0015.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d16" data-status="TRANSLATED_AND_CHECKED"><summary>Corelib.Init.Number.uint_of_uint — TRANSLATED_AND_CHECKED</summary><p>类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Number.uint_of_uint</p><p>源文件行号候选：[37]</p><h3>实际 Lean 输出</h3><pre>def Rocq.Corelib.Init.Number.uint_of_uint : Rocq.Corelib.Init.Number.uint → Rocq.Corelib.Init.Number.uint :=
+fun i =&gt; i</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;definition_function&quot;,
+  &quot;source_body_state&quot;: &quot;transparent&quot;,
+  &quot;native_preparation&quot;: {
+    &quot;sealed_implementation&quot;: false,
+    &quot;lowered_ssr_have_upoly&quot;: false
+  },
+  &quot;exported&quot;: true
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {
+    &quot;type&quot;: [
+      &quot;Corelib.Init.Number.uint&quot;
+    ],
+    &quot;body&quot;: [
+      &quot;Corelib.Init.Number.uint&quot;
+    ]
+  },
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;constant/transparent&quot;,
+  &quot;source_node_counts&quot;: {
+    &quot;prod&quot;: 1,
+    &quot;ind&quot;: 3,
+    &quot;lam&quot;: 1,
+    &quot;rel&quot;: 1
+  },
+  &quot;node_rules_present&quot;: [
+    &quot;依赖函数类型 → Lean forall&quot;,
+    &quot;归纳类型引用 → 原生 bootstrap 或生成类型&quot;,
+    &quot;函数体 → Lean lambda&quot;,
+    &quot;局部变量 → Lean 绑定变量&quot;
+  ],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{
+  &quot;universe_diagnostics&quot;: [],
+  &quot;universe_checks&quot;: 0,
+  &quot;template_params&quot;: [],
+  &quot;solved_levels&quot;: [],
+  &quot;r2bp_levels&quot;: [],
+  &quot;prop_lift_coercions&quot;: 0,
+  &quot;prop_lift&quot;: null,
+  &quot;phantom_lowered&quot;: [],
+  &quot;level_split&quot;: [],
+  &quot;level_params&quot;: [],
+  &quot;level_interp&quot;: [],
+  &quot;level_copies&quot;: [],
+  &quot;delta_inlined&quot;: [],
+  &quot;admitting_levels&quot;: []
+}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;TRANSLATED_AND_CHECKED&quot;,
+  &quot;target&quot;: &quot;Rocq.Corelib.Init.Number.uint_of_uint&quot;,
+  &quot;target_kind&quot;: &quot;def&quot;,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: &quot;RT_OK&quot;,
+  &quot;module_roundtrip&quot;: &quot;OK&quot;,
+  &quot;consumer&quot;: &quot;OK&quot;,
+  &quot;audit&quot;: &quot;OK&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[
+  {
+    &quot;label&quot;: &quot;c[]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;TRANSLATED_AND_CHECKED&quot;,
+    &quot;flag_descriptions&quot;: []
+  }
+]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Number/records/0016.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><script>function filter(){let q=document.getElementById("search").value.toLowerCase(),s=document.getElementById("filter").value;document.querySelectorAll(".decl").forEach(e=>e.style.display=(!s||e.dataset.status===s)&&e.querySelector("summary").textContent.toLowerCase().includes(q)?"":"none")}document.getElementById("search").oninput=filter;document.getElementById("filter").onchange=filter;</script></body></html>

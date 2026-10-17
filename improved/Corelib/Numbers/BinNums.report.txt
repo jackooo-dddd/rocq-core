@@ -1,0 +1,1547 @@
+Corelib.Numbers.BinNums 逐声明翻译报告
+{
+  "module": "Corelib.Numbers.BinNums",
+  "total": 15,
+  "complete": 12,
+  "pending": 0,
+  "blocked": 3,
+  "statuses": {
+    "TRANSLATED_AND_CHECKED": 9,
+    "STATEMENT_KERNEL_CHECKED": 3,
+    "UNSUPPORTED_FEATURE": 3
+  },
+  "run_status": "MEASURED",
+  "source_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK",
+  "translation_compile_exit": 0
+}
+本文件采用逐模块独立运行。依赖随各翻译单元重复包含；不要直接把全部 .lean 一起 import。
+对应 .lean 使用翻译器的 #rocq2lean_import 命令生成内核声明；实际定义以 kernel view 展示，并非人工伪造的 Lean 源码。
+定理只翻译陈述；pending 是显式前提，不是已经证明；未导出的项目没有虚构 IR。
+
+================================================================================
+Corelib.Numbers.BinNums.N
+类别: data_inductive；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Numbers.BinNums.N
+源文件行号候选: [45]
+1 源声明与导出
+{
+  "source_kind": "data_inductive",
+  "source_body_state": null,
+  "native_preparation": {},
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.positive"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "inductive/generated",
+  "source_node_counts": {
+    "sort": 1,
+    "rel": 2,
+    "ind": 2,
+    "prod": 1
+  },
+  "node_rules_present": [
+    "源 sort/宇宙 → Lean Sort",
+    "局部变量 → Lean 绑定变量",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "依赖函数类型 → Lean forall"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Numbers.BinNums.N",
+  "target_kind": "inductive",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "i[pl]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": [
+      "归纳类型中表示 plain levels；常量中表示 Prop lift 尝试"
+    ]
+  }
+]
+实际 Lean 内核声明（#print）
+inductive Rocq.Corelib.Numbers.BinNums.N : Type
+number of parameters: 0
+constructors:
+Rocq.Corelib.Numbers.BinNums.N.N0 : Rocq.Corelib.Numbers.BinNums.N
+Rocq.Corelib.Numbers.BinNums.N.Npos : Rocq.Corelib.Numbers.BinNums.positive → Rocq.Corelib.Numbers.BinNums.N
+
+================================================================================
+Corelib.Numbers.BinNums.N_ind
+类别: statement；状态: STATEMENT_KERNEL_CHECKED；实际目标: Rocq.Corelib.Numbers.BinNums.N_ind.statement
+源文件行号候选: [45]
+1 源声明与导出
+{
+  "source_kind": "statement",
+  "source_body_state": "statement_only",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": true,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.N",
+      "Corelib.Numbers.BinNums.positive"
+    ],
+    "body": []
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 6,
+    "ind": 3,
+    "sort": 1,
+    "app": 4,
+    "rel": 5,
+    "construct": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "源 sort/宇宙 → Lean Sort",
+    "应用 → 已翻译目标的应用",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "STATEMENT_KERNEL_CHECKED",
+  "target": "Rocq.Corelib.Numbers.BinNums.N_ind.statement",
+  "target_kind": "statement",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 1,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Numbers.BinNums.N_ind.statement : Prop :=
+∀ (P : Rocq.Corelib.Numbers.BinNums.N → Prop),
+  P Rocq.Corelib.Numbers.BinNums.N.N0 →
+    (∀ (p : Rocq.Corelib.Numbers.BinNums.positive), P (Rocq.Corelib.Numbers.BinNums.N.Npos p)) →
+      ∀ (n : Rocq.Corelib.Numbers.BinNums.N), P n
+
+================================================================================
+Corelib.Numbers.BinNums.N_rec
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Numbers.BinNums.N_rec
+源文件行号候选: [45]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.N",
+      "Corelib.Numbers.BinNums.positive"
+    ],
+    "body": [
+      "Corelib.Numbers.BinNums.N",
+      "Corelib.Numbers.BinNums.positive"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 8,
+    "ind": 6,
+    "sort": 2,
+    "app": 9,
+    "rel": 14,
+    "construct": 4,
+    "lam": 4,
+    "case": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "源 sort/宇宙 → Lean Sort",
+    "应用 → 已翻译目标的应用",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Numbers.BinNums.N.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Numbers.BinNums.N_rec",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Numbers.BinNums.N_rec : (P : Rocq.Corelib.Numbers.BinNums.N → Type) →
+  P Rocq.Corelib.Numbers.BinNums.N.N0 →
+    ((p : Rocq.Corelib.Numbers.BinNums.positive) → P (Rocq.Corelib.Numbers.BinNums.N.Npos p)) →
+      (n : Rocq.Corelib.Numbers.BinNums.N) → P n :=
+fun P N0 Npos n => @Rocq.Corelib.Numbers.BinNums.N.rec.{1} (fun t => P t) N0 (fun a => Npos a) n
+
+================================================================================
+Corelib.Numbers.BinNums.N_rect
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Numbers.BinNums.N_rect
+源文件行号候选: [45]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.N",
+      "Corelib.Numbers.BinNums.positive"
+    ],
+    "body": [
+      "Corelib.Numbers.BinNums.N",
+      "Corelib.Numbers.BinNums.positive"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 8,
+    "ind": 6,
+    "sort": 2,
+    "app": 9,
+    "rel": 14,
+    "construct": 4,
+    "lam": 4,
+    "case": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "源 sort/宇宙 → Lean Sort",
+    "应用 → 已翻译目标的应用",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Numbers.BinNums.N.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [
+    "u_Corelib_Numbers_BinNums_22"
+  ],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": [
+    "Corelib.Numbers.BinNums.22"
+  ]
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Numbers.BinNums.N_rect",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[ad]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": [
+      "motive 的 Sort 解释"
+    ]
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Numbers.BinNums.N_rect.{u_Corelib_Numbers_BinNums_22} : (P :
+    Rocq.Corelib.Numbers.BinNums.N → Sort u_Corelib_Numbers_BinNums_22) →
+  P Rocq.Corelib.Numbers.BinNums.N.N0 →
+    ((p : Rocq.Corelib.Numbers.BinNums.positive) → P (Rocq.Corelib.Numbers.BinNums.N.Npos p)) →
+      (n : Rocq.Corelib.Numbers.BinNums.N) → P n :=
+fun P N0 Npos n =>
+  @Rocq.Corelib.Numbers.BinNums.N.rec.{u_Corelib_Numbers_BinNums_22} (fun t => P t) N0 (fun a => Npos a) n
+
+================================================================================
+Corelib.Numbers.BinNums.N_sind
+类别: statement；状态: UNSUPPORTED_FEATURE；实际目标: None
+源文件行号候选: [45]
+1 源声明与导出
+{
+  "source_kind": "statement",
+  "source_body_state": "statement_only",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": true,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.N",
+      "Corelib.Numbers.BinNums.positive"
+    ],
+    "body": []
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "",
+  "source_node_counts": {
+    "prod": 6,
+    "ind": 3,
+    "sort": 1,
+    "app": 4,
+    "rel": 5,
+    "construct": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "源 sort/宇宙 → Lean Sort",
+    "应用 → 已翻译目标的应用",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "UNSUPPORTED_FEATURE",
+  "target": null,
+  "target_kind": "",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "UNSUPPORTED_FEATURE",
+    "flag_descriptions": []
+  }
+]
+失败定位与缺失能力
+{
+  "stage": "表达式 / sort 或 relevance 翻译",
+  "class": "sprop",
+  "observed": "SProp",
+  "needed": "需要明确 SProp 的目标表示、相关消去限制以及无关绑定的处理，并让审计覆盖这些规则；不能未经验证简单改成 Prop。",
+  "implementation": "Rocq2Lean/Translate.lean:364,368",
+  "certainty": "当前代码直接拒绝；具体表示选择仍属于设计事项"
+}
+原始报错
+SProp
+IR 节点路径
+["body", "prod", "ty", "prod", "b"]
+上游根因链
+[]
+
+================================================================================
+Corelib.Numbers.BinNums.Z
+类别: data_inductive；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Numbers.BinNums.Z
+源文件行号候选: [68]
+1 源声明与导出
+{
+  "source_kind": "data_inductive",
+  "source_body_state": null,
+  "native_preparation": {},
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.positive"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "inductive/generated",
+  "source_node_counts": {
+    "sort": 1,
+    "rel": 3,
+    "ind": 4,
+    "prod": 2
+  },
+  "node_rules_present": [
+    "源 sort/宇宙 → Lean Sort",
+    "局部变量 → Lean 绑定变量",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "依赖函数类型 → Lean forall"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Numbers.BinNums.Z",
+  "target_kind": "inductive",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "i[pl]",
+    "ms": 1,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": [
+      "归纳类型中表示 plain levels；常量中表示 Prop lift 尝试"
+    ]
+  }
+]
+实际 Lean 内核声明（#print）
+inductive Rocq.Corelib.Numbers.BinNums.Z : Type
+number of parameters: 0
+constructors:
+Rocq.Corelib.Numbers.BinNums.Z.Z0 : Rocq.Corelib.Numbers.BinNums.Z
+Rocq.Corelib.Numbers.BinNums.Z.Zpos : Rocq.Corelib.Numbers.BinNums.positive → Rocq.Corelib.Numbers.BinNums.Z
+Rocq.Corelib.Numbers.BinNums.Z.Zneg : Rocq.Corelib.Numbers.BinNums.positive → Rocq.Corelib.Numbers.BinNums.Z
+
+================================================================================
+Corelib.Numbers.BinNums.Z_ind
+类别: statement；状态: STATEMENT_KERNEL_CHECKED；实际目标: Rocq.Corelib.Numbers.BinNums.Z_ind.statement
+源文件行号候选: [68]
+1 源声明与导出
+{
+  "source_kind": "statement",
+  "source_body_state": "statement_only",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": true,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.Z",
+      "Corelib.Numbers.BinNums.positive"
+    ],
+    "body": []
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 8,
+    "ind": 4,
+    "sort": 1,
+    "app": 6,
+    "rel": 7,
+    "construct": 3
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "源 sort/宇宙 → Lean Sort",
+    "应用 → 已翻译目标的应用",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "STATEMENT_KERNEL_CHECKED",
+  "target": "Rocq.Corelib.Numbers.BinNums.Z_ind.statement",
+  "target_kind": "statement",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Numbers.BinNums.Z_ind.statement : Prop :=
+∀ (P : Rocq.Corelib.Numbers.BinNums.Z → Prop),
+  P Rocq.Corelib.Numbers.BinNums.Z.Z0 →
+    (∀ (p : Rocq.Corelib.Numbers.BinNums.positive), P (Rocq.Corelib.Numbers.BinNums.Z.Zpos p)) →
+      (∀ (p : Rocq.Corelib.Numbers.BinNums.positive), P (Rocq.Corelib.Numbers.BinNums.Z.Zneg p)) →
+        ∀ (z : Rocq.Corelib.Numbers.BinNums.Z), P z
+
+================================================================================
+Corelib.Numbers.BinNums.Z_rec
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Numbers.BinNums.Z_rec
+源文件行号候选: [68]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.Z",
+      "Corelib.Numbers.BinNums.positive"
+    ],
+    "body": [
+      "Corelib.Numbers.BinNums.Z",
+      "Corelib.Numbers.BinNums.positive"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 11,
+    "ind": 8,
+    "sort": 2,
+    "app": 14,
+    "rel": 20,
+    "construct": 6,
+    "lam": 5,
+    "case": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "源 sort/宇宙 → Lean Sort",
+    "应用 → 已翻译目标的应用",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Numbers.BinNums.Z.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Numbers.BinNums.Z_rec",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Numbers.BinNums.Z_rec : (P : Rocq.Corelib.Numbers.BinNums.Z → Type) →
+  P Rocq.Corelib.Numbers.BinNums.Z.Z0 →
+    ((p : Rocq.Corelib.Numbers.BinNums.positive) → P (Rocq.Corelib.Numbers.BinNums.Z.Zpos p)) →
+      ((p : Rocq.Corelib.Numbers.BinNums.positive) → P (Rocq.Corelib.Numbers.BinNums.Z.Zneg p)) →
+        (z : Rocq.Corelib.Numbers.BinNums.Z) → P z :=
+fun P Z0 Zpos Zneg z => @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => P t) Z0 (fun a => Zpos a) (fun a => Zneg a) z
+
+================================================================================
+Corelib.Numbers.BinNums.Z_rect
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Numbers.BinNums.Z_rect
+源文件行号候选: [68]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.Z",
+      "Corelib.Numbers.BinNums.positive"
+    ],
+    "body": [
+      "Corelib.Numbers.BinNums.Z",
+      "Corelib.Numbers.BinNums.positive"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 11,
+    "ind": 8,
+    "sort": 2,
+    "app": 14,
+    "rel": 20,
+    "construct": 6,
+    "lam": 5,
+    "case": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "源 sort/宇宙 → Lean Sort",
+    "应用 → 已翻译目标的应用",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Numbers.BinNums.Z.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [
+    "u_Corelib_Numbers_BinNums_23"
+  ],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": [
+    "Corelib.Numbers.BinNums.23"
+  ]
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Numbers.BinNums.Z_rect",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[ad]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": [
+      "motive 的 Sort 解释"
+    ]
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Numbers.BinNums.Z_rect.{u_Corelib_Numbers_BinNums_23} : (P :
+    Rocq.Corelib.Numbers.BinNums.Z → Sort u_Corelib_Numbers_BinNums_23) →
+  P Rocq.Corelib.Numbers.BinNums.Z.Z0 →
+    ((p : Rocq.Corelib.Numbers.BinNums.positive) → P (Rocq.Corelib.Numbers.BinNums.Z.Zpos p)) →
+      ((p : Rocq.Corelib.Numbers.BinNums.positive) → P (Rocq.Corelib.Numbers.BinNums.Z.Zneg p)) →
+        (z : Rocq.Corelib.Numbers.BinNums.Z) → P z :=
+fun P Z0 Zpos Zneg z =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{u_Corelib_Numbers_BinNums_23} (fun t => P t) Z0 (fun a => Zpos a)
+    (fun a => Zneg a) z
+
+================================================================================
+Corelib.Numbers.BinNums.Z_sind
+类别: statement；状态: UNSUPPORTED_FEATURE；实际目标: None
+源文件行号候选: [68]
+1 源声明与导出
+{
+  "source_kind": "statement",
+  "source_body_state": "statement_only",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": true,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.Z",
+      "Corelib.Numbers.BinNums.positive"
+    ],
+    "body": []
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "",
+  "source_node_counts": {
+    "prod": 8,
+    "ind": 4,
+    "sort": 1,
+    "app": 6,
+    "rel": 7,
+    "construct": 3
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "源 sort/宇宙 → Lean Sort",
+    "应用 → 已翻译目标的应用",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "UNSUPPORTED_FEATURE",
+  "target": null,
+  "target_kind": "",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "UNSUPPORTED_FEATURE",
+    "flag_descriptions": []
+  }
+]
+失败定位与缺失能力
+{
+  "stage": "表达式 / sort 或 relevance 翻译",
+  "class": "sprop",
+  "observed": "SProp",
+  "needed": "需要明确 SProp 的目标表示、相关消去限制以及无关绑定的处理，并让审计覆盖这些规则；不能未经验证简单改成 Prop。",
+  "implementation": "Rocq2Lean/Translate.lean:364,368",
+  "certainty": "当前代码直接拒绝；具体表示选择仍属于设计事项"
+}
+原始报错
+SProp
+IR 节点路径
+["body", "prod", "ty", "prod", "b"]
+上游根因链
+[]
+
+================================================================================
+Corelib.Numbers.BinNums.positive
+类别: data_inductive；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Numbers.BinNums.positive
+源文件行号候选: [21]
+1 源声明与导出
+{
+  "source_kind": "data_inductive",
+  "source_body_state": null,
+  "native_preparation": {},
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": []
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "inductive/generated",
+  "source_node_counts": {
+    "sort": 1,
+    "rel": 7,
+    "prod": 2
+  },
+  "node_rules_present": [
+    "源 sort/宇宙 → Lean Sort",
+    "局部变量 → Lean 绑定变量",
+    "依赖函数类型 → Lean forall"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Numbers.BinNums.positive",
+  "target_kind": "inductive",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "i[pl]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": [
+      "归纳类型中表示 plain levels；常量中表示 Prop lift 尝试"
+    ]
+  }
+]
+实际 Lean 内核声明（#print）
+inductive Rocq.Corelib.Numbers.BinNums.positive : Type
+number of parameters: 0
+constructors:
+Rocq.Corelib.Numbers.BinNums.positive.xI : Rocq.Corelib.Numbers.BinNums.positive → Rocq.Corelib.Numbers.BinNums.positive
+Rocq.Corelib.Numbers.BinNums.positive.xO : Rocq.Corelib.Numbers.BinNums.positive → Rocq.Corelib.Numbers.BinNums.positive
+Rocq.Corelib.Numbers.BinNums.positive.xH : Rocq.Corelib.Numbers.BinNums.positive
+
+================================================================================
+Corelib.Numbers.BinNums.positive_ind
+类别: statement；状态: STATEMENT_KERNEL_CHECKED；实际目标: Rocq.Corelib.Numbers.BinNums.positive_ind.statement
+源文件行号候选: [21]
+1 源声明与导出
+{
+  "source_kind": "statement",
+  "source_body_state": "statement_only",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": true,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.positive"
+    ],
+    "body": []
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 10,
+    "ind": 4,
+    "sort": 1,
+    "app": 8,
+    "rel": 11,
+    "construct": 3
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "源 sort/宇宙 → Lean Sort",
+    "应用 → 已翻译目标的应用",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "STATEMENT_KERNEL_CHECKED",
+  "target": "Rocq.Corelib.Numbers.BinNums.positive_ind.statement",
+  "target_kind": "statement",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Numbers.BinNums.positive_ind.statement : Prop :=
+∀ (P : Rocq.Corelib.Numbers.BinNums.positive → Prop),
+  (∀ (p : Rocq.Corelib.Numbers.BinNums.positive), P p → P p.xI) →
+    (∀ (p : Rocq.Corelib.Numbers.BinNums.positive), P p → P p.xO) →
+      P Rocq.Corelib.Numbers.BinNums.positive.xH → ∀ (p : Rocq.Corelib.Numbers.BinNums.positive), P p
+
+================================================================================
+Corelib.Numbers.BinNums.positive_rec
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Numbers.BinNums.positive_rec
+源文件行号候选: [21]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.positive"
+    ],
+    "body": [
+      "Corelib.Numbers.BinNums.positive"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 16,
+    "ind": 9,
+    "sort": 2,
+    "app": 21,
+    "rel": 34,
+    "construct": 6,
+    "lam": 5,
+    "fix": 1,
+    "case": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "源 sort/宇宙 → Lean Sort",
+    "应用 → 已翻译目标的应用",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子",
+    "函数体 → Lean lambda",
+    "递归 → 目标递归消去结构；具体结果见 recursor 引用与实际 Lean 定义",
+    "模式消去 → 目标 recursor/消去表达式"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Numbers.BinNums.positive.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Numbers.BinNums.positive_rec",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 1,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Numbers.BinNums.positive_rec : (P : Rocq.Corelib.Numbers.BinNums.positive → Type) →
+  ((p : Rocq.Corelib.Numbers.BinNums.positive) → P p → P p.xI) →
+    ((p : Rocq.Corelib.Numbers.BinNums.positive) → P p → P p.xO) →
+      P Rocq.Corelib.Numbers.BinNums.positive.xH → (p : Rocq.Corelib.Numbers.BinNums.positive) → P p :=
+fun P xI xO xH p =>
+  @Rocq.Corelib.Numbers.BinNums.positive.rec.{1} (fun p => P p) (fun a _ih => xI a _ih) (fun a _ih => xO a _ih) xH p
+
+================================================================================
+Corelib.Numbers.BinNums.positive_rect
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Numbers.BinNums.positive_rect
+源文件行号候选: [21]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.positive"
+    ],
+    "body": [
+      "Corelib.Numbers.BinNums.positive"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 16,
+    "ind": 9,
+    "sort": 2,
+    "app": 21,
+    "rel": 34,
+    "construct": 6,
+    "lam": 5,
+    "fix": 1,
+    "case": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "源 sort/宇宙 → Lean Sort",
+    "应用 → 已翻译目标的应用",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子",
+    "函数体 → Lean lambda",
+    "递归 → 目标递归消去结构；具体结果见 recursor 引用与实际 Lean 定义",
+    "模式消去 → 目标 recursor/消去表达式"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Numbers.BinNums.positive.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [
+    "u_Corelib_Numbers_BinNums_21"
+  ],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": [
+    "Corelib.Numbers.BinNums.21"
+  ]
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Numbers.BinNums.positive_rect",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[ad]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": [
+      "motive 的 Sort 解释"
+    ]
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Numbers.BinNums.positive_rect.{u_Corelib_Numbers_BinNums_21} : (P :
+    Rocq.Corelib.Numbers.BinNums.positive → Sort u_Corelib_Numbers_BinNums_21) →
+  ((p : Rocq.Corelib.Numbers.BinNums.positive) → P p → P p.xI) →
+    ((p : Rocq.Corelib.Numbers.BinNums.positive) → P p → P p.xO) →
+      P Rocq.Corelib.Numbers.BinNums.positive.xH → (p : Rocq.Corelib.Numbers.BinNums.positive) → P p :=
+fun P xI xO xH p =>
+  @Rocq.Corelib.Numbers.BinNums.positive.rec.{u_Corelib_Numbers_BinNums_21} (fun p => P p) (fun a _ih => xI a _ih)
+    (fun a _ih => xO a _ih) xH p
+
+================================================================================
+Corelib.Numbers.BinNums.positive_sind
+类别: statement；状态: UNSUPPORTED_FEATURE；实际目标: None
+源文件行号候选: [21]
+1 源声明与导出
+{
+  "source_kind": "statement",
+  "source_body_state": "statement_only",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": true,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.positive"
+    ],
+    "body": []
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "",
+  "source_node_counts": {
+    "prod": 10,
+    "ind": 4,
+    "sort": 1,
+    "app": 8,
+    "rel": 11,
+    "construct": 3
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "源 sort/宇宙 → Lean Sort",
+    "应用 → 已翻译目标的应用",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "UNSUPPORTED_FEATURE",
+  "target": null,
+  "target_kind": "",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "UNSUPPORTED_FEATURE",
+    "flag_descriptions": []
+  }
+]
+失败定位与缺失能力
+{
+  "stage": "表达式 / sort 或 relevance 翻译",
+  "class": "sprop",
+  "observed": "SProp",
+  "needed": "需要明确 SProp 的目标表示、相关消去限制以及无关绑定的处理，并让审计覆盖这些规则；不能未经验证简单改成 Prop。",
+  "implementation": "Rocq2Lean/Translate.lean:364,368",
+  "certainty": "当前代码直接拒绝；具体表示选择仍属于设计事项"
+}
+原始报错
+SProp
+IR 节点路径
+["body", "prod", "ty", "prod", "b"]
+上游根因链
+[]

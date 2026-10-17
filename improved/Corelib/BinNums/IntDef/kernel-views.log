@@ -1,0 +1,619 @@
+R2L_BEGIN_0
+def Rocq.Corelib.BinNums.IntDef.Z.add : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun x y =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) y
+    (fun a =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) x
+        (fun a_1 => Rocq.Corelib.Numbers.BinNums.Z.Zpos (Rocq.Corelib.BinNums.PosDef.Pos.add a a_1))
+        (fun a_1 => Rocq.Corelib.BinNums.IntDef.Z.pos_sub a a_1) y)
+    (fun a =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) x
+        (fun a_1 => Rocq.Corelib.BinNums.IntDef.Z.pos_sub a_1 a)
+        (fun a_1 => Rocq.Corelib.Numbers.BinNums.Z.Zneg (Rocq.Corelib.BinNums.PosDef.Pos.add a a_1)) y)
+    x
+R2L_END_0
+R2L_BEGIN_1
+def Rocq.Corelib.BinNums.IntDef.Z.compare : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Init.Datatypes.comparison :=
+fun x y =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.comparison)
+    (@Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.comparison)
+      Rocq.Corelib.Init.Datatypes.comparison.Eq (fun a => Rocq.Corelib.Init.Datatypes.comparison.Lt)
+      (fun a => Rocq.Corelib.Init.Datatypes.comparison.Gt) y)
+    (fun a =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.comparison)
+        Rocq.Corelib.Init.Datatypes.comparison.Gt (fun a_1 => Rocq.Corelib.BinNums.PosDef.Pos.compare a a_1)
+        (fun a => Rocq.Corelib.Init.Datatypes.comparison.Gt) y)
+    (fun a =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.comparison)
+        Rocq.Corelib.Init.Datatypes.comparison.Lt (fun a => Rocq.Corelib.Init.Datatypes.comparison.Lt)
+        (fun a_1 => Rocq.Corelib.Init.Datatypes.CompOpp (Rocq.Corelib.BinNums.PosDef.Pos.compare a a_1)) y)
+    x
+R2L_END_1
+R2L_BEGIN_2
+def Rocq.Corelib.BinNums.IntDef.Z.div : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun a b =>
+  @Rocq.Corelib.Init.Datatypes.prod.rec.{1, 0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+    (fun t => Rocq.Corelib.Numbers.BinNums.Z) (fun a a_1 => a) (Rocq.Corelib.BinNums.IntDef.Z.div_eucl a b)
+R2L_END_2
+R2L_BEGIN_3
+def Rocq.Corelib.BinNums.IntDef.Z.div2 : Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun z =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) Rocq.Corelib.Numbers.BinNums.Z.Z0
+    (fun a =>
+      @Rocq.Corelib.Numbers.BinNums.positive.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z)
+        (fun a_1 _ih => Rocq.Corelib.Numbers.BinNums.Z.Zpos (Rocq.Corelib.BinNums.PosDef.Pos.div2 a))
+        (fun a_1 _ih => Rocq.Corelib.Numbers.BinNums.Z.Zpos (Rocq.Corelib.BinNums.PosDef.Pos.div2 a))
+        Rocq.Corelib.Numbers.BinNums.Z.Z0 a)
+    (fun a => Rocq.Corelib.Numbers.BinNums.Z.Zneg (Rocq.Corelib.BinNums.PosDef.Pos.div2_up a)) z
+R2L_END_3
+R2L_BEGIN_4
+def Rocq.Corelib.BinNums.IntDef.Z.div_eucl : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z →
+    Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z :=
+fun a b =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1}
+    (fun t => Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+    (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+      Rocq.Corelib.Numbers.BinNums.Z.Z0 Rocq.Corelib.Numbers.BinNums.Z.Z0)
+    (fun a_1 =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1}
+        (fun t => Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+        (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+          Rocq.Corelib.Numbers.BinNums.Z.Z0 a)
+        (fun a => Rocq.Corelib.BinNums.IntDef.Z.pos_div_eucl a_1 b)
+        (fun a =>
+          @Rocq.Corelib.Init.Datatypes.prod.rec.{1, 0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+            (fun t =>
+              Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+            (fun a a_2 =>
+              @Rocq.Corelib.Numbers.BinNums.Z.rec.{1}
+                (fun t =>
+                  Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+                (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z
+                  Rocq.Corelib.Numbers.BinNums.Z (Rocq.Corelib.BinNums.IntDef.Z.opp a)
+                  Rocq.Corelib.Numbers.BinNums.Z.Z0)
+                (fun a_3 =>
+                  Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z
+                    Rocq.Corelib.Numbers.BinNums.Z
+                    (Rocq.Corelib.BinNums.IntDef.Z.opp
+                      (Rocq.Corelib.BinNums.IntDef.Z.add a
+                        (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH)))
+                    (Rocq.Corelib.BinNums.IntDef.Z.add b a_2))
+                (fun a_3 =>
+                  Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z
+                    Rocq.Corelib.Numbers.BinNums.Z
+                    (Rocq.Corelib.BinNums.IntDef.Z.opp
+                      (Rocq.Corelib.BinNums.IntDef.Z.add a
+                        (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH)))
+                    (Rocq.Corelib.BinNums.IntDef.Z.add b a_2))
+                a_2)
+            (Rocq.Corelib.BinNums.IntDef.Z.pos_div_eucl a_1 (Rocq.Corelib.Numbers.BinNums.Z.Zpos a)))
+        b)
+    (fun a_1 =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1}
+        (fun t => Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+        (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+          Rocq.Corelib.Numbers.BinNums.Z.Z0 a)
+        (fun a =>
+          @Rocq.Corelib.Init.Datatypes.prod.rec.{1, 0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+            (fun t =>
+              Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+            (fun a a_2 =>
+              @Rocq.Corelib.Numbers.BinNums.Z.rec.{1}
+                (fun t =>
+                  Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+                (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z
+                  Rocq.Corelib.Numbers.BinNums.Z (Rocq.Corelib.BinNums.IntDef.Z.opp a)
+                  Rocq.Corelib.Numbers.BinNums.Z.Z0)
+                (fun a_3 =>
+                  Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z
+                    Rocq.Corelib.Numbers.BinNums.Z
+                    (Rocq.Corelib.BinNums.IntDef.Z.opp
+                      (Rocq.Corelib.BinNums.IntDef.Z.add a
+                        (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH)))
+                    (Rocq.Corelib.BinNums.IntDef.Z.sub b a_2))
+                (fun a_3 =>
+                  Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z
+                    Rocq.Corelib.Numbers.BinNums.Z
+                    (Rocq.Corelib.BinNums.IntDef.Z.opp
+                      (Rocq.Corelib.BinNums.IntDef.Z.add a
+                        (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH)))
+                    (Rocq.Corelib.BinNums.IntDef.Z.sub b a_2))
+                a_2)
+            (Rocq.Corelib.BinNums.IntDef.Z.pos_div_eucl a_1 b))
+        (fun a =>
+          @Rocq.Corelib.Init.Datatypes.prod.rec.{1, 0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+            (fun t =>
+              Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+            (fun a a_2 =>
+              Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+                a (Rocq.Corelib.BinNums.IntDef.Z.opp a_2))
+            (Rocq.Corelib.BinNums.IntDef.Z.pos_div_eucl a_1 (Rocq.Corelib.Numbers.BinNums.Z.Zpos a)))
+        b)
+    a
+R2L_END_4
+R2L_BEGIN_5
+def Rocq.Corelib.BinNums.IntDef.Z.double : Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun x =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) Rocq.Corelib.Numbers.BinNums.Z.Z0
+    (fun a => Rocq.Corelib.Numbers.BinNums.Z.Zpos a.xO) (fun a => Rocq.Corelib.Numbers.BinNums.Z.Zneg a.xO) x
+R2L_END_5
+R2L_BEGIN_6
+def Rocq.Corelib.BinNums.IntDef.Z.eqb : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Init.Datatypes.bool :=
+fun x y =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+    (@Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+      Rocq.Corelib.Init.Datatypes.bool.true (fun a => Rocq.Corelib.Init.Datatypes.bool.false)
+      (fun a => Rocq.Corelib.Init.Datatypes.bool.false) y)
+    (fun a =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+        Rocq.Corelib.Init.Datatypes.bool.false (fun a_1 => Rocq.Corelib.BinNums.PosDef.Pos.eqb a a_1)
+        (fun a => Rocq.Corelib.Init.Datatypes.bool.false) y)
+    (fun a =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+        Rocq.Corelib.Init.Datatypes.bool.false (fun a => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a_1 => Rocq.Corelib.BinNums.PosDef.Pos.eqb a a_1) y)
+    x
+R2L_END_6
+R2L_BEGIN_7
+def Rocq.Corelib.BinNums.IntDef.Z.even : Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Init.Datatypes.bool :=
+fun z =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+    Rocq.Corelib.Init.Datatypes.bool.true
+    (fun a =>
+      @Rocq.Corelib.Numbers.BinNums.positive.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.true)
+        Rocq.Corelib.Init.Datatypes.bool.false a)
+    (fun a =>
+      @Rocq.Corelib.Numbers.BinNums.positive.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.true)
+        Rocq.Corelib.Init.Datatypes.bool.false a)
+    z
+R2L_END_7
+R2L_BEGIN_8
+def Rocq.Corelib.BinNums.IntDef.Z.ge : Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z → Prop :=
+fun x y =>
+  Rocq.Corelib.Init.Logic.not
+    (@Eq.{1} Rocq.Corelib.Init.Datatypes.comparison (Rocq.Corelib.BinNums.IntDef.Z.compare x y)
+      Rocq.Corelib.Init.Datatypes.comparison.Lt)
+R2L_END_8
+R2L_BEGIN_9
+def Rocq.Corelib.BinNums.IntDef.Z.gt : Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z → Prop :=
+fun x y =>
+  @Eq.{1} Rocq.Corelib.Init.Datatypes.comparison (Rocq.Corelib.BinNums.IntDef.Z.compare x y)
+    Rocq.Corelib.Init.Datatypes.comparison.Gt
+R2L_END_9
+R2L_BEGIN_10
+def Rocq.Corelib.BinNums.IntDef.Z.land : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun a b =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) Rocq.Corelib.Numbers.BinNums.Z.Z0
+    (fun a =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z)
+        Rocq.Corelib.Numbers.BinNums.Z.Z0
+        (fun a_1 => Rocq.Corelib.BinNums.IntDef.Z.of_N (Rocq.Corelib.BinNums.PosDef.Pos.land a a_1))
+        (fun a_1 =>
+          Rocq.Corelib.BinNums.IntDef.Z.of_N
+            (Rocq.Corelib.BinNums.NatDef.N.ldiff (Rocq.Corelib.Numbers.BinNums.N.Npos a)
+              (Rocq.Corelib.BinNums.PosDef.Pos.pred_N a_1)))
+        b)
+    (fun a =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z)
+        Rocq.Corelib.Numbers.BinNums.Z.Z0
+        (fun a_1 =>
+          Rocq.Corelib.BinNums.IntDef.Z.of_N
+            (Rocq.Corelib.BinNums.NatDef.N.ldiff (Rocq.Corelib.Numbers.BinNums.N.Npos a_1)
+              (Rocq.Corelib.BinNums.PosDef.Pos.pred_N a)))
+        (fun a_1 =>
+          Rocq.Corelib.Numbers.BinNums.Z.Zneg
+            (Rocq.Corelib.BinNums.NatDef.N.succ_pos
+              (Rocq.Corelib.BinNums.NatDef.N.lor (Rocq.Corelib.BinNums.PosDef.Pos.pred_N a)
+                (Rocq.Corelib.BinNums.PosDef.Pos.pred_N a_1))))
+        b)
+    a
+R2L_END_10
+R2L_BEGIN_11
+def Rocq.Corelib.BinNums.IntDef.Z.le : Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z → Prop :=
+fun x y =>
+  Rocq.Corelib.Init.Logic.not
+    (@Eq.{1} Rocq.Corelib.Init.Datatypes.comparison (Rocq.Corelib.BinNums.IntDef.Z.compare x y)
+      Rocq.Corelib.Init.Datatypes.comparison.Gt)
+R2L_END_11
+R2L_BEGIN_12
+def Rocq.Corelib.BinNums.IntDef.Z.leb : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Init.Datatypes.bool :=
+fun x y =>
+  @Rocq.Corelib.Init.Datatypes.comparison.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+    Rocq.Corelib.Init.Datatypes.bool.true Rocq.Corelib.Init.Datatypes.bool.true Rocq.Corelib.Init.Datatypes.bool.false
+    (Rocq.Corelib.BinNums.IntDef.Z.compare x y)
+R2L_END_12
+R2L_BEGIN_13
+def Rocq.Corelib.BinNums.IntDef.Z.lor : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun a b =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) b
+    (fun a_1 =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) a
+        (fun a => Rocq.Corelib.Numbers.BinNums.Z.Zpos (Rocq.Corelib.BinNums.PosDef.Pos.lor a_1 a))
+        (fun a =>
+          Rocq.Corelib.Numbers.BinNums.Z.Zneg
+            (Rocq.Corelib.BinNums.NatDef.N.succ_pos
+              (Rocq.Corelib.BinNums.NatDef.N.ldiff (Rocq.Corelib.BinNums.PosDef.Pos.pred_N a)
+                (Rocq.Corelib.Numbers.BinNums.N.Npos a_1))))
+        b)
+    (fun a_1 =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) a
+        (fun a =>
+          Rocq.Corelib.Numbers.BinNums.Z.Zneg
+            (Rocq.Corelib.BinNums.NatDef.N.succ_pos
+              (Rocq.Corelib.BinNums.NatDef.N.ldiff (Rocq.Corelib.BinNums.PosDef.Pos.pred_N a_1)
+                (Rocq.Corelib.Numbers.BinNums.N.Npos a))))
+        (fun a =>
+          Rocq.Corelib.Numbers.BinNums.Z.Zneg
+            (Rocq.Corelib.BinNums.NatDef.N.succ_pos
+              (Rocq.Corelib.BinNums.NatDef.N.land (Rocq.Corelib.BinNums.PosDef.Pos.pred_N a_1)
+                (Rocq.Corelib.BinNums.PosDef.Pos.pred_N a))))
+        b)
+    a
+R2L_END_13
+R2L_BEGIN_14
+def Rocq.Corelib.BinNums.IntDef.Z.lt : Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z → Prop :=
+fun x y =>
+  @Eq.{1} Rocq.Corelib.Init.Datatypes.comparison (Rocq.Corelib.BinNums.IntDef.Z.compare x y)
+    Rocq.Corelib.Init.Datatypes.comparison.Lt
+R2L_END_14
+R2L_BEGIN_15
+def Rocq.Corelib.BinNums.IntDef.Z.ltb : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Init.Datatypes.bool :=
+fun x y =>
+  @Rocq.Corelib.Init.Datatypes.comparison.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+    Rocq.Corelib.Init.Datatypes.bool.false Rocq.Corelib.Init.Datatypes.bool.true Rocq.Corelib.Init.Datatypes.bool.false
+    (Rocq.Corelib.BinNums.IntDef.Z.compare x y)
+R2L_END_15
+R2L_BEGIN_16
+def Rocq.Corelib.BinNums.IntDef.Z.lxor : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun a b =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) b
+    (fun a_1 =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) a
+        (fun a => Rocq.Corelib.BinNums.IntDef.Z.of_N (Rocq.Corelib.BinNums.PosDef.Pos.lxor a_1 a))
+        (fun a =>
+          Rocq.Corelib.Numbers.BinNums.Z.Zneg
+            (Rocq.Corelib.BinNums.NatDef.N.succ_pos
+              (Rocq.Corelib.BinNums.NatDef.N.lxor (Rocq.Corelib.Numbers.BinNums.N.Npos a_1)
+                (Rocq.Corelib.BinNums.PosDef.Pos.pred_N a))))
+        b)
+    (fun a_1 =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) a
+        (fun a =>
+          Rocq.Corelib.Numbers.BinNums.Z.Zneg
+            (Rocq.Corelib.BinNums.NatDef.N.succ_pos
+              (Rocq.Corelib.BinNums.NatDef.N.lxor (Rocq.Corelib.BinNums.PosDef.Pos.pred_N a_1)
+                (Rocq.Corelib.Numbers.BinNums.N.Npos a))))
+        (fun a =>
+          Rocq.Corelib.BinNums.IntDef.Z.of_N
+            (Rocq.Corelib.BinNums.NatDef.N.lxor (Rocq.Corelib.BinNums.PosDef.Pos.pred_N a_1)
+              (Rocq.Corelib.BinNums.PosDef.Pos.pred_N a)))
+        b)
+    a
+R2L_END_16
+R2L_BEGIN_17
+def Rocq.Corelib.BinNums.IntDef.Z.max : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun n m =>
+  @Rocq.Corelib.Init.Datatypes.comparison.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) n m n
+    (Rocq.Corelib.BinNums.IntDef.Z.compare n m)
+R2L_END_17
+R2L_BEGIN_18
+def Rocq.Corelib.BinNums.IntDef.Z.min : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun n m =>
+  @Rocq.Corelib.Init.Datatypes.comparison.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) n n m
+    (Rocq.Corelib.BinNums.IntDef.Z.compare n m)
+R2L_END_18
+R2L_BEGIN_19
+def Rocq.Corelib.BinNums.IntDef.Z.modulo : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun a b =>
+  @Rocq.Corelib.Init.Datatypes.prod.rec.{1, 0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+    (fun t => Rocq.Corelib.Numbers.BinNums.Z) (fun a a_1 => a_1) (Rocq.Corelib.BinNums.IntDef.Z.div_eucl a b)
+R2L_END_19
+R2L_BEGIN_20
+def Rocq.Corelib.BinNums.IntDef.Z.mul : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun x y =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) Rocq.Corelib.Numbers.BinNums.Z.Z0
+    (fun a =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z)
+        Rocq.Corelib.Numbers.BinNums.Z.Z0
+        (fun a_1 => Rocq.Corelib.Numbers.BinNums.Z.Zpos (Rocq.Corelib.BinNums.PosDef.Pos.mul a a_1))
+        (fun a_1 => Rocq.Corelib.Numbers.BinNums.Z.Zneg (Rocq.Corelib.BinNums.PosDef.Pos.mul a a_1)) y)
+    (fun a =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z)
+        Rocq.Corelib.Numbers.BinNums.Z.Z0
+        (fun a_1 => Rocq.Corelib.Numbers.BinNums.Z.Zneg (Rocq.Corelib.BinNums.PosDef.Pos.mul a a_1))
+        (fun a_1 => Rocq.Corelib.Numbers.BinNums.Z.Zpos (Rocq.Corelib.BinNums.PosDef.Pos.mul a a_1)) y)
+    x
+R2L_END_20
+R2L_BEGIN_21
+def Rocq.Corelib.BinNums.IntDef.Z.of_N : Rocq.Corelib.Numbers.BinNums.N → Rocq.Corelib.Numbers.BinNums.Z :=
+fun n =>
+  @Rocq.Corelib.Numbers.BinNums.N.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) Rocq.Corelib.Numbers.BinNums.Z.Z0
+    (fun a => Rocq.Corelib.Numbers.BinNums.Z.Zpos a) n
+R2L_END_21
+R2L_BEGIN_22
+def Rocq.Corelib.BinNums.IntDef.Z.of_nat : Nat → Rocq.Corelib.Numbers.BinNums.Z :=
+fun n =>
+  @Nat.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) Rocq.Corelib.Numbers.BinNums.Z.Z0
+    (fun n n_ih => Rocq.Corelib.Numbers.BinNums.Z.Zpos (Rocq.Corelib.BinNums.PosDef.Pos.of_succ_nat n)) n
+R2L_END_22
+R2L_BEGIN_23
+def Rocq.Corelib.BinNums.IntDef.Z.opp : Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun x =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) Rocq.Corelib.Numbers.BinNums.Z.Z0
+    (fun a => Rocq.Corelib.Numbers.BinNums.Z.Zneg a) (fun a => Rocq.Corelib.Numbers.BinNums.Z.Zpos a) x
+R2L_END_23
+R2L_BEGIN_24
+def Rocq.Corelib.BinNums.IntDef.Z.pos_div_eucl : Rocq.Corelib.Numbers.BinNums.positive →
+  Rocq.Corelib.Numbers.BinNums.Z →
+    Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z :=
+fun a b =>
+  @Rocq.Corelib.Numbers.BinNums.positive.rec.{1}
+    (fun a =>
+      Rocq.Corelib.Numbers.BinNums.Z →
+        Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+    (fun a _ih b =>
+      @Rocq.Corelib.Init.Datatypes.prod.rec.{1, 0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+        (fun t => Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+        (fun a a_1 =>
+          let r' :=
+            Rocq.Corelib.BinNums.IntDef.Z.add
+              (Rocq.Corelib.BinNums.IntDef.Z.mul
+                (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH.xO) a_1)
+              (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH);
+          @Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+            (fun t =>
+              Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+            (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+              (Rocq.Corelib.BinNums.IntDef.Z.mul
+                (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH.xO) a)
+              r')
+            (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+              (Rocq.Corelib.BinNums.IntDef.Z.add
+                (Rocq.Corelib.BinNums.IntDef.Z.mul
+                  (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH.xO) a)
+                (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH))
+              (Rocq.Corelib.BinNums.IntDef.Z.sub r' b))
+            (Rocq.Corelib.BinNums.IntDef.Z.ltb r' b))
+        (_ih b))
+    (fun a _ih b =>
+      @Rocq.Corelib.Init.Datatypes.prod.rec.{1, 0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+        (fun t => Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+        (fun a a_1 =>
+          let r' :=
+            Rocq.Corelib.BinNums.IntDef.Z.mul
+              (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH.xO) a_1;
+          @Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+            (fun t =>
+              Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+            (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+              (Rocq.Corelib.BinNums.IntDef.Z.mul
+                (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH.xO) a)
+              r')
+            (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+              (Rocq.Corelib.BinNums.IntDef.Z.add
+                (Rocq.Corelib.BinNums.IntDef.Z.mul
+                  (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH.xO) a)
+                (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH))
+              (Rocq.Corelib.BinNums.IntDef.Z.sub r' b))
+            (Rocq.Corelib.BinNums.IntDef.Z.ltb r' b))
+        (_ih b))
+    (fun b =>
+      @Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+        (fun t => Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+        (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+          Rocq.Corelib.Numbers.BinNums.Z.Z0
+          (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH))
+        (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+          (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH)
+          Rocq.Corelib.Numbers.BinNums.Z.Z0)
+        (Rocq.Corelib.BinNums.IntDef.Z.leb
+          (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH.xO) b))
+    a b
+R2L_END_24
+R2L_BEGIN_25
+def Rocq.Corelib.BinNums.IntDef.Z.pos_sub : Rocq.Corelib.Numbers.BinNums.positive →
+  Rocq.Corelib.Numbers.BinNums.positive → Rocq.Corelib.Numbers.BinNums.Z :=
+fun x y =>
+  @Rocq.Corelib.Numbers.BinNums.positive.rec.{1}
+    (fun y => Rocq.Corelib.Numbers.BinNums.positive → Rocq.Corelib.Numbers.BinNums.Z)
+    (fun a _ih x =>
+      @Rocq.Corelib.Numbers.BinNums.positive.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z)
+        (fun a _ih_1 => Rocq.Corelib.BinNums.IntDef.Z.double (_ih a))
+        (fun a _ih_1 => Rocq.Corelib.BinNums.IntDef.Z.pred_double (_ih a)) (Rocq.Corelib.Numbers.BinNums.Z.Zneg a.xO) x)
+    (fun a _ih x =>
+      @Rocq.Corelib.Numbers.BinNums.positive.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z)
+        (fun a _ih_1 => Rocq.Corelib.BinNums.IntDef.Z.succ_double (_ih a))
+        (fun a _ih_1 => Rocq.Corelib.BinNums.IntDef.Z.double (_ih a))
+        (Rocq.Corelib.Numbers.BinNums.Z.Zneg (Rocq.Corelib.BinNums.PosDef.Pos.pred_double a)) x)
+    (fun x =>
+      @Rocq.Corelib.Numbers.BinNums.positive.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z)
+        (fun a _ih => Rocq.Corelib.Numbers.BinNums.Z.Zpos a.xO)
+        (fun a _ih => Rocq.Corelib.Numbers.BinNums.Z.Zpos (Rocq.Corelib.BinNums.PosDef.Pos.pred_double a))
+        Rocq.Corelib.Numbers.BinNums.Z.Z0 x)
+    y x
+R2L_END_25
+R2L_BEGIN_26
+def Rocq.Corelib.BinNums.IntDef.Z.pow : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun x y =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z)
+    (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH)
+    (fun a => Rocq.Corelib.BinNums.IntDef.Z.pow_pos x a) (fun a => Rocq.Corelib.Numbers.BinNums.Z.Z0) y
+R2L_END_26
+R2L_BEGIN_27
+def Rocq.Corelib.BinNums.IntDef.Z.pow_pos : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.positive → Rocq.Corelib.Numbers.BinNums.Z :=
+fun z =>
+  Rocq.Corelib.BinNums.PosDef.Pos.iter.{0} Rocq.Corelib.Numbers.BinNums.Z (Rocq.Corelib.BinNums.IntDef.Z.mul z)
+    (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH)
+R2L_END_27
+R2L_BEGIN_28
+def Rocq.Corelib.BinNums.IntDef.Z.pred_double : Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun x =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z)
+    (Rocq.Corelib.Numbers.BinNums.Z.Zneg Rocq.Corelib.Numbers.BinNums.positive.xH)
+    (fun a => Rocq.Corelib.Numbers.BinNums.Z.Zpos (Rocq.Corelib.BinNums.PosDef.Pos.pred_double a))
+    (fun a => Rocq.Corelib.Numbers.BinNums.Z.Zneg a.xI) x
+R2L_END_28
+R2L_BEGIN_29
+def Rocq.Corelib.BinNums.IntDef.Z.quot : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun a b =>
+  Rocq.Corelib.Init.Datatypes.fst.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+    (Rocq.Corelib.BinNums.IntDef.Z.quotrem a b)
+R2L_END_29
+R2L_BEGIN_30
+def Rocq.Corelib.BinNums.IntDef.Z.quotrem : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z →
+    Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z :=
+fun a b =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1}
+    (fun t => Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+    (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+      Rocq.Corelib.Numbers.BinNums.Z.Z0 Rocq.Corelib.Numbers.BinNums.Z.Z0)
+    (fun a_1 =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1}
+        (fun t => Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+        (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+          Rocq.Corelib.Numbers.BinNums.Z.Z0 a)
+        (fun a =>
+          @Rocq.Corelib.Init.Datatypes.prod.rec.{1, 0, 0} Rocq.Corelib.Numbers.BinNums.N Rocq.Corelib.Numbers.BinNums.N
+            (fun t =>
+              Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+            (fun a a_2 =>
+              Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+                (Rocq.Corelib.BinNums.IntDef.Z.of_N a) (Rocq.Corelib.BinNums.IntDef.Z.of_N a_2))
+            (Rocq.Corelib.BinNums.NatDef.N.pos_div_eucl a_1 (Rocq.Corelib.Numbers.BinNums.N.Npos a)))
+        (fun a =>
+          @Rocq.Corelib.Init.Datatypes.prod.rec.{1, 0, 0} Rocq.Corelib.Numbers.BinNums.N Rocq.Corelib.Numbers.BinNums.N
+            (fun t =>
+              Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+            (fun a a_2 =>
+              Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+                (Rocq.Corelib.BinNums.IntDef.Z.opp (Rocq.Corelib.BinNums.IntDef.Z.of_N a))
+                (Rocq.Corelib.BinNums.IntDef.Z.of_N a_2))
+            (Rocq.Corelib.BinNums.NatDef.N.pos_div_eucl a_1 (Rocq.Corelib.Numbers.BinNums.N.Npos a)))
+        b)
+    (fun a_1 =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1}
+        (fun t => Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+        (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+          Rocq.Corelib.Numbers.BinNums.Z.Z0 a)
+        (fun a =>
+          @Rocq.Corelib.Init.Datatypes.prod.rec.{1, 0, 0} Rocq.Corelib.Numbers.BinNums.N Rocq.Corelib.Numbers.BinNums.N
+            (fun t =>
+              Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+            (fun a a_2 =>
+              Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+                (Rocq.Corelib.BinNums.IntDef.Z.opp (Rocq.Corelib.BinNums.IntDef.Z.of_N a))
+                (Rocq.Corelib.BinNums.IntDef.Z.opp (Rocq.Corelib.BinNums.IntDef.Z.of_N a_2)))
+            (Rocq.Corelib.BinNums.NatDef.N.pos_div_eucl a_1 (Rocq.Corelib.Numbers.BinNums.N.Npos a)))
+        (fun a =>
+          @Rocq.Corelib.Init.Datatypes.prod.rec.{1, 0, 0} Rocq.Corelib.Numbers.BinNums.N Rocq.Corelib.Numbers.BinNums.N
+            (fun t =>
+              Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+            (fun a a_2 =>
+              Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+                (Rocq.Corelib.BinNums.IntDef.Z.of_N a)
+                (Rocq.Corelib.BinNums.IntDef.Z.opp (Rocq.Corelib.BinNums.IntDef.Z.of_N a_2)))
+            (Rocq.Corelib.BinNums.NatDef.N.pos_div_eucl a_1 (Rocq.Corelib.Numbers.BinNums.N.Npos a)))
+        b)
+    a
+R2L_END_30
+R2L_BEGIN_31
+def Rocq.Corelib.BinNums.IntDef.Z.rem : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun a b =>
+  Rocq.Corelib.Init.Datatypes.snd.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+    (Rocq.Corelib.BinNums.IntDef.Z.quotrem a b)
+R2L_END_31
+R2L_BEGIN_32
+def Rocq.Corelib.BinNums.IntDef.Z.shiftl : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun a n =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) a
+    (fun a_1 =>
+      Rocq.Corelib.BinNums.PosDef.Pos.iter.{0} Rocq.Corelib.Numbers.BinNums.Z
+        (Rocq.Corelib.BinNums.IntDef.Z.mul
+          (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH.xO))
+        a a_1)
+    (fun a_1 =>
+      Rocq.Corelib.BinNums.PosDef.Pos.iter.{0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.BinNums.IntDef.Z.div2 a a_1)
+    n
+R2L_END_32
+R2L_BEGIN_33
+def Rocq.Corelib.BinNums.IntDef.Z.shiftr : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun a n => Rocq.Corelib.BinNums.IntDef.Z.shiftl a (Rocq.Corelib.BinNums.IntDef.Z.opp n)
+R2L_END_33
+R2L_BEGIN_34
+def Rocq.Corelib.BinNums.IntDef.Z.sqrtrem : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z :=
+fun n =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1}
+    (fun t => Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+    (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+      Rocq.Corelib.Numbers.BinNums.Z.Z0 Rocq.Corelib.Numbers.BinNums.Z.Z0)
+    (fun a =>
+      @Rocq.Corelib.Init.Datatypes.prod.rec.{1, 0, 0} Rocq.Corelib.Numbers.BinNums.positive
+        Rocq.Corelib.BinNums.PosDef.Pos.mask
+        (fun t => Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+        (fun a a_1 =>
+          @Rocq.Corelib.BinNums.PosDef.Pos.mask.rec.{1}
+            (fun t =>
+              Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+            (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+              (Rocq.Corelib.Numbers.BinNums.Z.Zpos a) Rocq.Corelib.Numbers.BinNums.Z.Z0)
+            (fun a_2 =>
+              Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+                (Rocq.Corelib.Numbers.BinNums.Z.Zpos a) (Rocq.Corelib.Numbers.BinNums.Z.Zpos a_2))
+            (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+              (Rocq.Corelib.Numbers.BinNums.Z.Zpos a) Rocq.Corelib.Numbers.BinNums.Z.Z0)
+            a_1)
+        (Rocq.Corelib.BinNums.PosDef.Pos.sqrtrem a))
+    (fun a =>
+      Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+        Rocq.Corelib.Numbers.BinNums.Z.Z0 Rocq.Corelib.Numbers.BinNums.Z.Z0)
+    n
+R2L_END_34
+R2L_BEGIN_35
+def Rocq.Corelib.BinNums.IntDef.Z.sub : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun m n => Rocq.Corelib.BinNums.IntDef.Z.add m (Rocq.Corelib.BinNums.IntDef.Z.opp n)
+R2L_END_35
+R2L_BEGIN_36
+def Rocq.Corelib.BinNums.IntDef.Z.succ_double : Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun x =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z)
+    (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH)
+    (fun a => Rocq.Corelib.Numbers.BinNums.Z.Zpos a.xI)
+    (fun a => Rocq.Corelib.Numbers.BinNums.Z.Zneg (Rocq.Corelib.BinNums.PosDef.Pos.pred_double a)) x
+R2L_END_36
+R2L_BEGIN_37
+def Rocq.Corelib.BinNums.IntDef.Z.to_nat : Rocq.Corelib.Numbers.BinNums.Z → Nat :=
+fun z =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Nat) Nat.zero (fun a => Rocq.Corelib.BinNums.PosDef.Pos.to_nat a)
+    (fun a => Nat.zero) z
+R2L_END_37
+R2L_BEGIN_38
+def Rocq.Corelib.BinNums.IntDef.Z.to_pos : Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.positive :=
+fun z =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.positive)
+    Rocq.Corelib.Numbers.BinNums.positive.xH (fun a => a) (fun a => Rocq.Corelib.Numbers.BinNums.positive.xH) z
+R2L_END_38

@@ -1,0 +1,98 @@
+R2L_BEGIN_0
+inductive Rocq.Corelib.Numbers.BinNums.N : Type
+number of parameters: 0
+constructors:
+Rocq.Corelib.Numbers.BinNums.N.N0 : Rocq.Corelib.Numbers.BinNums.N
+Rocq.Corelib.Numbers.BinNums.N.Npos : Rocq.Corelib.Numbers.BinNums.positive → Rocq.Corelib.Numbers.BinNums.N
+R2L_END_0
+R2L_BEGIN_1
+def Rocq.Corelib.Numbers.BinNums.N_ind.statement : Prop :=
+∀ (P : Rocq.Corelib.Numbers.BinNums.N → Prop),
+  P Rocq.Corelib.Numbers.BinNums.N.N0 →
+    (∀ (p : Rocq.Corelib.Numbers.BinNums.positive), P (Rocq.Corelib.Numbers.BinNums.N.Npos p)) →
+      ∀ (n : Rocq.Corelib.Numbers.BinNums.N), P n
+R2L_END_1
+R2L_BEGIN_2
+def Rocq.Corelib.Numbers.BinNums.N_rec : (P : Rocq.Corelib.Numbers.BinNums.N → Type) →
+  P Rocq.Corelib.Numbers.BinNums.N.N0 →
+    ((p : Rocq.Corelib.Numbers.BinNums.positive) → P (Rocq.Corelib.Numbers.BinNums.N.Npos p)) →
+      (n : Rocq.Corelib.Numbers.BinNums.N) → P n :=
+fun P N0 Npos n => @Rocq.Corelib.Numbers.BinNums.N.rec.{1} (fun t => P t) N0 (fun a => Npos a) n
+R2L_END_2
+R2L_BEGIN_3
+def Rocq.Corelib.Numbers.BinNums.N_rect.{u_Corelib_Numbers_BinNums_22} : (P :
+    Rocq.Corelib.Numbers.BinNums.N → Sort u_Corelib_Numbers_BinNums_22) →
+  P Rocq.Corelib.Numbers.BinNums.N.N0 →
+    ((p : Rocq.Corelib.Numbers.BinNums.positive) → P (Rocq.Corelib.Numbers.BinNums.N.Npos p)) →
+      (n : Rocq.Corelib.Numbers.BinNums.N) → P n :=
+fun P N0 Npos n =>
+  @Rocq.Corelib.Numbers.BinNums.N.rec.{u_Corelib_Numbers_BinNums_22} (fun t => P t) N0 (fun a => Npos a) n
+R2L_END_3
+R2L_BEGIN_4
+inductive Rocq.Corelib.Numbers.BinNums.Z : Type
+number of parameters: 0
+constructors:
+Rocq.Corelib.Numbers.BinNums.Z.Z0 : Rocq.Corelib.Numbers.BinNums.Z
+Rocq.Corelib.Numbers.BinNums.Z.Zpos : Rocq.Corelib.Numbers.BinNums.positive → Rocq.Corelib.Numbers.BinNums.Z
+Rocq.Corelib.Numbers.BinNums.Z.Zneg : Rocq.Corelib.Numbers.BinNums.positive → Rocq.Corelib.Numbers.BinNums.Z
+R2L_END_4
+R2L_BEGIN_5
+def Rocq.Corelib.Numbers.BinNums.Z_ind.statement : Prop :=
+∀ (P : Rocq.Corelib.Numbers.BinNums.Z → Prop),
+  P Rocq.Corelib.Numbers.BinNums.Z.Z0 →
+    (∀ (p : Rocq.Corelib.Numbers.BinNums.positive), P (Rocq.Corelib.Numbers.BinNums.Z.Zpos p)) →
+      (∀ (p : Rocq.Corelib.Numbers.BinNums.positive), P (Rocq.Corelib.Numbers.BinNums.Z.Zneg p)) →
+        ∀ (z : Rocq.Corelib.Numbers.BinNums.Z), P z
+R2L_END_5
+R2L_BEGIN_6
+def Rocq.Corelib.Numbers.BinNums.Z_rec : (P : Rocq.Corelib.Numbers.BinNums.Z → Type) →
+  P Rocq.Corelib.Numbers.BinNums.Z.Z0 →
+    ((p : Rocq.Corelib.Numbers.BinNums.positive) → P (Rocq.Corelib.Numbers.BinNums.Z.Zpos p)) →
+      ((p : Rocq.Corelib.Numbers.BinNums.positive) → P (Rocq.Corelib.Numbers.BinNums.Z.Zneg p)) →
+        (z : Rocq.Corelib.Numbers.BinNums.Z) → P z :=
+fun P Z0 Zpos Zneg z => @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => P t) Z0 (fun a => Zpos a) (fun a => Zneg a) z
+R2L_END_6
+R2L_BEGIN_7
+def Rocq.Corelib.Numbers.BinNums.Z_rect.{u_Corelib_Numbers_BinNums_23} : (P :
+    Rocq.Corelib.Numbers.BinNums.Z → Sort u_Corelib_Numbers_BinNums_23) →
+  P Rocq.Corelib.Numbers.BinNums.Z.Z0 →
+    ((p : Rocq.Corelib.Numbers.BinNums.positive) → P (Rocq.Corelib.Numbers.BinNums.Z.Zpos p)) →
+      ((p : Rocq.Corelib.Numbers.BinNums.positive) → P (Rocq.Corelib.Numbers.BinNums.Z.Zneg p)) →
+        (z : Rocq.Corelib.Numbers.BinNums.Z) → P z :=
+fun P Z0 Zpos Zneg z =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{u_Corelib_Numbers_BinNums_23} (fun t => P t) Z0 (fun a => Zpos a)
+    (fun a => Zneg a) z
+R2L_END_7
+R2L_BEGIN_8
+inductive Rocq.Corelib.Numbers.BinNums.positive : Type
+number of parameters: 0
+constructors:
+Rocq.Corelib.Numbers.BinNums.positive.xI : Rocq.Corelib.Numbers.BinNums.positive → Rocq.Corelib.Numbers.BinNums.positive
+Rocq.Corelib.Numbers.BinNums.positive.xO : Rocq.Corelib.Numbers.BinNums.positive → Rocq.Corelib.Numbers.BinNums.positive
+Rocq.Corelib.Numbers.BinNums.positive.xH : Rocq.Corelib.Numbers.BinNums.positive
+R2L_END_8
+R2L_BEGIN_9
+def Rocq.Corelib.Numbers.BinNums.positive_ind.statement : Prop :=
+∀ (P : Rocq.Corelib.Numbers.BinNums.positive → Prop),
+  (∀ (p : Rocq.Corelib.Numbers.BinNums.positive), P p → P p.xI) →
+    (∀ (p : Rocq.Corelib.Numbers.BinNums.positive), P p → P p.xO) →
+      P Rocq.Corelib.Numbers.BinNums.positive.xH → ∀ (p : Rocq.Corelib.Numbers.BinNums.positive), P p
+R2L_END_9
+R2L_BEGIN_10
+def Rocq.Corelib.Numbers.BinNums.positive_rec : (P : Rocq.Corelib.Numbers.BinNums.positive → Type) →
+  ((p : Rocq.Corelib.Numbers.BinNums.positive) → P p → P p.xI) →
+    ((p : Rocq.Corelib.Numbers.BinNums.positive) → P p → P p.xO) →
+      P Rocq.Corelib.Numbers.BinNums.positive.xH → (p : Rocq.Corelib.Numbers.BinNums.positive) → P p :=
+fun P xI xO xH p =>
+  @Rocq.Corelib.Numbers.BinNums.positive.rec.{1} (fun p => P p) (fun a _ih => xI a _ih) (fun a _ih => xO a _ih) xH p
+R2L_END_10
+R2L_BEGIN_11
+def Rocq.Corelib.Numbers.BinNums.positive_rect.{u_Corelib_Numbers_BinNums_21} : (P :
+    Rocq.Corelib.Numbers.BinNums.positive → Sort u_Corelib_Numbers_BinNums_21) →
+  ((p : Rocq.Corelib.Numbers.BinNums.positive) → P p → P p.xI) →
+    ((p : Rocq.Corelib.Numbers.BinNums.positive) → P p → P p.xO) →
+      P Rocq.Corelib.Numbers.BinNums.positive.xH → (p : Rocq.Corelib.Numbers.BinNums.positive) → P p :=
+fun P xI xO xH p =>
+  @Rocq.Corelib.Numbers.BinNums.positive.rec.{u_Corelib_Numbers_BinNums_21} (fun p => P p) (fun a _ih => xI a _ih)
+    (fun a _ih => xO a _ih) xH p
+R2L_END_11

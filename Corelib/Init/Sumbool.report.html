@@ -1,0 +1,957 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><title>Corelib.Init.Sumbool</title><style>body{font:15px/1.65 system-ui,sans-serif;max-width:1250px;margin:35px auto;padding:0 24px;color:#23303b;background:#fbfcfe}h1{font-size:25px}h2{font-size:19px}table{border-collapse:collapse;width:100%;background:white}td,th{padding:9px;border:1px solid #dbe2e8;text-align:left;vertical-align:top}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#edf2f6;padding:14px;border-radius:6px;font:12px/1.6 ui-monospace,monospace}details{background:white;border:1px solid #dbe2e8;border-radius:7px;margin:13px 0;padding:12px}summary{font-weight:600;cursor:pointer;overflow-wrap:anywhere}input,select{padding:9px;margin:8px;border:1px solid #aab8c5;border-radius:5px}a{color:#175fa6}.note{background:#edf4ff;padding:14px}.bad{color:#ac3027}.good{color:#176d4c}</style><body><h1>Corelib.Init.Sumbool</h1><p class="note">本文件采用逐模块独立运行。依赖随各翻译单元重复包含；不要直接把全部 .lean 一起 import。 对应 .lean 使用翻译器的 #rocq2lean_import 命令生成内核声明；实际定义以 kernel view 展示，并非人工伪造的 Lean 源码。 定理只翻译陈述；pending 是显式前提，不是已经证明；未导出的项目没有虚构 IR。</p><pre>{
+  &quot;module&quot;: &quot;Corelib.Init.Sumbool&quot;,
+  &quot;total&quot;: 7,
+  &quot;complete&quot;: 3,
+  &quot;pending&quot;: 3,
+  &quot;blocked&quot;: 1,
+  &quot;statuses&quot;: {
+    &quot;STATEMENT_KERNEL_CHECKED&quot;: 1,
+    &quot;UNIVERSE_REJECTED&quot;: 1,
+    &quot;TRANSLATED_AND_CHECKED&quot;: 2,
+    &quot;PENDING_KERNEL_CHECKED&quot;: 3
+  },
+  &quot;run_status&quot;: &quot;MEASURED&quot;,
+  &quot;source_roundtrip&quot;: &quot;OK&quot;,
+  &quot;consumer&quot;: &quot;OK&quot;,
+  &quot;audit&quot;: &quot;OK&quot;,
+  &quot;translation_compile_exit&quot;: 0
+}</pre><p><a href="Sumbool.lean">翻译文件</a> · <a href="Sumbool.v">源文件副本</a> · <a href="Sumbool.json">完整 JSON</a> · <a href="Sumbool.report.txt">文本报告</a></p><input id="search" placeholder="搜索声明名"><select id="filter"><option value="">全部状态</option><option>STATEMENT_KERNEL_CHECKED</option><option>UNIVERSE_REJECTED</option><option>TRANSLATED_AND_CHECKED</option><option>PENDING_KERNEL_CHECKED</option></select><details class="decl" id="d0" data-status="STATEMENT_KERNEL_CHECKED"><summary>Corelib.Init.Sumbool.bool_eq_ind — STATEMENT_KERNEL_CHECKED</summary><p>类别: statement；状态: STATEMENT_KERNEL_CHECKED；实际目标: Rocq.Corelib.Init.Sumbool.bool_eq_ind.statement</p><p>源文件行号候选：[33]</p><h3>实际 Lean 输出</h3><pre>def Rocq.Corelib.Init.Sumbool.bool_eq_ind.statement : Prop :=
+∀ (b : Rocq.Corelib.Init.Datatypes.bool) (P : Rocq.Corelib.Init.Datatypes.bool → Prop),
+  (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool b Rocq.Corelib.Init.Datatypes.bool.true →
+      P Rocq.Corelib.Init.Datatypes.bool.true) →
+    (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool b Rocq.Corelib.Init.Datatypes.bool.false →
+        P Rocq.Corelib.Init.Datatypes.bool.false) →
+      P b</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;statement&quot;,
+  &quot;source_body_state&quot;: &quot;statement_only&quot;,
+  &quot;native_preparation&quot;: {
+    &quot;sealed_implementation&quot;: false,
+    &quot;lowered_ssr_have_upoly&quot;: false
+  },
+  &quot;exported&quot;: true
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: true,
+  &quot;dependencies&quot;: {
+    &quot;type&quot;: [
+      &quot;Corelib.Init.Datatypes.bool&quot;,
+      &quot;Corelib.Init.Logic.eq&quot;
+    ],
+    &quot;body&quot;: []
+  },
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;constant/transparent&quot;,
+  &quot;source_node_counts&quot;: {
+    &quot;prod&quot;: 7,
+    &quot;ind&quot;: 6,
+    &quot;sort&quot;: 1,
+    &quot;app&quot;: 5,
+    &quot;rel&quot;: 6,
+    &quot;construct&quot;: 4
+  },
+  &quot;node_rules_present&quot;: [
+    &quot;依赖函数类型 → Lean forall&quot;,
+    &quot;归纳类型引用 → 原生 bootstrap 或生成类型&quot;,
+    &quot;源 sort/宇宙 → Lean Sort&quot;,
+    &quot;应用 → 已翻译目标的应用&quot;,
+    &quot;局部变量 → Lean 绑定变量&quot;,
+    &quot;构造子 → 对应目标构造子&quot;
+  ],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{
+  &quot;universe_diagnostics&quot;: [],
+  &quot;universe_checks&quot;: 0,
+  &quot;template_params&quot;: [],
+  &quot;solved_levels&quot;: [],
+  &quot;r2bp_levels&quot;: [],
+  &quot;prop_lift_coercions&quot;: 0,
+  &quot;prop_lift&quot;: null,
+  &quot;phantom_lowered&quot;: [],
+  &quot;level_split&quot;: [],
+  &quot;level_params&quot;: [],
+  &quot;level_interp&quot;: [],
+  &quot;level_copies&quot;: [],
+  &quot;delta_inlined&quot;: [],
+  &quot;admitting_levels&quot;: []
+}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;,
+  &quot;target&quot;: &quot;Rocq.Corelib.Init.Sumbool.bool_eq_ind.statement&quot;,
+  &quot;target_kind&quot;: &quot;statement&quot;,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: &quot;RT_OK&quot;,
+  &quot;module_roundtrip&quot;: &quot;OK&quot;,
+  &quot;consumer&quot;: &quot;OK&quot;,
+  &quot;audit&quot;: &quot;OK&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[
+  {
+    &quot;label&quot;: &quot;c[]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;TRANSLATED_AND_CHECKED&quot;,
+    &quot;flag_descriptions&quot;: []
+  }
+]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Sumbool/records/0000.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d1" data-status="UNIVERSE_REJECTED"><summary>Corelib.Init.Sumbool.bool_eq_rec — UNIVERSE_REJECTED</summary><p>类别: definition_function；状态: UNIVERSE_REJECTED；实际目标: None</p><p>源文件行号候选：[26]</p><h3>失败位置、原因与所需能力</h3><pre>{
+  &quot;stage&quot;: &quot;宇宙实例求解 / 一致性校验&quot;,
+  &quot;class&quot;: &quot;universe&quot;,
+  &quot;observed&quot;: &quot;proof-local level Corelib.Init.Sumbool.32 solved as (some 0): native fact Set lt Corelib.Init.Sumbool.32 does not hold for the solution [last tier: UNIVERSE_REJECTED: proof-local level Corelib.Init.Sumbool.32 solved as (some 0): native fact Set lt Corelib.Init.Sumbool.32 does not hold for the solution]&quot;,
+  &quot;needed&quot;: &quot;需要修正相应宇宙参数传播或求解策略，并保留源端大小约束、共享层一致性及公开类型范围；不可放松检查来制造成功。&quot;,
+  &quot;implementation&quot;: &quot;Rocq2Lean/Translate.lean:2740-2780; Rocq2Lean/Emit.lean&quot;,
+  &quot;certainty&quot;: &quot;具体违反的约束为直接证据；当前日志不足以断言某一行修复即可解决&quot;
+}</pre><pre>proof-local level Corelib.Init.Sumbool.32 solved as (some 0): native fact Set lt Corelib.Init.Sumbool.32 does not hold for the solution [last tier: UNIVERSE_REJECTED: proof-local level Corelib.Init.Sumbool.32 solved as (some 0): native fact Set lt Corelib.Init.Sumbool.32 does not hold for the solution]
+节点路径: []</pre><pre>[]</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;definition_function&quot;,
+  &quot;source_body_state&quot;: &quot;transparent&quot;,
+  &quot;native_preparation&quot;: {
+    &quot;sealed_implementation&quot;: false,
+    &quot;lowered_ssr_have_upoly&quot;: false
+  },
+  &quot;exported&quot;: true
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {
+    &quot;type&quot;: [
+      &quot;Corelib.Init.Datatypes.bool&quot;,
+      &quot;Corelib.Init.Logic.eq&quot;
+    ],
+    &quot;body&quot;: [
+      &quot;Corelib.Init.Datatypes.bool&quot;,
+      &quot;Corelib.Init.Logic.eq&quot;,
+      &quot;Corelib.Init.Sumbool.bool_eq_rec__rocq2lean_obligation_1&quot;,
+      &quot;Corelib.Init.Sumbool.bool_eq_rec__rocq2lean_obligation_2&quot;
+    ]
+  },
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;&quot;,
+  &quot;source_node_counts&quot;: {
+    &quot;prod&quot;: 20,
+    &quot;ind&quot;: 23,
+    &quot;sort&quot;: 5,
+    &quot;app&quot;: 23,
+    &quot;rel&quot;: 30,
+    &quot;construct&quot;: 20,
+    &quot;lam&quot;: 8,
+    &quot;case&quot;: 1,
+    &quot;const&quot;: 2
+  },
+  &quot;node_rules_present&quot;: [
+    &quot;依赖函数类型 → Lean forall&quot;,
+    &quot;归纳类型引用 → 原生 bootstrap 或生成类型&quot;,
+    &quot;源 sort/宇宙 → Lean Sort&quot;,
+    &quot;应用 → 已翻译目标的应用&quot;,
+    &quot;局部变量 → Lean 绑定变量&quot;,
+    &quot;构造子 → 对应目标构造子&quot;,
+    &quot;函数体 → Lean lambda&quot;,
+    &quot;模式消去 → 目标 recursor/消去表达式&quot;,
+    &quot;全局常量 → 目标声明或显式待证明前提&quot;
+  ],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{
+  &quot;universe_diagnostics&quot;: [],
+  &quot;universe_checks&quot;: 0,
+  &quot;template_params&quot;: [],
+  &quot;solved_levels&quot;: [
+    {
+      &quot;sigma&quot;: {
+        &quot;k&quot;: &quot;zero&quot;
+      },
+      &quot;level&quot;: &quot;Corelib.Init.Sumbool.32&quot;
+    }
+  ],
+  &quot;r2bp_levels&quot;: [],
+  &quot;prop_lift_coercions&quot;: 0,
+  &quot;prop_lift&quot;: null,
+  &quot;phantom_lowered&quot;: [],
+  &quot;level_split&quot;: [],
+  &quot;level_params&quot;: [],
+  &quot;level_interp&quot;: [],
+  &quot;level_copies&quot;: [],
+  &quot;delta_inlined&quot;: [],
+  &quot;admitting_levels&quot;: []
+}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;UNIVERSE_REJECTED&quot;,
+  &quot;target&quot;: null,
+  &quot;target_kind&quot;: &quot;&quot;,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: &quot;RT_OK&quot;,
+  &quot;module_roundtrip&quot;: &quot;OK&quot;,
+  &quot;consumer&quot;: &quot;OK&quot;,
+  &quot;audit&quot;: &quot;OK&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[
+  {
+    &quot;label&quot;: &quot;c[]&quot;,
+    &quot;ms&quot;: 1,
+    &quot;result&quot;: &quot;UNIVERSE_REJECTED | proof-local level Corelib.Init.Sumbool.32 solved as (some 0): native fact Set lt Corelib.Init.Sumbool.32 does not hold for the solution&quot;,
+    &quot;flag_descriptions&quot;: []
+  },
+  {
+    &quot;label&quot;: &quot;c[it]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;UNIVERSE_REJECTED | proof-local level Corelib.Init.Sumbool.32 solved as (some 0): native fact Set lt Corelib.Init.Sumbool.32 does not hold for the solution&quot;,
+    &quot;flag_descriptions&quot;: [
+      &quot;宇宙事实解释&quot;
+    ]
+  },
+  {
+    &quot;label&quot;: &quot;c[un]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;UNIVERSE_REJECTED | proof-local level Corelib.Init.Sumbool.32 solved as (some 0): native fact Set lt Corelib.Init.Sumbool.32 does not hold for the solution&quot;,
+    &quot;flag_descriptions&quot;: [
+      &quot;统一求解&quot;
+    ]
+  },
+  {
+    &quot;label&quot;: &quot;c[it,un]&quot;,
+    &quot;ms&quot;: 1,
+    &quot;result&quot;: &quot;UNIVERSE_REJECTED | proof-local level Corelib.Init.Sumbool.32 solved as (some 0): native fact Set lt Corelib.Init.Sumbool.32 does not hold for the solution&quot;,
+    &quot;flag_descriptions&quot;: [
+      &quot;宇宙事实解释&quot;,
+      &quot;统一求解&quot;
+    ]
+  },
+  {
+    &quot;label&quot;: &quot;c[cu]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;UNIVERSE_REJECTED | R2B-P levels #[Corelib.Init.Sumbool.32] on a pending artifact: the source instance is not checkable&quot;,
+    &quot;flag_descriptions&quot;: [
+      &quot;累积性重试&quot;
+    ]
+  },
+  {
+    &quot;label&quot;: &quot;c[it,cu]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;UNIVERSE_REJECTED | R2B-P levels #[Corelib.Init.Sumbool.32] on a pending artifact: the source instance is not checkable&quot;,
+    &quot;flag_descriptions&quot;: [
+      &quot;宇宙事实解释&quot;,
+      &quot;累积性重试&quot;
+    ]
+  },
+  {
+    &quot;label&quot;: &quot;c[cu,lo]&quot;,
+    &quot;ms&quot;: 1,
+    &quot;result&quot;: &quot;UNIVERSE_REJECTED | R2B-P levels #[Corelib.Init.Sumbool.32] on a pending artifact: the source instance is not checkable&quot;,
+    &quot;flag_descriptions&quot;: [
+      &quot;累积性重试&quot;,
+      &quot;受检的层级求解&quot;
+    ]
+  },
+  {
+    &quot;label&quot;: &quot;c[it,cu,lo]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;UNIVERSE_REJECTED | R2B-P levels #[Corelib.Init.Sumbool.32] on a pending artifact: the source instance is not checkable&quot;,
+    &quot;flag_descriptions&quot;: [
+      &quot;宇宙事实解释&quot;,
+      &quot;累积性重试&quot;,
+      &quot;受检的层级求解&quot;
+    ]
+  },
+  {
+    &quot;label&quot;: &quot;c[de]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;UNSUPPORTED_FEATURE&quot;,
+    &quot;flag_descriptions&quot;: [
+      &quot;透明定义展开&quot;
+    ]
+  },
+  {
+    &quot;label&quot;: &quot;c[fr,it,cu,lo,de]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;UNSUPPORTED_FEATURE&quot;,
+    &quot;flag_descriptions&quot;: [
+      &quot;源宇宙事实化简&quot;,
+      &quot;宇宙事实解释&quot;,
+      &quot;累积性重试&quot;,
+      &quot;受检的层级求解&quot;,
+      &quot;透明定义展开&quot;
+    ]
+  },
+  {
+    &quot;label&quot;: &quot;c[di]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;DISCOVERED | &quot;,
+    &quot;flag_descriptions&quot;: [
+      &quot;发现隐式宇宙参数&quot;
+    ]
+  },
+  {
+    &quot;label&quot;: &quot;c[p3]&quot;,
+    &quot;ms&quot;: 1,
+    &quot;result&quot;: &quot;UNIVERSE_REJECTED | proof-local level Corelib.Init.Sumbool.32 solved as (some 0): native fact Set lt Corelib.Init.Sumbool.32 does not hold for the solution&quot;,
+    &quot;flag_descriptions&quot;: [
+      &quot;按前提类型精确解层&quot;
+    ]
+  },
+  {
+    &quot;label&quot;: &quot;c[it,p3]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;UNIVERSE_REJECTED | proof-local level Corelib.Init.Sumbool.32 solved as (some 0): native fact Set lt Corelib.Init.Sumbool.32 does not hold for the solution&quot;,
+    &quot;flag_descriptions&quot;: [
+      &quot;宇宙事实解释&quot;,
+      &quot;按前提类型精确解层&quot;
+    ]
+  },
+  {
+    &quot;label&quot;: &quot;c[lo,p3]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;UNIVERSE_REJECTED | proof-local level Corelib.Init.Sumbool.32 solved as (some 0): native fact Set lt Corelib.Init.Sumbool.32 does not hold for the solution&quot;,
+    &quot;flag_descriptions&quot;: [
+      &quot;受检的层级求解&quot;,
+      &quot;按前提类型精确解层&quot;
+    ]
+  },
+  {
+    &quot;label&quot;: &quot;c[rv]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;UNSUPPORTED_FEATURE&quot;,
+    &quot;flag_descriptions&quot;: [
+      &quot;从值继承结果 sort&quot;
+    ]
+  },
+  {
+    &quot;label&quot;: &quot;c[it,rv]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;UNSUPPORTED_FEATURE&quot;,
+    &quot;flag_descriptions&quot;: [
+      &quot;宇宙事实解释&quot;,
+      &quot;从值继承结果 sort&quot;
+    ]
+  },
+  {
+    &quot;label&quot;: &quot;c[lo,rv]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;UNSUPPORTED_FEATURE&quot;,
+    &quot;flag_descriptions&quot;: [
+      &quot;受检的层级求解&quot;,
+      &quot;从值继承结果 sort&quot;
+    ]
+  },
+  {
+    &quot;label&quot;: &quot;c[it,lo,rv]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;UNSUPPORTED_FEATURE&quot;,
+    &quot;flag_descriptions&quot;: [
+      &quot;宇宙事实解释&quot;,
+      &quot;受检的层级求解&quot;,
+      &quot;从值继承结果 sort&quot;
+    ]
+  },
+  {
+    &quot;label&quot;: &quot;c[fr,it,cu,lo,rv]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;UNSUPPORTED_FEATURE&quot;,
+    &quot;flag_descriptions&quot;: [
+      &quot;源宇宙事实化简&quot;,
+      &quot;宇宙事实解释&quot;,
+      &quot;累积性重试&quot;,
+      &quot;受检的层级求解&quot;,
+      &quot;从值继承结果 sort&quot;
+    ]
+  }
+]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Sumbool/records/0001.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d2" data-status="TRANSLATED_AND_CHECKED"><summary>Corelib.Init.Sumbool.bool_of_sumbool — TRANSLATED_AND_CHECKED</summary><p>类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Sumbool.bool_of_sumbool</p><p>源文件行号候选：[81]</p><h3>实际 Lean 输出</h3><pre>def Rocq.Corelib.Init.Sumbool.bool_of_sumbool : (A B : Prop) →
+  Rocq.Corelib.Init.Specif.sumbool A B →
+    Rocq.Corelib.Init.Specif.sig.{0} Rocq.Corelib.Init.Datatypes.bool fun b =&gt;
+      @Rocq.Corelib.Init.Datatypes.bool.rec.{1} (fun t =&gt; Prop) A B b :=
+fun A B =&gt;
+  Rocq.Corelib.Init.Specif.sumbool_rec
+    ((fun x =&gt; @Rocq.Corelib.Init.Datatypes.bool.rec.{1} (fun t =&gt; Prop) A B x) Rocq.Corelib.Init.Datatypes.bool.true)
+    ((fun x =&gt; @Rocq.Corelib.Init.Datatypes.bool.rec.{1} (fun t =&gt; Prop) A B x) Rocq.Corelib.Init.Datatypes.bool.false)
+    (fun s =&gt;
+      Rocq.Corelib.Init.Specif.sig.{0} Rocq.Corelib.Init.Datatypes.bool fun b =&gt;
+        @Rocq.Corelib.Init.Datatypes.bool.rec.{1} (fun t =&gt; Prop) A B b)
+    (Rocq.Corelib.Init.Specif.sig.exist.{0} Rocq.Corelib.Init.Datatypes.bool
+      (fun x =&gt; @Rocq.Corelib.Init.Datatypes.bool.rec.{1} (fun t =&gt; Prop) A B x) Rocq.Corelib.Init.Datatypes.bool.true)
+    (Rocq.Corelib.Init.Specif.sig.exist.{0} Rocq.Corelib.Init.Datatypes.bool
+      (fun x =&gt; @Rocq.Corelib.Init.Datatypes.bool.rec.{1} (fun t =&gt; Prop) A B x) Rocq.Corelib.Init.Datatypes.bool.false)</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;definition_function&quot;,
+  &quot;source_body_state&quot;: &quot;transparent&quot;,
+  &quot;native_preparation&quot;: {
+    &quot;sealed_implementation&quot;: false,
+    &quot;lowered_ssr_have_upoly&quot;: false
+  },
+  &quot;exported&quot;: true
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {
+    &quot;type&quot;: [
+      &quot;Corelib.Init.Datatypes.bool&quot;,
+      &quot;Corelib.Init.Specif.sig&quot;,
+      &quot;Corelib.Init.Specif.sumbool&quot;
+    ],
+    &quot;body&quot;: [
+      &quot;Corelib.Init.Datatypes.bool&quot;,
+      &quot;Corelib.Init.Specif.sig&quot;,
+      &quot;Corelib.Init.Specif.sumbool&quot;,
+      &quot;Corelib.Init.Specif.sumbool_rec&quot;
+    ]
+  },
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;constant/transparent&quot;,
+  &quot;source_node_counts&quot;: {
+    &quot;prod&quot;: 3,
+    &quot;sort&quot;: 12,
+    &quot;app&quot;: 11,
+    &quot;ind&quot;: 16,
+    &quot;rel&quot;: 26,
+    &quot;lam&quot;: 11,
+    &quot;case&quot;: 8,
+    &quot;const&quot;: 1,
+    &quot;construct&quot;: 8
+  },
+  &quot;node_rules_present&quot;: [
+    &quot;依赖函数类型 → Lean forall&quot;,
+    &quot;源 sort/宇宙 → Lean Sort&quot;,
+    &quot;应用 → 已翻译目标的应用&quot;,
+    &quot;归纳类型引用 → 原生 bootstrap 或生成类型&quot;,
+    &quot;局部变量 → Lean 绑定变量&quot;,
+    &quot;函数体 → Lean lambda&quot;,
+    &quot;模式消去 → 目标 recursor/消去表达式&quot;,
+    &quot;全局常量 → 目标声明或显式待证明前提&quot;,
+    &quot;构造子 → 对应目标构造子&quot;
+  ],
+  &quot;actual_target_recursors&quot;: [
+    &quot;Rocq.Corelib.Init.Datatypes.bool.rec&quot;
+  ],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{
+  &quot;universe_diagnostics&quot;: [],
+  &quot;universe_checks&quot;: 0,
+  &quot;template_params&quot;: [],
+  &quot;solved_levels&quot;: [],
+  &quot;r2bp_levels&quot;: [],
+  &quot;prop_lift_coercions&quot;: 0,
+  &quot;prop_lift&quot;: null,
+  &quot;phantom_lowered&quot;: [],
+  &quot;level_split&quot;: [],
+  &quot;level_params&quot;: [],
+  &quot;level_interp&quot;: [],
+  &quot;level_copies&quot;: [],
+  &quot;delta_inlined&quot;: [],
+  &quot;admitting_levels&quot;: []
+}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;TRANSLATED_AND_CHECKED&quot;,
+  &quot;target&quot;: &quot;Rocq.Corelib.Init.Sumbool.bool_of_sumbool&quot;,
+  &quot;target_kind&quot;: &quot;def&quot;,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: &quot;RT_OK&quot;,
+  &quot;module_roundtrip&quot;: &quot;OK&quot;,
+  &quot;consumer&quot;: &quot;OK&quot;,
+  &quot;audit&quot;: &quot;OK&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[
+  {
+    &quot;label&quot;: &quot;c[]&quot;,
+    &quot;ms&quot;: 1,
+    &quot;result&quot;: &quot;TRANSLATED_AND_CHECKED&quot;,
+    &quot;flag_descriptions&quot;: []
+  }
+]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Sumbool/records/0002.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d3" data-status="PENDING_KERNEL_CHECKED"><summary>Corelib.Init.Sumbool.sumbool_and — PENDING_KERNEL_CHECKED</summary><p>类别: definition_function；状态: PENDING_KERNEL_CHECKED；实际目标: RocqPending.Corelib.Init.Sumbool.sumbool_and</p><p>源文件行号候选：[49]</p><h3>实际 Lean 输出</h3><pre>def RocqPending.Corelib.Init.Sumbool.sumbool_and : {h_Corelib_Init_Sumbool_sumbool_and__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_1.statement} →
+  {h_Corelib_Init_Sumbool_sumbool_and__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_2.statement} →
+    {h_Corelib_Init_Sumbool_sumbool_and__rocq2lean_obligation_3 :
+        Rocq.Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_3.statement} →
+      {h_Corelib_Init_Sumbool_sumbool_and__rocq2lean_obligation_4 :
+          Rocq.Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_4.statement} →
+        (A B C D : Prop) →
+          Rocq.Corelib.Init.Specif.sumbool A B →
+            Rocq.Corelib.Init.Specif.sumbool C D →
+              Rocq.Corelib.Init.Specif.sumbool (Rocq.Corelib.Init.Logic.and A C) (Rocq.Corelib.Init.Logic.or B D) :=
+fun {h_Corelib_Init_Sumbool_sumbool_and__rocq2lean_obligation_1}
+    {h_Corelib_Init_Sumbool_sumbool_and__rocq2lean_obligation_2}
+    {h_Corelib_Init_Sumbool_sumbool_and__rocq2lean_obligation_3}
+    {h_Corelib_Init_Sumbool_sumbool_and__rocq2lean_obligation_4} A B C D H1 H2 =&gt;
+  @Rocq.Corelib.Init.Specif.sumbool.rec.{1} A B
+    (fun t =&gt; Rocq.Corelib.Init.Specif.sumbool (Rocq.Corelib.Init.Logic.and A C) (Rocq.Corelib.Init.Logic.or B D))
+    (fun a =&gt;
+      @Rocq.Corelib.Init.Specif.sumbool.rec.{1} C D
+        (fun t =&gt; Rocq.Corelib.Init.Specif.sumbool (Rocq.Corelib.Init.Logic.and A C) (Rocq.Corelib.Init.Logic.or B D))
+        (fun a_1 =&gt;
+          Rocq.Corelib.Init.Specif.sumbool.left (Rocq.Corelib.Init.Logic.and A C) (Rocq.Corelib.Init.Logic.or B D) ⋯)
+        (fun a_1 =&gt;
+          Rocq.Corelib.Init.Specif.sumbool.right (Rocq.Corelib.Init.Logic.and A C) (Rocq.Corelib.Init.Logic.or B D) ⋯)
+        H2)
+    (fun a =&gt;
+      @Rocq.Corelib.Init.Specif.sumbool.rec.{1} C D
+        (fun t =&gt; Rocq.Corelib.Init.Specif.sumbool (Rocq.Corelib.Init.Logic.and A C) (Rocq.Corelib.Init.Logic.or B D))
+        (fun a_1 =&gt;
+          Rocq.Corelib.Init.Specif.sumbool.right (Rocq.Corelib.Init.Logic.and A C) (Rocq.Corelib.Init.Logic.or B D) ⋯)
+        (fun a_1 =&gt;
+          Rocq.Corelib.Init.Specif.sumbool.right (Rocq.Corelib.Init.Logic.and A C) (Rocq.Corelib.Init.Logic.or B D) ⋯)
+        H2)
+    H1</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;definition_function&quot;,
+  &quot;source_body_state&quot;: &quot;transparent&quot;,
+  &quot;native_preparation&quot;: {
+    &quot;sealed_implementation&quot;: false,
+    &quot;lowered_ssr_have_upoly&quot;: false
+  },
+  &quot;exported&quot;: true
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {
+    &quot;type&quot;: [
+      &quot;Corelib.Init.Logic.and&quot;,
+      &quot;Corelib.Init.Logic.or&quot;,
+      &quot;Corelib.Init.Specif.sumbool&quot;
+    ],
+    &quot;body&quot;: [
+      &quot;Corelib.Init.Logic.and&quot;,
+      &quot;Corelib.Init.Logic.or&quot;,
+      &quot;Corelib.Init.Specif.sumbool&quot;,
+      &quot;Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_1&quot;,
+      &quot;Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_2&quot;,
+      &quot;Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_3&quot;,
+      &quot;Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_4&quot;
+    ]
+  },
+  &quot;pending&quot;: [
+    &quot;Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_1&quot;,
+    &quot;Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_2&quot;,
+    &quot;Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_3&quot;,
+    &quot;Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_4&quot;
+  ],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;constant/transparent&quot;,
+  &quot;source_node_counts&quot;: {
+    &quot;prod&quot;: 6,
+    &quot;sort&quot;: 8,
+    &quot;app&quot;: 32,
+    &quot;ind&quot;: 24,
+    &quot;rel&quot;: 81,
+    &quot;lam&quot;: 6,
+    &quot;case&quot;: 3,
+    &quot;construct&quot;: 4,
+    &quot;const&quot;: 4
+  },
+  &quot;node_rules_present&quot;: [
+    &quot;依赖函数类型 → Lean forall&quot;,
+    &quot;源 sort/宇宙 → Lean Sort&quot;,
+    &quot;应用 → 已翻译目标的应用&quot;,
+    &quot;归纳类型引用 → 原生 bootstrap 或生成类型&quot;,
+    &quot;局部变量 → Lean 绑定变量&quot;,
+    &quot;函数体 → Lean lambda&quot;,
+    &quot;模式消去 → 目标 recursor/消去表达式&quot;,
+    &quot;构造子 → 对应目标构造子&quot;,
+    &quot;全局常量 → 目标声明或显式待证明前提&quot;
+  ],
+  &quot;actual_target_recursors&quot;: [
+    &quot;Rocq.Corelib.Init.Specif.sumbool.rec&quot;
+  ],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{
+  &quot;universe_diagnostics&quot;: [],
+  &quot;universe_checks&quot;: 0,
+  &quot;template_params&quot;: [],
+  &quot;solved_levels&quot;: [],
+  &quot;r2bp_levels&quot;: [],
+  &quot;prop_lift_coercions&quot;: 0,
+  &quot;prop_lift&quot;: null,
+  &quot;phantom_lowered&quot;: [],
+  &quot;level_split&quot;: [],
+  &quot;level_params&quot;: [],
+  &quot;level_interp&quot;: [],
+  &quot;level_copies&quot;: [],
+  &quot;delta_inlined&quot;: [],
+  &quot;admitting_levels&quot;: []
+}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;PENDING_KERNEL_CHECKED&quot;,
+  &quot;target&quot;: &quot;RocqPending.Corelib.Init.Sumbool.sumbool_and&quot;,
+  &quot;target_kind&quot;: &quot;def&quot;,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: &quot;RT_OK&quot;,
+  &quot;module_roundtrip&quot;: &quot;OK&quot;,
+  &quot;consumer&quot;: &quot;OK&quot;,
+  &quot;audit&quot;: &quot;OK&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[
+  {
+    &quot;label&quot;: &quot;c[]&quot;,
+    &quot;ms&quot;: 1,
+    &quot;result&quot;: &quot;PENDING_KERNEL_CHECKED&quot;,
+    &quot;flag_descriptions&quot;: []
+  }
+]</pre><p>完整尝试结果见下方逐项 JSON。</p><h3>待证明条件</h3><pre>[
+  {
+    &quot;source&quot;: &quot;Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_1&quot;,
+    &quot;target&quot;: &quot;Rocq.Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_1.statement&quot;,
+    &quot;status&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;
+  },
+  {
+    &quot;source&quot;: &quot;Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_2&quot;,
+    &quot;target&quot;: &quot;Rocq.Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_2.statement&quot;,
+    &quot;status&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;
+  },
+  {
+    &quot;source&quot;: &quot;Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_3&quot;,
+    &quot;target&quot;: &quot;Rocq.Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_3.statement&quot;,
+    &quot;status&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;
+  },
+  {
+    &quot;source&quot;: &quot;Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_4&quot;,
+    &quot;target&quot;: &quot;Rocq.Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_4.statement&quot;,
+    &quot;status&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;
+  }
+]</pre><p>条件的完整源类型和 Lean 类型见逐项 JSON。</p><p><a href="Sumbool/records/0003.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d4" data-status="TRANSLATED_AND_CHECKED"><summary>Corelib.Init.Sumbool.sumbool_not — TRANSLATED_AND_CHECKED</summary><p>类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Sumbool.sumbool_not</p><p>源文件行号候选：[65]</p><h3>实际 Lean 输出</h3><pre>def Rocq.Corelib.Init.Sumbool.sumbool_not : (A B : Prop) →
+  Rocq.Corelib.Init.Specif.sumbool A B → Rocq.Corelib.Init.Specif.sumbool B A :=
+fun A B H1 =&gt;
+  @Rocq.Corelib.Init.Specif.sumbool.rec.{1} A B (fun t =&gt; Rocq.Corelib.Init.Specif.sumbool B A)
+    (fun a =&gt; Rocq.Corelib.Init.Specif.sumbool.right B A a) (fun a =&gt; Rocq.Corelib.Init.Specif.sumbool.left B A a) H1</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;definition_function&quot;,
+  &quot;source_body_state&quot;: &quot;transparent&quot;,
+  &quot;native_preparation&quot;: {
+    &quot;sealed_implementation&quot;: false,
+    &quot;lowered_ssr_have_upoly&quot;: false
+  },
+  &quot;exported&quot;: true
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {
+    &quot;type&quot;: [
+      &quot;Corelib.Init.Specif.sumbool&quot;
+    ],
+    &quot;body&quot;: [
+      &quot;Corelib.Init.Specif.sumbool&quot;
+    ]
+  },
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;constant/transparent&quot;,
+  &quot;source_node_counts&quot;: {
+    &quot;prod&quot;: 3,
+    &quot;sort&quot;: 4,
+    &quot;app&quot;: 6,
+    &quot;ind&quot;: 4,
+    &quot;rel&quot;: 17,
+    &quot;lam&quot;: 3,
+    &quot;case&quot;: 1,
+    &quot;construct&quot;: 2
+  },
+  &quot;node_rules_present&quot;: [
+    &quot;依赖函数类型 → Lean forall&quot;,
+    &quot;源 sort/宇宙 → Lean Sort&quot;,
+    &quot;应用 → 已翻译目标的应用&quot;,
+    &quot;归纳类型引用 → 原生 bootstrap 或生成类型&quot;,
+    &quot;局部变量 → Lean 绑定变量&quot;,
+    &quot;函数体 → Lean lambda&quot;,
+    &quot;模式消去 → 目标 recursor/消去表达式&quot;,
+    &quot;构造子 → 对应目标构造子&quot;
+  ],
+  &quot;actual_target_recursors&quot;: [
+    &quot;Rocq.Corelib.Init.Specif.sumbool.rec&quot;
+  ],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{
+  &quot;universe_diagnostics&quot;: [],
+  &quot;universe_checks&quot;: 0,
+  &quot;template_params&quot;: [],
+  &quot;solved_levels&quot;: [],
+  &quot;r2bp_levels&quot;: [],
+  &quot;prop_lift_coercions&quot;: 0,
+  &quot;prop_lift&quot;: null,
+  &quot;phantom_lowered&quot;: [],
+  &quot;level_split&quot;: [],
+  &quot;level_params&quot;: [],
+  &quot;level_interp&quot;: [],
+  &quot;level_copies&quot;: [],
+  &quot;delta_inlined&quot;: [],
+  &quot;admitting_levels&quot;: []
+}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;TRANSLATED_AND_CHECKED&quot;,
+  &quot;target&quot;: &quot;Rocq.Corelib.Init.Sumbool.sumbool_not&quot;,
+  &quot;target_kind&quot;: &quot;def&quot;,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: &quot;RT_OK&quot;,
+  &quot;module_roundtrip&quot;: &quot;OK&quot;,
+  &quot;consumer&quot;: &quot;OK&quot;,
+  &quot;audit&quot;: &quot;OK&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[
+  {
+    &quot;label&quot;: &quot;c[]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;TRANSLATED_AND_CHECKED&quot;,
+    &quot;flag_descriptions&quot;: []
+  }
+]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Sumbool/records/0004.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d5" data-status="PENDING_KERNEL_CHECKED"><summary>Corelib.Init.Sumbool.sumbool_of_bool — PENDING_KERNEL_CHECKED</summary><p>类别: definition_function；状态: PENDING_KERNEL_CHECKED；实际目标: RocqPending.Corelib.Init.Sumbool.sumbool_of_bool</p><p>源文件行号候选：[20]</p><h3>实际 Lean 输出</h3><pre>def RocqPending.Corelib.Init.Sumbool.sumbool_of_bool : {h_Corelib_Init_Sumbool_sumbool_of_bool__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Sumbool.sumbool_of_bool__rocq2lean_obligation_1.statement} →
+  {h_Corelib_Init_Sumbool_sumbool_of_bool__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Sumbool.sumbool_of_bool__rocq2lean_obligation_2.statement} →
+    (b : Rocq.Corelib.Init.Datatypes.bool) →
+      Rocq.Corelib.Init.Specif.sumbool
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool b Rocq.Corelib.Init.Datatypes.bool.true)
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool b Rocq.Corelib.Init.Datatypes.bool.false) :=
+fun {h_Corelib_Init_Sumbool_sumbool_of_bool__rocq2lean_obligation_1}
+    {h_Corelib_Init_Sumbool_sumbool_of_bool__rocq2lean_obligation_2} b =&gt;
+  @Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+    (fun t =&gt;
+      Rocq.Corelib.Init.Specif.sumbool
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool t Rocq.Corelib.Init.Datatypes.bool.true)
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool t Rocq.Corelib.Init.Datatypes.bool.false))
+    (Rocq.Corelib.Init.Specif.sumbool.left
+      (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+        Rocq.Corelib.Init.Datatypes.bool.true)
+      (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+        Rocq.Corelib.Init.Datatypes.bool.false)
+      ⋯)
+    (Rocq.Corelib.Init.Specif.sumbool.right
+      (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+        Rocq.Corelib.Init.Datatypes.bool.true)
+      (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+        Rocq.Corelib.Init.Datatypes.bool.false)
+      ⋯)
+    b</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;definition_function&quot;,
+  &quot;source_body_state&quot;: &quot;transparent&quot;,
+  &quot;native_preparation&quot;: {
+    &quot;sealed_implementation&quot;: false,
+    &quot;lowered_ssr_have_upoly&quot;: false
+  },
+  &quot;exported&quot;: true
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {
+    &quot;type&quot;: [
+      &quot;Corelib.Init.Datatypes.bool&quot;,
+      &quot;Corelib.Init.Logic.eq&quot;,
+      &quot;Corelib.Init.Specif.sumbool&quot;
+    ],
+    &quot;body&quot;: [
+      &quot;Corelib.Init.Datatypes.bool&quot;,
+      &quot;Corelib.Init.Logic.eq&quot;,
+      &quot;Corelib.Init.Specif.sumbool&quot;,
+      &quot;Corelib.Init.Sumbool.sumbool_of_bool__rocq2lean_obligation_1&quot;,
+      &quot;Corelib.Init.Sumbool.sumbool_of_bool__rocq2lean_obligation_2&quot;
+    ]
+  },
+  &quot;pending&quot;: [
+    &quot;Corelib.Init.Sumbool.sumbool_of_bool__rocq2lean_obligation_1&quot;,
+    &quot;Corelib.Init.Sumbool.sumbool_of_bool__rocq2lean_obligation_2&quot;
+  ],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;constant/transparent&quot;,
+  &quot;source_node_counts&quot;: {
+    &quot;prod&quot;: 1,
+    &quot;ind&quot;: 20,
+    &quot;app&quot;: 14,
+    &quot;rel&quot;: 7,
+    &quot;construct&quot;: 14,
+    &quot;lam&quot;: 1,
+    &quot;case&quot;: 1,
+    &quot;const&quot;: 2
+  },
+  &quot;node_rules_present&quot;: [
+    &quot;依赖函数类型 → Lean forall&quot;,
+    &quot;归纳类型引用 → 原生 bootstrap 或生成类型&quot;,
+    &quot;应用 → 已翻译目标的应用&quot;,
+    &quot;局部变量 → Lean 绑定变量&quot;,
+    &quot;构造子 → 对应目标构造子&quot;,
+    &quot;函数体 → Lean lambda&quot;,
+    &quot;模式消去 → 目标 recursor/消去表达式&quot;,
+    &quot;全局常量 → 目标声明或显式待证明前提&quot;
+  ],
+  &quot;actual_target_recursors&quot;: [
+    &quot;Rocq.Corelib.Init.Datatypes.bool.rec&quot;
+  ],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{
+  &quot;universe_diagnostics&quot;: [],
+  &quot;universe_checks&quot;: 0,
+  &quot;template_params&quot;: [],
+  &quot;solved_levels&quot;: [],
+  &quot;r2bp_levels&quot;: [],
+  &quot;prop_lift_coercions&quot;: 0,
+  &quot;prop_lift&quot;: null,
+  &quot;phantom_lowered&quot;: [],
+  &quot;level_split&quot;: [],
+  &quot;level_params&quot;: [],
+  &quot;level_interp&quot;: [],
+  &quot;level_copies&quot;: [],
+  &quot;delta_inlined&quot;: [],
+  &quot;admitting_levels&quot;: []
+}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;PENDING_KERNEL_CHECKED&quot;,
+  &quot;target&quot;: &quot;RocqPending.Corelib.Init.Sumbool.sumbool_of_bool&quot;,
+  &quot;target_kind&quot;: &quot;def&quot;,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: &quot;RT_OK&quot;,
+  &quot;module_roundtrip&quot;: &quot;OK&quot;,
+  &quot;consumer&quot;: &quot;OK&quot;,
+  &quot;audit&quot;: &quot;OK&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[
+  {
+    &quot;label&quot;: &quot;c[]&quot;,
+    &quot;ms&quot;: 1,
+    &quot;result&quot;: &quot;PENDING_KERNEL_CHECKED&quot;,
+    &quot;flag_descriptions&quot;: []
+  }
+]</pre><p>完整尝试结果见下方逐项 JSON。</p><h3>待证明条件</h3><pre>[
+  {
+    &quot;source&quot;: &quot;Corelib.Init.Sumbool.sumbool_of_bool__rocq2lean_obligation_1&quot;,
+    &quot;target&quot;: &quot;Rocq.Corelib.Init.Sumbool.sumbool_of_bool__rocq2lean_obligation_1.statement&quot;,
+    &quot;status&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;
+  },
+  {
+    &quot;source&quot;: &quot;Corelib.Init.Sumbool.sumbool_of_bool__rocq2lean_obligation_2&quot;,
+    &quot;target&quot;: &quot;Rocq.Corelib.Init.Sumbool.sumbool_of_bool__rocq2lean_obligation_2.statement&quot;,
+    &quot;status&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;
+  }
+]</pre><p>条件的完整源类型和 Lean 类型见逐项 JSON。</p><p><a href="Sumbool/records/0005.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d6" data-status="PENDING_KERNEL_CHECKED"><summary>Corelib.Init.Sumbool.sumbool_or — PENDING_KERNEL_CHECKED</summary><p>类别: definition_function；状态: PENDING_KERNEL_CHECKED；实际目标: RocqPending.Corelib.Init.Sumbool.sumbool_or</p><p>源文件行号候选：[57]</p><h3>实际 Lean 输出</h3><pre>def RocqPending.Corelib.Init.Sumbool.sumbool_or : {h_Corelib_Init_Sumbool_sumbool_or__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_1.statement} →
+  {h_Corelib_Init_Sumbool_sumbool_or__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_2.statement} →
+    {h_Corelib_Init_Sumbool_sumbool_or__rocq2lean_obligation_3 :
+        Rocq.Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_3.statement} →
+      {h_Corelib_Init_Sumbool_sumbool_or__rocq2lean_obligation_4 :
+          Rocq.Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_4.statement} →
+        (A B C D : Prop) →
+          Rocq.Corelib.Init.Specif.sumbool A B →
+            Rocq.Corelib.Init.Specif.sumbool C D →
+              Rocq.Corelib.Init.Specif.sumbool (Rocq.Corelib.Init.Logic.or A C) (Rocq.Corelib.Init.Logic.and B D) :=
+fun {h_Corelib_Init_Sumbool_sumbool_or__rocq2lean_obligation_1}
+    {h_Corelib_Init_Sumbool_sumbool_or__rocq2lean_obligation_2}
+    {h_Corelib_Init_Sumbool_sumbool_or__rocq2lean_obligation_3}
+    {h_Corelib_Init_Sumbool_sumbool_or__rocq2lean_obligation_4} A B C D H1 H2 =&gt;
+  @Rocq.Corelib.Init.Specif.sumbool.rec.{1} A B
+    (fun t =&gt; Rocq.Corelib.Init.Specif.sumbool (Rocq.Corelib.Init.Logic.or A C) (Rocq.Corelib.Init.Logic.and B D))
+    (fun a =&gt;
+      @Rocq.Corelib.Init.Specif.sumbool.rec.{1} C D
+        (fun t =&gt; Rocq.Corelib.Init.Specif.sumbool (Rocq.Corelib.Init.Logic.or A C) (Rocq.Corelib.Init.Logic.and B D))
+        (fun a_1 =&gt;
+          Rocq.Corelib.Init.Specif.sumbool.left (Rocq.Corelib.Init.Logic.or A C) (Rocq.Corelib.Init.Logic.and B D) ⋯)
+        (fun a_1 =&gt;
+          Rocq.Corelib.Init.Specif.sumbool.left (Rocq.Corelib.Init.Logic.or A C) (Rocq.Corelib.Init.Logic.and B D) ⋯)
+        H2)
+    (fun a =&gt;
+      @Rocq.Corelib.Init.Specif.sumbool.rec.{1} C D
+        (fun t =&gt; Rocq.Corelib.Init.Specif.sumbool (Rocq.Corelib.Init.Logic.or A C) (Rocq.Corelib.Init.Logic.and B D))
+        (fun a_1 =&gt;
+          Rocq.Corelib.Init.Specif.sumbool.left (Rocq.Corelib.Init.Logic.or A C) (Rocq.Corelib.Init.Logic.and B D) ⋯)
+        (fun a_1 =&gt;
+          Rocq.Corelib.Init.Specif.sumbool.right (Rocq.Corelib.Init.Logic.or A C) (Rocq.Corelib.Init.Logic.and B D) ⋯)
+        H2)
+    H1</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;definition_function&quot;,
+  &quot;source_body_state&quot;: &quot;transparent&quot;,
+  &quot;native_preparation&quot;: {
+    &quot;sealed_implementation&quot;: false,
+    &quot;lowered_ssr_have_upoly&quot;: false
+  },
+  &quot;exported&quot;: true
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {
+    &quot;type&quot;: [
+      &quot;Corelib.Init.Logic.and&quot;,
+      &quot;Corelib.Init.Logic.or&quot;,
+      &quot;Corelib.Init.Specif.sumbool&quot;
+    ],
+    &quot;body&quot;: [
+      &quot;Corelib.Init.Logic.and&quot;,
+      &quot;Corelib.Init.Logic.or&quot;,
+      &quot;Corelib.Init.Specif.sumbool&quot;,
+      &quot;Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_1&quot;,
+      &quot;Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_2&quot;,
+      &quot;Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_3&quot;,
+      &quot;Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_4&quot;
+    ]
+  },
+  &quot;pending&quot;: [
+    &quot;Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_1&quot;,
+    &quot;Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_2&quot;,
+    &quot;Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_3&quot;,
+    &quot;Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_4&quot;
+  ],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;constant/transparent&quot;,
+  &quot;source_node_counts&quot;: {
+    &quot;prod&quot;: 6,
+    &quot;sort&quot;: 8,
+    &quot;app&quot;: 32,
+    &quot;ind&quot;: 24,
+    &quot;rel&quot;: 81,
+    &quot;lam&quot;: 6,
+    &quot;case&quot;: 3,
+    &quot;construct&quot;: 4,
+    &quot;const&quot;: 4
+  },
+  &quot;node_rules_present&quot;: [
+    &quot;依赖函数类型 → Lean forall&quot;,
+    &quot;源 sort/宇宙 → Lean Sort&quot;,
+    &quot;应用 → 已翻译目标的应用&quot;,
+    &quot;归纳类型引用 → 原生 bootstrap 或生成类型&quot;,
+    &quot;局部变量 → Lean 绑定变量&quot;,
+    &quot;函数体 → Lean lambda&quot;,
+    &quot;模式消去 → 目标 recursor/消去表达式&quot;,
+    &quot;构造子 → 对应目标构造子&quot;,
+    &quot;全局常量 → 目标声明或显式待证明前提&quot;
+  ],
+  &quot;actual_target_recursors&quot;: [
+    &quot;Rocq.Corelib.Init.Specif.sumbool.rec&quot;
+  ],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{
+  &quot;universe_diagnostics&quot;: [],
+  &quot;universe_checks&quot;: 0,
+  &quot;template_params&quot;: [],
+  &quot;solved_levels&quot;: [],
+  &quot;r2bp_levels&quot;: [],
+  &quot;prop_lift_coercions&quot;: 0,
+  &quot;prop_lift&quot;: null,
+  &quot;phantom_lowered&quot;: [],
+  &quot;level_split&quot;: [],
+  &quot;level_params&quot;: [],
+  &quot;level_interp&quot;: [],
+  &quot;level_copies&quot;: [],
+  &quot;delta_inlined&quot;: [],
+  &quot;admitting_levels&quot;: []
+}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;PENDING_KERNEL_CHECKED&quot;,
+  &quot;target&quot;: &quot;RocqPending.Corelib.Init.Sumbool.sumbool_or&quot;,
+  &quot;target_kind&quot;: &quot;def&quot;,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: &quot;RT_OK&quot;,
+  &quot;module_roundtrip&quot;: &quot;OK&quot;,
+  &quot;consumer&quot;: &quot;OK&quot;,
+  &quot;audit&quot;: &quot;OK&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[
+  {
+    &quot;label&quot;: &quot;c[]&quot;,
+    &quot;ms&quot;: 1,
+    &quot;result&quot;: &quot;PENDING_KERNEL_CHECKED&quot;,
+    &quot;flag_descriptions&quot;: []
+  }
+]</pre><p>完整尝试结果见下方逐项 JSON。</p><h3>待证明条件</h3><pre>[
+  {
+    &quot;source&quot;: &quot;Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_1&quot;,
+    &quot;target&quot;: &quot;Rocq.Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_1.statement&quot;,
+    &quot;status&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;
+  },
+  {
+    &quot;source&quot;: &quot;Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_2&quot;,
+    &quot;target&quot;: &quot;Rocq.Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_2.statement&quot;,
+    &quot;status&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;
+  },
+  {
+    &quot;source&quot;: &quot;Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_3&quot;,
+    &quot;target&quot;: &quot;Rocq.Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_3.statement&quot;,
+    &quot;status&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;
+  },
+  {
+    &quot;source&quot;: &quot;Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_4&quot;,
+    &quot;target&quot;: &quot;Rocq.Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_4.statement&quot;,
+    &quot;status&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;
+  }
+]</pre><p>条件的完整源类型和 Lean 类型见逐项 JSON。</p><p><a href="Sumbool/records/0006.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><script>function filter(){let q=document.getElementById("search").value.toLowerCase(),s=document.getElementById("filter").value;document.querySelectorAll(".decl").forEach(e=>e.style.display=(!s||e.dataset.status===s)&&e.querySelector("summary").textContent.toLowerCase().includes(q)?"":"none")}document.getElementById("search").oninput=filter;document.getElementById("filter").onchange=filter;</script></body></html>

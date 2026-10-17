@@ -1,0 +1,568 @@
+Corelib.Program.Basics 逐声明翻译报告
+{
+  "module": "Corelib.Program.Basics",
+  "total": 6,
+  "complete": 6,
+  "pending": 0,
+  "blocked": 0,
+  "statuses": {
+    "TRANSLATED_AND_CHECKED": 6
+  },
+  "run_status": "MEASURED",
+  "source_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK",
+  "translation_compile_exit": 0
+}
+本文件采用逐模块独立运行。依赖随各翻译单元重复包含；不要直接把全部 .lean 一起 import。
+对应 .lean 使用翻译器的 #rocq2lean_import 命令生成内核声明；实际定义以 kernel view 展示，并非人工伪造的 Lean 源码。
+定理只翻译陈述；pending 是显式前提，不是已经证明；未导出的项目没有虚构 IR。
+
+================================================================================
+Corelib.Program.Basics.apply
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Program.Basics.apply
+源文件行号候选: [60]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [],
+    "body": []
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 6,
+    "sort": 4,
+    "rel": 9,
+    "lam": 4,
+    "app": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "源 sort/宇宙 → Lean Sort",
+    "局部变量 → Lean 绑定变量",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [
+    "u_Corelib_Program_Basics_43",
+    "u_Corelib_Program_Basics_44"
+  ],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Program.Basics.apply",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 1,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Program.Basics.apply.{u_Corelib_Program_Basics_43, u_Corelib_Program_Basics_44} : (A :
+    Type u_Corelib_Program_Basics_43) →
+  (B : Type u_Corelib_Program_Basics_44) → (A → B) → A → B :=
+fun A B f x => f x
+
+================================================================================
+Corelib.Program.Basics.arrow
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Program.Basics.arrow
+源文件行号候选: [41]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [],
+    "body": []
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 3,
+    "sort": 5,
+    "lam": 2,
+    "rel": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "源 sort/宇宙 → Lean Sort",
+    "函数体 → Lean lambda",
+    "局部变量 → Lean 绑定变量"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [
+    "u_Corelib_Program_Basics_27",
+    "u_Corelib_Program_Basics_28"
+  ],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Program.Basics.arrow",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Program.Basics.arrow.{u_Corelib_Program_Basics_27, u_Corelib_Program_Basics_28} : Type
+    u_Corelib_Program_Basics_27 →
+  Type u_Corelib_Program_Basics_28 → Type (max u_Corelib_Program_Basics_27 u_Corelib_Program_Basics_28) :=
+fun A B => A → B
+
+================================================================================
+Corelib.Program.Basics.compose
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Program.Basics.compose
+源文件行号候选: [26]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [],
+    "body": []
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 10,
+    "sort": 6,
+    "rel": 14,
+    "lam": 6,
+    "app": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "源 sort/宇宙 → Lean Sort",
+    "局部变量 → Lean 绑定变量",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [
+    "u_Corelib_Program_Basics_24",
+    "u_Corelib_Program_Basics_25",
+    "u_Corelib_Program_Basics_26"
+  ],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Program.Basics.compose",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Program.Basics.compose.{u_Corelib_Program_Basics_24, u_Corelib_Program_Basics_25, u_Corelib_Program_Basics_26} : (A :
+    Type u_Corelib_Program_Basics_26) →
+  (B : Type u_Corelib_Program_Basics_24) → (C : Type u_Corelib_Program_Basics_25) → (B → C) → (A → B) → A → C :=
+fun A B C g f x => g (f x)
+
+================================================================================
+Corelib.Program.Basics.const
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Program.Basics.const
+源文件行号候选: [51]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [],
+    "body": []
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 4,
+    "sort": 4,
+    "rel": 6,
+    "lam": 4
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "源 sort/宇宙 → Lean Sort",
+    "局部变量 → Lean 绑定变量",
+    "函数体 → Lean lambda"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [
+    "u_Corelib_Program_Basics_31",
+    "u_Corelib_Program_Basics_32"
+  ],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Program.Basics.const",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Program.Basics.const.{u_Corelib_Program_Basics_31, u_Corelib_Program_Basics_32} : (A :
+    Type u_Corelib_Program_Basics_31) →
+  (B : Type u_Corelib_Program_Basics_32) → A → B → A :=
+fun A B a a_1 => a
+
+================================================================================
+Corelib.Program.Basics.flip
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Program.Basics.flip
+源文件行号候选: [55]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [],
+    "body": []
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 10,
+    "sort": 6,
+    "rel": 14,
+    "lam": 6,
+    "app": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "源 sort/宇宙 → Lean Sort",
+    "局部变量 → Lean 绑定变量",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [
+    "u_Corelib_Program_Basics_36",
+    "u_Corelib_Program_Basics_37",
+    "u_Corelib_Program_Basics_38"
+  ],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Program.Basics.flip",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Program.Basics.flip.{u_Corelib_Program_Basics_36, u_Corelib_Program_Basics_37, u_Corelib_Program_Basics_38} : (A :
+    Type u_Corelib_Program_Basics_36) →
+  (B : Type u_Corelib_Program_Basics_37) → (C : Type u_Corelib_Program_Basics_38) → (A → B → C) → B → A → C :=
+fun A B C f x y => f y x
+
+================================================================================
+Corelib.Program.Basics.impl
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Program.Basics.impl
+源文件行号候选: [46]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [],
+    "body": []
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 3,
+    "sort": 5,
+    "lam": 2,
+    "rel": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "源 sort/宇宙 → Lean Sort",
+    "函数体 → Lean lambda",
+    "局部变量 → Lean 绑定变量"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Program.Basics.impl",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Program.Basics.impl : Prop → Prop → Prop :=
+fun A B => A → B

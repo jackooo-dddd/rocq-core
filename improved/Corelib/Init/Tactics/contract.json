@@ -1,0 +1,50 @@
+{
+  "schema": "rocq2lean-contract/1",
+  "run_id": "55a93ac3-2871-44f6-94f7-9d3f74aca51c",
+  "ir_sha256": "31a353fba07086a221f5d5f17f78d70e5f54ba9a11511af1e3aabd9baf880b13",
+  "request": [
+    "Corelib.Init.Tactics.decide_left",
+    "Corelib.Init.Tactics.decide_right"
+  ],
+  "roots": [
+    {
+      "requested": "Corelib.Init.Tactics.decide_left",
+      "canonical": "Corelib.Init.Tactics.decide_left",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Init.Tactics.decide_right",
+      "canonical": "Corelib.Init.Tactics.decide_right",
+      "kind": "constant"
+    }
+  ],
+  "exported": [
+    "Corelib.Init.Logic.False",
+    "Corelib.Init.Logic.not",
+    "Corelib.Init.Specif.sumbool",
+    "Corelib.Init.Tactics.decide_left",
+    "Corelib.Init.Tactics.decide_right"
+  ],
+  "required_closure": [
+    "Corelib.Init.Logic.False",
+    "Corelib.Init.Logic.not",
+    "Corelib.Init.Specif.sumbool",
+    "Corelib.Init.Tactics.decide_left",
+    "Corelib.Init.Tactics.decide_right"
+  ],
+  "extra_exported": [],
+  "protection": {
+    "schema": "rocq2lean-protected-interface/1",
+    "manifest_sha256": "fcc71378dd10052bb86e0afbf2532ccacc6ee0a1c42a7c03895b43c80e99cfcd",
+    "policy": {
+      "refuse": [
+        "R2B-S result-sort lowering",
+        "R2B-P specialization of a statement level"
+      ],
+      "applies_to": "every protected declaration, requested root or dependency",
+      "unprotected_dependencies": "existing checked policy (R2B-P instances re-checked by Rocq at verify)"
+    },
+    "protected": []
+  },
+  "mode": "statement"
+}

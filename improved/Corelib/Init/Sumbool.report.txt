@@ -1,0 +1,3963 @@
+Corelib.Init.Sumbool 逐声明翻译报告
+{
+  "module": "Corelib.Init.Sumbool",
+  "total": 7,
+  "complete": 3,
+  "pending": 3,
+  "blocked": 1,
+  "statuses": {
+    "STATEMENT_KERNEL_CHECKED": 1,
+    "UNIVERSE_REJECTED": 1,
+    "TRANSLATED_AND_CHECKED": 2,
+    "PENDING_KERNEL_CHECKED": 3
+  },
+  "run_status": "MEASURED",
+  "source_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK",
+  "translation_compile_exit": 0
+}
+本文件采用逐模块独立运行。依赖随各翻译单元重复包含；不要直接把全部 .lean 一起 import。
+对应 .lean 使用翻译器的 #rocq2lean_import 命令生成内核声明；实际定义以 kernel view 展示，并非人工伪造的 Lean 源码。
+定理只翻译陈述；pending 是显式前提，不是已经证明；未导出的项目没有虚构 IR。
+
+================================================================================
+Corelib.Init.Sumbool.bool_eq_ind
+类别: statement；状态: STATEMENT_KERNEL_CHECKED；实际目标: Rocq.Corelib.Init.Sumbool.bool_eq_ind.statement
+源文件行号候选: [33]
+1 源声明与导出
+{
+  "source_kind": "statement",
+  "source_body_state": "statement_only",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": true,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.bool",
+      "Corelib.Init.Logic.eq"
+    ],
+    "body": []
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 7,
+    "ind": 6,
+    "sort": 1,
+    "app": 5,
+    "rel": 6,
+    "construct": 4
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "源 sort/宇宙 → Lean Sort",
+    "应用 → 已翻译目标的应用",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "STATEMENT_KERNEL_CHECKED",
+  "target": "Rocq.Corelib.Init.Sumbool.bool_eq_ind.statement",
+  "target_kind": "statement",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Sumbool.bool_eq_ind.statement : Prop :=
+∀ (b : Rocq.Corelib.Init.Datatypes.bool) (P : Rocq.Corelib.Init.Datatypes.bool → Prop),
+  (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool b Rocq.Corelib.Init.Datatypes.bool.true →
+      P Rocq.Corelib.Init.Datatypes.bool.true) →
+    (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool b Rocq.Corelib.Init.Datatypes.bool.false →
+        P Rocq.Corelib.Init.Datatypes.bool.false) →
+      P b
+
+================================================================================
+Corelib.Init.Sumbool.bool_eq_rec
+类别: definition_function；状态: UNIVERSE_REJECTED；实际目标: None
+源文件行号候选: [26]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.bool",
+      "Corelib.Init.Logic.eq"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.bool",
+      "Corelib.Init.Logic.eq",
+      "Corelib.Init.Sumbool.bool_eq_rec__rocq2lean_obligation_1",
+      "Corelib.Init.Sumbool.bool_eq_rec__rocq2lean_obligation_2"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "",
+  "source_node_counts": {
+    "prod": 20,
+    "ind": 23,
+    "sort": 5,
+    "app": 23,
+    "rel": 30,
+    "construct": 20,
+    "lam": 8,
+    "case": 1,
+    "const": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "源 sort/宇宙 → Lean Sort",
+    "应用 → 已翻译目标的应用",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "全局常量 → 目标声明或显式待证明前提"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [
+    {
+      "sigma": {
+        "k": "zero"
+      },
+      "level": "Corelib.Init.Sumbool.32"
+    }
+  ],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "UNIVERSE_REJECTED",
+  "target": null,
+  "target_kind": "",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 1,
+    "result": "UNIVERSE_REJECTED | proof-local level Corelib.Init.Sumbool.32 solved as (some 0): native fact Set lt Corelib.Init.Sumbool.32 does not hold for the solution",
+    "flag_descriptions": []
+  },
+  {
+    "label": "c[it]",
+    "ms": 0,
+    "result": "UNIVERSE_REJECTED | proof-local level Corelib.Init.Sumbool.32 solved as (some 0): native fact Set lt Corelib.Init.Sumbool.32 does not hold for the solution",
+    "flag_descriptions": [
+      "宇宙事实解释"
+    ]
+  },
+  {
+    "label": "c[un]",
+    "ms": 0,
+    "result": "UNIVERSE_REJECTED | proof-local level Corelib.Init.Sumbool.32 solved as (some 0): native fact Set lt Corelib.Init.Sumbool.32 does not hold for the solution",
+    "flag_descriptions": [
+      "统一求解"
+    ]
+  },
+  {
+    "label": "c[it,un]",
+    "ms": 1,
+    "result": "UNIVERSE_REJECTED | proof-local level Corelib.Init.Sumbool.32 solved as (some 0): native fact Set lt Corelib.Init.Sumbool.32 does not hold for the solution",
+    "flag_descriptions": [
+      "宇宙事实解释",
+      "统一求解"
+    ]
+  },
+  {
+    "label": "c[cu]",
+    "ms": 0,
+    "result": "UNIVERSE_REJECTED | R2B-P levels #[Corelib.Init.Sumbool.32] on a pending artifact: the source instance is not checkable",
+    "flag_descriptions": [
+      "累积性重试"
+    ]
+  },
+  {
+    "label": "c[it,cu]",
+    "ms": 0,
+    "result": "UNIVERSE_REJECTED | R2B-P levels #[Corelib.Init.Sumbool.32] on a pending artifact: the source instance is not checkable",
+    "flag_descriptions": [
+      "宇宙事实解释",
+      "累积性重试"
+    ]
+  },
+  {
+    "label": "c[cu,lo]",
+    "ms": 1,
+    "result": "UNIVERSE_REJECTED | R2B-P levels #[Corelib.Init.Sumbool.32] on a pending artifact: the source instance is not checkable",
+    "flag_descriptions": [
+      "累积性重试",
+      "受检的层级求解"
+    ]
+  },
+  {
+    "label": "c[it,cu,lo]",
+    "ms": 0,
+    "result": "UNIVERSE_REJECTED | R2B-P levels #[Corelib.Init.Sumbool.32] on a pending artifact: the source instance is not checkable",
+    "flag_descriptions": [
+      "宇宙事实解释",
+      "累积性重试",
+      "受检的层级求解"
+    ]
+  },
+  {
+    "label": "c[de]",
+    "ms": 0,
+    "result": "UNSUPPORTED_FEATURE",
+    "flag_descriptions": [
+      "透明定义展开"
+    ]
+  },
+  {
+    "label": "c[fr,it,cu,lo,de]",
+    "ms": 0,
+    "result": "UNSUPPORTED_FEATURE",
+    "flag_descriptions": [
+      "源宇宙事实化简",
+      "宇宙事实解释",
+      "累积性重试",
+      "受检的层级求解",
+      "透明定义展开"
+    ]
+  },
+  {
+    "label": "c[di]",
+    "ms": 0,
+    "result": "DISCOVERED | ",
+    "flag_descriptions": [
+      "发现隐式宇宙参数"
+    ]
+  },
+  {
+    "label": "c[p3]",
+    "ms": 1,
+    "result": "UNIVERSE_REJECTED | proof-local level Corelib.Init.Sumbool.32 solved as (some 0): native fact Set lt Corelib.Init.Sumbool.32 does not hold for the solution",
+    "flag_descriptions": [
+      "按前提类型精确解层"
+    ]
+  },
+  {
+    "label": "c[it,p3]",
+    "ms": 0,
+    "result": "UNIVERSE_REJECTED | proof-local level Corelib.Init.Sumbool.32 solved as (some 0): native fact Set lt Corelib.Init.Sumbool.32 does not hold for the solution",
+    "flag_descriptions": [
+      "宇宙事实解释",
+      "按前提类型精确解层"
+    ]
+  },
+  {
+    "label": "c[lo,p3]",
+    "ms": 0,
+    "result": "UNIVERSE_REJECTED | proof-local level Corelib.Init.Sumbool.32 solved as (some 0): native fact Set lt Corelib.Init.Sumbool.32 does not hold for the solution",
+    "flag_descriptions": [
+      "受检的层级求解",
+      "按前提类型精确解层"
+    ]
+  },
+  {
+    "label": "c[rv]",
+    "ms": 0,
+    "result": "UNSUPPORTED_FEATURE",
+    "flag_descriptions": [
+      "从值继承结果 sort"
+    ]
+  },
+  {
+    "label": "c[it,rv]",
+    "ms": 0,
+    "result": "UNSUPPORTED_FEATURE",
+    "flag_descriptions": [
+      "宇宙事实解释",
+      "从值继承结果 sort"
+    ]
+  },
+  {
+    "label": "c[lo,rv]",
+    "ms": 0,
+    "result": "UNSUPPORTED_FEATURE",
+    "flag_descriptions": [
+      "受检的层级求解",
+      "从值继承结果 sort"
+    ]
+  },
+  {
+    "label": "c[it,lo,rv]",
+    "ms": 0,
+    "result": "UNSUPPORTED_FEATURE",
+    "flag_descriptions": [
+      "宇宙事实解释",
+      "受检的层级求解",
+      "从值继承结果 sort"
+    ]
+  },
+  {
+    "label": "c[fr,it,cu,lo,rv]",
+    "ms": 0,
+    "result": "UNSUPPORTED_FEATURE",
+    "flag_descriptions": [
+      "源宇宙事实化简",
+      "宇宙事实解释",
+      "累积性重试",
+      "受检的层级求解",
+      "从值继承结果 sort"
+    ]
+  }
+]
+失败定位与缺失能力
+{
+  "stage": "宇宙实例求解 / 一致性校验",
+  "class": "universe",
+  "observed": "proof-local level Corelib.Init.Sumbool.32 solved as (some 0): native fact Set lt Corelib.Init.Sumbool.32 does not hold for the solution [last tier: UNIVERSE_REJECTED: proof-local level Corelib.Init.Sumbool.32 solved as (some 0): native fact Set lt Corelib.Init.Sumbool.32 does not hold for the solution]",
+  "needed": "需要修正相应宇宙参数传播或求解策略，并保留源端大小约束、共享层一致性及公开类型范围；不可放松检查来制造成功。",
+  "implementation": "Rocq2Lean/Translate.lean:2740-2780; Rocq2Lean/Emit.lean",
+  "certainty": "具体违反的约束为直接证据；当前日志不足以断言某一行修复即可解决"
+}
+原始报错
+proof-local level Corelib.Init.Sumbool.32 solved as (some 0): native fact Set lt Corelib.Init.Sumbool.32 does not hold for the solution [last tier: UNIVERSE_REJECTED: proof-local level Corelib.Init.Sumbool.32 solved as (some 0): native fact Set lt Corelib.Init.Sumbool.32 does not hold for the solution]
+IR 节点路径
+[]
+上游根因链
+[]
+
+================================================================================
+Corelib.Init.Sumbool.bool_of_sumbool
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Sumbool.bool_of_sumbool
+源文件行号候选: [81]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.bool",
+      "Corelib.Init.Specif.sig",
+      "Corelib.Init.Specif.sumbool"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.bool",
+      "Corelib.Init.Specif.sig",
+      "Corelib.Init.Specif.sumbool",
+      "Corelib.Init.Specif.sumbool_rec"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 3,
+    "sort": 12,
+    "app": 11,
+    "ind": 16,
+    "rel": 26,
+    "lam": 11,
+    "case": 8,
+    "const": 1,
+    "construct": 8
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "源 sort/宇宙 → Lean Sort",
+    "应用 → 已翻译目标的应用",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "局部变量 → Lean 绑定变量",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "全局常量 → 目标声明或显式待证明前提",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Init.Datatypes.bool.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Sumbool.bool_of_sumbool",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Sumbool.bool_of_sumbool : (A B : Prop) →
+  Rocq.Corelib.Init.Specif.sumbool A B →
+    Rocq.Corelib.Init.Specif.sig.{0} Rocq.Corelib.Init.Datatypes.bool fun b =>
+      @Rocq.Corelib.Init.Datatypes.bool.rec.{1} (fun t => Prop) A B b :=
+fun A B =>
+  Rocq.Corelib.Init.Specif.sumbool_rec
+    ((fun x => @Rocq.Corelib.Init.Datatypes.bool.rec.{1} (fun t => Prop) A B x) Rocq.Corelib.Init.Datatypes.bool.true)
+    ((fun x => @Rocq.Corelib.Init.Datatypes.bool.rec.{1} (fun t => Prop) A B x) Rocq.Corelib.Init.Datatypes.bool.false)
+    (fun s =>
+      Rocq.Corelib.Init.Specif.sig.{0} Rocq.Corelib.Init.Datatypes.bool fun b =>
+        @Rocq.Corelib.Init.Datatypes.bool.rec.{1} (fun t => Prop) A B b)
+    (Rocq.Corelib.Init.Specif.sig.exist.{0} Rocq.Corelib.Init.Datatypes.bool
+      (fun x => @Rocq.Corelib.Init.Datatypes.bool.rec.{1} (fun t => Prop) A B x) Rocq.Corelib.Init.Datatypes.bool.true)
+    (Rocq.Corelib.Init.Specif.sig.exist.{0} Rocq.Corelib.Init.Datatypes.bool
+      (fun x => @Rocq.Corelib.Init.Datatypes.bool.rec.{1} (fun t => Prop) A B x) Rocq.Corelib.Init.Datatypes.bool.false)
+
+================================================================================
+Corelib.Init.Sumbool.sumbool_and
+类别: definition_function；状态: PENDING_KERNEL_CHECKED；实际目标: RocqPending.Corelib.Init.Sumbool.sumbool_and
+源文件行号候选: [49]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Logic.and",
+      "Corelib.Init.Logic.or",
+      "Corelib.Init.Specif.sumbool"
+    ],
+    "body": [
+      "Corelib.Init.Logic.and",
+      "Corelib.Init.Logic.or",
+      "Corelib.Init.Specif.sumbool",
+      "Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_1",
+      "Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_2",
+      "Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_3",
+      "Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_4"
+    ]
+  },
+  "pending": [
+    "Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_1",
+    "Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_2",
+    "Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_3",
+    "Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_4"
+  ],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 6,
+    "sort": 8,
+    "app": 32,
+    "ind": 24,
+    "rel": 81,
+    "lam": 6,
+    "case": 3,
+    "construct": 4,
+    "const": 4
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "源 sort/宇宙 → Lean Sort",
+    "应用 → 已翻译目标的应用",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "局部变量 → Lean 绑定变量",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "构造子 → 对应目标构造子",
+    "全局常量 → 目标声明或显式待证明前提"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Init.Specif.sumbool.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "PENDING_KERNEL_CHECKED",
+  "target": "RocqPending.Corelib.Init.Sumbool.sumbool_and",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "PENDING_KERNEL_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def RocqPending.Corelib.Init.Sumbool.sumbool_and : {h_Corelib_Init_Sumbool_sumbool_and__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_1.statement} →
+  {h_Corelib_Init_Sumbool_sumbool_and__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_2.statement} →
+    {h_Corelib_Init_Sumbool_sumbool_and__rocq2lean_obligation_3 :
+        Rocq.Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_3.statement} →
+      {h_Corelib_Init_Sumbool_sumbool_and__rocq2lean_obligation_4 :
+          Rocq.Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_4.statement} →
+        (A B C D : Prop) →
+          Rocq.Corelib.Init.Specif.sumbool A B →
+            Rocq.Corelib.Init.Specif.sumbool C D →
+              Rocq.Corelib.Init.Specif.sumbool (Rocq.Corelib.Init.Logic.and A C) (Rocq.Corelib.Init.Logic.or B D) :=
+fun {h_Corelib_Init_Sumbool_sumbool_and__rocq2lean_obligation_1}
+    {h_Corelib_Init_Sumbool_sumbool_and__rocq2lean_obligation_2}
+    {h_Corelib_Init_Sumbool_sumbool_and__rocq2lean_obligation_3}
+    {h_Corelib_Init_Sumbool_sumbool_and__rocq2lean_obligation_4} A B C D H1 H2 =>
+  @Rocq.Corelib.Init.Specif.sumbool.rec.{1} A B
+    (fun t => Rocq.Corelib.Init.Specif.sumbool (Rocq.Corelib.Init.Logic.and A C) (Rocq.Corelib.Init.Logic.or B D))
+    (fun a =>
+      @Rocq.Corelib.Init.Specif.sumbool.rec.{1} C D
+        (fun t => Rocq.Corelib.Init.Specif.sumbool (Rocq.Corelib.Init.Logic.and A C) (Rocq.Corelib.Init.Logic.or B D))
+        (fun a_1 =>
+          Rocq.Corelib.Init.Specif.sumbool.left (Rocq.Corelib.Init.Logic.and A C) (Rocq.Corelib.Init.Logic.or B D) ⋯)
+        (fun a_1 =>
+          Rocq.Corelib.Init.Specif.sumbool.right (Rocq.Corelib.Init.Logic.and A C) (Rocq.Corelib.Init.Logic.or B D) ⋯)
+        H2)
+    (fun a =>
+      @Rocq.Corelib.Init.Specif.sumbool.rec.{1} C D
+        (fun t => Rocq.Corelib.Init.Specif.sumbool (Rocq.Corelib.Init.Logic.and A C) (Rocq.Corelib.Init.Logic.or B D))
+        (fun a_1 =>
+          Rocq.Corelib.Init.Specif.sumbool.right (Rocq.Corelib.Init.Logic.and A C) (Rocq.Corelib.Init.Logic.or B D) ⋯)
+        (fun a_1 =>
+          Rocq.Corelib.Init.Specif.sumbool.right (Rocq.Corelib.Init.Logic.and A C) (Rocq.Corelib.Init.Logic.or B D) ⋯)
+        H2)
+    H1
+待证明条件（含完整源/目标表达）
+[
+  {
+    "source": "Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_1",
+    "target": "Rocq.Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_1.statement",
+    "status": "STATEMENT_KERNEL_CHECKED",
+    "statement_target_type": {
+      "l": {
+        "k": "zero"
+      },
+      "k": "sort"
+    },
+    "statement_target_value": {
+      "t": {
+        "l": {
+          "k": "zero"
+        },
+        "k": "sort"
+      },
+      "n": "A",
+      "k": "forall",
+      "b": {
+        "t": {
+          "l": {
+            "k": "zero"
+          },
+          "k": "sort"
+        },
+        "n": "B",
+        "k": "forall",
+        "b": {
+          "t": {
+            "l": {
+              "k": "zero"
+            },
+            "k": "sort"
+          },
+          "n": "C",
+          "k": "forall",
+          "b": {
+            "t": {
+              "l": {
+                "k": "zero"
+              },
+              "k": "sort"
+            },
+            "n": "D",
+            "k": "forall",
+            "b": {
+              "t": {
+                "k": "app",
+                "f": {
+                  "k": "app",
+                  "f": {
+                    "u": [],
+                    "n": "Rocq.Corelib.Init.Specif.sumbool",
+                    "k": "const"
+                  },
+                  "a": {
+                    "k": "bvar",
+                    "i": 3
+                  }
+                },
+                "a": {
+                  "k": "bvar",
+                  "i": 2
+                }
+              },
+              "n": "H1",
+              "k": "forall",
+              "b": {
+                "t": {
+                  "k": "app",
+                  "f": {
+                    "k": "app",
+                    "f": {
+                      "u": [],
+                      "n": "Rocq.Corelib.Init.Specif.sumbool",
+                      "k": "const"
+                    },
+                    "a": {
+                      "k": "bvar",
+                      "i": 2
+                    }
+                  },
+                  "a": {
+                    "k": "bvar",
+                    "i": 1
+                  }
+                },
+                "n": "H2",
+                "k": "forall",
+                "b": {
+                  "t": {
+                    "k": "bvar",
+                    "i": 5
+                  },
+                  "n": "a",
+                  "k": "forall",
+                  "b": {
+                    "t": {
+                      "k": "bvar",
+                      "i": 4
+                    },
+                    "n": "c",
+                    "k": "forall",
+                    "b": {
+                      "k": "app",
+                      "f": {
+                        "k": "app",
+                        "f": {
+                          "u": [],
+                          "n": "Rocq.Corelib.Init.Logic.and",
+                          "k": "const"
+                        },
+                        "a": {
+                          "k": "bvar",
+                          "i": 7
+                        }
+                      },
+                      "a": {
+                        "k": "bvar",
+                        "i": 5
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "source_record": {
+      "kind": "constant",
+      "name": "Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_1",
+      "mp": {
+        "file": [
+          "Corelib",
+          "Init",
+          "Sumbool"
+        ]
+      },
+      "id": "sumbool_and__rocq2lean_obligation_1",
+      "type": {
+        "k": "prod",
+        "n": {
+          "n": "A",
+          "r": "R"
+        },
+        "ty": {
+          "k": "sort",
+          "s": {
+            "k": "prop"
+          }
+        },
+        "b": {
+          "k": "prod",
+          "n": {
+            "n": "B",
+            "r": "R"
+          },
+          "ty": {
+            "k": "sort",
+            "s": {
+              "k": "prop"
+            }
+          },
+          "b": {
+            "k": "prod",
+            "n": {
+              "n": "C",
+              "r": "R"
+            },
+            "ty": {
+              "k": "sort",
+              "s": {
+                "k": "prop"
+              }
+            },
+            "b": {
+              "k": "prod",
+              "n": {
+                "n": "D",
+                "r": "R"
+              },
+              "ty": {
+                "k": "sort",
+                "s": {
+                  "k": "prop"
+                }
+              },
+              "b": {
+                "k": "prod",
+                "n": {
+                  "n": "H1",
+                  "r": "R"
+                },
+                "ty": {
+                  "k": "app",
+                  "f": {
+                    "k": "ind",
+                    "ind": {
+                      "mind": "Corelib.Init.Specif.sumbool",
+                      "i": 0
+                    },
+                    "u": []
+                  },
+                  "args": [
+                    {
+                      "k": "rel",
+                      "i": 3
+                    },
+                    {
+                      "k": "rel",
+                      "i": 2
+                    }
+                  ]
+                },
+                "b": {
+                  "k": "prod",
+                  "n": {
+                    "n": "H2",
+                    "r": "R"
+                  },
+                  "ty": {
+                    "k": "app",
+                    "f": {
+                      "k": "ind",
+                      "ind": {
+                        "mind": "Corelib.Init.Specif.sumbool",
+                        "i": 0
+                      },
+                      "u": []
+                    },
+                    "args": [
+                      {
+                        "k": "rel",
+                        "i": 2
+                      },
+                      {
+                        "k": "rel",
+                        "i": 1
+                      }
+                    ]
+                  },
+                  "b": {
+                    "k": "prod",
+                    "n": {
+                      "n": "a",
+                      "r": "R"
+                    },
+                    "ty": {
+                      "k": "rel",
+                      "i": 5
+                    },
+                    "b": {
+                      "k": "prod",
+                      "n": {
+                        "n": "c",
+                        "r": "R"
+                      },
+                      "ty": {
+                        "k": "rel",
+                        "i": 4
+                      },
+                      "b": {
+                        "k": "app",
+                        "f": {
+                          "k": "ind",
+                          "ind": {
+                            "mind": "Corelib.Init.Logic.and",
+                            "i": 0
+                          },
+                          "u": []
+                        },
+                        "args": [
+                          {
+                            "k": "rel",
+                            "i": 7
+                          },
+                          {
+                            "k": "rel",
+                            "i": 5
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "body": null,
+      "body_state": "obligation",
+      "universes": {
+        "k": "monomorphic"
+      },
+      "relevance": "R",
+      "deps": {
+        "type": [
+          "Corelib.Init.Logic.and",
+          "Corelib.Init.Specif.sumbool"
+        ],
+        "body": []
+      },
+      "native": {
+        "obligation": {
+          "of": "Corelib.Init.Sumbool.sumbool_and",
+          "index": 1
+        },
+        "typing_flags": {
+          "check_guarded": true,
+          "check_positive": true,
+          "check_universes": true,
+          "check_eliminations": true,
+          "indices_matter": false,
+          "impredicative_set": false,
+          "sprop_allowed": true,
+          "allow_uip": false
+        }
+      }
+    }
+  },
+  {
+    "source": "Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_2",
+    "target": "Rocq.Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_2.statement",
+    "status": "STATEMENT_KERNEL_CHECKED",
+    "statement_target_type": {
+      "l": {
+        "k": "zero"
+      },
+      "k": "sort"
+    },
+    "statement_target_value": {
+      "t": {
+        "l": {
+          "k": "zero"
+        },
+        "k": "sort"
+      },
+      "n": "A",
+      "k": "forall",
+      "b": {
+        "t": {
+          "l": {
+            "k": "zero"
+          },
+          "k": "sort"
+        },
+        "n": "B",
+        "k": "forall",
+        "b": {
+          "t": {
+            "l": {
+              "k": "zero"
+            },
+            "k": "sort"
+          },
+          "n": "C",
+          "k": "forall",
+          "b": {
+            "t": {
+              "l": {
+                "k": "zero"
+              },
+              "k": "sort"
+            },
+            "n": "D",
+            "k": "forall",
+            "b": {
+              "t": {
+                "k": "app",
+                "f": {
+                  "k": "app",
+                  "f": {
+                    "u": [],
+                    "n": "Rocq.Corelib.Init.Specif.sumbool",
+                    "k": "const"
+                  },
+                  "a": {
+                    "k": "bvar",
+                    "i": 3
+                  }
+                },
+                "a": {
+                  "k": "bvar",
+                  "i": 2
+                }
+              },
+              "n": "H1",
+              "k": "forall",
+              "b": {
+                "t": {
+                  "k": "app",
+                  "f": {
+                    "k": "app",
+                    "f": {
+                      "u": [],
+                      "n": "Rocq.Corelib.Init.Specif.sumbool",
+                      "k": "const"
+                    },
+                    "a": {
+                      "k": "bvar",
+                      "i": 2
+                    }
+                  },
+                  "a": {
+                    "k": "bvar",
+                    "i": 1
+                  }
+                },
+                "n": "H2",
+                "k": "forall",
+                "b": {
+                  "t": {
+                    "k": "bvar",
+                    "i": 5
+                  },
+                  "n": "a",
+                  "k": "forall",
+                  "b": {
+                    "t": {
+                      "k": "bvar",
+                      "i": 3
+                    },
+                    "n": "d",
+                    "k": "forall",
+                    "b": {
+                      "k": "app",
+                      "f": {
+                        "k": "app",
+                        "f": {
+                          "u": [],
+                          "n": "Rocq.Corelib.Init.Logic.or",
+                          "k": "const"
+                        },
+                        "a": {
+                          "k": "bvar",
+                          "i": 6
+                        }
+                      },
+                      "a": {
+                        "k": "bvar",
+                        "i": 4
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "source_record": {
+      "kind": "constant",
+      "name": "Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_2",
+      "mp": {
+        "file": [
+          "Corelib",
+          "Init",
+          "Sumbool"
+        ]
+      },
+      "id": "sumbool_and__rocq2lean_obligation_2",
+      "type": {
+        "k": "prod",
+        "n": {
+          "n": "A",
+          "r": "R"
+        },
+        "ty": {
+          "k": "sort",
+          "s": {
+            "k": "prop"
+          }
+        },
+        "b": {
+          "k": "prod",
+          "n": {
+            "n": "B",
+            "r": "R"
+          },
+          "ty": {
+            "k": "sort",
+            "s": {
+              "k": "prop"
+            }
+          },
+          "b": {
+            "k": "prod",
+            "n": {
+              "n": "C",
+              "r": "R"
+            },
+            "ty": {
+              "k": "sort",
+              "s": {
+                "k": "prop"
+              }
+            },
+            "b": {
+              "k": "prod",
+              "n": {
+                "n": "D",
+                "r": "R"
+              },
+              "ty": {
+                "k": "sort",
+                "s": {
+                  "k": "prop"
+                }
+              },
+              "b": {
+                "k": "prod",
+                "n": {
+                  "n": "H1",
+                  "r": "R"
+                },
+                "ty": {
+                  "k": "app",
+                  "f": {
+                    "k": "ind",
+                    "ind": {
+                      "mind": "Corelib.Init.Specif.sumbool",
+                      "i": 0
+                    },
+                    "u": []
+                  },
+                  "args": [
+                    {
+                      "k": "rel",
+                      "i": 3
+                    },
+                    {
+                      "k": "rel",
+                      "i": 2
+                    }
+                  ]
+                },
+                "b": {
+                  "k": "prod",
+                  "n": {
+                    "n": "H2",
+                    "r": "R"
+                  },
+                  "ty": {
+                    "k": "app",
+                    "f": {
+                      "k": "ind",
+                      "ind": {
+                        "mind": "Corelib.Init.Specif.sumbool",
+                        "i": 0
+                      },
+                      "u": []
+                    },
+                    "args": [
+                      {
+                        "k": "rel",
+                        "i": 2
+                      },
+                      {
+                        "k": "rel",
+                        "i": 1
+                      }
+                    ]
+                  },
+                  "b": {
+                    "k": "prod",
+                    "n": {
+                      "n": "a",
+                      "r": "R"
+                    },
+                    "ty": {
+                      "k": "rel",
+                      "i": 5
+                    },
+                    "b": {
+                      "k": "prod",
+                      "n": {
+                        "n": "d",
+                        "r": "R"
+                      },
+                      "ty": {
+                        "k": "rel",
+                        "i": 3
+                      },
+                      "b": {
+                        "k": "app",
+                        "f": {
+                          "k": "ind",
+                          "ind": {
+                            "mind": "Corelib.Init.Logic.or",
+                            "i": 0
+                          },
+                          "u": []
+                        },
+                        "args": [
+                          {
+                            "k": "rel",
+                            "i": 6
+                          },
+                          {
+                            "k": "rel",
+                            "i": 4
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "body": null,
+      "body_state": "obligation",
+      "universes": {
+        "k": "monomorphic"
+      },
+      "relevance": "R",
+      "deps": {
+        "type": [
+          "Corelib.Init.Logic.or",
+          "Corelib.Init.Specif.sumbool"
+        ],
+        "body": []
+      },
+      "native": {
+        "obligation": {
+          "of": "Corelib.Init.Sumbool.sumbool_and",
+          "index": 2
+        },
+        "typing_flags": {
+          "check_guarded": true,
+          "check_positive": true,
+          "check_universes": true,
+          "check_eliminations": true,
+          "indices_matter": false,
+          "impredicative_set": false,
+          "sprop_allowed": true,
+          "allow_uip": false
+        }
+      }
+    }
+  },
+  {
+    "source": "Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_3",
+    "target": "Rocq.Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_3.statement",
+    "status": "STATEMENT_KERNEL_CHECKED",
+    "statement_target_type": {
+      "l": {
+        "k": "zero"
+      },
+      "k": "sort"
+    },
+    "statement_target_value": {
+      "t": {
+        "l": {
+          "k": "zero"
+        },
+        "k": "sort"
+      },
+      "n": "A",
+      "k": "forall",
+      "b": {
+        "t": {
+          "l": {
+            "k": "zero"
+          },
+          "k": "sort"
+        },
+        "n": "B",
+        "k": "forall",
+        "b": {
+          "t": {
+            "l": {
+              "k": "zero"
+            },
+            "k": "sort"
+          },
+          "n": "C",
+          "k": "forall",
+          "b": {
+            "t": {
+              "l": {
+                "k": "zero"
+              },
+              "k": "sort"
+            },
+            "n": "D",
+            "k": "forall",
+            "b": {
+              "t": {
+                "k": "app",
+                "f": {
+                  "k": "app",
+                  "f": {
+                    "u": [],
+                    "n": "Rocq.Corelib.Init.Specif.sumbool",
+                    "k": "const"
+                  },
+                  "a": {
+                    "k": "bvar",
+                    "i": 3
+                  }
+                },
+                "a": {
+                  "k": "bvar",
+                  "i": 2
+                }
+              },
+              "n": "H1",
+              "k": "forall",
+              "b": {
+                "t": {
+                  "k": "app",
+                  "f": {
+                    "k": "app",
+                    "f": {
+                      "u": [],
+                      "n": "Rocq.Corelib.Init.Specif.sumbool",
+                      "k": "const"
+                    },
+                    "a": {
+                      "k": "bvar",
+                      "i": 2
+                    }
+                  },
+                  "a": {
+                    "k": "bvar",
+                    "i": 1
+                  }
+                },
+                "n": "H2",
+                "k": "forall",
+                "b": {
+                  "t": {
+                    "k": "bvar",
+                    "i": 4
+                  },
+                  "n": "b",
+                  "k": "forall",
+                  "b": {
+                    "t": {
+                      "k": "bvar",
+                      "i": 4
+                    },
+                    "n": "c",
+                    "k": "forall",
+                    "b": {
+                      "k": "app",
+                      "f": {
+                        "k": "app",
+                        "f": {
+                          "u": [],
+                          "n": "Rocq.Corelib.Init.Logic.or",
+                          "k": "const"
+                        },
+                        "a": {
+                          "k": "bvar",
+                          "i": 6
+                        }
+                      },
+                      "a": {
+                        "k": "bvar",
+                        "i": 4
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "source_record": {
+      "kind": "constant",
+      "name": "Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_3",
+      "mp": {
+        "file": [
+          "Corelib",
+          "Init",
+          "Sumbool"
+        ]
+      },
+      "id": "sumbool_and__rocq2lean_obligation_3",
+      "type": {
+        "k": "prod",
+        "n": {
+          "n": "A",
+          "r": "R"
+        },
+        "ty": {
+          "k": "sort",
+          "s": {
+            "k": "prop"
+          }
+        },
+        "b": {
+          "k": "prod",
+          "n": {
+            "n": "B",
+            "r": "R"
+          },
+          "ty": {
+            "k": "sort",
+            "s": {
+              "k": "prop"
+            }
+          },
+          "b": {
+            "k": "prod",
+            "n": {
+              "n": "C",
+              "r": "R"
+            },
+            "ty": {
+              "k": "sort",
+              "s": {
+                "k": "prop"
+              }
+            },
+            "b": {
+              "k": "prod",
+              "n": {
+                "n": "D",
+                "r": "R"
+              },
+              "ty": {
+                "k": "sort",
+                "s": {
+                  "k": "prop"
+                }
+              },
+              "b": {
+                "k": "prod",
+                "n": {
+                  "n": "H1",
+                  "r": "R"
+                },
+                "ty": {
+                  "k": "app",
+                  "f": {
+                    "k": "ind",
+                    "ind": {
+                      "mind": "Corelib.Init.Specif.sumbool",
+                      "i": 0
+                    },
+                    "u": []
+                  },
+                  "args": [
+                    {
+                      "k": "rel",
+                      "i": 3
+                    },
+                    {
+                      "k": "rel",
+                      "i": 2
+                    }
+                  ]
+                },
+                "b": {
+                  "k": "prod",
+                  "n": {
+                    "n": "H2",
+                    "r": "R"
+                  },
+                  "ty": {
+                    "k": "app",
+                    "f": {
+                      "k": "ind",
+                      "ind": {
+                        "mind": "Corelib.Init.Specif.sumbool",
+                        "i": 0
+                      },
+                      "u": []
+                    },
+                    "args": [
+                      {
+                        "k": "rel",
+                        "i": 2
+                      },
+                      {
+                        "k": "rel",
+                        "i": 1
+                      }
+                    ]
+                  },
+                  "b": {
+                    "k": "prod",
+                    "n": {
+                      "n": "b",
+                      "r": "R"
+                    },
+                    "ty": {
+                      "k": "rel",
+                      "i": 4
+                    },
+                    "b": {
+                      "k": "prod",
+                      "n": {
+                        "n": "c",
+                        "r": "R"
+                      },
+                      "ty": {
+                        "k": "rel",
+                        "i": 4
+                      },
+                      "b": {
+                        "k": "app",
+                        "f": {
+                          "k": "ind",
+                          "ind": {
+                            "mind": "Corelib.Init.Logic.or",
+                            "i": 0
+                          },
+                          "u": []
+                        },
+                        "args": [
+                          {
+                            "k": "rel",
+                            "i": 6
+                          },
+                          {
+                            "k": "rel",
+                            "i": 4
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "body": null,
+      "body_state": "obligation",
+      "universes": {
+        "k": "monomorphic"
+      },
+      "relevance": "R",
+      "deps": {
+        "type": [
+          "Corelib.Init.Logic.or",
+          "Corelib.Init.Specif.sumbool"
+        ],
+        "body": []
+      },
+      "native": {
+        "obligation": {
+          "of": "Corelib.Init.Sumbool.sumbool_and",
+          "index": 3
+        },
+        "typing_flags": {
+          "check_guarded": true,
+          "check_positive": true,
+          "check_universes": true,
+          "check_eliminations": true,
+          "indices_matter": false,
+          "impredicative_set": false,
+          "sprop_allowed": true,
+          "allow_uip": false
+        }
+      }
+    }
+  },
+  {
+    "source": "Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_4",
+    "target": "Rocq.Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_4.statement",
+    "status": "STATEMENT_KERNEL_CHECKED",
+    "statement_target_type": {
+      "l": {
+        "k": "zero"
+      },
+      "k": "sort"
+    },
+    "statement_target_value": {
+      "t": {
+        "l": {
+          "k": "zero"
+        },
+        "k": "sort"
+      },
+      "n": "A",
+      "k": "forall",
+      "b": {
+        "t": {
+          "l": {
+            "k": "zero"
+          },
+          "k": "sort"
+        },
+        "n": "B",
+        "k": "forall",
+        "b": {
+          "t": {
+            "l": {
+              "k": "zero"
+            },
+            "k": "sort"
+          },
+          "n": "C",
+          "k": "forall",
+          "b": {
+            "t": {
+              "l": {
+                "k": "zero"
+              },
+              "k": "sort"
+            },
+            "n": "D",
+            "k": "forall",
+            "b": {
+              "t": {
+                "k": "app",
+                "f": {
+                  "k": "app",
+                  "f": {
+                    "u": [],
+                    "n": "Rocq.Corelib.Init.Specif.sumbool",
+                    "k": "const"
+                  },
+                  "a": {
+                    "k": "bvar",
+                    "i": 3
+                  }
+                },
+                "a": {
+                  "k": "bvar",
+                  "i": 2
+                }
+              },
+              "n": "H1",
+              "k": "forall",
+              "b": {
+                "t": {
+                  "k": "app",
+                  "f": {
+                    "k": "app",
+                    "f": {
+                      "u": [],
+                      "n": "Rocq.Corelib.Init.Specif.sumbool",
+                      "k": "const"
+                    },
+                    "a": {
+                      "k": "bvar",
+                      "i": 2
+                    }
+                  },
+                  "a": {
+                    "k": "bvar",
+                    "i": 1
+                  }
+                },
+                "n": "H2",
+                "k": "forall",
+                "b": {
+                  "t": {
+                    "k": "bvar",
+                    "i": 4
+                  },
+                  "n": "b",
+                  "k": "forall",
+                  "b": {
+                    "t": {
+                      "k": "bvar",
+                      "i": 3
+                    },
+                    "n": "d",
+                    "k": "forall",
+                    "b": {
+                      "k": "app",
+                      "f": {
+                        "k": "app",
+                        "f": {
+                          "u": [],
+                          "n": "Rocq.Corelib.Init.Logic.or",
+                          "k": "const"
+                        },
+                        "a": {
+                          "k": "bvar",
+                          "i": 6
+                        }
+                      },
+                      "a": {
+                        "k": "bvar",
+                        "i": 4
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "source_record": {
+      "kind": "constant",
+      "name": "Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_4",
+      "mp": {
+        "file": [
+          "Corelib",
+          "Init",
+          "Sumbool"
+        ]
+      },
+      "id": "sumbool_and__rocq2lean_obligation_4",
+      "type": {
+        "k": "prod",
+        "n": {
+          "n": "A",
+          "r": "R"
+        },
+        "ty": {
+          "k": "sort",
+          "s": {
+            "k": "prop"
+          }
+        },
+        "b": {
+          "k": "prod",
+          "n": {
+            "n": "B",
+            "r": "R"
+          },
+          "ty": {
+            "k": "sort",
+            "s": {
+              "k": "prop"
+            }
+          },
+          "b": {
+            "k": "prod",
+            "n": {
+              "n": "C",
+              "r": "R"
+            },
+            "ty": {
+              "k": "sort",
+              "s": {
+                "k": "prop"
+              }
+            },
+            "b": {
+              "k": "prod",
+              "n": {
+                "n": "D",
+                "r": "R"
+              },
+              "ty": {
+                "k": "sort",
+                "s": {
+                  "k": "prop"
+                }
+              },
+              "b": {
+                "k": "prod",
+                "n": {
+                  "n": "H1",
+                  "r": "R"
+                },
+                "ty": {
+                  "k": "app",
+                  "f": {
+                    "k": "ind",
+                    "ind": {
+                      "mind": "Corelib.Init.Specif.sumbool",
+                      "i": 0
+                    },
+                    "u": []
+                  },
+                  "args": [
+                    {
+                      "k": "rel",
+                      "i": 3
+                    },
+                    {
+                      "k": "rel",
+                      "i": 2
+                    }
+                  ]
+                },
+                "b": {
+                  "k": "prod",
+                  "n": {
+                    "n": "H2",
+                    "r": "R"
+                  },
+                  "ty": {
+                    "k": "app",
+                    "f": {
+                      "k": "ind",
+                      "ind": {
+                        "mind": "Corelib.Init.Specif.sumbool",
+                        "i": 0
+                      },
+                      "u": []
+                    },
+                    "args": [
+                      {
+                        "k": "rel",
+                        "i": 2
+                      },
+                      {
+                        "k": "rel",
+                        "i": 1
+                      }
+                    ]
+                  },
+                  "b": {
+                    "k": "prod",
+                    "n": {
+                      "n": "b",
+                      "r": "R"
+                    },
+                    "ty": {
+                      "k": "rel",
+                      "i": 4
+                    },
+                    "b": {
+                      "k": "prod",
+                      "n": {
+                        "n": "d",
+                        "r": "R"
+                      },
+                      "ty": {
+                        "k": "rel",
+                        "i": 3
+                      },
+                      "b": {
+                        "k": "app",
+                        "f": {
+                          "k": "ind",
+                          "ind": {
+                            "mind": "Corelib.Init.Logic.or",
+                            "i": 0
+                          },
+                          "u": []
+                        },
+                        "args": [
+                          {
+                            "k": "rel",
+                            "i": 6
+                          },
+                          {
+                            "k": "rel",
+                            "i": 4
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "body": null,
+      "body_state": "obligation",
+      "universes": {
+        "k": "monomorphic"
+      },
+      "relevance": "R",
+      "deps": {
+        "type": [
+          "Corelib.Init.Logic.or",
+          "Corelib.Init.Specif.sumbool"
+        ],
+        "body": []
+      },
+      "native": {
+        "obligation": {
+          "of": "Corelib.Init.Sumbool.sumbool_and",
+          "index": 4
+        },
+        "typing_flags": {
+          "check_guarded": true,
+          "check_positive": true,
+          "check_universes": true,
+          "check_eliminations": true,
+          "indices_matter": false,
+          "impredicative_set": false,
+          "sprop_allowed": true,
+          "allow_uip": false
+        }
+      }
+    }
+  }
+]
+
+================================================================================
+Corelib.Init.Sumbool.sumbool_not
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Sumbool.sumbool_not
+源文件行号候选: [65]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Specif.sumbool"
+    ],
+    "body": [
+      "Corelib.Init.Specif.sumbool"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 3,
+    "sort": 4,
+    "app": 6,
+    "ind": 4,
+    "rel": 17,
+    "lam": 3,
+    "case": 1,
+    "construct": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "源 sort/宇宙 → Lean Sort",
+    "应用 → 已翻译目标的应用",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "局部变量 → Lean 绑定变量",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Init.Specif.sumbool.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Sumbool.sumbool_not",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Sumbool.sumbool_not : (A B : Prop) →
+  Rocq.Corelib.Init.Specif.sumbool A B → Rocq.Corelib.Init.Specif.sumbool B A :=
+fun A B H1 =>
+  @Rocq.Corelib.Init.Specif.sumbool.rec.{1} A B (fun t => Rocq.Corelib.Init.Specif.sumbool B A)
+    (fun a => Rocq.Corelib.Init.Specif.sumbool.right B A a) (fun a => Rocq.Corelib.Init.Specif.sumbool.left B A a) H1
+
+================================================================================
+Corelib.Init.Sumbool.sumbool_of_bool
+类别: definition_function；状态: PENDING_KERNEL_CHECKED；实际目标: RocqPending.Corelib.Init.Sumbool.sumbool_of_bool
+源文件行号候选: [20]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.bool",
+      "Corelib.Init.Logic.eq",
+      "Corelib.Init.Specif.sumbool"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.bool",
+      "Corelib.Init.Logic.eq",
+      "Corelib.Init.Specif.sumbool",
+      "Corelib.Init.Sumbool.sumbool_of_bool__rocq2lean_obligation_1",
+      "Corelib.Init.Sumbool.sumbool_of_bool__rocq2lean_obligation_2"
+    ]
+  },
+  "pending": [
+    "Corelib.Init.Sumbool.sumbool_of_bool__rocq2lean_obligation_1",
+    "Corelib.Init.Sumbool.sumbool_of_bool__rocq2lean_obligation_2"
+  ],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 20,
+    "app": 14,
+    "rel": 7,
+    "construct": 14,
+    "lam": 1,
+    "case": 1,
+    "const": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "应用 → 已翻译目标的应用",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "全局常量 → 目标声明或显式待证明前提"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Init.Datatypes.bool.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "PENDING_KERNEL_CHECKED",
+  "target": "RocqPending.Corelib.Init.Sumbool.sumbool_of_bool",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "PENDING_KERNEL_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def RocqPending.Corelib.Init.Sumbool.sumbool_of_bool : {h_Corelib_Init_Sumbool_sumbool_of_bool__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Sumbool.sumbool_of_bool__rocq2lean_obligation_1.statement} →
+  {h_Corelib_Init_Sumbool_sumbool_of_bool__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Sumbool.sumbool_of_bool__rocq2lean_obligation_2.statement} →
+    (b : Rocq.Corelib.Init.Datatypes.bool) →
+      Rocq.Corelib.Init.Specif.sumbool
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool b Rocq.Corelib.Init.Datatypes.bool.true)
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool b Rocq.Corelib.Init.Datatypes.bool.false) :=
+fun {h_Corelib_Init_Sumbool_sumbool_of_bool__rocq2lean_obligation_1}
+    {h_Corelib_Init_Sumbool_sumbool_of_bool__rocq2lean_obligation_2} b =>
+  @Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+    (fun t =>
+      Rocq.Corelib.Init.Specif.sumbool
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool t Rocq.Corelib.Init.Datatypes.bool.true)
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool t Rocq.Corelib.Init.Datatypes.bool.false))
+    (Rocq.Corelib.Init.Specif.sumbool.left
+      (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+        Rocq.Corelib.Init.Datatypes.bool.true)
+      (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+        Rocq.Corelib.Init.Datatypes.bool.false)
+      ⋯)
+    (Rocq.Corelib.Init.Specif.sumbool.right
+      (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+        Rocq.Corelib.Init.Datatypes.bool.true)
+      (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+        Rocq.Corelib.Init.Datatypes.bool.false)
+      ⋯)
+    b
+待证明条件（含完整源/目标表达）
+[
+  {
+    "source": "Corelib.Init.Sumbool.sumbool_of_bool__rocq2lean_obligation_1",
+    "target": "Rocq.Corelib.Init.Sumbool.sumbool_of_bool__rocq2lean_obligation_1.statement",
+    "status": "STATEMENT_KERNEL_CHECKED",
+    "statement_target_type": {
+      "l": {
+        "k": "zero"
+      },
+      "k": "sort"
+    },
+    "statement_target_value": {
+      "t": {
+        "u": [],
+        "n": "Rocq.Corelib.Init.Datatypes.bool",
+        "k": "const"
+      },
+      "n": "b",
+      "k": "forall",
+      "b": {
+        "k": "app",
+        "f": {
+          "k": "app",
+          "f": {
+            "k": "app",
+            "f": {
+              "u": [
+                {
+                  "l": {
+                    "k": "zero"
+                  },
+                  "k": "succ"
+                }
+              ],
+              "n": "Eq",
+              "k": "const"
+            },
+            "a": {
+              "u": [],
+              "n": "Rocq.Corelib.Init.Datatypes.bool",
+              "k": "const"
+            }
+          },
+          "a": {
+            "u": [],
+            "n": "Rocq.Corelib.Init.Datatypes.bool.true",
+            "k": "const"
+          }
+        },
+        "a": {
+          "u": [],
+          "n": "Rocq.Corelib.Init.Datatypes.bool.true",
+          "k": "const"
+        }
+      }
+    },
+    "source_record": {
+      "kind": "constant",
+      "name": "Corelib.Init.Sumbool.sumbool_of_bool__rocq2lean_obligation_1",
+      "mp": {
+        "file": [
+          "Corelib",
+          "Init",
+          "Sumbool"
+        ]
+      },
+      "id": "sumbool_of_bool__rocq2lean_obligation_1",
+      "type": {
+        "k": "prod",
+        "n": {
+          "n": "b",
+          "r": "R"
+        },
+        "ty": {
+          "k": "ind",
+          "ind": {
+            "mind": "Corelib.Init.Datatypes.bool",
+            "i": 0
+          },
+          "u": []
+        },
+        "b": {
+          "k": "app",
+          "f": {
+            "k": "ind",
+            "ind": {
+              "mind": "Corelib.Init.Logic.eq",
+              "i": 0
+            },
+            "u": []
+          },
+          "args": [
+            {
+              "k": "ind",
+              "ind": {
+                "mind": "Corelib.Init.Datatypes.bool",
+                "i": 0
+              },
+              "u": []
+            },
+            {
+              "k": "construct",
+              "ind": {
+                "mind": "Corelib.Init.Datatypes.bool",
+                "i": 0
+              },
+              "c": 0,
+              "u": []
+            },
+            {
+              "k": "construct",
+              "ind": {
+                "mind": "Corelib.Init.Datatypes.bool",
+                "i": 0
+              },
+              "c": 0,
+              "u": []
+            }
+          ]
+        }
+      },
+      "body": null,
+      "body_state": "obligation",
+      "universes": {
+        "k": "monomorphic"
+      },
+      "relevance": "R",
+      "deps": {
+        "type": [
+          "Corelib.Init.Datatypes.bool",
+          "Corelib.Init.Logic.eq"
+        ],
+        "body": []
+      },
+      "native": {
+        "obligation": {
+          "of": "Corelib.Init.Sumbool.sumbool_of_bool",
+          "index": 1
+        },
+        "typing_flags": {
+          "check_guarded": true,
+          "check_positive": true,
+          "check_universes": true,
+          "check_eliminations": true,
+          "indices_matter": false,
+          "impredicative_set": false,
+          "sprop_allowed": true,
+          "allow_uip": false
+        }
+      }
+    }
+  },
+  {
+    "source": "Corelib.Init.Sumbool.sumbool_of_bool__rocq2lean_obligation_2",
+    "target": "Rocq.Corelib.Init.Sumbool.sumbool_of_bool__rocq2lean_obligation_2.statement",
+    "status": "STATEMENT_KERNEL_CHECKED",
+    "statement_target_type": {
+      "l": {
+        "k": "zero"
+      },
+      "k": "sort"
+    },
+    "statement_target_value": {
+      "t": {
+        "u": [],
+        "n": "Rocq.Corelib.Init.Datatypes.bool",
+        "k": "const"
+      },
+      "n": "b",
+      "k": "forall",
+      "b": {
+        "k": "app",
+        "f": {
+          "k": "app",
+          "f": {
+            "k": "app",
+            "f": {
+              "u": [
+                {
+                  "l": {
+                    "k": "zero"
+                  },
+                  "k": "succ"
+                }
+              ],
+              "n": "Eq",
+              "k": "const"
+            },
+            "a": {
+              "u": [],
+              "n": "Rocq.Corelib.Init.Datatypes.bool",
+              "k": "const"
+            }
+          },
+          "a": {
+            "u": [],
+            "n": "Rocq.Corelib.Init.Datatypes.bool.false",
+            "k": "const"
+          }
+        },
+        "a": {
+          "u": [],
+          "n": "Rocq.Corelib.Init.Datatypes.bool.false",
+          "k": "const"
+        }
+      }
+    },
+    "source_record": {
+      "kind": "constant",
+      "name": "Corelib.Init.Sumbool.sumbool_of_bool__rocq2lean_obligation_2",
+      "mp": {
+        "file": [
+          "Corelib",
+          "Init",
+          "Sumbool"
+        ]
+      },
+      "id": "sumbool_of_bool__rocq2lean_obligation_2",
+      "type": {
+        "k": "prod",
+        "n": {
+          "n": "b",
+          "r": "R"
+        },
+        "ty": {
+          "k": "ind",
+          "ind": {
+            "mind": "Corelib.Init.Datatypes.bool",
+            "i": 0
+          },
+          "u": []
+        },
+        "b": {
+          "k": "app",
+          "f": {
+            "k": "ind",
+            "ind": {
+              "mind": "Corelib.Init.Logic.eq",
+              "i": 0
+            },
+            "u": []
+          },
+          "args": [
+            {
+              "k": "ind",
+              "ind": {
+                "mind": "Corelib.Init.Datatypes.bool",
+                "i": 0
+              },
+              "u": []
+            },
+            {
+              "k": "construct",
+              "ind": {
+                "mind": "Corelib.Init.Datatypes.bool",
+                "i": 0
+              },
+              "c": 1,
+              "u": []
+            },
+            {
+              "k": "construct",
+              "ind": {
+                "mind": "Corelib.Init.Datatypes.bool",
+                "i": 0
+              },
+              "c": 1,
+              "u": []
+            }
+          ]
+        }
+      },
+      "body": null,
+      "body_state": "obligation",
+      "universes": {
+        "k": "monomorphic"
+      },
+      "relevance": "R",
+      "deps": {
+        "type": [
+          "Corelib.Init.Datatypes.bool",
+          "Corelib.Init.Logic.eq"
+        ],
+        "body": []
+      },
+      "native": {
+        "obligation": {
+          "of": "Corelib.Init.Sumbool.sumbool_of_bool",
+          "index": 2
+        },
+        "typing_flags": {
+          "check_guarded": true,
+          "check_positive": true,
+          "check_universes": true,
+          "check_eliminations": true,
+          "indices_matter": false,
+          "impredicative_set": false,
+          "sprop_allowed": true,
+          "allow_uip": false
+        }
+      }
+    }
+  }
+]
+
+================================================================================
+Corelib.Init.Sumbool.sumbool_or
+类别: definition_function；状态: PENDING_KERNEL_CHECKED；实际目标: RocqPending.Corelib.Init.Sumbool.sumbool_or
+源文件行号候选: [57]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Logic.and",
+      "Corelib.Init.Logic.or",
+      "Corelib.Init.Specif.sumbool"
+    ],
+    "body": [
+      "Corelib.Init.Logic.and",
+      "Corelib.Init.Logic.or",
+      "Corelib.Init.Specif.sumbool",
+      "Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_1",
+      "Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_2",
+      "Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_3",
+      "Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_4"
+    ]
+  },
+  "pending": [
+    "Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_1",
+    "Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_2",
+    "Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_3",
+    "Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_4"
+  ],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 6,
+    "sort": 8,
+    "app": 32,
+    "ind": 24,
+    "rel": 81,
+    "lam": 6,
+    "case": 3,
+    "construct": 4,
+    "const": 4
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "源 sort/宇宙 → Lean Sort",
+    "应用 → 已翻译目标的应用",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "局部变量 → Lean 绑定变量",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "构造子 → 对应目标构造子",
+    "全局常量 → 目标声明或显式待证明前提"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Init.Specif.sumbool.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "PENDING_KERNEL_CHECKED",
+  "target": "RocqPending.Corelib.Init.Sumbool.sumbool_or",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 1,
+    "result": "PENDING_KERNEL_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def RocqPending.Corelib.Init.Sumbool.sumbool_or : {h_Corelib_Init_Sumbool_sumbool_or__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_1.statement} →
+  {h_Corelib_Init_Sumbool_sumbool_or__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_2.statement} →
+    {h_Corelib_Init_Sumbool_sumbool_or__rocq2lean_obligation_3 :
+        Rocq.Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_3.statement} →
+      {h_Corelib_Init_Sumbool_sumbool_or__rocq2lean_obligation_4 :
+          Rocq.Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_4.statement} →
+        (A B C D : Prop) →
+          Rocq.Corelib.Init.Specif.sumbool A B →
+            Rocq.Corelib.Init.Specif.sumbool C D →
+              Rocq.Corelib.Init.Specif.sumbool (Rocq.Corelib.Init.Logic.or A C) (Rocq.Corelib.Init.Logic.and B D) :=
+fun {h_Corelib_Init_Sumbool_sumbool_or__rocq2lean_obligation_1}
+    {h_Corelib_Init_Sumbool_sumbool_or__rocq2lean_obligation_2}
+    {h_Corelib_Init_Sumbool_sumbool_or__rocq2lean_obligation_3}
+    {h_Corelib_Init_Sumbool_sumbool_or__rocq2lean_obligation_4} A B C D H1 H2 =>
+  @Rocq.Corelib.Init.Specif.sumbool.rec.{1} A B
+    (fun t => Rocq.Corelib.Init.Specif.sumbool (Rocq.Corelib.Init.Logic.or A C) (Rocq.Corelib.Init.Logic.and B D))
+    (fun a =>
+      @Rocq.Corelib.Init.Specif.sumbool.rec.{1} C D
+        (fun t => Rocq.Corelib.Init.Specif.sumbool (Rocq.Corelib.Init.Logic.or A C) (Rocq.Corelib.Init.Logic.and B D))
+        (fun a_1 =>
+          Rocq.Corelib.Init.Specif.sumbool.left (Rocq.Corelib.Init.Logic.or A C) (Rocq.Corelib.Init.Logic.and B D) ⋯)
+        (fun a_1 =>
+          Rocq.Corelib.Init.Specif.sumbool.left (Rocq.Corelib.Init.Logic.or A C) (Rocq.Corelib.Init.Logic.and B D) ⋯)
+        H2)
+    (fun a =>
+      @Rocq.Corelib.Init.Specif.sumbool.rec.{1} C D
+        (fun t => Rocq.Corelib.Init.Specif.sumbool (Rocq.Corelib.Init.Logic.or A C) (Rocq.Corelib.Init.Logic.and B D))
+        (fun a_1 =>
+          Rocq.Corelib.Init.Specif.sumbool.left (Rocq.Corelib.Init.Logic.or A C) (Rocq.Corelib.Init.Logic.and B D) ⋯)
+        (fun a_1 =>
+          Rocq.Corelib.Init.Specif.sumbool.right (Rocq.Corelib.Init.Logic.or A C) (Rocq.Corelib.Init.Logic.and B D) ⋯)
+        H2)
+    H1
+待证明条件（含完整源/目标表达）
+[
+  {
+    "source": "Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_1",
+    "target": "Rocq.Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_1.statement",
+    "status": "STATEMENT_KERNEL_CHECKED",
+    "statement_target_type": {
+      "l": {
+        "k": "zero"
+      },
+      "k": "sort"
+    },
+    "statement_target_value": {
+      "t": {
+        "l": {
+          "k": "zero"
+        },
+        "k": "sort"
+      },
+      "n": "A",
+      "k": "forall",
+      "b": {
+        "t": {
+          "l": {
+            "k": "zero"
+          },
+          "k": "sort"
+        },
+        "n": "B",
+        "k": "forall",
+        "b": {
+          "t": {
+            "l": {
+              "k": "zero"
+            },
+            "k": "sort"
+          },
+          "n": "C",
+          "k": "forall",
+          "b": {
+            "t": {
+              "l": {
+                "k": "zero"
+              },
+              "k": "sort"
+            },
+            "n": "D",
+            "k": "forall",
+            "b": {
+              "t": {
+                "k": "app",
+                "f": {
+                  "k": "app",
+                  "f": {
+                    "u": [],
+                    "n": "Rocq.Corelib.Init.Specif.sumbool",
+                    "k": "const"
+                  },
+                  "a": {
+                    "k": "bvar",
+                    "i": 3
+                  }
+                },
+                "a": {
+                  "k": "bvar",
+                  "i": 2
+                }
+              },
+              "n": "H1",
+              "k": "forall",
+              "b": {
+                "t": {
+                  "k": "app",
+                  "f": {
+                    "k": "app",
+                    "f": {
+                      "u": [],
+                      "n": "Rocq.Corelib.Init.Specif.sumbool",
+                      "k": "const"
+                    },
+                    "a": {
+                      "k": "bvar",
+                      "i": 2
+                    }
+                  },
+                  "a": {
+                    "k": "bvar",
+                    "i": 1
+                  }
+                },
+                "n": "H2",
+                "k": "forall",
+                "b": {
+                  "t": {
+                    "k": "bvar",
+                    "i": 5
+                  },
+                  "n": "a",
+                  "k": "forall",
+                  "b": {
+                    "t": {
+                      "k": "bvar",
+                      "i": 4
+                    },
+                    "n": "c",
+                    "k": "forall",
+                    "b": {
+                      "k": "app",
+                      "f": {
+                        "k": "app",
+                        "f": {
+                          "u": [],
+                          "n": "Rocq.Corelib.Init.Logic.or",
+                          "k": "const"
+                        },
+                        "a": {
+                          "k": "bvar",
+                          "i": 7
+                        }
+                      },
+                      "a": {
+                        "k": "bvar",
+                        "i": 5
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "source_record": {
+      "kind": "constant",
+      "name": "Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_1",
+      "mp": {
+        "file": [
+          "Corelib",
+          "Init",
+          "Sumbool"
+        ]
+      },
+      "id": "sumbool_or__rocq2lean_obligation_1",
+      "type": {
+        "k": "prod",
+        "n": {
+          "n": "A",
+          "r": "R"
+        },
+        "ty": {
+          "k": "sort",
+          "s": {
+            "k": "prop"
+          }
+        },
+        "b": {
+          "k": "prod",
+          "n": {
+            "n": "B",
+            "r": "R"
+          },
+          "ty": {
+            "k": "sort",
+            "s": {
+              "k": "prop"
+            }
+          },
+          "b": {
+            "k": "prod",
+            "n": {
+              "n": "C",
+              "r": "R"
+            },
+            "ty": {
+              "k": "sort",
+              "s": {
+                "k": "prop"
+              }
+            },
+            "b": {
+              "k": "prod",
+              "n": {
+                "n": "D",
+                "r": "R"
+              },
+              "ty": {
+                "k": "sort",
+                "s": {
+                  "k": "prop"
+                }
+              },
+              "b": {
+                "k": "prod",
+                "n": {
+                  "n": "H1",
+                  "r": "R"
+                },
+                "ty": {
+                  "k": "app",
+                  "f": {
+                    "k": "ind",
+                    "ind": {
+                      "mind": "Corelib.Init.Specif.sumbool",
+                      "i": 0
+                    },
+                    "u": []
+                  },
+                  "args": [
+                    {
+                      "k": "rel",
+                      "i": 3
+                    },
+                    {
+                      "k": "rel",
+                      "i": 2
+                    }
+                  ]
+                },
+                "b": {
+                  "k": "prod",
+                  "n": {
+                    "n": "H2",
+                    "r": "R"
+                  },
+                  "ty": {
+                    "k": "app",
+                    "f": {
+                      "k": "ind",
+                      "ind": {
+                        "mind": "Corelib.Init.Specif.sumbool",
+                        "i": 0
+                      },
+                      "u": []
+                    },
+                    "args": [
+                      {
+                        "k": "rel",
+                        "i": 2
+                      },
+                      {
+                        "k": "rel",
+                        "i": 1
+                      }
+                    ]
+                  },
+                  "b": {
+                    "k": "prod",
+                    "n": {
+                      "n": "a",
+                      "r": "R"
+                    },
+                    "ty": {
+                      "k": "rel",
+                      "i": 5
+                    },
+                    "b": {
+                      "k": "prod",
+                      "n": {
+                        "n": "c",
+                        "r": "R"
+                      },
+                      "ty": {
+                        "k": "rel",
+                        "i": 4
+                      },
+                      "b": {
+                        "k": "app",
+                        "f": {
+                          "k": "ind",
+                          "ind": {
+                            "mind": "Corelib.Init.Logic.or",
+                            "i": 0
+                          },
+                          "u": []
+                        },
+                        "args": [
+                          {
+                            "k": "rel",
+                            "i": 7
+                          },
+                          {
+                            "k": "rel",
+                            "i": 5
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "body": null,
+      "body_state": "obligation",
+      "universes": {
+        "k": "monomorphic"
+      },
+      "relevance": "R",
+      "deps": {
+        "type": [
+          "Corelib.Init.Logic.or",
+          "Corelib.Init.Specif.sumbool"
+        ],
+        "body": []
+      },
+      "native": {
+        "obligation": {
+          "of": "Corelib.Init.Sumbool.sumbool_or",
+          "index": 1
+        },
+        "typing_flags": {
+          "check_guarded": true,
+          "check_positive": true,
+          "check_universes": true,
+          "check_eliminations": true,
+          "indices_matter": false,
+          "impredicative_set": false,
+          "sprop_allowed": true,
+          "allow_uip": false
+        }
+      }
+    }
+  },
+  {
+    "source": "Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_2",
+    "target": "Rocq.Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_2.statement",
+    "status": "STATEMENT_KERNEL_CHECKED",
+    "statement_target_type": {
+      "l": {
+        "k": "zero"
+      },
+      "k": "sort"
+    },
+    "statement_target_value": {
+      "t": {
+        "l": {
+          "k": "zero"
+        },
+        "k": "sort"
+      },
+      "n": "A",
+      "k": "forall",
+      "b": {
+        "t": {
+          "l": {
+            "k": "zero"
+          },
+          "k": "sort"
+        },
+        "n": "B",
+        "k": "forall",
+        "b": {
+          "t": {
+            "l": {
+              "k": "zero"
+            },
+            "k": "sort"
+          },
+          "n": "C",
+          "k": "forall",
+          "b": {
+            "t": {
+              "l": {
+                "k": "zero"
+              },
+              "k": "sort"
+            },
+            "n": "D",
+            "k": "forall",
+            "b": {
+              "t": {
+                "k": "app",
+                "f": {
+                  "k": "app",
+                  "f": {
+                    "u": [],
+                    "n": "Rocq.Corelib.Init.Specif.sumbool",
+                    "k": "const"
+                  },
+                  "a": {
+                    "k": "bvar",
+                    "i": 3
+                  }
+                },
+                "a": {
+                  "k": "bvar",
+                  "i": 2
+                }
+              },
+              "n": "H1",
+              "k": "forall",
+              "b": {
+                "t": {
+                  "k": "app",
+                  "f": {
+                    "k": "app",
+                    "f": {
+                      "u": [],
+                      "n": "Rocq.Corelib.Init.Specif.sumbool",
+                      "k": "const"
+                    },
+                    "a": {
+                      "k": "bvar",
+                      "i": 2
+                    }
+                  },
+                  "a": {
+                    "k": "bvar",
+                    "i": 1
+                  }
+                },
+                "n": "H2",
+                "k": "forall",
+                "b": {
+                  "t": {
+                    "k": "bvar",
+                    "i": 5
+                  },
+                  "n": "a",
+                  "k": "forall",
+                  "b": {
+                    "t": {
+                      "k": "bvar",
+                      "i": 3
+                    },
+                    "n": "d",
+                    "k": "forall",
+                    "b": {
+                      "k": "app",
+                      "f": {
+                        "k": "app",
+                        "f": {
+                          "u": [],
+                          "n": "Rocq.Corelib.Init.Logic.or",
+                          "k": "const"
+                        },
+                        "a": {
+                          "k": "bvar",
+                          "i": 7
+                        }
+                      },
+                      "a": {
+                        "k": "bvar",
+                        "i": 5
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "source_record": {
+      "kind": "constant",
+      "name": "Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_2",
+      "mp": {
+        "file": [
+          "Corelib",
+          "Init",
+          "Sumbool"
+        ]
+      },
+      "id": "sumbool_or__rocq2lean_obligation_2",
+      "type": {
+        "k": "prod",
+        "n": {
+          "n": "A",
+          "r": "R"
+        },
+        "ty": {
+          "k": "sort",
+          "s": {
+            "k": "prop"
+          }
+        },
+        "b": {
+          "k": "prod",
+          "n": {
+            "n": "B",
+            "r": "R"
+          },
+          "ty": {
+            "k": "sort",
+            "s": {
+              "k": "prop"
+            }
+          },
+          "b": {
+            "k": "prod",
+            "n": {
+              "n": "C",
+              "r": "R"
+            },
+            "ty": {
+              "k": "sort",
+              "s": {
+                "k": "prop"
+              }
+            },
+            "b": {
+              "k": "prod",
+              "n": {
+                "n": "D",
+                "r": "R"
+              },
+              "ty": {
+                "k": "sort",
+                "s": {
+                  "k": "prop"
+                }
+              },
+              "b": {
+                "k": "prod",
+                "n": {
+                  "n": "H1",
+                  "r": "R"
+                },
+                "ty": {
+                  "k": "app",
+                  "f": {
+                    "k": "ind",
+                    "ind": {
+                      "mind": "Corelib.Init.Specif.sumbool",
+                      "i": 0
+                    },
+                    "u": []
+                  },
+                  "args": [
+                    {
+                      "k": "rel",
+                      "i": 3
+                    },
+                    {
+                      "k": "rel",
+                      "i": 2
+                    }
+                  ]
+                },
+                "b": {
+                  "k": "prod",
+                  "n": {
+                    "n": "H2",
+                    "r": "R"
+                  },
+                  "ty": {
+                    "k": "app",
+                    "f": {
+                      "k": "ind",
+                      "ind": {
+                        "mind": "Corelib.Init.Specif.sumbool",
+                        "i": 0
+                      },
+                      "u": []
+                    },
+                    "args": [
+                      {
+                        "k": "rel",
+                        "i": 2
+                      },
+                      {
+                        "k": "rel",
+                        "i": 1
+                      }
+                    ]
+                  },
+                  "b": {
+                    "k": "prod",
+                    "n": {
+                      "n": "a",
+                      "r": "R"
+                    },
+                    "ty": {
+                      "k": "rel",
+                      "i": 5
+                    },
+                    "b": {
+                      "k": "prod",
+                      "n": {
+                        "n": "d",
+                        "r": "R"
+                      },
+                      "ty": {
+                        "k": "rel",
+                        "i": 3
+                      },
+                      "b": {
+                        "k": "app",
+                        "f": {
+                          "k": "ind",
+                          "ind": {
+                            "mind": "Corelib.Init.Logic.or",
+                            "i": 0
+                          },
+                          "u": []
+                        },
+                        "args": [
+                          {
+                            "k": "rel",
+                            "i": 7
+                          },
+                          {
+                            "k": "rel",
+                            "i": 5
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "body": null,
+      "body_state": "obligation",
+      "universes": {
+        "k": "monomorphic"
+      },
+      "relevance": "R",
+      "deps": {
+        "type": [
+          "Corelib.Init.Logic.or",
+          "Corelib.Init.Specif.sumbool"
+        ],
+        "body": []
+      },
+      "native": {
+        "obligation": {
+          "of": "Corelib.Init.Sumbool.sumbool_or",
+          "index": 2
+        },
+        "typing_flags": {
+          "check_guarded": true,
+          "check_positive": true,
+          "check_universes": true,
+          "check_eliminations": true,
+          "indices_matter": false,
+          "impredicative_set": false,
+          "sprop_allowed": true,
+          "allow_uip": false
+        }
+      }
+    }
+  },
+  {
+    "source": "Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_3",
+    "target": "Rocq.Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_3.statement",
+    "status": "STATEMENT_KERNEL_CHECKED",
+    "statement_target_type": {
+      "l": {
+        "k": "zero"
+      },
+      "k": "sort"
+    },
+    "statement_target_value": {
+      "t": {
+        "l": {
+          "k": "zero"
+        },
+        "k": "sort"
+      },
+      "n": "A",
+      "k": "forall",
+      "b": {
+        "t": {
+          "l": {
+            "k": "zero"
+          },
+          "k": "sort"
+        },
+        "n": "B",
+        "k": "forall",
+        "b": {
+          "t": {
+            "l": {
+              "k": "zero"
+            },
+            "k": "sort"
+          },
+          "n": "C",
+          "k": "forall",
+          "b": {
+            "t": {
+              "l": {
+                "k": "zero"
+              },
+              "k": "sort"
+            },
+            "n": "D",
+            "k": "forall",
+            "b": {
+              "t": {
+                "k": "app",
+                "f": {
+                  "k": "app",
+                  "f": {
+                    "u": [],
+                    "n": "Rocq.Corelib.Init.Specif.sumbool",
+                    "k": "const"
+                  },
+                  "a": {
+                    "k": "bvar",
+                    "i": 3
+                  }
+                },
+                "a": {
+                  "k": "bvar",
+                  "i": 2
+                }
+              },
+              "n": "H1",
+              "k": "forall",
+              "b": {
+                "t": {
+                  "k": "app",
+                  "f": {
+                    "k": "app",
+                    "f": {
+                      "u": [],
+                      "n": "Rocq.Corelib.Init.Specif.sumbool",
+                      "k": "const"
+                    },
+                    "a": {
+                      "k": "bvar",
+                      "i": 2
+                    }
+                  },
+                  "a": {
+                    "k": "bvar",
+                    "i": 1
+                  }
+                },
+                "n": "H2",
+                "k": "forall",
+                "b": {
+                  "t": {
+                    "k": "bvar",
+                    "i": 4
+                  },
+                  "n": "b",
+                  "k": "forall",
+                  "b": {
+                    "t": {
+                      "k": "bvar",
+                      "i": 4
+                    },
+                    "n": "c",
+                    "k": "forall",
+                    "b": {
+                      "k": "app",
+                      "f": {
+                        "k": "app",
+                        "f": {
+                          "u": [],
+                          "n": "Rocq.Corelib.Init.Logic.or",
+                          "k": "const"
+                        },
+                        "a": {
+                          "k": "bvar",
+                          "i": 7
+                        }
+                      },
+                      "a": {
+                        "k": "bvar",
+                        "i": 5
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "source_record": {
+      "kind": "constant",
+      "name": "Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_3",
+      "mp": {
+        "file": [
+          "Corelib",
+          "Init",
+          "Sumbool"
+        ]
+      },
+      "id": "sumbool_or__rocq2lean_obligation_3",
+      "type": {
+        "k": "prod",
+        "n": {
+          "n": "A",
+          "r": "R"
+        },
+        "ty": {
+          "k": "sort",
+          "s": {
+            "k": "prop"
+          }
+        },
+        "b": {
+          "k": "prod",
+          "n": {
+            "n": "B",
+            "r": "R"
+          },
+          "ty": {
+            "k": "sort",
+            "s": {
+              "k": "prop"
+            }
+          },
+          "b": {
+            "k": "prod",
+            "n": {
+              "n": "C",
+              "r": "R"
+            },
+            "ty": {
+              "k": "sort",
+              "s": {
+                "k": "prop"
+              }
+            },
+            "b": {
+              "k": "prod",
+              "n": {
+                "n": "D",
+                "r": "R"
+              },
+              "ty": {
+                "k": "sort",
+                "s": {
+                  "k": "prop"
+                }
+              },
+              "b": {
+                "k": "prod",
+                "n": {
+                  "n": "H1",
+                  "r": "R"
+                },
+                "ty": {
+                  "k": "app",
+                  "f": {
+                    "k": "ind",
+                    "ind": {
+                      "mind": "Corelib.Init.Specif.sumbool",
+                      "i": 0
+                    },
+                    "u": []
+                  },
+                  "args": [
+                    {
+                      "k": "rel",
+                      "i": 3
+                    },
+                    {
+                      "k": "rel",
+                      "i": 2
+                    }
+                  ]
+                },
+                "b": {
+                  "k": "prod",
+                  "n": {
+                    "n": "H2",
+                    "r": "R"
+                  },
+                  "ty": {
+                    "k": "app",
+                    "f": {
+                      "k": "ind",
+                      "ind": {
+                        "mind": "Corelib.Init.Specif.sumbool",
+                        "i": 0
+                      },
+                      "u": []
+                    },
+                    "args": [
+                      {
+                        "k": "rel",
+                        "i": 2
+                      },
+                      {
+                        "k": "rel",
+                        "i": 1
+                      }
+                    ]
+                  },
+                  "b": {
+                    "k": "prod",
+                    "n": {
+                      "n": "b",
+                      "r": "R"
+                    },
+                    "ty": {
+                      "k": "rel",
+                      "i": 4
+                    },
+                    "b": {
+                      "k": "prod",
+                      "n": {
+                        "n": "c",
+                        "r": "R"
+                      },
+                      "ty": {
+                        "k": "rel",
+                        "i": 4
+                      },
+                      "b": {
+                        "k": "app",
+                        "f": {
+                          "k": "ind",
+                          "ind": {
+                            "mind": "Corelib.Init.Logic.or",
+                            "i": 0
+                          },
+                          "u": []
+                        },
+                        "args": [
+                          {
+                            "k": "rel",
+                            "i": 7
+                          },
+                          {
+                            "k": "rel",
+                            "i": 5
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "body": null,
+      "body_state": "obligation",
+      "universes": {
+        "k": "monomorphic"
+      },
+      "relevance": "R",
+      "deps": {
+        "type": [
+          "Corelib.Init.Logic.or",
+          "Corelib.Init.Specif.sumbool"
+        ],
+        "body": []
+      },
+      "native": {
+        "obligation": {
+          "of": "Corelib.Init.Sumbool.sumbool_or",
+          "index": 3
+        },
+        "typing_flags": {
+          "check_guarded": true,
+          "check_positive": true,
+          "check_universes": true,
+          "check_eliminations": true,
+          "indices_matter": false,
+          "impredicative_set": false,
+          "sprop_allowed": true,
+          "allow_uip": false
+        }
+      }
+    }
+  },
+  {
+    "source": "Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_4",
+    "target": "Rocq.Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_4.statement",
+    "status": "STATEMENT_KERNEL_CHECKED",
+    "statement_target_type": {
+      "l": {
+        "k": "zero"
+      },
+      "k": "sort"
+    },
+    "statement_target_value": {
+      "t": {
+        "l": {
+          "k": "zero"
+        },
+        "k": "sort"
+      },
+      "n": "A",
+      "k": "forall",
+      "b": {
+        "t": {
+          "l": {
+            "k": "zero"
+          },
+          "k": "sort"
+        },
+        "n": "B",
+        "k": "forall",
+        "b": {
+          "t": {
+            "l": {
+              "k": "zero"
+            },
+            "k": "sort"
+          },
+          "n": "C",
+          "k": "forall",
+          "b": {
+            "t": {
+              "l": {
+                "k": "zero"
+              },
+              "k": "sort"
+            },
+            "n": "D",
+            "k": "forall",
+            "b": {
+              "t": {
+                "k": "app",
+                "f": {
+                  "k": "app",
+                  "f": {
+                    "u": [],
+                    "n": "Rocq.Corelib.Init.Specif.sumbool",
+                    "k": "const"
+                  },
+                  "a": {
+                    "k": "bvar",
+                    "i": 3
+                  }
+                },
+                "a": {
+                  "k": "bvar",
+                  "i": 2
+                }
+              },
+              "n": "H1",
+              "k": "forall",
+              "b": {
+                "t": {
+                  "k": "app",
+                  "f": {
+                    "k": "app",
+                    "f": {
+                      "u": [],
+                      "n": "Rocq.Corelib.Init.Specif.sumbool",
+                      "k": "const"
+                    },
+                    "a": {
+                      "k": "bvar",
+                      "i": 2
+                    }
+                  },
+                  "a": {
+                    "k": "bvar",
+                    "i": 1
+                  }
+                },
+                "n": "H2",
+                "k": "forall",
+                "b": {
+                  "t": {
+                    "k": "bvar",
+                    "i": 4
+                  },
+                  "n": "b",
+                  "k": "forall",
+                  "b": {
+                    "t": {
+                      "k": "bvar",
+                      "i": 3
+                    },
+                    "n": "d",
+                    "k": "forall",
+                    "b": {
+                      "k": "app",
+                      "f": {
+                        "k": "app",
+                        "f": {
+                          "u": [],
+                          "n": "Rocq.Corelib.Init.Logic.and",
+                          "k": "const"
+                        },
+                        "a": {
+                          "k": "bvar",
+                          "i": 6
+                        }
+                      },
+                      "a": {
+                        "k": "bvar",
+                        "i": 4
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "source_record": {
+      "kind": "constant",
+      "name": "Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_4",
+      "mp": {
+        "file": [
+          "Corelib",
+          "Init",
+          "Sumbool"
+        ]
+      },
+      "id": "sumbool_or__rocq2lean_obligation_4",
+      "type": {
+        "k": "prod",
+        "n": {
+          "n": "A",
+          "r": "R"
+        },
+        "ty": {
+          "k": "sort",
+          "s": {
+            "k": "prop"
+          }
+        },
+        "b": {
+          "k": "prod",
+          "n": {
+            "n": "B",
+            "r": "R"
+          },
+          "ty": {
+            "k": "sort",
+            "s": {
+              "k": "prop"
+            }
+          },
+          "b": {
+            "k": "prod",
+            "n": {
+              "n": "C",
+              "r": "R"
+            },
+            "ty": {
+              "k": "sort",
+              "s": {
+                "k": "prop"
+              }
+            },
+            "b": {
+              "k": "prod",
+              "n": {
+                "n": "D",
+                "r": "R"
+              },
+              "ty": {
+                "k": "sort",
+                "s": {
+                  "k": "prop"
+                }
+              },
+              "b": {
+                "k": "prod",
+                "n": {
+                  "n": "H1",
+                  "r": "R"
+                },
+                "ty": {
+                  "k": "app",
+                  "f": {
+                    "k": "ind",
+                    "ind": {
+                      "mind": "Corelib.Init.Specif.sumbool",
+                      "i": 0
+                    },
+                    "u": []
+                  },
+                  "args": [
+                    {
+                      "k": "rel",
+                      "i": 3
+                    },
+                    {
+                      "k": "rel",
+                      "i": 2
+                    }
+                  ]
+                },
+                "b": {
+                  "k": "prod",
+                  "n": {
+                    "n": "H2",
+                    "r": "R"
+                  },
+                  "ty": {
+                    "k": "app",
+                    "f": {
+                      "k": "ind",
+                      "ind": {
+                        "mind": "Corelib.Init.Specif.sumbool",
+                        "i": 0
+                      },
+                      "u": []
+                    },
+                    "args": [
+                      {
+                        "k": "rel",
+                        "i": 2
+                      },
+                      {
+                        "k": "rel",
+                        "i": 1
+                      }
+                    ]
+                  },
+                  "b": {
+                    "k": "prod",
+                    "n": {
+                      "n": "b",
+                      "r": "R"
+                    },
+                    "ty": {
+                      "k": "rel",
+                      "i": 4
+                    },
+                    "b": {
+                      "k": "prod",
+                      "n": {
+                        "n": "d",
+                        "r": "R"
+                      },
+                      "ty": {
+                        "k": "rel",
+                        "i": 3
+                      },
+                      "b": {
+                        "k": "app",
+                        "f": {
+                          "k": "ind",
+                          "ind": {
+                            "mind": "Corelib.Init.Logic.and",
+                            "i": 0
+                          },
+                          "u": []
+                        },
+                        "args": [
+                          {
+                            "k": "rel",
+                            "i": 6
+                          },
+                          {
+                            "k": "rel",
+                            "i": 4
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "body": null,
+      "body_state": "obligation",
+      "universes": {
+        "k": "monomorphic"
+      },
+      "relevance": "R",
+      "deps": {
+        "type": [
+          "Corelib.Init.Logic.and",
+          "Corelib.Init.Specif.sumbool"
+        ],
+        "body": []
+      },
+      "native": {
+        "obligation": {
+          "of": "Corelib.Init.Sumbool.sumbool_or",
+          "index": 4
+        },
+        "typing_flags": {
+          "check_guarded": true,
+          "check_positive": true,
+          "check_universes": true,
+          "check_eliminations": true,
+          "indices_matter": false,
+          "impredicative_set": false,
+          "sprop_allowed": true,
+          "allow_uip": false
+        }
+      }
+    }
+  }
+]

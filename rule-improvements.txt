@@ -1,0 +1,524 @@
+范围：此前基础模块的 24 个 Corelib 文件、839 项声明，不是所有已安装 Corelib 文件。
+原项目未修改，未提交或推送。
+基线：574 无额外条件，75 带条件，190 受阻。
+隔离候选：569 无额外条件，81 带条件，189 受阻。
+可检查项由 649 增至 650；新增的只是定理陈述 eq_existT_curried_congr，仍有 3 个显式前提，并未得到定理证明。
+普通数据类型和函数没有新增成功项。另 5 项原本无额外条件的定理陈述新增条件，因此这是有代价的候选，未集成原项目。
+
+目录：
+index.html / improved/index.html：基线 / 候选逐文件入口。
+rule-improvements.html / .txt：六组实验、最终候选、逐项变化、后续缺失能力。
+Corelib/.../X.v：源文件副本。
+Corelib/.../X.lean：实际翻译入口，用 #rocq2lean_import 生成内核声明。
+Corelib/.../X.kernel.txt：实际 Lean #print 定义。
+Corelib/.../X.report.html / .txt：每项成功/失败与翻译过程。
+Corelib/.../X.json：模块完整机器可读结果。
+Corelib/.../X/records/0000.json：单项完整源 IR、目标 AST、全部尝试与条件。
+Corelib/.../X/：导出、roundtrip、consumer、audit、日志和 olean。
+improved/Corelib/...：同结构候选结果。
+translator/：基线 3c79203 加未提交候选；candidate.patch 是精确代码差异。
+experiments/：各组试验、差异和测试证据。
+source-extraction-errors.json：52 项抽取失败的实际检查阶段与类型错误。
+artifact-validation.json：产物和检查结果。
+
+使用：
+每个 .lean 带自己的依赖闭包，应作为独立单元使用，不可直接把 24 个文件同时 import。
+.lean 是翻译器的可执行入口，不是脱离翻译器的手写源码；可读定义在 kernel.txt 和逐项报告。
+Equality.lean 明确报导出失败。Ltac、Notations、Tauto 没有计入内核声明，不代表策略/记号已经翻译。
+定理只输出 .statement : Prop；pending 是显式假设，不能当作已有证明或无条件结论。
+过程来自真实 IR、tier 尝试与内核输出；AST 节点映射为静态说明，不冒充逐指令执行轨迹。
+
+验证：
+Lean 4.33.1 / Rocq 9.3.0。20 个有可导出声明的模块在基线与候选下分别通过源端 roundtrip、Lean consumer、未修改的独立 audit、内核输出及入口编译。
+statement 套件通过：包括证明变化不影响输出、确定性、陈述篡改负例及拒绝 sorry/axiom 的提交负例。
+本轮未重跑完整 4,474 个 Prosa 保护根；保护清单未改。候选代码保持隔离。
+复现脚本位于 scripts/，读取现有冻结 census 输入及已安装工具链；所有本轮输出在本目录。
+
+实验
+[
+  {
+    "experiment": "proof-cache-trial",
+    "total": 839,
+    "complete": 574,
+    "pending": 75,
+    "blocked": 190,
+    "validation": {
+      "source-roundtrip/roundtrip.json": "OK",
+      "audit.json": "OK",
+      "consumer_result.json": "OK"
+    },
+    "note": "相同完整上下文中的证明子项复用：没有增加通过项，未保留。"
+  },
+  {
+    "experiment": "normalization-trial",
+    "total": 839,
+    "complete": 574,
+    "pending": 75,
+    "blocked": 190,
+    "validation": {
+      "source-roundtrip/roundtrip.json": "EXPORT_VALIDATION_FAILED",
+      "audit.json": "OK",
+      "consumer_result.json": "OK"
+    },
+    "note": "抽取前 β/ι/ζ 化简：源端结构 roundtrip 失败；下面计数只是诊断，不能计为认证结果，拒绝。"
+  },
+  {
+    "experiment": "binder-context-trial",
+    "total": 839,
+    "complete": 569,
+    "pending": 81,
+    "blocked": 189,
+    "validation": {
+      "source-roundtrip/roundtrip.json": "OK",
+      "audit.json": "OK",
+      "consumer_result.json": "OK"
+    },
+    "note": "使用重写后的绑定类型：增加 1 项带条件陈述，另 5 项新增条件；候选核心。"
+  },
+  {
+    "experiment": "minimal-obligations-trial",
+    "total": 839,
+    "complete": 569,
+    "pending": 78,
+    "blocked": 192,
+    "validation": {
+      "source-roundtrip/roundtrip.json": "OK",
+      "audit.json": "OK",
+      "consumer_result.json": "OK"
+    },
+    "note": "缩减义务上下文并复用同型条件：3 项原可检查陈述变为受阻，拒绝。"
+  },
+  {
+    "experiment": "minimal-binder-trial",
+    "total": 839,
+    "complete": 569,
+    "pending": 78,
+    "blocked": 192,
+    "validation": {
+      "source-roundtrip/roundtrip.json": "OK",
+      "audit.json": "OK",
+      "consumer_result.json": "OK"
+    },
+    "note": "缩减上下文与绑定修补组合：2 项越过抽取阶段但仍被依赖阻塞；仍有上述 3 项退步，拒绝。"
+  },
+  {
+    "experiment": "binder-statement-cache-trial",
+    "total": 839,
+    "complete": 569,
+    "pending": 81,
+    "blocked": 189,
+    "validation": {
+      "source-roundtrip/roundtrip.json": "OK",
+      "audit.json": "OK",
+      "consumer_result.json": "OK"
+    },
+    "note": "同型条件复用 + 绑定修补：没有超过单独绑定修补，未保留额外缓存。"
+  },
+  {
+    "experiment": "candidate-final",
+    "total": 839,
+    "complete": 569,
+    "pending": 81,
+    "blocked": 189,
+    "validation": {
+      "source-roundtrip/roundtrip.json": "OK",
+      "audit.json": "OK",
+      "consumer_result.json": "OK"
+    },
+    "note": "最终隔离候选：绑定上下文修补 + 源端详细错误 + 可选 Lean 线程数。"
+  }
+]
+逐项变化
+[
+  {
+    "source": "Corelib.Init.Logic.eq_ex_intro",
+    "before": "STATEMENT_KERNEL_CHECKED",
+    "after": "STATEMENT_PENDING_KERNEL_CHECKED",
+    "new_pending_hypotheses": [
+      "Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_1",
+      "Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_2",
+      "Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_3"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_intro2",
+    "before": "STATEMENT_KERNEL_CHECKED",
+    "after": "STATEMENT_PENDING_KERNEL_CHECKED",
+    "new_pending_hypotheses": [
+      "Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_1",
+      "Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_2",
+      "Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_3",
+      "Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_4"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_intro2_hprop_nondep",
+    "before": "STATEMENT_KERNEL_CHECKED",
+    "after": "STATEMENT_PENDING_KERNEL_CHECKED",
+    "new_pending_hypotheses": [
+      "Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_1",
+      "Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_2",
+      "Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_3",
+      "Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_4"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_intro2_uncurried",
+    "before": "UNSUPPORTED_FEATURE",
+    "after": "BLOCKED_DEPENDENCY",
+    "new_pending_hypotheses": []
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_intro_uncurried",
+    "before": "UNSUPPORTED_FEATURE",
+    "after": "BLOCKED_DEPENDENCY",
+    "new_pending_hypotheses": []
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_exist2_curried",
+    "before": "STATEMENT_KERNEL_CHECKED",
+    "after": "STATEMENT_PENDING_KERNEL_CHECKED",
+    "new_pending_hypotheses": [
+      "Corelib.Init.Specif.eq_exist2_curried__rocq2lean_obligation_1",
+      "Corelib.Init.Specif.eq_exist2_curried__rocq2lean_obligation_2"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_existT_curried_congr",
+    "before": "UNIVERSE_REJECTED",
+    "after": "STATEMENT_PENDING_KERNEL_CHECKED",
+    "new_pending_hypotheses": [
+      "Corelib.Init.Specif.eq_existT_curried_congr__rocq2lean_obligation_1",
+      "Corelib.Init.Specif.eq_existT_curried_congr__rocq2lean_obligation_2",
+      "Corelib.Init.Specif.eq_existT_curried_congr__rocq2lean_obligation_3"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Wf.Acc_inv_dep",
+    "before": "STATEMENT_KERNEL_CHECKED",
+    "after": "STATEMENT_PENDING_KERNEL_CHECKED",
+    "new_pending_hypotheses": [
+      "Corelib.Init.Wf.Acc_inv_dep__rocq2lean_obligation_1",
+      "Corelib.Init.Wf.Acc_inv_dep__rocq2lean_obligation_2"
+    ]
+  }
+]
+规则评估
+[
+  {
+    "rule": "SProp / irrelevant 绑定",
+    "before": 40,
+    "after": 40,
+    "missing": "需定义 SProp 的表示及消去限制，不能删除拒绝检查。",
+    "action": "未采用新的表示策略。"
+  },
+  {
+    "rule": "证明抽取与依赖计算",
+    "before": 52,
+    "after": 52,
+    "missing": "构造子证明作为依赖索引时，抽取后分支类型与消去器要求的构造子索引不同。需保持索引一致；补充前提不能恢复源端转换。",
+    "action": "测试缓存、化简、上下文缩减和绑定修补；保留逐项实际错误。"
+  },
+  {
+    "rule": "quality / sort 多态导出",
+    "before": 22,
+    "after": 22,
+    "missing": "MetaRocq 引用前端缺少 quality 多态上下文的完整表示及传递；还未进入 Lean。",
+    "action": "固定工具链下仍受阻。"
+  },
+  {
+    "rule": "模板归纳类型的 Prop 实例",
+    "before": 20,
+    "after": 18,
+    "missing": "需统一处理 Prop 参数的类型、构造子、recursor、投影和调用点；可能涉及 Sort 泛化或 lift 表示。",
+    "action": "2 项改为依赖受阻，仍未成功；未更改表示策略。"
+  },
+  {
+    "rule": "宇宙求解及一致性",
+    "before": 2,
+    "after": 1,
+    "missing": "bool_eq_rec 仍有 proof-local 宇宙约束冲突；不能放松源宇宙一致性检查。",
+    "action": "eq_existT_curried_congr 成为带条件的可检查陈述。"
+  },
+  {
+    "rule": "抽取后的证明递归",
+    "before": 4,
+    "after": 4,
+    "missing": "需重建结构递归依据或产生可检查的良基终止性义务，不能假定终止性。",
+    "action": "保持受阻，没有生成原库证明。"
+  },
+  {
+    "rule": "依赖阻塞",
+    "before": 50,
+    "after": 52,
+    "missing": "逐项报告递归追踪上游根因；先修上游，再重测。",
+    "action": "增加包含失败阶段变化，不是新增 2 个失败根声明。"
+  }
+]
+另有 6 项原本已经带条件的陈述改变了条件清单（4 项条件数增加、1 项减少、1 项数量相同但条件变化）；完整前后对比见 experiments/root-obligation-delta.json。
+[
+  {
+    "source": "Corelib.Init.Logic.eq_ex_intro",
+    "before_status": "STATEMENT_KERNEL_CHECKED",
+    "after_status": "STATEMENT_PENDING_KERNEL_CHECKED",
+    "before": [],
+    "after": [
+      "Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_1",
+      "Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_2",
+      "Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_3"
+    ],
+    "added": [
+      "Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_1",
+      "Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_2",
+      "Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_3"
+    ],
+    "removed": []
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_intro2",
+    "before_status": "STATEMENT_KERNEL_CHECKED",
+    "after_status": "STATEMENT_PENDING_KERNEL_CHECKED",
+    "before": [],
+    "after": [
+      "Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_1",
+      "Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_2",
+      "Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_3",
+      "Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_4"
+    ],
+    "added": [
+      "Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_1",
+      "Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_2",
+      "Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_3",
+      "Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_4"
+    ],
+    "removed": []
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_intro2_hprop_nondep",
+    "before_status": "STATEMENT_KERNEL_CHECKED",
+    "after_status": "STATEMENT_PENDING_KERNEL_CHECKED",
+    "before": [],
+    "after": [
+      "Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_1",
+      "Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_2",
+      "Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_3",
+      "Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_4"
+    ],
+    "added": [
+      "Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_1",
+      "Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_2",
+      "Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_3",
+      "Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_4"
+    ],
+    "removed": []
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_exist2_curried",
+    "before_status": "STATEMENT_KERNEL_CHECKED",
+    "after_status": "STATEMENT_PENDING_KERNEL_CHECKED",
+    "before": [],
+    "after": [
+      "Corelib.Init.Specif.eq_exist2_curried__rocq2lean_obligation_1",
+      "Corelib.Init.Specif.eq_exist2_curried__rocq2lean_obligation_2"
+    ],
+    "added": [
+      "Corelib.Init.Specif.eq_exist2_curried__rocq2lean_obligation_1",
+      "Corelib.Init.Specif.eq_exist2_curried__rocq2lean_obligation_2"
+    ],
+    "removed": []
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_exist2_l",
+    "before_status": "STATEMENT_PENDING_KERNEL_CHECKED",
+    "after_status": "STATEMENT_PENDING_KERNEL_CHECKED",
+    "before": [
+      "Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1",
+      "Corelib.Init.Specif.proj2_sig",
+      "Corelib.Init.Specif.proj3_sig"
+    ],
+    "after": [
+      "Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1",
+      "Corelib.Init.Specif.eq_exist2_l__rocq2lean_obligation_1",
+      "Corelib.Init.Specif.eq_exist2_l__rocq2lean_obligation_2",
+      "Corelib.Init.Specif.eq_exist2_l__rocq2lean_obligation_3",
+      "Corelib.Init.Specif.eq_exist2_l__rocq2lean_obligation_4"
+    ],
+    "added": [
+      "Corelib.Init.Specif.eq_exist2_l__rocq2lean_obligation_1",
+      "Corelib.Init.Specif.eq_exist2_l__rocq2lean_obligation_2",
+      "Corelib.Init.Specif.eq_exist2_l__rocq2lean_obligation_3",
+      "Corelib.Init.Specif.eq_exist2_l__rocq2lean_obligation_4"
+    ],
+    "removed": [
+      "Corelib.Init.Specif.proj2_sig",
+      "Corelib.Init.Specif.proj3_sig"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_exist2_r",
+    "before_status": "STATEMENT_PENDING_KERNEL_CHECKED",
+    "after_status": "STATEMENT_PENDING_KERNEL_CHECKED",
+    "before": [
+      "Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1",
+      "Corelib.Init.Specif.proj2_sig",
+      "Corelib.Init.Specif.proj3_sig"
+    ],
+    "after": [
+      "Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1",
+      "Corelib.Init.Specif.eq_exist2_r__rocq2lean_obligation_1",
+      "Corelib.Init.Specif.eq_exist2_r__rocq2lean_obligation_2"
+    ],
+    "added": [
+      "Corelib.Init.Specif.eq_exist2_r__rocq2lean_obligation_1",
+      "Corelib.Init.Specif.eq_exist2_r__rocq2lean_obligation_2"
+    ],
+    "removed": [
+      "Corelib.Init.Specif.proj2_sig",
+      "Corelib.Init.Specif.proj3_sig"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_existT_curried_congr",
+    "before_status": "UNIVERSE_REJECTED",
+    "after_status": "STATEMENT_PENDING_KERNEL_CHECKED",
+    "before": [],
+    "after": [
+      "Corelib.Init.Specif.eq_existT_curried_congr__rocq2lean_obligation_1",
+      "Corelib.Init.Specif.eq_existT_curried_congr__rocq2lean_obligation_2",
+      "Corelib.Init.Specif.eq_existT_curried_congr__rocq2lean_obligation_3"
+    ],
+    "added": [
+      "Corelib.Init.Specif.eq_existT_curried_congr__rocq2lean_obligation_1",
+      "Corelib.Init.Specif.eq_existT_curried_congr__rocq2lean_obligation_2",
+      "Corelib.Init.Specif.eq_existT_curried_congr__rocq2lean_obligation_3"
+    ],
+    "removed": []
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sig2",
+    "before_status": "STATEMENT_PENDING_KERNEL_CHECKED",
+    "after_status": "STATEMENT_PENDING_KERNEL_CHECKED",
+    "before": [
+      "Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1",
+      "Corelib.Init.Specif.proj2_sig",
+      "Corelib.Init.Specif.proj3_sig"
+    ],
+    "after": [
+      "Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1",
+      "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_1",
+      "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_2",
+      "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_3",
+      "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_4"
+    ],
+    "added": [
+      "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_1",
+      "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_2",
+      "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_3",
+      "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_4"
+    ],
+    "removed": [
+      "Corelib.Init.Specif.proj2_sig",
+      "Corelib.Init.Specif.proj3_sig"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sig2_ind",
+    "before_status": "STATEMENT_PENDING_KERNEL_CHECKED",
+    "after_status": "STATEMENT_PENDING_KERNEL_CHECKED",
+    "before": [
+      "Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1",
+      "Corelib.Init.Specif.proj2_sig",
+      "Corelib.Init.Specif.proj3_sig",
+      "Corelib.Init.Specif.eq_sig2"
+    ],
+    "after": [
+      "Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1",
+      "Corelib.Init.Specif.eq_sig2_ind__rocq2lean_obligation_1",
+      "Corelib.Init.Specif.eq_sig2_ind__rocq2lean_obligation_2",
+      "Corelib.Init.Specif.eq_sig2_ind__rocq2lean_obligation_3",
+      "Corelib.Init.Specif.eq_sig2_ind__rocq2lean_obligation_4",
+      "Corelib.Init.Specif.eq_sig2_ind__rocq2lean_obligation_5"
+    ],
+    "added": [
+      "Corelib.Init.Specif.eq_sig2_ind__rocq2lean_obligation_1",
+      "Corelib.Init.Specif.eq_sig2_ind__rocq2lean_obligation_2",
+      "Corelib.Init.Specif.eq_sig2_ind__rocq2lean_obligation_3",
+      "Corelib.Init.Specif.eq_sig2_ind__rocq2lean_obligation_4",
+      "Corelib.Init.Specif.eq_sig2_ind__rocq2lean_obligation_5"
+    ],
+    "removed": [
+      "Corelib.Init.Specif.eq_sig2",
+      "Corelib.Init.Specif.proj2_sig",
+      "Corelib.Init.Specif.proj3_sig"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sig2_nondep",
+    "before_status": "STATEMENT_PENDING_KERNEL_CHECKED",
+    "after_status": "STATEMENT_PENDING_KERNEL_CHECKED",
+    "before": [
+      "Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1",
+      "Corelib.Init.Specif.proj2_sig",
+      "Corelib.Init.Specif.proj3_sig"
+    ],
+    "after": [
+      "Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1",
+      "Corelib.Init.Specif.eq_sig2_nondep__rocq2lean_obligation_1",
+      "Corelib.Init.Specif.eq_sig2_nondep__rocq2lean_obligation_2",
+      "Corelib.Init.Specif.eq_sig2_nondep__rocq2lean_obligation_3",
+      "Corelib.Init.Specif.eq_sig2_nondep__rocq2lean_obligation_4"
+    ],
+    "added": [
+      "Corelib.Init.Specif.eq_sig2_nondep__rocq2lean_obligation_1",
+      "Corelib.Init.Specif.eq_sig2_nondep__rocq2lean_obligation_2",
+      "Corelib.Init.Specif.eq_sig2_nondep__rocq2lean_obligation_3",
+      "Corelib.Init.Specif.eq_sig2_nondep__rocq2lean_obligation_4"
+    ],
+    "removed": [
+      "Corelib.Init.Specif.proj2_sig",
+      "Corelib.Init.Specif.proj3_sig"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sig_ind",
+    "before_status": "STATEMENT_PENDING_KERNEL_CHECKED",
+    "after_status": "STATEMENT_PENDING_KERNEL_CHECKED",
+    "before": [
+      "Corelib.Init.Specif.proj2_sig",
+      "Corelib.Init.Specif.eq_sig__rocq2lean_obligation_1",
+      "Corelib.Init.Specif.eq_sig__rocq2lean_obligation_2",
+      "Corelib.Init.Specif.eq_sig"
+    ],
+    "after": [
+      "Corelib.Init.Specif.eq_sig_ind__rocq2lean_obligation_1",
+      "Corelib.Init.Specif.eq_sig_ind__rocq2lean_obligation_2",
+      "Corelib.Init.Specif.eq_sig_ind__rocq2lean_obligation_3"
+    ],
+    "added": [
+      "Corelib.Init.Specif.eq_sig_ind__rocq2lean_obligation_1",
+      "Corelib.Init.Specif.eq_sig_ind__rocq2lean_obligation_2",
+      "Corelib.Init.Specif.eq_sig_ind__rocq2lean_obligation_3"
+    ],
+    "removed": [
+      "Corelib.Init.Specif.eq_sig",
+      "Corelib.Init.Specif.eq_sig__rocq2lean_obligation_1",
+      "Corelib.Init.Specif.eq_sig__rocq2lean_obligation_2",
+      "Corelib.Init.Specif.proj2_sig"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Wf.Acc_inv_dep",
+    "before_status": "STATEMENT_KERNEL_CHECKED",
+    "after_status": "STATEMENT_PENDING_KERNEL_CHECKED",
+    "before": [],
+    "after": [
+      "Corelib.Init.Wf.Acc_inv_dep__rocq2lean_obligation_1",
+      "Corelib.Init.Wf.Acc_inv_dep__rocq2lean_obligation_2"
+    ],
+    "added": [
+      "Corelib.Init.Wf.Acc_inv_dep__rocq2lean_obligation_1",
+      "Corelib.Init.Wf.Acc_inv_dep__rocq2lean_obligation_2"
+    ],
+    "removed": []
+  }
+]

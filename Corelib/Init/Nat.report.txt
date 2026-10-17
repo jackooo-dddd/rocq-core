@@ -1,0 +1,6331 @@
+Corelib.Init.Nat 逐声明翻译报告
+{
+  "module": "Corelib.Init.Nat",
+  "total": 58,
+  "complete": 57,
+  "pending": 1,
+  "blocked": 0,
+  "statuses": {
+    "TRANSLATED_AND_CHECKED": 57,
+    "PENDING_KERNEL_CHECKED": 1
+  },
+  "run_status": "MEASURED",
+  "source_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK",
+  "translation_compile_exit": 0
+}
+本文件采用逐模块独立运行。依赖随各翻译单元重复包含；不要直接把全部 .lean 一起 import。
+对应 .lean 使用翻译器的 #rocq2lean_import 命令生成内核声明；实际定义以 kernel view 展示，并非人工伪造的 Lean 源码。
+定理只翻译陈述；pending 是显式前提，不是已经证明；未导出的项目没有虚构 IR。
+
+================================================================================
+Corelib.Init.Nat.add
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.add
+源文件行号候选: [47]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 4,
+    "ind": 9,
+    "fix": 1,
+    "lam": 2,
+    "case": 1,
+    "rel": 5,
+    "app": 2,
+    "construct": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "递归 → 目标递归消去结构；具体结果见 recursor 引用与实际 Lean 定义",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "应用 → 已翻译目标的应用",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [
+    "Nat.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.add",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.add : Nat → Nat → Nat :=
+fun n m => @Nat.rec.{1} (fun n => Nat → Nat) (fun m => m) (fun n n_ih m => (n_ih m).succ) n m
+
+================================================================================
+Corelib.Init.Nat.bitwise
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.bitwise
+源文件行号候选: [416]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.bool",
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.bool",
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Nat.add",
+      "Corelib.Init.Nat.div2",
+      "Corelib.Init.Nat.mul",
+      "Corelib.Init.Nat.odd"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 14,
+    "ind": 22,
+    "fix": 1,
+    "lam": 4,
+    "case": 2,
+    "rel": 9,
+    "construct": 7,
+    "app": 11,
+    "const": 6
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "递归 → 目标递归消去结构；具体结果见 recursor 引用与实际 Lean 定义",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提"
+  ],
+  "actual_target_recursors": [
+    "Nat.rec",
+    "Rocq.Corelib.Init.Datatypes.bool.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.bitwise",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 1,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.bitwise : (Rocq.Corelib.Init.Datatypes.bool →
+    Rocq.Corelib.Init.Datatypes.bool → Rocq.Corelib.Init.Datatypes.bool) →
+  Nat → Nat → Nat → Nat :=
+fun op n a b =>
+  @Nat.rec.{1} (fun n => Nat → Nat → Nat) (fun a b => Nat.zero)
+    (fun n n_ih a b =>
+      Rocq.Corelib.Init.Nat.add
+        (@Rocq.Corelib.Init.Datatypes.bool.rec.{1} (fun t => Nat) Nat.zero.succ Nat.zero
+          (op (Rocq.Corelib.Init.Nat.odd a) (Rocq.Corelib.Init.Nat.odd b)))
+        (Rocq.Corelib.Init.Nat.mul Nat.zero.succ.succ
+          (n_ih (Rocq.Corelib.Init.Nat.div2 a) (Rocq.Corelib.Init.Nat.div2 b))))
+    n a b
+
+================================================================================
+Corelib.Init.Nat.compare
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.compare
+源文件行号候选: [104]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.comparison",
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.comparison",
+      "Corelib.Init.Datatypes.nat"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 4,
+    "ind": 11,
+    "fix": 1,
+    "lam": 2,
+    "case": 3,
+    "rel": 6,
+    "construct": 3,
+    "app": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "递归 → 目标递归消去结构；具体结果见 recursor 引用与实际 Lean 定义",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子",
+    "应用 → 已翻译目标的应用"
+  ],
+  "actual_target_recursors": [
+    "Nat.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.compare",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.compare : Nat → Nat → Rocq.Corelib.Init.Datatypes.comparison :=
+fun n m =>
+  @Nat.rec.{1} (fun n => Nat → Rocq.Corelib.Init.Datatypes.comparison)
+    (fun m =>
+      @Nat.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.comparison) Rocq.Corelib.Init.Datatypes.comparison.Eq
+        (fun n n_ih => Rocq.Corelib.Init.Datatypes.comparison.Lt) m)
+    (fun n n_ih m =>
+      @Nat.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.comparison) Rocq.Corelib.Init.Datatypes.comparison.Gt
+        (fun n n_ih_1 => n_ih n) m)
+    n m
+
+================================================================================
+Corelib.Init.Nat.div
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.div
+源文件行号候选: [283]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.fst",
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Nat.divmod"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 8,
+    "lam": 2,
+    "case": 1,
+    "rel": 5,
+    "app": 2,
+    "const": 2,
+    "construct": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [
+    "Nat.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 2,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.div",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.div : Nat → Nat → Nat :=
+fun x y =>
+  @Nat.rec.{1} (fun t => Nat) y
+    (fun n n_ih => Rocq.Corelib.Init.Datatypes.fst.{0, 0} Nat Nat (Rocq.Corelib.Init.Nat.divmod x n Nat.zero n)) y
+
+================================================================================
+Corelib.Init.Nat.div2
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.div2
+源文件行号候选: [400]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 7,
+    "fix": 1,
+    "lam": 1,
+    "case": 2,
+    "rel": 4,
+    "construct": 3,
+    "app": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "递归 → 目标递归消去结构；具体结果见 recursor 引用与实际 Lean 定义",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子",
+    "应用 → 已翻译目标的应用"
+  ],
+  "actual_target_recursors": [
+    "Nat.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.div2",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.div2 : Nat → Nat :=
+fun n =>
+  (@Nat.rec.{1}
+      (fun x =>
+        PProd.{1, 1} Nat
+          (@Nat.rec.{2} (fun x => Type) PUnit.{1} (fun n n_ih => PProd.{1, 1} (PProd.{1, 1} Nat n_ih) PUnit.{1}) x))
+      (@PProd.mk.{1, 1} Nat
+        (@Nat.rec.{2} (fun x => Type) PUnit.{1} (fun n n_ih => PProd.{1, 1} (PProd.{1, 1} Nat n_ih) PUnit.{1}) Nat.zero)
+        Nat.zero PUnit.unit.{1})
+      (fun n n_ih =>
+        @PProd.mk.{1, 1} Nat
+          (@Nat.rec.{2} (fun x => Type) PUnit.{1} (fun n n_ih => PProd.{1, 1} (PProd.{1, 1} Nat n_ih) PUnit.{1}) n.succ)
+          (@Nat.rec.{1}
+            (fun z =>
+              PProd.{1, 1} Nat
+                  (@Nat.rec.{2} (fun x => Type) PUnit.{1} (fun n n_ih => PProd.{1, 1} (PProd.{1, 1} Nat n_ih) PUnit.{1})
+                    z) →
+                Nat)
+            (fun x => Nat.zero) (fun n n_ih x => x.2.1.1.succ) n n_ih)
+          (@PProd.mk.{1, 1}
+            ((fun x =>
+                PProd.{1, 1} Nat
+                  (@Nat.rec.{2} (fun x => Type) PUnit.{1} (fun n n_ih => PProd.{1, 1} (PProd.{1, 1} Nat n_ih) PUnit.{1})
+                    x))
+              n)
+            PUnit.{1} n_ih PUnit.unit.{1}))
+      n).1
+
+================================================================================
+Corelib.Init.Nat.divmod
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.divmod
+源文件行号候选: [274]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Datatypes.prod"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Datatypes.prod"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 8,
+    "ind": 26,
+    "app": 8,
+    "fix": 1,
+    "lam": 4,
+    "case": 2,
+    "rel": 14,
+    "construct": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "应用 → 已翻译目标的应用",
+    "递归 → 目标递归消去结构；具体结果见 recursor 引用与实际 Lean 定义",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [
+    "Nat.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.divmod",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 1,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.divmod : Nat → Nat → Nat → Nat → Rocq.Corelib.Init.Datatypes.prod.{0, 0} Nat Nat :=
+fun x y q u =>
+  @Nat.rec.{1} (fun x => Nat → Nat → Nat → Rocq.Corelib.Init.Datatypes.prod.{0, 0} Nat Nat)
+    (fun y q u => Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Nat Nat q u)
+    (fun n n_ih y q u =>
+      @Nat.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.prod.{0, 0} Nat Nat) (n_ih y q.succ y)
+        (fun n n_ih_1 => n_ih y q n) u)
+    x y q u
+
+================================================================================
+Corelib.Init.Nat.double
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.double
+源文件行号候选: [57]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Nat.add"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 3,
+    "lam": 1,
+    "app": 1,
+    "const": 1,
+    "rel": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.double",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.double : Nat → Nat :=
+fun n => Rocq.Corelib.Init.Nat.add n n
+
+================================================================================
+Corelib.Init.Nat.eqb
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.eqb
+源文件行号候选: [83]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.bool",
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.bool",
+      "Corelib.Init.Datatypes.nat"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 4,
+    "ind": 11,
+    "fix": 1,
+    "lam": 2,
+    "case": 3,
+    "rel": 6,
+    "construct": 3,
+    "app": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "递归 → 目标递归消去结构；具体结果见 recursor 引用与实际 Lean 定义",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子",
+    "应用 → 已翻译目标的应用"
+  ],
+  "actual_target_recursors": [
+    "Nat.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.eqb",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.eqb : Nat → Nat → Rocq.Corelib.Init.Datatypes.bool :=
+fun n m =>
+  @Nat.rec.{1} (fun n => Nat → Rocq.Corelib.Init.Datatypes.bool)
+    (fun m =>
+      @Nat.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool) Rocq.Corelib.Init.Datatypes.bool.true
+        (fun n n_ih => Rocq.Corelib.Init.Datatypes.bool.false) m)
+    (fun n n_ih m =>
+      @Nat.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool) Rocq.Corelib.Init.Datatypes.bool.false
+        (fun n n_ih_1 => n_ih n) m)
+    n m
+
+================================================================================
+Corelib.Init.Nat.even
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.even
+源文件行号候选: [132]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.bool",
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.bool",
+      "Corelib.Init.Datatypes.nat"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 7,
+    "fix": 1,
+    "lam": 1,
+    "case": 2,
+    "rel": 4,
+    "construct": 2,
+    "app": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "递归 → 目标递归消去结构；具体结果见 recursor 引用与实际 Lean 定义",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子",
+    "应用 → 已翻译目标的应用"
+  ],
+  "actual_target_recursors": [
+    "Nat.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.even",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.even : Nat → Rocq.Corelib.Init.Datatypes.bool :=
+fun n =>
+  (@Nat.rec.{1}
+      (fun x =>
+        PProd.{1, 1} Rocq.Corelib.Init.Datatypes.bool
+          (@Nat.rec.{2} (fun x => Type) PUnit.{1}
+            (fun n n_ih => PProd.{1, 1} (PProd.{1, 1} Rocq.Corelib.Init.Datatypes.bool n_ih) PUnit.{1}) x))
+      (@PProd.mk.{1, 1} Rocq.Corelib.Init.Datatypes.bool
+        (@Nat.rec.{2} (fun x => Type) PUnit.{1}
+          (fun n n_ih => PProd.{1, 1} (PProd.{1, 1} Rocq.Corelib.Init.Datatypes.bool n_ih) PUnit.{1}) Nat.zero)
+        Rocq.Corelib.Init.Datatypes.bool.true PUnit.unit.{1})
+      (fun n n_ih =>
+        @PProd.mk.{1, 1} Rocq.Corelib.Init.Datatypes.bool
+          (@Nat.rec.{2} (fun x => Type) PUnit.{1}
+            (fun n n_ih => PProd.{1, 1} (PProd.{1, 1} Rocq.Corelib.Init.Datatypes.bool n_ih) PUnit.{1}) n.succ)
+          (@Nat.rec.{1}
+            (fun z =>
+              PProd.{1, 1} Rocq.Corelib.Init.Datatypes.bool
+                  (@Nat.rec.{2} (fun x => Type) PUnit.{1}
+                    (fun n n_ih => PProd.{1, 1} (PProd.{1, 1} Rocq.Corelib.Init.Datatypes.bool n_ih) PUnit.{1}) z) →
+                Rocq.Corelib.Init.Datatypes.bool)
+            (fun x => Rocq.Corelib.Init.Datatypes.bool.false) (fun n n_ih x => x.2.1.1) n n_ih)
+          (@PProd.mk.{1, 1}
+            ((fun x =>
+                PProd.{1, 1} Rocq.Corelib.Init.Datatypes.bool
+                  (@Nat.rec.{2} (fun x => Type) PUnit.{1}
+                    (fun n n_ih => PProd.{1, 1} (PProd.{1, 1} Rocq.Corelib.Init.Datatypes.bool n_ih) PUnit.{1}) x))
+              n)
+            PUnit.{1} n_ih PUnit.unit.{1}))
+      n).1
+
+================================================================================
+Corelib.Init.Nat.gcd
+类别: definition_function；状态: PENDING_KERNEL_CHECKED；实际目标: RocqPending.Corelib.Init.Nat.gcd
+源文件行号候选: [306]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Nat.modulo"
+    ]
+  },
+  "pending": [
+    "Corelib.Init.Nat.gcd__rocq2lean_termination_1"
+  ],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 4,
+    "ind": 9,
+    "fix": 1,
+    "lam": 2,
+    "case": 1,
+    "rel": 6,
+    "app": 4,
+    "const": 1,
+    "construct": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "递归 → 目标递归消去结构；具体结果见 recursor 引用与实际 Lean 定义",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [
+    "Acc.rec",
+    "Nat.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "PENDING_KERNEL_CHECKED",
+  "target": "RocqPending.Corelib.Init.Nat.gcd",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 1,
+    "result": "PENDING_KERNEL_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def RocqPending.Corelib.Init.Nat.gcd : {h_Corelib_Init_Nat_gcd__rocq2lean_termination_1 :
+    Rocq.Corelib.Init.Nat.gcd__rocq2lean_termination_1.statement} →
+  Nat → Nat → Nat :=
+fun {h_Corelib_Init_Nat_gcd__rocq2lean_termination_1} a b =>
+  @Acc.rec.{1, 1} Nat
+    (fun y s =>
+      @Exists.{1} Nat fun b =>
+        @Exists.{1} Nat fun n =>
+          @Exists.{0} (@Eq.{1} Nat s n.succ) fun h => @Eq.{1} Nat y (Rocq.Corelib.Init.Nat.modulo b n.succ))
+    (fun s acc => Nat → Nat)
+    (fun s h ih b =>
+      @Nat.rec.{1} (fun t => @Eq.{1} Nat s t → Nat) (fun h => b)
+        (fun n n_ih h => ih (Rocq.Corelib.Init.Nat.modulo b n.succ) ⋯ n.succ) s ⋯)
+    a ⋯ b
+待证明条件（含完整源/目标表达）
+[
+  {
+    "source": "Corelib.Init.Nat.gcd__rocq2lean_termination_1",
+    "target": "Rocq.Corelib.Init.Nat.gcd__rocq2lean_termination_1.statement",
+    "status": "STATEMENT_KERNEL_CHECKED",
+    "statement_target_type": {
+      "l": {
+        "k": "zero"
+      },
+      "k": "sort"
+    },
+    "statement_target_value": {
+      "t": {
+        "u": [],
+        "n": "Nat",
+        "k": "const"
+      },
+      "n": "s",
+      "k": "forall",
+      "b": {
+        "k": "app",
+        "f": {
+          "k": "app",
+          "f": {
+            "k": "app",
+            "f": {
+              "u": [
+                {
+                  "l": {
+                    "k": "zero"
+                  },
+                  "k": "succ"
+                }
+              ],
+              "n": "Acc",
+              "k": "const"
+            },
+            "a": {
+              "u": [],
+              "n": "Nat",
+              "k": "const"
+            }
+          },
+          "a": {
+            "t": {
+              "u": [],
+              "n": "Nat",
+              "k": "const"
+            },
+            "n": "y",
+            "k": "lam",
+            "b": {
+              "t": {
+                "u": [],
+                "n": "Nat",
+                "k": "const"
+              },
+              "n": "s",
+              "k": "lam",
+              "b": {
+                "k": "app",
+                "f": {
+                  "k": "app",
+                  "f": {
+                    "u": [
+                      {
+                        "l": {
+                          "k": "zero"
+                        },
+                        "k": "succ"
+                      }
+                    ],
+                    "n": "Exists",
+                    "k": "const"
+                  },
+                  "a": {
+                    "u": [],
+                    "n": "Nat",
+                    "k": "const"
+                  }
+                },
+                "a": {
+                  "t": {
+                    "u": [],
+                    "n": "Nat",
+                    "k": "const"
+                  },
+                  "n": "b",
+                  "k": "lam",
+                  "b": {
+                    "k": "app",
+                    "f": {
+                      "k": "app",
+                      "f": {
+                        "u": [
+                          {
+                            "l": {
+                              "k": "zero"
+                            },
+                            "k": "succ"
+                          }
+                        ],
+                        "n": "Exists",
+                        "k": "const"
+                      },
+                      "a": {
+                        "u": [],
+                        "n": "Nat",
+                        "k": "const"
+                      }
+                    },
+                    "a": {
+                      "t": {
+                        "u": [],
+                        "n": "Nat",
+                        "k": "const"
+                      },
+                      "n": "n",
+                      "k": "lam",
+                      "b": {
+                        "k": "app",
+                        "f": {
+                          "k": "app",
+                          "f": {
+                            "u": [
+                              {
+                                "k": "zero"
+                              }
+                            ],
+                            "n": "Exists",
+                            "k": "const"
+                          },
+                          "a": {
+                            "k": "app",
+                            "f": {
+                              "k": "app",
+                              "f": {
+                                "k": "app",
+                                "f": {
+                                  "u": [
+                                    {
+                                      "l": {
+                                        "k": "zero"
+                                      },
+                                      "k": "succ"
+                                    }
+                                  ],
+                                  "n": "Eq",
+                                  "k": "const"
+                                },
+                                "a": {
+                                  "u": [],
+                                  "n": "Nat",
+                                  "k": "const"
+                                }
+                              },
+                              "a": {
+                                "k": "bvar",
+                                "i": 2
+                              }
+                            },
+                            "a": {
+                              "k": "app",
+                              "f": {
+                                "u": [],
+                                "n": "Nat.succ",
+                                "k": "const"
+                              },
+                              "a": {
+                                "k": "bvar",
+                                "i": 0
+                              }
+                            }
+                          }
+                        },
+                        "a": {
+                          "t": {
+                            "k": "app",
+                            "f": {
+                              "k": "app",
+                              "f": {
+                                "k": "app",
+                                "f": {
+                                  "u": [
+                                    {
+                                      "l": {
+                                        "k": "zero"
+                                      },
+                                      "k": "succ"
+                                    }
+                                  ],
+                                  "n": "Eq",
+                                  "k": "const"
+                                },
+                                "a": {
+                                  "u": [],
+                                  "n": "Nat",
+                                  "k": "const"
+                                }
+                              },
+                              "a": {
+                                "k": "bvar",
+                                "i": 2
+                              }
+                            },
+                            "a": {
+                              "k": "app",
+                              "f": {
+                                "u": [],
+                                "n": "Nat.succ",
+                                "k": "const"
+                              },
+                              "a": {
+                                "k": "bvar",
+                                "i": 0
+                              }
+                            }
+                          },
+                          "n": "h",
+                          "k": "lam",
+                          "b": {
+                            "k": "app",
+                            "f": {
+                              "k": "app",
+                              "f": {
+                                "k": "app",
+                                "f": {
+                                  "u": [
+                                    {
+                                      "l": {
+                                        "k": "zero"
+                                      },
+                                      "k": "succ"
+                                    }
+                                  ],
+                                  "n": "Eq",
+                                  "k": "const"
+                                },
+                                "a": {
+                                  "u": [],
+                                  "n": "Nat",
+                                  "k": "const"
+                                }
+                              },
+                              "a": {
+                                "k": "bvar",
+                                "i": 4
+                              }
+                            },
+                            "a": {
+                              "k": "app",
+                              "f": {
+                                "k": "app",
+                                "f": {
+                                  "u": [],
+                                  "n": "Rocq.Corelib.Init.Nat.modulo",
+                                  "k": "const"
+                                },
+                                "a": {
+                                  "k": "bvar",
+                                  "i": 2
+                                }
+                              },
+                              "a": {
+                                "k": "app",
+                                "f": {
+                                  "u": [],
+                                  "n": "Nat.succ",
+                                  "k": "const"
+                                },
+                                "a": {
+                                  "k": "bvar",
+                                  "i": 1
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "a": {
+          "k": "bvar",
+          "i": 0
+        }
+      }
+    },
+    "source_record": null
+  }
+]
+
+================================================================================
+Corelib.Init.Nat.iter
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.iter
+源文件行号候选: [388]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Datatypes.nat_rect"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 6,
+    "ind": 4,
+    "sort": 2,
+    "rel": 11,
+    "lam": 6,
+    "app": 1,
+    "const": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "源 sort/宇宙 → Lean Sort",
+    "局部变量 → Lean 绑定变量",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 1,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [
+    "u_Corelib_Init_Nat_149"
+  ],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.iter",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.iter.{u_Corelib_Init_Nat_149} : Nat → (A : Type u_Corelib_Init_Nat_149) → (A → A) → A → A :=
+fun n A f x => Rocq.Corelib.Init.Datatypes.nat_rect.{u_Corelib_Init_Nat_149 + 1} (fun n => A) x (fun n => f) n
+
+================================================================================
+Corelib.Init.Nat.land
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.land
+源文件行号候选: [424]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.andb",
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Nat.bitwise"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 5,
+    "lam": 2,
+    "app": 1,
+    "const": 2,
+    "rel": 3
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.land",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.land : Nat → Nat → Nat :=
+fun a b => Rocq.Corelib.Init.Nat.bitwise Rocq.Corelib.Init.Datatypes.andb a a b
+
+================================================================================
+Corelib.Init.Nat.ldiff
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.ldiff
+源文件行号候选: [426]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.andb",
+      "Corelib.Init.Datatypes.bool",
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Datatypes.negb",
+      "Corelib.Init.Nat.bitwise"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 7,
+    "lam": 4,
+    "app": 3,
+    "const": 3,
+    "rel": 5
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.ldiff",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.ldiff : Nat → Nat → Nat :=
+fun a b =>
+  Rocq.Corelib.Init.Nat.bitwise (fun b b' => Rocq.Corelib.Init.Datatypes.andb b (Rocq.Corelib.Init.Datatypes.negb b')) a
+    a b
+
+================================================================================
+Corelib.Init.Nat.leb
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.leb
+源文件行号候选: [91]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.bool",
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.bool",
+      "Corelib.Init.Datatypes.nat"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 4,
+    "ind": 10,
+    "fix": 1,
+    "lam": 2,
+    "case": 2,
+    "rel": 5,
+    "construct": 2,
+    "app": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "递归 → 目标递归消去结构；具体结果见 recursor 引用与实际 Lean 定义",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子",
+    "应用 → 已翻译目标的应用"
+  ],
+  "actual_target_recursors": [
+    "Nat.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.leb",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.leb : Nat → Nat → Rocq.Corelib.Init.Datatypes.bool :=
+fun n m =>
+  @Nat.rec.{1} (fun n => Nat → Rocq.Corelib.Init.Datatypes.bool) (fun m => Rocq.Corelib.Init.Datatypes.bool.true)
+    (fun n n_ih m =>
+      @Nat.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool) Rocq.Corelib.Init.Datatypes.bool.false
+        (fun n n_ih_1 => n_ih n) m)
+    n m
+
+================================================================================
+Corelib.Init.Nat.log2
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.log2
+源文件行号候选: [384]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Nat.log2_iter",
+      "Corelib.Init.Nat.pred"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 3,
+    "lam": 1,
+    "app": 3,
+    "const": 2,
+    "rel": 1,
+    "construct": 4
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.log2",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.log2 : Nat → Nat :=
+fun n => Rocq.Corelib.Init.Nat.log2_iter (Rocq.Corelib.Init.Nat.pred n) Nat.zero Nat.zero.succ Nat.zero
+
+================================================================================
+Corelib.Init.Nat.log2_iter
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.log2_iter
+源文件行号候选: [375]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 8,
+    "ind": 16,
+    "fix": 1,
+    "lam": 4,
+    "case": 2,
+    "rel": 13,
+    "app": 5,
+    "construct": 3
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "递归 → 目标递归消去结构；具体结果见 recursor 引用与实际 Lean 定义",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "应用 → 已翻译目标的应用",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [
+    "Nat.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.log2_iter",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 1,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.log2_iter : Nat → Nat → Nat → Nat → Nat :=
+fun k p q r =>
+  @Nat.rec.{1} (fun k => Nat → Nat → Nat → Nat) (fun p q r => p)
+    (fun n n_ih p q r => @Nat.rec.{1} (fun t => Nat) (n_ih p.succ q.succ q) (fun n n_ih_1 => n_ih p q.succ n) r) k p q r
+
+================================================================================
+Corelib.Init.Nat.lor
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.lor
+源文件行号候选: [425]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Datatypes.orb",
+      "Corelib.Init.Nat.bitwise",
+      "Corelib.Init.Nat.max"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 5,
+    "lam": 2,
+    "app": 2,
+    "const": 3,
+    "rel": 4
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.lor",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.lor : Nat → Nat → Nat :=
+fun a b => Rocq.Corelib.Init.Nat.bitwise Rocq.Corelib.Init.Datatypes.orb (Rocq.Corelib.Init.Nat.max a b) a b
+
+================================================================================
+Corelib.Init.Nat.ltb
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.ltb
+源文件行号候选: [98]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.bool",
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Nat.leb"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 5,
+    "lam": 2,
+    "app": 2,
+    "const": 1,
+    "construct": 1,
+    "rel": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "构造子 → 对应目标构造子",
+    "局部变量 → Lean 绑定变量"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.ltb",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.ltb : Nat → Nat → Rocq.Corelib.Init.Datatypes.bool :=
+fun n m => Rocq.Corelib.Init.Nat.leb n.succ m
+
+================================================================================
+Corelib.Init.Nat.lxor
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.lxor
+源文件行号候选: [427]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Datatypes.xorb",
+      "Corelib.Init.Nat.bitwise",
+      "Corelib.Init.Nat.max"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 5,
+    "lam": 2,
+    "app": 2,
+    "const": 3,
+    "rel": 4
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.lxor",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 1,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.lxor : Nat → Nat → Nat :=
+fun a b => Rocq.Corelib.Init.Nat.bitwise Rocq.Corelib.Init.Datatypes.xorb (Rocq.Corelib.Init.Nat.max a b) a b
+
+================================================================================
+Corelib.Init.Nat.max
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.max
+源文件行号候选: [116]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 4,
+    "ind": 10,
+    "fix": 1,
+    "lam": 2,
+    "case": 2,
+    "rel": 7,
+    "app": 2,
+    "construct": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "递归 → 目标递归消去结构；具体结果见 recursor 引用与实际 Lean 定义",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "应用 → 已翻译目标的应用",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [
+    "Nat.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.max",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.max : Nat → Nat → Nat :=
+fun n m =>
+  @Nat.rec.{1} (fun n => Nat → Nat) (fun m => m)
+    (fun n n_ih m => @Nat.rec.{1} (fun t => Nat) n.succ (fun n n_ih_1 => (n_ih n).succ) m) n m
+
+================================================================================
+Corelib.Init.Nat.min
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.min
+源文件行号候选: [123]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 4,
+    "ind": 10,
+    "fix": 1,
+    "lam": 2,
+    "case": 2,
+    "rel": 5,
+    "construct": 3,
+    "app": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "递归 → 目标递归消去结构；具体结果见 recursor 引用与实际 Lean 定义",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子",
+    "应用 → 已翻译目标的应用"
+  ],
+  "actual_target_recursors": [
+    "Nat.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.min",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.min : Nat → Nat → Nat :=
+fun n m =>
+  @Nat.rec.{1} (fun n => Nat → Nat) (fun m => Nat.zero)
+    (fun n n_ih m => @Nat.rec.{1} (fun t => Nat) Nat.zero (fun n n_ih_1 => (n_ih n).succ) m) n m
+
+================================================================================
+Corelib.Init.Nat.modulo
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.modulo
+源文件行号候选: [289]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Datatypes.snd",
+      "Corelib.Init.Nat.divmod",
+      "Corelib.Init.Nat.sub"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 8,
+    "lam": 2,
+    "case": 1,
+    "rel": 6,
+    "app": 3,
+    "const": 3,
+    "construct": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [
+    "Nat.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 2,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.modulo",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.modulo : Nat → Nat → Nat :=
+fun x y =>
+  @Nat.rec.{1} (fun t => Nat) x
+    (fun n n_ih =>
+      Rocq.Corelib.Init.Nat.sub n
+        (Rocq.Corelib.Init.Datatypes.snd.{0, 0} Nat Nat (Rocq.Corelib.Init.Nat.divmod x n Nat.zero n)))
+    y
+
+================================================================================
+Corelib.Init.Nat.mul
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.mul
+源文件行号候选: [59]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Nat.add"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 4,
+    "ind": 9,
+    "fix": 1,
+    "lam": 2,
+    "case": 1,
+    "rel": 5,
+    "construct": 1,
+    "app": 2,
+    "const": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "递归 → 目标递归消去结构；具体结果见 recursor 引用与实际 Lean 定义",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提"
+  ],
+  "actual_target_recursors": [
+    "Nat.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.mul",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 1,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.mul : Nat → Nat → Nat :=
+fun n m =>
+  @Nat.rec.{1} (fun n => Nat → Nat) (fun m => Nat.zero) (fun n n_ih m => Rocq.Corelib.Init.Nat.add m (n_ih m)) n m
+
+================================================================================
+Corelib.Init.Nat.odd
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.odd
+源文件行号候选: [139]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.bool",
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Datatypes.negb",
+      "Corelib.Init.Nat.even"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 3,
+    "lam": 1,
+    "app": 2,
+    "const": 2,
+    "rel": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.odd",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.odd : Nat → Rocq.Corelib.Init.Datatypes.bool :=
+fun n => Rocq.Corelib.Init.Datatypes.negb (Rocq.Corelib.Init.Nat.even n)
+
+================================================================================
+Corelib.Init.Nat.of_hex_int
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.of_hex_int
+源文件行号候选: [249]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Datatypes.option",
+      "Corelib.Init.Hexadecimal.signed_int"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Datatypes.option",
+      "Corelib.Init.Hexadecimal.norm",
+      "Corelib.Init.Hexadecimal.signed_int",
+      "Corelib.Init.Nat.of_hex_uint"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 8,
+    "app": 6,
+    "lam": 1,
+    "case": 1,
+    "const": 2,
+    "rel": 2,
+    "construct": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "应用 → 已翻译目标的应用",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Init.Hexadecimal.signed_int.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.of_hex_int",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.of_hex_int : Rocq.Corelib.Init.Hexadecimal.signed_int →
+  Rocq.Corelib.Init.Datatypes.option.{0} Nat :=
+fun d =>
+  @Rocq.Corelib.Init.Hexadecimal.signed_int.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.option.{0} Nat)
+    (fun d => Rocq.Corelib.Init.Datatypes.option.Some.{0} Nat (Rocq.Corelib.Init.Nat.of_hex_uint d))
+    (fun d => Rocq.Corelib.Init.Datatypes.option.None.{0} Nat) (Rocq.Corelib.Init.Hexadecimal.norm d)
+
+================================================================================
+Corelib.Init.Nat.of_hex_uint
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.of_hex_uint
+源文件行号候选: [213]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Hexadecimal.uint"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Hexadecimal.uint",
+      "Corelib.Init.Nat.of_hex_uint_acc"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 3,
+    "lam": 1,
+    "app": 1,
+    "const": 1,
+    "rel": 1,
+    "construct": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.of_hex_uint",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.of_hex_uint : Rocq.Corelib.Init.Hexadecimal.uint → Nat :=
+fun d => Rocq.Corelib.Init.Nat.of_hex_uint_acc d Nat.zero
+
+================================================================================
+Corelib.Init.Nat.of_hex_uint_acc
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.of_hex_uint_acc
+源文件行号候选: [192]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Hexadecimal.uint"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Hexadecimal.uint",
+      "Corelib.Init.Nat.tail_mul"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 4,
+    "ind": 9,
+    "fix": 1,
+    "lam": 2,
+    "case": 1,
+    "rel": 50,
+    "app": 408,
+    "const": 16,
+    "construct": 392
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "递归 → 目标递归消去结构；具体结果见 recursor 引用与实际 Lean 定义",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Init.Hexadecimal.uint.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.of_hex_uint_acc",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 1,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.of_hex_uint_acc : Rocq.Corelib.Init.Hexadecimal.uint → Nat → Nat :=
+fun d acc =>
+  @Rocq.Corelib.Init.Hexadecimal.uint.rec.{1} (fun d => Nat → Nat) (fun acc => acc)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul
+          Nat.zero.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ acc))
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul
+            Nat.zero.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ acc).succ)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul
+              Nat.zero.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ acc).succ.succ)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul
+                Nat.zero.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ
+                acc).succ.succ.succ)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul
+                  Nat.zero.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ
+                  acc).succ.succ.succ.succ)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul
+                    Nat.zero.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ
+                    acc).succ.succ.succ.succ.succ)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul
+                      Nat.zero.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ
+                      acc).succ.succ.succ.succ.succ.succ)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul
+                        Nat.zero.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ
+                        acc).succ.succ.succ.succ.succ.succ.succ)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul
+                          Nat.zero.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ
+                          acc).succ.succ.succ.succ.succ.succ.succ.succ)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul
+                            Nat.zero.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ
+                            acc).succ.succ.succ.succ.succ.succ.succ.succ.succ)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul
+                              Nat.zero.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ
+                              acc).succ.succ.succ.succ.succ.succ.succ.succ.succ.succ)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul
+                                Nat.zero.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ
+                                acc).succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul
+                                  Nat.zero.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ
+                                  acc).succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul
+                                    Nat.zero.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ
+                                    acc).succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul
+                                      Nat.zero.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ
+                                      acc).succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul
+                                        Nat.zero.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ
+                                        acc).succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ)
+    d acc
+
+================================================================================
+Corelib.Init.Nat.of_int
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.of_int
+源文件行号候选: [243]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Datatypes.option",
+      "Corelib.Init.Decimal.signed_int"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Datatypes.option",
+      "Corelib.Init.Decimal.norm",
+      "Corelib.Init.Decimal.signed_int",
+      "Corelib.Init.Nat.of_uint"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 8,
+    "app": 6,
+    "lam": 1,
+    "case": 1,
+    "const": 2,
+    "rel": 2,
+    "construct": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "应用 → 已翻译目标的应用",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Init.Decimal.signed_int.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.of_int",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.of_int : Rocq.Corelib.Init.Decimal.signed_int → Rocq.Corelib.Init.Datatypes.option.{0} Nat :=
+fun d =>
+  @Rocq.Corelib.Init.Decimal.signed_int.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.option.{0} Nat)
+    (fun d => Rocq.Corelib.Init.Datatypes.option.Some.{0} Nat (Rocq.Corelib.Init.Nat.of_uint d))
+    (fun d => Rocq.Corelib.Init.Datatypes.option.None.{0} Nat) (Rocq.Corelib.Init.Decimal.norm d)
+
+================================================================================
+Corelib.Init.Nat.of_num_int
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.of_num_int
+源文件行号候选: [255]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Datatypes.option",
+      "Corelib.Init.Number.signed_int"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Datatypes.option",
+      "Corelib.Init.Nat.of_hex_int",
+      "Corelib.Init.Nat.of_int",
+      "Corelib.Init.Number.signed_int"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 6,
+    "app": 4,
+    "lam": 1,
+    "case": 1,
+    "rel": 3,
+    "const": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "应用 → 已翻译目标的应用",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "全局常量 → 目标声明或显式待证明前提"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Init.Number.signed_int.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.of_num_int",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.of_num_int : Rocq.Corelib.Init.Number.signed_int →
+  Rocq.Corelib.Init.Datatypes.option.{0} Nat :=
+fun d =>
+  @Rocq.Corelib.Init.Number.signed_int.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.option.{0} Nat)
+    (fun i => Rocq.Corelib.Init.Nat.of_int i) (fun i => Rocq.Corelib.Init.Nat.of_hex_int i) d
+
+================================================================================
+Corelib.Init.Nat.of_num_uint
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.of_num_uint
+源文件行号候选: [215]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Number.uint"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Nat.of_hex_uint",
+      "Corelib.Init.Nat.of_uint",
+      "Corelib.Init.Number.uint"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 4,
+    "lam": 1,
+    "case": 1,
+    "rel": 3,
+    "app": 2,
+    "const": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Init.Number.uint.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.of_num_uint",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.of_num_uint : Rocq.Corelib.Init.Number.uint → Nat :=
+fun d =>
+  @Rocq.Corelib.Init.Number.uint.rec.{1} (fun t => Nat) (fun u => Rocq.Corelib.Init.Nat.of_uint u)
+    (fun u => Rocq.Corelib.Init.Nat.of_hex_uint u) d
+
+================================================================================
+Corelib.Init.Nat.of_uint
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.of_uint
+源文件行号候选: [188]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Decimal.uint"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Decimal.uint",
+      "Corelib.Init.Nat.of_uint_acc"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 3,
+    "lam": 1,
+    "app": 1,
+    "const": 1,
+    "rel": 1,
+    "construct": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.of_uint",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.of_uint : Rocq.Corelib.Init.Decimal.uint → Nat :=
+fun d => Rocq.Corelib.Init.Nat.of_uint_acc d Nat.zero
+
+================================================================================
+Corelib.Init.Nat.of_uint_acc
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.of_uint_acc
+源文件行号候选: [173]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Decimal.uint"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Decimal.uint",
+      "Corelib.Init.Nat.tail_mul"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 4,
+    "ind": 9,
+    "fix": 1,
+    "lam": 2,
+    "case": 1,
+    "rel": 32,
+    "app": 165,
+    "const": 10,
+    "construct": 155
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "递归 → 目标递归消去结构；具体结果见 recursor 引用与实际 Lean 定义",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Init.Decimal.uint.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.of_uint_acc",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 1,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.of_uint_acc : Rocq.Corelib.Init.Decimal.uint → Nat → Nat :=
+fun d acc =>
+  @Rocq.Corelib.Init.Decimal.uint.rec.{1} (fun d => Nat → Nat) (fun acc => acc)
+    (fun a _ih acc =>
+      _ih (Rocq.Corelib.Init.Nat.tail_mul Nat.zero.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ acc))
+    (fun a _ih acc =>
+      _ih (Rocq.Corelib.Init.Nat.tail_mul Nat.zero.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ acc).succ)
+    (fun a _ih acc =>
+      _ih (Rocq.Corelib.Init.Nat.tail_mul Nat.zero.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ acc).succ.succ)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul Nat.zero.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ acc).succ.succ.succ)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul Nat.zero.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ
+                  acc).succ.succ.succ.succ)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul Nat.zero.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ
+                    acc).succ.succ.succ.succ.succ)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul Nat.zero.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ
+                      acc).succ.succ.succ.succ.succ.succ)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul Nat.zero.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ
+                        acc).succ.succ.succ.succ.succ.succ.succ)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul Nat.zero.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ
+                          acc).succ.succ.succ.succ.succ.succ.succ.succ)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul Nat.zero.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ
+                            acc).succ.succ.succ.succ.succ.succ.succ.succ.succ)
+    d acc
+
+================================================================================
+Corelib.Init.Nat.one
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.one
+源文件行号候选: [32]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "ind": 1,
+    "app": 1,
+    "construct": 2
+  },
+  "node_rules_present": [
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "应用 → 已翻译目标的应用",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.one",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.one : Nat :=
+Nat.zero.succ
+
+================================================================================
+Corelib.Init.Nat.pow
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.pow
+源文件行号候选: [143]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Nat.mul"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 4,
+    "ind": 9,
+    "fix": 1,
+    "lam": 2,
+    "case": 1,
+    "rel": 5,
+    "app": 3,
+    "construct": 2,
+    "const": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "递归 → 目标递归消去结构；具体结果见 recursor 引用与实际 Lean 定义",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "应用 → 已翻译目标的应用",
+    "构造子 → 对应目标构造子",
+    "全局常量 → 目标声明或显式待证明前提"
+  ],
+  "actual_target_recursors": [
+    "Nat.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.pow",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.pow : Nat → Nat → Nat :=
+fun n m => @Nat.rec.{1} (fun m => Nat) Nat.zero.succ (fun n_1 n_ih => Rocq.Corelib.Init.Nat.mul n n_ih) m
+
+================================================================================
+Corelib.Init.Nat.pred
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.pred
+源文件行号候选: [39]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 4,
+    "lam": 1,
+    "case": 1,
+    "rel": 3
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量"
+  ],
+  "actual_target_recursors": [
+    "Nat.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.pred",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.pred : Nat → Nat :=
+fun n => @Nat.rec.{1} (fun t => Nat) n (fun n n_ih => n) n
+
+================================================================================
+Corelib.Init.Nat.shiftl
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.shiftl
+源文件行号候选: [413]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Datatypes.nat_rect",
+      "Corelib.Init.Nat.double"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "app": 4,
+    "lam": 6,
+    "ind": 10,
+    "construct": 2,
+    "rel": 2,
+    "const": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "应用 → 已翻译目标的应用",
+    "函数体 → Lean lambda",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "构造子 → 对应目标构造子",
+    "局部变量 → Lean 绑定变量",
+    "全局常量 → 目标声明或显式待证明前提"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 1,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.shiftl",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.shiftl : (fun a => Nat) Nat.zero → (n : Nat) → (fun a => Nat) n :=
+fun a => Rocq.Corelib.Init.Datatypes.nat_rect.{1} (fun a => Nat) a fun n => Rocq.Corelib.Init.Nat.double
+
+================================================================================
+Corelib.Init.Nat.shiftr
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.shiftr
+源文件行号候选: [414]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Datatypes.nat_rect",
+      "Corelib.Init.Nat.div2"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "app": 4,
+    "lam": 6,
+    "ind": 10,
+    "construct": 2,
+    "rel": 2,
+    "const": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "应用 → 已翻译目标的应用",
+    "函数体 → Lean lambda",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "构造子 → 对应目标构造子",
+    "局部变量 → Lean 绑定变量",
+    "全局常量 → 目标声明或显式待证明前提"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 1,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.shiftr",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.shiftr : (fun a => Nat) Nat.zero → (n : Nat) → (fun a => Nat) n :=
+fun a => Rocq.Corelib.Init.Datatypes.nat_rect.{1} (fun a => Nat) a fun n => Rocq.Corelib.Init.Nat.div2
+
+================================================================================
+Corelib.Init.Nat.sqrt
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.sqrt
+源文件行号候选: [340]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Nat.sqrt_iter"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 3,
+    "lam": 1,
+    "app": 1,
+    "const": 1,
+    "rel": 1,
+    "construct": 3
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.sqrt",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.sqrt : Nat → Nat :=
+fun n => Rocq.Corelib.Init.Nat.sqrt_iter n Nat.zero Nat.zero Nat.zero
+
+================================================================================
+Corelib.Init.Nat.sqrt_iter
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.sqrt_iter
+源文件行号候选: [331]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 8,
+    "ind": 16,
+    "fix": 1,
+    "lam": 4,
+    "case": 2,
+    "rel": 13,
+    "app": 7,
+    "construct": 5
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "递归 → 目标递归消去结构；具体结果见 recursor 引用与实际 Lean 定义",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "应用 → 已翻译目标的应用",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [
+    "Nat.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.sqrt_iter",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 1,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.sqrt_iter : Nat → Nat → Nat → Nat → Nat :=
+fun k p q r =>
+  @Nat.rec.{1} (fun k => Nat → Nat → Nat → Nat) (fun p q r => p)
+    (fun n n_ih p q r =>
+      @Nat.rec.{1} (fun t => Nat) (n_ih p.succ q.succ.succ q.succ.succ) (fun n n_ih_1 => n_ih p q n) r)
+    k p q r
+
+================================================================================
+Corelib.Init.Nat.square
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.square
+源文件行号候选: [314]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Nat.mul"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 3,
+    "lam": 1,
+    "app": 1,
+    "const": 1,
+    "rel": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.square",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.square : Nat → Nat :=
+fun n => Rocq.Corelib.Init.Nat.mul n n
+
+================================================================================
+Corelib.Init.Nat.sub
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.sub
+源文件行号候选: [71]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 4,
+    "ind": 10,
+    "fix": 1,
+    "lam": 2,
+    "case": 2,
+    "rel": 7,
+    "app": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "递归 → 目标递归消去结构；具体结果见 recursor 引用与实际 Lean 定义",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "应用 → 已翻译目标的应用"
+  ],
+  "actual_target_recursors": [
+    "Nat.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.sub",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.sub : Nat → Nat → Nat :=
+fun n m =>
+  @Nat.rec.{1} (fun n => Nat → Nat) (fun m => Nat.zero)
+    (fun n n_ih m => @Nat.rec.{1} (fun t => Nat) n.succ (fun n n_ih_1 => n_ih n) m) n m
+
+================================================================================
+Corelib.Init.Nat.succ
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.succ
+源文件行号候选: [37]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 2,
+    "construct": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.succ",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.succ : Nat → Nat :=
+Nat.succ
+
+================================================================================
+Corelib.Init.Nat.t
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.t
+源文件行号候选: [23]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [],
+    "body": [
+      "Corelib.Init.Datatypes.nat"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "sort": 1,
+    "ind": 1
+  },
+  "node_rules_present": [
+    "源 sort/宇宙 → Lean Sort",
+    "归纳类型引用 → 原生 bootstrap 或生成类型"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.t",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.t : Type :=
+Nat
+
+================================================================================
+Corelib.Init.Nat.tail_add
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.tail_add
+源文件行号候选: [153]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 4,
+    "ind": 9,
+    "fix": 1,
+    "lam": 2,
+    "case": 1,
+    "rel": 5,
+    "app": 2,
+    "construct": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "递归 → 目标递归消去结构；具体结果见 recursor 引用与实际 Lean 定义",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "应用 → 已翻译目标的应用",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [
+    "Nat.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.tail_add",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.tail_add : Nat → Nat → Nat :=
+fun n m => @Nat.rec.{1} (fun n => Nat → Nat) (fun m => m) (fun n n_ih m => n_ih m.succ) n m
+
+================================================================================
+Corelib.Init.Nat.tail_addmul
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.tail_addmul
+源文件行号候选: [161]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Nat.tail_add"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 6,
+    "ind": 12,
+    "fix": 1,
+    "lam": 3,
+    "case": 1,
+    "rel": 7,
+    "app": 2,
+    "const": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "递归 → 目标递归消去结构；具体结果见 recursor 引用与实际 Lean 定义",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提"
+  ],
+  "actual_target_recursors": [
+    "Nat.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.tail_addmul",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 1,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.tail_addmul : Nat → Nat → Nat → Nat :=
+fun r n m =>
+  @Nat.rec.{1} (fun n => Nat → Nat → Nat) (fun r m => r) (fun n n_ih r m => n_ih (Rocq.Corelib.Init.Nat.tail_add m r) m)
+    n r m
+
+================================================================================
+Corelib.Init.Nat.tail_mul
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.tail_mul
+源文件行号候选: [167]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Nat.tail_addmul"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 5,
+    "lam": 2,
+    "app": 1,
+    "const": 1,
+    "construct": 1,
+    "rel": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "构造子 → 对应目标构造子",
+    "局部变量 → Lean 绑定变量"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.tail_mul",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.tail_mul : Nat → Nat → Nat :=
+fun n m => Rocq.Corelib.Init.Nat.tail_addmul Nat.zero n m
+
+================================================================================
+Corelib.Init.Nat.testbit
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.testbit
+源文件行号候选: [407]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.bool",
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.bool",
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Nat.div2",
+      "Corelib.Init.Nat.odd"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 4,
+    "ind": 9,
+    "fix": 1,
+    "lam": 2,
+    "case": 1,
+    "rel": 5,
+    "app": 3,
+    "const": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "递归 → 目标递归消去结构；具体结果见 recursor 引用与实际 Lean 定义",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提"
+  ],
+  "actual_target_recursors": [
+    "Nat.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.testbit",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.testbit : Nat → Nat → Rocq.Corelib.Init.Datatypes.bool :=
+fun a n =>
+  @Nat.rec.{1} (fun n => Nat → Rocq.Corelib.Init.Datatypes.bool) (fun a => Rocq.Corelib.Init.Nat.odd a)
+    (fun n n_ih a => n_ih (Rocq.Corelib.Init.Nat.div2 a)) n a
+
+================================================================================
+Corelib.Init.Nat.to_hex_int
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.to_hex_int
+源文件行号候选: [263]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Hexadecimal.signed_int"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Hexadecimal.signed_int",
+      "Corelib.Init.Nat.to_hex_uint"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 3,
+    "lam": 1,
+    "app": 2,
+    "construct": 1,
+    "const": 1,
+    "rel": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用",
+    "构造子 → 对应目标构造子",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.to_hex_int",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.to_hex_int : Nat → Rocq.Corelib.Init.Hexadecimal.signed_int :=
+fun n => Rocq.Corelib.Init.Hexadecimal.signed_int.Pos (Rocq.Corelib.Init.Nat.to_hex_uint n)
+
+================================================================================
+Corelib.Init.Nat.to_hex_uint
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.to_hex_uint
+源文件行号候选: [236]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Hexadecimal.uint"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Hexadecimal.rev",
+      "Corelib.Init.Hexadecimal.uint",
+      "Corelib.Init.Nat.to_little_hex_uint"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 3,
+    "lam": 1,
+    "app": 3,
+    "const": 2,
+    "rel": 1,
+    "construct": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.to_hex_uint",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.to_hex_uint : Nat → Rocq.Corelib.Init.Hexadecimal.uint :=
+fun n =>
+  Rocq.Corelib.Init.Hexadecimal.rev
+    (Rocq.Corelib.Init.Nat.to_little_hex_uint n Rocq.Corelib.Init.Hexadecimal.uint.Nil.D0)
+
+================================================================================
+Corelib.Init.Nat.to_int
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.to_int
+源文件行号候选: [261]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Decimal.signed_int"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Decimal.signed_int",
+      "Corelib.Init.Nat.to_uint"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 3,
+    "lam": 1,
+    "app": 2,
+    "construct": 1,
+    "const": 1,
+    "rel": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用",
+    "构造子 → 对应目标构造子",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.to_int",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.to_int : Nat → Rocq.Corelib.Init.Decimal.signed_int :=
+fun n => Rocq.Corelib.Init.Decimal.signed_int.Pos (Rocq.Corelib.Init.Nat.to_uint n)
+
+================================================================================
+Corelib.Init.Nat.to_little_hex_uint
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.to_little_hex_uint
+源文件行号候选: [230]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Hexadecimal.uint"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Hexadecimal.uint",
+      "Corelib.Init.Hexadecimal/Little.succ"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 4,
+    "ind": 9,
+    "fix": 1,
+    "lam": 2,
+    "case": 1,
+    "rel": 5,
+    "app": 2,
+    "const": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "递归 → 目标递归消去结构；具体结果见 recursor 引用与实际 Lean 定义",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提"
+  ],
+  "actual_target_recursors": [
+    "Nat.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.to_little_hex_uint",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 1,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.to_little_hex_uint : Nat →
+  Rocq.Corelib.Init.Hexadecimal.uint → Rocq.Corelib.Init.Hexadecimal.uint :=
+fun n acc =>
+  @Nat.rec.{1} (fun n => Rocq.Corelib.Init.Hexadecimal.uint → Rocq.Corelib.Init.Hexadecimal.uint) (fun acc => acc)
+    (fun n n_ih acc => n_ih (Rocq.Corelib.Init.Hexadecimal.Little.succ acc)) n acc
+
+================================================================================
+Corelib.Init.Nat.to_little_uint
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.to_little_uint
+源文件行号候选: [221]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Decimal.uint"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Decimal.uint",
+      "Corelib.Init.Decimal/Little.succ"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 4,
+    "ind": 9,
+    "fix": 1,
+    "lam": 2,
+    "case": 1,
+    "rel": 5,
+    "app": 2,
+    "const": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "递归 → 目标递归消去结构；具体结果见 recursor 引用与实际 Lean 定义",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提"
+  ],
+  "actual_target_recursors": [
+    "Nat.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.to_little_uint",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.to_little_uint : Nat → Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.uint :=
+fun n acc =>
+  @Nat.rec.{1} (fun n => Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.uint) (fun acc => acc)
+    (fun n n_ih acc => n_ih (Rocq.Corelib.Init.Decimal.Little.succ acc)) n acc
+
+================================================================================
+Corelib.Init.Nat.to_num_hex_uint
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.to_num_hex_uint
+源文件行号候选: [241]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Number.uint"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Nat.to_hex_uint",
+      "Corelib.Init.Number.uint"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 3,
+    "lam": 1,
+    "app": 2,
+    "construct": 1,
+    "const": 1,
+    "rel": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用",
+    "构造子 → 对应目标构造子",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.to_num_hex_uint",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.to_num_hex_uint : Nat → Rocq.Corelib.Init.Number.uint :=
+fun n => Rocq.Corelib.Init.Number.uint.UIntHexadecimal (Rocq.Corelib.Init.Nat.to_hex_uint n)
+
+================================================================================
+Corelib.Init.Nat.to_num_int
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.to_num_int
+源文件行号候选: [265]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Number.signed_int"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Nat.to_int",
+      "Corelib.Init.Number.signed_int"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 3,
+    "lam": 1,
+    "app": 2,
+    "construct": 1,
+    "const": 1,
+    "rel": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用",
+    "构造子 → 对应目标构造子",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.to_num_int",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.to_num_int : Nat → Rocq.Corelib.Init.Number.signed_int :=
+fun n => Rocq.Corelib.Init.Number.signed_int.IntDecimal (Rocq.Corelib.Init.Nat.to_int n)
+
+================================================================================
+Corelib.Init.Nat.to_num_uint
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.to_num_uint
+源文件行号候选: [239]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Number.uint"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Nat.to_uint",
+      "Corelib.Init.Number.uint"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 3,
+    "lam": 1,
+    "app": 2,
+    "construct": 1,
+    "const": 1,
+    "rel": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用",
+    "构造子 → 对应目标构造子",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.to_num_uint",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.to_num_uint : Nat → Rocq.Corelib.Init.Number.uint :=
+fun n => Rocq.Corelib.Init.Number.uint.UIntDecimal (Rocq.Corelib.Init.Nat.to_uint n)
+
+================================================================================
+Corelib.Init.Nat.to_uint
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.to_uint
+源文件行号候选: [227]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Decimal.uint"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Init.Decimal.rev",
+      "Corelib.Init.Decimal.uint",
+      "Corelib.Init.Nat.to_little_uint"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 3,
+    "lam": 1,
+    "app": 3,
+    "const": 2,
+    "rel": 1,
+    "construct": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.to_uint",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.to_uint : Nat → Rocq.Corelib.Init.Decimal.uint :=
+fun n => Rocq.Corelib.Init.Decimal.rev (Rocq.Corelib.Init.Nat.to_little_uint n Rocq.Corelib.Init.Decimal.uint.Nil.D0)
+
+================================================================================
+Corelib.Init.Nat.two
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.two
+源文件行号候选: [33]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "ind": 1,
+    "app": 2,
+    "construct": 3
+  },
+  "node_rules_present": [
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "应用 → 已翻译目标的应用",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.two",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.two : Nat :=
+Nat.zero.succ.succ
+
+================================================================================
+Corelib.Init.Nat.zero
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.Init.Nat.zero
+源文件行号候选: [31]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.nat"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "ind": 1,
+    "construct": 1
+  },
+  "node_rules_present": [
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.Init.Nat.zero",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Nat.zero : Nat :=
+Nat.zero

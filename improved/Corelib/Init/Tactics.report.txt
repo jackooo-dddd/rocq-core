@@ -1,0 +1,217 @@
+Corelib.Init.Tactics 逐声明翻译报告
+{
+  "module": "Corelib.Init.Tactics",
+  "total": 2,
+  "complete": 2,
+  "pending": 0,
+  "blocked": 0,
+  "statuses": {
+    "STATEMENT_KERNEL_CHECKED": 2
+  },
+  "run_status": "MEASURED",
+  "source_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK",
+  "translation_compile_exit": 0
+}
+本文件采用逐模块独立运行。依赖随各翻译单元重复包含；不要直接把全部 .lean 一起 import。
+对应 .lean 使用翻译器的 #rocq2lean_import 命令生成内核声明；实际定义以 kernel view 展示，并非人工伪造的 Lean 源码。
+定理只翻译陈述；pending 是显式前提，不是已经证明；未导出的项目没有虚构 IR。
+
+================================================================================
+Corelib.Init.Tactics.decide_left
+类别: statement；状态: STATEMENT_KERNEL_CHECKED；实际目标: Rocq.Corelib.Init.Tactics.decide_left.statement
+源文件行号候选: [197]
+1 源声明与导出
+{
+  "source_kind": "statement",
+  "source_body_state": "statement_only",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": true,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Logic.not",
+      "Corelib.Init.Specif.sumbool"
+    ],
+    "body": []
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 7,
+    "sort": 2,
+    "app": 8,
+    "ind": 2,
+    "rel": 12,
+    "const": 3,
+    "construct": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "源 sort/宇宙 → Lean Sort",
+    "应用 → 已翻译目标的应用",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "局部变量 → Lean 绑定变量",
+    "全局常量 → 目标声明或显式待证明前提",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "STATEMENT_KERNEL_CHECKED",
+  "target": "Rocq.Corelib.Init.Tactics.decide_left.statement",
+  "target_kind": "statement",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Tactics.decide_left.statement : Prop :=
+∀ (C : Prop) (decide : Rocq.Corelib.Init.Specif.sumbool C (Rocq.Corelib.Init.Logic.not C)),
+  C →
+    ∀ (P : Rocq.Corelib.Init.Specif.sumbool C (Rocq.Corelib.Init.Logic.not C) → Prop),
+      (∀ (H : C), P (Rocq.Corelib.Init.Specif.sumbool.left C (Rocq.Corelib.Init.Logic.not C) H)) → P decide
+
+================================================================================
+Corelib.Init.Tactics.decide_right
+类别: statement；状态: STATEMENT_KERNEL_CHECKED；实际目标: Rocq.Corelib.Init.Tactics.decide_right.statement
+源文件行号候选: [205]
+1 源声明与导出
+{
+  "source_kind": "statement",
+  "source_body_state": "statement_only",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": true,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Logic.not",
+      "Corelib.Init.Specif.sumbool"
+    ],
+    "body": []
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 7,
+    "sort": 2,
+    "app": 10,
+    "ind": 2,
+    "rel": 12,
+    "const": 5,
+    "construct": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "源 sort/宇宙 → Lean Sort",
+    "应用 → 已翻译目标的应用",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "局部变量 → Lean 绑定变量",
+    "全局常量 → 目标声明或显式待证明前提",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "STATEMENT_KERNEL_CHECKED",
+  "target": "Rocq.Corelib.Init.Tactics.decide_right.statement",
+  "target_kind": "statement",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.Init.Tactics.decide_right.statement : Prop :=
+∀ (C : Prop) (decide : Rocq.Corelib.Init.Specif.sumbool C (Rocq.Corelib.Init.Logic.not C)),
+  Rocq.Corelib.Init.Logic.not C →
+    ∀ (P : Rocq.Corelib.Init.Specif.sumbool C (Rocq.Corelib.Init.Logic.not C) → Prop),
+      (∀ (H : Rocq.Corelib.Init.Logic.not C),
+          P (Rocq.Corelib.Init.Specif.sumbool.right C (Rocq.Corelib.Init.Logic.not C) H)) →
+        P decide

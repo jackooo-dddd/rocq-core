@@ -1,0 +1,15 @@
+SOURCE Corelib.Init.Prelude.ReverseCoercionSource
+def Rocq.Corelib.Init.Prelude.ReverseCoercionSource.{v_0} : Type v_0 → Type v_0 :=
+fun T => T
+
+SOURCE Corelib.Init.Prelude.ReverseCoercionTarget
+def Rocq.Corelib.Init.Prelude.ReverseCoercionTarget.{v_0} : Type v_0 → Type v_0 :=
+fun T => T
+
+SOURCE Corelib.Init.Prelude.reverse_coercion
+def Rocq.Corelib.Init.Prelude.reverse_coercion.{v_0, v_1} : (T' : Type v_0) →
+  (T : Type v_1) →
+    T' →
+      Rocq.Corelib.Init.Prelude.ReverseCoercionSource.{v_1} T →
+        Rocq.Corelib.Init.Prelude.ReverseCoercionTarget.{v_0} T' :=
+fun T' T x' x => x'

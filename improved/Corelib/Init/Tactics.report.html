@@ -1,0 +1,171 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><title>Corelib.Init.Tactics</title><style>body{font:15px/1.65 system-ui,sans-serif;max-width:1250px;margin:35px auto;padding:0 24px;color:#23303b;background:#fbfcfe}h1{font-size:25px}h2{font-size:19px}table{border-collapse:collapse;width:100%;background:white}td,th{padding:9px;border:1px solid #dbe2e8;text-align:left;vertical-align:top}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#edf2f6;padding:14px;border-radius:6px;font:12px/1.6 ui-monospace,monospace}details{background:white;border:1px solid #dbe2e8;border-radius:7px;margin:13px 0;padding:12px}summary{font-weight:600;cursor:pointer;overflow-wrap:anywhere}input,select{padding:9px;margin:8px;border:1px solid #aab8c5;border-radius:5px}a{color:#175fa6}.note{background:#edf4ff;padding:14px}.bad{color:#ac3027}.good{color:#176d4c}</style><body><h1>Corelib.Init.Tactics</h1><p class="note">本文件采用逐模块独立运行。依赖随各翻译单元重复包含；不要直接把全部 .lean 一起 import。 对应 .lean 使用翻译器的 #rocq2lean_import 命令生成内核声明；实际定义以 kernel view 展示，并非人工伪造的 Lean 源码。 定理只翻译陈述；pending 是显式前提，不是已经证明；未导出的项目没有虚构 IR。</p><pre>{
+  &quot;module&quot;: &quot;Corelib.Init.Tactics&quot;,
+  &quot;total&quot;: 2,
+  &quot;complete&quot;: 2,
+  &quot;pending&quot;: 0,
+  &quot;blocked&quot;: 0,
+  &quot;statuses&quot;: {
+    &quot;STATEMENT_KERNEL_CHECKED&quot;: 2
+  },
+  &quot;run_status&quot;: &quot;MEASURED&quot;,
+  &quot;source_roundtrip&quot;: &quot;OK&quot;,
+  &quot;consumer&quot;: &quot;OK&quot;,
+  &quot;audit&quot;: &quot;OK&quot;,
+  &quot;translation_compile_exit&quot;: 0
+}</pre><p><a href="Tactics.lean">翻译文件</a> · <a href="Tactics.v">源文件副本</a> · <a href="Tactics.json">完整 JSON</a> · <a href="Tactics.report.txt">文本报告</a></p><input id="search" placeholder="搜索声明名"><select id="filter"><option value="">全部状态</option><option>STATEMENT_KERNEL_CHECKED</option></select><details class="decl" id="d0" data-status="STATEMENT_KERNEL_CHECKED"><summary>Corelib.Init.Tactics.decide_left — STATEMENT_KERNEL_CHECKED</summary><p>类别: statement；状态: STATEMENT_KERNEL_CHECKED；实际目标: Rocq.Corelib.Init.Tactics.decide_left.statement</p><p>源文件行号候选：[197]</p><h3>实际 Lean 输出</h3><pre>def Rocq.Corelib.Init.Tactics.decide_left.statement : Prop :=
+∀ (C : Prop) (decide : Rocq.Corelib.Init.Specif.sumbool C (Rocq.Corelib.Init.Logic.not C)),
+  C →
+    ∀ (P : Rocq.Corelib.Init.Specif.sumbool C (Rocq.Corelib.Init.Logic.not C) → Prop),
+      (∀ (H : C), P (Rocq.Corelib.Init.Specif.sumbool.left C (Rocq.Corelib.Init.Logic.not C) H)) → P decide</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;statement&quot;,
+  &quot;source_body_state&quot;: &quot;statement_only&quot;,
+  &quot;native_preparation&quot;: {
+    &quot;sealed_implementation&quot;: false,
+    &quot;lowered_ssr_have_upoly&quot;: false
+  },
+  &quot;exported&quot;: true
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: true,
+  &quot;dependencies&quot;: {
+    &quot;type&quot;: [
+      &quot;Corelib.Init.Logic.not&quot;,
+      &quot;Corelib.Init.Specif.sumbool&quot;
+    ],
+    &quot;body&quot;: []
+  },
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;constant/transparent&quot;,
+  &quot;source_node_counts&quot;: {
+    &quot;prod&quot;: 7,
+    &quot;sort&quot;: 2,
+    &quot;app&quot;: 8,
+    &quot;ind&quot;: 2,
+    &quot;rel&quot;: 12,
+    &quot;const&quot;: 3,
+    &quot;construct&quot;: 1
+  },
+  &quot;node_rules_present&quot;: [
+    &quot;依赖函数类型 → Lean forall&quot;,
+    &quot;源 sort/宇宙 → Lean Sort&quot;,
+    &quot;应用 → 已翻译目标的应用&quot;,
+    &quot;归纳类型引用 → 原生 bootstrap 或生成类型&quot;,
+    &quot;局部变量 → Lean 绑定变量&quot;,
+    &quot;全局常量 → 目标声明或显式待证明前提&quot;,
+    &quot;构造子 → 对应目标构造子&quot;
+  ],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{
+  &quot;universe_diagnostics&quot;: [],
+  &quot;universe_checks&quot;: 0,
+  &quot;template_params&quot;: [],
+  &quot;solved_levels&quot;: [],
+  &quot;r2bp_levels&quot;: [],
+  &quot;prop_lift_coercions&quot;: 0,
+  &quot;prop_lift&quot;: null,
+  &quot;phantom_lowered&quot;: [],
+  &quot;level_split&quot;: [],
+  &quot;level_params&quot;: [],
+  &quot;level_interp&quot;: [],
+  &quot;level_copies&quot;: [],
+  &quot;delta_inlined&quot;: [],
+  &quot;admitting_levels&quot;: []
+}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;,
+  &quot;target&quot;: &quot;Rocq.Corelib.Init.Tactics.decide_left.statement&quot;,
+  &quot;target_kind&quot;: &quot;statement&quot;,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: &quot;RT_OK&quot;,
+  &quot;module_roundtrip&quot;: &quot;OK&quot;,
+  &quot;consumer&quot;: &quot;OK&quot;,
+  &quot;audit&quot;: &quot;OK&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[
+  {
+    &quot;label&quot;: &quot;c[]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;TRANSLATED_AND_CHECKED&quot;,
+    &quot;flag_descriptions&quot;: []
+  }
+]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Tactics/records/0000.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d1" data-status="STATEMENT_KERNEL_CHECKED"><summary>Corelib.Init.Tactics.decide_right — STATEMENT_KERNEL_CHECKED</summary><p>类别: statement；状态: STATEMENT_KERNEL_CHECKED；实际目标: Rocq.Corelib.Init.Tactics.decide_right.statement</p><p>源文件行号候选：[205]</p><h3>实际 Lean 输出</h3><pre>def Rocq.Corelib.Init.Tactics.decide_right.statement : Prop :=
+∀ (C : Prop) (decide : Rocq.Corelib.Init.Specif.sumbool C (Rocq.Corelib.Init.Logic.not C)),
+  Rocq.Corelib.Init.Logic.not C →
+    ∀ (P : Rocq.Corelib.Init.Specif.sumbool C (Rocq.Corelib.Init.Logic.not C) → Prop),
+      (∀ (H : Rocq.Corelib.Init.Logic.not C),
+          P (Rocq.Corelib.Init.Specif.sumbool.right C (Rocq.Corelib.Init.Logic.not C) H)) →
+        P decide</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;statement&quot;,
+  &quot;source_body_state&quot;: &quot;statement_only&quot;,
+  &quot;native_preparation&quot;: {
+    &quot;sealed_implementation&quot;: false,
+    &quot;lowered_ssr_have_upoly&quot;: false
+  },
+  &quot;exported&quot;: true
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: true,
+  &quot;dependencies&quot;: {
+    &quot;type&quot;: [
+      &quot;Corelib.Init.Logic.not&quot;,
+      &quot;Corelib.Init.Specif.sumbool&quot;
+    ],
+    &quot;body&quot;: []
+  },
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;constant/transparent&quot;,
+  &quot;source_node_counts&quot;: {
+    &quot;prod&quot;: 7,
+    &quot;sort&quot;: 2,
+    &quot;app&quot;: 10,
+    &quot;ind&quot;: 2,
+    &quot;rel&quot;: 12,
+    &quot;const&quot;: 5,
+    &quot;construct&quot;: 1
+  },
+  &quot;node_rules_present&quot;: [
+    &quot;依赖函数类型 → Lean forall&quot;,
+    &quot;源 sort/宇宙 → Lean Sort&quot;,
+    &quot;应用 → 已翻译目标的应用&quot;,
+    &quot;归纳类型引用 → 原生 bootstrap 或生成类型&quot;,
+    &quot;局部变量 → Lean 绑定变量&quot;,
+    &quot;全局常量 → 目标声明或显式待证明前提&quot;,
+    &quot;构造子 → 对应目标构造子&quot;
+  ],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{
+  &quot;universe_diagnostics&quot;: [],
+  &quot;universe_checks&quot;: 0,
+  &quot;template_params&quot;: [],
+  &quot;solved_levels&quot;: [],
+  &quot;r2bp_levels&quot;: [],
+  &quot;prop_lift_coercions&quot;: 0,
+  &quot;prop_lift&quot;: null,
+  &quot;phantom_lowered&quot;: [],
+  &quot;level_split&quot;: [],
+  &quot;level_params&quot;: [],
+  &quot;level_interp&quot;: [],
+  &quot;level_copies&quot;: [],
+  &quot;delta_inlined&quot;: [],
+  &quot;admitting_levels&quot;: []
+}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;,
+  &quot;target&quot;: &quot;Rocq.Corelib.Init.Tactics.decide_right.statement&quot;,
+  &quot;target_kind&quot;: &quot;statement&quot;,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: &quot;RT_OK&quot;,
+  &quot;module_roundtrip&quot;: &quot;OK&quot;,
+  &quot;consumer&quot;: &quot;OK&quot;,
+  &quot;audit&quot;: &quot;OK&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[
+  {
+    &quot;label&quot;: &quot;c[]&quot;,
+    &quot;ms&quot;: 0,
+    &quot;result&quot;: &quot;TRANSLATED_AND_CHECKED&quot;,
+    &quot;flag_descriptions&quot;: []
+  }
+]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Tactics/records/0001.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><script>function filter(){let q=document.getElementById("search").value.toLowerCase(),s=document.getElementById("filter").value;document.querySelectorAll(".decl").forEach(e=>e.style.display=(!s||e.dataset.status===s)&&e.querySelector("summary").textContent.toLowerCase().includes(q)?"":"none")}document.getElementById("search").oninput=filter;document.getElementById("filter").onchange=filter;</script></body></html>

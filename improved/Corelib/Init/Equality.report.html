@@ -1,0 +1,851 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><title>Corelib.Init.Equality</title><style>body{font:15px/1.65 system-ui,sans-serif;max-width:1250px;margin:35px auto;padding:0 24px;color:#23303b;background:#fbfcfe}h1{font-size:25px}h2{font-size:19px}table{border-collapse:collapse;width:100%;background:white}td,th{padding:9px;border:1px solid #dbe2e8;text-align:left;vertical-align:top}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#edf2f6;padding:14px;border-radius:6px;font:12px/1.6 ui-monospace,monospace}details{background:white;border:1px solid #dbe2e8;border-radius:7px;margin:13px 0;padding:12px}summary{font-weight:600;cursor:pointer;overflow-wrap:anywhere}input,select{padding:9px;margin:8px;border:1px solid #aab8c5;border-radius:5px}a{color:#175fa6}.note{background:#edf4ff;padding:14px}.bad{color:#ac3027}.good{color:#176d4c}</style><body><h1>Corelib.Init.Equality</h1><p class="note">本文件采用逐模块独立运行。依赖随各翻译单元重复包含；不要直接把全部 .lean 一起 import。 对应 .lean 使用翻译器的 #rocq2lean_import 命令生成内核声明；实际定义以 kernel view 展示，并非人工伪造的 Lean 源码。 定理只翻译陈述；pending 是显式前提，不是已经证明；未导出的项目没有虚构 IR。</p><pre>{
+  &quot;module&quot;: &quot;Corelib.Init.Equality&quot;,
+  &quot;total&quot;: 22,
+  &quot;complete&quot;: 0,
+  &quot;pending&quot;: 0,
+  &quot;blocked&quot;: 22,
+  &quot;statuses&quot;: {
+    &quot;EXPORT_SORT_POLYMORPHISM_UNSUPPORTED&quot;: 22
+  },
+  &quot;run_status&quot;: &quot;EXPORT_BLOCKED&quot;,
+  &quot;source_roundtrip&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;consumer&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;audit&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;translation_compile_exit&quot;: 1
+}</pre><p><a href="Equality.lean">翻译文件</a> · <a href="Equality.v">源文件副本</a> · <a href="Equality.json">完整 JSON</a> · <a href="Equality.report.txt">文本报告</a></p><input id="search" placeholder="搜索声明名"><select id="filter"><option value="">全部状态</option><option>EXPORT_SORT_POLYMORPHISM_UNSUPPORTED</option></select><details class="decl" id="d0" data-status="EXPORT_SORT_POLYMORPHISM_UNSUPPORTED"><summary>Corelib.Init.Equality.Has_J — EXPORT_SORT_POLYMORPHISM_UNSUPPORTED</summary><p>类别: export_unavailable；状态: EXPORT_SORT_POLYMORPHISM_UNSUPPORTED；实际目标: None</p><p>源文件行号候选：[28]</p><h3>失败位置、原因与所需能力</h3><pre>{
+  &quot;stage&quot;: &quot;导出 / MetaRocq 引用&quot;,
+  &quot;class&quot;: &quot;sort_polymorphism&quot;,
+  &quot;observed&quot;: &quot;导出器拒绝绑定 sort quality 的多态上下文；没有生成该项 IR。&quot;,
+  &quot;needed&quot;: &quot;需要前端表示并引用 quality/sort 多态，且向后续 IR 与 Lean 翻译传递约束；不是仅增加一个普通 AST 节点。&quot;,
+  &quot;implementation&quot;: &quot;rocq/exporter/src/r2l_export.ml:733,1075&quot;,
+  &quot;certainty&quot;: &quot;阶段和报错为直接证据；所需能力为分析，不代表已有安全实现&quot;
+}</pre><pre>File &quot;./Export.v&quot;, line 3, characters 0-155:
+Error:
+ROCQ2LEAN_UNQUOTABLE: 1 root(s) depend on a sort-polymorphic declaration; see /home/shunqwang4/research/r2l-core-census-20261017/runs/corelib-census/exports/0015/source.ndjson.blockers.json
+
+
+节点路径: []</pre><pre>[]</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;export_unavailable&quot;,
+  &quot;source_body_state&quot;: null,
+  &quot;native_preparation&quot;: {},
+  &quot;exported&quot;: false
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {},
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;&quot;,
+  &quot;source_node_counts&quot;: {},
+  &quot;node_rules_present&quot;: [],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;EXPORT_SORT_POLYMORPHISM_UNSUPPORTED&quot;,
+  &quot;target&quot;: null,
+  &quot;target_kind&quot;: null,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: null,
+  &quot;module_roundtrip&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;consumer&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;audit&quot;: &quot;NOT_APPLICABLE&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Equality/records/0000.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d1" data-status="EXPORT_SORT_POLYMORPHISM_UNSUPPORTED"><summary>Corelib.Init.Equality.Has_J_Has_J_forward — EXPORT_SORT_POLYMORPHISM_UNSUPPORTED</summary><p>类别: export_unavailable；状态: EXPORT_SORT_POLYMORPHISM_UNSUPPORTED；实际目标: None</p><p>源文件行号候选：[116]</p><h3>失败位置、原因与所需能力</h3><pre>{
+  &quot;stage&quot;: &quot;导出 / MetaRocq 引用&quot;,
+  &quot;class&quot;: &quot;sort_polymorphism&quot;,
+  &quot;observed&quot;: &quot;导出器拒绝绑定 sort quality 的多态上下文；没有生成该项 IR。&quot;,
+  &quot;needed&quot;: &quot;需要前端表示并引用 quality/sort 多态，且向后续 IR 与 Lean 翻译传递约束；不是仅增加一个普通 AST 节点。&quot;,
+  &quot;implementation&quot;: &quot;rocq/exporter/src/r2l_export.ml:733,1075&quot;,
+  &quot;certainty&quot;: &quot;阶段和报错为直接证据；所需能力为分析，不代表已有安全实现&quot;
+}</pre><pre>File &quot;./Export.v&quot;, line 3, characters 0-169:
+Error:
+ROCQ2LEAN_UNQUOTABLE: 1 root(s) depend on a sort-polymorphic declaration; see /home/shunqwang4/research/r2l-core-census-20261017/runs/corelib-census/exports/0045/source.ndjson.blockers.json
+
+
+节点路径: []</pre><pre>[]</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;export_unavailable&quot;,
+  &quot;source_body_state&quot;: null,
+  &quot;native_preparation&quot;: {},
+  &quot;exported&quot;: false
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {},
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;&quot;,
+  &quot;source_node_counts&quot;: {},
+  &quot;node_rules_present&quot;: [],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;EXPORT_SORT_POLYMORPHISM_UNSUPPORTED&quot;,
+  &quot;target&quot;: null,
+  &quot;target_kind&quot;: null,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: null,
+  &quot;module_roundtrip&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;consumer&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;audit&quot;: &quot;NOT_APPLICABLE&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Equality/records/0001.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d2" data-status="EXPORT_SORT_POLYMORPHISM_UNSUPPORTED"><summary>Corelib.Init.Equality.Has_J_Has_Leibniz — EXPORT_SORT_POLYMORPHISM_UNSUPPORTED</summary><p>类别: export_unavailable；状态: EXPORT_SORT_POLYMORPHISM_UNSUPPORTED；实际目标: None</p><p>源文件行号候选：[85]</p><h3>失败位置、原因与所需能力</h3><pre>{
+  &quot;stage&quot;: &quot;导出 / MetaRocq 引用&quot;,
+  &quot;class&quot;: &quot;sort_polymorphism&quot;,
+  &quot;observed&quot;: &quot;导出器拒绝绑定 sort quality 的多态上下文；没有生成该项 IR。&quot;,
+  &quot;needed&quot;: &quot;需要前端表示并引用 quality/sort 多态，且向后续 IR 与 Lean 翻译传递约束；不是仅增加一个普通 AST 节点。&quot;,
+  &quot;implementation&quot;: &quot;rocq/exporter/src/r2l_export.ml:733,1075&quot;,
+  &quot;certainty&quot;: &quot;阶段和报错为直接证据；所需能力为分析，不代表已有安全实现&quot;
+}</pre><pre>File &quot;./Export.v&quot;, line 3, characters 0-167:
+Error:
+ROCQ2LEAN_UNQUOTABLE: 1 root(s) depend on a sort-polymorphic declaration; see /home/shunqwang4/research/r2l-core-census-20261017/runs/corelib-census/exports/0039/source.ndjson.blockers.json
+
+
+节点路径: []</pre><pre>[]</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;export_unavailable&quot;,
+  &quot;source_body_state&quot;: null,
+  &quot;native_preparation&quot;: {},
+  &quot;exported&quot;: false
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {},
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;&quot;,
+  &quot;source_node_counts&quot;: {},
+  &quot;node_rules_present&quot;: [],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;EXPORT_SORT_POLYMORPHISM_UNSUPPORTED&quot;,
+  &quot;target&quot;: null,
+  &quot;target_kind&quot;: null,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: null,
+  &quot;module_roundtrip&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;consumer&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;audit&quot;: &quot;NOT_APPLICABLE&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Equality/records/0002.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d3" data-status="EXPORT_SORT_POLYMORPHISM_UNSUPPORTED"><summary>Corelib.Init.Equality.Has_J_forward — EXPORT_SORT_POLYMORPHISM_UNSUPPORTED</summary><p>类别: export_unavailable；状态: EXPORT_SORT_POLYMORPHISM_UNSUPPORTED；实际目标: None</p><p>源文件行号候选：[42]</p><h3>失败位置、原因与所需能力</h3><pre>{
+  &quot;stage&quot;: &quot;导出 / MetaRocq 引用&quot;,
+  &quot;class&quot;: &quot;sort_polymorphism&quot;,
+  &quot;observed&quot;: &quot;导出器拒绝绑定 sort quality 的多态上下文；没有生成该项 IR。&quot;,
+  &quot;needed&quot;: &quot;需要前端表示并引用 quality/sort 多态，且向后续 IR 与 Lean 翻译传递约束；不是仅增加一个普通 AST 节点。&quot;,
+  &quot;implementation&quot;: &quot;rocq/exporter/src/r2l_export.ml:733,1075&quot;,
+  &quot;certainty&quot;: &quot;阶段和报错为直接证据；所需能力为分析，不代表已有安全实现&quot;
+}</pre><pre>File &quot;./Export.v&quot;, line 3, characters 0-163:
+Error:
+ROCQ2LEAN_UNQUOTABLE: 1 root(s) depend on a sort-polymorphic declaration; see /home/shunqwang4/research/r2l-core-census-20261017/runs/corelib-census/exports/0023/source.ndjson.blockers.json
+
+
+节点路径: []</pre><pre>[]</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;export_unavailable&quot;,
+  &quot;source_body_state&quot;: null,
+  &quot;native_preparation&quot;: {},
+  &quot;exported&quot;: false
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {},
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;&quot;,
+  &quot;source_node_counts&quot;: {},
+  &quot;node_rules_present&quot;: [],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;EXPORT_SORT_POLYMORPHISM_UNSUPPORTED&quot;,
+  &quot;target&quot;: null,
+  &quot;target_kind&quot;: null,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: null,
+  &quot;module_roundtrip&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;consumer&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;audit&quot;: &quot;NOT_APPLICABLE&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Equality/records/0003.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d4" data-status="EXPORT_SORT_POLYMORPHISM_UNSUPPORTED"><summary>Corelib.Init.Equality.Has_J_r — EXPORT_SORT_POLYMORPHISM_UNSUPPORTED</summary><p>类别: export_unavailable；状态: EXPORT_SORT_POLYMORPHISM_UNSUPPORTED；实际目标: None</p><p>源文件行号候选：[35]</p><h3>失败位置、原因与所需能力</h3><pre>{
+  &quot;stage&quot;: &quot;导出 / MetaRocq 引用&quot;,
+  &quot;class&quot;: &quot;sort_polymorphism&quot;,
+  &quot;observed&quot;: &quot;导出器拒绝绑定 sort quality 的多态上下文；没有生成该项 IR。&quot;,
+  &quot;needed&quot;: &quot;需要前端表示并引用 quality/sort 多态，且向后续 IR 与 Lean 翻译传递约束；不是仅增加一个普通 AST 节点。&quot;,
+  &quot;implementation&quot;: &quot;rocq/exporter/src/r2l_export.ml:733,1075&quot;,
+  &quot;certainty&quot;: &quot;阶段和报错为直接证据；所需能力为分析，不代表已有安全实现&quot;
+}</pre><pre>File &quot;./Export.v&quot;, line 3, characters 0-157:
+Error:
+ROCQ2LEAN_UNQUOTABLE: 1 root(s) depend on a sort-polymorphic declaration; see /home/shunqwang4/research/r2l-core-census-20261017/runs/corelib-census/exports/0018/source.ndjson.blockers.json
+
+
+节点路径: []</pre><pre>[]</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;export_unavailable&quot;,
+  &quot;source_body_state&quot;: null,
+  &quot;native_preparation&quot;: {},
+  &quot;exported&quot;: false
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {},
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;&quot;,
+  &quot;source_node_counts&quot;: {},
+  &quot;node_rules_present&quot;: [],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;EXPORT_SORT_POLYMORPHISM_UNSUPPORTED&quot;,
+  &quot;target&quot;: null,
+  &quot;target_kind&quot;: null,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: null,
+  &quot;module_roundtrip&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;consumer&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;audit&quot;: &quot;NOT_APPLICABLE&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Equality/records/0004.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d5" data-status="EXPORT_SORT_POLYMORPHISM_UNSUPPORTED"><summary>Corelib.Init.Equality.Has_J_r_Has_J_r_forward — EXPORT_SORT_POLYMORPHISM_UNSUPPORTED</summary><p>类别: export_unavailable；状态: EXPORT_SORT_POLYMORPHISM_UNSUPPORTED；实际目标: None</p><p>源文件行号候选：[128]</p><h3>失败位置、原因与所需能力</h3><pre>{
+  &quot;stage&quot;: &quot;导出 / MetaRocq 引用&quot;,
+  &quot;class&quot;: &quot;sort_polymorphism&quot;,
+  &quot;observed&quot;: &quot;导出器拒绝绑定 sort quality 的多态上下文；没有生成该项 IR。&quot;,
+  &quot;needed&quot;: &quot;需要前端表示并引用 quality/sort 多态，且向后续 IR 与 Lean 翻译传递约束；不是仅增加一个普通 AST 节点。&quot;,
+  &quot;implementation&quot;: &quot;rocq/exporter/src/r2l_export.ml:733,1075&quot;,
+  &quot;certainty&quot;: &quot;阶段和报错为直接证据；所需能力为分析，不代表已有安全实现&quot;
+}</pre><pre>File &quot;./Export.v&quot;, line 3, characters 0-173:
+Error:
+ROCQ2LEAN_UNQUOTABLE: 1 root(s) depend on a sort-polymorphic declaration; see /home/shunqwang4/research/r2l-core-census-20261017/runs/corelib-census/exports/0049/source.ndjson.blockers.json
+
+
+节点路径: []</pre><pre>[]</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;export_unavailable&quot;,
+  &quot;source_body_state&quot;: null,
+  &quot;native_preparation&quot;: {},
+  &quot;exported&quot;: false
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {},
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;&quot;,
+  &quot;source_node_counts&quot;: {},
+  &quot;node_rules_present&quot;: [],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;EXPORT_SORT_POLYMORPHISM_UNSUPPORTED&quot;,
+  &quot;target&quot;: null,
+  &quot;target_kind&quot;: null,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: null,
+  &quot;module_roundtrip&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;consumer&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;audit&quot;: &quot;NOT_APPLICABLE&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Equality/records/0005.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d6" data-status="EXPORT_SORT_POLYMORPHISM_UNSUPPORTED"><summary>Corelib.Init.Equality.Has_J_r_forward — EXPORT_SORT_POLYMORPHISM_UNSUPPORTED</summary><p>类别: export_unavailable；状态: EXPORT_SORT_POLYMORPHISM_UNSUPPORTED；实际目标: None</p><p>源文件行号候选：[47]</p><h3>失败位置、原因与所需能力</h3><pre>{
+  &quot;stage&quot;: &quot;导出 / MetaRocq 引用&quot;,
+  &quot;class&quot;: &quot;sort_polymorphism&quot;,
+  &quot;observed&quot;: &quot;导出器拒绝绑定 sort quality 的多态上下文；没有生成该项 IR。&quot;,
+  &quot;needed&quot;: &quot;需要前端表示并引用 quality/sort 多态，且向后续 IR 与 Lean 翻译传递约束；不是仅增加一个普通 AST 节点。&quot;,
+  &quot;implementation&quot;: &quot;rocq/exporter/src/r2l_export.ml:733,1075&quot;,
+  &quot;certainty&quot;: &quot;阶段和报错为直接证据；所需能力为分析，不代表已有安全实现&quot;
+}</pre><pre>File &quot;./Export.v&quot;, line 3, characters 0-165:
+Error:
+ROCQ2LEAN_UNQUOTABLE: 1 root(s) depend on a sort-polymorphic declaration; see /home/shunqwang4/research/r2l-core-census-20261017/runs/corelib-census/exports/0026/source.ndjson.blockers.json
+
+
+节点路径: []</pre><pre>[]</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;export_unavailable&quot;,
+  &quot;source_body_state&quot;: null,
+  &quot;native_preparation&quot;: {},
+  &quot;exported&quot;: false
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {},
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;&quot;,
+  &quot;source_node_counts&quot;: {},
+  &quot;node_rules_present&quot;: [],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;EXPORT_SORT_POLYMORPHISM_UNSUPPORTED&quot;,
+  &quot;target&quot;: null,
+  &quot;target_kind&quot;: null,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: null,
+  &quot;module_roundtrip&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;consumer&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;audit&quot;: &quot;NOT_APPLICABLE&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Equality/records/0006.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d7" data-status="EXPORT_SORT_POLYMORPHISM_UNSUPPORTED"><summary>Corelib.Init.Equality.Has_Leibniz — EXPORT_SORT_POLYMORPHISM_UNSUPPORTED</summary><p>类别: export_unavailable；状态: EXPORT_SORT_POLYMORPHISM_UNSUPPORTED；实际目标: None</p><p>源文件行号候选：[54]</p><h3>失败位置、原因与所需能力</h3><pre>{
+  &quot;stage&quot;: &quot;导出 / MetaRocq 引用&quot;,
+  &quot;class&quot;: &quot;sort_polymorphism&quot;,
+  &quot;observed&quot;: &quot;导出器拒绝绑定 sort quality 的多态上下文；没有生成该项 IR。&quot;,
+  &quot;needed&quot;: &quot;需要前端表示并引用 quality/sort 多态，且向后续 IR 与 Lean 翻译传递约束；不是仅增加一个普通 AST 节点。&quot;,
+  &quot;implementation&quot;: &quot;rocq/exporter/src/r2l_export.ml:733,1075&quot;,
+  &quot;certainty&quot;: &quot;阶段和报错为直接证据；所需能力为分析，不代表已有安全实现&quot;
+}</pre><pre>File &quot;./Export.v&quot;, line 3, characters 0-161:
+Error:
+ROCQ2LEAN_UNQUOTABLE: 1 root(s) depend on a sort-polymorphic declaration; see /home/shunqwang4/research/r2l-core-census-20261017/runs/corelib-census/exports/0029/source.ndjson.blockers.json
+
+
+节点路径: []</pre><pre>[]</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;export_unavailable&quot;,
+  &quot;source_body_state&quot;: null,
+  &quot;native_preparation&quot;: {},
+  &quot;exported&quot;: false
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {},
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;&quot;,
+  &quot;source_node_counts&quot;: {},
+  &quot;node_rules_present&quot;: [],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;EXPORT_SORT_POLYMORPHISM_UNSUPPORTED&quot;,
+  &quot;target&quot;: null,
+  &quot;target_kind&quot;: null,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: null,
+  &quot;module_roundtrip&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;consumer&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;audit&quot;: &quot;NOT_APPLICABLE&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Equality/records/0007.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d8" data-status="EXPORT_SORT_POLYMORPHISM_UNSUPPORTED"><summary>Corelib.Init.Equality.Has_Leibniz_r — EXPORT_SORT_POLYMORPHISM_UNSUPPORTED</summary><p>类别: export_unavailable；状态: EXPORT_SORT_POLYMORPHISM_UNSUPPORTED；实际目标: None</p><p>源文件行号候选：[57]</p><h3>失败位置、原因与所需能力</h3><pre>{
+  &quot;stage&quot;: &quot;导出 / MetaRocq 引用&quot;,
+  &quot;class&quot;: &quot;sort_polymorphism&quot;,
+  &quot;observed&quot;: &quot;导出器拒绝绑定 sort quality 的多态上下文；没有生成该项 IR。&quot;,
+  &quot;needed&quot;: &quot;需要前端表示并引用 quality/sort 多态，且向后续 IR 与 Lean 翻译传递约束；不是仅增加一个普通 AST 节点。&quot;,
+  &quot;implementation&quot;: &quot;rocq/exporter/src/r2l_export.ml:733,1075&quot;,
+  &quot;certainty&quot;: &quot;阶段和报错为直接证据；所需能力为分析，不代表已有安全实现&quot;
+}</pre><pre>File &quot;./Export.v&quot;, line 3, characters 0-163:
+Error:
+ROCQ2LEAN_UNQUOTABLE: 1 root(s) depend on a sort-polymorphic declaration; see /home/shunqwang4/research/r2l-core-census-20261017/runs/corelib-census/exports/0034/source.ndjson.blockers.json
+
+
+节点路径: []</pre><pre>[]</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;export_unavailable&quot;,
+  &quot;source_body_state&quot;: null,
+  &quot;native_preparation&quot;: {},
+  &quot;exported&quot;: false
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {},
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;&quot;,
+  &quot;source_node_counts&quot;: {},
+  &quot;node_rules_present&quot;: [],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;EXPORT_SORT_POLYMORPHISM_UNSUPPORTED&quot;,
+  &quot;target&quot;: null,
+  &quot;target_kind&quot;: null,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: null,
+  &quot;module_roundtrip&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;consumer&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;audit&quot;: &quot;NOT_APPLICABLE&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Equality/records/0008.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d9" data-status="EXPORT_SORT_POLYMORPHISM_UNSUPPORTED"><summary>Corelib.Init.Equality.Has_refl — EXPORT_SORT_POLYMORPHISM_UNSUPPORTED</summary><p>类别: export_unavailable；状态: EXPORT_SORT_POLYMORPHISM_UNSUPPORTED；实际目标: None</p><p>源文件行号候选：[23]</p><h3>失败位置、原因与所需能力</h3><pre>{
+  &quot;stage&quot;: &quot;导出 / MetaRocq 引用&quot;,
+  &quot;class&quot;: &quot;sort_polymorphism&quot;,
+  &quot;observed&quot;: &quot;导出器拒绝绑定 sort quality 的多态上下文；没有生成该项 IR。&quot;,
+  &quot;needed&quot;: &quot;需要前端表示并引用 quality/sort 多态，且向后续 IR 与 Lean 翻译传递约束；不是仅增加一个普通 AST 节点。&quot;,
+  &quot;implementation&quot;: &quot;rocq/exporter/src/r2l_export.ml:733,1075&quot;,
+  &quot;certainty&quot;: &quot;阶段和报错为直接证据；所需能力为分析，不代表已有安全实现&quot;
+}</pre><pre>File &quot;./Export.v&quot;, line 3, characters 0-158:
+Error:
+ROCQ2LEAN_UNQUOTABLE: 1 root(s) depend on a sort-polymorphic declaration; see /home/shunqwang4/research/r2l-core-census-20261017/runs/corelib-census/exports/0012/source.ndjson.blockers.json
+
+
+节点路径: []</pre><pre>[]</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;export_unavailable&quot;,
+  &quot;source_body_state&quot;: null,
+  &quot;native_preparation&quot;: {},
+  &quot;exported&quot;: false
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {},
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;&quot;,
+  &quot;source_node_counts&quot;: {},
+  &quot;node_rules_present&quot;: [],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;EXPORT_SORT_POLYMORPHISM_UNSUPPORTED&quot;,
+  &quot;target&quot;: null,
+  &quot;target_kind&quot;: null,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: null,
+  &quot;module_roundtrip&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;consumer&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;audit&quot;: &quot;NOT_APPLICABLE&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Equality/records/0009.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d10" data-status="EXPORT_SORT_POLYMORPHISM_UNSUPPORTED"><summary>Corelib.Init.Equality.J_eliminator — EXPORT_SORT_POLYMORPHISM_UNSUPPORTED</summary><p>类别: export_unavailable；状态: EXPORT_SORT_POLYMORPHISM_UNSUPPORTED；实际目标: None</p><p>源文件行号候选：[]</p><h3>失败位置、原因与所需能力</h3><pre>{
+  &quot;stage&quot;: &quot;导出 / MetaRocq 引用&quot;,
+  &quot;class&quot;: &quot;sort_polymorphism&quot;,
+  &quot;observed&quot;: &quot;导出器拒绝绑定 sort quality 的多态上下文；没有生成该项 IR。&quot;,
+  &quot;needed&quot;: &quot;需要前端表示并引用 quality/sort 多态，且向后续 IR 与 Lean 翻译传递约束；不是仅增加一个普通 AST 节点。&quot;,
+  &quot;implementation&quot;: &quot;rocq/exporter/src/r2l_export.ml:733,1075&quot;,
+  &quot;certainty&quot;: &quot;阶段和报错为直接证据；所需能力为分析，不代表已有安全实现&quot;
+}</pre><pre>File &quot;./Export.v&quot;, line 3, characters 0-162:
+Error:
+ROCQ2LEAN_UNQUOTABLE: 1 root(s) depend on a sort-polymorphic declaration; see /home/shunqwang4/research/r2l-core-census-20261017/runs/corelib-census/exports/0017/source.ndjson.blockers.json
+
+
+节点路径: []</pre><pre>[]</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;export_unavailable&quot;,
+  &quot;source_body_state&quot;: null,
+  &quot;native_preparation&quot;: {},
+  &quot;exported&quot;: false
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {},
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;&quot;,
+  &quot;source_node_counts&quot;: {},
+  &quot;node_rules_present&quot;: [],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;EXPORT_SORT_POLYMORPHISM_UNSUPPORTED&quot;,
+  &quot;target&quot;: null,
+  &quot;target_kind&quot;: null,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: null,
+  &quot;module_roundtrip&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;consumer&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;audit&quot;: &quot;NOT_APPLICABLE&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Equality/records/0010.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d11" data-status="EXPORT_SORT_POLYMORPHISM_UNSUPPORTED"><summary>Corelib.Init.Equality.J_forward — EXPORT_SORT_POLYMORPHISM_UNSUPPORTED</summary><p>类别: export_unavailable；状态: EXPORT_SORT_POLYMORPHISM_UNSUPPORTED；实际目标: None</p><p>源文件行号候选：[]</p><h3>失败位置、原因与所需能力</h3><pre>{
+  &quot;stage&quot;: &quot;导出 / MetaRocq 引用&quot;,
+  &quot;class&quot;: &quot;sort_polymorphism&quot;,
+  &quot;observed&quot;: &quot;导出器拒绝绑定 sort quality 的多态上下文；没有生成该项 IR。&quot;,
+  &quot;needed&quot;: &quot;需要前端表示并引用 quality/sort 多态，且向后续 IR 与 Lean 翻译传递约束；不是仅增加一个普通 AST 节点。&quot;,
+  &quot;implementation&quot;: &quot;rocq/exporter/src/r2l_export.ml:733,1075&quot;,
+  &quot;certainty&quot;: &quot;阶段和报错为直接证据；所需能力为分析，不代表已有安全实现&quot;
+}</pre><pre>File &quot;./Export.v&quot;, line 3, characters 0-159:
+Error:
+ROCQ2LEAN_UNQUOTABLE: 1 root(s) depend on a sort-polymorphic declaration; see /home/shunqwang4/research/r2l-core-census-20261017/runs/corelib-census/exports/0024/source.ndjson.blockers.json
+
+
+节点路径: []</pre><pre>[]</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;export_unavailable&quot;,
+  &quot;source_body_state&quot;: null,
+  &quot;native_preparation&quot;: {},
+  &quot;exported&quot;: false
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {},
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;&quot;,
+  &quot;source_node_counts&quot;: {},
+  &quot;node_rules_present&quot;: [],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;EXPORT_SORT_POLYMORPHISM_UNSUPPORTED&quot;,
+  &quot;target&quot;: null,
+  &quot;target_kind&quot;: null,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: null,
+  &quot;module_roundtrip&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;consumer&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;audit&quot;: &quot;NOT_APPLICABLE&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Equality/records/0011.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d12" data-status="EXPORT_SORT_POLYMORPHISM_UNSUPPORTED"><summary>Corelib.Init.Equality.J_no_dep — EXPORT_SORT_POLYMORPHISM_UNSUPPORTED</summary><p>类别: export_unavailable；状态: EXPORT_SORT_POLYMORPHISM_UNSUPPORTED；实际目标: None</p><p>源文件行号候选：[81]</p><h3>失败位置、原因与所需能力</h3><pre>{
+  &quot;stage&quot;: &quot;导出 / MetaRocq 引用&quot;,
+  &quot;class&quot;: &quot;sort_polymorphism&quot;,
+  &quot;observed&quot;: &quot;导出器拒绝绑定 sort quality 的多态上下文；没有生成该项 IR。&quot;,
+  &quot;needed&quot;: &quot;需要前端表示并引用 quality/sort 多态，且向后续 IR 与 Lean 翻译传递约束；不是仅增加一个普通 AST 节点。&quot;,
+  &quot;implementation&quot;: &quot;rocq/exporter/src/r2l_export.ml:733,1075&quot;,
+  &quot;certainty&quot;: &quot;阶段和报错为直接证据；所需能力为分析，不代表已有安全实现&quot;
+}</pre><pre>File &quot;./Export.v&quot;, line 3, characters 0-158:
+Error:
+ROCQ2LEAN_UNQUOTABLE: 1 root(s) depend on a sort-polymorphic declaration; see /home/shunqwang4/research/r2l-core-census-20261017/runs/corelib-census/exports/0038/source.ndjson.blockers.json
+
+
+节点路径: []</pre><pre>[]</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;export_unavailable&quot;,
+  &quot;source_body_state&quot;: null,
+  &quot;native_preparation&quot;: {},
+  &quot;exported&quot;: false
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {},
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;&quot;,
+  &quot;source_node_counts&quot;: {},
+  &quot;node_rules_present&quot;: [],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;EXPORT_SORT_POLYMORPHISM_UNSUPPORTED&quot;,
+  &quot;target&quot;: null,
+  &quot;target_kind&quot;: null,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: null,
+  &quot;module_roundtrip&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;consumer&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;audit&quot;: &quot;NOT_APPLICABLE&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Equality/records/0012.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d13" data-status="EXPORT_SORT_POLYMORPHISM_UNSUPPORTED"><summary>Corelib.Init.Equality.J_r_eliminator — EXPORT_SORT_POLYMORPHISM_UNSUPPORTED</summary><p>类别: export_unavailable；状态: EXPORT_SORT_POLYMORPHISM_UNSUPPORTED；实际目标: None</p><p>源文件行号候选：[]</p><h3>失败位置、原因与所需能力</h3><pre>{
+  &quot;stage&quot;: &quot;导出 / MetaRocq 引用&quot;,
+  &quot;class&quot;: &quot;sort_polymorphism&quot;,
+  &quot;observed&quot;: &quot;导出器拒绝绑定 sort quality 的多态上下文；没有生成该项 IR。&quot;,
+  &quot;needed&quot;: &quot;需要前端表示并引用 quality/sort 多态，且向后续 IR 与 Lean 翻译传递约束；不是仅增加一个普通 AST 节点。&quot;,
+  &quot;implementation&quot;: &quot;rocq/exporter/src/r2l_export.ml:733,1075&quot;,
+  &quot;certainty&quot;: &quot;阶段和报错为直接证据；所需能力为分析，不代表已有安全实现&quot;
+}</pre><pre>File &quot;./Export.v&quot;, line 3, characters 0-164:
+Error:
+ROCQ2LEAN_UNQUOTABLE: 1 root(s) depend on a sort-polymorphic declaration; see /home/shunqwang4/research/r2l-core-census-20261017/runs/corelib-census/exports/0021/source.ndjson.blockers.json
+
+
+节点路径: []</pre><pre>[]</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;export_unavailable&quot;,
+  &quot;source_body_state&quot;: null,
+  &quot;native_preparation&quot;: {},
+  &quot;exported&quot;: false
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {},
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;&quot;,
+  &quot;source_node_counts&quot;: {},
+  &quot;node_rules_present&quot;: [],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;EXPORT_SORT_POLYMORPHISM_UNSUPPORTED&quot;,
+  &quot;target&quot;: null,
+  &quot;target_kind&quot;: null,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: null,
+  &quot;module_roundtrip&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;consumer&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;audit&quot;: &quot;NOT_APPLICABLE&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Equality/records/0013.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d14" data-status="EXPORT_SORT_POLYMORPHISM_UNSUPPORTED"><summary>Corelib.Init.Equality.J_r_forward — EXPORT_SORT_POLYMORPHISM_UNSUPPORTED</summary><p>类别: export_unavailable；状态: EXPORT_SORT_POLYMORPHISM_UNSUPPORTED；实际目标: None</p><p>源文件行号候选：[]</p><h3>失败位置、原因与所需能力</h3><pre>{
+  &quot;stage&quot;: &quot;导出 / MetaRocq 引用&quot;,
+  &quot;class&quot;: &quot;sort_polymorphism&quot;,
+  &quot;observed&quot;: &quot;导出器拒绝绑定 sort quality 的多态上下文；没有生成该项 IR。&quot;,
+  &quot;needed&quot;: &quot;需要前端表示并引用 quality/sort 多态，且向后续 IR 与 Lean 翻译传递约束；不是仅增加一个普通 AST 节点。&quot;,
+  &quot;implementation&quot;: &quot;rocq/exporter/src/r2l_export.ml:733,1075&quot;,
+  &quot;certainty&quot;: &quot;阶段和报错为直接证据；所需能力为分析，不代表已有安全实现&quot;
+}</pre><pre>File &quot;./Export.v&quot;, line 3, characters 0-161:
+Error:
+ROCQ2LEAN_UNQUOTABLE: 1 root(s) depend on a sort-polymorphic declaration; see /home/shunqwang4/research/r2l-core-census-20261017/runs/corelib-census/exports/0028/source.ndjson.blockers.json
+
+
+节点路径: []</pre><pre>[]</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;export_unavailable&quot;,
+  &quot;source_body_state&quot;: null,
+  &quot;native_preparation&quot;: {},
+  &quot;exported&quot;: false
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {},
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;&quot;,
+  &quot;source_node_counts&quot;: {},
+  &quot;node_rules_present&quot;: [],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;EXPORT_SORT_POLYMORPHISM_UNSUPPORTED&quot;,
+  &quot;target&quot;: null,
+  &quot;target_kind&quot;: null,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: null,
+  &quot;module_roundtrip&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;consumer&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;audit&quot;: &quot;NOT_APPLICABLE&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Equality/records/0014.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d15" data-status="EXPORT_SORT_POLYMORPHISM_UNSUPPORTED"><summary>Corelib.Init.Equality._Has_J_Has_J_forward — EXPORT_SORT_POLYMORPHISM_UNSUPPORTED</summary><p>类别: export_unavailable；状态: EXPORT_SORT_POLYMORPHISM_UNSUPPORTED；实际目标: None</p><p>源文件行号候选：[122]</p><h3>失败位置、原因与所需能力</h3><pre>{
+  &quot;stage&quot;: &quot;导出 / MetaRocq 引用&quot;,
+  &quot;class&quot;: &quot;sort_polymorphism&quot;,
+  &quot;observed&quot;: &quot;导出器拒绝绑定 sort quality 的多态上下文；没有生成该项 IR。&quot;,
+  &quot;needed&quot;: &quot;需要前端表示并引用 quality/sort 多态，且向后续 IR 与 Lean 翻译传递约束；不是仅增加一个普通 AST 节点。&quot;,
+  &quot;implementation&quot;: &quot;rocq/exporter/src/r2l_export.ml:733,1075&quot;,
+  &quot;certainty&quot;: &quot;阶段和报错为直接证据；所需能力为分析，不代表已有安全实现&quot;
+}</pre><pre>File &quot;./Export.v&quot;, line 3, characters 0-170:
+Error:
+ROCQ2LEAN_UNQUOTABLE: 1 root(s) depend on a sort-polymorphic declaration; see /home/shunqwang4/research/r2l-core-census-20261017/runs/corelib-census/exports/0047/source.ndjson.blockers.json
+
+
+节点路径: []</pre><pre>[]</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;export_unavailable&quot;,
+  &quot;source_body_state&quot;: null,
+  &quot;native_preparation&quot;: {},
+  &quot;exported&quot;: false
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {},
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;&quot;,
+  &quot;source_node_counts&quot;: {},
+  &quot;node_rules_present&quot;: [],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;EXPORT_SORT_POLYMORPHISM_UNSUPPORTED&quot;,
+  &quot;target&quot;: null,
+  &quot;target_kind&quot;: null,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: null,
+  &quot;module_roundtrip&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;consumer&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;audit&quot;: &quot;NOT_APPLICABLE&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Equality/records/0015.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d16" data-status="EXPORT_SORT_POLYMORPHISM_UNSUPPORTED"><summary>Corelib.Init.Equality._Has_J_r_Has_J_r_forward — EXPORT_SORT_POLYMORPHISM_UNSUPPORTED</summary><p>类别: export_unavailable；状态: EXPORT_SORT_POLYMORPHISM_UNSUPPORTED；实际目标: None</p><p>源文件行号候选：[134]</p><h3>失败位置、原因与所需能力</h3><pre>{
+  &quot;stage&quot;: &quot;导出 / MetaRocq 引用&quot;,
+  &quot;class&quot;: &quot;sort_polymorphism&quot;,
+  &quot;observed&quot;: &quot;导出器拒绝绑定 sort quality 的多态上下文；没有生成该项 IR。&quot;,
+  &quot;needed&quot;: &quot;需要前端表示并引用 quality/sort 多态，且向后续 IR 与 Lean 翻译传递约束；不是仅增加一个普通 AST 节点。&quot;,
+  &quot;implementation&quot;: &quot;rocq/exporter/src/r2l_export.ml:733,1075&quot;,
+  &quot;certainty&quot;: &quot;阶段和报错为直接证据；所需能力为分析，不代表已有安全实现&quot;
+}</pre><pre>File &quot;./Export.v&quot;, line 3, characters 0-174:
+Error:
+ROCQ2LEAN_UNQUOTABLE: 1 root(s) depend on a sort-polymorphic declaration; see /home/shunqwang4/research/r2l-core-census-20261017/runs/corelib-census/exports/0050/source.ndjson.blockers.json
+
+
+节点路径: []</pre><pre>[]</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;export_unavailable&quot;,
+  &quot;source_body_state&quot;: null,
+  &quot;native_preparation&quot;: {},
+  &quot;exported&quot;: false
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {},
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;&quot;,
+  &quot;source_node_counts&quot;: {},
+  &quot;node_rules_present&quot;: [],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;EXPORT_SORT_POLYMORPHISM_UNSUPPORTED&quot;,
+  &quot;target&quot;: null,
+  &quot;target_kind&quot;: null,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: null,
+  &quot;module_roundtrip&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;consumer&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;audit&quot;: &quot;NOT_APPLICABLE&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Equality/records/0016.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d17" data-status="EXPORT_SORT_POLYMORPHISM_UNSUPPORTED"><summary>Corelib.Init.Equality.ap — EXPORT_SORT_POLYMORPHISM_UNSUPPORTED</summary><p>类别: export_unavailable；状态: EXPORT_SORT_POLYMORPHISM_UNSUPPORTED；实际目标: None</p><p>源文件行号候选：[96]</p><h3>失败位置、原因与所需能力</h3><pre>{
+  &quot;stage&quot;: &quot;导出 / MetaRocq 引用&quot;,
+  &quot;class&quot;: &quot;sort_polymorphism&quot;,
+  &quot;observed&quot;: &quot;导出器拒绝绑定 sort quality 的多态上下文；没有生成该项 IR。&quot;,
+  &quot;needed&quot;: &quot;需要前端表示并引用 quality/sort 多态，且向后续 IR 与 Lean 翻译传递约束；不是仅增加一个普通 AST 节点。&quot;,
+  &quot;implementation&quot;: &quot;rocq/exporter/src/r2l_export.ml:733,1075&quot;,
+  &quot;certainty&quot;: &quot;阶段和报错为直接证据；所需能力为分析，不代表已有安全实现&quot;
+}</pre><pre>File &quot;./Export.v&quot;, line 3, characters 0-152:
+Error:
+ROCQ2LEAN_UNQUOTABLE: 1 root(s) depend on a sort-polymorphic declaration; see /home/shunqwang4/research/r2l-core-census-20261017/runs/corelib-census/exports/0042/source.ndjson.blockers.json
+
+
+节点路径: []</pre><pre>[]</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;export_unavailable&quot;,
+  &quot;source_body_state&quot;: null,
+  &quot;native_preparation&quot;: {},
+  &quot;exported&quot;: false
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {},
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;&quot;,
+  &quot;source_node_counts&quot;: {},
+  &quot;node_rules_present&quot;: [],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;EXPORT_SORT_POLYMORPHISM_UNSUPPORTED&quot;,
+  &quot;target&quot;: null,
+  &quot;target_kind&quot;: null,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: null,
+  &quot;module_roundtrip&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;consumer&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;audit&quot;: &quot;NOT_APPLICABLE&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Equality/records/0017.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d18" data-status="EXPORT_SORT_POLYMORPHISM_UNSUPPORTED"><summary>Corelib.Init.Equality.leibniz — EXPORT_SORT_POLYMORPHISM_UNSUPPORTED</summary><p>类别: export_unavailable；状态: EXPORT_SORT_POLYMORPHISM_UNSUPPORTED；实际目标: None</p><p>源文件行号候选：[]</p><h3>失败位置、原因与所需能力</h3><pre>{
+  &quot;stage&quot;: &quot;导出 / MetaRocq 引用&quot;,
+  &quot;class&quot;: &quot;sort_polymorphism&quot;,
+  &quot;observed&quot;: &quot;导出器拒绝绑定 sort quality 的多态上下文；没有生成该项 IR。&quot;,
+  &quot;needed&quot;: &quot;需要前端表示并引用 quality/sort 多态，且向后续 IR 与 Lean 翻译传递约束；不是仅增加一个普通 AST 节点。&quot;,
+  &quot;implementation&quot;: &quot;rocq/exporter/src/r2l_export.ml:733,1075&quot;,
+  &quot;certainty&quot;: &quot;阶段和报错为直接证据；所需能力为分析，不代表已有安全实现&quot;
+}</pre><pre>File &quot;./Export.v&quot;, line 3, characters 0-157:
+Error:
+ROCQ2LEAN_UNQUOTABLE: 1 root(s) depend on a sort-polymorphic declaration; see /home/shunqwang4/research/r2l-core-census-20261017/runs/corelib-census/exports/0033/source.ndjson.blockers.json
+
+
+节点路径: []</pre><pre>[]</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;export_unavailable&quot;,
+  &quot;source_body_state&quot;: null,
+  &quot;native_preparation&quot;: {},
+  &quot;exported&quot;: false
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {},
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;&quot;,
+  &quot;source_node_counts&quot;: {},
+  &quot;node_rules_present&quot;: [],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;EXPORT_SORT_POLYMORPHISM_UNSUPPORTED&quot;,
+  &quot;target&quot;: null,
+  &quot;target_kind&quot;: null,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: null,
+  &quot;module_roundtrip&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;consumer&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;audit&quot;: &quot;NOT_APPLICABLE&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Equality/records/0018.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d19" data-status="EXPORT_SORT_POLYMORPHISM_UNSUPPORTED"><summary>Corelib.Init.Equality.leibniz_r — EXPORT_SORT_POLYMORPHISM_UNSUPPORTED</summary><p>类别: export_unavailable；状态: EXPORT_SORT_POLYMORPHISM_UNSUPPORTED；实际目标: None</p><p>源文件行号候选：[]</p><h3>失败位置、原因与所需能力</h3><pre>{
+  &quot;stage&quot;: &quot;导出 / MetaRocq 引用&quot;,
+  &quot;class&quot;: &quot;sort_polymorphism&quot;,
+  &quot;observed&quot;: &quot;导出器拒绝绑定 sort quality 的多态上下文；没有生成该项 IR。&quot;,
+  &quot;needed&quot;: &quot;需要前端表示并引用 quality/sort 多态，且向后续 IR 与 Lean 翻译传递约束；不是仅增加一个普通 AST 节点。&quot;,
+  &quot;implementation&quot;: &quot;rocq/exporter/src/r2l_export.ml:733,1075&quot;,
+  &quot;certainty&quot;: &quot;阶段和报错为直接证据；所需能力为分析，不代表已有安全实现&quot;
+}</pre><pre>File &quot;./Export.v&quot;, line 3, characters 0-159:
+Error:
+ROCQ2LEAN_UNQUOTABLE: 1 root(s) depend on a sort-polymorphic declaration; see /home/shunqwang4/research/r2l-core-census-20261017/runs/corelib-census/exports/0036/source.ndjson.blockers.json
+
+
+节点路径: []</pre><pre>[]</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;export_unavailable&quot;,
+  &quot;source_body_state&quot;: null,
+  &quot;native_preparation&quot;: {},
+  &quot;exported&quot;: false
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {},
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;&quot;,
+  &quot;source_node_counts&quot;: {},
+  &quot;node_rules_present&quot;: [],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;EXPORT_SORT_POLYMORPHISM_UNSUPPORTED&quot;,
+  &quot;target&quot;: null,
+  &quot;target_kind&quot;: null,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: null,
+  &quot;module_roundtrip&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;consumer&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;audit&quot;: &quot;NOT_APPLICABLE&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Equality/records/0019.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d20" data-status="EXPORT_SORT_POLYMORPHISM_UNSUPPORTED"><summary>Corelib.Init.Equality.refl — EXPORT_SORT_POLYMORPHISM_UNSUPPORTED</summary><p>类别: export_unavailable；状态: EXPORT_SORT_POLYMORPHISM_UNSUPPORTED；实际目标: None</p><p>源文件行号候选：[]</p><h3>失败位置、原因与所需能力</h3><pre>{
+  &quot;stage&quot;: &quot;导出 / MetaRocq 引用&quot;,
+  &quot;class&quot;: &quot;sort_polymorphism&quot;,
+  &quot;observed&quot;: &quot;导出器拒绝绑定 sort quality 的多态上下文；没有生成该项 IR。&quot;,
+  &quot;needed&quot;: &quot;需要前端表示并引用 quality/sort 多态，且向后续 IR 与 Lean 翻译传递约束；不是仅增加一个普通 AST 节点。&quot;,
+  &quot;implementation&quot;: &quot;rocq/exporter/src/r2l_export.ml:733,1075&quot;,
+  &quot;certainty&quot;: &quot;阶段和报错为直接证据；所需能力为分析，不代表已有安全实现&quot;
+}</pre><pre>File &quot;./Export.v&quot;, line 3, characters 0-154:
+Error:
+ROCQ2LEAN_UNQUOTABLE: 1 root(s) depend on a sort-polymorphic declaration; see /home/shunqwang4/research/r2l-core-census-20261017/runs/corelib-census/exports/0013/source.ndjson.blockers.json
+
+
+节点路径: []</pre><pre>[]</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;export_unavailable&quot;,
+  &quot;source_body_state&quot;: null,
+  &quot;native_preparation&quot;: {},
+  &quot;exported&quot;: false
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {},
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;&quot;,
+  &quot;source_node_counts&quot;: {},
+  &quot;node_rules_present&quot;: [],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;EXPORT_SORT_POLYMORPHISM_UNSUPPORTED&quot;,
+  &quot;target&quot;: null,
+  &quot;target_kind&quot;: null,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: null,
+  &quot;module_roundtrip&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;consumer&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;audit&quot;: &quot;NOT_APPLICABLE&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Equality/records/0020.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><details class="decl" id="d21" data-status="EXPORT_SORT_POLYMORPHISM_UNSUPPORTED"><summary>Corelib.Init.Equality.sym — EXPORT_SORT_POLYMORPHISM_UNSUPPORTED</summary><p>类别: export_unavailable；状态: EXPORT_SORT_POLYMORPHISM_UNSUPPORTED；实际目标: None</p><p>源文件行号候选：[111]</p><h3>失败位置、原因与所需能力</h3><pre>{
+  &quot;stage&quot;: &quot;导出 / MetaRocq 引用&quot;,
+  &quot;class&quot;: &quot;sort_polymorphism&quot;,
+  &quot;observed&quot;: &quot;导出器拒绝绑定 sort quality 的多态上下文；没有生成该项 IR。&quot;,
+  &quot;needed&quot;: &quot;需要前端表示并引用 quality/sort 多态，且向后续 IR 与 Lean 翻译传递约束；不是仅增加一个普通 AST 节点。&quot;,
+  &quot;implementation&quot;: &quot;rocq/exporter/src/r2l_export.ml:733,1075&quot;,
+  &quot;certainty&quot;: &quot;阶段和报错为直接证据；所需能力为分析，不代表已有安全实现&quot;
+}</pre><pre>File &quot;./Export.v&quot;, line 3, characters 0-153:
+Error:
+ROCQ2LEAN_UNQUOTABLE: 1 root(s) depend on a sort-polymorphic declaration; see /home/shunqwang4/research/r2l-core-census-20261017/runs/corelib-census/exports/0044/source.ndjson.blockers.json
+
+
+节点路径: []</pre><pre>[]</pre><h3>翻译过程</h3><p>1 源声明与导出</p><pre>{
+  &quot;source_kind&quot;: &quot;export_unavailable&quot;,
+  &quot;source_body_state&quot;: null,
+  &quot;native_preparation&quot;: {},
+  &quot;exported&quot;: false
+}</pre><p>2 证明抽取与依赖</p><pre>{
+  &quot;proof_body_omitted&quot;: false,
+  &quot;dependencies&quot;: {},
+  &quot;pending&quot;: [],
+  &quot;extraction_refusal&quot;: null
+}</pre><p>3 结构翻译</p><pre>{
+  &quot;declaration_rule&quot;: &quot;&quot;,
+  &quot;source_node_counts&quot;: {},
+  &quot;node_rules_present&quot;: [],
+  &quot;actual_target_recursors&quot;: [],
+  &quot;note&quot;: &quot;节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。&quot;
+}</pre><p>4 宇宙及适配处理</p><pre>{}</pre><p>5 目标输出</p><pre>{
+  &quot;status&quot;: &quot;EXPORT_SORT_POLYMORPHISM_UNSUPPORTED&quot;,
+  &quot;target&quot;: null,
+  &quot;target_kind&quot;: null,
+  &quot;theorem_proof_produced&quot;: false
+}</pre><p>6 独立检查</p><pre>{
+  &quot;source_roundtrip_item&quot;: null,
+  &quot;module_roundtrip&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;consumer&quot;: &quot;NOT_APPLICABLE&quot;,
+  &quot;audit&quot;: &quot;NOT_APPLICABLE&quot;
+}</pre><h3>实际尝试顺序</h3><pre>[]</pre><p>完整尝试结果见下方逐项 JSON。</p><p><a href="Equality/records/0021.json">本项完整证据：源 IR、目标 AST、所有尝试和待证明条件</a></p></details><script>function filter(){let q=document.getElementById("search").value.toLowerCase(),s=document.getElementById("filter").value;document.querySelectorAll(".decl").forEach(e=>e.style.display=(!s||e.dataset.status===s)&&e.querySelector("summary").textContent.toLowerCase().includes(q)?"":"none")}document.getElementById("search").oninput=filter;document.getElementById("filter").onchange=filter;</script></body></html>

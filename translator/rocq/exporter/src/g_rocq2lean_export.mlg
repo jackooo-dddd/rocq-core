@@ -1,0 +1,80 @@
+DECLARE PLUGIN "rocq2lean-export.plugin"
+
+{
+open Stdarg
+}
+
+(* Rocq2Lean Export "out.ndjson" root1 root2 ... *)
+VERNAC COMMAND EXTEND Rocq2LeanExport CLASSIFIED AS QUERY STATE opaque_access
+| [ "Rocq2Lean" "Export" string(file) ne_global_list(roots) ] -> {
+    fun ~opaque_access -> R2l_export.export ~opaque_access file roots
+  }
+END
+
+(* Rocq2Lean ExportStatements "out.ndjson" root1 ...: statement-only export (proof bodies omitted, proof
+   subterms of kept terms extracted as obligations; docs/STATEMENT_ONLY_DESIGN.md). *)
+VERNAC COMMAND EXTEND Rocq2LeanExportStatements CLASSIFIED AS QUERY STATE opaque_access
+| [ "Rocq2Lean" "ExportStatements" string(file) ne_global_list(roots) ] -> {
+    fun ~opaque_access -> R2l_export.export_statements ~opaque_access file roots
+  }
+END
+
+(* Rocq2Lean CheckStatementPrepared "key": fresh-process re-derivation of one constant's statement
+   preparation (rewritten type and body, obligations), for the round trip. *)
+VERNAC COMMAND EXTEND Rocq2LeanCheckStatementPrepared CLASSIFIED AS QUERY STATE opaque_access
+| [ "Rocq2Lean" "CheckStatementPrepared" string(key) ] -> {
+    fun ~opaque_access -> R2l_export.check_statement_prepared ~opaque_access key
+  }
+END
+
+(* Rocq2Lean CheckStatementsPrepared "keys.txt": the same for every listed constant, the environment
+   prepared once for all of them (as the export does). *)
+VERNAC COMMAND EXTEND Rocq2LeanCheckStatementsPrepared CLASSIFIED AS QUERY STATE opaque_access
+| [ "Rocq2Lean" "CheckStatementsPrepared" string(file) ] -> {
+    fun ~opaque_access -> R2l_export.check_statements_prepared ~opaque_access file
+  }
+END
+
+(* Rocq2Lean CheckRelation "a" "b" "lt|le|none|eq": native re-check of one universe fact. *)
+VERNAC COMMAND EXTEND Rocq2LeanCheckRelation CLASSIFIED AS QUERY
+| [ "Rocq2Lean" "CheckRelation" string(a) string(b) string(r) ] -> {
+    R2l_export.check_relation a b r
+  }
+END
+
+(* Rocq2Lean CheckRelations "in.tsv" "out.txt": CheckRelation for every fact of a file, in one pass. *)
+VERNAC COMMAND EXTEND Rocq2LeanCheckRelations CLASSIFIED AS QUERY
+| [ "Rocq2Lean" "CheckRelations" string(inp) string(outp) ] -> {
+    R2l_export.check_relations inp outp
+  }
+END
+
+(* Rocq2Lean CheckPrepared "key": prepared (sealed implementation / lowered) type and body of a
+   constant, after Rocq's kernel re-check, for the fresh-process round trip. *)
+VERNAC COMMAND EXTEND Rocq2LeanCheckPrepared CLASSIFIED AS QUERY STATE opaque_access
+| [ "Rocq2Lean" "CheckPrepared" string(key) ] -> {
+    fun ~opaque_access -> R2l_export.check_prepared ~opaque_access key
+  }
+END
+
+(* Rocq2Lean NativeMeta "key" "constant|inductive": native metadata of one declaration. *)
+VERNAC COMMAND EXTEND Rocq2LeanNativeMeta CLASSIFIED AS QUERY STATE opaque_access
+| [ "Rocq2Lean" "NativeMeta" string(key) string(kind) ] -> {
+    fun ~opaque_access -> R2l_export.native_meta ~opaque_access key kind
+  }
+END
+
+(* Rocq2Lean CheckInstance "key" "l=r;...": Rocq kernel re-check of a constant at substituted levels. *)
+VERNAC COMMAND EXTEND Rocq2LeanCheckInstance CLASSIFIED AS QUERY STATE opaque_access
+| [ "Rocq2Lean" "CheckInstance" string(key) string(subst) ] -> {
+    fun ~opaque_access -> R2l_export.check_instance ~opaque_access key subst
+  }
+END
+
+(* Rocq2Lean CheckConversionDeps "L1;L2" "deps.txt" "out.txt": conversion dependence of constants on the
+   unfolding of L1, L2, ... (docs/TERMINATION.md). *)
+VERNAC COMMAND EXTEND Rocq2LeanCheckConversionDeps CLASSIFIED AS QUERY STATE opaque_access
+| [ "Rocq2Lean" "CheckConversionDeps" string(lowered) string(inp) string(outp) ] -> {
+    fun ~opaque_access -> R2l_export.check_conversion_deps ~opaque_access lowered inp outp
+  }
+END

@@ -1,0 +1,662 @@
+R2L_BEGIN_0
+def Rocq.Corelib.Init.Decimal.Little.double : Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.uint :=
+fun d =>
+  (@Rocq.Corelib.Init.Decimal.uint.rec.{1}
+      (fun d => PProd.{1, 1} Rocq.Corelib.Init.Decimal.uint Rocq.Corelib.Init.Decimal.uint)
+      (@PProd.mk.{1, 1} Rocq.Corelib.Init.Decimal.uint Rocq.Corelib.Init.Decimal.uint Rocq.Corelib.Init.Decimal.uint.Nil
+        Rocq.Corelib.Init.Decimal.uint.Nil.D1)
+      (fun a _ih => @PProd.mk.{1, 1} Rocq.Corelib.Init.Decimal.uint Rocq.Corelib.Init.Decimal.uint _ih.1.D0 _ih.1.D1)
+      (fun a _ih => @PProd.mk.{1, 1} Rocq.Corelib.Init.Decimal.uint Rocq.Corelib.Init.Decimal.uint _ih.1.D2 _ih.1.D3)
+      (fun a _ih => @PProd.mk.{1, 1} Rocq.Corelib.Init.Decimal.uint Rocq.Corelib.Init.Decimal.uint _ih.1.D4 _ih.1.D5)
+      (fun a _ih => @PProd.mk.{1, 1} Rocq.Corelib.Init.Decimal.uint Rocq.Corelib.Init.Decimal.uint _ih.1.D6 _ih.1.D7)
+      (fun a _ih => @PProd.mk.{1, 1} Rocq.Corelib.Init.Decimal.uint Rocq.Corelib.Init.Decimal.uint _ih.1.D8 _ih.1.D9)
+      (fun a _ih => @PProd.mk.{1, 1} Rocq.Corelib.Init.Decimal.uint Rocq.Corelib.Init.Decimal.uint _ih.2.D0 _ih.2.D1)
+      (fun a _ih => @PProd.mk.{1, 1} Rocq.Corelib.Init.Decimal.uint Rocq.Corelib.Init.Decimal.uint _ih.2.D2 _ih.2.D3)
+      (fun a _ih => @PProd.mk.{1, 1} Rocq.Corelib.Init.Decimal.uint Rocq.Corelib.Init.Decimal.uint _ih.2.D4 _ih.2.D5)
+      (fun a _ih => @PProd.mk.{1, 1} Rocq.Corelib.Init.Decimal.uint Rocq.Corelib.Init.Decimal.uint _ih.2.D6 _ih.2.D7)
+      (fun a _ih => @PProd.mk.{1, 1} Rocq.Corelib.Init.Decimal.uint Rocq.Corelib.Init.Decimal.uint _ih.2.D8 _ih.2.D9)
+      d).1
+R2L_END_0
+R2L_BEGIN_1
+def Rocq.Corelib.Init.Decimal.Little.succ : Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.uint :=
+fun d =>
+  @Rocq.Corelib.Init.Decimal.uint.rec.{1} (fun d => Rocq.Corelib.Init.Decimal.uint)
+    Rocq.Corelib.Init.Decimal.uint.Nil.D1 (fun a _ih => a.D1) (fun a _ih => a.D2) (fun a _ih => a.D3)
+    (fun a _ih => a.D4) (fun a _ih => a.D5) (fun a _ih => a.D6) (fun a _ih => a.D7) (fun a _ih => a.D8)
+    (fun a _ih => a.D9) (fun a _ih => Rocq.Corelib.Init.Decimal.uint.D0 _ih) d
+R2L_END_1
+R2L_BEGIN_2
+def Rocq.Corelib.Init.Decimal.Little.succ_double : Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.uint :=
+fun d =>
+  (@Rocq.Corelib.Init.Decimal.uint.rec.{1}
+      (fun d => PProd.{1, 1} Rocq.Corelib.Init.Decimal.uint Rocq.Corelib.Init.Decimal.uint)
+      (@PProd.mk.{1, 1} Rocq.Corelib.Init.Decimal.uint Rocq.Corelib.Init.Decimal.uint Rocq.Corelib.Init.Decimal.uint.Nil
+        Rocq.Corelib.Init.Decimal.uint.Nil.D1)
+      (fun a _ih => @PProd.mk.{1, 1} Rocq.Corelib.Init.Decimal.uint Rocq.Corelib.Init.Decimal.uint _ih.1.D0 _ih.1.D1)
+      (fun a _ih => @PProd.mk.{1, 1} Rocq.Corelib.Init.Decimal.uint Rocq.Corelib.Init.Decimal.uint _ih.1.D2 _ih.1.D3)
+      (fun a _ih => @PProd.mk.{1, 1} Rocq.Corelib.Init.Decimal.uint Rocq.Corelib.Init.Decimal.uint _ih.1.D4 _ih.1.D5)
+      (fun a _ih => @PProd.mk.{1, 1} Rocq.Corelib.Init.Decimal.uint Rocq.Corelib.Init.Decimal.uint _ih.1.D6 _ih.1.D7)
+      (fun a _ih => @PProd.mk.{1, 1} Rocq.Corelib.Init.Decimal.uint Rocq.Corelib.Init.Decimal.uint _ih.1.D8 _ih.1.D9)
+      (fun a _ih => @PProd.mk.{1, 1} Rocq.Corelib.Init.Decimal.uint Rocq.Corelib.Init.Decimal.uint _ih.2.D0 _ih.2.D1)
+      (fun a _ih => @PProd.mk.{1, 1} Rocq.Corelib.Init.Decimal.uint Rocq.Corelib.Init.Decimal.uint _ih.2.D2 _ih.2.D3)
+      (fun a _ih => @PProd.mk.{1, 1} Rocq.Corelib.Init.Decimal.uint Rocq.Corelib.Init.Decimal.uint _ih.2.D4 _ih.2.D5)
+      (fun a _ih => @PProd.mk.{1, 1} Rocq.Corelib.Init.Decimal.uint Rocq.Corelib.Init.Decimal.uint _ih.2.D6 _ih.2.D7)
+      (fun a _ih => @PProd.mk.{1, 1} Rocq.Corelib.Init.Decimal.uint Rocq.Corelib.Init.Decimal.uint _ih.2.D8 _ih.2.D9)
+      d).2
+R2L_END_2
+R2L_BEGIN_3
+def Rocq.Corelib.Init.Decimal.abs : Rocq.Corelib.Init.Decimal.signed_int → Rocq.Corelib.Init.Decimal.uint :=
+fun d =>
+  @Rocq.Corelib.Init.Decimal.signed_int.rec.{1} (fun t => Rocq.Corelib.Init.Decimal.uint) (fun d => d) (fun d => d) d
+R2L_END_3
+R2L_BEGIN_4
+def Rocq.Corelib.Init.Decimal.app : Rocq.Corelib.Init.Decimal.uint →
+  Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.uint :=
+fun d d' => Rocq.Corelib.Init.Decimal.revapp (Rocq.Corelib.Init.Decimal.rev d) d'
+R2L_END_4
+R2L_BEGIN_5
+def Rocq.Corelib.Init.Decimal.app_int : Rocq.Corelib.Init.Decimal.signed_int →
+  Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.signed_int :=
+fun d1 d2 =>
+  @Rocq.Corelib.Init.Decimal.signed_int.rec.{1} (fun t => Rocq.Corelib.Init.Decimal.signed_int)
+    (fun d => Rocq.Corelib.Init.Decimal.signed_int.Pos (Rocq.Corelib.Init.Decimal.app d d2))
+    (fun d => Rocq.Corelib.Init.Decimal.signed_int.Neg (Rocq.Corelib.Init.Decimal.app d d2)) d1
+R2L_END_5
+R2L_BEGIN_6
+inductive Rocq.Corelib.Init.Decimal.decimal : Type
+number of parameters: 0
+constructors:
+Rocq.Corelib.Init.Decimal.decimal.Decimal : Rocq.Corelib.Init.Decimal.signed_int →
+  Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.decimal
+Rocq.Corelib.Init.Decimal.decimal.DecimalExp : Rocq.Corelib.Init.Decimal.signed_int →
+  Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.signed_int → Rocq.Corelib.Init.Decimal.decimal
+R2L_END_6
+R2L_BEGIN_7
+def Rocq.Corelib.Init.Decimal.decimal_beq : Rocq.Corelib.Init.Decimal.decimal →
+  Rocq.Corelib.Init.Decimal.decimal → Rocq.Corelib.Init.Datatypes.bool :=
+fun X Y =>
+  @Rocq.Corelib.Init.Decimal.decimal.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+    (fun i f =>
+      @Rocq.Corelib.Init.Decimal.decimal.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+        (fun i_1 f_1 =>
+          Rocq.Corelib.Init.Datatypes.andb (Rocq.Corelib.Init.Decimal.signed_int_beq i i_1)
+            (Rocq.Corelib.Init.Decimal.uint_beq f f_1))
+        (fun i f e => Rocq.Corelib.Init.Datatypes.bool.false) Y)
+    (fun i f e =>
+      @Rocq.Corelib.Init.Decimal.decimal.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+        (fun i f => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun i_1 f_1 e_1 =>
+          Rocq.Corelib.Init.Datatypes.andb (Rocq.Corelib.Init.Decimal.signed_int_beq i i_1)
+            (Rocq.Corelib.Init.Datatypes.andb (Rocq.Corelib.Init.Decimal.uint_beq f f_1)
+              (Rocq.Corelib.Init.Decimal.signed_int_beq e e_1)))
+        Y)
+    X
+R2L_END_7
+R2L_BEGIN_8
+def RocqPending.Corelib.Init.Decimal.decimal_eq_dec : {h_Corelib_Init_Decimal_decimal_eq_dec__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Decimal.decimal_eq_dec__rocq2lean_obligation_1.statement} →
+  {h_Corelib_Init_Decimal_decimal_eq_dec__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Decimal.decimal_eq_dec__rocq2lean_obligation_2.statement} →
+    {h_Corelib_Init_Decimal_decimal_eq_dec__rocq2lean_obligation_3 :
+        @RocqPending.Corelib.Init.Decimal.decimal_eq_dec__rocq2lean_obligation_3.statement
+          h_Corelib_Init_Decimal_decimal_eq_dec__rocq2lean_obligation_1
+          h_Corelib_Init_Decimal_decimal_eq_dec__rocq2lean_obligation_2} →
+      {h_Corelib_Init_Decimal_decimal_eq_dec__rocq2lean_obligation_4 :
+          @RocqPending.Corelib.Init.Decimal.decimal_eq_dec__rocq2lean_obligation_4.statement
+            h_Corelib_Init_Decimal_decimal_eq_dec__rocq2lean_obligation_1
+            h_Corelib_Init_Decimal_decimal_eq_dec__rocq2lean_obligation_2} →
+        (x y : Rocq.Corelib.Init.Decimal.decimal) →
+          Rocq.Corelib.Init.Specif.sumbool (@Eq.{1} Rocq.Corelib.Init.Decimal.decimal x y)
+            (Rocq.Corelib.Init.Logic.not (@Eq.{1} Rocq.Corelib.Init.Decimal.decimal x y)) :=
+fun {h_Corelib_Init_Decimal_decimal_eq_dec__rocq2lean_obligation_1}
+    {h_Corelib_Init_Decimal_decimal_eq_dec__rocq2lean_obligation_2}
+    {h_Corelib_Init_Decimal_decimal_eq_dec__rocq2lean_obligation_3}
+    {h_Corelib_Init_Decimal_decimal_eq_dec__rocq2lean_obligation_4} x y =>
+  let H :=
+    let b := Rocq.Corelib.Init.Decimal.decimal_beq x y;
+    @Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+      (fun t =>
+        Rocq.Corelib.Init.Specif.sumbool
+          (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool t Rocq.Corelib.Init.Datatypes.bool.true)
+          (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool t Rocq.Corelib.Init.Datatypes.bool.false))
+      (Rocq.Corelib.Init.Specif.sumbool.left
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+          Rocq.Corelib.Init.Datatypes.bool.true)
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+          Rocq.Corelib.Init.Datatypes.bool.false)
+        ⋯)
+      (Rocq.Corelib.Init.Specif.sumbool.right
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+          Rocq.Corelib.Init.Datatypes.bool.true)
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+          Rocq.Corelib.Init.Datatypes.bool.false)
+        ⋯)
+      b;
+  @Rocq.Corelib.Init.Specif.sumbool.rec.{1}
+    (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Decimal.decimal_beq x y)
+      Rocq.Corelib.Init.Datatypes.bool.true)
+    (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Decimal.decimal_beq x y)
+      Rocq.Corelib.Init.Datatypes.bool.false)
+    (fun t =>
+      Rocq.Corelib.Init.Specif.sumbool (@Eq.{1} Rocq.Corelib.Init.Decimal.decimal x y)
+        (Rocq.Corelib.Init.Logic.not (@Eq.{1} Rocq.Corelib.Init.Decimal.decimal x y)))
+    (fun a =>
+      (fun e =>
+          Rocq.Corelib.Init.Specif.sumbool.left (@Eq.{1} Rocq.Corelib.Init.Decimal.decimal x y)
+            (Rocq.Corelib.Init.Logic.not (@Eq.{1} Rocq.Corelib.Init.Decimal.decimal x y)) ⋯)
+        a)
+    (fun a =>
+      (fun H0 =>
+          Rocq.Corelib.Init.Specif.sumbool.right (@Eq.{1} Rocq.Corelib.Init.Decimal.decimal x y)
+            (Rocq.Corelib.Init.Logic.not (@Eq.{1} Rocq.Corelib.Init.Decimal.decimal x y)) ⋯)
+        a)
+    H
+R2L_END_8
+R2L_BEGIN_9
+def Rocq.Corelib.Init.Decimal.del_head : Nat → Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.uint :=
+fun n d =>
+  @Nat.rec.{1} (fun n => Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.uint) (fun d => d)
+    (fun n n_ih d =>
+      @Rocq.Corelib.Init.Decimal.uint.rec.{1} (fun t => Rocq.Corelib.Init.Decimal.uint)
+        Rocq.Corelib.Init.Decimal.uint.Nil.D0 (fun a _ih => n_ih a) (fun a _ih => n_ih a) (fun a _ih => n_ih a)
+        (fun a _ih => n_ih a) (fun a _ih => n_ih a) (fun a _ih => n_ih a) (fun a _ih => n_ih a) (fun a _ih => n_ih a)
+        (fun a _ih => n_ih a) (fun a _ih => n_ih a) d)
+    n d
+R2L_END_9
+R2L_BEGIN_10
+def Rocq.Corelib.Init.Decimal.del_head_int : Nat →
+  Rocq.Corelib.Init.Decimal.signed_int → Rocq.Corelib.Init.Decimal.uint :=
+fun n d =>
+  @Rocq.Corelib.Init.Decimal.signed_int.rec.{1} (fun t => Rocq.Corelib.Init.Decimal.uint)
+    (fun d => Rocq.Corelib.Init.Decimal.del_head n d) (fun d => Rocq.Corelib.Init.Decimal.del_head n d) d
+R2L_END_10
+R2L_BEGIN_11
+def Rocq.Corelib.Init.Decimal.del_tail : Nat → Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.uint :=
+fun n d => Rocq.Corelib.Init.Decimal.rev (Rocq.Corelib.Init.Decimal.del_head n (Rocq.Corelib.Init.Decimal.rev d))
+R2L_END_11
+R2L_BEGIN_12
+def Rocq.Corelib.Init.Decimal.del_tail_int : Nat →
+  Rocq.Corelib.Init.Decimal.signed_int → Rocq.Corelib.Init.Decimal.signed_int :=
+fun n d =>
+  @Rocq.Corelib.Init.Decimal.signed_int.rec.{1} (fun t => Rocq.Corelib.Init.Decimal.signed_int)
+    (fun d => Rocq.Corelib.Init.Decimal.signed_int.Pos (Rocq.Corelib.Init.Decimal.del_tail n d))
+    (fun d => Rocq.Corelib.Init.Decimal.signed_int.Neg (Rocq.Corelib.Init.Decimal.del_tail n d)) d
+R2L_END_12
+R2L_BEGIN_13
+def Rocq.Corelib.Init.Decimal.int_of_int : Rocq.Corelib.Init.Decimal.signed_int →
+  Rocq.Corelib.Init.Decimal.signed_int :=
+fun i => i
+R2L_END_13
+R2L_BEGIN_14
+def Rocq.Corelib.Init.Decimal.internal_decimal_dec_bl.statement : Prop :=
+∀ (x y : Rocq.Corelib.Init.Decimal.decimal),
+  @Eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Decimal.decimal_beq x y)
+      Rocq.Corelib.Init.Datatypes.bool.true →
+    @Eq.{1} Rocq.Corelib.Init.Decimal.decimal x y
+R2L_END_14
+R2L_BEGIN_15
+def Rocq.Corelib.Init.Decimal.internal_decimal_dec_lb.statement : Prop :=
+∀ (x y : Rocq.Corelib.Init.Decimal.decimal),
+  @Eq.{1} Rocq.Corelib.Init.Decimal.decimal x y →
+    @Eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Decimal.decimal_beq x y)
+      Rocq.Corelib.Init.Datatypes.bool.true
+R2L_END_15
+R2L_BEGIN_16
+def Rocq.Corelib.Init.Decimal.internal_signed_int_dec_bl.statement : Prop :=
+∀ (x y : Rocq.Corelib.Init.Decimal.signed_int),
+  @Eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Decimal.signed_int_beq x y)
+      Rocq.Corelib.Init.Datatypes.bool.true →
+    @Eq.{1} Rocq.Corelib.Init.Decimal.signed_int x y
+R2L_END_16
+R2L_BEGIN_17
+def Rocq.Corelib.Init.Decimal.internal_signed_int_dec_lb.statement : Prop :=
+∀ (x y : Rocq.Corelib.Init.Decimal.signed_int),
+  @Eq.{1} Rocq.Corelib.Init.Decimal.signed_int x y →
+    @Eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Decimal.signed_int_beq x y)
+      Rocq.Corelib.Init.Datatypes.bool.true
+R2L_END_17
+R2L_BEGIN_18
+def Rocq.Corelib.Init.Decimal.internal_uint_dec_bl.statement : Prop :=
+∀ (x : Rocq.Corelib.Init.Decimal.uint),
+  (fun x =>
+      ∀ (y : Rocq.Corelib.Init.Decimal.uint),
+        @Eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Decimal.uint_beq x y)
+            Rocq.Corelib.Init.Datatypes.bool.true →
+          @Eq.{1} Rocq.Corelib.Init.Decimal.uint x y)
+    x
+R2L_END_18
+R2L_BEGIN_19
+def Rocq.Corelib.Init.Decimal.internal_uint_dec_lb.statement : Prop :=
+∀ (x : Rocq.Corelib.Init.Decimal.uint),
+  (fun x =>
+      ∀ (y : Rocq.Corelib.Init.Decimal.uint),
+        @Eq.{1} Rocq.Corelib.Init.Decimal.uint x y →
+          @Eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Decimal.uint_beq x y)
+            Rocq.Corelib.Init.Datatypes.bool.true)
+    x
+R2L_END_19
+R2L_BEGIN_20
+def Rocq.Corelib.Init.Decimal.nb_digits : Rocq.Corelib.Init.Decimal.uint → Nat :=
+fun d =>
+  @Rocq.Corelib.Init.Decimal.uint.rec.{1} (fun d => Nat) Nat.zero (fun a _ih => Nat.succ _ih)
+    (fun a _ih => Nat.succ _ih) (fun a _ih => Nat.succ _ih) (fun a _ih => Nat.succ _ih) (fun a _ih => Nat.succ _ih)
+    (fun a _ih => Nat.succ _ih) (fun a _ih => Nat.succ _ih) (fun a _ih => Nat.succ _ih) (fun a _ih => Nat.succ _ih)
+    (fun a _ih => Nat.succ _ih) d
+R2L_END_20
+R2L_BEGIN_21
+def Rocq.Corelib.Init.Decimal.norm : Rocq.Corelib.Init.Decimal.signed_int → Rocq.Corelib.Init.Decimal.signed_int :=
+fun d =>
+  @Rocq.Corelib.Init.Decimal.signed_int.rec.{1} (fun t => Rocq.Corelib.Init.Decimal.signed_int)
+    (fun d => Rocq.Corelib.Init.Decimal.signed_int.Pos (Rocq.Corelib.Init.Decimal.unorm d))
+    (fun d =>
+      @Rocq.Corelib.Init.Decimal.uint.rec.{1} (fun t => Rocq.Corelib.Init.Decimal.signed_int)
+        (Rocq.Corelib.Init.Decimal.signed_int.Pos Rocq.Corelib.Init.Decimal.uint.Nil.D0)
+        (fun a _ih => Rocq.Corelib.Init.Decimal.signed_int.Neg a.D0)
+        (fun a _ih => Rocq.Corelib.Init.Decimal.signed_int.Neg a.D1)
+        (fun a _ih => Rocq.Corelib.Init.Decimal.signed_int.Neg a.D2)
+        (fun a _ih => Rocq.Corelib.Init.Decimal.signed_int.Neg a.D3)
+        (fun a _ih => Rocq.Corelib.Init.Decimal.signed_int.Neg a.D4)
+        (fun a _ih => Rocq.Corelib.Init.Decimal.signed_int.Neg a.D5)
+        (fun a _ih => Rocq.Corelib.Init.Decimal.signed_int.Neg a.D6)
+        (fun a _ih => Rocq.Corelib.Init.Decimal.signed_int.Neg a.D7)
+        (fun a _ih => Rocq.Corelib.Init.Decimal.signed_int.Neg a.D8)
+        (fun a _ih => Rocq.Corelib.Init.Decimal.signed_int.Neg a.D9) (Rocq.Corelib.Init.Decimal.nzhead d))
+    d
+R2L_END_21
+R2L_BEGIN_22
+def Rocq.Corelib.Init.Decimal.nzhead : Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.uint :=
+fun d =>
+  @Rocq.Corelib.Init.Decimal.uint.rec.{1} (fun d => Rocq.Corelib.Init.Decimal.uint) Rocq.Corelib.Init.Decimal.uint.Nil
+    (fun a _ih => _ih) (fun a _ih => a.D1) (fun a _ih => a.D2) (fun a _ih => a.D3) (fun a _ih => a.D4)
+    (fun a _ih => a.D5) (fun a _ih => a.D6) (fun a _ih => a.D7) (fun a _ih => a.D8) (fun a _ih => a.D9) d
+R2L_END_22
+R2L_BEGIN_23
+def Rocq.Corelib.Init.Decimal.nztail : Rocq.Corelib.Init.Decimal.uint →
+  Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Init.Decimal.uint Nat :=
+fun d =>
+  let aux := fun d_rev =>
+    @Rocq.Corelib.Init.Decimal.uint.rec.{1}
+      (fun d_rev => Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Init.Decimal.uint Nat)
+      (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Init.Decimal.uint Nat
+        Rocq.Corelib.Init.Decimal.uint.Nil Nat.zero)
+      (fun a _ih =>
+        @Rocq.Corelib.Init.Datatypes.prod.rec.{1, 0, 0} Rocq.Corelib.Init.Decimal.uint Nat
+          (fun t => Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Init.Decimal.uint Nat)
+          (fun a a_1 => Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Init.Decimal.uint Nat a a_1.succ) _ih)
+      (fun a _ih => Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Init.Decimal.uint Nat a.D1 Nat.zero)
+      (fun a _ih => Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Init.Decimal.uint Nat a.D2 Nat.zero)
+      (fun a _ih => Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Init.Decimal.uint Nat a.D3 Nat.zero)
+      (fun a _ih => Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Init.Decimal.uint Nat a.D4 Nat.zero)
+      (fun a _ih => Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Init.Decimal.uint Nat a.D5 Nat.zero)
+      (fun a _ih => Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Init.Decimal.uint Nat a.D6 Nat.zero)
+      (fun a _ih => Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Init.Decimal.uint Nat a.D7 Nat.zero)
+      (fun a _ih => Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Init.Decimal.uint Nat a.D8 Nat.zero)
+      (fun a _ih => Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Init.Decimal.uint Nat a.D9 Nat.zero)
+      d_rev;
+  @Rocq.Corelib.Init.Datatypes.prod.rec.{1, 0, 0} Rocq.Corelib.Init.Decimal.uint Nat
+    (fun t => Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Init.Decimal.uint Nat)
+    (fun a a_1 =>
+      Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Init.Decimal.uint Nat (Rocq.Corelib.Init.Decimal.rev a)
+        a_1)
+    (aux (Rocq.Corelib.Init.Decimal.rev d))
+R2L_END_23
+R2L_BEGIN_24
+def Rocq.Corelib.Init.Decimal.nztail_int : Rocq.Corelib.Init.Decimal.signed_int →
+  Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Init.Decimal.signed_int Nat :=
+fun d =>
+  @Rocq.Corelib.Init.Decimal.signed_int.rec.{1}
+    (fun t => Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Init.Decimal.signed_int Nat)
+    (fun d =>
+      @Rocq.Corelib.Init.Datatypes.prod.rec.{1, 0, 0} Rocq.Corelib.Init.Decimal.uint Nat
+        (fun t => Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Init.Decimal.signed_int Nat)
+        (fun a a_1 =>
+          Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Init.Decimal.signed_int Nat
+            (Rocq.Corelib.Init.Decimal.signed_int.Pos a) a_1)
+        (Rocq.Corelib.Init.Decimal.nztail d))
+    (fun d =>
+      @Rocq.Corelib.Init.Datatypes.prod.rec.{1, 0, 0} Rocq.Corelib.Init.Decimal.uint Nat
+        (fun t => Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Init.Decimal.signed_int Nat)
+        (fun a a_1 =>
+          Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Init.Decimal.signed_int Nat
+            (Rocq.Corelib.Init.Decimal.signed_int.Neg a) a_1)
+        (Rocq.Corelib.Init.Decimal.nztail d))
+    d
+R2L_END_24
+R2L_BEGIN_25
+def Rocq.Corelib.Init.Decimal.opp : Rocq.Corelib.Init.Decimal.signed_int → Rocq.Corelib.Init.Decimal.signed_int :=
+fun d =>
+  @Rocq.Corelib.Init.Decimal.signed_int.rec.{1} (fun t => Rocq.Corelib.Init.Decimal.signed_int)
+    (fun d => Rocq.Corelib.Init.Decimal.signed_int.Neg d) (fun d => Rocq.Corelib.Init.Decimal.signed_int.Pos d) d
+R2L_END_25
+R2L_BEGIN_26
+def Rocq.Corelib.Init.Decimal.rev : Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.uint :=
+fun d => Rocq.Corelib.Init.Decimal.revapp d Rocq.Corelib.Init.Decimal.uint.Nil
+R2L_END_26
+R2L_BEGIN_27
+def Rocq.Corelib.Init.Decimal.revapp : Rocq.Corelib.Init.Decimal.uint →
+  Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.uint :=
+fun d d' =>
+  @Rocq.Corelib.Init.Decimal.uint.rec.{1} (fun d => Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.uint)
+    (fun d' => d') (fun a _ih d' => _ih d'.D0) (fun a _ih d' => _ih d'.D1) (fun a _ih d' => _ih d'.D2)
+    (fun a _ih d' => _ih d'.D3) (fun a _ih d' => _ih d'.D4) (fun a _ih d' => _ih d'.D5) (fun a _ih d' => _ih d'.D6)
+    (fun a _ih d' => _ih d'.D7) (fun a _ih d' => _ih d'.D8) (fun a _ih d' => _ih d'.D9) d d'
+R2L_END_27
+R2L_BEGIN_28
+inductive Rocq.Corelib.Init.Decimal.signed_int : Type
+number of parameters: 0
+constructors:
+Rocq.Corelib.Init.Decimal.signed_int.Pos : Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.signed_int
+Rocq.Corelib.Init.Decimal.signed_int.Neg : Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.signed_int
+R2L_END_28
+R2L_BEGIN_29
+def Rocq.Corelib.Init.Decimal.signed_int_beq : Rocq.Corelib.Init.Decimal.signed_int →
+  Rocq.Corelib.Init.Decimal.signed_int → Rocq.Corelib.Init.Datatypes.bool :=
+fun X Y =>
+  @Rocq.Corelib.Init.Decimal.signed_int.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+    (fun d =>
+      @Rocq.Corelib.Init.Decimal.signed_int.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+        (fun d_1 => Rocq.Corelib.Init.Decimal.uint_beq d d_1) (fun d => Rocq.Corelib.Init.Datatypes.bool.false) Y)
+    (fun d =>
+      @Rocq.Corelib.Init.Decimal.signed_int.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+        (fun d => Rocq.Corelib.Init.Datatypes.bool.false) (fun d_1 => Rocq.Corelib.Init.Decimal.uint_beq d d_1) Y)
+    X
+R2L_END_29
+R2L_BEGIN_30
+def RocqPending.Corelib.Init.Decimal.signed_int_eq_dec : {h_Corelib_Init_Decimal_signed_int_eq_dec__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Decimal.signed_int_eq_dec__rocq2lean_obligation_1.statement} →
+  {h_Corelib_Init_Decimal_signed_int_eq_dec__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Decimal.signed_int_eq_dec__rocq2lean_obligation_2.statement} →
+    {h_Corelib_Init_Decimal_signed_int_eq_dec__rocq2lean_obligation_3 :
+        @RocqPending.Corelib.Init.Decimal.signed_int_eq_dec__rocq2lean_obligation_3.statement
+          h_Corelib_Init_Decimal_signed_int_eq_dec__rocq2lean_obligation_1
+          h_Corelib_Init_Decimal_signed_int_eq_dec__rocq2lean_obligation_2} →
+      {h_Corelib_Init_Decimal_signed_int_eq_dec__rocq2lean_obligation_4 :
+          @RocqPending.Corelib.Init.Decimal.signed_int_eq_dec__rocq2lean_obligation_4.statement
+            h_Corelib_Init_Decimal_signed_int_eq_dec__rocq2lean_obligation_1
+            h_Corelib_Init_Decimal_signed_int_eq_dec__rocq2lean_obligation_2} →
+        (x y : Rocq.Corelib.Init.Decimal.signed_int) →
+          Rocq.Corelib.Init.Specif.sumbool (@Eq.{1} Rocq.Corelib.Init.Decimal.signed_int x y)
+            (Rocq.Corelib.Init.Logic.not (@Eq.{1} Rocq.Corelib.Init.Decimal.signed_int x y)) :=
+fun {h_Corelib_Init_Decimal_signed_int_eq_dec__rocq2lean_obligation_1}
+    {h_Corelib_Init_Decimal_signed_int_eq_dec__rocq2lean_obligation_2}
+    {h_Corelib_Init_Decimal_signed_int_eq_dec__rocq2lean_obligation_3}
+    {h_Corelib_Init_Decimal_signed_int_eq_dec__rocq2lean_obligation_4} x y =>
+  let H :=
+    let b := Rocq.Corelib.Init.Decimal.signed_int_beq x y;
+    @Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+      (fun t =>
+        Rocq.Corelib.Init.Specif.sumbool
+          (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool t Rocq.Corelib.Init.Datatypes.bool.true)
+          (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool t Rocq.Corelib.Init.Datatypes.bool.false))
+      (Rocq.Corelib.Init.Specif.sumbool.left
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+          Rocq.Corelib.Init.Datatypes.bool.true)
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+          Rocq.Corelib.Init.Datatypes.bool.false)
+        ⋯)
+      (Rocq.Corelib.Init.Specif.sumbool.right
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+          Rocq.Corelib.Init.Datatypes.bool.true)
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+          Rocq.Corelib.Init.Datatypes.bool.false)
+        ⋯)
+      b;
+  @Rocq.Corelib.Init.Specif.sumbool.rec.{1}
+    (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Decimal.signed_int_beq x y)
+      Rocq.Corelib.Init.Datatypes.bool.true)
+    (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Decimal.signed_int_beq x y)
+      Rocq.Corelib.Init.Datatypes.bool.false)
+    (fun t =>
+      Rocq.Corelib.Init.Specif.sumbool (@Eq.{1} Rocq.Corelib.Init.Decimal.signed_int x y)
+        (Rocq.Corelib.Init.Logic.not (@Eq.{1} Rocq.Corelib.Init.Decimal.signed_int x y)))
+    (fun a =>
+      (fun e =>
+          Rocq.Corelib.Init.Specif.sumbool.left (@Eq.{1} Rocq.Corelib.Init.Decimal.signed_int x y)
+            (Rocq.Corelib.Init.Logic.not (@Eq.{1} Rocq.Corelib.Init.Decimal.signed_int x y)) ⋯)
+        a)
+    (fun a =>
+      (fun H0 =>
+          Rocq.Corelib.Init.Specif.sumbool.right (@Eq.{1} Rocq.Corelib.Init.Decimal.signed_int x y)
+            (Rocq.Corelib.Init.Logic.not (@Eq.{1} Rocq.Corelib.Init.Decimal.signed_int x y)) ⋯)
+        a)
+    H
+R2L_END_30
+R2L_BEGIN_31
+inductive Rocq.Corelib.Init.Decimal.uint : Type
+number of parameters: 0
+constructors:
+Rocq.Corelib.Init.Decimal.uint.Nil : Rocq.Corelib.Init.Decimal.uint
+Rocq.Corelib.Init.Decimal.uint.D0 : Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.uint
+Rocq.Corelib.Init.Decimal.uint.D1 : Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.uint
+Rocq.Corelib.Init.Decimal.uint.D2 : Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.uint
+Rocq.Corelib.Init.Decimal.uint.D3 : Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.uint
+Rocq.Corelib.Init.Decimal.uint.D4 : Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.uint
+Rocq.Corelib.Init.Decimal.uint.D5 : Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.uint
+Rocq.Corelib.Init.Decimal.uint.D6 : Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.uint
+Rocq.Corelib.Init.Decimal.uint.D7 : Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.uint
+Rocq.Corelib.Init.Decimal.uint.D8 : Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.uint
+Rocq.Corelib.Init.Decimal.uint.D9 : Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.uint
+R2L_END_31
+R2L_BEGIN_32
+def Rocq.Corelib.Init.Decimal.uint_beq : Rocq.Corelib.Init.Decimal.uint →
+  Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Datatypes.bool :=
+fun X Y =>
+  @Rocq.Corelib.Init.Decimal.uint.rec.{1} (fun X => Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Datatypes.bool)
+    (fun Y =>
+      @Rocq.Corelib.Init.Decimal.uint.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+        Rocq.Corelib.Init.Datatypes.bool.true (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) Y)
+    (fun a _ih Y =>
+      @Rocq.Corelib.Init.Decimal.uint.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+        Rocq.Corelib.Init.Datatypes.bool.false (fun a _ih_1 => _ih a)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) Y)
+    (fun a _ih Y =>
+      @Rocq.Corelib.Init.Decimal.uint.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+        Rocq.Corelib.Init.Datatypes.bool.false (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih_1 => _ih a) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) Y)
+    (fun a _ih Y =>
+      @Rocq.Corelib.Init.Decimal.uint.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+        Rocq.Corelib.Init.Datatypes.bool.false (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih_1 => _ih a)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) Y)
+    (fun a _ih Y =>
+      @Rocq.Corelib.Init.Decimal.uint.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+        Rocq.Corelib.Init.Datatypes.bool.false (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih_1 => _ih a) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) Y)
+    (fun a _ih Y =>
+      @Rocq.Corelib.Init.Decimal.uint.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+        Rocq.Corelib.Init.Datatypes.bool.false (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih_1 => _ih a)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) Y)
+    (fun a _ih Y =>
+      @Rocq.Corelib.Init.Decimal.uint.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+        Rocq.Corelib.Init.Datatypes.bool.false (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih_1 => _ih a) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) Y)
+    (fun a _ih Y =>
+      @Rocq.Corelib.Init.Decimal.uint.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+        Rocq.Corelib.Init.Datatypes.bool.false (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih_1 => _ih a)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) Y)
+    (fun a _ih Y =>
+      @Rocq.Corelib.Init.Decimal.uint.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+        Rocq.Corelib.Init.Datatypes.bool.false (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih_1 => _ih a) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) Y)
+    (fun a _ih Y =>
+      @Rocq.Corelib.Init.Decimal.uint.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+        Rocq.Corelib.Init.Datatypes.bool.false (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih_1 => _ih a)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) Y)
+    (fun a _ih Y =>
+      @Rocq.Corelib.Init.Decimal.uint.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+        Rocq.Corelib.Init.Datatypes.bool.false (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a _ih_1 => _ih a) Y)
+    X Y
+R2L_END_32
+R2L_BEGIN_33
+def RocqPending.Corelib.Init.Decimal.uint_eq_dec : {h_Corelib_Init_Decimal_uint_eq_dec__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Decimal.uint_eq_dec__rocq2lean_obligation_1.statement} →
+  {h_Corelib_Init_Decimal_uint_eq_dec__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Decimal.uint_eq_dec__rocq2lean_obligation_2.statement} →
+    {h_Corelib_Init_Decimal_uint_eq_dec__rocq2lean_obligation_3 :
+        @RocqPending.Corelib.Init.Decimal.uint_eq_dec__rocq2lean_obligation_3.statement
+          h_Corelib_Init_Decimal_uint_eq_dec__rocq2lean_obligation_1
+          h_Corelib_Init_Decimal_uint_eq_dec__rocq2lean_obligation_2} →
+      {h_Corelib_Init_Decimal_uint_eq_dec__rocq2lean_obligation_4 :
+          @RocqPending.Corelib.Init.Decimal.uint_eq_dec__rocq2lean_obligation_4.statement
+            h_Corelib_Init_Decimal_uint_eq_dec__rocq2lean_obligation_1
+            h_Corelib_Init_Decimal_uint_eq_dec__rocq2lean_obligation_2} →
+        (x y : Rocq.Corelib.Init.Decimal.uint) →
+          Rocq.Corelib.Init.Specif.sumbool (@Eq.{1} Rocq.Corelib.Init.Decimal.uint x y)
+            (Rocq.Corelib.Init.Logic.not (@Eq.{1} Rocq.Corelib.Init.Decimal.uint x y)) :=
+fun {h_Corelib_Init_Decimal_uint_eq_dec__rocq2lean_obligation_1}
+    {h_Corelib_Init_Decimal_uint_eq_dec__rocq2lean_obligation_2}
+    {h_Corelib_Init_Decimal_uint_eq_dec__rocq2lean_obligation_3}
+    {h_Corelib_Init_Decimal_uint_eq_dec__rocq2lean_obligation_4} x y =>
+  let H :=
+    let b := Rocq.Corelib.Init.Decimal.uint_beq x y;
+    @Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+      (fun t =>
+        Rocq.Corelib.Init.Specif.sumbool
+          (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool t Rocq.Corelib.Init.Datatypes.bool.true)
+          (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool t Rocq.Corelib.Init.Datatypes.bool.false))
+      (Rocq.Corelib.Init.Specif.sumbool.left
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+          Rocq.Corelib.Init.Datatypes.bool.true)
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+          Rocq.Corelib.Init.Datatypes.bool.false)
+        ⋯)
+      (Rocq.Corelib.Init.Specif.sumbool.right
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+          Rocq.Corelib.Init.Datatypes.bool.true)
+        (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+          Rocq.Corelib.Init.Datatypes.bool.false)
+        ⋯)
+      b;
+  @Rocq.Corelib.Init.Specif.sumbool.rec.{1}
+    (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Decimal.uint_beq x y)
+      Rocq.Corelib.Init.Datatypes.bool.true)
+    (@Eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Decimal.uint_beq x y)
+      Rocq.Corelib.Init.Datatypes.bool.false)
+    (fun t =>
+      Rocq.Corelib.Init.Specif.sumbool (@Eq.{1} Rocq.Corelib.Init.Decimal.uint x y)
+        (Rocq.Corelib.Init.Logic.not (@Eq.{1} Rocq.Corelib.Init.Decimal.uint x y)))
+    (fun a =>
+      (fun e =>
+          Rocq.Corelib.Init.Specif.sumbool.left (@Eq.{1} Rocq.Corelib.Init.Decimal.uint x y)
+            (Rocq.Corelib.Init.Logic.not (@Eq.{1} Rocq.Corelib.Init.Decimal.uint x y)) ⋯)
+        a)
+    (fun a =>
+      (fun H0 =>
+          Rocq.Corelib.Init.Specif.sumbool.right (@Eq.{1} Rocq.Corelib.Init.Decimal.uint x y)
+            (Rocq.Corelib.Init.Logic.not (@Eq.{1} Rocq.Corelib.Init.Decimal.uint x y)) ⋯)
+        a)
+    H
+R2L_END_33
+R2L_BEGIN_34
+def Rocq.Corelib.Init.Decimal.uint_ind.statement : Prop :=
+∀ (P : Rocq.Corelib.Init.Decimal.uint → Prop),
+  P Rocq.Corelib.Init.Decimal.uint.Nil →
+    (∀ (u : Rocq.Corelib.Init.Decimal.uint), P u → P u.D0) →
+      (∀ (u : Rocq.Corelib.Init.Decimal.uint), P u → P u.D1) →
+        (∀ (u : Rocq.Corelib.Init.Decimal.uint), P u → P u.D2) →
+          (∀ (u : Rocq.Corelib.Init.Decimal.uint), P u → P u.D3) →
+            (∀ (u : Rocq.Corelib.Init.Decimal.uint), P u → P u.D4) →
+              (∀ (u : Rocq.Corelib.Init.Decimal.uint), P u → P u.D5) →
+                (∀ (u : Rocq.Corelib.Init.Decimal.uint), P u → P u.D6) →
+                  (∀ (u : Rocq.Corelib.Init.Decimal.uint), P u → P u.D7) →
+                    (∀ (u : Rocq.Corelib.Init.Decimal.uint), P u → P u.D8) →
+                      (∀ (u : Rocq.Corelib.Init.Decimal.uint), P u → P u.D9) →
+                        ∀ (u : Rocq.Corelib.Init.Decimal.uint), P u
+R2L_END_34
+R2L_BEGIN_35
+def Rocq.Corelib.Init.Decimal.uint_of_uint : Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.uint :=
+fun i => i
+R2L_END_35
+R2L_BEGIN_36
+def Rocq.Corelib.Init.Decimal.uint_rec : (P : Rocq.Corelib.Init.Decimal.uint → Type) →
+  P Rocq.Corelib.Init.Decimal.uint.Nil →
+    ((u : Rocq.Corelib.Init.Decimal.uint) → P u → P u.D0) →
+      ((u : Rocq.Corelib.Init.Decimal.uint) → P u → P u.D1) →
+        ((u : Rocq.Corelib.Init.Decimal.uint) → P u → P u.D2) →
+          ((u : Rocq.Corelib.Init.Decimal.uint) → P u → P u.D3) →
+            ((u : Rocq.Corelib.Init.Decimal.uint) → P u → P u.D4) →
+              ((u : Rocq.Corelib.Init.Decimal.uint) → P u → P u.D5) →
+                ((u : Rocq.Corelib.Init.Decimal.uint) → P u → P u.D6) →
+                  ((u : Rocq.Corelib.Init.Decimal.uint) → P u → P u.D7) →
+                    ((u : Rocq.Corelib.Init.Decimal.uint) → P u → P u.D8) →
+                      ((u : Rocq.Corelib.Init.Decimal.uint) → P u → P u.D9) →
+                        (u : Rocq.Corelib.Init.Decimal.uint) → P u :=
+fun P Nil D0 D1 D2 D3 D4 D5 D6 D7 D8 D9 u =>
+  @Rocq.Corelib.Init.Decimal.uint.rec.{1} (fun u => P u) Nil (fun a _ih => D0 a _ih) (fun a _ih => D1 a _ih)
+    (fun a _ih => D2 a _ih) (fun a _ih => D3 a _ih) (fun a _ih => D4 a _ih) (fun a _ih => D5 a _ih)
+    (fun a _ih => D6 a _ih) (fun a _ih => D7 a _ih) (fun a _ih => D8 a _ih) (fun a _ih => D9 a _ih) u
+R2L_END_36
+R2L_BEGIN_37
+def Rocq.Corelib.Init.Decimal.uint_rect.{u_Corelib_Init_Decimal_32} : (P :
+    Rocq.Corelib.Init.Decimal.uint → Sort u_Corelib_Init_Decimal_32) →
+  P Rocq.Corelib.Init.Decimal.uint.Nil →
+    ((u : Rocq.Corelib.Init.Decimal.uint) → P u → P u.D0) →
+      ((u : Rocq.Corelib.Init.Decimal.uint) → P u → P u.D1) →
+        ((u : Rocq.Corelib.Init.Decimal.uint) → P u → P u.D2) →
+          ((u : Rocq.Corelib.Init.Decimal.uint) → P u → P u.D3) →
+            ((u : Rocq.Corelib.Init.Decimal.uint) → P u → P u.D4) →
+              ((u : Rocq.Corelib.Init.Decimal.uint) → P u → P u.D5) →
+                ((u : Rocq.Corelib.Init.Decimal.uint) → P u → P u.D6) →
+                  ((u : Rocq.Corelib.Init.Decimal.uint) → P u → P u.D7) →
+                    ((u : Rocq.Corelib.Init.Decimal.uint) → P u → P u.D8) →
+                      ((u : Rocq.Corelib.Init.Decimal.uint) → P u → P u.D9) →
+                        (u : Rocq.Corelib.Init.Decimal.uint) → P u :=
+fun P Nil D0 D1 D2 D3 D4 D5 D6 D7 D8 D9 u =>
+  @Rocq.Corelib.Init.Decimal.uint.rec.{u_Corelib_Init_Decimal_32} (fun u => P u) Nil (fun a _ih => D0 a _ih)
+    (fun a _ih => D1 a _ih) (fun a _ih => D2 a _ih) (fun a _ih => D3 a _ih) (fun a _ih => D4 a _ih)
+    (fun a _ih => D5 a _ih) (fun a _ih => D6 a _ih) (fun a _ih => D7 a _ih) (fun a _ih => D8 a _ih)
+    (fun a _ih => D9 a _ih) u
+R2L_END_37
+R2L_BEGIN_38
+def Rocq.Corelib.Init.Decimal.unorm : Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.uint :=
+fun d =>
+  @Rocq.Corelib.Init.Decimal.uint.rec.{1} (fun t => Rocq.Corelib.Init.Decimal.uint)
+    Rocq.Corelib.Init.Decimal.uint.Nil.D0 (fun a _ih => a.D0) (fun a _ih => a.D1) (fun a _ih => a.D2)
+    (fun a _ih => a.D3) (fun a _ih => a.D4) (fun a _ih => a.D5) (fun a _ih => a.D6) (fun a _ih => a.D7)
+    (fun a _ih => a.D8) (fun a _ih => a.D9) (Rocq.Corelib.Init.Decimal.nzhead d)
+R2L_END_38

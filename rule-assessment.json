@@ -1,0 +1,51 @@
+[
+  {
+    "rule": "SProp / irrelevant 绑定",
+    "before": 40,
+    "after": 40,
+    "missing": "需定义 SProp 的表示及消去限制，不能删除拒绝检查。",
+    "action": "未采用新的表示策略。"
+  },
+  {
+    "rule": "证明抽取与依赖计算",
+    "before": 52,
+    "after": 52,
+    "missing": "构造子证明作为依赖索引时，抽取后分支类型与消去器要求的构造子索引不同。需保持索引一致；补充前提不能恢复源端转换。",
+    "action": "测试缓存、化简、上下文缩减和绑定修补；保留逐项实际错误。"
+  },
+  {
+    "rule": "quality / sort 多态导出",
+    "before": 22,
+    "after": 22,
+    "missing": "MetaRocq 引用前端缺少 quality 多态上下文的完整表示及传递；还未进入 Lean。",
+    "action": "固定工具链下仍受阻。"
+  },
+  {
+    "rule": "模板归纳类型的 Prop 实例",
+    "before": 20,
+    "after": 18,
+    "missing": "需统一处理 Prop 参数的类型、构造子、recursor、投影和调用点；可能涉及 Sort 泛化或 lift 表示。",
+    "action": "2 项改为依赖受阻，仍未成功；未更改表示策略。"
+  },
+  {
+    "rule": "宇宙求解及一致性",
+    "before": 2,
+    "after": 1,
+    "missing": "bool_eq_rec 仍有 proof-local 宇宙约束冲突；不能放松源宇宙一致性检查。",
+    "action": "eq_existT_curried_congr 成为带条件的可检查陈述。"
+  },
+  {
+    "rule": "抽取后的证明递归",
+    "before": 4,
+    "after": 4,
+    "missing": "需重建结构递归依据或产生可检查的良基终止性义务，不能假定终止性。",
+    "action": "保持受阻，没有生成原库证明。"
+  },
+  {
+    "rule": "依赖阻塞",
+    "before": 50,
+    "after": 52,
+    "missing": "逐项报告递归追踪上游根因；先修上游，再重测。",
+    "action": "增加包含失败阶段变化，不是新增 2 个失败根声明。"
+  }
+]

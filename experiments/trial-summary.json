@@ -1,0 +1,93 @@
+[
+  {
+    "experiment": "proof-cache-trial",
+    "total": 839,
+    "complete": 574,
+    "pending": 75,
+    "blocked": 190,
+    "validation": {
+      "source-roundtrip/roundtrip.json": "OK",
+      "audit.json": "OK",
+      "consumer_result.json": "OK"
+    },
+    "note": "相同完整上下文中的证明子项复用：没有增加通过项，未保留。"
+  },
+  {
+    "experiment": "normalization-trial",
+    "total": 839,
+    "complete": 574,
+    "pending": 75,
+    "blocked": 190,
+    "validation": {
+      "source-roundtrip/roundtrip.json": "EXPORT_VALIDATION_FAILED",
+      "audit.json": "OK",
+      "consumer_result.json": "OK"
+    },
+    "note": "抽取前 β/ι/ζ 化简：源端结构 roundtrip 失败；下面计数只是诊断，不能计为认证结果，拒绝。"
+  },
+  {
+    "experiment": "binder-context-trial",
+    "total": 839,
+    "complete": 569,
+    "pending": 81,
+    "blocked": 189,
+    "validation": {
+      "source-roundtrip/roundtrip.json": "OK",
+      "audit.json": "OK",
+      "consumer_result.json": "OK"
+    },
+    "note": "使用重写后的绑定类型：增加 1 项带条件陈述，另 5 项新增条件；候选核心。"
+  },
+  {
+    "experiment": "minimal-obligations-trial",
+    "total": 839,
+    "complete": 569,
+    "pending": 78,
+    "blocked": 192,
+    "validation": {
+      "source-roundtrip/roundtrip.json": "OK",
+      "audit.json": "OK",
+      "consumer_result.json": "OK"
+    },
+    "note": "缩减义务上下文并复用同型条件：3 项原可检查陈述变为受阻，拒绝。"
+  },
+  {
+    "experiment": "minimal-binder-trial",
+    "total": 839,
+    "complete": 569,
+    "pending": 78,
+    "blocked": 192,
+    "validation": {
+      "source-roundtrip/roundtrip.json": "OK",
+      "audit.json": "OK",
+      "consumer_result.json": "OK"
+    },
+    "note": "缩减上下文与绑定修补组合：2 项越过抽取阶段但仍被依赖阻塞；仍有上述 3 项退步，拒绝。"
+  },
+  {
+    "experiment": "binder-statement-cache-trial",
+    "total": 839,
+    "complete": 569,
+    "pending": 81,
+    "blocked": 189,
+    "validation": {
+      "source-roundtrip/roundtrip.json": "OK",
+      "audit.json": "OK",
+      "consumer_result.json": "OK"
+    },
+    "note": "同型条件复用 + 绑定修补：没有超过单独绑定修补，未保留额外缓存。"
+  },
+  {
+    "experiment": "candidate-final",
+    "total": 839,
+    "complete": 569,
+    "pending": 81,
+    "blocked": 189,
+    "validation": {
+      "source-roundtrip/roundtrip.json": "OK",
+      "audit.json": "OK",
+      "consumer_result.json": "OK"
+    },
+    "note": "最终隔离候选：绑定上下文修补 + 源端详细错误 + 可选 Lean 线程数。"
+  }
+]

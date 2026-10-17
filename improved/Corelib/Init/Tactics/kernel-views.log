@@ -1,0 +1,16 @@
+R2L_BEGIN_0
+def Rocq.Corelib.Init.Tactics.decide_left.statement : Prop :=
+∀ (C : Prop) (decide : Rocq.Corelib.Init.Specif.sumbool C (Rocq.Corelib.Init.Logic.not C)),
+  C →
+    ∀ (P : Rocq.Corelib.Init.Specif.sumbool C (Rocq.Corelib.Init.Logic.not C) → Prop),
+      (∀ (H : C), P (Rocq.Corelib.Init.Specif.sumbool.left C (Rocq.Corelib.Init.Logic.not C) H)) → P decide
+R2L_END_0
+R2L_BEGIN_1
+def Rocq.Corelib.Init.Tactics.decide_right.statement : Prop :=
+∀ (C : Prop) (decide : Rocq.Corelib.Init.Specif.sumbool C (Rocq.Corelib.Init.Logic.not C)),
+  Rocq.Corelib.Init.Logic.not C →
+    ∀ (P : Rocq.Corelib.Init.Specif.sumbool C (Rocq.Corelib.Init.Logic.not C) → Prop),
+      (∀ (H : Rocq.Corelib.Init.Logic.not C),
+          P (Rocq.Corelib.Init.Specif.sumbool.right C (Rocq.Corelib.Init.Logic.not C) H)) →
+        P decide
+R2L_END_1

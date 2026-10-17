@@ -1,0 +1,836 @@
+R2L_BEGIN_0
+inductive Rocq.Corelib.Init.Logic.False : Prop
+number of parameters: 0
+constructors:
+R2L_END_0
+R2L_BEGIN_1
+def Rocq.Corelib.Init.Logic.False_ind.statement : Prop :=
+∀ (P : Prop), Rocq.Corelib.Init.Logic.False → P
+R2L_END_1
+R2L_BEGIN_2
+def Rocq.Corelib.Init.Logic.False_rec : (P : Type) → Rocq.Corelib.Init.Logic.False → P :=
+fun P f => Rocq.Corelib.Init.Logic.False.rec.{1} (fun t => P) f
+R2L_END_2
+R2L_BEGIN_3
+def Rocq.Corelib.Init.Logic.False_rect.{u_Corelib_Init_Logic_2} : (P : Type u_Corelib_Init_Logic_2) →
+  Rocq.Corelib.Init.Logic.False → P :=
+fun P f => Rocq.Corelib.Init.Logic.False.rec.{u_Corelib_Init_Logic_2 + 1} (fun t => P) f
+R2L_END_3
+R2L_BEGIN_4
+inductive Rocq.Corelib.Init.Logic.True : Prop
+number of parameters: 0
+constructors:
+Rocq.Corelib.Init.Logic.True.I : Rocq.Corelib.Init.Logic.True
+R2L_END_4
+R2L_BEGIN_5
+def Rocq.Corelib.Init.Logic.True_ind.statement : Prop :=
+∀ (P : Prop), P → Rocq.Corelib.Init.Logic.True → P
+R2L_END_5
+R2L_BEGIN_6
+def Rocq.Corelib.Init.Logic.True_rec : (P : Type) → P → Rocq.Corelib.Init.Logic.True → P :=
+fun P I t => @Rocq.Corelib.Init.Logic.True.rec.{1} (fun t => P) I t
+R2L_END_6
+R2L_BEGIN_7
+def Rocq.Corelib.Init.Logic.True_rect.{u_Corelib_Init_Logic_1} : (P : Type u_Corelib_Init_Logic_1) →
+  P → Rocq.Corelib.Init.Logic.True → P :=
+fun P I t => @Rocq.Corelib.Init.Logic.True.rec.{u_Corelib_Init_Logic_1 + 1} (fun t => P) I t
+R2L_END_7
+R2L_BEGIN_8
+def Rocq.Corelib.Init.Logic.absurd.statement : Prop :=
+∀ (A C : Prop), A → Rocq.Corelib.Init.Logic.not A → C
+R2L_END_8
+R2L_BEGIN_9
+def Rocq.Corelib.Init.Logic.all.{u_Corelib_Init_Logic_17} : (A : Type u_Corelib_Init_Logic_17) → (A → Prop) → Prop :=
+fun A P => ∀ (x : A), P x
+R2L_END_9
+R2L_BEGIN_10
+inductive Rocq.Corelib.Init.Logic.and : Prop → Prop → Prop
+number of parameters: 2
+constructors:
+Rocq.Corelib.Init.Logic.and.conj : ∀ (A B : Prop), A → B → Rocq.Corelib.Init.Logic.and A B
+R2L_END_10
+R2L_BEGIN_11
+def Rocq.Corelib.Init.Logic.and_assoc.statement : Prop :=
+∀ (A B C : Prop),
+  Rocq.Corelib.Init.Logic.iff (Rocq.Corelib.Init.Logic.and (Rocq.Corelib.Init.Logic.and A B) C)
+    (Rocq.Corelib.Init.Logic.and A (Rocq.Corelib.Init.Logic.and B C))
+R2L_END_11
+R2L_BEGIN_12
+def Rocq.Corelib.Init.Logic.and_cancel_l.statement : Prop :=
+∀ (A B C : Prop),
+  (B → A) →
+    (C → A) →
+      Rocq.Corelib.Init.Logic.iff
+        (Rocq.Corelib.Init.Logic.iff (Rocq.Corelib.Init.Logic.and A B) (Rocq.Corelib.Init.Logic.and A C))
+        (Rocq.Corelib.Init.Logic.iff B C)
+R2L_END_12
+R2L_BEGIN_13
+def Rocq.Corelib.Init.Logic.and_cancel_r.statement : Prop :=
+∀ (A B C : Prop),
+  (B → A) →
+    (C → A) →
+      Rocq.Corelib.Init.Logic.iff
+        (Rocq.Corelib.Init.Logic.iff (Rocq.Corelib.Init.Logic.and B A) (Rocq.Corelib.Init.Logic.and C A))
+        (Rocq.Corelib.Init.Logic.iff B C)
+R2L_END_13
+R2L_BEGIN_14
+def Rocq.Corelib.Init.Logic.and_comm.statement : Prop :=
+∀ (A B : Prop), Rocq.Corelib.Init.Logic.iff (Rocq.Corelib.Init.Logic.and A B) (Rocq.Corelib.Init.Logic.and B A)
+R2L_END_14
+R2L_BEGIN_15
+def Rocq.Corelib.Init.Logic.and_iff_compat_l.statement : Prop :=
+∀ (A B C : Prop),
+  Rocq.Corelib.Init.Logic.iff B C →
+    Rocq.Corelib.Init.Logic.iff (Rocq.Corelib.Init.Logic.and A B) (Rocq.Corelib.Init.Logic.and A C)
+R2L_END_15
+R2L_BEGIN_16
+def Rocq.Corelib.Init.Logic.and_iff_compat_r.statement : Prop :=
+∀ (A B C : Prop),
+  Rocq.Corelib.Init.Logic.iff B C →
+    Rocq.Corelib.Init.Logic.iff (Rocq.Corelib.Init.Logic.and B A) (Rocq.Corelib.Init.Logic.and C A)
+R2L_END_16
+R2L_BEGIN_17
+def Rocq.Corelib.Init.Logic.and_ind.statement : Prop :=
+∀ (A B P : Prop), (A → B → P) → Rocq.Corelib.Init.Logic.and A B → P
+R2L_END_17
+R2L_BEGIN_18
+def Rocq.Corelib.Init.Logic.and_rec : (A B : Prop) → (P : Type) → (A → B → P) → Rocq.Corelib.Init.Logic.and A B → P :=
+fun A B P conj a => @Rocq.Corelib.Init.Logic.and.rec.{1} A B (fun t => P) (fun a a_1 => conj a a_1) a
+R2L_END_18
+R2L_BEGIN_19
+def Rocq.Corelib.Init.Logic.and_rect.{u_Corelib_Init_Logic_4} : (A B : Prop) →
+  (P : Type u_Corelib_Init_Logic_4) → (A → B → P) → Rocq.Corelib.Init.Logic.and A B → P :=
+fun A B P conj a =>
+  @Rocq.Corelib.Init.Logic.and.rec.{u_Corelib_Init_Logic_4 + 1} A B (fun t => P) (fun a a_1 => conj a a_1) a
+R2L_END_19
+R2L_BEGIN_20
+inductive Eq.{u_1} : {α : Sort u_1} → α → α → Prop
+number of parameters: 2
+constructors:
+Eq.refl : ∀ {α : Sort u_1} (a : α), @Eq.{u_1} α a a
+R2L_END_20
+R2L_BEGIN_21
+def RocqPending.Corelib.Init.Logic.eq_ex_intro.statement.{u_Corelib_Init_Logic_439} : {h_Corelib_Init_Logic_eq_ex_intro__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_1.statement.{u_Corelib_Init_Logic_439}} →
+  {h_Corelib_Init_Logic_eq_ex_intro__rocq2lean_obligation_2 :
+      @RocqPending.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_2.statement.{u_Corelib_Init_Logic_439}
+        h_Corelib_Init_Logic_eq_ex_intro__rocq2lean_obligation_1} →
+    {h_Corelib_Init_Logic_eq_ex_intro__rocq2lean_obligation_3 :
+        @RocqPending.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_3.statement.{u_Corelib_Init_Logic_439}
+          h_Corelib_Init_Logic_eq_ex_intro__rocq2lean_obligation_1} →
+      Prop :=
+fun {h_Corelib_Init_Logic_eq_ex_intro__rocq2lean_obligation_1}
+    {h_Corelib_Init_Logic_eq_ex_intro__rocq2lean_obligation_2}
+    {h_Corelib_Init_Logic_eq_ex_intro__rocq2lean_obligation_3} =>
+  ∀ (A : Type u_Corelib_Init_Logic_439) (P : A → Prop) (u1 v1 : A) (u2 : P u1) (v2 : P v1)
+    (p : @Eq.{u_Corelib_Init_Logic_439 + 1} A u1 v1) (q : @Eq.{0} (P v1) ⋯ v2),
+    @Eq.{0} (Rocq.Corelib.Init.Logic.ex.{u_Corelib_Init_Logic_439} A P) ⋯ ⋯
+R2L_END_21
+R2L_BEGIN_22
+def RocqPending.Corelib.Init.Logic.eq_ex_intro2.statement.{u_Corelib_Init_Logic_626} : {h_Corelib_Init_Logic_eq_ex_intro2__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_1.statement.{u_Corelib_Init_Logic_626}} →
+  {h_Corelib_Init_Logic_eq_ex_intro2__rocq2lean_obligation_2 :
+      @RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_2.statement.{u_Corelib_Init_Logic_626}
+        h_Corelib_Init_Logic_eq_ex_intro2__rocq2lean_obligation_1} →
+    {h_Corelib_Init_Logic_eq_ex_intro2__rocq2lean_obligation_3 :
+        @RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_3.statement.{u_Corelib_Init_Logic_626}
+          h_Corelib_Init_Logic_eq_ex_intro2__rocq2lean_obligation_1
+          h_Corelib_Init_Logic_eq_ex_intro2__rocq2lean_obligation_2} →
+      {h_Corelib_Init_Logic_eq_ex_intro2__rocq2lean_obligation_4 :
+          @RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_4.statement.{u_Corelib_Init_Logic_626}
+            h_Corelib_Init_Logic_eq_ex_intro2__rocq2lean_obligation_1
+            h_Corelib_Init_Logic_eq_ex_intro2__rocq2lean_obligation_2} →
+        Prop :=
+fun {h_Corelib_Init_Logic_eq_ex_intro2__rocq2lean_obligation_1}
+    {h_Corelib_Init_Logic_eq_ex_intro2__rocq2lean_obligation_2}
+    {h_Corelib_Init_Logic_eq_ex_intro2__rocq2lean_obligation_3}
+    {h_Corelib_Init_Logic_eq_ex_intro2__rocq2lean_obligation_4} =>
+  ∀ (A : Type u_Corelib_Init_Logic_626) (P Q : A → Prop) (u1 v1 : A) (u2 : P u1) (v2 : P v1) (u3 : Q u1) (v3 : Q v1)
+    (p : @Eq.{u_Corelib_Init_Logic_626 + 1} A u1 v1) (q : @Eq.{0} (P v1) ⋯ v2) (r : @Eq.{0} (Q v1) ⋯ v3),
+    @Eq.{0} (Rocq.Corelib.Init.Logic.ex2.{u_Corelib_Init_Logic_626} A P Q) ⋯ ⋯
+R2L_END_22
+R2L_BEGIN_23
+def RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop.statement.{u_Corelib_Init_Logic_690} : {h_Corelib_Init_Logic_eq_ex_intro2_hprop__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop__rocq2lean_obligation_1.statement.{u_Corelib_Init_Logic_690}} →
+  {h_Corelib_Init_Logic_eq_ex_intro2_hprop__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop__rocq2lean_obligation_2.statement.{u_Corelib_Init_Logic_690}} →
+    Prop :=
+fun {h_Corelib_Init_Logic_eq_ex_intro2_hprop__rocq2lean_obligation_1}
+    {h_Corelib_Init_Logic_eq_ex_intro2_hprop__rocq2lean_obligation_2} =>
+  ∀ (A : Type u_Corelib_Init_Logic_690) (P Q : A → Prop) (P_hprop : ∀ (x : A) (p q : P x), @Eq.{0} (P x) p q)
+    (Q_hprop : ∀ (x : A) (p q : Q x), @Eq.{0} (Q x) p q) (u1 v1 : A) (u2 : P u1) (v2 : P v1) (u3 : Q u1) (v3 : Q v1)
+    (p : @Eq.{u_Corelib_Init_Logic_690 + 1} A u1 v1),
+    @Eq.{0} (Rocq.Corelib.Init.Logic.ex2.{u_Corelib_Init_Logic_690} A P Q) ⋯ ⋯
+R2L_END_23
+R2L_BEGIN_24
+def RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep.statement.{u_Corelib_Init_Logic_667} : {h_Corelib_Init_Logic_eq_ex_intro2_hprop_nondep__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_1.statement.{u_Corelib_Init_Logic_667}} →
+  {h_Corelib_Init_Logic_eq_ex_intro2_hprop_nondep__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_2.statement.{u_Corelib_Init_Logic_667}} →
+    {h_Corelib_Init_Logic_eq_ex_intro2_hprop_nondep__rocq2lean_obligation_3 :
+        @RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_3.statement.{u_Corelib_Init_Logic_667}
+          h_Corelib_Init_Logic_eq_ex_intro2_hprop_nondep__rocq2lean_obligation_1
+          h_Corelib_Init_Logic_eq_ex_intro2_hprop_nondep__rocq2lean_obligation_2} →
+      {h_Corelib_Init_Logic_eq_ex_intro2_hprop_nondep__rocq2lean_obligation_4 :
+          @RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_4.statement.{u_Corelib_Init_Logic_667}
+            h_Corelib_Init_Logic_eq_ex_intro2_hprop_nondep__rocq2lean_obligation_1
+            h_Corelib_Init_Logic_eq_ex_intro2_hprop_nondep__rocq2lean_obligation_2} →
+        Prop :=
+fun {h_Corelib_Init_Logic_eq_ex_intro2_hprop_nondep__rocq2lean_obligation_1}
+    {h_Corelib_Init_Logic_eq_ex_intro2_hprop_nondep__rocq2lean_obligation_2}
+    {h_Corelib_Init_Logic_eq_ex_intro2_hprop_nondep__rocq2lean_obligation_3}
+    {h_Corelib_Init_Logic_eq_ex_intro2_hprop_nondep__rocq2lean_obligation_4} =>
+  ∀ (A : Type u_Corelib_Init_Logic_667) (P : A → Prop) (Q : Prop) (Q_hprop : ∀ (p q : Q), @Eq.{0} Q p q) (u1 v1 : A)
+    (u2 : P u1) (v2 : P v1) (u3 v3 : Q) (p : @Eq.{0} (Rocq.Corelib.Init.Logic.ex.{u_Corelib_Init_Logic_667} A P) ⋯ ⋯),
+    @Eq.{0} (Rocq.Corelib.Init.Logic.ex2.{u_Corelib_Init_Logic_667} A P fun u1 => Q) ⋯ ⋯
+R2L_END_24
+R2L_BEGIN_25
+def RocqPending.Corelib.Init.Logic.eq_ex_intro_hprop.statement.{u_Corelib_Init_Logic_537} : {h_Corelib_Init_Logic_eq_ex_intro_hprop__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.eq_ex_intro_hprop__rocq2lean_obligation_1.statement.{u_Corelib_Init_Logic_537}} →
+  {h_Corelib_Init_Logic_eq_ex_intro_hprop__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Logic.eq_ex_intro_hprop__rocq2lean_obligation_2.statement.{u_Corelib_Init_Logic_537}} →
+    Prop :=
+fun {h_Corelib_Init_Logic_eq_ex_intro_hprop__rocq2lean_obligation_1}
+    {h_Corelib_Init_Logic_eq_ex_intro_hprop__rocq2lean_obligation_2} =>
+  ∀ (A : Type u_Corelib_Init_Logic_537) (P : A → Prop) (P_hprop : ∀ (x : A) (p q : P x), @Eq.{0} (P x) p q) (u1 v1 : A)
+    (u2 : P u1) (v2 : P v1) (p : @Eq.{u_Corelib_Init_Logic_537 + 1} A u1 v1),
+    @Eq.{0} (Rocq.Corelib.Init.Logic.ex.{u_Corelib_Init_Logic_537} A P) ⋯ ⋯
+R2L_END_25
+R2L_BEGIN_26
+def RocqPending.Corelib.Init.Logic.eq_id_comm_l.statement.{u_Corelib_Init_Logic_269} : {h_Corelib_Init_Logic_eq_id_comm_l__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.eq_id_comm_l__rocq2lean_obligation_1.statement.{u_Corelib_Init_Logic_269}} →
+  {h_Corelib_Init_Logic_eq_id_comm_l__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Logic.eq_id_comm_l__rocq2lean_obligation_2.statement.{u_Corelib_Init_Logic_269}} →
+    Prop :=
+fun {h_Corelib_Init_Logic_eq_id_comm_l__rocq2lean_obligation_1}
+    {h_Corelib_Init_Logic_eq_id_comm_l__rocq2lean_obligation_2} =>
+  ∀ (A : Type u_Corelib_Init_Logic_269) (f : A → A) (Hf : ∀ (a : A), @Eq.{u_Corelib_Init_Logic_269 + 1} A a (f a))
+    (a : A), @Eq.{0} (@Eq.{u_Corelib_Init_Logic_269 + 1} A (f a) (f (f a))) ⋯ ⋯
+R2L_END_26
+R2L_BEGIN_27
+def RocqPending.Corelib.Init.Logic.eq_id_comm_r.statement.{u_Corelib_Init_Logic_277} : {h_Corelib_Init_Logic_eq_id_comm_r__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.eq_id_comm_r__rocq2lean_obligation_1.statement.{u_Corelib_Init_Logic_277}} →
+  {h_Corelib_Init_Logic_eq_id_comm_r__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Logic.eq_id_comm_r__rocq2lean_obligation_2.statement.{u_Corelib_Init_Logic_277}} →
+    Prop :=
+fun {h_Corelib_Init_Logic_eq_id_comm_r__rocq2lean_obligation_1}
+    {h_Corelib_Init_Logic_eq_id_comm_r__rocq2lean_obligation_2} =>
+  ∀ (A : Type u_Corelib_Init_Logic_277) (f : A → A) (Hf : ∀ (a : A), @Eq.{u_Corelib_Init_Logic_277 + 1} A (f a) a)
+    (a : A), @Eq.{0} (@Eq.{u_Corelib_Init_Logic_277 + 1} A (f (f a)) (f a)) ⋯ ⋯
+R2L_END_27
+R2L_BEGIN_28
+def Rocq.Corelib.Init.Logic.eq_ind.statement.{u_Corelib_Init_Logic_22} : Prop :=
+∀ (A : Type u_Corelib_Init_Logic_22) (x : A) (P : A → Prop),
+  P x → ∀ (a : A), @Eq.{u_Corelib_Init_Logic_22 + 1} A x a → P a
+R2L_END_28
+R2L_BEGIN_29
+def Rocq.Corelib.Init.Logic.eq_ind_r.statement.{u_Corelib_Init_Logic_61} : Prop :=
+∀ (A : Type u_Corelib_Init_Logic_61) (x : A) (P : A → Prop),
+  P x → ∀ (y : A), @Eq.{u_Corelib_Init_Logic_61 + 1} A y x → P y
+R2L_END_29
+R2L_BEGIN_30
+def Rocq.Corelib.Init.Logic.eq_rec.{u_Corelib_Init_Logic_23} : (A : Type u_Corelib_Init_Logic_23) →
+  (x : A) → (P : A → Type) → P x → (a : A) → @Eq.{u_Corelib_Init_Logic_23 + 1} A x a → P a :=
+fun A x P eq_refl a e => @Eq.rec.{1, u_Corelib_Init_Logic_23 + 1} A x (fun a t => P a) eq_refl a e
+R2L_END_30
+R2L_BEGIN_31
+def RocqPending.Corelib.Init.Logic.eq_rec_r.{u_Corelib_Init_Logic_63} : {h_Corelib_Init_Logic_eq_rec_r__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.eq_rec_r__rocq2lean_obligation_1.statement.{u_Corelib_Init_Logic_63}} →
+  (A : Type u_Corelib_Init_Logic_63) →
+    (x : A) → (P : A → Type) → P x → (y : A) → @Eq.{u_Corelib_Init_Logic_63 + 1} A y x → P y :=
+fun {h_Corelib_Init_Logic_eq_rec_r__rocq2lean_obligation_1} A x P H y H0 =>
+  Rocq.Corelib.Init.Logic.eq_rec.{u_Corelib_Init_Logic_63} A x (fun y => P y) H y ⋯
+R2L_END_31
+R2L_BEGIN_32
+def Rocq.Corelib.Init.Logic.eq_rect.{u_Corelib_Init_Logic_20, u_Corelib_Init_Logic_21} : (A :
+    Type u_Corelib_Init_Logic_21) →
+  (x : A) → (P : A → Sort u_Corelib_Init_Logic_20) → P x → (a : A) → @Eq.{u_Corelib_Init_Logic_21 + 1} A x a → P a :=
+fun A x P eq_refl a e => @Eq.rec.{u_Corelib_Init_Logic_20, u_Corelib_Init_Logic_21 + 1} A x (fun a t => P a) eq_refl a e
+R2L_END_32
+R2L_BEGIN_33
+def RocqPending.Corelib.Init.Logic.eq_rect_r.{u_Corelib_Init_Logic_65, u_Corelib_Init_Logic_66} : {h_Corelib_Init_Logic_eq_rect_r__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement.{u_Corelib_Init_Logic_65,
+      u_Corelib_Init_Logic_66}} →
+  (A : Type u_Corelib_Init_Logic_65) →
+    (x : A) → (P : A → Type u_Corelib_Init_Logic_66) → P x → (y : A) → @Eq.{u_Corelib_Init_Logic_65 + 1} A y x → P y :=
+fun {h_Corelib_Init_Logic_eq_rect_r__rocq2lean_obligation_1} A x P H y H0 =>
+  Rocq.Corelib.Init.Logic.eq_rect.{u_Corelib_Init_Logic_66 + 1, u_Corelib_Init_Logic_65} A x (fun y => P y) H y ⋯
+R2L_END_33
+R2L_BEGIN_34
+def RocqPending.Corelib.Init.Logic.eq_refl_map_distr.statement.{u_Corelib_Init_Logic_287, u_Corelib_Init_Logic_288} : {h_Corelib_Init_Logic_eq_refl_map_distr__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.eq_refl_map_distr__rocq2lean_obligation_1.statement.{u_Corelib_Init_Logic_287,
+      u_Corelib_Init_Logic_288}} →
+  {h_Corelib_Init_Logic_eq_refl_map_distr__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Logic.eq_refl_map_distr__rocq2lean_obligation_2.statement.{u_Corelib_Init_Logic_287,
+        u_Corelib_Init_Logic_288}} →
+    Prop :=
+fun {h_Corelib_Init_Logic_eq_refl_map_distr__rocq2lean_obligation_1}
+    {h_Corelib_Init_Logic_eq_refl_map_distr__rocq2lean_obligation_2} =>
+  ∀ (A : Type u_Corelib_Init_Logic_287) (B : Type u_Corelib_Init_Logic_288) (x : A) (f : A → B),
+    @Eq.{0} (@Eq.{u_Corelib_Init_Logic_288 + 1} B (f x) (f x)) ⋯ ⋯
+R2L_END_34
+R2L_BEGIN_35
+def Rocq.Corelib.Init.Logic.eq_rew.{u_Corelib_Init_Logic_32, u_Corelib_Init_Logic_33} : (A :
+    Type u_Corelib_Init_Logic_33) →
+  (x : A) → (P : A → Sort u_Corelib_Init_Logic_32) → P x → (a : A) → @Eq.{u_Corelib_Init_Logic_33 + 1} A x a → P a :=
+fun A x P eq_refl a e => @Eq.rec.{u_Corelib_Init_Logic_32, u_Corelib_Init_Logic_33 + 1} A x (fun a t => P a) eq_refl a e
+R2L_END_35
+R2L_BEGIN_36
+def Rocq.Corelib.Init.Logic.eq_rew_r.{u_Corelib_Init_Logic_38, u_Corelib_Init_Logic_39} : (A :
+    Type u_Corelib_Init_Logic_38) →
+  (x y : A) → (P : A → Sort u_Corelib_Init_Logic_39) → P y → @Eq.{u_Corelib_Init_Logic_38 + 1} A x y → P x :=
+fun A x y P HC H =>
+  @Eq.rec.{u_Corelib_Init_Logic_39, u_Corelib_Init_Logic_38 + 1} A x (fun a t => P a → P x) (fun HC => HC) y H HC
+R2L_END_36
+R2L_BEGIN_37
+def Rocq.Corelib.Init.Logic.eq_stepl.statement.{u_Corelib_Init_Logic_383} : Prop :=
+∀ (A : Type u_Corelib_Init_Logic_383) (x y z : A),
+  @Eq.{u_Corelib_Init_Logic_383 + 1} A x y →
+    @Eq.{u_Corelib_Init_Logic_383 + 1} A x z → @Eq.{u_Corelib_Init_Logic_383 + 1} A z y
+R2L_END_37
+R2L_BEGIN_38
+def Rocq.Corelib.Init.Logic.eq_sym.statement.{u_Corelib_Init_Logic_31} : Prop :=
+∀ (A : Type u_Corelib_Init_Logic_31) (x y : A),
+  @Eq.{u_Corelib_Init_Logic_31 + 1} A x y → @Eq.{u_Corelib_Init_Logic_31 + 1} A y x
+R2L_END_38
+R2L_BEGIN_39
+def RocqPending.Corelib.Init.Logic.eq_sym_involutive.statement.{u_Corelib_Init_Logic_40} : {h_Corelib_Init_Logic_eq_sym_involutive__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.eq_sym_involutive__rocq2lean_obligation_1.statement.{u_Corelib_Init_Logic_40}} →
+  Prop :=
+fun {h_Corelib_Init_Logic_eq_sym_involutive__rocq2lean_obligation_1} =>
+  ∀ (A : Type u_Corelib_Init_Logic_40) (x y : A) (H : @Eq.{u_Corelib_Init_Logic_40 + 1} A x y),
+    @Eq.{0} (@Eq.{u_Corelib_Init_Logic_40 + 1} A x y) ⋯ H
+R2L_END_39
+R2L_BEGIN_40
+def RocqPending.Corelib.Init.Logic.eq_sym_map_distr.statement.{u_Corelib_Init_Logic_312, u_Corelib_Init_Logic_313} : {h_Corelib_Init_Logic_eq_sym_map_distr__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.eq_sym_map_distr__rocq2lean_obligation_1.statement.{u_Corelib_Init_Logic_312,
+      u_Corelib_Init_Logic_313}} →
+  {h_Corelib_Init_Logic_eq_sym_map_distr__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Logic.eq_sym_map_distr__rocq2lean_obligation_2.statement.{u_Corelib_Init_Logic_312,
+        u_Corelib_Init_Logic_313}} →
+    Prop :=
+fun {h_Corelib_Init_Logic_eq_sym_map_distr__rocq2lean_obligation_1}
+    {h_Corelib_Init_Logic_eq_sym_map_distr__rocq2lean_obligation_2} =>
+  ∀ (A : Type u_Corelib_Init_Logic_312) (B : Type u_Corelib_Init_Logic_313) (x y : A) (f : A → B)
+    (e : @Eq.{u_Corelib_Init_Logic_312 + 1} A x y), @Eq.{0} (@Eq.{u_Corelib_Init_Logic_313 + 1} B (f y) (f x)) ⋯ ⋯
+R2L_END_40
+R2L_BEGIN_41
+def Rocq.Corelib.Init.Logic.eq_trans.statement.{u_Corelib_Init_Logic_45} : Prop :=
+∀ (A : Type u_Corelib_Init_Logic_45) (x y z : A),
+  @Eq.{u_Corelib_Init_Logic_45 + 1} A x y →
+    @Eq.{u_Corelib_Init_Logic_45 + 1} A y z → @Eq.{u_Corelib_Init_Logic_45 + 1} A x z
+R2L_END_41
+R2L_BEGIN_42
+def RocqPending.Corelib.Init.Logic.eq_trans_assoc.statement.{u_Corelib_Init_Logic_182} : {h_Corelib_Init_Logic_eq_trans_assoc__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.eq_trans_assoc__rocq2lean_obligation_1.statement.{u_Corelib_Init_Logic_182}} →
+  {h_Corelib_Init_Logic_eq_trans_assoc__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Logic.eq_trans_assoc__rocq2lean_obligation_2.statement.{u_Corelib_Init_Logic_182}} →
+    Prop :=
+fun {h_Corelib_Init_Logic_eq_trans_assoc__rocq2lean_obligation_1}
+    {h_Corelib_Init_Logic_eq_trans_assoc__rocq2lean_obligation_2} =>
+  ∀ (A : Type u_Corelib_Init_Logic_182) (x y z t : A) (e : @Eq.{u_Corelib_Init_Logic_182 + 1} A x y)
+    (e' : @Eq.{u_Corelib_Init_Logic_182 + 1} A y z) (e'' : @Eq.{u_Corelib_Init_Logic_182 + 1} A z t),
+    @Eq.{0} (@Eq.{u_Corelib_Init_Logic_182 + 1} A x t) ⋯ ⋯
+R2L_END_42
+R2L_BEGIN_43
+def RocqPending.Corelib.Init.Logic.eq_trans_map.statement.{u_Corelib_Init_Logic_202, u_Corelib_Init_Logic_205} : {h_Corelib_Init_Logic_eq_trans_map__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.eq_trans_map__rocq2lean_obligation_1.statement.{u_Corelib_Init_Logic_202,
+      u_Corelib_Init_Logic_205}} →
+  Prop :=
+fun {h_Corelib_Init_Logic_eq_trans_map__rocq2lean_obligation_1} =>
+  ∀ (A : Type u_Corelib_Init_Logic_202) (B : A → Type u_Corelib_Init_Logic_205) (x1 x2 x3 : A) (y1 : B x1) (y2 : B x2)
+    (y3 : B x3) (H1 : @Eq.{u_Corelib_Init_Logic_202 + 1} A x1 x2) (H2 : @Eq.{u_Corelib_Init_Logic_202 + 1} A x2 x3)
+    (H1' :
+      @Eq.{u_Corelib_Init_Logic_205 + 1} (B x2)
+        (Rocq.Corelib.Init.Logic.eq_rect.{u_Corelib_Init_Logic_205 + 1, u_Corelib_Init_Logic_202} A x1 B y1 x2 H1) y2)
+    (H2' :
+      @Eq.{u_Corelib_Init_Logic_205 + 1} (B x3)
+        (Rocq.Corelib.Init.Logic.eq_rect.{u_Corelib_Init_Logic_205 + 1, u_Corelib_Init_Logic_202} A x2 B y2 x3 H2) y3),
+    @Eq.{u_Corelib_Init_Logic_205 + 1} (B x3)
+      (Rocq.Corelib.Init.Logic.eq_rect.{u_Corelib_Init_Logic_205 + 1, u_Corelib_Init_Logic_202} A x1 B y1 x3 ⋯) y3
+R2L_END_43
+R2L_BEGIN_44
+def RocqPending.Corelib.Init.Logic.eq_trans_map_distr.statement.{u_Corelib_Init_Logic_299, u_Corelib_Init_Logic_300} : {h_Corelib_Init_Logic_eq_trans_map_distr__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.eq_trans_map_distr__rocq2lean_obligation_1.statement.{u_Corelib_Init_Logic_299,
+      u_Corelib_Init_Logic_300}} →
+  {h_Corelib_Init_Logic_eq_trans_map_distr__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Logic.eq_trans_map_distr__rocq2lean_obligation_2.statement.{u_Corelib_Init_Logic_299,
+        u_Corelib_Init_Logic_300}} →
+    Prop :=
+fun {h_Corelib_Init_Logic_eq_trans_map_distr__rocq2lean_obligation_1}
+    {h_Corelib_Init_Logic_eq_trans_map_distr__rocq2lean_obligation_2} =>
+  ∀ (A : Type u_Corelib_Init_Logic_299) (B : Type u_Corelib_Init_Logic_300) (x y z : A) (f : A → B)
+    (e : @Eq.{u_Corelib_Init_Logic_299 + 1} A x y) (e' : @Eq.{u_Corelib_Init_Logic_299 + 1} A y z),
+    @Eq.{0} (@Eq.{u_Corelib_Init_Logic_300 + 1} B (f x) (f z)) ⋯ ⋯
+R2L_END_44
+R2L_BEGIN_45
+def Rocq.Corelib.Init.Logic.eq_trans_r.statement.{u_Corelib_Init_Logic_45} : Prop :=
+∀ (A : Type u_Corelib_Init_Logic_45) (x y z : A),
+  @Eq.{u_Corelib_Init_Logic_45 + 1} A x y →
+    @Eq.{u_Corelib_Init_Logic_45 + 1} A z y → @Eq.{u_Corelib_Init_Logic_45 + 1} A x z
+R2L_END_45
+R2L_BEGIN_46
+def RocqPending.Corelib.Init.Logic.eq_trans_refl_l.statement.{u_Corelib_Init_Logic_157} : {h_Corelib_Init_Logic_eq_trans_refl_l__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.eq_trans_refl_l__rocq2lean_obligation_1.statement.{u_Corelib_Init_Logic_157}} →
+  Prop :=
+fun {h_Corelib_Init_Logic_eq_trans_refl_l__rocq2lean_obligation_1} =>
+  ∀ (A : Type u_Corelib_Init_Logic_157) (x y : A) (e : @Eq.{u_Corelib_Init_Logic_157 + 1} A x y),
+    @Eq.{0} (@Eq.{u_Corelib_Init_Logic_157 + 1} A x y) ⋯ e
+R2L_END_46
+R2L_BEGIN_47
+def RocqPending.Corelib.Init.Logic.eq_trans_refl_r.statement.{u_Corelib_Init_Logic_164} : {h_Corelib_Init_Logic_eq_trans_refl_r__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.eq_trans_refl_r__rocq2lean_obligation_1.statement.{u_Corelib_Init_Logic_164}} →
+  Prop :=
+fun {h_Corelib_Init_Logic_eq_trans_refl_r__rocq2lean_obligation_1} =>
+  ∀ (A : Type u_Corelib_Init_Logic_164) (x y : A) (e : @Eq.{u_Corelib_Init_Logic_164 + 1} A x y),
+    @Eq.{0} (@Eq.{u_Corelib_Init_Logic_164 + 1} A x y) ⋯ e
+R2L_END_47
+R2L_BEGIN_48
+def RocqPending.Corelib.Init.Logic.eq_trans_rew_distr.statement.{u_Corelib_Init_Logic_324, u_Corelib_Init_Logic_325} : {h_Corelib_Init_Logic_eq_trans_rew_distr__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.eq_trans_rew_distr__rocq2lean_obligation_1.statement.{u_Corelib_Init_Logic_324,
+      u_Corelib_Init_Logic_325}} →
+  Prop :=
+fun {h_Corelib_Init_Logic_eq_trans_rew_distr__rocq2lean_obligation_1} =>
+  ∀ (A : Type u_Corelib_Init_Logic_324) (P : A → Type u_Corelib_Init_Logic_325) (x y z : A)
+    (e : @Eq.{u_Corelib_Init_Logic_324 + 1} A x y) (e' : @Eq.{u_Corelib_Init_Logic_324 + 1} A y z) (k : P x),
+    @Eq.{u_Corelib_Init_Logic_325 + 1} (P z)
+      (Rocq.Corelib.Init.Logic.eq_rect.{u_Corelib_Init_Logic_325 + 1, u_Corelib_Init_Logic_324} A x P k z ⋯)
+      (Rocq.Corelib.Init.Logic.eq_rect.{u_Corelib_Init_Logic_325 + 1, u_Corelib_Init_Logic_324} A y P
+        (Rocq.Corelib.Init.Logic.eq_rect.{u_Corelib_Init_Logic_325 + 1, u_Corelib_Init_Logic_324} A x P k y e) z e')
+R2L_END_48
+R2L_BEGIN_49
+def RocqPending.Corelib.Init.Logic.eq_trans_sym_distr.statement.{u_Corelib_Init_Logic_318} : {h_Corelib_Init_Logic_eq_trans_sym_distr__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.eq_trans_sym_distr__rocq2lean_obligation_1.statement.{u_Corelib_Init_Logic_318}} →
+  {h_Corelib_Init_Logic_eq_trans_sym_distr__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Logic.eq_trans_sym_distr__rocq2lean_obligation_2.statement.{u_Corelib_Init_Logic_318}} →
+    Prop :=
+fun {h_Corelib_Init_Logic_eq_trans_sym_distr__rocq2lean_obligation_1}
+    {h_Corelib_Init_Logic_eq_trans_sym_distr__rocq2lean_obligation_2} =>
+  ∀ (A : Type u_Corelib_Init_Logic_318) (x y z : A) (e : @Eq.{u_Corelib_Init_Logic_318 + 1} A x y)
+    (e' : @Eq.{u_Corelib_Init_Logic_318 + 1} A y z), @Eq.{0} (@Eq.{u_Corelib_Init_Logic_318 + 1} A z x) ⋯ ⋯
+R2L_END_49
+R2L_BEGIN_50
+def RocqPending.Corelib.Init.Logic.eq_trans_sym_inv_l.statement.{u_Corelib_Init_Logic_170} : {h_Corelib_Init_Logic_eq_trans_sym_inv_l__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.eq_trans_sym_inv_l__rocq2lean_obligation_1.statement.{u_Corelib_Init_Logic_170}} →
+  {h_Corelib_Init_Logic_eq_trans_sym_inv_l__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Logic.eq_trans_sym_inv_l__rocq2lean_obligation_2.statement.{u_Corelib_Init_Logic_170}} →
+    Prop :=
+fun {h_Corelib_Init_Logic_eq_trans_sym_inv_l__rocq2lean_obligation_1}
+    {h_Corelib_Init_Logic_eq_trans_sym_inv_l__rocq2lean_obligation_2} =>
+  ∀ (A : Type u_Corelib_Init_Logic_170) (x y : A) (e : @Eq.{u_Corelib_Init_Logic_170 + 1} A x y),
+    @Eq.{0} (@Eq.{u_Corelib_Init_Logic_170 + 1} A y y) ⋯ ⋯
+R2L_END_50
+R2L_BEGIN_51
+def RocqPending.Corelib.Init.Logic.eq_trans_sym_inv_r.statement.{u_Corelib_Init_Logic_176} : {h_Corelib_Init_Logic_eq_trans_sym_inv_r__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.eq_trans_sym_inv_r__rocq2lean_obligation_1.statement.{u_Corelib_Init_Logic_176}} →
+  {h_Corelib_Init_Logic_eq_trans_sym_inv_r__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Logic.eq_trans_sym_inv_r__rocq2lean_obligation_2.statement.{u_Corelib_Init_Logic_176}} →
+    Prop :=
+fun {h_Corelib_Init_Logic_eq_trans_sym_inv_r__rocq2lean_obligation_1}
+    {h_Corelib_Init_Logic_eq_trans_sym_inv_r__rocq2lean_obligation_2} =>
+  ∀ (A : Type u_Corelib_Init_Logic_176) (x y : A) (e : @Eq.{u_Corelib_Init_Logic_176 + 1} A x y),
+    @Eq.{0} (@Eq.{u_Corelib_Init_Logic_176 + 1} A x x) ⋯ ⋯
+R2L_END_51
+R2L_BEGIN_52
+inductive Rocq.Corelib.Init.Logic.ex.{u_Corelib_Init_Logic_5} : (A : Type u_Corelib_Init_Logic_5) → (A → Prop) → Prop
+number of parameters: 2
+constructors:
+Rocq.Corelib.Init.Logic.ex.ex_intro : ∀ (A : Type u_Corelib_Init_Logic_5) (P : A → Prop) (x : A),
+  P x → Rocq.Corelib.Init.Logic.ex.{u_Corelib_Init_Logic_5} A P
+R2L_END_52
+R2L_BEGIN_53
+inductive Rocq.Corelib.Init.Logic.ex2.{u_Corelib_Init_Logic_10} : (A : Type u_Corelib_Init_Logic_10) →
+  (A → Prop) → (A → Prop) → Prop
+number of parameters: 3
+constructors:
+Rocq.Corelib.Init.Logic.ex2.ex_intro2 : ∀ (A : Type u_Corelib_Init_Logic_10) (P Q : A → Prop) (x : A),
+  P x → Q x → Rocq.Corelib.Init.Logic.ex2.{u_Corelib_Init_Logic_10} A P Q
+R2L_END_53
+R2L_BEGIN_54
+def Rocq.Corelib.Init.Logic.ex2_ind.statement.{u_Corelib_Init_Logic_11} : Prop :=
+∀ (A : Type u_Corelib_Init_Logic_11) (P Q : A → Prop) (P0 : Prop),
+  (∀ (x : A), P x → Q x → P0) → Rocq.Corelib.Init.Logic.ex2.{u_Corelib_Init_Logic_11} A P Q → P0
+R2L_END_54
+R2L_BEGIN_55
+def Rocq.Corelib.Init.Logic.ex_ind.statement.{u_Corelib_Init_Logic_6} : Prop :=
+∀ (A : Type u_Corelib_Init_Logic_6) (P : A → Prop) (P0 : Prop),
+  (∀ (x : A), P x → P0) → Rocq.Corelib.Init.Logic.ex.{u_Corelib_Init_Logic_6} A P → P0
+R2L_END_55
+R2L_BEGIN_56
+def Rocq.Corelib.Init.Logic.exists_inhabited.statement.{u_Corelib_Init_Logic_374} : Prop :=
+∀ (A : Type u_Corelib_Init_Logic_374) (P : A → Prop),
+  (Rocq.Corelib.Init.Logic.ex.{u_Corelib_Init_Logic_374} A fun x => P x) →
+    Rocq.Corelib.Init.Logic.inhabited.{u_Corelib_Init_Logic_374} A
+R2L_END_56
+R2L_BEGIN_57
+def Rocq.Corelib.Init.Logic.f_equal.statement.{u_Corelib_Init_Logic_45, u_Corelib_Init_Logic_46} : Prop :=
+∀ (A : Type u_Corelib_Init_Logic_45) (B : Type u_Corelib_Init_Logic_46) (f : A → B) (x y : A),
+  @Eq.{u_Corelib_Init_Logic_45 + 1} A x y → @Eq.{u_Corelib_Init_Logic_46 + 1} B (f x) (f y)
+R2L_END_57
+R2L_BEGIN_58
+def Rocq.Corelib.Init.Logic.f_equal2.statement.{u_Corelib_Init_Logic_107, u_Corelib_Init_Logic_108, u_Corelib_Init_Logic_109} : Prop :=
+∀ (A1 : Type u_Corelib_Init_Logic_107) (A2 : Type u_Corelib_Init_Logic_108) (B : Type u_Corelib_Init_Logic_109)
+  (f : A1 → A2 → B) (x1 y1 : A1) (x2 y2 : A2),
+  @Eq.{u_Corelib_Init_Logic_107 + 1} A1 x1 y1 →
+    @Eq.{u_Corelib_Init_Logic_108 + 1} A2 x2 y2 → @Eq.{u_Corelib_Init_Logic_109 + 1} B (f x1 x2) (f y1 y2)
+R2L_END_58
+R2L_BEGIN_59
+def Rocq.Corelib.Init.Logic.f_equal3.statement.{u_Corelib_Init_Logic_114, u_Corelib_Init_Logic_115, u_Corelib_Init_Logic_116, u_Corelib_Init_Logic_117} : Prop :=
+∀ (A1 : Type u_Corelib_Init_Logic_114) (A2 : Type u_Corelib_Init_Logic_115) (A3 : Type u_Corelib_Init_Logic_116)
+  (B : Type u_Corelib_Init_Logic_117) (f : A1 → A2 → A3 → B) (x1 y1 : A1) (x2 y2 : A2) (x3 y3 : A3),
+  @Eq.{u_Corelib_Init_Logic_114 + 1} A1 x1 y1 →
+    @Eq.{u_Corelib_Init_Logic_115 + 1} A2 x2 y2 →
+      @Eq.{u_Corelib_Init_Logic_116 + 1} A3 x3 y3 → @Eq.{u_Corelib_Init_Logic_117 + 1} B (f x1 x2 x3) (f y1 y2 y3)
+R2L_END_59
+R2L_BEGIN_60
+def Rocq.Corelib.Init.Logic.f_equal4.statement.{u_Corelib_Init_Logic_123, u_Corelib_Init_Logic_124, u_Corelib_Init_Logic_125, u_Corelib_Init_Logic_126, u_Corelib_Init_Logic_127} : Prop :=
+∀ (A1 : Type u_Corelib_Init_Logic_123) (A2 : Type u_Corelib_Init_Logic_124) (A3 : Type u_Corelib_Init_Logic_125)
+  (A4 : Type u_Corelib_Init_Logic_126) (B : Type u_Corelib_Init_Logic_127) (f : A1 → A2 → A3 → A4 → B) (x1 y1 : A1)
+  (x2 y2 : A2) (x3 y3 : A3) (x4 y4 : A4),
+  @Eq.{u_Corelib_Init_Logic_123 + 1} A1 x1 y1 →
+    @Eq.{u_Corelib_Init_Logic_124 + 1} A2 x2 y2 →
+      @Eq.{u_Corelib_Init_Logic_125 + 1} A3 x3 y3 →
+        @Eq.{u_Corelib_Init_Logic_126 + 1} A4 x4 y4 →
+          @Eq.{u_Corelib_Init_Logic_127 + 1} B (f x1 x2 x3 x4) (f y1 y2 y3 y4)
+R2L_END_60
+R2L_BEGIN_61
+def Rocq.Corelib.Init.Logic.f_equal5.statement.{u_Corelib_Init_Logic_134, u_Corelib_Init_Logic_135, u_Corelib_Init_Logic_136, u_Corelib_Init_Logic_137, u_Corelib_Init_Logic_138, u_Corelib_Init_Logic_139} : Prop :=
+∀ (A1 : Type u_Corelib_Init_Logic_134) (A2 : Type u_Corelib_Init_Logic_135) (A3 : Type u_Corelib_Init_Logic_136)
+  (A4 : Type u_Corelib_Init_Logic_137) (A5 : Type u_Corelib_Init_Logic_138) (B : Type u_Corelib_Init_Logic_139)
+  (f : A1 → A2 → A3 → A4 → A5 → B) (x1 y1 : A1) (x2 y2 : A2) (x3 y3 : A3) (x4 y4 : A4) (x5 y5 : A5),
+  @Eq.{u_Corelib_Init_Logic_134 + 1} A1 x1 y1 →
+    @Eq.{u_Corelib_Init_Logic_135 + 1} A2 x2 y2 →
+      @Eq.{u_Corelib_Init_Logic_136 + 1} A3 x3 y3 →
+        @Eq.{u_Corelib_Init_Logic_137 + 1} A4 x4 y4 →
+          @Eq.{u_Corelib_Init_Logic_138 + 1} A5 x5 y5 →
+            @Eq.{u_Corelib_Init_Logic_139 + 1} B (f x1 x2 x3 x4 x5) (f y1 y2 y3 y4 y5)
+R2L_END_61
+R2L_BEGIN_62
+def RocqPending.Corelib.Init.Logic.f_equal_compose.statement.{u_Corelib_Init_Logic_150, u_Corelib_Init_Logic_151, u_Corelib_Init_Logic_152} : {h_Corelib_Init_Logic_f_equal_compose__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.f_equal_compose__rocq2lean_obligation_1.statement.{u_Corelib_Init_Logic_150,
+      u_Corelib_Init_Logic_151, u_Corelib_Init_Logic_152}} →
+  {h_Corelib_Init_Logic_f_equal_compose__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Logic.f_equal_compose__rocq2lean_obligation_2.statement.{u_Corelib_Init_Logic_150,
+        u_Corelib_Init_Logic_151, u_Corelib_Init_Logic_152}} →
+    Prop :=
+fun {h_Corelib_Init_Logic_f_equal_compose__rocq2lean_obligation_1}
+    {h_Corelib_Init_Logic_f_equal_compose__rocq2lean_obligation_2} =>
+  ∀ (A : Type u_Corelib_Init_Logic_150) (B : Type u_Corelib_Init_Logic_151) (C : Type u_Corelib_Init_Logic_152)
+    (a b : A) (f : A → B) (g : B → C) (e : @Eq.{u_Corelib_Init_Logic_150 + 1} A a b),
+    @Eq.{0} (@Eq.{u_Corelib_Init_Logic_152 + 1} C (g (f a)) (g (f b))) ⋯ ⋯
+R2L_END_62
+R2L_BEGIN_63
+def Rocq.Corelib.Init.Logic.f_equal_dep.statement.{u_Corelib_Init_Logic_68, u_Corelib_Init_Logic_69} : Prop :=
+∀ (A : Type u_Corelib_Init_Logic_68) (B : A → Type u_Corelib_Init_Logic_69) (f : (x : A) → B x) (x y : A)
+  (H : @Eq.{u_Corelib_Init_Logic_68 + 1} A x y),
+  @Eq.{u_Corelib_Init_Logic_69 + 1} (B y)
+    (Rocq.Corelib.Init.Logic.eq_rect.{u_Corelib_Init_Logic_69 + 1, u_Corelib_Init_Logic_68} A x B (f x) y H) (f y)
+R2L_END_63
+R2L_BEGIN_64
+def RocqPending.Corelib.Init.Logic.f_equal_dep2.statement.{u_Corelib_Init_Logic_79, u_Corelib_Init_Logic_80, u_Corelib_Init_Logic_83, u_Corelib_Init_Logic_86} : {h_Corelib_Init_Logic_f_equal_dep2__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.f_equal_dep2__rocq2lean_obligation_1.statement.{u_Corelib_Init_Logic_79,
+      u_Corelib_Init_Logic_80, u_Corelib_Init_Logic_83, u_Corelib_Init_Logic_86}} →
+  Prop :=
+fun {h_Corelib_Init_Logic_f_equal_dep2__rocq2lean_obligation_1} =>
+  ∀ (A : Type u_Corelib_Init_Logic_79) (A' : Type u_Corelib_Init_Logic_80) (B : A → Type u_Corelib_Init_Logic_83)
+    (B' : A' → Type u_Corelib_Init_Logic_86) (f : A → A') (g : (a : A) → B a → B' (f a)) (x1 x2 : A) (y1 : B x1)
+    (y2 : B x2) (H : @Eq.{u_Corelib_Init_Logic_79 + 1} A x1 x2)
+    (a :
+      @Eq.{u_Corelib_Init_Logic_83 + 1} (B x2)
+        (Rocq.Corelib.Init.Logic.eq_rect.{u_Corelib_Init_Logic_83 + 1, u_Corelib_Init_Logic_79} A x1 B y1 x2 H) y2),
+    @Eq.{u_Corelib_Init_Logic_86 + 1} (B' (f x2))
+      (Rocq.Corelib.Init.Logic.eq_rect.{u_Corelib_Init_Logic_86 + 1, u_Corelib_Init_Logic_80} A' (f x1) B' (g x1 y1)
+        (f x2) ⋯)
+      (g x2 y2)
+R2L_END_64
+R2L_BEGIN_65
+def Rocq.Corelib.Init.Logic.forall_exists_coincide_unique_domain.statement.{u_Corelib_Init_Logic_361} : Prop :=
+∀ (A : Type u_Corelib_Init_Logic_361) (P : A → Prop),
+  (∀ (Q : A → Prop),
+      Rocq.Corelib.Init.Logic.iff (∀ (x : A), P x → Q x)
+        (Rocq.Corelib.Init.Logic.ex.{u_Corelib_Init_Logic_361} A fun x => Rocq.Corelib.Init.Logic.and (P x) (Q x))) →
+    Rocq.Corelib.Init.Logic.ex.{u_Corelib_Init_Logic_361} A
+      (Rocq.Corelib.Init.Logic.unique.{u_Corelib_Init_Logic_361} A fun x => P x)
+R2L_END_65
+R2L_BEGIN_66
+def Rocq.Corelib.Init.Logic.forall_exists_unique_domain_coincide.statement.{u_Corelib_Init_Logic_354} : Prop :=
+∀ (A : Type u_Corelib_Init_Logic_354) (P : A → Prop),
+  Rocq.Corelib.Init.Logic.ex.{u_Corelib_Init_Logic_354} A
+      (Rocq.Corelib.Init.Logic.unique.{u_Corelib_Init_Logic_354} A fun x => P x) →
+    ∀ (Q : A → Prop),
+      Rocq.Corelib.Init.Logic.iff (∀ (x : A), P x → Q x)
+        (Rocq.Corelib.Init.Logic.ex.{u_Corelib_Init_Logic_354} A fun x => Rocq.Corelib.Init.Logic.and (P x) (Q x))
+R2L_END_66
+R2L_BEGIN_67
+def Rocq.Corelib.Init.Logic.gen.statement.{u_Corelib_Init_Logic_18} : Prop :=
+∀ (A : Type u_Corelib_Init_Logic_18) (P : A → Prop) (B : Prop),
+  (∀ (y : A), B → P y) → B → Rocq.Corelib.Init.Logic.all.{u_Corelib_Init_Logic_18} A P
+R2L_END_67
+R2L_BEGIN_68
+def Rocq.Corelib.Init.Logic.iff : Prop → Prop → Prop :=
+fun A B => Rocq.Corelib.Init.Logic.and (A → B) (B → A)
+R2L_END_68
+R2L_BEGIN_69
+def Rocq.Corelib.Init.Logic.iff_and.statement : Prop :=
+∀ (A B : Prop), Rocq.Corelib.Init.Logic.iff A B → Rocq.Corelib.Init.Logic.and (A → B) (B → A)
+R2L_END_69
+R2L_BEGIN_70
+def Rocq.Corelib.Init.Logic.iff_refl.statement : Prop :=
+∀ (A : Prop), Rocq.Corelib.Init.Logic.iff A A
+R2L_END_70
+R2L_BEGIN_71
+def Rocq.Corelib.Init.Logic.iff_stepl.statement : Prop :=
+∀ (A B C : Prop), Rocq.Corelib.Init.Logic.iff A B → Rocq.Corelib.Init.Logic.iff A C → Rocq.Corelib.Init.Logic.iff C B
+R2L_END_71
+R2L_BEGIN_72
+def Rocq.Corelib.Init.Logic.iff_sym.statement : Prop :=
+∀ (A B : Prop), Rocq.Corelib.Init.Logic.iff A B → Rocq.Corelib.Init.Logic.iff B A
+R2L_END_72
+R2L_BEGIN_73
+def Rocq.Corelib.Init.Logic.iff_to_and.statement : Prop :=
+∀ (A B : Prop),
+  Rocq.Corelib.Init.Logic.iff (Rocq.Corelib.Init.Logic.iff A B) (Rocq.Corelib.Init.Logic.and (A → B) (B → A))
+R2L_END_73
+R2L_BEGIN_74
+def Rocq.Corelib.Init.Logic.iff_trans.statement : Prop :=
+∀ (A B C : Prop), Rocq.Corelib.Init.Logic.iff A B → Rocq.Corelib.Init.Logic.iff B C → Rocq.Corelib.Init.Logic.iff A C
+R2L_END_74
+R2L_BEGIN_75
+def Rocq.Corelib.Init.Logic.imp_iff_compat_l.statement : Prop :=
+∀ (A B C : Prop), Rocq.Corelib.Init.Logic.iff B C → Rocq.Corelib.Init.Logic.iff (A → B) (A → C)
+R2L_END_75
+R2L_BEGIN_76
+def Rocq.Corelib.Init.Logic.imp_iff_compat_r.statement : Prop :=
+∀ (A B C : Prop), Rocq.Corelib.Init.Logic.iff B C → Rocq.Corelib.Init.Logic.iff (B → A) (C → A)
+R2L_END_76
+R2L_BEGIN_77
+inductive Rocq.Corelib.Init.Logic.inhabited.{u_Corelib_Init_Logic_369} : Type u_Corelib_Init_Logic_369 → Prop
+number of parameters: 1
+constructors:
+Rocq.Corelib.Init.Logic.inhabited.inhabits : ∀ (A : Type u_Corelib_Init_Logic_369) (a : A),
+  Rocq.Corelib.Init.Logic.inhabited.{u_Corelib_Init_Logic_369} A
+R2L_END_77
+R2L_BEGIN_78
+def Rocq.Corelib.Init.Logic.inhabited_covariant.statement.{u_Corelib_Init_Logic_378, u_Corelib_Init_Logic_379} : Prop :=
+∀ (A : Type u_Corelib_Init_Logic_378) (B : Type u_Corelib_Init_Logic_379) (a : A → B),
+  Rocq.Corelib.Init.Logic.inhabited.{u_Corelib_Init_Logic_378} A →
+    Rocq.Corelib.Init.Logic.inhabited.{u_Corelib_Init_Logic_379} B
+R2L_END_78
+R2L_BEGIN_79
+def Rocq.Corelib.Init.Logic.inhabited_ind.statement.{u_Corelib_Init_Logic_370} : Prop :=
+∀ (A : Type u_Corelib_Init_Logic_370) (P : Prop),
+  (∀ (a : A), P) → Rocq.Corelib.Init.Logic.inhabited.{u_Corelib_Init_Logic_370} A → P
+R2L_END_79
+R2L_BEGIN_80
+def Rocq.Corelib.Init.Logic.inst.statement.{u_Corelib_Init_Logic_18} : Prop :=
+∀ (A : Type u_Corelib_Init_Logic_18) (P : A → Prop) (x : A),
+  (Rocq.Corelib.Init.Logic.all.{u_Corelib_Init_Logic_18} A fun x => P x) → P x
+R2L_END_80
+R2L_BEGIN_81
+def Rocq.Corelib.Init.Logic.map_subst.statement.{u_Corelib_Init_Logic_215, u_Corelib_Init_Logic_216, u_Corelib_Init_Logic_217} : Prop :=
+∀ (A : Type u_Corelib_Init_Logic_215) (P : A → Type u_Corelib_Init_Logic_216) (Q : A → Type u_Corelib_Init_Logic_217)
+  (f : (x : A) → P x → Q x) (x y : A) (H : @Eq.{u_Corelib_Init_Logic_215 + 1} A x y) (z : P x),
+  @Eq.{u_Corelib_Init_Logic_217 + 1} (Q y)
+    (Rocq.Corelib.Init.Logic.eq_rect.{u_Corelib_Init_Logic_217 + 1, u_Corelib_Init_Logic_215} A x Q (f x z) y H)
+    (f y (Rocq.Corelib.Init.Logic.eq_rect.{u_Corelib_Init_Logic_216 + 1, u_Corelib_Init_Logic_215} A x P z y H))
+R2L_END_81
+R2L_BEGIN_82
+def RocqPending.Corelib.Init.Logic.map_subst_map.statement.{u_Corelib_Init_Logic_229, u_Corelib_Init_Logic_230, u_Corelib_Init_Logic_231, u_Corelib_Init_Logic_232} : {h_Corelib_Init_Logic_map_subst_map__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.map_subst_map__rocq2lean_obligation_1.statement.{u_Corelib_Init_Logic_229,
+      u_Corelib_Init_Logic_230, u_Corelib_Init_Logic_231, u_Corelib_Init_Logic_232}} →
+  Prop :=
+fun {h_Corelib_Init_Logic_map_subst_map__rocq2lean_obligation_1} =>
+  ∀ (A : Type u_Corelib_Init_Logic_229) (B : Type u_Corelib_Init_Logic_231) (P : A → Type u_Corelib_Init_Logic_230)
+    (Q : B → Type u_Corelib_Init_Logic_232) (f : A → B) (g : (x : A) → P x → Q (f x)) (x y : A)
+    (H : @Eq.{u_Corelib_Init_Logic_229 + 1} A x y) (z : P x),
+    @Eq.{u_Corelib_Init_Logic_232 + 1} (Q (f y))
+      (Rocq.Corelib.Init.Logic.eq_rect.{u_Corelib_Init_Logic_232 + 1, u_Corelib_Init_Logic_231} B (f x) Q (g x z) (f y)
+        ⋯)
+      (g y (Rocq.Corelib.Init.Logic.eq_rect.{u_Corelib_Init_Logic_230 + 1, u_Corelib_Init_Logic_229} A x P z y H))
+R2L_END_82
+R2L_BEGIN_83
+def Rocq.Corelib.Init.Logic.neg_false.statement : Prop :=
+∀ (A : Prop),
+  Rocq.Corelib.Init.Logic.iff (Rocq.Corelib.Init.Logic.not A)
+    (Rocq.Corelib.Init.Logic.iff A Rocq.Corelib.Init.Logic.False)
+R2L_END_83
+R2L_BEGIN_84
+def Rocq.Corelib.Init.Logic.not : Prop → Prop :=
+fun A => A → Rocq.Corelib.Init.Logic.False
+R2L_END_84
+R2L_BEGIN_85
+def Rocq.Corelib.Init.Logic.notT.{u_Corelib_Init_Logic_3} : Type u_Corelib_Init_Logic_3 → Prop :=
+fun A => ∀ (a : A), Rocq.Corelib.Init.Logic.False
+R2L_END_85
+R2L_BEGIN_86
+def Rocq.Corelib.Init.Logic.not_eq_sym.statement.{u_Corelib_Init_Logic_45} : Prop :=
+∀ (A : Type u_Corelib_Init_Logic_45) (x y : A),
+  Rocq.Corelib.Init.Logic.not (@Eq.{u_Corelib_Init_Logic_45 + 1} A x y) →
+    Rocq.Corelib.Init.Logic.not (@Eq.{u_Corelib_Init_Logic_45 + 1} A y x)
+R2L_END_86
+R2L_BEGIN_87
+def Rocq.Corelib.Init.Logic.not_iff_compat.statement : Prop :=
+∀ (A B : Prop),
+  Rocq.Corelib.Init.Logic.iff A B →
+    Rocq.Corelib.Init.Logic.iff (Rocq.Corelib.Init.Logic.not A) (Rocq.Corelib.Init.Logic.not B)
+R2L_END_87
+R2L_BEGIN_88
+inductive Rocq.Corelib.Init.Logic.or : Prop → Prop → Prop
+number of parameters: 2
+constructors:
+Rocq.Corelib.Init.Logic.or.or_introl : ∀ (A B : Prop), A → Rocq.Corelib.Init.Logic.or A B
+Rocq.Corelib.Init.Logic.or.or_intror : ∀ (A B : Prop), B → Rocq.Corelib.Init.Logic.or A B
+R2L_END_88
+R2L_BEGIN_89
+def Rocq.Corelib.Init.Logic.or_assoc.statement : Prop :=
+∀ (A B C : Prop),
+  Rocq.Corelib.Init.Logic.iff (Rocq.Corelib.Init.Logic.or (Rocq.Corelib.Init.Logic.or A B) C)
+    (Rocq.Corelib.Init.Logic.or A (Rocq.Corelib.Init.Logic.or B C))
+R2L_END_89
+R2L_BEGIN_90
+def Rocq.Corelib.Init.Logic.or_cancel_l.statement : Prop :=
+∀ (A B C : Prop),
+  (B → Rocq.Corelib.Init.Logic.not A) →
+    (C → Rocq.Corelib.Init.Logic.not A) →
+      Rocq.Corelib.Init.Logic.iff
+        (Rocq.Corelib.Init.Logic.iff (Rocq.Corelib.Init.Logic.or A B) (Rocq.Corelib.Init.Logic.or A C))
+        (Rocq.Corelib.Init.Logic.iff B C)
+R2L_END_90
+R2L_BEGIN_91
+def Rocq.Corelib.Init.Logic.or_cancel_r.statement : Prop :=
+∀ (A B C : Prop),
+  (B → Rocq.Corelib.Init.Logic.not A) →
+    (C → Rocq.Corelib.Init.Logic.not A) →
+      Rocq.Corelib.Init.Logic.iff
+        (Rocq.Corelib.Init.Logic.iff (Rocq.Corelib.Init.Logic.or B A) (Rocq.Corelib.Init.Logic.or C A))
+        (Rocq.Corelib.Init.Logic.iff B C)
+R2L_END_91
+R2L_BEGIN_92
+def Rocq.Corelib.Init.Logic.or_comm.statement : Prop :=
+∀ (A B : Prop), Rocq.Corelib.Init.Logic.iff (Rocq.Corelib.Init.Logic.or A B) (Rocq.Corelib.Init.Logic.or B A)
+R2L_END_92
+R2L_BEGIN_93
+def Rocq.Corelib.Init.Logic.or_iff_compat_l.statement : Prop :=
+∀ (A B C : Prop),
+  Rocq.Corelib.Init.Logic.iff B C →
+    Rocq.Corelib.Init.Logic.iff (Rocq.Corelib.Init.Logic.or A B) (Rocq.Corelib.Init.Logic.or A C)
+R2L_END_93
+R2L_BEGIN_94
+def Rocq.Corelib.Init.Logic.or_iff_compat_r.statement : Prop :=
+∀ (A B C : Prop),
+  Rocq.Corelib.Init.Logic.iff B C →
+    Rocq.Corelib.Init.Logic.iff (Rocq.Corelib.Init.Logic.or B A) (Rocq.Corelib.Init.Logic.or C A)
+R2L_END_94
+R2L_BEGIN_95
+def Rocq.Corelib.Init.Logic.or_ind.statement : Prop :=
+∀ (A B P : Prop), (A → P) → (B → P) → Rocq.Corelib.Init.Logic.or A B → P
+R2L_END_95
+R2L_BEGIN_96
+def Rocq.Corelib.Init.Logic.proj1.statement : Prop :=
+∀ (A B : Prop), Rocq.Corelib.Init.Logic.and A B → A
+R2L_END_96
+R2L_BEGIN_97
+def Rocq.Corelib.Init.Logic.proj2.statement : Prop :=
+∀ (A B : Prop), Rocq.Corelib.Init.Logic.and A B → B
+R2L_END_97
+R2L_BEGIN_98
+def RocqPending.Corelib.Init.Logic.rew_compose.statement.{u_Corelib_Init_Logic_254, u_Corelib_Init_Logic_255} : {h_Corelib_Init_Logic_rew_compose__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.rew_compose__rocq2lean_obligation_1.statement.{u_Corelib_Init_Logic_254,
+      u_Corelib_Init_Logic_255}} →
+  Prop :=
+fun {h_Corelib_Init_Logic_rew_compose__rocq2lean_obligation_1} =>
+  ∀ (A : Type u_Corelib_Init_Logic_254) (P : A → Type u_Corelib_Init_Logic_255) (x1 x2 x3 : A)
+    (H1 : @Eq.{u_Corelib_Init_Logic_254 + 1} A x1 x2) (H2 : @Eq.{u_Corelib_Init_Logic_254 + 1} A x2 x3) (y : P x1),
+    @Eq.{u_Corelib_Init_Logic_255 + 1} (P x3)
+      (Rocq.Corelib.Init.Logic.eq_rect.{u_Corelib_Init_Logic_255 + 1, u_Corelib_Init_Logic_254} A x2 P
+        (Rocq.Corelib.Init.Logic.eq_rect.{u_Corelib_Init_Logic_255 + 1, u_Corelib_Init_Logic_254} A x1 P y x2 H1) x3 H2)
+      (Rocq.Corelib.Init.Logic.eq_rect.{u_Corelib_Init_Logic_255 + 1, u_Corelib_Init_Logic_254} A x1 P y x3 ⋯)
+R2L_END_98
+R2L_BEGIN_99
+def Rocq.Corelib.Init.Logic.rew_const.statement.{u_Corelib_Init_Logic_333, u_Corelib_Init_Logic_335} : Prop :=
+∀ (A : Type u_Corelib_Init_Logic_333) (P : Type u_Corelib_Init_Logic_335) (x y : A)
+  (e : @Eq.{u_Corelib_Init_Logic_333 + 1} A x y) (k : P),
+  @Eq.{u_Corelib_Init_Logic_335 + 1} P
+    (Rocq.Corelib.Init.Logic.eq_rect.{u_Corelib_Init_Logic_335 + 1, u_Corelib_Init_Logic_333} A x (fun a => P) k y e) k
+R2L_END_99
+R2L_BEGIN_100
+def RocqPending.Corelib.Init.Logic.rew_map.statement.{u_Corelib_Init_Logic_190, u_Corelib_Init_Logic_191, u_Corelib_Init_Logic_192} : {h_Corelib_Init_Logic_rew_map__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.rew_map__rocq2lean_obligation_1.statement.{u_Corelib_Init_Logic_190,
+      u_Corelib_Init_Logic_191, u_Corelib_Init_Logic_192}} →
+  Prop :=
+fun {h_Corelib_Init_Logic_rew_map__rocq2lean_obligation_1} =>
+  ∀ (A : Type u_Corelib_Init_Logic_192) (B : Type u_Corelib_Init_Logic_190) (P : B → Type u_Corelib_Init_Logic_191)
+    (f : A → B) (x1 x2 : A) (H : @Eq.{u_Corelib_Init_Logic_192 + 1} A x1 x2) (y : P (f x1)),
+    @Eq.{u_Corelib_Init_Logic_191 + 1} (P (f x2))
+      (Rocq.Corelib.Init.Logic.eq_rect.{u_Corelib_Init_Logic_191 + 1, u_Corelib_Init_Logic_192} A x1 (fun x => P (f x))
+        y x2 H)
+      (Rocq.Corelib.Init.Logic.eq_rect.{u_Corelib_Init_Logic_191 + 1, u_Corelib_Init_Logic_190} B (f x1) P y (f x2) ⋯)
+R2L_END_100
+R2L_BEGIN_101
+def RocqPending.Corelib.Init.Logic.rew_opp_l.statement.{u_Corelib_Init_Logic_101, u_Corelib_Init_Logic_102} : {h_Corelib_Init_Logic_eq_rect_r__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement.{u_Corelib_Init_Logic_101,
+      u_Corelib_Init_Logic_102}} →
+  Prop :=
+fun {h_Corelib_Init_Logic_eq_rect_r__rocq2lean_obligation_1} =>
+  ∀ (A : Type u_Corelib_Init_Logic_101) (P : A → Type u_Corelib_Init_Logic_102) (x y : A)
+    (H : @Eq.{u_Corelib_Init_Logic_101 + 1} A x y) (a : P x),
+    @Eq.{u_Corelib_Init_Logic_102 + 1} (P x)
+      (@RocqPending.Corelib.Init.Logic.eq_rect_r.{u_Corelib_Init_Logic_101, u_Corelib_Init_Logic_102}
+        h_Corelib_Init_Logic_eq_rect_r__rocq2lean_obligation_1 A y P
+        (Rocq.Corelib.Init.Logic.eq_rect.{u_Corelib_Init_Logic_102 + 1, u_Corelib_Init_Logic_101} A x P a y H) x H)
+      a
+R2L_END_101
+R2L_BEGIN_102
+def RocqPending.Corelib.Init.Logic.rew_opp_r.statement.{u_Corelib_Init_Logic_94, u_Corelib_Init_Logic_95} : {h_Corelib_Init_Logic_eq_rect_r__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement.{u_Corelib_Init_Logic_94,
+      u_Corelib_Init_Logic_95}} →
+  Prop :=
+fun {h_Corelib_Init_Logic_eq_rect_r__rocq2lean_obligation_1} =>
+  ∀ (A : Type u_Corelib_Init_Logic_94) (P : A → Type u_Corelib_Init_Logic_95) (x y : A)
+    (H : @Eq.{u_Corelib_Init_Logic_94 + 1} A x y) (a : P y),
+    @Eq.{u_Corelib_Init_Logic_95 + 1} (P y)
+      (Rocq.Corelib.Init.Logic.eq_rect.{u_Corelib_Init_Logic_95 + 1, u_Corelib_Init_Logic_94} A x P
+        (@RocqPending.Corelib.Init.Logic.eq_rect_r.{u_Corelib_Init_Logic_94, u_Corelib_Init_Logic_95}
+          h_Corelib_Init_Logic_eq_rect_r__rocq2lean_obligation_1 A y P a x H)
+        y H)
+      a
+R2L_END_102
+R2L_BEGIN_103
+def RocqPending.Corelib.Init.Logic.rew_swap.statement.{u_Corelib_Init_Logic_243, u_Corelib_Init_Logic_244} : {h_Corelib_Init_Logic_eq_rect_r__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement.{u_Corelib_Init_Logic_243,
+      u_Corelib_Init_Logic_244}} →
+  Prop :=
+fun {h_Corelib_Init_Logic_eq_rect_r__rocq2lean_obligation_1} =>
+  ∀ (A : Type u_Corelib_Init_Logic_243) (P : A → Type u_Corelib_Init_Logic_244) (x1 x2 : A)
+    (H : @Eq.{u_Corelib_Init_Logic_243 + 1} A x1 x2) (y1 : P x1) (y2 : P x2),
+    @Eq.{u_Corelib_Init_Logic_244 + 1} (P x2)
+        (Rocq.Corelib.Init.Logic.eq_rect.{u_Corelib_Init_Logic_244 + 1, u_Corelib_Init_Logic_243} A x1 P y1 x2 H) y2 →
+      @Eq.{u_Corelib_Init_Logic_244 + 1} (P x1) y1
+        (@RocqPending.Corelib.Init.Logic.eq_rect_r.{u_Corelib_Init_Logic_243, u_Corelib_Init_Logic_244}
+          h_Corelib_Init_Logic_eq_rect_r__rocq2lean_obligation_1 A x2 P y2 x1 H)
+R2L_END_103
+R2L_BEGIN_104
+def Rocq.Corelib.Init.Logic.subrelation.{u_Corelib_Init_Logic_338, u_Corelib_Init_Logic_339} : (A :
+    Type u_Corelib_Init_Logic_338) →
+  (B : Type u_Corelib_Init_Logic_339) → (A → B → Prop) → (A → B → Prop) → Prop :=
+fun A B R R' => ∀ (x : A) (y : B), R x y → R' x y
+R2L_END_104
+R2L_BEGIN_105
+def Rocq.Corelib.Init.Logic.unique.{u_Corelib_Init_Logic_342} : (A : Type u_Corelib_Init_Logic_342) →
+  (A → Prop) → A → Prop :=
+fun A P x => Rocq.Corelib.Init.Logic.and (P x) (∀ (x' : A), P x' → @Eq.{u_Corelib_Init_Logic_342 + 1} A x x')
+R2L_END_105
+R2L_BEGIN_106
+def Rocq.Corelib.Init.Logic.unique_existence.statement.{u_Corelib_Init_Logic_348} : Prop :=
+∀ (A : Type u_Corelib_Init_Logic_348) (P : A → Prop),
+  Rocq.Corelib.Init.Logic.iff
+    (Rocq.Corelib.Init.Logic.and (Rocq.Corelib.Init.Logic.ex.{u_Corelib_Init_Logic_348} A fun x => P x)
+      (Rocq.Corelib.Init.Logic.uniqueness.{u_Corelib_Init_Logic_348} A P))
+    (Rocq.Corelib.Init.Logic.ex.{u_Corelib_Init_Logic_348} A
+      (Rocq.Corelib.Init.Logic.unique.{u_Corelib_Init_Logic_348} A fun x => P x))
+R2L_END_106
+R2L_BEGIN_107
+def Rocq.Corelib.Init.Logic.uniqueness.{u_Corelib_Init_Logic_344} : (A : Type u_Corelib_Init_Logic_344) →
+  (A → Prop) → Prop :=
+fun A P => ∀ (x y : A), P x → P y → @Eq.{u_Corelib_Init_Logic_344 + 1} A x y
+R2L_END_107

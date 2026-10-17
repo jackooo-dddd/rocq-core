@@ -1,0 +1,13 @@
+diff --git a/rocq/exporter/src/r2l_export.ml b/rocq/exporter/src/r2l_export.ml
+index 7cface6..4e518ff 100644
+--- a/rocq/exporter/src/r2l_export.ml
++++ b/rocq/exporter/src/r2l_export.ml
+@@ -917,7 +917,7 @@ let extract_proofs env0 sigma mk t =
+       EConstr.mkLetIn (na, v', ty', go (EConstr.push_rel (Context.Rel.Declaration.LocalDef (na, v', ty')) env) b)
+     | _ -> Termops.map_constr_with_full_binders env sigma EConstr.push_rel go env t
+   in
+-  go env0 t
++  go env0 (Reductionops.nf_betaiotazeta env0 sigma t)
+ 
+ (* The statement environment for [roots], recording what was done in [st]. *)
+ let statement_env ?(follow = true) ~opaque_access st env0 roots =

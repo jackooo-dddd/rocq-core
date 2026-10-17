@@ -1,0 +1,122 @@
+R2L_BEGIN_0
+inductive Rocq.Corelib.Lists.ListDef.Forall.{u_Corelib_Lists_ListDef_53} : (A : Type u_Corelib_Lists_ListDef_53) →
+  (A → Prop) → Rocq.Corelib.Init.Datatypes.list.{u_Corelib_Lists_ListDef_53} A → Prop
+number of parameters: 2
+constructors:
+Rocq.Corelib.Lists.ListDef.Forall.Forall_nil : ∀ (A : Type u_Corelib_Lists_ListDef_53) (P : A → Prop),
+  Rocq.Corelib.Lists.ListDef.Forall.{u_Corelib_Lists_ListDef_53} A P
+    (Rocq.Corelib.Init.Datatypes.list.nil.{u_Corelib_Lists_ListDef_53} A)
+Rocq.Corelib.Lists.ListDef.Forall.Forall_cons : ∀ (A : Type u_Corelib_Lists_ListDef_53) (P : A → Prop) (x : A)
+  (l : Rocq.Corelib.Init.Datatypes.list.{u_Corelib_Lists_ListDef_53} A),
+  P x →
+    Rocq.Corelib.Lists.ListDef.Forall.{u_Corelib_Lists_ListDef_53} A P l →
+      Rocq.Corelib.Lists.ListDef.Forall.{u_Corelib_Lists_ListDef_53} A P
+        (Rocq.Corelib.Init.Datatypes.list.cons.{u_Corelib_Lists_ListDef_53} A x l)
+R2L_END_0
+R2L_BEGIN_1
+def Rocq.Corelib.Lists.ListDef.Forall_ind.statement.{u_Corelib_Lists_ListDef_53} : Prop :=
+∀ (A : Type u_Corelib_Lists_ListDef_53) (P : A → Prop)
+  (P_1 : Rocq.Corelib.Init.Datatypes.list.{u_Corelib_Lists_ListDef_53} A → Prop),
+  P_1 (Rocq.Corelib.Init.Datatypes.list.nil.{u_Corelib_Lists_ListDef_53} A) →
+    (∀ (x : A) (l : Rocq.Corelib.Init.Datatypes.list.{u_Corelib_Lists_ListDef_53} A),
+        P x →
+          Rocq.Corelib.Lists.ListDef.Forall.{u_Corelib_Lists_ListDef_53} A P l →
+            P_1 l → P_1 (Rocq.Corelib.Init.Datatypes.list.cons.{u_Corelib_Lists_ListDef_53} A x l)) →
+      ∀ (l : Rocq.Corelib.Init.Datatypes.list.{u_Corelib_Lists_ListDef_53} A),
+        Rocq.Corelib.Lists.ListDef.Forall.{u_Corelib_Lists_ListDef_53} A P l → P_1 l
+R2L_END_1
+R2L_BEGIN_2
+def Rocq.Corelib.Lists.ListDef.firstn.{u_Corelib_Lists_ListDef_40} : (A : Type u_Corelib_Lists_ListDef_40) →
+  Nat →
+    Rocq.Corelib.Init.Datatypes.list.{u_Corelib_Lists_ListDef_40} A →
+      Rocq.Corelib.Init.Datatypes.list.{u_Corelib_Lists_ListDef_40} A :=
+fun A n l =>
+  @Nat.rec.{u_Corelib_Lists_ListDef_40 + 1}
+    (fun n =>
+      Rocq.Corelib.Init.Datatypes.list.{u_Corelib_Lists_ListDef_40} A →
+        Rocq.Corelib.Init.Datatypes.list.{u_Corelib_Lists_ListDef_40} A)
+    (fun l => Rocq.Corelib.Init.Datatypes.list.nil.{u_Corelib_Lists_ListDef_40} A)
+    (fun n n_ih l =>
+      @Rocq.Corelib.Init.Datatypes.list.rec.{u_Corelib_Lists_ListDef_40 + 1, u_Corelib_Lists_ListDef_40} A
+        (fun t => Rocq.Corelib.Init.Datatypes.list.{u_Corelib_Lists_ListDef_40} A)
+        (Rocq.Corelib.Init.Datatypes.list.nil.{u_Corelib_Lists_ListDef_40} A)
+        (fun a a_1 _ih => Rocq.Corelib.Init.Datatypes.list.cons.{u_Corelib_Lists_ListDef_40} A a (n_ih a_1)) l)
+    n l
+R2L_END_2
+R2L_BEGIN_3
+def Rocq.Corelib.Lists.ListDef.list_compare.{u_Corelib_Lists_ListDef_59} : (A : Type u_Corelib_Lists_ListDef_59) →
+  (A → A → Rocq.Corelib.Init.Datatypes.comparison) →
+    Rocq.Corelib.Init.Datatypes.list.{u_Corelib_Lists_ListDef_59} A →
+      Rocq.Corelib.Init.Datatypes.list.{u_Corelib_Lists_ListDef_59} A → Rocq.Corelib.Init.Datatypes.comparison :=
+fun A cmp xs ys =>
+  @Rocq.Corelib.Init.Datatypes.list.rec.{u_Corelib_Lists_ListDef_59 + 1, u_Corelib_Lists_ListDef_59} A
+    (fun xs => Rocq.Corelib.Init.Datatypes.list.{u_Corelib_Lists_ListDef_59} A → Rocq.Corelib.Init.Datatypes.comparison)
+    (fun ys =>
+      @Rocq.Corelib.Init.Datatypes.list.rec.{1, u_Corelib_Lists_ListDef_59} A
+        (fun t => Rocq.Corelib.Init.Datatypes.comparison) Rocq.Corelib.Init.Datatypes.comparison.Eq
+        (fun a a_1 _ih => Rocq.Corelib.Init.Datatypes.comparison.Lt) ys)
+    (fun a a_1 _ih ys =>
+      @Rocq.Corelib.Init.Datatypes.list.rec.{1, u_Corelib_Lists_ListDef_59} A
+        (fun t => Rocq.Corelib.Init.Datatypes.comparison) Rocq.Corelib.Init.Datatypes.comparison.Gt
+        (fun a_2 a_3 _ih_1 =>
+          @Rocq.Corelib.Init.Datatypes.comparison.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.comparison) (_ih a_3)
+            Rocq.Corelib.Init.Datatypes.comparison.Lt Rocq.Corelib.Init.Datatypes.comparison.Gt (cmp a a_2))
+        ys)
+    xs ys
+R2L_END_3
+R2L_BEGIN_4
+def Rocq.Corelib.Lists.ListDef.map.{u_Corelib_Lists_ListDef_21, u_Corelib_Lists_ListDef_22} : (A :
+    Type u_Corelib_Lists_ListDef_21) →
+  (B : Type u_Corelib_Lists_ListDef_22) →
+    (A → B) →
+      Rocq.Corelib.Init.Datatypes.list.{u_Corelib_Lists_ListDef_21} A →
+        Rocq.Corelib.Init.Datatypes.list.{u_Corelib_Lists_ListDef_22} B :=
+fun A B f l =>
+  @Rocq.Corelib.Init.Datatypes.list.rec.{u_Corelib_Lists_ListDef_22 + 1, u_Corelib_Lists_ListDef_21} A
+    (fun l => Rocq.Corelib.Init.Datatypes.list.{u_Corelib_Lists_ListDef_22} B)
+    (Rocq.Corelib.Init.Datatypes.list.nil.{u_Corelib_Lists_ListDef_22} B)
+    (fun a a_1 _ih => Rocq.Corelib.Init.Datatypes.list.cons.{u_Corelib_Lists_ListDef_22} B (f a) _ih) l
+R2L_END_4
+R2L_BEGIN_5
+def Rocq.Corelib.Lists.ListDef.nth.{u_Corelib_Lists_ListDef_37} : (A : Type u_Corelib_Lists_ListDef_37) →
+  Nat → Rocq.Corelib.Init.Datatypes.list.{u_Corelib_Lists_ListDef_37} A → A → A :=
+fun A n l default =>
+  @Rocq.Corelib.Init.Datatypes.list.rec.{u_Corelib_Lists_ListDef_37 + 1, u_Corelib_Lists_ListDef_37} A
+    (fun l => Nat → A → A)
+    (fun n default => @Nat.rec.{u_Corelib_Lists_ListDef_37 + 1} (fun t => A) default (fun n n_ih => default) n)
+    (fun a a_1 _ih n default =>
+      @Nat.rec.{u_Corelib_Lists_ListDef_37 + 1} (fun t => A) a (fun n n_ih => _ih n default) n)
+    l n default
+R2L_END_5
+R2L_BEGIN_6
+def Rocq.Corelib.Lists.ListDef.repeat.{u_Corelib_Lists_ListDef_31} : (A : Type u_Corelib_Lists_ListDef_31) →
+  A → Nat → Rocq.Corelib.Init.Datatypes.list.{u_Corelib_Lists_ListDef_31} A :=
+fun A x n =>
+  @Nat.rec.{u_Corelib_Lists_ListDef_31 + 1} (fun n => Rocq.Corelib.Init.Datatypes.list.{u_Corelib_Lists_ListDef_31} A)
+    (Rocq.Corelib.Init.Datatypes.list.nil.{u_Corelib_Lists_ListDef_31} A)
+    (fun n n_ih => Rocq.Corelib.Init.Datatypes.list.cons.{u_Corelib_Lists_ListDef_31} A x n_ih) n
+R2L_END_6
+R2L_BEGIN_7
+def Rocq.Corelib.Lists.ListDef.seq : Nat → Nat → Rocq.Corelib.Init.Datatypes.list.{0} Nat :=
+fun start len =>
+  @Nat.rec.{1} (fun len => Nat → Rocq.Corelib.Init.Datatypes.list.{0} Nat)
+    (fun start => Rocq.Corelib.Init.Datatypes.list.nil.{0} Nat)
+    (fun n n_ih start => Rocq.Corelib.Init.Datatypes.list.cons.{0} Nat start (n_ih start.succ)) len start
+R2L_END_7
+R2L_BEGIN_8
+def Rocq.Corelib.Lists.ListDef.skipn.{u_Corelib_Lists_ListDef_40} : (A : Type u_Corelib_Lists_ListDef_40) →
+  Nat →
+    Rocq.Corelib.Init.Datatypes.list.{u_Corelib_Lists_ListDef_40} A →
+      Rocq.Corelib.Init.Datatypes.list.{u_Corelib_Lists_ListDef_40} A :=
+fun A n l =>
+  @Nat.rec.{u_Corelib_Lists_ListDef_40 + 1}
+    (fun n =>
+      Rocq.Corelib.Init.Datatypes.list.{u_Corelib_Lists_ListDef_40} A →
+        Rocq.Corelib.Init.Datatypes.list.{u_Corelib_Lists_ListDef_40} A)
+    (fun l => l)
+    (fun n n_ih l =>
+      @Rocq.Corelib.Init.Datatypes.list.rec.{u_Corelib_Lists_ListDef_40 + 1, u_Corelib_Lists_ListDef_40} A
+        (fun t => Rocq.Corelib.Init.Datatypes.list.{u_Corelib_Lists_ListDef_40} A)
+        (Rocq.Corelib.Init.Datatypes.list.nil.{u_Corelib_Lists_ListDef_40} A) (fun a a_1 _ih => n_ih a_1) l)
+    n l
+R2L_END_8

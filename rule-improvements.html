@@ -1,0 +1,191 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><title>规则修补对比</title><style>body{font:15px/1.7 system-ui;max-width:1300px;margin:32px auto;padding:0 24px;color:#23303b}table{border-collapse:collapse;width:100%}td,th{padding:9px;border:1px solid #dbe2e8;text-align:left;vertical-align:top}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f1f5f9;padding:16px}td{overflow-wrap:anywhere}h1{font-size:26px}h2{font-size:20px}a{color:#175fa6}</style><body><h1>核心规则修补：实际结果与代价</h1><p><a href="index.html">基线</a> · <a href="improved/index.html">候选</a> · <a href="candidate.patch">补丁</a> · <a href="README.txt">使用说明</a></p><pre>范围：此前基础模块的 24 个 Corelib 文件、839 项声明，不是所有已安装 Corelib 文件。
+原项目未修改，未提交或推送。
+基线：574 无额外条件，75 带条件，190 受阻。
+隔离候选：569 无额外条件，81 带条件，189 受阻。
+可检查项由 649 增至 650；新增的只是定理陈述 eq_existT_curried_congr，仍有 3 个显式前提，并未得到定理证明。
+普通数据类型和函数没有新增成功项。另 5 项原本无额外条件的定理陈述新增条件，因此这是有代价的候选，未集成原项目。
+
+</pre><h2>六组试验与最终候选</h2><table><tr><th>试验</th><th>无条件</th><th>带条件</th><th>受阻</th><th>检查</th><th>解释</th></tr><tr><td>proof-cache-trial</td><td>574</td><td>75</td><td>190</td><td>{&#x27;source-roundtrip/roundtrip.json&#x27;: &#x27;OK&#x27;, &#x27;audit.json&#x27;: &#x27;OK&#x27;, &#x27;consumer_result.json&#x27;: &#x27;OK&#x27;}</td><td>相同完整上下文中的证明子项复用：没有增加通过项，未保留。</td></tr><tr><td>normalization-trial</td><td>574</td><td>75</td><td>190</td><td>{&#x27;source-roundtrip/roundtrip.json&#x27;: &#x27;EXPORT_VALIDATION_FAILED&#x27;, &#x27;audit.json&#x27;: &#x27;OK&#x27;, &#x27;consumer_result.json&#x27;: &#x27;OK&#x27;}</td><td>抽取前 β/ι/ζ 化简：源端结构 roundtrip 失败；下面计数只是诊断，不能计为认证结果，拒绝。</td></tr><tr><td>binder-context-trial</td><td>569</td><td>81</td><td>189</td><td>{&#x27;source-roundtrip/roundtrip.json&#x27;: &#x27;OK&#x27;, &#x27;audit.json&#x27;: &#x27;OK&#x27;, &#x27;consumer_result.json&#x27;: &#x27;OK&#x27;}</td><td>使用重写后的绑定类型：增加 1 项带条件陈述，另 5 项新增条件；候选核心。</td></tr><tr><td>minimal-obligations-trial</td><td>569</td><td>78</td><td>192</td><td>{&#x27;source-roundtrip/roundtrip.json&#x27;: &#x27;OK&#x27;, &#x27;audit.json&#x27;: &#x27;OK&#x27;, &#x27;consumer_result.json&#x27;: &#x27;OK&#x27;}</td><td>缩减义务上下文并复用同型条件：3 项原可检查陈述变为受阻，拒绝。</td></tr><tr><td>minimal-binder-trial</td><td>569</td><td>78</td><td>192</td><td>{&#x27;source-roundtrip/roundtrip.json&#x27;: &#x27;OK&#x27;, &#x27;audit.json&#x27;: &#x27;OK&#x27;, &#x27;consumer_result.json&#x27;: &#x27;OK&#x27;}</td><td>缩减上下文与绑定修补组合：2 项越过抽取阶段但仍被依赖阻塞；仍有上述 3 项退步，拒绝。</td></tr><tr><td>binder-statement-cache-trial</td><td>569</td><td>81</td><td>189</td><td>{&#x27;source-roundtrip/roundtrip.json&#x27;: &#x27;OK&#x27;, &#x27;audit.json&#x27;: &#x27;OK&#x27;, &#x27;consumer_result.json&#x27;: &#x27;OK&#x27;}</td><td>同型条件复用 + 绑定修补：没有超过单独绑定修补，未保留额外缓存。</td></tr><tr><td>candidate-final</td><td>569</td><td>81</td><td>189</td><td>{&#x27;source-roundtrip/roundtrip.json&#x27;: &#x27;OK&#x27;, &#x27;audit.json&#x27;: &#x27;OK&#x27;, &#x27;consumer_result.json&#x27;: &#x27;OK&#x27;}</td><td>最终隔离候选：绑定上下文修补 + 源端详细错误 + 可选 Lean 线程数。</td></tr></table><p>除 normalization-trial 的源端 roundtrip 失败外，其余试验均通过三项检查。化简试验的计数仅作诊断。中途线程资源错误与重试日志均保留。</p><h2>全部根声明状态变化</h2><p>8 项：1 项新增可检查、5 项新增条件、2 项改变受阻阶段。</p><pre>[
+  {
+    &quot;source&quot;: &quot;Corelib.Init.Logic.eq_ex_intro&quot;,
+    &quot;before&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;,
+    &quot;after&quot;: &quot;STATEMENT_PENDING_KERNEL_CHECKED&quot;,
+    &quot;new_pending_hypotheses&quot;: [
+      &quot;Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_1&quot;,
+      &quot;Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_2&quot;,
+      &quot;Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_3&quot;
+    ]
+  },
+  {
+    &quot;source&quot;: &quot;Corelib.Init.Logic.eq_ex_intro2&quot;,
+    &quot;before&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;,
+    &quot;after&quot;: &quot;STATEMENT_PENDING_KERNEL_CHECKED&quot;,
+    &quot;new_pending_hypotheses&quot;: [
+      &quot;Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_1&quot;,
+      &quot;Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_2&quot;,
+      &quot;Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_3&quot;,
+      &quot;Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_4&quot;
+    ]
+  },
+  {
+    &quot;source&quot;: &quot;Corelib.Init.Logic.eq_ex_intro2_hprop_nondep&quot;,
+    &quot;before&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;,
+    &quot;after&quot;: &quot;STATEMENT_PENDING_KERNEL_CHECKED&quot;,
+    &quot;new_pending_hypotheses&quot;: [
+      &quot;Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_1&quot;,
+      &quot;Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_2&quot;,
+      &quot;Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_3&quot;,
+      &quot;Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_4&quot;
+    ]
+  },
+  {
+    &quot;source&quot;: &quot;Corelib.Init.Logic.eq_ex_intro2_uncurried&quot;,
+    &quot;before&quot;: &quot;UNSUPPORTED_FEATURE&quot;,
+    &quot;after&quot;: &quot;BLOCKED_DEPENDENCY&quot;,
+    &quot;new_pending_hypotheses&quot;: []
+  },
+  {
+    &quot;source&quot;: &quot;Corelib.Init.Logic.eq_ex_intro_uncurried&quot;,
+    &quot;before&quot;: &quot;UNSUPPORTED_FEATURE&quot;,
+    &quot;after&quot;: &quot;BLOCKED_DEPENDENCY&quot;,
+    &quot;new_pending_hypotheses&quot;: []
+  },
+  {
+    &quot;source&quot;: &quot;Corelib.Init.Specif.eq_exist2_curried&quot;,
+    &quot;before&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;,
+    &quot;after&quot;: &quot;STATEMENT_PENDING_KERNEL_CHECKED&quot;,
+    &quot;new_pending_hypotheses&quot;: [
+      &quot;Corelib.Init.Specif.eq_exist2_curried__rocq2lean_obligation_1&quot;,
+      &quot;Corelib.Init.Specif.eq_exist2_curried__rocq2lean_obligation_2&quot;
+    ]
+  },
+  {
+    &quot;source&quot;: &quot;Corelib.Init.Specif.eq_existT_curried_congr&quot;,
+    &quot;before&quot;: &quot;UNIVERSE_REJECTED&quot;,
+    &quot;after&quot;: &quot;STATEMENT_PENDING_KERNEL_CHECKED&quot;,
+    &quot;new_pending_hypotheses&quot;: [
+      &quot;Corelib.Init.Specif.eq_existT_curried_congr__rocq2lean_obligation_1&quot;,
+      &quot;Corelib.Init.Specif.eq_existT_curried_congr__rocq2lean_obligation_2&quot;,
+      &quot;Corelib.Init.Specif.eq_existT_curried_congr__rocq2lean_obligation_3&quot;
+    ]
+  },
+  {
+    &quot;source&quot;: &quot;Corelib.Init.Wf.Acc_inv_dep&quot;,
+    &quot;before&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;,
+    &quot;after&quot;: &quot;STATEMENT_PENDING_KERNEL_CHECKED&quot;,
+    &quot;new_pending_hypotheses&quot;: [
+      &quot;Corelib.Init.Wf.Acc_inv_dep__rocq2lean_obligation_1&quot;,
+      &quot;Corelib.Init.Wf.Acc_inv_dep__rocq2lean_obligation_2&quot;
+    ]
+  }
+]</pre><p>另有 6 项原本已经带条件的陈述改变了条件清单（4 项条件数增加、1 项减少、1 项数量相同但条件变化）；完整前后对比见 experiments/root-obligation-delta.json。 <a href="experiments/root-obligation-delta.json">逐项条件对比</a></p><h2>逐类规则：做了什么、还缺什么</h2><table><tr><th>规则类</th><th>基线受阻</th><th>候选受阻</th><th>缺少能力</th><th>本轮行动</th></tr><tr><td>SProp / irrelevant 绑定</td><td>40</td><td>40</td><td>需定义 SProp 的表示及消去限制，不能删除拒绝检查。</td><td>未采用新的表示策略。</td></tr><tr><td>证明抽取与依赖计算</td><td>52</td><td>52</td><td>构造子证明作为依赖索引时，抽取后分支类型与消去器要求的构造子索引不同。需保持索引一致；补充前提不能恢复源端转换。</td><td>测试缓存、化简、上下文缩减和绑定修补；保留逐项实际错误。</td></tr><tr><td>quality / sort 多态导出</td><td>22</td><td>22</td><td>MetaRocq 引用前端缺少 quality 多态上下文的完整表示及传递；还未进入 Lean。</td><td>固定工具链下仍受阻。</td></tr><tr><td>模板归纳类型的 Prop 实例</td><td>20</td><td>18</td><td>需统一处理 Prop 参数的类型、构造子、recursor、投影和调用点；可能涉及 Sort 泛化或 lift 表示。</td><td>2 项改为依赖受阻，仍未成功；未更改表示策略。</td></tr><tr><td>宇宙求解及一致性</td><td>2</td><td>1</td><td>bool_eq_rec 仍有 proof-local 宇宙约束冲突；不能放松源宇宙一致性检查。</td><td>eq_existT_curried_congr 成为带条件的可检查陈述。</td></tr><tr><td>抽取后的证明递归</td><td>4</td><td>4</td><td>需重建结构递归依据或产生可检查的良基终止性义务，不能假定终止性。</td><td>保持受阻，没有生成原库证明。</td></tr><tr><td>依赖阻塞</td><td>50</td><td>52</td><td>逐项报告递归追踪上游根因；先修上游，再重测。</td><td>增加包含失败阶段变化，不是新增 2 个失败根声明。</td></tr></table><h2>源端失败实例</h2><pre>kernel type error: ill-formed branch [stage: rewritten body inference]
+In pattern-matching on term &quot;e&quot; the branch for constructor
+&quot;Datatypes.is_eq_true&quot; has type
+ &quot;P true (Corelib.Init.Datatypes.eq_true_rew_dep__rocq2lean_obligation_2 P)&quot;
+which should be &quot;P true Datatypes.is_eq_true&quot;.</pre><p><a href="source-extraction-errors.json">全部 52 项实际源端错误</a></p><h2>验证范围</h2><pre>{
+  &quot;checks&quot;: [
+    {
+      &quot;version&quot;: &quot;baseline&quot;,
+      &quot;files&quot;: 24,
+      &quot;declarations&quot;: 839,
+      &quot;module_runs&quot;: {
+        &quot;MEASURED&quot;: 20,
+        &quot;EXPORT_BLOCKED&quot;: 1,
+        &quot;NO_COUNTED_DECLARATIONS&quot;: 3
+      },
+      &quot;validation&quot;: &quot;20 measured modules: roundtrip, consumer, audit, kernel views, entry compilation OK&quot;
+    },
+    {
+      &quot;version&quot;: &quot;candidate&quot;,
+      &quot;files&quot;: 24,
+      &quot;declarations&quot;: 839,
+      &quot;module_runs&quot;: {
+        &quot;MEASURED&quot;: 20,
+        &quot;EXPORT_BLOCKED&quot;: 1,
+        &quot;NO_COUNTED_DECLARATIONS&quot;: 3
+      },
+      &quot;validation&quot;: &quot;20 measured modules: roundtrip, consumer, audit, kernel views, entry compilation OK&quot;
+    }
+  ],
+  &quot;newly_checkable&quot;: [
+    {
+      &quot;source&quot;: &quot;Corelib.Init.Specif.eq_existT_curried_congr&quot;,
+      &quot;before&quot;: &quot;UNIVERSE_REJECTED&quot;,
+      &quot;after&quot;: &quot;STATEMENT_PENDING_KERNEL_CHECKED&quot;,
+      &quot;new_pending_hypotheses&quot;: [
+        &quot;Corelib.Init.Specif.eq_existT_curried_congr__rocq2lean_obligation_1&quot;,
+        &quot;Corelib.Init.Specif.eq_existT_curried_congr__rocq2lean_obligation_2&quot;,
+        &quot;Corelib.Init.Specif.eq_existT_curried_congr__rocq2lean_obligation_3&quot;
+      ]
+    }
+  ],
+  &quot;formerly_checkable_now_blocked&quot;: [],
+  &quot;newly_conditional&quot;: [
+    {
+      &quot;source&quot;: &quot;Corelib.Init.Logic.eq_ex_intro&quot;,
+      &quot;before&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;,
+      &quot;after&quot;: &quot;STATEMENT_PENDING_KERNEL_CHECKED&quot;,
+      &quot;new_pending_hypotheses&quot;: [
+        &quot;Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_1&quot;,
+        &quot;Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_2&quot;,
+        &quot;Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_3&quot;
+      ]
+    },
+    {
+      &quot;source&quot;: &quot;Corelib.Init.Logic.eq_ex_intro2&quot;,
+      &quot;before&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;,
+      &quot;after&quot;: &quot;STATEMENT_PENDING_KERNEL_CHECKED&quot;,
+      &quot;new_pending_hypotheses&quot;: [
+        &quot;Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_1&quot;,
+        &quot;Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_2&quot;,
+        &quot;Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_3&quot;,
+        &quot;Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_4&quot;
+      ]
+    },
+    {
+      &quot;source&quot;: &quot;Corelib.Init.Logic.eq_ex_intro2_hprop_nondep&quot;,
+      &quot;before&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;,
+      &quot;after&quot;: &quot;STATEMENT_PENDING_KERNEL_CHECKED&quot;,
+      &quot;new_pending_hypotheses&quot;: [
+        &quot;Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_1&quot;,
+        &quot;Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_2&quot;,
+        &quot;Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_3&quot;,
+        &quot;Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_4&quot;
+      ]
+    },
+    {
+      &quot;source&quot;: &quot;Corelib.Init.Specif.eq_exist2_curried&quot;,
+      &quot;before&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;,
+      &quot;after&quot;: &quot;STATEMENT_PENDING_KERNEL_CHECKED&quot;,
+      &quot;new_pending_hypotheses&quot;: [
+        &quot;Corelib.Init.Specif.eq_exist2_curried__rocq2lean_obligation_1&quot;,
+        &quot;Corelib.Init.Specif.eq_exist2_curried__rocq2lean_obligation_2&quot;
+      ]
+    },
+    {
+      &quot;source&quot;: &quot;Corelib.Init.Wf.Acc_inv_dep&quot;,
+      &quot;before&quot;: &quot;STATEMENT_KERNEL_CHECKED&quot;,
+      &quot;after&quot;: &quot;STATEMENT_PENDING_KERNEL_CHECKED&quot;,
+      &quot;new_pending_hypotheses&quot;: [
+        &quot;Corelib.Init.Wf.Acc_inv_dep__rocq2lean_obligation_1&quot;,
+        &quot;Corelib.Init.Wf.Acc_inv_dep__rocq2lean_obligation_2&quot;
+      ]
+    }
+  ],
+  &quot;extraction_failure_stages&quot;: {
+    &quot;rewritten body inference&quot;: 26,
+    &quot;rewritten body/type conversion&quot;: 12,
+    &quot;rewritten type&quot;: 10,
+    &quot;obligation Corelib.Init.Specif.eq_sig2_rect__rocq2lean_obligation_15&quot;: 1,
+    &quot;obligation Corelib.Init.Specif.eq_sigT2_rect__rocq2lean_obligation_7&quot;: 1,
+    &quot;obligation Corelib.Init.Specif.eq_sigT_rect__rocq2lean_obligation_6&quot;: 1,
+    &quot;obligation Corelib.Init.Specif.eq_sig_rect__rocq2lean_obligation_10&quot;: 1
+  },
+  &quot;statement_suite&quot;: {
+    &quot;exit&quot;: 0,
+    &quot;seconds&quot;: 82.04530143737793,
+    &quot;patch&quot;: &quot;candidate-final/changes.diff&quot;
+  },
+  &quot;full_4474_root_corpus_run&quot;: false,
+  &quot;original_project_modified&quot;: false
+}</pre></body></html>

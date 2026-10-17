@@ -1,0 +1,4470 @@
+Corelib.BinNums.IntDef 逐声明翻译报告
+{
+  "module": "Corelib.BinNums.IntDef",
+  "total": 39,
+  "complete": 39,
+  "pending": 0,
+  "blocked": 0,
+  "statuses": {
+    "TRANSLATED_AND_CHECKED": 39
+  },
+  "run_status": "MEASURED",
+  "source_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK",
+  "translation_compile_exit": 0
+}
+本文件采用逐模块独立运行。依赖随各翻译单元重复包含；不要直接把全部 .lean 一起 import。
+对应 .lean 使用翻译器的 #rocq2lean_import 命令生成内核声明；实际定义以 kernel view 展示，并非人工伪造的 Lean 源码。
+定理只翻译陈述；pending 是显式前提，不是已经证明；未导出的项目没有虚构 IR。
+
+================================================================================
+Corelib.BinNums.IntDef/Z.add
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.add
+源文件行号候选: [57]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.BinNums.IntDef/Z.pos_sub",
+      "Corelib.BinNums.PosDef/Pos.add",
+      "Corelib.Numbers.BinNums.Z"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 8,
+    "lam": 2,
+    "case": 3,
+    "rel": 14,
+    "app": 6,
+    "construct": 2,
+    "const": 4
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "应用 → 已翻译目标的应用",
+    "构造子 → 对应目标构造子",
+    "全局常量 → 目标声明或显式待证明前提"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Numbers.BinNums.Z.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.add",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 1,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.add : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun x y =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) y
+    (fun a =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) x
+        (fun a_1 => Rocq.Corelib.Numbers.BinNums.Z.Zpos (Rocq.Corelib.BinNums.PosDef.Pos.add a a_1))
+        (fun a_1 => Rocq.Corelib.BinNums.IntDef.Z.pos_sub a a_1) y)
+    (fun a =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) x
+        (fun a_1 => Rocq.Corelib.BinNums.IntDef.Z.pos_sub a_1 a)
+        (fun a_1 => Rocq.Corelib.Numbers.BinNums.Z.Zneg (Rocq.Corelib.BinNums.PosDef.Pos.add a a_1)) y)
+    x
+
+================================================================================
+Corelib.BinNums.IntDef/Z.compare
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.compare
+源文件行号候选: [115]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.comparison",
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.BinNums.PosDef/Pos.compare",
+      "Corelib.Init.Datatypes.CompOpp",
+      "Corelib.Init.Datatypes.comparison",
+      "Corelib.Numbers.BinNums.Z"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 9,
+    "lam": 2,
+    "case": 4,
+    "rel": 8,
+    "construct": 7,
+    "app": 3,
+    "const": 3
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Numbers.BinNums.Z.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.compare",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.compare : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Init.Datatypes.comparison :=
+fun x y =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.comparison)
+    (@Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.comparison)
+      Rocq.Corelib.Init.Datatypes.comparison.Eq (fun a => Rocq.Corelib.Init.Datatypes.comparison.Lt)
+      (fun a => Rocq.Corelib.Init.Datatypes.comparison.Gt) y)
+    (fun a =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.comparison)
+        Rocq.Corelib.Init.Datatypes.comparison.Gt (fun a_1 => Rocq.Corelib.BinNums.PosDef.Pos.compare a a_1)
+        (fun a => Rocq.Corelib.Init.Datatypes.comparison.Gt) y)
+    (fun a =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.comparison)
+        Rocq.Corelib.Init.Datatypes.comparison.Lt (fun a => Rocq.Corelib.Init.Datatypes.comparison.Lt)
+        (fun a_1 => Rocq.Corelib.Init.Datatypes.CompOpp (Rocq.Corelib.BinNums.PosDef.Pos.compare a a_1)) y)
+    x
+
+================================================================================
+Corelib.BinNums.IntDef/Z.div
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.div
+源文件行号候选: [270]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.BinNums.IntDef/Z.div_eucl",
+      "Corelib.Init.Datatypes.prod",
+      "Corelib.Numbers.BinNums.Z"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 8,
+    "lam": 2,
+    "case": 1,
+    "app": 1,
+    "const": 1,
+    "rel": 3
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Init.Datatypes.prod.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.div",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.div : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun a b =>
+  @Rocq.Corelib.Init.Datatypes.prod.rec.{1, 0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+    (fun t => Rocq.Corelib.Numbers.BinNums.Z) (fun a a_1 => a) (Rocq.Corelib.BinNums.IntDef.Z.div_eucl a b)
+
+================================================================================
+Corelib.BinNums.IntDef/Z.div2
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.div2
+源文件行号候选: [327]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.BinNums.PosDef/Pos.div2",
+      "Corelib.BinNums.PosDef/Pos.div2_up",
+      "Corelib.Numbers.BinNums.Z",
+      "Corelib.Numbers.BinNums.positive"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 5,
+    "lam": 1,
+    "case": 2,
+    "rel": 5,
+    "construct": 5,
+    "app": 6,
+    "const": 3
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Numbers.BinNums.Z.rec",
+    "Rocq.Corelib.Numbers.BinNums.positive.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.div2",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.div2 : Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun z =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) Rocq.Corelib.Numbers.BinNums.Z.Z0
+    (fun a =>
+      @Rocq.Corelib.Numbers.BinNums.positive.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z)
+        (fun a_1 _ih => Rocq.Corelib.Numbers.BinNums.Z.Zpos (Rocq.Corelib.BinNums.PosDef.Pos.div2 a))
+        (fun a_1 _ih => Rocq.Corelib.Numbers.BinNums.Z.Zpos (Rocq.Corelib.BinNums.PosDef.Pos.div2 a))
+        Rocq.Corelib.Numbers.BinNums.Z.Z0 a)
+    (fun a => Rocq.Corelib.Numbers.BinNums.Z.Zneg (Rocq.Corelib.BinNums.PosDef.Pos.div2_up a)) z
+
+================================================================================
+Corelib.BinNums.IntDef/Z.div_eucl
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.div_eucl
+源文件行号候选: [249]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.prod",
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.BinNums.IntDef/Z.add",
+      "Corelib.BinNums.IntDef/Z.opp",
+      "Corelib.BinNums.IntDef/Z.pos_div_eucl",
+      "Corelib.BinNums.IntDef/Z.sub",
+      "Corelib.Init.Datatypes.prod",
+      "Corelib.Numbers.BinNums.Z",
+      "Corelib.Numbers.BinNums.positive"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 57,
+    "app": 44,
+    "lam": 2,
+    "case": 8,
+    "rel": 31,
+    "construct": 26,
+    "const": 19
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "应用 → 已翻译目标的应用",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子",
+    "全局常量 → 目标声明或显式待证明前提"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Init.Datatypes.prod.rec",
+    "Rocq.Corelib.Numbers.BinNums.Z.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.div_eucl",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 1,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.div_eucl : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z →
+    Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z :=
+fun a b =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1}
+    (fun t => Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+    (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+      Rocq.Corelib.Numbers.BinNums.Z.Z0 Rocq.Corelib.Numbers.BinNums.Z.Z0)
+    (fun a_1 =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1}
+        (fun t => Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+        (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+          Rocq.Corelib.Numbers.BinNums.Z.Z0 a)
+        (fun a => Rocq.Corelib.BinNums.IntDef.Z.pos_div_eucl a_1 b)
+        (fun a =>
+          @Rocq.Corelib.Init.Datatypes.prod.rec.{1, 0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+            (fun t =>
+              Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+            (fun a a_2 =>
+              @Rocq.Corelib.Numbers.BinNums.Z.rec.{1}
+                (fun t =>
+                  Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+                (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z
+                  Rocq.Corelib.Numbers.BinNums.Z (Rocq.Corelib.BinNums.IntDef.Z.opp a)
+                  Rocq.Corelib.Numbers.BinNums.Z.Z0)
+                (fun a_3 =>
+                  Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z
+                    Rocq.Corelib.Numbers.BinNums.Z
+                    (Rocq.Corelib.BinNums.IntDef.Z.opp
+                      (Rocq.Corelib.BinNums.IntDef.Z.add a
+                        (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH)))
+                    (Rocq.Corelib.BinNums.IntDef.Z.add b a_2))
+                (fun a_3 =>
+                  Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z
+                    Rocq.Corelib.Numbers.BinNums.Z
+                    (Rocq.Corelib.BinNums.IntDef.Z.opp
+                      (Rocq.Corelib.BinNums.IntDef.Z.add a
+                        (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH)))
+                    (Rocq.Corelib.BinNums.IntDef.Z.add b a_2))
+                a_2)
+            (Rocq.Corelib.BinNums.IntDef.Z.pos_div_eucl a_1 (Rocq.Corelib.Numbers.BinNums.Z.Zpos a)))
+        b)
+    (fun a_1 =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1}
+        (fun t => Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+        (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+          Rocq.Corelib.Numbers.BinNums.Z.Z0 a)
+        (fun a =>
+          @Rocq.Corelib.Init.Datatypes.prod.rec.{1, 0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+            (fun t =>
+              Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+            (fun a a_2 =>
+              @Rocq.Corelib.Numbers.BinNums.Z.rec.{1}
+                (fun t =>
+                  Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+                (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z
+                  Rocq.Corelib.Numbers.BinNums.Z (Rocq.Corelib.BinNums.IntDef.Z.opp a)
+                  Rocq.Corelib.Numbers.BinNums.Z.Z0)
+                (fun a_3 =>
+                  Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z
+                    Rocq.Corelib.Numbers.BinNums.Z
+                    (Rocq.Corelib.BinNums.IntDef.Z.opp
+                      (Rocq.Corelib.BinNums.IntDef.Z.add a
+                        (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH)))
+                    (Rocq.Corelib.BinNums.IntDef.Z.sub b a_2))
+                (fun a_3 =>
+                  Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z
+                    Rocq.Corelib.Numbers.BinNums.Z
+                    (Rocq.Corelib.BinNums.IntDef.Z.opp
+                      (Rocq.Corelib.BinNums.IntDef.Z.add a
+                        (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH)))
+                    (Rocq.Corelib.BinNums.IntDef.Z.sub b a_2))
+                a_2)
+            (Rocq.Corelib.BinNums.IntDef.Z.pos_div_eucl a_1 b))
+        (fun a =>
+          @Rocq.Corelib.Init.Datatypes.prod.rec.{1, 0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+            (fun t =>
+              Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+            (fun a a_2 =>
+              Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+                a (Rocq.Corelib.BinNums.IntDef.Z.opp a_2))
+            (Rocq.Corelib.BinNums.IntDef.Z.pos_div_eucl a_1 (Rocq.Corelib.Numbers.BinNums.Z.Zpos a)))
+        b)
+    a
+
+================================================================================
+Corelib.BinNums.IntDef/Z.double
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.double
+源文件行号候选: [19]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.Numbers.BinNums.Z",
+      "Corelib.Numbers.BinNums.positive"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 4,
+    "lam": 1,
+    "case": 1,
+    "rel": 3,
+    "construct": 5,
+    "app": 4
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子",
+    "应用 → 已翻译目标的应用"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Numbers.BinNums.Z.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.double",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 1,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.double : Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun x =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) Rocq.Corelib.Numbers.BinNums.Z.Z0
+    (fun a => Rocq.Corelib.Numbers.BinNums.Z.Zpos a.xO) (fun a => Rocq.Corelib.Numbers.BinNums.Z.Zneg a.xO) x
+
+================================================================================
+Corelib.BinNums.IntDef/Z.eqb
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.eqb
+源文件行号候选: [154]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.bool",
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.BinNums.PosDef/Pos.eqb",
+      "Corelib.Init.Datatypes.bool",
+      "Corelib.Numbers.BinNums.Z"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 9,
+    "lam": 2,
+    "case": 4,
+    "rel": 8,
+    "construct": 7,
+    "app": 2,
+    "const": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Numbers.BinNums.Z.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.eqb",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.eqb : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Init.Datatypes.bool :=
+fun x y =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+    (@Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+      Rocq.Corelib.Init.Datatypes.bool.true (fun a => Rocq.Corelib.Init.Datatypes.bool.false)
+      (fun a => Rocq.Corelib.Init.Datatypes.bool.false) y)
+    (fun a =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+        Rocq.Corelib.Init.Datatypes.bool.false (fun a_1 => Rocq.Corelib.BinNums.PosDef.Pos.eqb a a_1)
+        (fun a => Rocq.Corelib.Init.Datatypes.bool.false) y)
+    (fun a =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+        Rocq.Corelib.Init.Datatypes.bool.false (fun a => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun a_1 => Rocq.Corelib.BinNums.PosDef.Pos.eqb a a_1) y)
+    x
+
+================================================================================
+Corelib.BinNums.IntDef/Z.even
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.even
+源文件行号候选: [313]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.bool",
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.Init.Datatypes.bool",
+      "Corelib.Numbers.BinNums.Z",
+      "Corelib.Numbers.BinNums.positive"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 6,
+    "lam": 1,
+    "case": 3,
+    "rel": 3,
+    "construct": 7
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Numbers.BinNums.Z.rec",
+    "Rocq.Corelib.Numbers.BinNums.positive.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.even",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 1,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.even : Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Init.Datatypes.bool :=
+fun z =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+    Rocq.Corelib.Init.Datatypes.bool.true
+    (fun a =>
+      @Rocq.Corelib.Numbers.BinNums.positive.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.true)
+        Rocq.Corelib.Init.Datatypes.bool.false a)
+    (fun a =>
+      @Rocq.Corelib.Numbers.BinNums.positive.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.true)
+        Rocq.Corelib.Init.Datatypes.bool.false a)
+    z
+
+================================================================================
+Corelib.BinNums.IntDef/Z.ge
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.ge
+源文件行号候选: [133]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.BinNums.IntDef/Z.compare",
+      "Corelib.Init.Datatypes.comparison",
+      "Corelib.Init.Logic.eq",
+      "Corelib.Init.Logic.not",
+      "Corelib.Numbers.BinNums.Z"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 6,
+    "sort": 1,
+    "lam": 2,
+    "app": 3,
+    "const": 2,
+    "rel": 2,
+    "construct": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "源 sort/宇宙 → Lean Sort",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.ge",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.ge : Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z → Prop :=
+fun x y =>
+  Rocq.Corelib.Init.Logic.not
+    (@Eq.{1} Rocq.Corelib.Init.Datatypes.comparison (Rocq.Corelib.BinNums.IntDef.Z.compare x y)
+      Rocq.Corelib.Init.Datatypes.comparison.Lt)
+
+================================================================================
+Corelib.BinNums.IntDef/Z.gt
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.gt
+源文件行号候选: [131]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.BinNums.IntDef/Z.compare",
+      "Corelib.Init.Datatypes.comparison",
+      "Corelib.Init.Logic.eq",
+      "Corelib.Numbers.BinNums.Z"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 6,
+    "sort": 1,
+    "lam": 2,
+    "app": 2,
+    "const": 1,
+    "rel": 2,
+    "construct": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "源 sort/宇宙 → Lean Sort",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.gt",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.gt : Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z → Prop :=
+fun x y =>
+  @Eq.{1} Rocq.Corelib.Init.Datatypes.comparison (Rocq.Corelib.BinNums.IntDef.Z.compare x y)
+    Rocq.Corelib.Init.Datatypes.comparison.Gt
+
+================================================================================
+Corelib.BinNums.IntDef/Z.land
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.land
+源文件行号候选: [380]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.BinNums.IntDef/Z.of_N",
+      "Corelib.BinNums.NatDef/N.ldiff",
+      "Corelib.BinNums.NatDef/N.lor",
+      "Corelib.BinNums.NatDef/N.succ_pos",
+      "Corelib.BinNums.PosDef/Pos.land",
+      "Corelib.BinNums.PosDef/Pos.pred_N",
+      "Corelib.Numbers.BinNums.N",
+      "Corelib.Numbers.BinNums.Z"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 8,
+    "lam": 2,
+    "case": 3,
+    "rel": 11,
+    "construct": 6,
+    "app": 15,
+    "const": 12
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Numbers.BinNums.Z.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.land",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.land : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun a b =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) Rocq.Corelib.Numbers.BinNums.Z.Z0
+    (fun a =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z)
+        Rocq.Corelib.Numbers.BinNums.Z.Z0
+        (fun a_1 => Rocq.Corelib.BinNums.IntDef.Z.of_N (Rocq.Corelib.BinNums.PosDef.Pos.land a a_1))
+        (fun a_1 =>
+          Rocq.Corelib.BinNums.IntDef.Z.of_N
+            (Rocq.Corelib.BinNums.NatDef.N.ldiff (Rocq.Corelib.Numbers.BinNums.N.Npos a)
+              (Rocq.Corelib.BinNums.PosDef.Pos.pred_N a_1)))
+        b)
+    (fun a =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z)
+        Rocq.Corelib.Numbers.BinNums.Z.Z0
+        (fun a_1 =>
+          Rocq.Corelib.BinNums.IntDef.Z.of_N
+            (Rocq.Corelib.BinNums.NatDef.N.ldiff (Rocq.Corelib.Numbers.BinNums.N.Npos a_1)
+              (Rocq.Corelib.BinNums.PosDef.Pos.pred_N a)))
+        (fun a_1 =>
+          Rocq.Corelib.Numbers.BinNums.Z.Zneg
+            (Rocq.Corelib.BinNums.NatDef.N.succ_pos
+              (Rocq.Corelib.BinNums.NatDef.N.lor (Rocq.Corelib.BinNums.PosDef.Pos.pred_N a)
+                (Rocq.Corelib.BinNums.PosDef.Pos.pred_N a_1))))
+        b)
+    a
+
+================================================================================
+Corelib.BinNums.IntDef/Z.le
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.le
+源文件行号候选: [132]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.BinNums.IntDef/Z.compare",
+      "Corelib.Init.Datatypes.comparison",
+      "Corelib.Init.Logic.eq",
+      "Corelib.Init.Logic.not",
+      "Corelib.Numbers.BinNums.Z"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 6,
+    "sort": 1,
+    "lam": 2,
+    "app": 3,
+    "const": 2,
+    "rel": 2,
+    "construct": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "源 sort/宇宙 → Lean Sort",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.le",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.le : Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z → Prop :=
+fun x y =>
+  Rocq.Corelib.Init.Logic.not
+    (@Eq.{1} Rocq.Corelib.Init.Datatypes.comparison (Rocq.Corelib.BinNums.IntDef.Z.compare x y)
+      Rocq.Corelib.Init.Datatypes.comparison.Gt)
+
+================================================================================
+Corelib.BinNums.IntDef/Z.leb
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.leb
+源文件行号候选: [142]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.bool",
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.BinNums.IntDef/Z.compare",
+      "Corelib.Init.Datatypes.bool",
+      "Corelib.Init.Datatypes.comparison",
+      "Corelib.Numbers.BinNums.Z"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 6,
+    "lam": 2,
+    "case": 1,
+    "app": 1,
+    "const": 1,
+    "rel": 2,
+    "construct": 3
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Init.Datatypes.comparison.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.leb",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 1,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.leb : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Init.Datatypes.bool :=
+fun x y =>
+  @Rocq.Corelib.Init.Datatypes.comparison.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+    Rocq.Corelib.Init.Datatypes.bool.true Rocq.Corelib.Init.Datatypes.bool.true Rocq.Corelib.Init.Datatypes.bool.false
+    (Rocq.Corelib.BinNums.IntDef.Z.compare x y)
+
+================================================================================
+Corelib.BinNums.IntDef/Z.lor
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.lor
+源文件行号候选: [370]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.BinNums.NatDef/N.land",
+      "Corelib.BinNums.NatDef/N.ldiff",
+      "Corelib.BinNums.NatDef/N.succ_pos",
+      "Corelib.BinNums.PosDef/Pos.lor",
+      "Corelib.BinNums.PosDef/Pos.pred_N",
+      "Corelib.Numbers.BinNums.N",
+      "Corelib.Numbers.BinNums.Z"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 8,
+    "lam": 2,
+    "case": 3,
+    "rel": 14,
+    "app": 17,
+    "construct": 6,
+    "const": 11
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "应用 → 已翻译目标的应用",
+    "构造子 → 对应目标构造子",
+    "全局常量 → 目标声明或显式待证明前提"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Numbers.BinNums.Z.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.lor",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 1,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.lor : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun a b =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) b
+    (fun a_1 =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) a
+        (fun a => Rocq.Corelib.Numbers.BinNums.Z.Zpos (Rocq.Corelib.BinNums.PosDef.Pos.lor a_1 a))
+        (fun a =>
+          Rocq.Corelib.Numbers.BinNums.Z.Zneg
+            (Rocq.Corelib.BinNums.NatDef.N.succ_pos
+              (Rocq.Corelib.BinNums.NatDef.N.ldiff (Rocq.Corelib.BinNums.PosDef.Pos.pred_N a)
+                (Rocq.Corelib.Numbers.BinNums.N.Npos a_1))))
+        b)
+    (fun a_1 =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) a
+        (fun a =>
+          Rocq.Corelib.Numbers.BinNums.Z.Zneg
+            (Rocq.Corelib.BinNums.NatDef.N.succ_pos
+              (Rocq.Corelib.BinNums.NatDef.N.ldiff (Rocq.Corelib.BinNums.PosDef.Pos.pred_N a_1)
+                (Rocq.Corelib.Numbers.BinNums.N.Npos a))))
+        (fun a =>
+          Rocq.Corelib.Numbers.BinNums.Z.Zneg
+            (Rocq.Corelib.BinNums.NatDef.N.succ_pos
+              (Rocq.Corelib.BinNums.NatDef.N.land (Rocq.Corelib.BinNums.PosDef.Pos.pred_N a_1)
+                (Rocq.Corelib.BinNums.PosDef.Pos.pred_N a))))
+        b)
+    a
+
+================================================================================
+Corelib.BinNums.IntDef/Z.lt
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.lt
+源文件行号候选: [130]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.BinNums.IntDef/Z.compare",
+      "Corelib.Init.Datatypes.comparison",
+      "Corelib.Init.Logic.eq",
+      "Corelib.Numbers.BinNums.Z"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 6,
+    "sort": 1,
+    "lam": 2,
+    "app": 2,
+    "const": 1,
+    "rel": 2,
+    "construct": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "源 sort/宇宙 → Lean Sort",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.lt",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.lt : Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z → Prop :=
+fun x y =>
+  @Eq.{1} Rocq.Corelib.Init.Datatypes.comparison (Rocq.Corelib.BinNums.IntDef.Z.compare x y)
+    Rocq.Corelib.Init.Datatypes.comparison.Lt
+
+================================================================================
+Corelib.BinNums.IntDef/Z.ltb
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.ltb
+源文件行号候选: [148]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.bool",
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.BinNums.IntDef/Z.compare",
+      "Corelib.Init.Datatypes.bool",
+      "Corelib.Init.Datatypes.comparison",
+      "Corelib.Numbers.BinNums.Z"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 6,
+    "lam": 2,
+    "case": 1,
+    "app": 1,
+    "const": 1,
+    "rel": 2,
+    "construct": 3
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Init.Datatypes.comparison.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.ltb",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.ltb : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Init.Datatypes.bool :=
+fun x y =>
+  @Rocq.Corelib.Init.Datatypes.comparison.rec.{1} (fun t => Rocq.Corelib.Init.Datatypes.bool)
+    Rocq.Corelib.Init.Datatypes.bool.false Rocq.Corelib.Init.Datatypes.bool.true Rocq.Corelib.Init.Datatypes.bool.false
+    (Rocq.Corelib.BinNums.IntDef.Z.compare x y)
+
+================================================================================
+Corelib.BinNums.IntDef/Z.lxor
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.lxor
+源文件行号候选: [390]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.BinNums.IntDef/Z.of_N",
+      "Corelib.BinNums.NatDef/N.lxor",
+      "Corelib.BinNums.NatDef/N.succ_pos",
+      "Corelib.BinNums.PosDef/Pos.lxor",
+      "Corelib.BinNums.PosDef/Pos.pred_N",
+      "Corelib.Numbers.BinNums.N",
+      "Corelib.Numbers.BinNums.Z"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 8,
+    "lam": 2,
+    "case": 3,
+    "rel": 14,
+    "app": 16,
+    "const": 12,
+    "construct": 4
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Numbers.BinNums.Z.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.lxor",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 1,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.lxor : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun a b =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) b
+    (fun a_1 =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) a
+        (fun a => Rocq.Corelib.BinNums.IntDef.Z.of_N (Rocq.Corelib.BinNums.PosDef.Pos.lxor a_1 a))
+        (fun a =>
+          Rocq.Corelib.Numbers.BinNums.Z.Zneg
+            (Rocq.Corelib.BinNums.NatDef.N.succ_pos
+              (Rocq.Corelib.BinNums.NatDef.N.lxor (Rocq.Corelib.Numbers.BinNums.N.Npos a_1)
+                (Rocq.Corelib.BinNums.PosDef.Pos.pred_N a))))
+        b)
+    (fun a_1 =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) a
+        (fun a =>
+          Rocq.Corelib.Numbers.BinNums.Z.Zneg
+            (Rocq.Corelib.BinNums.NatDef.N.succ_pos
+              (Rocq.Corelib.BinNums.NatDef.N.lxor (Rocq.Corelib.BinNums.PosDef.Pos.pred_N a_1)
+                (Rocq.Corelib.Numbers.BinNums.N.Npos a))))
+        (fun a =>
+          Rocq.Corelib.BinNums.IntDef.Z.of_N
+            (Rocq.Corelib.BinNums.NatDef.N.lxor (Rocq.Corelib.BinNums.PosDef.Pos.pred_N a_1)
+              (Rocq.Corelib.BinNums.PosDef.Pos.pred_N a)))
+        b)
+    a
+
+================================================================================
+Corelib.BinNums.IntDef/Z.max
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.max
+源文件行号候选: [164]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.BinNums.IntDef/Z.compare",
+      "Corelib.Init.Datatypes.comparison",
+      "Corelib.Numbers.BinNums.Z"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 6,
+    "lam": 2,
+    "case": 1,
+    "app": 1,
+    "const": 1,
+    "rel": 5
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Init.Datatypes.comparison.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.max",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.max : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun n m =>
+  @Rocq.Corelib.Init.Datatypes.comparison.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) n m n
+    (Rocq.Corelib.BinNums.IntDef.Z.compare n m)
+
+================================================================================
+Corelib.BinNums.IntDef/Z.min
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.min
+源文件行号候选: [170]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.BinNums.IntDef/Z.compare",
+      "Corelib.Init.Datatypes.comparison",
+      "Corelib.Numbers.BinNums.Z"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 6,
+    "lam": 2,
+    "case": 1,
+    "app": 1,
+    "const": 1,
+    "rel": 5
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Init.Datatypes.comparison.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.min",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.min : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun n m =>
+  @Rocq.Corelib.Init.Datatypes.comparison.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) n n m
+    (Rocq.Corelib.BinNums.IntDef.Z.compare n m)
+
+================================================================================
+Corelib.BinNums.IntDef/Z.modulo
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.modulo
+源文件行号候选: [271]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.BinNums.IntDef/Z.div_eucl",
+      "Corelib.Init.Datatypes.prod",
+      "Corelib.Numbers.BinNums.Z"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 8,
+    "lam": 2,
+    "case": 1,
+    "app": 1,
+    "const": 1,
+    "rel": 3
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Init.Datatypes.prod.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.modulo",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.modulo : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun a b =>
+  @Rocq.Corelib.Init.Datatypes.prod.rec.{1, 0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+    (fun t => Rocq.Corelib.Numbers.BinNums.Z) (fun a a_1 => a_1) (Rocq.Corelib.BinNums.IntDef.Z.div_eucl a b)
+
+================================================================================
+Corelib.BinNums.IntDef/Z.mul
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.mul
+源文件行号候选: [88]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.BinNums.PosDef/Pos.mul",
+      "Corelib.Numbers.BinNums.Z"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 8,
+    "lam": 2,
+    "case": 3,
+    "rel": 11,
+    "construct": 7,
+    "app": 8,
+    "const": 4
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Numbers.BinNums.Z.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.mul",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.mul : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun x y =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) Rocq.Corelib.Numbers.BinNums.Z.Z0
+    (fun a =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z)
+        Rocq.Corelib.Numbers.BinNums.Z.Z0
+        (fun a_1 => Rocq.Corelib.Numbers.BinNums.Z.Zpos (Rocq.Corelib.BinNums.PosDef.Pos.mul a a_1))
+        (fun a_1 => Rocq.Corelib.Numbers.BinNums.Z.Zneg (Rocq.Corelib.BinNums.PosDef.Pos.mul a a_1)) y)
+    (fun a =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z)
+        Rocq.Corelib.Numbers.BinNums.Z.Z0
+        (fun a_1 => Rocq.Corelib.Numbers.BinNums.Z.Zneg (Rocq.Corelib.BinNums.PosDef.Pos.mul a a_1))
+        (fun a_1 => Rocq.Corelib.Numbers.BinNums.Z.Zpos (Rocq.Corelib.BinNums.PosDef.Pos.mul a a_1)) y)
+    x
+
+================================================================================
+Corelib.BinNums.IntDef/Z.of_N
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.of_N
+源文件行号候选: [196]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.N",
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.Numbers.BinNums.N",
+      "Corelib.Numbers.BinNums.Z"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 4,
+    "lam": 1,
+    "case": 1,
+    "rel": 2,
+    "construct": 2,
+    "app": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子",
+    "应用 → 已翻译目标的应用"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Numbers.BinNums.N.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.of_N",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.of_N : Rocq.Corelib.Numbers.BinNums.N → Rocq.Corelib.Numbers.BinNums.Z :=
+fun n =>
+  @Rocq.Corelib.Numbers.BinNums.N.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) Rocq.Corelib.Numbers.BinNums.Z.Z0
+    (fun a => Rocq.Corelib.Numbers.BinNums.Z.Zpos a) n
+
+================================================================================
+Corelib.BinNums.IntDef/Z.of_nat
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.of_nat
+源文件行号候选: [188]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.BinNums.PosDef/Pos.of_succ_nat",
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Numbers.BinNums.Z"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 4,
+    "lam": 1,
+    "case": 1,
+    "rel": 2,
+    "construct": 2,
+    "app": 2,
+    "const": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提"
+  ],
+  "actual_target_recursors": [
+    "Nat.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.of_nat",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.of_nat : Nat → Rocq.Corelib.Numbers.BinNums.Z :=
+fun n =>
+  @Nat.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) Rocq.Corelib.Numbers.BinNums.Z.Z0
+    (fun n n_ih => Rocq.Corelib.Numbers.BinNums.Z.Zpos (Rocq.Corelib.BinNums.PosDef.Pos.of_succ_nat n)) n
+
+================================================================================
+Corelib.BinNums.IntDef/Z.opp
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.opp
+源文件行号候选: [71]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.Numbers.BinNums.Z"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 4,
+    "lam": 1,
+    "case": 1,
+    "rel": 3,
+    "construct": 3,
+    "app": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子",
+    "应用 → 已翻译目标的应用"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Numbers.BinNums.Z.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.opp",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.opp : Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun x =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) Rocq.Corelib.Numbers.BinNums.Z.Z0
+    (fun a => Rocq.Corelib.Numbers.BinNums.Z.Zneg a) (fun a => Rocq.Corelib.Numbers.BinNums.Z.Zpos a) x
+
+================================================================================
+Corelib.BinNums.IntDef/Z.pos_div_eucl
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.pos_div_eucl
+源文件行号候选: [234]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.prod",
+      "Corelib.Numbers.BinNums.Z",
+      "Corelib.Numbers.BinNums.positive"
+    ],
+    "body": [
+      "Corelib.BinNums.IntDef/Z.add",
+      "Corelib.BinNums.IntDef/Z.leb",
+      "Corelib.BinNums.IntDef/Z.ltb",
+      "Corelib.BinNums.IntDef/Z.mul",
+      "Corelib.BinNums.IntDef/Z.sub",
+      "Corelib.Init.Datatypes.bool",
+      "Corelib.Init.Datatypes.prod",
+      "Corelib.Numbers.BinNums.Z",
+      "Corelib.Numbers.BinNums.positive"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 4,
+    "ind": 48,
+    "app": 49,
+    "fix": 1,
+    "lam": 2,
+    "case": 6,
+    "rel": 24,
+    "let": 2,
+    "const": 14,
+    "construct": 39
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "应用 → 已翻译目标的应用",
+    "递归 → 目标递归消去结构；具体结果见 recursor 引用与实际 Lean 定义",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "局部定义 → Lean let",
+    "全局常量 → 目标声明或显式待证明前提",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Init.Datatypes.bool.rec",
+    "Rocq.Corelib.Init.Datatypes.prod.rec",
+    "Rocq.Corelib.Numbers.BinNums.positive.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.pos_div_eucl",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.pos_div_eucl : Rocq.Corelib.Numbers.BinNums.positive →
+  Rocq.Corelib.Numbers.BinNums.Z →
+    Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z :=
+fun a b =>
+  @Rocq.Corelib.Numbers.BinNums.positive.rec.{1}
+    (fun a =>
+      Rocq.Corelib.Numbers.BinNums.Z →
+        Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+    (fun a _ih b =>
+      @Rocq.Corelib.Init.Datatypes.prod.rec.{1, 0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+        (fun t => Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+        (fun a a_1 =>
+          let r' :=
+            Rocq.Corelib.BinNums.IntDef.Z.add
+              (Rocq.Corelib.BinNums.IntDef.Z.mul
+                (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH.xO) a_1)
+              (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH);
+          @Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+            (fun t =>
+              Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+            (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+              (Rocq.Corelib.BinNums.IntDef.Z.mul
+                (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH.xO) a)
+              r')
+            (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+              (Rocq.Corelib.BinNums.IntDef.Z.add
+                (Rocq.Corelib.BinNums.IntDef.Z.mul
+                  (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH.xO) a)
+                (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH))
+              (Rocq.Corelib.BinNums.IntDef.Z.sub r' b))
+            (Rocq.Corelib.BinNums.IntDef.Z.ltb r' b))
+        (_ih b))
+    (fun a _ih b =>
+      @Rocq.Corelib.Init.Datatypes.prod.rec.{1, 0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+        (fun t => Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+        (fun a a_1 =>
+          let r' :=
+            Rocq.Corelib.BinNums.IntDef.Z.mul
+              (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH.xO) a_1;
+          @Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+            (fun t =>
+              Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+            (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+              (Rocq.Corelib.BinNums.IntDef.Z.mul
+                (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH.xO) a)
+              r')
+            (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+              (Rocq.Corelib.BinNums.IntDef.Z.add
+                (Rocq.Corelib.BinNums.IntDef.Z.mul
+                  (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH.xO) a)
+                (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH))
+              (Rocq.Corelib.BinNums.IntDef.Z.sub r' b))
+            (Rocq.Corelib.BinNums.IntDef.Z.ltb r' b))
+        (_ih b))
+    (fun b =>
+      @Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+        (fun t => Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+        (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+          Rocq.Corelib.Numbers.BinNums.Z.Z0
+          (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH))
+        (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+          (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH)
+          Rocq.Corelib.Numbers.BinNums.Z.Z0)
+        (Rocq.Corelib.BinNums.IntDef.Z.leb
+          (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH.xO) b))
+    a b
+
+================================================================================
+Corelib.BinNums.IntDef/Z.pos_sub
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.pos_sub
+源文件行号候选: [42]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.Z",
+      "Corelib.Numbers.BinNums.positive"
+    ],
+    "body": [
+      "Corelib.BinNums.IntDef/Z.double",
+      "Corelib.BinNums.IntDef/Z.pred_double",
+      "Corelib.BinNums.IntDef/Z.succ_double",
+      "Corelib.BinNums.PosDef/Pos.pred_double",
+      "Corelib.Numbers.BinNums.Z",
+      "Corelib.Numbers.BinNums.positive"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 4,
+    "ind": 12,
+    "fix": 1,
+    "lam": 2,
+    "case": 4,
+    "rel": 20,
+    "app": 16,
+    "const": 6,
+    "construct": 7
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "递归 → 目标递归消去结构；具体结果见 recursor 引用与实际 Lean 定义",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Numbers.BinNums.positive.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.pos_sub",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.pos_sub : Rocq.Corelib.Numbers.BinNums.positive →
+  Rocq.Corelib.Numbers.BinNums.positive → Rocq.Corelib.Numbers.BinNums.Z :=
+fun x y =>
+  @Rocq.Corelib.Numbers.BinNums.positive.rec.{1}
+    (fun y => Rocq.Corelib.Numbers.BinNums.positive → Rocq.Corelib.Numbers.BinNums.Z)
+    (fun a _ih x =>
+      @Rocq.Corelib.Numbers.BinNums.positive.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z)
+        (fun a _ih_1 => Rocq.Corelib.BinNums.IntDef.Z.double (_ih a))
+        (fun a _ih_1 => Rocq.Corelib.BinNums.IntDef.Z.pred_double (_ih a)) (Rocq.Corelib.Numbers.BinNums.Z.Zneg a.xO) x)
+    (fun a _ih x =>
+      @Rocq.Corelib.Numbers.BinNums.positive.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z)
+        (fun a _ih_1 => Rocq.Corelib.BinNums.IntDef.Z.succ_double (_ih a))
+        (fun a _ih_1 => Rocq.Corelib.BinNums.IntDef.Z.double (_ih a))
+        (Rocq.Corelib.Numbers.BinNums.Z.Zneg (Rocq.Corelib.BinNums.PosDef.Pos.pred_double a)) x)
+    (fun x =>
+      @Rocq.Corelib.Numbers.BinNums.positive.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z)
+        (fun a _ih => Rocq.Corelib.Numbers.BinNums.Z.Zpos a.xO)
+        (fun a _ih => Rocq.Corelib.Numbers.BinNums.Z.Zpos (Rocq.Corelib.BinNums.PosDef.Pos.pred_double a))
+        Rocq.Corelib.Numbers.BinNums.Z.Z0 x)
+    y x
+
+================================================================================
+Corelib.BinNums.IntDef/Z.pow
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.pow
+源文件行号候选: [104]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.BinNums.IntDef/Z.pow_pos",
+      "Corelib.Numbers.BinNums.Z",
+      "Corelib.Numbers.BinNums.positive"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 6,
+    "lam": 2,
+    "case": 1,
+    "rel": 3,
+    "app": 2,
+    "construct": 3,
+    "const": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "应用 → 已翻译目标的应用",
+    "构造子 → 对应目标构造子",
+    "全局常量 → 目标声明或显式待证明前提"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Numbers.BinNums.Z.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.pow",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.pow : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun x y =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z)
+    (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH)
+    (fun a => Rocq.Corelib.BinNums.IntDef.Z.pow_pos x a) (fun a => Rocq.Corelib.Numbers.BinNums.Z.Z0) y
+
+================================================================================
+Corelib.BinNums.IntDef/Z.pow_pos
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.pow_pos
+源文件行号候选: [102]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.Z",
+      "Corelib.Numbers.BinNums.positive"
+    ],
+    "body": [
+      "Corelib.BinNums.IntDef/Z.mul",
+      "Corelib.BinNums.PosDef/Pos.iter",
+      "Corelib.Numbers.BinNums.Z",
+      "Corelib.Numbers.BinNums.positive"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 5,
+    "lam": 1,
+    "app": 3,
+    "const": 2,
+    "rel": 1,
+    "construct": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 1,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.pow_pos",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.pow_pos : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.positive → Rocq.Corelib.Numbers.BinNums.Z :=
+fun z =>
+  Rocq.Corelib.BinNums.PosDef.Pos.iter.{0} Rocq.Corelib.Numbers.BinNums.Z (Rocq.Corelib.BinNums.IntDef.Z.mul z)
+    (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH)
+
+================================================================================
+Corelib.BinNums.IntDef/Z.pred_double
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.pred_double
+源文件行号候选: [33]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.BinNums.PosDef/Pos.pred_double",
+      "Corelib.Numbers.BinNums.Z",
+      "Corelib.Numbers.BinNums.positive"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 4,
+    "lam": 1,
+    "case": 1,
+    "rel": 3,
+    "app": 5,
+    "construct": 5,
+    "const": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "应用 → 已翻译目标的应用",
+    "构造子 → 对应目标构造子",
+    "全局常量 → 目标声明或显式待证明前提"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Numbers.BinNums.Z.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.pred_double",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.pred_double : Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun x =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z)
+    (Rocq.Corelib.Numbers.BinNums.Z.Zneg Rocq.Corelib.Numbers.BinNums.positive.xH)
+    (fun a => Rocq.Corelib.Numbers.BinNums.Z.Zpos (Rocq.Corelib.BinNums.PosDef.Pos.pred_double a))
+    (fun a => Rocq.Corelib.Numbers.BinNums.Z.Zneg a.xI) x
+
+================================================================================
+Corelib.BinNums.IntDef/Z.quot
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.quot
+源文件行号候选: [305]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.BinNums.IntDef/Z.quotrem",
+      "Corelib.Init.Datatypes.fst",
+      "Corelib.Numbers.BinNums.Z"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 7,
+    "lam": 2,
+    "app": 2,
+    "const": 2,
+    "rel": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 2,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.quot",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.quot : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun a b =>
+  Rocq.Corelib.Init.Datatypes.fst.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+    (Rocq.Corelib.BinNums.IntDef.Z.quotrem a b)
+
+================================================================================
+Corelib.BinNums.IntDef/Z.quotrem
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.quotrem
+源文件行号候选: [291]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.prod",
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.BinNums.IntDef/Z.of_N",
+      "Corelib.BinNums.IntDef/Z.opp",
+      "Corelib.BinNums.NatDef/N.pos_div_eucl",
+      "Corelib.Init.Datatypes.prod",
+      "Corelib.Numbers.BinNums.N",
+      "Corelib.Numbers.BinNums.Z"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 50,
+    "app": 35,
+    "lam": 2,
+    "case": 7,
+    "rel": 21,
+    "construct": 15,
+    "const": 16
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "应用 → 已翻译目标的应用",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子",
+    "全局常量 → 目标声明或显式待证明前提"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Init.Datatypes.prod.rec",
+    "Rocq.Corelib.Numbers.BinNums.Z.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.quotrem",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 1,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.quotrem : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z →
+    Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z :=
+fun a b =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1}
+    (fun t => Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+    (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+      Rocq.Corelib.Numbers.BinNums.Z.Z0 Rocq.Corelib.Numbers.BinNums.Z.Z0)
+    (fun a_1 =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1}
+        (fun t => Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+        (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+          Rocq.Corelib.Numbers.BinNums.Z.Z0 a)
+        (fun a =>
+          @Rocq.Corelib.Init.Datatypes.prod.rec.{1, 0, 0} Rocq.Corelib.Numbers.BinNums.N Rocq.Corelib.Numbers.BinNums.N
+            (fun t =>
+              Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+            (fun a a_2 =>
+              Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+                (Rocq.Corelib.BinNums.IntDef.Z.of_N a) (Rocq.Corelib.BinNums.IntDef.Z.of_N a_2))
+            (Rocq.Corelib.BinNums.NatDef.N.pos_div_eucl a_1 (Rocq.Corelib.Numbers.BinNums.N.Npos a)))
+        (fun a =>
+          @Rocq.Corelib.Init.Datatypes.prod.rec.{1, 0, 0} Rocq.Corelib.Numbers.BinNums.N Rocq.Corelib.Numbers.BinNums.N
+            (fun t =>
+              Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+            (fun a a_2 =>
+              Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+                (Rocq.Corelib.BinNums.IntDef.Z.opp (Rocq.Corelib.BinNums.IntDef.Z.of_N a))
+                (Rocq.Corelib.BinNums.IntDef.Z.of_N a_2))
+            (Rocq.Corelib.BinNums.NatDef.N.pos_div_eucl a_1 (Rocq.Corelib.Numbers.BinNums.N.Npos a)))
+        b)
+    (fun a_1 =>
+      @Rocq.Corelib.Numbers.BinNums.Z.rec.{1}
+        (fun t => Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+        (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+          Rocq.Corelib.Numbers.BinNums.Z.Z0 a)
+        (fun a =>
+          @Rocq.Corelib.Init.Datatypes.prod.rec.{1, 0, 0} Rocq.Corelib.Numbers.BinNums.N Rocq.Corelib.Numbers.BinNums.N
+            (fun t =>
+              Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+            (fun a a_2 =>
+              Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+                (Rocq.Corelib.BinNums.IntDef.Z.opp (Rocq.Corelib.BinNums.IntDef.Z.of_N a))
+                (Rocq.Corelib.BinNums.IntDef.Z.opp (Rocq.Corelib.BinNums.IntDef.Z.of_N a_2)))
+            (Rocq.Corelib.BinNums.NatDef.N.pos_div_eucl a_1 (Rocq.Corelib.Numbers.BinNums.N.Npos a)))
+        (fun a =>
+          @Rocq.Corelib.Init.Datatypes.prod.rec.{1, 0, 0} Rocq.Corelib.Numbers.BinNums.N Rocq.Corelib.Numbers.BinNums.N
+            (fun t =>
+              Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+            (fun a a_2 =>
+              Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+                (Rocq.Corelib.BinNums.IntDef.Z.of_N a)
+                (Rocq.Corelib.BinNums.IntDef.Z.opp (Rocq.Corelib.BinNums.IntDef.Z.of_N a_2)))
+            (Rocq.Corelib.BinNums.NatDef.N.pos_div_eucl a_1 (Rocq.Corelib.Numbers.BinNums.N.Npos a)))
+        b)
+    a
+
+================================================================================
+Corelib.BinNums.IntDef/Z.rem
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.rem
+源文件行号候选: [306]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.BinNums.IntDef/Z.quotrem",
+      "Corelib.Init.Datatypes.snd",
+      "Corelib.Numbers.BinNums.Z"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 7,
+    "lam": 2,
+    "app": 2,
+    "const": 2,
+    "rel": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 2,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.rem",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.rem : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun a b =>
+  Rocq.Corelib.Init.Datatypes.snd.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+    (Rocq.Corelib.BinNums.IntDef.Z.quotrem a b)
+
+================================================================================
+Corelib.BinNums.IntDef/Z.shiftl
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.shiftl
+源文件行号候选: [359]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.BinNums.IntDef/Z.div2",
+      "Corelib.BinNums.IntDef/Z.mul",
+      "Corelib.BinNums.PosDef/Pos.iter",
+      "Corelib.Numbers.BinNums.Z",
+      "Corelib.Numbers.BinNums.positive"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 8,
+    "lam": 2,
+    "case": 1,
+    "rel": 6,
+    "app": 5,
+    "const": 4,
+    "construct": 3
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Numbers.BinNums.Z.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 2,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.shiftl",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 1,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.shiftl : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun a n =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z) a
+    (fun a_1 =>
+      Rocq.Corelib.BinNums.PosDef.Pos.iter.{0} Rocq.Corelib.Numbers.BinNums.Z
+        (Rocq.Corelib.BinNums.IntDef.Z.mul
+          (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH.xO))
+        a a_1)
+    (fun a_1 =>
+      Rocq.Corelib.BinNums.PosDef.Pos.iter.{0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.BinNums.IntDef.Z.div2 a a_1)
+    n
+
+================================================================================
+Corelib.BinNums.IntDef/Z.shiftr
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.shiftr
+源文件行号候选: [366]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.BinNums.IntDef/Z.opp",
+      "Corelib.BinNums.IntDef/Z.shiftl",
+      "Corelib.Numbers.BinNums.Z"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 5,
+    "lam": 2,
+    "app": 2,
+    "const": 2,
+    "rel": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.shiftr",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.shiftr : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun a n => Rocq.Corelib.BinNums.IntDef.Z.shiftl a (Rocq.Corelib.BinNums.IntDef.Z.opp n)
+
+================================================================================
+Corelib.BinNums.IntDef/Z.sqrtrem
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.sqrtrem
+源文件行号候选: [337]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.prod",
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.BinNums.PosDef/Pos.mask",
+      "Corelib.BinNums.PosDef/Pos.sqrtrem",
+      "Corelib.Init.Datatypes.prod",
+      "Corelib.Numbers.BinNums.Z",
+      "Corelib.Numbers.BinNums.positive"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 26,
+    "app": 14,
+    "lam": 1,
+    "case": 3,
+    "rel": 7,
+    "construct": 15,
+    "const": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "应用 → 已翻译目标的应用",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子",
+    "全局常量 → 目标声明或显式待证明前提"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.BinNums.PosDef.Pos.mask.rec",
+    "Rocq.Corelib.Init.Datatypes.prod.rec",
+    "Rocq.Corelib.Numbers.BinNums.Z.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.sqrtrem",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 1,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.sqrtrem : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z :=
+fun n =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1}
+    (fun t => Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+    (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+      Rocq.Corelib.Numbers.BinNums.Z.Z0 Rocq.Corelib.Numbers.BinNums.Z.Z0)
+    (fun a =>
+      @Rocq.Corelib.Init.Datatypes.prod.rec.{1, 0, 0} Rocq.Corelib.Numbers.BinNums.positive
+        Rocq.Corelib.BinNums.PosDef.Pos.mask
+        (fun t => Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+        (fun a a_1 =>
+          @Rocq.Corelib.BinNums.PosDef.Pos.mask.rec.{1}
+            (fun t =>
+              Rocq.Corelib.Init.Datatypes.prod.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+            (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+              (Rocq.Corelib.Numbers.BinNums.Z.Zpos a) Rocq.Corelib.Numbers.BinNums.Z.Z0)
+            (fun a_2 =>
+              Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+                (Rocq.Corelib.Numbers.BinNums.Z.Zpos a) (Rocq.Corelib.Numbers.BinNums.Z.Zpos a_2))
+            (Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+              (Rocq.Corelib.Numbers.BinNums.Z.Zpos a) Rocq.Corelib.Numbers.BinNums.Z.Z0)
+            a_1)
+        (Rocq.Corelib.BinNums.PosDef.Pos.sqrtrem a))
+    (fun a =>
+      Rocq.Corelib.Init.Datatypes.prod.pair.{0, 0} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z
+        Rocq.Corelib.Numbers.BinNums.Z.Z0 Rocq.Corelib.Numbers.BinNums.Z.Z0)
+    n
+
+================================================================================
+Corelib.BinNums.IntDef/Z.sub
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.sub
+源文件行号候选: [82]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.BinNums.IntDef/Z.add",
+      "Corelib.BinNums.IntDef/Z.opp",
+      "Corelib.Numbers.BinNums.Z"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 2,
+    "ind": 5,
+    "lam": 2,
+    "app": 2,
+    "const": 2,
+    "rel": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提",
+    "局部变量 → Lean 绑定变量"
+  ],
+  "actual_target_recursors": [],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.sub",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.sub : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun m n => Rocq.Corelib.BinNums.IntDef.Z.add m (Rocq.Corelib.BinNums.IntDef.Z.opp n)
+
+================================================================================
+Corelib.BinNums.IntDef/Z.succ_double
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.succ_double
+源文件行号候选: [26]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.BinNums.PosDef/Pos.pred_double",
+      "Corelib.Numbers.BinNums.Z",
+      "Corelib.Numbers.BinNums.positive"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 4,
+    "lam": 1,
+    "case": 1,
+    "rel": 3,
+    "app": 5,
+    "construct": 5,
+    "const": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "应用 → 已翻译目标的应用",
+    "构造子 → 对应目标构造子",
+    "全局常量 → 目标声明或显式待证明前提"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Numbers.BinNums.Z.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.succ_double",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.succ_double : Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun x =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.Z)
+    (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH)
+    (fun a => Rocq.Corelib.Numbers.BinNums.Z.Zpos a.xI)
+    (fun a => Rocq.Corelib.Numbers.BinNums.Z.Zneg (Rocq.Corelib.BinNums.PosDef.Pos.pred_double a)) x
+
+================================================================================
+Corelib.BinNums.IntDef/Z.to_nat
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.to_nat
+源文件行号候选: [180]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Numbers.BinNums.Z"
+    ],
+    "body": [
+      "Corelib.BinNums.PosDef/Pos.to_nat",
+      "Corelib.Init.Datatypes.nat",
+      "Corelib.Numbers.BinNums.Z"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 4,
+    "lam": 1,
+    "case": 1,
+    "rel": 2,
+    "construct": 2,
+    "app": 1,
+    "const": 1
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子",
+    "应用 → 已翻译目标的应用",
+    "全局常量 → 目标声明或显式待证明前提"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Numbers.BinNums.Z.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.to_nat",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.to_nat : Rocq.Corelib.Numbers.BinNums.Z → Nat :=
+fun z =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Nat) Nat.zero (fun a => Rocq.Corelib.BinNums.PosDef.Pos.to_nat a)
+    (fun a => Nat.zero) z
+
+================================================================================
+Corelib.BinNums.IntDef/Z.to_pos
+类别: definition_function；状态: TRANSLATED_AND_CHECKED；实际目标: Rocq.Corelib.BinNums.IntDef.Z.to_pos
+源文件行号候选: [204]
+1 源声明与导出
+{
+  "source_kind": "definition_function",
+  "source_body_state": "transparent",
+  "native_preparation": {
+    "sealed_implementation": false,
+    "lowered_ssr_have_upoly": false
+  },
+  "exported": true
+}
+2 证明抽取与依赖
+{
+  "proof_body_omitted": false,
+  "dependencies": {
+    "type": [
+      "Corelib.Numbers.BinNums.Z",
+      "Corelib.Numbers.BinNums.positive"
+    ],
+    "body": [
+      "Corelib.Numbers.BinNums.Z",
+      "Corelib.Numbers.BinNums.positive"
+    ]
+  },
+  "pending": [],
+  "extraction_refusal": null
+}
+3 结构翻译
+{
+  "declaration_rule": "constant/transparent",
+  "source_node_counts": {
+    "prod": 1,
+    "ind": 4,
+    "lam": 1,
+    "case": 1,
+    "rel": 2,
+    "construct": 2
+  },
+  "node_rules_present": [
+    "依赖函数类型 → Lean forall",
+    "归纳类型引用 → 原生 bootstrap 或生成类型",
+    "函数体 → Lean lambda",
+    "模式消去 → 目标 recursor/消去表达式",
+    "局部变量 → Lean 绑定变量",
+    "构造子 → 对应目标构造子"
+  ],
+  "actual_target_recursors": [
+    "Rocq.Corelib.Numbers.BinNums.Z.rec"
+  ],
+  "note": "节点映射是依据 IR 与实现的静态解释；不是虚构的逐节点运行轨迹。实际运行尝试见 tier_attempts。"
+}
+4 宇宙及适配处理
+{
+  "universe_diagnostics": [],
+  "universe_checks": 0,
+  "template_params": [],
+  "solved_levels": [],
+  "r2bp_levels": [],
+  "prop_lift_coercions": 0,
+  "prop_lift": null,
+  "phantom_lowered": [],
+  "level_split": [],
+  "level_params": [],
+  "level_interp": [],
+  "level_copies": [],
+  "delta_inlined": [],
+  "admitting_levels": []
+}
+5 目标输出
+{
+  "status": "TRANSLATED_AND_CHECKED",
+  "target": "Rocq.Corelib.BinNums.IntDef.Z.to_pos",
+  "target_kind": "def",
+  "theorem_proof_produced": false
+}
+6 独立检查
+{
+  "source_roundtrip_item": "RT_OK",
+  "module_roundtrip": "OK",
+  "consumer": "OK",
+  "audit": "OK"
+}
+实际记录的翻译尝试
+[
+  {
+    "label": "c[]",
+    "ms": 0,
+    "result": "TRANSLATED_AND_CHECKED",
+    "flag_descriptions": []
+  }
+]
+实际 Lean 内核声明（#print）
+def Rocq.Corelib.BinNums.IntDef.Z.to_pos : Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.positive :=
+fun z =>
+  @Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (fun t => Rocq.Corelib.Numbers.BinNums.positive)
+    Rocq.Corelib.Numbers.BinNums.positive.xH (fun a => a) (fun a => Rocq.Corelib.Numbers.BinNums.positive.xH) z

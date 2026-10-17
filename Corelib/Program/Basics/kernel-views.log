@@ -1,0 +1,34 @@
+R2L_BEGIN_0
+def Rocq.Corelib.Program.Basics.apply.{u_Corelib_Program_Basics_43, u_Corelib_Program_Basics_44} : (A :
+    Type u_Corelib_Program_Basics_43) →
+  (B : Type u_Corelib_Program_Basics_44) → (A → B) → A → B :=
+fun A B f x => f x
+R2L_END_0
+R2L_BEGIN_1
+def Rocq.Corelib.Program.Basics.arrow.{u_Corelib_Program_Basics_27, u_Corelib_Program_Basics_28} : Type
+    u_Corelib_Program_Basics_27 →
+  Type u_Corelib_Program_Basics_28 → Type (max u_Corelib_Program_Basics_27 u_Corelib_Program_Basics_28) :=
+fun A B => A → B
+R2L_END_1
+R2L_BEGIN_2
+def Rocq.Corelib.Program.Basics.compose.{u_Corelib_Program_Basics_24, u_Corelib_Program_Basics_25, u_Corelib_Program_Basics_26} : (A :
+    Type u_Corelib_Program_Basics_26) →
+  (B : Type u_Corelib_Program_Basics_24) → (C : Type u_Corelib_Program_Basics_25) → (B → C) → (A → B) → A → C :=
+fun A B C g f x => g (f x)
+R2L_END_2
+R2L_BEGIN_3
+def Rocq.Corelib.Program.Basics.const.{u_Corelib_Program_Basics_31, u_Corelib_Program_Basics_32} : (A :
+    Type u_Corelib_Program_Basics_31) →
+  (B : Type u_Corelib_Program_Basics_32) → A → B → A :=
+fun A B a a_1 => a
+R2L_END_3
+R2L_BEGIN_4
+def Rocq.Corelib.Program.Basics.flip.{u_Corelib_Program_Basics_36, u_Corelib_Program_Basics_37, u_Corelib_Program_Basics_38} : (A :
+    Type u_Corelib_Program_Basics_36) →
+  (B : Type u_Corelib_Program_Basics_37) → (C : Type u_Corelib_Program_Basics_38) → (A → B → C) → B → A → C :=
+fun A B C f x y => f y x
+R2L_END_4
+R2L_BEGIN_5
+def Rocq.Corelib.Program.Basics.impl : Prop → Prop → Prop :=
+fun A B => A → B
+R2L_END_5

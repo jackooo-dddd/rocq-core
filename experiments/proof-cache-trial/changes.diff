@@ -1,0 +1,41 @@
+diff --git a/rocq/exporter/src/r2l_export.ml b/rocq/exporter/src/r2l_export.ml
+index 7cface6..5e9d789 100644
+--- a/rocq/exporter/src/r2l_export.ml
++++ b/rocq/exporter/src/r2l_export.ml
+@@ -875,7 +875,8 @@ let extract_proofs env0 sigma mk t =
+     | Constr.Const (c, _) when proof_valued env c -> t
+     | _ ->
+       let ctx = EConstr.rel_context env in
+-      let o = mk (EConstr.it_mkProd_or_LetIn (canon env ty) ctx) in
++      let o = mk (EConstr.it_mkProd_or_LetIn (canon env ty) ctx)
++          (EConstr.it_mkLambda_or_LetIn t ctx) in
+       EConstr.mkApp (o, Context.Rel.instance EConstr.mkRel 0 ctx)
+   in
+   (* local variables (hypotheses of the context) stay: they are not proof terms of the source *)
+@@ -941,12 +942,23 @@ let statement_env ?(follow = true) ~opaque_access st env0 roots =
+            else EConstr.EInstance.empty
+          in
+          let obls = ref [] and n = ref 0 in
+-         let mk stmt =
++         (* Reuse only the exact same closed proof occurrence at the exact same expected
++            type, across both the declaration type and body. Distinct proof terms are
++            never identified. The witness is a transient cache key, never exported. *)
++         let proof_cache = ref [] in
++         let mk stmt witness =
++           let ty = EConstr.to_constr sigma stmt in
++           let proof = EConstr.to_constr sigma witness in
++           match List.find_opt (fun (ty0, p0, _) -> Constr.equal ty ty0 && Constr.equal proof p0) !proof_cache with
++           | Some (_, _, o) -> o
++           | None ->
+            incr n;
+            let lbl = Names.Label.to_string (Names.Constant.label c) ^ "__rocq2lean_obligation_" ^ string_of_int !n in
+            let o = Names.Constant.make1 (Names.KerName.make (Names.Constant.modpath c) (Names.Label.make lbl)) in
+-           obls := (o, EConstr.to_constr sigma stmt) :: !obls;
+-           EConstr.mkConstU (o, inst)
++           obls := (o, ty) :: !obls;
++           let term = EConstr.mkConstU (o, inst) in
++           proof_cache := (ty, proof, term) :: !proof_cache;
++           term
+          in
+          let is_proof = proof_valued env0 c in
+          (* opacity as declared in Rocq (the native environment): the preparation may have replaced

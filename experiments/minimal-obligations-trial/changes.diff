@@ -1,0 +1,61 @@
+diff --git a/rocq/exporter/src/r2l_export.ml b/rocq/exporter/src/r2l_export.ml
+index 7cface6..b0d5c79 100644
+--- a/rocq/exporter/src/r2l_export.ml
++++ b/rocq/exporter/src/r2l_export.ml
+@@ -875,8 +875,25 @@ let extract_proofs env0 sigma mk t =
+     | Constr.Const (c, _) when proof_valued env c -> t
+     | _ ->
+       let ctx = EConstr.rel_context env in
+-      let o = mk (EConstr.it_mkProd_or_LetIn (canon env ty) ctx) in
+-      EConstr.mkApp (o, Context.Rel.instance EConstr.mkRel 0 ctx)
++      (* Close over only the locals occurring in the expected statement (including
++         dependencies in the retained binder types).  A context let is substituted;
++         unused assumptions are dropped from the inside out. *)
++      let rec close n t =
++        if n = 0 then (t, []) else
++        match EConstr.kind sigma t with
++        | Constr.Prod (na, d, b) ->
++          let b', args = close (n - 1) b in
++          if EConstr.Vars.noccurn sigma 1 b' then
++            (EConstr.Vars.lift (-1) b', args)
++          else (EConstr.mkProd (na, d, b'), EConstr.mkRel n :: args)
++        | Constr.LetIn (_, v, _, b) ->
++          let b', args = close (n - 1) b in
++          (EConstr.Vars.subst1 v b', args)
++        | _ -> failwith "obligation closure: expected a context binder"
++      in
++      let stmt, args = close (List.length ctx) (EConstr.it_mkProd_or_LetIn (canon env ty) ctx) in
++      let o = mk stmt in
++      EConstr.mkApp (o, Array.of_list args)
+   in
+   (* local variables (hypotheses of the context) stay: they are not proof terms of the source *)
+   let atomic t =
+@@ -942,10 +959,14 @@ let statement_env ?(follow = true) ~opaque_access st env0 roots =
+          in
+          let obls = ref [] and n = ref 0 in
+          let mk stmt =
++           let stmt = EConstr.to_constr sigma stmt in
++           match List.find_opt (fun (_, ty) -> Constr.equal ty stmt) !obls with
++           | Some (o, _) -> EConstr.mkConstU (o, inst)
++           | None ->
+            incr n;
+            let lbl = Names.Label.to_string (Names.Constant.label c) ^ "__rocq2lean_obligation_" ^ string_of_int !n in
+            let o = Names.Constant.make1 (Names.KerName.make (Names.Constant.modpath c) (Names.Label.make lbl)) in
+-           obls := (o, EConstr.to_constr sigma stmt) :: !obls;
++           obls := (o, stmt) :: !obls;
+            EConstr.mkConstU (o, inst)
+          in
+          let is_proof = proof_valued env0 c in
+diff --git a/tools/rocq2lean.py b/tools/rocq2lean.py
+index f8aaa9f..b4bbcbd 100755
+--- a/tools/rocq2lean.py
++++ b/tools/rocq2lean.py
+@@ -451,7 +451,7 @@ NATIVE_LIB = ROOT / ".lake" / "build" / "lib" / "librocq2lean__pilot_Rocq2Lean.s
+ def native_args():
+     """Speed (entry 14): the translator library as native code (`precompileModules`), loaded into `lean`
+     instead of running in the IR interpreter; the same program (results byte-identical)."""
+-    return [f"--load-dynlib={NATIVE_LIB}"] if NATIVE_LIB.exists() else []
++    return ["-j", "4"] + ([f"--load-dynlib={NATIVE_LIB}"] if NATIVE_LIB.exists() else [])
+ 
+ 
+ def lean_build_sha256():
