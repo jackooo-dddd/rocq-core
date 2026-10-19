@@ -2048,5 +2048,230 @@
     "name": "NativeBridge.Incremental.StringComparison.nativeCompare",
     "native_expression": "fun a b =>\n  List.compareLex NativeBridge.Incremental.StringComparison.wordCompare\n    (NativeBridge.Incremental.StringOperations.toWords a) (NativeBridge.Incremental.StringOperations.toWords b)",
     "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRSetoidCompatibility.reflexivitySpec",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop), (∀ (x : A), R x x) → ∀ (x : A), R x x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.DefaultRelationMarker.equivalenceSpec",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop), Equivalence R → NativeBridge.Incremental.DefaultRelationMarker.nativeMarker A R",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.DefaultRelationMarker.nativeMarker",
+    "native_expression": "fun A _R => True",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.DefaultRelationMarker.nativeRelation",
+    "native_expression": "fun A R x => R",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.DecisionTactics.leftSpec",
+    "native_expression": "∀ (C : Prop) (d : Decidable C), C → ∀ (P : Decidable C → Prop), (∀ (h : C), P (isTrue h)) → P d",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.DecisionTactics.rightSpec",
+    "native_expression": "∀ (C : Prop) (d : Decidable C), ¬C → ∀ (P : Decidable C → Prop), (∀ (h : ¬C), P (isFalse h)) → P d",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.UnconvertibleMarker.nativeMarker",
+    "native_expression": "Unit",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PreludeCoercions.constantValue",
+    "native_expression": "fun {A} {B} a x => a",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PreludeCoercions.identityType",
+    "native_expression": "fun A => A",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatRepresentation.absolute",
+    "native_expression": "fun x =>\n  match x with\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero a =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero false\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity a =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity false\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite a m e =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite false m e",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatRepresentation.fromShift",
+    "native_expression": "fun s =>\n  if s.snd.fst = true then some (if s.snd.snd = true then Ordering.gt else Ordering.eq)\n  else if s.snd.snd = true then some Ordering.lt else none",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatRepresentation.locationElim",
+    "native_expression": "fun P z s x =>\n  match x with\n  | none => z\n  | some c => s c",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatRepresentation.locationInd",
+    "native_expression": "∀ (P : Option Ordering → Prop), P none → (∀ (c : Ordering), P (some c)) → ∀ (l : Option Ordering), P l",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatRepresentation.mantissa",
+    "native_expression": "fun s => s.fst",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatRepresentation.nativeLocation",
+    "native_expression": "Option Ordering",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatRepresentation.nativeShift",
+    "native_expression": "Int × Bool × Bool",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatRepresentation.nativeSpec",
+    "native_expression": "NativeBridge.Incremental.SpecFloatRepresentation.SpecValue",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatRepresentation.negate",
+    "native_expression": "fun x =>\n  match x with\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero s =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero !s\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity s =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity !s\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite s m e =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite (!s) m e",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatRepresentation.roundBit",
+    "native_expression": "fun s => s.snd.fst",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatRepresentation.stickyBit",
+    "native_expression": "fun s => s.snd.snd",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatRepresentation.toShift",
+    "native_expression": "fun m x =>\n  match x with\n  | none => (m, false, false)\n  | some Ordering.eq => (m, true, false)\n  | some Ordering.lt => (m, false, true)\n  | some Ordering.gt => (m, true, true)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatRounding.bounded",
+    "native_expression": "fun prec emax m e => NativeBridge.Incremental.SpecFloatRounding.canonical prec emax m e && decide (e ≤ emax - prec)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatRounding.canonical",
+    "native_expression": "fun prec emax m e =>\n  decide\n    (NativeBridge.Incremental.SpecFloatRounding.exponent prec emax\n        (↑(NativeBridge.Incremental.SpecFloatRounding.positiveDigits m) + e) =\n      e)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatRounding.conditionalNegate",
+    "native_expression": "fun b z => if b = true then -z else z",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatRounding.evenLocation",
+    "native_expression": "fun steps k => if k = 0 then none else some (compare (2 * k) steps)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatRounding.exponent",
+    "native_expression": "fun prec emax e => max (e - prec) (NativeBridge.Incremental.SpecFloatRounding.minimumExponent prec emax)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatRounding.integerDigits",
+    "native_expression": "fun z => if z = 0 then 0 else Int.ofNat (z.natAbs.log2 + 1)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatRounding.minimumExponent",
+    "native_expression": "fun prec emax => 3 - emax - prec",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatRounding.nearestEven",
+    "native_expression": "fun m x =>\n  match x with\n  | none => m\n  | some Ordering.lt => m\n  | some Ordering.gt => m + 1\n  | some Ordering.eq => if m % 2 = 0 then m else m + 1",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatRounding.newLocation",
+    "native_expression": "fun steps k =>\n  if steps % 2 = 0 then NativeBridge.Incremental.SpecFloatRounding.evenLocation steps k\n  else NativeBridge.Incremental.SpecFloatRounding.oddLocation steps k",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatRounding.oddLocation",
+    "native_expression": "fun steps k =>\n  if k = 0 then none else NativeBridge.Incremental.SpecFloatRounding.oddCompareResult (compare (2 * k + 1) steps)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatRounding.positiveDigits",
+    "native_expression": "fun n => n.log2 + 1",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatRounding.valid",
+    "native_expression": "fun prec emax x =>\n  match x with\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite a m e =>\n    NativeBridge.Incremental.SpecFloatRounding.bounded prec emax m.val e\n  | x => true",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatShift.alignment",
+    "native_expression": "fun m e target => if target < e then (2 ^ (e - target).toNat * m, target) else (m, e)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatShift.iterate",
+    "native_expression": "fun {A} f n x => NativeBridge.Incremental.BinaryPower.repeatNative f n x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatShift.shiftMany",
+    "native_expression": "fun s e n =>\n  if n > 0 then\n    (NativeBridge.Incremental.SpecFloatShift.iterate NativeBridge.Incremental.SpecFloatShift.shiftOne n.toNat s, e + n)\n  else (s, e)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatShift.shiftOne",
+    "native_expression": "fun s => (s.fst.tdiv 2, decide (s.fst.natAbs % 2 = 1), s.snd.fst || s.snd.snd)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatShift.shiftToExponent",
+    "native_expression": "fun prec emax m e l =>\n  NativeBridge.Incremental.SpecFloatShift.shiftMany (NativeBridge.Incremental.SpecFloatRepresentation.toShift m l) e\n    (NativeBridge.Incremental.SpecFloatRounding.exponent prec emax\n        (NativeBridge.Incremental.SpecFloatRounding.integerDigits m + e) -\n      e)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatNormalize.classify",
+    "native_expression": "fun prec x =>\n  match x with\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero s => if s = true then 5 else 4\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity s => if s = true then 7 else 6\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan => 8\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite s m a =>\n    if s = true then if ↑(NativeBridge.Incremental.SpecFloatRounding.positiveDigits m.val) = prec then 1 else 3\n    else if ↑(NativeBridge.Incremental.SpecFloatRounding.positiveDigits m.val) = prec then 0 else 2",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatNormalize.normalMantissa",
+    "native_expression": "fun prec x =>\n  match x with\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite a m e => if e = -prec then m.val else 0\n  | x => 0",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatNormalize.normalize",
+    "native_expression": "fun prec emax m e zeroSign =>\n  if m = 0 then NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero zeroSign\n  else NativeBridge.Incremental.SpecFloatNormalize.roundPositive prec emax (decide (m < 0)) m.natAbs e",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatNormalize.one",
+    "native_expression": "fun prec emax => NativeBridge.Incremental.SpecFloatNormalize.roundPositive prec emax false 1 0",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatNormalize.roundAux",
+    "native_expression": "fun prec emax sign m e l =>\n  have first := NativeBridge.Incremental.SpecFloatShift.shiftToExponent prec emax m e l;\n  have next :=\n    NativeBridge.Incremental.SpecFloatRounding.nearestEven\n      (NativeBridge.Incremental.SpecFloatRepresentation.mantissa first.fst)\n      (NativeBridge.Incremental.SpecFloatRepresentation.fromShift first.fst);\n  have second := NativeBridge.Incremental.SpecFloatShift.shiftToExponent prec emax next first.snd none;\n  NativeBridge.Incremental.SpecFloatNormalize.finish sign\n    (NativeBridge.Incremental.SpecFloatRepresentation.mantissa second.fst) second.snd (emax - prec)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatNormalize.roundPositive",
+    "native_expression": "fun prec emax sign m e =>\n  have aligned :=\n    NativeBridge.Incremental.SpecFloatShift.alignment m e\n      (NativeBridge.Incremental.SpecFloatRounding.exponent prec emax\n        (↑(NativeBridge.Incremental.SpecFloatRounding.positiveDigits m) + e));\n  NativeBridge.Incremental.SpecFloatNormalize.roundAux prec emax sign (↑aligned.fst) aligned.snd none",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatNormalize.scale",
+    "native_expression": "fun prec emax x n =>\n  match x with\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite sign m e =>\n    NativeBridge.Incremental.SpecFloatNormalize.roundPositive prec emax sign m.val (e + n)\n  | x_1 => x",
+    "remaining_source_symbols": []
   }
 ]

@@ -14035,6 +14035,727 @@ NativeBridge.Incremental.StringComparison.primitiveCompare_agrees
 
 公理闭包：propext, Classical.choice, Quot.sound
 
+## Corelib.Init.Prelude.ReverseCoercionSource
+
+NativeBridge.Incremental.PreludeCoercions.sourceIso
+
+目标：NativeBridge.Incremental.PreludeCoercions.identityType；范围：Full source universe parameters. Exact definition-level marker/identity or decision/reflexivity specification; markers impose no inequality assumption.
+
+```lean
+(A : Type u) →
+  NativeBridge.Iso (Rocq.Corelib.Init.Prelude.ReverseCoercionSource A)
+    (NativeBridge.Incremental.PreludeCoercions.identityType A)
+```
+
+公理闭包：空
+
+## Corelib.Init.Prelude.ReverseCoercionTarget
+
+NativeBridge.Incremental.PreludeCoercions.targetIso
+
+目标：NativeBridge.Incremental.PreludeCoercions.identityType；范围：Full source universe parameters. Exact definition-level marker/identity or decision/reflexivity specification; markers impose no inequality assumption.
+
+```lean
+(A : Type u) →
+  NativeBridge.Iso (Rocq.Corelib.Init.Prelude.ReverseCoercionTarget A)
+    (NativeBridge.Incremental.PreludeCoercions.identityType A)
+```
+
+公理闭包：空
+
+## Corelib.Init.Prelude.reverse_coercion
+
+NativeBridge.Incremental.PreludeCoercions.reverseCoercion_agrees
+
+目标：NativeBridge.Incremental.PreludeCoercions.constantValue；范围：Full source universe parameters. Exact definition-level marker/identity or decision/reflexivity specification; markers impose no inequality assumption.
+
+```lean
+∀ (A : Type u) (B : Type v) (a : A) (b : B),
+  Rocq.Corelib.Init.Prelude.reverse_coercion A B a b = NativeBridge.Incremental.PreludeCoercions.constantValue a b
+```
+
+公理闭包：空
+
+## Corelib.Classes.Init.Unconvertible
+
+NativeBridge.Incremental.UnconvertibleMarker.markerIso
+
+目标：NativeBridge.Incremental.UnconvertibleMarker.nativeMarker；范围：Full source universe parameters. Exact definition-level marker/identity or decision/reflexivity specification; markers impose no inequality assumption.
+
+```lean
+(A : Type u) →
+  (a b : A) →
+    NativeBridge.Iso (Rocq.Corelib.Classes.Init.Unconvertible A a b)
+      NativeBridge.Incremental.UnconvertibleMarker.nativeMarker
+```
+
+公理闭包：空
+
+## Corelib.Classes.Init.unconvertible
+
+NativeBridge.Incremental.UnconvertibleMarker.markerValue_agrees
+
+目标：id；范围：Full source universe parameters. Exact definition-level marker/identity or decision/reflexivity specification; markers impose no inequality assumption.
+
+```lean
+∀ (A : Type u) (a b : A) (h : Rocq.Corelib.Classes.Init.Unconvertible A a b),
+  NativeBridge.unitIso.to (Rocq.Corelib.Classes.Init.unconvertible A a b h) = id (NativeBridge.unitIso.to h)
+```
+
+公理闭包：空
+
+## Corelib.Program.Tactics.fix_proto
+
+NativeBridge.Incremental.FixPrototype.prototype_agrees
+
+目标：id；范围：Full source universe parameters. Exact definition-level marker/identity or decision/reflexivity specification; markers impose no inequality assumption.
+
+```lean
+∀ (A : Sort u) (a : A), Rocq.Corelib.Program.Tactics.fix_proto A a = id a
+```
+
+公理闭包：空
+
+## Corelib.Init.Tactics.decide_left
+
+NativeBridge.Incremental.DecisionTactics.leftSpec_correspondence
+
+目标：NativeBridge.Incremental.DecisionTactics.leftSpec；范围：Full source universe parameters. Exact definition-level marker/identity or decision/reflexivity specification; markers impose no inequality assumption.
+
+```lean
+Rocq.Corelib.Init.Tactics.decide_left.statement ↔ NativeBridge.Incremental.DecisionTactics.leftSpec
+```
+
+公理闭包：空
+
+## Corelib.Init.Tactics.decide_right
+
+NativeBridge.Incremental.DecisionTactics.rightSpec_correspondence
+
+目标：NativeBridge.Incremental.DecisionTactics.rightSpec；范围：Full source universe parameters. Exact definition-level marker/identity or decision/reflexivity specification; markers impose no inequality assumption.
+
+```lean
+Rocq.Corelib.Init.Tactics.decide_right.statement ↔ NativeBridge.Incremental.DecisionTactics.rightSpec
+```
+
+公理闭包：空
+
+## Corelib.Classes.SetoidTactics.DefaultRelation
+
+NativeBridge.Incremental.DefaultRelationMarker.markerIso
+
+目标：NativeBridge.Incremental.DefaultRelationMarker.nativeMarker；范围：Full source universe parameters. Exact definition-level marker/identity or decision/reflexivity specification; markers impose no inequality assumption.
+
+```lean
+(A : Type u) →
+  (R : A → A → Prop) →
+    NativeBridge.Iso (Rocq.Corelib.Classes.SetoidTactics.DefaultRelation A R)
+      (NativeBridge.Incremental.DefaultRelationMarker.nativeMarker A R)
+```
+
+公理闭包：空
+
+## Corelib.Classes.SetoidTactics.default_relation
+
+NativeBridge.Incremental.DefaultRelationMarker.relation_agrees
+
+目标：NativeBridge.Incremental.DefaultRelationMarker.nativeRelation；范围：Full source universe parameters. Exact definition-level marker/identity or decision/reflexivity specification; markers impose no inequality assumption.
+
+```lean
+∀ (A : Type u) (R : A → A → Prop) (h : Rocq.Corelib.Classes.SetoidTactics.DefaultRelation A R),
+  Rocq.Corelib.Classes.SetoidTactics.default_relation A R h =
+    NativeBridge.Incremental.DefaultRelationMarker.nativeRelation A R ⋯
+```
+
+公理闭包：空
+
+## Corelib.Classes.SetoidTactics.equivalence_default
+
+NativeBridge.Incremental.DefaultRelationMarker.equivalenceSpec_correspondence
+
+目标：NativeBridge.Incremental.DefaultRelationMarker.equivalenceSpec；范围：Full source universe parameters. Exact definition-level marker/identity or decision/reflexivity specification; markers impose no inequality assumption.
+
+```lean
+Rocq.Corelib.Classes.SetoidTactics.equivalence_default.statement ↔
+  NativeBridge.Incremental.DefaultRelationMarker.equivalenceSpec
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrsetoid.compat_Reflexive
+
+NativeBridge.Incremental.SSRSetoidCompatibility.reflexivitySpec_correspondence
+
+目标：NativeBridge.Incremental.SSRSetoidCompatibility.reflexivitySpec；范围：Full source universe parameters. Exact definition-level marker/identity or decision/reflexivity specification; markers impose no inequality assumption.
+
+```lean
+Rocq.Corelib.ssr.ssrsetoid.compat_Reflexive.statement ↔ NativeBridge.Incremental.SSRSetoidCompatibility.reflexivitySpec
+```
+
+公理闭包：空
+
+## Corelib.Floats.SpecFloat.spec_float
+
+NativeBridge.Incremental.SpecFloatRepresentation.specIso
+
+目标：NativeBridge.Incremental.SpecFloatRepresentation.nativeSpec；范围：Exact symbolic float syntax, including invalid finite inputs, signed zero, infinity and canonical NaN. Positive Nat mantissa and arbitrary Int exponent; not a correspondence to Lean runtime Float.
+
+```lean
+NativeBridge.Iso Rocq.Corelib.Floats.SpecFloat.spec_float NativeBridge.Incremental.SpecFloatRepresentation.nativeSpec
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.location
+
+NativeBridge.Incremental.SpecFloatRepresentation.locationIso
+
+目标：NativeBridge.Incremental.SpecFloatRepresentation.nativeLocation；范围：Exact symbolic float syntax, including invalid finite inputs, signed zero, infinity and canonical NaN. Positive Nat mantissa and arbitrary Int exponent; not a correspondence to Lean runtime Float.
+
+```lean
+NativeBridge.Iso Rocq.Corelib.Floats.SpecFloat.location NativeBridge.Incremental.SpecFloatRepresentation.nativeLocation
+```
+
+公理闭包：propext
+
+## Corelib.Floats.SpecFloat.shr_record
+
+NativeBridge.Incremental.SpecFloatRepresentation.shiftIso
+
+目标：NativeBridge.Incremental.SpecFloatRepresentation.nativeShift；范围：Exact symbolic float syntax, including invalid finite inputs, signed zero, infinity and canonical NaN. Positive Nat mantissa and arbitrary Int exponent; not a correspondence to Lean runtime Float.
+
+```lean
+NativeBridge.Iso Rocq.Corelib.Floats.SpecFloat.shr_record NativeBridge.Incremental.SpecFloatRepresentation.nativeShift
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.SFabs
+
+NativeBridge.Incremental.SpecFloatRepresentation.absolute_agrees
+
+目标：NativeBridge.Incremental.SpecFloatRepresentation.absolute；范围：Exact symbolic float syntax, including invalid finite inputs, signed zero, infinity and canonical NaN. Positive Nat mantissa and arbitrary Int exponent; not a correspondence to Lean runtime Float.
+
+```lean
+∀ (x : Rocq.Corelib.Floats.SpecFloat.spec_float),
+  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.SpecFloat.SFabs x) =
+    NativeBridge.Incremental.SpecFloatRepresentation.absolute
+      (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.SFopp
+
+NativeBridge.Incremental.SpecFloatRepresentation.negate_agrees
+
+目标：NativeBridge.Incremental.SpecFloatRepresentation.negate；范围：Exact symbolic float syntax, including invalid finite inputs, signed zero, infinity and canonical NaN. Positive Nat mantissa and arbitrary Int exponent; not a correspondence to Lean runtime Float.
+
+```lean
+∀ (x : Rocq.Corelib.Floats.SpecFloat.spec_float),
+  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.SpecFloat.SFopp x) =
+    NativeBridge.Incremental.SpecFloatRepresentation.negate (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.shr_m
+
+NativeBridge.Incremental.SpecFloatRepresentation.mantissa_agrees
+
+目标：NativeBridge.Incremental.SpecFloatRepresentation.mantissa；范围：Exact symbolic float syntax, including invalid finite inputs, signed zero, infinity and canonical NaN. Positive Nat mantissa and arbitrary Int exponent; not a correspondence to Lean runtime Float.
+
+```lean
+∀ (s : Rocq.Corelib.Floats.SpecFloat.shr_record),
+  NativeBridge.binaryIntTo (Rocq.Corelib.Floats.SpecFloat.shr_m s) =
+    NativeBridge.Incremental.SpecFloatRepresentation.mantissa
+      (NativeBridge.Incremental.SpecFloatRepresentation.shiftTo s)
+```
+
+公理闭包：空
+
+## Corelib.Floats.SpecFloat.shr_r
+
+NativeBridge.Incremental.SpecFloatRepresentation.roundBit_agrees
+
+目标：NativeBridge.Incremental.SpecFloatRepresentation.roundBit；范围：Exact symbolic float syntax, including invalid finite inputs, signed zero, infinity and canonical NaN. Positive Nat mantissa and arbitrary Int exponent; not a correspondence to Lean runtime Float.
+
+```lean
+∀ (s : Rocq.Corelib.Floats.SpecFloat.shr_record),
+  NativeBridge.boolTo (Rocq.Corelib.Floats.SpecFloat.shr_r s) =
+    NativeBridge.Incremental.SpecFloatRepresentation.roundBit
+      (NativeBridge.Incremental.SpecFloatRepresentation.shiftTo s)
+```
+
+公理闭包：空
+
+## Corelib.Floats.SpecFloat.shr_s
+
+NativeBridge.Incremental.SpecFloatRepresentation.stickyBit_agrees
+
+目标：NativeBridge.Incremental.SpecFloatRepresentation.stickyBit；范围：Exact symbolic float syntax, including invalid finite inputs, signed zero, infinity and canonical NaN. Positive Nat mantissa and arbitrary Int exponent; not a correspondence to Lean runtime Float.
+
+```lean
+∀ (s : Rocq.Corelib.Floats.SpecFloat.shr_record),
+  NativeBridge.boolTo (Rocq.Corelib.Floats.SpecFloat.shr_s s) =
+    NativeBridge.Incremental.SpecFloatRepresentation.stickyBit
+      (NativeBridge.Incremental.SpecFloatRepresentation.shiftTo s)
+```
+
+公理闭包：空
+
+## Corelib.Floats.SpecFloat.loc_of_shr_record
+
+NativeBridge.Incremental.SpecFloatRepresentation.fromShift_agrees
+
+目标：NativeBridge.Incremental.SpecFloatRepresentation.fromShift；范围：Exact symbolic float syntax, including invalid finite inputs, signed zero, infinity and canonical NaN. Positive Nat mantissa and arbitrary Int exponent; not a correspondence to Lean runtime Float.
+
+```lean
+∀ (s : Rocq.Corelib.Floats.SpecFloat.shr_record),
+  NativeBridge.Incremental.SpecFloatRepresentation.locationTo (Rocq.Corelib.Floats.SpecFloat.loc_of_shr_record s) =
+    NativeBridge.Incremental.SpecFloatRepresentation.fromShift
+      (NativeBridge.Incremental.SpecFloatRepresentation.shiftTo s)
+```
+
+公理闭包：空
+
+## Corelib.Floats.SpecFloat.shr_record_of_loc
+
+NativeBridge.Incremental.SpecFloatRepresentation.toShift_agrees
+
+目标：NativeBridge.Incremental.SpecFloatRepresentation.toShift；范围：Exact symbolic float syntax, including invalid finite inputs, signed zero, infinity and canonical NaN. Positive Nat mantissa and arbitrary Int exponent; not a correspondence to Lean runtime Float.
+
+```lean
+∀ (m : NativeBridge.RIntBinary) (l : Rocq.Corelib.Floats.SpecFloat.location),
+  NativeBridge.Incremental.SpecFloatRepresentation.shiftTo (Rocq.Corelib.Floats.SpecFloat.shr_record_of_loc m l) =
+    NativeBridge.Incremental.SpecFloatRepresentation.toShift (NativeBridge.binaryIntTo m)
+      (NativeBridge.Incremental.SpecFloatRepresentation.locationTo l)
+```
+
+公理闭包：空
+
+## Corelib.Floats.SpecFloat.location_rect
+
+NativeBridge.Incremental.SpecFloatRepresentation.locationRect_agrees
+
+目标：NativeBridge.Incremental.SpecFloatRepresentation.locationElim；范围：Exact symbolic float syntax, including invalid finite inputs, signed zero, infinity and canonical NaN. Positive Nat mantissa and arbitrary Int exponent; not a correspondence to Lean runtime Float.
+
+```lean
+∀ (P : Option Ordering → Sort u) (z : P none) (s : (c : Ordering) → P (some c))
+  (l : Rocq.Corelib.Floats.SpecFloat.location),
+  Rocq.Corelib.Floats.SpecFloat.location_rect
+      (fun l => P (NativeBridge.Incremental.SpecFloatRepresentation.locationTo l)) z
+      (fun c => s (NativeBridge.comparisonTo c)) l =
+    NativeBridge.Incremental.SpecFloatRepresentation.locationElim P z s
+      (NativeBridge.Incremental.SpecFloatRepresentation.locationTo l)
+```
+
+公理闭包：空
+
+## Corelib.Floats.SpecFloat.location_rec
+
+NativeBridge.Incremental.SpecFloatRepresentation.locationRec_agrees
+
+目标：NativeBridge.Incremental.SpecFloatRepresentation.locationElim；范围：Exact symbolic float syntax, including invalid finite inputs, signed zero, infinity and canonical NaN. Positive Nat mantissa and arbitrary Int exponent; not a correspondence to Lean runtime Float.
+
+```lean
+∀ (P : Option Ordering → Type) (z : P none) (s : (c : Ordering) → P (some c))
+  (l : Rocq.Corelib.Floats.SpecFloat.location),
+  Rocq.Corelib.Floats.SpecFloat.location_rec
+      (fun l => P (NativeBridge.Incremental.SpecFloatRepresentation.locationTo l)) z
+      (fun c => s (NativeBridge.comparisonTo c)) l =
+    NativeBridge.Incremental.SpecFloatRepresentation.locationElim P z s
+      (NativeBridge.Incremental.SpecFloatRepresentation.locationTo l)
+```
+
+公理闭包：空
+
+## Corelib.Floats.SpecFloat.location_ind
+
+NativeBridge.Incremental.SpecFloatRepresentation.locationInd_correspondence
+
+目标：NativeBridge.Incremental.SpecFloatRepresentation.locationInd；范围：Exact symbolic float syntax, including invalid finite inputs, signed zero, infinity and canonical NaN. Positive Nat mantissa and arbitrary Int exponent; not a correspondence to Lean runtime Float.
+
+```lean
+Rocq.Corelib.Floats.SpecFloat.location_ind.statement ↔ NativeBridge.Incremental.SpecFloatRepresentation.locationInd
+```
+
+公理闭包：空
+
+## Corelib.Floats.SpecFloat.location_sind
+
+NativeBridge.Incremental.SpecFloatRepresentation.locationSind_correspondence
+
+目标：NativeBridge.Incremental.SpecFloatRepresentation.locationInd；范围：Exact symbolic float syntax, including invalid finite inputs, signed zero, infinity and canonical NaN. Positive Nat mantissa and arbitrary Int exponent; not a correspondence to Lean runtime Float.
+
+```lean
+Rocq.Corelib.Floats.SpecFloat.location_sind.statement ↔ NativeBridge.Incremental.SpecFloatRepresentation.locationInd
+```
+
+公理闭包：空
+
+## Corelib.Floats.SpecFloat.cond_Zopp
+
+NativeBridge.Incremental.SpecFloatRounding.conditionalNegate_agrees
+
+目标：NativeBridge.Incremental.SpecFloatRounding.conditionalNegate；范围：Exact integer/log2 and location computation for all source parameters, including invalid precision/exponent inputs. Native symbolic model, not Lean runtime Float.
+
+```lean
+∀ (b : NativeBridge.RBool) (z : NativeBridge.RIntBinary),
+  NativeBridge.binaryIntTo (Rocq.Corelib.Floats.SpecFloat.cond_Zopp b z) =
+    NativeBridge.Incremental.SpecFloatRounding.conditionalNegate (NativeBridge.boolTo b) (NativeBridge.binaryIntTo z)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Floats.SpecFloat.emin
+
+NativeBridge.Incremental.SpecFloatRounding.minimumExponent_agrees
+
+目标：NativeBridge.Incremental.SpecFloatRounding.minimumExponent；范围：Exact integer/log2 and location computation for all source parameters, including invalid precision/exponent inputs. Native symbolic model, not Lean runtime Float.
+
+```lean
+∀ (prec emax : NativeBridge.RIntBinary),
+  NativeBridge.binaryIntTo (Rocq.Corelib.Floats.SpecFloat.emin prec emax) =
+    NativeBridge.Incremental.SpecFloatRounding.minimumExponent (NativeBridge.binaryIntTo prec)
+      (NativeBridge.binaryIntTo emax)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Floats.SpecFloat.fexp
+
+NativeBridge.Incremental.SpecFloatRounding.exponent_agrees
+
+目标：NativeBridge.Incremental.SpecFloatRounding.exponent；范围：Exact integer/log2 and location computation for all source parameters, including invalid precision/exponent inputs. Native symbolic model, not Lean runtime Float.
+
+```lean
+∀ (prec emax e : NativeBridge.RIntBinary),
+  NativeBridge.binaryIntTo (Rocq.Corelib.Floats.SpecFloat.fexp prec emax e) =
+    NativeBridge.Incremental.SpecFloatRounding.exponent (NativeBridge.binaryIntTo prec) (NativeBridge.binaryIntTo emax)
+      (NativeBridge.binaryIntTo e)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Floats.SpecFloat.digits2_pos
+
+NativeBridge.Incremental.SpecFloatRounding.positiveDigits_agrees
+
+目标：NativeBridge.Incremental.SpecFloatRounding.positiveDigits；范围：Exact integer/log2 and location computation for all source parameters, including invalid precision/exponent inputs. Native symbolic model, not Lean runtime Float.
+
+```lean
+∀ (p : NativeBridge.RPositive),
+  NativeBridge.positiveTo (Rocq.Corelib.Floats.SpecFloat.digits2_pos p) =
+    NativeBridge.Incremental.SpecFloatRounding.positiveDigits (NativeBridge.positiveTo p)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Floats.SpecFloat.Zdigits2
+
+NativeBridge.Incremental.SpecFloatRounding.integerDigits_agrees
+
+目标：NativeBridge.Incremental.SpecFloatRounding.integerDigits；范围：Exact integer/log2 and location computation for all source parameters, including invalid precision/exponent inputs. Native symbolic model, not Lean runtime Float.
+
+```lean
+∀ (z : NativeBridge.RIntBinary),
+  NativeBridge.binaryIntTo (Rocq.Corelib.Floats.SpecFloat.Zdigits2 z) =
+    NativeBridge.Incremental.SpecFloatRounding.integerDigits (NativeBridge.binaryIntTo z)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.canonical_mantissa
+
+NativeBridge.Incremental.SpecFloatRounding.canonical_agrees
+
+目标：NativeBridge.Incremental.SpecFloatRounding.canonical；范围：Exact integer/log2 and location computation for all source parameters, including invalid precision/exponent inputs. Native symbolic model, not Lean runtime Float.
+
+```lean
+∀ (prec emax : NativeBridge.RIntBinary) (m : NativeBridge.RPositive) (e : NativeBridge.RIntBinary),
+  NativeBridge.boolTo (Rocq.Corelib.Floats.SpecFloat.canonical_mantissa prec emax m e) =
+    NativeBridge.Incremental.SpecFloatRounding.canonical (NativeBridge.binaryIntTo prec) (NativeBridge.binaryIntTo emax)
+      (NativeBridge.positiveTo m) (NativeBridge.binaryIntTo e)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.bounded
+
+NativeBridge.Incremental.SpecFloatRounding.bounded_agrees
+
+目标：NativeBridge.Incremental.SpecFloatRounding.bounded；范围：Exact integer/log2 and location computation for all source parameters, including invalid precision/exponent inputs. Native symbolic model, not Lean runtime Float.
+
+```lean
+∀ (prec emax : NativeBridge.RIntBinary) (m : NativeBridge.RPositive) (e : NativeBridge.RIntBinary),
+  NativeBridge.boolTo (Rocq.Corelib.Floats.SpecFloat.bounded prec emax m e) =
+    NativeBridge.Incremental.SpecFloatRounding.bounded (NativeBridge.binaryIntTo prec) (NativeBridge.binaryIntTo emax)
+      (NativeBridge.positiveTo m) (NativeBridge.binaryIntTo e)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.valid_binary
+
+NativeBridge.Incremental.SpecFloatRounding.valid_agrees
+
+目标：NativeBridge.Incremental.SpecFloatRounding.valid；范围：Exact integer/log2 and location computation for all source parameters, including invalid precision/exponent inputs. Native symbolic model, not Lean runtime Float.
+
+```lean
+∀ (prec emax : NativeBridge.RIntBinary) (x : Rocq.Corelib.Floats.SpecFloat.spec_float),
+  NativeBridge.boolTo (Rocq.Corelib.Floats.SpecFloat.valid_binary prec emax x) =
+    NativeBridge.Incremental.SpecFloatRounding.valid (NativeBridge.binaryIntTo prec) (NativeBridge.binaryIntTo emax)
+      (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.round_nearest_even
+
+NativeBridge.Incremental.SpecFloatRounding.nearestEven_agrees
+
+目标：NativeBridge.Incremental.SpecFloatRounding.nearestEven；范围：Exact integer/log2 and location computation for all source parameters, including invalid precision/exponent inputs. Native symbolic model, not Lean runtime Float.
+
+```lean
+∀ (m : NativeBridge.RIntBinary) (l : Rocq.Corelib.Floats.SpecFloat.location),
+  NativeBridge.binaryIntTo (Rocq.Corelib.Floats.SpecFloat.round_nearest_even m l) =
+    NativeBridge.Incremental.SpecFloatRounding.nearestEven (NativeBridge.binaryIntTo m)
+      (NativeBridge.Incremental.SpecFloatRepresentation.locationTo l)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Floats.SpecFloat.new_location_even
+
+NativeBridge.Incremental.SpecFloatRounding.evenLocation_agrees
+
+目标：NativeBridge.Incremental.SpecFloatRounding.evenLocation；范围：Exact integer/log2 and location computation for all source parameters, including invalid precision/exponent inputs. Native symbolic model, not Lean runtime Float.
+
+```lean
+∀ (steps k : NativeBridge.RIntBinary),
+  NativeBridge.Incremental.SpecFloatRepresentation.locationTo
+      (Rocq.Corelib.Floats.SpecFloat.new_location_even steps k) =
+    NativeBridge.Incremental.SpecFloatRounding.evenLocation (NativeBridge.binaryIntTo steps)
+      (NativeBridge.binaryIntTo k)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.new_location_odd
+
+NativeBridge.Incremental.SpecFloatRounding.oddLocation_agrees
+
+目标：NativeBridge.Incremental.SpecFloatRounding.oddLocation；范围：Exact integer/log2 and location computation for all source parameters, including invalid precision/exponent inputs. Native symbolic model, not Lean runtime Float.
+
+```lean
+∀ (steps k : NativeBridge.RIntBinary),
+  NativeBridge.Incremental.SpecFloatRepresentation.locationTo (Rocq.Corelib.Floats.SpecFloat.new_location_odd steps k) =
+    NativeBridge.Incremental.SpecFloatRounding.oddLocation (NativeBridge.binaryIntTo steps) (NativeBridge.binaryIntTo k)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.new_location
+
+NativeBridge.Incremental.SpecFloatRounding.newLocation_agrees
+
+目标：NativeBridge.Incremental.SpecFloatRounding.newLocation；范围：Exact integer/log2 and location computation for all source parameters, including invalid precision/exponent inputs. Native symbolic model, not Lean runtime Float.
+
+```lean
+∀ (steps k : NativeBridge.RIntBinary),
+  NativeBridge.Incremental.SpecFloatRepresentation.locationTo (Rocq.Corelib.Floats.SpecFloat.new_location steps k) =
+    NativeBridge.Incremental.SpecFloatRounding.newLocation (NativeBridge.binaryIntTo steps) (NativeBridge.binaryIntTo k)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.iter_pos
+
+NativeBridge.Incremental.SpecFloatShift.iterate_agrees
+
+目标：NativeBridge.Incremental.SpecFloatShift.iterate；范围：All source inputs, including negative mantissas, nonpositive shift counts and arbitrary exponents. Single shift truncates toward zero; round and sticky bits preserved. Symbolic exact arithmetic, not Lean Float.
+
+```lean
+∀ {A : Sort u} (f : A → A) (p : NativeBridge.RPositive) (x : A),
+  Rocq.Corelib.Floats.SpecFloat.iter_pos A f p x =
+    NativeBridge.Incremental.SpecFloatShift.iterate f (NativeBridge.positiveTo p) x
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Floats.SpecFloat.shr_1
+
+NativeBridge.Incremental.SpecFloatShift.shiftOne_agrees
+
+目标：NativeBridge.Incremental.SpecFloatShift.shiftOne；范围：All source inputs, including negative mantissas, nonpositive shift counts and arbitrary exponents. Single shift truncates toward zero; round and sticky bits preserved. Symbolic exact arithmetic, not Lean Float.
+
+```lean
+∀ (s : Rocq.Corelib.Floats.SpecFloat.shr_record),
+  NativeBridge.Incremental.SpecFloatRepresentation.shiftTo (Rocq.Corelib.Floats.SpecFloat.shr_1 s) =
+    NativeBridge.Incremental.SpecFloatShift.shiftOne (NativeBridge.Incremental.SpecFloatRepresentation.shiftTo s)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Floats.SpecFloat.shr
+
+NativeBridge.Incremental.SpecFloatShift.shiftMany_agrees
+
+目标：NativeBridge.Incremental.SpecFloatShift.shiftMany；范围：All source inputs, including negative mantissas, nonpositive shift counts and arbitrary exponents. Single shift truncates toward zero; round and sticky bits preserved. Symbolic exact arithmetic, not Lean Float.
+
+```lean
+∀ (s : Rocq.Corelib.Floats.SpecFloat.shr_record) (e n : NativeBridge.RIntBinary),
+  NativeBridge.Incremental.SpecFloatShift.shiftPairTo (Rocq.Corelib.Floats.SpecFloat.shr s e n) =
+    NativeBridge.Incremental.SpecFloatShift.shiftMany (NativeBridge.Incremental.SpecFloatRepresentation.shiftTo s)
+      (NativeBridge.binaryIntTo e) (NativeBridge.binaryIntTo n)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Floats.SpecFloat.shr_fexp
+
+NativeBridge.Incremental.SpecFloatShift.shiftToExponent_agrees
+
+目标：NativeBridge.Incremental.SpecFloatShift.shiftToExponent；范围：All source inputs, including negative mantissas, nonpositive shift counts and arbitrary exponents. Single shift truncates toward zero; round and sticky bits preserved. Symbolic exact arithmetic, not Lean Float.
+
+```lean
+∀ (prec emax m e : NativeBridge.RIntBinary) (l : Rocq.Corelib.Floats.SpecFloat.location),
+  NativeBridge.Incremental.SpecFloatShift.shiftPairTo (Rocq.Corelib.Floats.SpecFloat.shr_fexp prec emax m e l) =
+    NativeBridge.Incremental.SpecFloatShift.shiftToExponent (NativeBridge.binaryIntTo prec)
+      (NativeBridge.binaryIntTo emax) (NativeBridge.binaryIntTo m) (NativeBridge.binaryIntTo e)
+      (NativeBridge.Incremental.SpecFloatRepresentation.locationTo l)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.shl_align
+
+NativeBridge.Incremental.SpecFloatShift.alignment_agrees
+
+目标：NativeBridge.Incremental.SpecFloatShift.alignment；范围：All source inputs, including negative mantissas, nonpositive shift counts and arbitrary exponents. Single shift truncates toward zero; round and sticky bits preserved. Symbolic exact arithmetic, not Lean Float.
+
+```lean
+∀ (m : NativeBridge.RPositive) (e target : NativeBridge.RIntBinary),
+  NativeBridge.Incremental.SpecFloatShift.alignmentTo (Rocq.Corelib.Floats.SpecFloat.shl_align m e target) =
+    NativeBridge.Incremental.SpecFloatShift.alignment (NativeBridge.positiveTo m) (NativeBridge.binaryIntTo e)
+      (NativeBridge.binaryIntTo target)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Floats.SpecFloat.binary_round_aux
+
+NativeBridge.Incremental.SpecFloatNormalize.roundAux_agrees
+
+目标：NativeBridge.Incremental.SpecFloatNormalize.roundAux；范围：Exact composition of alignment, round-to-nearest-even, overflow and sign handling, for all precision/exponent inputs and symbolic float values. Classification uses the registered nine-value Fin code. Not Lean runtime Float.
+
+```lean
+∀ (prec emax : NativeBridge.RIntBinary) (sign : NativeBridge.RBool) (m e : NativeBridge.RIntBinary)
+  (l : Rocq.Corelib.Floats.SpecFloat.location),
+  NativeBridge.Incremental.SpecFloatRepresentation.specTo
+      (Rocq.Corelib.Floats.SpecFloat.binary_round_aux prec emax sign m e l) =
+    NativeBridge.Incremental.SpecFloatNormalize.roundAux (NativeBridge.binaryIntTo prec) (NativeBridge.binaryIntTo emax)
+      (NativeBridge.boolTo sign) (NativeBridge.binaryIntTo m) (NativeBridge.binaryIntTo e)
+      (NativeBridge.Incremental.SpecFloatRepresentation.locationTo l)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.binary_round
+
+NativeBridge.Incremental.SpecFloatNormalize.roundPositive_agrees
+
+目标：NativeBridge.Incremental.SpecFloatNormalize.roundPositive；范围：Exact composition of alignment, round-to-nearest-even, overflow and sign handling, for all precision/exponent inputs and symbolic float values. Classification uses the registered nine-value Fin code. Not Lean runtime Float.
+
+```lean
+∀ (prec emax : NativeBridge.RIntBinary) (sign : NativeBridge.RBool) (m : NativeBridge.RPositive)
+  (e : NativeBridge.RIntBinary),
+  NativeBridge.Incremental.SpecFloatRepresentation.specTo
+      (Rocq.Corelib.Floats.SpecFloat.binary_round prec emax sign m e) =
+    NativeBridge.Incremental.SpecFloatNormalize.roundPositive (NativeBridge.binaryIntTo prec)
+      (NativeBridge.binaryIntTo emax) (NativeBridge.boolTo sign) (NativeBridge.positiveTo m)
+      (NativeBridge.binaryIntTo e)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.binary_normalize
+
+NativeBridge.Incremental.SpecFloatNormalize.normalize_agrees
+
+目标：NativeBridge.Incremental.SpecFloatNormalize.normalize；范围：Exact composition of alignment, round-to-nearest-even, overflow and sign handling, for all precision/exponent inputs and symbolic float values. Classification uses the registered nine-value Fin code. Not Lean runtime Float.
+
+```lean
+∀ (prec emax m e : NativeBridge.RIntBinary) (zeroSign : NativeBridge.RBool),
+  NativeBridge.Incremental.SpecFloatRepresentation.specTo
+      (Rocq.Corelib.Floats.SpecFloat.binary_normalize prec emax m e zeroSign) =
+    NativeBridge.Incremental.SpecFloatNormalize.normalize (NativeBridge.binaryIntTo prec)
+      (NativeBridge.binaryIntTo emax) (NativeBridge.binaryIntTo m) (NativeBridge.binaryIntTo e)
+      (NativeBridge.boolTo zeroSign)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.SFone
+
+NativeBridge.Incremental.SpecFloatNormalize.one_agrees
+
+目标：NativeBridge.Incremental.SpecFloatNormalize.one；范围：Exact composition of alignment, round-to-nearest-even, overflow and sign handling, for all precision/exponent inputs and symbolic float values. Classification uses the registered nine-value Fin code. Not Lean runtime Float.
+
+```lean
+∀ (prec emax : NativeBridge.RIntBinary),
+  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.SpecFloat.SFone prec emax) =
+    NativeBridge.Incremental.SpecFloatNormalize.one (NativeBridge.binaryIntTo prec) (NativeBridge.binaryIntTo emax)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.SFldexp
+
+NativeBridge.Incremental.SpecFloatNormalize.scale_agrees
+
+目标：NativeBridge.Incremental.SpecFloatNormalize.scale；范围：Exact composition of alignment, round-to-nearest-even, overflow and sign handling, for all precision/exponent inputs and symbolic float values. Classification uses the registered nine-value Fin code. Not Lean runtime Float.
+
+```lean
+∀ (prec emax : NativeBridge.RIntBinary) (x : Rocq.Corelib.Floats.SpecFloat.spec_float) (n : NativeBridge.RIntBinary),
+  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.SpecFloat.SFldexp prec emax x n) =
+    NativeBridge.Incremental.SpecFloatNormalize.scale (NativeBridge.binaryIntTo prec) (NativeBridge.binaryIntTo emax)
+      (NativeBridge.Incremental.SpecFloatRepresentation.specTo x) (NativeBridge.binaryIntTo n)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.SFnormfr_mantissa
+
+NativeBridge.Incremental.SpecFloatNormalize.normalMantissa_agrees
+
+目标：NativeBridge.Incremental.SpecFloatNormalize.normalMantissa；范围：Exact composition of alignment, round-to-nearest-even, overflow and sign handling, for all precision/exponent inputs and symbolic float values. Classification uses the registered nine-value Fin code. Not Lean runtime Float.
+
+```lean
+∀ (prec : NativeBridge.RIntBinary) (x : Rocq.Corelib.Floats.SpecFloat.spec_float),
+  NativeBridge.binaryNatTo (Rocq.Corelib.Floats.SpecFloat.SFnormfr_mantissa prec x) =
+    NativeBridge.Incremental.SpecFloatNormalize.normalMantissa (NativeBridge.binaryIntTo prec)
+      (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.SFclassify
+
+NativeBridge.Incremental.SpecFloatNormalize.classify_agrees
+
+目标：NativeBridge.Incremental.SpecFloatNormalize.classify；范围：Exact composition of alignment, round-to-nearest-even, overflow and sign handling, for all precision/exponent inputs and symbolic float values. Classification uses the registered nine-value Fin code. Not Lean runtime Float.
+
+```lean
+∀ (prec : NativeBridge.RIntBinary) (x : Rocq.Corelib.Floats.SpecFloat.spec_float),
+  NativeBridge.floatClassTo (Rocq.Corelib.Floats.SpecFloat.SFclassify prec x) =
+    NativeBridge.Incremental.SpecFloatNormalize.classify (NativeBridge.binaryIntTo prec)
+      (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
 ## Corelib.ssr.ssrbool.canLR_in
 
 NativeBridge.Incremental.SSRBoolClosedStatements.RocqPending.Corelib.ssr.ssrbool.canLR_in.statement.correspondence

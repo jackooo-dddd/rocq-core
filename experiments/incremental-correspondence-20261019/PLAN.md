@@ -239,3 +239,7 @@ SSR Bool 的 314 个依赖/原陈述目标已有闭合证明，覆盖 271 / 275 
 新增 23 根、24 份证书，1950 / 2180。ArrayAxioms 11/11、PrimStringAxioms 12/12。20 项规格均独立证明源陈述；PrimString.compare 额外对应 List.compareLex。134 个 profile 验证，120 个覆盖 profile / 1698 份证书共同导入。见 [结果](BATCH66_70_RESULTS.md)。
 
 下一步：先闭合 Prelude/Classes.Init 标记、决策辅助和 DefaultRelation；再处理 CMorphisms 可计算数据与可证明陈述。浮点目标必须保留二进制格式、NaN、无穷和舍入；不可将精确表示未经证明称为 Lean Float。不可由 opaque Type 值常量签名猜测其计算结果。
+
+## 第七十一至七十五批：基础标记与符号浮点
+
+新增 50 根，2000 / 2180。SpecFloat 38/55，基础标记/决策/关系兼容六模块完成 12 根。145 个验证 profile、130 个覆盖 profile / 1748 份证书共同导入。见 [结果](BATCH71_75_RESULTS.md)。下一步继续 SpecFloat 剩余 17 项、PrimFloat 表示与运算、FloatOps 转换；浮点公理要保留有效性与比较等原前提，不能因符号算法对应就宣称已支持 Lean Float。

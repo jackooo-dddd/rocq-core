@@ -251,3 +251,13 @@ Decimal.decimal 对应“带符号整数数字、小数数字、可选带符号�
 ## 29. 字节串比较对应现成 List.compareLex
 
 [StringComparison.lean](../experiments/incremental-correspondence-20261019/proofs/StringComparison.lean) 的 primitiveCompare_agrees 将机械 compare 直接对应到 List.compareLex，以字节的无符号数值比较。长度不同但前缀相等时，较短串较小。证明对任意有界字节串成立，没有依赖有限样例枚举，也没有把原串解释成 Unicode。
+
+## 30. 最近偶数舍入和负数右移
+
+[SpecFloatRounding.lean](../experiments/incremental-correspondence-20261019/proofs/SpecFloatRounding.lean) 的 nearestEven_agrees 证明原机械舍入函数等于显式整数规则：恰好半单位时，3 增加到 4，4 保持 4；低于半单位不增加，高于半单位增加。
+
+[SpecFloatShift.lean](../experiments/incremental-correspondence-20261019/proofs/SpecFloatShift.lean) 的 shiftOne_agrees 对所有整数有效数字成立。例如有效数字 −3 单次右移得到 −1，同时记录低位为 1；这里使用 Int.tdiv，不把它误写成向下取整的 −2。
+
+## 31. 完整浮点舍入由已有对应组合
+
+[SpecFloatNormalize.lean](../experiments/incremental-correspondence-20261019/proofs/SpecFloatNormalize.lean) 证明 binary_round 的“对齐 → 指数调整 → 最近偶数舍入 → 溢出/零处理”完整链。输入精度和指数仍取原定义允许的所有整数值。目标是无 Rocq 符号的 SpecValue/Int/Nat 算法，并非 Lean 运行时 Float。

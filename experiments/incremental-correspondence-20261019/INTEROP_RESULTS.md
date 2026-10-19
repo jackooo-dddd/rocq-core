@@ -1,6 +1,6 @@
 # 跨模块导入与 Mathlib 消费结果
 
-当前共同导入验收通过：120 个含增量覆盖证书的 profile、1698 份覆盖证书，连同原陈述证明和闭合包装函数，共 2316 个导出入口，在同一 Lean 文件中导入并审计。复制依赖声明 19997 个；这些副本不增加 correspondence 覆盖数量。
+当前共同导入验收通过：130 个含增量覆盖证书的 profile、1748 份覆盖证书，连同原陈述证明和闭合包装函数，共 2372 个导出入口，在同一 Lean 文件中导入并审计。复制依赖声明 21186 个；这些副本不增加 correspondence 覆盖数量。
 
 ## 具体可以怎样使用
 
@@ -30,7 +30,7 @@ Lean 版本 4.33.1。复用远程已安装的 Mathlib，提交为 `0df444a360eaa
 - `interop/pack_profiles.py`、`check_consumer.py`：三个独立模块及 Mathlib 消费例。
 - `interop/check_rejection.py`：新公理拒绝测试。
 - `reports/interop/all/import-all-validation.json`：共同导入证据。
-- `reports/interop/coverage-manifest.json`：当前 1698 份覆盖证书的固定清单。
+- `reports/interop/coverage-manifest.json`：当前 1748 份覆盖证书的固定清单。
 - `reports/interop/consumer-validation.json`：实际 Mathlib 提交、工具链和消费结果。
 
 在工作区依次执行 pack_all.py、check_all.py，以及 pack_profiles.py、check_consumer.py、check_rejection.py。编译缓存和生成的打包源码位于 .work/interop，仅远程保存。脚本需要先完成原 profile 编译；它们不下载依赖。
@@ -86,3 +86,5 @@ opaque 支持的独立验证见 interop/check_opaque.py 与 reports/interop/opaq
 第六十三至六十五批：Uint63WideSpecs、Sint63Operations、Sint63Specs 及重检支持。115 个覆盖 profile、1674 份证书共同导入，2272 个入口、18986 个副本。BitVec.Bitblast 作为库导入，新增两份现成 sdiv/srem API 证书及一份带负计数分支的右移证书，不重复计源根。
 
 第六十六至七十批：ArraySpecs、StringOperations、StringSpecs、StringRoundtrip、StringComparison。120 个覆盖 profile、1698 份证书共同导入，2316 个入口、19997 个副本。字节串比较使用原生 List.compareLex；数组保留默认值，字节串保留容量及字节截断。
+
+第七十一至七十五批：六个基础标记/决策/兼容 profile 与四个符号浮点覆盖 profile。130 个覆盖 profile / 1748 份证书共同导入，2372 个入口、21186 个副本。浮点目标为精确符号算法，未宣称对应运行时 Float；支持 profile 不单独计根。

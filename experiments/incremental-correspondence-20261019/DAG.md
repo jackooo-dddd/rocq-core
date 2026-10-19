@@ -602,3 +602,18 @@ flowchart TD
 ```
 
 上述节点均已检查并共同导入。StringRoundtrip 先证明列表视图单射，再证明构造与读取往返；StringComparison 按比较剩余长度归纳，处理相等前缀和空串。
+
+## 第七十一至七十五批：已验证浮点依赖
+
+```mermaid
+flowchart TD
+  NativeIntPositive[机械 Z/positive 对应] --> SpecFloatRepresentation
+  SpecFloatRepresentation --> SpecFloatArithmeticSupport
+  SpecFloatArithmeticSupport --> SpecFloatRounding
+  SpecFloatRounding --> SpecFloatShift
+  SpecFloatShift --> SpecFloatNormalize
+  SpecFloatNormalize --> FloatArithmeticNext[后续 加减乘除和开方]
+  SpecFloatRepresentation --> FloatPrimitiveNext[后续 PrimFloat 表示]
+```
+
+前五个节点已完成，后两个节点待处理。nearest-even 的半单位分支和 shr_1 的向零取整均显式保留。基础标记证明独立成模块，不依赖浮点链。

@@ -17092,6 +17092,767 @@
     ]
   },
   {
+    "source": "Corelib.Init.Prelude.ReverseCoercionSource",
+    "profile": "PreludeCoercions",
+    "certificate": "NativeBridge.Incremental.PreludeCoercions.sourceIso",
+    "kind": "TYPE_ISO",
+    "target": "NativeBridge.Incremental.PreludeCoercions.identityType",
+    "target_class": "native_representation",
+    "native_target": "NativeBridge.Incremental.PreludeCoercions.identityType",
+    "scope": "Full source universe parameters. Exact definition-level marker/identity or decision/reflexivity specification; markers impose no inequality assumption.",
+    "native_expression": "fun A => A",
+    "type": "(A : Type u) →\n  NativeBridge.Iso (Rocq.Corelib.Init.Prelude.ReverseCoercionSource A)\n    (NativeBridge.Incremental.PreludeCoercions.identityType A)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Prelude.ReverseCoercionTarget",
+    "profile": "PreludeCoercions",
+    "certificate": "NativeBridge.Incremental.PreludeCoercions.targetIso",
+    "kind": "TYPE_ISO",
+    "target": "NativeBridge.Incremental.PreludeCoercions.identityType",
+    "target_class": "native_representation",
+    "native_target": "NativeBridge.Incremental.PreludeCoercions.identityType",
+    "scope": "Full source universe parameters. Exact definition-level marker/identity or decision/reflexivity specification; markers impose no inequality assumption.",
+    "native_expression": "fun A => A",
+    "type": "(A : Type u) →\n  NativeBridge.Iso (Rocq.Corelib.Init.Prelude.ReverseCoercionTarget A)\n    (NativeBridge.Incremental.PreludeCoercions.identityType A)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Prelude.reverse_coercion",
+    "profile": "PreludeCoercions",
+    "certificate": "NativeBridge.Incremental.PreludeCoercions.reverseCoercion_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PreludeCoercions.constantValue",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.PreludeCoercions.constantValue",
+    "scope": "Full source universe parameters. Exact definition-level marker/identity or decision/reflexivity specification; markers impose no inequality assumption.",
+    "native_expression": "fun {A} {B} a x => a",
+    "type": "∀ (A : Type u) (B : Type v) (a : A) (b : B),\n  Rocq.Corelib.Init.Prelude.reverse_coercion A B a b = NativeBridge.Incremental.PreludeCoercions.constantValue a b",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.Init.Unconvertible",
+    "profile": "UnconvertibleMarker",
+    "certificate": "NativeBridge.Incremental.UnconvertibleMarker.markerIso",
+    "kind": "TYPE_ISO",
+    "target": "NativeBridge.Incremental.UnconvertibleMarker.nativeMarker",
+    "target_class": "native_representation",
+    "native_target": "NativeBridge.Incremental.UnconvertibleMarker.nativeMarker",
+    "scope": "Full source universe parameters. Exact definition-level marker/identity or decision/reflexivity specification; markers impose no inequality assumption.",
+    "native_expression": "Unit",
+    "type": "(A : Type u) →\n  (a b : A) →\n    NativeBridge.Iso (Rocq.Corelib.Classes.Init.Unconvertible A a b)\n      NativeBridge.Incremental.UnconvertibleMarker.nativeMarker",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.Init.unconvertible",
+    "profile": "UnconvertibleMarker",
+    "certificate": "NativeBridge.Incremental.UnconvertibleMarker.markerValue_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id",
+    "target_class": "existing_api",
+    "native_target": "id",
+    "scope": "Full source universe parameters. Exact definition-level marker/identity or decision/reflexivity specification; markers impose no inequality assumption.",
+    "native_expression": "fun {α} a => a",
+    "type": "∀ (A : Type u) (a b : A) (h : Rocq.Corelib.Classes.Init.Unconvertible A a b),\n  NativeBridge.unitIso.to (Rocq.Corelib.Classes.Init.unconvertible A a b h) = id (NativeBridge.unitIso.to h)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Program.Tactics.fix_proto",
+    "profile": "FixPrototype",
+    "certificate": "NativeBridge.Incremental.FixPrototype.prototype_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id",
+    "target_class": "existing_api",
+    "native_target": "id",
+    "scope": "Full source universe parameters. Exact definition-level marker/identity or decision/reflexivity specification; markers impose no inequality assumption.",
+    "native_expression": "fun {α} a => a",
+    "type": "∀ (A : Sort u) (a : A), Rocq.Corelib.Program.Tactics.fix_proto A a = id a",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Tactics.decide_left",
+    "profile": "DecisionTactics",
+    "certificate": "NativeBridge.Incremental.DecisionTactics.leftSpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.DecisionTactics.leftSpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.DecisionTactics.leftSpec",
+    "scope": "Full source universe parameters. Exact definition-level marker/identity or decision/reflexivity specification; markers impose no inequality assumption.",
+    "original_statement_proof": "NativeBridge.Incremental.DecisionTactics.leftSpec_proof",
+    "native_expression": "∀ (C : Prop) (d : Decidable C), C → ∀ (P : Decidable C → Prop), (∀ (h : C), P (isTrue h)) → P d",
+    "type": "Rocq.Corelib.Init.Tactics.decide_left.statement ↔ NativeBridge.Incremental.DecisionTactics.leftSpec",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Tactics.decide_right",
+    "profile": "DecisionTactics",
+    "certificate": "NativeBridge.Incremental.DecisionTactics.rightSpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.DecisionTactics.rightSpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.DecisionTactics.rightSpec",
+    "scope": "Full source universe parameters. Exact definition-level marker/identity or decision/reflexivity specification; markers impose no inequality assumption.",
+    "original_statement_proof": "NativeBridge.Incremental.DecisionTactics.rightSpec_proof",
+    "native_expression": "∀ (C : Prop) (d : Decidable C), ¬C → ∀ (P : Decidable C → Prop), (∀ (h : ¬C), P (isFalse h)) → P d",
+    "type": "Rocq.Corelib.Init.Tactics.decide_right.statement ↔ NativeBridge.Incremental.DecisionTactics.rightSpec",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.SetoidTactics.DefaultRelation",
+    "profile": "DefaultRelationMarker",
+    "certificate": "NativeBridge.Incremental.DefaultRelationMarker.markerIso",
+    "kind": "TYPE_ISO",
+    "target": "NativeBridge.Incremental.DefaultRelationMarker.nativeMarker",
+    "target_class": "native_representation",
+    "native_target": "NativeBridge.Incremental.DefaultRelationMarker.nativeMarker",
+    "scope": "Full source universe parameters. Exact definition-level marker/identity or decision/reflexivity specification; markers impose no inequality assumption.",
+    "native_expression": "fun A _R => True",
+    "type": "(A : Type u) →\n  (R : A → A → Prop) →\n    NativeBridge.Iso (Rocq.Corelib.Classes.SetoidTactics.DefaultRelation A R)\n      (NativeBridge.Incremental.DefaultRelationMarker.nativeMarker A R)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.SetoidTactics.default_relation",
+    "profile": "DefaultRelationMarker",
+    "certificate": "NativeBridge.Incremental.DefaultRelationMarker.relation_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.DefaultRelationMarker.nativeRelation",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.DefaultRelationMarker.nativeRelation",
+    "scope": "Full source universe parameters. Exact definition-level marker/identity or decision/reflexivity specification; markers impose no inequality assumption.",
+    "native_expression": "fun A R x => R",
+    "type": "∀ (A : Type u) (R : A → A → Prop) (h : Rocq.Corelib.Classes.SetoidTactics.DefaultRelation A R),\n  Rocq.Corelib.Classes.SetoidTactics.default_relation A R h =\n    NativeBridge.Incremental.DefaultRelationMarker.nativeRelation A R ⋯",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.SetoidTactics.equivalence_default",
+    "profile": "DefaultRelationMarker",
+    "certificate": "NativeBridge.Incremental.DefaultRelationMarker.equivalenceSpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.DefaultRelationMarker.equivalenceSpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.DefaultRelationMarker.equivalenceSpec",
+    "scope": "Full source universe parameters. Exact definition-level marker/identity or decision/reflexivity specification; markers impose no inequality assumption.",
+    "original_statement_proof": "NativeBridge.Incremental.DefaultRelationMarker.equivalenceSpec_proof",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop), Equivalence R → NativeBridge.Incremental.DefaultRelationMarker.nativeMarker A R",
+    "type": "Rocq.Corelib.Classes.SetoidTactics.equivalence_default.statement ↔\n  NativeBridge.Incremental.DefaultRelationMarker.equivalenceSpec",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrsetoid.compat_Reflexive",
+    "profile": "SSRSetoidCompatibility",
+    "certificate": "NativeBridge.Incremental.SSRSetoidCompatibility.reflexivitySpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.SSRSetoidCompatibility.reflexivitySpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.SSRSetoidCompatibility.reflexivitySpec",
+    "scope": "Full source universe parameters. Exact definition-level marker/identity or decision/reflexivity specification; markers impose no inequality assumption.",
+    "original_statement_proof": "NativeBridge.Incremental.SSRSetoidCompatibility.reflexivitySpec_proof",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop), (∀ (x : A), R x x) → ∀ (x : A), R x x",
+    "type": "Rocq.Corelib.ssr.ssrsetoid.compat_Reflexive.statement ↔ NativeBridge.Incremental.SSRSetoidCompatibility.reflexivitySpec",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.spec_float",
+    "profile": "SpecFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.SpecFloatRepresentation.specIso",
+    "kind": "TYPE_ISO",
+    "target": "NativeBridge.Incremental.SpecFloatRepresentation.nativeSpec",
+    "native_target": "NativeBridge.Incremental.SpecFloatRepresentation.nativeSpec",
+    "target_class": "native_representation",
+    "scope": "Exact symbolic float syntax, including invalid finite inputs, signed zero, infinity and canonical NaN. Positive Nat mantissa and arbitrary Int exponent; not a correspondence to Lean runtime Float.",
+    "native_expression": "NativeBridge.Incremental.SpecFloatRepresentation.SpecValue",
+    "type": "NativeBridge.Iso Rocq.Corelib.Floats.SpecFloat.spec_float NativeBridge.Incremental.SpecFloatRepresentation.nativeSpec",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.location",
+    "profile": "SpecFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.SpecFloatRepresentation.locationIso",
+    "kind": "TYPE_ISO",
+    "target": "NativeBridge.Incremental.SpecFloatRepresentation.nativeLocation",
+    "native_target": "NativeBridge.Incremental.SpecFloatRepresentation.nativeLocation",
+    "target_class": "native_representation",
+    "scope": "Exact symbolic float syntax, including invalid finite inputs, signed zero, infinity and canonical NaN. Positive Nat mantissa and arbitrary Int exponent; not a correspondence to Lean runtime Float.",
+    "native_expression": "Option Ordering",
+    "type": "NativeBridge.Iso Rocq.Corelib.Floats.SpecFloat.location NativeBridge.Incremental.SpecFloatRepresentation.nativeLocation",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.shr_record",
+    "profile": "SpecFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.SpecFloatRepresentation.shiftIso",
+    "kind": "TYPE_ISO",
+    "target": "NativeBridge.Incremental.SpecFloatRepresentation.nativeShift",
+    "native_target": "NativeBridge.Incremental.SpecFloatRepresentation.nativeShift",
+    "target_class": "native_representation",
+    "scope": "Exact symbolic float syntax, including invalid finite inputs, signed zero, infinity and canonical NaN. Positive Nat mantissa and arbitrary Int exponent; not a correspondence to Lean runtime Float.",
+    "native_expression": "Int × Bool × Bool",
+    "type": "NativeBridge.Iso Rocq.Corelib.Floats.SpecFloat.shr_record NativeBridge.Incremental.SpecFloatRepresentation.nativeShift",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.SFabs",
+    "profile": "SpecFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.SpecFloatRepresentation.absolute_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatRepresentation.absolute",
+    "native_target": "NativeBridge.Incremental.SpecFloatRepresentation.absolute",
+    "target_class": "native_expression",
+    "scope": "Exact symbolic float syntax, including invalid finite inputs, signed zero, infinity and canonical NaN. Positive Nat mantissa and arbitrary Int exponent; not a correspondence to Lean runtime Float.",
+    "native_expression": "fun x =>\n  match x with\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero a =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero false\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity a =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity false\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite a m e =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite false m e",
+    "type": "∀ (x : Rocq.Corelib.Floats.SpecFloat.spec_float),\n  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.SpecFloat.SFabs x) =\n    NativeBridge.Incremental.SpecFloatRepresentation.absolute\n      (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.SFopp",
+    "profile": "SpecFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.SpecFloatRepresentation.negate_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatRepresentation.negate",
+    "native_target": "NativeBridge.Incremental.SpecFloatRepresentation.negate",
+    "target_class": "native_expression",
+    "scope": "Exact symbolic float syntax, including invalid finite inputs, signed zero, infinity and canonical NaN. Positive Nat mantissa and arbitrary Int exponent; not a correspondence to Lean runtime Float.",
+    "native_expression": "fun x =>\n  match x with\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero s =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero !s\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity s =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity !s\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite s m e =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite (!s) m e",
+    "type": "∀ (x : Rocq.Corelib.Floats.SpecFloat.spec_float),\n  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.SpecFloat.SFopp x) =\n    NativeBridge.Incremental.SpecFloatRepresentation.negate (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.shr_m",
+    "profile": "SpecFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.SpecFloatRepresentation.mantissa_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatRepresentation.mantissa",
+    "native_target": "NativeBridge.Incremental.SpecFloatRepresentation.mantissa",
+    "target_class": "native_expression",
+    "scope": "Exact symbolic float syntax, including invalid finite inputs, signed zero, infinity and canonical NaN. Positive Nat mantissa and arbitrary Int exponent; not a correspondence to Lean runtime Float.",
+    "native_expression": "fun s => s.fst",
+    "type": "∀ (s : Rocq.Corelib.Floats.SpecFloat.shr_record),\n  NativeBridge.binaryIntTo (Rocq.Corelib.Floats.SpecFloat.shr_m s) =\n    NativeBridge.Incremental.SpecFloatRepresentation.mantissa\n      (NativeBridge.Incremental.SpecFloatRepresentation.shiftTo s)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.shr_r",
+    "profile": "SpecFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.SpecFloatRepresentation.roundBit_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatRepresentation.roundBit",
+    "native_target": "NativeBridge.Incremental.SpecFloatRepresentation.roundBit",
+    "target_class": "native_expression",
+    "scope": "Exact symbolic float syntax, including invalid finite inputs, signed zero, infinity and canonical NaN. Positive Nat mantissa and arbitrary Int exponent; not a correspondence to Lean runtime Float.",
+    "native_expression": "fun s => s.snd.fst",
+    "type": "∀ (s : Rocq.Corelib.Floats.SpecFloat.shr_record),\n  NativeBridge.boolTo (Rocq.Corelib.Floats.SpecFloat.shr_r s) =\n    NativeBridge.Incremental.SpecFloatRepresentation.roundBit\n      (NativeBridge.Incremental.SpecFloatRepresentation.shiftTo s)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.shr_s",
+    "profile": "SpecFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.SpecFloatRepresentation.stickyBit_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatRepresentation.stickyBit",
+    "native_target": "NativeBridge.Incremental.SpecFloatRepresentation.stickyBit",
+    "target_class": "native_expression",
+    "scope": "Exact symbolic float syntax, including invalid finite inputs, signed zero, infinity and canonical NaN. Positive Nat mantissa and arbitrary Int exponent; not a correspondence to Lean runtime Float.",
+    "native_expression": "fun s => s.snd.snd",
+    "type": "∀ (s : Rocq.Corelib.Floats.SpecFloat.shr_record),\n  NativeBridge.boolTo (Rocq.Corelib.Floats.SpecFloat.shr_s s) =\n    NativeBridge.Incremental.SpecFloatRepresentation.stickyBit\n      (NativeBridge.Incremental.SpecFloatRepresentation.shiftTo s)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.loc_of_shr_record",
+    "profile": "SpecFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.SpecFloatRepresentation.fromShift_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatRepresentation.fromShift",
+    "native_target": "NativeBridge.Incremental.SpecFloatRepresentation.fromShift",
+    "target_class": "native_expression",
+    "scope": "Exact symbolic float syntax, including invalid finite inputs, signed zero, infinity and canonical NaN. Positive Nat mantissa and arbitrary Int exponent; not a correspondence to Lean runtime Float.",
+    "native_expression": "fun s =>\n  if s.snd.fst = true then some (if s.snd.snd = true then Ordering.gt else Ordering.eq)\n  else if s.snd.snd = true then some Ordering.lt else none",
+    "type": "∀ (s : Rocq.Corelib.Floats.SpecFloat.shr_record),\n  NativeBridge.Incremental.SpecFloatRepresentation.locationTo (Rocq.Corelib.Floats.SpecFloat.loc_of_shr_record s) =\n    NativeBridge.Incremental.SpecFloatRepresentation.fromShift\n      (NativeBridge.Incremental.SpecFloatRepresentation.shiftTo s)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.shr_record_of_loc",
+    "profile": "SpecFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.SpecFloatRepresentation.toShift_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatRepresentation.toShift",
+    "native_target": "NativeBridge.Incremental.SpecFloatRepresentation.toShift",
+    "target_class": "native_expression",
+    "scope": "Exact symbolic float syntax, including invalid finite inputs, signed zero, infinity and canonical NaN. Positive Nat mantissa and arbitrary Int exponent; not a correspondence to Lean runtime Float.",
+    "native_expression": "fun m x =>\n  match x with\n  | none => (m, false, false)\n  | some Ordering.eq => (m, true, false)\n  | some Ordering.lt => (m, false, true)\n  | some Ordering.gt => (m, true, true)",
+    "type": "∀ (m : NativeBridge.RIntBinary) (l : Rocq.Corelib.Floats.SpecFloat.location),\n  NativeBridge.Incremental.SpecFloatRepresentation.shiftTo (Rocq.Corelib.Floats.SpecFloat.shr_record_of_loc m l) =\n    NativeBridge.Incremental.SpecFloatRepresentation.toShift (NativeBridge.binaryIntTo m)\n      (NativeBridge.Incremental.SpecFloatRepresentation.locationTo l)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.location_rect",
+    "profile": "SpecFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.SpecFloatRepresentation.locationRect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatRepresentation.locationElim",
+    "native_target": "NativeBridge.Incremental.SpecFloatRepresentation.locationElim",
+    "target_class": "native_expression",
+    "scope": "Exact symbolic float syntax, including invalid finite inputs, signed zero, infinity and canonical NaN. Positive Nat mantissa and arbitrary Int exponent; not a correspondence to Lean runtime Float.",
+    "native_expression": "fun P z s x =>\n  match x with\n  | none => z\n  | some c => s c",
+    "type": "∀ (P : Option Ordering → Sort u) (z : P none) (s : (c : Ordering) → P (some c))\n  (l : Rocq.Corelib.Floats.SpecFloat.location),\n  Rocq.Corelib.Floats.SpecFloat.location_rect\n      (fun l => P (NativeBridge.Incremental.SpecFloatRepresentation.locationTo l)) z\n      (fun c => s (NativeBridge.comparisonTo c)) l =\n    NativeBridge.Incremental.SpecFloatRepresentation.locationElim P z s\n      (NativeBridge.Incremental.SpecFloatRepresentation.locationTo l)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.location_rec",
+    "profile": "SpecFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.SpecFloatRepresentation.locationRec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatRepresentation.locationElim",
+    "native_target": "NativeBridge.Incremental.SpecFloatRepresentation.locationElim",
+    "target_class": "native_expression",
+    "scope": "Exact symbolic float syntax, including invalid finite inputs, signed zero, infinity and canonical NaN. Positive Nat mantissa and arbitrary Int exponent; not a correspondence to Lean runtime Float.",
+    "native_expression": "fun P z s x =>\n  match x with\n  | none => z\n  | some c => s c",
+    "type": "∀ (P : Option Ordering → Type) (z : P none) (s : (c : Ordering) → P (some c))\n  (l : Rocq.Corelib.Floats.SpecFloat.location),\n  Rocq.Corelib.Floats.SpecFloat.location_rec\n      (fun l => P (NativeBridge.Incremental.SpecFloatRepresentation.locationTo l)) z\n      (fun c => s (NativeBridge.comparisonTo c)) l =\n    NativeBridge.Incremental.SpecFloatRepresentation.locationElim P z s\n      (NativeBridge.Incremental.SpecFloatRepresentation.locationTo l)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.location_ind",
+    "profile": "SpecFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.SpecFloatRepresentation.locationInd_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.SpecFloatRepresentation.locationInd",
+    "native_target": "NativeBridge.Incremental.SpecFloatRepresentation.locationInd",
+    "target_class": "native_statement",
+    "scope": "Exact symbolic float syntax, including invalid finite inputs, signed zero, infinity and canonical NaN. Positive Nat mantissa and arbitrary Int exponent; not a correspondence to Lean runtime Float.",
+    "original_statement_proof": "NativeBridge.Incremental.SpecFloatRepresentation.locationInd_proof",
+    "native_expression": "∀ (P : Option Ordering → Prop), P none → (∀ (c : Ordering), P (some c)) → ∀ (l : Option Ordering), P l",
+    "type": "Rocq.Corelib.Floats.SpecFloat.location_ind.statement ↔ NativeBridge.Incremental.SpecFloatRepresentation.locationInd",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.location_sind",
+    "profile": "SpecFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.SpecFloatRepresentation.locationSind_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.SpecFloatRepresentation.locationInd",
+    "native_target": "NativeBridge.Incremental.SpecFloatRepresentation.locationInd",
+    "target_class": "native_statement",
+    "scope": "Exact symbolic float syntax, including invalid finite inputs, signed zero, infinity and canonical NaN. Positive Nat mantissa and arbitrary Int exponent; not a correspondence to Lean runtime Float.",
+    "original_statement_proof": "NativeBridge.Incremental.SpecFloatRepresentation.locationSind_proof",
+    "native_expression": "∀ (P : Option Ordering → Prop), P none → (∀ (c : Ordering), P (some c)) → ∀ (l : Option Ordering), P l",
+    "type": "Rocq.Corelib.Floats.SpecFloat.location_sind.statement ↔ NativeBridge.Incremental.SpecFloatRepresentation.locationInd",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.cond_Zopp",
+    "profile": "SpecFloatRounding",
+    "certificate": "NativeBridge.Incremental.SpecFloatRounding.conditionalNegate_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatRounding.conditionalNegate",
+    "native_target": "NativeBridge.Incremental.SpecFloatRounding.conditionalNegate",
+    "target_class": "native_expression",
+    "scope": "Exact integer/log2 and location computation for all source parameters, including invalid precision/exponent inputs. Native symbolic model, not Lean runtime Float.",
+    "native_expression": "fun b z => if b = true then -z else z",
+    "type": "∀ (b : NativeBridge.RBool) (z : NativeBridge.RIntBinary),\n  NativeBridge.binaryIntTo (Rocq.Corelib.Floats.SpecFloat.cond_Zopp b z) =\n    NativeBridge.Incremental.SpecFloatRounding.conditionalNegate (NativeBridge.boolTo b) (NativeBridge.binaryIntTo z)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.emin",
+    "profile": "SpecFloatRounding",
+    "certificate": "NativeBridge.Incremental.SpecFloatRounding.minimumExponent_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatRounding.minimumExponent",
+    "native_target": "NativeBridge.Incremental.SpecFloatRounding.minimumExponent",
+    "target_class": "native_expression",
+    "scope": "Exact integer/log2 and location computation for all source parameters, including invalid precision/exponent inputs. Native symbolic model, not Lean runtime Float.",
+    "native_expression": "fun prec emax => 3 - emax - prec",
+    "type": "∀ (prec emax : NativeBridge.RIntBinary),\n  NativeBridge.binaryIntTo (Rocq.Corelib.Floats.SpecFloat.emin prec emax) =\n    NativeBridge.Incremental.SpecFloatRounding.minimumExponent (NativeBridge.binaryIntTo prec)\n      (NativeBridge.binaryIntTo emax)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.fexp",
+    "profile": "SpecFloatRounding",
+    "certificate": "NativeBridge.Incremental.SpecFloatRounding.exponent_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatRounding.exponent",
+    "native_target": "NativeBridge.Incremental.SpecFloatRounding.exponent",
+    "target_class": "native_expression",
+    "scope": "Exact integer/log2 and location computation for all source parameters, including invalid precision/exponent inputs. Native symbolic model, not Lean runtime Float.",
+    "native_expression": "fun prec emax e => max (e - prec) (NativeBridge.Incremental.SpecFloatRounding.minimumExponent prec emax)",
+    "type": "∀ (prec emax e : NativeBridge.RIntBinary),\n  NativeBridge.binaryIntTo (Rocq.Corelib.Floats.SpecFloat.fexp prec emax e) =\n    NativeBridge.Incremental.SpecFloatRounding.exponent (NativeBridge.binaryIntTo prec) (NativeBridge.binaryIntTo emax)\n      (NativeBridge.binaryIntTo e)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.digits2_pos",
+    "profile": "SpecFloatRounding",
+    "certificate": "NativeBridge.Incremental.SpecFloatRounding.positiveDigits_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatRounding.positiveDigits",
+    "native_target": "NativeBridge.Incremental.SpecFloatRounding.positiveDigits",
+    "target_class": "native_expression",
+    "scope": "Exact integer/log2 and location computation for all source parameters, including invalid precision/exponent inputs. Native symbolic model, not Lean runtime Float.",
+    "native_expression": "fun n => n.log2 + 1",
+    "type": "∀ (p : NativeBridge.RPositive),\n  NativeBridge.positiveTo (Rocq.Corelib.Floats.SpecFloat.digits2_pos p) =\n    NativeBridge.Incremental.SpecFloatRounding.positiveDigits (NativeBridge.positiveTo p)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.Zdigits2",
+    "profile": "SpecFloatRounding",
+    "certificate": "NativeBridge.Incremental.SpecFloatRounding.integerDigits_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatRounding.integerDigits",
+    "native_target": "NativeBridge.Incremental.SpecFloatRounding.integerDigits",
+    "target_class": "native_expression",
+    "scope": "Exact integer/log2 and location computation for all source parameters, including invalid precision/exponent inputs. Native symbolic model, not Lean runtime Float.",
+    "native_expression": "fun z => if z = 0 then 0 else Int.ofNat (z.natAbs.log2 + 1)",
+    "type": "∀ (z : NativeBridge.RIntBinary),\n  NativeBridge.binaryIntTo (Rocq.Corelib.Floats.SpecFloat.Zdigits2 z) =\n    NativeBridge.Incremental.SpecFloatRounding.integerDigits (NativeBridge.binaryIntTo z)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.canonical_mantissa",
+    "profile": "SpecFloatRounding",
+    "certificate": "NativeBridge.Incremental.SpecFloatRounding.canonical_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatRounding.canonical",
+    "native_target": "NativeBridge.Incremental.SpecFloatRounding.canonical",
+    "target_class": "native_expression",
+    "scope": "Exact integer/log2 and location computation for all source parameters, including invalid precision/exponent inputs. Native symbolic model, not Lean runtime Float.",
+    "native_expression": "fun prec emax m e =>\n  decide\n    (NativeBridge.Incremental.SpecFloatRounding.exponent prec emax\n        (↑(NativeBridge.Incremental.SpecFloatRounding.positiveDigits m) + e) =\n      e)",
+    "type": "∀ (prec emax : NativeBridge.RIntBinary) (m : NativeBridge.RPositive) (e : NativeBridge.RIntBinary),\n  NativeBridge.boolTo (Rocq.Corelib.Floats.SpecFloat.canonical_mantissa prec emax m e) =\n    NativeBridge.Incremental.SpecFloatRounding.canonical (NativeBridge.binaryIntTo prec) (NativeBridge.binaryIntTo emax)\n      (NativeBridge.positiveTo m) (NativeBridge.binaryIntTo e)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.bounded",
+    "profile": "SpecFloatRounding",
+    "certificate": "NativeBridge.Incremental.SpecFloatRounding.bounded_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatRounding.bounded",
+    "native_target": "NativeBridge.Incremental.SpecFloatRounding.bounded",
+    "target_class": "native_expression",
+    "scope": "Exact integer/log2 and location computation for all source parameters, including invalid precision/exponent inputs. Native symbolic model, not Lean runtime Float.",
+    "native_expression": "fun prec emax m e => NativeBridge.Incremental.SpecFloatRounding.canonical prec emax m e && decide (e ≤ emax - prec)",
+    "type": "∀ (prec emax : NativeBridge.RIntBinary) (m : NativeBridge.RPositive) (e : NativeBridge.RIntBinary),\n  NativeBridge.boolTo (Rocq.Corelib.Floats.SpecFloat.bounded prec emax m e) =\n    NativeBridge.Incremental.SpecFloatRounding.bounded (NativeBridge.binaryIntTo prec) (NativeBridge.binaryIntTo emax)\n      (NativeBridge.positiveTo m) (NativeBridge.binaryIntTo e)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.valid_binary",
+    "profile": "SpecFloatRounding",
+    "certificate": "NativeBridge.Incremental.SpecFloatRounding.valid_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatRounding.valid",
+    "native_target": "NativeBridge.Incremental.SpecFloatRounding.valid",
+    "target_class": "native_expression",
+    "scope": "Exact integer/log2 and location computation for all source parameters, including invalid precision/exponent inputs. Native symbolic model, not Lean runtime Float.",
+    "native_expression": "fun prec emax x =>\n  match x with\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite a m e =>\n    NativeBridge.Incremental.SpecFloatRounding.bounded prec emax m.val e\n  | x => true",
+    "type": "∀ (prec emax : NativeBridge.RIntBinary) (x : Rocq.Corelib.Floats.SpecFloat.spec_float),\n  NativeBridge.boolTo (Rocq.Corelib.Floats.SpecFloat.valid_binary prec emax x) =\n    NativeBridge.Incremental.SpecFloatRounding.valid (NativeBridge.binaryIntTo prec) (NativeBridge.binaryIntTo emax)\n      (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.round_nearest_even",
+    "profile": "SpecFloatRounding",
+    "certificate": "NativeBridge.Incremental.SpecFloatRounding.nearestEven_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatRounding.nearestEven",
+    "native_target": "NativeBridge.Incremental.SpecFloatRounding.nearestEven",
+    "target_class": "native_expression",
+    "scope": "Exact integer/log2 and location computation for all source parameters, including invalid precision/exponent inputs. Native symbolic model, not Lean runtime Float.",
+    "native_expression": "fun m x =>\n  match x with\n  | none => m\n  | some Ordering.lt => m\n  | some Ordering.gt => m + 1\n  | some Ordering.eq => if m % 2 = 0 then m else m + 1",
+    "type": "∀ (m : NativeBridge.RIntBinary) (l : Rocq.Corelib.Floats.SpecFloat.location),\n  NativeBridge.binaryIntTo (Rocq.Corelib.Floats.SpecFloat.round_nearest_even m l) =\n    NativeBridge.Incremental.SpecFloatRounding.nearestEven (NativeBridge.binaryIntTo m)\n      (NativeBridge.Incremental.SpecFloatRepresentation.locationTo l)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.new_location_even",
+    "profile": "SpecFloatRounding",
+    "certificate": "NativeBridge.Incremental.SpecFloatRounding.evenLocation_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatRounding.evenLocation",
+    "native_target": "NativeBridge.Incremental.SpecFloatRounding.evenLocation",
+    "target_class": "native_expression",
+    "scope": "Exact integer/log2 and location computation for all source parameters, including invalid precision/exponent inputs. Native symbolic model, not Lean runtime Float.",
+    "native_expression": "fun steps k => if k = 0 then none else some (compare (2 * k) steps)",
+    "type": "∀ (steps k : NativeBridge.RIntBinary),\n  NativeBridge.Incremental.SpecFloatRepresentation.locationTo\n      (Rocq.Corelib.Floats.SpecFloat.new_location_even steps k) =\n    NativeBridge.Incremental.SpecFloatRounding.evenLocation (NativeBridge.binaryIntTo steps)\n      (NativeBridge.binaryIntTo k)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.new_location_odd",
+    "profile": "SpecFloatRounding",
+    "certificate": "NativeBridge.Incremental.SpecFloatRounding.oddLocation_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatRounding.oddLocation",
+    "native_target": "NativeBridge.Incremental.SpecFloatRounding.oddLocation",
+    "target_class": "native_expression",
+    "scope": "Exact integer/log2 and location computation for all source parameters, including invalid precision/exponent inputs. Native symbolic model, not Lean runtime Float.",
+    "native_expression": "fun steps k =>\n  if k = 0 then none else NativeBridge.Incremental.SpecFloatRounding.oddCompareResult (compare (2 * k + 1) steps)",
+    "type": "∀ (steps k : NativeBridge.RIntBinary),\n  NativeBridge.Incremental.SpecFloatRepresentation.locationTo (Rocq.Corelib.Floats.SpecFloat.new_location_odd steps k) =\n    NativeBridge.Incremental.SpecFloatRounding.oddLocation (NativeBridge.binaryIntTo steps) (NativeBridge.binaryIntTo k)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.new_location",
+    "profile": "SpecFloatRounding",
+    "certificate": "NativeBridge.Incremental.SpecFloatRounding.newLocation_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatRounding.newLocation",
+    "native_target": "NativeBridge.Incremental.SpecFloatRounding.newLocation",
+    "target_class": "native_expression",
+    "scope": "Exact integer/log2 and location computation for all source parameters, including invalid precision/exponent inputs. Native symbolic model, not Lean runtime Float.",
+    "native_expression": "fun steps k =>\n  if steps % 2 = 0 then NativeBridge.Incremental.SpecFloatRounding.evenLocation steps k\n  else NativeBridge.Incremental.SpecFloatRounding.oddLocation steps k",
+    "type": "∀ (steps k : NativeBridge.RIntBinary),\n  NativeBridge.Incremental.SpecFloatRepresentation.locationTo (Rocq.Corelib.Floats.SpecFloat.new_location steps k) =\n    NativeBridge.Incremental.SpecFloatRounding.newLocation (NativeBridge.binaryIntTo steps) (NativeBridge.binaryIntTo k)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.iter_pos",
+    "profile": "SpecFloatShift",
+    "certificate": "NativeBridge.Incremental.SpecFloatShift.iterate_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatShift.iterate",
+    "native_target": "NativeBridge.Incremental.SpecFloatShift.iterate",
+    "target_class": "native_expression",
+    "scope": "All source inputs, including negative mantissas, nonpositive shift counts and arbitrary exponents. Single shift truncates toward zero; round and sticky bits preserved. Symbolic exact arithmetic, not Lean Float.",
+    "native_expression": "fun {A} f n x => NativeBridge.Incremental.BinaryPower.repeatNative f n x",
+    "type": "∀ {A : Sort u} (f : A → A) (p : NativeBridge.RPositive) (x : A),\n  Rocq.Corelib.Floats.SpecFloat.iter_pos A f p x =\n    NativeBridge.Incremental.SpecFloatShift.iterate f (NativeBridge.positiveTo p) x",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.shr_1",
+    "profile": "SpecFloatShift",
+    "certificate": "NativeBridge.Incremental.SpecFloatShift.shiftOne_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatShift.shiftOne",
+    "native_target": "NativeBridge.Incremental.SpecFloatShift.shiftOne",
+    "target_class": "native_expression",
+    "scope": "All source inputs, including negative mantissas, nonpositive shift counts and arbitrary exponents. Single shift truncates toward zero; round and sticky bits preserved. Symbolic exact arithmetic, not Lean Float.",
+    "native_expression": "fun s => (s.fst.tdiv 2, decide (s.fst.natAbs % 2 = 1), s.snd.fst || s.snd.snd)",
+    "type": "∀ (s : Rocq.Corelib.Floats.SpecFloat.shr_record),\n  NativeBridge.Incremental.SpecFloatRepresentation.shiftTo (Rocq.Corelib.Floats.SpecFloat.shr_1 s) =\n    NativeBridge.Incremental.SpecFloatShift.shiftOne (NativeBridge.Incremental.SpecFloatRepresentation.shiftTo s)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.shr",
+    "profile": "SpecFloatShift",
+    "certificate": "NativeBridge.Incremental.SpecFloatShift.shiftMany_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatShift.shiftMany",
+    "native_target": "NativeBridge.Incremental.SpecFloatShift.shiftMany",
+    "target_class": "native_expression",
+    "scope": "All source inputs, including negative mantissas, nonpositive shift counts and arbitrary exponents. Single shift truncates toward zero; round and sticky bits preserved. Symbolic exact arithmetic, not Lean Float.",
+    "native_expression": "fun s e n =>\n  if n > 0 then\n    (NativeBridge.Incremental.SpecFloatShift.iterate NativeBridge.Incremental.SpecFloatShift.shiftOne n.toNat s, e + n)\n  else (s, e)",
+    "type": "∀ (s : Rocq.Corelib.Floats.SpecFloat.shr_record) (e n : NativeBridge.RIntBinary),\n  NativeBridge.Incremental.SpecFloatShift.shiftPairTo (Rocq.Corelib.Floats.SpecFloat.shr s e n) =\n    NativeBridge.Incremental.SpecFloatShift.shiftMany (NativeBridge.Incremental.SpecFloatRepresentation.shiftTo s)\n      (NativeBridge.binaryIntTo e) (NativeBridge.binaryIntTo n)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.shr_fexp",
+    "profile": "SpecFloatShift",
+    "certificate": "NativeBridge.Incremental.SpecFloatShift.shiftToExponent_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatShift.shiftToExponent",
+    "native_target": "NativeBridge.Incremental.SpecFloatShift.shiftToExponent",
+    "target_class": "native_expression",
+    "scope": "All source inputs, including negative mantissas, nonpositive shift counts and arbitrary exponents. Single shift truncates toward zero; round and sticky bits preserved. Symbolic exact arithmetic, not Lean Float.",
+    "native_expression": "fun prec emax m e l =>\n  NativeBridge.Incremental.SpecFloatShift.shiftMany (NativeBridge.Incremental.SpecFloatRepresentation.toShift m l) e\n    (NativeBridge.Incremental.SpecFloatRounding.exponent prec emax\n        (NativeBridge.Incremental.SpecFloatRounding.integerDigits m + e) -\n      e)",
+    "type": "∀ (prec emax m e : NativeBridge.RIntBinary) (l : Rocq.Corelib.Floats.SpecFloat.location),\n  NativeBridge.Incremental.SpecFloatShift.shiftPairTo (Rocq.Corelib.Floats.SpecFloat.shr_fexp prec emax m e l) =\n    NativeBridge.Incremental.SpecFloatShift.shiftToExponent (NativeBridge.binaryIntTo prec)\n      (NativeBridge.binaryIntTo emax) (NativeBridge.binaryIntTo m) (NativeBridge.binaryIntTo e)\n      (NativeBridge.Incremental.SpecFloatRepresentation.locationTo l)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.shl_align",
+    "profile": "SpecFloatShift",
+    "certificate": "NativeBridge.Incremental.SpecFloatShift.alignment_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatShift.alignment",
+    "native_target": "NativeBridge.Incremental.SpecFloatShift.alignment",
+    "target_class": "native_expression",
+    "scope": "All source inputs, including negative mantissas, nonpositive shift counts and arbitrary exponents. Single shift truncates toward zero; round and sticky bits preserved. Symbolic exact arithmetic, not Lean Float.",
+    "native_expression": "fun m e target => if target < e then (2 ^ (e - target).toNat * m, target) else (m, e)",
+    "type": "∀ (m : NativeBridge.RPositive) (e target : NativeBridge.RIntBinary),\n  NativeBridge.Incremental.SpecFloatShift.alignmentTo (Rocq.Corelib.Floats.SpecFloat.shl_align m e target) =\n    NativeBridge.Incremental.SpecFloatShift.alignment (NativeBridge.positiveTo m) (NativeBridge.binaryIntTo e)\n      (NativeBridge.binaryIntTo target)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.binary_round_aux",
+    "profile": "SpecFloatNormalize",
+    "certificate": "NativeBridge.Incremental.SpecFloatNormalize.roundAux_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatNormalize.roundAux",
+    "native_target": "NativeBridge.Incremental.SpecFloatNormalize.roundAux",
+    "target_class": "native_expression",
+    "scope": "Exact composition of alignment, round-to-nearest-even, overflow and sign handling, for all precision/exponent inputs and symbolic float values. Classification uses the registered nine-value Fin code. Not Lean runtime Float.",
+    "native_expression": "fun prec emax sign m e l =>\n  have first := NativeBridge.Incremental.SpecFloatShift.shiftToExponent prec emax m e l;\n  have next :=\n    NativeBridge.Incremental.SpecFloatRounding.nearestEven\n      (NativeBridge.Incremental.SpecFloatRepresentation.mantissa first.fst)\n      (NativeBridge.Incremental.SpecFloatRepresentation.fromShift first.fst);\n  have second := NativeBridge.Incremental.SpecFloatShift.shiftToExponent prec emax next first.snd none;\n  NativeBridge.Incremental.SpecFloatNormalize.finish sign\n    (NativeBridge.Incremental.SpecFloatRepresentation.mantissa second.fst) second.snd (emax - prec)",
+    "type": "∀ (prec emax : NativeBridge.RIntBinary) (sign : NativeBridge.RBool) (m e : NativeBridge.RIntBinary)\n  (l : Rocq.Corelib.Floats.SpecFloat.location),\n  NativeBridge.Incremental.SpecFloatRepresentation.specTo\n      (Rocq.Corelib.Floats.SpecFloat.binary_round_aux prec emax sign m e l) =\n    NativeBridge.Incremental.SpecFloatNormalize.roundAux (NativeBridge.binaryIntTo prec) (NativeBridge.binaryIntTo emax)\n      (NativeBridge.boolTo sign) (NativeBridge.binaryIntTo m) (NativeBridge.binaryIntTo e)\n      (NativeBridge.Incremental.SpecFloatRepresentation.locationTo l)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.binary_round",
+    "profile": "SpecFloatNormalize",
+    "certificate": "NativeBridge.Incremental.SpecFloatNormalize.roundPositive_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatNormalize.roundPositive",
+    "native_target": "NativeBridge.Incremental.SpecFloatNormalize.roundPositive",
+    "target_class": "native_expression",
+    "scope": "Exact composition of alignment, round-to-nearest-even, overflow and sign handling, for all precision/exponent inputs and symbolic float values. Classification uses the registered nine-value Fin code. Not Lean runtime Float.",
+    "native_expression": "fun prec emax sign m e =>\n  have aligned :=\n    NativeBridge.Incremental.SpecFloatShift.alignment m e\n      (NativeBridge.Incremental.SpecFloatRounding.exponent prec emax\n        (↑(NativeBridge.Incremental.SpecFloatRounding.positiveDigits m) + e));\n  NativeBridge.Incremental.SpecFloatNormalize.roundAux prec emax sign (↑aligned.fst) aligned.snd none",
+    "type": "∀ (prec emax : NativeBridge.RIntBinary) (sign : NativeBridge.RBool) (m : NativeBridge.RPositive)\n  (e : NativeBridge.RIntBinary),\n  NativeBridge.Incremental.SpecFloatRepresentation.specTo\n      (Rocq.Corelib.Floats.SpecFloat.binary_round prec emax sign m e) =\n    NativeBridge.Incremental.SpecFloatNormalize.roundPositive (NativeBridge.binaryIntTo prec)\n      (NativeBridge.binaryIntTo emax) (NativeBridge.boolTo sign) (NativeBridge.positiveTo m)\n      (NativeBridge.binaryIntTo e)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.binary_normalize",
+    "profile": "SpecFloatNormalize",
+    "certificate": "NativeBridge.Incremental.SpecFloatNormalize.normalize_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatNormalize.normalize",
+    "native_target": "NativeBridge.Incremental.SpecFloatNormalize.normalize",
+    "target_class": "native_expression",
+    "scope": "Exact composition of alignment, round-to-nearest-even, overflow and sign handling, for all precision/exponent inputs and symbolic float values. Classification uses the registered nine-value Fin code. Not Lean runtime Float.",
+    "native_expression": "fun prec emax m e zeroSign =>\n  if m = 0 then NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero zeroSign\n  else NativeBridge.Incremental.SpecFloatNormalize.roundPositive prec emax (decide (m < 0)) m.natAbs e",
+    "type": "∀ (prec emax m e : NativeBridge.RIntBinary) (zeroSign : NativeBridge.RBool),\n  NativeBridge.Incremental.SpecFloatRepresentation.specTo\n      (Rocq.Corelib.Floats.SpecFloat.binary_normalize prec emax m e zeroSign) =\n    NativeBridge.Incremental.SpecFloatNormalize.normalize (NativeBridge.binaryIntTo prec)\n      (NativeBridge.binaryIntTo emax) (NativeBridge.binaryIntTo m) (NativeBridge.binaryIntTo e)\n      (NativeBridge.boolTo zeroSign)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.SFone",
+    "profile": "SpecFloatNormalize",
+    "certificate": "NativeBridge.Incremental.SpecFloatNormalize.one_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatNormalize.one",
+    "native_target": "NativeBridge.Incremental.SpecFloatNormalize.one",
+    "target_class": "native_expression",
+    "scope": "Exact composition of alignment, round-to-nearest-even, overflow and sign handling, for all precision/exponent inputs and symbolic float values. Classification uses the registered nine-value Fin code. Not Lean runtime Float.",
+    "native_expression": "fun prec emax => NativeBridge.Incremental.SpecFloatNormalize.roundPositive prec emax false 1 0",
+    "type": "∀ (prec emax : NativeBridge.RIntBinary),\n  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.SpecFloat.SFone prec emax) =\n    NativeBridge.Incremental.SpecFloatNormalize.one (NativeBridge.binaryIntTo prec) (NativeBridge.binaryIntTo emax)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.SFldexp",
+    "profile": "SpecFloatNormalize",
+    "certificate": "NativeBridge.Incremental.SpecFloatNormalize.scale_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatNormalize.scale",
+    "native_target": "NativeBridge.Incremental.SpecFloatNormalize.scale",
+    "target_class": "native_expression",
+    "scope": "Exact composition of alignment, round-to-nearest-even, overflow and sign handling, for all precision/exponent inputs and symbolic float values. Classification uses the registered nine-value Fin code. Not Lean runtime Float.",
+    "native_expression": "fun prec emax x n =>\n  match x with\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite sign m e =>\n    NativeBridge.Incremental.SpecFloatNormalize.roundPositive prec emax sign m.val (e + n)\n  | x_1 => x",
+    "type": "∀ (prec emax : NativeBridge.RIntBinary) (x : Rocq.Corelib.Floats.SpecFloat.spec_float) (n : NativeBridge.RIntBinary),\n  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.SpecFloat.SFldexp prec emax x n) =\n    NativeBridge.Incremental.SpecFloatNormalize.scale (NativeBridge.binaryIntTo prec) (NativeBridge.binaryIntTo emax)\n      (NativeBridge.Incremental.SpecFloatRepresentation.specTo x) (NativeBridge.binaryIntTo n)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.SFnormfr_mantissa",
+    "profile": "SpecFloatNormalize",
+    "certificate": "NativeBridge.Incremental.SpecFloatNormalize.normalMantissa_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatNormalize.normalMantissa",
+    "native_target": "NativeBridge.Incremental.SpecFloatNormalize.normalMantissa",
+    "target_class": "native_expression",
+    "scope": "Exact composition of alignment, round-to-nearest-even, overflow and sign handling, for all precision/exponent inputs and symbolic float values. Classification uses the registered nine-value Fin code. Not Lean runtime Float.",
+    "native_expression": "fun prec x =>\n  match x with\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite a m e => if e = -prec then m.val else 0\n  | x => 0",
+    "type": "∀ (prec : NativeBridge.RIntBinary) (x : Rocq.Corelib.Floats.SpecFloat.spec_float),\n  NativeBridge.binaryNatTo (Rocq.Corelib.Floats.SpecFloat.SFnormfr_mantissa prec x) =\n    NativeBridge.Incremental.SpecFloatNormalize.normalMantissa (NativeBridge.binaryIntTo prec)\n      (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.SFclassify",
+    "profile": "SpecFloatNormalize",
+    "certificate": "NativeBridge.Incremental.SpecFloatNormalize.classify_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatNormalize.classify",
+    "native_target": "NativeBridge.Incremental.SpecFloatNormalize.classify",
+    "target_class": "native_expression",
+    "scope": "Exact composition of alignment, round-to-nearest-even, overflow and sign handling, for all precision/exponent inputs and symbolic float values. Classification uses the registered nine-value Fin code. Not Lean runtime Float.",
+    "native_expression": "fun prec x =>\n  match x with\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero s => if s = true then 5 else 4\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity s => if s = true then 7 else 6\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan => 8\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite s m a =>\n    if s = true then if ↑(NativeBridge.Incremental.SpecFloatRounding.positiveDigits m.val) = prec then 1 else 3\n    else if ↑(NativeBridge.Incremental.SpecFloatRounding.positiveDigits m.val) = prec then 0 else 2",
+    "type": "∀ (prec : NativeBridge.RIntBinary) (x : Rocq.Corelib.Floats.SpecFloat.spec_float),\n  NativeBridge.floatClassTo (Rocq.Corelib.Floats.SpecFloat.SFclassify prec x) =\n    NativeBridge.Incremental.SpecFloatNormalize.classify (NativeBridge.binaryIntTo prec)\n      (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
     "source": "Corelib.ssr.ssrbool.canLR_in",
     "profile": "SSRBoolClosedStatements",
     "certificate": "NativeBridge.Incremental.SSRBoolClosedStatements.RocqPending.Corelib.ssr.ssrbool.canLR_in.statement.correspondence",
