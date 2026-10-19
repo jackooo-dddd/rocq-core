@@ -9205,5 +9205,105 @@
     "scope": "original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs",
     "native_target": "NativeBridge.Incremental.CRelationStatements.irreflexivityNative",
     "original_statement_proof": "NativeBridge.Incremental.CRelationStatements.irreflexivity_source"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.PartialOrder",
+    "profile": "CRelationOrder",
+    "certificate": "NativeBridge.Incremental.CRelationOrder.partialOrderIso",
+    "kind": "TYPE_ISO",
+    "target": "partialOrderNative",
+    "target_class": "native_representation",
+    "scope": "All five exported universe parameters; arbitrary native equivalence/preorder witnesses; both evidence conversion functions preserved, not Lean PartialOrder.",
+    "native_target": "NativeBridge.Incremental.CRelationOrder.partialOrderNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.antisymmetry",
+    "profile": "CRelationOrder",
+    "certificate": "NativeBridge.Incremental.CRelationOrder.antisymmetry_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "antisymmetryNative",
+    "target_class": "native_expression",
+    "scope": "All carrier and two relation universes; arbitrary Type-valued result relation.",
+    "native_target": "NativeBridge.Incremental.CRelationOrder.antisymmetryNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.flip_Symmetric",
+    "profile": "CRelationOrder",
+    "certificate": "NativeBridge.Incremental.CRelationOrder.flip_Symmetric_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "flipSymmetricNative",
+    "target_class": "native_expression",
+    "scope": "All exported universes; swap the two arguments of the supplied symmetry function.",
+    "native_target": "NativeBridge.Incremental.CRelationOrder.flipSymmetricNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.flip_Transitive",
+    "profile": "CRelationOrder",
+    "certificate": "NativeBridge.Incremental.CRelationOrder.flip_Transitive_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "flipTransitiveNative",
+    "target_class": "native_expression",
+    "scope": "All exported universes; reverse the three endpoints and swap the relation evidence arguments.",
+    "native_target": "NativeBridge.Incremental.CRelationOrder.flipTransitiveNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.partial_order_equivalence",
+    "profile": "CRelationOrder",
+    "certificate": "NativeBridge.Incremental.CRelationOrder.partial_order_equivalence_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "partialOrderEquivalenceNative",
+    "target_class": "native_expression",
+    "scope": "All five exported universes; transport both function-valued fields in the source pointwise pair.",
+    "native_target": "NativeBridge.Incremental.CRelationOrder.partialOrderEquivalenceNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.eq_equivalence",
+    "profile": "CRelationOrder",
+    "certificate": "NativeBridge.Incremental.CRelationOrder.eq_equivalence_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "equalityEquivalenceNative",
+    "target_class": "native_expression",
+    "scope": "All exported carrier universes; three prerequisites proved; inverse laws for conversion to Lean Equivalence Eq, mechanical eq remains unchanged.",
+    "native_target": "NativeBridge.Incremental.CRelationOrder.equalityEquivalenceNative",
+    "closed_wrapper": "NativeBridge.Incremental.CRelationOrder.eqEquivalenceClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Classes.CRelationClasses.eq_equivalence__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.CRelationOrder.eqProof1"
+      },
+      {
+        "source": "Corelib.Classes.CRelationClasses.eq_equivalence__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.CRelationOrder.eqProof2"
+      },
+      {
+        "source": "Corelib.Classes.CRelationClasses.eq_equivalence__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.CRelationOrder.eqProof3"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.iff_equivalence",
+    "profile": "CRelationOrder",
+    "certificate": "NativeBridge.Incremental.CRelationOrder.iff_equivalence_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "iffEquivalenceNative",
+    "target_class": "native_expression",
+    "scope": "All exported universes; source PULift Prop carrier transported to Prop; three prerequisites proved; inverse laws for conversion to Lean Equivalence Iff.",
+    "native_target": "NativeBridge.Incremental.CRelationOrder.iffEquivalenceNative",
+    "closed_wrapper": "NativeBridge.Incremental.CRelationOrder.iffEquivalenceClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Classes.CRelationClasses.iff_Reflexive",
+        "proof": "NativeBridge.Incremental.CRelationOrder.iffProof1"
+      },
+      {
+        "source": "Corelib.Classes.CRelationClasses.iff_Symmetric",
+        "proof": "NativeBridge.Incremental.CRelationOrder.iffProof2"
+      },
+      {
+        "source": "Corelib.Classes.CRelationClasses.iff_Transitive",
+        "proof": "NativeBridge.Incremental.CRelationOrder.iffProof3"
+      }
+    ]
   }
 ]

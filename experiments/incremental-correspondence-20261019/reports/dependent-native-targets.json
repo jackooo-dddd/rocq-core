@@ -738,5 +738,40 @@
     "name": "NativeBridge.Incremental.CRelationStatements.strictTransitiveNative",
     "native_expression": "fun A R h => h.snd",
     "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationOrder.antisymmetryNative",
+    "native_expression": "fun A E R h => h",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationOrder.equalityEquivalenceNative",
+    "native_expression": "fun A => { refl := Eq.refl, symm := fun {x y} => Eq.symm, trans := fun {x y z} => Eq.trans }",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationOrder.flipSymmetricNative",
+    "native_expression": "fun A R h x y r => h y x r",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationOrder.flipTransitiveNative",
+    "native_expression": "fun A R h x y z r s => h z y x s r",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationOrder.iffEquivalenceNative",
+    "native_expression": "{ refl := fun x => Iff.rfl, symm := fun {x y} => Iff.symm, trans := fun {x y z} => Iff.trans }",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationOrder.partialOrderEquivalenceNative",
+    "native_expression": "fun A E R h => h",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationOrder.partialOrderNative",
+    "native_expression": "fun A E R => (x y : A) → (E x y → R x y × R y x) × (R x y × R y x → E x y)",
+    "remaining_source_symbols": []
   }
 ]

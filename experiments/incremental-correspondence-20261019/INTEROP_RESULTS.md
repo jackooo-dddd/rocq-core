@@ -1,6 +1,6 @@
 # 跨模块导入与 Mathlib 消费结果
 
-当前共同导入验收通过：80 个含增量覆盖证书的 profile、1353 份覆盖证书，连同原陈述证明和闭合包装函数，共 1835 个导出入口，在同一 Lean 文件中导入并审计。复制依赖声明 12111 个；这些副本不增加 correspondence 覆盖数量。
+当前共同导入验收通过：81 个含增量覆盖证书的 profile、1360 份覆盖证书，连同原陈述证明和闭合包装函数，共 1844 个导出入口，在同一 Lean 文件中导入并审计。复制依赖声明 12229 个；这些副本不增加 correspondence 覆盖数量。
 
 ## 具体可以怎样使用
 
@@ -68,3 +68,5 @@ opaque 支持的独立验证见 interop/check_opaque.py 与 reports/interop/opaq
 第二十八至三十一批扩展后：新增 SSRBoolIndexed、SSRBoolRestrictions、BinaryPower、SumboolBridge、CRelationData；79 个覆盖 profile、1336 份证书共同导入通过，1803 个入口、11977 个依赖副本。新证明的原生目标不残留源符号。旧 Mathlib 消费例本轮未重跑；共同导入检查仍包含 Mathlib 模块。
 
 第三十二批扩展后：新增 CRelationStatements；80 个覆盖 profile、1353 份证书共同导入，1835 个入口、12111 个依赖副本。
+
+第三十三批加入 CRelationOrder 后，81 个覆盖 profile、1360 份证书共同导入通过；1844 个导出入口、12229 个依赖声明。新增目标涵盖保留 Type 数据的偏序表示，以及 Lean Equivalence Eq/Iff。该批共同导入包括既有 Mathlib 导入检查，未重跑旧消费例。

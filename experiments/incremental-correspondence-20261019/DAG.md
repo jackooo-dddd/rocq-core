@@ -389,3 +389,20 @@ graph TD
 ## 第三十二批
 
 CRelationData 的反自反性 Iso → StrictOrder 的类型 Iso → StrictOrder_Transitive 对应；同一批复用关系数据表示证明 15 个原生陈述 iff，并给出原陈述证明。累计 1353 份覆盖证书已共同导入。
+
+## 第三十三批：已验证的复用关系
+
+```mermaid
+flowchart LR
+  CRelationData --> CRelationOrder
+  CRelationOrder --> PartialOrderIso
+  MechanicalEqIso --> equalityEquivalenceIso
+  EqWitnesses[3 个 Eq 前置证明] --> eq_equivalence_agrees
+  equalityEquivalenceIso --> eq_equivalence_agrees
+  IffWitnesses[3 个 Iff 前置证明] --> iff_equivalence_agrees
+  iffEquivalenceIso --> iff_equivalence_agrees
+  CRelationOrder --> PackedAll_CRelationOrder
+  PackedAll_CRelationOrder --> ImportAll[81 profiles / 1360 certificates]
+```
+
+图中后两项等价关系对应有双向逆，且六个前置证明已闭合；完整 Lean 依赖仍由审计记录。Type 值偏序只对应函数／积类型表示。

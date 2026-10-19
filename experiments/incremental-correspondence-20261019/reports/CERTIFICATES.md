@@ -9312,6 +9312,114 @@ Rocq.Corelib.Classes.CRelationClasses.irreflexivity.statement ↔
 
 公理闭包：空
 
+## Corelib.Classes.CRelationClasses.PartialOrder
+
+NativeBridge.Incremental.CRelationOrder.partialOrderIso
+
+目标：partialOrderNative；范围：All five exported universe parameters; arbitrary native equivalence/preorder witnesses; both evidence conversion functions preserved, not Lean PartialOrder.
+
+```lean
+(A : Type u) →
+  (E R : A → A → Type v) →
+    (equ : NativeBridge.Incremental.CRelationData.equivalenceNative A E) →
+      (pre : NativeBridge.Incremental.CRelationData.preorderNative A R) →
+        NativeBridge.Iso
+          (Rocq.Corelib.Classes.CRelationClasses.PartialOrder A E
+            ((NativeBridge.Incremental.CRelationData.EquivalenceIso A E).of equ) R
+            ((NativeBridge.Incremental.CRelationData.PreOrderIso A R).of pre))
+          (NativeBridge.Incremental.CRelationOrder.partialOrderNative A E R)
+```
+
+公理闭包：Quot.sound
+
+## Corelib.Classes.CRelationClasses.antisymmetry
+
+NativeBridge.Incremental.CRelationOrder.antisymmetry_agrees
+
+目标：antisymmetryNative；范围：All carrier and two relation universes; arbitrary Type-valued result relation.
+
+```lean
+∀ (A : Type u) (E : A → A → Type v) (equ : NativeBridge.Incremental.CRelationData.equivalenceNative A E)
+  (R : A → A → Type w) (h : NativeBridge.Incremental.CRelationData.antisymmetricNative A E R),
+  Rocq.Corelib.Classes.CRelationClasses.antisymmetry A E
+      ((NativeBridge.Incremental.CRelationData.EquivalenceIso A E).of equ) R h =
+    NativeBridge.Incremental.CRelationOrder.antisymmetryNative A E R h
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.flip_Symmetric
+
+NativeBridge.Incremental.CRelationOrder.flip_Symmetric_agrees
+
+目标：flipSymmetricNative；范围：All exported universes; swap the two arguments of the supplied symmetry function.
+
+```lean
+∀ (A : Type u) (R : A → A → Type v) (h : NativeBridge.Incremental.CRelationData.symmetricNative A R),
+  Rocq.Corelib.Classes.CRelationClasses.flip_Symmetric A R h =
+    NativeBridge.Incremental.CRelationOrder.flipSymmetricNative A R h
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.flip_Transitive
+
+NativeBridge.Incremental.CRelationOrder.flip_Transitive_agrees
+
+目标：flipTransitiveNative；范围：All exported universes; reverse the three endpoints and swap the relation evidence arguments.
+
+```lean
+∀ (A : Type u) (R : A → A → Type v) (h : NativeBridge.Incremental.CRelationData.transitiveNative A R),
+  Rocq.Corelib.Classes.CRelationClasses.flip_Transitive A R h =
+    NativeBridge.Incremental.CRelationOrder.flipTransitiveNative A R h
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.partial_order_equivalence
+
+NativeBridge.Incremental.CRelationOrder.partial_order_equivalence_agrees
+
+目标：partialOrderEquivalenceNative；范围：All five exported universes; transport both function-valued fields in the source pointwise pair.
+
+```lean
+∀ (A : Type u) (E R : A → A → Type v) (equ : NativeBridge.Incremental.CRelationData.equivalenceNative A E)
+  (pre : NativeBridge.Incremental.CRelationData.preorderNative A R)
+  (h : NativeBridge.Incremental.CRelationOrder.partialOrderNative A E R),
+  NativeBridge.Incremental.CRelationOrder.partialTo A E R
+      (Rocq.Corelib.Classes.CRelationClasses.partial_order_equivalence A E
+        ((NativeBridge.Incremental.CRelationData.EquivalenceIso A E).of equ) R
+        ((NativeBridge.Incremental.CRelationData.PreOrderIso A R).of pre)
+        (NativeBridge.Incremental.CRelationOrder.partialOf A E R h)) =
+    NativeBridge.Incremental.CRelationOrder.partialOrderEquivalenceNative A E R h
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.eq_equivalence
+
+NativeBridge.Incremental.CRelationOrder.eq_equivalence_agrees
+
+目标：equalityEquivalenceNative；范围：All exported carrier universes; three prerequisites proved; inverse laws for conversion to Lean Equivalence Eq, mechanical eq remains unchanged.
+
+```lean
+∀ (A : Type u), ⋯ = ⋯
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.iff_equivalence
+
+NativeBridge.Incremental.CRelationOrder.iff_equivalence_agrees
+
+目标：iffEquivalenceNative；范围：All exported universes; source PULift Prop carrier transported to Prop; three prerequisites proved; inverse laws for conversion to Lean Equivalence Iff.
+
+```lean
+⋯ = NativeBridge.Incremental.CRelationOrder.iffEquivalenceNative
+```
+
+公理闭包：空
+
 ## Corelib.ssr.ssrbool.canLR_in
 
 NativeBridge.Incremental.SSRBoolClosedStatements.RocqPending.Corelib.ssr.ssrbool.canLR_in.statement.correspondence

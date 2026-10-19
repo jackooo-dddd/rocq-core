@@ -11573,6 +11573,129 @@
     "axioms": []
   },
   {
+    "source": "Corelib.Classes.CRelationClasses.PartialOrder",
+    "profile": "CRelationOrder",
+    "certificate": "NativeBridge.Incremental.CRelationOrder.partialOrderIso",
+    "kind": "TYPE_ISO",
+    "target": "partialOrderNative",
+    "target_class": "native_representation",
+    "scope": "All five exported universe parameters; arbitrary native equivalence/preorder witnesses; both evidence conversion functions preserved, not Lean PartialOrder.",
+    "native_target": "NativeBridge.Incremental.CRelationOrder.partialOrderNative",
+    "native_expression": "fun A E R => (x y : A) → (E x y → R x y × R y x) × (R x y × R y x → E x y)",
+    "type": "(A : Type u) →\n  (E R : A → A → Type v) →\n    (equ : NativeBridge.Incremental.CRelationData.equivalenceNative A E) →\n      (pre : NativeBridge.Incremental.CRelationData.preorderNative A R) →\n        NativeBridge.Iso\n          (Rocq.Corelib.Classes.CRelationClasses.PartialOrder A E\n            ((NativeBridge.Incremental.CRelationData.EquivalenceIso A E).of equ) R\n            ((NativeBridge.Incremental.CRelationData.PreOrderIso A R).of pre))\n          (NativeBridge.Incremental.CRelationOrder.partialOrderNative A E R)",
+    "axioms": [
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.antisymmetry",
+    "profile": "CRelationOrder",
+    "certificate": "NativeBridge.Incremental.CRelationOrder.antisymmetry_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "antisymmetryNative",
+    "target_class": "native_expression",
+    "scope": "All carrier and two relation universes; arbitrary Type-valued result relation.",
+    "native_target": "NativeBridge.Incremental.CRelationOrder.antisymmetryNative",
+    "native_expression": "fun A E R h => h",
+    "type": "∀ (A : Type u) (E : A → A → Type v) (equ : NativeBridge.Incremental.CRelationData.equivalenceNative A E)\n  (R : A → A → Type w) (h : NativeBridge.Incremental.CRelationData.antisymmetricNative A E R),\n  Rocq.Corelib.Classes.CRelationClasses.antisymmetry A E\n      ((NativeBridge.Incremental.CRelationData.EquivalenceIso A E).of equ) R h =\n    NativeBridge.Incremental.CRelationOrder.antisymmetryNative A E R h",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.flip_Symmetric",
+    "profile": "CRelationOrder",
+    "certificate": "NativeBridge.Incremental.CRelationOrder.flip_Symmetric_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "flipSymmetricNative",
+    "target_class": "native_expression",
+    "scope": "All exported universes; swap the two arguments of the supplied symmetry function.",
+    "native_target": "NativeBridge.Incremental.CRelationOrder.flipSymmetricNative",
+    "native_expression": "fun A R h x y r => h y x r",
+    "type": "∀ (A : Type u) (R : A → A → Type v) (h : NativeBridge.Incremental.CRelationData.symmetricNative A R),\n  Rocq.Corelib.Classes.CRelationClasses.flip_Symmetric A R h =\n    NativeBridge.Incremental.CRelationOrder.flipSymmetricNative A R h",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.flip_Transitive",
+    "profile": "CRelationOrder",
+    "certificate": "NativeBridge.Incremental.CRelationOrder.flip_Transitive_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "flipTransitiveNative",
+    "target_class": "native_expression",
+    "scope": "All exported universes; reverse the three endpoints and swap the relation evidence arguments.",
+    "native_target": "NativeBridge.Incremental.CRelationOrder.flipTransitiveNative",
+    "native_expression": "fun A R h x y z r s => h z y x s r",
+    "type": "∀ (A : Type u) (R : A → A → Type v) (h : NativeBridge.Incremental.CRelationData.transitiveNative A R),\n  Rocq.Corelib.Classes.CRelationClasses.flip_Transitive A R h =\n    NativeBridge.Incremental.CRelationOrder.flipTransitiveNative A R h",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.partial_order_equivalence",
+    "profile": "CRelationOrder",
+    "certificate": "NativeBridge.Incremental.CRelationOrder.partial_order_equivalence_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "partialOrderEquivalenceNative",
+    "target_class": "native_expression",
+    "scope": "All five exported universes; transport both function-valued fields in the source pointwise pair.",
+    "native_target": "NativeBridge.Incremental.CRelationOrder.partialOrderEquivalenceNative",
+    "native_expression": "fun A E R h => h",
+    "type": "∀ (A : Type u) (E R : A → A → Type v) (equ : NativeBridge.Incremental.CRelationData.equivalenceNative A E)\n  (pre : NativeBridge.Incremental.CRelationData.preorderNative A R)\n  (h : NativeBridge.Incremental.CRelationOrder.partialOrderNative A E R),\n  NativeBridge.Incremental.CRelationOrder.partialTo A E R\n      (Rocq.Corelib.Classes.CRelationClasses.partial_order_equivalence A E\n        ((NativeBridge.Incremental.CRelationData.EquivalenceIso A E).of equ) R\n        ((NativeBridge.Incremental.CRelationData.PreOrderIso A R).of pre)\n        (NativeBridge.Incremental.CRelationOrder.partialOf A E R h)) =\n    NativeBridge.Incremental.CRelationOrder.partialOrderEquivalenceNative A E R h",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.eq_equivalence",
+    "profile": "CRelationOrder",
+    "certificate": "NativeBridge.Incremental.CRelationOrder.eq_equivalence_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "equalityEquivalenceNative",
+    "target_class": "native_expression",
+    "scope": "All exported carrier universes; three prerequisites proved; inverse laws for conversion to Lean Equivalence Eq, mechanical eq remains unchanged.",
+    "native_target": "NativeBridge.Incremental.CRelationOrder.equalityEquivalenceNative",
+    "closed_wrapper": "NativeBridge.Incremental.CRelationOrder.eqEquivalenceClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Classes.CRelationClasses.eq_equivalence__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.CRelationOrder.eqProof1"
+      },
+      {
+        "source": "Corelib.Classes.CRelationClasses.eq_equivalence__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.CRelationOrder.eqProof2"
+      },
+      {
+        "source": "Corelib.Classes.CRelationClasses.eq_equivalence__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.CRelationOrder.eqProof3"
+      }
+    ],
+    "native_expression": "fun A => { refl := Eq.refl, symm := fun {x y} => Eq.symm, trans := fun {x y z} => Eq.trans }",
+    "type": "∀ (A : Type u), ⋯ = ⋯",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.iff_equivalence",
+    "profile": "CRelationOrder",
+    "certificate": "NativeBridge.Incremental.CRelationOrder.iff_equivalence_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "iffEquivalenceNative",
+    "target_class": "native_expression",
+    "scope": "All exported universes; source PULift Prop carrier transported to Prop; three prerequisites proved; inverse laws for conversion to Lean Equivalence Iff.",
+    "native_target": "NativeBridge.Incremental.CRelationOrder.iffEquivalenceNative",
+    "closed_wrapper": "NativeBridge.Incremental.CRelationOrder.iffEquivalenceClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Classes.CRelationClasses.iff_Reflexive",
+        "proof": "NativeBridge.Incremental.CRelationOrder.iffProof1"
+      },
+      {
+        "source": "Corelib.Classes.CRelationClasses.iff_Symmetric",
+        "proof": "NativeBridge.Incremental.CRelationOrder.iffProof2"
+      },
+      {
+        "source": "Corelib.Classes.CRelationClasses.iff_Transitive",
+        "proof": "NativeBridge.Incremental.CRelationOrder.iffProof3"
+      }
+    ],
+    "native_expression": "{ refl := fun x => Iff.rfl, symm := fun {x y} => Iff.symm, trans := fun {x y z} => Iff.trans }",
+    "type": "⋯ = NativeBridge.Incremental.CRelationOrder.iffEquivalenceNative",
+    "axioms": []
+  },
+  {
     "source": "Corelib.ssr.ssrbool.canLR_in",
     "profile": "SSRBoolClosedStatements",
     "certificate": "NativeBridge.Incremental.SSRBoolClosedStatements.RocqPending.Corelib.ssr.ssrbool.canLR_in.statement.correspondence",

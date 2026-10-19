@@ -100,4 +100,18 @@ EquivalenceIso 给出双向逆，三个字段投影也有对应等式。这里�
 
 [Type 值关系证明](../experiments/incremental-correspondence-20261019/proofs/CRelationData.lean)。
 
+
+## 8. Eq / Iff 的等价关系记录：对应到现成的 Lean 命题
+
+机械 CRelationClasses.eq_equivalence 的关系值是 PULift (机械 eq x y)。通过已证的机械 Eq ↔ Lean Eq，得到：
+
+    equalityEquivalenceIso.to (eqEquivalenceClosed A)
+      = equalityEquivalenceNative A
+
+右侧的类型为 Lean 的 Equivalence (@Eq A)，三个字段分别是 Eq.refl、Eq.symm、Eq.trans。equalityEquivalenceIso 还证明正反两条转换互为逆。三个源端前置条件已经证明，不作为用户额外假设。
+
+同理，iff_equivalence 从 PULift Prop 上的机械 iff 转换到 Prop 上的 Equivalence Iff，也有两个逆律。这两个具体关系的值仅为证明；这正是它们可以转成 Prop 中的原生记录，而上一节任意 Type 值关系需要保留计算数据的原因。
+
+[Eq / Iff 与 PartialOrder 的证明](../experiments/incremental-correspondence-20261019/proofs/CRelationOrder.lean)。
+
 完整签名、假设和公理依赖见 [证书报告](../experiments/incremental-correspondence-20261019/reports/CERTIFICATES.md)；当前总数见 [工作区摘要](../experiments/incremental-correspondence-20261019/reports/summary.json)。原生表达式对应与现成 Lean／Mathlib API 直接对应分别登记。
