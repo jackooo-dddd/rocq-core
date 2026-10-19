@@ -203,3 +203,9 @@ SSR Bool 的 314 个依赖/原陈述目标已有闭合证明，覆盖 271 / 275 
 新增 64 根，当前 1795 / 2180。Byte 10/10、PrimInt63 37/37、CarryType 1/1、PrimString 17/17、Init.Equality 22/22、PrimArray 8/8。107 个 profile 验证，98 个覆盖 profile / 1539 份证书共同导入通过。详见 [结果](BATCH44_48_RESULTS.md)。
 
 下一步：Init.Wf 的 10 个无条件陈述先原生化并独立证明，再处理 Acc_inv_dep 的显式条件。复用已有 Acc/WellFounded Iso 和 Fix/Fix_F 对应，保留原始声明的外延性前提和 universe 范围。随后推进 Program.Wf、SSR 重写接口与浮点表示；opaque 数据缺口仍需计算证据。
+
+## 第四十九至五十四批：良基递归与 SSR 重写
+
+新增 76 根，当前 1871 / 2180；Init.Wf 21/21、Program.Wf 10/12、ssreflect_rw 52/55、ssrclasses 4/4、ssrunder 7/7。314 个原有条件根已闭合并完成对应，剩余 17；原陈述独立证明 260。113 个 profile 验证，104 个覆盖 profile / 1615 份证书共同导入通过。详见 [结果](BATCH49_54_RESULTS.md)。
+
+下一步：Uint63Axioms / Sint63Axioms。先桥接其透明定义（进位定义、比较、位测试、to_Z、位宽），再依赖已有机器整数和二进制整数对应处理规格陈述。规格 iff 和原规格证明分别统计。浮点模型、opaque 数据计算及剩余类接口继续按账本保留。

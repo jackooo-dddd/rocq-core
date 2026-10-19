@@ -9857,6 +9857,316 @@
     "certificate": "NativeBridge.Incremental.NumberRepresentation.number_eq_dec_agrees"
   },
   {
+    "source": "Corelib.Init.Wf.Acc_inv_dep",
+    "wrapper": {
+      "type": "Prop",
+      "source_references": [],
+      "name": "NativeBridge.Incremental.WellFoundedStatements.accInvDepClosed",
+      "kind": "definition",
+      "axioms": []
+    },
+    "witnesses": [
+      {
+        "source": "Corelib.Init.Wf.Acc_inv_dep__rocq2lean_obligation_1",
+        "type": "Rocq.Corelib.Init.Wf.Acc_inv_dep__rocq2lean_obligation_1.statement",
+        "source_references": [
+          "Rocq.Corelib.Init.Wf.Acc_inv_dep__rocq2lean_obligation_1.statement"
+        ],
+        "name": "NativeBridge.Incremental.WellFoundedStatements.acc_inv_dep_witness",
+        "kind": "theorem",
+        "axioms": []
+      }
+    ],
+    "certificate": "NativeBridge.Incremental.WellFoundedStatements.acc_inv_dep_correspondence"
+  },
+  {
+    "source": "Corelib.Program.Wf.Fix_F_sub",
+    "wrapper": {
+      "type": "{A : Type u} →\n  (R : A → A → Prop) →\n    (P : A → Type v) →\n      ((x : A) →\n          ((y : Rocq.Corelib.Init.Specif.sig A fun y => R y x) →\n              P (Rocq.Corelib.Init.Specif.proj1_sig A (fun y => R y x) y)) →\n            P x) →\n        (x : A) → Rocq.Corelib.Init.Wf.Acc A R x → P x",
+      "source_references": [
+        "Rocq.Corelib.Init.Specif.sig",
+        "Rocq.Corelib.Init.Specif.proj1_sig",
+        "Rocq.Corelib.Init.Wf.Acc"
+      ],
+      "name": "NativeBridge.Incremental.ProgramWellFounded.closedFixF",
+      "kind": "definition",
+      "axioms": []
+    },
+    "witnesses": [
+      {
+        "source": "Corelib.Init.Specif.proj2_sig",
+        "type": "Rocq.Corelib.Init.Specif.proj2_sig.statement",
+        "source_references": [
+          "Rocq.Corelib.Init.Specif.proj2_sig.statement"
+        ],
+        "name": "NativeBridge.Incremental.ProgramWellFounded.proj2_witness",
+        "kind": "theorem",
+        "axioms": []
+      }
+    ],
+    "certificate": "NativeBridge.Incremental.ProgramWellFounded.fixF_agrees"
+  },
+  {
+    "source": "Corelib.Program.Wf.Fix_sub",
+    "wrapper": {
+      "type": "{A : Type u} →\n  (R : A → A → Prop) →\n    Rocq.Corelib.Init.Wf.well_founded A R →\n      (P : A → Type v) →\n        ((x : A) →\n            ((y : Rocq.Corelib.Init.Specif.sig A fun y => R y x) →\n                P (Rocq.Corelib.Init.Specif.proj1_sig A (fun y => R y x) y)) →\n              P x) →\n          (x : A) → P x",
+      "source_references": [
+        "Rocq.Corelib.Init.Wf.well_founded",
+        "Rocq.Corelib.Init.Specif.sig",
+        "Rocq.Corelib.Init.Specif.proj1_sig"
+      ],
+      "name": "NativeBridge.Incremental.ProgramWellFounded.closedFix",
+      "kind": "definition",
+      "axioms": []
+    },
+    "witnesses": [
+      {
+        "source": "Corelib.Init.Specif.proj2_sig",
+        "type": "Rocq.Corelib.Init.Specif.proj2_sig.statement",
+        "source_references": [
+          "Rocq.Corelib.Init.Specif.proj2_sig.statement"
+        ],
+        "name": "NativeBridge.Incremental.ProgramWellFounded.proj2_witness",
+        "kind": "theorem",
+        "axioms": []
+      }
+    ],
+    "certificate": "NativeBridge.Incremental.ProgramWellFounded.fix_agrees"
+  },
+  {
+    "source": "Corelib.Program.Wf.F_unfold",
+    "wrapper": {
+      "type": "Prop",
+      "source_references": [],
+      "name": "NativeBridge.Incremental.ProgramWellFounded.unfoldClosed",
+      "kind": "definition",
+      "axioms": []
+    },
+    "witnesses": [
+      {
+        "source": "Corelib.Init.Specif.proj2_sig",
+        "type": "Rocq.Corelib.Init.Specif.proj2_sig.statement",
+        "source_references": [
+          "Rocq.Corelib.Init.Specif.proj2_sig.statement"
+        ],
+        "name": "NativeBridge.Incremental.ProgramWellFounded.proj2_witness",
+        "kind": "theorem",
+        "axioms": []
+      },
+      {
+        "source": "Corelib.Program.Wf.F_unfold__rocq2lean_obligation_1",
+        "type": "Rocq.Corelib.Program.Wf.F_unfold__rocq2lean_obligation_1.statement",
+        "source_references": [
+          "Rocq.Corelib.Program.Wf.F_unfold__rocq2lean_obligation_1.statement"
+        ],
+        "name": "NativeBridge.Incremental.ProgramWellFounded.unfold_witness",
+        "kind": "theorem",
+        "axioms": []
+      }
+    ],
+    "certificate": "NativeBridge.Incremental.ProgramWellFounded.f_unfold_correspondence"
+  },
+  {
+    "source": "Corelib.Program.Wf.Fix_F_eq",
+    "wrapper": {
+      "type": "Prop",
+      "source_references": [],
+      "name": "NativeBridge.Incremental.ProgramWellFounded.fixFEquationClosed",
+      "kind": "definition",
+      "axioms": []
+    },
+    "witnesses": [
+      {
+        "source": "Corelib.Program.Wf.Fix_F_eq__rocq2lean_obligation_1",
+        "type": "Rocq.Corelib.Program.Wf.Fix_F_eq__rocq2lean_obligation_1.statement",
+        "source_references": [
+          "Rocq.Corelib.Program.Wf.Fix_F_eq__rocq2lean_obligation_1.statement"
+        ],
+        "name": "NativeBridge.Incremental.ProgramWellFounded.fixF_eq_witness",
+        "kind": "theorem",
+        "axioms": []
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig",
+        "type": "Rocq.Corelib.Init.Specif.proj2_sig.statement",
+        "source_references": [
+          "Rocq.Corelib.Init.Specif.proj2_sig.statement"
+        ],
+        "name": "NativeBridge.Incremental.ProgramWellFounded.proj2_witness",
+        "kind": "theorem",
+        "axioms": []
+      }
+    ],
+    "certificate": "NativeBridge.Incremental.ProgramWellFounded.fix_f_eq_correspondence"
+  },
+  {
+    "source": "Corelib.Program.Wf.Fix_F_inv",
+    "wrapper": {
+      "type": "Prop",
+      "source_references": [],
+      "name": "NativeBridge.Incremental.ProgramWellFounded.fixFIndependentClosed",
+      "kind": "definition",
+      "axioms": []
+    },
+    "witnesses": [
+      {
+        "source": "Corelib.Init.Specif.proj2_sig",
+        "type": "Rocq.Corelib.Init.Specif.proj2_sig.statement",
+        "source_references": [
+          "Rocq.Corelib.Init.Specif.proj2_sig.statement"
+        ],
+        "name": "NativeBridge.Incremental.ProgramWellFounded.proj2_witness",
+        "kind": "theorem",
+        "axioms": []
+      }
+    ],
+    "certificate": "NativeBridge.Incremental.ProgramWellFounded.fix_f_inv_correspondence"
+  },
+  {
+    "source": "Corelib.Program.Wf.eq_Fix_F_sub",
+    "wrapper": {
+      "type": "Prop",
+      "source_references": [],
+      "name": "NativeBridge.Incremental.ProgramWellFounded.fixFIndependentGeneralClosed",
+      "kind": "definition",
+      "axioms": []
+    },
+    "witnesses": [
+      {
+        "source": "Corelib.Init.Specif.proj2_sig",
+        "type": "Rocq.Corelib.Init.Specif.proj2_sig.statement",
+        "source_references": [
+          "Rocq.Corelib.Init.Specif.proj2_sig.statement"
+        ],
+        "name": "NativeBridge.Incremental.ProgramWellFounded.proj2_witness",
+        "kind": "theorem",
+        "axioms": []
+      }
+    ],
+    "certificate": "NativeBridge.Incremental.ProgramWellFounded.eq_fix_f_sub_correspondence"
+  },
+  {
+    "source": "Corelib.Program.Wf.Fix_eq",
+    "wrapper": {
+      "type": "Prop",
+      "source_references": [],
+      "name": "NativeBridge.Incremental.ProgramWellFounded.fixEquationClosed",
+      "kind": "definition",
+      "axioms": []
+    },
+    "witnesses": [
+      {
+        "source": "Corelib.Init.Specif.proj2_sig",
+        "type": "Rocq.Corelib.Init.Specif.proj2_sig.statement",
+        "source_references": [
+          "Rocq.Corelib.Init.Specif.proj2_sig.statement"
+        ],
+        "name": "NativeBridge.Incremental.ProgramWellFounded.proj2_witness",
+        "kind": "theorem",
+        "axioms": []
+      }
+    ],
+    "certificate": "NativeBridge.Incremental.ProgramWellFounded.fix_eq_correspondence"
+  },
+  {
+    "source": "Corelib.Program.Wf.fix_sub_eq",
+    "wrapper": {
+      "type": "Prop",
+      "source_references": [],
+      "name": "NativeBridge.Incremental.ProgramWellFounded.fixSubEquationClosed",
+      "kind": "definition",
+      "axioms": []
+    },
+    "witnesses": [
+      {
+        "source": "Corelib.Init.Specif.proj2_sig",
+        "type": "Rocq.Corelib.Init.Specif.proj2_sig.statement",
+        "source_references": [
+          "Rocq.Corelib.Init.Specif.proj2_sig.statement"
+        ],
+        "name": "NativeBridge.Incremental.ProgramWellFounded.proj2_witness",
+        "kind": "theorem",
+        "axioms": []
+      }
+    ],
+    "certificate": "NativeBridge.Incremental.ProgramWellFounded.fix_sub_eq_correspondence"
+  },
+  {
+    "source": "Corelib.ssr.ssreflect_rw.unlock_with",
+    "wrapper": {
+      "type": "Prop",
+      "source_references": [],
+      "name": "NativeBridge.Incremental.SSRRewriteStatements.unlockWithClosed",
+      "kind": "definition",
+      "axioms": []
+    },
+    "witnesses": [
+      {
+        "source": "Corelib.ssr.ssreflect_rw.locked_with_unlockable__rocq2lean_obligation_1",
+        "type": "Rocq.Corelib.ssr.ssreflect_rw.locked_with_unlockable__rocq2lean_obligation_1.statement",
+        "source_references": [
+          "Rocq.Corelib.ssr.ssreflect_rw.locked_with_unlockable__rocq2lean_obligation_1.statement"
+        ],
+        "name": "NativeBridge.Incremental.SSRRewriteStatements.lockedWith_witness",
+        "kind": "theorem",
+        "axioms": []
+      }
+    ],
+    "certificate": "NativeBridge.Incremental.SSRRewriteStatements.unlock_with_correspondence"
+  },
+  {
+    "source": "Corelib.ssr.ssreflect_rw.locked_with_unlockable",
+    "wrapper": {
+      "type": "(T : Sort u) → Rocq.Corelib.Init.Datatypes.unit → (x : T) → Rocq.Corelib.ssr.ssreflect_rw.unlockable T x",
+      "source_references": [
+        "Rocq.Corelib.Init.Datatypes.unit",
+        "Rocq.Corelib.ssr.ssreflect_rw.unlockable"
+      ],
+      "name": "NativeBridge.Incremental.SSRRewriteStatements.lockedWithClosed",
+      "kind": "definition",
+      "axioms": []
+    },
+    "witnesses": [
+      {
+        "source": "Corelib.ssr.ssreflect_rw.locked_with_unlockable__rocq2lean_obligation_1",
+        "type": "Rocq.Corelib.ssr.ssreflect_rw.locked_with_unlockable__rocq2lean_obligation_1.statement",
+        "source_references": [
+          "Rocq.Corelib.ssr.ssreflect_rw.locked_with_unlockable__rocq2lean_obligation_1.statement"
+        ],
+        "name": "NativeBridge.Incremental.SSRRewriteStatements.lockedWith_witness",
+        "kind": "theorem",
+        "axioms": []
+      }
+    ],
+    "certificate": "NativeBridge.Incremental.SSRRewriteStatements.lockedWithUnlockable_agrees"
+  },
+  {
+    "source": "Corelib.ssr.ssreflect_rw.ssr_converse",
+    "wrapper": {
+      "type": "(R : Sort u) → R → Rocq.Corelib.Init.Datatypes.prod Rocq.Corelib.Init.Logic.True R",
+      "source_references": [
+        "Rocq.Corelib.Init.Datatypes.prod",
+        "Rocq.Corelib.Init.Logic.True"
+      ],
+      "name": "NativeBridge.Incremental.SSRRewriteStatements.converseClosed",
+      "kind": "definition",
+      "axioms": []
+    },
+    "witnesses": [
+      {
+        "source": "Corelib.ssr.ssreflect_rw.ssr_converse__rocq2lean_obligation_1",
+        "type": "Rocq.Corelib.ssr.ssreflect_rw.ssr_converse__rocq2lean_obligation_1.statement",
+        "source_references": [
+          "Rocq.Corelib.ssr.ssreflect_rw.ssr_converse__rocq2lean_obligation_1.statement"
+        ],
+        "name": "NativeBridge.Incremental.SSRRewriteStatements.converse_witness",
+        "kind": "theorem",
+        "axioms": []
+      }
+    ],
+    "certificate": "NativeBridge.Incremental.SSRRewriteStatements.converse_agrees"
+  },
+  {
     "source": "Corelib.ssr.ssrbool.canLR_in",
     "wrapper": {
       "type": "Prop",

@@ -11989,6 +11989,980 @@ Rocq.Corelib.Array.PrimArray.max_length = NativeBridge.Incremental.ArrayCapacity
 
 公理闭包：空
 
+## Corelib.Init.Wf.Acc_ind
+
+NativeBridge.Incremental.WellFoundedStatements.acc_ind_correspondence
+
+目标：NativeBridge.Incremental.WellFoundedStatements.accInduction；范围：Full mechanically translated universe parameters and explicit extensionality hypotheses retained. Source and matching native universal statements independently proved; iff follows from those proofs. Native uses Acc and WellFounded.fix/fixF, with no remaining source symbols.
+
+```lean
+Rocq.Corelib.Init.Wf.Acc_ind.statement ↔ NativeBridge.Incremental.WellFoundedStatements.accInduction
+```
+
+公理闭包：空
+
+## Corelib.Init.Wf.Acc_sind
+
+NativeBridge.Incremental.WellFoundedStatements.acc_sind_correspondence
+
+目标：NativeBridge.Incremental.WellFoundedStatements.accInduction；范围：Full mechanically translated universe parameters and explicit extensionality hypotheses retained. Source and matching native universal statements independently proved; iff follows from those proofs. Native uses Acc and WellFounded.fix/fixF, with no remaining source symbols.
+
+```lean
+Rocq.Corelib.Init.Wf.Acc_sind.statement ↔ NativeBridge.Incremental.WellFoundedStatements.accInduction
+```
+
+公理闭包：空
+
+## Corelib.Init.Wf.Acc_intro_generator
+
+NativeBridge.Incremental.WellFoundedStatements.acc_intro_generator_correspondence
+
+目标：NativeBridge.Incremental.WellFoundedStatements.accGenerator；范围：Full mechanically translated universe parameters and explicit extensionality hypotheses retained. Source and matching native universal statements independently proved; iff follows from those proofs. Native uses Acc and WellFounded.fix/fixF, with no remaining source symbols.
+
+```lean
+Rocq.Corelib.Init.Wf.Acc_intro_generator.statement ↔ NativeBridge.Incremental.WellFoundedStatements.accGenerator
+```
+
+公理闭包：空
+
+## Corelib.Init.Wf.Acc_inv
+
+NativeBridge.Incremental.WellFoundedStatements.acc_inv_correspondence
+
+目标：NativeBridge.Incremental.WellFoundedStatements.accInverse；范围：Full mechanically translated universe parameters and explicit extensionality hypotheses retained. Source and matching native universal statements independently proved; iff follows from those proofs. Native uses Acc and WellFounded.fix/fixF, with no remaining source symbols.
+
+```lean
+Rocq.Corelib.Init.Wf.Acc_inv.statement ↔ NativeBridge.Incremental.WellFoundedStatements.accInverse
+```
+
+公理闭包：空
+
+## Corelib.Init.Wf.well_founded_ind
+
+NativeBridge.Incremental.WellFoundedStatements.well_founded_ind_correspondence
+
+目标：NativeBridge.Incremental.WellFoundedStatements.wellFoundedInduction；范围：Full mechanically translated universe parameters and explicit extensionality hypotheses retained. Source and matching native universal statements independently proved; iff follows from those proofs. Native uses Acc and WellFounded.fix/fixF, with no remaining source symbols.
+
+```lean
+Rocq.Corelib.Init.Wf.well_founded_ind.statement ↔ NativeBridge.Incremental.WellFoundedStatements.wellFoundedInduction
+```
+
+公理闭包：空
+
+## Corelib.Init.Wf.Fix_F_eq
+
+NativeBridge.Incremental.WellFoundedStatements.fix_f_eq_correspondence
+
+目标：NativeBridge.Incremental.WellFoundedStatements.fixFEquation；范围：Full mechanically translated universe parameters and explicit extensionality hypotheses retained. Source and matching native universal statements independently proved; iff follows from those proofs. Native uses Acc and WellFounded.fix/fixF, with no remaining source symbols.
+
+```lean
+Rocq.Corelib.Init.Wf.Fix_F_eq.statement ↔ NativeBridge.Incremental.WellFoundedStatements.fixFEquation
+```
+
+公理闭包：空
+
+## Corelib.Init.Wf.Fix_F_inv
+
+NativeBridge.Incremental.WellFoundedStatements.fix_f_inv_correspondence
+
+目标：NativeBridge.Incremental.WellFoundedStatements.fixFIndependent；范围：Full mechanically translated universe parameters and explicit extensionality hypotheses retained. Source and matching native universal statements independently proved; iff follows from those proofs. Native uses Acc and WellFounded.fix/fixF, with no remaining source symbols.
+
+```lean
+Rocq.Corelib.Init.Wf.Fix_F_inv.statement ↔ NativeBridge.Incremental.WellFoundedStatements.fixFIndependent
+```
+
+公理闭包：空
+
+## Corelib.Init.Wf.Fix_F_inv_gen
+
+NativeBridge.Incremental.WellFoundedStatements.fix_f_inv_gen_correspondence
+
+目标：NativeBridge.Incremental.WellFoundedStatements.fixFIndependentGeneral；范围：Full mechanically translated universe parameters and explicit extensionality hypotheses retained. Source and matching native universal statements independently proved; iff follows from those proofs. Native uses Acc and WellFounded.fix/fixF, with no remaining source symbols.
+
+```lean
+Rocq.Corelib.Init.Wf.Fix_F_inv_gen.statement ↔ NativeBridge.Incremental.WellFoundedStatements.fixFIndependentGeneral
+```
+
+公理闭包：空
+
+## Corelib.Init.Wf.Fix_eq
+
+NativeBridge.Incremental.WellFoundedStatements.fix_eq_correspondence
+
+目标：NativeBridge.Incremental.WellFoundedStatements.fixEquation；范围：Full mechanically translated universe parameters and explicit extensionality hypotheses retained. Source and matching native universal statements independently proved; iff follows from those proofs. Native uses Acc and WellFounded.fix/fixF, with no remaining source symbols.
+
+```lean
+Rocq.Corelib.Init.Wf.Fix_eq.statement ↔ NativeBridge.Incremental.WellFoundedStatements.fixEquation
+```
+
+公理闭包：Quot.sound
+
+## Corelib.Init.Wf.Fix_eq_gen
+
+NativeBridge.Incremental.WellFoundedStatements.fix_eq_gen_correspondence
+
+目标：NativeBridge.Incremental.WellFoundedStatements.fixEquationGeneral；范围：Full mechanically translated universe parameters and explicit extensionality hypotheses retained. Source and matching native universal statements independently proved; iff follows from those proofs. Native uses Acc and WellFounded.fix/fixF, with no remaining source symbols.
+
+```lean
+Rocq.Corelib.Init.Wf.Fix_eq_gen.statement ↔ NativeBridge.Incremental.WellFoundedStatements.fixEquationGeneral
+```
+
+公理闭包：Quot.sound
+
+## Corelib.Init.Wf.Acc_inv_dep
+
+NativeBridge.Incremental.WellFoundedStatements.acc_inv_dep_correspondence
+
+目标：NativeBridge.Incremental.WellFoundedStatements.accDependentInduction；范围：Full mechanically translated universe parameters and explicit extensionality hypotheses retained. Source and matching native universal statements independently proved; iff follows from those proofs. Native uses Acc and WellFounded.fix/fixF, with no remaining source symbols.
+
+```lean
+RocqPending.Corelib.Init.Wf.Acc_inv_dep.statement ↔ NativeBridge.Incremental.WellFoundedStatements.accDependentInduction
+```
+
+公理闭包：空
+
+## Corelib.Program.Wf.MR
+
+NativeBridge.Incremental.ProgramWellFounded.mr_agrees
+
+目标：InvImage；范围：Source universes preserved. Subtype callbacks correspond by explicitly proved inverse adapters. Native recursion uses WellFounded.fix/fixF; all extracted proof conditions are supplied by closed checked witnesses. Matching universal statements retain extensionality hypotheses and are independently proved on both sides.
+
+```lean
+∀ (T : Sort u) (M : Sort v) (R : M → M → Prop) (m : T → M), Rocq.Corelib.Program.Wf.MR T M R m = InvImage R m
+```
+
+公理闭包：空
+
+## Corelib.Program.Wf.measure_wf
+
+NativeBridge.Incremental.ProgramWellFounded.measure_wf_correspondence
+
+目标：NativeBridge.Incremental.ProgramWellFounded.measureStatement；范围：Source universes preserved. Subtype callbacks correspond by explicitly proved inverse adapters. Native recursion uses WellFounded.fix/fixF; all extracted proof conditions are supplied by closed checked witnesses. Matching universal statements retain extensionality hypotheses and are independently proved on both sides.
+
+```lean
+Rocq.Corelib.Program.Wf.measure_wf.statement ↔ NativeBridge.Incremental.ProgramWellFounded.measureStatement
+```
+
+公理闭包：空
+
+## Corelib.Program.Wf.Fix_F_sub
+
+NativeBridge.Incremental.ProgramWellFounded.fixF_agrees
+
+目标：NativeBridge.Incremental.ProgramWellFounded.fixFSubtype；范围：Source universes preserved. Subtype callbacks correspond by explicitly proved inverse adapters. Native recursion uses WellFounded.fix/fixF; all extracted proof conditions are supplied by closed checked witnesses. Matching universal statements retain extensionality hypotheses and are independently proved on both sides.
+
+```lean
+∀ {A : Type u} (R : A → A → Prop) (P : A → Type v) (G : NativeBridge.Incremental.ProgramWellFounded.NativeStep R P)
+  (x : A) (a : Rocq.Corelib.Init.Wf.Acc A R x),
+  RocqPending.Corelib.Program.Wf.Fix_F_sub A R P (NativeBridge.Incremental.ProgramWellFounded.sourceStep R P G) x a =
+    NativeBridge.Incremental.ProgramWellFounded.fixFSubtype R P G x ⋯
+```
+
+公理闭包：Quot.sound
+
+## Corelib.Program.Wf.Fix_sub
+
+NativeBridge.Incremental.ProgramWellFounded.fix_agrees
+
+目标：NativeBridge.Incremental.ProgramWellFounded.fixSubtype；范围：Source universes preserved. Subtype callbacks correspond by explicitly proved inverse adapters. Native recursion uses WellFounded.fix/fixF; all extracted proof conditions are supplied by closed checked witnesses. Matching universal statements retain extensionality hypotheses and are independently proved on both sides.
+
+```lean
+∀ {A : Type u} (R : A → A → Prop) (wf : Rocq.Corelib.Init.Wf.well_founded A R) (P : A → Type v)
+  (G : NativeBridge.Incremental.ProgramWellFounded.NativeStep R P) (x : A),
+  RocqPending.Corelib.Program.Wf.Fix_sub A R wf P (NativeBridge.Incremental.ProgramWellFounded.sourceStep R P G) x =
+    NativeBridge.Incremental.ProgramWellFounded.fixSubtype R ⋯ P G x
+```
+
+公理闭包：Quot.sound
+
+## Corelib.Program.Wf.F_unfold
+
+NativeBridge.Incremental.ProgramWellFounded.f_unfold_correspondence
+
+目标：NativeBridge.Incremental.ProgramWellFounded.unfoldStatement；范围：Source universes preserved. Subtype callbacks correspond by explicitly proved inverse adapters. Native recursion uses WellFounded.fix/fixF; all extracted proof conditions are supplied by closed checked witnesses. Matching universal statements retain extensionality hypotheses and are independently proved on both sides.
+
+```lean
+RocqPending.Corelib.Program.Wf.F_unfold.statement ↔ NativeBridge.Incremental.ProgramWellFounded.unfoldStatement
+```
+
+公理闭包：空
+
+## Corelib.Program.Wf.Fix_F_eq
+
+NativeBridge.Incremental.ProgramWellFounded.fix_f_eq_correspondence
+
+目标：NativeBridge.Incremental.ProgramWellFounded.fixFEquation；范围：Source universes preserved. Subtype callbacks correspond by explicitly proved inverse adapters. Native recursion uses WellFounded.fix/fixF; all extracted proof conditions are supplied by closed checked witnesses. Matching universal statements retain extensionality hypotheses and are independently proved on both sides.
+
+```lean
+RocqPending.Corelib.Program.Wf.Fix_F_eq.statement ↔ NativeBridge.Incremental.ProgramWellFounded.fixFEquation
+```
+
+公理闭包：空
+
+## Corelib.Program.Wf.Fix_F_inv
+
+NativeBridge.Incremental.ProgramWellFounded.fix_f_inv_correspondence
+
+目标：NativeBridge.Incremental.ProgramWellFounded.fixFIndependent；范围：Source universes preserved. Subtype callbacks correspond by explicitly proved inverse adapters. Native recursion uses WellFounded.fix/fixF; all extracted proof conditions are supplied by closed checked witnesses. Matching universal statements retain extensionality hypotheses and are independently proved on both sides.
+
+```lean
+RocqPending.Corelib.Program.Wf.Fix_F_inv.statement ↔ NativeBridge.Incremental.ProgramWellFounded.fixFIndependent
+```
+
+公理闭包：空
+
+## Corelib.Program.Wf.eq_Fix_F_sub
+
+NativeBridge.Incremental.ProgramWellFounded.eq_fix_f_sub_correspondence
+
+目标：NativeBridge.Incremental.ProgramWellFounded.fixFIndependentGeneral；范围：Source universes preserved. Subtype callbacks correspond by explicitly proved inverse adapters. Native recursion uses WellFounded.fix/fixF; all extracted proof conditions are supplied by closed checked witnesses. Matching universal statements retain extensionality hypotheses and are independently proved on both sides.
+
+```lean
+RocqPending.Corelib.Program.Wf.eq_Fix_F_sub.statement ↔
+  NativeBridge.Incremental.ProgramWellFounded.fixFIndependentGeneral
+```
+
+公理闭包：空
+
+## Corelib.Program.Wf.Fix_eq
+
+NativeBridge.Incremental.ProgramWellFounded.fix_eq_correspondence
+
+目标：NativeBridge.Incremental.ProgramWellFounded.fixEquation；范围：Source universes preserved. Subtype callbacks correspond by explicitly proved inverse adapters. Native recursion uses WellFounded.fix/fixF; all extracted proof conditions are supplied by closed checked witnesses. Matching universal statements retain extensionality hypotheses and are independently proved on both sides.
+
+```lean
+RocqPending.Corelib.Program.Wf.Fix_eq.statement ↔ NativeBridge.Incremental.ProgramWellFounded.fixEquation
+```
+
+公理闭包：空
+
+## Corelib.Program.Wf.fix_sub_eq
+
+NativeBridge.Incremental.ProgramWellFounded.fix_sub_eq_correspondence
+
+目标：NativeBridge.Incremental.ProgramWellFounded.fixEquation；范围：Source universes preserved. Subtype callbacks correspond by explicitly proved inverse adapters. Native recursion uses WellFounded.fix/fixF; all extracted proof conditions are supplied by closed checked witnesses. Matching universal statements retain extensionality hypotheses and are independently proved on both sides.
+
+```lean
+RocqPending.Corelib.Program.Wf.fix_sub_eq.statement ↔ NativeBridge.Incremental.ProgramWellFounded.fixEquation
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.NonPropType.call_of
+
+NativeBridge.Incremental.SSRRewriteData.callIso
+
+目标：NativeBridge.Incremental.SSRRewriteData.typeUniverse；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+(c : Rocq.Corelib.Init.Datatypes.unit) →
+  (b : NativeBridge.RBool) → NativeBridge.Iso (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.call_of c b) (Type u)
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.NonPropType.test_of
+
+NativeBridge.Incremental.SSRRewriteData.testIso
+
+目标：NativeBridge.Incremental.SSRRewriteData.unitType；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+(b : NativeBridge.RBool) → NativeBridge.Iso (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.test_of b) Unit
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.TheCanonical.put
+
+NativeBridge.Incremental.SSRRewriteData.canonicalIso
+
+目标：NativeBridge.Incremental.SSRRewriteData.trueType；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+(V : Sort u) →
+  (S : Sort v) → (x y : V) → (s : S) → NativeBridge.Iso (Rocq.Corelib.ssr.ssreflect_rw.TheCanonical.put V S x y s) True
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.external_view
+
+NativeBridge.Incremental.SSRRewriteData.viewIso
+
+目标：NativeBridge.Incremental.SSRRewriteData.typeUniverse；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+NativeBridge.Iso Rocq.Corelib.ssr.ssreflect_rw.external_view (Type u)
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.phantom
+
+NativeBridge.Incremental.SSRRewriteData.phantomIso
+
+目标：NativeBridge.Incremental.SSRRewriteData.trueType；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+(T : Sort u) → (x : T) → NativeBridge.Iso (Rocq.Corelib.ssr.ssreflect_rw.phantom T x) True
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.phant
+
+NativeBridge.Incremental.SSRRewriteData.phantIso
+
+目标：NativeBridge.Incremental.SSRRewriteData.trueType；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+(T : Sort u) → NativeBridge.Iso (Rocq.Corelib.ssr.ssreflect_rw.phant T) True
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.abstract_lock
+
+NativeBridge.Incremental.SSRRewriteData.lockIso
+
+目标：NativeBridge.Incremental.SSRRewriteData.unitType；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+NativeBridge.Iso Rocq.Corelib.ssr.ssreflect_rw.abstract_lock Unit
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.abstract
+
+NativeBridge.Incremental.SSRRewriteData.abstractIso
+
+目标：NativeBridge.Incremental.SSRRewriteData.identityType；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+(T : Type u) →
+  (n : NativeBridge.MN) →
+    (k : Rocq.Corelib.ssr.ssreflect_rw.abstract_lock) →
+      NativeBridge.Iso (Rocq.Corelib.ssr.ssreflect_rw.abstract T n k) T
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.argumentType
+
+NativeBridge.Incremental.SSRRewriteData.argumentTypeIso
+
+目标：NativeBridge.Incremental.SSRRewriteData.identityType；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+(T : Type u) →
+  (P : T → Sort v) → (f : (x : T) → P x) → NativeBridge.Iso (Rocq.Corelib.ssr.ssreflect_rw.argumentType T P f) T
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.dependentReturnType
+
+NativeBridge.Incremental.SSRRewriteData.dependentReturnTypeIso
+
+目标：NativeBridge.Incremental.SSRRewriteData.identityType；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+(T : Sort u) →
+  (P : T → Type v) →
+    (f : (x : T) → P x) → (x : T) → NativeBridge.Iso (Rocq.Corelib.ssr.ssreflect_rw.dependentReturnType T P f x) (P x)
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.returnType
+
+NativeBridge.Incremental.SSRRewriteData.returnTypeIso
+
+目标：NativeBridge.Incremental.SSRRewriteData.identityType；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+(A : Sort u) → (B : Type v) → (f : A → B) → NativeBridge.Iso (Rocq.Corelib.ssr.ssreflect_rw.returnType A B f) B
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.unlockable
+
+NativeBridge.Incremental.SSRRewriteData.unlockableIso
+
+目标：NativeBridge.Incremental.SSRRewriteData.unitType；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+(T : Sort u) → (x : T) → NativeBridge.Iso (Rocq.Corelib.ssr.ssreflect_rw.unlockable T x) Unit
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.NonPropType.call
+
+NativeBridge.Incremental.SSRRewriteData.call_agrees
+
+目标：id；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+∀ (T : Type u),
+  NativeBridge.Incremental.SSRRewriteData.callTo (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.maybeProp T)
+      Rocq.Corelib.Init.Datatypes.bool.false (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.call T) =
+    id T
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.NonPropType.callee
+
+NativeBridge.Incremental.SSRRewriteData.callee_agrees
+
+目标：id；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+∀ (c : Rocq.Corelib.Init.Datatypes.unit) (b : NativeBridge.RBool)
+  (x : Rocq.Corelib.ssr.ssreflect_rw.NonPropType.call_of c b),
+  Rocq.Corelib.ssr.ssreflect_rw.NonPropType.callee c b x = id (NativeBridge.Incremental.SSRRewriteData.callTo c b x)
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.NonPropType.condition
+
+NativeBridge.Incremental.SSRRewriteData.condition_agrees
+
+目标：id；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+∀ (b : NativeBridge.RBool) (t : Rocq.Corelib.ssr.ssreflect_rw.NonPropType.test_of b),
+  NativeBridge.Incremental.SSRRewriteData.unitTo (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.condition b t) =
+    id (NativeBridge.Incremental.SSRRewriteData.testTo b t)
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.NonPropType.frame
+
+NativeBridge.Incremental.SSRRewriteData.frame_agrees
+
+目标：Prod.snd；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+∀ (t : Rocq.Corelib.ssr.ssreflect_rw.NonPropType.type),
+  NativeBridge.Incremental.SSRRewriteData.callTo
+      (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.condition (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.result t)
+        (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.test t))
+      (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.result t) (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.frame t) =
+    (NativeBridge.Incremental.SSRRewriteData.nonPropTo t).snd
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.NonPropType.result
+
+NativeBridge.Incremental.SSRRewriteData.result_agrees
+
+目标：Prod.fst；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+∀ (t : Rocq.Corelib.ssr.ssreflect_rw.NonPropType.type),
+  NativeBridge.boolTo (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.result t) =
+    (NativeBridge.Incremental.SSRRewriteData.nonPropTo t).fst
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.TheCanonical.get
+
+NativeBridge.Incremental.SSRRewriteData.get_agrees
+
+目标：id；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+∀ (V : Sort u) (S : Sort v) (x : V) (s : S) (p : Rocq.Corelib.ssr.ssreflect_rw.TheCanonical.put V S x x s),
+  Rocq.Corelib.ssr.ssreflect_rw.TheCanonical.get V S x s p = id s
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.TheCanonical.get_by
+
+NativeBridge.Incremental.SSRRewriteData.getBy_agrees
+
+目标：id；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+∀ (V : Sort u) (S : Sort v) (f : S → V) (x : V) (s : S) (p : Rocq.Corelib.ssr.ssreflect_rw.TheCanonical.put V S x x s),
+  Rocq.Corelib.ssr.ssreflect_rw.TheCanonical.get_by V S f x s p = id s
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.protect_term
+
+NativeBridge.Incremental.SSRRewriteData.protect_agrees
+
+目标：id；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+∀ (T : Sort u) (x : T), Rocq.Corelib.ssr.ssreflect_rw.protect_term T x = id x
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.locked_with
+
+NativeBridge.Incremental.SSRRewriteData.lockedWith_agrees
+
+目标：id；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+∀ (k : Rocq.Corelib.Init.Datatypes.unit) (T : Sort u) (x : T), Rocq.Corelib.ssr.ssreflect_rw.locked_with k T x = id x
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.NonPropType.check
+
+NativeBridge.Incremental.SSRRewriteData.check_agrees
+
+目标：NativeBridge.Incremental.SSRRewriteData.makeNonProp；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+∀ (b : NativeBridge.RBool) (t : Rocq.Corelib.ssr.ssreflect_rw.NonPropType.test_of b)
+  (f : Rocq.Corelib.ssr.ssreflect_rw.NonPropType.call_of (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.condition b t) b),
+  NativeBridge.Incremental.SSRRewriteData.nonPropTo (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.check b t f) =
+    NativeBridge.Incremental.SSRRewriteData.makeNonProp (NativeBridge.boolTo b)
+      (NativeBridge.Incremental.SSRRewriteData.testTo b t)
+      (NativeBridge.Incremental.SSRRewriteData.callTo (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.condition b t) b f)
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.NonPropType.test
+
+NativeBridge.Incremental.SSRRewriteData.test_agrees
+
+目标：NativeBridge.Incremental.SSRRewriteData.constUnit；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+∀ (t : Rocq.Corelib.ssr.ssreflect_rw.NonPropType.type),
+  NativeBridge.Incremental.SSRRewriteData.testTo (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.result t)
+      (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.test t) =
+    NativeBridge.Incremental.SSRRewriteData.constUnit (NativeBridge.Incremental.SSRRewriteData.nonPropTo t)
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.NonPropType.maybeProp
+
+NativeBridge.Incremental.SSRRewriteData.maybeProp_agrees
+
+目标：NativeBridge.Incremental.SSRRewriteData.constUnit；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+∀ (T : Sort u),
+  NativeBridge.Incremental.SSRRewriteData.unitTo (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.maybeProp T) =
+    NativeBridge.Incremental.SSRRewriteData.constUnit T
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.NonPropType.test_Prop
+
+NativeBridge.Incremental.SSRRewriteData.testProp_agrees
+
+目标：NativeBridge.Incremental.SSRRewriteData.constUnit；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+∀ (P : Prop),
+  NativeBridge.Incremental.SSRRewriteData.testTo Rocq.Corelib.Init.Datatypes.bool.true
+      (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.test_Prop P) =
+    NativeBridge.Incremental.SSRRewriteData.constUnit P
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.NonPropType.test_negative
+
+NativeBridge.Incremental.SSRRewriteData.testNegative_agrees
+
+目标：NativeBridge.Incremental.SSRRewriteData.unitValue；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+NativeBridge.Incremental.SSRRewriteData.testTo Rocq.Corelib.Init.Datatypes.bool.false
+    Rocq.Corelib.ssr.ssreflect_rw.NonPropType.test_negative =
+  ()
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.external_view_rect
+
+NativeBridge.Incremental.SSRRewriteData.viewRect_agrees
+
+目标：NativeBridge.Incremental.SSRRewriteData.viewRec；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+∀ (P : Type u → Type v) (f : (T : Type u) → P T) (e : Rocq.Corelib.ssr.ssreflect_rw.external_view),
+  Rocq.Corelib.ssr.ssreflect_rw.external_view_rect (fun e => P (NativeBridge.Incremental.SSRRewriteData.viewTo e)) f e =
+    NativeBridge.Incremental.SSRRewriteData.viewRec P f (NativeBridge.Incremental.SSRRewriteData.viewTo e)
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.external_view_rec
+
+NativeBridge.Incremental.SSRRewriteData.viewRec_agrees
+
+目标：NativeBridge.Incremental.SSRRewriteData.viewRec；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+∀ (P : Type u → Type) (f : (T : Type u) → P T) (e : Rocq.Corelib.ssr.ssreflect_rw.external_view),
+  Rocq.Corelib.ssr.ssreflect_rw.external_view_rec (fun e => P (NativeBridge.Incremental.SSRRewriteData.viewTo e)) f e =
+    NativeBridge.Incremental.SSRRewriteData.viewRec P f (NativeBridge.Incremental.SSRRewriteData.viewTo e)
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.abstract_key
+
+NativeBridge.Incremental.SSRRewriteData.key_agrees
+
+目标：NativeBridge.Incremental.SSRRewriteData.unitValue；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+NativeBridge.Incremental.SSRRewriteData.unitTo Rocq.Corelib.ssr.ssreflect_rw.abstract_key = ()
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.unlocked
+
+NativeBridge.Incremental.SSRRewriteData.unlocked_agrees
+
+目标：NativeBridge.Incremental.SSRRewriteData.unlockValue；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+∀ (T : Sort u) (x : T) (c : Rocq.Corelib.ssr.ssreflect_rw.unlockable T x),
+  Rocq.Corelib.ssr.ssreflect_rw.unlocked T x c =
+    NativeBridge.Incremental.SSRRewriteData.unlockValue T x
+      ((NativeBridge.Incremental.SSRRewriteData.unlockableIso T x).to c)
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.vm_compute_eq
+
+NativeBridge.Incremental.SSRRewriteData.vmComputeEq_agrees
+
+目标：NativeBridge.Incremental.SSRRewriteData.nativeEquality；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+∀ (T : Sort u) (x y : T), Rocq.Corelib.ssr.ssreflect_rw.vm_compute_eq T x y ↔ x = y
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.nary_congruence_statement
+
+NativeBridge.Incremental.SSRRewriteData.naryStatement_agrees
+
+目标：NativeBridge.Incremental.SSRRewriteData.naryCongruence；范围：All mechanically translated universe parameters and dependent arguments retained. Explicit inverses for representations; operation theorem names the source root directly. Native target recursively checked for source symbols.
+
+```lean
+∀ (n : NativeBridge.MN) (k : (B : Type u) → (B → B → Prop) → Prop),
+  Rocq.Corelib.ssr.ssreflect_rw.nary_congruence_statement n k ↔
+    NativeBridge.Incremental.SSRRewriteData.naryCongruence (NativeBridge.natTo n) k
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssreflect_rw.external_view_ind
+
+NativeBridge.Incremental.SSRRewriteStatements.view_ind_correspondence
+
+目标：NativeBridge.Incremental.SSRRewriteStatements.viewInduction；范围：Full mechanically translated universes. Both source and matching native universal statements are proved, then related by iff. N-ary congruence proved for arbitrary arity via induction and full relation-parametric predicate correspondence; locks use source-free identity/Unit representations.
+
+```lean
+Rocq.Corelib.ssr.ssreflect_rw.external_view_ind.statement ↔ NativeBridge.Incremental.SSRRewriteStatements.viewInduction
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.external_view_sind
+
+NativeBridge.Incremental.SSRRewriteStatements.view_sind_correspondence
+
+目标：NativeBridge.Incremental.SSRRewriteStatements.viewInduction；范围：Full mechanically translated universes. Both source and matching native universal statements are proved, then related by iff. N-ary congruence proved for arbitrary arity via induction and full relation-parametric predicate correspondence; locks use source-free identity/Unit representations.
+
+```lean
+Rocq.Corelib.ssr.ssreflect_rw.external_view_sind.statement ↔ NativeBridge.Incremental.SSRRewriteStatements.viewInduction
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.UnderE
+
+NativeBridge.Incremental.SSRRewriteStatements.under_correspondence
+
+目标：NativeBridge.Incremental.SSRRewriteStatements.underStatement；范围：Full mechanically translated universes. Both source and matching native universal statements are proved, then related by iff. N-ary congruence proved for arbitrary arity via induction and full relation-parametric predicate correspondence; locks use source-free identity/Unit representations.
+
+```lean
+Rocq.Corelib.ssr.ssreflect_rw.UnderE.statement ↔ NativeBridge.Incremental.SSRRewriteStatements.underStatement
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.over
+
+NativeBridge.Incremental.SSRRewriteStatements.over_correspondence
+
+目标：NativeBridge.Incremental.SSRRewriteStatements.overStatement；范围：Full mechanically translated universes. Both source and matching native universal statements are proved, then related by iff. N-ary congruence proved for arbitrary arity via induction and full relation-parametric predicate correspondence; locks use source-free identity/Unit representations.
+
+```lean
+Rocq.Corelib.ssr.ssreflect_rw.over.statement ↔ NativeBridge.Incremental.SSRRewriteStatements.overStatement
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.lock
+
+NativeBridge.Incremental.SSRRewriteStatements.lock_correspondence
+
+目标：NativeBridge.Incremental.SSRRewriteStatements.lockStatement；范围：Full mechanically translated universes. Both source and matching native universal statements are proved, then related by iff. N-ary congruence proved for arbitrary arity via induction and full relation-parametric predicate correspondence; locks use source-free identity/Unit representations.
+
+```lean
+Rocq.Corelib.ssr.ssreflect_rw.lock.statement ↔ NativeBridge.Incremental.SSRRewriteStatements.lockStatement
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.locked_withE
+
+NativeBridge.Incremental.SSRRewriteStatements.lockedWith_correspondence
+
+目标：NativeBridge.Incremental.SSRRewriteStatements.lockedWithStatement；范围：Full mechanically translated universes. Both source and matching native universal statements are proved, then related by iff. N-ary congruence proved for arbitrary arity via induction and full relation-parametric predicate correspondence; locks use source-free identity/Unit representations.
+
+```lean
+Rocq.Corelib.ssr.ssreflect_rw.locked_withE.statement ↔ NativeBridge.Incremental.SSRRewriteStatements.lockedWithStatement
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.unlock
+
+NativeBridge.Incremental.SSRRewriteStatements.unlock_correspondence
+
+目标：NativeBridge.Incremental.SSRRewriteStatements.unlockStatement；范围：Full mechanically translated universes. Both source and matching native universal statements are proved, then related by iff. N-ary congruence proved for arbitrary arity via induction and full relation-parametric predicate correspondence; locks use source-free identity/Unit representations.
+
+```lean
+Rocq.Corelib.ssr.ssreflect_rw.unlock.statement ↔ NativeBridge.Incremental.SSRRewriteStatements.unlockStatement
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.nary_congruence
+
+NativeBridge.Incremental.SSRRewriteStatements.nary_correspondence
+
+目标：NativeBridge.Incremental.SSRRewriteStatements.naryStatement；范围：Full mechanically translated universes. Both source and matching native universal statements are proved, then related by iff. N-ary congruence proved for arbitrary arity via induction and full relation-parametric predicate correspondence; locks use source-free identity/Unit representations.
+
+```lean
+Rocq.Corelib.ssr.ssreflect_rw.nary_congruence.statement ↔ NativeBridge.Incremental.SSRRewriteStatements.naryStatement
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssreflect_rw.vm_compute
+
+NativeBridge.Incremental.SSRRewriteStatements.vm_compute_correspondence
+
+目标：NativeBridge.Incremental.SSRRewriteStatements.vmComputeStatement；范围：Full mechanically translated universes. Both source and matching native universal statements are proved, then related by iff. N-ary congruence proved for arbitrary arity via induction and full relation-parametric predicate correspondence; locks use source-free identity/Unit representations.
+
+```lean
+Rocq.Corelib.ssr.ssreflect_rw.vm_compute.statement ↔ NativeBridge.Incremental.SSRRewriteStatements.vmComputeStatement
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.unlock_with
+
+NativeBridge.Incremental.SSRRewriteStatements.unlock_with_correspondence
+
+目标：NativeBridge.Incremental.SSRRewriteStatements.lockedWithStatement；范围：Full mechanically translated universes. Both source and matching native universal statements are proved, then related by iff. N-ary congruence proved for arbitrary arity via induction and full relation-parametric predicate correspondence; locks use source-free identity/Unit representations.
+
+```lean
+RocqPending.Corelib.ssr.ssreflect_rw.unlock_with.statement ↔
+  NativeBridge.Incremental.SSRRewriteStatements.lockedWithStatement
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.locked_with_unlockable
+
+NativeBridge.Incremental.SSRRewriteStatements.lockedWithUnlockable_agrees
+
+目标：NativeBridge.Incremental.SSRRewriteData.unitValue；范围：Full Sort carrier; result uses the proved two-sided unlockable-to-Unit Iso. The lock equation prerequisite is proved for every source key.
+
+```lean
+∀ (T : Sort u) (k : Rocq.Corelib.Init.Datatypes.unit) (x : T),
+  (NativeBridge.Incremental.SSRRewriteData.unlockableIso T x).to
+      (RocqPending.Corelib.ssr.ssreflect_rw.locked_with_unlockable T k x) =
+    NativeBridge.Incremental.SSRRewriteData.unitValue
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.ssr_converse
+
+NativeBridge.Incremental.SSRRewriteStatements.converse_agrees
+
+目标：NativeBridge.Incremental.SSRRewriteStatements.nativeConverse；范围：Full Sort payload; source product of mechanical True and payload corresponds to PProd True payload, with explicit inverse maps and a closed True prerequisite.
+
+```lean
+∀ (R : Sort u) (r : R),
+  NativeBridge.Incremental.SSRRewriteStatements.converseTo (RocqPending.Corelib.ssr.ssreflect_rw.ssr_converse R r) =
+    NativeBridge.Incremental.SSRRewriteStatements.nativeConverse R r
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrclasses.Reflexive
+
+NativeBridge.Incremental.SSRClasses.reflexive_agrees
+
+目标：NativeBridge.Incremental.SSRClasses.nativeReflexive；范围：Full source universe range. Under/Over are the supplied native relation; reflexivity is Lean Std.Refl. Original statements independently proved and related to matching source-free universal propositions.
+
+```lean
+∀ (A : Sort u) (R : A → A → Prop),
+  Rocq.Corelib.ssr.ssrclasses.Reflexive A R ↔ NativeBridge.Incremental.SSRClasses.nativeReflexive R
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrclasses.eq_Reflexive
+
+NativeBridge.Incremental.SSRClasses.eq_correspondence
+
+目标：NativeBridge.Incremental.SSRClasses.eqReflexive；范围：Full source universe range. Under/Over are the supplied native relation; reflexivity is Lean Std.Refl. Original statements independently proved and related to matching source-free universal propositions.
+
+```lean
+Rocq.Corelib.ssr.ssrclasses.eq_Reflexive.statement ↔ NativeBridge.Incremental.SSRClasses.eqReflexive
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrclasses.iff_Reflexive
+
+NativeBridge.Incremental.SSRClasses.iff_correspondence
+
+目标：NativeBridge.Incremental.SSRClasses.iffReflexive；范围：Full source universe range. Under/Over are the supplied native relation; reflexivity is Lean Std.Refl. Original statements independently proved and related to matching source-free universal propositions.
+
+```lean
+Rocq.Corelib.ssr.ssrclasses.iff_Reflexive.statement ↔ NativeBridge.Incremental.SSRClasses.iffReflexive
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrclasses.reflexivity
+
+NativeBridge.Incremental.SSRClasses.reflexivity_correspondence
+
+目标：NativeBridge.Incremental.SSRClasses.reflexivityStatement；范围：Full source universe range. Under/Over are the supplied native relation; reflexivity is Lean Std.Refl. Original statements independently proved and related to matching source-free universal propositions.
+
+```lean
+Rocq.Corelib.ssr.ssrclasses.reflexivity.statement ↔ NativeBridge.Incremental.SSRClasses.reflexivityStatement
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrunder.Under_rel.Under_rel
+
+NativeBridge.Incremental.SSRUnder.under_agrees
+
+目标：id；范围：Full source universe range. Under/Over are the supplied native relation; reflexivity is Lean Std.Refl. Original statements independently proved and related to matching source-free universal propositions.
+
+```lean
+∀ (A : Type u) (R : A → A → Prop), Rocq.Corelib.ssr.ssrunder.Under_rel.Under_rel A R = id R
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrunder.Under_rel.Over_rel
+
+NativeBridge.Incremental.SSRUnder.over_agrees
+
+目标：id；范围：Full source universe range. Under/Over are the supplied native relation; reflexivity is Lean Std.Refl. Original statements independently proved and related to matching source-free universal propositions.
+
+```lean
+∀ (A : Type u) (R : A → A → Prop), Rocq.Corelib.ssr.ssrunder.Under_rel.Over_rel A R = id R
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrunder.Under_rel.Under_relE
+
+NativeBridge.Incremental.SSRUnder.under_eq_correspondence
+
+目标：NativeBridge.Incremental.SSRUnder.underEquation；范围：Full source universe range. Under/Over are the supplied native relation; reflexivity is Lean Std.Refl. Original statements independently proved and related to matching source-free universal propositions.
+
+```lean
+Rocq.Corelib.ssr.ssrunder.Under_rel.Under_relE.statement ↔ NativeBridge.Incremental.SSRUnder.underEquation
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrunder.Under_rel.Under_rel_from_rel
+
+NativeBridge.Incremental.SSRUnder.under_from_correspondence
+
+目标：NativeBridge.Incremental.SSRUnder.underFromRelation；范围：Full source universe range. Under/Over are the supplied native relation; reflexivity is Lean Std.Refl. Original statements independently proved and related to matching source-free universal propositions.
+
+```lean
+Rocq.Corelib.ssr.ssrunder.Under_rel.Under_rel_from_rel.statement ↔ NativeBridge.Incremental.SSRUnder.underFromRelation
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrunder.Under_rel.over_rel
+
+NativeBridge.Incremental.SSRUnder.over_eq_correspondence
+
+目标：NativeBridge.Incremental.SSRUnder.overEquation；范围：Full source universe range. Under/Over are the supplied native relation; reflexivity is Lean Std.Refl. Original statements independently proved and related to matching source-free universal propositions.
+
+```lean
+Rocq.Corelib.ssr.ssrunder.Under_rel.over_rel.statement ↔ NativeBridge.Incremental.SSRUnder.overEquation
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrunder.Under_rel.over_rel_done
+
+NativeBridge.Incremental.SSRUnder.over_done_correspondence
+
+目标：NativeBridge.Incremental.SSRUnder.reflexiveDone；范围：Full source universe range. Under/Over are the supplied native relation; reflexivity is Lean Std.Refl. Original statements independently proved and related to matching source-free universal propositions.
+
+```lean
+Rocq.Corelib.ssr.ssrunder.Under_rel.over_rel_done.statement ↔ NativeBridge.Incremental.SSRUnder.reflexiveDone
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrunder.Under_rel.under_rel_done
+
+NativeBridge.Incremental.SSRUnder.under_done_correspondence
+
+目标：NativeBridge.Incremental.SSRUnder.reflexiveDone；范围：Full source universe range. Under/Over are the supplied native relation; reflexivity is Lean Std.Refl. Original statements independently proved and related to matching source-free universal propositions.
+
+```lean
+Rocq.Corelib.ssr.ssrunder.Under_rel.under_rel_done.statement ↔ NativeBridge.Incremental.SSRUnder.reflexiveDone
+```
+
+公理闭包：空
+
 ## Corelib.ssr.ssrbool.canLR_in
 
 NativeBridge.Incremental.SSRBoolClosedStatements.RocqPending.Corelib.ssr.ssrbool.canLR_in.statement.correspondence

@@ -195,3 +195,15 @@ Decimal.decimal 对应“带符号整数数字、小数数字、可选带符号�
 ## 17. 通用关系接口实例化为 Lean Eq
 
 [GenericEquality.lean](../experiments/incremental-correspondence-20261019/proofs/GenericEquality.lean) 用 PLift (x = y) 满足源 Type 值关系的要求。实例化机械 ap 后得到 PLift (congrArg f h)，实例化 sym 后得到 PLift h.symm，两项都由 kernel 验证。任意关系的接口对应和这一特定 Eq 实例分别陈述。
+
+## 18. Program.Wf 的子类型递归
+
+[ProgramWellFounded.lean](../experiments/incremental-correspondence-20261019/proofs/ProgramWellFounded.lean) 把源函数收到的机械 sig 输入转为 Lean Subtype {y // R y x}，递归结果等于 WellFounded.fix 的结果。两个回调转换器证明互为逆；proj2_sig 等前提已经给出闭合证明，不需要用户再提供。
+
+## 19. 任意元数的合同性
+
+[SSRRewriteData.lean](../experiments/incremental-correspondence-20261019/proofs/SSRRewriteData.lean) 对所有机械 n 证明 nary_congruence_statement n k 等价于原生 Nat 上的递归谓词；每层函数参数使用 Lean Eq。随后 [SSRRewriteStatements.lean](../experiments/incremental-correspondence-20261019/proofs/SSRRewriteStatements.lean) 对所有 arity 用归纳证明完整合同性陈述，既有对应证书，也有原陈述证明。
+
+## 20. 把 SSR 自反性作为原生实例使用
+
+[SSRClasses.lean](../experiments/incremental-correspondence-20261019/proofs/SSRClasses.lean) 证明源 Reflexive A R ↔ Std.Refl R。转换后的证据可用于 Lean 的 Std.Refl.refl；Eq 和 Iff 的两个原陈述也都有独立证明。

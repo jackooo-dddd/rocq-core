@@ -495,3 +495,27 @@ flowchart TD
 ```
 
 字节串比较暂为原生组合表达式，未宣称对应现成 List.compareLex。通用 J 接口保留显式关系参数；PLift Eq 只是一个经过验证的客户实例。
+
+## 第四十九至五十四批与机器整数规格
+
+```mermaid
+flowchart TD
+  WellFounded --> WellFoundedStatements
+  SourceAccIntro[closed Acc_inv_dep witness] --> WellFoundedStatements
+  NativeSubtypeIso --> ProgramWellFounded
+  NativeWellFoundedFix --> ProgramWellFounded
+  ClosedProj2[closed projection and unfolding witnesses] --> ProgramWellFounded
+  NativeBoolUnitType --> SSRRewriteData
+  MechanicalEqIso --> SSRRewriteData
+  MechanicalNatIso --> NaryInduction[arbitrary arity induction]
+  NaryInduction --> SSRRewriteStatements
+  SSRRewriteData --> SSRRewriteStatements
+  NativeStdRefl --> SSRClasses
+  NativeStdRefl --> SSRUnder
+  WordOperations --> Uint63Definitions
+  BinaryZCorrespondence --> Uint63Definitions
+  Uint63Definitions --> Uint63Specifications
+  Uint63Definitions --> Sint63Specifications
+```
+
+Program.Wf 的两个 Type 值 opaque 消去器，以及 ssreflect_rw 的三个 Type 值 opaque 计算函数，仍需额外计算证据。它们不阻止透明整数定义和规格对应继续推进。

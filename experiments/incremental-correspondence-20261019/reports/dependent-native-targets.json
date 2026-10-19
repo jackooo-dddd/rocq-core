@@ -1393,5 +1393,250 @@
     "name": "NativeBridge.Incremental.ArrayCapacity.capacity",
     "native_expression": "4194303",
     "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.WellFoundedStatements.accDependentInduction",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop) (P : (x : A) → Acc R x → Prop),\n  (∀ (x : A) (a : ∀ (y : A), R y x → Acc R y), (∀ (y : A) (h : R y x), P y ⋯) → P x ⋯) → ∀ (x : A) (a : Acc R x), P x a",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.WellFoundedStatements.accGenerator",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop) (_n : Nat), WellFounded R → WellFounded R",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.WellFoundedStatements.accInduction",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop) (P : A → Prop),\n  (∀ (x : A), (∀ (y : A), R y x → Acc R y) → (∀ (y : A), R y x → P y) → P x) → ∀ (x : A), Acc R x → P x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.WellFoundedStatements.accInverse",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop) (x : A), Acc R x → ∀ (y : A), R y x → Acc R y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.WellFoundedStatements.fixEquation",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop) (wf : WellFounded R) (P : A → Type v) (F : (x : A) → ((y : A) → R y x → P y) → P x),\n  NativeBridge.Incremental.WellFoundedStatements.extensional R P F → ∀ (x : A), wf.fix F x = F x fun y x => wf.fix F y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.WellFoundedStatements.fixEquationGeneral",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop) (wf : WellFounded R) (P : A → Type v) (F : (x : A) → ((y : A) → R y x → P y) → P x),\n  NativeBridge.Incremental.WellFoundedStatements.extensionalGeneral R P F →\n    ∀ (x : A), wf.fix F x = F x fun y x => wf.fix F y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.WellFoundedStatements.fixFEquation",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop) (P : A → Type v) (F : (x : A) → ((y : A) → R y x → P y) → P x) (x : A) (a : Acc R x),\n  (F x fun y h => WellFounded.fixF F y ⋯) = WellFounded.fixF F x a",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.WellFoundedStatements.fixFIndependent",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop),\n  WellFounded R →\n    ∀ (P : A → Type v) (F : (x : A) → ((y : A) → R y x → P y) → P x),\n      NativeBridge.Incremental.WellFoundedStatements.extensional R P F →\n        ∀ (x : A) (r s : Acc R x), WellFounded.fixF F x r = WellFounded.fixF F x s",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.WellFoundedStatements.fixFIndependentGeneral",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop),\n  WellFounded R →\n    ∀ (P : A → Type v) (F : (x : A) → ((y : A) → R y x → P y) → P x),\n      NativeBridge.Incremental.WellFoundedStatements.extensionalGeneral R P F →\n        ∀ (x : A) (r s : Acc R x), WellFounded.fixF F x r = WellFounded.fixF F x s",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.WellFoundedStatements.wellFoundedInduction",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop),\n  WellFounded R → ∀ (P : A → Prop), (∀ (x : A), (∀ (y : A), R y x → P y) → P x) → ∀ (a : A), P a",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "InvImage",
+    "native_expression": "fun {α} {β} r f a₁ a₂ => r (f a₁) (f a₂)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.ProgramWellFounded.fixEquation",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop) (wf : WellFounded R) (P : A → Type v)\n  (G : NativeBridge.Incremental.ProgramWellFounded.NativeStep R P),\n  NativeBridge.Incremental.ProgramWellFounded.extensional R P G →\n    ∀ (x : A),\n      NativeBridge.Incremental.ProgramWellFounded.fixSubtype R wf P G x =\n        G x fun y => NativeBridge.Incremental.ProgramWellFounded.fixSubtype R wf P G y.val",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.ProgramWellFounded.fixFEquation",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop) (P : A → Type v) (G : NativeBridge.Incremental.ProgramWellFounded.NativeStep R P)\n  (x : A) (a : Acc R x),\n  (G x fun y => NativeBridge.Incremental.ProgramWellFounded.fixFSubtype R P G y.val ⋯) =\n    NativeBridge.Incremental.ProgramWellFounded.fixFSubtype R P G x a",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.ProgramWellFounded.fixFIndependent",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop),\n  WellFounded R →\n    ∀ (P : A → Type v) (G : NativeBridge.Incremental.ProgramWellFounded.NativeStep R P),\n      NativeBridge.Incremental.ProgramWellFounded.extensional R P G →\n        ∀ (x : A) (r s : Acc R x),\n          NativeBridge.Incremental.ProgramWellFounded.fixFSubtype R P G x r =\n            NativeBridge.Incremental.ProgramWellFounded.fixFSubtype R P G x s",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.ProgramWellFounded.fixFIndependentGeneral",
+    "native_expression": "∀ (A : Type u) (P : A → Type v) (R : A → A → Prop),\n  WellFounded R →\n    ∀ (G : NativeBridge.Incremental.ProgramWellFounded.NativeStep R P),\n      NativeBridge.Incremental.ProgramWellFounded.extensionalGeneral R P G →\n        ∀ (x : A) (r s : Acc R x),\n          NativeBridge.Incremental.ProgramWellFounded.fixFSubtype R P G x r =\n            NativeBridge.Incremental.ProgramWellFounded.fixFSubtype R P G x s",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.ProgramWellFounded.fixFSubtype",
+    "native_expression": "fun {A} R P G x a => WellFounded.fixF (fun x rec => G x fun y => rec y.val ⋯) x a",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.ProgramWellFounded.fixSubtype",
+    "native_expression": "fun {A} R wf P G x => wf.fix (fun x rec => G x fun y => rec y.val ⋯) x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.ProgramWellFounded.measureStatement",
+    "native_expression": "∀ (T : Type u) (M : Type v) (R : M → M → Prop), WellFounded R → ∀ (m : T → M), WellFounded (InvImage R m)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.ProgramWellFounded.unfoldStatement",
+    "native_expression": "∀ (A : Type u) (P : A → Type v) (R : A → A → Prop) (G : NativeBridge.Incremental.ProgramWellFounded.NativeStep R P)\n  (x : A) (a : Acc R x),\n  NativeBridge.Incremental.ProgramWellFounded.fixFSubtype R P G x a =\n    G x fun y => NativeBridge.Incremental.ProgramWellFounded.fixFSubtype R P G y.val ⋯",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRRewriteData.constUnit",
+    "native_expression": "fun {A} x => ()",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRRewriteData.identityType",
+    "native_expression": "fun T => T",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRRewriteData.makeNonProp",
+    "native_expression": "fun b x T => (b, T)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRRewriteData.naryCongruence",
+    "native_expression": "fun x x_1 =>\n  Nat.brecOn (motive := fun x => ((B : Type u) → (B → B → Prop) → Prop) → Prop) x\n    NativeBridge.Incremental.SSRRewriteData.naryCongruence._f x_1",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRRewriteData.nativeEquality",
+    "native_expression": "fun T x y => x = y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRRewriteData.trueType",
+    "native_expression": "True",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRRewriteData.typeUniverse",
+    "native_expression": "Type u",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRRewriteData.unitType",
+    "native_expression": "Unit",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRRewriteData.unitValue",
+    "native_expression": "()",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRRewriteData.unlockValue",
+    "native_expression": "fun T x x_1 => x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRRewriteData.viewRec",
+    "native_expression": "fun P f T => f T",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "Prod.fst",
+    "native_expression": "fun α β self => self.1",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "Prod.snd",
+    "native_expression": "fun α β self => self.2",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRRewriteStatements.lockStatement",
+    "native_expression": "∀ (T : Sort u) (x : T), x = id x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRRewriteStatements.lockedWithStatement",
+    "native_expression": "∀ (T : Sort u) (_k : Unit) (x : T), id x = x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRRewriteStatements.naryStatement",
+    "native_expression": "∀ (n : Nat), NativeBridge.Incremental.SSRRewriteData.naryCongruence n fun B e => ∀ (y : B), e y y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRRewriteStatements.nativeConverse",
+    "native_expression": "fun R r => ⟨trivial, r⟩",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRRewriteStatements.overStatement",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop) (x y : A), R x y = R x y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRRewriteStatements.underStatement",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop), id R = R",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRRewriteStatements.unlockStatement",
+    "native_expression": "∀ (T : Sort u) (x : T) (_c : Unit), x = x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRRewriteStatements.viewInduction",
+    "native_expression": "∀ (P : Type u → Prop), (∀ (T : Type u), P T) → ∀ (T : Type u), P T",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRRewriteStatements.vmComputeStatement",
+    "native_expression": "∀ (T : Sort u) (x y : T), x = y → x = y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRClasses.eqReflexive",
+    "native_expression": "∀ (A : Sort u), Std.Refl Eq",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRClasses.iffReflexive",
+    "native_expression": "Std.Refl Iff",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRClasses.nativeReflexive",
+    "native_expression": "fun {A} R => Std.Refl R",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRClasses.reflexivityStatement",
+    "native_expression": "∀ (A : Sort u) (R : A → A → Prop), Std.Refl R → ∀ (x : A), R x x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRUnder.overEquation",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop) (x y : A), R x y = R x y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRUnder.reflexiveDone",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop), Std.Refl R → ∀ (x : A), R x x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRUnder.underEquation",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop), id R = R",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRUnder.underFromRelation",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop) (x y : A), R x y → R x y",
+    "remaining_source_symbols": []
   }
 ]
