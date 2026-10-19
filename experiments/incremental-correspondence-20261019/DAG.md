@@ -210,3 +210,22 @@ Peano 本批实证依赖：机械 Nat Iso → pred/add/迭代器辅助对应 →
 第十八批实证依赖：positive Iso → mask/Option Nat Iso → 倍增 mask → sub_mask/sub_mask_carry 联合不变量 → Pos.sub、N.sub；Z.double/succ_double/pred_double → Z.pos_sub → Z.add（另依赖 Pos.add）→ Z.sub。mask Iso → motive/量词转换 → 2 个纯原生归纳陈述。
 
 第十九批实证依赖：完整 Sort 容器 Iso → 量词/函数族转换 → 容器归纳陈述；Bool/Ordering 索引 Iso + 每个索引的 PLift 纤维 Iso → 依赖函数族转换 → CompareSpecT/reflect 归纳陈述；CompareSpec iff → 3 个闭合见证 → CompareSpec2Type/CompSpec2Type。Eq transport + PProd 映射 → rew_pair。
+
+## 第二十批：Init.Logic 共享证明与原生化
+
+```mermaid
+flowchart TD
+  A["机械声明的前置条件"] --> B["151 个条件证明"]
+  B --> C["按真实依赖 DAG 实例化为闭合证明"]
+  C --> D["18 个带条件消去定义"]
+  C --> E["54 个带条件陈述"]
+  F["逻辑 iff、证明参数量词、Eq transport"] --> G["67 个完整原生陈述"]
+  E --> G
+  H["原生 Exists 的命题见证 + proof irrelevance"] --> D
+  I["False/True/And 消去 + 3 个谓词"] --> J["27 个运算对应"]
+  D --> J
+  G --> K["共同导入及公理闭包检查"]
+  J --> K
+```
+
+真实证明节点和边见 reports/logic-witness-dag.json；每条边来自冻结翻译报告 pending_hypotheses。此图的 151 个证明节点不是 151 个新增完成根。

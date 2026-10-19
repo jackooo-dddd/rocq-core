@@ -4462,6 +4462,2579 @@
     "axioms": []
   },
   {
+    "source": "Corelib.Init.Logic.unique",
+    "profile": "LogicNormalization",
+    "certificate": "NativeBridge.Incremental.LogicNormalization.unique_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "P x ∧ ∀ y, P y → x = y",
+    "scope": "full source Sort parameters; heterogeneous source/target for subrelation",
+    "target_class": "native_expression",
+    "type": "∀ (A : Sort u) (P : A → Prop) (x : A), Rocq.Corelib.Init.Logic.unique A P x ↔ P x ∧ ∀ (y : A), P y → x = y",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.uniqueness",
+    "profile": "LogicNormalization",
+    "certificate": "NativeBridge.Incremental.LogicNormalization.uniqueness_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x y, P x → P y → x = y",
+    "scope": "full source Sort parameters; heterogeneous source/target for subrelation",
+    "target_class": "native_expression",
+    "type": "∀ (A : Sort u) (P : A → Prop), Rocq.Corelib.Init.Logic.uniqueness A P ↔ ∀ (x y : A), P x → P y → x = y",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.subrelation",
+    "profile": "LogicNormalization",
+    "certificate": "NativeBridge.Incremental.LogicNormalization.subrelation_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x y, R x y → S x y",
+    "scope": "full source Sort parameters; heterogeneous source/target for subrelation",
+    "target_class": "native_expression",
+    "type": "∀ (A : Sort u) (B : Sort v) (R S : A → B → Prop),\n  Rocq.Corelib.Init.Logic.subrelation A B R S ↔ ∀ (x : A) (y : B), R x y → S x y",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Logic.False_rec",
+    "profile": "LogicElimination",
+    "certificate": "NativeBridge.Incremental.LogicElimination.false_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "False.elim",
+    "scope": "Type result; source signature preserved",
+    "target_class": "existing_api",
+    "type": "∀ (P : Type) (h : Rocq.Corelib.Init.Logic.False), Rocq.Corelib.Init.Logic.False_rec P h = ⋯.elim",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Logic.False_rect",
+    "profile": "LogicElimination",
+    "certificate": "NativeBridge.Incremental.LogicElimination.false_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "False.elim",
+    "scope": "Sort result; source signature preserved",
+    "target_class": "existing_api",
+    "type": "∀ (P : Sort u) (h : Rocq.Corelib.Init.Logic.False), Rocq.Corelib.Init.Logic.False_rect P h = ⋯.elim",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Logic.True_rec",
+    "profile": "LogicElimination",
+    "certificate": "NativeBridge.Incremental.LogicElimination.true_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected value",
+    "scope": "Type result; source signature preserved",
+    "target_class": "native_expression",
+    "type": "∀ (P : Type) (p : P) (h : Rocq.Corelib.Init.Logic.True), Rocq.Corelib.Init.Logic.True_rec P p h = p",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Logic.True_rect",
+    "profile": "LogicElimination",
+    "certificate": "NativeBridge.Incremental.LogicElimination.true_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected value",
+    "scope": "Sort result; source signature preserved",
+    "target_class": "native_expression",
+    "type": "∀ (P : Sort u) (p : P) (h : Rocq.Corelib.Init.Logic.True), Rocq.Corelib.Init.Logic.True_rect P p h = p",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Logic.and_rec",
+    "profile": "LogicElimination",
+    "certificate": "NativeBridge.Incremental.LogicElimination.and_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "apply function to native And projections",
+    "scope": "Type result; source signature preserved",
+    "target_class": "native_expression",
+    "type": "∀ (A B : Prop) (P : Type) (f : A → B → P) (h : Rocq.Corelib.Init.Logic.and A B),\n  Rocq.Corelib.Init.Logic.and_rec A B P f h = f ⋯ ⋯",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Logic.and_rect",
+    "profile": "LogicElimination",
+    "certificate": "NativeBridge.Incremental.LogicElimination.and_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "apply function to native And projections",
+    "scope": "Sort result; source signature preserved",
+    "target_class": "native_expression",
+    "type": "∀ (A B : Prop) (P : Sort u) (f : A → B → P) (h : Rocq.Corelib.Init.Logic.and A B),\n  Rocq.Corelib.Init.Logic.and_rect A B P f h = f ⋯ ⋯",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Logic.ex_rec",
+    "profile": "LogicExistsElimination",
+    "certificate": "NativeBridge.Incremental.LogicExistsElimination.ex_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "native Exists elimination through Prop witness and predicate proofs",
+    "scope": "A : Prop as in exported signature; dependent native Exists motive; Type result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicExistsElimination.exRecClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.ex_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "∀ (A : Prop) (P : A → Prop) (F : Exists P → Type) (f : (x : A) → (p : P x) → F ⋯) (h : Rocq.Corelib.Init.Logic.ex A P),\n  RocqPending.Corelib.Init.Logic.ex_rec A P (fun e => F ⋯) f h =\n    NativeBridge.Incremental.LogicExistsElimination.nativeExistsElim F f ⋯",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Logic.ex_rect",
+    "profile": "LogicExistsElimination",
+    "certificate": "NativeBridge.Incremental.LogicExistsElimination.ex_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "native Exists elimination through Prop witness and predicate proofs",
+    "scope": "A : Prop as in exported signature; dependent native Exists motive; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicExistsElimination.exRectClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.ex_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "∀ (A : Prop) (P : A → Prop) (F : Exists P → Sort u) (f : (x : A) → (p : P x) → F ⋯)\n  (h : Rocq.Corelib.Init.Logic.ex A P),\n  RocqPending.Corelib.Init.Logic.ex_rect A P (fun e => F ⋯) f h =\n    NativeBridge.Incremental.LogicExistsElimination.nativeExistsElim F f ⋯",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Logic.ex2_rec",
+    "profile": "LogicExistsElimination",
+    "certificate": "NativeBridge.Incremental.LogicExistsElimination.ex2_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "native Exists elimination through Prop witness and predicate proofs",
+    "scope": "A : Prop as in exported signature; dependent native Exists motive; Type result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicExistsElimination.ex2RecClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.ex2_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex2_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex2_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex2_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "∀ (A : Prop) (P Q : A → Prop) (F : (∃ x, P x ∧ Q x) → Type) (f : (x : A) → (p : P x) → (q : Q x) → F ⋯)\n  (h : Rocq.Corelib.Init.Logic.ex2 A P Q),\n  RocqPending.Corelib.Init.Logic.ex2_rec A P Q (fun e => F ⋯) f h =\n    NativeBridge.Incremental.LogicExistsElimination.nativeExists2Elim F f ⋯",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Logic.ex2_rect",
+    "profile": "LogicExistsElimination",
+    "certificate": "NativeBridge.Incremental.LogicExistsElimination.ex2_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "native Exists elimination through Prop witness and predicate proofs",
+    "scope": "A : Prop as in exported signature; dependent native Exists motive; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicExistsElimination.ex2RectClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.ex2_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex2_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex2_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex2_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "∀ (A : Prop) (P Q : A → Prop) (F : (∃ x, P x ∧ Q x) → Sort u) (f : (x : A) → (p : P x) → (q : Q x) → F ⋯)\n  (h : Rocq.Corelib.Init.Logic.ex2 A P Q),\n  RocqPending.Corelib.Init.Logic.ex2_rect A P Q (fun e => F ⋯) f h =\n    NativeBridge.Incremental.LogicExistsElimination.nativeExists2Elim F f ⋯",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_rec",
+    "profile": "LogicProofElimination",
+    "certificate": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value; all proof arguments identified by proof irrelevance",
+    "scope": "A : Prop as in exported signature; native equality-indexed motive; arbitrary branch value, representing the unique proof-argument fiber; Type result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rec_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj1_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "∀ (A : Prop) (P : A → Prop) (a b : Rocq.Corelib.Init.Logic.ex A P) (F : ⋯ = ⋯ → Type) (f : F ⋯)\n  (e : NativeBridge.ME (Rocq.Corelib.Init.Logic.ex A P) a b),\n  RocqPending.Corelib.Init.Logic.eq_ex_rec A P a b (fun e => F ⋯) (fun x x_1 => f) e = f",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_rect",
+    "profile": "LogicProofElimination",
+    "certificate": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value; all proof arguments identified by proof irrelevance",
+    "scope": "A : Prop as in exported signature; native equality-indexed motive; arbitrary branch value, representing the unique proof-argument fiber; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rect_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj1_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "∀ (A : Prop) (P : A → Prop) (a b : Rocq.Corelib.Init.Logic.ex A P) (F : ⋯ = ⋯ → Sort w) (f : F ⋯)\n  (e : NativeBridge.ME (Rocq.Corelib.Init.Logic.ex A P) a b),\n  RocqPending.Corelib.Init.Logic.eq_ex_rect A P a b (fun e => F ⋯) (fun x x_1 => f) e = f",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_rec_uncurried",
+    "profile": "LogicProofElimination",
+    "certificate": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rec_uncurried_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value; all proof arguments identified by proof irrelevance",
+    "scope": "A : Prop as in exported signature; native equality-indexed motive; arbitrary branch value, representing the unique proof-argument fiber; Type result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rec_uncurried_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj1_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "∀ (A : Prop) (P : A → Prop) (a b : Rocq.Corelib.Init.Logic.ex A P) (F : ⋯ = ⋯ → Type) (f : F ⋯)\n  (e : NativeBridge.ME (Rocq.Corelib.Init.Logic.ex A P) a b),\n  RocqPending.Corelib.Init.Logic.eq_ex_rec_uncurried A P a b (fun e => F ⋯) (fun x => f) e = f",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_rect_uncurried",
+    "profile": "LogicProofElimination",
+    "certificate": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rect_uncurried_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value; all proof arguments identified by proof irrelevance",
+    "scope": "A : Prop as in exported signature; native equality-indexed motive; arbitrary branch value, representing the unique proof-argument fiber; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rect_uncurried_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj1_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "∀ (A : Prop) (P : A → Prop) (a b : Rocq.Corelib.Init.Logic.ex A P) (F : ⋯ = ⋯ → Sort w) (f : F ⋯)\n  (e : NativeBridge.ME (Rocq.Corelib.Init.Logic.ex A P) a b),\n  RocqPending.Corelib.Init.Logic.eq_ex_rect_uncurried A P a b (fun e => F ⋯) (fun x => f) e = f",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_rect_ex_intro",
+    "profile": "LogicProofElimination",
+    "certificate": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rect_ex_intro_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value; all proof arguments identified by proof irrelevance",
+    "scope": "A : Prop as in exported signature; native equality-indexed motive; arbitrary branch value, representing the unique proof-argument fiber; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rect_ex_intro_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_3.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj1_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "∀ (A : Prop) (P : A → Prop) (a1 : A) (a2 : P a1) (b1 : A) (b2 : P b1) (F : ⋯ = ⋯ → Sort w) (f : F ⋯)\n  (e : NativeBridge.ME (Rocq.Corelib.Init.Logic.ex A P) ⋯ ⋯),\n  RocqPending.Corelib.Init.Logic.eq_ex_rect_ex_intro A P a1 a2 b1 b2 (fun e => F ⋯) (fun x x_1 => f) e = f",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_rect_ex_intro_l",
+    "profile": "LogicProofElimination",
+    "certificate": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rect_ex_intro_l_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value; all proof arguments identified by proof irrelevance",
+    "scope": "A : Prop as in exported signature; native equality-indexed motive; arbitrary branch value, representing the unique proof-argument fiber; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rect_ex_intro_l_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro_l__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro_l__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro_l__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro_l__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro_l",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro_l.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj1_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "∀ (A : Prop) (P : A → Prop) (a1 : A) (a2 : P a1) (b : Rocq.Corelib.Init.Logic.ex A P) (F : ⋯ = ⋯ → Sort w) (f : F ⋯)\n  (e : NativeBridge.ME (Rocq.Corelib.Init.Logic.ex A P) ⋯ b),\n  RocqPending.Corelib.Init.Logic.eq_ex_rect_ex_intro_l A P a1 a2 b (fun e => F ⋯) (fun x x_1 => f) e = f",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_rect_ex_intro_r",
+    "profile": "LogicProofElimination",
+    "certificate": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rect_ex_intro_r_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value; all proof arguments identified by proof irrelevance",
+    "scope": "A : Prop as in exported signature; native equality-indexed motive; arbitrary branch value, representing the unique proof-argument fiber; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rect_ex_intro_r_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro_r__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro_r__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro_r__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro_r",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro_r.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj1_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "∀ (A : Prop) (P : A → Prop) (a : Rocq.Corelib.Init.Logic.ex A P) (b1 : A) (b2 : P b1) (F : ⋯ = ⋯ → Sort w) (f : F ⋯)\n  (e : NativeBridge.ME (Rocq.Corelib.Init.Logic.ex A P) a ⋯),\n  RocqPending.Corelib.Init.Logic.eq_ex_rect_ex_intro_r A P a b1 b2 (fun e => F ⋯) (fun x x_1 => f) e = f",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex2_rec",
+    "profile": "LogicProofElimination",
+    "certificate": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value; all proof arguments identified by proof irrelevance",
+    "scope": "A : Prop as in exported signature; native equality-indexed motive; arbitrary branch value, representing the unique proof-argument fiber; Type result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rec_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj1_of_ex2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_of_ex2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_of_ex2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_of_ex2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj3_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj3_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "∀ (A : Prop) (P Q : A → Prop) (a b : Rocq.Corelib.Init.Logic.ex2 A P Q) (F : ⋯ = ⋯ → Type) (f : F ⋯)\n  (e : NativeBridge.ME (Rocq.Corelib.Init.Logic.ex2 A P Q) a b),\n  RocqPending.Corelib.Init.Logic.eq_ex2_rec A P Q a b (fun e => F ⋯) (fun x x_1 x_2 => f) e = f",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex2_rect",
+    "profile": "LogicProofElimination",
+    "certificate": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value; all proof arguments identified by proof irrelevance",
+    "scope": "A : Prop as in exported signature; native equality-indexed motive; arbitrary branch value, representing the unique proof-argument fiber; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rect_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj1_of_ex2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_of_ex2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_of_ex2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_of_ex2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj3_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj3_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "∀ (A : Prop) (P Q : A → Prop) (a b : Rocq.Corelib.Init.Logic.ex2 A P Q) (F : ⋯ = ⋯ → Sort w) (f : F ⋯)\n  (e : NativeBridge.ME (Rocq.Corelib.Init.Logic.ex2 A P Q) a b),\n  RocqPending.Corelib.Init.Logic.eq_ex2_rect A P Q a b (fun e => F ⋯) (fun x x_1 x_2 => f) e = f",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex2_rec_uncurried",
+    "profile": "LogicProofElimination",
+    "certificate": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rec_uncurried_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value; all proof arguments identified by proof irrelevance",
+    "scope": "A : Prop as in exported signature; native equality-indexed motive; arbitrary branch value, representing the unique proof-argument fiber; Type result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rec_uncurried_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj1_of_ex2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_of_ex2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_of_ex2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_of_ex2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj3_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj3_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "∀ (A : Prop) (P Q : A → Prop) (a b : Rocq.Corelib.Init.Logic.ex2 A P Q) (F : ⋯ = ⋯ → Type) (f : F ⋯)\n  (e : NativeBridge.ME (Rocq.Corelib.Init.Logic.ex2 A P Q) a b),\n  RocqPending.Corelib.Init.Logic.eq_ex2_rec_uncurried A P Q a b (fun e => F ⋯) (fun x => f) e = f",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex2_rect_uncurried",
+    "profile": "LogicProofElimination",
+    "certificate": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rect_uncurried_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value; all proof arguments identified by proof irrelevance",
+    "scope": "A : Prop as in exported signature; native equality-indexed motive; arbitrary branch value, representing the unique proof-argument fiber; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rect_uncurried_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj1_of_ex2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_of_ex2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_of_ex2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_of_ex2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj3_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj3_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "∀ (A : Prop) (P Q : A → Prop) (a b : Rocq.Corelib.Init.Logic.ex2 A P Q) (F : ⋯ = ⋯ → Sort w) (f : F ⋯)\n  (e : NativeBridge.ME (Rocq.Corelib.Init.Logic.ex2 A P Q) a b),\n  RocqPending.Corelib.Init.Logic.eq_ex2_rect_uncurried A P Q a b (fun e => F ⋯) (fun x => f) e = f",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex2_rect_ex_intro2",
+    "profile": "LogicProofElimination",
+    "certificate": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rect_ex_intro2_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value; all proof arguments identified by proof irrelevance",
+    "scope": "A : Prop as in exported signature; native equality-indexed motive; arbitrary branch value, representing the unique proof-argument fiber; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rect_ex_intro2_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_3.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_4.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj1_of_ex2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_of_ex2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_of_ex2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_of_ex2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj3_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj3_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "∀ (A : Prop) (P Q : A → Prop) (a1 : A) (a2 : P a1) (a3 : Q a1) (b1 : A) (b2 : P b1) (b3 : Q b1) (F : ⋯ = ⋯ → Sort w)\n  (f : F ⋯) (e : NativeBridge.ME (Rocq.Corelib.Init.Logic.ex2 A P Q) ⋯ ⋯),\n  RocqPending.Corelib.Init.Logic.eq_ex2_rect_ex_intro2 A P Q a1 a2 a3 b1 b2 b3 (fun e => F ⋯) (fun x x_1 x_2 => f) e = f",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex2_rect_ex_intro2_l",
+    "profile": "LogicProofElimination",
+    "certificate": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rect_ex_intro2_l_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value; all proof arguments identified by proof irrelevance",
+    "scope": "A : Prop as in exported signature; native equality-indexed motive; arbitrary branch value, representing the unique proof-argument fiber; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rect_ex_intro2_l_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_3.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_l",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_l.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj1_of_ex2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_of_ex2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_of_ex2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_of_ex2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj3_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj3_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "∀ (A : Prop) (P Q : A → Prop) (a1 : A) (a2 : P a1) (a3 : Q a1) (b : Rocq.Corelib.Init.Logic.ex2 A P Q)\n  (F : ⋯ = ⋯ → Sort w) (f : F ⋯) (e : NativeBridge.ME (Rocq.Corelib.Init.Logic.ex2 A P Q) ⋯ b),\n  RocqPending.Corelib.Init.Logic.eq_ex2_rect_ex_intro2_l A P Q a1 a2 a3 b (fun e => F ⋯) (fun x x_1 x_2 => f) e = f",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex2_rect_ex_intro2_r",
+    "profile": "LogicProofElimination",
+    "certificate": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rect_ex_intro2_r_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value; all proof arguments identified by proof irrelevance",
+    "scope": "A : Prop as in exported signature; native equality-indexed motive; arbitrary branch value, representing the unique proof-argument fiber; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rect_ex_intro2_r_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_3.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_r",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_r.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj1_of_ex2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_of_ex2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_of_ex2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_of_ex2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj3_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj3_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "∀ (A : Prop) (P Q : A → Prop) (a : Rocq.Corelib.Init.Logic.ex2 A P Q) (b1 : A) (b2 : P b1) (b3 : Q b1)\n  (F : ⋯ = ⋯ → Sort w) (f : F ⋯) (e : NativeBridge.ME (Rocq.Corelib.Init.Logic.ex2 A P Q) a ⋯),\n  RocqPending.Corelib.Init.Logic.eq_ex2_rect_ex_intro2_r A P Q a b1 b2 b3 (fun e => F ⋯) (fun x x_1 x_2 => f) e = f",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Prop) (P : A → Prop), (∃ a, P a) → (∃ a, P a) → True → True → True",
+    "native_expression": "∀ (A : Prop) (P : A → Prop), (∃ a, P a) → (∃ a, P a) → True → True → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_ex.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_ex.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex2",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex2.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Prop) (P Q : A → Prop), (∃ x, P x ∧ Q x) → (∃ x, P x ∧ Q x) → True → True → True → True",
+    "native_expression": "∀ (A : Prop) (P Q : A → Prop), (∃ x, P x ∧ Q x) → (∃ x, P x ∧ Q x) → True → True → True → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_ex2.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_ex2.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex2.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex2_eta",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex2_eta.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Prop) (P Q : A → Prop), (∃ x, P x ∧ Q x) → (∃ x, P x ∧ Q x) → True → True",
+    "native_expression": "∀ (A : Prop) (P Q : A → Prop), (∃ x, P x ∧ Q x) → (∃ x, P x ∧ Q x) → True → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_eta.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_ex2_eta.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_ex2_eta.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex2_eta.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex2_hprop",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex2_hprop.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Prop) (P Q : A → Prop), (∀ (x : A), Q x → Q x → True) → (∃ x, P x ∧ Q x) → (∃ x, P x ∧ Q x) → True → True",
+    "native_expression": "∀ (A : Prop) (P Q : A → Prop), (∀ (x : A), Q x → Q x → True) → (∃ x, P x ∧ Q x) → (∃ x, P x ∧ Q x) → True → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_hprop.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_ex2_hprop.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_hprop__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_hprop__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_hprop__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_hprop__rocq2lean_obligation_2.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_ex2_hprop.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex2_hprop.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex2_hprop_iff",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex2_hprop_iff.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Prop) (P Q : A → Prop), (∀ (x : A), Q x → Q x → True) → (∃ x, P x ∧ Q x) → (∃ x, P x ∧ Q x) → (True ↔ True)",
+    "native_expression": "∀ (A : Prop) (P Q : A → Prop), (∀ (x : A), Q x → Q x → True) → (∃ x, P x ∧ Q x) → (∃ x, P x ∧ Q x) → (True ↔ True)",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_hprop_iff.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_ex2_hprop_iff.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_hprop_iff__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_hprop_iff__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_hprop_iff__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_hprop_iff__rocq2lean_obligation_2.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_ex2_hprop_iff.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex2_hprop_iff.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex2_ind",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex2_ind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Prop) (P Q : A → Prop),\n  (∃ x, P x ∧ Q x) → (∃ x, P x ∧ Q x) → ∀ (R : True → Prop), (True → True → True → R True.intro) → True → R True.intro",
+    "native_expression": "∀ (A : Prop) (P Q : A → Prop),\n  (∃ x, P x ∧ Q x) → (∃ x, P x ∧ Q x) → ∀ (R : True → Prop), (True → True → True → R True.intro) → True → R True.intro",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_ind.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_ex2_ind.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_3.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_ex2_ind.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex2_ind.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex2_ind_uncurried",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex2_ind_uncurried.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Prop) (P Q : A → Prop) (u : ∃ x, P x ∧ Q x),\n  (∃ x, P x ∧ Q x) → ∀ (R : True → Prop), ((∃ e, True ∧ True) → R True.intro) → True → R True.intro",
+    "native_expression": "∀ (A : Prop) (P Q : A → Prop) (u : ∃ x, P x ∧ Q x),\n  (∃ x, P x ∧ Q x) → ∀ (R : True → Prop), ((∃ e, True ∧ True) → R True.intro) → True → R True.intro",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_ind_uncurried.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_ex2_ind_uncurried.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_3.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_ex2_ind_uncurried.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex2_ind_uncurried.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex2_nondep",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Logic.eq_ex2_nondep.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A B C : Prop), (∃ x, B ∧ C) → (∃ x, B ∧ C) → True → True → True → True",
+    "native_expression": "∀ (A B C : Prop), (∃ x, B ∧ C) → (∃ x, B ∧ C) → True → True → True → True",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Logic.eq_ex2_nondep.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Logic.eq_ex2_nondep.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex2_uncurried",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex2_uncurried.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Prop) (P Q : A → Prop) (u : ∃ x, P x ∧ Q x), (∃ x, P x ∧ Q x) → (∃ e, True ∧ True) → True",
+    "native_expression": "∀ (A : Prop) (P Q : A → Prop) (u : ∃ x, P x ∧ Q x), (∃ x, P x ∧ Q x) → (∃ e, True ∧ True) → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_uncurried.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_ex2_uncurried.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_uncurried__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_uncurried__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_uncurried__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_uncurried__rocq2lean_obligation_2.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_ex2_uncurried.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex2_uncurried.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex2_uncurried_iff",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex2_uncurried_iff.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Prop) (P Q : A → Prop) (u : ∃ x, P x ∧ Q x), (∃ x, P x ∧ Q x) → (True ↔ ∃ e, True ∧ True)",
+    "native_expression": "∀ (A : Prop) (P Q : A → Prop) (u : ∃ x, P x ∧ Q x), (∃ x, P x ∧ Q x) → (True ↔ ∃ e, True ∧ True)",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_uncurried_iff.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_ex2_uncurried_iff.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_uncurried_iff__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_uncurried_iff__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_uncurried_iff__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_uncurried_iff__rocq2lean_obligation_2.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_ex2_uncurried_iff.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex2_uncurried_iff.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_eta",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_eta.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Prop) (P : A → Prop), (∃ a, P a) → (∃ a, P a) → True → True",
+    "native_expression": "∀ (A : Prop) (P : A → Prop), (∃ a, P a) → (∃ a, P a) → True → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_eta.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_ex_eta.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_ex_eta.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_eta.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_hprop",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Logic.eq_ex_hprop.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Prop) (P : A → Prop), (∀ (x : A), P x → P x → True) → (∃ a, P a) → (∃ a, P a) → True → True",
+    "native_expression": "∀ (A : Prop) (P : A → Prop), (∀ (x : A), P x → P x → True) → (∃ a, P a) → (∃ a, P a) → True → True",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Logic.eq_ex_hprop.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Logic.eq_ex_hprop.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_hprop_iff",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Logic.eq_ex_hprop_iff.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Prop) (P : A → Prop), (∀ (x : A), P x → P x → True) → (∃ a, P a) → (∃ a, P a) → (True ↔ True)",
+    "native_expression": "∀ (A : Prop) (P : A → Prop), (∀ (x : A), P x → P x → True) → (∃ a, P a) → (∃ a, P a) → (True ↔ True)",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Logic.eq_ex_hprop_iff.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Logic.eq_ex_hprop_iff.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_ind",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_ind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Prop) (P : A → Prop),\n  (∃ a, P a) → (∃ a, P a) → ∀ (R : True → Prop), (True → True → R True.intro) → True → R True.intro",
+    "native_expression": "∀ (A : Prop) (P : A → Prop),\n  (∃ a, P a) → (∃ a, P a) → ∀ (R : True → Prop), (True → True → R True.intro) → True → R True.intro",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_ind.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_ex_ind.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex_ind__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_ind__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_ind__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_ind__rocq2lean_obligation_2.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_ex_ind.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_ind.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_ind_uncurried",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_ind_uncurried.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Prop) (P : A → Prop) (u : ∃ a, P a),\n  (∃ a, P a) → ∀ (R : True → Prop), ((∃ e, True) → R True.intro) → True → R True.intro",
+    "native_expression": "∀ (A : Prop) (P : A → Prop) (u : ∃ a, P a),\n  (∃ a, P a) → ∀ (R : True → Prop), ((∃ e, True) → R True.intro) → True → R True.intro",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_ind_uncurried.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_ex_ind_uncurried.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex_ind_uncurried__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_ind_uncurried__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_ind_uncurried__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_ind_uncurried__rocq2lean_obligation_2.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_ex_ind_uncurried.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_ind_uncurried.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_intro",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_intro.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_439) (P : A → Prop) (u1 v1 : A), P u1 → P v1 → u1 = v1 → True → True",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_439) (P : A → Prop) (u1 v1 : A), P u1 → P v1 → u1 = v1 → True → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_3.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_ex_intro.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_intro.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_intro2",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_intro2.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_626) (P Q : A → Prop) (u1 v1 : A),\n  P u1 → P v1 → Q u1 → Q v1 → u1 = v1 → True → True → True",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_626) (P Q : A → Prop) (u1 v1 : A),\n  P u1 → P v1 → Q u1 → Q v1 → u1 = v1 → True → True → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_3.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_4.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_ex_intro2.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_intro2.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_intro2_hprop",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_690) (P Q : A → Prop),\n  (∀ (x : A), P x → P x → True) →\n    (∀ (x : A), Q x → Q x → True) → ∀ (u1 v1 : A), P u1 → P v1 → Q u1 → Q v1 → u1 = v1 → True",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_690) (P Q : A → Prop),\n  (∀ (x : A), P x → P x → True) →\n    (∀ (x : A), Q x → Q x → True) → ∀ (u1 v1 : A), P u1 → P v1 → Q u1 → Q v1 → u1 = v1 → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_hprop__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_hprop__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop__rocq2lean_obligation_2.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_intro2_hprop_nondep",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_667) (P : A → Prop) (Q : Prop),\n  (Q → Q → True) → ∀ (u1 v1 : A), P u1 → P v1 → Q → Q → True → True",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_667) (P : A → Prop) (Q : Prop),\n  (Q → Q → True) → ∀ (u1 v1 : A), P u1 → P v1 → Q → Q → True → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_3.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_4.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_intro2_l",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_intro2_l.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Prop) (P Q : A → Prop) (u1 : A), P u1 → Q u1 → (∃ x, P x ∧ Q x) → True → True → True → True",
+    "native_expression": "∀ (A : Prop) (P Q : A → Prop) (u1 : A), P u1 → Q u1 → (∃ x, P x ∧ Q x) → True → True → True → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_l.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_l.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_3.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_ex_intro2_l.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_intro2_l.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_intro2_r",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_intro2_r.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Prop) (P Q : A → Prop), (∃ x, P x ∧ Q x) → ∀ (v1 : A), P v1 → Q v1 → True → True → True → True",
+    "native_expression": "∀ (A : Prop) (P Q : A → Prop), (∃ x, P x ∧ Q x) → ∀ (v1 : A), P v1 → Q v1 → True → True → True → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_r.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_r.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_3.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_ex_intro2_r.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_intro2_r.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_intro2_uncurried",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_intro2_uncurried.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_601) (P Q : A → Prop) (u1 v1 : A),\n  P u1 → P v1 → Q u1 → Q v1 → (∃ e, True ∧ True) → True",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_601) (P Q : A → Prop) (u1 v1 : A),\n  P u1 → P v1 → Q u1 → Q v1 → (∃ e, True ∧ True) → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_uncurried.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_uncurried.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_3.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_4.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_ex_intro2_uncurried.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_intro2_uncurried.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_intro_hprop",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_intro_hprop.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_537) (P : A → Prop),\n  (∀ (x : A), P x → P x → True) → ∀ (u1 v1 : A), P u1 → P v1 → u1 = v1 → True",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_537) (P : A → Prop),\n  (∀ (x : A), P x → P x → True) → ∀ (u1 v1 : A), P u1 → P v1 → u1 = v1 → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro_hprop.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro_hprop.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro_hprop__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro_hprop__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro_hprop__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro_hprop__rocq2lean_obligation_2.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_ex_intro_hprop.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_intro_hprop.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_intro_l",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_intro_l.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Prop) (P : A → Prop) (u1 : A), P u1 → (∃ a, P a) → True → True → True",
+    "native_expression": "∀ (A : Prop) (P : A → Prop) (u1 : A), P u1 → (∃ a, P a) → True → True → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro_l.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro_l.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro_l__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro_l__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro_l__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro_l__rocq2lean_obligation_2.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_ex_intro_l.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_intro_l.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_intro_r",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_intro_r.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Prop) (P : A → Prop), (∃ a, P a) → ∀ (v1 : A), P v1 → True → True → True",
+    "native_expression": "∀ (A : Prop) (P : A → Prop), (∃ a, P a) → ∀ (v1 : A), P v1 → True → True → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro_r.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro_r.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro_r__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro_r__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro_r__rocq2lean_obligation_2.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_ex_intro_r.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_intro_r.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_intro_uncurried",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_intro_uncurried.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_424) (P : A → Prop) (u1 v1 : A), P u1 → P v1 → (∃ e, True) → True",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_424) (P : A → Prop) (u1 v1 : A), P u1 → P v1 → (∃ e, True) → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro_uncurried.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro_uncurried.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_3.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_ex_intro_uncurried.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_intro_uncurried.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_uncurried",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_uncurried.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Prop) (P : A → Prop) (u : ∃ a, P a), (∃ a, P a) → (∃ e, True) → True",
+    "native_expression": "∀ (A : Prop) (P : A → Prop) (u : ∃ a, P a), (∃ a, P a) → (∃ e, True) → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_uncurried.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_ex_uncurried.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex_uncurried__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_uncurried__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_ex_uncurried.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_uncurried.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_uncurried_iff",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_uncurried_iff.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Prop) (P : A → Prop) (u : ∃ a, P a), (∃ a, P a) → (True ↔ ∃ e, True)",
+    "native_expression": "∀ (A : Prop) (P : A → Prop) (u : ∃ a, P a), (∃ a, P a) → (True ↔ ∃ e, True)",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_uncurried_iff.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_ex_uncurried_iff.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex_uncurried_iff__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_uncurried_iff__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_ex_uncurried_iff.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex_uncurried_iff.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_id_comm_l",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_id_comm_l.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_269) (f : A → A), (∀ (a : A), a = f a) → ∀ (a : A), True",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_269) (f : A → A), (∀ (a : A), a = f a) → ∀ (a : A), True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_id_comm_l.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_id_comm_l.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_id_comm_l__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_id_comm_l__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_id_comm_l.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_id_comm_l.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_id_comm_r",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_id_comm_r.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_277) (f : A → A), (∀ (a : A), f a = a) → ∀ (a : A), True",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_277) (f : A → A), (∀ (a : A), f a = a) → ∀ (a : A), True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_id_comm_r.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_id_comm_r.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_id_comm_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_id_comm_r__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_id_comm_r.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_id_comm_r.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_refl_map_distr",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_refl_map_distr.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_287) (B : Sort u_Corelib_Init_Logic_288) (x : A) (f : A → B), True",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_287) (B : Sort u_Corelib_Init_Logic_288) (x : A) (f : A → B), True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_refl_map_distr.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_refl_map_distr.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_refl_map_distr__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_refl_map_distr__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_refl_map_distr__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_refl_map_distr__rocq2lean_obligation_2.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_refl_map_distr.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_refl_map_distr.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_sym_map_distr",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_sym_map_distr.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_312) (B : Sort u_Corelib_Init_Logic_313) (x y : A) (f : A → B), x = y → True",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_312) (B : Sort u_Corelib_Init_Logic_313) (x y : A) (f : A → B), x = y → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_sym_map_distr.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_sym_map_distr.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_sym_map_distr__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_sym_map_distr__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_sym_map_distr__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_sym_map_distr__rocq2lean_obligation_2.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_sym_map_distr.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_sym_map_distr.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_trans_assoc",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_trans_assoc.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_182) (x y z t : A), x = y → y = z → z = t → True",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_182) (x y z t : A), x = y → y = z → z = t → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_trans_assoc.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_trans_assoc.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_trans_assoc__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_trans_assoc__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_trans_assoc__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_trans_assoc__rocq2lean_obligation_2.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_trans_assoc.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_trans_assoc.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_trans_map",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_trans_map.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_202) (B : A → Sort u_Corelib_Init_Logic_205) (x1 x2 x3 : A) (y1 : B x1) (y2 : B x2)\n  (y3 : B x3) (H1 : x1 = x2) (H2 : x2 = x3), H1 ▸ y1 = y2 → H2 ▸ y2 = y3 → ⋯ ▸ y1 = y3",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_202) (B : A → Sort u_Corelib_Init_Logic_205) (x1 x2 x3 : A) (y1 : B x1) (y2 : B x2)\n  (y3 : B x3) (H1 : x1 = x2) (H2 : x2 = x3), H1 ▸ y1 = y2 → H2 ▸ y2 = y3 → ⋯ ▸ y1 = y3",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_trans_map.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_trans_map.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_trans_map__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_trans_map__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_trans_map.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_trans_map.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_trans_map_distr",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_trans_map_distr.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_299) (B : Sort u_Corelib_Init_Logic_300) (x y z : A) (f : A → B), x = y → y = z → True",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_299) (B : Sort u_Corelib_Init_Logic_300) (x y z : A) (f : A → B), x = y → y = z → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_trans_map_distr.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_trans_map_distr.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_trans_map_distr__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_trans_map_distr__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_trans_map_distr__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_trans_map_distr__rocq2lean_obligation_2.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_trans_map_distr.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_trans_map_distr.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_trans_refl_l",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_trans_refl_l.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_157) (x y : A), x = y → True",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_157) (x y : A), x = y → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_trans_refl_l.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_trans_refl_l.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_trans_refl_l__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_trans_refl_l__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_trans_refl_l.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_trans_refl_l.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_trans_refl_r",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_trans_refl_r.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_164) (x y : A), x = y → True",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_164) (x y : A), x = y → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_trans_refl_r.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_trans_refl_r.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_trans_refl_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_trans_refl_r__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_trans_refl_r.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_trans_refl_r.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_trans_rew_distr",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_trans_rew_distr.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_324) (P : A → Sort u_Corelib_Init_Logic_325) (x y z : A) (e : x = y) (e' : y = z)\n  (k : P x), ⋯ ▸ k = e' ▸ e ▸ k",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_324) (P : A → Sort u_Corelib_Init_Logic_325) (x y z : A) (e : x = y) (e' : y = z)\n  (k : P x), ⋯ ▸ k = e' ▸ e ▸ k",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_trans_rew_distr.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_trans_rew_distr.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_trans_rew_distr__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_trans_rew_distr__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_trans_rew_distr.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_trans_rew_distr.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_trans_sym_distr",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_trans_sym_distr.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_318) (x y z : A), x = y → y = z → True",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_318) (x y z : A), x = y → y = z → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_trans_sym_distr.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_trans_sym_distr.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_trans_sym_distr__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_trans_sym_distr__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_trans_sym_distr__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_trans_sym_distr__rocq2lean_obligation_2.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_trans_sym_distr.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_trans_sym_distr.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_trans_sym_inv_l",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_trans_sym_inv_l.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_170) (x y : A), x = y → True",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_170) (x y : A), x = y → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_trans_sym_inv_l.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_trans_sym_inv_l.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_trans_sym_inv_l__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_trans_sym_inv_l__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_trans_sym_inv_l__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_trans_sym_inv_l__rocq2lean_obligation_2.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_trans_sym_inv_l.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_trans_sym_inv_l.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_trans_sym_inv_r",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_trans_sym_inv_r.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_176) (x y : A), x = y → True",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_176) (x y : A), x = y → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_trans_sym_inv_r.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.eq_trans_sym_inv_r.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_trans_sym_inv_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_trans_sym_inv_r__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_trans_sym_inv_r__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_trans_sym_inv_r__rocq2lean_obligation_2.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.eq_trans_sym_inv_r.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_trans_sym_inv_r.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.ex2_eta",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.ex2_eta.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Prop) (P Q : A → Prop), (∃ x, P x ∧ Q x) → True",
+    "native_expression": "∀ (A : Prop) (P Q : A → Prop), (∃ x, P x ∧ Q x) → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex2_eta.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.ex2_eta.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.ex2_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex2_eta__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.ex2_eta.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.ex2_eta.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.ex_eta",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.ex_eta.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Prop) (P : A → Prop), (∃ a, P a) → True",
+    "native_expression": "∀ (A : Prop) (P : A → Prop), (∃ a, P a) → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_eta.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.ex_eta.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.ex_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_eta__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.ex_eta.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.ex_eta.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.ex_of_ex2_eq",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.ex_of_ex2_eq.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Prop) (P Q : A → Prop), (∃ x, P x ∧ Q x) → (∃ x, P x ∧ Q x) → True → True",
+    "native_expression": "∀ (A : Prop) (P Q : A → Prop), (∃ x, P x ∧ Q x) → (∃ x, P x ∧ Q x) → True → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_of_ex2_eq.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.ex_of_ex2_eq.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.ex_of_ex2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_of_ex2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_of_ex2_eq__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_of_ex2_eq__rocq2lean_obligation_2.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.ex_of_ex2_eq.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.ex_of_ex2_eq.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.ex_proj1_eq",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Logic.ex_proj1_eq.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Prop) (P : A → Prop), (∃ a, P a) → (∃ a, P a) → True → True",
+    "native_expression": "∀ (A : Prop) (P : A → Prop), (∃ a, P a) → (∃ a, P a) → True → True",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_eq.statement",
+    "type": "Rocq.Corelib.Init.Logic.ex_proj1_eq.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Logic.ex_proj1_eq.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.ex_proj1_of_ex2_eq",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Logic.ex_proj1_of_ex2_eq.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Prop) (P Q : A → Prop), (∃ x, P x ∧ Q x) → (∃ x, P x ∧ Q x) → True → True",
+    "native_expression": "∀ (A : Prop) (P Q : A → Prop), (∃ x, P x ∧ Q x) → (∃ x, P x ∧ Q x) → True → True",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_of_ex2_eq.statement",
+    "type": "Rocq.Corelib.Init.Logic.ex_proj1_of_ex2_eq.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Logic.ex_proj1_of_ex2_eq.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.ex_proj2",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Logic.ex_proj2.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Prop) (P : A → Prop) (x : ∃ x, P x), P ⋯",
+    "native_expression": "∀ (A : Prop) (P : A → Prop) (x : ∃ x, P x), P ⋯",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Logic.ex_proj2.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Logic.ex_proj2.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.ex_proj2_eq",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.ex_proj2_eq.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Prop) (P : A → Prop), (∃ a, P a) → (∃ a, P a) → True → True",
+    "native_expression": "∀ (A : Prop) (P : A → Prop), (∃ a, P a) → (∃ a, P a) → True → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_eq.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.ex_proj2_eq.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.ex_proj2_eq.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.ex_proj2_eq.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.ex_proj2_of_ex2_eq",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.ex_proj2_of_ex2_eq.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Prop) (P Q : A → Prop), (∃ x, P x ∧ Q x) → (∃ x, P x ∧ Q x) → True → True",
+    "native_expression": "∀ (A : Prop) (P Q : A → Prop), (∃ x, P x ∧ Q x) → (∃ x, P x ∧ Q x) → True → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_of_ex2_eq.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.ex_proj2_of_ex2_eq.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.ex_proj2_of_ex2_eq.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.ex_proj2_of_ex2_eq.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.ex_proj3",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Logic.ex_proj3.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Prop) (P Q : A → Prop) (x : ∃ x, P x ∧ Q x), Q ⋯",
+    "native_expression": "∀ (A : Prop) (P Q : A → Prop) (x : ∃ x, P x ∧ Q x), Q ⋯",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Logic.ex_proj3.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Logic.ex_proj3.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.ex_proj3_eq",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.ex_proj3_eq.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Prop) (P Q : A → Prop), (∃ x, P x ∧ Q x) → (∃ x, P x ∧ Q x) → True → True",
+    "native_expression": "∀ (A : Prop) (P Q : A → Prop), (∃ x, P x ∧ Q x) → (∃ x, P x ∧ Q x) → True → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj3_eq.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.ex_proj3_eq.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.ex_proj3_eq.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.ex_proj3_eq.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.f_equal_compose",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.f_equal_compose.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_150) (B : Sort u_Corelib_Init_Logic_151) (C : Sort u_Corelib_Init_Logic_152) (a b : A)\n  (f : A → B) (g : B → C), a = b → True",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_150) (B : Sort u_Corelib_Init_Logic_151) (C : Sort u_Corelib_Init_Logic_152) (a b : A)\n  (f : A → B) (g : B → C), a = b → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.f_equal_compose.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.f_equal_compose.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.f_equal_compose__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.f_equal_compose__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.f_equal_compose__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.f_equal_compose__rocq2lean_obligation_2.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.f_equal_compose.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.f_equal_compose.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.f_equal_dep",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Logic.f_equal_dep.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_68) (B : A → Sort u_Corelib_Init_Logic_69) (f : (x : A) → B x) (x y : A) (H : x = y),\n  H ▸ f x = f y",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_68) (B : A → Sort u_Corelib_Init_Logic_69) (f : (x : A) → B x) (x y : A) (H : x = y),\n  H ▸ f x = f y",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Logic.f_equal_dep.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Logic.f_equal_dep.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.f_equal_dep2",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.f_equal_dep2.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_79) (A' : Sort u_Corelib_Init_Logic_80) (B : A → Sort u_Corelib_Init_Logic_83)\n  (B' : A' → Sort u_Corelib_Init_Logic_86) (f : A → A') (g : (a : A) → B a → B' (f a)) (x1 x2 : A) (y1 : B x1)\n  (y2 : B x2) (H : x1 = x2), H ▸ y1 = y2 → ⋯ ▸ g x1 y1 = g x2 y2",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_79) (A' : Sort u_Corelib_Init_Logic_80) (B : A → Sort u_Corelib_Init_Logic_83)\n  (B' : A' → Sort u_Corelib_Init_Logic_86) (f : A → A') (g : (a : A) → B a → B' (f a)) (x1 x2 : A) (y1 : B x1)\n  (y2 : B x2) (H : x1 = x2), H ▸ y1 = y2 → ⋯ ▸ g x1 y1 = g x2 y2",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.f_equal_dep2.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.f_equal_dep2.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.f_equal_dep2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.f_equal_dep2__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.f_equal_dep2.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.f_equal_dep2.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.forall_exists_coincide_unique_domain",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Logic.forall_exists_coincide_unique_domain.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_361) (P : A → Prop),\n  (∀ (Q : A → Prop), (∀ (x : A), P x → Q x) ↔ ∃ x, P x ∧ Q x) → ∃ x, P x ∧ ∀ (y : A), P y → x = y",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_361) (P : A → Prop),\n  (∀ (Q : A → Prop), (∀ (x : A), P x → Q x) ↔ ∃ x, P x ∧ Q x) → ∃ x, P x ∧ ∀ (y : A), P y → x = y",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Logic.forall_exists_coincide_unique_domain.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Logic.forall_exists_coincide_unique_domain.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.forall_exists_unique_domain_coincide",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Logic.forall_exists_unique_domain_coincide.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_354) (P : A → Prop),\n  (∃ x, P x ∧ ∀ (y : A), P y → x = y) → ∀ (Q : A → Prop), (∀ (x : A), P x → Q x) ↔ ∃ x, P x ∧ Q x",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_354) (P : A → Prop),\n  (∃ x, P x ∧ ∀ (y : A), P y → x = y) → ∀ (Q : A → Prop), (∀ (x : A), P x → Q x) ↔ ∃ x, P x ∧ Q x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Logic.forall_exists_unique_domain_coincide.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Logic.forall_exists_unique_domain_coincide.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.map_subst",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Logic.map_subst.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_215) (P : A → Sort u_Corelib_Init_Logic_216) (Q : A → Sort u_Corelib_Init_Logic_217)\n  (f : (x : A) → P x → Q x) (x y : A) (H : x = y) (z : P x), H ▸ f x z = f y (H ▸ z)",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_215) (P : A → Sort u_Corelib_Init_Logic_216) (Q : A → Sort u_Corelib_Init_Logic_217)\n  (f : (x : A) → P x → Q x) (x y : A) (H : x = y) (z : P x), H ▸ f x z = f y (H ▸ z)",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Logic.map_subst.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Logic.map_subst.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.map_subst_map",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.map_subst_map.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_229) (B : Sort u_Corelib_Init_Logic_231) (P : A → Sort u_Corelib_Init_Logic_230)\n  (Q : B → Sort u_Corelib_Init_Logic_232) (f : A → B) (g : (x : A) → P x → Q (f x)) (x y : A) (H : x = y) (z : P x),\n  ⋯ ▸ g x z = g y (H ▸ z)",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_229) (B : Sort u_Corelib_Init_Logic_231) (P : A → Sort u_Corelib_Init_Logic_230)\n  (Q : B → Sort u_Corelib_Init_Logic_232) (f : A → B) (g : (x : A) → P x → Q (f x)) (x y : A) (H : x = y) (z : P x),\n  ⋯ ▸ g x z = g y (H ▸ z)",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.map_subst_map.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.map_subst_map.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.map_subst_map__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.map_subst_map__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.map_subst_map.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.map_subst_map.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.rew_compose",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.rew_compose.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_254) (P : A → Sort u_Corelib_Init_Logic_255) (x1 x2 x3 : A) (H1 : x1 = x2)\n  (H2 : x2 = x3) (y : P x1), H2 ▸ H1 ▸ y = ⋯ ▸ y",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_254) (P : A → Sort u_Corelib_Init_Logic_255) (x1 x2 x3 : A) (H1 : x1 = x2)\n  (H2 : x2 = x3) (y : P x1), H2 ▸ H1 ▸ y = ⋯ ▸ y",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.rew_compose.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.rew_compose.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.rew_compose__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.rew_compose__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.rew_compose.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.rew_compose.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.rew_const",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Logic.rew_const.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_333) (P : Sort u_Corelib_Init_Logic_335) (x y : A) (e : x = y) (k : P), e ▸ k = k",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_333) (P : Sort u_Corelib_Init_Logic_335) (x y : A) (e : x = y) (k : P), e ▸ k = k",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Logic.rew_const.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Logic.rew_const.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.rew_ex",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.rew_ex.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A' : Sort u_Corelib_Init_Logic_558) (x : A') (P : A' → Prop) (Q : (a : A') → P a → Prop),\n  (∃ p, Q x p) → ∀ (y : A'), x = y → True",
+    "native_expression": "∀ (A' : Sort u_Corelib_Init_Logic_558) (x : A') (P : A' → Prop) (Q : (a : A') → P a → Prop),\n  (∃ p, Q x p) → ∀ (y : A'), x = y → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.rew_ex.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.rew_ex.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.rew_ex__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.rew_ex__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.rew_ex__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.rew_ex__rocq2lean_obligation_2.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.rew_ex.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.rew_ex.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.rew_ex2",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.rew_ex2.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A' : Sort u_Corelib_Init_Logic_796) (x : A') (P : A' → Prop) (Q R : (a : A') → P a → Prop),\n  (∃ x_1, Q x x_1 ∧ R x x_1) → ∀ (y : A'), x = y → True",
+    "native_expression": "∀ (A' : Sort u_Corelib_Init_Logic_796) (x : A') (P : A' → Prop) (Q R : (a : A') → P a → Prop),\n  (∃ x_1, Q x x_1 ∧ R x x_1) → ∀ (y : A'), x = y → True",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.rew_ex2.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.rew_ex2.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.rew_ex2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.rew_ex2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.rew_ex2__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.rew_ex2__rocq2lean_obligation_2.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.rew_ex2.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.rew_ex2.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.rew_map",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.rew_map.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_192) (B : Sort u_Corelib_Init_Logic_190) (P : B → Sort u_Corelib_Init_Logic_191)\n  (f : A → B) (x1 x2 : A) (H : x1 = x2) (y : P (f x1)), H ▸ y = ⋯ ▸ y",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_192) (B : Sort u_Corelib_Init_Logic_190) (P : B → Sort u_Corelib_Init_Logic_191)\n  (f : A → B) (x1 x2 : A) (H : x1 = x2) (y : P (f x1)), H ▸ y = ⋯ ▸ y",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.rew_map.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.rew_map.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.rew_map__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.rew_map__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.rew_map.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.rew_map.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.rew_opp_l",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.rew_opp_l.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_101) (P : A → Sort u_Corelib_Init_Logic_102) (x y : A) (H : x = y) (a : P x),\n  ⋯ ▸ H ▸ a = a",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_101) (P : A → Sort u_Corelib_Init_Logic_102) (x y : A) (H : x = y) (a : P x),\n  ⋯ ▸ H ▸ a = a",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.rew_opp_l.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.rew_opp_l.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.rew_opp_l.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.rew_opp_l.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.rew_opp_r",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.rew_opp_r.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_94) (P : A → Sort u_Corelib_Init_Logic_95) (x y : A) (H : x = y) (a : P y),\n  H ▸ ⋯ ▸ a = a",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_94) (P : A → Sort u_Corelib_Init_Logic_95) (x y : A) (H : x = y) (a : P y),\n  H ▸ ⋯ ▸ a = a",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.rew_opp_r.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.rew_opp_r.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.rew_opp_r.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.rew_opp_r.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.rew_swap",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.rew_swap.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_243) (P : A → Sort u_Corelib_Init_Logic_244) (x1 x2 : A) (H : x1 = x2) (y1 : P x1)\n  (y2 : P x2), H ▸ y1 = y2 → y1 = ⋯ ▸ y2",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_243) (P : A → Sort u_Corelib_Init_Logic_244) (x1 x2 : A) (H : x1 = x2) (y1 : P x1)\n  (y2 : P x2), H ▸ y1 = y2 → y1 = ⋯ ▸ y2",
+    "scope": "all explicit prerequisites discharged; source-free native statement body; source universe parameters preserved",
+    "original_statement_proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.rew_swap.statement",
+    "closed_wrapper": "NativeBridge.Incremental.LogicStatements.closed.RocqPending.Corelib.Init.Logic.rew_swap.statement",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ],
+    "type": "RocqPending.Corelib.Init.Logic.rew_swap.statement ↔\n  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.rew_swap.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.unique_existence",
+    "profile": "LogicStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Logic.unique_existence.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Logic_348) (P : A → Prop),\n  ((∃ x, P x) ∧ ∀ (x y : A), P x → P y → x = y) ↔ ∃ x, P x ∧ ∀ (y : A), P y → x = y",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Logic_348) (P : A → Prop),\n  ((∃ x, P x) ∧ ∀ (x y : A), P x → P y → x = y) ↔ ∃ x, P x ∧ ∀ (y : A), P y → x = y",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Logic.unique_existence.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Logic.unique_existence.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
     "source": "Corelib.Init.Datatypes.BoolSpec_ind",
     "profile": "DatatypeStatements",
     "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.BoolSpec_ind.statement.correspondence",

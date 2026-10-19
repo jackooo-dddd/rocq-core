@@ -608,5 +608,89 @@
         "olean_sha256": "9831ab0c627d16bf7ba0664cf708621cca36ed959d8befdac3add4315ec17e2f"
       }
     }
+  },
+  {
+    "profile": "LogicWitnesses",
+    "module": "Init/Logic",
+    "exit": 0,
+    "seconds": 4.986,
+    "proof_sha256": "f3a5318bd6e45bd02a726ad6c6bed61c308c44c697c225be2c2286a7afdbd929",
+    "audit_present": true,
+    "incremental_dependencies": {
+      "EqualityTransport": {
+        "proof_sha256": "7411314d06a7c28c29a3dc39ab0e42969772051b1e37165d49ba934413794e1e",
+        "olean_sha256": "f236ec7104b449302495122e06399110295a53583c43ee2d2c098801492f46fc"
+      }
+    }
+  },
+  {
+    "profile": "LogicNormalization",
+    "module": "Init/Logic",
+    "exit": 0,
+    "seconds": 1.118,
+    "proof_sha256": "1bd32e3c8da8eb44103d940d22fb6c3d584ecab9c33066ddf7c504c2978f2672",
+    "audit_present": true,
+    "incremental_dependencies": {
+      "LogicWitnesses": {
+        "proof_sha256": "f3a5318bd6e45bd02a726ad6c6bed61c308c44c697c225be2c2286a7afdbd929",
+        "olean_sha256": "77184b3f5a4524ae7a0e4ee5f4bfd96c010631c2d045baed1ef0132466405980"
+      }
+    }
+  },
+  {
+    "profile": "LogicStatements",
+    "module": "Init/Logic",
+    "exit": 0,
+    "seconds": 1.972,
+    "proof_sha256": "3f090b0545cda4b323f3a5507b57ea350bab456fed6229ed1d94733e045d0ee5",
+    "audit_present": true,
+    "incremental_dependencies": {
+      "LogicNormalization": {
+        "proof_sha256": "1bd32e3c8da8eb44103d940d22fb6c3d584ecab9c33066ddf7c504c2978f2672",
+        "olean_sha256": "169b4095d76c3af086c7409b13f297aee05d031225c67864bf584e39a68f7bd4"
+      }
+    }
+  },
+  {
+    "profile": "LogicElimination",
+    "module": "Init/Logic",
+    "exit": 0,
+    "seconds": 1.018,
+    "proof_sha256": "b8b1b33555627134acdb5292f8acefa1241e0377aa07d654675c450bfe99d5ab",
+    "audit_present": true,
+    "incremental_dependencies": {
+      "LogicNormalization": {
+        "proof_sha256": "1bd32e3c8da8eb44103d940d22fb6c3d584ecab9c33066ddf7c504c2978f2672",
+        "olean_sha256": "169b4095d76c3af086c7409b13f297aee05d031225c67864bf584e39a68f7bd4"
+      }
+    }
+  },
+  {
+    "profile": "LogicExistsElimination",
+    "module": "Init/Logic",
+    "exit": 0,
+    "seconds": 1.218,
+    "proof_sha256": "767673007d8d390d410c2ac0c5b67311243cadf3640a8b162d938570168e1b8d",
+    "audit_present": true,
+    "incremental_dependencies": {
+      "LogicElimination": {
+        "proof_sha256": "b8b1b33555627134acdb5292f8acefa1241e0377aa07d654675c450bfe99d5ab",
+        "olean_sha256": "e0e0b67a31133eb3d772c5c6e98c96f438780da77f85a0636c7cb27f32a21fc5"
+      }
+    }
+  },
+  {
+    "profile": "LogicProofElimination",
+    "module": "Init/Logic",
+    "exit": 0,
+    "seconds": 1.168,
+    "proof_sha256": "eda9260daed18414366308cbc48b63a22947f6d4a3bf3a88d1167a517587b62a",
+    "audit_present": true,
+    "incremental_dependencies": {
+      "LogicExistsElimination": {
+        "proof_sha256": "767673007d8d390d410c2ac0c5b67311243cadf3640a8b162d938570168e1b8d",
+        "olean_sha256": "8bb8f2279f399d75271d4e7c8d09f935dc0d598c743bfd860d3bd148ef51def1"
+      }
+    }
   }
 ]

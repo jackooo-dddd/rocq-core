@@ -1,0 +1,3137 @@
+[{"type":
+  "∀ (A : Prop) (P Q : A → Prop) (a b : Rocq.Corelib.Init.Logic.ex2 A P Q) (F : ⋯ = ⋯ → Sort w) (f : F ⋯)\n  (e : NativeBridge.ME (Rocq.Corelib.Init.Logic.ex2 A P Q) a b),\n  RocqPending.Corelib.Init.Logic.eq_ex2_rect_uncurried A P Q a b (fun e => F ⋯) (fun x => f) e = f",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex2",
+   "RocqPending.Corelib.Init.Logic.eq_ex2_rect_uncurried",
+   "Rocq.Corelib.Init.Logic.eq",
+   "Rocq.Corelib.Init.Logic.ex2.rec",
+   "Rocq.Corelib.Init.Logic.eq_rect"],
+  "name":
+  "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rect_uncurried_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Prop) (P : A → Prop) (a1 : A) (a2 : P a1) (b1 : A) (b2 : P b1) (F : ⋯ = ⋯ → Sort w) (f : F ⋯)\n  (e : NativeBridge.ME (Rocq.Corelib.Init.Logic.ex A P) ⋯ ⋯),\n  RocqPending.Corelib.Init.Logic.eq_ex_rect_ex_intro A P a1 a2 b1 b2 (fun e => F ⋯) (fun x x_1 => f) e = f",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex",
+   "Rocq.Corelib.Init.Logic.ex.ex_intro",
+   "RocqPending.Corelib.Init.Logic.eq_ex_rect_ex_intro",
+   "Rocq.Corelib.Init.Logic.eq",
+   "Rocq.Corelib.Init.Logic.eq_rect"],
+  "name":
+  "NativeBridge.Incremental.LogicProofElimination.eq_ex_rect_ex_intro_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "(A : Prop) →\n  (P Q : A → Prop) →\n    (u v : Rocq.Corelib.Init.Logic.ex2 A (fun a => P a) fun a => Q a) →\n      (R : Rocq.Corelib.Init.Logic.eq (Rocq.Corelib.Init.Logic.ex2 A (fun a => P a) fun a => Q a) u v → Type) →\n        ((pqr :\n              Rocq.Corelib.Init.Logic.ex2 (Rocq.Corelib.Init.Logic.eq A ⋯ ⋯)\n                (fun p => Rocq.Corelib.Init.Logic.eq (P ⋯) ⋯ ⋯) fun p => Rocq.Corelib.Init.Logic.eq (Q ⋯) ⋯ ⋯) →\n            R ⋯) →\n          (p : Rocq.Corelib.Init.Logic.eq (Rocq.Corelib.Init.Logic.ex2 A (fun a => P a) fun a => Q a) u v) → R p",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex2",
+   "Rocq.Corelib.Init.Logic.eq",
+   "Rocq.Corelib.Init.Logic.ex2.rec",
+   "Rocq.Corelib.Init.Logic.eq_rect"],
+  "name":
+  "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rec_uncurried_closed",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (A : Prop) (P Q : A → Prop) (a b : Rocq.Corelib.Init.Logic.ex2 A P Q) (F : ⋯ = ⋯ → Type) (f : F ⋯)\n  (e : NativeBridge.ME (Rocq.Corelib.Init.Logic.ex2 A P Q) a b),\n  RocqPending.Corelib.Init.Logic.eq_ex2_rec A P Q a b (fun e => F ⋯) (fun x x_1 x_2 => f) e = f",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex2",
+   "RocqPending.Corelib.Init.Logic.eq_ex2_rec",
+   "Rocq.Corelib.Init.Logic.eq",
+   "Rocq.Corelib.Init.Logic.ex2.rec",
+   "Rocq.Corelib.Init.Logic.eq_rect"],
+  "name": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rec_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "(A : Prop) →\n  (P : A → Prop) →\n    (u1 : A) →\n      (u2 : P u1) →\n        (v1 : A) →\n          (v2 : P v1) →\n            (Q : Rocq.Corelib.Init.Logic.eq (Rocq.Corelib.Init.Logic.ex A P) ⋯ ⋯ → Sort u_1) →\n              ((p : Rocq.Corelib.Init.Logic.eq A u1 v1) → (q : Rocq.Corelib.Init.Logic.eq (P v1) ⋯ v2) → Q ⋯) →\n                (p : Rocq.Corelib.Init.Logic.eq (Rocq.Corelib.Init.Logic.ex A P) ⋯ ⋯) → Q p",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq",
+   "Rocq.Corelib.Init.Logic.ex",
+   "Rocq.Corelib.Init.Logic.ex.ex_intro",
+   "Rocq.Corelib.Init.Logic.eq_rect"],
+  "name":
+  "NativeBridge.Incremental.LogicProofElimination.eq_ex_rect_ex_intro_closed",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "(A : Prop) →\n  (P Q : A → Prop) →\n    (u v : Rocq.Corelib.Init.Logic.ex2 A (fun a => P a) fun a => Q a) →\n      (R : Rocq.Corelib.Init.Logic.eq (Rocq.Corelib.Init.Logic.ex2 A (fun a => P a) fun a => Q a) u v → Sort u_1) →\n        ((p : Rocq.Corelib.Init.Logic.eq A ⋯ ⋯) →\n            (q : Rocq.Corelib.Init.Logic.eq (P ⋯) ⋯ ⋯) → (r : Rocq.Corelib.Init.Logic.eq (Q ⋯) ⋯ ⋯) → R ⋯) →\n          (p : Rocq.Corelib.Init.Logic.eq (Rocq.Corelib.Init.Logic.ex2 A (fun a => P a) fun a => Q a) u v) → R p",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex2",
+   "Rocq.Corelib.Init.Logic.eq",
+   "Rocq.Corelib.Init.Logic.ex2.rec",
+   "Rocq.Corelib.Init.Logic.eq_rect"],
+  "name": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rect_closed",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "(A : Prop) →\n  (P Q : A → Prop) →\n    (u v : Rocq.Corelib.Init.Logic.ex2 A (fun a => P a) fun a => Q a) →\n      (R : Rocq.Corelib.Init.Logic.eq (Rocq.Corelib.Init.Logic.ex2 A (fun a => P a) fun a => Q a) u v → Sort u_1) →\n        ((pqr :\n              Rocq.Corelib.Init.Logic.ex2 (Rocq.Corelib.Init.Logic.eq A ⋯ ⋯)\n                (fun p => Rocq.Corelib.Init.Logic.eq (P ⋯) ⋯ ⋯) fun p => Rocq.Corelib.Init.Logic.eq (Q ⋯) ⋯ ⋯) →\n            R ⋯) →\n          (p : Rocq.Corelib.Init.Logic.eq (Rocq.Corelib.Init.Logic.ex2 A (fun a => P a) fun a => Q a) u v) → R p",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex2",
+   "Rocq.Corelib.Init.Logic.eq",
+   "Rocq.Corelib.Init.Logic.ex2.rec",
+   "Rocq.Corelib.Init.Logic.eq_rect"],
+  "name":
+  "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rect_uncurried_closed",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "(A : Prop) →\n  (P : A → Prop) →\n    (u v : Rocq.Corelib.Init.Logic.ex A fun a => P a) →\n      (Q : Rocq.Corelib.Init.Logic.eq (Rocq.Corelib.Init.Logic.ex A fun a => P a) u v → Type) →\n        ((p : Rocq.Corelib.Init.Logic.eq A ⋯ ⋯) → (q : Rocq.Corelib.Init.Logic.eq (P ⋯) ⋯ ⋯) → Q ⋯) →\n          (p : Rocq.Corelib.Init.Logic.eq (Rocq.Corelib.Init.Logic.ex A fun a => P a) u v) → Q p",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex",
+   "Rocq.Corelib.Init.Logic.eq",
+   "Rocq.Corelib.Init.Logic.ex.rec",
+   "Rocq.Corelib.Init.Logic.eq_rect"],
+  "name": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rec_closed",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (A : Prop) (P : A → Prop) (a1 : A) (a2 : P a1) (b : Rocq.Corelib.Init.Logic.ex A P) (F : ⋯ = ⋯ → Sort w) (f : F ⋯)\n  (e : NativeBridge.ME (Rocq.Corelib.Init.Logic.ex A P) ⋯ b),\n  RocqPending.Corelib.Init.Logic.eq_ex_rect_ex_intro_l A P a1 a2 b (fun e => F ⋯) (fun x x_1 => f) e = f",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex",
+   "Rocq.Corelib.Init.Logic.ex.ex_intro",
+   "RocqPending.Corelib.Init.Logic.eq_ex_rect_ex_intro_l",
+   "Rocq.Corelib.Init.Logic.eq",
+   "Rocq.Corelib.Init.Logic.ex.rec",
+   "Rocq.Corelib.Init.Logic.eq_rect"],
+  "name":
+  "NativeBridge.Incremental.LogicProofElimination.eq_ex_rect_ex_intro_l_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "(A : Prop) →\n  (P Q : A → Prop) →\n    (u1 : A) →\n      (u2 : P u1) →\n        (u3 : Q u1) →\n          (v : Rocq.Corelib.Init.Logic.ex2 A (fun a => P a) fun a => Q a) →\n            (R : Rocq.Corelib.Init.Logic.eq (Rocq.Corelib.Init.Logic.ex2 A P Q) ⋯ v → Sort u_1) →\n              ((p : Rocq.Corelib.Init.Logic.eq A u1 ⋯) →\n                  (q : Rocq.Corelib.Init.Logic.eq ((fun a => P a) ⋯) ⋯ ⋯) →\n                    (r : Rocq.Corelib.Init.Logic.eq ((fun a => Q a) ⋯) ⋯ ⋯) → R ⋯) →\n                (p : Rocq.Corelib.Init.Logic.eq (Rocq.Corelib.Init.Logic.ex2 A P Q) ⋯ v) → R p",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex2",
+   "Rocq.Corelib.Init.Logic.eq",
+   "Rocq.Corelib.Init.Logic.ex2.ex_intro2",
+   "Rocq.Corelib.Init.Logic.ex2.rec",
+   "Rocq.Corelib.Init.Logic.eq_rect"],
+  "name":
+  "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rect_ex_intro2_l_closed",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (A : Prop) (P Q : A → Prop) (a b : Rocq.Corelib.Init.Logic.ex2 A P Q) (F : ⋯ = ⋯ → Type) (f : F ⋯)\n  (e : NativeBridge.ME (Rocq.Corelib.Init.Logic.ex2 A P Q) a b),\n  RocqPending.Corelib.Init.Logic.eq_ex2_rec_uncurried A P Q a b (fun e => F ⋯) (fun x => f) e = f",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex2",
+   "RocqPending.Corelib.Init.Logic.eq_ex2_rec_uncurried",
+   "Rocq.Corelib.Init.Logic.eq",
+   "Rocq.Corelib.Init.Logic.ex2.rec",
+   "Rocq.Corelib.Init.Logic.eq_rect"],
+  "name":
+  "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rec_uncurried_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Prop) (P Q : A → Prop) (a : Rocq.Corelib.Init.Logic.ex2 A P Q) (b1 : A) (b2 : P b1) (b3 : Q b1)\n  (F : ⋯ = ⋯ → Sort w) (f : F ⋯) (e : NativeBridge.ME (Rocq.Corelib.Init.Logic.ex2 A P Q) a ⋯),\n  RocqPending.Corelib.Init.Logic.eq_ex2_rect_ex_intro2_r A P Q a b1 b2 b3 (fun e => F ⋯) (fun x x_1 x_2 => f) e = f",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex2",
+   "Rocq.Corelib.Init.Logic.ex2.ex_intro2",
+   "RocqPending.Corelib.Init.Logic.eq_ex2_rect_ex_intro2_r",
+   "Rocq.Corelib.Init.Logic.eq",
+   "Rocq.Corelib.Init.Logic.ex2.rec",
+   "Rocq.Corelib.Init.Logic.eq_rect"],
+  "name":
+  "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rect_ex_intro2_r_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "(A : Prop) →\n  (P : A → Prop) →\n    (u1 : A) →\n      (u2 : P u1) →\n        (v : Rocq.Corelib.Init.Logic.ex A fun a => P a) →\n          (Q : Rocq.Corelib.Init.Logic.eq (Rocq.Corelib.Init.Logic.ex A P) ⋯ v → Sort u_1) →\n            ((p : Rocq.Corelib.Init.Logic.eq A u1 ⋯) → (q : Rocq.Corelib.Init.Logic.eq ((fun a => P a) ⋯) ⋯ ⋯) → Q ⋯) →\n              (p : Rocq.Corelib.Init.Logic.eq (Rocq.Corelib.Init.Logic.ex A P) ⋯ v) → Q p",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex",
+   "Rocq.Corelib.Init.Logic.eq",
+   "Rocq.Corelib.Init.Logic.ex.ex_intro",
+   "Rocq.Corelib.Init.Logic.ex.rec",
+   "Rocq.Corelib.Init.Logic.eq_rect"],
+  "name":
+  "NativeBridge.Incremental.LogicProofElimination.eq_ex_rect_ex_intro_l_closed",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "(A : Prop) →\n  (P : A → Prop) →\n    (u v : Rocq.Corelib.Init.Logic.ex A fun a => P a) →\n      (Q : Rocq.Corelib.Init.Logic.eq (Rocq.Corelib.Init.Logic.ex A fun a => P a) u v → Sort u_1) →\n        ((pq :\n              Rocq.Corelib.Init.Logic.ex (Rocq.Corelib.Init.Logic.eq A ⋯ ⋯) fun p =>\n                Rocq.Corelib.Init.Logic.eq (P ⋯) ⋯ ⋯) →\n            Q ⋯) →\n          (p : Rocq.Corelib.Init.Logic.eq (Rocq.Corelib.Init.Logic.ex A fun a => P a) u v) → Q p",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex",
+   "Rocq.Corelib.Init.Logic.eq",
+   "Rocq.Corelib.Init.Logic.ex.rec",
+   "Rocq.Corelib.Init.Logic.eq_rect"],
+  "name":
+  "NativeBridge.Incremental.LogicProofElimination.eq_ex_rect_uncurried_closed",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "(A : Prop) →\n  (P : A → Prop) →\n    (u : Rocq.Corelib.Init.Logic.ex A fun a => P a) →\n      (v1 : A) →\n        (v2 : P v1) →\n          (Q : Rocq.Corelib.Init.Logic.eq (Rocq.Corelib.Init.Logic.ex A fun a => P a) u ⋯ → Sort u_1) →\n            ((p : Rocq.Corelib.Init.Logic.eq A ⋯ v1) → (q : Rocq.Corelib.Init.Logic.eq (P v1) ⋯ v2) → Q ⋯) →\n              (p : Rocq.Corelib.Init.Logic.eq (Rocq.Corelib.Init.Logic.ex A fun a => P a) u ⋯) → Q p",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex",
+   "Rocq.Corelib.Init.Logic.eq",
+   "Rocq.Corelib.Init.Logic.ex.ex_intro",
+   "Rocq.Corelib.Init.Logic.ex.rec",
+   "Rocq.Corelib.Init.Logic.eq_rect"],
+  "name":
+  "NativeBridge.Incremental.LogicProofElimination.eq_ex_rect_ex_intro_r_closed",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (A : Prop) (P Q : A → Prop) (a1 : A) (a2 : P a1) (a3 : Q a1) (b1 : A) (b2 : P b1) (b3 : Q b1) (F : ⋯ = ⋯ → Sort w)\n  (f : F ⋯) (e : NativeBridge.ME (Rocq.Corelib.Init.Logic.ex2 A P Q) ⋯ ⋯),\n  RocqPending.Corelib.Init.Logic.eq_ex2_rect_ex_intro2 A P Q a1 a2 a3 b1 b2 b3 (fun e => F ⋯) (fun x x_1 x_2 => f) e = f",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex2",
+   "Rocq.Corelib.Init.Logic.ex2.ex_intro2",
+   "RocqPending.Corelib.Init.Logic.eq_ex2_rect_ex_intro2",
+   "Rocq.Corelib.Init.Logic.eq",
+   "Rocq.Corelib.Init.Logic.eq_rect"],
+  "name":
+  "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rect_ex_intro2_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "(A : Prop) →\n  (P Q : A → Prop) →\n    (u : Rocq.Corelib.Init.Logic.ex2 A (fun a => P a) fun a => Q a) →\n      (v1 : A) →\n        (v2 : P v1) →\n          (v3 : Q v1) →\n            (R :\n                Rocq.Corelib.Init.Logic.eq (Rocq.Corelib.Init.Logic.ex2 A (fun a => P a) fun a => Q a) u ⋯ → Sort u_1) →\n              ((p : Rocq.Corelib.Init.Logic.eq A ⋯ v1) →\n                  (q : Rocq.Corelib.Init.Logic.eq (P v1) ⋯ v2) → (r : Rocq.Corelib.Init.Logic.eq (Q v1) ⋯ v3) → R ⋯) →\n                (p : Rocq.Corelib.Init.Logic.eq (Rocq.Corelib.Init.Logic.ex2 A (fun a => P a) fun a => Q a) u ⋯) → R p",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex2",
+   "Rocq.Corelib.Init.Logic.eq",
+   "Rocq.Corelib.Init.Logic.ex2.ex_intro2",
+   "Rocq.Corelib.Init.Logic.ex2.rec",
+   "Rocq.Corelib.Init.Logic.eq_rect"],
+  "name":
+  "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rect_ex_intro2_r_closed",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (A : Prop) (P : A → Prop) (a b : Rocq.Corelib.Init.Logic.ex A P) (F : ⋯ = ⋯ → Type) (f : F ⋯)\n  (e : NativeBridge.ME (Rocq.Corelib.Init.Logic.ex A P) a b),\n  RocqPending.Corelib.Init.Logic.eq_ex_rec A P a b (fun e => F ⋯) (fun x x_1 => f) e = f",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex",
+   "RocqPending.Corelib.Init.Logic.eq_ex_rec",
+   "Rocq.Corelib.Init.Logic.eq",
+   "Rocq.Corelib.Init.Logic.ex.rec",
+   "Rocq.Corelib.Init.Logic.eq_rect"],
+  "name": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rec_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Prop) (P Q : A → Prop) (a b : Rocq.Corelib.Init.Logic.ex2 A P Q) (F : ⋯ = ⋯ → Sort w) (f : F ⋯)\n  (e : NativeBridge.ME (Rocq.Corelib.Init.Logic.ex2 A P Q) a b),\n  RocqPending.Corelib.Init.Logic.eq_ex2_rect A P Q a b (fun e => F ⋯) (fun x x_1 x_2 => f) e = f",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex2",
+   "RocqPending.Corelib.Init.Logic.eq_ex2_rect",
+   "Rocq.Corelib.Init.Logic.eq",
+   "Rocq.Corelib.Init.Logic.ex2.rec",
+   "Rocq.Corelib.Init.Logic.eq_rect"],
+  "name": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rect_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Prop) (P : A → Prop) (a b : Rocq.Corelib.Init.Logic.ex A P) (F : ⋯ = ⋯ → Sort w) (f : F ⋯)\n  (e : NativeBridge.ME (Rocq.Corelib.Init.Logic.ex A P) a b),\n  RocqPending.Corelib.Init.Logic.eq_ex_rect A P a b (fun e => F ⋯) (fun x x_1 => f) e = f",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex",
+   "RocqPending.Corelib.Init.Logic.eq_ex_rect",
+   "Rocq.Corelib.Init.Logic.eq",
+   "Rocq.Corelib.Init.Logic.ex.rec",
+   "Rocq.Corelib.Init.Logic.eq_rect"],
+  "name": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rect_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "(A : Prop) →\n  (P : A → Prop) →\n    (u v : Rocq.Corelib.Init.Logic.ex A fun a => P a) →\n      (Q : Rocq.Corelib.Init.Logic.eq (Rocq.Corelib.Init.Logic.ex A fun a => P a) u v → Type) →\n        ((pq :\n              Rocq.Corelib.Init.Logic.ex (Rocq.Corelib.Init.Logic.eq A ⋯ ⋯) fun p =>\n                Rocq.Corelib.Init.Logic.eq (P ⋯) ⋯ ⋯) →\n            Q ⋯) →\n          (p : Rocq.Corelib.Init.Logic.eq (Rocq.Corelib.Init.Logic.ex A fun a => P a) u v) → Q p",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex",
+   "Rocq.Corelib.Init.Logic.eq",
+   "Rocq.Corelib.Init.Logic.ex.rec",
+   "Rocq.Corelib.Init.Logic.eq_rect"],
+  "name":
+  "NativeBridge.Incremental.LogicProofElimination.eq_ex_rec_uncurried_closed",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (A : Prop) (P : A → Prop) (a : Rocq.Corelib.Init.Logic.ex A P) (b1 : A) (b2 : P b1) (F : ⋯ = ⋯ → Sort w) (f : F ⋯)\n  (e : NativeBridge.ME (Rocq.Corelib.Init.Logic.ex A P) a ⋯),\n  RocqPending.Corelib.Init.Logic.eq_ex_rect_ex_intro_r A P a b1 b2 (fun e => F ⋯) (fun x x_1 => f) e = f",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex",
+   "Rocq.Corelib.Init.Logic.ex.ex_intro",
+   "RocqPending.Corelib.Init.Logic.eq_ex_rect_ex_intro_r",
+   "Rocq.Corelib.Init.Logic.eq",
+   "Rocq.Corelib.Init.Logic.ex.rec",
+   "Rocq.Corelib.Init.Logic.eq_rect"],
+  "name":
+  "NativeBridge.Incremental.LogicProofElimination.eq_ex_rect_ex_intro_r_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Prop) (P : A → Prop) (a b : Rocq.Corelib.Init.Logic.ex A P) (F : ⋯ = ⋯ → Sort w) (f : F ⋯)\n  (e : NativeBridge.ME (Rocq.Corelib.Init.Logic.ex A P) a b),\n  RocqPending.Corelib.Init.Logic.eq_ex_rect_uncurried A P a b (fun e => F ⋯) (fun x => f) e = f",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex",
+   "RocqPending.Corelib.Init.Logic.eq_ex_rect_uncurried",
+   "Rocq.Corelib.Init.Logic.eq",
+   "Rocq.Corelib.Init.Logic.ex.rec",
+   "Rocq.Corelib.Init.Logic.eq_rect"],
+  "name":
+  "NativeBridge.Incremental.LogicProofElimination.eq_ex_rect_uncurried_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Prop) (P : A → Prop) (a b : Rocq.Corelib.Init.Logic.ex A P) (F : ⋯ = ⋯ → Type) (f : F ⋯)\n  (e : NativeBridge.ME (Rocq.Corelib.Init.Logic.ex A P) a b),\n  RocqPending.Corelib.Init.Logic.eq_ex_rec_uncurried A P a b (fun e => F ⋯) (fun x => f) e = f",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex",
+   "RocqPending.Corelib.Init.Logic.eq_ex_rec_uncurried",
+   "Rocq.Corelib.Init.Logic.eq",
+   "Rocq.Corelib.Init.Logic.ex.rec",
+   "Rocq.Corelib.Init.Logic.eq_rect"],
+  "name":
+  "NativeBridge.Incremental.LogicProofElimination.eq_ex_rec_uncurried_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Prop) (P Q : A → Prop) (a1 : A) (a2 : P a1) (a3 : Q a1) (b : Rocq.Corelib.Init.Logic.ex2 A P Q)\n  (F : ⋯ = ⋯ → Sort w) (f : F ⋯) (e : NativeBridge.ME (Rocq.Corelib.Init.Logic.ex2 A P Q) ⋯ b),\n  RocqPending.Corelib.Init.Logic.eq_ex2_rect_ex_intro2_l A P Q a1 a2 a3 b (fun e => F ⋯) (fun x x_1 x_2 => f) e = f",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex2",
+   "Rocq.Corelib.Init.Logic.ex2.ex_intro2",
+   "RocqPending.Corelib.Init.Logic.eq_ex2_rect_ex_intro2_l",
+   "Rocq.Corelib.Init.Logic.eq",
+   "Rocq.Corelib.Init.Logic.ex2.rec",
+   "Rocq.Corelib.Init.Logic.eq_rect"],
+  "name":
+  "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rect_ex_intro2_l_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "(A : Prop) →\n  (P Q : A → Prop) →\n    (u1 : A) →\n      (u2 : P u1) →\n        (u3 : Q u1) →\n          (v1 : A) →\n            (v2 : P v1) →\n              (v3 : Q v1) →\n                (R : Rocq.Corelib.Init.Logic.eq (Rocq.Corelib.Init.Logic.ex2 A P Q) ⋯ ⋯ → Sort u_1) →\n                  ((p : Rocq.Corelib.Init.Logic.eq A u1 v1) →\n                      (q : Rocq.Corelib.Init.Logic.eq (P v1) ⋯ v2) →\n                        (r : Rocq.Corelib.Init.Logic.eq (Q v1) ⋯ v3) → R ⋯) →\n                    (p : Rocq.Corelib.Init.Logic.eq (Rocq.Corelib.Init.Logic.ex2 A P Q) ⋯ ⋯) → R p",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq",
+   "Rocq.Corelib.Init.Logic.ex2",
+   "Rocq.Corelib.Init.Logic.ex2.ex_intro2",
+   "Rocq.Corelib.Init.Logic.eq_rect"],
+  "name":
+  "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rect_ex_intro2_closed",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "(A : Prop) →\n  (P Q : A → Prop) →\n    (u v : Rocq.Corelib.Init.Logic.ex2 A (fun a => P a) fun a => Q a) →\n      (R : Rocq.Corelib.Init.Logic.eq (Rocq.Corelib.Init.Logic.ex2 A (fun a => P a) fun a => Q a) u v → Type) →\n        ((p : Rocq.Corelib.Init.Logic.eq A ⋯ ⋯) →\n            (q : Rocq.Corelib.Init.Logic.eq (P ⋯) ⋯ ⋯) → (r : Rocq.Corelib.Init.Logic.eq (Q ⋯) ⋯ ⋯) → R ⋯) →\n          (p : Rocq.Corelib.Init.Logic.eq (Rocq.Corelib.Init.Logic.ex2 A (fun a => P a) fun a => Q a) u v) → R p",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex2",
+   "Rocq.Corelib.Init.Logic.eq",
+   "Rocq.Corelib.Init.Logic.ex2.rec",
+   "Rocq.Corelib.Init.Logic.eq_rect"],
+  "name": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rec_closed",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "(A : Prop) →\n  (P : A → Prop) →\n    (u v : Rocq.Corelib.Init.Logic.ex A fun a => P a) →\n      (Q : Rocq.Corelib.Init.Logic.eq (Rocq.Corelib.Init.Logic.ex A fun a => P a) u v → Sort u_1) →\n        ((p : Rocq.Corelib.Init.Logic.eq A ⋯ ⋯) → (q : Rocq.Corelib.Init.Logic.eq (P ⋯) ⋯ ⋯) → Q ⋯) →\n          (p : Rocq.Corelib.Init.Logic.eq (Rocq.Corelib.Init.Logic.ex A fun a => P a) u v) → Q p",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex",
+   "Rocq.Corelib.Init.Logic.eq",
+   "Rocq.Corelib.Init.Logic.ex.rec",
+   "Rocq.Corelib.Init.Logic.eq_rect"],
+  "name": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rect_closed",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "RocqPending.Corelib.Init.Logic.eq_ex_intro_r__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_intro_r__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro_r__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex2_uncurried_iff__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_uncurried_iff__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_uncurried_iff__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_ex2.statement",
+  "source_references": ["RocqPending.Corelib.Init.Logic.eq_ex2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_ex_intro2.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_intro2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "(A : Prop) →\n  (P Q : A → Prop) →\n    (P0 : Rocq.Corelib.Init.Logic.ex2 A P Q → Type) →\n      ((x : A) → (p : P x) → (q : Q x) → P0 ⋯) → (e : Rocq.Corelib.Init.Logic.ex2 A P Q) → P0 e",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex2", "Rocq.Corelib.Init.Logic.ex2.ex_intro2"],
+  "name": "NativeBridge.Incremental.LogicExistsElimination.ex2RecClosed",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "{A : Prop} → {P : A → Prop} → (F : Exists P → Sort u) → ((x : A) → (p : P x) → F ⋯) → (h : Exists P) → F h",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.LogicExistsElimination.nativeExistsElim",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_ex_uncurried.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_uncurried.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_uncurried.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "RocqPending.Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_3.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_3.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_3.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_intro2_uncurried__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_ex_intro2_uncurried__rocq2lean_obligation_2 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_2.statement}\n  {h_Corelib_Init_Logic_eq_ex_intro2_uncurried__rocq2lean_obligation_3 :\n    RocqPending.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_3.statement}\n  {h_Corelib_Init_Logic_eq_ex_intro2_uncurried__rocq2lean_obligation_4 :\n    RocqPending.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_4.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_intro2_uncurried.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_1.statement",
+   "Rocq.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_3.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_4.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2_uncurried.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_intro2_uncurried.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_ex_intro2_l.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_intro2_l.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_l.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Sort u) (x y : A) (P : NativeBridge.ME A x y → Prop), (∀ (e : NativeBridge.ME A x y), P e) ↔ ∀ (e : x = y), P ⋯",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.LogicNormalization.eq_forall",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_intro_hprop__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro_hprop__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro_hprop__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_intro_uncurried__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_3.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_3.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_3.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "∀ {A : Prop} {P Q : A → Prop} (x : A), P x → Q x → ∃ x, P x ∧ Q x",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.LogicExistsElimination.nativeExists2Elim._proof_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_trans_sym_inv_l.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_trans_sym_inv_l.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_trans_sym_inv_l.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.ex2_eta__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex2_eta__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.ex2_eta__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex2_hprop__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex2_hprop__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_ex2_hprop__rocq2lean_obligation_2 :\n    Rocq.Corelib.Init.Logic.eq_ex2_hprop__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex2_hprop.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_hprop__rocq2lean_obligation_1.statement",
+   "Rocq.Corelib.Init.Logic.eq_ex2_hprop__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex2_hprop.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex2_hprop.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_ex_intro_hprop.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_intro_hprop.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro_hprop.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "(A : Prop) →\n  (P Q : A → Prop) →\n    (P0 : Rocq.Corelib.Init.Logic.ex2 A P Q → Sort u_1) →\n      ((x : A) → (p : P x) → (q : Q x) → P0 ⋯) → (e : Rocq.Corelib.Init.Logic.ex2 A P Q) → P0 e",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex2", "Rocq.Corelib.Init.Logic.ex2.ex_intro2"],
+  "name": "NativeBridge.Incremental.LogicExistsElimination.ex2RectClosed",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_uncurried__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_uncurried__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex_uncurried__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_trans_sym_inv_l__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_sym_inv_l__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_trans_sym_inv_l__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "RocqPending.Corelib.Init.Logic.eq_sym_involutive.statement ↔ NativeBridge.Incremental.eqSymInvolutiveNative",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_sym_involutive.statement"],
+  "name": "NativeBridge.Incremental.eq_sym_involutive_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.rew_ex2.statement",
+  "source_references": ["RocqPending.Corelib.Init.Logic.rew_ex2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.rew_ex2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_trans_sym_distr__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_sym_distr__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_trans_sym_distr__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A B : Prop) (P : Type) (f : A → B → P) (h : Rocq.Corelib.Init.Logic.and A B),\n  Rocq.Corelib.Init.Logic.and_rec A B P f h = f ⋯ ⋯",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.and", "Rocq.Corelib.Init.Logic.and_rec"],
+  "name": "NativeBridge.Incremental.LogicElimination.and_rec_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_rew_ex__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.rew_ex__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_rew_ex__rocq2lean_obligation_2 :\n    Rocq.Corelib.Init.Logic.rew_ex__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.rew_ex.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.rew_ex__rocq2lean_obligation_1.statement",
+   "Rocq.Corelib.Init.Logic.rew_ex__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.rew_ex.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.rew_ex.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (P : Prop) (x y : P) (F : (NativeBridge.ME P x y → Prop) → Prop),\n  (∀ (R : NativeBridge.ME P x y → Prop), F R) ↔ ∀ (R : True → Prop), F fun x => R True.intro",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.LogicNormalization.proof_eq_family_forall",
+  "kind": "theorem",
+  "axioms": ["Quot.sound"]},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_intro2_r__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_ex_intro2_r__rocq2lean_obligation_2 :\n    RocqPending.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_2.statement}\n  {h_Corelib_Init_Logic_eq_ex_intro2_r__rocq2lean_obligation_3 :\n    RocqPending.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_3.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_intro2_r.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_3.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2_r.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_intro2_r.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_trans_sym_distr__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_sym_distr__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_trans_sym_distr__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_intro__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex2_ind_uncurried__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_ex2_ind_uncurried__rocq2lean_obligation_2 :\n    Rocq.Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_3.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_1.statement",
+   "Rocq.Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_3.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_3.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_trans_refl_r__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_refl_r__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_trans_refl_r__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_trans_refl_l__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_refl_l__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_trans_refl_l__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_intro_r__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro_r__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro_r__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "RocqPending.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_4.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_4.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_4.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_rect_r__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.rew_opp_r.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.rew_opp_r.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.rew_opp_r.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "{A : Prop} →\n  {P Q : A → Prop} →\n    (F : (∃ x, P x ∧ Q x) → Sort u) → ((x : A) → (p : P x) → (q : Q x) → F ⋯) → (h : ∃ x, P x ∧ Q x) → F h",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.LogicExistsElimination.nativeExists2Elim",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_trans_refl_r__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_refl_r__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_trans_refl_r__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Prop) (P : A → Prop) (F : Exists P → Type) (f : (x : A) → (p : P x) → F ⋯) (h : Rocq.Corelib.Init.Logic.ex A P),\n  RocqPending.Corelib.Init.Logic.ex_rec A P (fun e => F ⋯) f h =\n    NativeBridge.Incremental.LogicExistsElimination.nativeExistsElim F f ⋯",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex", "RocqPending.Corelib.Init.Logic.ex_rec"],
+  "name": "NativeBridge.Incremental.LogicExistsElimination.ex_rec_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "∀ {A : Sort u} (a b : A), NativeBridge.ME A a b = (a = b)",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.LogicNormalization.uniqueness_agrees._simp_1_2",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type": "Rocq.Corelib.Init.Logic.rew_ex__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.rew_ex__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.rew_ex__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "(A : Prop) →\n  (P : A → Prop) →\n    (P0 : Rocq.Corelib.Init.Logic.ex A P → Sort u_1) →\n      ((x : A) → (p : P x) → P0 ⋯) → (e : Rocq.Corelib.Init.Logic.ex A P) → P0 e",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex", "Rocq.Corelib.Init.Logic.ex.ex_intro"],
+  "name": "NativeBridge.Incremental.LogicExistsElimination.exRectClosed",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (P : Type) (h : Rocq.Corelib.Init.Logic.False), Rocq.Corelib.Init.Logic.False_rec P h = ⋯.elim",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.False", "Rocq.Corelib.Init.Logic.False_rec"],
+  "name": "NativeBridge.Incremental.LogicElimination.false_rec_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_ex2_uncurried.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex2_uncurried.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_uncurried.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex2_uncurried__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex2_uncurried__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_ex2_uncurried__rocq2lean_obligation_2 :\n    Rocq.Corelib.Init.Logic.eq_ex2_uncurried__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex2_uncurried.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_uncurried__rocq2lean_obligation_1.statement",
+   "Rocq.Corelib.Init.Logic.eq_ex2_uncurried__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex2_uncurried.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex2_uncurried.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_intro_r__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro_r__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_intro_r__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro_r__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro_r__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_intro_r__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "∀ {A : Prop} {P : A → Prop}, Exists P → A",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.LogicNormalization.exProof",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.ex_of_ex2_eq__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex_of_ex2_eq__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.ex_of_ex2_eq__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.rew_ex__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.rew_ex__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.rew_ex__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_intro_l__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro_l__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro_l__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_refl_map_distr.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_refl_map_distr.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_refl_map_distr.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_trans_assoc.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_trans_assoc.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_trans_assoc.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_refl_map_distr__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_refl_map_distr__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_refl_map_distr__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.eqSymInvolutiveNative",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_intro__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_ex_intro__rocq2lean_obligation_2 :\n    RocqPending.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_2.statement}\n  {h_Corelib_Init_Logic_eq_ex_intro__rocq2lean_obligation_3 :\n    RocqPending.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_3.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_intro.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_3.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_intro.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.rew_ex2__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.rew_ex2__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.rew_ex2__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex2__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_ex2__rocq2lean_obligation_2 :\n    RocqPending.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_ex2_uncurried_iff.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex2_uncurried_iff.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_uncurried_iff.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Sort u) (x y : A) (P : NativeBridge.ME A x y → Prop), (∃ e, P e) ↔ ∃ e, P ⋯",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.LogicNormalization.eq_exists",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_uncurried_iff__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_uncurried_iff__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_uncurried_iff.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_uncurried_iff__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_uncurried_iff.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_uncurried_iff.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex2_eta__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex2_eta.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex2_eta.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex2_eta.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_trans_rew_distr__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_rew_distr__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_trans_rew_distr__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_sym_map_distr.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_sym_map_distr.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_sym_map_distr.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "∀ (A : Sort u_1) (x y : A), x = y → x = y",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.eqSymInvolutiveNative._proof_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.rew_ex2__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.rew_ex2__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.rew_ex2__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_intro_hprop__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro_hprop__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro_hprop__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_rew_map__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.rew_map__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.rew_map.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.rew_map__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.rew_map.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.rew_map.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_trans_map_distr__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_map_distr__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_trans_map_distr__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "RocqPending.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_3.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_3.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_3.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_trans_assoc__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_assoc__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_trans_assoc__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_trans_sym_distr__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_sym_distr__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_trans_sym_distr__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_intro_l__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro_l__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex_intro_l__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.rew_compose__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.rew_compose__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.rew_compose__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.rew_compose__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.rew_compose__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.rew_compose__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_trans_map_distr__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_map_distr__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_trans_map_distr__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex2_hprop_iff__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_hprop_iff__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_hprop_iff__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Prop) (P Q : A → Prop) (F : (∃ x, P x ∧ Q x) → Type) (f : (x : A) → (p : P x) → (q : Q x) → F ⋯)\n  (h : Rocq.Corelib.Init.Logic.ex2 A P Q),\n  RocqPending.Corelib.Init.Logic.ex2_rec A P Q (fun e => F ⋯) f h =\n    NativeBridge.Incremental.LogicExistsElimination.nativeExists2Elim F f ⋯",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex2", "RocqPending.Corelib.Init.Logic.ex2_rec"],
+  "name": "NativeBridge.Incremental.LogicExistsElimination.ex2_rec_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_map_subst_map__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.map_subst_map__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.map_subst_map.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.map_subst_map__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.map_subst_map.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.map_subst_map.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_ind__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_ind__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_ex_ind__rocq2lean_obligation_2 :\n    RocqPending.Corelib.Init.Logic.eq_ex_ind__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_ind.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_ind__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_ind__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_ind.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_ind.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "∀ {A : Prop} {P Q : A → Prop} (h : ∃ x, P x ∧ Q x), P ⋯",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.LogicExistsElimination.nativeExists2Elim._proof_2",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_intro_uncurried__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_ex_intro_uncurried__rocq2lean_obligation_2 :\n    RocqPending.Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_2.statement}\n  {h_Corelib_Init_Logic_eq_ex_intro_uncurried__rocq2lean_obligation_3 :\n    RocqPending.Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_3.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_intro_uncurried.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_3.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro_uncurried.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_intro_uncurried.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.rew_swap.statement",
+  "source_references": ["RocqPending.Corelib.Init.Logic.rew_swap.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.rew_swap.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_uncurried__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_uncurried__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_uncurried__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_ex_intro2_uncurried.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_intro2_uncurried.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_uncurried.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_ex_intro2_r.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_intro2_r.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_r.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_ind_uncurried__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_ind_uncurried__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex_ind_uncurried__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_id_comm_l.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_id_comm_l.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_id_comm_l.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_trans_assoc__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_assoc__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_trans_assoc__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "∀ {A : Prop} {P Q : A → Prop} (h : ∃ x, P x ∧ Q x), P ⋯ ∧ Q ⋯",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.LogicExistsElimination.ex2Property",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex2_uncurried__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_uncurried__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex2_uncurried__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_trans_sym_inv_r.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_trans_sym_inv_r.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_trans_sym_inv_r.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex2_hprop_iff__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_hprop_iff__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex2_hprop_iff__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_ind__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_ind__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_ind__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_ind__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_ind__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_ind__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_rew_compose__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.rew_compose__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.rew_compose.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.rew_compose__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.rew_compose.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.rew_compose.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_ex2_eta__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.ex2_eta__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.ex2_eta.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex2_eta__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.ex2_eta.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.ex2_eta.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_trans_assoc__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_trans_assoc__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_trans_assoc__rocq2lean_obligation_2 :\n    Rocq.Corelib.Init.Logic.eq_trans_assoc__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.eq_trans_assoc.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_assoc__rocq2lean_obligation_1.statement",
+   "Rocq.Corelib.Init.Logic.eq_trans_assoc__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_trans_assoc.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_trans_assoc.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "∀ {A : Prop} {P Q : A → Prop}, (∃ x, P x ∧ Q x) → A",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.LogicNormalization.ex2Proof",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex2_uncurried__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_uncurried__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_uncurried__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_sym_map_distr__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_sym_map_distr__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_sym_map_distr__rocq2lean_obligation_2 :\n    Rocq.Corelib.Init.Logic.eq_sym_map_distr__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.eq_sym_map_distr.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_sym_map_distr__rocq2lean_obligation_1.statement",
+   "Rocq.Corelib.Init.Logic.eq_sym_map_distr__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_sym_map_distr.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_sym_map_distr.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_sym_involutive.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_sym_involutive.statement"],
+  "name": "NativeBridge.Incremental.eq_sym_involutive_closed",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_intro2_l__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_ex_intro2_l__rocq2lean_obligation_2 :\n    RocqPending.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_3.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_3.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_3.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_ex_intro_l.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_intro_l.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro_l.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex2_uncurried__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_uncurried__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex2_uncurried__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_intro2__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_ex_intro2__rocq2lean_obligation_2 :\n    RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_2.statement}\n  {h_Corelib_Init_Logic_eq_ex_intro2__rocq2lean_obligation_3 :\n    RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_3.statement}\n  {h_Corelib_Init_Logic_eq_ex_intro2__rocq2lean_obligation_4 :\n    RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_4.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_intro2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_3.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_4.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_intro2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_trans_map.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_trans_map.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_trans_map.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.ex_proj1_of_ex2_eq.statement",
+  "source_references": ["Rocq.Corelib.Init.Logic.ex_proj1_of_ex2_eq.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.ex_proj1_of_ex2_eq.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "RocqPending.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_3.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_3.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_3.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.f_equal_compose__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.f_equal_compose__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.f_equal_compose__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.ex_proj1_eq.statement",
+  "source_references": ["Rocq.Corelib.Init.Logic.ex_proj1_eq.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_eq.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_ind_uncurried__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_ind_uncurried__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_ind_uncurried__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_ex_intro_uncurried.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_intro_uncurried.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro_uncurried.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "∀ (P Q : Prop), Rocq.Corelib.Init.Logic.and P Q = (P ∧ Q)",
+  "source_references": ["Rocq.Corelib.Init.Logic.and"],
+  "name": "NativeBridge.Incremental.LogicNormalization.unique_agrees._simp_1_2",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_trans_rew_distr.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_trans_rew_distr.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_trans_rew_distr.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_intro_hprop__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro_hprop__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex_intro_hprop__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_intro2__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_ex_intro2__rocq2lean_obligation_2 :\n    RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_3.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_3.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_3.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "∀ (A : Prop) (P : A → Prop) (h : Exists P), ⋯ = ⋯",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex.rec", "Rocq.Corelib.Init.Logic.ex"],
+  "name": "NativeBridge.Incremental.LogicNormalization.ex_proj1_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "∀ {A : Prop} {P Q : A → Prop} (h : ∃ x, P x ∧ Q x), Q ⋯",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.LogicExistsElimination.nativeExists2Elim._proof_3",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Sort u) (P : A → Prop) (x : A), Rocq.Corelib.Init.Logic.unique A P x ↔ P x ∧ ∀ (y : A), P y → x = y",
+  "source_references": ["Rocq.Corelib.Init.Logic.unique"],
+  "name": "NativeBridge.Incremental.LogicNormalization.unique_agrees",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex2_ind__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.f_equal_compose__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.f_equal_compose__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.f_equal_compose__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_intro_l__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro_l__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_ex_intro_l__rocq2lean_obligation_2 :\n    RocqPending.Corelib.Init.Logic.eq_ex_intro_l__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_intro_l.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro_l__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro_l__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro_l.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_intro_l.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_ex_intro_r.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_intro_r.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro_r.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "(A : Prop) →\n  (P : A → Prop) →\n    (P0 : Rocq.Corelib.Init.Logic.ex A P → Type) →\n      ((x : A) → (p : P x) → P0 ⋯) → (e : Rocq.Corelib.Init.Logic.ex A P) → P0 e",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex", "Rocq.Corelib.Init.Logic.ex.ex_intro"],
+  "name": "NativeBridge.Incremental.LogicExistsElimination.exRecClosed",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.rew_ex__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.rew_ex__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.rew_ex__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_intro2_l__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex2_uncurried__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_uncurried__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_uncurried__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_sym_map_distr__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_sym_map_distr__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_sym_map_distr__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Sort u) (P : A → Prop) (F : Rocq.Corelib.Init.Logic.ex A P → Prop),\n  (∀ (e : Rocq.Corelib.Init.Logic.ex A P), F e) ↔ ∀ (e : Exists P), F ⋯",
+  "source_references": ["Rocq.Corelib.Init.Logic.ex"],
+  "name": "NativeBridge.Incremental.LogicNormalization.ex_forall",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_uncurried_iff__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_uncurried_iff__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex_uncurried_iff__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.rew_opp_l.statement",
+  "source_references": ["RocqPending.Corelib.Init.Logic.rew_opp_l.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.rew_opp_l.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} (x : A) (P : A → Type) (h : P x) (y : A) (e : NativeBridge.ME A x y),\n  Rocq.Corelib.Init.Logic.eq_rec A x P h y e = ⋯ ▸ h",
+  "source_references": ["Rocq.Corelib.Init.Logic.eq_rec"],
+  "name": "NativeBridge.Incremental.eq_rec_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.ex2_eta.statement",
+  "source_references": ["RocqPending.Corelib.Init.Logic.ex2_eta.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex2_eta.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_refl_map_distr__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_refl_map_distr__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_refl_map_distr__rocq2lean_obligation_2 :\n    Rocq.Corelib.Init.Logic.eq_refl_map_distr__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.eq_refl_map_distr.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_refl_map_distr__rocq2lean_obligation_1.statement",
+   "Rocq.Corelib.Init.Logic.eq_refl_map_distr__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_refl_map_distr.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_refl_map_distr.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.f_equal_compose__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.f_equal_compose__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.f_equal_compose__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_intro_l__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro_l__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_intro_l__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro_l__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro_l__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_intro_l__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.rew_ex.statement",
+  "source_references": ["RocqPending.Corelib.Init.Logic.rew_ex.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.rew_ex.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_trans_sym_distr__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_trans_sym_distr__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_trans_sym_distr__rocq2lean_obligation_2 :\n    Rocq.Corelib.Init.Logic.eq_trans_sym_distr__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.eq_trans_sym_distr.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_sym_distr__rocq2lean_obligation_1.statement",
+   "Rocq.Corelib.Init.Logic.eq_trans_sym_distr__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_trans_sym_distr.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_trans_sym_distr.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.map_subst_map__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.map_subst_map__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.map_subst_map__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "∀ {A : Sort u_1} (y : A) (e : y = y), e ≍ ⋯ → ⋯ = e",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.nativeEqRightRec._proof_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "∀ {A : Sort u_1} (y x : A) (e : x = y), e ≍ e",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.nativeEqRightRec._proof_2",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_trans_assoc__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_assoc__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_trans_assoc__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_ex_ind.statement",
+  "source_references": ["RocqPending.Corelib.Init.Logic.eq_ex_ind.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_ind.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_intro2__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_ex_intro2__rocq2lean_obligation_2 :\n    RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_4.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_4.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_4.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.f_equal_compose__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.f_equal_compose__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.f_equal_compose__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "RocqPending.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "{A : Sort u} → (x : A) → (P : A → Sort v) → P x → (y : A) → NativeBridge.ME A y x → P y",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.eqRectRClosed",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "{A : Sort u} → (x : A) → (P : A → Type) → P x → (y : A) → NativeBridge.ME A y x → P y",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.eqRecRClosed",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_intro2__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_trans_refl_l__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_refl_l__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_trans_refl_l__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (H : Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement) (A : Sort u) (x : A) (P : A → Sort v)\n  (h : P x) (y : A) (e : NativeBridge.ME A y x), RocqPending.Corelib.Init.Logic.eq_rect_r A x P h y e = ⋯ ▸ h",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_rect_r"],
+  "name": "NativeBridge.Incremental.LogicNormalization.eq_rect_r_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.rew_map.statement",
+  "source_references": ["RocqPending.Corelib.Init.Logic.rew_map.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.rew_map.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.map_subst_map.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.map_subst_map.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.map_subst_map.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.ex_eta.statement",
+  "source_references": ["RocqPending.Corelib.Init.Logic.ex_eta.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_eta.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_trans_sym_inv_l__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_sym_inv_l__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_trans_sym_inv_l__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (P Q : Prop) (F : Rocq.Corelib.Init.Logic.and P Q → Prop),\n  (∀ (e : Rocq.Corelib.Init.Logic.and P Q), F e) ↔ ∀ (e : P ∧ Q), F ⋯",
+  "source_references": ["Rocq.Corelib.Init.Logic.and"],
+  "name": "NativeBridge.Incremental.LogicNormalization.and_forall",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "RocqPending.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex2_hprop_iff__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_hprop_iff__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_hprop_iff__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex2_hprop_iff__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_hprop_iff__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex2_hprop_iff__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex2_uncurried_iff__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_uncurried_iff__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex2_uncurried_iff__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (P : Sort u) (h : Rocq.Corelib.Init.Logic.False), Rocq.Corelib.Init.Logic.False_rect P h = ⋯.elim",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.False", "Rocq.Corelib.Init.Logic.False_rect"],
+  "name": "NativeBridge.Incremental.LogicElimination.false_rect_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_trans_map__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_trans_map__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.eq_trans_map.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_map__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_trans_map.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_trans_map.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.ex_of_ex2_eq__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex_of_ex2_eq__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.ex_of_ex2_eq__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_trans_sym_distr.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_trans_sym_distr.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_trans_sym_distr.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_trans_map_distr__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_trans_map_distr__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_trans_map_distr__rocq2lean_obligation_2 :\n    Rocq.Corelib.Init.Logic.eq_trans_map_distr__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.eq_trans_map_distr.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_map_distr__rocq2lean_obligation_1.statement",
+   "Rocq.Corelib.Init.Logic.eq_trans_map_distr__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_trans_map_distr.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_trans_map_distr.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_trans_sym_inv_r__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_trans_sym_inv_r__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_trans_sym_inv_r__rocq2lean_obligation_2 :\n    Rocq.Corelib.Init.Logic.eq_trans_sym_inv_r__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.eq_trans_sym_inv_r.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_sym_inv_r__rocq2lean_obligation_1.statement",
+   "Rocq.Corelib.Init.Logic.eq_trans_sym_inv_r__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_trans_sym_inv_r.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_trans_sym_inv_r.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_ex_ind_uncurried.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_ind_uncurried.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_ind_uncurried.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_ex2_ind.statement",
+  "source_references": ["RocqPending.Corelib.Init.Logic.eq_ex2_ind.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_ind.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.ex_proj2_eq.statement",
+  "source_references": ["RocqPending.Corelib.Init.Logic.ex_proj2_eq.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_eq.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_id_comm_l__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_id_comm_l__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_id_comm_l__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.map_subst_map__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.map_subst_map__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.map_subst_map__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.rew_ex2__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.rew_ex2__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.rew_ex2__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_ex_intro.statement",
+  "source_references": ["RocqPending.Corelib.Init.Logic.eq_ex_intro.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.rew_map__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.rew_map__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.rew_map__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} (x : A) (P : A → Sort v) (h : P x) (y : A) (e : NativeBridge.ME A x y),\n  Rocq.Corelib.Init.Logic.eq_rew A x P h y e = ⋯ ▸ h",
+  "source_references": ["Rocq.Corelib.Init.Logic.eq_rew"],
+  "name": "NativeBridge.Incremental.eq_rew_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Prop) (P : A → Prop) (F : Exists P → Sort u) (f : (x : A) → (p : P x) → F ⋯)\n  (h : Rocq.Corelib.Init.Logic.ex A P),\n  RocqPending.Corelib.Init.Logic.ex_rect A P (fun e => F ⋯) f h =\n    NativeBridge.Incremental.LogicExistsElimination.nativeExistsElim F f ⋯",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex", "RocqPending.Corelib.Init.Logic.ex_rect"],
+  "name": "NativeBridge.Incremental.LogicExistsElimination.ex_rect_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.ex_proj1_eq.statement",
+  "source_references": ["Rocq.Corelib.Init.Logic.ex_proj1_eq.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.ex_proj1_eq.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Sort u) (B : Sort v) (R S : A → B → Prop),\n  Rocq.Corelib.Init.Logic.subrelation A B R S ↔ ∀ (x : A) (y : B), R x y → S x y",
+  "source_references": ["Rocq.Corelib.Init.Logic.subrelation"],
+  "name": "NativeBridge.Incremental.LogicNormalization.subrelation_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_rew_ex2__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.rew_ex2__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_rew_ex2__rocq2lean_obligation_2 :\n    Rocq.Corelib.Init.Logic.rew_ex2__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.rew_ex2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.rew_ex2__rocq2lean_obligation_1.statement",
+   "Rocq.Corelib.Init.Logic.rew_ex2__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.rew_ex2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.rew_ex2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_intro_hprop__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro_hprop__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_ex_intro_hprop__rocq2lean_obligation_2 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro_hprop__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_intro_hprop.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro_hprop__rocq2lean_obligation_1.statement",
+   "Rocq.Corelib.Init.Logic.eq_ex_intro_hprop__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro_hprop.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_intro_hprop.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "∀ {A : Prop} {P : A → Prop} (h : Exists P), P ⋯",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.LogicExistsElimination.exProperty",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_intro2_hprop_nondep__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_ex_intro2_hprop_nondep__rocq2lean_obligation_2 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_4.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_1.statement",
+   "Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_4.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_4.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.f_equal_dep2__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.f_equal_dep2__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.f_equal_dep2__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Prop) (P Q : A → Prop) (F : (∃ x, P x ∧ Q x) → Sort u) (f : (x : A) → (p : P x) → (q : Q x) → F ⋯)\n  (h : Rocq.Corelib.Init.Logic.ex2 A P Q),\n  RocqPending.Corelib.Init.Logic.ex2_rect A P Q (fun e => F ⋯) f h =\n    NativeBridge.Incremental.LogicExistsElimination.nativeExists2Elim F f ⋯",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex2", "RocqPending.Corelib.Init.Logic.ex2_rect"],
+  "name": "NativeBridge.Incremental.LogicExistsElimination.ex2_rect_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex2__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_ex_eta__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.ex_eta__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.ex_eta.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex_eta__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.ex_eta.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.ex_eta.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_trans_refl_l.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_trans_refl_l.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_trans_refl_l.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (P : Sort u) (p : P) (h : Rocq.Corelib.Init.Logic.True), Rocq.Corelib.Init.Logic.True_rect P p h = p",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.True", "Rocq.Corelib.Init.Logic.True_rect"],
+  "name": "NativeBridge.Incremental.LogicElimination.true_rect_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "{A : Sort u} → (y : A) → (P : (x : A) → x = y → Sort v) → P y ⋯ → (x : A) → (e : x = y) → P x e",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.nativeEqRightRec",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "RocqPending.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_sym_map_distr__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_sym_map_distr__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_sym_map_distr__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "RocqPending.Corelib.Init.Logic.eq_ex_ind__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_ind__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_ind__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.rew_map__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.rew_map__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.rew_map__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex2_hprop__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_hprop__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_hprop__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.eq_ex_ind__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_ind__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_ind__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_3.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_3.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_3.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_trans_refl_l__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_trans_refl_l__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.eq_trans_refl_l.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_refl_l__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_trans_refl_l.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_trans_refl_l.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_id_comm_r.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_id_comm_r.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_id_comm_r.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_trans_rew_distr__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_trans_rew_distr__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.eq_trans_rew_distr.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_rew_distr__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_trans_rew_distr.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_trans_rew_distr.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_intro2_r__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Sort u) (P Q : A → Prop) (F : Rocq.Corelib.Init.Logic.ex2 A P Q → Prop),\n  (∀ (e : Rocq.Corelib.Init.Logic.ex2 A P Q), F e) ↔ ∀ (e : ∃ x, P x ∧ Q x), F ⋯",
+  "source_references": ["Rocq.Corelib.Init.Logic.ex2"],
+  "name": "NativeBridge.Incremental.LogicNormalization.ex2_forall",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_trans_map__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_map__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_trans_map__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_refl_map_distr__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_refl_map_distr__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_refl_map_distr__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_intro2_l__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_ex_intro2_l__rocq2lean_obligation_2 :\n    RocqPending.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_2.statement}\n  {h_Corelib_Init_Logic_eq_ex_intro2_l__rocq2lean_obligation_3 :\n    RocqPending.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_3.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_intro2_l.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_3.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2_l.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_intro2_l.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex2_hprop__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_hprop__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_hprop__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Sort u) (P : A → Prop), Rocq.Corelib.Init.Logic.uniqueness A P ↔ ∀ (x y : A), P x → P y → x = y",
+  "source_references": ["Rocq.Corelib.Init.Logic.uniqueness"],
+  "name": "NativeBridge.Incremental.LogicNormalization.uniqueness_agrees",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex2_hprop_iff__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex2_hprop_iff__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_ex2_hprop_iff__rocq2lean_obligation_2 :\n    Rocq.Corelib.Init.Logic.eq_ex2_hprop_iff__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex2_hprop_iff.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_hprop_iff__rocq2lean_obligation_1.statement",
+   "Rocq.Corelib.Init.Logic.eq_ex2_hprop_iff__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex2_hprop_iff.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex2_hprop_iff.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} (x y : A) (P : (x : A) → x = y → Sort v) (h : P y ⋯) (e : NativeBridge.ME A x y),\n  RocqPending.Corelib.Init.Logic.eq_rew_r_dep A x y (fun x e => P x ⋯) h e =\n    NativeBridge.Incremental.nativeEqRightRec y P h x ⋯",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_rew_r_dep", "Rocq.Corelib.Init.Logic.eq"],
+  "name": "NativeBridge.Incremental.eq_rew_r_dep_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_4.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_4.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_4.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_trans_sym_inv_l__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_sym_inv_l__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_trans_sym_inv_l__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_ind_uncurried__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_ind_uncurried__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_ex_ind_uncurried__rocq2lean_obligation_2 :\n    RocqPending.Corelib.Init.Logic.eq_ex_ind_uncurried__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_ind_uncurried.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_ind_uncurried__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_ind_uncurried__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_ind_uncurried.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_ind_uncurried.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_trans_sym_inv_r__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_sym_inv_r__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_trans_sym_inv_r__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_id_comm_r__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_id_comm_r__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_id_comm_r__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "RocqPending.Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_3.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_3.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_3.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_refl_map_distr__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_refl_map_distr__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_refl_map_distr__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_f_equal_compose__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.f_equal_compose__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_f_equal_compose__rocq2lean_obligation_2 :\n    Rocq.Corelib.Init.Logic.f_equal_compose__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.f_equal_compose.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.f_equal_compose__rocq2lean_obligation_1.statement",
+   "Rocq.Corelib.Init.Logic.f_equal_compose__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.f_equal_compose.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.f_equal_compose.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_f_equal_dep2__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.f_equal_dep2__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.f_equal_dep2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.f_equal_dep2__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.f_equal_dep2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.f_equal_dep2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "RocqPending.Corelib.Init.Logic.eq_ex_intro_l__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_intro_l__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro_l__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_ex_uncurried_iff.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_uncurried_iff.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_uncurried_iff.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_3.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_3.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_3.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.ex_eta__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex_eta__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.ex_eta__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} (x : A) (P : A → Type) (h : P x) (y : A) (e : NativeBridge.ME A y x),\n  RocqPending.Corelib.Init.Logic.eq_rec_r A x P h y e = ⋯ ▸ h",
+  "source_references": ["RocqPending.Corelib.Init.Logic.eq_rec_r"],
+  "name": "NativeBridge.Incremental.eq_rec_r_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.rew_opp_r.statement",
+  "source_references": ["RocqPending.Corelib.Init.Logic.rew_opp_r.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.rew_opp_r.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_ex_proj3_eq__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.ex_proj3_eq.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.ex_proj3_eq.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.ex_proj3_eq.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_uncurried_iff__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_uncurried_iff__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_uncurried_iff__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_trans_map_distr__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_map_distr__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_trans_map_distr__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex2_ind__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_ex2_ind__rocq2lean_obligation_2 :\n    RocqPending.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_2.statement}\n  {h_Corelib_Init_Logic_eq_ex2_ind__rocq2lean_obligation_3 :\n    RocqPending.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_3.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex2_ind.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_3.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex2_ind.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex2_ind.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_ex_of_ex2_eq__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.ex_of_ex2_eq__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_ex_of_ex2_eq__rocq2lean_obligation_2 :\n    Rocq.Corelib.Init.Logic.ex_of_ex2_eq__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.ex_of_ex2_eq.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex_of_ex2_eq__rocq2lean_obligation_1.statement",
+   "Rocq.Corelib.Init.Logic.ex_of_ex2_eq__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.ex_of_ex2_eq.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.ex_of_ex2_eq.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} (x y : A) (P : A → Sort v) (h : P y) (e : NativeBridge.ME A x y),\n  Rocq.Corelib.Init.Logic.eq_rew_r A x y P h e = ⋯ ▸ h",
+  "source_references": ["Rocq.Corelib.Init.Logic.eq_rew_r"],
+  "name": "NativeBridge.Incremental.eq_rew_r_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.eq_rec_r__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_rec_r__rocq2lean_obligation_1.statement"],
+  "name": "NativeBridge.Incremental.eq_rec_r_obligation",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_trans_sym_inv_r__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_sym_inv_r__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_trans_sym_inv_r__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "∀ (P : Prop) (x y : P), x = y ↔ True",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.LogicNormalization.proof_equality",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "RocqPending.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.f_equal_compose.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.f_equal_compose.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.f_equal_compose.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.ex_of_ex2_eq.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.ex_of_ex2_eq.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_of_ex2_eq.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_intro2_uncurried__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_ex_intro2_uncurried__rocq2lean_obligation_2 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_4.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_1.statement",
+   "Rocq.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_4.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_4.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.rew_compose.statement",
+  "source_references": ["RocqPending.Corelib.Init.Logic.rew_compose.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.rew_compose.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.ex_proj2_of_ex2_eq.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.ex_proj2_of_ex2_eq.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_of_ex2_eq.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.f_equal_dep2__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.f_equal_dep2__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.f_equal_dep2__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_trans_refl_r.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_trans_refl_r.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_trans_refl_r.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_trans_map_distr__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_map_distr__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_trans_map_distr__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} (x : A) (P : A → Sort v) (h : P x) (y : A) (e : NativeBridge.ME A y x),\n  RocqPending.Corelib.Init.Logic.eq_rect_r A x P h y e = ⋯ ▸ h",
+  "source_references": ["RocqPending.Corelib.Init.Logic.eq_rect_r"],
+  "name": "NativeBridge.Incremental.eq_rect_r_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex2_uncurried_iff__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex2_uncurried_iff__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_ex2_uncurried_iff__rocq2lean_obligation_2 :\n    Rocq.Corelib.Init.Logic.eq_ex2_uncurried_iff__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex2_uncurried_iff.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_uncurried_iff__rocq2lean_obligation_1.statement",
+   "Rocq.Corelib.Init.Logic.eq_ex2_uncurried_iff__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex2_uncurried_iff.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex2_uncurried_iff.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex2_hprop__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_hprop__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex2_hprop__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "RocqPending.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_3.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_3.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_3.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_uncurried__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_uncurried__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_uncurried.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_uncurried__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_uncurried.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_uncurried.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "RocqPending.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.ex_of_ex2_eq__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex_of_ex2_eq__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_of_ex2_eq__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.ex_of_ex2_eq__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex_of_ex2_eq__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_of_ex2_eq__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_trans_assoc__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_assoc__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_trans_assoc__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_sym_map_distr__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_sym_map_distr__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_sym_map_distr__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.ex2_eta__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex2_eta__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex2_eta__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_intro_r__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro_r__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_ex_intro_r__rocq2lean_obligation_2 :\n    RocqPending.Corelib.Init.Logic.eq_ex_intro_r__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_intro_r.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro_r__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro_r__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro_r.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_intro_r.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex2_uncurried_iff__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_uncurried_iff__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_uncurried_iff__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_trans_map__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_map__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_trans_map__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex2_ind__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_ex2_ind__rocq2lean_obligation_2 :\n    RocqPending.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_3.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_3.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_3.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_4.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_4.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_4.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_ex2_hprop_iff.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex2_hprop_iff.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_hprop_iff.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.f_equal_dep2.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.f_equal_dep2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.f_equal_dep2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_trans_sym_inv_r__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_sym_inv_r__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_trans_sym_inv_r__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_ex.statement",
+  "source_references": ["RocqPending.Corelib.Init.Logic.eq_ex.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_refl_map_distr__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_refl_map_distr__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_refl_map_distr__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_sym_involutive__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_sym_involutive__rocq2lean_obligation_1.statement"],
+  "name": "NativeBridge.Incremental.eq_sym_involutive_obligation",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex2_hprop__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_hprop__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex2_hprop__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.ex_eta__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex_eta__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_eta__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_ex_proj2_eq__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.ex_proj2_eq.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.ex_proj2_eq.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.ex_proj2_eq.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex2_ind_uncurried__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_ex2_ind_uncurried__rocq2lean_obligation_2 :\n    Rocq.Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_2.statement}\n  {h_Corelib_Init_Logic_eq_ex2_ind_uncurried__rocq2lean_obligation_3 :\n    RocqPending.Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_3.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex2_ind_uncurried.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_1.statement",
+   "Rocq.Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_3.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex2_ind_uncurried.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex2_ind_uncurried.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} {B : Sort v} (i : NativeBridge.Iso A B) {x y : A} (P : B → Sort u_1) (h : P (i.to x))\n  (e : NativeBridge.ME A x y), Rocq.Corelib.Init.Logic.eq_rew A x (fun a => P (i.to a)) h y e = ⋯ ▸ h",
+  "source_references": ["Rocq.Corelib.Init.Logic.eq_rew"],
+  "name": "NativeBridge.Incremental.eq_rew_across_iso",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_intro__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_3.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_3.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_3.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_ex_eta.statement",
+  "source_references": ["RocqPending.Corelib.Init.Logic.eq_ex_eta.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_eta.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_intro2_hprop_nondep__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_ex_intro2_hprop_nondep__rocq2lean_obligation_2 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_2.statement}\n  {h_Corelib_Init_Logic_eq_ex_intro2_hprop_nondep__rocq2lean_obligation_3 :\n    RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_3.statement}\n  {h_Corelib_Init_Logic_eq_ex_intro2_hprop_nondep__rocq2lean_obligation_4 :\n    RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_4.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_1.statement",
+   "Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_3.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_4.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_intro_hprop__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro_hprop__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex_intro_hprop__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex2_uncurried_iff__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex2_uncurried_iff__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex2_uncurried_iff__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_trans_map_distr.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_trans_map_distr.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_trans_map_distr.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_id_comm_r__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_id_comm_r__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.eq_id_comm_r.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_id_comm_r__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_id_comm_r.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_id_comm_r.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_trans_rew_distr__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_rew_distr__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_trans_rew_distr__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_ex_proj2_of_ex2_eq__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.ex_proj2_of_ex2_eq.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.ex_proj2_of_ex2_eq.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.ex_proj2_of_ex2_eq.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_id_comm_l__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_id_comm_l__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_id_comm_l__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_intro_uncurried__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_intro2_hprop__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_ex_intro2_hprop__rocq2lean_obligation_2 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop__rocq2lean_obligation_1.statement",
+   "Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_rect_r__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.rew_swap.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.rew_swap.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.rew_swap.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A B : Prop) (P : Sort u) (f : A → B → P) (h : Rocq.Corelib.Init.Logic.and A B),\n  Rocq.Corelib.Init.Logic.and_rect A B P f h = f ⋯ ⋯",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.and", "Rocq.Corelib.Init.Logic.and_rect"],
+  "name": "NativeBridge.Incremental.LogicElimination.and_rect_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_ex2_eta.statement",
+  "source_references": ["RocqPending.Corelib.Init.Logic.eq_ex2_eta.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_eta.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.ex_proj1_of_ex2_eq.statement",
+  "source_references": ["Rocq.Corelib.Init.Logic.ex_proj1_of_ex2_eq.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_of_ex2_eq.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.eq_sym.statement",
+  "source_references": ["Rocq.Corelib.Init.Logic.eq_sym.statement"],
+  "name": "NativeBridge.Incremental.eq_sym_closed",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.ex_proj3_eq.statement",
+  "source_references": ["RocqPending.Corelib.Init.Logic.ex_proj3_eq.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj3_eq.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_trans_refl_r__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_trans_refl_r__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.eq_trans_refl_r.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_refl_r__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_trans_refl_r.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_trans_refl_r.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_ind_uncurried__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_ind_uncurried__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_ind_uncurried__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_ind_uncurried__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_ind_uncurried__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_ind_uncurried__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_trans_sym_inv_l__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_sym_inv_l__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_trans_sym_inv_l__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_rect_r__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.rew_opp_l.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.rew_opp_l.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.rew_opp_l.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_ex2_hprop.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex2_hprop.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_hprop.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_intro2_hprop_nondep__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_ex_intro2_hprop_nondep__rocq2lean_obligation_2 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_3.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_1.statement",
+   "Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_3.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_3.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.rew_ex2__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.rew_ex2__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.rew_ex2__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_id_comm_l__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_id_comm_l__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.eq_id_comm_l.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_id_comm_l__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_id_comm_l.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_id_comm_l.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_trans_sym_inv_l__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_trans_sym_inv_l__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_trans_sym_inv_l__rocq2lean_obligation_2 :\n    Rocq.Corelib.Init.Logic.eq_trans_sym_inv_l__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.eq_trans_sym_inv_l.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_sym_inv_l__rocq2lean_obligation_1.statement",
+   "Rocq.Corelib.Init.Logic.eq_trans_sym_inv_l__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_trans_sym_inv_l.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_trans_sym_inv_l.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (P : Type) (p : P) (h : Rocq.Corelib.Init.Logic.True), Rocq.Corelib.Init.Logic.True_rec P p h = p",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.True", "Rocq.Corelib.Init.Logic.True_rec"],
+  "name": "NativeBridge.Incremental.LogicElimination.true_rec_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "{A : Sort u} → (x y : A) → (P : (x : A) → NativeBridge.ME A x y → Sort v) → P y ⋯ → (e : NativeBridge.ME A x y) → P x e",
+  "source_references": ["Rocq.Corelib.Init.Logic.eq.eq_refl"],
+  "name": "NativeBridge.Incremental.eqRewRDepClosed",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.eq_ex_ind__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_ind__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex_ind__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.rew_ex__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.rew_ex__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.rew_ex__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_trans_sym_distr__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_sym_distr__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_trans_sym_distr__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "∀ {A : Sort u} (a b : A), NativeBridge.ME A a b = (a = b)",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.LogicNormalization.unique_agrees._simp_1_3",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_eta__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_eta.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_eta.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_eta.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_id_comm_r__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_id_comm_r__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_id_comm_r__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_intro_r__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro_r__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_ex_intro_r__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"],
+  "name": "NativeBridge.Incremental.eq_rect_r_obligation",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "RocqPending.Corelib.Init.Logic.eq_ex_ind_uncurried__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_ind_uncurried__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_ind_uncurried__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_sym_map_distr__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_sym_map_distr__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.Rocq.Corelib.Init.Logic.eq_sym_map_distr__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "RocqPending.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_3.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_3.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_3.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Sort u) (x : A) (P : A → Sort v) (h : P x) (y : A) (e : NativeBridge.ME A x y),\n  Rocq.Corelib.Init.Logic.eq_rect A x P h y e = ⋯ ▸ h",
+  "source_references": ["Rocq.Corelib.Init.Logic.eq_rect"],
+  "name": "NativeBridge.Incremental.LogicNormalization.eq_rect_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "RocqPending.Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro_uncurried__rocq2lean_obligation_2.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_trans_sym_inv_r__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_trans_sym_inv_r__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_trans_sym_inv_r__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "RocqPending.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_3.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_3.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_3.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_intro2_r__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_ex_intro2_r__rocq2lean_obligation_2 :\n    RocqPending.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_3.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_1.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_3.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_3.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro2_hprop_nondep__rocq2lean_obligation_1.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "RocqPending.Corelib.Init.Logic.eq_ex2_ind_uncurried.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Logic.eq_ex2_ind_uncurried.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_ind_uncurried.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀\n  {h_Corelib_Init_Logic_eq_ex_intro2_uncurried__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_1.statement}\n  {h_Corelib_Init_Logic_eq_ex_intro2_uncurried__rocq2lean_obligation_2 :\n    Rocq.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_2.statement},\n  RocqPending.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_3.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_1.statement",
+   "Rocq.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_2.statement",
+   "RocqPending.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_3.statement"],
+  "name":
+  "NativeBridge.Incremental.LogicWitnesses.conditional.RocqPending.Corelib.Init.Logic.eq_ex_intro2_uncurried__rocq2lean_obligation_3.statement",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "∀ (A : Prop) (P Q : A → Prop) (h : ∃ x, P x ∧ Q x), ⋯ = ⋯",
+  "source_references":
+  ["Rocq.Corelib.Init.Logic.ex2.rec", "Rocq.Corelib.Init.Logic.ex2"],
+  "name": "NativeBridge.Incremental.LogicNormalization.ex_proj1_of_ex2_agrees",
+  "kind": "theorem",
+  "axioms": []}]

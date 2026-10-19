@@ -3265,5 +3265,974 @@
         "proof": "NativeBridge.Incremental.DatatypeSpecs.compare_gt_obligation"
       }
     ]
+  },
+  {
+    "source": "Corelib.Init.Logic.unique",
+    "profile": "LogicNormalization",
+    "certificate": "NativeBridge.Incremental.LogicNormalization.unique_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "P x ∧ ∀ y, P y → x = y",
+    "scope": "full source Sort parameters; heterogeneous source/target for subrelation",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Logic.uniqueness",
+    "profile": "LogicNormalization",
+    "certificate": "NativeBridge.Incremental.LogicNormalization.uniqueness_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x y, P x → P y → x = y",
+    "scope": "full source Sort parameters; heterogeneous source/target for subrelation",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Logic.subrelation",
+    "profile": "LogicNormalization",
+    "certificate": "NativeBridge.Incremental.LogicNormalization.subrelation_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x y, R x y → S x y",
+    "scope": "full source Sort parameters; heterogeneous source/target for subrelation",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Logic.False_rec",
+    "profile": "LogicElimination",
+    "certificate": "NativeBridge.Incremental.LogicElimination.false_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "False.elim",
+    "scope": "Type result; source signature preserved",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Logic.False_rect",
+    "profile": "LogicElimination",
+    "certificate": "NativeBridge.Incremental.LogicElimination.false_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "False.elim",
+    "scope": "Sort result; source signature preserved",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Logic.True_rec",
+    "profile": "LogicElimination",
+    "certificate": "NativeBridge.Incremental.LogicElimination.true_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected value",
+    "scope": "Type result; source signature preserved",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Logic.True_rect",
+    "profile": "LogicElimination",
+    "certificate": "NativeBridge.Incremental.LogicElimination.true_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected value",
+    "scope": "Sort result; source signature preserved",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Logic.and_rec",
+    "profile": "LogicElimination",
+    "certificate": "NativeBridge.Incremental.LogicElimination.and_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "apply function to native And projections",
+    "scope": "Type result; source signature preserved",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Logic.and_rect",
+    "profile": "LogicElimination",
+    "certificate": "NativeBridge.Incremental.LogicElimination.and_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "apply function to native And projections",
+    "scope": "Sort result; source signature preserved",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Logic.ex_rec",
+    "profile": "LogicExistsElimination",
+    "certificate": "NativeBridge.Incremental.LogicExistsElimination.ex_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "native Exists elimination through Prop witness and predicate proofs",
+    "scope": "A : Prop as in exported signature; dependent native Exists motive; Type result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicExistsElimination.exRecClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.ex_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.ex_rect",
+    "profile": "LogicExistsElimination",
+    "certificate": "NativeBridge.Incremental.LogicExistsElimination.ex_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "native Exists elimination through Prop witness and predicate proofs",
+    "scope": "A : Prop as in exported signature; dependent native Exists motive; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicExistsElimination.exRectClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.ex_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.ex2_rec",
+    "profile": "LogicExistsElimination",
+    "certificate": "NativeBridge.Incremental.LogicExistsElimination.ex2_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "native Exists elimination through Prop witness and predicate proofs",
+    "scope": "A : Prop as in exported signature; dependent native Exists motive; Type result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicExistsElimination.ex2RecClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.ex2_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex2_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex2_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex2_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.ex2_rect",
+    "profile": "LogicExistsElimination",
+    "certificate": "NativeBridge.Incremental.LogicExistsElimination.ex2_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "native Exists elimination through Prop witness and predicate proofs",
+    "scope": "A : Prop as in exported signature; dependent native Exists motive; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicExistsElimination.ex2RectClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.ex2_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex2_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex2_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex2_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_rec",
+    "profile": "LogicProofElimination",
+    "certificate": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value; all proof arguments identified by proof irrelevance",
+    "scope": "A : Prop as in exported signature; native equality-indexed motive; arbitrary branch value, representing the unique proof-argument fiber; Type result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rec_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj1_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_rect",
+    "profile": "LogicProofElimination",
+    "certificate": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value; all proof arguments identified by proof irrelevance",
+    "scope": "A : Prop as in exported signature; native equality-indexed motive; arbitrary branch value, representing the unique proof-argument fiber; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rect_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj1_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_rec_uncurried",
+    "profile": "LogicProofElimination",
+    "certificate": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rec_uncurried_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value; all proof arguments identified by proof irrelevance",
+    "scope": "A : Prop as in exported signature; native equality-indexed motive; arbitrary branch value, representing the unique proof-argument fiber; Type result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rec_uncurried_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj1_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_rect_uncurried",
+    "profile": "LogicProofElimination",
+    "certificate": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rect_uncurried_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value; all proof arguments identified by proof irrelevance",
+    "scope": "A : Prop as in exported signature; native equality-indexed motive; arbitrary branch value, representing the unique proof-argument fiber; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rect_uncurried_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj1_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_rect_ex_intro",
+    "profile": "LogicProofElimination",
+    "certificate": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rect_ex_intro_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value; all proof arguments identified by proof irrelevance",
+    "scope": "A : Prop as in exported signature; native equality-indexed motive; arbitrary branch value, representing the unique proof-argument fiber; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rect_ex_intro_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro__rocq2lean_obligation_3.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj1_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_rect_ex_intro_l",
+    "profile": "LogicProofElimination",
+    "certificate": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rect_ex_intro_l_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value; all proof arguments identified by proof irrelevance",
+    "scope": "A : Prop as in exported signature; native equality-indexed motive; arbitrary branch value, representing the unique proof-argument fiber; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rect_ex_intro_l_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro_l__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro_l__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro_l__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro_l__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro_l",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro_l.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj1_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex_rect_ex_intro_r",
+    "profile": "LogicProofElimination",
+    "certificate": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rect_ex_intro_r_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value; all proof arguments identified by proof irrelevance",
+    "scope": "A : Prop as in exported signature; native equality-indexed motive; arbitrary branch value, representing the unique proof-argument fiber; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicProofElimination.eq_ex_rect_ex_intro_r_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro_r__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro_r__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro_r__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro_r",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro_r.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj1_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex2_rec",
+    "profile": "LogicProofElimination",
+    "certificate": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value; all proof arguments identified by proof irrelevance",
+    "scope": "A : Prop as in exported signature; native equality-indexed motive; arbitrary branch value, representing the unique proof-argument fiber; Type result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rec_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj1_of_ex2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_of_ex2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_of_ex2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_of_ex2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj3_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj3_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex2_rect",
+    "profile": "LogicProofElimination",
+    "certificate": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value; all proof arguments identified by proof irrelevance",
+    "scope": "A : Prop as in exported signature; native equality-indexed motive; arbitrary branch value, representing the unique proof-argument fiber; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rect_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj1_of_ex2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_of_ex2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_of_ex2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_of_ex2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj3_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj3_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex2_rec_uncurried",
+    "profile": "LogicProofElimination",
+    "certificate": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rec_uncurried_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value; all proof arguments identified by proof irrelevance",
+    "scope": "A : Prop as in exported signature; native equality-indexed motive; arbitrary branch value, representing the unique proof-argument fiber; Type result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rec_uncurried_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj1_of_ex2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_of_ex2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_of_ex2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_of_ex2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj3_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj3_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex2_rect_uncurried",
+    "profile": "LogicProofElimination",
+    "certificate": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rect_uncurried_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value; all proof arguments identified by proof irrelevance",
+    "scope": "A : Prop as in exported signature; native equality-indexed motive; arbitrary branch value, representing the unique proof-argument fiber; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rect_uncurried_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj1_of_ex2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_of_ex2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_of_ex2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_of_ex2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj3_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj3_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex2_rect_ex_intro2",
+    "profile": "LogicProofElimination",
+    "certificate": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rect_ex_intro2_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value; all proof arguments identified by proof irrelevance",
+    "scope": "A : Prop as in exported signature; native equality-indexed motive; arbitrary branch value, representing the unique proof-argument fiber; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rect_ex_intro2_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_3.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2__rocq2lean_obligation_4.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj1_of_ex2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_of_ex2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_of_ex2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_of_ex2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj3_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj3_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex2_rect_ex_intro2_l",
+    "profile": "LogicProofElimination",
+    "certificate": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rect_ex_intro2_l_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value; all proof arguments identified by proof irrelevance",
+    "scope": "A : Prop as in exported signature; native equality-indexed motive; arbitrary branch value, representing the unique proof-argument fiber; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rect_ex_intro2_l_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_l__rocq2lean_obligation_3.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_l",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_l.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj1_of_ex2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_of_ex2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_of_ex2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_of_ex2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj3_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj3_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_ex2_rect_ex_intro2_r",
+    "profile": "LogicProofElimination",
+    "certificate": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rect_ex_intro2_r_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value; all proof arguments identified by proof irrelevance",
+    "scope": "A : Prop as in exported signature; native equality-indexed motive; arbitrary branch value, representing the unique proof-argument fiber; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.LogicProofElimination.eq_ex2_rect_ex_intro2_r_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_r__rocq2lean_obligation_3.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex_intro2_r",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex_intro2_r.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj1_of_ex2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj1_of_ex2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj2_of_ex2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj2_of_ex2_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj2_of_ex2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.ex_proj3_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.ex_proj3_eq",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.ex_proj3_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_ex2_eta",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.RocqPending.Corelib.Init.Logic.eq_ex2_eta.statement"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
+      }
+    ]
   }
 ]
