@@ -1478,6 +1478,440 @@ NativeBridge.Incremental.sigT2_of_sig2_closed_agrees
 
 公理闭包：空
 
+## Corelib.Init.Wf.Fix_F_2
+
+NativeBridge.Incremental.fixF2_agrees
+
+目标：WellFounded.fixF on native Prod；范围：A : Type u, B : Type v, P : A → B → Type w; native relation pulled back through prodTo; native step; both component universes and dependent result family retained
+
+```lean
+∀ {A : Type u} {B : Type v} (R : A × B → A × B → Prop) (P : A → B → Type w)
+  (F : (x : A) → (y : B) → ((a : A) → (b : B) → R (a, b) (x, y) → P a b) → P x y) (x : A) (y : B)
+  (ac :
+    Rocq.Corelib.Init.Wf.Acc (Rocq.Corelib.Init.Datatypes.prod A B)
+      (fun p q => R (NativeBridge.prodTo p) (NativeBridge.prodTo q)) (Rocq.Corelib.Init.Datatypes.prod.pair A B x y)),
+  Rocq.Corelib.Init.Wf.Fix_F_2 A B (fun p q => R (NativeBridge.prodTo p) (NativeBridge.prodTo q)) P F x y ac =
+    WellFounded.fixF (fun p rec => F p.fst p.snd fun a b h => rec (a, b) h) (x, y) ⋯
+```
+
+公理闭包：Quot.sound
+
+## Corelib.Init.Wf.well_founded_induction_type_2
+
+NativeBridge.Incremental.well_founded_induction_type_2_agrees
+
+目标：WellFounded.fix on native Prod；范围：A : Type u, B : Type v, P : A → B → Type w; native relation pulled back through prodTo; native step; both component universes and dependent result family retained
+
+```lean
+∀ {A : Type u} {B : Type v} (R : A × B → A × B → Prop) (P : A → B → Type w)
+  (wf :
+    Rocq.Corelib.Init.Wf.well_founded (Rocq.Corelib.Init.Datatypes.prod A B) fun p q =>
+      R (NativeBridge.prodTo p) (NativeBridge.prodTo q))
+  (F : (x : A) → (y : B) → ((a : A) → (b : B) → R (a, b) (x, y) → P a b) → P x y) (x : A) (y : B),
+  Rocq.Corelib.Init.Wf.well_founded_induction_type_2 A B (fun p q => R (NativeBridge.prodTo p) (NativeBridge.prodTo q))
+      P wf F x y =
+    ⋯.fix (fun p rec => F p.fst p.snd fun a b h => rec (a, b) h) (x, y)
+```
+
+公理闭包：Quot.sound
+
+## Corelib.Init.Datatypes.sum
+
+NativeBridge.Incremental.psumIso
+
+目标：PSum A B；范围：A : Sort u, B : Sort v; broadens the previously covered Type-only sum root
+
+```lean
+(A : Sort u) → (B : Sort v) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.sum A B) (A ⊕' B)
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.bool_rec
+
+NativeBridge.Incremental.datatypes_bool_rec_agrees
+
+目标：Bool.rec；范围：fixed datatype; dependent native motive; result Type
+
+```lean
+∀ (P : Bool → Type) (t : P true) (f : P false) (b : NativeBridge.RBool),
+  Rocq.Corelib.Init.Datatypes.bool_rec (fun b => P (NativeBridge.boolTo b)) t f b = Bool.rec f t (NativeBridge.boolTo b)
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.bool_rect
+
+NativeBridge.Incremental.datatypes_bool_rect_agrees
+
+目标：Bool.rec；范围：fixed datatype; dependent native motive; result Sort z
+
+```lean
+∀ (P : Bool → Sort z) (t : P true) (f : P false) (b : NativeBridge.RBool),
+  Rocq.Corelib.Init.Datatypes.bool_rect (fun b => P (NativeBridge.boolTo b)) t f b =
+    Bool.rec f t (NativeBridge.boolTo b)
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.comparison_rec
+
+NativeBridge.Incremental.datatypes_comparison_rec_agrees
+
+目标：Ordering.rec；范围：fixed datatype; dependent native motive; result Type
+
+```lean
+∀ (P : Ordering → Type) (e : P Ordering.eq) (l : P Ordering.lt) (g : P Ordering.gt) (c : NativeBridge.RComparison),
+  Rocq.Corelib.Init.Datatypes.comparison_rec (fun c => P (NativeBridge.comparisonTo c)) e l g c =
+    Ordering.rec l e g (NativeBridge.comparisonTo c)
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.comparison_rect
+
+NativeBridge.Incremental.datatypes_comparison_rect_agrees
+
+目标：Ordering.rec；范围：fixed datatype; dependent native motive; result Sort z
+
+```lean
+∀ (P : Ordering → Sort z) (e : P Ordering.eq) (l : P Ordering.lt) (g : P Ordering.gt) (c : NativeBridge.RComparison),
+  Rocq.Corelib.Init.Datatypes.comparison_rect (fun c => P (NativeBridge.comparisonTo c)) e l g c =
+    Ordering.rec l e g (NativeBridge.comparisonTo c)
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.unit_rec
+
+NativeBridge.Incremental.datatypes_unit_rec_agrees
+
+目标：PUnit.rec (Unit alias)；范围：fixed datatype; dependent native motive; result Type
+
+```lean
+∀ (P : Unit → Type) (h : P ()) (s : Rocq.Corelib.Init.Datatypes.unit),
+  Rocq.Corelib.Init.Datatypes.unit_rec (fun s => P (NativeBridge.unitIso.to s)) h s =
+    PUnit.rec h (NativeBridge.unitIso.to s)
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.unit_rect
+
+NativeBridge.Incremental.datatypes_unit_rect_agrees
+
+目标：PUnit.rec (Unit alias)；范围：fixed datatype; dependent native motive; result Sort z
+
+```lean
+∀ (P : Unit → Sort z) (h : P ()) (s : Rocq.Corelib.Init.Datatypes.unit),
+  Rocq.Corelib.Init.Datatypes.unit_rect (fun s => P (NativeBridge.unitIso.to s)) h s =
+    PUnit.rec h (NativeBridge.unitIso.to s)
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.Empty_set_rec
+
+NativeBridge.Incremental.datatypes_Empty_set_rec_agrees
+
+目标：Empty.rec；范围：fixed datatype; dependent native motive; result Type
+
+```lean
+∀ (P : Empty → Type) (s : Rocq.Corelib.Init.Datatypes.Empty_set),
+  Rocq.Corelib.Init.Datatypes.Empty_set_rec (fun s => P (NativeBridge.emptyIso.to s)) s =
+    Empty.rec P (NativeBridge.emptyIso.to s)
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.Empty_set_rect
+
+NativeBridge.Incremental.datatypes_Empty_set_rect_agrees
+
+目标：Empty.rec；范围：fixed datatype; dependent native motive; result Sort z
+
+```lean
+∀ (P : Empty → Sort z) (s : Rocq.Corelib.Init.Datatypes.Empty_set),
+  Rocq.Corelib.Init.Datatypes.Empty_set_rect (fun s => P (NativeBridge.emptyIso.to s)) s =
+    Empty.rec P (NativeBridge.emptyIso.to s)
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.option_rec
+
+NativeBridge.Incremental.datatypes_option_rec_agrees
+
+目标：Option.rec；范围：element A : Type u; dependent native motive; result Type
+
+```lean
+∀ {A : Type u} (P : Option A → Type) (f : (a : A) → P (some a)) (n : P none) (s : Rocq.Corelib.Init.Datatypes.option A),
+  Rocq.Corelib.Init.Datatypes.option_rec A (fun s => P (NativeBridge.optionTo s)) f n s =
+    Option.rec n f (NativeBridge.optionTo s)
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.option_rect
+
+NativeBridge.Incremental.datatypes_option_rect_agrees
+
+目标：Option.rec；范围：element A : Type u; dependent native motive; result Sort z
+
+```lean
+∀ {A : Type u} (P : Option A → Sort z) (f : (a : A) → P (some a)) (n : P none)
+  (s : Rocq.Corelib.Init.Datatypes.option A),
+  Rocq.Corelib.Init.Datatypes.option_rect A (fun s => P (NativeBridge.optionTo s)) f n s =
+    Option.rec n f (NativeBridge.optionTo s)
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.list_rec
+
+NativeBridge.Incremental.datatypes_list_rec_agrees
+
+目标：List.rec；范围：element A : Type u; dependent native motive; result Type
+
+```lean
+∀ {A : Type u} (P : List A → Type) (n : P []) (c : (a : A) → (as : List A) → P as → P (a :: as))
+  (s : NativeBridge.RList A),
+  Rocq.Corelib.Init.Datatypes.list_rec A (fun s => P (NativeBridge.listTo s)) n
+      (fun a as ih => c a (NativeBridge.listTo as) ih) s =
+    List.rec n c (NativeBridge.listTo s)
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.list_rect
+
+NativeBridge.Incremental.datatypes_list_rect_agrees
+
+目标：List.rec；范围：element A : Type u; dependent native motive; result Sort z
+
+```lean
+∀ {A : Type u} (P : List A → Sort z) (n : P []) (c : (a : A) → (as : List A) → P as → P (a :: as))
+  (s : NativeBridge.RList A),
+  Rocq.Corelib.Init.Datatypes.list_rect A (fun s => P (NativeBridge.listTo s)) n
+      (fun a as ih => c a (NativeBridge.listTo as) ih) s =
+    List.rec n c (NativeBridge.listTo s)
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.prod_rec
+
+NativeBridge.Incremental.datatypes_prod_rec_agrees
+
+目标：PProd.rec；范围：A : Sort u and B : Sort v; dependent native motive; result Type
+
+```lean
+∀ {A : Sort u} {B : Sort v} (P : A ×' B → Type) (f : (a : A) → (b : B) → P ⟨a, b⟩)
+  (s : Rocq.Corelib.Init.Datatypes.prod A B),
+  Rocq.Corelib.Init.Datatypes.prod_rec A B (fun s => P (NativeBridge.Incremental.pprodTo s)) f s =
+    PProd.rec f (NativeBridge.Incremental.pprodTo s)
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.prod_rect
+
+NativeBridge.Incremental.datatypes_prod_rect_agrees
+
+目标：PProd.rec；范围：A : Sort u and B : Sort v; dependent native motive; result Sort z
+
+```lean
+∀ {A : Sort u} {B : Sort v} (P : A ×' B → Sort z) (f : (a : A) → (b : B) → P ⟨a, b⟩)
+  (s : Rocq.Corelib.Init.Datatypes.prod A B),
+  Rocq.Corelib.Init.Datatypes.prod_rect A B (fun s => P (NativeBridge.Incremental.pprodTo s)) f s =
+    PProd.rec f (NativeBridge.Incremental.pprodTo s)
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.sum_rec
+
+NativeBridge.Incremental.datatypes_sum_rec_agrees
+
+目标：PSum.rec；范围：A : Sort u and B : Sort v; dependent native motive; result Type
+
+```lean
+∀ {A : Sort u} {B : Sort v} (P : A ⊕' B → Type) (l : (a : A) → P (PSum.inl a)) (r : (b : B) → P (PSum.inr b))
+  (s : Rocq.Corelib.Init.Datatypes.sum A B),
+  Rocq.Corelib.Init.Datatypes.sum_rec A B (fun s => P (NativeBridge.Incremental.psumTo s)) l r s =
+    PSum.rec l r (NativeBridge.Incremental.psumTo s)
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.sum_rect
+
+NativeBridge.Incremental.datatypes_sum_rect_agrees
+
+目标：PSum.rec；范围：A : Sort u and B : Sort v; dependent native motive; result Sort z
+
+```lean
+∀ {A : Sort u} {B : Sort v} (P : A ⊕' B → Sort z) (l : (a : A) → P (PSum.inl a)) (r : (b : B) → P (PSum.inr b))
+  (s : Rocq.Corelib.Init.Datatypes.sum A B),
+  Rocq.Corelib.Init.Datatypes.sum_rect A B (fun s => P (NativeBridge.Incremental.psumTo s)) l r s =
+    PSum.rec l r (NativeBridge.Incremental.psumTo s)
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.result_rec
+
+NativeBridge.Incremental.datatypes_result_rec_agrees
+
+目标：Except.rec；范围：value A : Type u and error E : Type v; dependent native motive; result Type
+
+```lean
+∀ {A : Type u} {E : Type v} (P : Except E A → Type) (ok : (a : A) → P (Except.ok a))
+  (error : (e : E) → P (Except.error e)) (s : Rocq.Corelib.Init.Datatypes.result A E),
+  Rocq.Corelib.Init.Datatypes.result_rec A E (fun s => P (NativeBridge.resultTo s)) ok error s =
+    Except.rec error ok (NativeBridge.resultTo s)
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.result_rect
+
+NativeBridge.Incremental.datatypes_result_rect_agrees
+
+目标：Except.rec；范围：value A : Type u and error E : Type v; dependent native motive; result Sort z
+
+```lean
+∀ {A : Type u} {E : Type v} (P : Except E A → Sort z) (ok : (a : A) → P (Except.ok a))
+  (error : (e : E) → P (Except.error e)) (s : Rocq.Corelib.Init.Datatypes.result A E),
+  Rocq.Corelib.Init.Datatypes.result_rect A E (fun s => P (NativeBridge.resultTo s)) ok error s =
+    Except.rec error ok (NativeBridge.resultTo s)
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.curry
+
+NativeBridge.Incremental.datatypes_curry_agrees
+
+目标：fun f a b => f ⟨a,b⟩ with PProd；范围：A/B/C : Sort
+
+```lean
+∀ {A : Sort u} {B : Sort v} {C : Sort w} (f : A ×' B → C) (a : A) (b : B),
+  Rocq.Corelib.Init.Datatypes.curry A B C (fun p => f (NativeBridge.Incremental.pprodTo p)) a b = f ⟨a, b⟩
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.uncurry
+
+NativeBridge.Incremental.datatypes_uncurry_agrees
+
+目标：fun f p => f p.fst p.snd with PProd；范围：A/B/C : Sort
+
+```lean
+∀ {A : Sort u} {B : Sort v} {C : Sort w} (f : A → B → C) (p : Rocq.Corelib.Init.Datatypes.prod A B),
+  Rocq.Corelib.Init.Datatypes.uncurry A B C f p =
+    f (NativeBridge.Incremental.pprodTo p).fst (NativeBridge.Incremental.pprodTo p).snd
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.id
+
+NativeBridge.Incremental.datatypes_id_agrees
+
+目标：id；范围：A : Type u
+
+```lean
+∀ (A : Type u) (x : A), Rocq.Corelib.Init.Datatypes.id A x = id x
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.ID
+
+NativeBridge.Incremental.datatypes_ID_agrees
+
+目标：(A : Type u) → A → A；范围：exact equality of types
+
+```lean
+Rocq.Corelib.Init.Datatypes.ID = ((A : Type u) → A → A)
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.IDProp
+
+NativeBridge.Incremental.datatypes_IDProp_agrees
+
+目标：∀ A : Prop, A → A；范围：iff of predicates
+
+```lean
+Rocq.Corelib.Init.Datatypes.IDProp ↔ ∀ (A : Prop), A → A
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.proj3_sig
+
+NativeBridge.Incremental.proj3_sig_native
+
+目标：NativeBridge.Incremental.proj3SigNative；范围：full Sort u carrier; predicates retained; the extracted projection obligation is explicitly proved; native target recursively checked for source references
+
+```lean
+RocqPending.Corelib.Init.Specif.proj3_sig.statement ↔ NativeBridge.Incremental.proj3SigNative
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.proj1_sig_of_sig2_eq
+
+NativeBridge.Incremental.proj1_sig_of_sig2_eq_native
+
+目标：NativeBridge.Incremental.proj1SigOfSig2EqNative；范围：full Sort u carrier; predicates retained; the extracted projection obligation is explicitly proved; native target recursively checked for source references
+
+```lean
+RocqPending.Corelib.Init.Specif.proj1_sig_of_sig2_eq.statement ↔ NativeBridge.Incremental.proj1SigOfSig2EqNative
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.sig_of_sig2_eq
+
+NativeBridge.Incremental.sig_of_sig2_eq_native
+
+目标：NativeBridge.Incremental.sigOfSig2EqNative；范围：full Sort u carrier; predicates retained; the extracted projection obligation is explicitly proved; native target recursively checked for source references
+
+```lean
+RocqPending.Corelib.Init.Specif.sig_of_sig2_eq.statement ↔ NativeBridge.Incremental.sigOfSig2EqNative
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_sig2_hprop
+
+NativeBridge.Incremental.eq_sig2_hprop_native
+
+目标：NativeBridge.Incremental.eqSig2HpropNative；范围：full Sort u carrier; predicates retained; the extracted projection obligation is explicitly proved; native target recursively checked for source references
+
+```lean
+RocqPending.Corelib.Init.Specif.eq_sig2_hprop.statement ↔ NativeBridge.Incremental.eqSig2HpropNative
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_sig2_hprop_iff
+
+NativeBridge.Incremental.eq_sig2_hprop_iff_native
+
+目标：NativeBridge.Incremental.eqSig2HpropIffNative；范围：full Sort u carrier; predicates retained; the extracted projection obligation is explicitly proved; native target recursively checked for source references
+
+```lean
+RocqPending.Corelib.Init.Specif.eq_sig2_hprop_iff.statement ↔ NativeBridge.Incremental.eqSig2HpropIffNative
+```
+
+公理闭包：propext, Quot.sound
+
 ## Corelib.ssr.ssrbool.addFb
 
 NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addFb.statement.correspondence

@@ -1,0 +1,229 @@
+[{"type":
+  "∀ {A : Type u} {E : Type v} (P : Except E A → Sort z) (ok : (a : A) → P (Except.ok a))\n  (error : (e : E) → P (Except.error e)) (s : Rocq.Corelib.Init.Datatypes.result A E),\n  Rocq.Corelib.Init.Datatypes.result_rect A E (fun s => P (NativeBridge.resultTo s)) ok error s =\n    Except.rec error ok (NativeBridge.resultTo s)",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.result",
+   "Rocq.Corelib.Init.Datatypes.result_rect"],
+  "name": "NativeBridge.Incremental.datatypes_result_rect_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Sort u_1) (B : Sort u_2) (s : A ⊕' B), NativeBridge.Incremental.psumTo (NativeBridge.Incremental.psumOf s) = s",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.psumIso._proof_2",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Type u} (P : Option A → Type) (f : (a : A) → P (some a)) (n : P none) (s : Rocq.Corelib.Init.Datatypes.option A),\n  Rocq.Corelib.Init.Datatypes.option_rec A (fun s => P (NativeBridge.optionTo s)) f n s =\n    Option.rec n f (NativeBridge.optionTo s)",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.option",
+   "Rocq.Corelib.Init.Datatypes.option_rec"],
+  "name": "NativeBridge.Incremental.datatypes_option_rec_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} {B : Sort v} {C : Sort w} (f : A ×' B → C) (a : A) (b : B),\n  Rocq.Corelib.Init.Datatypes.curry A B C (fun p => f (NativeBridge.Incremental.pprodTo p)) a b = f ⟨a, b⟩",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.curry", "Rocq.Corelib.Init.Datatypes.prod"],
+  "name": "NativeBridge.Incremental.datatypes_curry_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Type u} {E : Type v} (P : Except E A → Type) (ok : (a : A) → P (Except.ok a))\n  (error : (e : E) → P (Except.error e)) (s : Rocq.Corelib.Init.Datatypes.result A E),\n  Rocq.Corelib.Init.Datatypes.result_rec A E (fun s => P (NativeBridge.resultTo s)) ok error s =\n    Except.rec error ok (NativeBridge.resultTo s)",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.result",
+   "Rocq.Corelib.Init.Datatypes.result_rec"],
+  "name": "NativeBridge.Incremental.datatypes_result_rec_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Type u} (P : Option A → Sort z) (f : (a : A) → P (some a)) (n : P none)\n  (s : Rocq.Corelib.Init.Datatypes.option A),\n  Rocq.Corelib.Init.Datatypes.option_rect A (fun s => P (NativeBridge.optionTo s)) f n s =\n    Option.rec n f (NativeBridge.optionTo s)",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.option",
+   "Rocq.Corelib.Init.Datatypes.option_rect"],
+  "name": "NativeBridge.Incremental.datatypes_option_rect_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (P : Unit → Sort z) (h : P ()) (s : Rocq.Corelib.Init.Datatypes.unit),\n  Rocq.Corelib.Init.Datatypes.unit_rect (fun s => P (NativeBridge.unitIso.to s)) h s =\n    PUnit.rec h (NativeBridge.unitIso.to s)",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.unit", "Rocq.Corelib.Init.Datatypes.unit_rect"],
+  "name": "NativeBridge.Incremental.datatypes_unit_rect_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (P : Ordering → Type) (e : P Ordering.eq) (l : P Ordering.lt) (g : P Ordering.gt) (c : NativeBridge.RComparison),\n  Rocq.Corelib.Init.Datatypes.comparison_rec (fun c => P (NativeBridge.comparisonTo c)) e l g c =\n    Ordering.rec l e g (NativeBridge.comparisonTo c)",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.comparison_rec",
+   "Rocq.Corelib.Init.Datatypes.comparison"],
+  "name": "NativeBridge.Incremental.datatypes_comparison_rec_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (P : Bool → Sort z) (t : P true) (f : P false) (b : NativeBridge.RBool),\n  Rocq.Corelib.Init.Datatypes.bool_rect (fun b => P (NativeBridge.boolTo b)) t f b =\n    Bool.rec f t (NativeBridge.boolTo b)",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.bool_rect", "Rocq.Corelib.Init.Datatypes.bool"],
+  "name": "NativeBridge.Incremental.datatypes_bool_rect_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} {B : Sort v} (P : A ×' B → Type) (f : (a : A) → (b : B) → P ⟨a, b⟩)\n  (s : Rocq.Corelib.Init.Datatypes.prod A B),\n  Rocq.Corelib.Init.Datatypes.prod_rec A B (fun s => P (NativeBridge.Incremental.pprodTo s)) f s =\n    PProd.rec f (NativeBridge.Incremental.pprodTo s)",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.prod", "Rocq.Corelib.Init.Datatypes.prod_rec"],
+  "name": "NativeBridge.Incremental.datatypes_prod_rec_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Sort u_1) (B : Sort u_2) (s : Rocq.Corelib.Init.Datatypes.sum A B),\n  NativeBridge.Incremental.psumOf (NativeBridge.Incremental.psumTo s) = s",
+  "source_references": ["Rocq.Corelib.Init.Datatypes.sum"],
+  "name": "NativeBridge.Incremental.psumIso._proof_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "{A : Sort u} → {B : Sort v} → A ×' B → Rocq.Corelib.Init.Datatypes.prod A B",
+  "source_references": ["Rocq.Corelib.Init.Datatypes.prod"],
+  "name": "NativeBridge.Incremental.pprodOf",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (P : Ordering → Sort z) (e : P Ordering.eq) (l : P Ordering.lt) (g : P Ordering.gt) (c : NativeBridge.RComparison),\n  Rocq.Corelib.Init.Datatypes.comparison_rect (fun c => P (NativeBridge.comparisonTo c)) e l g c =\n    Ordering.rec l e g (NativeBridge.comparisonTo c)",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.comparison_rect",
+   "Rocq.Corelib.Init.Datatypes.comparison"],
+  "name": "NativeBridge.Incremental.datatypes_comparison_rect_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (P : Empty → Type) (s : Rocq.Corelib.Init.Datatypes.Empty_set),\n  Rocq.Corelib.Init.Datatypes.Empty_set_rec (fun s => P (NativeBridge.emptyIso.to s)) s =\n    Empty.rec P (NativeBridge.emptyIso.to s)",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.Empty_set",
+   "Rocq.Corelib.Init.Datatypes.Empty_set_rec"],
+  "name": "NativeBridge.Incremental.datatypes_Empty_set_rec_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "{A : Sort u} → {B : Sort v} → Rocq.Corelib.Init.Datatypes.prod A B → A ×' B",
+  "source_references": ["Rocq.Corelib.Init.Datatypes.prod"],
+  "name": "NativeBridge.Incremental.pprodTo",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (A : Sort u_1) (B : Sort u_2) (s : Rocq.Corelib.Init.Datatypes.prod A B),\n  NativeBridge.Incremental.pprodOf (NativeBridge.Incremental.pprodTo s) = s",
+  "source_references": ["Rocq.Corelib.Init.Datatypes.prod"],
+  "name": "NativeBridge.Incremental.pprodIso._proof_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "(A : Sort u) → (B : Sort v) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.prod A B) (A ×' B)",
+  "source_references": ["Rocq.Corelib.Init.Datatypes.prod"],
+  "name": "NativeBridge.Incremental.pprodIso",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "∀ (A : Type u) (x : A), Rocq.Corelib.Init.Datatypes.id A x = id x",
+  "source_references": ["Rocq.Corelib.Init.Datatypes.id"],
+  "name": "NativeBridge.Incremental.datatypes_id_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (P : Unit → Type) (h : P ()) (s : Rocq.Corelib.Init.Datatypes.unit),\n  Rocq.Corelib.Init.Datatypes.unit_rec (fun s => P (NativeBridge.unitIso.to s)) h s =\n    PUnit.rec h (NativeBridge.unitIso.to s)",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.unit", "Rocq.Corelib.Init.Datatypes.unit_rec"],
+  "name": "NativeBridge.Incremental.datatypes_unit_rec_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "{A : Sort u} → {B : Sort v} → Rocq.Corelib.Init.Datatypes.sum A B → A ⊕' B",
+  "source_references": ["Rocq.Corelib.Init.Datatypes.sum"],
+  "name": "NativeBridge.Incremental.psumTo",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "{A : Sort u_1} →\n  {B : Sort u_2} →\n    (motive : A ⊕' B → Sort u_3) →\n      (x : A ⊕' B) → ((a : A) → motive (PSum.inl a)) → ((b : B) → motive (PSum.inr b)) → motive x",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.psumOf.match_1",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} {B : Sort v} (P : A ⊕' B → Sort z) (l : (a : A) → P (PSum.inl a)) (r : (b : B) → P (PSum.inr b))\n  (s : Rocq.Corelib.Init.Datatypes.sum A B),\n  Rocq.Corelib.Init.Datatypes.sum_rect A B (fun s => P (NativeBridge.Incremental.psumTo s)) l r s =\n    PSum.rec l r (NativeBridge.Incremental.psumTo s)",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.sum", "Rocq.Corelib.Init.Datatypes.sum_rect"],
+  "name": "NativeBridge.Incremental.datatypes_sum_rect_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} {B : Sort v} (P : A ×' B → Sort z) (f : (a : A) → (b : B) → P ⟨a, b⟩)\n  (s : Rocq.Corelib.Init.Datatypes.prod A B),\n  Rocq.Corelib.Init.Datatypes.prod_rect A B (fun s => P (NativeBridge.Incremental.pprodTo s)) f s =\n    PProd.rec f (NativeBridge.Incremental.pprodTo s)",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.prod", "Rocq.Corelib.Init.Datatypes.prod_rect"],
+  "name": "NativeBridge.Incremental.datatypes_prod_rect_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (P : Empty → Sort z) (s : Rocq.Corelib.Init.Datatypes.Empty_set),\n  Rocq.Corelib.Init.Datatypes.Empty_set_rect (fun s => P (NativeBridge.emptyIso.to s)) s =\n    Empty.rec P (NativeBridge.emptyIso.to s)",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.Empty_set",
+   "Rocq.Corelib.Init.Datatypes.Empty_set_rect"],
+  "name": "NativeBridge.Incremental.datatypes_Empty_set_rect_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Sort u_1) (B : Sort u_2) (s : A ×' B), NativeBridge.Incremental.pprodTo (NativeBridge.Incremental.pprodOf s) = s",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.pprodIso._proof_2",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Type u} (P : List A → Type) (n : P []) (c : (a : A) → (as : List A) → P as → P (a :: as))\n  (s : NativeBridge.RList A),\n  Rocq.Corelib.Init.Datatypes.list_rec A (fun s => P (NativeBridge.listTo s)) n\n      (fun a as ih => c a (NativeBridge.listTo as) ih) s =\n    List.rec n c (NativeBridge.listTo s)",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.list_rec", "Rocq.Corelib.Init.Datatypes.list"],
+  "name": "NativeBridge.Incremental.datatypes_list_rec_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "(A : Sort u) → (B : Sort v) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.sum A B) (A ⊕' B)",
+  "source_references": ["Rocq.Corelib.Init.Datatypes.sum"],
+  "name": "NativeBridge.Incremental.psumIso",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Type u} (P : List A → Sort z) (n : P []) (c : (a : A) → (as : List A) → P as → P (a :: as))\n  (s : NativeBridge.RList A),\n  Rocq.Corelib.Init.Datatypes.list_rect A (fun s => P (NativeBridge.listTo s)) n\n      (fun a as ih => c a (NativeBridge.listTo as) ih) s =\n    List.rec n c (NativeBridge.listTo s)",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.list_rect", "Rocq.Corelib.Init.Datatypes.list"],
+  "name": "NativeBridge.Incremental.datatypes_list_rect_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "{A : Sort u} → {B : Sort v} → A ⊕' B → Rocq.Corelib.Init.Datatypes.sum A B",
+  "source_references": ["Rocq.Corelib.Init.Datatypes.sum"],
+  "name": "NativeBridge.Incremental.psumOf",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Datatypes.IDProp ↔ ∀ (A : Prop), A → A",
+  "source_references": ["Rocq.Corelib.Init.Datatypes.IDProp"],
+  "name": "NativeBridge.Incremental.datatypes_IDProp_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Datatypes.ID = ((A : Type u) → A → A)",
+  "source_references": ["Rocq.Corelib.Init.Datatypes.ID"],
+  "name": "NativeBridge.Incremental.datatypes_ID_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} {B : Sort v} {C : Sort w} (f : A → B → C) (p : Rocq.Corelib.Init.Datatypes.prod A B),\n  Rocq.Corelib.Init.Datatypes.uncurry A B C f p =\n    f (NativeBridge.Incremental.pprodTo p).fst (NativeBridge.Incremental.pprodTo p).snd",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.prod", "Rocq.Corelib.Init.Datatypes.uncurry"],
+  "name": "NativeBridge.Incremental.datatypes_uncurry_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (P : Bool → Type) (t : P true) (f : P false) (b : NativeBridge.RBool),\n  Rocq.Corelib.Init.Datatypes.bool_rec (fun b => P (NativeBridge.boolTo b)) t f b = Bool.rec f t (NativeBridge.boolTo b)",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.bool_rec", "Rocq.Corelib.Init.Datatypes.bool"],
+  "name": "NativeBridge.Incremental.datatypes_bool_rec_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} {B : Sort v} (P : A ⊕' B → Type) (l : (a : A) → P (PSum.inl a)) (r : (b : B) → P (PSum.inr b))\n  (s : Rocq.Corelib.Init.Datatypes.sum A B),\n  Rocq.Corelib.Init.Datatypes.sum_rec A B (fun s => P (NativeBridge.Incremental.psumTo s)) l r s =\n    PSum.rec l r (NativeBridge.Incremental.psumTo s)",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.sum", "Rocq.Corelib.Init.Datatypes.sum_rec"],
+  "name": "NativeBridge.Incremental.datatypes_sum_rec_agrees",
+  "kind": "theorem",
+  "axioms": []}]

@@ -4,7 +4,7 @@ W=Path(__file__).resolve().parent;R=W.parents[1];D=W/'reports'
 B=R/'experiments/mechanical-correspondence-20261019/reports'
 specs=json.loads((W/'certificates.json').read_text())
 validation=json.loads((D/'validation.json').read_text())
-assert {r['profile'] for r in validation}=={'Basics','SSR','Iteration','Registry','SSRProperties','SSRBool','SSRBoolStatements','NumericRead','DecimalOperations','HexadecimalOperations','WellFounded','DependentElimination'}
+assert {r['profile'] for r in validation}=={'Basics','SSR','Iteration','Registry','SSRProperties','SSRBool','SSRBoolStatements','NumericRead','DecimalOperations','HexadecimalOperations','WellFounded','DependentElimination','PairRecursion','DependentStatements','DatatypeElimination'}
 audits={}
 for r in validation:
  assert r['exit']==0 and r['audit_present'],r
@@ -23,6 +23,15 @@ for c in candidates:
   specs.append({'source':selection[c['source_target']],'profile':'SSRBoolStatements','certificate':c['certificate'],
     'kind':'STATEMENT_FULL_NATIVE','target':'native statement: '+c['native_expression'],
     'native_expression':c['native_expression'],'scope':'unconditional original statement; source-free body including NativeBridge alias expansion'})
+native_targets=[json.loads(l.split('NATIVE_TARGET ',1)[1]) for l in (D/'DependentStatements.log').read_text().splitlines() if 'NATIVE_TARGET ' in l]
+native_targets={t['name']:t for t in native_targets}
+assert len(native_targets)==5
+for sp in specs:
+ if sp.get('native_target'):
+  t=native_targets[sp['native_target']]
+  assert not t['remaining_source_symbols']
+  sp['native_expression']=t['native_expression']
+(D/'dependent-native-targets.json').write_text(json.dumps(list(native_targets.values()),ensure_ascii=False,indent=2))
 accepted=[]
 original_proofs=[]
 resolved_conditions=[]
@@ -59,11 +68,11 @@ for sp in specs:
  r['new_certificates']=';'.join(filter(None,[r['new_certificates'],sp['certificate']]))
  r['bridge_certificates']=';'.join(filter(None,[r['bridge_certificates'],sp['certificate']]))
  if sp['kind']=='STATEMENT_FULL_NATIVE':
-  assert r['baseline_bridge_status']=='STATEMENT_PARTIAL'
+  assert r['baseline_bridge_status'] in {'STATEMENT_PARTIAL','EXPLICIT_PROOF_PARAMETERS'}
   r['statement_certificate']=sp['certificate']
   r['native_statement']=sp['native_expression']
   r['remaining_source_symbols']=''
-  r['interpretation']=('新增原生陈述 iff；另有从原生 BEq 定理推出的原陈述证明：'+sp['original_statement_proof']) if sp.get('original_statement_proof') else '新增原生陈述 iff；目标体及 NativeBridge 别名展开后无源端符号；不是业务定理证明。'
+  r['interpretation']=('新增原生陈述 iff；另有从原生性质推出的原陈述证明：'+sp['original_statement_proof']) if sp.get('original_statement_proof') else '新增原生陈述 iff；目标体及 NativeBridge 别名展开后无源端符号；不是业务定理证明。'
  else:
   r['interpretation']='新增已检查的'+('类型双向逆。' if sp['kind']=='TYPE_ISO' else '指定原生运算/表达式/谓词对应。')+'适用范围见增量证书完整类型。'
 
@@ -100,10 +109,10 @@ summary={'alias_regression_profiles':45,'alias_regression_lost':0,'alias_regress
  'conditions_remaining':counts['EXPLICIT_PROOF_PARAMETERS'],
  'mechanical_declarations_with_explicit_conditions':331,
  'correspondence_conditions_remaining':counts['EXPLICIT_PROOF_PARAMETERS'],
- 'condition_resolved_roots':len(resolved_conditions),
+ 'condition_resolved_roots':len({r['source'] for r in resolved_conditions}),
  'closed_obligation_witnesses':len({w['name'] for r in resolved_conditions for w in r['witnesses']}),
- 'full_sort_type_certificates_added':5,'completion':'five incremental batches; overall plan remains incomplete',
- 'explicit_target_classes_batches_3_to_5':dict(collections.Counter(sp['target_class'] for sp in specs if 'target_class' in sp))}
+ 'full_sort_type_certificates_added':6,'completion':'six incremental batches; overall plan remains incomplete',
+ 'explicit_target_classes_since_batch_3':dict(collections.Counter(sp['target_class'] for sp in specs if 'target_class' in sp))}
 assert sum(counts.values())==2180
 (D/'summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2))
 (D/'condition-discharges.json').write_text(json.dumps(resolved_conditions,ensure_ascii=False,indent=2))

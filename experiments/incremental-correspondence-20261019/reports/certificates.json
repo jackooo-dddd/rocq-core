@@ -1374,6 +1374,416 @@
     "axioms": []
   },
   {
+    "source": "Corelib.Init.Wf.Fix_F_2",
+    "profile": "PairRecursion",
+    "certificate": "NativeBridge.Incremental.fixF2_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "WellFounded.fixF on native Prod",
+    "scope": "A : Type u, B : Type v, P : A → B → Type w; native relation pulled back through prodTo; native step; both component universes and dependent result family retained",
+    "target_class": "existing_api",
+    "type": "∀ {A : Type u} {B : Type v} (R : A × B → A × B → Prop) (P : A → B → Type w)\n  (F : (x : A) → (y : B) → ((a : A) → (b : B) → R (a, b) (x, y) → P a b) → P x y) (x : A) (y : B)\n  (ac :\n    Rocq.Corelib.Init.Wf.Acc (Rocq.Corelib.Init.Datatypes.prod A B)\n      (fun p q => R (NativeBridge.prodTo p) (NativeBridge.prodTo q)) (Rocq.Corelib.Init.Datatypes.prod.pair A B x y)),\n  Rocq.Corelib.Init.Wf.Fix_F_2 A B (fun p q => R (NativeBridge.prodTo p) (NativeBridge.prodTo q)) P F x y ac =\n    WellFounded.fixF (fun p rec => F p.fst p.snd fun a b h => rec (a, b) h) (x, y) ⋯",
+    "axioms": [
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Wf.well_founded_induction_type_2",
+    "profile": "PairRecursion",
+    "certificate": "NativeBridge.Incremental.well_founded_induction_type_2_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "WellFounded.fix on native Prod",
+    "scope": "A : Type u, B : Type v, P : A → B → Type w; native relation pulled back through prodTo; native step; both component universes and dependent result family retained",
+    "target_class": "existing_api",
+    "type": "∀ {A : Type u} {B : Type v} (R : A × B → A × B → Prop) (P : A → B → Type w)\n  (wf :\n    Rocq.Corelib.Init.Wf.well_founded (Rocq.Corelib.Init.Datatypes.prod A B) fun p q =>\n      R (NativeBridge.prodTo p) (NativeBridge.prodTo q))\n  (F : (x : A) → (y : B) → ((a : A) → (b : B) → R (a, b) (x, y) → P a b) → P x y) (x : A) (y : B),\n  Rocq.Corelib.Init.Wf.well_founded_induction_type_2 A B (fun p q => R (NativeBridge.prodTo p) (NativeBridge.prodTo q))\n      P wf F x y =\n    ⋯.fix (fun p rec => F p.fst p.snd fun a b h => rec (a, b) h) (x, y)",
+    "axioms": [
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.sum",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.psumIso",
+    "kind": "TYPE_ISO",
+    "target": "PSum A B",
+    "scope": "A : Sort u, B : Sort v; broadens the previously covered Type-only sum root",
+    "target_class": "native_representation",
+    "type": "(A : Sort u) → (B : Sort v) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.sum A B) (A ⊕' B)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.bool_rec",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_bool_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Bool.rec",
+    "scope": "fixed datatype; dependent native motive; result Type",
+    "target_class": "existing_api",
+    "type": "∀ (P : Bool → Type) (t : P true) (f : P false) (b : NativeBridge.RBool),\n  Rocq.Corelib.Init.Datatypes.bool_rec (fun b => P (NativeBridge.boolTo b)) t f b = Bool.rec f t (NativeBridge.boolTo b)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.bool_rect",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_bool_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Bool.rec",
+    "scope": "fixed datatype; dependent native motive; result Sort z",
+    "target_class": "existing_api",
+    "type": "∀ (P : Bool → Sort z) (t : P true) (f : P false) (b : NativeBridge.RBool),\n  Rocq.Corelib.Init.Datatypes.bool_rect (fun b => P (NativeBridge.boolTo b)) t f b =\n    Bool.rec f t (NativeBridge.boolTo b)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.comparison_rec",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_comparison_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Ordering.rec",
+    "scope": "fixed datatype; dependent native motive; result Type",
+    "target_class": "existing_api",
+    "type": "∀ (P : Ordering → Type) (e : P Ordering.eq) (l : P Ordering.lt) (g : P Ordering.gt) (c : NativeBridge.RComparison),\n  Rocq.Corelib.Init.Datatypes.comparison_rec (fun c => P (NativeBridge.comparisonTo c)) e l g c =\n    Ordering.rec l e g (NativeBridge.comparisonTo c)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.comparison_rect",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_comparison_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Ordering.rec",
+    "scope": "fixed datatype; dependent native motive; result Sort z",
+    "target_class": "existing_api",
+    "type": "∀ (P : Ordering → Sort z) (e : P Ordering.eq) (l : P Ordering.lt) (g : P Ordering.gt) (c : NativeBridge.RComparison),\n  Rocq.Corelib.Init.Datatypes.comparison_rect (fun c => P (NativeBridge.comparisonTo c)) e l g c =\n    Ordering.rec l e g (NativeBridge.comparisonTo c)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.unit_rec",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_unit_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PUnit.rec (Unit alias)",
+    "scope": "fixed datatype; dependent native motive; result Type",
+    "target_class": "existing_api",
+    "type": "∀ (P : Unit → Type) (h : P ()) (s : Rocq.Corelib.Init.Datatypes.unit),\n  Rocq.Corelib.Init.Datatypes.unit_rec (fun s => P (NativeBridge.unitIso.to s)) h s =\n    PUnit.rec h (NativeBridge.unitIso.to s)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.unit_rect",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_unit_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PUnit.rec (Unit alias)",
+    "scope": "fixed datatype; dependent native motive; result Sort z",
+    "target_class": "existing_api",
+    "type": "∀ (P : Unit → Sort z) (h : P ()) (s : Rocq.Corelib.Init.Datatypes.unit),\n  Rocq.Corelib.Init.Datatypes.unit_rect (fun s => P (NativeBridge.unitIso.to s)) h s =\n    PUnit.rec h (NativeBridge.unitIso.to s)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.Empty_set_rec",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_Empty_set_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Empty.rec",
+    "scope": "fixed datatype; dependent native motive; result Type",
+    "target_class": "existing_api",
+    "type": "∀ (P : Empty → Type) (s : Rocq.Corelib.Init.Datatypes.Empty_set),\n  Rocq.Corelib.Init.Datatypes.Empty_set_rec (fun s => P (NativeBridge.emptyIso.to s)) s =\n    Empty.rec P (NativeBridge.emptyIso.to s)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.Empty_set_rect",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_Empty_set_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Empty.rec",
+    "scope": "fixed datatype; dependent native motive; result Sort z",
+    "target_class": "existing_api",
+    "type": "∀ (P : Empty → Sort z) (s : Rocq.Corelib.Init.Datatypes.Empty_set),\n  Rocq.Corelib.Init.Datatypes.Empty_set_rect (fun s => P (NativeBridge.emptyIso.to s)) s =\n    Empty.rec P (NativeBridge.emptyIso.to s)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.option_rec",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_option_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Option.rec",
+    "scope": "element A : Type u; dependent native motive; result Type",
+    "target_class": "existing_api",
+    "type": "∀ {A : Type u} (P : Option A → Type) (f : (a : A) → P (some a)) (n : P none) (s : Rocq.Corelib.Init.Datatypes.option A),\n  Rocq.Corelib.Init.Datatypes.option_rec A (fun s => P (NativeBridge.optionTo s)) f n s =\n    Option.rec n f (NativeBridge.optionTo s)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.option_rect",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_option_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Option.rec",
+    "scope": "element A : Type u; dependent native motive; result Sort z",
+    "target_class": "existing_api",
+    "type": "∀ {A : Type u} (P : Option A → Sort z) (f : (a : A) → P (some a)) (n : P none)\n  (s : Rocq.Corelib.Init.Datatypes.option A),\n  Rocq.Corelib.Init.Datatypes.option_rect A (fun s => P (NativeBridge.optionTo s)) f n s =\n    Option.rec n f (NativeBridge.optionTo s)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.list_rec",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_list_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "List.rec",
+    "scope": "element A : Type u; dependent native motive; result Type",
+    "target_class": "existing_api",
+    "type": "∀ {A : Type u} (P : List A → Type) (n : P []) (c : (a : A) → (as : List A) → P as → P (a :: as))\n  (s : NativeBridge.RList A),\n  Rocq.Corelib.Init.Datatypes.list_rec A (fun s => P (NativeBridge.listTo s)) n\n      (fun a as ih => c a (NativeBridge.listTo as) ih) s =\n    List.rec n c (NativeBridge.listTo s)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.list_rect",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_list_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "List.rec",
+    "scope": "element A : Type u; dependent native motive; result Sort z",
+    "target_class": "existing_api",
+    "type": "∀ {A : Type u} (P : List A → Sort z) (n : P []) (c : (a : A) → (as : List A) → P as → P (a :: as))\n  (s : NativeBridge.RList A),\n  Rocq.Corelib.Init.Datatypes.list_rect A (fun s => P (NativeBridge.listTo s)) n\n      (fun a as ih => c a (NativeBridge.listTo as) ih) s =\n    List.rec n c (NativeBridge.listTo s)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.prod_rec",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_prod_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PProd.rec",
+    "scope": "A : Sort u and B : Sort v; dependent native motive; result Type",
+    "target_class": "existing_api",
+    "type": "∀ {A : Sort u} {B : Sort v} (P : A ×' B → Type) (f : (a : A) → (b : B) → P ⟨a, b⟩)\n  (s : Rocq.Corelib.Init.Datatypes.prod A B),\n  Rocq.Corelib.Init.Datatypes.prod_rec A B (fun s => P (NativeBridge.Incremental.pprodTo s)) f s =\n    PProd.rec f (NativeBridge.Incremental.pprodTo s)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.prod_rect",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_prod_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PProd.rec",
+    "scope": "A : Sort u and B : Sort v; dependent native motive; result Sort z",
+    "target_class": "existing_api",
+    "type": "∀ {A : Sort u} {B : Sort v} (P : A ×' B → Sort z) (f : (a : A) → (b : B) → P ⟨a, b⟩)\n  (s : Rocq.Corelib.Init.Datatypes.prod A B),\n  Rocq.Corelib.Init.Datatypes.prod_rect A B (fun s => P (NativeBridge.Incremental.pprodTo s)) f s =\n    PProd.rec f (NativeBridge.Incremental.pprodTo s)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.sum_rec",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_sum_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PSum.rec",
+    "scope": "A : Sort u and B : Sort v; dependent native motive; result Type",
+    "target_class": "existing_api",
+    "type": "∀ {A : Sort u} {B : Sort v} (P : A ⊕' B → Type) (l : (a : A) → P (PSum.inl a)) (r : (b : B) → P (PSum.inr b))\n  (s : Rocq.Corelib.Init.Datatypes.sum A B),\n  Rocq.Corelib.Init.Datatypes.sum_rec A B (fun s => P (NativeBridge.Incremental.psumTo s)) l r s =\n    PSum.rec l r (NativeBridge.Incremental.psumTo s)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.sum_rect",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_sum_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PSum.rec",
+    "scope": "A : Sort u and B : Sort v; dependent native motive; result Sort z",
+    "target_class": "existing_api",
+    "type": "∀ {A : Sort u} {B : Sort v} (P : A ⊕' B → Sort z) (l : (a : A) → P (PSum.inl a)) (r : (b : B) → P (PSum.inr b))\n  (s : Rocq.Corelib.Init.Datatypes.sum A B),\n  Rocq.Corelib.Init.Datatypes.sum_rect A B (fun s => P (NativeBridge.Incremental.psumTo s)) l r s =\n    PSum.rec l r (NativeBridge.Incremental.psumTo s)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.result_rec",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_result_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Except.rec",
+    "scope": "value A : Type u and error E : Type v; dependent native motive; result Type",
+    "target_class": "existing_api",
+    "type": "∀ {A : Type u} {E : Type v} (P : Except E A → Type) (ok : (a : A) → P (Except.ok a))\n  (error : (e : E) → P (Except.error e)) (s : Rocq.Corelib.Init.Datatypes.result A E),\n  Rocq.Corelib.Init.Datatypes.result_rec A E (fun s => P (NativeBridge.resultTo s)) ok error s =\n    Except.rec error ok (NativeBridge.resultTo s)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.result_rect",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_result_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Except.rec",
+    "scope": "value A : Type u and error E : Type v; dependent native motive; result Sort z",
+    "target_class": "existing_api",
+    "type": "∀ {A : Type u} {E : Type v} (P : Except E A → Sort z) (ok : (a : A) → P (Except.ok a))\n  (error : (e : E) → P (Except.error e)) (s : Rocq.Corelib.Init.Datatypes.result A E),\n  Rocq.Corelib.Init.Datatypes.result_rect A E (fun s => P (NativeBridge.resultTo s)) ok error s =\n    Except.rec error ok (NativeBridge.resultTo s)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.curry",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_curry_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "fun f a b => f ⟨a,b⟩ with PProd",
+    "scope": "A/B/C : Sort",
+    "target_class": "native_expression",
+    "type": "∀ {A : Sort u} {B : Sort v} {C : Sort w} (f : A ×' B → C) (a : A) (b : B),\n  Rocq.Corelib.Init.Datatypes.curry A B C (fun p => f (NativeBridge.Incremental.pprodTo p)) a b = f ⟨a, b⟩",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.uncurry",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_uncurry_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "fun f p => f p.fst p.snd with PProd",
+    "scope": "A/B/C : Sort",
+    "target_class": "native_expression",
+    "type": "∀ {A : Sort u} {B : Sort v} {C : Sort w} (f : A → B → C) (p : Rocq.Corelib.Init.Datatypes.prod A B),\n  Rocq.Corelib.Init.Datatypes.uncurry A B C f p =\n    f (NativeBridge.Incremental.pprodTo p).fst (NativeBridge.Incremental.pprodTo p).snd",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.id",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_id_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id",
+    "scope": "A : Type u",
+    "target_class": "existing_api",
+    "type": "∀ (A : Type u) (x : A), Rocq.Corelib.Init.Datatypes.id A x = id x",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.ID",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_ID_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "(A : Type u) → A → A",
+    "scope": "exact equality of types",
+    "target_class": "native_expression",
+    "type": "Rocq.Corelib.Init.Datatypes.ID = ((A : Type u) → A → A)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.IDProp",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_IDProp_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ A : Prop, A → A",
+    "scope": "iff of predicates",
+    "target_class": "native_expression",
+    "type": "Rocq.Corelib.Init.Datatypes.IDProp ↔ ∀ (A : Prop), A → A",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Specif.proj3_sig",
+    "profile": "DependentStatements",
+    "certificate": "NativeBridge.Incremental.proj3_sig_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.proj3SigNative",
+    "scope": "full Sort u carrier; predicates retained; the extracted projection obligation is explicitly proved; native target recursively checked for source references",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.proj3SigNative",
+    "original_statement_proof": "NativeBridge.Incremental.proj3_sig_closed",
+    "closed_wrapper": "NativeBridge.Incremental.proj3_sig_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.sig_of_sig2_obligation"
+      }
+    ],
+    "native_expression": "∀ (A : Sort u) (P Q : A → Prop) (s : { x // P x ∧ Q x }), Q s.val",
+    "type": "RocqPending.Corelib.Init.Specif.proj3_sig.statement ↔ NativeBridge.Incremental.proj3SigNative",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.proj1_sig_of_sig2_eq",
+    "profile": "DependentStatements",
+    "certificate": "NativeBridge.Incremental.proj1_sig_of_sig2_eq_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.proj1SigOfSig2EqNative",
+    "scope": "full Sort u carrier; predicates retained; the extracted projection obligation is explicitly proved; native target recursively checked for source references",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.proj1SigOfSig2EqNative",
+    "original_statement_proof": "NativeBridge.Incremental.proj1_sig_of_sig2_eq_closed",
+    "closed_wrapper": "NativeBridge.Incremental.proj1_sig_of_sig2_eq_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.sig_of_sig2_obligation"
+      }
+    ],
+    "native_expression": "∀ (A : Sort u) (P Q : A → Prop) (s t : { x // P x ∧ Q x }), s = t → s.val = t.val",
+    "type": "RocqPending.Corelib.Init.Specif.proj1_sig_of_sig2_eq.statement ↔ NativeBridge.Incremental.proj1SigOfSig2EqNative",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.sig_of_sig2_eq",
+    "profile": "DependentStatements",
+    "certificate": "NativeBridge.Incremental.sig_of_sig2_eq_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.sigOfSig2EqNative",
+    "scope": "full Sort u carrier; predicates retained; the extracted projection obligation is explicitly proved; native target recursively checked for source references",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.sigOfSig2EqNative",
+    "original_statement_proof": "NativeBridge.Incremental.sig_of_sig2_eq_closed",
+    "closed_wrapper": "NativeBridge.Incremental.sig_of_sig2_eq_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.sig_of_sig2_obligation"
+      }
+    ],
+    "native_expression": "∀ (A : Sort u) (P Q : A → Prop) (s t : { x // P x ∧ Q x }),\n  s = t → NativeBridge.Incremental.dropSecondProperty s = NativeBridge.Incremental.dropSecondProperty t",
+    "type": "RocqPending.Corelib.Init.Specif.sig_of_sig2_eq.statement ↔ NativeBridge.Incremental.sigOfSig2EqNative",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sig2_hprop",
+    "profile": "DependentStatements",
+    "certificate": "NativeBridge.Incremental.eq_sig2_hprop_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.eqSig2HpropNative",
+    "scope": "full Sort u carrier; predicates retained; the extracted projection obligation is explicitly proved; native target recursively checked for source references",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.eqSig2HpropNative",
+    "original_statement_proof": "NativeBridge.Incremental.eq_sig2_hprop_closed",
+    "closed_wrapper": "NativeBridge.Incremental.eq_sig2_hprop_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.sig_of_sig2_obligation"
+      }
+    ],
+    "native_expression": "∀ (A : Sort u) (P Q : A → Prop),\n  (∀ (x : A) (p q : Q x), p = q) →\n    ∀ (s t : { x // P x ∧ Q x }),\n      NativeBridge.Incremental.dropSecondProperty s = NativeBridge.Incremental.dropSecondProperty t → s = t",
+    "type": "RocqPending.Corelib.Init.Specif.eq_sig2_hprop.statement ↔ NativeBridge.Incremental.eqSig2HpropNative",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sig2_hprop_iff",
+    "profile": "DependentStatements",
+    "certificate": "NativeBridge.Incremental.eq_sig2_hprop_iff_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.eqSig2HpropIffNative",
+    "scope": "full Sort u carrier; predicates retained; the extracted projection obligation is explicitly proved; native target recursively checked for source references",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.eqSig2HpropIffNative",
+    "original_statement_proof": "NativeBridge.Incremental.eq_sig2_hprop_iff_closed",
+    "closed_wrapper": "NativeBridge.Incremental.eq_sig2_hprop_iff_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.sig_of_sig2_obligation"
+      }
+    ],
+    "native_expression": "∀ (A : Sort u) (P Q : A → Prop),\n  (∀ (x : A) (p q : Q x), p = q) →\n    ∀ (s t : { x // P x ∧ Q x }),\n      s = t ↔ NativeBridge.Incremental.dropSecondProperty s = NativeBridge.Incremental.dropSecondProperty t",
+    "type": "RocqPending.Corelib.Init.Specif.eq_sig2_hprop_iff.statement ↔ NativeBridge.Incremental.eqSig2HpropIffNative",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
     "source": "Corelib.ssr.ssrbool.addFb",
     "profile": "SSRBoolStatements",
     "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addFb.statement.correspondence",

@@ -999,5 +999,329 @@
         "proof": "NativeBridge.Incremental.sigT2_of_sig2_obligation_2"
       }
     ]
+  },
+  {
+    "source": "Corelib.Init.Wf.Fix_F_2",
+    "profile": "PairRecursion",
+    "certificate": "NativeBridge.Incremental.fixF2_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "WellFounded.fixF on native Prod",
+    "scope": "A : Type u, B : Type v, P : A → B → Type w; native relation pulled back through prodTo; native step; both component universes and dependent result family retained",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Wf.well_founded_induction_type_2",
+    "profile": "PairRecursion",
+    "certificate": "NativeBridge.Incremental.well_founded_induction_type_2_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "WellFounded.fix on native Prod",
+    "scope": "A : Type u, B : Type v, P : A → B → Type w; native relation pulled back through prodTo; native step; both component universes and dependent result family retained",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.sum",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.psumIso",
+    "kind": "TYPE_ISO",
+    "target": "PSum A B",
+    "scope": "A : Sort u, B : Sort v; broadens the previously covered Type-only sum root",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.bool_rec",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_bool_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Bool.rec",
+    "scope": "fixed datatype; dependent native motive; result Type",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.bool_rect",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_bool_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Bool.rec",
+    "scope": "fixed datatype; dependent native motive; result Sort z",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.comparison_rec",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_comparison_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Ordering.rec",
+    "scope": "fixed datatype; dependent native motive; result Type",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.comparison_rect",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_comparison_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Ordering.rec",
+    "scope": "fixed datatype; dependent native motive; result Sort z",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.unit_rec",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_unit_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PUnit.rec (Unit alias)",
+    "scope": "fixed datatype; dependent native motive; result Type",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.unit_rect",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_unit_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PUnit.rec (Unit alias)",
+    "scope": "fixed datatype; dependent native motive; result Sort z",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.Empty_set_rec",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_Empty_set_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Empty.rec",
+    "scope": "fixed datatype; dependent native motive; result Type",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.Empty_set_rect",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_Empty_set_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Empty.rec",
+    "scope": "fixed datatype; dependent native motive; result Sort z",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.option_rec",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_option_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Option.rec",
+    "scope": "element A : Type u; dependent native motive; result Type",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.option_rect",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_option_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Option.rec",
+    "scope": "element A : Type u; dependent native motive; result Sort z",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.list_rec",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_list_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "List.rec",
+    "scope": "element A : Type u; dependent native motive; result Type",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.list_rect",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_list_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "List.rec",
+    "scope": "element A : Type u; dependent native motive; result Sort z",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.prod_rec",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_prod_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PProd.rec",
+    "scope": "A : Sort u and B : Sort v; dependent native motive; result Type",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.prod_rect",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_prod_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PProd.rec",
+    "scope": "A : Sort u and B : Sort v; dependent native motive; result Sort z",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.sum_rec",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_sum_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PSum.rec",
+    "scope": "A : Sort u and B : Sort v; dependent native motive; result Type",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.sum_rect",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_sum_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PSum.rec",
+    "scope": "A : Sort u and B : Sort v; dependent native motive; result Sort z",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.result_rec",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_result_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Except.rec",
+    "scope": "value A : Type u and error E : Type v; dependent native motive; result Type",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.result_rect",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_result_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Except.rec",
+    "scope": "value A : Type u and error E : Type v; dependent native motive; result Sort z",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.curry",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_curry_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "fun f a b => f ⟨a,b⟩ with PProd",
+    "scope": "A/B/C : Sort",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.uncurry",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_uncurry_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "fun f p => f p.fst p.snd with PProd",
+    "scope": "A/B/C : Sort",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.id",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_id_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id",
+    "scope": "A : Type u",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.ID",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_ID_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "(A : Type u) → A → A",
+    "scope": "exact equality of types",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.IDProp",
+    "profile": "DatatypeElimination",
+    "certificate": "NativeBridge.Incremental.datatypes_IDProp_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ A : Prop, A → A",
+    "scope": "iff of predicates",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Specif.proj3_sig",
+    "profile": "DependentStatements",
+    "certificate": "NativeBridge.Incremental.proj3_sig_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.proj3SigNative",
+    "scope": "full Sort u carrier; predicates retained; the extracted projection obligation is explicitly proved; native target recursively checked for source references",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.proj3SigNative",
+    "original_statement_proof": "NativeBridge.Incremental.proj3_sig_closed",
+    "closed_wrapper": "NativeBridge.Incremental.proj3_sig_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.sig_of_sig2_obligation"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.proj1_sig_of_sig2_eq",
+    "profile": "DependentStatements",
+    "certificate": "NativeBridge.Incremental.proj1_sig_of_sig2_eq_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.proj1SigOfSig2EqNative",
+    "scope": "full Sort u carrier; predicates retained; the extracted projection obligation is explicitly proved; native target recursively checked for source references",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.proj1SigOfSig2EqNative",
+    "original_statement_proof": "NativeBridge.Incremental.proj1_sig_of_sig2_eq_closed",
+    "closed_wrapper": "NativeBridge.Incremental.proj1_sig_of_sig2_eq_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.sig_of_sig2_obligation"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.sig_of_sig2_eq",
+    "profile": "DependentStatements",
+    "certificate": "NativeBridge.Incremental.sig_of_sig2_eq_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.sigOfSig2EqNative",
+    "scope": "full Sort u carrier; predicates retained; the extracted projection obligation is explicitly proved; native target recursively checked for source references",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.sigOfSig2EqNative",
+    "original_statement_proof": "NativeBridge.Incremental.sig_of_sig2_eq_closed",
+    "closed_wrapper": "NativeBridge.Incremental.sig_of_sig2_eq_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.sig_of_sig2_obligation"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sig2_hprop",
+    "profile": "DependentStatements",
+    "certificate": "NativeBridge.Incremental.eq_sig2_hprop_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.eqSig2HpropNative",
+    "scope": "full Sort u carrier; predicates retained; the extracted projection obligation is explicitly proved; native target recursively checked for source references",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.eqSig2HpropNative",
+    "original_statement_proof": "NativeBridge.Incremental.eq_sig2_hprop_closed",
+    "closed_wrapper": "NativeBridge.Incremental.eq_sig2_hprop_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.sig_of_sig2_obligation"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sig2_hprop_iff",
+    "profile": "DependentStatements",
+    "certificate": "NativeBridge.Incremental.eq_sig2_hprop_iff_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.eqSig2HpropIffNative",
+    "scope": "full Sort u carrier; predicates retained; the extracted projection obligation is explicitly proved; native target recursively checked for source references",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.eqSig2HpropIffNative",
+    "original_statement_proof": "NativeBridge.Incremental.eq_sig2_hprop_iff_closed",
+    "closed_wrapper": "NativeBridge.Incremental.eq_sig2_hprop_iff_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.sig_of_sig2_obligation"
+      }
+    ]
   }
 ]

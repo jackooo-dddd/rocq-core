@@ -1,0 +1,27 @@
+[
+  {
+    "name": "NativeBridge.Incremental.proj3SigNative",
+    "native_expression": "∀ (A : Sort u) (P Q : A → Prop) (s : { x // P x ∧ Q x }), Q s.val",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.proj1SigOfSig2EqNative",
+    "native_expression": "∀ (A : Sort u) (P Q : A → Prop) (s t : { x // P x ∧ Q x }), s = t → s.val = t.val",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.sigOfSig2EqNative",
+    "native_expression": "∀ (A : Sort u) (P Q : A → Prop) (s t : { x // P x ∧ Q x }),\n  s = t → NativeBridge.Incremental.dropSecondProperty s = NativeBridge.Incremental.dropSecondProperty t",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.eqSig2HpropNative",
+    "native_expression": "∀ (A : Sort u) (P Q : A → Prop),\n  (∀ (x : A) (p q : Q x), p = q) →\n    ∀ (s t : { x // P x ∧ Q x }),\n      NativeBridge.Incremental.dropSecondProperty s = NativeBridge.Incremental.dropSecondProperty t → s = t",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.eqSig2HpropIffNative",
+    "native_expression": "∀ (A : Sort u) (P Q : A → Prop),\n  (∀ (x : A) (p q : Q x), p = q) →\n    ∀ (s t : { x // P x ∧ Q x }),\n      s = t ↔ NativeBridge.Incremental.dropSecondProperty s = NativeBridge.Incremental.dropSecondProperty t",
+    "remaining_source_symbols": []
+  }
+]

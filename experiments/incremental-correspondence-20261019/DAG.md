@@ -76,7 +76,7 @@ flowchart TD
 | Nat.iter | natTo；源递归器；载体 Iso 与步函数对应假设 | 普通与转换载体两份证明通过 |
 | 复合 Option / 函数表达式 | Option.map/bind 对应 + comp 对应 | 两例自动组合通过；目标表达式仍显式提供 |
 | 数字表示进一步运算 | uint ↔ List Fin；Nat 算术；符号 pair 与进制 Sum | 读取、比较、规范化已证；写出待继续 |
-| 依赖类型/Acc | Acc 转换 + 递归步骤对应 + 原生良基性 | Acc 与 7 项递归/谓词已证；Sigma/Subtype 已推进，二元递归/Eq 待继续 |
+| 依赖类型/Acc | Acc 转换 + 递归步骤对应 + 原生良基性 | Acc 与 7 项递归/谓词已证；Sigma/Subtype 已推进，二元递归已证，Eq/剩余条件待继续 |
 
 ## 第二批：证书复用到下游陈述
 
@@ -113,3 +113,16 @@ flowchart TD
     上述三份证明 → sigT2_of_sig2 的闭合实例化 → 原生构造对应
 
 5 个不同见证、4 个源根；前驱义务复用不等于自动覆盖所有依赖它的下游声明。
+
+## 第六批：依赖复用的实际结果
+
+    prodIso + source Acc ↔ native Acc → pairAccTo/pairAccOf
+    pair Acc + 原生关系的拉回 + 依赖返回族 → Fix_F_2
+    pair WellFounded + Fix_F_2 → well_founded_induction_type_2
+    native sum measure + native recursion theorem → 机械二元倒计数正确性
+    sig_of_sig2 的已证义务 → 五个下游陈述的实际闭合实例化
+    Subtype Iso + Eq + 投影转换 → 五个原生 iff → 五个原陈述证明
+    类型 Iso + 原生依赖 motive → 18 个基本 rec/rect 对应
+    完整 Sort 的 sum ↔ PSum → sum_rec/sum_rect
+
+条件依赖集合从原始 translation_report 抽取并逐项核对；计数由实例化后的 kernel 检查和显式证书清单决定。

@@ -4,7 +4,7 @@ W=Path(__file__).resolve().parent;R=W.parents[1]
 B=R/'experiments/mechanical-correspondence-20261019'
 M=R/'experiments/mechanical-nat-eq-20261019';T=M/'translator'
 sys.path.insert(0,str(T/'tools'));import rocq2lean as cli
-configs={'Basics':'Program/Basics','SSR':'ssr/ssrfun','Iteration':'Init/Nat','Registry':'ssr/ssrfun','SSRProperties':'ssr/ssrfun','SSRBool':'ssr/ssrbool','SSRBoolStatements':'ssr/ssrbool','NumericRead':'Init/Nat','DecimalOperations':'Init/Decimal','HexadecimalOperations':'Init/Hexadecimal','WellFounded':'Init/Wf','DependentElimination':'Init/Specif'}
+configs={'Basics':'Program/Basics','SSR':'ssr/ssrfun','Iteration':'Init/Nat','Registry':'ssr/ssrfun','SSRProperties':'ssr/ssrfun','SSRBool':'ssr/ssrbool','SSRBoolStatements':'ssr/ssrbool','NumericRead':'Init/Nat','DecimalOperations':'Init/Decimal','HexadecimalOperations':'Init/Hexadecimal','WellFounded':'Init/Wf','DependentElimination':'Init/Specif','PairRecursion':'Init/Wf','DependentStatements':'Init/Specif','DatatypeElimination':'Init/Datatypes'}
 (W/'.work').mkdir(exist_ok=True);(W/'reports').mkdir(exist_ok=True)
 previous=json.loads((W/'reports/validation.json').read_text()) if (W/'reports/validation.json').exists() else []
 selected=set(sys.argv[1:]) or set(configs)
