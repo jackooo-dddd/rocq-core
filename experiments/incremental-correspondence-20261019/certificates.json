@@ -326,5 +326,453 @@
     "kind": "OPERATION_CORRESPONDENCE",
     "target": "native quantified Boolean/equality formula (see theorem)",
     "scope": "Type carriers; exact converted predicate/operation in certificate"
+  },
+  {
+    "source": "Corelib.Init.Decimal.signed_int",
+    "profile": "DecimalOperations",
+    "certificate": "NativeBridge.Incremental.Decimal.signedIso",
+    "kind": "TYPE_ISO",
+    "target": "Bool × List (Fin 10)",
+    "scope": "all signs and digit strings, including negative zero and leading zeros",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.Init.Decimal.revapp",
+    "profile": "DecimalOperations",
+    "certificate": "NativeBridge.Incremental.Decimal.revapp_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "List.reverse ++ accumulator",
+    "scope": "all inputs; no source proof obligations",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Decimal.rev",
+    "profile": "DecimalOperations",
+    "certificate": "NativeBridge.Incremental.Decimal.rev_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "List.reverse",
+    "scope": "all inputs; no source proof obligations",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Decimal.app",
+    "profile": "DecimalOperations",
+    "certificate": "NativeBridge.Incremental.Decimal.app_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "List.append",
+    "scope": "all inputs; no source proof obligations",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Decimal.nb_digits",
+    "profile": "DecimalOperations",
+    "certificate": "NativeBridge.Incremental.Decimal.nb_digits_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "List.length",
+    "scope": "all inputs; no source proof obligations",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Decimal.nzhead",
+    "profile": "DecimalOperations",
+    "certificate": "NativeBridge.Incremental.Decimal.nzhead_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "List.dropWhile (digit == 0)",
+    "scope": "all inputs; no source proof obligations",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Decimal.unorm",
+    "profile": "DecimalOperations",
+    "certificate": "NativeBridge.Incremental.Decimal.unorm_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "List.dropWhile followed by empty-list replacement with [0]",
+    "scope": "all inputs; no source proof obligations",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Decimal.abs",
+    "profile": "DecimalOperations",
+    "certificate": "NativeBridge.Incremental.Decimal.abs_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Prod.snd on sign-and-digits representation",
+    "scope": "all inputs; no source proof obligations",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Decimal.opp",
+    "profile": "DecimalOperations",
+    "certificate": "NativeBridge.Incremental.Decimal.opp_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Bool.not on sign bit; digits unchanged",
+    "scope": "all inputs; no source proof obligations",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Decimal.app_int",
+    "profile": "DecimalOperations",
+    "certificate": "NativeBridge.Incremental.Decimal.app_int_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "List.append on digits; sign unchanged",
+    "scope": "all inputs; no source proof obligations",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Decimal.uint_beq",
+    "profile": "DecimalOperations",
+    "certificate": "NativeBridge.Incremental.Decimal.uint_beq_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "BEq on List (Fin 10)",
+    "scope": "all inputs; no source proof obligations",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Decimal.signed_int_beq",
+    "profile": "DecimalOperations",
+    "certificate": "NativeBridge.Incremental.Decimal.signed_int_beq_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "BEq on Bool × List (Fin 10)",
+    "scope": "all inputs; no source proof obligations",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Decimal.norm",
+    "profile": "DecimalOperations",
+    "certificate": "NativeBridge.Incremental.Decimal.norm_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "List.dropWhile, with either sign of zero canonicalized to (false, [0])",
+    "scope": "all inputs; no source proof obligations",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.signed_int",
+    "profile": "HexadecimalOperations",
+    "certificate": "NativeBridge.Incremental.Hexadecimal.signedIso",
+    "kind": "TYPE_ISO",
+    "target": "Bool × List (Fin 16)",
+    "scope": "all signs and digit strings, including negative zero and leading zeros",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.revapp",
+    "profile": "HexadecimalOperations",
+    "certificate": "NativeBridge.Incremental.Hexadecimal.revapp_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "List.reverse ++ accumulator",
+    "scope": "all inputs; no source proof obligations",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.rev",
+    "profile": "HexadecimalOperations",
+    "certificate": "NativeBridge.Incremental.Hexadecimal.rev_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "List.reverse",
+    "scope": "all inputs; no source proof obligations",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.app",
+    "profile": "HexadecimalOperations",
+    "certificate": "NativeBridge.Incremental.Hexadecimal.app_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "List.append",
+    "scope": "all inputs; no source proof obligations",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.nb_digits",
+    "profile": "HexadecimalOperations",
+    "certificate": "NativeBridge.Incremental.Hexadecimal.nb_digits_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "List.length",
+    "scope": "all inputs; no source proof obligations",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.nzhead",
+    "profile": "HexadecimalOperations",
+    "certificate": "NativeBridge.Incremental.Hexadecimal.nzhead_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "List.dropWhile (digit == 0)",
+    "scope": "all inputs; no source proof obligations",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.unorm",
+    "profile": "HexadecimalOperations",
+    "certificate": "NativeBridge.Incremental.Hexadecimal.unorm_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "List.dropWhile followed by empty-list replacement with [0]",
+    "scope": "all inputs; no source proof obligations",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.abs",
+    "profile": "HexadecimalOperations",
+    "certificate": "NativeBridge.Incremental.Hexadecimal.abs_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Prod.snd on sign-and-digits representation",
+    "scope": "all inputs; no source proof obligations",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.opp",
+    "profile": "HexadecimalOperations",
+    "certificate": "NativeBridge.Incremental.Hexadecimal.opp_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Bool.not on sign bit; digits unchanged",
+    "scope": "all inputs; no source proof obligations",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.app_int",
+    "profile": "HexadecimalOperations",
+    "certificate": "NativeBridge.Incremental.Hexadecimal.app_int_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "List.append on digits; sign unchanged",
+    "scope": "all inputs; no source proof obligations",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.uint_beq",
+    "profile": "HexadecimalOperations",
+    "certificate": "NativeBridge.Incremental.Hexadecimal.uint_beq_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "BEq on List (Fin 16)",
+    "scope": "all inputs; no source proof obligations",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.signed_int_beq",
+    "profile": "HexadecimalOperations",
+    "certificate": "NativeBridge.Incremental.Hexadecimal.signed_int_beq_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "BEq on Bool × List (Fin 16)",
+    "scope": "all inputs; no source proof obligations",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.norm",
+    "profile": "HexadecimalOperations",
+    "certificate": "NativeBridge.Incremental.Hexadecimal.norm_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "List.dropWhile, with either sign of zero canonicalized to (false, [0])",
+    "scope": "all inputs; no source proof obligations",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Number.uint",
+    "profile": "NumericRead",
+    "certificate": "NativeBridge.Incremental.numberUintIso",
+    "kind": "TYPE_ISO",
+    "target": "Sum (List (Fin 10)) (List (Fin 16))",
+    "scope": "radix tag and exact digits preserved",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.Init.Nat.of_uint",
+    "profile": "NumericRead",
+    "certificate": "NativeBridge.Incremental.decimal_read_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "List.foldl (fun acc digit => 10 * acc + digit.val)",
+    "scope": "all digit strings, including empty/leading-zero strings; zero accumulator; numeric reading is not a bijection",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Nat.of_uint_acc",
+    "profile": "NumericRead",
+    "certificate": "NativeBridge.Incremental.decimal_read_acc_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "List.foldl (fun acc digit => 10 * acc + digit.val)",
+    "scope": "all digit strings, including empty/leading-zero strings; arbitrary accumulator; numeric reading is not a bijection",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Nat.of_hex_uint",
+    "profile": "NumericRead",
+    "certificate": "NativeBridge.Incremental.hexadecimal_read_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "List.foldl (fun acc digit => 16 * acc + digit.val)",
+    "scope": "all digit strings, including empty/leading-zero strings; zero accumulator; numeric reading is not a bijection",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Nat.of_hex_uint_acc",
+    "profile": "NumericRead",
+    "certificate": "NativeBridge.Incremental.hexadecimal_read_acc_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "List.foldl (fun acc digit => 16 * acc + digit.val)",
+    "scope": "all digit strings, including empty/leading-zero strings; arbitrary accumulator; numeric reading is not a bijection",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Nat.of_num_uint",
+    "profile": "NumericRead",
+    "certificate": "NativeBridge.Incremental.number_read_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Sum case dispatch to radix-10 or radix-16 List.foldl",
+    "scope": "both radix tags; numeric reading is not a bijection",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Wf.Acc",
+    "profile": "WellFounded",
+    "certificate": "NativeBridge.Incremental.accIso",
+    "kind": "TYPE_ISO",
+    "target": "Lean Acc R x",
+    "scope": "A : Type u; arbitrary relation and index; proof irrelevance supplies inverse laws",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Wf.well_founded",
+    "profile": "WellFounded",
+    "certificate": "NativeBridge.Incremental.well_founded_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Lean WellFounded",
+    "scope": "A : Type u; arbitrary relation; iff of predicates",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Wf.Fix_F",
+    "profile": "WellFounded",
+    "certificate": "NativeBridge.Incremental.fixF_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "WellFounded.fixF",
+    "scope": "A : Type u; P : A → Type v; arbitrary recursive step; accessibility converted",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Wf.Fix",
+    "profile": "WellFounded",
+    "certificate": "NativeBridge.Incremental.fix_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "WellFounded.fix",
+    "scope": "A : Type u; P : A → Type v; arbitrary recursive step; well-foundedness converted",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Wf.Acc_rect",
+    "profile": "WellFounded",
+    "certificate": "NativeBridge.Incremental.acc_rect_native_callback",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Acc.rec",
+    "scope": "A : Type u; P : A → Type v; native callback transported across Acc conversion",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Wf.Acc_rec",
+    "profile": "WellFounded",
+    "certificate": "NativeBridge.Incremental.acc_rec_native_callback",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Acc.rec",
+    "scope": "A : Type u; P : A → Type; native callback transported across Acc conversion",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Wf.well_founded_induction_type",
+    "profile": "WellFounded",
+    "certificate": "NativeBridge.Incremental.well_founded_induction_type_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "WellFounded.fix",
+    "scope": "A : Type u; P : A → Type v; arbitrary recursive step",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Wf.well_founded_induction",
+    "profile": "WellFounded",
+    "certificate": "NativeBridge.Incremental.well_founded_induction_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "WellFounded.fix",
+    "scope": "A : Type u; P : A → Type; arbitrary recursive step",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Decimal.internal_uint_dec_bl",
+    "profile": "DecimalOperations",
+    "certificate": "NativeBridge.Incremental.Decimal.uint_dec_bl_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "∀ (x y : List (Fin 10)), (x == y) = true → x = y",
+    "native_expression": "∀ (x y : List (Fin 10)), (x == y) = true → x = y",
+    "original_statement_proof": "NativeBridge.Incremental.Decimal.uint_dec_bl_proved",
+    "scope": "all representations, including empty, leading-zero and signed-zero cases; native target uses only Bool/List/Fin/Prod/BEq/Eq",
+    "target_class": "native_statement"
+  },
+  {
+    "source": "Corelib.Init.Decimal.internal_uint_dec_lb",
+    "profile": "DecimalOperations",
+    "certificate": "NativeBridge.Incremental.Decimal.uint_dec_lb_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "∀ (x y : List (Fin 10)), x = y → (x == y) = true",
+    "native_expression": "∀ (x y : List (Fin 10)), x = y → (x == y) = true",
+    "original_statement_proof": "NativeBridge.Incremental.Decimal.uint_dec_lb_proved",
+    "scope": "all representations, including empty, leading-zero and signed-zero cases; native target uses only Bool/List/Fin/Prod/BEq/Eq",
+    "target_class": "native_statement"
+  },
+  {
+    "source": "Corelib.Init.Decimal.internal_signed_int_dec_bl",
+    "profile": "DecimalOperations",
+    "certificate": "NativeBridge.Incremental.Decimal.signed_int_dec_bl_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "∀ (x y : Bool × List (Fin 10)), (x == y) = true → x = y",
+    "native_expression": "∀ (x y : Bool × List (Fin 10)), (x == y) = true → x = y",
+    "original_statement_proof": "NativeBridge.Incremental.Decimal.signed_int_dec_bl_proved",
+    "scope": "all representations, including empty, leading-zero and signed-zero cases; native target uses only Bool/List/Fin/Prod/BEq/Eq",
+    "target_class": "native_statement"
+  },
+  {
+    "source": "Corelib.Init.Decimal.internal_signed_int_dec_lb",
+    "profile": "DecimalOperations",
+    "certificate": "NativeBridge.Incremental.Decimal.signed_int_dec_lb_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "∀ (x y : Bool × List (Fin 10)), x = y → (x == y) = true",
+    "native_expression": "∀ (x y : Bool × List (Fin 10)), x = y → (x == y) = true",
+    "original_statement_proof": "NativeBridge.Incremental.Decimal.signed_int_dec_lb_proved",
+    "scope": "all representations, including empty, leading-zero and signed-zero cases; native target uses only Bool/List/Fin/Prod/BEq/Eq",
+    "target_class": "native_statement"
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.internal_uint_dec_bl0",
+    "profile": "HexadecimalOperations",
+    "certificate": "NativeBridge.Incremental.Hexadecimal.uint_dec_bl_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "∀ (x y : List (Fin 16)), (x == y) = true → x = y",
+    "native_expression": "∀ (x y : List (Fin 16)), (x == y) = true → x = y",
+    "original_statement_proof": "NativeBridge.Incremental.Hexadecimal.uint_dec_bl_proved",
+    "scope": "all representations, including empty, leading-zero and signed-zero cases; native target uses only Bool/List/Fin/Prod/BEq/Eq",
+    "target_class": "native_statement"
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.internal_uint_dec_lb0",
+    "profile": "HexadecimalOperations",
+    "certificate": "NativeBridge.Incremental.Hexadecimal.uint_dec_lb_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "∀ (x y : List (Fin 16)), x = y → (x == y) = true",
+    "native_expression": "∀ (x y : List (Fin 16)), x = y → (x == y) = true",
+    "original_statement_proof": "NativeBridge.Incremental.Hexadecimal.uint_dec_lb_proved",
+    "scope": "all representations, including empty, leading-zero and signed-zero cases; native target uses only Bool/List/Fin/Prod/BEq/Eq",
+    "target_class": "native_statement"
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.internal_signed_int_dec_bl0",
+    "profile": "HexadecimalOperations",
+    "certificate": "NativeBridge.Incremental.Hexadecimal.signed_int_dec_bl_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "∀ (x y : Bool × List (Fin 16)), (x == y) = true → x = y",
+    "native_expression": "∀ (x y : Bool × List (Fin 16)), (x == y) = true → x = y",
+    "original_statement_proof": "NativeBridge.Incremental.Hexadecimal.signed_int_dec_bl_proved",
+    "scope": "all representations, including empty, leading-zero and signed-zero cases; native target uses only Bool/List/Fin/Prod/BEq/Eq",
+    "target_class": "native_statement"
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.internal_signed_int_dec_lb0",
+    "profile": "HexadecimalOperations",
+    "certificate": "NativeBridge.Incremental.Hexadecimal.signed_int_dec_lb_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "∀ (x y : Bool × List (Fin 16)), x = y → (x == y) = true",
+    "native_expression": "∀ (x y : Bool × List (Fin 16)), x = y → (x == y) = true",
+    "original_statement_proof": "NativeBridge.Incremental.Hexadecimal.signed_int_dec_lb_proved",
+    "scope": "all representations, including empty, leading-zero and signed-zero cases; native target uses only Bool/List/Fin/Prod/BEq/Eq",
+    "target_class": "native_statement"
   }
 ]

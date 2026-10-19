@@ -1,0 +1,144 @@
+[{"type":
+  "∀ {A : Type u} (R : A → A → Prop) (P : A → Type)\n  (G : (x : A) → (∀ (y : A), R y x → Acc R y) → ((y : A) → R y x → P y) → P x) (x : A)\n  (a : Rocq.Corelib.Init.Wf.Acc A R x), Rocq.Corelib.Init.Wf.Acc_rec A R P (fun x h ih => G x ⋯ ih) x a = Acc.rec G ⋯",
+  "source_references":
+  ["Rocq.Corelib.Init.Wf.Acc", "Rocq.Corelib.Init.Wf.Acc_rec"],
+  "name": "NativeBridge.Incremental.acc_rec_native_callback",
+  "kind": "theorem",
+  "axioms": ["Quot.sound"]},
+ {"type":
+  "Rocq.Corelib.Init.Wf.well_founded NativeBridge.MN fun n m => NativeBridge.natTo n < NativeBridge.natTo m",
+  "source_references": ["Rocq.Corelib.Init.Wf.well_founded"],
+  "name": "NativeBridge.Incremental.mechanicalNatMeasureWf",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Type u} {R : A → A → Prop}, WellFounded R → Rocq.Corelib.Init.Wf.well_founded A R",
+  "source_references": ["Rocq.Corelib.Init.Wf.well_founded"],
+  "name": "NativeBridge.Incremental.wellFoundedOf",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "∀ {A : Type u_1} (R : A → A → Prop) (x : A), Acc R x → Acc R x",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.accIso._proof_3",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Type u_1} (R : A → A → Prop) (x : A) (x_1 : Rocq.Corelib.Init.Wf.Acc A R x), ⋯ = ⋯",
+  "source_references": ["Rocq.Corelib.Init.Wf.Acc"],
+  "name": "NativeBridge.Incremental.accIso._proof_2",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Type u} (R : A → A → Prop) (P : A → Type v) (F : (x : A) → ((y : A) → R y x → P y) → P x) (x : A)\n  (a : Rocq.Corelib.Init.Wf.Acc A R x), Rocq.Corelib.Init.Wf.Fix_F A R P F x a = WellFounded.fixF F x ⋯",
+  "source_references":
+  ["Rocq.Corelib.Init.Wf.Acc", "Rocq.Corelib.Init.Wf.Fix_F"],
+  "name": "NativeBridge.Incremental.fixF_agrees",
+  "kind": "theorem",
+  "axioms": ["Quot.sound"]},
+ {"type":
+  "∀ {A : Type u} (R : A → A → Prop) (P : A → Type v)\n  (F : (x : A) → (∀ (y : A), R y x → Rocq.Corelib.Init.Wf.Acc A R y) → ((y : A) → R y x → P y) → P x) (x : A)\n  (a : Rocq.Corelib.Init.Wf.Acc A R x), Rocq.Corelib.Init.Wf.Acc_rect A R P F x a = Acc.rec (fun x h ih => F x ⋯ ih) ⋯",
+  "source_references":
+  ["Rocq.Corelib.Init.Wf.Acc", "Rocq.Corelib.Init.Wf.Acc_rect"],
+  "name": "NativeBridge.Incremental.acc_rect_agrees",
+  "kind": "theorem",
+  "axioms": ["Quot.sound"]},
+ {"type":
+  "∀ {A : Type u} (R : A → A → Prop) (P : A → Type v)\n  (G : (x : A) → (∀ (y : A), R y x → Acc R y) → ((y : A) → R y x → P y) → P x) (x : A)\n  (a : Rocq.Corelib.Init.Wf.Acc A R x), Rocq.Corelib.Init.Wf.Acc_rect A R P (fun x h ih => G x ⋯ ih) x a = Acc.rec G ⋯",
+  "source_references":
+  ["Rocq.Corelib.Init.Wf.Acc", "Rocq.Corelib.Init.Wf.Acc_rect"],
+  "name": "NativeBridge.Incremental.acc_rect_native_callback",
+  "kind": "theorem",
+  "axioms": ["Quot.sound"]},
+ {"type":
+  "∀ {A : Type u} {R : A → A → Prop} {x : A}, Acc R x → Rocq.Corelib.Init.Wf.Acc A R x",
+  "source_references": ["Rocq.Corelib.Init.Wf.Acc"],
+  "name": "NativeBridge.Incremental.accOf",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Type u} (R : A → A → Prop) (wf : Rocq.Corelib.Init.Wf.well_founded A R) (P : A → Type v)\n  (F : (x : A) → ((y : A) → R y x → P y) → P x) (x : A), Rocq.Corelib.Init.Wf.Fix A R wf P F x = ⋯.fix F x",
+  "source_references":
+  ["Rocq.Corelib.Init.Wf.well_founded", "Rocq.Corelib.Init.Wf.Fix"],
+  "name": "NativeBridge.Incremental.fix_agrees",
+  "kind": "theorem",
+  "axioms": ["Quot.sound"]},
+ {"type":
+  "∀ {A : Type u} {R : A → A → Prop}, Rocq.Corelib.Init.Wf.well_founded A R → WellFounded R",
+  "source_references": ["Rocq.Corelib.Init.Wf.well_founded"],
+  "name": "NativeBridge.Incremental.wellFoundedTo",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Type u} {R : A → A → Prop} {x : A}, Rocq.Corelib.Init.Wf.Acc A R x → Acc R x",
+  "source_references": ["Rocq.Corelib.Init.Wf.Acc"],
+  "name": "NativeBridge.Incremental.accTo",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Type u} (R : A → A → Prop) (wf : Rocq.Corelib.Init.Wf.well_founded A R) (P : A → Type)\n  (F : (x : A) → ((y : A) → R y x → P y) → P x) (x : A),\n  Rocq.Corelib.Init.Wf.well_founded_induction A R wf P F x = ⋯.fix F x",
+  "source_references":
+  ["Rocq.Corelib.Init.Wf.well_founded",
+   "Rocq.Corelib.Init.Wf.well_founded_induction"],
+  "name": "NativeBridge.Incremental.well_founded_induction_agrees",
+  "kind": "theorem",
+  "axioms": ["Quot.sound"]},
+ {"type":
+  "∀ {A : Type u} (R : A → A → Prop), Rocq.Corelib.Init.Wf.well_founded A R ↔ WellFounded R",
+  "source_references": ["Rocq.Corelib.Init.Wf.well_founded"],
+  "name": "NativeBridge.Incremental.well_founded_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "∀ (n : Nat), ⋯.fix NativeBridge.Incremental.countdownStep n = n",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.native_countdown_correct",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "(motive : (n : Nat) → ((k : Nat) → k < n → Nat) → Sort u_1) →\n  (n : Nat) →\n    (rec : (k : Nat) → k < n → Nat) →\n      ((rec : (k : Nat) → k < 0 → Nat) → motive 0 rec) →\n        ((k : Nat) → (rec : (k_1 : Nat) → k_1 < k + 1 → Nat) → motive k.succ rec) → motive n rec",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.countdownStep.match_1",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Type u} (R : A → A → Prop) (P : A → Type)\n  (F : (x : A) → (∀ (y : A), R y x → Rocq.Corelib.Init.Wf.Acc A R y) → ((y : A) → R y x → P y) → P x) (x : A)\n  (a : Rocq.Corelib.Init.Wf.Acc A R x), Rocq.Corelib.Init.Wf.Acc_rec A R P F x a = Acc.rec (fun x h ih => F x ⋯ ih) ⋯",
+  "source_references":
+  ["Rocq.Corelib.Init.Wf.Acc", "Rocq.Corelib.Init.Wf.Acc_rec"],
+  "name": "NativeBridge.Incremental.acc_rec_agrees",
+  "kind": "theorem",
+  "axioms": ["Quot.sound"]},
+ {"type":
+  "{A : Type u} → (R : A → A → Prop) → (x : A) → NativeBridge.Iso (Rocq.Corelib.Init.Wf.Acc A R x) (Acc R x)",
+  "source_references": ["Rocq.Corelib.Init.Wf.Acc"],
+  "name": "NativeBridge.Incremental.accIso",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "∀ {A : Type u_1} (R : A → A → Prop) (x : A) (x_1 : Acc R x), ⋯ = ⋯",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.accIso._proof_4",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Type u_1} (R : A → A → Prop) (x : A), Rocq.Corelib.Init.Wf.Acc A R x → Rocq.Corelib.Init.Wf.Acc A R x",
+  "source_references": ["Rocq.Corelib.Init.Wf.Acc"],
+  "name": "NativeBridge.Incremental.accIso._proof_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (n : Nat),\n  Rocq.Corelib.Init.Wf.Fix Nat (fun x1 x2 => x1 < x2) ⋯ (fun x => Nat) NativeBridge.Incremental.countdownStep n = n",
+  "source_references": ["Rocq.Corelib.Init.Wf.Fix"],
+  "name": "NativeBridge.Incremental.mechanical_countdown_correct",
+  "kind": "theorem",
+  "axioms": ["Quot.sound"]},
+ {"type": "(n : Nat) → ((k : Nat) → k < n → Nat) → Nat",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.countdownStep",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Type u} (R : A → A → Prop) (wf : Rocq.Corelib.Init.Wf.well_founded A R) (P : A → Type v)\n  (F : (x : A) → ((y : A) → R y x → P y) → P x) (x : A),\n  Rocq.Corelib.Init.Wf.well_founded_induction_type A R wf P F x = ⋯.fix F x",
+  "source_references":
+  ["Rocq.Corelib.Init.Wf.well_founded",
+   "Rocq.Corelib.Init.Wf.well_founded_induction_type"],
+  "name": "NativeBridge.Incremental.well_founded_induction_type_agrees",
+  "kind": "theorem",
+  "axioms": ["Quot.sound"]}]

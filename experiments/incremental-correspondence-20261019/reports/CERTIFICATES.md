@@ -528,6 +528,662 @@ NativeBridge.Incremental.ssr_total_agrees
 
 公理闭包：propext, Quot.sound
 
+## Corelib.Init.Decimal.signed_int
+
+NativeBridge.Incremental.Decimal.signedIso
+
+目标：Bool × List (Fin 10)；范围：all signs and digit strings, including negative zero and leading zeros
+
+```lean
+NativeBridge.Iso Rocq.Corelib.Init.Decimal.signed_int (Bool × List (Fin 10))
+```
+
+公理闭包：propext
+
+## Corelib.Init.Decimal.revapp
+
+NativeBridge.Incremental.Decimal.revapp_agrees
+
+目标：List.reverse ++ accumulator；范围：all inputs; no source proof obligations
+
+```lean
+∀ (xs ys : Rocq.Corelib.Init.Decimal.uint),
+  NativeBridge.decimalDigitsTo (Rocq.Corelib.Init.Decimal.revapp xs ys) =
+    (NativeBridge.decimalDigitsTo xs).reverse ++ NativeBridge.decimalDigitsTo ys
+```
+
+公理闭包：propext
+
+## Corelib.Init.Decimal.rev
+
+NativeBridge.Incremental.Decimal.rev_agrees
+
+目标：List.reverse；范围：all inputs; no source proof obligations
+
+```lean
+∀ (xs : Rocq.Corelib.Init.Decimal.uint),
+  NativeBridge.decimalDigitsTo (Rocq.Corelib.Init.Decimal.rev xs) = (NativeBridge.decimalDigitsTo xs).reverse
+```
+
+公理闭包：propext
+
+## Corelib.Init.Decimal.app
+
+NativeBridge.Incremental.Decimal.app_agrees
+
+目标：List.append；范围：all inputs; no source proof obligations
+
+```lean
+∀ (xs ys : Rocq.Corelib.Init.Decimal.uint),
+  NativeBridge.decimalDigitsTo (Rocq.Corelib.Init.Decimal.app xs ys) =
+    NativeBridge.decimalDigitsTo xs ++ NativeBridge.decimalDigitsTo ys
+```
+
+公理闭包：propext
+
+## Corelib.Init.Decimal.nb_digits
+
+NativeBridge.Incremental.Decimal.nb_digits_agrees
+
+目标：List.length；范围：all inputs; no source proof obligations
+
+```lean
+∀ (xs : Rocq.Corelib.Init.Decimal.uint),
+  NativeBridge.natTo (Rocq.Corelib.Init.Decimal.nb_digits xs) = (NativeBridge.decimalDigitsTo xs).length
+```
+
+公理闭包：propext
+
+## Corelib.Init.Decimal.nzhead
+
+NativeBridge.Incremental.Decimal.nzhead_agrees
+
+目标：List.dropWhile (digit == 0)；范围：all inputs; no source proof obligations
+
+```lean
+∀ (xs : Rocq.Corelib.Init.Decimal.uint),
+  NativeBridge.decimalDigitsTo (Rocq.Corelib.Init.Decimal.nzhead xs) =
+    List.dropWhile (fun d => ↑d == 0) (NativeBridge.decimalDigitsTo xs)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Init.Decimal.unorm
+
+NativeBridge.Incremental.Decimal.unorm_agrees
+
+目标：List.dropWhile followed by empty-list replacement with [0]；范围：all inputs; no source proof obligations
+
+```lean
+∀ (xs : Rocq.Corelib.Init.Decimal.uint),
+  NativeBridge.decimalDigitsTo (Rocq.Corelib.Init.Decimal.unorm xs) =
+    match List.dropWhile (fun d => ↑d == 0) (NativeBridge.decimalDigitsTo xs) with
+    | [] => [0]
+    | ds => ds
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Init.Decimal.abs
+
+NativeBridge.Incremental.Decimal.abs_agrees
+
+目标：Prod.snd on sign-and-digits representation；范围：all inputs; no source proof obligations
+
+```lean
+∀ (x : Rocq.Corelib.Init.Decimal.signed_int),
+  NativeBridge.decimalDigitsTo (Rocq.Corelib.Init.Decimal.abs x) = (NativeBridge.Incremental.Decimal.signedTo x).snd
+```
+
+公理闭包：空
+
+## Corelib.Init.Decimal.opp
+
+NativeBridge.Incremental.Decimal.opp_agrees
+
+目标：Bool.not on sign bit; digits unchanged；范围：all inputs; no source proof obligations
+
+```lean
+∀ (x : Rocq.Corelib.Init.Decimal.signed_int),
+  NativeBridge.Incremental.Decimal.signedTo (Rocq.Corelib.Init.Decimal.opp x) =
+    (!(NativeBridge.Incremental.Decimal.signedTo x).fst, (NativeBridge.Incremental.Decimal.signedTo x).snd)
+```
+
+公理闭包：空
+
+## Corelib.Init.Decimal.app_int
+
+NativeBridge.Incremental.Decimal.app_int_agrees
+
+目标：List.append on digits; sign unchanged；范围：all inputs; no source proof obligations
+
+```lean
+∀ (x : Rocq.Corelib.Init.Decimal.signed_int) (ds : Rocq.Corelib.Init.Decimal.uint),
+  NativeBridge.Incremental.Decimal.signedTo (Rocq.Corelib.Init.Decimal.app_int x ds) =
+    ((NativeBridge.Incremental.Decimal.signedTo x).fst,
+      (NativeBridge.Incremental.Decimal.signedTo x).snd ++ NativeBridge.decimalDigitsTo ds)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Decimal.uint_beq
+
+NativeBridge.Incremental.Decimal.uint_beq_agrees
+
+目标：BEq on List (Fin 10)；范围：all inputs; no source proof obligations
+
+```lean
+∀ (xs ys : Rocq.Corelib.Init.Decimal.uint),
+  NativeBridge.Incremental.Decimal.digitBoolTo (Rocq.Corelib.Init.Decimal.uint_beq xs ys) =
+    (NativeBridge.decimalDigitsTo xs == NativeBridge.decimalDigitsTo ys)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Decimal.signed_int_beq
+
+NativeBridge.Incremental.Decimal.signed_int_beq_agrees
+
+目标：BEq on Bool × List (Fin 10)；范围：all inputs; no source proof obligations
+
+```lean
+∀ (xs ys : Rocq.Corelib.Init.Decimal.signed_int),
+  NativeBridge.Incremental.Decimal.digitBoolTo (Rocq.Corelib.Init.Decimal.signed_int_beq xs ys) =
+    (NativeBridge.Incremental.Decimal.signedTo xs == NativeBridge.Incremental.Decimal.signedTo ys)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Decimal.norm
+
+NativeBridge.Incremental.Decimal.norm_agrees
+
+目标：List.dropWhile, with either sign of zero canonicalized to (false, [0])；范围：all inputs; no source proof obligations
+
+```lean
+∀ (x : Rocq.Corelib.Init.Decimal.signed_int),
+  NativeBridge.Incremental.Decimal.signedTo (Rocq.Corelib.Init.Decimal.norm x) =
+    have ds := List.dropWhile (fun d => ↑d == 0) (NativeBridge.Incremental.Decimal.signedTo x).snd;
+    match ds with
+    | [] => (false, [0])
+    | d :: rest => ((NativeBridge.Incremental.Decimal.signedTo x).fst, d :: rest)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Init.Hexadecimal.signed_int
+
+NativeBridge.Incremental.Hexadecimal.signedIso
+
+目标：Bool × List (Fin 16)；范围：all signs and digit strings, including negative zero and leading zeros
+
+```lean
+NativeBridge.Iso Rocq.Corelib.Init.Hexadecimal.signed_int (Bool × List (Fin 16))
+```
+
+公理闭包：propext
+
+## Corelib.Init.Hexadecimal.revapp
+
+NativeBridge.Incremental.Hexadecimal.revapp_agrees
+
+目标：List.reverse ++ accumulator；范围：all inputs; no source proof obligations
+
+```lean
+∀ (xs ys : Rocq.Corelib.Init.Hexadecimal.uint),
+  NativeBridge.hexadecimalDigitsTo (Rocq.Corelib.Init.Hexadecimal.revapp xs ys) =
+    (NativeBridge.hexadecimalDigitsTo xs).reverse ++ NativeBridge.hexadecimalDigitsTo ys
+```
+
+公理闭包：propext
+
+## Corelib.Init.Hexadecimal.rev
+
+NativeBridge.Incremental.Hexadecimal.rev_agrees
+
+目标：List.reverse；范围：all inputs; no source proof obligations
+
+```lean
+∀ (xs : Rocq.Corelib.Init.Hexadecimal.uint),
+  NativeBridge.hexadecimalDigitsTo (Rocq.Corelib.Init.Hexadecimal.rev xs) =
+    (NativeBridge.hexadecimalDigitsTo xs).reverse
+```
+
+公理闭包：propext
+
+## Corelib.Init.Hexadecimal.app
+
+NativeBridge.Incremental.Hexadecimal.app_agrees
+
+目标：List.append；范围：all inputs; no source proof obligations
+
+```lean
+∀ (xs ys : Rocq.Corelib.Init.Hexadecimal.uint),
+  NativeBridge.hexadecimalDigitsTo (Rocq.Corelib.Init.Hexadecimal.app xs ys) =
+    NativeBridge.hexadecimalDigitsTo xs ++ NativeBridge.hexadecimalDigitsTo ys
+```
+
+公理闭包：propext
+
+## Corelib.Init.Hexadecimal.nb_digits
+
+NativeBridge.Incremental.Hexadecimal.nb_digits_agrees
+
+目标：List.length；范围：all inputs; no source proof obligations
+
+```lean
+∀ (xs : Rocq.Corelib.Init.Hexadecimal.uint),
+  NativeBridge.natTo (Rocq.Corelib.Init.Hexadecimal.nb_digits xs) = (NativeBridge.hexadecimalDigitsTo xs).length
+```
+
+公理闭包：propext
+
+## Corelib.Init.Hexadecimal.nzhead
+
+NativeBridge.Incremental.Hexadecimal.nzhead_agrees
+
+目标：List.dropWhile (digit == 0)；范围：all inputs; no source proof obligations
+
+```lean
+∀ (xs : Rocq.Corelib.Init.Hexadecimal.uint),
+  NativeBridge.hexadecimalDigitsTo (Rocq.Corelib.Init.Hexadecimal.nzhead xs) =
+    List.dropWhile (fun d => ↑d == 0) (NativeBridge.hexadecimalDigitsTo xs)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Init.Hexadecimal.unorm
+
+NativeBridge.Incremental.Hexadecimal.unorm_agrees
+
+目标：List.dropWhile followed by empty-list replacement with [0]；范围：all inputs; no source proof obligations
+
+```lean
+∀ (xs : Rocq.Corelib.Init.Hexadecimal.uint),
+  NativeBridge.hexadecimalDigitsTo (Rocq.Corelib.Init.Hexadecimal.unorm xs) =
+    match List.dropWhile (fun d => ↑d == 0) (NativeBridge.hexadecimalDigitsTo xs) with
+    | [] => [0]
+    | ds => ds
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Init.Hexadecimal.abs
+
+NativeBridge.Incremental.Hexadecimal.abs_agrees
+
+目标：Prod.snd on sign-and-digits representation；范围：all inputs; no source proof obligations
+
+```lean
+∀ (x : Rocq.Corelib.Init.Hexadecimal.signed_int),
+  NativeBridge.hexadecimalDigitsTo (Rocq.Corelib.Init.Hexadecimal.abs x) =
+    (NativeBridge.Incremental.Hexadecimal.signedTo x).snd
+```
+
+公理闭包：空
+
+## Corelib.Init.Hexadecimal.opp
+
+NativeBridge.Incremental.Hexadecimal.opp_agrees
+
+目标：Bool.not on sign bit; digits unchanged；范围：all inputs; no source proof obligations
+
+```lean
+∀ (x : Rocq.Corelib.Init.Hexadecimal.signed_int),
+  NativeBridge.Incremental.Hexadecimal.signedTo (Rocq.Corelib.Init.Hexadecimal.opp x) =
+    (!(NativeBridge.Incremental.Hexadecimal.signedTo x).fst, (NativeBridge.Incremental.Hexadecimal.signedTo x).snd)
+```
+
+公理闭包：空
+
+## Corelib.Init.Hexadecimal.app_int
+
+NativeBridge.Incremental.Hexadecimal.app_int_agrees
+
+目标：List.append on digits; sign unchanged；范围：all inputs; no source proof obligations
+
+```lean
+∀ (x : Rocq.Corelib.Init.Hexadecimal.signed_int) (ds : Rocq.Corelib.Init.Hexadecimal.uint),
+  NativeBridge.Incremental.Hexadecimal.signedTo (Rocq.Corelib.Init.Hexadecimal.app_int x ds) =
+    ((NativeBridge.Incremental.Hexadecimal.signedTo x).fst,
+      (NativeBridge.Incremental.Hexadecimal.signedTo x).snd ++ NativeBridge.hexadecimalDigitsTo ds)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Hexadecimal.uint_beq
+
+NativeBridge.Incremental.Hexadecimal.uint_beq_agrees
+
+目标：BEq on List (Fin 16)；范围：all inputs; no source proof obligations
+
+```lean
+∀ (xs ys : Rocq.Corelib.Init.Hexadecimal.uint),
+  NativeBridge.Incremental.Hexadecimal.digitBoolTo (Rocq.Corelib.Init.Hexadecimal.uint_beq xs ys) =
+    (NativeBridge.hexadecimalDigitsTo xs == NativeBridge.hexadecimalDigitsTo ys)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Hexadecimal.signed_int_beq
+
+NativeBridge.Incremental.Hexadecimal.signed_int_beq_agrees
+
+目标：BEq on Bool × List (Fin 16)；范围：all inputs; no source proof obligations
+
+```lean
+∀ (xs ys : Rocq.Corelib.Init.Hexadecimal.signed_int),
+  NativeBridge.Incremental.Hexadecimal.digitBoolTo (Rocq.Corelib.Init.Hexadecimal.signed_int_beq xs ys) =
+    (NativeBridge.Incremental.Hexadecimal.signedTo xs == NativeBridge.Incremental.Hexadecimal.signedTo ys)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Hexadecimal.norm
+
+NativeBridge.Incremental.Hexadecimal.norm_agrees
+
+目标：List.dropWhile, with either sign of zero canonicalized to (false, [0])；范围：all inputs; no source proof obligations
+
+```lean
+∀ (x : Rocq.Corelib.Init.Hexadecimal.signed_int),
+  NativeBridge.Incremental.Hexadecimal.signedTo (Rocq.Corelib.Init.Hexadecimal.norm x) =
+    have ds := List.dropWhile (fun d => ↑d == 0) (NativeBridge.Incremental.Hexadecimal.signedTo x).snd;
+    match ds with
+    | [] => (false, [0])
+    | d :: rest => ((NativeBridge.Incremental.Hexadecimal.signedTo x).fst, d :: rest)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Init.Number.uint
+
+NativeBridge.Incremental.numberUintIso
+
+目标：Sum (List (Fin 10)) (List (Fin 16))；范围：radix tag and exact digits preserved
+
+```lean
+NativeBridge.Iso Rocq.Corelib.Init.Number.uint (List (Fin 10) ⊕ List (Fin 16))
+```
+
+公理闭包：propext
+
+## Corelib.Init.Nat.of_uint
+
+NativeBridge.Incremental.decimal_read_agrees
+
+目标：List.foldl (fun acc digit => 10 * acc + digit.val)；范围：all digit strings, including empty/leading-zero strings; zero accumulator; numeric reading is not a bijection
+
+```lean
+∀ (ds : Rocq.Corelib.Init.Decimal.uint),
+  NativeBridge.natTo (Rocq.Corelib.Init.Nat.of_uint ds) =
+    List.foldl (fun a d => 10 * a + ↑d) 0 (NativeBridge.decimalDigitsTo ds)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Nat.of_uint_acc
+
+NativeBridge.Incremental.decimal_read_acc_agrees
+
+目标：List.foldl (fun acc digit => 10 * acc + digit.val)；范围：all digit strings, including empty/leading-zero strings; arbitrary accumulator; numeric reading is not a bijection
+
+```lean
+∀ (ds : Rocq.Corelib.Init.Decimal.uint) (acc : NativeBridge.MN),
+  NativeBridge.natTo (Rocq.Corelib.Init.Nat.of_uint_acc ds acc) =
+    List.foldl (fun a d => 10 * a + ↑d) (NativeBridge.natTo acc) (NativeBridge.decimalDigitsTo ds)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Nat.of_hex_uint
+
+NativeBridge.Incremental.hexadecimal_read_agrees
+
+目标：List.foldl (fun acc digit => 16 * acc + digit.val)；范围：all digit strings, including empty/leading-zero strings; zero accumulator; numeric reading is not a bijection
+
+```lean
+∀ (ds : Rocq.Corelib.Init.Hexadecimal.uint),
+  NativeBridge.natTo (Rocq.Corelib.Init.Nat.of_hex_uint ds) =
+    List.foldl (fun a d => 16 * a + ↑d) 0 (NativeBridge.hexadecimalDigitsTo ds)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Nat.of_hex_uint_acc
+
+NativeBridge.Incremental.hexadecimal_read_acc_agrees
+
+目标：List.foldl (fun acc digit => 16 * acc + digit.val)；范围：all digit strings, including empty/leading-zero strings; arbitrary accumulator; numeric reading is not a bijection
+
+```lean
+∀ (ds : Rocq.Corelib.Init.Hexadecimal.uint) (acc : NativeBridge.MN),
+  NativeBridge.natTo (Rocq.Corelib.Init.Nat.of_hex_uint_acc ds acc) =
+    List.foldl (fun a d => 16 * a + ↑d) (NativeBridge.natTo acc) (NativeBridge.hexadecimalDigitsTo ds)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Nat.of_num_uint
+
+NativeBridge.Incremental.number_read_agrees
+
+目标：Sum case dispatch to radix-10 or radix-16 List.foldl；范围：both radix tags; numeric reading is not a bijection
+
+```lean
+∀ (ds : Rocq.Corelib.Init.Number.uint),
+  NativeBridge.natTo (Rocq.Corelib.Init.Nat.of_num_uint ds) =
+    match NativeBridge.Incremental.numberUintTo ds with
+    | Sum.inl xs => List.foldl (fun a d => 10 * a + ↑d) 0 xs
+    | Sum.inr xs => List.foldl (fun a d => 16 * a + ↑d) 0 xs
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Wf.Acc
+
+NativeBridge.Incremental.accIso
+
+目标：Lean Acc R x；范围：A : Type u; arbitrary relation and index; proof irrelevance supplies inverse laws
+
+```lean
+{A : Type u} → (R : A → A → Prop) → (x : A) → NativeBridge.Iso (Rocq.Corelib.Init.Wf.Acc A R x) (Acc R x)
+```
+
+公理闭包：空
+
+## Corelib.Init.Wf.well_founded
+
+NativeBridge.Incremental.well_founded_agrees
+
+目标：Lean WellFounded；范围：A : Type u; arbitrary relation; iff of predicates
+
+```lean
+∀ {A : Type u} (R : A → A → Prop), Rocq.Corelib.Init.Wf.well_founded A R ↔ WellFounded R
+```
+
+公理闭包：空
+
+## Corelib.Init.Wf.Fix_F
+
+NativeBridge.Incremental.fixF_agrees
+
+目标：WellFounded.fixF；范围：A : Type u; P : A → Type v; arbitrary recursive step; accessibility converted
+
+```lean
+∀ {A : Type u} (R : A → A → Prop) (P : A → Type v) (F : (x : A) → ((y : A) → R y x → P y) → P x) (x : A)
+  (a : Rocq.Corelib.Init.Wf.Acc A R x), Rocq.Corelib.Init.Wf.Fix_F A R P F x a = WellFounded.fixF F x ⋯
+```
+
+公理闭包：Quot.sound
+
+## Corelib.Init.Wf.Fix
+
+NativeBridge.Incremental.fix_agrees
+
+目标：WellFounded.fix；范围：A : Type u; P : A → Type v; arbitrary recursive step; well-foundedness converted
+
+```lean
+∀ {A : Type u} (R : A → A → Prop) (wf : Rocq.Corelib.Init.Wf.well_founded A R) (P : A → Type v)
+  (F : (x : A) → ((y : A) → R y x → P y) → P x) (x : A), Rocq.Corelib.Init.Wf.Fix A R wf P F x = ⋯.fix F x
+```
+
+公理闭包：Quot.sound
+
+## Corelib.Init.Wf.Acc_rect
+
+NativeBridge.Incremental.acc_rect_native_callback
+
+目标：Acc.rec；范围：A : Type u; P : A → Type v; native callback transported across Acc conversion
+
+```lean
+∀ {A : Type u} (R : A → A → Prop) (P : A → Type v)
+  (G : (x : A) → (∀ (y : A), R y x → Acc R y) → ((y : A) → R y x → P y) → P x) (x : A)
+  (a : Rocq.Corelib.Init.Wf.Acc A R x), Rocq.Corelib.Init.Wf.Acc_rect A R P (fun x h ih => G x ⋯ ih) x a = Acc.rec G ⋯
+```
+
+公理闭包：Quot.sound
+
+## Corelib.Init.Wf.Acc_rec
+
+NativeBridge.Incremental.acc_rec_native_callback
+
+目标：Acc.rec；范围：A : Type u; P : A → Type; native callback transported across Acc conversion
+
+```lean
+∀ {A : Type u} (R : A → A → Prop) (P : A → Type)
+  (G : (x : A) → (∀ (y : A), R y x → Acc R y) → ((y : A) → R y x → P y) → P x) (x : A)
+  (a : Rocq.Corelib.Init.Wf.Acc A R x), Rocq.Corelib.Init.Wf.Acc_rec A R P (fun x h ih => G x ⋯ ih) x a = Acc.rec G ⋯
+```
+
+公理闭包：Quot.sound
+
+## Corelib.Init.Wf.well_founded_induction_type
+
+NativeBridge.Incremental.well_founded_induction_type_agrees
+
+目标：WellFounded.fix；范围：A : Type u; P : A → Type v; arbitrary recursive step
+
+```lean
+∀ {A : Type u} (R : A → A → Prop) (wf : Rocq.Corelib.Init.Wf.well_founded A R) (P : A → Type v)
+  (F : (x : A) → ((y : A) → R y x → P y) → P x) (x : A),
+  Rocq.Corelib.Init.Wf.well_founded_induction_type A R wf P F x = ⋯.fix F x
+```
+
+公理闭包：Quot.sound
+
+## Corelib.Init.Wf.well_founded_induction
+
+NativeBridge.Incremental.well_founded_induction_agrees
+
+目标：WellFounded.fix；范围：A : Type u; P : A → Type; arbitrary recursive step
+
+```lean
+∀ {A : Type u} (R : A → A → Prop) (wf : Rocq.Corelib.Init.Wf.well_founded A R) (P : A → Type)
+  (F : (x : A) → ((y : A) → R y x → P y) → P x) (x : A),
+  Rocq.Corelib.Init.Wf.well_founded_induction A R wf P F x = ⋯.fix F x
+```
+
+公理闭包：Quot.sound
+
+## Corelib.Init.Decimal.internal_uint_dec_bl
+
+NativeBridge.Incremental.Decimal.uint_dec_bl_native
+
+目标：∀ (x y : List (Fin 10)), (x == y) = true → x = y；范围：all representations, including empty, leading-zero and signed-zero cases; native target uses only Bool/List/Fin/Prod/BEq/Eq
+
+```lean
+Rocq.Corelib.Init.Decimal.internal_uint_dec_bl.statement ↔ ∀ (x y : List (Fin 10)), (x == y) = true → x = y
+```
+
+公理闭包：propext
+
+## Corelib.Init.Decimal.internal_uint_dec_lb
+
+NativeBridge.Incremental.Decimal.uint_dec_lb_native
+
+目标：∀ (x y : List (Fin 10)), x = y → (x == y) = true；范围：all representations, including empty, leading-zero and signed-zero cases; native target uses only Bool/List/Fin/Prod/BEq/Eq
+
+```lean
+Rocq.Corelib.Init.Decimal.internal_uint_dec_lb.statement ↔ ∀ (x y : List (Fin 10)), x = y → (x == y) = true
+```
+
+公理闭包：propext
+
+## Corelib.Init.Decimal.internal_signed_int_dec_bl
+
+NativeBridge.Incremental.Decimal.signed_int_dec_bl_native
+
+目标：∀ (x y : Bool × List (Fin 10)), (x == y) = true → x = y；范围：all representations, including empty, leading-zero and signed-zero cases; native target uses only Bool/List/Fin/Prod/BEq/Eq
+
+```lean
+Rocq.Corelib.Init.Decimal.internal_signed_int_dec_bl.statement ↔ ∀ (x y : Bool × List (Fin 10)), (x == y) = true → x = y
+```
+
+公理闭包：propext
+
+## Corelib.Init.Decimal.internal_signed_int_dec_lb
+
+NativeBridge.Incremental.Decimal.signed_int_dec_lb_native
+
+目标：∀ (x y : Bool × List (Fin 10)), x = y → (x == y) = true；范围：all representations, including empty, leading-zero and signed-zero cases; native target uses only Bool/List/Fin/Prod/BEq/Eq
+
+```lean
+Rocq.Corelib.Init.Decimal.internal_signed_int_dec_lb.statement ↔ ∀ (x y : Bool × List (Fin 10)), x = y → (x == y) = true
+```
+
+公理闭包：propext
+
+## Corelib.Init.Hexadecimal.internal_uint_dec_bl0
+
+NativeBridge.Incremental.Hexadecimal.uint_dec_bl_native
+
+目标：∀ (x y : List (Fin 16)), (x == y) = true → x = y；范围：all representations, including empty, leading-zero and signed-zero cases; native target uses only Bool/List/Fin/Prod/BEq/Eq
+
+```lean
+Rocq.Corelib.Init.Hexadecimal.internal_uint_dec_bl0.statement ↔ ∀ (x y : List (Fin 16)), (x == y) = true → x = y
+```
+
+公理闭包：propext
+
+## Corelib.Init.Hexadecimal.internal_uint_dec_lb0
+
+NativeBridge.Incremental.Hexadecimal.uint_dec_lb_native
+
+目标：∀ (x y : List (Fin 16)), x = y → (x == y) = true；范围：all representations, including empty, leading-zero and signed-zero cases; native target uses only Bool/List/Fin/Prod/BEq/Eq
+
+```lean
+Rocq.Corelib.Init.Hexadecimal.internal_uint_dec_lb0.statement ↔ ∀ (x y : List (Fin 16)), x = y → (x == y) = true
+```
+
+公理闭包：propext
+
+## Corelib.Init.Hexadecimal.internal_signed_int_dec_bl0
+
+NativeBridge.Incremental.Hexadecimal.signed_int_dec_bl_native
+
+目标：∀ (x y : Bool × List (Fin 16)), (x == y) = true → x = y；范围：all representations, including empty, leading-zero and signed-zero cases; native target uses only Bool/List/Fin/Prod/BEq/Eq
+
+```lean
+Rocq.Corelib.Init.Hexadecimal.internal_signed_int_dec_bl0.statement ↔
+  ∀ (x y : Bool × List (Fin 16)), (x == y) = true → x = y
+```
+
+公理闭包：propext
+
+## Corelib.Init.Hexadecimal.internal_signed_int_dec_lb0
+
+NativeBridge.Incremental.Hexadecimal.signed_int_dec_lb_native
+
+目标：∀ (x y : Bool × List (Fin 16)), x = y → (x == y) = true；范围：all representations, including empty, leading-zero and signed-zero cases; native target uses only Bool/List/Fin/Prod/BEq/Eq
+
+```lean
+Rocq.Corelib.Init.Hexadecimal.internal_signed_int_dec_lb0.statement ↔
+  ∀ (x y : Bool × List (Fin 16)), x = y → (x == y) = true
+```
+
+公理闭包：propext
+
 ## Corelib.ssr.ssrbool.addFb
 
 NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addFb.statement.correspondence

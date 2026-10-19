@@ -4,7 +4,7 @@ W=Path(__file__).resolve().parent;R=W.parents[1];D=W/'reports'
 B=R/'experiments/mechanical-correspondence-20261019/reports'
 specs=json.loads((W/'certificates.json').read_text())
 validation=json.loads((D/'validation.json').read_text())
-assert {r['profile'] for r in validation}=={'Basics','SSR','Iteration','Registry','SSRProperties','SSRBool','SSRBoolStatements'}
+assert {r['profile'] for r in validation}=={'Basics','SSR','Iteration','Registry','SSRProperties','SSRBool','SSRBoolStatements','NumericRead','DecimalOperations','HexadecimalOperations','WellFounded'}
 audits={}
 for r in validation:
  assert r['exit']==0 and r['audit_present'],r
@@ -24,11 +24,17 @@ for c in candidates:
     'kind':'STATEMENT_FULL_NATIVE','target':'native statement: '+c['native_expression'],
     'native_expression':c['native_expression'],'scope':'unconditional original statement; source-free body including NativeBridge alias expansion'})
 accepted=[]
+original_proofs=[]
 for sp in specs:
  cert=audits[sp['profile']][sp['certificate']]
  assert set(cert['axioms']) <= {'propext','Quot.sound','Classical.choice'}
  assert sp['source'] in rows
  assert ('Rocq.'+sp['source'] in cert['source_references'] or rows[sp['source']]['target'] in cert['source_references']),sp
+ if sp.get('original_statement_proof'):
+  proved=audits[sp['profile']][sp['original_statement_proof']]
+  assert set(proved['axioms']) <= {'propext','Quot.sound','Classical.choice'}
+  assert rows[sp['source']]['target'] in proved['source_references']
+  original_proofs.append(dict(source=sp['source'],profile=sp['profile'],**proved))
  item=dict(sp,**{k:cert[k] for k in ['type','axioms']})
  accepted.append(item)
  r=rows[sp['source']];r['bridge_status']=sp['kind'];r['evidence_origin']='baseline + checked incremental certificate'
@@ -39,7 +45,7 @@ for sp in specs:
   r['statement_certificate']=sp['certificate']
   r['native_statement']=sp['native_expression']
   r['remaining_source_symbols']=''
-  r['interpretation']='新增原生陈述 iff；目标体及 NativeBridge 别名展开后无源端符号；不是业务定理证明。'
+  r['interpretation']=('新增原生陈述 iff；另有从原生 BEq 定理推出的原陈述证明：'+sp['original_statement_proof']) if sp.get('original_statement_proof') else '新增原生陈述 iff；目标体及 NativeBridge 别名展开后无源端符号；不是业务定理证明。'
  else:
   r['interpretation']='新增已检查的'+('类型双向逆。' if sp['kind']=='TYPE_ISO' else '指定原生运算/表达式/谓词对应。')+'适用范围见增量证书完整类型。'
 
@@ -61,15 +67,20 @@ assert len(alias)==45 and all(x['exit']==0 and not x['lost'] and not x['gained']
 summary={'alias_regression_profiles':45,'alias_regression_lost':0,'alias_regression_gained':0,'root_declarations':len(rows),'baseline':str(B.relative_to(R)),'baseline_status':bcounts,'coverage_status':counts,
  'new_type_roots':len({s['source'] for s in specs if s['kind']=='TYPE_ISO'}),
  'new_operation_roots':len({s['source'] for s in specs if s['kind']=='OPERATION_CORRESPONDENCE'}),
- 'new_fully_native_statements':sum(x['full'] for x in candidates),'statement_candidates_rechecked':len(candidates),
+ 'new_fully_native_statements':len({s['source'] for s in specs if s['kind']=='STATEMENT_FULL_NATIVE'}),
+ 'automatic_statement_candidates_rechecked':len(candidates),
+ 'manual_native_statement_certificates':sum(s['kind']=='STATEMENT_FULL_NATIVE' for s in json.loads((W/'certificates.json').read_text())),
+ 'additional_original_statement_proofs':len(original_proofs),
  'new_certificates':len(specs),'baseline_operation_certificates':119,'operation_certificates_total':119+sum(s['kind']=='OPERATION_CORRESPONDENCE' for s in specs),
  'type_certificates_total':30+sum(s['kind']=='TYPE_ISO' for s in specs),
  'native_interface_roundtrips':479,'new_root_interface_roundtrips':1,'passing_incremental_profiles':len(validation),
  'full_baseline_rerun':False,'translation_rerun':False,'mathlib_tested':False,
  'automatic_native_target_synthesis':False,'automatic_certificate_composition':'SSR Option/function proof composition plus automatic statement normalization; arbitrary function targets still supplied',
- 'conditions_remaining':331,'completion':'two incremental batches; overall plan remains incomplete'}
+ 'conditions_remaining':331,'completion':'four incremental batches; overall plan remains incomplete',
+ 'explicit_target_classes_new_numeric_wf':dict(collections.Counter(sp['target_class'] for sp in specs if 'target_class' in sp))}
 assert sum(counts.values())==2180
 (D/'summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2))
+(D/'original-statement-proofs.json').write_text(json.dumps(original_proofs,ensure_ascii=False,indent=2))
 (D/'certificates.json').write_text(json.dumps(accepted,ensure_ascii=False,indent=2))
 tasks=list(csv.DictReader((W/'tasks.csv').open()))
 for t in tasks:

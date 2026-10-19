@@ -75,8 +75,8 @@ flowchart TD
 | SSR 关系性质 | 机械 Eq ↔ Lean Eq；函数外延性用于 eqfun/eqrel | 八项谓词对应已证 |
 | Nat.iter | natTo；源递归器；载体 Iso 与步函数对应假设 | 普通与转换载体两份证明通过 |
 | 复合 Option / 函数表达式 | Option.map/bind 对应 + comp 对应 | 两例自动组合通过；目标表达式仍显式提供 |
-| N/Z、数字表示进一步运算 | 已有数值 Iso + 未补齐的语义证书 | 待后续批次 |
-| 依赖类型/Acc | Eq transport + motive/index 转换 + 终止性证据 | 待后续批次 |
+| 数字表示进一步运算 | uint ↔ List Fin；Nat 算术；符号 pair 与进制 Sum | 读取、比较、规范化已证；写出待继续 |
+| 依赖类型/Acc | Acc 转换 + 递归步骤对应 + 原生良基性 | Acc 与 7 项递归/谓词已证；Sigma/二元递归待继续 |
 
 ## 第二批：证书复用到下游陈述
 
@@ -87,3 +87,17 @@ flowchart TD
     规范化 + 原陈述 iff + 递归检查桥接别名 → 141 个完全原生陈述
 
 75 个候选仍残留源符号，主要涉及 mem_pred/mem、phantom、classically、部分高阶函数及依赖 Bool 消去；未计作完全对应。详细记录见 reports/statement-candidates.json。
+
+## 第三、四批：已检查的桥接依赖
+
+    uint ↔ List (Fin radix) → reverse/append/length/dropWhile/BEq
+    digit representation + sign Bool → signed_int Iso → signed BEq / norm / abs / opp
+    decimal/hex digits + Sum → Number.uint Iso
+    digit representation + natTo + tail_mul agreement → of_uint/of_hex_uint foldl
+    BEq correspondence + Eq conversion → 8 native statements ↔ source statements
+    native LawfulBEq → native soundness/completeness → 8 original-statement proofs
+    source Acc constructors ↔ Lean Acc → well_founded ↔ WellFounded
+    Acc conversion + recursion induction → Fix_F / Fix / Acc recursors
+    native InvImage.wf + natTo → source well-foundedness of a mechanical Nat measure
+
+接下来的依赖仍是规划：Little.succ → 数字写出；prodIso + Acc → 二元良基递归；Sigma/Subtype + Eq transport → 依赖函数。没有将反例定理或使用示例计成额外 Corelib 根。

@@ -2,24 +2,25 @@
 
 先写计划与 DAG，再按步骤推进。入口：[PLAN.md](PLAN.md)、[DAG.md](DAG.md)、[逐根任务表](tasks.csv)。
 
-## 已验证进展（两批）
+## 已验证进展（四批）
 
-7 个 Lean profile 全部通过。两批累计显式登记 182 份新增证书，覆盖 4 个新类型根、36 个新运算/谓词根，并将 141 个部分陈述升级为完全原生陈述。
+11 个 Lean profile 均有成功验证记录。四批累计显式登记 230 份新增覆盖证书，覆盖 8 个新类型根、72 个新运算/谓词根，并将 149 个部分陈述升级为完全原生陈述。另有 8 份原陈述证明，不重复计入根数。
 - Program.Basics：apply、arrow、compose、const、flip、impl。
 - SSR Option：apply、default、lift、map、bind。
 - SSR 函数：comp、catcomp、idfun、fun_of_simpl；simpl_fun 与普通函数的 Iso。
 - SSR 谓词：cancel、commutative、associative、involutive、injective、eqfun、eqrel、left_id。
 - 第二批：pred/rel Iso、reflect Iso 及到 Decidable P 的转换；SSR 布尔运算与关系谓词 12 项；216 项陈述复查中 141 项完全原生化。
+- 第三、四批：[数字表示与良基递归](NUMERIC_WF_RESULTS.md)：4 个类型、36 个运算、8 个完全原生陈述；8 个原陈述经原生 BEq 定理证明。
 - Nat.iter：原生 Nat.rec 迭代表达式；另证带载体 Iso 和显式步函数对应假设的版本。
 
 | 主分类 | 基线 | 当前 |
 |---|---:|---:|
-| 类型对应 | 29 | 33 |
-| 运算/谓词对应 | 114 | 150 |
-| 只有接口 | 375 | 338 |
-| 尚无证书 | 485 | 482 |
-| 完全原生陈述 | 143 | 284 |
-| 部分原生陈述 | 702 | 561 |
+| 类型对应 | 29 | 37 |
+| 运算/谓词对应 | 114 | 186 |
+| 只有接口 | 375 | 319 |
+| 尚无证书 | 485 | 461 |
+| 完全原生陈述 | 143 | 292 |
+| 部分原生陈述 | 702 | 553 |
 | 带条件 | 331 | 331 |
 | 非 Prop 特殊陈述 | 1 | 1 |
 
@@ -43,7 +44,7 @@ Registry.lean 将 simplFunIso 接入接口生成器，并组合已有函数、Bo
 - [证书完整类型、公理闭包](reports/CERTIFICATES.md)
 - [当前 2180 项覆盖](reports/CORELIB_LEDGER.csv)、[摘要](reports/summary.json)
 - [验证记录](reports/validation.json)、reports/*-audit.json、reports/*.log
-- proofs/Basics.lean、SSR.lean、SSRProperties.lean、Iteration.lean、Registry.lean
+- proofs/：Basics、SSR、Bool 陈述、NumericRead、Decimal/HexadecimalOperations、WellFounded 等；新增证明详情见 NUMERIC_WF_RESULTS.md。
 - certificates.json：显式 source → certificate 清单；make_report.py 只按此清单更新覆盖。
 - source-dependencies.csv：9457 条带类别的 IR 依赖；dependency-graph.json：根级 DAG。
 - .work/：编译缓存与临时检查，仅远程保留。
@@ -55,6 +56,7 @@ Registry.lean 将 simplFunIso 接入接口生成器，并组合已有函数、Bo
     python3 build_dag.py
     python3 build_registry.py
     python3 build_statements.py
+    python3 build_digit_operations.py
     python3 verify.py
     python3 make_report.py
 
@@ -64,7 +66,7 @@ build_dag.py 重新生成基线任务表后，运行 make_report.py 恢复本轮
 
 ## 下一步
 
-P2/P3a/P5/P6 已有两批进展，整个计划未完成。接下来处理数值/数字表示、依赖类型及剩余 SSR 包装。最终覆盖的主观预估见 [ESTIMATE.md](ESTIMATE.md)，不作为已证结果。
+P2/P3/P4/P5/P6 已有四批进展，整个计划未完成。接下来处理数字写出、二元良基递归、Sigma/Subtype 及剩余 SSR 包装。最终覆盖的主观预估见 [ESTIMATE.md](ESTIMATE.md)，不作为已证结果。
 
 ## 第二批检查
 

@@ -1,0 +1,114 @@
+[{"type":
+  "∀ (x : List (Fin 10) ⊕ List (Fin 16)),\n  NativeBridge.Incremental.numberUintTo (NativeBridge.Incremental.numberUintOf x) = x",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.numberUint_to_of",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type": "Rocq.Corelib.Init.Number.uint → List (Fin 10) ⊕ List (Fin 16)",
+  "source_references": ["Rocq.Corelib.Init.Number.uint"],
+  "name": "NativeBridge.Incremental.numberUintTo",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (x : Rocq.Corelib.Init.Number.uint),\n  NativeBridge.Incremental.numberUintTo x =\n    Rocq.Corelib.Init.Number.uint.rec (fun ds => Sum.inl (NativeBridge.decimalDigitsTo ds))\n      (fun ds => Sum.inr (NativeBridge.hexadecimalDigitsTo ds)) x",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.uint",
+   "Rocq.Corelib.Init.Number.uint.rec",
+   "Rocq.Corelib.Init.Decimal.uint",
+   "Rocq.Corelib.Init.Hexadecimal.uint"],
+  "name": "NativeBridge.Incremental.numberUintTo.eq_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (ds : Rocq.Corelib.Init.Number.uint),\n  NativeBridge.natTo (Rocq.Corelib.Init.Nat.of_num_uint ds) =\n    match NativeBridge.Incremental.numberUintTo ds with\n    | Sum.inl xs => List.foldl (fun a d => 10 * a + ↑d) 0 xs\n    | Sum.inr xs => List.foldl (fun a d => 16 * a + ↑d) 0 xs",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.uint", "Rocq.Corelib.Init.Nat.of_num_uint"],
+  "name": "NativeBridge.Incremental.number_read_agrees",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "∀ (ds : Rocq.Corelib.Init.Hexadecimal.uint) (acc : NativeBridge.MN),\n  NativeBridge.natTo (Rocq.Corelib.Init.Nat.of_hex_uint_acc ds acc) =\n    List.foldl (fun a d => 16 * a + ↑d) (NativeBridge.natTo acc) (NativeBridge.hexadecimalDigitsTo ds)",
+  "source_references":
+  ["Rocq.Corelib.Init.Hexadecimal.uint",
+   "Rocq.Corelib.Init.Nat.of_hex_uint_acc"],
+  "name": "NativeBridge.Incremental.hexadecimal_read_acc_agrees",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "¬∀ (x y : Rocq.Corelib.Init.Hexadecimal.uint),\n    Rocq.Corelib.Init.Nat.of_hex_uint x = Rocq.Corelib.Init.Nat.of_hex_uint y → x = y",
+  "source_references":
+  ["Rocq.Corelib.Init.Hexadecimal.uint",
+   "Rocq.Corelib.Init.Datatypes.nat",
+   "Rocq.Corelib.Init.Nat.of_hex_uint"],
+  "name": "NativeBridge.Incremental.hexadecimal_decode_not_injective",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (ds : Rocq.Corelib.Init.Decimal.uint),\n  NativeBridge.natTo (Rocq.Corelib.Init.Nat.of_uint ds) =\n    List.foldl (fun a d => 10 * a + ↑d) 0 (NativeBridge.decimalDigitsTo ds)",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.uint", "Rocq.Corelib.Init.Nat.of_uint"],
+  "name": "NativeBridge.Incremental.decimal_read_agrees",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "∀ (x : Rocq.Corelib.Init.Number.uint),\n  NativeBridge.Incremental.numberUintOf (NativeBridge.Incremental.numberUintTo x) = x",
+  "source_references": ["Rocq.Corelib.Init.Number.uint"],
+  "name": "NativeBridge.Incremental.numberUint_of_to",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (ds : List (Fin 16)),\n  NativeBridge.Incremental.numberUintOf (Sum.inr ds) =\n    Rocq.Corelib.Init.Number.uint.UIntHexadecimal (NativeBridge.hexadecimalDigitsOf ds)",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.uint",
+   "Rocq.Corelib.Init.Number.uint.UIntHexadecimal"],
+  "name": "NativeBridge.Incremental.numberUintOf.eq_2",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type": "List (Fin 10) ⊕ List (Fin 16) → Rocq.Corelib.Init.Number.uint",
+  "source_references": ["Rocq.Corelib.Init.Number.uint"],
+  "name": "NativeBridge.Incremental.numberUintOf",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type":
+  "NativeBridge.Iso Rocq.Corelib.Init.Number.uint (List (Fin 10) ⊕ List (Fin 16))",
+  "source_references": ["Rocq.Corelib.Init.Number.uint"],
+  "name": "NativeBridge.Incremental.numberUintIso",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (ds : Rocq.Corelib.Init.Decimal.uint) (acc : NativeBridge.MN),\n  NativeBridge.natTo (Rocq.Corelib.Init.Nat.of_uint_acc ds acc) =\n    List.foldl (fun a d => 10 * a + ↑d) (NativeBridge.natTo acc) (NativeBridge.decimalDigitsTo ds)",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.uint", "Rocq.Corelib.Init.Nat.of_uint_acc"],
+  "name": "NativeBridge.Incremental.decimal_read_acc_agrees",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "(motive : List (Fin 10) ⊕ List (Fin 16) → Sort u_1) →\n  (x : List (Fin 10) ⊕ List (Fin 16)) →\n    ((ds : List (Fin 10)) → motive (Sum.inl ds)) → ((ds : List (Fin 16)) → motive (Sum.inr ds)) → motive x",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.numberUintOf.match_1",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "¬∀ (x y : Rocq.Corelib.Init.Decimal.uint), Rocq.Corelib.Init.Nat.of_uint x = Rocq.Corelib.Init.Nat.of_uint y → x = y",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.uint",
+   "Rocq.Corelib.Init.Datatypes.nat",
+   "Rocq.Corelib.Init.Nat.of_uint"],
+  "name": "NativeBridge.Incremental.decimal_decode_not_injective",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (ds : List (Fin 10)),\n  NativeBridge.Incremental.numberUintOf (Sum.inl ds) =\n    Rocq.Corelib.Init.Number.uint.UIntDecimal (NativeBridge.decimalDigitsOf ds)",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.uint",
+   "Rocq.Corelib.Init.Number.uint.UIntDecimal"],
+  "name": "NativeBridge.Incremental.numberUintOf.eq_1",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (ds : Rocq.Corelib.Init.Hexadecimal.uint),\n  NativeBridge.natTo (Rocq.Corelib.Init.Nat.of_hex_uint ds) =\n    List.foldl (fun a d => 16 * a + ↑d) 0 (NativeBridge.hexadecimalDigitsTo ds)",
+  "source_references":
+  ["Rocq.Corelib.Init.Hexadecimal.uint", "Rocq.Corelib.Init.Nat.of_hex_uint"],
+  "name": "NativeBridge.Incremental.hexadecimal_read_agrees",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]}]

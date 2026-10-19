@@ -1,0 +1,246 @@
+[{"type":
+  "Rocq.Corelib.Init.Decimal.internal_signed_int_dec_lb.statement ↔ ∀ (x y : Bool × List (Fin 10)), x = y → (x == y) = true",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.internal_signed_int_dec_lb.statement"],
+  "name": "NativeBridge.Incremental.Decimal.signed_int_dec_lb_native",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (x : Bool × List (Fin 10)),\n  NativeBridge.Incremental.Decimal.signedOf x =\n    if x.fst = true then Rocq.Corelib.Init.Decimal.signed_int.Neg (NativeBridge.decimalDigitsOf x.snd)\n    else Rocq.Corelib.Init.Decimal.signed_int.Pos (NativeBridge.decimalDigitsOf x.snd)",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.signed_int",
+   "Rocq.Corelib.Init.Decimal.signed_int.Neg",
+   "Rocq.Corelib.Init.Decimal.signed_int.Pos"],
+  "name": "NativeBridge.Incremental.Decimal.signedOf.eq_1",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type": "Rocq.Corelib.Init.Decimal.signed_int → Bool × List (Fin 10)",
+  "source_references": ["Rocq.Corelib.Init.Decimal.signed_int"],
+  "name": "NativeBridge.Incremental.Decimal.signedTo",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (x : Rocq.Corelib.Init.Decimal.signed_int) (ds : Rocq.Corelib.Init.Decimal.uint),\n  NativeBridge.Incremental.Decimal.signedTo (Rocq.Corelib.Init.Decimal.app_int x ds) =\n    ((NativeBridge.Incremental.Decimal.signedTo x).fst,\n      (NativeBridge.Incremental.Decimal.signedTo x).snd ++ NativeBridge.decimalDigitsTo ds)",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.signed_int",
+   "Rocq.Corelib.Init.Decimal.uint",
+   "Rocq.Corelib.Init.Decimal.app_int"],
+  "name": "NativeBridge.Incremental.Decimal.app_int_agrees",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (x : Rocq.Corelib.Init.Decimal.signed_int),\n  NativeBridge.Incremental.Decimal.signedTo x =\n    Rocq.Corelib.Init.Decimal.signed_int.rec (fun ds => (false, NativeBridge.decimalDigitsTo ds))\n      (fun ds => (true, NativeBridge.decimalDigitsTo ds)) x",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.signed_int",
+   "Rocq.Corelib.Init.Decimal.signed_int.rec",
+   "Rocq.Corelib.Init.Decimal.uint"],
+  "name": "NativeBridge.Incremental.Decimal.signedTo.eq_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "(motive : List (Fin 10) → Sort u_1) →\n  (x : List (Fin 10)) → (Unit → motive []) → ((ds : List (Fin 10)) → motive ds) → motive x",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.Decimal.unorm_agrees.match_1",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type":
+  "Rocq.Corelib.Init.Decimal.internal_uint_dec_lb.statement ↔ ∀ (x y : List (Fin 10)), x = y → (x == y) = true",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.internal_uint_dec_lb.statement"],
+  "name": "NativeBridge.Incremental.Decimal.uint_dec_lb_native",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (t : Rocq.Corelib.Init.Datatypes.bool),\n  NativeBridge.Incremental.Decimal.digitBoolTo t = Rocq.Corelib.Init.Datatypes.bool.rec true false t",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.bool", "Rocq.Corelib.Init.Datatypes.bool.rec"],
+  "name": "NativeBridge.Incremental.Decimal.digitBoolTo.eq_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "{α : Type u} →\n  {motive : List α → Sort u_1} → (t : List α) → motive [] → (Nat.hasNotBit 1 t.ctorIdx → motive t) → motive t",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.Decimal.unorm_agrees._sparseCasesOn_1",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (x : Rocq.Corelib.Init.Decimal.signed_int),\n  NativeBridge.decimalDigitsTo (Rocq.Corelib.Init.Decimal.abs x) = (NativeBridge.Incremental.Decimal.signedTo x).snd",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.signed_int", "Rocq.Corelib.Init.Decimal.abs"],
+  "name": "NativeBridge.Incremental.Decimal.abs_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (x : Bool × List (Fin 10)),\n  NativeBridge.Incremental.Decimal.signedTo (NativeBridge.Incremental.Decimal.signedOf x) = x",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.Decimal.signed_to_of",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (x : Rocq.Corelib.Init.Decimal.signed_int),\n  NativeBridge.Incremental.Decimal.signedTo (Rocq.Corelib.Init.Decimal.opp x) =\n    (!(NativeBridge.Incremental.Decimal.signedTo x).fst, (NativeBridge.Incremental.Decimal.signedTo x).snd)",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.signed_int", "Rocq.Corelib.Init.Decimal.opp"],
+  "name": "NativeBridge.Incremental.Decimal.opp_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Bool × List (Fin 10) → Rocq.Corelib.Init.Decimal.signed_int",
+  "source_references": ["Rocq.Corelib.Init.Decimal.signed_int"],
+  "name": "NativeBridge.Incremental.Decimal.signedOf",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (xs ys : Rocq.Corelib.Init.Decimal.uint),\n  NativeBridge.decimalDigitsTo (Rocq.Corelib.Init.Decimal.app xs ys) =\n    NativeBridge.decimalDigitsTo xs ++ NativeBridge.decimalDigitsTo ys",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.uint", "Rocq.Corelib.Init.Decimal.app"],
+  "name": "NativeBridge.Incremental.Decimal.app_agrees",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (xs : Rocq.Corelib.Init.Decimal.uint),\n  NativeBridge.decimalDigitsTo (Rocq.Corelib.Init.Decimal.nzhead xs) =\n    List.dropWhile (fun d => ↑d == 0) (NativeBridge.decimalDigitsTo xs)",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.uint", "Rocq.Corelib.Init.Decimal.nzhead"],
+  "name": "NativeBridge.Incremental.Decimal.nzhead_agrees",
+  "kind": "theorem",
+  "axioms": ["propext", "Classical.choice", "Quot.sound"]},
+ {"type":
+  "∀ (xs ys : Rocq.Corelib.Init.Decimal.uint),\n  NativeBridge.Incremental.Decimal.digitBoolTo (Rocq.Corelib.Init.Decimal.uint_beq xs ys) =\n    (NativeBridge.decimalDigitsTo xs == NativeBridge.decimalDigitsTo ys)",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.uint", "Rocq.Corelib.Init.Decimal.uint_beq"],
+  "name": "NativeBridge.Incremental.Decimal.uint_beq_agrees",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (xs ys : Rocq.Corelib.Init.Decimal.signed_int),\n  NativeBridge.Incremental.Decimal.digitBoolTo (Rocq.Corelib.Init.Decimal.signed_int_beq xs ys) =\n    (NativeBridge.Incremental.Decimal.signedTo xs == NativeBridge.Incremental.Decimal.signedTo ys)",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.signed_int",
+   "Rocq.Corelib.Init.Decimal.signed_int_beq"],
+  "name": "NativeBridge.Incremental.Decimal.signed_int_beq_agrees",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type": "Rocq.Corelib.Init.Decimal.internal_signed_int_dec_bl.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.internal_signed_int_dec_bl.statement"],
+  "name": "NativeBridge.Incremental.Decimal.signed_int_dec_bl_proved",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (xs : Rocq.Corelib.Init.Decimal.uint),\n  NativeBridge.decimalDigitsTo (Rocq.Corelib.Init.Decimal.unorm xs) =\n    match List.dropWhile (fun d => ↑d == 0) (NativeBridge.decimalDigitsTo xs) with\n    | [] => [0]\n    | ds => ds",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.uint", "Rocq.Corelib.Init.Decimal.unorm"],
+  "name": "NativeBridge.Incremental.Decimal.unorm_agrees",
+  "kind": "theorem",
+  "axioms": ["propext", "Classical.choice", "Quot.sound"]},
+ {"type":
+  "∀ (xs ys : Rocq.Corelib.Init.Decimal.uint),\n  NativeBridge.decimalDigitsTo (Rocq.Corelib.Init.Decimal.revapp xs ys) =\n    (NativeBridge.decimalDigitsTo xs).reverse ++ NativeBridge.decimalDigitsTo ys",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.uint", "Rocq.Corelib.Init.Decimal.revapp"],
+  "name": "NativeBridge.Incremental.Decimal.revapp_agrees",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (x : Rocq.Corelib.Init.Decimal.signed_int),\n  NativeBridge.Incremental.Decimal.signedOf (NativeBridge.Incremental.Decimal.signedTo x) = x",
+  "source_references": ["Rocq.Corelib.Init.Decimal.signed_int"],
+  "name": "NativeBridge.Incremental.Decimal.signed_of_to",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "Rocq.Corelib.Init.Decimal.internal_signed_int_dec_bl.statement ↔ ∀ (x y : Bool × List (Fin 10)), (x == y) = true → x = y",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.internal_signed_int_dec_bl.statement"],
+  "name": "NativeBridge.Incremental.Decimal.signed_int_dec_bl_native",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (xs : Rocq.Corelib.Init.Decimal.uint),\n  NativeBridge.decimalDigitsTo (Rocq.Corelib.Init.Decimal.rev xs) = (NativeBridge.decimalDigitsTo xs).reverse",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.uint", "Rocq.Corelib.Init.Decimal.rev"],
+  "name": "NativeBridge.Incremental.Decimal.rev_agrees",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ {A B : Type} (e : NativeBridge.Iso A B) (r : A → A → Rocq.Corelib.Init.Datatypes.bool) (s : B → B → Bool),\n  (∀ (x y : A), NativeBridge.Incremental.Decimal.digitBoolTo (r x y) = s (e.to x) (e.to y)) →\n    ((∀ (x y : A),\n        NativeBridge.ME A x y →\n          NativeBridge.ME Rocq.Corelib.Init.Datatypes.bool (r x y) Rocq.Corelib.Init.Datatypes.bool.true) ↔\n      ∀ (x y : B), x = y → s x y = true)",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.bool", "Rocq.Corelib.Init.Datatypes.bool.true"],
+  "name": "NativeBridge.Incremental.Decimal.comparison_complete_transport",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "(motive : List (Fin 10) → Sort u_1) →\n  (ds : List (Fin 10)) → (Unit → motive []) → ((d : Fin 10) → (rest : List (Fin 10)) → motive (d :: rest)) → motive ds",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.Decimal.norm_agrees.match_1",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Decimal.internal_uint_dec_bl.statement ↔ ∀ (x y : List (Fin 10)), (x == y) = true → x = y",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.internal_uint_dec_bl.statement"],
+  "name": "NativeBridge.Incremental.Decimal.uint_dec_bl_native",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "NativeBridge.decimalDigitsTo\n    (Rocq.Corelib.Init.Decimal.del_head Rocq.Corelib.Init.Datatypes.nat.O.S Rocq.Corelib.Init.Decimal.uint.Nil) ≠\n  List.drop 1 []",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.del_head",
+   "Rocq.Corelib.Init.Datatypes.nat.S",
+   "Rocq.Corelib.Init.Datatypes.nat.O",
+   "Rocq.Corelib.Init.Decimal.uint.Nil"],
+  "name": "NativeBridge.Incremental.Decimal.del_head_is_not_drop",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type": "Rocq.Corelib.Init.Decimal.internal_uint_dec_lb.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.internal_uint_dec_lb.statement"],
+  "name": "NativeBridge.Incremental.Decimal.uint_dec_lb_proved",
+  "kind": "theorem",
+  "axioms": ["propext", "Classical.choice", "Quot.sound"]},
+ {"type":
+  "NativeBridge.Iso Rocq.Corelib.Init.Decimal.signed_int (Bool × List (Fin 10))",
+  "source_references": ["Rocq.Corelib.Init.Decimal.signed_int"],
+  "name": "NativeBridge.Incremental.Decimal.signedIso",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (x : Rocq.Corelib.Init.Decimal.signed_int),\n  NativeBridge.Incremental.Decimal.signedTo (Rocq.Corelib.Init.Decimal.norm x) =\n    have ds := List.dropWhile (fun d => ↑d == 0) (NativeBridge.Incremental.Decimal.signedTo x).snd;\n    match ds with\n    | [] => (false, [0])\n    | d :: rest => ((NativeBridge.Incremental.Decimal.signedTo x).fst, d :: rest)",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.signed_int", "Rocq.Corelib.Init.Decimal.norm"],
+  "name": "NativeBridge.Incremental.Decimal.norm_agrees",
+  "kind": "theorem",
+  "axioms": ["propext", "Classical.choice", "Quot.sound"]},
+ {"type": "Rocq.Corelib.Init.Decimal.internal_signed_int_dec_lb.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.internal_signed_int_dec_lb.statement"],
+  "name": "NativeBridge.Incremental.Decimal.signed_int_dec_lb_proved",
+  "kind": "theorem",
+  "axioms": ["propext", "Classical.choice", "Quot.sound"]},
+ {"type":
+  "∀ {A B : Type} (e : NativeBridge.Iso A B) (r : A → A → Rocq.Corelib.Init.Datatypes.bool) (s : B → B → Bool),\n  (∀ (x y : A), NativeBridge.Incremental.Decimal.digitBoolTo (r x y) = s (e.to x) (e.to y)) →\n    ((∀ (x y : A),\n        NativeBridge.ME Rocq.Corelib.Init.Datatypes.bool (r x y) Rocq.Corelib.Init.Datatypes.bool.true →\n          NativeBridge.ME A x y) ↔\n      ∀ (x y : B), s x y = true → x = y)",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.bool", "Rocq.Corelib.Init.Datatypes.bool.true"],
+  "name": "NativeBridge.Incremental.Decimal.comparison_sound_transport",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Decimal.internal_uint_dec_bl.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.internal_uint_dec_bl.statement"],
+  "name": "NativeBridge.Incremental.Decimal.uint_dec_bl_proved",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type": "Rocq.Corelib.Init.Datatypes.bool → Bool",
+  "source_references": ["Rocq.Corelib.Init.Datatypes.bool"],
+  "name": "NativeBridge.Incremental.Decimal.digitBoolTo",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (b : Rocq.Corelib.Init.Datatypes.bool),\n  NativeBridge.ME Rocq.Corelib.Init.Datatypes.bool b Rocq.Corelib.Init.Datatypes.bool.true ↔\n    NativeBridge.Incremental.Decimal.digitBoolTo b = true",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.bool", "Rocq.Corelib.Init.Datatypes.bool.true"],
+  "name": "NativeBridge.Incremental.Decimal.digitBool_true_iff",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (xs : Rocq.Corelib.Init.Decimal.uint),\n  NativeBridge.natTo (Rocq.Corelib.Init.Decimal.nb_digits xs) = (NativeBridge.decimalDigitsTo xs).length",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.uint", "Rocq.Corelib.Init.Decimal.nb_digits"],
+  "name": "NativeBridge.Incremental.Decimal.nb_digits_agrees",
+  "kind": "theorem",
+  "axioms": ["propext"]}]
