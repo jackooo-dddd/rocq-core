@@ -100,7 +100,7 @@ python3 results/run_lean_entry.py Corelib/Init/Nat.lean
 ## 已完成的后续 correspondence
 
 机械翻译阶段完成后，已在独立 mechanical-correspondence-20261019 实验建立机械 nat/eq 与 Lean 原生 Nat/Eq 的对应。
-下一阶段可以基于这两个真实机械类型，分别证明双向转换、操作一致性和命题搬运。
+已证明双向转换、两个往返恒等、主要运算一致性和依赖 transport；完整证书与边界见 [新对应实验](../mechanical-correspondence-20261019/README.md)。
 
 `native-correspondence-main75-20261018` 属于旧 bootstrap 基线。
 旧版 Nat identity bridge 和此前的 correspondence 数量不能直接作为本版本的证明结果。

@@ -14,8 +14,8 @@ Lean's own Nat/Eq may still occur in metaprogramming, primitive-model internals,
 bookkeeping and checked auxiliary proofs. Those occurrences are not a source inductive
 mapping. Generated source references must resolve to the generated source declarations.
 
-No Nat/Eq correspondence, conversion or native API substitution is introduced in this
-phase. Earlier native-correspondence-main75 artifacts belong to the previous bootstrap
+The mechanical translation phase does not substitute native Nat/Eq APIs. Separate Nat/Eq
+correspondence proofs have now been completed; see the subsequent-proof section below. Earlier native-correspondence-main75 artifacts belong to the previous bootstrap
 baseline and must not be imported as evidence for this new baseline.
 
 Existing pending proof parameters remain explicit. Translating a theorem statement does
