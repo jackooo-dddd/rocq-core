@@ -1,0 +1,74 @@
+{
+  "status": "PASS",
+  "scope": {
+    "modules": 67,
+    "distinct_requested": 2180,
+    "root_counts": {
+      "STATEMENT_KERNEL_CHECKED": 846,
+      "TRANSLATED_AND_CHECKED": 1003,
+      "PENDING_KERNEL_CHECKED": 148,
+      "STATEMENT_PENDING_KERNEL_CHECKED": 183
+    },
+    "blocked_roots": 0,
+    "validation_failures": [],
+    "success": true
+  },
+  "kernel_modules": 51,
+  "translation_rules_enabled": 102,
+  "checks_enabled": 8,
+  "scheduling_enabled": 5,
+  "not_enabled": [
+    "E14",
+    "T06",
+    "V02"
+  ],
+  "configuration_sha256": "238ca58ad3e4dceaf4f7b08ca985dcd8d3547eb4b0429e30485f7b60004e1b22",
+  "catalog_sha256": "c2f3246b04cd5560977f39e6cef6c1e9435d24fa89aff727b74cf8e1c7e75aad",
+  "source_run": "fresh export, source roundtrip, target translation, independent consumer and audit",
+  "root_inventory_unchanged": true,
+  "target_declarations_changed_from_mechanical_baseline": 0,
+  "native_bootstrap": 0,
+  "source_body_states_including_repeated_dependencies": {
+    "assumption": 17,
+    "unsupported_primitive": 159,
+    "statement_only": 1029,
+    "transparent": 2058,
+    "opaque_data": 108,
+    "obligation": 541,
+    "opaque_interface": 1,
+    "opaque_present": 9,
+    "sealed_implementation": 4
+  },
+  "tests": [
+    {
+      "test": "MechanicalIdentity",
+      "exit": 0,
+      "passed": true,
+      "log_sha256": "89baba9bf4aaeec22d1d31dbf39ab4ecc465315f787b15d120255450541d5597"
+    },
+    {
+      "test": "NatCompute",
+      "exit": 0,
+      "passed": true,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "test": "itemized-configuration-check",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "test": "changed-rule-set-refused",
+      "removed": "M03",
+      "exit": 2,
+      "passed": true
+    },
+    {
+      "test": "documented-translation-entrypoint",
+      "exit": 0,
+      "passed": true
+    }
+  ],
+  "limits": "Sufficient full configuration, not minimality or independently measured use of every subrule; theorem statements and explicit prerequisites remain.",
+  "raw_artifacts_remote_only": "/home/shunqwang4/research/rocq-core/.work/used-rules-20261019/full"
+}
