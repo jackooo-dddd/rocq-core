@@ -1,0 +1,66 @@
+{"certificates":
+ [{"type":
+   "∀ (P : Sort u) (Q : Sort v) (f : P → Q),\n  Eq.{imax u v}\n    (Computational.SSRBool.Rocq.Corelib.ssr.ssrbool.impliesP.{u, v} P Q\n      (Computational.SSRBool.NativeBridge.Iso.of.{max (max 1 u) v, imax u v}\n        (Computational.SSRBool.NativeBridge.Incremental.SSRBoolData.impliesIso.{u, v} P Q) f))\n    (NativeBridge.ComputationalCorrespondence.SSRBool.applyImplication.{u, v} P Q f)",
+   "source_variant": "Computational.SSRBool.Rocq.Corelib.ssr.ssrbool.impliesP",
+   "source_universes_unspecialized": true,
+   "remaining_source_symbols": [],
+   "native_target":
+   "NativeBridge.ComputationalCorrespondence.SSRBool.applyImplication",
+   "certificate":
+   "NativeBridge.ComputationalCorrespondence.SSRBool.applyImplication_agrees",
+   "axioms": []},
+  {"type":
+   "∀ (I : Type u) (T : I → Type v) (C : I → Bool) (U : (x : I) → T x → Type w) (d : (x : I) → T x)\n  (f : (x : I) → Eq.{1} (C x) true → Sigma.{v, w} (U x)),\n  Eq.{max (max (u + 1) (v + 1)) (w + 1)}\n    (Computational.SSRBool.NativeBridge.Iso.to.{max (max (u + 1) (v + 1)) (w + 1), max (max (u + 1) (v + 1)) (w + 1)}\n      (NativeBridge.ComputationalCorrespondence.SSRBool.conditionalTagIso.{u, v, w} I T C U)\n      (Computational.SSRBool.RocqPending.Corelib.ssr.ssrbool.all_tag_cond_dep.{u, v, w} I T\n        (Computational.SSRBool.NativeBridge.Incremental.SSRBoolData.predOf.{u} C) U d fun x h =>\n        Computational.SSRBool.NativeBridge.Iso.of.{max (w + 1) (v + 1), max (w + 1) (v + 1)}\n          (Computational.SSRBool.NativeBridge.sigmaIso.{v, w} (T x) fun y => U x y) (f x ⋯)))\n    (NativeBridge.ComputationalCorrespondence.SSRBool.allTagCondDep.{u, v, w} I T C U d f)",
+   "source_variant":
+   "Computational.SSRBool.RocqPending.Corelib.ssr.ssrbool.all_tag_cond_dep",
+   "source_universes_unspecialized": true,
+   "remaining_source_symbols": [],
+   "native_target":
+   "NativeBridge.ComputationalCorrespondence.SSRBool.allTagCondDep",
+   "certificate":
+   "NativeBridge.ComputationalCorrespondence.SSRBool.allTagCondDep_agrees",
+   "axioms": ["propext", "Quot.sound"]},
+  {"type":
+   "∀ (I : Type u) (T : Type v) (C : I → Bool) (U : I → T → Type w) (d : T)\n  (f : (x : I) → Eq.{1} (C x) true → Sigma.{v, w} (U x)),\n  Eq.{max (max (u + 1) (v + 1)) (w + 1)}\n    (Computational.SSRBool.NativeBridge.Iso.to.{max (max (u + 1) (v + 1)) (w + 1), max (max (u + 1) (v + 1)) (w + 1)}\n      (NativeBridge.ComputationalCorrespondence.SSRBool.conditionalTagIso.{u, v, w} I (fun x => T) C U)\n      (Computational.SSRBool.RocqPending.Corelib.ssr.ssrbool.all_tag_cond.{u, v, w} I T\n        (Computational.SSRBool.NativeBridge.Incremental.SSRBoolData.predOf.{u} C) U d fun x h =>\n        Computational.SSRBool.NativeBridge.Iso.of.{max (w + 1) (v + 1), max (w + 1) (v + 1)}\n          (Computational.SSRBool.NativeBridge.sigmaIso.{v, w} T fun y => U x y) (f x ⋯)))\n    (NativeBridge.ComputationalCorrespondence.SSRBool.allTagCond.{u, v, w} I T C U d f)",
+   "source_variant":
+   "Computational.SSRBool.RocqPending.Corelib.ssr.ssrbool.all_tag_cond",
+   "source_universes_unspecialized": true,
+   "remaining_source_symbols": [],
+   "native_target":
+   "NativeBridge.ComputationalCorrespondence.SSRBool.allTagCond",
+   "certificate":
+   "NativeBridge.ComputationalCorrespondence.SSRBool.allTagCond_agrees",
+   "axioms": ["propext", "Quot.sound"]},
+  {"type":
+   "∀ (I : Type u) (T : I → Type v) (C : I → Bool) (P : (x : I) → T x → Prop) (d : (x : I) → T x)\n  (f : (x : I) → Eq.{1} (C x) true → Subtype.{v + 1} (P x)),\n  Eq.{max (u + 1) (v + 1)}\n    (Computational.SSRBool.NativeBridge.Iso.to.{max (u + 1) (v + 1), max (u + 1) (v + 1)}\n      (NativeBridge.ComputationalCorrespondence.SSRBool.conditionalSigIso.{u, v} I T C P)\n      (Computational.SSRBool.RocqPending.Corelib.ssr.ssrbool.all_sig_cond_dep.{u, v} I T\n        (Computational.SSRBool.NativeBridge.Incremental.SSRBoolData.predOf.{u} C) P d fun x h =>\n        Computational.SSRBool.NativeBridge.Iso.of.{v + 1, v + 1}\n          (Computational.SSRBool.NativeBridge.sigIso.{v} (T x) fun y => P x y) (f x ⋯)))\n    (NativeBridge.ComputationalCorrespondence.SSRBool.allSigCondDep.{u, v} I T C P d f)",
+   "source_variant":
+   "Computational.SSRBool.RocqPending.Corelib.ssr.ssrbool.all_sig_cond_dep",
+   "source_universes_unspecialized": true,
+   "remaining_source_symbols": [],
+   "native_target":
+   "NativeBridge.ComputationalCorrespondence.SSRBool.allSigCondDep",
+   "certificate":
+   "NativeBridge.ComputationalCorrespondence.SSRBool.allSigCondDep_agrees",
+   "axioms": ["propext", "Quot.sound"]},
+  {"type":
+   "∀ (I : Type u) (T : Type v) (C : I → Bool) (P : I → T → Prop) (d : T)\n  (f : (x : I) → Eq.{1} (C x) true → Subtype.{v + 1} (P x)),\n  Eq.{max (u + 1) (v + 1)}\n    (Computational.SSRBool.NativeBridge.Iso.to.{max (u + 1) (v + 1), max (u + 1) (v + 1)}\n      (NativeBridge.ComputationalCorrespondence.SSRBool.conditionalSigIso.{u, v} I (fun x => T) C P)\n      (Computational.SSRBool.RocqPending.Corelib.ssr.ssrbool.all_sig_cond.{u, v} I T\n        (Computational.SSRBool.NativeBridge.Incremental.SSRBoolData.predOf.{u} C) P d fun x h =>\n        Computational.SSRBool.NativeBridge.Iso.of.{v + 1, v + 1}\n          (Computational.SSRBool.NativeBridge.sigIso.{v} T fun y => P x y) (f x ⋯)))\n    (NativeBridge.ComputationalCorrespondence.SSRBool.allSigCond.{u, v} I T C P d f)",
+   "source_variant":
+   "Computational.SSRBool.RocqPending.Corelib.ssr.ssrbool.all_sig_cond",
+   "source_universes_unspecialized": true,
+   "remaining_source_symbols": [],
+   "native_target":
+   "NativeBridge.ComputationalCorrespondence.SSRBool.allSigCond",
+   "certificate":
+   "NativeBridge.ComputationalCorrespondence.SSRBool.allSigCond_agrees",
+   "axioms": ["propext", "Quot.sound"]},
+  {"type":
+   "∀ (I : Type u) (T : Type v) (C : I → Bool) (P Q : I → T → Prop) (d : T)\n  (f : (x : I) → Eq.{1} (C x) true → Subtype.{v + 1} fun a => P x a ∧ Q x a),\n  Eq.{max (u + 1) (v + 1)}\n    (Computational.SSRBool.NativeBridge.Iso.to.{max (u + 1) (v + 1), max (u + 1) (v + 1)}\n      (NativeBridge.ComputationalCorrespondence.SSRBool.conditionalSig2Iso.{u, v} I T C P Q)\n      (Computational.SSRBool.RocqPending.Corelib.ssr.ssrbool.all_sig2_cond.{u, v} I T\n        (Computational.SSRBool.NativeBridge.Incremental.SSRBoolData.predOf.{u} C) P Q d fun x h =>\n        Computational.SSRBool.NativeBridge.Iso.of.{v + 1, v + 1}\n          (Computational.SSRBool.NativeBridge.sig2Iso.{v} T (fun y => P x y) fun y => Q x y) (f x ⋯)))\n    (NativeBridge.ComputationalCorrespondence.SSRBool.allSig2Cond.{u, v} I T C P Q d f)",
+   "source_variant":
+   "Computational.SSRBool.RocqPending.Corelib.ssr.ssrbool.all_sig2_cond",
+   "source_universes_unspecialized": true,
+   "remaining_source_symbols": [],
+   "native_target":
+   "NativeBridge.ComputationalCorrespondence.SSRBool.allSig2Cond",
+   "certificate":
+   "NativeBridge.ComputationalCorrespondence.SSRBool.allSig2Cond_agrees",
+   "axioms": ["propext", "Classical.choice", "Quot.sound"]}]}

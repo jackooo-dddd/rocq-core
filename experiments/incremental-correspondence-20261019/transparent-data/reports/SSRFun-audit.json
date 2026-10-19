@@ -1,0 +1,39 @@
+{"certificates":
+ [{"type":
+   "∀ (I : Sort u) (T : I → Sort v) (U : (i : I) → T i → Sort w) (f : (i : I) → PSigma.{v, w} (U i)),\n  Eq.{max (max 1 (imax u v)) (imax u w)}\n    (Computational.SSRFun.NativeBridge.Incremental.SSRFunData.sigmaTo.{imax u v, imax u w}\n      (Computational.SSRFun.Rocq.Corelib.ssr.ssrfun.all_tag.{u, v, w} I T U fun i =>\n        Computational.SSRFun.NativeBridge.Incremental.SSRFunData.sigmaOf.{v, w} (f i)))\n    (NativeBridge.ComputationalCorrespondence.SSRFun.allTag.{u, v, w} I T U f)",
+   "source_variant": "Computational.SSRFun.Rocq.Corelib.ssr.ssrfun.all_tag",
+   "source_universes_unspecialized": true,
+   "remaining_source_symbols": [],
+   "native_target": "NativeBridge.ComputationalCorrespondence.SSRFun.allTag",
+   "certificate":
+   "NativeBridge.ComputationalCorrespondence.SSRFun.allTag_agrees",
+   "axioms": []},
+  {"type":
+   "∀ (I : Sort u) (T : I → Sort v) (U : (i : I) → T i → Sort w) (V : (i : I) → T i → Sort z)\n  (f : (i : I) → (a : T i) ×' PProd.{w, z} (U i a) (V i a)),\n  Eq.{max (max (max 1 (imax u v)) (imax u w)) (imax u z)}\n    (Computational.SSRFun.NativeBridge.Incremental.SSRFunData.sigma2To.{imax u v, imax u w, imax u z}\n      (Computational.SSRFun.Rocq.Corelib.ssr.ssrfun.all_tag2.{u, v, w, z} I T U V fun i =>\n        Computational.SSRFun.NativeBridge.Incremental.SSRFunData.sigma2Of.{v, w, z} (f i)))\n    (NativeBridge.ComputationalCorrespondence.SSRFun.allTag2.{u, v, w, z} I T U V f)",
+   "source_variant": "Computational.SSRFun.Rocq.Corelib.ssr.ssrfun.all_tag2",
+   "source_universes_unspecialized": true,
+   "remaining_source_symbols": [],
+   "native_target": "NativeBridge.ComputationalCorrespondence.SSRFun.allTag2",
+   "certificate":
+   "NativeBridge.ComputationalCorrespondence.SSRFun.allTag2_agrees",
+   "axioms": []},
+  {"type":
+   "∀ (I : Sort u) (T : I → Sort v) (P : (i : I) → T i → Prop) (f : (i : I) → Subtype.{v} (P i)),\n  Eq.{max 1 (imax u v)}\n    (Computational.SSRFun.NativeBridge.Incremental.SSRFunNormalization.sigTo.{imax u v}\n      (Computational.SSRFun.RocqPending.Corelib.ssr.ssrfun.all_sig.{u, v} I T P fun i =>\n        Computational.SSRFun.NativeBridge.Incremental.SSRFunNormalization.sigOf.{v} (f i)))\n    (NativeBridge.ComputationalCorrespondence.SSRFun.allSig.{u, v} I T P f)",
+   "source_variant":
+   "Computational.SSRFun.RocqPending.Corelib.ssr.ssrfun.all_sig",
+   "source_universes_unspecialized": true,
+   "remaining_source_symbols": [],
+   "native_target": "NativeBridge.ComputationalCorrespondence.SSRFun.allSig",
+   "certificate":
+   "NativeBridge.ComputationalCorrespondence.SSRFun.allSig_agrees",
+   "axioms": []},
+  {"type":
+   "∀ (I : Sort u) (T : I → Sort v) (P Q : (i : I) → T i → Prop) (f : (i : I) → Subtype.{v} fun a => P i a ∧ Q i a),\n  Eq.{max 1 (imax u v)}\n    (Computational.SSRFun.NativeBridge.Incremental.SSRFunNormalization.sig2To.{imax u v}\n      (Computational.SSRFun.RocqPending.Corelib.ssr.ssrfun.all_sig2.{u, v} I T P Q fun i =>\n        Computational.SSRFun.NativeBridge.Incremental.SSRFunNormalization.sig2Of.{v} (f i)))\n    (NativeBridge.ComputationalCorrespondence.SSRFun.allSig2.{u, v} I T P Q f)",
+   "source_variant":
+   "Computational.SSRFun.RocqPending.Corelib.ssr.ssrfun.all_sig2",
+   "source_universes_unspecialized": true,
+   "remaining_source_symbols": [],
+   "native_target": "NativeBridge.ComputationalCorrespondence.SSRFun.allSig2",
+   "certificate":
+   "NativeBridge.ComputationalCorrespondence.SSRFun.allSig2_agrees",
+   "axioms": []}]}

@@ -1,0 +1,23 @@
+{"certificates":
+ [{"type":
+   "∀ {A : Type u} (R : A → A → Prop) (wf : NativeBridge.ComputationalCorrespondence.ProgramWf.SWf.{u} R) (P : A → Type v)\n  (G : Computational.ProgramWf.NativeBridge.Incremental.ProgramWellFounded.NativeStep.{v, u + 1} R P)\n  (Q : (x : A) → P x → Type w)\n  (I :\n    (x : A) →\n      ((y : A) → R y x → Q y (NativeBridge.ComputationalCorrespondence.ProgramWf.nativeValue.{u, v} R ⋯ P G y)) →\n        Q x (NativeBridge.ComputationalCorrespondence.ProgramWf.nativeValue.{u, v} R ⋯ P G x))\n  (x : A) (a : NativeBridge.ComputationalCorrespondence.ProgramWf.SAcc.{u} R x),\n  Eq.{w + 1}\n    (cast.{w + 1} ⋯\n      (Computational.ProgramWf.RocqPending.Corelib.Program.Wf.Fix_F_sub_rect.{u, v, w} A P R wf\n        (Computational.ProgramWf.NativeBridge.Incremental.ProgramWellFounded.sourceStep.{u, v} R P G) Q\n        (NativeBridge.ComputationalCorrespondence.ProgramWf.fromInvariant.{u, v, w} R wf P G Q I) x a))\n    (NativeBridge.ComputationalCorrespondence.ProgramWf.nativeRect.{u, v, w} R ⋯ P G Q I x)",
+   "source_variant":
+   "Computational.ProgramWf.RocqPending.Corelib.Program.Wf.Fix_F_sub_rect",
+   "source_universes_unspecialized": true,
+   "remaining_source_symbols": [],
+   "native_target":
+   "NativeBridge.ComputationalCorrespondence.ProgramWf.nativeRect",
+   "certificate":
+   "NativeBridge.ComputationalCorrespondence.ProgramWf.fixFRect_agrees",
+   "axioms": ["Quot.sound"]},
+  {"type":
+   "∀ {A : Type u} (R : A → A → Prop) (wf : NativeBridge.ComputationalCorrespondence.ProgramWf.SWf.{u} R) (P : A → Type v)\n  (G : Computational.ProgramWf.NativeBridge.Incremental.ProgramWellFounded.NativeStep.{v, u + 1} R P)\n  (Q : (x : A) → P x → Type w)\n  (I :\n    (x : A) →\n      ((y : A) → R y x → Q y (NativeBridge.ComputationalCorrespondence.ProgramWf.nativeValue.{u, v} R ⋯ P G y)) →\n        Q x (NativeBridge.ComputationalCorrespondence.ProgramWf.nativeValue.{u, v} R ⋯ P G x))\n  (x : A),\n  Eq.{w + 1}\n    (cast.{w + 1} ⋯\n      (Computational.ProgramWf.RocqPending.Corelib.Program.Wf.Fix_sub_rect.{u, v, w} A P R wf\n        (Computational.ProgramWf.NativeBridge.Incremental.ProgramWellFounded.sourceStep.{u, v} R P G) ⋯ Q\n        (NativeBridge.ComputationalCorrespondence.ProgramWf.fromSubInvariant.{u, v, w} R wf P G Q I) x))\n    (NativeBridge.ComputationalCorrespondence.ProgramWf.nativeRect.{u, v, w} R ⋯ P G Q I x)",
+   "source_variant":
+   "Computational.ProgramWf.RocqPending.Corelib.Program.Wf.Fix_sub_rect",
+   "source_universes_unspecialized": true,
+   "remaining_source_symbols": [],
+   "native_target":
+   "NativeBridge.ComputationalCorrespondence.ProgramWf.nativeRect",
+   "certificate":
+   "NativeBridge.ComputationalCorrespondence.ProgramWf.fixSubRect_agrees",
+   "axioms": ["Quot.sound"]}]}

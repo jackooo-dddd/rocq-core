@@ -678,9 +678,17 @@ flowchart TD
  SSRPredicatePackages --> Frozen2100[原基线 2100/2180]
  Retained[原基线保留的 opaque 正文] --> TransparentPack
  TransparentPack --> CRelationVariant[CRelation 11 个对应]
- TransparentPack --> CMorphismVariant[CMorphism 已证明 26 个对应]
+ TransparentPack --> CMorphismVariant[CMorphism 54 个对应]
  CRelationVariant --> VariantAudit[变体独立审计与共同导入]
  CMorphismVariant --> VariantAudit
+ TransparentPack --> SSRVariant[SSR 13 个对应]
+ TransparentPack --> ProgramWfVariant[Program.Wf 2 个对应]
+ SSRVariant --> VariantAudit
+ ProgramWfVariant --> VariantAudit
+ VariantAudit --> Variant80[剩余候选 80/80]
+ Frozen2100 --> Recheck[既有证书按透明策略回归]
+ Variant80 --> Combined[完整变体共同导入]
+ Recheck --> Combined
 ~~~
 
 透明分支不回写原声明，也不计入 Frozen2100。详见 [变体结果](transparent-data/README.md)。

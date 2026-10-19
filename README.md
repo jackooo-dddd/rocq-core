@@ -57,4 +57,4 @@ translator/ 已同步经验证的机械 nat/eq 实现。实验固定快照和证
 
 [浮点转换与规格陈述对应](experiments/incremental-correspondence-20261019/BATCH86_89_RESULTS.md)：FloatOps 8/8、FloatAxioms 33/33；其中 24 项是完整原生陈述 iff，没有将它们计作独立证明的原定理。
 
-[计算透明变体](experiments/incremental-correspondence-20261019/transparent-data/README.md)：保留机械正文、仅将非 Prop opaque 数据重新导出为 def，已单独证明 37/80 个剩余候选根；原冻结基线仍为 2100/2180。这些是新命名空间定义的对应，不是原 opaque 常量与新定义的等式。
+[计算透明变体](experiments/incremental-correspondence-20261019/transparent-data/README.md)：保留机械正文、仅将非 Prop opaque 数据重新导出为 def，已单独证明 80/80 个剩余候选根；原冻结基线仍为 2100/2180。这些是新命名空间定义的对应，不是原 opaque 常量与新定义的等式。

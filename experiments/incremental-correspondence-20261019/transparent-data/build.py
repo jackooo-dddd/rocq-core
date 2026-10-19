@@ -11,7 +11,7 @@ configs={
  'CRelation':('Classes/CRelationClasses',['CRelationData','CRelationOrder','CRelationStatements']),
  'CMorphism':('Classes/CMorphisms',['CMorphismData']),
  'SSRBool':('ssr/ssrbool',['SSRPredicatePackages','SSRBoolClosedOperations','SSRBoolFinalWitnesses']),
- 'SSRFun':('ssr/ssrfun',['SSRFunOpacity','SSRFunConditions','SSRFunData']),
+ 'SSRFun':('ssr/ssrfun',['SSRFunOpacity','SSRFunConditions','SSRFunData','SSRFunNormalization']),
  'SSRRewrite':('ssr/ssreflect_rw',['SSRRewriteData','SSRRewriteStatements']),
  'ProgramWf':('Program/Wf',['ProgramWellFounded']),
 }
@@ -33,6 +33,7 @@ for name in sys.argv[1:] or configs:
  helpers=[]
  for profile in imports:
   helpers += [(n if n.startswith('NativeBridge.') else 'NativeBridge.Incremental.'+profile+'.'+n) for n in re.findall(r'^(?:def|abbrev|theorem)\s+([\w.]+)',(W/'proofs'/(profile+'.lean')).read_text(),re.M)]
+ if name == "SSRBool": helpers += ["NativeBridge.sigmaIso","NativeBridge.sigIso","NativeBridge.sig2Iso","NativeBridge.is_true_agrees","NativeBridge.bool_to_of","NativeBridge.Incremental.SSRBoolData.impliesIso","NativeBridge.Incremental.SSRBoolWitnesses.closed.Rocq.Corelib.ssr.ssrfun.tag_of_sig__rocq2lean_obligation_1.statement","NativeBridge.Incremental.SSRBoolWitnesses.closed.Rocq.Corelib.ssr.ssrfun.sig_of_sig2__rocq2lean_obligation_1.statement","NativeBridge.Incremental.SSRBoolWitnesses.closed.Rocq.Corelib.ssr.ssrbool.all_tag_cond_dep__rocq2lean_obligation_1.statement","NativeBridge.Incremental.SSRBoolWitnesses.closed.Rocq.Corelib.ssr.ssrbool.all_tag_cond_dep__rocq2lean_obligation_2.statement","NativeBridge.Incremental.SSRBoolWitnesses.closed.Rocq.Corelib.ssr.ssrbool.all_sig2_cond__rocq2lean_obligation_1.statement","NativeBridge.Incremental.SSRBoolWitnesses.closed.Rocq.Corelib.ssr.ssrbool.all_sig2_cond__rocq2lean_obligation_2.statement"]
  roots=sorted(set(selected+helpers))
  src=P/('Data'+name+'.lean')
  src.write_text('import TransparentPack\nset_option maxRecDepth 16384\nset_option maxHeartbeats 12000000\nopen Lean in\nrun_cmd Lean.Elab.Command.liftTermElabM do\n  TransparentPack.pack '+chr(96)+inp.stem+' '+chr(96)+'Computational.'+name+' #['+', '.join(chr(96)+n for n in roots)+'] '+json.dumps(str(D/'reports'/('export-'+name+'.json')))+'\n')
