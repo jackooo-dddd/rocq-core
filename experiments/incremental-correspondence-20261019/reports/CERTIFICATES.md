@@ -3772,6 +3772,85 @@ NativeBridge.Incremental.NatIterators.log2_agrees
 
 公理闭包：propext, Quot.sound
 
+## Corelib.Init.Peano.IsSucc
+
+NativeBridge.Incremental.PeanoBridge.isSucc_agrees
+
+目标：0 < n；范围：All mechanical natural numbers; IsSucc corresponds to native Nat positivity.
+
+```lean
+∀ (n : NativeBridge.MN), Rocq.Corelib.Init.Peano.IsSucc n ↔ 0 < NativeBridge.natTo n
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Init.Peano.f_equal_pred
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Peano.f_equal_pred.statement.correspondence
+
+目标：native statement: ∀ (n n_1 : Nat), n = n_1 → n - 1 = n_1 - 1；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Peano.f_equal_pred.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Peano.f_equal_pred.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Peano.le_pred
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Peano.le_pred.statement.correspondence
+
+目标：native statement: ∀ (n n_1 : Nat), n ≤ n_1 → n - 1 ≤ n_1 - 1；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Peano.le_pred.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Peano.le_pred.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Peano.nat_rect_plus
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Peano.nat_rect_plus.statement.correspondence
+
+目标：native statement: ∀ (n n_1 : Nat) (A : Sort u_Corelib_Init_Peano_98) (f : A → A) (x : A),
+  Nat.rec x (fun x => f) (n + n_1) = Nat.rec (Nat.rec x (fun x => f) n_1) (fun x => f) n；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Peano.nat_rect_plus.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Peano.nat_rect_plus.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Peano.nat_rect_succ_r
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Peano.nat_rect_succ_r.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Peano_92) (f : A → A) (x : A) (n : Nat),
+  f (Nat.rec x (fun x => f) n) = Nat.rec (f x) (fun x => f) n；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Peano.nat_rect_succ_r.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Peano.nat_rect_succ_r.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Peano.pred_Sn
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Peano.pred_Sn.statement.correspondence
+
+目标：native statement: ∀ (n : Nat), n = n.succ - 1；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Peano.pred_Sn.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Peano.pred_Sn.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
 ## Corelib.Init.Specif.eq_existT2_curried
 
 NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.eq_existT2_curried.statement.correspondence

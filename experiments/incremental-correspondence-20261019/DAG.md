@@ -202,3 +202,5 @@ flowchart TD
     原生状态迭代 + 二次幂区间不变量 → Nat.log2
 
 这些证明未修改原始机械翻译。
+
+Peano 本批实证依赖：机械 Nat Iso → pred/add/迭代器辅助对应 → 5 个新完全原生陈述；IsSucc → 原生 Nat 正性。旧原生目标审计依据 statement ledger → 实际 Auto profile → 展开别名后的目标体，不以手写同名 profile 替代。

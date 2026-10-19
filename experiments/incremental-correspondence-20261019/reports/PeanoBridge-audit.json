@@ -1,0 +1,66 @@
+[{"type":
+  "∀ (n m : Rocq.Corelib.Init.Datatypes.nat),\n  ¬min (NativeBridge.natTo n) (NativeBridge.natTo m) + 1 = min (NativeBridge.natTo n + 1) (NativeBridge.natTo m + 1) →\n    False",
+  "source_references": ["Rocq.Corelib.Init.Datatypes.nat"],
+  "name": "NativeBridge.Incremental.PeanoBridge.min_agrees._proof_1_1",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "∀ (n m : Rocq.Corelib.Init.Datatypes.nat),\n  ¬max (NativeBridge.natTo n) (NativeBridge.natTo m) + 1 = max (NativeBridge.natTo n + 1) (NativeBridge.natTo m + 1) →\n    False",
+  "source_references": ["Rocq.Corelib.Init.Datatypes.nat"],
+  "name": "NativeBridge.Incremental.PeanoBridge.max_agrees._proof_1_1",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "∀ (n m : NativeBridge.MN),\n  NativeBridge.natTo (Rocq.Corelib.Init.Nat.mul n m) = NativeBridge.natTo n * NativeBridge.natTo m",
+  "source_references": ["Rocq.Corelib.Init.Nat.mul"],
+  "name": "NativeBridge.Incremental.PeanoBridge.mul_agrees",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "∀ (n m : NativeBridge.MN),\n  NativeBridge.natTo (Rocq.Corelib.Init.Nat.add n m) = NativeBridge.natTo n + NativeBridge.natTo m",
+  "source_references": ["Rocq.Corelib.Init.Nat.add"],
+  "name": "NativeBridge.Incremental.PeanoBridge.add_agrees",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "∀ {A : Sort u} (f : A → A) (x : A) (n : NativeBridge.MN),\n  Rocq.Corelib.Init.Datatypes.nat_rect (fun x => A) x (fun x => f) n = Nat.rec x (fun x => f) (NativeBridge.natTo n)",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.nat_rect", "Rocq.Corelib.Init.Datatypes.nat"],
+  "name": "NativeBridge.Incremental.PeanoBridge.iteration_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "0 < 0 → False",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.PeanoBridge.isSucc_agrees._proof_1_1",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "∀ (n : NativeBridge.MN), NativeBridge.natTo (Rocq.Corelib.Init.Nat.pred n) = NativeBridge.natTo n - 1",
+  "source_references": ["Rocq.Corelib.Init.Nat.pred"],
+  "name": "NativeBridge.Incremental.PeanoBridge.pred_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (n : NativeBridge.MN), Rocq.Corelib.Init.Peano.IsSucc n ↔ 0 < NativeBridge.natTo n",
+  "source_references": ["Rocq.Corelib.Init.Peano.IsSucc"],
+  "name": "NativeBridge.Incremental.PeanoBridge.isSucc_agrees",
+  "kind": "theorem",
+  "axioms": ["propext", "Classical.choice", "Quot.sound"]},
+ {"type":
+  "∀ (n m : NativeBridge.MN),\n  NativeBridge.natTo (Rocq.Corelib.Init.Nat.min n m) = min (NativeBridge.natTo n) (NativeBridge.natTo m)",
+  "source_references": ["Rocq.Corelib.Init.Nat.min"],
+  "name": "NativeBridge.Incremental.PeanoBridge.min_agrees",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "∀ (n m : NativeBridge.MN),\n  NativeBridge.natTo (Rocq.Corelib.Init.Nat.max n m) = max (NativeBridge.natTo n) (NativeBridge.natTo m)",
+  "source_references": ["Rocq.Corelib.Init.Nat.max"],
+  "name": "NativeBridge.Incremental.PeanoBridge.max_agrees",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "∀ (m : NativeBridge.MN) (n : Rocq.Corelib.Init.Datatypes.nat),\n  ¬NativeBridge.natTo n + NativeBridge.natTo m + 1 = NativeBridge.natTo n + 1 + NativeBridge.natTo m → False",
+  "source_references": ["Rocq.Corelib.Init.Datatypes.nat"],
+  "name": "NativeBridge.Incremental.PeanoBridge.add_agrees._proof_1_1",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]}]

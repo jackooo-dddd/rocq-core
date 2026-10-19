@@ -38,3 +38,5 @@ Lean 版本 4.33.1。复用远程已安装的 Mathlib，提交为 `0df444a360eaa
 更新：当前共同导入快照已包含全部 613 份增量覆盖证书，包括 Specif、数字写出/读取、Mathlib digits、gcd、divmod、sqrt/log2。Registry 是机制验证模块，不产生覆盖根，所以 37 个验证 profile 对应 36 个覆盖模块。
 
 NumericMathlib 的打包模块显式导入 Mathlib.Data.Nat.Digits.Defs，保留原生 Mathlib 常量身份；NatIterators 导入对应 Init 算术引理。pack_all.py 可传 profile 名，仅重建改变的模块；继承部分逐项核对源码、打包器和证书入口集合，最后仍执行全部模块的共同导入检查。
+
+Peano 扩展后：38 个含覆盖证书的 profile、619 份覆盖证书共同导入通过。实际入口和依赖副本数见 reports/interop/all/import-all-validation.json。

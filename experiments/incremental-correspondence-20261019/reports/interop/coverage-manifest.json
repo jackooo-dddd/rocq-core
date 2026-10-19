@@ -3657,6 +3657,91 @@
     ]
   },
   {
+    "source": "Corelib.Init.Peano.IsSucc",
+    "profile": "PeanoBridge",
+    "certificate": "NativeBridge.Incremental.PeanoBridge.isSucc_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "0 < n",
+    "target_class": "existing_api",
+    "scope": "All mechanical natural numbers; IsSucc corresponds to native Nat positivity.",
+    "type": "∀ (n : NativeBridge.MN), Rocq.Corelib.Init.Peano.IsSucc n ↔ 0 < NativeBridge.natTo n",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Peano.f_equal_pred",
+    "profile": "PeanoStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Peano.f_equal_pred.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (n n_1 : Nat), n = n_1 → n - 1 = n_1 - 1",
+    "native_expression": "∀ (n n_1 : Nat), n = n_1 → n - 1 = n_1 - 1",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Peano.f_equal_pred.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Peano.f_equal_pred.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Peano.le_pred",
+    "profile": "PeanoStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Peano.le_pred.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (n n_1 : Nat), n ≤ n_1 → n - 1 ≤ n_1 - 1",
+    "native_expression": "∀ (n n_1 : Nat), n ≤ n_1 → n - 1 ≤ n_1 - 1",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Peano.le_pred.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Peano.le_pred.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Peano.nat_rect_plus",
+    "profile": "PeanoStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Peano.nat_rect_plus.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (n n_1 : Nat) (A : Sort u_Corelib_Init_Peano_98) (f : A → A) (x : A),\n  Nat.rec x (fun x => f) (n + n_1) = Nat.rec (Nat.rec x (fun x => f) n_1) (fun x => f) n",
+    "native_expression": "∀ (n n_1 : Nat) (A : Sort u_Corelib_Init_Peano_98) (f : A → A) (x : A),\n  Nat.rec x (fun x => f) (n + n_1) = Nat.rec (Nat.rec x (fun x => f) n_1) (fun x => f) n",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Peano.nat_rect_plus.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Peano.nat_rect_plus.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Peano.nat_rect_succ_r",
+    "profile": "PeanoStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Peano.nat_rect_succ_r.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Peano_92) (f : A → A) (x : A) (n : Nat),\n  f (Nat.rec x (fun x => f) n) = Nat.rec (f x) (fun x => f) n",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Peano_92) (f : A → A) (x : A) (n : Nat),\n  f (Nat.rec x (fun x => f) n) = Nat.rec (f x) (fun x => f) n",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Peano.nat_rect_succ_r.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Peano.nat_rect_succ_r.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Peano.pred_Sn",
+    "profile": "PeanoStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Peano.pred_Sn.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (n : Nat), n = n.succ - 1",
+    "native_expression": "∀ (n : Nat), n = n.succ - 1",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Peano.pred_Sn.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Peano.pred_Sn.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
     "source": "Corelib.Init.Specif.eq_existT2_curried",
     "profile": "SpecifStatements",
     "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.eq_existT2_curried.statement.correspondence",
