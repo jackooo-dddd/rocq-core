@@ -773,5 +773,115 @@
     "name": "NativeBridge.Incremental.CRelationOrder.partialOrderNative",
     "native_expression": "fun A E R => (x y : A) → (E x y → R x y × R y x) × (R x y × R y x → E x y)",
     "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CMorphismData.flipArrowNative",
+    "native_expression": "(A : Type v) →\n  (R S : A → A → Type w) →\n    (NativeBridge.Incremental.CMorphismData.relationPairNative A R fun x y => S y x) →\n      (B : Type t) →\n        (T U : B → B → Type z) →\n          (NativeBridge.Incremental.CMorphismData.relationPairNative B T fun x y => U y x) →\n            (f g : A → B) →\n              (NativeBridge.Incremental.CMorphismData.respectfulNative A B R T f g →\n                  NativeBridge.Incremental.CMorphismData.respectfulNative A B S U g f) ×\n                (NativeBridge.Incremental.CMorphismData.respectfulNative A B S U g f →\n                  NativeBridge.Incremental.CMorphismData.respectfulNative A B R T f g)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CMorphismData.forallNative",
+    "native_expression": "fun A P => (x : A) → P x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CMorphismData.forallRelationNative",
+    "native_expression": "fun A P R f g => (a : A) → R a (f a) (g a)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CMorphismData.iffImplNative",
+    "native_expression": "∀ (P Q : Prop), (P ↔ Q) → P → Q",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CMorphismData.markerNative",
+    "native_expression": "True",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CMorphismData.normalizesNative",
+    "native_expression": "NativeBridge.Incremental.CMorphismData.relationPairNative",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CMorphismData.normalizesNativeOp",
+    "native_expression": "fun A R S h => h",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CMorphismData.paramsNative",
+    "native_expression": "fun A x x_1 => True",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CMorphismData.pointwiseNative",
+    "native_expression": "fun A B R f g => (x : A) → R (f x) (g x)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CMorphismData.properNative",
+    "native_expression": "fun A R x => R x x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CMorphismData.properPrfNative",
+    "native_expression": "fun A R x h => h",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CMorphismData.respectfulHeteroNative",
+    "native_expression": "fun A B C D R S f g => (x : A) → (y : B) → R x y → S x y (f x) (g y)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CMorphismData.respectfulNative",
+    "native_expression": "fun A B R S f g => (x y : A) → R x y → S (f x) (g y)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CMorphismData.respectfulSymmetryNative",
+    "native_expression": "fun A B R S h k f g rel x y r => k.fst (f y) (g x) (rel y x (h.fst x y r))",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "Nat.land",
+    "native_expression": "Nat.bitwise and",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "Nat.lor",
+    "native_expression": "Nat.bitwise or",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "Nat.xor",
+    "native_expression": "Nat.bitwise bne",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.BinaryBitwise.diffNative",
+    "native_expression": "fun m n => Nat.bitwise (fun a b => a && !b) m n",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "Int.land",
+    "native_expression": "fun x x_1 =>\n  match x, x_1 with\n  | Int.ofNat m, Int.ofNat n => ↑(m &&& n)\n  | Int.ofNat m, Int.negSucc n => ↑(m.ldiff n)\n  | Int.negSucc m, Int.ofNat n => ↑(n.ldiff m)\n  | Int.negSucc m, Int.negSucc n => Int.negSucc (m ||| n)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "Int.lor",
+    "native_expression": "fun x x_1 =>\n  match x, x_1 with\n  | Int.ofNat m, Int.ofNat n => ↑(m ||| n)\n  | Int.ofNat m, Int.negSucc n => Int.negSucc (n.ldiff m)\n  | Int.negSucc m, Int.ofNat n => Int.negSucc (m.ldiff n)\n  | Int.negSucc m, Int.negSucc n => Int.negSucc (m &&& n)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "Int.xor",
+    "native_expression": "fun x x_1 =>\n  match x, x_1 with\n  | Int.ofNat m, Int.ofNat n => ↑(m ^^^ n)\n  | Int.ofNat m, Int.negSucc n => Int.negSucc (m ^^^ n)\n  | Int.negSucc m, Int.ofNat n => Int.negSucc (m ^^^ n)\n  | Int.negSucc m, Int.negSucc n => ↑(m ^^^ n)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "Nat.ldiff",
+    "native_expression": "Nat.bitwise fun a b => a && !b",
+    "remaining_source_symbols": []
   }
 ]

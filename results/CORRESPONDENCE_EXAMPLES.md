@@ -114,4 +114,28 @@ EquivalenceIso 给出双向逆，三个字段投影也有对应等式。这里�
 
 [Eq / Iff 与 PartialOrder 的证明](../experiments/incremental-correspondence-20261019/proofs/CRelationOrder.lean)。
 
+
+## 9. 按位运算：直接对应 Mathlib，并把原生定理推回机械对象
+
+    binaryIntTo (R.Z.land x y) = Int.land (binaryIntTo x) (binaryIntTo y)
+    binaryIntTo (R.Z.lor x y)  = Int.lor  (binaryIntTo x) (binaryIntTo y)
+    binaryIntTo (R.Z.lxor x y) = Int.xor  (binaryIntTo x) (binaryIntTo y)
+
+这里的目标是 Mathlib 已有的 Int 运算，覆盖任意正负整数，不需要选定机器字长。四个另外检查的实例为：
+
+| 机械输入 | 转换后结果 |
+|---|---:|
+| Z.land (-3) 6 | 4 |
+| Z.lor (-3) (-6) | -1 |
+| Z.lxor (-3) 6 | -5 |
+| Z.lxor (-3) (-6) | 7 |
+
+positive / N 的对应先通过二进制构造器归纳证明；Z 复用这些结果处理符号。Pos.ldiff、N.ldiff 也已证明等于 Mathlib 的 Nat.ldiff。
+
+在同一文件中，binaryNat_land_comm 把 Nat.and_comm 通过对应等式和 binaryNatIso 的单射性推回，证明：
+
+    R.N.land m n = R.N.land n m
+
+这展示了已经可以使用 Lean 原生定理证明机械对象的性质。通用证明、四个实例和交换律见 [BinaryIntBitwise.lean](../experiments/incremental-correspondence-20261019/proofs/BinaryIntBitwise.lean)。
+
 完整签名、假设和公理依赖见 [证书报告](../experiments/incremental-correspondence-20261019/reports/CERTIFICATES.md)；当前总数见 [工作区摘要](../experiments/incremental-correspondence-20261019/reports/summary.json)。原生表达式对应与现成 Lean／Mathlib API 直接对应分别登记。

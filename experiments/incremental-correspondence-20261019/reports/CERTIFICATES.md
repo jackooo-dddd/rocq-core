@@ -9420,6 +9420,473 @@ NativeBridge.Incremental.CRelationOrder.iff_equivalence_agrees
 
 公理闭包：空
 
+## Corelib.Classes.CMorphisms.Normalizes
+
+NativeBridge.Incremental.CMorphismData.normalizesIso
+
+目标：normalizesNative；范围：All exported universe parameters; Type-valued relation evidence and functions preserved.
+
+```lean
+(A : Type u) →
+  (R S : A → A → Type v) →
+    NativeBridge.Iso (Rocq.Corelib.Classes.CMorphisms.Normalizes A R S)
+      (NativeBridge.Incremental.CMorphismData.normalizesNative A R S)
+```
+
+公理闭包：Quot.sound
+
+## Corelib.Classes.CMorphisms.Params
+
+NativeBridge.Incremental.CMorphismData.paramsIso
+
+目标：paramsNative；范围：All exported universe parameters; Type-valued relation evidence and functions preserved. Native arity encoded using natOf; nat Iso covers every source arity.
+
+```lean
+(A : Type u) →
+  (x : A) →
+    (arity : Nat) →
+      NativeBridge.Iso (Rocq.Corelib.Classes.CMorphisms.Params A x (NativeBridge.natOf arity))
+        (NativeBridge.Incremental.CMorphismData.paramsNative A x arity)
+```
+
+公理闭包：空
+
+## Corelib.Classes.CMorphisms.PartialApplication
+
+NativeBridge.Incremental.CMorphismData.partialApplicationIso
+
+目标：markerNative；范围：Propositional marker with a constructor and no computational fields; Iso to True.
+
+```lean
+NativeBridge.Iso Rocq.Corelib.Classes.CMorphisms.PartialApplication NativeBridge.Incremental.CMorphismData.markerNative
+```
+
+公理闭包：空
+
+## Corelib.Classes.CMorphisms.Proper
+
+NativeBridge.Incremental.CMorphismData.properIso
+
+目标：properNative；范围：All exported universe parameters; Type-valued relation evidence and functions preserved.
+
+```lean
+(A : Type u) →
+  (R : A → A → Type v) →
+    (x : A) →
+      NativeBridge.Iso (Rocq.Corelib.Classes.CMorphisms.Proper A R x)
+        (NativeBridge.Incremental.CMorphismData.properNative A R x)
+```
+
+公理闭包：空
+
+## Corelib.Classes.CMorphisms.ProperProxy
+
+NativeBridge.Incremental.CMorphismData.properProxyIso
+
+目标：properNative；范围：All exported universe parameters; Type-valued relation evidence and functions preserved.
+
+```lean
+(A : Type u) →
+  (R : A → A → Type v) →
+    (x : A) →
+      NativeBridge.Iso (Rocq.Corelib.Classes.CMorphisms.ProperProxy A R x)
+        (NativeBridge.Incremental.CMorphismData.properNative A R x)
+```
+
+公理闭包：空
+
+## Corelib.Classes.CMorphisms.apply_subrelation
+
+NativeBridge.Incremental.CMorphismData.applySubrelationIso
+
+目标：markerNative；范围：Propositional marker with a constructor and no computational fields; Iso to True.
+
+```lean
+NativeBridge.Iso Rocq.Corelib.Classes.CMorphisms.apply_subrelation NativeBridge.Incremental.CMorphismData.markerNative
+```
+
+公理闭包：空
+
+## Corelib.Classes.CMorphisms.forall_def
+
+NativeBridge.Incremental.CMorphismData.forallIso
+
+目标：forallNative；范围：All exported universe parameters; Type-valued relation evidence and functions preserved.
+
+```lean
+(A : Type u) →
+  (P : A → Type v) →
+    NativeBridge.Iso (Rocq.Corelib.Classes.CMorphisms.forall_def A P)
+      (NativeBridge.Incremental.CMorphismData.forallNative A P)
+```
+
+公理闭包：空
+
+## Corelib.Classes.CMorphisms.forall_relation
+
+NativeBridge.Incremental.CMorphismData.forallRelationIso
+
+目标：forallRelationNative；范围：All exported universe parameters; Type-valued relation evidence and functions preserved.
+
+```lean
+(A : Type u) →
+  (P : A → Type v) →
+    (R : (a : A) → P a → P a → Type w) →
+      (f g : (a : A) → P a) →
+        NativeBridge.Iso (Rocq.Corelib.Classes.CMorphisms.forall_relation A P R f g)
+          (NativeBridge.Incremental.CMorphismData.forallRelationNative A P R f g)
+```
+
+公理闭包：空
+
+## Corelib.Classes.CMorphisms.normalization_done
+
+NativeBridge.Incremental.CMorphismData.normalizationDoneIso
+
+目标：markerNative；范围：Propositional marker with a constructor and no computational fields; Iso to True.
+
+```lean
+NativeBridge.Iso Rocq.Corelib.Classes.CMorphisms.normalization_done NativeBridge.Incremental.CMorphismData.markerNative
+```
+
+公理闭包：空
+
+## Corelib.Classes.CMorphisms.pointwise_relation
+
+NativeBridge.Incremental.CMorphismData.pointwiseIso
+
+目标：pointwiseNative；范围：All exported universe parameters; Type-valued relation evidence and functions preserved.
+
+```lean
+(A : Type u) →
+  (B : Type v) →
+    (R : B → B → Type w) →
+      (f g : A → B) →
+        NativeBridge.Iso (Rocq.Corelib.Classes.CMorphisms.pointwise_relation A B R f g)
+          (NativeBridge.Incremental.CMorphismData.pointwiseNative A B R f g)
+```
+
+公理闭包：空
+
+## Corelib.Classes.CMorphisms.respectful
+
+NativeBridge.Incremental.CMorphismData.respectfulIso
+
+目标：respectfulNative；范围：All exported universe parameters; Type-valued relation evidence and functions preserved.
+
+```lean
+(A : Type u) →
+  (B : Type v) →
+    (R : A → A → Type w) →
+      (S : B → B → Type t) →
+        (f g : A → B) →
+          NativeBridge.Iso (Rocq.Corelib.Classes.CMorphisms.respectful A B R S f g)
+            (NativeBridge.Incremental.CMorphismData.respectfulNative A B R S f g)
+```
+
+公理闭包：空
+
+## Corelib.Classes.CMorphisms.respectful_hetero
+
+NativeBridge.Incremental.CMorphismData.respectfulHeteroIso
+
+目标：respectfulHeteroNative；范围：All exported universe parameters; Type-valued relation evidence and functions preserved.
+
+```lean
+(A : Type u) →
+  (B : Type v) →
+    (C : A → Type w) →
+      (D : B → Type t) →
+        (R : A → B → Type z) →
+          (S : (x : A) → (y : B) → C x → D y → Type a) →
+            (f : (x : A) → C x) →
+              (g : (y : B) → D y) →
+                NativeBridge.Iso (Rocq.Corelib.Classes.CMorphisms.respectful_hetero A B C D R S f g)
+                  (NativeBridge.Incremental.CMorphismData.respectfulHeteroNative A B C D R S f g)
+```
+
+公理闭包：空
+
+## Corelib.Classes.CMorphisms.normalizes
+
+NativeBridge.Incremental.CMorphismData.normalizes_agrees
+
+目标：normalizesNativeOp；范围：All exported universe parameters; Type-valued relation evidence and functions preserved.
+
+```lean
+∀ (A : Type u) (R S : A → A → Type v) (h : NativeBridge.Incremental.CMorphismData.normalizesNative A R S),
+  (NativeBridge.Incremental.CMorphismData.normalizesIso A R S).to
+      (Rocq.Corelib.Classes.CMorphisms.normalizes A R S
+        ((NativeBridge.Incremental.CMorphismData.normalizesIso A R S).of h)) =
+    NativeBridge.Incremental.CMorphismData.normalizesNativeOp A R S h
+```
+
+公理闭包：Quot.sound
+
+## Corelib.Classes.CMorphisms.proper_prf
+
+NativeBridge.Incremental.CMorphismData.proper_prf_agrees
+
+目标：properPrfNative；范围：All exported universe parameters; Type-valued relation evidence and functions preserved.
+
+```lean
+∀ (A : Type u) (R : A → A → Type v) (x : A) (h : NativeBridge.Incremental.CMorphismData.properNative A R x),
+  Rocq.Corelib.Classes.CMorphisms.proper_prf A R x h = NativeBridge.Incremental.CMorphismData.properPrfNative A R x h
+```
+
+公理闭包：空
+
+## Corelib.Classes.CMorphisms.proper_proxy
+
+NativeBridge.Incremental.CMorphismData.proper_proxy_agrees
+
+目标：properPrfNative；范围：All exported universe parameters; Type-valued relation evidence and functions preserved.
+
+```lean
+∀ (A : Type u) (R : A → A → Type v) (x : A) (h : NativeBridge.Incremental.CMorphismData.properNative A R x),
+  Rocq.Corelib.Classes.CMorphisms.proper_proxy A R x h = NativeBridge.Incremental.CMorphismData.properPrfNative A R x h
+```
+
+公理闭包：空
+
+## Corelib.Classes.CMorphisms.proper_flip_proper
+
+NativeBridge.Incremental.CMorphismData.proper_flip_proper_agrees
+
+目标：properPrfNative；范围：All exported universe parameters; Type-valued relation evidence and functions preserved.
+
+```lean
+∀ (A : Type u) (R : A → A → Type v) (x : A) (h : NativeBridge.Incremental.CMorphismData.properNative A R x),
+  Rocq.Corelib.Classes.CMorphisms.proper_flip_proper A R x h =
+    NativeBridge.Incremental.CMorphismData.properPrfNative A R x h
+```
+
+公理闭包：空
+
+## Corelib.Classes.CMorphisms.respectful_per_obligation_1
+
+NativeBridge.Incremental.CMorphismData.respectful_per_obligation_1_agrees
+
+目标：respectfulSymmetryNative；范围：All exported universe parameters; Type-valued relation evidence and functions preserved.
+
+```lean
+∀ (A : Type u) (B : Type v) (R : A → A → Type w) (S : B → B → Type t)
+  (h : NativeBridge.Incremental.CMorphismData.perNative A R) (k : NativeBridge.Incremental.CMorphismData.perNative B S)
+  (f g : A → B) (rel : NativeBridge.Incremental.CMorphismData.respectfulNative A B R S f g),
+  Rocq.Corelib.Classes.CMorphisms.respectful_per_obligation_1 A R
+      ((NativeBridge.Incremental.CMorphismData.perIso A R).of h) B S
+      ((NativeBridge.Incremental.CMorphismData.perIso B S).of k) f g rel =
+    NativeBridge.Incremental.CMorphismData.respectfulSymmetryNative A B R S h k f g rel
+```
+
+公理闭包：空
+
+## Corelib.Classes.CMorphisms.iff_impl_subrelation
+
+NativeBridge.Incremental.CMorphismData.iff_impl_subrelation_agrees
+
+目标：iffImplNative；范围：All exported universe parameters; Type-valued relation evidence and functions preserved.
+
+```lean
+Rocq.Corelib.Classes.CMorphisms.iff_impl_subrelation.statement ↔ NativeBridge.Incremental.CMorphismData.iffImplNative
+```
+
+公理闭包：空
+
+## Corelib.Classes.CMorphisms.flip_arrow
+
+NativeBridge.Incremental.CMorphismData.flipArrowIso
+
+目标：flipArrowNative；范围：All 15 exported universe parameters; Iso of the exported Type-valued statement. A separate source inhabitant is constructed, without claiming equality to the original unavailable opaque value.
+
+```lean
+NativeBridge.Iso Rocq.Corelib.Classes.CMorphisms.flip_arrow.type NativeBridge.Incremental.CMorphismData.flipArrowNative
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.PosDef.Pos.land
+
+NativeBridge.Incremental.BinaryBitwise.positive_land_agrees
+
+目标：Nat.land；范围：All positive or binary-natural inputs; full mathematical Nat bit operations, no finite-width truncation.
+
+```lean
+∀ (p q : NativeBridge.RPositive),
+  NativeBridge.binaryNatTo (Rocq.Corelib.BinNums.PosDef.Pos.land p q) =
+    (NativeBridge.positiveTo p).land (NativeBridge.positiveTo q)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.PosDef.Pos.lor
+
+NativeBridge.Incremental.BinaryBitwise.positive_lor_agrees
+
+目标：Nat.lor；范围：All positive or binary-natural inputs; full mathematical Nat bit operations, no finite-width truncation.
+
+```lean
+∀ (p q : NativeBridge.RPositive),
+  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.lor p q) =
+    (NativeBridge.positiveTo p).lor (NativeBridge.positiveTo q)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.PosDef.Pos.lxor
+
+NativeBridge.Incremental.BinaryBitwise.positive_lxor_agrees
+
+目标：Nat.xor；范围：All positive or binary-natural inputs; full mathematical Nat bit operations, no finite-width truncation.
+
+```lean
+∀ (p q : NativeBridge.RPositive),
+  NativeBridge.binaryNatTo (Rocq.Corelib.BinNums.PosDef.Pos.lxor p q) =
+    (NativeBridge.positiveTo p).xor (NativeBridge.positiveTo q)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.PosDef.Pos.ldiff
+
+NativeBridge.Incremental.BinaryBitwise.positive_ldiff_agrees
+
+目标：NativeBridge.Incremental.BinaryBitwise.diffNative；范围：All positive or binary-natural inputs; full mathematical Nat bit operations, no finite-width truncation.
+
+```lean
+∀ (p q : NativeBridge.RPositive),
+  NativeBridge.binaryNatTo (Rocq.Corelib.BinNums.PosDef.Pos.ldiff p q) =
+    NativeBridge.Incremental.BinaryBitwise.diffNative (NativeBridge.positiveTo p) (NativeBridge.positiveTo q)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.NatDef.N.land
+
+NativeBridge.Incremental.BinaryBitwise.binaryNat_land_agrees
+
+目标：Nat.land；范围：All positive or binary-natural inputs; full mathematical Nat bit operations, no finite-width truncation.
+
+```lean
+∀ (m n : NativeBridge.RNatBinary),
+  NativeBridge.binaryNatTo (Rocq.Corelib.BinNums.NatDef.N.land m n) =
+    (NativeBridge.binaryNatTo m).land (NativeBridge.binaryNatTo n)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.NatDef.N.lor
+
+NativeBridge.Incremental.BinaryBitwise.binaryNat_lor_agrees
+
+目标：Nat.lor；范围：All positive or binary-natural inputs; full mathematical Nat bit operations, no finite-width truncation.
+
+```lean
+∀ (m n : NativeBridge.RNatBinary),
+  NativeBridge.binaryNatTo (Rocq.Corelib.BinNums.NatDef.N.lor m n) =
+    (NativeBridge.binaryNatTo m).lor (NativeBridge.binaryNatTo n)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.NatDef.N.lxor
+
+NativeBridge.Incremental.BinaryBitwise.binaryNat_lxor_agrees
+
+目标：Nat.xor；范围：All positive or binary-natural inputs; full mathematical Nat bit operations, no finite-width truncation.
+
+```lean
+∀ (m n : NativeBridge.RNatBinary),
+  NativeBridge.binaryNatTo (Rocq.Corelib.BinNums.NatDef.N.lxor m n) =
+    (NativeBridge.binaryNatTo m).xor (NativeBridge.binaryNatTo n)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.NatDef.N.ldiff
+
+NativeBridge.Incremental.BinaryBitwise.binaryNat_ldiff_agrees
+
+目标：NativeBridge.Incremental.BinaryBitwise.diffNative；范围：All positive or binary-natural inputs; full mathematical Nat bit operations, no finite-width truncation.
+
+```lean
+∀ (m n : NativeBridge.RNatBinary),
+  NativeBridge.binaryNatTo (Rocq.Corelib.BinNums.NatDef.N.ldiff m n) =
+    NativeBridge.Incremental.BinaryBitwise.diffNative (NativeBridge.binaryNatTo m) (NativeBridge.binaryNatTo n)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.PosDef.Pos.ldiff
+
+NativeBridge.Incremental.BinaryIntBitwise.positive_ldiff_mathlib_agrees
+
+目标：Nat.ldiff；范围：All source inputs; Mathlib bitwise operations on unbounded Nat/Int, including negative integers. No fixed bit width.
+
+```lean
+∀ (p q : NativeBridge.RPositive),
+  NativeBridge.binaryNatTo (Rocq.Corelib.BinNums.PosDef.Pos.ldiff p q) =
+    (NativeBridge.positiveTo p).ldiff (NativeBridge.positiveTo q)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.NatDef.N.ldiff
+
+NativeBridge.Incremental.BinaryIntBitwise.binaryNat_ldiff_mathlib_agrees
+
+目标：Nat.ldiff；范围：All source inputs; Mathlib bitwise operations on unbounded Nat/Int, including negative integers. No fixed bit width.
+
+```lean
+∀ (m n : NativeBridge.RNatBinary),
+  NativeBridge.binaryNatTo (Rocq.Corelib.BinNums.NatDef.N.ldiff m n) =
+    (NativeBridge.binaryNatTo m).ldiff (NativeBridge.binaryNatTo n)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.land
+
+NativeBridge.Incremental.BinaryIntBitwise.z_land_agrees
+
+目标：Int.land；范围：All source inputs; Mathlib bitwise operations on unbounded Nat/Int, including negative integers. No fixed bit width.
+
+```lean
+∀ (x y : NativeBridge.RIntBinary),
+  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.land x y) =
+    (NativeBridge.binaryIntTo x).land (NativeBridge.binaryIntTo y)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.lor
+
+NativeBridge.Incremental.BinaryIntBitwise.z_lor_agrees
+
+目标：Int.lor；范围：All source inputs; Mathlib bitwise operations on unbounded Nat/Int, including negative integers. No fixed bit width.
+
+```lean
+∀ (x y : NativeBridge.RIntBinary),
+  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.lor x y) =
+    (NativeBridge.binaryIntTo x).lor (NativeBridge.binaryIntTo y)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.lxor
+
+NativeBridge.Incremental.BinaryIntBitwise.z_lxor_agrees
+
+目标：Int.xor；范围：All source inputs; Mathlib bitwise operations on unbounded Nat/Int, including negative integers. No fixed bit width.
+
+```lean
+∀ (x y : NativeBridge.RIntBinary),
+  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.lxor x y) =
+    (NativeBridge.binaryIntTo x).xor (NativeBridge.binaryIntTo y)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
 ## Corelib.ssr.ssrbool.canLR_in
 
 NativeBridge.Incremental.SSRBoolClosedStatements.RocqPending.Corelib.ssr.ssrbool.canLR_in.statement.correspondence

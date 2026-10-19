@@ -4,7 +4,7 @@ W=Path(__file__).resolve().parent;R=W.parents[1];D=W/'reports'
 B=R/'experiments/mechanical-correspondence-20261019/reports'
 specs=json.loads((W/'certificates.json').read_text())
 validation=json.loads((D/'validation.json').read_text())
-assert {r['profile'] for r in validation}=={'CRelationOrder','CRelationStatements','CRelationData','SumboolBridge','BinaryPower','SSRBoolIndexed','SSRBoolRestrictions','SSRBoolFinalWitnesses','SSRBoolReflection','SSRBoolProofFunctions','SSRBoolClosedOperations','SSRBoolWitnesses','SSRBoolClosedStatements','SSRBoolConditionalNormalization','SSRBoolPackaging','SSRBoolRemainingStatements','SSRBoolData','SSRBoolLogic','SSRBoolExtendedStatements','SSRFunOpacity','SSRFunData','SSRFunConditions','SSRFunNormalization','SSRFunPredicates','SSRFunStatements','SSRFunOption','SSRNonProp','SpecifWitnesses','SpecifConditionalNormalization','SpecifClosedStatements','SpecifOperations','SpecifChoice','SpecifEqualityElimination','LogicWitnesses','LogicNormalization','LogicStatements','LogicElimination','LogicExistsElimination','LogicProofElimination','DatatypeNormalization','DatatypeQuantifiers','DatatypeStatements','DatatypeSpecs','BinaryArithmetic','BinaryNatSub','BinaryMask','BinaryMaskStatements','ListBridge','ListStatements','BinaryOrder','BinaryInt','PeanoBridge','PeanoStatements','NatArithmetic','NatIterators','NatGcd','NumericSigned','NumericMathlib','NumericWrite','SpecifNormalization','SpecifStatements','Basics','SSR','Iteration','Registry','SSRProperties','SSRBool','SSRBoolStatements','NumericRead','DecimalOperations','HexadecimalOperations','WellFounded','DependentElimination','PairRecursion','DependentStatements','DatatypeElimination','EqualityTransport','BooleanEquality','RelationDefinitions','RelationClasses','RelationClassStatements','VariadicPredicates','VariadicStatements','RelationConditions','Morphisms','MorphismStatements','EquivalenceBridge','EquivalenceStatements','MorphismsProp','SetoidBridge'}
+assert {r['profile'] for r in validation}=={'BinaryIntBitwise','BinaryBitwise','CMorphismData','CRelationOrder','CRelationStatements','CRelationData','SumboolBridge','BinaryPower','SSRBoolIndexed','SSRBoolRestrictions','SSRBoolFinalWitnesses','SSRBoolReflection','SSRBoolProofFunctions','SSRBoolClosedOperations','SSRBoolWitnesses','SSRBoolClosedStatements','SSRBoolConditionalNormalization','SSRBoolPackaging','SSRBoolRemainingStatements','SSRBoolData','SSRBoolLogic','SSRBoolExtendedStatements','SSRFunOpacity','SSRFunData','SSRFunConditions','SSRFunNormalization','SSRFunPredicates','SSRFunStatements','SSRFunOption','SSRNonProp','SpecifWitnesses','SpecifConditionalNormalization','SpecifClosedStatements','SpecifOperations','SpecifChoice','SpecifEqualityElimination','LogicWitnesses','LogicNormalization','LogicStatements','LogicElimination','LogicExistsElimination','LogicProofElimination','DatatypeNormalization','DatatypeQuantifiers','DatatypeStatements','DatatypeSpecs','BinaryArithmetic','BinaryNatSub','BinaryMask','BinaryMaskStatements','ListBridge','ListStatements','BinaryOrder','BinaryInt','PeanoBridge','PeanoStatements','NatArithmetic','NatIterators','NatGcd','NumericSigned','NumericMathlib','NumericWrite','SpecifNormalization','SpecifStatements','Basics','SSR','Iteration','Registry','SSRProperties','SSRBool','SSRBoolStatements','NumericRead','DecimalOperations','HexadecimalOperations','WellFounded','DependentElimination','PairRecursion','DependentStatements','DatatypeElimination','EqualityTransport','BooleanEquality','RelationDefinitions','RelationClasses','RelationClassStatements','VariadicPredicates','VariadicStatements','RelationConditions','Morphisms','MorphismStatements','EquivalenceBridge','EquivalenceStatements','MorphismsProp','SetoidBridge'}
 audits={}
 for r in validation:
  assert r['exit']==0 and r['audit_present'],r
@@ -12,6 +12,9 @@ for r in validation:
  for dep,record in r['incremental_dependencies'].items():
   assert record['proof_sha256']==hashlib.sha256((W/'proofs'/(dep+'.lean')).read_bytes()).hexdigest()
   assert record['olean_sha256']==hashlib.sha256((W/'.work'/(dep+'.olean')).read_bytes()).hexdigest()
+ if r['profile']=='BinaryIntBitwise':
+  packages=Path.home()/'research/leanbuddy-work/lean-prosa-v06-master/.lake/packages'
+  assert r['mathlib_bitwise_olean_sha256']==hashlib.sha256((packages/'mathlib/.lake/build/lib/lean/Mathlib/Data/Int/Bitwise.olean').read_bytes()).hexdigest()
  audits[r['profile']]={x['name']:x for x in json.loads((D/(r['profile']+'-audit.json')).read_text())}
 base=list(csv.DictReader((B/'CORELIB_LEDGER.csv').open()))
 rows={r['source']:dict(r,baseline_bridge_status=r['bridge_status'],evidence_origin='inherited baseline',new_certificates='') for r in base}
@@ -224,7 +227,7 @@ assert {x['target'] for x in opaque_records}=={r['target'] for r in ssrfun_rows 
 ssrbool_rows=[r for r in rows.values() if r['module']=='Corelib.ssr.ssrbool']
 assert len(ssrbool_rows)==451
 (D/'ssrbool-module-coverage.json').write_text(json.dumps(dict(module='Corelib.ssr.ssrbool',total=len(ssrbool_rows),counts=dict(collections.Counter(r['bridge_status'] for r in ssrbool_rows)),remaining=[dict(source=r['source'],status=r['bridge_status'],all_prerequisites_proved=(True if r['source'] in ssrb_conditions else None)) for r in ssrbool_rows if r['bridge_status'] not in {'TYPE_ISO','OPERATION_CORRESPONDENCE','STATEMENT_FULL_NATIVE'}]),ensure_ascii=False,indent=2))
-for module,filename,total in [('Corelib.Init.Sumbool','sumbool-module-coverage.json',7),('Corelib.Classes.CRelationClasses','crelation-module-coverage.json',81)]:
+for module,filename,total in [('Corelib.Init.Sumbool','sumbool-module-coverage.json',7),('Corelib.Classes.CRelationClasses','crelation-module-coverage.json',81),('Corelib.Classes.CMorphisms','cmorphisms-module-coverage.json',78)]:
  rs=[r for r in rows.values() if r['module']==module]
  assert len(rs)==total
  remaining=[dict(source=r['source'],status=r['bridge_status']) for r in rs if r['bridge_status'] not in {'TYPE_ISO','OPERATION_CORRESPONDENCE','STATEMENT_FULL_NATIVE'}]
@@ -258,7 +261,7 @@ summary={'alias_regression_profiles':45,'alias_regression_lost':0,'alias_regress
  'closed_obligation_witnesses':len({w['name'] for r in resolved_conditions for w in r['witnesses']}),
  'axiom_free_closed_witnesses':len({w['name'] for r in resolved_conditions for w in r['witnesses'] if not w['axioms']}),
  'standard_axiom_closed_witnesses':len({w['name'] for r in resolved_conditions for w in r['witnesses'] if w['axioms']}),
- 'full_sort_type_certificates_added':10,'completion':'thirty-three incremental batches plus P7 coexistence; overall plan remains incomplete',
+ 'full_sort_type_certificates_added':10,'completion':'thirty-six incremental batches plus P7 coexistence; overall plan remains incomplete',
  'explicit_target_classes_since_batch_3':dict(collections.Counter(sp['target_class'] for sp in specs if 'target_class' in sp))}
 interop_path=D/'interop/all/import-all-validation.json'
 if interop_path.exists():
@@ -272,7 +275,7 @@ if interop_path.exists():
  cv=json.loads((D/'interop/consumer-validation.json').read_text())
  assert cv['exit']==0 and cv['consumer_sha256']==hashlib.sha256((W/'interop/Consumer.lean').read_bytes()).hexdigest()
  summary['mathlib_tested']=True
- summary['mathlib_test_scope']='NumericMathlib proves decimal/hexadecimal printers equal Nat.digits with endian and zero adapters; Nat + SSR Option + Setoid consumer; Nat.prime_two at Mathlib '+cv['mathlib_commit']
+ summary['mathlib_test_scope']='NumericMathlib proves decimal/hexadecimal printers equal Nat.digits with endian and zero adapters; Nat + SSR Option + Setoid consumer; Nat.prime_two; BinaryIntBitwise proves Z.land/lor/lxor and Pos/N.ldiff equal Mathlib APIs, with four negative-input examples and native Nat.and_comm reuse, at Mathlib '+cv['mathlib_commit']
  summary['coimport_snapshot']=iv
  summary['coimport_source_fingerprints_current']=packer_current and profiles_current
  summary['coimport_not_current_coverage']=not (packer_current and profiles_current) or hashlib.sha256(json.dumps(accepted,ensure_ascii=False,indent=2).encode()).hexdigest()!=iv['manifest_sha256']

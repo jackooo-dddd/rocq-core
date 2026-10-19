@@ -406,3 +406,25 @@ flowchart LR
 ```
 
 图中后两项等价关系对应有双向逆，且六个前置证明已闭合；完整 Lean 依赖仍由审计记录。Type 值偏序只对应函数／积类型表示。
+
+## 第三十四至三十六批：已检查的证明依赖
+
+```mermaid
+flowchart TD
+  CMInterface[Interface Classes CMorphisms] --> CMorphismData
+  CMorphismData --> CMTypes[Proper / respectful / forall relations]
+  CMorphismData --> FlipArrow[Type-valued flip_arrow Iso + inhabitant]
+  BinaryInt --> BinaryBitwise
+  NatTestBit[Nat.testBit lemmas] --> BitStep[generic bitwise bit step]
+  BitStep --> PositiveBits[positive and/or/xor/diff]
+  PositiveBits --> NBits[N and/or/xor/diff]
+  NBits --> BinaryIntBitwise
+  MathlibBits[Mathlib.Data.Int.Bitwise] --> BinaryIntBitwise
+  BinaryIntBitwise --> ZBits[Z.land / Z.lor / Z.lxor]
+  NBits --> NativeReuse[Nat.and_comm to mechanical N.land]
+  CMorphismData --> ImportAll36[84 profiles / 1392 certificates]
+  BinaryBitwise --> ImportAll36
+  BinaryIntBitwise --> ImportAll36
+```
+
+按位运算的子目标都已证明。后三个 profile 的 Lean 导入边由 verify.py 记录，图中其余边表示实际用到的定理依赖。数学库代码沿用已安装版本，指纹在验证记录中。
