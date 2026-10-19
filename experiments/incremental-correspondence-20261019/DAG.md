@@ -164,3 +164,20 @@ flowchart TD
     Subtype 量词/投影转换 + 关系性质 → 14 个完全原生陈述
     Acc Iso + 原生逻辑整体函数等式 → Morphisms_Prop 的 17 个原生 iff
     Equivalence Iso → Setoid_Theory → 5 个 iff 与原陈述证明
+
+## P7：跨闭包消费
+
+    已检查的 profile 证书 → 依赖闭包 → 命名空间重建 → kernel 重检
+    28 个重建模块 → 同一文件导入 → 585 入口公理审计
+    Nat 运算对应 + SSR Option.map 对应 + Setoid Iso → 原生 Quotient 消费
+    Nat.add 对应 → Mathlib Nat.prime_two → 机械加法结果的原生素数性质
+
+本次共同导入覆盖清单独立固定于 reports/interop/coverage-manifest.json；后续新增证书需另行验收。
+
+## 第十二批：Specif 陈述
+
+    完整 Sort 的 Subtype / PSigma Iso → 量词与函数族双向搬运
+    Eq 对应 + 构造器/投影对应 + 逻辑存在量词 → 49 候选重写
+    原生目标体递归检查 + kernel iff → 23 个完整原生陈述
+
+剩余 26 项含依赖等式搬运、qualityProp 或其他未消除的源符号；不计入完成。

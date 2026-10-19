@@ -2,9 +2,9 @@
 
 先写计划与 DAG，再按步骤推进。入口：[PLAN.md](PLAN.md)、[DAG.md](DAG.md)、[逐根任务表](tasks.csv)。
 
-## 已验证进展（十一批）
+## 已验证进展（十二批）
 
-29 个 Lean profile 均有与当前源码匹配的成功验证记录。十一批累计登记 535 份新增覆盖证书，覆盖 33 个新类型根、169 个新运算根、326 个新完整原生陈述（318 个原部分陈述、8 个已闭合条件陈述）。另有 6 份既有类型根的完整 Sort 证书，不重复计根；43 份新增原陈述证明也不重复计根。
+31 个 Lean profile 均有与当前源码匹配的成功验证记录。十二批累计登记 558 份新增覆盖证书，覆盖 33 个新类型根、169 个新运算根、349 个新完整原生陈述（341 个原部分陈述、8 个已闭合条件陈述）。另有 6 份既有类型根的完整 Sort 证书，不重复计根；43 份新增原陈述证明也不重复计根。
 
 - Program.Basics：apply、arrow、compose、const、flip、impl。
 - SSR Option：apply、default、lift、map、bind。
@@ -17,7 +17,7 @@
 - 第七批：[Eq transport 与布尔等式](EQUALITY_RESULTS.md)：1 类型、14 运算、4 完整原生陈述；4 个条件根已闭合。
 - 第八、九批：[关系、Classes 与可变参数谓词](RELATIONS_RESULTS.md)：两个模块的 126 根均有对应；包括实际 Setoid/Quotient 使用例和两个闭合条件根。
 - 第十批：[Morphisms](MORPHISMS_RESULTS.md)：新增 68 根；该模块的 87 根均有对应；55 个部分陈述全部自动原生化。
-- 第十一批：[Equivalence / Morphisms_Prop / Setoid](EQUIVALENCE_SETOID_RESULTS.md)：新增 40 根；三个模块共 52 根均有对应。
+- 第十二批：[Equivalence / Morphisms_Prop / Setoid](EQUIVALENCE_SETOID_RESULTS.md)：新增 40 根；三个模块共 52 根均有对应。
 - Nat.iter：原生 Nat.rec 迭代表达式；另证带载体 Iso 和显式步函数对应假设的版本。
 
 | 主分类 | 基线 | 当前 |
@@ -26,8 +26,8 @@
 | 运算/谓词对应 | 114 | 283 |
 | 只有接口 | 375 | 274 |
 | 尚无证书 | 485 | 391 |
-| 完全原生陈述 | 143 | 469 |
-| 部分原生陈述 | 702 | 384 |
+| 完全原生陈述 | 143 | 492 |
+| 部分原生陈述 | 702 | 361 |
 | 本层尚带条件 | 331 | 316 |
 | 非 Prop 特殊陈述 | 1 | 1 |
 
@@ -47,8 +47,8 @@ Registry.lean 将 simplFunIso 接入接口生成器，并组合已有函数、Bo
 - native_correspondence 组合 SSR Option/函数规则，自动完成两个复合表达式的对应证明；错误的加一/加二对应被拒绝。
 
 当前需要显式给出原生目标表达式；尚未实现任意函数的原生目标自动合成。新生成器仍局限于本实验，并未全面替换旧接口流水线。
-不同模块的 Rocq2LeanOut 仍应按 profile 分别加载，尚未完成 P7 的统一导入。
-机械导出类型没有全部原生代码生成，本轮检查 Lean kernel 的定义/证明，不承诺运行时 #eval 性能。Mathlib 未在本轮测试。
+原 profile 的 Rocq2LeanOut 仍按闭包单独编译；P7 已将 535 份增量证书重新封装并共同导入，见 [跨模块与 Mathlib 结果](INTEROP_RESULTS.md)。新增 Specif 陈述尚未计入该固定导入快照。
+机械导出类型没有全部原生代码生成，本轮检查 Lean kernel 的定义/证明，不承诺运行时 #eval 性能。Mathlib Nat.prime_two 消费已通过；测试范围详见 INTEROP_RESULTS.md。
 
 ## 文件
 
@@ -81,10 +81,12 @@ build_dag.py 重新生成基线任务表后，运行 make_report.py 恢复本轮
 
 ## 下一步
 
-P2/P3/P4/P5/P6 已有十一批进展，整个计划未完成。Eq transport 已推进；接下来处理依赖陈述、剩余条件义务、数字写出及统一导入。最终覆盖的主观预估见 [ESTIMATE.md](ESTIMATE.md)，不作为已证结果。
+P2/P3/P4/P5/P6 已有十二批进展，整个计划未完成。Eq transport 已推进；接下来处理依赖陈述、剩余条件义务、数字写出及统一导入的后续覆盖。最终覆盖的主观预估见 [ESTIMATE.md](ESTIMATE.md)，不作为已证结果。
 
 ## 第二批检查
 
 SSRBoolStatements 使用转换证书自动生成原生目标和 iff，不依赖源定理证明。检查会展开 NativeBridge 别名，避免把隐藏源类型误计成原生；包括一个源别名反例和原生 Bool 正例。
 
 接口别名回归可用 python3 check_alias_regression.py 重跑；45 个旧 profile 全部通过，无旧接口丢失、无新增包装；结果在 reports/alias-regression.json。完整生成文件与详细回归日志仅在远程 .work/，保留脚本与紧凑结果。回归仅比较接口生成，不将新包装数当作运算 correspondence。
+
+第十二批：[Specif 陈述转换](SPECIF_STATEMENTS_RESULTS.md)，49 候选中 23 项完全原生化，另 26 项仍部分转换。完成类别总计 837 / 2180。

@@ -3359,6 +3359,326 @@ Rocq.Corelib.Setoids.Setoid.gen_st.statement ↔ NativeBridge.Incremental.Setoid
 
 公理闭包：propext, Quot.sound
 
+## Corelib.Init.Specif.eq_sigT2_hprop
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.eq_sigT2_hprop.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_884) (P : A → Sort u_Corelib_Init_Specif_890)
+  (Q : A → Sort u_Corelib_Init_Specif_887),
+  (∀ (x : A) (p q : Q x), p = q) →
+    ∀ (x x_1 : (x : A) ×' P x ×' Q x), ⟨x.fst, x.snd.fst⟩ = ⟨x_1.fst, x_1.snd.fst⟩ → x = x_1；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Specif.eq_sigT2_hprop.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.eq_sigT2_hprop.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_sigT2_hprop_iff
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.eq_sigT2_hprop_iff.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_1072) (P : A → Sort u_Corelib_Init_Specif_1078)
+  (Q : A → Sort u_Corelib_Init_Specif_1075),
+  (∀ (x : A) (p q : Q x), p = q) →
+    ∀ (x x_1 : (x : A) ×' P x ×' Q x), x = x_1 ↔ ⟨x.fst, x.snd.fst⟩ = ⟨x_1.fst, x_1.snd.fst⟩；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Specif.eq_sigT2_hprop_iff.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.eq_sigT2_hprop_iff.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_sigT2_nondep
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.eq_sigT2_nondep.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_1093) (B : Sort u_Corelib_Init_Specif_1094) (C : Sort u_Corelib_Init_Specif_1095)
+  (x x_1 : (_ : A) ×' B ×' C), x.fst = x_1.fst → x.snd.fst = x_1.snd.fst → x.snd.snd = x_1.snd.snd → x = x_1；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Specif.eq_sigT2_nondep.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.eq_sigT2_nondep.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_sigT_hprop
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.eq_sigT_hprop.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_362) (P : A → Sort u_Corelib_Init_Specif_365),
+  (∀ (x : A) (p q : P x), p = q) → ∀ (x x_1 : (a : A) ×' P a), x.fst = x_1.fst → x = x_1；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Specif.eq_sigT_hprop.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.eq_sigT_hprop.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_sigT_hprop_iff
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.eq_sigT_hprop_iff.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_492) (P : A → Sort u_Corelib_Init_Specif_495),
+  (∀ (x : A) (p q : P x), p = q) → ∀ (x x_1 : (a : A) ×' P a), x = x_1 ↔ x.fst = x_1.fst；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Specif.eq_sigT_hprop_iff.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.eq_sigT_hprop_iff.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_sigT_nondep
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.eq_sigT_nondep.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_507) (B : Sort u_Corelib_Init_Specif_508) (x x_1 : (_ : A) ×' B),
+  x.fst = x_1.fst → x.snd = x_1.snd → x = x_1；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Specif.eq_sigT_nondep.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.eq_sigT_nondep.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_sig_hprop
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.eq_sig_hprop.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_684) (P : A → Prop),
+  (∀ (x : A) (p q : P x), p = q) → ∀ (x x_1 : { a // P a }), x.val = x_1.val → x = x_1；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Specif.eq_sig_hprop.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.eq_sig_hprop.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_sig_hprop_iff
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.eq_sig_hprop_iff.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_702) (P : A → Prop),
+  (∀ (x : A) (p q : P x), p = q) → ∀ (x x_1 : { a // P a }), x = x_1 ↔ x.val = x_1.val；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Specif.eq_sig_hprop_iff.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.eq_sig_hprop_iff.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.ex2_of_sig2
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.ex2_of_sig2.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_123) (P Q : A → Prop) (s : { x // P x ∧ Q x }), ∃ x, P x ∧ Q x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Specif.ex2_of_sig2.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.ex2_of_sig2.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.ex2_of_sigT2
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.ex2_of_sigT2.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_127) (P Q : A → Prop) (x : (x : A) ×' P x ×' Q x), ∃ x, P x ∧ Q x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Specif.ex2_of_sigT2.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.ex2_of_sigT2.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.ex_of_sig
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.ex_of_sig.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_115) (P : A → Prop) (x : Subtype P), ∃ x, P x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Specif.ex_of_sig.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.ex_of_sig.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.ex_of_sigT
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.ex_of_sigT.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_119) (P : A → Prop) (x : PSigma P), ∃ x, P x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Specif.ex_of_sigT.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.ex_of_sigT.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.exists_to_inhabited_sig
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.exists_to_inhabited_sig.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_179) (P : A → Prop), (∃ x, P x) → Nonempty { x // P x }；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Specif.exists_to_inhabited_sig.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.exists_to_inhabited_sig.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.inhabited_sig_to_exists
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.inhabited_sig_to_exists.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_189) (P : A → Prop), Nonempty { x // P x } → ∃ x, P x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Specif.inhabited_sig_to_exists.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.inhabited_sig_to_exists.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.proj1_sig_eq
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.proj1_sig_eq.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_534) (P : A → Prop) (x x_1 : { a // P a }), x = x_1 → x.val = x_1.val；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Specif.proj1_sig_eq.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.proj1_sig_eq.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.proj2_sig
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.proj2_sig.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_54) (P : A → Prop) (x : Subtype P), P x.val；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Specif.proj2_sig.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.proj2_sig.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.projT1_eq
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.projT1_eq.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_211) (P : A → Sort u_Corelib_Init_Specif_212) (x x_1 : (a : A) ×' P a),
+  x = x_1 → x.fst = x_1.fst；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Specif.projT1_eq.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.projT1_eq.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.projT1_of_sigT2_eq
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.projT1_of_sigT2_eq.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_739) (P : A → Sort u_Corelib_Init_Specif_740) (Q : A → Sort u_Corelib_Init_Specif_741)
+  (x x_1 : (x : A) ×' P x ×' Q x), x = x_1 → x.fst = x_1.fst；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Specif.projT1_of_sigT2_eq.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.projT1_of_sigT2_eq.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.sigT2_ind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.sigT2_ind.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_45) (P : A → Sort u_Corelib_Init_Specif_46) (Q : A → Sort u_Corelib_Init_Specif_47)
+  (f : (x : A) ×' P x ×' Q x → Prop),
+  (∀ (x : A) (p : P x) (q : Q x), f ⟨x, ⟨p, q⟩⟩) → ∀ (x : (x : A) ×' P x ×' Q x), f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Specif.sigT2_ind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.sigT2_ind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.sigT2_sind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.sigT2_sind.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_51) (P : A → Sort u_Corelib_Init_Specif_52) (Q : A → Sort u_Corelib_Init_Specif_53)
+  (f : (x : A) ×' P x ×' Q x → Prop),
+  (∀ (x : A) (p : P x) (q : Q x), f ⟨x, ⟨p, q⟩⟩) → ∀ (x : (x : A) ×' P x ×' Q x), f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Specif.sigT2_sind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.sigT2_sind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.sigT_ind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.sigT_ind.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_31) (P : A → Sort u_Corelib_Init_Specif_32) (f : PSigma P → Prop),
+  (∀ (x : A) (p : P x), f ⟨x, p⟩) → ∀ (x : PSigma P), f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Specif.sigT_ind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.sigT_ind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.sigT_of_sigT2_eq
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.sigT_of_sigT2_eq.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_725) (P : A → Sort u_Corelib_Init_Specif_726) (Q : A → Sort u_Corelib_Init_Specif_727)
+  (x x_1 : (x : A) ×' P x ×' Q x), x = x_1 → ⟨x.fst, x.snd.fst⟩ = ⟨x_1.fst, x_1.snd.fst⟩；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Specif.sigT_of_sigT2_eq.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.sigT_of_sigT2_eq.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.sigT_sind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.sigT_sind.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_35) (P : A → Sort u_Corelib_Init_Specif_36) (f : PSigma P → Prop),
+  (∀ (x : A) (p : P x), f ⟨x, p⟩) → ∀ (x : PSigma P), f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Specif.sigT_sind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Specif.sigT_sind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
 ## Corelib.ssr.ssrbool.addFb
 
 NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addFb.statement.correspondence
