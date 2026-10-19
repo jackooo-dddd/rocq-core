@@ -13,7 +13,7 @@ nat 和 eq 都通过普通归纳规则翻译为独立目标类型。与 Lean Nat
 - [规则清单](results/corelib-complete/ALL_RULES.md)与[逐项使用次数](results/corelib-complete/RULE_USAGE.md)
 - [Universe 统计](results/corelib-complete/UNIVERSES.md)
 - [correspondence 总览](results/corelib-complete/CORRESPONDENCE.md)
-- [逐项对应覆盖](experiments/mechanical-correspondence-20261019/reports/CORELIB_LEDGER.csv)
+- [逐项对应覆盖](experiments/incremental-correspondence-20261019/reports/CORELIB_LEDGER.csv)
 - [迁移检查](experiments/mechanical-correspondence-20261019/reports/REGRESSION.json)
 - [统一使用示例](experiments/mechanical-correspondence-20261019/UseNative.lean)
 

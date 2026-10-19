@@ -1,0 +1,79 @@
+# Correspondence 依赖 DAG
+
+这是计划的机制依赖图；箭头表示前者可支持后者，不表示这些任务都已完成。
+
+```mermaid
+flowchart TD
+  Ledger["P1: 2180 项账本 + 源依赖分析"] --> Register["P2: 类型/运算证书注册与组合"]
+  Existing["已有 Nat/Eq/Bool/List/Option/N/Z Iso"] --> Register
+  Register --> Functions["函数组合 / Program.Basics"]
+  Register --> SSR["SSR simpl_fun / Option / 布尔谓词"]
+  Register --> Numeric["数值、比较、数字表示"]
+  Existing --> Dep["P4: 依赖函数 / Sigma / Eq transport"]
+  Dep --> Acc["Acc / 良基递归"]
+  Functions --> Operations["P5: 指定原生运算一致性"]
+  SSR --> Operations
+  Numeric --> Operations
+  Dep --> Operations
+  Register --> Classes["Classes: 关系性质 / 数据关系"]
+  Classes --> Statements["P6: 下游陈述原生化"]
+  Operations --> Statements
+  Acc --> Obligations["独立证明共享义务"]
+  Obligations --> Statements
+  Statements --> Integration["P7: 统一导入 / 原生定理复用"]
+  Operations --> Integration
+```
+
+## 两种依赖不能混淆
+
+1. **源声明依赖（事实）**：来自 full-v1/source.ndjson 中的 deps 字段。源声明引用某类型，并不自动意味着必须先证明该类型与原生对象的 Iso；有时可以局部展开或使用关系证明。
+2. **桥接任务依赖（规划）**：例如 SSR Option.map 的容器转换用 Option Iso，元素转换可能再用 Nat Iso；运算组合使用函数 correspondence。它们是所选方案需要的证书，不冒充源 IR 边。
+
+完整源图若含自递归或互递归，应收缩强连通分量（SCC）后得到 DAG。边方向统一为“依赖 → 使用者”。图外未被这 2180 根收录的辅助声明保留在外部依赖字段，不悄悄丢弃。
+
+首批：
+- Option Iso → SSR Option.map/bind/default/apply/lift
+- 函数结构 → Program.Basics、SSR comp/catcomp/idfun
+- simpl_fun 构造器 → simpl_fun Iso → fun_of_simpl 对应
+- Nat Iso + 递归器对应 → Nat.iter
+- 上述运算证书 → 高阶/复合函数自动证明
+
+这些边将在实际证明中验证；当前不声称完整数学依赖已自动发现。
+<!-- generated -->
+
+## 实际源依赖检查
+
+覆盖 2180 根；9457 条带类别的依赖记录；收缩后 2180 个 SCC、7230 条 DAG 边。已通过拓扑排序检查。
+
+依赖源为 IR 的 deps 字段。递归分量和外部辅助依赖均保留；不能由这些边直接推断对应证明一定依赖哪些 Iso。
+
+| 被依赖根 | 直接使用者数 |
+|---|---:|
+| Corelib.Init.Logic.eq | 588 |
+| Corelib.Init.Datatypes.bool | 423 |
+| Corelib.Relations.Relation_Definitions.relation | 181 |
+| Corelib.Init.Datatypes.is_true | 165 |
+| Corelib.Init.Datatypes.nat | 147 |
+| Corelib.Numbers.Cyclic.Int63.PrimInt63.int | 123 |
+| Corelib.Classes.CRelationClasses.crelation | 122 |
+| Corelib.Numbers.BinNums.Z | 112 |
+| Corelib.Init.Logic.iff | 107 |
+| Corelib.Numbers.BinNums.positive | 99 |
+| Corelib.ssr.ssrbool.predPredType | 92 |
+| Corelib.Init.Datatypes.prod | 91 |
+| Corelib.ssr.ssrbool.mem | 88 |
+| Corelib.Init.Datatypes.negb | 87 |
+| Corelib.Init.Logic.eq_rect | 86 |
+
+## 桥接证明依赖与本轮状态
+
+| 对应任务 | 使用的桥接/设施 | 状态 |
+|---|---|---|
+| SSR Option 五项操作 | 已有 optionTo/optionIso；元素转换组合 Iso.functions / Iso.options | 五项运算已证；map 的元素转换有独立定理 |
+| simpl_fun → 函数 | 源构造器与 fun_of_simpl；双向逆 | 已证，已接入新生成器 |
+| simpl_fun Bool Bool 原生接口 | simplFunIso → functions(boolIso, boolIso)；类型别名正规化 | 自动生成与往返通过，另证结果为 f true |
+| SSR 关系性质 | 机械 Eq ↔ Lean Eq；函数外延性用于 eqfun/eqrel | 八项谓词对应已证 |
+| Nat.iter | natTo；源递归器；载体 Iso 与步函数对应假设 | 普通与转换载体两份证明通过 |
+| 复合 Option / 函数表达式 | Option.map/bind 对应 + comp 对应 | 两例自动组合通过；目标表达式仍显式提供 |
+| N/Z、数字表示进一步运算 | 已有数值 Iso + 未补齐的语义证书 | 待后续批次 |
+| 依赖类型/Acc | Eq transport + motive/index 转换 + 终止性证据 | 待后续批次 |

@@ -1,0 +1,12 @@
+[{"type":
+  "∀ {A : Sort u} {B : Sort v} (e : NativeBridge.Iso A B) (f : A → A) (g : B → B),\n  (∀ (a : A), e.to (f a) = g (e.to a)) →\n    ∀ (x : A) (n : NativeBridge.MN),\n      e.to (Rocq.Corelib.Init.Nat.iter n A f x) = Nat.rec (e.to x) (fun x b => g b) (NativeBridge.natTo n)",
+  "source_references": ["Rocq.Corelib.Init.Nat.iter"],
+  "name": "NativeBridge.Incremental.nat_iter_transport",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} (f : A → A) (x : A) (n : NativeBridge.MN),\n  Rocq.Corelib.Init.Nat.iter n A f x = Nat.rec x (fun x a => f a) (NativeBridge.natTo n)",
+  "source_references": ["Rocq.Corelib.Init.Nat.iter"],
+  "name": "NativeBridge.Incremental.nat_iter_agrees",
+  "kind": "theorem",
+  "axioms": []}]

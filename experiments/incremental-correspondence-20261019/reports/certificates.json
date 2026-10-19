@@ -1,0 +1,284 @@
+[
+  {
+    "source": "Corelib.Program.Basics.apply",
+    "profile": "Basics",
+    "certificate": "NativeBridge.Incremental.basics_apply_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "function application",
+    "scope": "Sort parameters",
+    "type": "∀ {A : Sort u} {B : Sort v} (f : A → B) (x : A), Rocq.Corelib.Program.Basics.apply A B f x = f x",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Program.Basics.arrow",
+    "profile": "Basics",
+    "certificate": "NativeBridge.Incremental.basics_arrow_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Lean function type",
+    "scope": "Type parameters",
+    "type": "∀ (A : Type u) (B : Type v), Rocq.Corelib.Program.Basics.arrow A B = (A → B)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Program.Basics.compose",
+    "profile": "Basics",
+    "certificate": "NativeBridge.Incremental.basics_compose_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Function.comp",
+    "scope": "Sort parameters",
+    "type": "∀ {A : Sort u} {B : Sort v} {C : Sort w} (g : B → C) (f : A → B), Rocq.Corelib.Program.Basics.compose A B C g f = g ∘ f",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Program.Basics.const",
+    "profile": "Basics",
+    "certificate": "NativeBridge.Incremental.basics_const_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "constant lambda",
+    "scope": "Sort parameters",
+    "type": "∀ {A : Sort u} {B : Sort v} (a : A), Rocq.Corelib.Program.Basics.const A B a = fun x => a",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Program.Basics.flip",
+    "profile": "Basics",
+    "certificate": "NativeBridge.Incremental.basics_flip_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "argument-swapping lambda",
+    "scope": "Sort parameters",
+    "type": "∀ {A : Sort u} {B : Sort v} {C : Sort w} (f : A → B → C), Rocq.Corelib.Program.Basics.flip A B C f = fun b a => f a b",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Program.Basics.impl",
+    "profile": "Basics",
+    "certificate": "NativeBridge.Incremental.basics_impl_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Lean implication",
+    "scope": "Prop",
+    "type": "∀ (P Q : Prop), Rocq.Corelib.Program.Basics.impl P Q ↔ P → Q",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.Option.apply",
+    "profile": "SSR",
+    "certificate": "NativeBridge.Incremental.ssr_option_apply_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Option.elim",
+    "scope": "Type parameters; map_transport additionally supports element Iso with explicit function-correspondence premise",
+    "type": "∀ {A : Type u} {B : Type v} (f : A → B) (d : B) (x : Rocq.Corelib.Init.Datatypes.option A),\n  Rocq.Corelib.ssr.ssrfun.Option.apply A B f d x = (NativeBridge.optionTo x).elim d f",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.Option.default",
+    "profile": "SSR",
+    "certificate": "NativeBridge.Incremental.ssr_option_default_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Option.getD",
+    "scope": "Type parameters; map_transport additionally supports element Iso with explicit function-correspondence premise",
+    "type": "∀ {A : Type u} (d : A) (x : Rocq.Corelib.Init.Datatypes.option A),\n  Rocq.Corelib.ssr.ssrfun.Option.default A d x = (NativeBridge.optionTo x).getD d",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.Option.lift",
+    "profile": "SSR",
+    "certificate": "NativeBridge.Incremental.ssr_option_lift_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Option.some of function application",
+    "scope": "Type parameters; map_transport additionally supports element Iso with explicit function-correspondence premise",
+    "type": "∀ {A : Type u} {B : Type v} (f : A → B) (x : A),\n  NativeBridge.optionTo (Rocq.Corelib.ssr.ssrfun.Option.lift A B f x) = some (f x)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.Option.map",
+    "profile": "SSR",
+    "certificate": "NativeBridge.Incremental.ssr_option_map_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Option.map",
+    "scope": "Type parameters; map_transport additionally supports element Iso with explicit function-correspondence premise",
+    "type": "∀ {A : Type u} {B : Type v} (f : A → B) (x : Rocq.Corelib.Init.Datatypes.option A),\n  NativeBridge.optionTo (Rocq.Corelib.ssr.ssrfun.Option.map A B f x) = Option.map f (NativeBridge.optionTo x)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.Option.bind",
+    "profile": "SSR",
+    "certificate": "NativeBridge.Incremental.ssr_option_bind_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Option.bind",
+    "scope": "Type parameters; map_transport additionally supports element Iso with explicit function-correspondence premise",
+    "type": "∀ {A : Type u} {B : Type v} (f : A → Rocq.Corelib.Init.Datatypes.option B) (x : Rocq.Corelib.Init.Datatypes.option A),\n  NativeBridge.optionTo (Rocq.Corelib.ssr.ssrfun.Option.bind A B f x) =\n    (NativeBridge.optionTo x).bind fun a => NativeBridge.optionTo (f a)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.comp",
+    "profile": "SSR",
+    "certificate": "NativeBridge.Incremental.ssr_comp_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Function.comp",
+    "scope": "Sort parameters",
+    "type": "∀ {A : Sort u} {B : Sort v} {C : Sort w} (f : B → A) (g : C → B), Rocq.Corelib.ssr.ssrfun.comp A B C f g = f ∘ g",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.catcomp",
+    "profile": "SSR",
+    "certificate": "NativeBridge.Incremental.ssr_catcomp_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Function.comp",
+    "scope": "Sort parameters",
+    "type": "∀ {A : Sort u} {B : Sort v} {C : Sort w} (g : C → B) (f : B → A), Rocq.Corelib.ssr.ssrfun.catcomp A B C g f = f ∘ g",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.idfun",
+    "profile": "SSR",
+    "certificate": "NativeBridge.Incremental.ssr_idfun_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id",
+    "scope": "Sort parameters",
+    "type": "∀ {A : Sort u}, Rocq.Corelib.ssr.ssrfun.idfun A = id",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.simpl_fun",
+    "profile": "SSR",
+    "certificate": "NativeBridge.Incremental.simplFunIso",
+    "kind": "TYPE_ISO",
+    "target": "Lean function type A → B",
+    "scope": "Sort parameters; both inverse laws",
+    "type": "(A : Sort u) → (B : Sort v) → NativeBridge.Iso (Rocq.Corelib.ssr.ssrfun.simpl_fun A B) (A → B)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.fun_of_simpl",
+    "profile": "SSR",
+    "certificate": "NativeBridge.Incremental.ssr_fun_of_simpl_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "function projection under simplFunIso",
+    "scope": "Sort parameters",
+    "type": "∀ {A : Sort u} {B : Sort v} (f : Rocq.Corelib.ssr.ssrfun.simpl_fun A B),\n  Rocq.Corelib.ssr.ssrfun.fun_of_simpl A B f = (NativeBridge.Incremental.simplFunIso A B).to f",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Nat.iter",
+    "profile": "Iteration",
+    "certificate": "NativeBridge.Incremental.nat_iter_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Nat.rec iteration expression",
+    "scope": "Sort result; mechanical index translated by natTo",
+    "type": "∀ {A : Sort u} (f : A → A) (x : A) (n : NativeBridge.MN),\n  Rocq.Corelib.Init.Nat.iter n A f x = Nat.rec x (fun x a => f a) (NativeBridge.natTo n)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Nat.iter",
+    "profile": "Iteration",
+    "certificate": "NativeBridge.Incremental.nat_iter_transport",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Nat.rec iteration expression with carrier conversion",
+    "scope": "Sort carrier Iso; explicit step-function correspondence hypothesis",
+    "type": "∀ {A : Sort u} {B : Sort v} (e : NativeBridge.Iso A B) (f : A → A) (g : B → B),\n  (∀ (a : A), e.to (f a) = g (e.to a)) →\n    ∀ (x : A) (n : NativeBridge.MN),\n      e.to (Rocq.Corelib.Init.Nat.iter n A f x) = Nat.rec (e.to x) (fun x b => g b) (NativeBridge.natTo n)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.cancel",
+    "profile": "SSRProperties",
+    "certificate": "NativeBridge.Incremental.ssr_cancel_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "native quantified equality formula (see exact theorem type)",
+    "scope": "Sort parameters; predicate equivalence, not a proof that arbitrary functions have the property",
+    "type": "∀ {A : Sort u} {B : Sort v} (f : A → B) (g : B → A), Rocq.Corelib.ssr.ssrfun.cancel B A f g ↔ ∀ (x : A), g (f x) = x",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.commutative",
+    "profile": "SSRProperties",
+    "certificate": "NativeBridge.Incremental.ssr_commutative_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "native quantified equality formula (see exact theorem type)",
+    "scope": "Sort parameters; predicate equivalence, not a proof that arbitrary functions have the property",
+    "type": "∀ {A : Sort u} {B : Sort v} (f : A → A → B), Rocq.Corelib.ssr.ssrfun.commutative A B f ↔ ∀ (x y : A), f x y = f y x",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.associative",
+    "profile": "SSRProperties",
+    "certificate": "NativeBridge.Incremental.ssr_associative_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "native quantified equality formula (see exact theorem type)",
+    "scope": "Sort parameters; predicate equivalence, not a proof that arbitrary functions have the property",
+    "type": "∀ {A : Sort u} (f : A → A → A), Rocq.Corelib.ssr.ssrfun.associative A f ↔ ∀ (x y z : A), f x (f y z) = f (f x y) z",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.involutive",
+    "profile": "SSRProperties",
+    "certificate": "NativeBridge.Incremental.ssr_involutive_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "native quantified equality formula (see exact theorem type)",
+    "scope": "Sort parameters; predicate equivalence, not a proof that arbitrary functions have the property",
+    "type": "∀ {A : Sort u} (f : A → A), Rocq.Corelib.ssr.ssrfun.involutive A f ↔ ∀ (x : A), f (f x) = x",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.injective",
+    "profile": "SSRProperties",
+    "certificate": "NativeBridge.Incremental.ssr_injective_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "native quantified equality formula (see exact theorem type)",
+    "scope": "Sort parameters; predicate equivalence, not a proof that arbitrary functions have the property",
+    "type": "∀ {A : Sort u} {B : Sort v} (f : A → B), Rocq.Corelib.ssr.ssrfun.injective B A f ↔ ∀ (x y : A), f x = f y → x = y",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.eqfun",
+    "profile": "SSRProperties",
+    "certificate": "NativeBridge.Incremental.ssr_eqfun_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Lean function equality",
+    "scope": "Sort parameters; predicate equivalence, not a proof that arbitrary functions have the property",
+    "type": "∀ {A : Sort u} {B : Sort v} (f g : A → B), Rocq.Corelib.ssr.ssrfun.eqfun B A f g ↔ f = g",
+    "axioms": [
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.eqrel",
+    "profile": "SSRProperties",
+    "certificate": "NativeBridge.Incremental.ssr_eqrel_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Lean function equality",
+    "scope": "Sort parameters; predicate equivalence, not a proof that arbitrary functions have the property",
+    "type": "∀ {A : Sort u} {B : Sort v} {C : Sort w} (f g : A → B → C), Rocq.Corelib.ssr.ssrfun.eqrel C B A f g ↔ f = g",
+    "axioms": [
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.left_id",
+    "profile": "SSRProperties",
+    "certificate": "NativeBridge.Incremental.ssr_left_id_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "native quantified equality formula (see exact theorem type)",
+    "scope": "Sort parameters; predicate equivalence, not a proof that arbitrary functions have the property",
+    "type": "∀ {A : Sort u} {B : Sort v} (e : A) (f : A → B → B), Rocq.Corelib.ssr.ssrfun.left_id A B e f ↔ ∀ (x : B), f e x = x",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  }
+]
