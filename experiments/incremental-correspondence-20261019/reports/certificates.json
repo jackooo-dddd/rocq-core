@@ -3260,7 +3260,7 @@
     "kind": "OPERATION_CORRESPONDENCE",
     "target": "Native carry on List (Fin 10)",
     "target_class": "native_expression",
-    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved.",
+    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, all seven top-level printers also have separate NumericMathlib certificates.",
     "type": "∀ (ds : Rocq.Corelib.Init.Decimal.uint),\n  NativeBridge.decimalDigitsTo (Rocq.Corelib.Init.Decimal.Little.succ ds) =\n    NativeBridge.Incremental.NumericWrite.increment 10 ⋯ (NativeBridge.decimalDigitsTo ds)",
     "axioms": [
       "propext",
@@ -3274,7 +3274,7 @@
     "kind": "OPERATION_CORRESPONDENCE",
     "target": "Native carry on List (Fin 16)",
     "target_class": "native_expression",
-    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved.",
+    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, all seven top-level printers also have separate NumericMathlib certificates.",
     "type": "∀ (ds : Rocq.Corelib.Init.Hexadecimal.uint),\n  NativeBridge.hexadecimalDigitsTo (Rocq.Corelib.Init.Hexadecimal.Little.succ ds) =\n    NativeBridge.Incremental.NumericWrite.increment 16 ⋯ (NativeBridge.hexadecimalDigitsTo ds)",
     "axioms": [
       "propext",
@@ -3288,7 +3288,7 @@
     "kind": "OPERATION_CORRESPONDENCE",
     "target": "Native Nat.rec iteration of decimal digit carry",
     "target_class": "native_expression",
-    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved.",
+    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, all seven top-level printers also have separate NumericMathlib certificates.",
     "type": "∀ (n : NativeBridge.MN) (ds : Rocq.Corelib.Init.Decimal.uint),\n  NativeBridge.decimalDigitsTo (Rocq.Corelib.Init.Nat.to_little_uint n ds) =\n    NativeBridge.Incremental.NumericWrite.iterate 10 ⋯ (NativeBridge.natTo n) (NativeBridge.decimalDigitsTo ds)",
     "axioms": [
       "propext",
@@ -3302,7 +3302,7 @@
     "kind": "OPERATION_CORRESPONDENCE",
     "target": "Native Nat.rec iteration of hexadecimal digit carry",
     "target_class": "native_expression",
-    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved.",
+    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, all seven top-level printers also have separate NumericMathlib certificates.",
     "type": "∀ (n : NativeBridge.MN) (ds : Rocq.Corelib.Init.Hexadecimal.uint),\n  NativeBridge.hexadecimalDigitsTo (Rocq.Corelib.Init.Nat.to_little_hex_uint n ds) =\n    NativeBridge.Incremental.NumericWrite.iterate 16 ⋯ (NativeBridge.natTo n) (NativeBridge.hexadecimalDigitsTo ds)",
     "axioms": [
       "propext",
@@ -3316,7 +3316,7 @@
     "kind": "OPERATION_CORRESPONDENCE",
     "target": "Native decimal digit printing: iterate carry from [0], then reverse",
     "target_class": "native_expression",
-    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved.",
+    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, all seven top-level printers also have separate NumericMathlib certificates.",
     "type": "∀ (n : NativeBridge.MN),\n  NativeBridge.decimalDigitsTo (Rocq.Corelib.Init.Nat.to_uint n) =\n    NativeBridge.Incremental.NumericWrite.printDigits 10 ⋯ (NativeBridge.natTo n)",
     "axioms": [
       "propext",
@@ -3330,7 +3330,7 @@
     "kind": "OPERATION_CORRESPONDENCE",
     "target": "Native hexadecimal digit printing: iterate carry from [0], then reverse",
     "target_class": "native_expression",
-    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved.",
+    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, all seven top-level printers also have separate NumericMathlib certificates.",
     "type": "∀ (n : NativeBridge.MN),\n  NativeBridge.hexadecimalDigitsTo (Rocq.Corelib.Init.Nat.to_hex_uint n) =\n    NativeBridge.Incremental.NumericWrite.printDigits 16 ⋯ (NativeBridge.natTo n)",
     "axioms": [
       "propext",
@@ -3344,7 +3344,7 @@
     "kind": "OPERATION_CORRESPONDENCE",
     "target": "False sign tag paired with native decimal printDigits",
     "target_class": "native_expression",
-    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved.",
+    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, all seven top-level printers also have separate NumericMathlib certificates.",
     "type": "∀ (n : NativeBridge.MN),\n  NativeBridge.Incremental.NumericWrite.decimalSignedTo (Rocq.Corelib.Init.Nat.to_int n) =\n    (false, NativeBridge.Incremental.NumericWrite.printDigits 10 ⋯ (NativeBridge.natTo n))",
     "axioms": [
       "propext",
@@ -3358,7 +3358,7 @@
     "kind": "OPERATION_CORRESPONDENCE",
     "target": "False sign tag paired with native hexadecimal printDigits",
     "target_class": "native_expression",
-    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved.",
+    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, all seven top-level printers also have separate NumericMathlib certificates.",
     "type": "∀ (n : NativeBridge.MN),\n  NativeBridge.Incremental.NumericWrite.hexadecimalSignedTo (Rocq.Corelib.Init.Nat.to_hex_int n) =\n    (false, NativeBridge.Incremental.NumericWrite.printDigits 16 ⋯ (NativeBridge.natTo n))",
     "axioms": [
       "propext",
@@ -3372,7 +3372,7 @@
     "kind": "OPERATION_CORRESPONDENCE",
     "target": "Sum.inl of native decimal printDigits",
     "target_class": "native_expression",
-    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved.",
+    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, all seven top-level printers also have separate NumericMathlib certificates.",
     "type": "∀ (n : NativeBridge.MN),\n  NativeBridge.Incremental.numberUintTo (Rocq.Corelib.Init.Nat.to_num_uint n) =\n    Sum.inl (NativeBridge.Incremental.NumericWrite.printDigits 10 ⋯ (NativeBridge.natTo n))",
     "axioms": [
       "propext",
@@ -3386,7 +3386,7 @@
     "kind": "OPERATION_CORRESPONDENCE",
     "target": "Sum.inr of native hexadecimal printDigits",
     "target_class": "native_expression",
-    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved.",
+    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, all seven top-level printers also have separate NumericMathlib certificates.",
     "type": "∀ (n : NativeBridge.MN),\n  NativeBridge.Incremental.numberUintTo (Rocq.Corelib.Init.Nat.to_num_hex_uint n) =\n    Sum.inr (NativeBridge.Incremental.NumericWrite.printDigits 16 ⋯ (NativeBridge.natTo n))",
     "axioms": [
       "propext",
@@ -3400,7 +3400,7 @@
     "kind": "OPERATION_CORRESPONDENCE",
     "target": "Sum.inl of positive native signed decimal printDigits",
     "target_class": "native_expression",
-    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved.",
+    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, all seven top-level printers also have separate NumericMathlib certificates.",
     "type": "∀ (n : NativeBridge.MN),\n  NativeBridge.Incremental.NumericWrite.numberSignedTo (Rocq.Corelib.Init.Nat.to_num_int n) =\n    Sum.inl (false, NativeBridge.Incremental.NumericWrite.printDigits 10 ⋯ (NativeBridge.natTo n))",
     "axioms": [
       "propext",
@@ -3418,6 +3418,242 @@
     "type": "NativeBridge.Iso Rocq.Corelib.Init.Number.signed_int (Bool × List (Fin 10) ⊕ Bool × List (Fin 16))",
     "axioms": [
       "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Nat.to_uint",
+    "profile": "NumericMathlib",
+    "certificate": "NativeBridge.Incremental.NumericMathlib.decimal_print_mathlib",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "if n = 0 then [0] else (Nat.digits 10 n).reverse",
+    "target_class": "existing_api",
+    "scope": "All mechanical Nat inputs after natTo. Output digits mapped with Fin.val; endian reversal and the zero representation [0] vs [] explicitly adapted. Strengthens existing printDigits certificate; source root not counted twice.",
+    "type": "∀ (n : NativeBridge.MN),\n  List.map Fin.val (NativeBridge.decimalDigitsTo (Rocq.Corelib.Init.Nat.to_uint n)) =\n    if NativeBridge.natTo n = 0 then [0] else (Nat.digits 10 (NativeBridge.natTo n)).reverse",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Nat.to_hex_uint",
+    "profile": "NumericMathlib",
+    "certificate": "NativeBridge.Incremental.NumericMathlib.hexadecimal_print_mathlib",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "if n = 0 then [0] else (Nat.digits 16 n).reverse",
+    "target_class": "existing_api",
+    "scope": "All mechanical Nat inputs after natTo. Output digits mapped with Fin.val; endian reversal and the zero representation [0] vs [] explicitly adapted. Strengthens existing printDigits certificate; source root not counted twice.",
+    "type": "∀ (n : NativeBridge.MN),\n  List.map Fin.val (NativeBridge.hexadecimalDigitsTo (Rocq.Corelib.Init.Nat.to_hex_uint n)) =\n    if NativeBridge.natTo n = 0 then [0] else (Nat.digits 16 (NativeBridge.natTo n)).reverse",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Nat.to_int",
+    "profile": "NumericMathlib",
+    "certificate": "NativeBridge.Incremental.NumericMathlib.decimal_signed_print_mathlib",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "(false, adapted decimal Nat.digits)",
+    "target_class": "existing_api",
+    "scope": "All mechanical Nat inputs after natTo. Fin.val applied to output digits; radix/sign tags preserved; zero explicitly [0], nonzero Mathlib digits reversed. Additional stronger certificate, not a new source root.",
+    "type": "∀ (n : NativeBridge.MN),\n  have s := NativeBridge.Incremental.NumericWrite.decimalSignedTo (Rocq.Corelib.Init.Nat.to_int n);\n  (s.1, List.map Fin.val s.2) =\n    (false, if NativeBridge.natTo n = 0 then [0] else (Nat.digits 10 (NativeBridge.natTo n)).reverse)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Nat.to_hex_int",
+    "profile": "NumericMathlib",
+    "certificate": "NativeBridge.Incremental.NumericMathlib.hexadecimal_signed_print_mathlib",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "(false, adapted hexadecimal Nat.digits)",
+    "target_class": "existing_api",
+    "scope": "All mechanical Nat inputs after natTo. Fin.val applied to output digits; radix/sign tags preserved; zero explicitly [0], nonzero Mathlib digits reversed. Additional stronger certificate, not a new source root.",
+    "type": "∀ (n : NativeBridge.MN),\n  have s := NativeBridge.Incremental.NumericWrite.hexadecimalSignedTo (Rocq.Corelib.Init.Nat.to_hex_int n);\n  (s.1, List.map Fin.val s.2) =\n    (false, if NativeBridge.natTo n = 0 then [0] else (Nat.digits 16 (NativeBridge.natTo n)).reverse)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Nat.to_num_uint",
+    "profile": "NumericMathlib",
+    "certificate": "NativeBridge.Incremental.NumericMathlib.number_decimal_print_mathlib",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Sum.inl of adapted decimal Nat.digits",
+    "target_class": "existing_api",
+    "scope": "All mechanical Nat inputs after natTo. Fin.val applied to output digits; radix/sign tags preserved; zero explicitly [0], nonzero Mathlib digits reversed. Additional stronger certificate, not a new source root.",
+    "type": "∀ (n : NativeBridge.MN),\n  Sum.map (List.map Fin.val) (List.map Fin.val)\n      (NativeBridge.Incremental.numberUintTo (Rocq.Corelib.Init.Nat.to_num_uint n)) =\n    Sum.inl (if NativeBridge.natTo n = 0 then [0] else (Nat.digits 10 (NativeBridge.natTo n)).reverse)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Nat.to_num_hex_uint",
+    "profile": "NumericMathlib",
+    "certificate": "NativeBridge.Incremental.NumericMathlib.number_hexadecimal_print_mathlib",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Sum.inr of adapted hexadecimal Nat.digits",
+    "target_class": "existing_api",
+    "scope": "All mechanical Nat inputs after natTo. Fin.val applied to output digits; radix/sign tags preserved; zero explicitly [0], nonzero Mathlib digits reversed. Additional stronger certificate, not a new source root.",
+    "type": "∀ (n : NativeBridge.MN),\n  Sum.map (List.map Fin.val) (List.map Fin.val)\n      (NativeBridge.Incremental.numberUintTo (Rocq.Corelib.Init.Nat.to_num_hex_uint n)) =\n    Sum.inr (if NativeBridge.natTo n = 0 then [0] else (Nat.digits 16 (NativeBridge.natTo n)).reverse)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Nat.to_num_int",
+    "profile": "NumericMathlib",
+    "certificate": "NativeBridge.Incremental.NumericMathlib.number_signed_print_mathlib",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Sum.inl of (false, adapted decimal Nat.digits)",
+    "target_class": "existing_api",
+    "scope": "All mechanical Nat inputs after natTo. Fin.val applied to output digits; radix/sign tags preserved; zero explicitly [0], nonzero Mathlib digits reversed. Additional stronger certificate, not a new source root.",
+    "type": "∀ (n : NativeBridge.MN),\n  Sum.map (fun s => (s.1, List.map Fin.val s.2)) (fun s => (s.1, List.map Fin.val s.2))\n      (NativeBridge.Incremental.NumericWrite.numberSignedTo (Rocq.Corelib.Init.Nat.to_num_int n)) =\n    Sum.inl (false, if NativeBridge.natTo n = 0 then [0] else (Nat.digits 10 (NativeBridge.natTo n)).reverse)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Nat.of_int",
+    "profile": "NumericSigned",
+    "certificate": "NativeBridge.Incremental.NumericSigned.decimal_signed_read_int",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "if signed digit value z < 0 then none else some z.toNat",
+    "target_class": "existing_api",
+    "scope": "All signed decimal/hexadecimal digit representations, including empty input, redundant zeros and negative zero. Numeric interpretation is an Int-valued fold, not a bijection from representations to Int. Int.toNat guarded to reject negative nonzero inputs.",
+    "type": "∀ (s : Rocq.Corelib.Init.Decimal.signed_int),\n  NativeBridge.Incremental.NumericSigned.optionNatTo (Rocq.Corelib.Init.Nat.of_int s) =\n    have z :=\n      NativeBridge.Incremental.NumericSigned.signedValue 10 (NativeBridge.Incremental.NumericWrite.decimalSignedTo s);\n    if z < 0 then none else some z.toNat",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Nat.of_hex_int",
+    "profile": "NumericSigned",
+    "certificate": "NativeBridge.Incremental.NumericSigned.hexadecimal_signed_read_int",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "if signed digit value z < 0 then none else some z.toNat",
+    "target_class": "existing_api",
+    "scope": "All signed decimal/hexadecimal digit representations, including empty input, redundant zeros and negative zero. Numeric interpretation is an Int-valued fold, not a bijection from representations to Int. Int.toNat guarded to reject negative nonzero inputs.",
+    "type": "∀ (s : Rocq.Corelib.Init.Hexadecimal.signed_int),\n  NativeBridge.Incremental.NumericSigned.optionNatTo (Rocq.Corelib.Init.Nat.of_hex_int s) =\n    have z :=\n      NativeBridge.Incremental.NumericSigned.signedValue 16\n        (NativeBridge.Incremental.NumericWrite.hexadecimalSignedTo s);\n    if z < 0 then none else some z.toNat",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Nat.of_num_int",
+    "profile": "NumericSigned",
+    "certificate": "NativeBridge.Incremental.NumericSigned.number_signed_read_int",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "if signed digit value z < 0 then none else some z.toNat",
+    "target_class": "existing_api",
+    "scope": "All signed decimal/hexadecimal digit representations, including empty input, redundant zeros and negative zero. Numeric interpretation is an Int-valued fold, not a bijection from representations to Int. Int.toNat guarded to reject negative nonzero inputs.",
+    "type": "∀ (s : Rocq.Corelib.Init.Number.signed_int),\n  NativeBridge.Incremental.NumericSigned.optionNatTo (Rocq.Corelib.Init.Nat.of_num_int s) =\n    have z :=\n      NativeBridge.Incremental.NumericSigned.numberSignedValue (NativeBridge.Incremental.NumericWrite.numberSignedTo s);\n    if z < 0 then none else some z.toNat",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Nat.gcd",
+    "profile": "NatGcd",
+    "certificate": "NativeBridge.Incremental.NatGcd.gcd_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Nat.gcd",
+    "target_class": "existing_api",
+    "scope": "All mechanical Nat arguments; termination condition actually discharged using natTo measure and modulo correspondence. Witness uses standard propext and Quot.sound; no new axiom or pending condition.",
+    "closed_wrapper": "NativeBridge.Incremental.NatGcd.gcdClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Nat.gcd__rocq2lean_termination_1",
+        "proof": "NativeBridge.Incremental.NatGcd.termination"
+      }
+    ],
+    "type": "∀ (a b : NativeBridge.MN),\n  NativeBridge.natTo (RocqPending.Corelib.Init.Nat.gcd a b) = (NativeBridge.natTo a).gcd (NativeBridge.natTo b)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Nat.divmod",
+    "profile": "NatArithmetic",
+    "certificate": "NativeBridge.Incremental.NatArithmetic.divmod_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Native Nat division/remainder with explicit quotient and countdown accumulator adapter",
+    "target_class": "existing_api",
+    "scope": "All four Nat parameters, including initial countdown u > y. If x ≤ u returns (q,u-x); otherwise t=x-(u+1)+(q+1)*(y+1), result (t/(y+1),y-t%(y+1)).",
+    "type": "∀ (x y q u : NativeBridge.MN),\n  Rocq.Corelib.Init.Datatypes.prod.rec (fun q r => (NativeBridge.natTo q, NativeBridge.natTo r))\n      (Rocq.Corelib.Init.Nat.divmod x y q u) =\n    NativeBridge.Incremental.NatArithmetic.divmodNative (NativeBridge.natTo x) (NativeBridge.natTo y)\n      (NativeBridge.natTo q) (NativeBridge.natTo u)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Nat.sqrt_iter",
+    "profile": "NatIterators",
+    "certificate": "NativeBridge.Incremental.NatIterators.sqrt_iter_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Native Nat recursive sqrtIter",
+    "target_class": "native_expression",
+    "scope": "All four Nat state parameters. Arithmetic sqrt interpretation proved separately under the algorithm invariant.",
+    "type": "∀ (k p q r : NativeBridge.MN),\n  NativeBridge.natTo (Rocq.Corelib.Init.Nat.sqrt_iter k p q r) =\n    NativeBridge.Incremental.NatIterators.sqrtIter (NativeBridge.natTo k) (NativeBridge.natTo p) (NativeBridge.natTo q)\n      (NativeBridge.natTo r)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Nat.log2_iter",
+    "profile": "NatIterators",
+    "certificate": "NativeBridge.Incremental.NatIterators.log2_iter_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Native Nat recursive log2Iter",
+    "target_class": "native_expression",
+    "scope": "All four Nat state parameters. Arithmetic log2 interpretation proved separately under the algorithm invariant.",
+    "type": "∀ (k p q r : NativeBridge.MN),\n  NativeBridge.natTo (Rocq.Corelib.Init.Nat.log2_iter k p q r) =\n    NativeBridge.Incremental.NatIterators.log2Iter (NativeBridge.natTo k) (NativeBridge.natTo p) (NativeBridge.natTo q)\n      (NativeBridge.natTo r)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Nat.sqrt",
+    "profile": "NatIterators",
+    "certificate": "NativeBridge.Incremental.NatIterators.sqrt_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Nat.sqrt",
+    "target_class": "existing_api",
+    "scope": "All mechanical Nat inputs; proof uses square bounds and uniqueness of native square root.",
+    "type": "∀ (n : NativeBridge.MN), NativeBridge.natTo (Rocq.Corelib.Init.Nat.sqrt n) = (NativeBridge.natTo n).sqrt",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Nat.log2",
+    "profile": "NatIterators",
+    "certificate": "NativeBridge.Incremental.NatIterators.log2_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Nat.log2",
+    "target_class": "existing_api",
+    "scope": "All mechanical Nat inputs, including zero; proof uses powers-of-two bounds and native log2 uniqueness.",
+    "type": "∀ (n : NativeBridge.MN), NativeBridge.natTo (Rocq.Corelib.Init.Nat.log2 n) = (NativeBridge.natTo n).log2",
+    "axioms": [
+      "propext",
+      "Quot.sound"
     ]
   },
   {

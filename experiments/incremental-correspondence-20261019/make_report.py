@@ -4,7 +4,7 @@ W=Path(__file__).resolve().parent;R=W.parents[1];D=W/'reports'
 B=R/'experiments/mechanical-correspondence-20261019/reports'
 specs=json.loads((W/'certificates.json').read_text())
 validation=json.loads((D/'validation.json').read_text())
-assert {r['profile'] for r in validation}=={'NumericWrite','SpecifNormalization','SpecifStatements','Basics','SSR','Iteration','Registry','SSRProperties','SSRBool','SSRBoolStatements','NumericRead','DecimalOperations','HexadecimalOperations','WellFounded','DependentElimination','PairRecursion','DependentStatements','DatatypeElimination','EqualityTransport','BooleanEquality','RelationDefinitions','RelationClasses','RelationClassStatements','VariadicPredicates','VariadicStatements','RelationConditions','Morphisms','MorphismStatements','EquivalenceBridge','EquivalenceStatements','MorphismsProp','SetoidBridge'}
+assert {r['profile'] for r in validation}=={'NatArithmetic','NatIterators','NatGcd','NumericSigned','NumericMathlib','NumericWrite','SpecifNormalization','SpecifStatements','Basics','SSR','Iteration','Registry','SSRProperties','SSRBool','SSRBoolStatements','NumericRead','DecimalOperations','HexadecimalOperations','WellFounded','DependentElimination','PairRecursion','DependentStatements','DatatypeElimination','EqualityTransport','BooleanEquality','RelationDefinitions','RelationClasses','RelationClassStatements','VariadicPredicates','VariadicStatements','RelationConditions','Morphisms','MorphismStatements','EquivalenceBridge','EquivalenceStatements','MorphismsProp','SetoidBridge'}
 audits={}
 for r in validation:
  assert r['exit']==0 and r['audit_present'],r
@@ -71,7 +71,7 @@ for sp in specs:
   for discharge in ds:
    witness=audits[sp['profile']][discharge['proof']]
    assert expected['obligation_targets'][discharge['source']] in witness['source_references']
-   assert not witness['axioms'],witness
+   assert set(witness['axioms']) <= {'propext','Quot.sound','Classical.choice'},witness
    witnesses.append(dict(source=discharge['source'],**witness))
   resolved_conditions.append(dict(source=sp['source'],wrapper=wrapper,witnesses=witnesses,certificate=sp['certificate']))
  r['bridge_status']=sp['kind'];r['evidence_origin']='baseline + checked incremental certificate'
@@ -106,6 +106,9 @@ for module,total in [('Corelib.Relations.Relation_Definitions',23),('Corelib.Cla
  assert all(r['bridge_status'] in {'TYPE_ISO','OPERATION_CORRESPONDENCE','STATEMENT_FULL_NATIVE'} for r in rs)
  module_coverage.append(dict(module=module,total=len(rs),counts=dict(collections.Counter(r['bridge_status'] for r in rs))))
 (D/'relations-module-coverage.json').write_text(json.dumps(module_coverage,indent=2))
+nat_rows=[r for r in rows.values() if r['module']=='Corelib.Init.Nat']
+assert len(nat_rows)==58 and all(r['bridge_status'] in {'TYPE_ISO','OPERATION_CORRESPONDENCE','STATEMENT_FULL_NATIVE'} for r in nat_rows)
+(D/'nat-module-coverage.json').write_text(json.dumps(dict(module='Corelib.Init.Nat',total=58,counts=dict(collections.Counter(r['bridge_status'] for r in nat_rows)),sources=[r['source'] for r in nat_rows]),indent=2))
 writecsv(D/'CORELIB_LEDGER.csv',list(rows.values()))
 counts=dict(collections.Counter(r['bridge_status'] for r in rows.values()))
 bcounts=dict(collections.Counter(r['bridge_status'] for r in base))
@@ -129,7 +132,9 @@ summary={'alias_regression_profiles':45,'alias_regression_lost':0,'alias_regress
  'correspondence_conditions_remaining':counts['EXPLICIT_PROOF_PARAMETERS'],
  'condition_resolved_roots':len({r['source'] for r in resolved_conditions}),
  'closed_obligation_witnesses':len({w['name'] for r in resolved_conditions for w in r['witnesses']}),
- 'full_sort_type_certificates_added':7,'completion':'thirteen incremental batches plus P7 coexistence; overall plan remains incomplete',
+ 'axiom_free_closed_witnesses':len({w['name'] for r in resolved_conditions for w in r['witnesses'] if not w['axioms']}),
+ 'standard_axiom_closed_witnesses':len({w['name'] for r in resolved_conditions for w in r['witnesses'] if w['axioms']}),
+ 'full_sort_type_certificates_added':7,'completion':'fifteen incremental batches plus P7 coexistence; overall plan remains incomplete',
  'explicit_target_classes_since_batch_3':dict(collections.Counter(sp['target_class'] for sp in specs if 'target_class' in sp))}
 interop_path=D/'interop/all/import-all-validation.json'
 if interop_path.exists():
@@ -144,9 +149,9 @@ if interop_path.exists():
  cv=json.loads((D/'interop/consumer-validation.json').read_text())
  assert cv['exit']==0 and cv['consumer_sha256']==hashlib.sha256((W/'interop/Consumer.lean').read_bytes()).hexdigest()
  summary['mathlib_tested']=True
- summary['mathlib_test_scope']='Nat + SSR Option + Setoid consumer; Nat.prime_two at Mathlib '+cv['mathlib_commit']
+ summary['mathlib_test_scope']='NumericMathlib proves decimal/hexadecimal printers equal Nat.digits with endian and zero adapters; Nat + SSR Option + Setoid consumer; Nat.prime_two at Mathlib '+cv['mathlib_commit']
  summary['coimport_snapshot']=iv
- summary['coimport_not_current_coverage']=len(specs)!=iv['coverage_certificates']
+ summary['coimport_not_current_coverage']=hashlib.sha256(json.dumps(accepted,ensure_ascii=False,indent=2).encode()).hexdigest()!=iv['manifest_sha256']
 assert sum(counts.values())==2180
 (D/'summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2))
 (D/'condition-discharges.json').write_text(json.dumps(resolved_conditions,ensure_ascii=False,indent=2))

@@ -191,4 +191,14 @@ flowchart TD
     increment 数值 + Nat.rec → 打印数值正确
     sign × digits + Sum 进制标签 → Number.signed_int Iso → 五种带标签的打印
 
-与 Mathlib Nat.digits 的原生现成 API 对应尚待补充，零表示需显式适配。
+进位保持规范性 + 打印数值 + Mathlib Nat.digits_ofDigits → 七种顶层打印的现成 API 对应。零与字节序均显式适配。
+
+## 第十四、十五批：数值语义闭合
+
+    原生去前导零 + 零值判定 → Int 数值 → 三种有符号读取
+    modulo 对应 + natTo 下降量 → gcd 终止见证 → Nat.gcd
+    divmod 不变量 + 首次计数器归零分支 → 全参数原生 div/mod
+    原生状态迭代 + 平方区间不变量 → Nat.sqrt
+    原生状态迭代 + 二次幂区间不变量 → Nat.log2
+
+这些证明未修改原始机械翻译。

@@ -1,6 +1,6 @@
 # Nat 机械翻译案例
 
-后续增量：Nat.iter 已新增运算对应，见 [Iteration.lean](../../experiments/incremental-correspondence-20261019/proofs/Iteration.lean)。本案例逐项表保留构建时的证明快照，最新状态以 [增量账本](../../experiments/incremental-correspondence-20261019/reports/CORELIB_LEDGER.csv) 为准。
+后续增量：Init.Nat 的 58 个根现均有明示范围内的对应，gcd 条件已闭合，sqrt/log2 与七种数字打印已对应原生 API，见 [Nat 最新结果](../../experiments/incremental-correspondence-20261019/NAT_COMPLETION_RESULTS.md)。本案例逐项表保留构建时的证明快照，最新状态以 [增量账本](../../experiments/incremental-correspondence-20261019/reports/CORELIB_LEDGER.csv) 为准。
 
 本案例收录 Rocq Corelib 中 Nat 的源定义、函数、翻译过程证据、Lean 实际输出及现有 correspondence 证明。基线为 mechanical-nat-eq-20261019/full-v1：源 nat/eq 都生成独立归纳类型，bootstrap 表为空。
 

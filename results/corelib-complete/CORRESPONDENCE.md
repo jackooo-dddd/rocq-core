@@ -8,7 +8,7 @@
 
 natIso 提供机械 nat ↔ Nat 的两个方向与两个往返恒等。eq_correspondence 证明 MechanicalEq A x y ↔ x = y（A : Sort u），eqIso 提供证明对象的双向转换；eq_transport_agrees 证明依赖消去一致。以上主对应的公理闭包为空。
 
-当前 71 份类型对应证书覆盖 63 个根（含 7 份新增完整 Sort 证书）；300 份运算/谓词证书覆盖 294 个根；853 个陈述根中 518 个无源端符号、335 个仍有残留（其中新增的 141 项自动陈述还递归检查了桥接别名；另 8 项数字比较陈述有显式原生目标及原陈述证明）。另有 479 个源根自动接口往返证书；这些类别有重叠，不能相加当作声明数量。机械产物中的 331 个带条件根保持原样；correspondence 层已用 13 份闭合见证实际实例化其中 15 个根（7 定义、8 陈述），本层尚待处理 316 个。详见 [条件实例化](../../experiments/incremental-correspondence-20261019/DEPENDENT_RESULTS.md)。
+当前 71 份类型对应证书覆盖 63 个根（含 7 份新增完整 Sort 证书）；316 份运算/谓词证书覆盖 303 个根；853 个陈述根中 518 个无源端符号、335 个仍有残留（其中新增的 141 项自动陈述还递归检查了桥接别名；另 8 项数字比较陈述有显式原生目标及原陈述证明）。另有 479 个源根自动接口往返证书；这些类别有重叠，不能相加当作声明数量。机械产物中的 331 个带条件根保持原样；correspondence 层已用 14 份闭合见证实际实例化其中 16 个根（8 定义、8 陈述），本层尚待处理 315 个；其中 13 份见证公理闭包为空，gcd 见证使用标准 propext / Quot.sound。详见 [条件实例化](../../experiments/incremental-correspondence-20261019/DEPENDENT_RESULTS.md)。
 
 旧 480 个自动接口保留 475 个并新增 3 个。nat_rec、nat_rect、eq_rew_dep、eq_rew_fwd_dep、eq_rew_fwd_r_dep 尚未恢复通用依赖函数自动包装；五者均另有手写运算对应证明。手写运算对应不冒充自动接口往返。
 
@@ -28,6 +28,8 @@ natIso 提供机械 nat ↔ Nat 的两个方向与两个往返恒等。eq_corres
 
 第十一批：[Equivalence / Morphisms_Prop / Setoid](../../experiments/incremental-correspondence-20261019/EQUIVALENCE_SETOID_RESULTS.md)。当时累计 814 个完成根、43 份新增原陈述证明。
 
-最新第十二批：Specif 的 49 个部分陈述全部原生化，累计 863 个完成根，新增原陈述证明仍为 43 份。P7 已验证 30 个 profile / 585 份增量覆盖证书共同导入；本批新增证书正在扩展共同导入快照。见 [Specif 结果](../../experiments/incremental-correspondence-20261019/SPECIF_STATEMENTS_RESULTS.md) 和 [跨模块消费](../../experiments/incremental-correspondence-20261019/INTEROP_RESULTS.md)。
+最新第十二批：Specif 的 49 个部分陈述全部原生化，累计 863 个完成根，新增原陈述证明仍为 43 份。P7 已验证 36 个 profile / 613 份增量覆盖证书共同导入；当前全部增量覆盖证书已共同导入验证。见 [Specif 结果](../../experiments/incremental-correspondence-20261019/SPECIF_STATEMENTS_RESULTS.md) 和 [跨模块消费](../../experiments/incremental-correspondence-20261019/INTEROP_RESULTS.md)。
 
 最新数字写出批次新增 12 个完成根，累计 875；对应原生表达式及打印数值证明见 [数字写出结果](../../experiments/incremental-correspondence-20261019/NUMERIC_WRITE_RESULTS.md)。
+
+最新完成类别为 884 / 2180；Init.Nat 58 根的结果与标准公理边界见 [Nat 完成范围](../../experiments/incremental-correspondence-20261019/NAT_COMPLETION_RESULTS.md)。

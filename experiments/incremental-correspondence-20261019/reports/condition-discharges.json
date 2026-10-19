@@ -444,5 +444,34 @@
       }
     ],
     "certificate": "NativeBridge.Incremental.RelationConditions.subrelation_partial_order_native"
+  },
+  {
+    "source": "Corelib.Init.Nat.gcd",
+    "wrapper": {
+      "type": "NativeBridge.MN → NativeBridge.MN → NativeBridge.MN",
+      "source_references": [],
+      "name": "NativeBridge.Incremental.NatGcd.gcdClosed",
+      "kind": "definition",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    "witnesses": [
+      {
+        "source": "Corelib.Init.Nat.gcd__rocq2lean_termination_1",
+        "type": "Rocq.Corelib.Init.Nat.gcd__rocq2lean_termination_1.statement",
+        "source_references": [
+          "Rocq.Corelib.Init.Nat.gcd__rocq2lean_termination_1.statement"
+        ],
+        "name": "NativeBridge.Incremental.NatGcd.termination",
+        "kind": "theorem",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ]
+      }
+    ],
+    "certificate": "NativeBridge.Incremental.NatGcd.gcd_agrees"
   }
 ]

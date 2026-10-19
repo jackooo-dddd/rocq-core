@@ -62,4 +62,4 @@
 
 新证书为 49 个 iff 和 1 个既有类型的范围扩展；没有新增原陈述证明。详细类型、公理和目标体见 reports/CERTIFICATES.md、specif-statement-candidates.json。全部 49 项都是无条件原声明，本批未处理剩余显式条件。
 
-P7 正在扩展共同导入快照；以 reports/interop/all/import-all-validation.json 的实际记录为准。
+P7 已纳入本批全部新增证书；以 reports/interop/all/import-all-validation.json 的实际记录为准。

@@ -18,11 +18,11 @@
 | P1 | 2180 项基线任务表、源依赖图和桥接任务 DAG | 原始 IR、覆盖账本 | 节点可追踪，区分来源事实与规划依赖，检查 DAG | 已完成：tasks.csv、dependency-graph.json，2180 根 / 9457 条依赖 |
 | P2 | 已有证书复用及函数组合机制 | Nat/Bool/Option/函数 Iso | 在真实导入上组合证书；未知操作不误报成功 | 首批已验证：Registry、transport_comp、两项自动组合；通用化继续 |
 | P3a | Program.Basics 组合器及 SSR Option、simpl_fun | P2、Option Iso、Eq 桥接 | 类型往返、运算等式分别登记，Lean kernel 和公理闭包检查 | 首批已验证：6 Basics + 17 SSR 运算/谓词 + 1 SSR 类型；详见证书表 |
-| P3b | 数值、比较、数字表示及其转换 | Nat/N/Z/Bool Iso、表示类型桥接 | 明确原生目标、规范形式和参数范围 | Nat.iter；数字表示/读取/比较/规范化已推进；写出与进位语义已证明；等于 Mathlib 现成 digits 待继续 |
+| P3b | 数值、比较、数字表示及其转换 | Nat/N/Z/Bool Iso、表示类型桥接 | 明确原生目标、规范形式和参数范围 | Nat.iter；数字表示/读取/比较/规范化已推进；写出与进位语义已证明；七种顶层打印已对应 Mathlib Nat.digits；有符号读取待继续 |
 | P4 | 依赖函数、Sigma/Subtype、Eq transport、Acc | P2、依赖消去对应 | 保持索引/证明依赖及实际 universe 范围 | 已开始：Acc 与 7 项良基递归/谓词；完整 Sort 的 Sigma/Subtype、二元良基递归、基本容器消去；Eq/布尔等式已推进，剩余依赖陈述继续 |
-| P5 | 将 375 项接口逐步升级到运算对应 | P3/P4 的证书 | 对指定原生运算的等式/iff，不把接口往返混算 | 十三批推进；当前仅接口 268 项 |
-| P6 | 再处理 702 项部分陈述和共享证明义务 | 运算证书、依赖转换 | 原生陈述 iff；未解决的证明条件继续显式保留 | SSRBool 升级 141 项；数字比较再升级并证明 8 项；15 个条件根已闭合实例化，本层剩余 316 |
-| P7 | 统一导入与 Lean/Mathlib 组合使用 | 已验收证书 | 跨模块使用，记录实际测试边界和剩余失败 | 首批验收通过：30 profile / 585 证书共同导入；Nat + SSR + Setoid 组合、Mathlib Nat.prime_two 消费通过；见 INTEROP_RESULTS.md |
+| P5 | 将 375 项接口逐步升级到运算对应 | P3/P4 的证书 | 对指定原生运算的等式/iff，不把接口往返混算 | 十五批推进；当前仅接口 263 项 |
+| P6 | 再处理 702 项部分陈述和共享证明义务 | 运算证书、依赖转换 | 原生陈述 iff；未解决的证明条件继续显式保留 | SSRBool 升级 141 项；数字比较再升级并证明 8 项；16 个条件根已闭合实例化，本层剩余 315 |
+| P7 | 统一导入与 Lean/Mathlib 组合使用 | 已验收证书 | 跨模块使用，记录实际测试边界和剩余失败 | 首批验收通过：36 profile / 613 证书共同导入；Nat + SSR + Setoid 组合、Mathlib Nat.prime_two 消费通过；见 INTEROP_RESULTS.md |
 
 P2/P3a 采用小步循环：先实现最小可复用机制，再在具体函数上验证，补证书后回到机制层。
 首批选 Program.Basics、SSR Option/函数包装和 Nat.iter；不把同一声明的多份证书重复计入根数。
@@ -97,4 +97,8 @@ Init.Specif 的 49 个部分陈述中，49 个均已证明等价于无源符号�
 
 ## 第十三批执行记录
 
-数字写出新增 1 类型、11 运算，累计完成 875 根。通用进位、迭代以及机械打印结果的数值性质均已证明。32 个 profile 有当前源码的成功记录；与现成 Nat.digits 的直接等式仍待处理。见 NUMERIC_WRITE_RESULTS.md。
+数字写出新增 1 类型、11 运算，累计完成 875 根。通用进位、迭代以及机械打印结果的数值性质均已证明。32 个 profile 有当前源码的成功记录；七种顶层打印随后已补充现成 Nat.digits 的适配等式。见 NUMERIC_WRITE_RESULTS.md。
+
+## 第十四、十五批执行记录
+
+有符号读取新增 3 根；Nat 的 gcd、divmod、sqrt/log2 与两个内部迭代器再新增 6 根。Init.Nat 的 58 根均有明示范围内证书。全项目完成类别 884，37 个 profile 验证通过，全部 613 份覆盖证书共同导入通过。gcd 的终止条件由标准 Lean 公理下的闭合证明处理，剩余条件根 315。见 SIGNED_READ_RESULTS.md 与 NAT_COMPLETION_RESULTS.md。

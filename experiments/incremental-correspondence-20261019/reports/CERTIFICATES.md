@@ -3375,7 +3375,7 @@ NativeBridge.Incremental.sumorSortIso
 
 NativeBridge.Incremental.NumericWrite.decimal_increment_agrees
 
-目标：Native carry on List (Fin 10)；范围：All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved.
+目标：Native carry on List (Fin 10)；范围：All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, all seven top-level printers also have separate NumericMathlib certificates.
 
 ```lean
 ∀ (ds : Rocq.Corelib.Init.Decimal.uint),
@@ -3389,7 +3389,7 @@ NativeBridge.Incremental.NumericWrite.decimal_increment_agrees
 
 NativeBridge.Incremental.NumericWrite.hexadecimal_increment_agrees
 
-目标：Native carry on List (Fin 16)；范围：All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved.
+目标：Native carry on List (Fin 16)；范围：All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, all seven top-level printers also have separate NumericMathlib certificates.
 
 ```lean
 ∀ (ds : Rocq.Corelib.Init.Hexadecimal.uint),
@@ -3403,7 +3403,7 @@ NativeBridge.Incremental.NumericWrite.hexadecimal_increment_agrees
 
 NativeBridge.Incremental.NumericWrite.decimal_little_agrees
 
-目标：Native Nat.rec iteration of decimal digit carry；范围：All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved.
+目标：Native Nat.rec iteration of decimal digit carry；范围：All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, all seven top-level printers also have separate NumericMathlib certificates.
 
 ```lean
 ∀ (n : NativeBridge.MN) (ds : Rocq.Corelib.Init.Decimal.uint),
@@ -3417,7 +3417,7 @@ NativeBridge.Incremental.NumericWrite.decimal_little_agrees
 
 NativeBridge.Incremental.NumericWrite.hexadecimal_little_agrees
 
-目标：Native Nat.rec iteration of hexadecimal digit carry；范围：All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved.
+目标：Native Nat.rec iteration of hexadecimal digit carry；范围：All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, all seven top-level printers also have separate NumericMathlib certificates.
 
 ```lean
 ∀ (n : NativeBridge.MN) (ds : Rocq.Corelib.Init.Hexadecimal.uint),
@@ -3431,7 +3431,7 @@ NativeBridge.Incremental.NumericWrite.hexadecimal_little_agrees
 
 NativeBridge.Incremental.NumericWrite.decimal_print_agrees
 
-目标：Native decimal digit printing: iterate carry from [0], then reverse；范围：All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved.
+目标：Native decimal digit printing: iterate carry from [0], then reverse；范围：All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, all seven top-level printers also have separate NumericMathlib certificates.
 
 ```lean
 ∀ (n : NativeBridge.MN),
@@ -3445,7 +3445,7 @@ NativeBridge.Incremental.NumericWrite.decimal_print_agrees
 
 NativeBridge.Incremental.NumericWrite.hexadecimal_print_agrees
 
-目标：Native hexadecimal digit printing: iterate carry from [0], then reverse；范围：All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved.
+目标：Native hexadecimal digit printing: iterate carry from [0], then reverse；范围：All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, all seven top-level printers also have separate NumericMathlib certificates.
 
 ```lean
 ∀ (n : NativeBridge.MN),
@@ -3459,7 +3459,7 @@ NativeBridge.Incremental.NumericWrite.hexadecimal_print_agrees
 
 NativeBridge.Incremental.NumericWrite.decimal_signed_print_agrees
 
-目标：False sign tag paired with native decimal printDigits；范围：All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved.
+目标：False sign tag paired with native decimal printDigits；范围：All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, all seven top-level printers also have separate NumericMathlib certificates.
 
 ```lean
 ∀ (n : NativeBridge.MN),
@@ -3473,7 +3473,7 @@ NativeBridge.Incremental.NumericWrite.decimal_signed_print_agrees
 
 NativeBridge.Incremental.NumericWrite.hexadecimal_signed_print_agrees
 
-目标：False sign tag paired with native hexadecimal printDigits；范围：All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved.
+目标：False sign tag paired with native hexadecimal printDigits；范围：All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, all seven top-level printers also have separate NumericMathlib certificates.
 
 ```lean
 ∀ (n : NativeBridge.MN),
@@ -3487,7 +3487,7 @@ NativeBridge.Incremental.NumericWrite.hexadecimal_signed_print_agrees
 
 NativeBridge.Incremental.NumericWrite.number_decimal_print_agrees
 
-目标：Sum.inl of native decimal printDigits；范围：All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved.
+目标：Sum.inl of native decimal printDigits；范围：All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, all seven top-level printers also have separate NumericMathlib certificates.
 
 ```lean
 ∀ (n : NativeBridge.MN),
@@ -3501,7 +3501,7 @@ NativeBridge.Incremental.NumericWrite.number_decimal_print_agrees
 
 NativeBridge.Incremental.NumericWrite.number_hexadecimal_print_agrees
 
-目标：Sum.inr of native hexadecimal printDigits；范围：All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved.
+目标：Sum.inr of native hexadecimal printDigits；范围：All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, all seven top-level printers also have separate NumericMathlib certificates.
 
 ```lean
 ∀ (n : NativeBridge.MN),
@@ -3515,7 +3515,7 @@ NativeBridge.Incremental.NumericWrite.number_hexadecimal_print_agrees
 
 NativeBridge.Incremental.NumericWrite.number_signed_print_agrees
 
-目标：Sum.inl of positive native signed decimal printDigits；范围：All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved.
+目标：Sum.inl of positive native signed decimal printDigits；范围：All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, all seven top-level printers also have separate NumericMathlib certificates.
 
 ```lean
 ∀ (n : NativeBridge.MN),
@@ -3536,6 +3536,241 @@ NativeBridge.Iso Rocq.Corelib.Init.Number.signed_int (Bool × List (Fin 10) ⊕ 
 ```
 
 公理闭包：propext
+
+## Corelib.Init.Nat.to_uint
+
+NativeBridge.Incremental.NumericMathlib.decimal_print_mathlib
+
+目标：if n = 0 then [0] else (Nat.digits 10 n).reverse；范围：All mechanical Nat inputs after natTo. Output digits mapped with Fin.val; endian reversal and the zero representation [0] vs [] explicitly adapted. Strengthens existing printDigits certificate; source root not counted twice.
+
+```lean
+∀ (n : NativeBridge.MN),
+  List.map Fin.val (NativeBridge.decimalDigitsTo (Rocq.Corelib.Init.Nat.to_uint n)) =
+    if NativeBridge.natTo n = 0 then [0] else (Nat.digits 10 (NativeBridge.natTo n)).reverse
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Init.Nat.to_hex_uint
+
+NativeBridge.Incremental.NumericMathlib.hexadecimal_print_mathlib
+
+目标：if n = 0 then [0] else (Nat.digits 16 n).reverse；范围：All mechanical Nat inputs after natTo. Output digits mapped with Fin.val; endian reversal and the zero representation [0] vs [] explicitly adapted. Strengthens existing printDigits certificate; source root not counted twice.
+
+```lean
+∀ (n : NativeBridge.MN),
+  List.map Fin.val (NativeBridge.hexadecimalDigitsTo (Rocq.Corelib.Init.Nat.to_hex_uint n)) =
+    if NativeBridge.natTo n = 0 then [0] else (Nat.digits 16 (NativeBridge.natTo n)).reverse
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Init.Nat.to_int
+
+NativeBridge.Incremental.NumericMathlib.decimal_signed_print_mathlib
+
+目标：(false, adapted decimal Nat.digits)；范围：All mechanical Nat inputs after natTo. Fin.val applied to output digits; radix/sign tags preserved; zero explicitly [0], nonzero Mathlib digits reversed. Additional stronger certificate, not a new source root.
+
+```lean
+∀ (n : NativeBridge.MN),
+  have s := NativeBridge.Incremental.NumericWrite.decimalSignedTo (Rocq.Corelib.Init.Nat.to_int n);
+  (s.1, List.map Fin.val s.2) =
+    (false, if NativeBridge.natTo n = 0 then [0] else (Nat.digits 10 (NativeBridge.natTo n)).reverse)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Init.Nat.to_hex_int
+
+NativeBridge.Incremental.NumericMathlib.hexadecimal_signed_print_mathlib
+
+目标：(false, adapted hexadecimal Nat.digits)；范围：All mechanical Nat inputs after natTo. Fin.val applied to output digits; radix/sign tags preserved; zero explicitly [0], nonzero Mathlib digits reversed. Additional stronger certificate, not a new source root.
+
+```lean
+∀ (n : NativeBridge.MN),
+  have s := NativeBridge.Incremental.NumericWrite.hexadecimalSignedTo (Rocq.Corelib.Init.Nat.to_hex_int n);
+  (s.1, List.map Fin.val s.2) =
+    (false, if NativeBridge.natTo n = 0 then [0] else (Nat.digits 16 (NativeBridge.natTo n)).reverse)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Init.Nat.to_num_uint
+
+NativeBridge.Incremental.NumericMathlib.number_decimal_print_mathlib
+
+目标：Sum.inl of adapted decimal Nat.digits；范围：All mechanical Nat inputs after natTo. Fin.val applied to output digits; radix/sign tags preserved; zero explicitly [0], nonzero Mathlib digits reversed. Additional stronger certificate, not a new source root.
+
+```lean
+∀ (n : NativeBridge.MN),
+  Sum.map (List.map Fin.val) (List.map Fin.val)
+      (NativeBridge.Incremental.numberUintTo (Rocq.Corelib.Init.Nat.to_num_uint n)) =
+    Sum.inl (if NativeBridge.natTo n = 0 then [0] else (Nat.digits 10 (NativeBridge.natTo n)).reverse)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Init.Nat.to_num_hex_uint
+
+NativeBridge.Incremental.NumericMathlib.number_hexadecimal_print_mathlib
+
+目标：Sum.inr of adapted hexadecimal Nat.digits；范围：All mechanical Nat inputs after natTo. Fin.val applied to output digits; radix/sign tags preserved; zero explicitly [0], nonzero Mathlib digits reversed. Additional stronger certificate, not a new source root.
+
+```lean
+∀ (n : NativeBridge.MN),
+  Sum.map (List.map Fin.val) (List.map Fin.val)
+      (NativeBridge.Incremental.numberUintTo (Rocq.Corelib.Init.Nat.to_num_hex_uint n)) =
+    Sum.inr (if NativeBridge.natTo n = 0 then [0] else (Nat.digits 16 (NativeBridge.natTo n)).reverse)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Init.Nat.to_num_int
+
+NativeBridge.Incremental.NumericMathlib.number_signed_print_mathlib
+
+目标：Sum.inl of (false, adapted decimal Nat.digits)；范围：All mechanical Nat inputs after natTo. Fin.val applied to output digits; radix/sign tags preserved; zero explicitly [0], nonzero Mathlib digits reversed. Additional stronger certificate, not a new source root.
+
+```lean
+∀ (n : NativeBridge.MN),
+  Sum.map (fun s => (s.1, List.map Fin.val s.2)) (fun s => (s.1, List.map Fin.val s.2))
+      (NativeBridge.Incremental.NumericWrite.numberSignedTo (Rocq.Corelib.Init.Nat.to_num_int n)) =
+    Sum.inl (false, if NativeBridge.natTo n = 0 then [0] else (Nat.digits 10 (NativeBridge.natTo n)).reverse)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Init.Nat.of_int
+
+NativeBridge.Incremental.NumericSigned.decimal_signed_read_int
+
+目标：if signed digit value z < 0 then none else some z.toNat；范围：All signed decimal/hexadecimal digit representations, including empty input, redundant zeros and negative zero. Numeric interpretation is an Int-valued fold, not a bijection from representations to Int. Int.toNat guarded to reject negative nonzero inputs.
+
+```lean
+∀ (s : Rocq.Corelib.Init.Decimal.signed_int),
+  NativeBridge.Incremental.NumericSigned.optionNatTo (Rocq.Corelib.Init.Nat.of_int s) =
+    have z :=
+      NativeBridge.Incremental.NumericSigned.signedValue 10 (NativeBridge.Incremental.NumericWrite.decimalSignedTo s);
+    if z < 0 then none else some z.toNat
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Init.Nat.of_hex_int
+
+NativeBridge.Incremental.NumericSigned.hexadecimal_signed_read_int
+
+目标：if signed digit value z < 0 then none else some z.toNat；范围：All signed decimal/hexadecimal digit representations, including empty input, redundant zeros and negative zero. Numeric interpretation is an Int-valued fold, not a bijection from representations to Int. Int.toNat guarded to reject negative nonzero inputs.
+
+```lean
+∀ (s : Rocq.Corelib.Init.Hexadecimal.signed_int),
+  NativeBridge.Incremental.NumericSigned.optionNatTo (Rocq.Corelib.Init.Nat.of_hex_int s) =
+    have z :=
+      NativeBridge.Incremental.NumericSigned.signedValue 16
+        (NativeBridge.Incremental.NumericWrite.hexadecimalSignedTo s);
+    if z < 0 then none else some z.toNat
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Init.Nat.of_num_int
+
+NativeBridge.Incremental.NumericSigned.number_signed_read_int
+
+目标：if signed digit value z < 0 then none else some z.toNat；范围：All signed decimal/hexadecimal digit representations, including empty input, redundant zeros and negative zero. Numeric interpretation is an Int-valued fold, not a bijection from representations to Int. Int.toNat guarded to reject negative nonzero inputs.
+
+```lean
+∀ (s : Rocq.Corelib.Init.Number.signed_int),
+  NativeBridge.Incremental.NumericSigned.optionNatTo (Rocq.Corelib.Init.Nat.of_num_int s) =
+    have z :=
+      NativeBridge.Incremental.NumericSigned.numberSignedValue (NativeBridge.Incremental.NumericWrite.numberSignedTo s);
+    if z < 0 then none else some z.toNat
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Init.Nat.gcd
+
+NativeBridge.Incremental.NatGcd.gcd_agrees
+
+目标：Nat.gcd；范围：All mechanical Nat arguments; termination condition actually discharged using natTo measure and modulo correspondence. Witness uses standard propext and Quot.sound; no new axiom or pending condition.
+
+```lean
+∀ (a b : NativeBridge.MN),
+  NativeBridge.natTo (RocqPending.Corelib.Init.Nat.gcd a b) = (NativeBridge.natTo a).gcd (NativeBridge.natTo b)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Nat.divmod
+
+NativeBridge.Incremental.NatArithmetic.divmod_agrees
+
+目标：Native Nat division/remainder with explicit quotient and countdown accumulator adapter；范围：All four Nat parameters, including initial countdown u > y. If x ≤ u returns (q,u-x); otherwise t=x-(u+1)+(q+1)*(y+1), result (t/(y+1),y-t%(y+1)).
+
+```lean
+∀ (x y q u : NativeBridge.MN),
+  Rocq.Corelib.Init.Datatypes.prod.rec (fun q r => (NativeBridge.natTo q, NativeBridge.natTo r))
+      (Rocq.Corelib.Init.Nat.divmod x y q u) =
+    NativeBridge.Incremental.NatArithmetic.divmodNative (NativeBridge.natTo x) (NativeBridge.natTo y)
+      (NativeBridge.natTo q) (NativeBridge.natTo u)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Nat.sqrt_iter
+
+NativeBridge.Incremental.NatIterators.sqrt_iter_agrees
+
+目标：Native Nat recursive sqrtIter；范围：All four Nat state parameters. Arithmetic sqrt interpretation proved separately under the algorithm invariant.
+
+```lean
+∀ (k p q r : NativeBridge.MN),
+  NativeBridge.natTo (Rocq.Corelib.Init.Nat.sqrt_iter k p q r) =
+    NativeBridge.Incremental.NatIterators.sqrtIter (NativeBridge.natTo k) (NativeBridge.natTo p) (NativeBridge.natTo q)
+      (NativeBridge.natTo r)
+```
+
+公理闭包：空
+
+## Corelib.Init.Nat.log2_iter
+
+NativeBridge.Incremental.NatIterators.log2_iter_agrees
+
+目标：Native Nat recursive log2Iter；范围：All four Nat state parameters. Arithmetic log2 interpretation proved separately under the algorithm invariant.
+
+```lean
+∀ (k p q r : NativeBridge.MN),
+  NativeBridge.natTo (Rocq.Corelib.Init.Nat.log2_iter k p q r) =
+    NativeBridge.Incremental.NatIterators.log2Iter (NativeBridge.natTo k) (NativeBridge.natTo p) (NativeBridge.natTo q)
+      (NativeBridge.natTo r)
+```
+
+公理闭包：空
+
+## Corelib.Init.Nat.sqrt
+
+NativeBridge.Incremental.NatIterators.sqrt_agrees
+
+目标：Nat.sqrt；范围：All mechanical Nat inputs; proof uses square bounds and uniqueness of native square root.
+
+```lean
+∀ (n : NativeBridge.MN), NativeBridge.natTo (Rocq.Corelib.Init.Nat.sqrt n) = (NativeBridge.natTo n).sqrt
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Init.Nat.log2
+
+NativeBridge.Incremental.NatIterators.log2_agrees
+
+目标：Nat.log2；范围：All mechanical Nat inputs, including zero; proof uses powers-of-two bounds and native log2 uniqueness.
+
+```lean
+∀ (n : NativeBridge.MN), NativeBridge.natTo (Rocq.Corelib.Init.Nat.log2 n) = (NativeBridge.natTo n).log2
+```
+
+公理闭包：propext, Quot.sound
 
 ## Corelib.Init.Specif.eq_existT2_curried
 
