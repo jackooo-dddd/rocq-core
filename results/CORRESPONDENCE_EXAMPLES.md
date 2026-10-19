@@ -294,3 +294,19 @@ rebase (predTypeTo A (Rocq.Corelib.ssr.ssrbool.memPredType A))
 ~~~
 
 predicates A = ⟨A → Bool, id⟩。这证明了转换后 package 的值等式；没有把两个不同 carrier 的原 package 直接视为相等。见 [完整证明](../experiments/incremental-correspondence-20261019/proofs/SSRPredicatePackages.lean)。
+
+## 计算透明变体：依赖 Fin 与 Mathlib 素数定理
+
+这两个例子仅针对独立透明定义版本。完整代码见 [Consumer.lean](../experiments/incremental-correspondence-20261019/transparent-data/Consumer.lean)，原冻结 opaque 声明没有被改写。
+
+**良基递归返回依赖数据。** countdownStep 递归计算 n；机械 Fix_F_sub_rect 返回 Fin (机械递归结果 + 1)。通过递归值的对应等式运输后，它成为 Lean 的 Fin (原生递归结果 + 1)，并证明返回值等于 n、满足小于 n+1 的原生范围性质。Q 的取值是 Fin 数据类型，这里并非只处理 Prop 证明。
+
+**机械条件选择结果直接交给 Mathlib。** all_sig_cond_dep 在输入 n 为偶数时取提供的素数 2，否则保留默认值 0。转换后的结果具有原生类型：
+
+~~~lean
+{g : Nat → Nat // ∀ n, primeCondition n = true → Nat.Prime (g n)}
+~~~
+
+mechanicalPrimeSelection_value 证明该函数等于 if n % 2 = 0 then 2 else 0。机械选择得到的素数证据经过转换后，直接调用 Mathlib 已有的 Prime.two_le，得到 2 ≤ g n；条件为假时不声称默认值 0 是素数。
+
+这两个消费例均已通过 kernel 和公理依赖检查，不增加源声明覆盖数。

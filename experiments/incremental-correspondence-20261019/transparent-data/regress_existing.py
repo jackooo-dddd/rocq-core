@@ -32,6 +32,8 @@ for r in ledger:
   choices=[p for p,c in configs.items() if c['module']==module]
   assert choices,(r,choices)
   p=choices[0];roots=b['bridge_certificates'].split(';')
+  if any(n.startswith('NativeBridge.source_nat_') for n in roots):p='DependentNat'
+  if any(n.startswith('NativeBridge.source_eq_') for n in roots):p='DependentEq'
  groups[(p,module)].append((r['source'],roots))
 for (p,module),rs in groups.items():
  jobs.append(dict(key='Baseline_'+p,source_profile=p,module=module,roots=sorted({x for _,xs in rs for x in xs}),
@@ -48,7 +50,7 @@ for j in jobs:
  source_path=Path(j['source_path']);prefix='ComputationalRegression.'+key
  output='Transparent_'+key;src=O/(output+'.lean');report=J/(key+'.json')
  cached=results.get(key)
- if not sys.argv[1:] and cached and cached['exit']==0 and cached['source_sha256']==sha(source_path) and cached['exporter_sha256']==sha(D/'TransparentPack.lean') and src.with_suffix('.olean').exists() and cached['output_olean_sha256']==sha(src.with_suffix('.olean')):
+ if not sys.argv[1:] and cached and cached['exit']==0 and cached['source_sha256']==sha(source_path) and cached['exporter_sha256']==sha(D/'TransparentPack.lean') and src.with_suffix('.olean').exists() and cached['output_olean_sha256']==sha(src.with_suffix('.olean')) and cached['sources']==j['sources'] and cached['original_olean_sha256']==sha((W/'.work' if key.startswith('Existing_') else B)/(j['source_profile']+'.olean')) and report.exists() and {x['source'] for x in json.loads(report.read_text())['roots']}==set(j['roots']):
   print(key,'CACHED PASS',flush=True);continue
  tick=chr(96)
  src.write_text(''.join('import '+n+'\n' for n in j['extra_imports'])+

@@ -686,8 +686,8 @@ flowchart TD
  SSRVariant --> VariantAudit
  ProgramWfVariant --> VariantAudit
  VariantAudit --> Variant80[剩余候选 80/80]
- Frozen2100 --> Recheck[既有证书按透明策略回归]
- Variant80 --> Combined[完整变体共同导入]
+ Frozen2100 --> Recheck[2100 根 / 173 profile 回归通过]
+ Variant80 --> Combined[2180 根完整变体共同导入通过]
  Recheck --> Combined
 ~~~
 

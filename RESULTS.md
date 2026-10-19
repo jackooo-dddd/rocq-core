@@ -1,23 +1,33 @@
 # 当前 Corelib 机械翻译与对应证明
 
-已验证快照：experiments/mechanical-nat-eq-20261019/translator；完整运行：experiments/mechanical-nat-eq-20261019/runs/full-v1。
-当前 translator/ 已采用相同的机械 nat/eq 实现；main75 是取消 bootstrap 前的历史基线。
+机械翻译快照：experiments/mechanical-nat-eq-20261019/runs/full-v1。67 个源模块、2180 个去重根，0 受阻、0 验证失败；nat/eq 使用独立归纳结构，随后证明对应。
 
-67 个源模块，2180 个根声明，0 受阻、0 验证失败。1003 项定义／数据类型、846 项无条件陈述、148 项带条件定义、183 项带条件陈述；无 BOOTSTRAP_RESOLVED，331 项待证明条件仍然保留。普通定理陈述不是其证明。
+机械产物包含 1003 项定义／数据类型、846 项无条件陈述、148 项带条件定义、183 项带条件陈述。331 项条件仍在机械产物中显式保留。普通定理陈述不是其证明。
 
-nat 和 eq 都通过普通归纳规则翻译为独立目标类型。与 Lean Nat/Eq 的双向对应、依赖 transport、主要运算保持另行证明；主对应公理闭包为空。旧 98 个证明文件原样运行有 12 个失败，迁移后 101 个 profile 全部通过。
-旧 28 份类型 Iso、109 份运算证书、845 份陈述 iff 已重验。当前总覆盖和 5 项自动依赖接口限制见对应报告，不能把“0 机械翻译受阻”当成“全部原生对应已证明”。
+## 对应结果
 
-- [逐模块翻译、目标 AST 与条件](results/corelib-complete/README.md)
-- [2180 项翻译总表](results/corelib-complete/declarations.csv)
-- [实际使用规则](results/USED_RULES.md)：仅收录当前机械基线的使用证据。
-- [规则清单](results/corelib-complete/ALL_RULES.md)与[逐项使用次数](results/corelib-complete/RULE_USAGE.md)
+| 版本 | 类型对应 | 运算对应 | 原生陈述 iff | 完成根 | 剩余 |
+|---|---:|---:|---:|---:|---:|
+| 原冻结机械版本 | 164 | 908 | 1028 | 2100 / 2180 | 80 |
+| 计算透明变体 | 164 | 988 | 1028 | 2180 / 2180 | 0 |
+
+变体把保留正文的非 Prop opaque 数据声明在独立命名空间重导出为 def。它保留改名后的类型、universe 和正文，重新进行 kernel 检查；不声称旧 opaque 常量与新定义的值等式已被证明。正式 translator/ 及原冻结机械产物保持原有语义。
+
+原有 2100 根经 173 个 profile 重新检查，新增 80 根经 6 个 profile 证明；共同导入、标准公理检查和 Mathlib 消费例全部通过。2180 是逐根覆盖，具体参数与质量分支范围见证书。1028 项陈述 iff 不等于 1028 个源定理已经证明；另有 318 份原陈述 Prop 证明。
+
+## 入口
+
+- [变体说明、证明与复现](experiments/incremental-correspondence-20261019/transparent-data/README.md)
+- [完整变体逐根账本](experiments/incremental-correspondence-20261019/transparent-data/reports/FULL_VARIANT_LEDGER.json)
+- [完整变体验证摘要](experiments/incremental-correspondence-20261019/transparent-data/reports/FULL_VARIANT_SUMMARY.json)
+- [原冻结对应账本](experiments/incremental-correspondence-20261019/reports/CORELIB_LEDGER.csv)
+- [具体对应与消费例](results/CORRESPONDENCE_EXAMPLES.md)
+- [逐模块机械翻译、目标 AST 与条件](results/corelib-complete/README.md)
+- [2180 项机械翻译总表](results/corelib-complete/declarations.csv)
+- [实际使用规则](results/USED_RULES.md)、[全部规则](results/corelib-complete/ALL_RULES.md)、[使用次数](results/corelib-complete/RULE_USAGE.md)
 - [Universe 统计](results/corelib-complete/UNIVERSES.md)
-- [correspondence 总览](results/corelib-complete/CORRESPONDENCE.md)
-- [逐项对应覆盖](experiments/incremental-correspondence-20261019/reports/CORELIB_LEDGER.csv)
-- [迁移检查](experiments/mechanical-correspondence-20261019/reports/REGRESSION.json)
-- [统一使用示例](experiments/mechanical-correspondence-20261019/UseNative.lean)
+- [对应范围解释](results/corelib-complete/CORRESPONDENCE.md)
 
-main74→main75 的精简证据保留为历史比较；取消 nat/eq bootstrap 没有增加新翻译规则。
+原生目标包括现成 API、组合表达式及表示模型。浮点符号算法的对应不表示已经证明运行时 Float API 的对应；全体 Corelib 根有证书也不等于完整 MathComp/Prosa 已自动互通。
 
-当前增量对应完成类别为 1407 / 2180：92 类型、519 运算、796 完全原生陈述；另有 140 份原陈述闭合证明。76 个增量 profile 有成功记录，全部 1145 份覆盖证书共同导入通过。最新为 [SSR 包装与陈述结果](experiments/incremental-correspondence-20261019/SSR_PACKAGING_RESULTS.md)。
+构建缓存、完整编译日志和临时输入仅保留在远程 .work 中。原机械 nat/eq 迁移及各批次结果保留为历史记录。

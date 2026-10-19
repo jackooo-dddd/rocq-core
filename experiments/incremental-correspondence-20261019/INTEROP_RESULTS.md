@@ -96,3 +96,5 @@ opaque 支持的独立验证见 interop/check_opaque.py 与 reports/interop/opaq
 第八十六至八十九批：FloatOperations、Float64Operations、FloatStatements、FloatUlp；144 个覆盖 profile、1843 份证书共同导入，2467 个入口、26442 个副本。不同浮点闭包的证明通过重新检查及独立封装共存；24 项规格仅注册陈述 iff，没有原定理证明计数增长。
 
 第九十批：SSRPredicatePackages；145 个覆盖 profile、1848 份证书共同导入通过，2472 个入口、26507 个副本。计算透明变体另行做共同导入检查，见 [独立结果](transparent-data/README.md)，不混入本基线。
+
+计算透明分支最终检查：173 个既有 profile 覆盖原有 2100 根，6 个新 profile 覆盖 80 根；2752 个既有证书/辅助入口及 28608 个依赖副本经过重新检查。与新证明、Consumer 和 Composition 共同导入成功。原冻结统计不变。自动生成的原生函数也与完整变体共同导入通过；详见 [完整变体结果](transparent-data/README.md)。

@@ -38,6 +38,28 @@ flowchart TD
 
 ## 兼容性回归
 
-8. [进行中] 对当前已完成的 2100 根，按同一透明策略复制并重新检查既有证书及依赖闭包；既有增量 profile 与早期基线 profile 均纳入。逐根清单及结果写入 reports/regression。
-9. 将回归通过的既有证明与本次 80 份新证书共同导入；核验无额外公理并生成独立的全库变体账本。保留原冻结基线账本及其 80 项缺口。
-10. 根据完整回归结果提供消费示例；现成 API、组合原生表达式、类型表示和陈述 iff 分开解释。
+8. [完成] 对当前已完成的 2100 根，按同一透明策略复制并重新检查既有证书及依赖闭包；既有增量 profile 与早期基线 profile 均纳入。逐根清单及结果写入 reports/regression。
+9. [完成] 将回归通过的既有证明与本次 80 份新证书共同导入；核验无额外公理并生成独立的全库变体账本。保留原冻结基线账本及其 80 项缺口。
+10. [完成] 根据完整回归结果提供消费示例；现成 API、组合原生表达式、类型表示和陈述 iff 分开解释。
+
+## 依赖数据与组合的证明 DAG
+
+~~~mermaid
+flowchart TD
+ Value[机械递归值 = WellFounded.fix 的值] --> Cast[依赖返回类型的相等运输]
+ Cast --> Callback[递归回调双向逆]
+ Callback --> RectF[Fix_F_sub_rect]
+ RectF --> RectSub[Fix_sub_rect]
+ RectF --> Fin[依赖 Fin 消费例]
+ BoolIso[机械 Bool / Eq / Sigma / Subtype 对应] --> Choice[依赖条件选择]
+ Choice --> Prime[原生 Nat.Prime 证据]
+ Prime --> Mathlib[Mathlib Prime.two_le]
+ NatIter[旧 nat.iter 证书按透明策略重检] --> NativeNat[Lean Nat]
+ NativeNat --> Choice
+~~~
+
+上述新证明及两个消费文件已通过检查；它们不增加 80 项以外的根数。
+
+11. [完成] 基于给定 correspondence 的自动组合：生成原生函数及等式证明；内核检查、可执行示例和三类拒绝测试通过。不自动搜索任意库函数对应。
+
+最终：原冻结版本 2100/2180；计算透明变体 2180/2180。见 reports/FULL_VARIANT_SUMMARY.json 与逐根账本。
