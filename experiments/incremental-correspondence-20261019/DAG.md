@@ -76,7 +76,7 @@ flowchart TD
 | Nat.iter | natTo；源递归器；载体 Iso 与步函数对应假设 | 普通与转换载体两份证明通过 |
 | 复合 Option / 函数表达式 | Option.map/bind 对应 + comp 对应 | 两例自动组合通过；目标表达式仍显式提供 |
 | 数字表示进一步运算 | uint ↔ List Fin；Nat 算术；符号 pair 与进制 Sum | 读取、比较、规范化已证；写出待继续 |
-| 依赖类型/Acc | Acc 转换 + 递归步骤对应 + 原生良基性 | Acc 与 7 项递归/谓词已证；Sigma/二元递归待继续 |
+| 依赖类型/Acc | Acc 转换 + 递归步骤对应 + 原生良基性 | Acc 与 7 项递归/谓词已证；Sigma/Subtype 已推进，二元递归/Eq 待继续 |
 
 ## 第二批：证书复用到下游陈述
 
@@ -101,3 +101,15 @@ flowchart TD
     native InvImage.wf + natTo → source well-foundedness of a mechanical Nat measure
 
 接下来的依赖仍是规划：Little.succ → 数字写出；prodIso + Acc → 二元良基递归；Sigma/Subtype + Eq transport → 依赖函数。没有将反例定理或使用示例计成额外 Corelib 根。
+
+## 第五批：完整 Sort 与条件证明 DAG
+
+    sig ↔ Subtype / sigT ↔ PSigma / prod ↔ PProd → 依赖 motive 的 8 个消去器
+    sigT2 ↔ PSigma(PProd) → projT3 / sigT_of_sigT2
+    sig 的投影证明 → sigT_of_sig 的闭合实例化
+    sigT 的投影证明 → sig_of_sigT 的闭合实例化
+    sig2 的第一投影证明 → sig_of_sig2 的闭合实例化
+    sig_of_sig2 的闭合实例化 + sig2 的两个属性 → sigT2_of_sig2 的两份义务
+    上述三份证明 → sigT2_of_sig2 的闭合实例化 → 原生构造对应
+
+5 个不同见证、4 个源根；前驱义务复用不等于自动覆盖所有依赖它的下游声明。

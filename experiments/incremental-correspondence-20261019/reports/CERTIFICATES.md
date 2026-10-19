@@ -1184,6 +1184,300 @@ Rocq.Corelib.Init.Hexadecimal.internal_signed_int_dec_lb0.statement ↔
 
 公理闭包：propext
 
+## Corelib.Init.Specif.sig
+
+NativeBridge.Incremental.subtypeIso
+
+目标：Subtype P；范围：full source Sort universes; broadens an already-covered root without adding a type root
+
+```lean
+(A : Sort u) → (P : A → Prop) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sig A P) (Subtype P)
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.sig2
+
+NativeBridge.Incremental.subtype2Iso
+
+目标：Subtype (fun x => P x ∧ Q x)；范围：full source Sort universes; broadens an already-covered root without adding a type root
+
+```lean
+(A : Sort u) → (P Q : A → Prop) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sig2 A P Q) { x // P x ∧ Q x }
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.sigT
+
+NativeBridge.Incremental.psigmaIso
+
+目标：PSigma P；范围：full source Sort universes; broadens an already-covered root without adding a type root
+
+```lean
+(A : Sort u) → (P : A → Sort v) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sigT A P) (PSigma P)
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.sigT2
+
+NativeBridge.Incremental.psigma2Iso
+
+目标：PSigma (fun x => PProd (P x) (Q x))；范围：full source Sort universes; broadens an already-covered root without adding a type root
+
+```lean
+(A : Sort u) →
+  (P : A → Sort v) → (Q : A → Sort w) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sigT2 A P Q) ((x : A) ×' P x ×' Q x)
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.prod
+
+NativeBridge.Incremental.pprodIso
+
+目标：PProd A B；范围：full source Sort universes; broadens an already-covered root without adding a type root
+
+```lean
+(A : Sort u) → (B : Sort v) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.prod A B) (A ×' B)
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.prod_of_sigT
+
+NativeBridge.Incremental.prod_of_sigT_agrees
+
+目标：PSigma components → PProd；范围：full Sort carrier/family universes; dependent native motive retained; *_rec motive ends in Type, *_rect in Sort
+
+```lean
+∀ {A : Sort u} {B : Sort v} (s : Rocq.Corelib.Init.Specif.sigT A fun x => B),
+  NativeBridge.Incremental.pprodTo (Rocq.Corelib.Init.Specif.prod_of_sigT A B s) =
+    ⟨(NativeBridge.Incremental.psigmaTo s).fst, (NativeBridge.Incremental.psigmaTo s).snd⟩
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.sigT_of_prod
+
+NativeBridge.Incremental.sigT_of_prod_agrees
+
+目标：PProd components → PSigma；范围：full Sort carrier/family universes; dependent native motive retained; *_rec motive ends in Type, *_rect in Sort
+
+```lean
+∀ {A : Sort u} {B : Sort v} (s : Rocq.Corelib.Init.Datatypes.prod A B),
+  NativeBridge.Incremental.psigmaTo (Rocq.Corelib.Init.Specif.sigT_of_prod A B s) =
+    ⟨(NativeBridge.Incremental.pprodTo s).fst, (NativeBridge.Incremental.pprodTo s).snd⟩
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.sigT_of_sigT2
+
+NativeBridge.Incremental.sigT_of_sigT2_agrees
+
+目标：PSigma/PProd projection dropping the third component；范围：full Sort carrier/family universes; dependent native motive retained; *_rec motive ends in Type, *_rect in Sort
+
+```lean
+∀ {A : Sort u} {P : A → Sort v} {Q : A → Sort w} (s : Rocq.Corelib.Init.Specif.sigT2 A P Q),
+  NativeBridge.Incremental.psigmaTo (Rocq.Corelib.Init.Specif.sigT_of_sigT2 A P Q s) =
+    ⟨(NativeBridge.Incremental.psigma2To s).fst, (NativeBridge.Incremental.psigma2To s).snd.fst⟩
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.projT3
+
+NativeBridge.Incremental.projT3_agrees
+
+目标：PSigma.snd.snd (dependent equality stated as HEq)；范围：full Sort carrier/family universes; dependent native motive retained; *_rec motive ends in Type, *_rect in Sort
+
+```lean
+∀ {A : Sort u} {P : A → Sort v} {Q : A → Sort w} (s : Rocq.Corelib.Init.Specif.sigT2 A P Q),
+  Rocq.Corelib.Init.Specif.projT3 A P Q s ≍ (NativeBridge.Incremental.psigma2To s).snd.snd
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.sig_rect
+
+NativeBridge.Incremental.sig_rect_agrees
+
+目标：Subtype.rec；范围：full Sort carrier/family universes; dependent native motive retained; *_rec motive ends in Type, *_rect in Sort
+
+```lean
+∀ {A : Sort u} (P : A → Prop) (C : Subtype P → Sort z) (f : (x : A) → (h : P x) → C ⟨x, h⟩)
+  (s : Rocq.Corelib.Init.Specif.sig A P),
+  Rocq.Corelib.Init.Specif.sig_rect A P (fun s => C (NativeBridge.Incremental.subtypeTo s)) f s =
+    Subtype.rec f (NativeBridge.Incremental.subtypeTo s)
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.sig_rec
+
+NativeBridge.Incremental.sig_rec_agrees
+
+目标：Subtype.rec；范围：full Sort carrier/family universes; dependent native motive retained; *_rec motive ends in Type, *_rect in Sort
+
+```lean
+∀ {A : Sort u} (P : A → Prop) (C : Subtype P → Type) (f : (x : A) → (h : P x) → C ⟨x, h⟩)
+  (s : Rocq.Corelib.Init.Specif.sig A P),
+  Rocq.Corelib.Init.Specif.sig_rec A P (fun s => C (NativeBridge.Incremental.subtypeTo s)) f s =
+    Subtype.rec f (NativeBridge.Incremental.subtypeTo s)
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.sig2_rect
+
+NativeBridge.Incremental.sig2_rect_agrees
+
+目标：Subtype.rec with And.left/right；范围：full Sort carrier/family universes; dependent native motive retained; *_rec motive ends in Type, *_rect in Sort
+
+```lean
+∀ {A : Sort u} (P Q : A → Prop) (C : { x // P x ∧ Q x } → Sort z) (f : (x : A) → (hp : P x) → (hq : Q x) → C ⟨x, ⋯⟩)
+  (s : Rocq.Corelib.Init.Specif.sig2 A P Q),
+  Rocq.Corelib.Init.Specif.sig2_rect A P Q (fun s => C (NativeBridge.Incremental.subtype2To s)) f s =
+    Subtype.rec (fun x h => f x ⋯ ⋯) (NativeBridge.Incremental.subtype2To s)
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.sig2_rec
+
+NativeBridge.Incremental.sig2_rec_agrees
+
+目标：Subtype.rec with And.left/right；范围：full Sort carrier/family universes; dependent native motive retained; *_rec motive ends in Type, *_rect in Sort
+
+```lean
+∀ {A : Sort u} (P Q : A → Prop) (C : { x // P x ∧ Q x } → Type) (f : (x : A) → (hp : P x) → (hq : Q x) → C ⟨x, ⋯⟩)
+  (s : Rocq.Corelib.Init.Specif.sig2 A P Q),
+  Rocq.Corelib.Init.Specif.sig2_rec A P Q (fun s => C (NativeBridge.Incremental.subtype2To s)) f s =
+    Subtype.rec (fun x h => f x ⋯ ⋯) (NativeBridge.Incremental.subtype2To s)
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.sigT_rect
+
+NativeBridge.Incremental.sigT_rect_agrees
+
+目标：PSigma.rec；范围：full Sort carrier/family universes; dependent native motive retained; *_rec motive ends in Type, *_rect in Sort
+
+```lean
+∀ {A : Sort u} (P : A → Sort v) (C : PSigma P → Sort z) (f : (x : A) → (p : P x) → C ⟨x, p⟩)
+  (s : Rocq.Corelib.Init.Specif.sigT A P),
+  Rocq.Corelib.Init.Specif.sigT_rect A P (fun s => C (NativeBridge.Incremental.psigmaTo s)) f s =
+    PSigma.rec f (NativeBridge.Incremental.psigmaTo s)
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.sigT_rec
+
+NativeBridge.Incremental.sigT_rec_agrees
+
+目标：PSigma.rec；范围：full Sort carrier/family universes; dependent native motive retained; *_rec motive ends in Type, *_rect in Sort
+
+```lean
+∀ {A : Sort u} (P : A → Sort v) (C : PSigma P → Type) (f : (x : A) → (p : P x) → C ⟨x, p⟩)
+  (s : Rocq.Corelib.Init.Specif.sigT A P),
+  Rocq.Corelib.Init.Specif.sigT_rec A P (fun s => C (NativeBridge.Incremental.psigmaTo s)) f s =
+    PSigma.rec f (NativeBridge.Incremental.psigmaTo s)
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.sigT2_rect
+
+NativeBridge.Incremental.sigT2_rect_agrees
+
+目标：PSigma/PProd dependent pattern elimination；范围：full Sort carrier/family universes; dependent native motive retained; *_rec motive ends in Type, *_rect in Sort
+
+```lean
+∀ {A : Sort u} (P : A → Sort v) (Q : A → Sort w) (C : (x : A) ×' P x ×' Q x → Sort z)
+  (f : (x : A) → (p : P x) → (q : Q x) → C ⟨x, ⟨p, q⟩⟩) (s : Rocq.Corelib.Init.Specif.sigT2 A P Q),
+  Rocq.Corelib.Init.Specif.sigT2_rect A P Q (fun s => C (NativeBridge.Incremental.psigma2To s)) f s =
+    match NativeBridge.Incremental.psigma2To s with
+    | ⟨x, ⟨p, q⟩⟩ => f x p q
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.sigT2_rec
+
+NativeBridge.Incremental.sigT2_rec_agrees
+
+目标：PSigma/PProd dependent pattern elimination；范围：full Sort carrier/family universes; dependent native motive retained; *_rec motive ends in Type, *_rect in Sort
+
+```lean
+∀ {A : Sort u} (P : A → Sort v) (Q : A → Sort w) (C : (x : A) ×' P x ×' Q x → Type)
+  (f : (x : A) → (p : P x) → (q : Q x) → C ⟨x, ⟨p, q⟩⟩) (s : Rocq.Corelib.Init.Specif.sigT2 A P Q),
+  Rocq.Corelib.Init.Specif.sigT2_rec A P Q (fun s => C (NativeBridge.Incremental.psigma2To s)) f s =
+    match NativeBridge.Incremental.psigma2To s with
+    | ⟨x, ⟨p, q⟩⟩ => f x p q
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.sigT_of_sig
+
+NativeBridge.Incremental.sigT_of_sig_closed_agrees
+
+目标：Subtype → PSigma proof pair；范围：Sort carrier; Prop predicates; all extracted proof parameters explicitly instantiated with checked closed witnesses
+
+```lean
+∀ {A : Sort u} (P : A → Prop) (s : Rocq.Corelib.Init.Specif.sig A P),
+  NativeBridge.Incremental.psigmaTo (RocqPending.Corelib.Init.Specif.sigT_of_sig A P s) =
+    ⟨(NativeBridge.Incremental.subtypeTo s).val, ⋯⟩
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.sig_of_sigT
+
+NativeBridge.Incremental.sig_of_sigT_closed_agrees
+
+目标：PSigma proof pair → Subtype；范围：Sort carrier; Prop predicates; all extracted proof parameters explicitly instantiated with checked closed witnesses
+
+```lean
+∀ {A : Sort u} (P : A → Prop) (s : Rocq.Corelib.Init.Specif.sigT A P),
+  NativeBridge.Incremental.subtypeTo (RocqPending.Corelib.Init.Specif.sig_of_sigT A P s) =
+    ⟨(NativeBridge.Incremental.psigmaTo s).fst, ⋯⟩
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.sig_of_sig2
+
+NativeBridge.Incremental.sig_of_sig2_closed_agrees
+
+目标：Subtype (P ∧ Q) → Subtype P；范围：Sort carrier; Prop predicates; all extracted proof parameters explicitly instantiated with checked closed witnesses
+
+```lean
+∀ {A : Sort u} (P Q : A → Prop) (s : Rocq.Corelib.Init.Specif.sig2 A P Q),
+  NativeBridge.Incremental.subtypeTo (RocqPending.Corelib.Init.Specif.sig_of_sig2 A P Q s) =
+    ⟨(NativeBridge.Incremental.subtype2To s).val, ⋯⟩
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.sigT2_of_sig2
+
+NativeBridge.Incremental.sigT2_of_sig2_closed_agrees
+
+目标：Subtype (P ∧ Q) → PSigma (fun x => PProd (P x) (Q x))；范围：Sort carrier; Prop predicates; all extracted proof parameters explicitly instantiated with checked closed witnesses
+
+```lean
+∀ {A : Sort u} (P Q : A → Prop) (s : Rocq.Corelib.Init.Specif.sig2 A P Q),
+  NativeBridge.Incremental.psigma2To (RocqPending.Corelib.Init.Specif.sigT2_of_sig2 A P Q s) =
+    ⟨(NativeBridge.Incremental.subtype2To s).val, ⟨⋯, ⋯⟩⟩
+```
+
+公理闭包：空
+
 ## Corelib.ssr.ssrbool.addFb
 
 NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addFb.statement.correspondence

@@ -774,5 +774,230 @@
     "original_statement_proof": "NativeBridge.Incremental.Hexadecimal.signed_int_dec_lb_proved",
     "scope": "all representations, including empty, leading-zero and signed-zero cases; native target uses only Bool/List/Fin/Prod/BEq/Eq",
     "target_class": "native_statement"
+  },
+  {
+    "source": "Corelib.Init.Specif.sig",
+    "profile": "DependentElimination",
+    "certificate": "NativeBridge.Incremental.subtypeIso",
+    "kind": "TYPE_ISO",
+    "target": "Subtype P",
+    "scope": "full source Sort universes; broadens an already-covered root without adding a type root",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.Init.Specif.sig2",
+    "profile": "DependentElimination",
+    "certificate": "NativeBridge.Incremental.subtype2Iso",
+    "kind": "TYPE_ISO",
+    "target": "Subtype (fun x => P x ∧ Q x)",
+    "scope": "full source Sort universes; broadens an already-covered root without adding a type root",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.Init.Specif.sigT",
+    "profile": "DependentElimination",
+    "certificate": "NativeBridge.Incremental.psigmaIso",
+    "kind": "TYPE_ISO",
+    "target": "PSigma P",
+    "scope": "full source Sort universes; broadens an already-covered root without adding a type root",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.Init.Specif.sigT2",
+    "profile": "DependentElimination",
+    "certificate": "NativeBridge.Incremental.psigma2Iso",
+    "kind": "TYPE_ISO",
+    "target": "PSigma (fun x => PProd (P x) (Q x))",
+    "scope": "full source Sort universes; broadens an already-covered root without adding a type root",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.prod",
+    "profile": "DependentElimination",
+    "certificate": "NativeBridge.Incremental.pprodIso",
+    "kind": "TYPE_ISO",
+    "target": "PProd A B",
+    "scope": "full source Sort universes; broadens an already-covered root without adding a type root",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.Init.Specif.prod_of_sigT",
+    "profile": "DependentElimination",
+    "certificate": "NativeBridge.Incremental.prod_of_sigT_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PSigma components → PProd",
+    "scope": "full Sort carrier/family universes; dependent native motive retained; *_rec motive ends in Type, *_rect in Sort",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Specif.sigT_of_prod",
+    "profile": "DependentElimination",
+    "certificate": "NativeBridge.Incremental.sigT_of_prod_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PProd components → PSigma",
+    "scope": "full Sort carrier/family universes; dependent native motive retained; *_rec motive ends in Type, *_rect in Sort",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Specif.sigT_of_sigT2",
+    "profile": "DependentElimination",
+    "certificate": "NativeBridge.Incremental.sigT_of_sigT2_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PSigma/PProd projection dropping the third component",
+    "scope": "full Sort carrier/family universes; dependent native motive retained; *_rec motive ends in Type, *_rect in Sort",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Specif.projT3",
+    "profile": "DependentElimination",
+    "certificate": "NativeBridge.Incremental.projT3_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PSigma.snd.snd (dependent equality stated as HEq)",
+    "scope": "full Sort carrier/family universes; dependent native motive retained; *_rec motive ends in Type, *_rect in Sort",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Specif.sig_rect",
+    "profile": "DependentElimination",
+    "certificate": "NativeBridge.Incremental.sig_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Subtype.rec",
+    "scope": "full Sort carrier/family universes; dependent native motive retained; *_rec motive ends in Type, *_rect in Sort",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Specif.sig_rec",
+    "profile": "DependentElimination",
+    "certificate": "NativeBridge.Incremental.sig_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Subtype.rec",
+    "scope": "full Sort carrier/family universes; dependent native motive retained; *_rec motive ends in Type, *_rect in Sort",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Specif.sig2_rect",
+    "profile": "DependentElimination",
+    "certificate": "NativeBridge.Incremental.sig2_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Subtype.rec with And.left/right",
+    "scope": "full Sort carrier/family universes; dependent native motive retained; *_rec motive ends in Type, *_rect in Sort",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Specif.sig2_rec",
+    "profile": "DependentElimination",
+    "certificate": "NativeBridge.Incremental.sig2_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Subtype.rec with And.left/right",
+    "scope": "full Sort carrier/family universes; dependent native motive retained; *_rec motive ends in Type, *_rect in Sort",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Specif.sigT_rect",
+    "profile": "DependentElimination",
+    "certificate": "NativeBridge.Incremental.sigT_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PSigma.rec",
+    "scope": "full Sort carrier/family universes; dependent native motive retained; *_rec motive ends in Type, *_rect in Sort",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Specif.sigT_rec",
+    "profile": "DependentElimination",
+    "certificate": "NativeBridge.Incremental.sigT_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PSigma.rec",
+    "scope": "full Sort carrier/family universes; dependent native motive retained; *_rec motive ends in Type, *_rect in Sort",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Specif.sigT2_rect",
+    "profile": "DependentElimination",
+    "certificate": "NativeBridge.Incremental.sigT2_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PSigma/PProd dependent pattern elimination",
+    "scope": "full Sort carrier/family universes; dependent native motive retained; *_rec motive ends in Type, *_rect in Sort",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Specif.sigT2_rec",
+    "profile": "DependentElimination",
+    "certificate": "NativeBridge.Incremental.sigT2_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PSigma/PProd dependent pattern elimination",
+    "scope": "full Sort carrier/family universes; dependent native motive retained; *_rec motive ends in Type, *_rect in Sort",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Specif.sigT_of_sig",
+    "profile": "DependentElimination",
+    "certificate": "NativeBridge.Incremental.sigT_of_sig_closed_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Subtype → PSigma proof pair",
+    "scope": "Sort carrier; Prop predicates; all extracted proof parameters explicitly instantiated with checked closed witnesses",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.sigTOfSigClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.sigT_of_sig__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.sigT_of_sig_obligation"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.sig_of_sigT",
+    "profile": "DependentElimination",
+    "certificate": "NativeBridge.Incremental.sig_of_sigT_closed_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PSigma proof pair → Subtype",
+    "scope": "Sort carrier; Prop predicates; all extracted proof parameters explicitly instantiated with checked closed witnesses",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.sigOfSigTClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.sig_of_sigT__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.sig_of_sigT_obligation"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.sig_of_sig2",
+    "profile": "DependentElimination",
+    "certificate": "NativeBridge.Incremental.sig_of_sig2_closed_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Subtype (P ∧ Q) → Subtype P",
+    "scope": "Sort carrier; Prop predicates; all extracted proof parameters explicitly instantiated with checked closed witnesses",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.sigOfSig2Closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.sig_of_sig2_obligation"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.sigT2_of_sig2",
+    "profile": "DependentElimination",
+    "certificate": "NativeBridge.Incremental.sigT2_of_sig2_closed_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Subtype (P ∧ Q) → PSigma (fun x => PProd (P x) (Q x))",
+    "scope": "Sort carrier; Prop predicates; all extracted proof parameters explicitly instantiated with checked closed witnesses",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.sigT2OfSig2Closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.sig_of_sig2_obligation"
+      },
+      {
+        "source": "Corelib.Init.Specif.sigT2_of_sig2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.sigT2_of_sig2_obligation_1"
+      },
+      {
+        "source": "Corelib.Init.Specif.sigT2_of_sig2__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.sigT2_of_sig2_obligation_2"
+      }
+    ]
   }
 ]

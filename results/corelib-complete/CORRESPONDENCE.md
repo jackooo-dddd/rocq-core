@@ -2,13 +2,13 @@
 
 源 nat/eq 先生成独立归纳结构；之后以 Lean 内核检查的转换和证明连接原生对象。不能再把它们当作原生 Nat/Eq 的别名。
 
-最新增量：[计划与结果](../../experiments/incremental-correspondence-20261019/README.md) · [依赖 DAG](../../experiments/incremental-correspondence-20261019/DAG.md) · [当前逐项覆盖](../../experiments/incremental-correspondence-20261019/reports/CORELIB_LEDGER.csv)。四批累计新增 8 个类型根、72 个运算/谓词根，149 个部分陈述升级为完全原生陈述；原生目标区分现成 API 与组合表达式。
+最新增量：[计划与结果](../../experiments/incremental-correspondence-20261019/README.md) · [依赖 DAG](../../experiments/incremental-correspondence-20261019/DAG.md) · [当前逐项覆盖](../../experiments/incremental-correspondence-20261019/reports/CORELIB_LEDGER.csv)。五批累计新增 8 个类型根、88 个运算/谓词根，149 个部分陈述升级为完全原生陈述；原生目标区分现成 API 与组合表达式。
 
 ## 当前证明
 
 natIso 提供机械 nat ↔ Nat 的两个方向与两个往返恒等。eq_correspondence 证明 MechanicalEq A x y ↔ x = y（A : Sort u），eqIso 提供证明对象的双向转换；eq_transport_agrees 证明依赖消去一致。以上主对应的公理闭包为空。
 
-当前 38 份类型对应证书覆盖 37 个根；192 份运算/谓词证书覆盖 186 个根；845 个陈述根中 292 个无源端符号、553 个仍有残留（其中新增的 141 项自动陈述还递归检查了桥接别名；另 8 项数字比较陈述有显式原生目标及原陈述证明）。另有 479 个源根自动接口往返证书；这些类别有重叠，不能相加当作声明数量。331 项待证明条件未消去。
+当前 43 份类型对应证书覆盖 37 个根（含 5 份新增完整 Sort 证书）；208 份运算/谓词证书覆盖 202 个根；845 个陈述根中 292 个无源端符号、553 个仍有残留（其中新增的 141 项自动陈述还递归检查了桥接别名；另 8 项数字比较陈述有显式原生目标及原陈述证明）。另有 479 个源根自动接口往返证书；这些类别有重叠，不能相加当作声明数量。机械产物中的 331 个带条件根保持原样；correspondence 层已用 5 份闭合见证实际实例化其中 4 个根，本层尚待处理 327 个。详见 [条件实例化](../../experiments/incremental-correspondence-20261019/DEPENDENT_RESULTS.md)。
 
 旧 480 个自动接口保留 475 个并新增 3 个。nat_rec、nat_rect、eq_rew_dep、eq_rew_fwd_dep、eq_rew_fwd_r_dep 尚未恢复通用依赖函数自动包装；五者均另有手写运算对应证明。手写运算对应不冒充自动接口往返。
 

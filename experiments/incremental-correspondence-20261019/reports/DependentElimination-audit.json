@@ -1,0 +1,353 @@
+[{"type":
+  "(A : Sort u) → (P : A → Prop) → Rocq.Corelib.Init.Specif.sig A P → Rocq.Corelib.Init.Specif.sigT A P",
+  "source_references":
+  ["Rocq.Corelib.Init.Specif.sig", "Rocq.Corelib.Init.Specif.sigT"],
+  "name": "NativeBridge.Incremental.sigTOfSigClosed",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "(A : Sort u) → (P Q : A → Prop) → Rocq.Corelib.Init.Specif.sig2 A P Q → Rocq.Corelib.Init.Specif.sigT2 A P Q",
+  "source_references":
+  ["Rocq.Corelib.Init.Specif.sig2", "Rocq.Corelib.Init.Specif.sigT2"],
+  "name": "NativeBridge.Incremental.sigT2OfSig2Closed",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (A : Sort u_1) (P : A → Prop) (s : Rocq.Corelib.Init.Specif.sig A P),\n  NativeBridge.Incremental.subtypeOf (NativeBridge.Incremental.subtypeTo s) = s",
+  "source_references": ["Rocq.Corelib.Init.Specif.sig"],
+  "name": "NativeBridge.Incremental.subtypeIso._proof_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} (P : A → Sort v) (Q : A → Sort w) (C : (x : A) ×' P x ×' Q x → Sort z)\n  (f : (x : A) → (p : P x) → (q : Q x) → C ⟨x, ⟨p, q⟩⟩) (s : Rocq.Corelib.Init.Specif.sigT2 A P Q),\n  Rocq.Corelib.Init.Specif.sigT2_rect A P Q (fun s => C (NativeBridge.Incremental.psigma2To s)) f s =\n    match NativeBridge.Incremental.psigma2To s with\n    | ⟨x, ⟨p, q⟩⟩ => f x p q",
+  "source_references":
+  ["Rocq.Corelib.Init.Specif.sigT2", "Rocq.Corelib.Init.Specif.sigT2_rect"],
+  "name": "NativeBridge.Incremental.sigT2_rect_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Sort u_1) (P Q : A → Prop) (s : { x // P x ∧ Q x }),\n  NativeBridge.Incremental.subtype2To (NativeBridge.Incremental.subtype2Of s) = s",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.subtype2Iso._proof_2",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "{A : Sort u} → {P Q : A → Prop} → { x // P x ∧ Q x } → Rocq.Corelib.Init.Specif.sig2 A P Q",
+  "source_references": ["Rocq.Corelib.Init.Specif.sig2"],
+  "name": "NativeBridge.Incremental.subtype2Of",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} {P : A → Sort v} {Q : A → Sort w} (s : Rocq.Corelib.Init.Specif.sigT2 A P Q),\n  Rocq.Corelib.Init.Specif.projT3 A P Q s ≍ (NativeBridge.Incremental.psigma2To s).snd.snd",
+  "source_references":
+  ["Rocq.Corelib.Init.Specif.sigT2",
+   "Rocq.Corelib.Init.Specif.projT1",
+   "Rocq.Corelib.Init.Specif.sigT_of_sigT2",
+   "Rocq.Corelib.Init.Specif.projT3"],
+  "name": "NativeBridge.Incremental.projT3_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "{A : Sort u} → {P : A → Sort v} → PSigma P → Rocq.Corelib.Init.Specif.sigT A P",
+  "source_references": ["Rocq.Corelib.Init.Specif.sigT"],
+  "name": "NativeBridge.Incremental.psigmaOf",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "{A : Sort u} → {P : A → Prop} → Subtype P → Rocq.Corelib.Init.Specif.sig A P",
+  "source_references": ["Rocq.Corelib.Init.Specif.sig"],
+  "name": "NativeBridge.Incremental.subtypeOf",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (A : Sort u_1) (P : A → Sort u_2) (s : Rocq.Corelib.Init.Specif.sigT A P),\n  NativeBridge.Incremental.psigmaOf (NativeBridge.Incremental.psigmaTo s) = s",
+  "source_references": ["Rocq.Corelib.Init.Specif.sigT"],
+  "name": "NativeBridge.Incremental.psigmaIso._proof_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "(A : Sort u) →\n  (P : A → Sort v) → (Q : A → Sort w) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sigT2 A P Q) ((x : A) ×' P x ×' Q x)",
+  "source_references": ["Rocq.Corelib.Init.Specif.sigT2"],
+  "name": "NativeBridge.Incremental.psigma2Iso",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (A : Sort u_1) (P : A → Sort u_2) (Q : A → Sort u_3) (s : Rocq.Corelib.Init.Specif.sigT2 A P Q),\n  NativeBridge.Incremental.psigma2Of (NativeBridge.Incremental.psigma2To s) = s",
+  "source_references": ["Rocq.Corelib.Init.Specif.sigT2"],
+  "name": "NativeBridge.Incremental.psigma2Iso._proof_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "{A : Sort u} → {P : A → Sort v} → Rocq.Corelib.Init.Specif.sigT A P → PSigma P",
+  "source_references": ["Rocq.Corelib.Init.Specif.sigT"],
+  "name": "NativeBridge.Incremental.psigmaTo",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (A : Sort u_1) (P : A → Sort u_3) (Q : A → Sort u_2) (s : (x : A) ×' P x ×' Q x),\n  NativeBridge.Incremental.psigma2To (NativeBridge.Incremental.psigma2Of s) = s",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.psigma2Iso._proof_2",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} (P Q : A → Prop) (C : { x // P x ∧ Q x } → Sort z) (f : (x : A) → (hp : P x) → (hq : Q x) → C ⟨x, ⋯⟩)\n  (s : Rocq.Corelib.Init.Specif.sig2 A P Q),\n  Rocq.Corelib.Init.Specif.sig2_rect A P Q (fun s => C (NativeBridge.Incremental.subtype2To s)) f s =\n    Subtype.rec (fun x h => f x ⋯ ⋯) (NativeBridge.Incremental.subtype2To s)",
+  "source_references":
+  ["Rocq.Corelib.Init.Specif.sig2", "Rocq.Corelib.Init.Specif.sig2_rect"],
+  "name": "NativeBridge.Incremental.sig2_rect_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} (P : A → Prop) (s : Rocq.Corelib.Init.Specif.sig A P),\n  NativeBridge.Incremental.psigmaTo (RocqPending.Corelib.Init.Specif.sigT_of_sig A P s) =\n    ⟨(NativeBridge.Incremental.subtypeTo s).val, ⋯⟩",
+  "source_references":
+  ["Rocq.Corelib.Init.Specif.sig",
+   "RocqPending.Corelib.Init.Specif.sigT_of_sig"],
+  "name": "NativeBridge.Incremental.sigT_of_sig_closed_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "(A : Sort u) → (P : A → Sort v) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sigT A P) (PSigma P)",
+  "source_references": ["Rocq.Corelib.Init.Specif.sigT"],
+  "name": "NativeBridge.Incremental.psigmaIso",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (A : Sort u_1) (P Q : A → Prop) (s : Rocq.Corelib.Init.Specif.sig2 A P Q),\n  NativeBridge.Incremental.subtype2Of (NativeBridge.Incremental.subtype2To s) = s",
+  "source_references": ["Rocq.Corelib.Init.Specif.sig2"],
+  "name": "NativeBridge.Incremental.subtype2Iso._proof_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "(A : Sort u) → (P : A → Prop) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sig A P) (Subtype P)",
+  "source_references": ["Rocq.Corelib.Init.Specif.sig"],
+  "name": "NativeBridge.Incremental.subtypeIso",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} (P : A → Sort v) (C : PSigma P → Type) (f : (x : A) → (p : P x) → C ⟨x, p⟩)\n  (s : Rocq.Corelib.Init.Specif.sigT A P),\n  Rocq.Corelib.Init.Specif.sigT_rec A P (fun s => C (NativeBridge.Incremental.psigmaTo s)) f s =\n    PSigma.rec f (NativeBridge.Incremental.psigmaTo s)",
+  "source_references":
+  ["Rocq.Corelib.Init.Specif.sigT", "Rocq.Corelib.Init.Specif.sigT_rec"],
+  "name": "NativeBridge.Incremental.sigT_rec_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Sort u_1) (P : A → Prop) (s : Subtype P),\n  NativeBridge.Incremental.subtypeTo (NativeBridge.Incremental.subtypeOf s) = s",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.subtypeIso._proof_2",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} (P : A → Prop) (s : Rocq.Corelib.Init.Specif.sigT A P),\n  NativeBridge.Incremental.subtypeTo (RocqPending.Corelib.Init.Specif.sig_of_sigT A P s) =\n    ⟨(NativeBridge.Incremental.psigmaTo s).fst, ⋯⟩",
+  "source_references":
+  ["Rocq.Corelib.Init.Specif.sigT",
+   "RocqPending.Corelib.Init.Specif.sig_of_sigT"],
+  "name": "NativeBridge.Incremental.sig_of_sigT_closed_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "{A : Sort u} → {B : Sort v} → A ×' B → Rocq.Corelib.Init.Datatypes.prod A B",
+  "source_references": ["Rocq.Corelib.Init.Datatypes.prod"],
+  "name": "NativeBridge.Incremental.pprodOf",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "{A : Sort u} → {B : Sort v} → Rocq.Corelib.Init.Datatypes.prod A B → A ×' B",
+  "source_references": ["Rocq.Corelib.Init.Datatypes.prod"],
+  "name": "NativeBridge.Incremental.pprodTo",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "∀ {A : Sort u_1} {P Q : A → Prop} (x : A), P x → Q x → P x ∧ Q x",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.subtype2To._proof_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Sort u_1) (B : Sort u_2) (s : Rocq.Corelib.Init.Datatypes.prod A B),\n  NativeBridge.Incremental.pprodOf (NativeBridge.Incremental.pprodTo s) = s",
+  "source_references": ["Rocq.Corelib.Init.Datatypes.prod"],
+  "name": "NativeBridge.Incremental.pprodIso._proof_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} (P : A → Prop) (C : Subtype P → Type) (f : (x : A) → (h : P x) → C ⟨x, h⟩)\n  (s : Rocq.Corelib.Init.Specif.sig A P),\n  Rocq.Corelib.Init.Specif.sig_rec A P (fun s => C (NativeBridge.Incremental.subtypeTo s)) f s =\n    Subtype.rec f (NativeBridge.Incremental.subtypeTo s)",
+  "source_references":
+  ["Rocq.Corelib.Init.Specif.sig", "Rocq.Corelib.Init.Specif.sig_rec"],
+  "name": "NativeBridge.Incremental.sig_rec_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "{A : Sort u} → {P : A → Sort v} → {Q : A → Sort w} → Rocq.Corelib.Init.Specif.sigT2 A P Q → (x : A) ×' P x ×' Q x",
+  "source_references": ["Rocq.Corelib.Init.Specif.sigT2"],
+  "name": "NativeBridge.Incremental.psigma2To",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "∀ {A : Sort u_1} {P Q : A → Prop} (s : { x // P x ∧ Q x }), P s.val",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.subtype2Of._proof_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} (P Q : A → Prop) (C : { x // P x ∧ Q x } → Type) (f : (x : A) → (hp : P x) → (hq : Q x) → C ⟨x, ⋯⟩)\n  (s : Rocq.Corelib.Init.Specif.sig2 A P Q),\n  Rocq.Corelib.Init.Specif.sig2_rec A P Q (fun s => C (NativeBridge.Incremental.subtype2To s)) f s =\n    Subtype.rec (fun x h => f x ⋯ ⋯) (NativeBridge.Incremental.subtype2To s)",
+  "source_references":
+  ["Rocq.Corelib.Init.Specif.sig2", "Rocq.Corelib.Init.Specif.sig2_rec"],
+  "name": "NativeBridge.Incremental.sig2_rec_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "(A : Sort u) → (B : Sort v) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.prod A B) (A ×' B)",
+  "source_references": ["Rocq.Corelib.Init.Datatypes.prod"],
+  "name": "NativeBridge.Incremental.pprodIso",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "{A : Sort u} → {P Q : A → Prop} → Rocq.Corelib.Init.Specif.sig2 A P Q → { x // P x ∧ Q x }",
+  "source_references": ["Rocq.Corelib.Init.Specif.sig2"],
+  "name": "NativeBridge.Incremental.subtype2To",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "(A : Sort u) → (P Q : A → Prop) → Rocq.Corelib.Init.Specif.sig2 A P Q → Rocq.Corelib.Init.Specif.sig A P",
+  "source_references":
+  ["Rocq.Corelib.Init.Specif.sig2", "Rocq.Corelib.Init.Specif.sig"],
+  "name": "NativeBridge.Incremental.sigOfSig2Closed",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "(A : Sort u) → (P Q : A → Prop) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sig2 A P Q) { x // P x ∧ Q x }",
+  "source_references": ["Rocq.Corelib.Init.Specif.sig2"],
+  "name": "NativeBridge.Incremental.subtype2Iso",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} {B : Sort v} (s : Rocq.Corelib.Init.Specif.sigT A fun x => B),\n  NativeBridge.Incremental.pprodTo (Rocq.Corelib.Init.Specif.prod_of_sigT A B s) =\n    ⟨(NativeBridge.Incremental.psigmaTo s).fst, (NativeBridge.Incremental.psigmaTo s).snd⟩",
+  "source_references":
+  ["Rocq.Corelib.Init.Specif.sigT", "Rocq.Corelib.Init.Specif.prod_of_sigT"],
+  "name": "NativeBridge.Incremental.prod_of_sigT_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Sort u_1) (B : Sort u_2) (s : A ×' B), NativeBridge.Incremental.pprodTo (NativeBridge.Incremental.pprodOf s) = s",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.pprodIso._proof_2",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "RocqPending.Corelib.Init.Specif.sigT2_of_sig2__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Specif.sigT2_of_sig2__rocq2lean_obligation_1.statement"],
+  "name": "NativeBridge.Incremental.sigT2_of_sig2_obligation_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1.statement"],
+  "name": "NativeBridge.Incremental.sig_of_sig2_obligation",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} (P : A → Sort v) (Q : A → Sort w) (C : (x : A) ×' P x ×' Q x → Type)\n  (f : (x : A) → (p : P x) → (q : Q x) → C ⟨x, ⟨p, q⟩⟩) (s : Rocq.Corelib.Init.Specif.sigT2 A P Q),\n  Rocq.Corelib.Init.Specif.sigT2_rec A P Q (fun s => C (NativeBridge.Incremental.psigma2To s)) f s =\n    match NativeBridge.Incremental.psigma2To s with\n    | ⟨x, ⟨p, q⟩⟩ => f x p q",
+  "source_references":
+  ["Rocq.Corelib.Init.Specif.sigT2", "Rocq.Corelib.Init.Specif.sigT2_rec"],
+  "name": "NativeBridge.Incremental.sigT2_rec_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "{A : Sort u} → {P : A → Prop} → Rocq.Corelib.Init.Specif.sig A P → Subtype P",
+  "source_references": ["Rocq.Corelib.Init.Specif.sig"],
+  "name": "NativeBridge.Incremental.subtypeTo",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} (P Q : A → Prop) (s : Rocq.Corelib.Init.Specif.sig2 A P Q),\n  NativeBridge.Incremental.subtypeTo (RocqPending.Corelib.Init.Specif.sig_of_sig2 A P Q s) =\n    ⟨(NativeBridge.Incremental.subtype2To s).val, ⋯⟩",
+  "source_references":
+  ["Rocq.Corelib.Init.Specif.sig2",
+   "RocqPending.Corelib.Init.Specif.sig_of_sig2"],
+  "name": "NativeBridge.Incremental.sig_of_sig2_closed_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Specif.sig_of_sigT__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Specif.sig_of_sigT__rocq2lean_obligation_1.statement"],
+  "name": "NativeBridge.Incremental.sig_of_sigT_obligation",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Specif.sigT_of_sig__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Specif.sigT_of_sig__rocq2lean_obligation_1.statement"],
+  "name": "NativeBridge.Incremental.sigT_of_sig_obligation",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} (P : A → Prop) (C : Subtype P → Sort z) (f : (x : A) → (h : P x) → C ⟨x, h⟩)\n  (s : Rocq.Corelib.Init.Specif.sig A P),\n  Rocq.Corelib.Init.Specif.sig_rect A P (fun s => C (NativeBridge.Incremental.subtypeTo s)) f s =\n    Subtype.rec f (NativeBridge.Incremental.subtypeTo s)",
+  "source_references":
+  ["Rocq.Corelib.Init.Specif.sig", "Rocq.Corelib.Init.Specif.sig_rect"],
+  "name": "NativeBridge.Incremental.sig_rect_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Sort u_1) (P : A → Sort u_2) (s : PSigma P),\n  NativeBridge.Incremental.psigmaTo (NativeBridge.Incremental.psigmaOf s) = s",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.psigmaIso._proof_2",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "RocqPending.Corelib.Init.Specif.sigT2_of_sig2__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Specif.sigT2_of_sig2__rocq2lean_obligation_2.statement"],
+  "name": "NativeBridge.Incremental.sigT2_of_sig2_obligation_2",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} (P Q : A → Prop) (s : Rocq.Corelib.Init.Specif.sig2 A P Q),\n  NativeBridge.Incremental.psigma2To (RocqPending.Corelib.Init.Specif.sigT2_of_sig2 A P Q s) =\n    ⟨(NativeBridge.Incremental.subtype2To s).val, ⟨⋯, ⋯⟩⟩",
+  "source_references":
+  ["Rocq.Corelib.Init.Specif.sig2",
+   "RocqPending.Corelib.Init.Specif.sigT2_of_sig2"],
+  "name": "NativeBridge.Incremental.sigT2_of_sig2_closed_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "(A : Sort u) → (P : A → Prop) → Rocq.Corelib.Init.Specif.sigT A P → Rocq.Corelib.Init.Specif.sig A P",
+  "source_references":
+  ["Rocq.Corelib.Init.Specif.sigT", "Rocq.Corelib.Init.Specif.sig"],
+  "name": "NativeBridge.Incremental.sigOfSigTClosed",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} (P : A → Sort v) (C : PSigma P → Sort z) (f : (x : A) → (p : P x) → C ⟨x, p⟩)\n  (s : Rocq.Corelib.Init.Specif.sigT A P),\n  Rocq.Corelib.Init.Specif.sigT_rect A P (fun s => C (NativeBridge.Incremental.psigmaTo s)) f s =\n    PSigma.rec f (NativeBridge.Incremental.psigmaTo s)",
+  "source_references":
+  ["Rocq.Corelib.Init.Specif.sigT", "Rocq.Corelib.Init.Specif.sigT_rect"],
+  "name": "NativeBridge.Incremental.sigT_rect_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "{A : Sort u} → {P : A → Sort v} → {Q : A → Sort w} → (x : A) ×' P x ×' Q x → Rocq.Corelib.Init.Specif.sigT2 A P Q",
+  "source_references": ["Rocq.Corelib.Init.Specif.sigT2"],
+  "name": "NativeBridge.Incremental.psigma2Of",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "∀ {A : Sort u_1} {P Q : A → Prop} (s : { x // P x ∧ Q x }), Q s.val",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.subtype2Of._proof_2",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} {B : Sort v} (s : Rocq.Corelib.Init.Datatypes.prod A B),\n  NativeBridge.Incremental.psigmaTo (Rocq.Corelib.Init.Specif.sigT_of_prod A B s) =\n    ⟨(NativeBridge.Incremental.pprodTo s).fst, (NativeBridge.Incremental.pprodTo s).snd⟩",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.prod", "Rocq.Corelib.Init.Specif.sigT_of_prod"],
+  "name": "NativeBridge.Incremental.sigT_of_prod_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} {P : A → Sort v} {Q : A → Sort w} (s : Rocq.Corelib.Init.Specif.sigT2 A P Q),\n  NativeBridge.Incremental.psigmaTo (Rocq.Corelib.Init.Specif.sigT_of_sigT2 A P Q s) =\n    ⟨(NativeBridge.Incremental.psigma2To s).fst, (NativeBridge.Incremental.psigma2To s).snd.fst⟩",
+  "source_references":
+  ["Rocq.Corelib.Init.Specif.sigT2", "Rocq.Corelib.Init.Specif.sigT_of_sigT2"],
+  "name": "NativeBridge.Incremental.sigT_of_sigT2_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "{A : Sort u_1} →\n  (P : A → Sort u_3) →\n    (Q : A → Sort u_2) →\n      (motive : (x : A) ×' P x ×' Q x → Sort u_4) →\n        (x : (x : A) ×' P x ×' Q x) → ((x : A) → (p : P x) → (q : Q x) → motive ⟨x, ⟨p, q⟩⟩) → motive x",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.sigT2_rect_agrees.match_1",
+  "kind": "definition",
+  "axioms": []}]

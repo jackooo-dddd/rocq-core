@@ -2,27 +2,30 @@
 
 先写计划与 DAG，再按步骤推进。入口：[PLAN.md](PLAN.md)、[DAG.md](DAG.md)、[逐根任务表](tasks.csv)。
 
-## 已验证进展（四批）
+## 已验证进展（五批）
 
-11 个 Lean profile 均有成功验证记录。四批累计显式登记 230 份新增覆盖证书，覆盖 8 个新类型根、72 个新运算/谓词根，并将 149 个部分陈述升级为完全原生陈述。另有 8 份原陈述证明，不重复计入根数。
+12 个 Lean profile 均有成功验证记录。五批累计显式登记 251 份新增覆盖证书，覆盖 8 个新类型根、88 个新运算/谓词根，并将 149 个部分陈述升级为完全原生陈述。另补 5 份已有类型根的完整 Sort 范围证书，不重复增加类型根数。另有 8 份原陈述证明，不重复计入根数。
 - Program.Basics：apply、arrow、compose、const、flip、impl。
 - SSR Option：apply、default、lift、map、bind。
 - SSR 函数：comp、catcomp、idfun、fun_of_simpl；simpl_fun 与普通函数的 Iso。
 - SSR 谓词：cancel、commutative、associative、involutive、injective、eqfun、eqrel、left_id。
 - 第二批：pred/rel Iso、reflect Iso 及到 Decidable P 的转换；SSR 布尔运算与关系谓词 12 项；216 项陈述复查中 141 项完全原生化。
 - 第三、四批：[数字表示与良基递归](NUMERIC_WF_RESULTS.md)：4 个类型、36 个运算、8 个完全原生陈述；8 个原陈述经原生 BEq 定理证明。
+- 第五批：[依赖消去与条件实例化](DEPENDENT_RESULTS.md)：16 个运算根，包括 4 个带条件根的闭合实例化；5 个既有类型根扩展到完整 Sort。
 - Nat.iter：原生 Nat.rec 迭代表达式；另证带载体 Iso 和显式步函数对应假设的版本。
 
 | 主分类 | 基线 | 当前 |
 |---|---:|---:|
 | 类型对应 | 29 | 37 |
-| 运算/谓词对应 | 114 | 186 |
-| 只有接口 | 375 | 319 |
-| 尚无证书 | 485 | 461 |
+| 运算/谓词对应 | 114 | 202 |
+| 只有接口 | 375 | 316 |
+| 尚无证书 | 485 | 452 |
 | 完全原生陈述 | 143 | 292 |
 | 部分原生陈述 | 702 | 553 |
-| 带条件 | 331 | 331 |
+| 本层尚带条件 | 331 | 327 |
 | 非 Prop 特殊陈述 | 1 | 1 |
+
+原始机械产物仍有 331 个带条件根；本层已用闭合证明实例化其中 4 个，剩余 327。入口与证据见 DEPENDENT_RESULTS.md。
 
 计数是去重源根；Nat.iter 的两份证书只算一个根。原生目标包括现成 API 和指定的原生组合表达式，两者在证书表的 target 字段中逐项说明。谓词 iff 不证明任意函数具有该性质。
 旧基线证明沿用其既有验证结果，本轮没有重跑全部 2180 项机械翻译或全部旧证明。
@@ -66,7 +69,7 @@ build_dag.py 重新生成基线任务表后，运行 make_report.py 恢复本轮
 
 ## 下一步
 
-P2/P3/P4/P5/P6 已有四批进展，整个计划未完成。接下来处理数字写出、二元良基递归、Sigma/Subtype 及剩余 SSR 包装。最终覆盖的主观预估见 [ESTIMATE.md](ESTIMATE.md)，不作为已证结果。
+P2/P3/P4/P5/P6 已有五批进展，整个计划未完成。接下来处理数字写出、二元良基递归、Sigma/Subtype 及剩余 SSR 包装。最终覆盖的主观预估见 [ESTIMATE.md](ESTIMATE.md)，不作为已证结果。
 
 ## 第二批检查
 
