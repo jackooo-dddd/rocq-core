@@ -167,3 +167,19 @@ positive / N 的对应先通过二进制构造器归纳证明；Z 复用这些�
 任意满足结合律的 op 还对应 List.foldr op a (List.replicate (positiveTo p-1) a)。没有结合律时只保证保留二进制括号的原生版本；已验证 op(a,b)=a+2b 对四份 5 给出 45，而线性 fold 给出 75。
 
 [证明](../experiments/incremental-correspondence-20261019/proofs/BinaryIterOp.lean)。同一 iter_op 根的四份证书不重复计根。
+
+## 13. 返回类型也依赖数值的递归
+
+N_rect 的对应允许原生 motive P : Nat → Sort u。已检查的例子取 P(n)=Fin(n+1)，因此输入改变时返回类型也改变；positive_rect 和 Z_rect 同样保留依赖返回类型。
+
+[证明及例子](../experiments/incremental-correspondence-20261019/proofs/BinaryElimination.lean)。
+
+## 14. 数字表示不能丢掉负零和格式
+
+Decimal.decimal 对应“带符号整数数字、小数数字、可选带符号指数”的原生元组。Hexadecimal.hexadecimal 的指数仍是十进制数字。Number.number 在外层再保留 Decimal/Hexadecimal 的 Sum 标签。
+
+所以这些是无损表示 Iso，结构相等判定保留负零／正零、前导零和指数是否出现的区别。9 个原本带条件的 eq_dec 函数已通过闭合前置证明，对应完整原生 Decidable equality。
+
+[十进制证明](../experiments/incremental-correspondence-20261019/proofs/DecimalRepresentation.lean)、
+[十六进制证明](../experiments/incremental-correspondence-20261019/proofs/HexadecimalRepresentation.lean)、
+[格式组合证明](../experiments/incremental-correspondence-20261019/proofs/NumberRepresentation.lean)。

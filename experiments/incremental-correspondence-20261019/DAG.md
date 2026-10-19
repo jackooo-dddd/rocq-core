@@ -450,3 +450,24 @@ flowchart TD
 ```
 
 IntDef 与 PosDef 的源闭包分别验证，统一导入经命名空间打包。下一依赖节点为 Numbers.BinNums 消去器：positive/N/Z 类型 Iso → 原生依赖递归目标 → 计算对应 → 原生归纳陈述。
+
+## 第四十至四十三批：数据表示与闭合相等判定
+
+```mermaid
+flowchart TD
+  BinaryTypeIso[positive / N / Z Iso] --> BinaryElimination
+  NativeDependentRec[Sort-polymorphic dependent recursion] --> BinaryElimination
+  DecimalOperations --> DecimalRepresentation
+  HexadecimalOperations --> HexadecimalRepresentation
+  DecimalRepresentation -. proof text independently rechecked .-> HexadecimalRepresentation
+  DecimalRepresentation -. representation and equality helpers .-> NumberRepresentation
+  HexadecimalRepresentation -. representation and equality helpers .-> NumberRepresentation
+  EqualityReflection[9 structural equality soundness and completeness pairs] --> ClosedEqDec[36 closed prerequisites]
+  ClosedEqDec --> NativeDecidable[9 Decidable correspondences]
+  BinaryElimination --> ImportAll43[92 profiles / 1475 certificates]
+  DecimalRepresentation --> ImportAll43
+  HexadecimalRepresentation --> ImportAll43
+  NumberRepresentation --> ImportAll43
+```
+
+虚线表示代码生成时复用证明文本，实际源模块闭包分别验证；不表示不同 Rocq2LeanOut 模块直接导入。位序和完整表示保存是下一批 Byte 的基础。

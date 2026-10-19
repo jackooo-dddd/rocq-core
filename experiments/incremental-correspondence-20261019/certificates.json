@@ -9786,5 +9786,866 @@
     "target_class": "existing_api",
     "native_target": "List.foldr",
     "scope": "Any Type-valued carrier and associative operation: native foldr over replicate(p-1,a). Associativity is an explicit hypothesis, essential for this linear-fold target. Not another root."
+  },
+  {
+    "source": "Corelib.Numbers.BinNums.positive_rec",
+    "profile": "BinaryElimination",
+    "certificate": "NativeBridge.Incremental.BinaryElimination.positive_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.BinaryElimination.positiveRec",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.BinaryElimination.positiveRec",
+    "scope": "Native dependent motive pulled back along the proven type Iso; rec preserves Type result, rect preserves arbitrary Sort result, including Prop. Native cases/recursion contains no source symbols."
+  },
+  {
+    "source": "Corelib.Numbers.BinNums.positive_rect",
+    "profile": "BinaryElimination",
+    "certificate": "NativeBridge.Incremental.BinaryElimination.positive_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.BinaryElimination.positiveRec",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.BinaryElimination.positiveRec",
+    "scope": "Native dependent motive pulled back along the proven type Iso; rec preserves Type result, rect preserves arbitrary Sort result, including Prop. Native cases/recursion contains no source symbols."
+  },
+  {
+    "source": "Corelib.Numbers.BinNums.positive_ind",
+    "profile": "BinaryElimination",
+    "certificate": "NativeBridge.Incremental.BinaryElimination.positive_ind_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.BinaryElimination.positiveInduction",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.BinaryElimination.positiveInduction",
+    "scope": "Full induction/case statement on the native carrier: positive subtype, Nat or Int. Both the original statement and the native statement are independently proved; iff does not assume the source theorem.",
+    "original_statement_proof": "NativeBridge.Incremental.BinaryElimination.positive_ind_proof"
+  },
+  {
+    "source": "Corelib.Numbers.BinNums.positive_sind",
+    "profile": "BinaryElimination",
+    "certificate": "NativeBridge.Incremental.BinaryElimination.positive_sind_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.BinaryElimination.positiveInduction",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.BinaryElimination.positiveInduction",
+    "scope": "Full induction/case statement on the native carrier: positive subtype, Nat or Int. Both the original statement and the native statement are independently proved; iff does not assume the source theorem.",
+    "original_statement_proof": "NativeBridge.Incremental.BinaryElimination.positive_sind_proof"
+  },
+  {
+    "source": "Corelib.Numbers.BinNums.N_rec",
+    "profile": "BinaryElimination",
+    "certificate": "NativeBridge.Incremental.BinaryElimination.n_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.BinaryElimination.natCases",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.BinaryElimination.natCases",
+    "scope": "Native dependent motive pulled back along the proven type Iso; rec preserves Type result, rect preserves arbitrary Sort result, including Prop. Native cases/recursion contains no source symbols."
+  },
+  {
+    "source": "Corelib.Numbers.BinNums.N_rect",
+    "profile": "BinaryElimination",
+    "certificate": "NativeBridge.Incremental.BinaryElimination.n_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.BinaryElimination.natCases",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.BinaryElimination.natCases",
+    "scope": "Native dependent motive pulled back along the proven type Iso; rec preserves Type result, rect preserves arbitrary Sort result, including Prop. Native cases/recursion contains no source symbols."
+  },
+  {
+    "source": "Corelib.Numbers.BinNums.N_ind",
+    "profile": "BinaryElimination",
+    "certificate": "NativeBridge.Incremental.BinaryElimination.n_ind_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.BinaryElimination.natInduction",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.BinaryElimination.natInduction",
+    "scope": "Full induction/case statement on the native carrier: positive subtype, Nat or Int. Both the original statement and the native statement are independently proved; iff does not assume the source theorem.",
+    "original_statement_proof": "NativeBridge.Incremental.BinaryElimination.n_ind_proof"
+  },
+  {
+    "source": "Corelib.Numbers.BinNums.N_sind",
+    "profile": "BinaryElimination",
+    "certificate": "NativeBridge.Incremental.BinaryElimination.n_sind_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.BinaryElimination.natInduction",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.BinaryElimination.natInduction",
+    "scope": "Full induction/case statement on the native carrier: positive subtype, Nat or Int. Both the original statement and the native statement are independently proved; iff does not assume the source theorem.",
+    "original_statement_proof": "NativeBridge.Incremental.BinaryElimination.n_sind_proof"
+  },
+  {
+    "source": "Corelib.Numbers.BinNums.Z_rec",
+    "profile": "BinaryElimination",
+    "certificate": "NativeBridge.Incremental.BinaryElimination.z_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.BinaryElimination.intCases",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.BinaryElimination.intCases",
+    "scope": "Native dependent motive pulled back along the proven type Iso; rec preserves Type result, rect preserves arbitrary Sort result, including Prop. Native cases/recursion contains no source symbols."
+  },
+  {
+    "source": "Corelib.Numbers.BinNums.Z_rect",
+    "profile": "BinaryElimination",
+    "certificate": "NativeBridge.Incremental.BinaryElimination.z_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.BinaryElimination.intCases",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.BinaryElimination.intCases",
+    "scope": "Native dependent motive pulled back along the proven type Iso; rec preserves Type result, rect preserves arbitrary Sort result, including Prop. Native cases/recursion contains no source symbols."
+  },
+  {
+    "source": "Corelib.Numbers.BinNums.Z_ind",
+    "profile": "BinaryElimination",
+    "certificate": "NativeBridge.Incremental.BinaryElimination.z_ind_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.BinaryElimination.intInduction",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.BinaryElimination.intInduction",
+    "scope": "Full induction/case statement on the native carrier: positive subtype, Nat or Int. Both the original statement and the native statement are independently proved; iff does not assume the source theorem.",
+    "original_statement_proof": "NativeBridge.Incremental.BinaryElimination.z_ind_proof"
+  },
+  {
+    "source": "Corelib.Numbers.BinNums.Z_sind",
+    "profile": "BinaryElimination",
+    "certificate": "NativeBridge.Incremental.BinaryElimination.z_sind_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.BinaryElimination.intInduction",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.BinaryElimination.intInduction",
+    "scope": "Full induction/case statement on the native carrier: positive subtype, Nat or Int. Both the original statement and the native statement are independently proved; iff does not assume the source theorem.",
+    "original_statement_proof": "NativeBridge.Incremental.BinaryElimination.z_sind_proof"
+  },
+  {
+    "source": "Corelib.Init.Decimal.decimal",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.decimalIso",
+    "kind": "TYPE_ISO",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.DecimalNative",
+    "target_class": "native_representation",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.DecimalNative",
+    "scope": "Sign/digit tuple with optional signed exponent; preserves leading zeros, negative zero, empty digits and exponent presence. Both inverse laws."
+  },
+  {
+    "source": "Corelib.Init.Decimal.decimal_beq",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.decimal_beq_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.decimalEqual",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.decimalEqual",
+    "scope": "All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation."
+  },
+  {
+    "source": "Corelib.Init.Decimal.del_head",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.del_head_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.dropHead",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.dropHead",
+    "scope": "All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation."
+  },
+  {
+    "source": "Corelib.Init.Decimal.del_tail",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.del_tail_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.dropTail",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.dropTail",
+    "scope": "All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation."
+  },
+  {
+    "source": "Corelib.Init.Decimal.del_head_int",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.del_head_int_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.dropHeadInt",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.dropHeadInt",
+    "scope": "All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation."
+  },
+  {
+    "source": "Corelib.Init.Decimal.del_tail_int",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.del_tail_int_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.dropTailInt",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.dropTailInt",
+    "scope": "All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation."
+  },
+  {
+    "source": "Corelib.Init.Decimal.nztail",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.nztail_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.trimTail",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.trimTail",
+    "scope": "All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation."
+  },
+  {
+    "source": "Corelib.Init.Decimal.nztail_int",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.nztail_int_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.trimTailInt",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.trimTailInt",
+    "scope": "All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation."
+  },
+  {
+    "source": "Corelib.Init.Decimal.Little.double",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.little_double_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.littleDouble",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.littleDouble",
+    "scope": "All little-endian digit lists, including empty and noncanonical zeros; double or double+1 with explicit carry. Represents the resulting digit sequence, not just its numeric value."
+  },
+  {
+    "source": "Corelib.Init.Decimal.Little.succ_double",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.little_succ_double_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.littleDouble",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.littleDouble",
+    "scope": "All little-endian digit lists, including empty and noncanonical zeros; double or double+1 with explicit carry. Represents the resulting digit sequence, not just its numeric value."
+  },
+  {
+    "source": "Corelib.Init.Decimal.uint_rect",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.uint_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.digitsRec",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.digitsRec",
+    "scope": "Full native dependent motive over List (Fin 10); source branch family indexed by the ten digits, corresponding to List.rec. rect is Sort-polymorphic; rec returns Type."
+  },
+  {
+    "source": "Corelib.Init.Decimal.uint_rec",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.uint_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.digitsRec",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.digitsRec",
+    "scope": "Full native dependent motive over List (Fin 10); source branch family indexed by the ten digits, corresponding to List.rec. rect is Sort-polymorphic; rec returns Type."
+  },
+  {
+    "source": "Corelib.Init.Decimal.uint_of_uint",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.uint_of_uint_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id",
+    "target_class": "existing_api",
+    "native_target": "id",
+    "scope": "Identity on the lossless native digit or signed-digit representation."
+  },
+  {
+    "source": "Corelib.Init.Decimal.int_of_int",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.int_of_int_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id",
+    "target_class": "existing_api",
+    "native_target": "id",
+    "scope": "Identity on the lossless native digit or signed-digit representation."
+  },
+  {
+    "source": "Corelib.Init.Decimal.uint_ind",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.uint_ind_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.digitInduction",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.digitInduction",
+    "scope": "Full native statement; original statement and native statement separately proved.",
+    "original_statement_proof": "NativeBridge.Incremental.DecimalRepresentation.uint_ind_proof"
+  },
+  {
+    "source": "Corelib.Init.Decimal.uint_sind",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.uint_sind_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.digitInduction",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.digitInduction",
+    "scope": "Full native statement; original statement and native statement separately proved.",
+    "original_statement_proof": "NativeBridge.Incremental.DecimalRepresentation.uint_sind_proof"
+  },
+  {
+    "source": "Corelib.Init.Decimal.internal_decimal_dec_bl",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.decimal_dec_bl_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.equalitySound",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.equalitySound",
+    "scope": "Full native statement; original statement and native statement separately proved.",
+    "original_statement_proof": "NativeBridge.Incremental.DecimalRepresentation.decimal_dec_bl_proof"
+  },
+  {
+    "source": "Corelib.Init.Decimal.internal_decimal_dec_lb",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.decimal_dec_lb_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.equalityComplete",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.equalityComplete",
+    "scope": "Full native statement; original statement and native statement separately proved.",
+    "original_statement_proof": "NativeBridge.Incremental.DecimalRepresentation.decimal_dec_lb_proof"
+  },
+  {
+    "source": "Corelib.Init.Decimal.uint_eq_dec",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.uint_eq_dec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.nativeDecision",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.nativeDecision",
+    "scope": "All inputs; complete Decidable equality on lossless native representation. Four extracted proof prerequisites closed explicitly; source sumbool maps to the unique native decision.",
+    "closed_wrapper": "NativeBridge.Incremental.DecimalRepresentation.uintDecisionClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Decimal.uint_eq_dec__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.DecimalRepresentation.uint_eq_obligation_1"
+      },
+      {
+        "source": "Corelib.Init.Decimal.uint_eq_dec__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.DecimalRepresentation.uint_eq_obligation_2"
+      },
+      {
+        "source": "Corelib.Init.Decimal.uint_eq_dec__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.DecimalRepresentation.uint_eq_obligation_3"
+      },
+      {
+        "source": "Corelib.Init.Decimal.uint_eq_dec__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.DecimalRepresentation.uint_eq_obligation_4"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Decimal.signed_int_eq_dec",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.signed_int_eq_dec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.nativeDecision",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.nativeDecision",
+    "scope": "All inputs; complete Decidable equality on lossless native representation. Four extracted proof prerequisites closed explicitly; source sumbool maps to the unique native decision.",
+    "closed_wrapper": "NativeBridge.Incremental.DecimalRepresentation.signed_intDecisionClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Decimal.signed_int_eq_dec__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.DecimalRepresentation.signed_int_eq_obligation_1"
+      },
+      {
+        "source": "Corelib.Init.Decimal.signed_int_eq_dec__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.DecimalRepresentation.signed_int_eq_obligation_2"
+      },
+      {
+        "source": "Corelib.Init.Decimal.signed_int_eq_dec__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.DecimalRepresentation.signed_int_eq_obligation_3"
+      },
+      {
+        "source": "Corelib.Init.Decimal.signed_int_eq_dec__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.DecimalRepresentation.signed_int_eq_obligation_4"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Decimal.decimal_eq_dec",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.decimal_eq_dec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.nativeDecision",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.nativeDecision",
+    "scope": "All inputs; complete Decidable equality on lossless native representation. Four extracted proof prerequisites closed explicitly; source sumbool maps to the unique native decision.",
+    "closed_wrapper": "NativeBridge.Incremental.DecimalRepresentation.decimalDecisionClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Decimal.decimal_eq_dec__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.DecimalRepresentation.decimal_eq_obligation_1"
+      },
+      {
+        "source": "Corelib.Init.Decimal.decimal_eq_dec__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.DecimalRepresentation.decimal_eq_obligation_2"
+      },
+      {
+        "source": "Corelib.Init.Decimal.decimal_eq_dec__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.DecimalRepresentation.decimal_eq_obligation_3"
+      },
+      {
+        "source": "Corelib.Init.Decimal.decimal_eq_dec__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.DecimalRepresentation.decimal_eq_obligation_4"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.hexadecimal",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.hexadecimalIso",
+    "kind": "TYPE_ISO",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.HexadecimalNative",
+    "target_class": "native_representation",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.HexadecimalNative",
+    "scope": "Hexadecimal signed integer and fractional digit lists, with an optional DECIMAL signed exponent; preserves negative zero, all zeros and exponent presence. Both inverse laws."
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.hexadecimal_beq",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.hexadecimal_beq_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.hexadecimalEqual",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.hexadecimalEqual",
+    "scope": "All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation."
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.del_head",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.del_head_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.dropHead",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.dropHead",
+    "scope": "All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation."
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.del_tail",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.del_tail_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.dropTail",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.dropTail",
+    "scope": "All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation."
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.del_head_int",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.del_head_int_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.dropHeadInt",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.dropHeadInt",
+    "scope": "All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation."
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.del_tail_int",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.del_tail_int_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.dropTailInt",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.dropTailInt",
+    "scope": "All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation."
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.nztail",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.nztail_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.trimTail",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.trimTail",
+    "scope": "All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation."
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.nztail_int",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.nztail_int_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.trimTailInt",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.trimTailInt",
+    "scope": "All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation."
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.Little.double",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.little_double_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.littleDouble",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.littleDouble",
+    "scope": "All little-endian digit lists, including empty and noncanonical zeros; double or double+1 with explicit carry. Represents the resulting digit sequence, not just its numeric value."
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.Little.succ_double",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.little_succ_double_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.littleDouble",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.littleDouble",
+    "scope": "All little-endian digit lists, including empty and noncanonical zeros; double or double+1 with explicit carry. Represents the resulting digit sequence, not just its numeric value."
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.uint_rect",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.uint_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.digitsRec",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.digitsRec",
+    "scope": "Full native dependent motive over List (Fin 16); source branch family indexed by the sixteen digits, corresponding to List.rec. rect is Sort-polymorphic; rec returns Type."
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.uint_rec",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.uint_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.digitsRec",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.digitsRec",
+    "scope": "Full native dependent motive over List (Fin 16); source branch family indexed by the sixteen digits, corresponding to List.rec. rect is Sort-polymorphic; rec returns Type."
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.uint_ind",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.uint_ind_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.digitInduction",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.digitInduction",
+    "scope": "Full native statement; original statement and native statement separately proved.",
+    "original_statement_proof": "NativeBridge.Incremental.HexadecimalRepresentation.uint_ind_proof"
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.uint_sind",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.uint_sind_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.digitInduction",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.digitInduction",
+    "scope": "Full native statement; original statement and native statement separately proved.",
+    "original_statement_proof": "NativeBridge.Incremental.HexadecimalRepresentation.uint_sind_proof"
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.internal_hexadecimal_dec_bl",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.hexadecimal_dec_bl_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.equalitySound",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.equalitySound",
+    "scope": "Full native statement; original statement and native statement separately proved.",
+    "original_statement_proof": "NativeBridge.Incremental.HexadecimalRepresentation.hexadecimal_dec_bl_proof"
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.internal_hexadecimal_dec_lb",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.hexadecimal_dec_lb_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.equalityComplete",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.equalityComplete",
+    "scope": "Full native statement; original statement and native statement separately proved.",
+    "original_statement_proof": "NativeBridge.Incremental.HexadecimalRepresentation.hexadecimal_dec_lb_proof"
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.uint_eq_dec",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.uint_eq_dec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.nativeDecision",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.nativeDecision",
+    "scope": "All inputs; complete Decidable equality on lossless native representation. Four extracted proof prerequisites closed explicitly; source sumbool maps to the unique native decision.",
+    "closed_wrapper": "NativeBridge.Incremental.HexadecimalRepresentation.uintDecisionClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Hexadecimal.uint_eq_dec__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.HexadecimalRepresentation.uint_eq_obligation_1"
+      },
+      {
+        "source": "Corelib.Init.Hexadecimal.uint_eq_dec__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.HexadecimalRepresentation.uint_eq_obligation_2"
+      },
+      {
+        "source": "Corelib.Init.Hexadecimal.uint_eq_dec__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.HexadecimalRepresentation.uint_eq_obligation_3"
+      },
+      {
+        "source": "Corelib.Init.Hexadecimal.uint_eq_dec__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.HexadecimalRepresentation.uint_eq_obligation_4"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.signed_int_eq_dec",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.signed_int_eq_dec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.nativeDecision",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.nativeDecision",
+    "scope": "All inputs; complete Decidable equality on lossless native representation. Four extracted proof prerequisites closed explicitly; source sumbool maps to the unique native decision.",
+    "closed_wrapper": "NativeBridge.Incremental.HexadecimalRepresentation.signed_intDecisionClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Hexadecimal.signed_int_eq_dec__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.HexadecimalRepresentation.signed_int_eq_obligation_1"
+      },
+      {
+        "source": "Corelib.Init.Hexadecimal.signed_int_eq_dec__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.HexadecimalRepresentation.signed_int_eq_obligation_2"
+      },
+      {
+        "source": "Corelib.Init.Hexadecimal.signed_int_eq_dec__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.HexadecimalRepresentation.signed_int_eq_obligation_3"
+      },
+      {
+        "source": "Corelib.Init.Hexadecimal.signed_int_eq_dec__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.HexadecimalRepresentation.signed_int_eq_obligation_4"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.hexadecimal_eq_dec",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.hexadecimal_eq_dec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.nativeDecision",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.nativeDecision",
+    "scope": "All inputs; complete Decidable equality on lossless native representation. Four extracted proof prerequisites closed explicitly; source sumbool maps to the unique native decision.",
+    "closed_wrapper": "NativeBridge.Incremental.HexadecimalRepresentation.hexadecimalDecisionClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Hexadecimal.hexadecimal_eq_dec__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.HexadecimalRepresentation.hexadecimal_eq_obligation_1"
+      },
+      {
+        "source": "Corelib.Init.Hexadecimal.hexadecimal_eq_dec__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.HexadecimalRepresentation.hexadecimal_eq_obligation_2"
+      },
+      {
+        "source": "Corelib.Init.Hexadecimal.hexadecimal_eq_dec__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.HexadecimalRepresentation.hexadecimal_eq_obligation_3"
+      },
+      {
+        "source": "Corelib.Init.Hexadecimal.hexadecimal_eq_dec__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.HexadecimalRepresentation.hexadecimal_eq_obligation_4"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Number.number",
+    "profile": "NumberRepresentation",
+    "certificate": "NativeBridge.Incremental.NumberRepresentation.numberIso",
+    "kind": "TYPE_ISO",
+    "target": "NativeBridge.Incremental.NumberRepresentation.NumberNative",
+    "target_class": "native_representation",
+    "native_target": "NativeBridge.Incremental.NumberRepresentation.NumberNative",
+    "scope": "Sum of lossless decimal/hexadecimal numeral records; retains format tag, leading zeros, signs and optional decimal exponent."
+  },
+  {
+    "source": "Corelib.Init.Number.uint_beq",
+    "profile": "NumberRepresentation",
+    "certificate": "NativeBridge.Incremental.NumberRepresentation.uint_beq_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.NumberRepresentation.nativeEqual",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.NumberRepresentation.nativeEqual",
+    "scope": "All inputs; native structural equality of the tagged representation, not equality of evaluated numeric values."
+  },
+  {
+    "source": "Corelib.Init.Number.signed_int_beq",
+    "profile": "NumberRepresentation",
+    "certificate": "NativeBridge.Incremental.NumberRepresentation.signed_int_beq_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.NumberRepresentation.nativeEqual",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.NumberRepresentation.nativeEqual",
+    "scope": "All inputs; native structural equality of the tagged representation, not equality of evaluated numeric values."
+  },
+  {
+    "source": "Corelib.Init.Number.number_beq",
+    "profile": "NumberRepresentation",
+    "certificate": "NativeBridge.Incremental.NumberRepresentation.number_beq_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.NumberRepresentation.nativeEqual",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.NumberRepresentation.nativeEqual",
+    "scope": "All inputs; native structural equality of the tagged representation, not equality of evaluated numeric values."
+  },
+  {
+    "source": "Corelib.Init.Number.uint_of_uint",
+    "profile": "NumberRepresentation",
+    "certificate": "NativeBridge.Incremental.NumberRepresentation.uint_of_uint_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id",
+    "target_class": "existing_api",
+    "native_target": "id",
+    "scope": "All tagged unsigned/signed digit representations; identity operation."
+  },
+  {
+    "source": "Corelib.Init.Number.int_of_int",
+    "profile": "NumberRepresentation",
+    "certificate": "NativeBridge.Incremental.NumberRepresentation.int_of_int_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id",
+    "target_class": "existing_api",
+    "native_target": "id",
+    "scope": "All tagged unsigned/signed digit representations; identity operation."
+  },
+  {
+    "source": "Corelib.Init.Number.internal_uint_dec_bl1",
+    "profile": "NumberRepresentation",
+    "certificate": "NativeBridge.Incremental.NumberRepresentation.uint_dec_bl_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.NumberRepresentation.equalitySound",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.NumberRepresentation.equalitySound",
+    "scope": "Full native reflection statement for tagged structural equality; original statement independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.NumberRepresentation.uint_dec_bl_proof"
+  },
+  {
+    "source": "Corelib.Init.Number.internal_uint_dec_lb1",
+    "profile": "NumberRepresentation",
+    "certificate": "NativeBridge.Incremental.NumberRepresentation.uint_dec_lb_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.NumberRepresentation.equalityComplete",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.NumberRepresentation.equalityComplete",
+    "scope": "Full native reflection statement for tagged structural equality; original statement independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.NumberRepresentation.uint_dec_lb_proof"
+  },
+  {
+    "source": "Corelib.Init.Number.internal_signed_int_dec_bl1",
+    "profile": "NumberRepresentation",
+    "certificate": "NativeBridge.Incremental.NumberRepresentation.signed_int_dec_bl_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.NumberRepresentation.equalitySound",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.NumberRepresentation.equalitySound",
+    "scope": "Full native reflection statement for tagged structural equality; original statement independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.NumberRepresentation.signed_int_dec_bl_proof"
+  },
+  {
+    "source": "Corelib.Init.Number.internal_signed_int_dec_lb1",
+    "profile": "NumberRepresentation",
+    "certificate": "NativeBridge.Incremental.NumberRepresentation.signed_int_dec_lb_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.NumberRepresentation.equalityComplete",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.NumberRepresentation.equalityComplete",
+    "scope": "Full native reflection statement for tagged structural equality; original statement independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.NumberRepresentation.signed_int_dec_lb_proof"
+  },
+  {
+    "source": "Corelib.Init.Number.internal_number_dec_bl",
+    "profile": "NumberRepresentation",
+    "certificate": "NativeBridge.Incremental.NumberRepresentation.number_dec_bl_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.NumberRepresentation.equalitySound",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.NumberRepresentation.equalitySound",
+    "scope": "Full native reflection statement for tagged structural equality; original statement independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.NumberRepresentation.number_dec_bl_proof"
+  },
+  {
+    "source": "Corelib.Init.Number.internal_number_dec_lb",
+    "profile": "NumberRepresentation",
+    "certificate": "NativeBridge.Incremental.NumberRepresentation.number_dec_lb_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.NumberRepresentation.equalityComplete",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.NumberRepresentation.equalityComplete",
+    "scope": "Full native reflection statement for tagged structural equality; original statement independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.NumberRepresentation.number_dec_lb_proof"
+  },
+  {
+    "source": "Corelib.Init.Number.uint_eq_dec",
+    "profile": "NumberRepresentation",
+    "certificate": "NativeBridge.Incremental.NumberRepresentation.uint_eq_dec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.NumberRepresentation.nativeDecision",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.NumberRepresentation.nativeDecision",
+    "scope": "All inputs; complete native Decidable equality derived from the proved lawful structural BEq. Four source proof prerequisites closed explicitly.",
+    "closed_wrapper": "NativeBridge.Incremental.NumberRepresentation.uintDecisionClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.NumberRepresentation.uint_eq_obligation_1"
+      },
+      {
+        "source": "Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.NumberRepresentation.uint_eq_obligation_2"
+      },
+      {
+        "source": "Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.NumberRepresentation.uint_eq_obligation_3"
+      },
+      {
+        "source": "Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.NumberRepresentation.uint_eq_obligation_4"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Number.signed_int_eq_dec",
+    "profile": "NumberRepresentation",
+    "certificate": "NativeBridge.Incremental.NumberRepresentation.signed_int_eq_dec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.NumberRepresentation.nativeDecision",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.NumberRepresentation.nativeDecision",
+    "scope": "All inputs; complete native Decidable equality derived from the proved lawful structural BEq. Four source proof prerequisites closed explicitly.",
+    "closed_wrapper": "NativeBridge.Incremental.NumberRepresentation.signed_intDecisionClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.NumberRepresentation.signed_int_eq_obligation_1"
+      },
+      {
+        "source": "Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.NumberRepresentation.signed_int_eq_obligation_2"
+      },
+      {
+        "source": "Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.NumberRepresentation.signed_int_eq_obligation_3"
+      },
+      {
+        "source": "Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.NumberRepresentation.signed_int_eq_obligation_4"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Number.number_eq_dec",
+    "profile": "NumberRepresentation",
+    "certificate": "NativeBridge.Incremental.NumberRepresentation.number_eq_dec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.NumberRepresentation.nativeDecision",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.NumberRepresentation.nativeDecision",
+    "scope": "All inputs; complete native Decidable equality derived from the proved lawful structural BEq. Four source proof prerequisites closed explicitly.",
+    "closed_wrapper": "NativeBridge.Incremental.NumberRepresentation.numberDecisionClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.NumberRepresentation.number_eq_obligation_1"
+      },
+      {
+        "source": "Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.NumberRepresentation.number_eq_obligation_2"
+      },
+      {
+        "source": "Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.NumberRepresentation.number_eq_obligation_3"
+      },
+      {
+        "source": "Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.NumberRepresentation.number_eq_obligation_4"
+      }
+    ]
   }
 ]

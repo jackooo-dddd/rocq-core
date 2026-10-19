@@ -1,0 +1,6 @@
+NATIVE_TARGET {"name":"NativeBridge.Incremental.NumberRepresentation.NumberNative","native_expression":"NativeBridge.Incremental.NumberRepresentation.DecimalPart.DecimalNative ⊕\n  NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.HexadecimalNative","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.NumberRepresentation.equalityComplete","native_expression":"fun A [BEq A] => ∀ (x y : A), x = y → NativeBridge.Incremental.NumberRepresentation.nativeEqual x y = true","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.NumberRepresentation.equalitySound","native_expression":"fun A [BEq A] => ∀ (x y : A), NativeBridge.Incremental.NumberRepresentation.nativeEqual x y = true → x = y","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.NumberRepresentation.nativeDecision","native_expression":"fun {A} [BEq A] [LawfulBEq A] x y => if h : (x == y) = true then isTrue ⋯ else isFalse ⋯","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.NumberRepresentation.nativeEqual","native_expression":"fun {A} [BEq A] x y => x == y","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"id","native_expression":"fun {α} a => a","remaining_source_symbols":[]}

@@ -1,0 +1,1073 @@
+[{"type":
+  "RocqPending.Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_4.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_4.statement"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.uint_eq_obligation_4",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type": "Type",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.S",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (i : Rocq.Corelib.Init.Decimal.signed_int) (f : Rocq.Corelib.Init.Decimal.uint)\n  (e : Rocq.Corelib.Init.Decimal.signed_int),\n  NativeBridge.Incremental.NumberRepresentation.DecimalPart.decimalTo\n      (Rocq.Corelib.Init.Decimal.decimal.DecimalExp i f e) =\n    (NativeBridge.Incremental.NumberRepresentation.DecimalPart.signedTo i, NativeBridge.decimalDigitsTo f,\n      some (NativeBridge.Incremental.NumberRepresentation.DecimalPart.signedTo e))",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.signed_int",
+   "Rocq.Corelib.Init.Decimal.uint",
+   "Rocq.Corelib.Init.Decimal.decimal.DecimalExp"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.DecimalPart.decimalTo.eq_2",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (h : Rocq.Corelib.Init.Hexadecimal.hexadecimal),\n  NativeBridge.Incremental.NumberRepresentation.toNumber (Rocq.Corelib.Init.Number.number.Hexadecimal h) =\n    Sum.inr (NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.hexadecimalTo h)",
+  "source_references":
+  ["Rocq.Corelib.Init.Hexadecimal.hexadecimal",
+   "Rocq.Corelib.Init.Number.number.Hexadecimal"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.toNumber.eq_2",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "NativeBridge.Incremental.NumberRepresentation.DecimalPart.S → Bool × List (Fin 10)",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.NumberRepresentation.DecimalPart.signedTo",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "(motive : NativeBridge.Incremental.NumberRepresentation.NumberNative → Sort u_1) →\n  (x : NativeBridge.Incremental.NumberRepresentation.NumberNative) →\n    ((d : NativeBridge.Incremental.NumberRepresentation.DecimalPart.DecimalNative) → motive (Sum.inl d)) →\n      ((h : NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.HexadecimalNative) → motive (Sum.inr h)) →\n        motive x",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.NumberRepresentation.ofNumber.match_1",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (a b : Rocq.Corelib.Init.Datatypes.bool),\n  NativeBridge.Incremental.NumberRepresentation.DecimalPart.digitBoolTo (Rocq.Corelib.Init.Datatypes.andb a b) =\n    (NativeBridge.Incremental.NumberRepresentation.DecimalPart.digitBoolTo a &&\n      NativeBridge.Incremental.NumberRepresentation.DecimalPart.digitBoolTo b)",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.bool", "Rocq.Corelib.Init.Datatypes.andb"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.DecimalPart.bool_and",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Number.internal_number_dec_lb.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.internal_number_dec_lb.statement"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.number_dec_lb_proof",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (x : Rocq.Corelib.Init.Number.number),\n  NativeBridge.Incremental.NumberRepresentation.ofNumber (NativeBridge.Incremental.NumberRepresentation.toNumber x) = x",
+  "source_references": ["Rocq.Corelib.Init.Number.number"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.number_of_to",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (h : NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.SignedDigits),\n  NativeBridge.Incremental.NumberRepresentation.ofSigned (Sum.inr h) =\n    Rocq.Corelib.Init.Number.signed_int.IntHexadecimal\n      (NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.signedOf h)",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.signed_int",
+   "Rocq.Corelib.Init.Number.signed_int.IntHexadecimal"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.ofSigned.eq_2",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "NativeBridge.Incremental.NumberRepresentation.UIntNative → Rocq.Corelib.Init.Number.uint",
+  "source_references": ["Rocq.Corelib.Init.Number.uint"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.ofUInt",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type":
+  "NativeBridge.Incremental.NumberRepresentation.SignedNative → Rocq.Corelib.Init.Number.signed_int",
+  "source_references": ["Rocq.Corelib.Init.Number.signed_int"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.ofSigned",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type": "Type",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.HexadecimalNative",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (d : Rocq.Corelib.Init.Decimal.decimal),\n  NativeBridge.Incremental.NumberRepresentation.toNumber (Rocq.Corelib.Init.Number.number.Decimal d) =\n    Sum.inl (NativeBridge.Incremental.NumberRepresentation.DecimalPart.decimalTo d)",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.decimal",
+   "Rocq.Corelib.Init.Number.number.Decimal"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.toNumber.eq_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (t : Rocq.Corelib.Init.Datatypes.bool),\n  NativeBridge.Incremental.NumberRepresentation.DecimalPart.digitBoolTo t =\n    Rocq.Corelib.Init.Datatypes.bool.rec true false t",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.bool", "Rocq.Corelib.Init.Datatypes.bool.rec"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.DecimalPart.digitBoolTo.eq_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (i : Rocq.Corelib.Init.Decimal.signed_int) (f : Rocq.Corelib.Init.Decimal.uint),\n  NativeBridge.Incremental.NumberRepresentation.DecimalPart.decimalTo (Rocq.Corelib.Init.Decimal.decimal.Decimal i f) =\n    (NativeBridge.Incremental.NumberRepresentation.DecimalPart.signedTo i, NativeBridge.decimalDigitsTo f, none)",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.signed_int",
+   "Rocq.Corelib.Init.Decimal.uint",
+   "Rocq.Corelib.Init.Decimal.decimal.Decimal"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.DecimalPart.decimalTo.eq_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Number.internal_signed_int_dec_lb1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.internal_signed_int_dec_lb1.statement"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.signed_int_dec_lb_proof",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "Rocq.Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.signed_int_eq_obligation_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {α : Type u_1} [inst : BEq α] [LawfulBEq α] {a b : α}, ((a == b) = true) = (a = b)",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.hexadecimal_beq_agrees._simp_1_6",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (d : NativeBridge.Incremental.NumberRepresentation.DecimalPart.SignedDigits),\n  NativeBridge.Incremental.NumberRepresentation.ofSigned (Sum.inl d) =\n    Rocq.Corelib.Init.Number.signed_int.IntDecimal\n      (NativeBridge.Incremental.NumberRepresentation.DecimalPart.signedOf d)",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.signed_int",
+   "Rocq.Corelib.Init.Number.signed_int.IntDecimal"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.ofSigned.eq_1",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.HexadecimalNative →\n  NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.HexadecimalNative → Bool",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.hexadecimalEqual",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Number.internal_signed_int_dec_bl1.statement ↔\n  NativeBridge.Incremental.NumberRepresentation.equalitySound NativeBridge.Incremental.NumberRepresentation.SignedNative",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.internal_signed_int_dec_bl1.statement"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.signed_int_dec_bl_correspondence",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (d : NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.D),\n  NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.hexadecimalOf\n      (NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.hexadecimalTo d) =\n    d",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.hexadecimal_of_to",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (d : List (Fin 10)),\n  NativeBridge.Incremental.NumberRepresentation.ofUInt (Sum.inl d) =\n    Rocq.Corelib.Init.Number.uint.UIntDecimal (NativeBridge.decimalDigitsOf d)",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.uint",
+   "Rocq.Corelib.Init.Number.uint.UIntDecimal"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.ofUInt.eq_1",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type": "Type",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.NumberRepresentation.DecimalPart.D",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (x : NativeBridge.Incremental.NumberRepresentation.DecimalPart.S),\n  NativeBridge.Incremental.NumberRepresentation.DecimalPart.signedTo x =\n    Rocq.Corelib.Init.Decimal.signed_int.rec (fun ds => (false, NativeBridge.decimalDigitsTo ds))\n      (fun ds => (true, NativeBridge.decimalDigitsTo ds)) x",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.signed_int.rec",
+   "Rocq.Corelib.Init.Decimal.uint"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.DecimalPart.signedTo.eq_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (x y : NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.D),\n  NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.digitBoolTo\n      (Rocq.Corelib.Init.Hexadecimal.hexadecimal_beq x y) =\n    NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.hexadecimalEqual\n      (NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.hexadecimalTo x)\n      (NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.hexadecimalTo y)",
+  "source_references": ["Rocq.Corelib.Init.Hexadecimal.hexadecimal_beq"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.hexadecimal_beq_agrees",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (x : NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.S),\n  NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.signedOf\n      (NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.signedTo x) =\n    x",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.signed_of_to",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (x : Rocq.Corelib.Init.Number.uint),\n  NativeBridge.Incremental.NumberRepresentation.ofUInt (NativeBridge.Incremental.NumberRepresentation.toUInt x) = x",
+  "source_references": ["Rocq.Corelib.Init.Number.uint"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.uint_of_to",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (a b : Rocq.Corelib.Init.Datatypes.bool),\n  NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.digitBoolTo (Rocq.Corelib.Init.Datatypes.andb a b) =\n    (NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.digitBoolTo a &&\n      NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.digitBoolTo b)",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.bool", "Rocq.Corelib.Init.Datatypes.andb"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.bool_and",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (i : Rocq.Corelib.Init.Hexadecimal.signed_int) (f : Rocq.Corelib.Init.Hexadecimal.uint)\n  (e : Rocq.Corelib.Init.Decimal.signed_int),\n  NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.hexadecimalTo\n      (Rocq.Corelib.Init.Hexadecimal.hexadecimal.HexadecimalExp i f e) =\n    (NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.signedTo i, NativeBridge.hexadecimalDigitsTo f,\n      some (NativeBridge.Incremental.NumberRepresentation.DecimalPart.signedTo e))",
+  "source_references":
+  ["Rocq.Corelib.Init.Hexadecimal.signed_int",
+   "Rocq.Corelib.Init.Hexadecimal.uint",
+   "Rocq.Corelib.Init.Decimal.signed_int",
+   "Rocq.Corelib.Init.Hexadecimal.hexadecimal.HexadecimalExp"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.hexadecimalTo.eq_2",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "(motive : Rocq.Corelib.Init.Number.signed_int → Sort u_1) →\n  (x : Rocq.Corelib.Init.Number.signed_int) →\n    ((d : Rocq.Corelib.Init.Decimal.signed_int) → motive (Rocq.Corelib.Init.Number.signed_int.IntDecimal d)) →\n      ((h : Rocq.Corelib.Init.Hexadecimal.signed_int) → motive (Rocq.Corelib.Init.Number.signed_int.IntHexadecimal h)) →\n        motive x",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.signed_int",
+   "Rocq.Corelib.Init.Decimal.signed_int",
+   "Rocq.Corelib.Init.Number.signed_int.IntDecimal",
+   "Rocq.Corelib.Init.Hexadecimal.signed_int",
+   "Rocq.Corelib.Init.Number.signed_int.IntHexadecimal"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.toSigned.match_1",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "NativeBridge.Incremental.NumberRepresentation.DecimalPart.DecimalNative →\n  NativeBridge.Incremental.NumberRepresentation.DecimalPart.DecimalNative → Bool",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.DecimalPart.decimalEqual",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.S → Bool × List (Fin 16)",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.signedTo",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (x : Bool × List (Fin 10)),\n  NativeBridge.Incremental.NumberRepresentation.DecimalPart.signedOf x =\n    if x.fst = true then Rocq.Corelib.Init.Decimal.signed_int.Neg (NativeBridge.decimalDigitsOf x.snd)\n    else Rocq.Corelib.Init.Decimal.signed_int.Pos (NativeBridge.decimalDigitsOf x.snd)",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.signed_int.Neg",
+   "Rocq.Corelib.Init.Decimal.signed_int.Pos"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.DecimalPart.signedOf.eq_1",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "NativeBridge.Incremental.NumberRepresentation.NumberNative → Rocq.Corelib.Init.Number.number",
+  "source_references": ["Rocq.Corelib.Init.Number.number"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.ofNumber",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type":
+  "{A : Type} →\n  (x y : A) →\n    (motive :\n        Rocq.Corelib.Init.Specif.sumbool (NativeBridge.ME A x y) (Rocq.Corelib.Init.Logic.not (NativeBridge.ME A x y)) →\n          Sort u_1) →\n      (d :\n          Rocq.Corelib.Init.Specif.sumbool (NativeBridge.ME A x y)\n            (Rocq.Corelib.Init.Logic.not (NativeBridge.ME A x y))) →\n        ((h : NativeBridge.ME A x y) →\n            motive\n              (Rocq.Corelib.Init.Specif.sumbool.left (NativeBridge.ME A x y)\n                (Rocq.Corelib.Init.Logic.not (NativeBridge.ME A x y)) h)) →\n          ((h : Rocq.Corelib.Init.Logic.not (NativeBridge.ME A x y)) →\n              motive\n                (Rocq.Corelib.Init.Specif.sumbool.right (NativeBridge.ME A x y)\n                  (Rocq.Corelib.Init.Logic.not (NativeBridge.ME A x y)) h)) →\n            motive d",
+  "source_references":
+  ["Rocq.Corelib.Init.Specif.sumbool",
+   "Rocq.Corelib.Init.Logic.not",
+   "Rocq.Corelib.Init.Specif.sumbool.left",
+   "Rocq.Corelib.Init.Specif.sumbool.right"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.eqDecisionTo.match_1",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (xs ys : NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.S),\n  NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.digitBoolTo\n      (Rocq.Corelib.Init.Hexadecimal.signed_int_beq xs ys) =\n    (NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.signedTo xs ==\n      NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.signedTo ys)",
+  "source_references": ["Rocq.Corelib.Init.Hexadecimal.signed_int_beq"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.signed_int_beq_agrees",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "Rocq.Corelib.Init.Number.number → NativeBridge.Incremental.NumberRepresentation.NumberNative",
+  "source_references": ["Rocq.Corelib.Init.Number.number"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.toNumber",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (xs ys : NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.U),\n  NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.digitBoolTo\n      (Rocq.Corelib.Init.Hexadecimal.uint_beq xs ys) =\n    (NativeBridge.hexadecimalDigitsTo xs == NativeBridge.hexadecimalDigitsTo ys)",
+  "source_references": ["Rocq.Corelib.Init.Hexadecimal.uint_beq"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.uint_beq_agrees",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "NativeBridge.Iso Rocq.Corelib.Init.Number.uint NativeBridge.Incremental.NumberRepresentation.UIntNative",
+  "source_references": ["Rocq.Corelib.Init.Number.uint"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.uintIso",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type":
+  "NativeBridge.Incremental.NumberRepresentation.DecimalPart.D →\n  NativeBridge.Incremental.NumberRepresentation.DecimalPart.DecimalNative",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.NumberRepresentation.DecimalPart.decimalTo",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Datatypes.bool → Bool",
+  "source_references": ["Rocq.Corelib.Init.Datatypes.bool"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.DecimalPart.digitBoolTo",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "(x y : Rocq.Corelib.Init.Number.uint) →\n  Rocq.Corelib.Init.Specif.sumbool (Rocq.Corelib.Init.Logic.eq Rocq.Corelib.Init.Number.uint x y)\n    (Rocq.Corelib.Init.Logic.not (Rocq.Corelib.Init.Logic.eq Rocq.Corelib.Init.Number.uint x y))",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.uint",
+   "Rocq.Corelib.Init.Specif.sumbool",
+   "Rocq.Corelib.Init.Logic.eq",
+   "Rocq.Corelib.Init.Logic.not"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.uintDecisionClosed",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (x y : Rocq.Corelib.Init.Decimal.signed_int),\n  NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.digitBoolTo\n      (Rocq.Corelib.Init.Decimal.signed_int_beq x y) =\n    (NativeBridge.Incremental.NumberRepresentation.DecimalPart.signedTo x ==\n      NativeBridge.Incremental.NumberRepresentation.DecimalPart.signedTo y)",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.signed_int",
+   "Rocq.Corelib.Init.Decimal.signed_int_beq"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.exponent_beq_agrees",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (d : Rocq.Corelib.Init.Decimal.signed_int),\n  NativeBridge.Incremental.NumberRepresentation.toSigned (Rocq.Corelib.Init.Number.signed_int.IntDecimal d) =\n    Sum.inl (NativeBridge.Incremental.NumberRepresentation.DecimalPart.signedTo d)",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.signed_int",
+   "Rocq.Corelib.Init.Number.signed_int.IntDecimal"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.toSigned.eq_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (x : NativeBridge.Incremental.NumberRepresentation.NumberNative),\n  NativeBridge.Incremental.NumberRepresentation.toNumber (NativeBridge.Incremental.NumberRepresentation.ofNumber x) = x",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.NumberRepresentation.number_to_of",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "Rocq.Corelib.Init.Number.internal_number_dec_bl.statement ↔\n  NativeBridge.Incremental.NumberRepresentation.equalitySound NativeBridge.Incremental.NumberRepresentation.NumberNative",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.internal_number_dec_bl.statement"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.number_dec_bl_correspondence",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (x y : Rocq.Corelib.Init.Number.uint),\n  NativeBridge.Incremental.NumberRepresentation.eqDecisionTo NativeBridge.Incremental.NumberRepresentation.uintIso x y\n      (RocqPending.Corelib.Init.Number.uint_eq_dec x y) =\n    NativeBridge.Incremental.NumberRepresentation.nativeDecision\n      (NativeBridge.Incremental.NumberRepresentation.toUInt x) (NativeBridge.Incremental.NumberRepresentation.toUInt y)",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.uint",
+   "RocqPending.Corelib.Init.Number.uint_eq_dec"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.uint_eq_dec_agrees",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (x y : Rocq.Corelib.Init.Number.signed_int),\n  NativeBridge.Incremental.NumberRepresentation.eqDecisionTo NativeBridge.Incremental.NumberRepresentation.signed_intIso\n      x y (RocqPending.Corelib.Init.Number.signed_int_eq_dec x y) =\n    NativeBridge.Incremental.NumberRepresentation.nativeDecision\n      (NativeBridge.Incremental.NumberRepresentation.toSigned x)\n      (NativeBridge.Incremental.NumberRepresentation.toSigned y)",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.signed_int",
+   "RocqPending.Corelib.Init.Number.signed_int_eq_dec"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.signed_int_eq_dec_agrees",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (x y : Rocq.Corelib.Init.Number.number),\n  NativeBridge.Incremental.NumberRepresentation.eqDecisionTo NativeBridge.Incremental.NumberRepresentation.numberIso x y\n      (RocqPending.Corelib.Init.Number.number_eq_dec x y) =\n    NativeBridge.Incremental.NumberRepresentation.nativeDecision\n      (NativeBridge.Incremental.NumberRepresentation.toNumber x)\n      (NativeBridge.Incremental.NumberRepresentation.toNumber y)",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.number",
+   "RocqPending.Corelib.Init.Number.number_eq_dec"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.number_eq_dec_agrees",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "Rocq.Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_1.statement"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.number_eq_obligation_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Type} [inst : BEq A] (x y : A), NativeBridge.Incremental.NumberRepresentation.nativeEqual x y = (x == y)",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.NumberRepresentation.nativeEqual.eq_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "(motive : NativeBridge.Incremental.NumberRepresentation.UIntNative → Sort u_1) →\n  (x : NativeBridge.Incremental.NumberRepresentation.UIntNative) →\n    ((d : List (Fin 10)) → motive (Sum.inl d)) → ((h : List (Fin 16)) → motive (Sum.inr h)) → motive x",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.NumberRepresentation.ofUInt.match_1",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_2.statement"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.uint_eq_obligation_2",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Type",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.DecimalPart.SignedDigits",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "NativeBridge.Iso NativeBridge.Incremental.NumberRepresentation.DecimalPart.S (Bool × List (Fin 10))",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.NumberRepresentation.DecimalPart.signedIso",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type":
+  "NativeBridge.Iso Rocq.Corelib.Init.Decimal.decimal\n  NativeBridge.Incremental.NumberRepresentation.DecimalPart.DecimalNative",
+  "source_references": ["Rocq.Corelib.Init.Decimal.decimal"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.DecimalPart.decimalIso",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type":
+  "(motive : Rocq.Corelib.Init.Number.number → Sort u_1) →\n  (x : Rocq.Corelib.Init.Number.number) →\n    ((d : Rocq.Corelib.Init.Decimal.decimal) → motive (Rocq.Corelib.Init.Number.number.Decimal d)) →\n      ((h : Rocq.Corelib.Init.Hexadecimal.hexadecimal) → motive (Rocq.Corelib.Init.Number.number.Hexadecimal h)) →\n        motive x",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.number",
+   "Rocq.Corelib.Init.Decimal.decimal",
+   "Rocq.Corelib.Init.Number.number.Decimal",
+   "Rocq.Corelib.Init.Hexadecimal.hexadecimal",
+   "Rocq.Corelib.Init.Number.number.Hexadecimal"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.toNumber.match_1",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Number.internal_uint_dec_bl1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.internal_uint_dec_bl1.statement"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.uint_dec_bl_proof",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "Bool × List (Fin 16) → NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.S",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.signedOf",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type":
+  "RocqPending.Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_4.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_4.statement"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.number_eq_obligation_4",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "Rocq.Corelib.Init.Number.internal_uint_dec_lb1.statement ↔\n  NativeBridge.Incremental.NumberRepresentation.equalityComplete\n    NativeBridge.Incremental.NumberRepresentation.UIntNative",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.internal_uint_dec_lb1.statement"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.uint_dec_lb_correspondence",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (x : Bool × List (Fin 16)),\n  NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.signedTo\n      (NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.signedOf x) =\n    x",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.signed_to_of",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "(motive : NativeBridge.Incremental.NumberRepresentation.DecimalPart.D → Sort u_1) →\n  (x : NativeBridge.Incremental.NumberRepresentation.DecimalPart.D) →\n    ((i : Rocq.Corelib.Init.Decimal.signed_int) →\n        (f : Rocq.Corelib.Init.Decimal.uint) → motive (Rocq.Corelib.Init.Decimal.decimal.Decimal i f)) →\n      ((i : Rocq.Corelib.Init.Decimal.signed_int) →\n          (f : Rocq.Corelib.Init.Decimal.uint) →\n            (e : Rocq.Corelib.Init.Decimal.signed_int) → motive (Rocq.Corelib.Init.Decimal.decimal.DecimalExp i f e)) →\n        motive x",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.signed_int",
+   "Rocq.Corelib.Init.Decimal.uint",
+   "Rocq.Corelib.Init.Decimal.decimal.Decimal",
+   "Rocq.Corelib.Init.Decimal.decimal.DecimalExp"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.DecimalPart.decimalTo.match_1",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "RocqPending.Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_4.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_4.statement"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.signed_int_eq_obligation_4",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type": "Type",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.NumberRepresentation.SignedNative",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.HexadecimalNative →\n  NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.D",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.hexadecimalOf",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (x y : NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.HexadecimalNative),\n  NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.hexadecimalEqual x y = (x == y)",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.hexadecimalEqual.eq_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Type",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.DecimalPart.DecimalNative",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "(A : Type) → [BEq A] → Prop",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.NumberRepresentation.equalitySound",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "{A : Type} → [BEq A] → A → A → Bool",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.NumberRepresentation.nativeEqual",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Type",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.NumberRepresentation.DecimalPart.S",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (a b : Rocq.Corelib.Init.Datatypes.bool),\n  NativeBridge.Incremental.NumberRepresentation.digitBoolTo a =\n      NativeBridge.Incremental.NumberRepresentation.digitBoolTo b →\n    a = b",
+  "source_references": ["Rocq.Corelib.Init.Datatypes.bool"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.digitBool_injective",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (d : NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.HexadecimalNative),\n  NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.hexadecimalTo\n      (NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.hexadecimalOf d) =\n    d",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.hexadecimal_to_of",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "(x y : Rocq.Corelib.Init.Number.number) →\n  Rocq.Corelib.Init.Specif.sumbool (Rocq.Corelib.Init.Logic.eq Rocq.Corelib.Init.Number.number x y)\n    (Rocq.Corelib.Init.Logic.not (Rocq.Corelib.Init.Logic.eq Rocq.Corelib.Init.Number.number x y))",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.number",
+   "Rocq.Corelib.Init.Specif.sumbool",
+   "Rocq.Corelib.Init.Logic.eq",
+   "Rocq.Corelib.Init.Logic.not"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.numberDecisionClosed",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ {A B : Type} (e : NativeBridge.Iso A B) (x y : A), NativeBridge.ME A x y → e.to x = e.to y",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.NumberRepresentation.eqDecisionTo._proof_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (d : Rocq.Corelib.Init.Decimal.uint),\n  NativeBridge.Incremental.NumberRepresentation.toUInt (Rocq.Corelib.Init.Number.uint.UIntDecimal d) =\n    Sum.inl (NativeBridge.decimalDigitsTo d)",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.uint",
+   "Rocq.Corelib.Init.Number.uint.UIntDecimal"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.toUInt.eq_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (t : Rocq.Corelib.Init.Datatypes.bool),\n  NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.digitBoolTo t =\n    Rocq.Corelib.Init.Datatypes.bool.rec true false t",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.bool", "Rocq.Corelib.Init.Datatypes.bool.rec"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.digitBoolTo.eq_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Type",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.NumberRepresentation.UIntNative",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Type",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.NumberRepresentation.DecimalPart.U",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (x : Rocq.Corelib.Init.Number.signed_int),\n  NativeBridge.Incremental.NumberRepresentation.ofSigned (NativeBridge.Incremental.NumberRepresentation.toSigned x) = x",
+  "source_references": ["Rocq.Corelib.Init.Number.signed_int"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.signed_int_of_to",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.D →\n  NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.HexadecimalNative",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.hexadecimalTo",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "{A : Type} → [inst : BEq A] → [LawfulBEq A] → (x y : A) → Decidable (x = y)",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.NumberRepresentation.nativeDecision",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (x : Rocq.Corelib.Init.Number.signed_int),\n  NativeBridge.Incremental.NumberRepresentation.toSigned (Rocq.Corelib.Init.Number.int_of_int x) =\n    id (NativeBridge.Incremental.NumberRepresentation.toSigned x)",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.signed_int",
+   "Rocq.Corelib.Init.Number.int_of_int"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.int_of_int_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Number.internal_signed_int_dec_lb1.statement ↔\n  NativeBridge.Incremental.NumberRepresentation.equalityComplete\n    NativeBridge.Incremental.NumberRepresentation.SignedNative",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.internal_signed_int_dec_lb1.statement"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.signed_int_dec_lb_correspondence",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (A : Type) [inst : BEq A] [LawfulBEq A], NativeBridge.Incremental.NumberRepresentation.equalityComplete A",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.equality_complete_native",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (h : Rocq.Corelib.Init.Hexadecimal.uint),\n  NativeBridge.Incremental.NumberRepresentation.toUInt (Rocq.Corelib.Init.Number.uint.UIntHexadecimal h) =\n    Sum.inr (NativeBridge.hexadecimalDigitsTo h)",
+  "source_references":
+  ["Rocq.Corelib.Init.Hexadecimal.uint",
+   "Rocq.Corelib.Init.Number.uint.UIntHexadecimal"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.toUInt.eq_2",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (d : NativeBridge.Incremental.NumberRepresentation.DecimalPart.D),\n  NativeBridge.Incremental.NumberRepresentation.DecimalPart.decimalOf\n      (NativeBridge.Incremental.NumberRepresentation.DecimalPart.decimalTo d) =\n    d",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.DecimalPart.decimal_of_to",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "Rocq.Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_1.statement"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.uint_eq_obligation_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.signed_int_eq_obligation_2",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "NativeBridge.Iso Rocq.Corelib.Init.Hexadecimal.hexadecimal\n  NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.HexadecimalNative",
+  "source_references": ["Rocq.Corelib.Init.Hexadecimal.hexadecimal"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.hexadecimalIso",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (x : NativeBridge.Incremental.NumberRepresentation.DecimalPart.S),\n  NativeBridge.Incremental.NumberRepresentation.DecimalPart.signedOf\n      (NativeBridge.Incremental.NumberRepresentation.DecimalPart.signedTo x) =\n    x",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.DecimalPart.signed_of_to",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type": "Type",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.NumberRepresentation.NumberNative",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {α : Type u_1} [inst : BEq α] [LawfulBEq α] {a b : α}, ((a == b) = true) = (a = b)",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.DecimalPart.decimal_beq_agrees._simp_1_6",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type": "Type",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.D",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (i : Rocq.Corelib.Init.Hexadecimal.signed_int) (f : Rocq.Corelib.Init.Hexadecimal.uint),\n  NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.hexadecimalTo\n      (Rocq.Corelib.Init.Hexadecimal.hexadecimal.Hexadecimal i f) =\n    (NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.signedTo i, NativeBridge.hexadecimalDigitsTo f, none)",
+  "source_references":
+  ["Rocq.Corelib.Init.Hexadecimal.signed_int",
+   "Rocq.Corelib.Init.Hexadecimal.uint",
+   "Rocq.Corelib.Init.Hexadecimal.hexadecimal.Hexadecimal"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.hexadecimalTo.eq_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "(A : Type) → [BEq A] → Prop",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.NumberRepresentation.equalityComplete",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (x y : NativeBridge.Incremental.NumberRepresentation.DecimalPart.D),\n  NativeBridge.Incremental.NumberRepresentation.DecimalPart.digitBoolTo (Rocq.Corelib.Init.Decimal.decimal_beq x y) =\n    NativeBridge.Incremental.NumberRepresentation.DecimalPart.decimalEqual\n      (NativeBridge.Incremental.NumberRepresentation.DecimalPart.decimalTo x)\n      (NativeBridge.Incremental.NumberRepresentation.DecimalPart.decimalTo y)",
+  "source_references": ["Rocq.Corelib.Init.Decimal.decimal_beq"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.DecimalPart.decimal_beq_agrees",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (x y : Rocq.Corelib.Init.Number.signed_int),\n  NativeBridge.Incremental.NumberRepresentation.digitBoolTo (Rocq.Corelib.Init.Number.signed_int_beq x y) =\n    NativeBridge.Incremental.NumberRepresentation.nativeEqual (NativeBridge.Incremental.NumberRepresentation.toSigned x)\n      (NativeBridge.Incremental.NumberRepresentation.toSigned y)",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.signed_int",
+   "Rocq.Corelib.Init.Number.signed_int_beq"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.signed_int_beq_agrees",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "(motive : NativeBridge.Incremental.NumberRepresentation.SignedNative → Sort u_1) →\n  (x : NativeBridge.Incremental.NumberRepresentation.SignedNative) →\n    ((d : NativeBridge.Incremental.NumberRepresentation.DecimalPart.SignedDigits) → motive (Sum.inl d)) →\n      ((h : NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.SignedDigits) → motive (Sum.inr h)) → motive x",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.NumberRepresentation.ofSigned.match_1",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (x y : Rocq.Corelib.Init.Number.uint),\n  NativeBridge.Incremental.NumberRepresentation.digitBoolTo (Rocq.Corelib.Init.Number.uint_beq x y) =\n    NativeBridge.Incremental.NumberRepresentation.nativeEqual (NativeBridge.Incremental.NumberRepresentation.toUInt x)\n      (NativeBridge.Incremental.NumberRepresentation.toUInt y)",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.uint", "Rocq.Corelib.Init.Number.uint_beq"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.uint_beq_agrees",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "RocqPending.Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_3.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_3.statement"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.number_eq_obligation_3",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (x : Bool × List (Fin 16)),\n  NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.signedOf x =\n    if x.fst = true then Rocq.Corelib.Init.Hexadecimal.signed_int.Neg (NativeBridge.hexadecimalDigitsOf x.snd)\n    else Rocq.Corelib.Init.Hexadecimal.signed_int.Pos (NativeBridge.hexadecimalDigitsOf x.snd)",
+  "source_references":
+  ["Rocq.Corelib.Init.Hexadecimal.signed_int.Neg",
+   "Rocq.Corelib.Init.Hexadecimal.signed_int.Pos"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.signedOf.eq_1",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "Rocq.Corelib.Init.Number.signed_int → NativeBridge.Incremental.NumberRepresentation.SignedNative",
+  "source_references": ["Rocq.Corelib.Init.Number.signed_int"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.toSigned",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (x : NativeBridge.Incremental.NumberRepresentation.UIntNative),\n  NativeBridge.Incremental.NumberRepresentation.toUInt (NativeBridge.Incremental.NumberRepresentation.ofUInt x) = x",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.NumberRepresentation.uint_to_of",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (h : NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.HexadecimalNative),\n  NativeBridge.Incremental.NumberRepresentation.ofNumber (Sum.inr h) =\n    Rocq.Corelib.Init.Number.number.Hexadecimal\n      (NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.hexadecimalOf h)",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.number",
+   "Rocq.Corelib.Init.Number.number.Hexadecimal"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.ofNumber.eq_2",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type": "Type",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.U",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (x : Rocq.Corelib.Init.Number.uint),\n  NativeBridge.Incremental.NumberRepresentation.toUInt (Rocq.Corelib.Init.Number.uint_of_uint x) =\n    id (NativeBridge.Incremental.NumberRepresentation.toUInt x)",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.uint", "Rocq.Corelib.Init.Number.uint_of_uint"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.uint_of_uint_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (h : List (Fin 16)),\n  NativeBridge.Incremental.NumberRepresentation.ofUInt (Sum.inr h) =\n    Rocq.Corelib.Init.Number.uint.UIntHexadecimal (NativeBridge.hexadecimalDigitsOf h)",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.uint",
+   "Rocq.Corelib.Init.Number.uint.UIntHexadecimal"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.ofUInt.eq_2",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (d : NativeBridge.Incremental.NumberRepresentation.DecimalPart.DecimalNative),\n  NativeBridge.Incremental.NumberRepresentation.ofNumber (Sum.inl d) =\n    Rocq.Corelib.Init.Number.number.Decimal (NativeBridge.Incremental.NumberRepresentation.DecimalPart.decimalOf d)",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.number",
+   "Rocq.Corelib.Init.Number.number.Decimal"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.ofNumber.eq_1",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (x : NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.S),\n  NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.signedTo x =\n    Rocq.Corelib.Init.Hexadecimal.signed_int.rec (fun ds => (false, NativeBridge.hexadecimalDigitsTo ds))\n      (fun ds => (true, NativeBridge.hexadecimalDigitsTo ds)) x",
+  "source_references":
+  ["Rocq.Corelib.Init.Hexadecimal.signed_int.rec",
+   "Rocq.Corelib.Init.Hexadecimal.uint"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.signedTo.eq_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "NativeBridge.Iso Rocq.Corelib.Init.Number.signed_int NativeBridge.Incremental.NumberRepresentation.SignedNative",
+  "source_references": ["Rocq.Corelib.Init.Number.signed_int"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.signed_intIso",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (x y : NativeBridge.Incremental.NumberRepresentation.DecimalPart.DecimalNative),\n  NativeBridge.Incremental.NumberRepresentation.DecimalPart.decimalEqual x y = (x == y)",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.DecimalPart.decimalEqual.eq_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Datatypes.bool → Bool",
+  "source_references": ["Rocq.Corelib.Init.Datatypes.bool"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.digitBoolTo",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "{A B : Type} →\n  (e : NativeBridge.Iso A B) →\n    (x y : A) →\n      Rocq.Corelib.Init.Specif.sumbool (NativeBridge.ME A x y) (Rocq.Corelib.Init.Logic.not (NativeBridge.ME A x y)) →\n        Decidable (e.to x = e.to y)",
+  "source_references":
+  ["Rocq.Corelib.Init.Specif.sumbool", "Rocq.Corelib.Init.Logic.not"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.eqDecisionTo",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (x y : Rocq.Corelib.Init.Number.number),\n  NativeBridge.Incremental.NumberRepresentation.digitBoolTo (Rocq.Corelib.Init.Number.number_beq x y) =\n    NativeBridge.Incremental.NumberRepresentation.nativeEqual (NativeBridge.Incremental.NumberRepresentation.toNumber x)\n      (NativeBridge.Incremental.NumberRepresentation.toNumber y)",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.number", "Rocq.Corelib.Init.Number.number_beq"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.number_beq_agrees",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (xs ys : NativeBridge.Incremental.NumberRepresentation.DecimalPart.U),\n  NativeBridge.Incremental.NumberRepresentation.DecimalPart.digitBoolTo (Rocq.Corelib.Init.Decimal.uint_beq xs ys) =\n    (NativeBridge.decimalDigitsTo xs == NativeBridge.decimalDigitsTo ys)",
+  "source_references": ["Rocq.Corelib.Init.Decimal.uint_beq"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.DecimalPart.uint_beq_agrees",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (xs ys : NativeBridge.Incremental.NumberRepresentation.DecimalPart.S),\n  NativeBridge.Incremental.NumberRepresentation.DecimalPart.digitBoolTo\n      (Rocq.Corelib.Init.Decimal.signed_int_beq xs ys) =\n    (NativeBridge.Incremental.NumberRepresentation.DecimalPart.signedTo xs ==\n      NativeBridge.Incremental.NumberRepresentation.DecimalPart.signedTo ys)",
+  "source_references": ["Rocq.Corelib.Init.Decimal.signed_int_beq"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.DecimalPart.signed_int_beq_agrees",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type": "Rocq.Corelib.Init.Number.internal_uint_dec_lb1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.internal_uint_dec_lb1.statement"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.uint_dec_lb_proof",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type": "Rocq.Corelib.Init.Number.internal_signed_int_dec_bl1.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.internal_signed_int_dec_bl1.statement"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.signed_int_dec_bl_proof",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "(motive : Option (Bool × List (Fin 10)) → Sort u_1) →\n  (x : Option (Bool × List (Fin 10))) → (Unit → motive none) → ((e : Bool × List (Fin 10)) → motive (some e)) → motive x",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.hexadecimalOf.match_1",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A B : Type} (e : NativeBridge.Iso A B) (x y : A),\n  Rocq.Corelib.Init.Logic.not (NativeBridge.ME A x y) → e.to x = e.to y → False",
+  "source_references": ["Rocq.Corelib.Init.Logic.not"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.eqDecisionTo._proof_2",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "(motive : NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.D → Sort u_1) →\n  (x : NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.D) →\n    ((i : Rocq.Corelib.Init.Hexadecimal.signed_int) →\n        (f : Rocq.Corelib.Init.Hexadecimal.uint) → motive (Rocq.Corelib.Init.Hexadecimal.hexadecimal.Hexadecimal i f)) →\n      ((i : Rocq.Corelib.Init.Hexadecimal.signed_int) →\n          (f : Rocq.Corelib.Init.Hexadecimal.uint) →\n            (e : Rocq.Corelib.Init.Decimal.signed_int) →\n              motive (Rocq.Corelib.Init.Hexadecimal.hexadecimal.HexadecimalExp i f e)) →\n        motive x",
+  "source_references":
+  ["Rocq.Corelib.Init.Hexadecimal.signed_int",
+   "Rocq.Corelib.Init.Hexadecimal.uint",
+   "Rocq.Corelib.Init.Hexadecimal.hexadecimal.Hexadecimal",
+   "Rocq.Corelib.Init.Decimal.signed_int",
+   "Rocq.Corelib.Init.Hexadecimal.hexadecimal.HexadecimalExp"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.hexadecimalTo.match_1",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "NativeBridge.Iso Rocq.Corelib.Init.Number.number NativeBridge.Incremental.NumberRepresentation.NumberNative",
+  "source_references": ["Rocq.Corelib.Init.Number.number"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.numberIso",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type":
+  "RocqPending.Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_3.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_3.statement"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.signed_int_eq_obligation_3",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type": "Rocq.Corelib.Init.Datatypes.bool → Bool",
+  "source_references": ["Rocq.Corelib.Init.Datatypes.bool"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.digitBoolTo",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "NativeBridge.Incremental.NumberRepresentation.DecimalPart.DecimalNative →\n  NativeBridge.Incremental.NumberRepresentation.DecimalPart.D",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.NumberRepresentation.DecimalPart.decimalOf",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (h : Rocq.Corelib.Init.Hexadecimal.signed_int),\n  NativeBridge.Incremental.NumberRepresentation.toSigned (Rocq.Corelib.Init.Number.signed_int.IntHexadecimal h) =\n    Sum.inr (NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.signedTo h)",
+  "source_references":
+  ["Rocq.Corelib.Init.Hexadecimal.signed_int",
+   "Rocq.Corelib.Init.Number.signed_int.IntHexadecimal"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.toSigned.eq_2",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "NativeBridge.Iso NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.S (Bool × List (Fin 16))",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.signedIso",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type":
+  "(x y : Rocq.Corelib.Init.Number.signed_int) →\n  Rocq.Corelib.Init.Specif.sumbool (Rocq.Corelib.Init.Logic.eq Rocq.Corelib.Init.Number.signed_int x y)\n    (Rocq.Corelib.Init.Logic.not (Rocq.Corelib.Init.Logic.eq Rocq.Corelib.Init.Number.signed_int x y))",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.signed_int",
+   "Rocq.Corelib.Init.Specif.sumbool",
+   "Rocq.Corelib.Init.Logic.eq",
+   "Rocq.Corelib.Init.Logic.not"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.signed_intDecisionClosed",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type":
+  "Bool × List (Fin 10) → NativeBridge.Incremental.NumberRepresentation.DecimalPart.S",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.NumberRepresentation.DecimalPart.signedOf",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type":
+  "RocqPending.Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_3.statement",
+  "source_references":
+  ["RocqPending.Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_3.statement"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.uint_eq_obligation_3",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (d : NativeBridge.Incremental.NumberRepresentation.DecimalPart.DecimalNative),\n  NativeBridge.Incremental.NumberRepresentation.DecimalPart.decimalOf d =\n    match d.snd.snd with\n    | none =>\n      Rocq.Corelib.Init.Decimal.decimal.Decimal\n        (NativeBridge.Incremental.NumberRepresentation.DecimalPart.signedOf d.fst)\n        (NativeBridge.decimalDigitsOf d.snd.fst)\n    | some e =>\n      Rocq.Corelib.Init.Decimal.decimal.DecimalExp\n        (NativeBridge.Incremental.NumberRepresentation.DecimalPart.signedOf d.fst)\n        (NativeBridge.decimalDigitsOf d.snd.fst) (NativeBridge.Incremental.NumberRepresentation.DecimalPart.signedOf e)",
+  "source_references":
+  ["Rocq.Corelib.Init.Decimal.decimal.Decimal",
+   "Rocq.Corelib.Init.Decimal.decimal.DecimalExp"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.DecimalPart.decimalOf.eq_1",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (x : Bool × List (Fin 10)),\n  NativeBridge.Incremental.NumberRepresentation.DecimalPart.signedTo\n      (NativeBridge.Incremental.NumberRepresentation.DecimalPart.signedOf x) =\n    x",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.DecimalPart.signed_to_of",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (x : NativeBridge.Incremental.NumberRepresentation.SignedNative),\n  NativeBridge.Incremental.NumberRepresentation.toSigned (NativeBridge.Incremental.NumberRepresentation.ofSigned x) = x",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.NumberRepresentation.signed_int_to_of",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type": "Type",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.SignedDigits",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Type} [inst : BEq A] [LawfulBEq A] (x y : A), ¬(x == y) = true → x = y → False",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.nativeDecision._proof_1",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ {A B : Type} [inst : BEq A] [inst_1 : BEq B] [LawfulBEq A] [LawfulBEq B], LawfulBEq (A ⊕ B)",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.NumberRepresentation.sumLawfulBEq",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "Rocq.Corelib.Init.Number.uint → NativeBridge.Incremental.NumberRepresentation.UIntNative",
+  "source_references": ["Rocq.Corelib.Init.Number.uint"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.toUInt",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Number.internal_number_dec_bl.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.internal_number_dec_bl.statement"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.number_dec_bl_proof",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "(motive : Option NativeBridge.Incremental.NumberRepresentation.DecimalPart.SignedDigits → Sort u_1) →\n  (x : Option NativeBridge.Incremental.NumberRepresentation.DecimalPart.SignedDigits) →\n    (Unit → motive none) →\n      ((e : NativeBridge.Incremental.NumberRepresentation.DecimalPart.SignedDigits) → motive (some e)) → motive x",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.DecimalPart.decimalOf.match_1",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "(motive : Rocq.Corelib.Init.Number.uint → Sort u_1) →\n  (x : Rocq.Corelib.Init.Number.uint) →\n    ((d : Rocq.Corelib.Init.Decimal.uint) → motive (Rocq.Corelib.Init.Number.uint.UIntDecimal d)) →\n      ((h : Rocq.Corelib.Init.Hexadecimal.uint) → motive (Rocq.Corelib.Init.Number.uint.UIntHexadecimal h)) → motive x",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.uint",
+   "Rocq.Corelib.Init.Decimal.uint",
+   "Rocq.Corelib.Init.Number.uint.UIntDecimal",
+   "Rocq.Corelib.Init.Hexadecimal.uint",
+   "Rocq.Corelib.Init.Number.uint.UIntHexadecimal"],
+  "name": "NativeBridge.Incremental.NumberRepresentation.toUInt.match_1",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (A : Type) [inst : BEq A] [LawfulBEq A], NativeBridge.Incremental.NumberRepresentation.equalitySound A",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.NumberRepresentation.equality_sound_native",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "Rocq.Corelib.Init.Number.internal_uint_dec_bl1.statement ↔\n  NativeBridge.Incremental.NumberRepresentation.equalitySound NativeBridge.Incremental.NumberRepresentation.UIntNative",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.internal_uint_dec_bl1.statement"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.uint_dec_bl_correspondence",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "Rocq.Corelib.Init.Number.internal_number_dec_lb.statement ↔\n  NativeBridge.Incremental.NumberRepresentation.equalityComplete\n    NativeBridge.Incremental.NumberRepresentation.NumberNative",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.internal_number_dec_lb.statement"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.number_dec_lb_correspondence",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (d : NativeBridge.Incremental.NumberRepresentation.DecimalPart.DecimalNative),\n  NativeBridge.Incremental.NumberRepresentation.DecimalPart.decimalTo\n      (NativeBridge.Incremental.NumberRepresentation.DecimalPart.decimalOf d) =\n    d",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.DecimalPart.decimal_to_of",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "Rocq.Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_2.statement",
+  "source_references":
+  ["Rocq.Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_2.statement"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.number_eq_obligation_2",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (d : NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.HexadecimalNative),\n  NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.hexadecimalOf d =\n    match d.snd.snd with\n    | none =>\n      Rocq.Corelib.Init.Hexadecimal.hexadecimal.Hexadecimal\n        (NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.signedOf d.fst)\n        (NativeBridge.hexadecimalDigitsOf d.snd.fst)\n    | some e =>\n      Rocq.Corelib.Init.Hexadecimal.hexadecimal.HexadecimalExp\n        (NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.signedOf d.fst)\n        (NativeBridge.hexadecimalDigitsOf d.snd.fst)\n        (NativeBridge.Incremental.NumberRepresentation.DecimalPart.signedOf e)",
+  "source_references":
+  ["Rocq.Corelib.Init.Hexadecimal.hexadecimal.Hexadecimal",
+   "Rocq.Corelib.Init.Hexadecimal.hexadecimal.HexadecimalExp"],
+  "name":
+  "NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.hexadecimalOf.eq_1",
+  "kind": "theorem",
+  "axioms": ["propext"]}]

@@ -12440,6 +12440,1220 @@
     ]
   },
   {
+    "source": "Corelib.Numbers.BinNums.positive_rec",
+    "profile": "BinaryElimination",
+    "certificate": "NativeBridge.Incremental.BinaryElimination.positive_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.BinaryElimination.positiveRec",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.BinaryElimination.positiveRec",
+    "scope": "Native dependent motive pulled back along the proven type Iso; rec preserves Type result, rect preserves arbitrary Sort result, including Prop. Native cases/recursion contains no source symbols.",
+    "native_expression": "fun P odd even one =>\n  WellFounded.Nat.fix (fun x => x.val) fun p a =>\n    if h : p.val = 1 then ⋯ ▸ one\n    else\n      have hp := ⋯;\n      let q := ⟨p.val / 2, ⋯⟩;\n      if he : p.val % 2 = 0 then ⋯ ▸ even q (a q ⋯) else ⋯ ▸ odd q (a q ⋯)",
+    "type": "∀ (P : NativeBridge.Incremental.BinaryElimination.PositiveNat → Type)\n  (odd :\n    (p : NativeBridge.Incremental.BinaryElimination.PositiveNat) →\n      P p → P (NativeBridge.Incremental.BinaryElimination.positiveOdd p))\n  (even :\n    (p : NativeBridge.Incremental.BinaryElimination.PositiveNat) →\n      P p → P (NativeBridge.Incremental.BinaryElimination.positiveEven p))\n  (one : P NativeBridge.Incremental.BinaryElimination.positiveOne) (p : NativeBridge.RPositive),\n  Rocq.Corelib.Numbers.BinNums.positive_rec (fun p => P (NativeBridge.positiveIso.to p))\n      (fun p ih => odd (NativeBridge.positiveIso.to p) ih) (fun p ih => even (NativeBridge.positiveIso.to p) ih) one p =\n    NativeBridge.Incremental.BinaryElimination.positiveRec P odd even one (NativeBridge.positiveIso.to p)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Numbers.BinNums.positive_rect",
+    "profile": "BinaryElimination",
+    "certificate": "NativeBridge.Incremental.BinaryElimination.positive_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.BinaryElimination.positiveRec",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.BinaryElimination.positiveRec",
+    "scope": "Native dependent motive pulled back along the proven type Iso; rec preserves Type result, rect preserves arbitrary Sort result, including Prop. Native cases/recursion contains no source symbols.",
+    "native_expression": "fun P odd even one =>\n  WellFounded.Nat.fix (fun x => x.val) fun p a =>\n    if h : p.val = 1 then ⋯ ▸ one\n    else\n      have hp := ⋯;\n      let q := ⟨p.val / 2, ⋯⟩;\n      if he : p.val % 2 = 0 then ⋯ ▸ even q (a q ⋯) else ⋯ ▸ odd q (a q ⋯)",
+    "type": "∀ (P : NativeBridge.Incremental.BinaryElimination.PositiveNat → Sort u)\n  (odd :\n    (p : NativeBridge.Incremental.BinaryElimination.PositiveNat) →\n      P p → P (NativeBridge.Incremental.BinaryElimination.positiveOdd p))\n  (even :\n    (p : NativeBridge.Incremental.BinaryElimination.PositiveNat) →\n      P p → P (NativeBridge.Incremental.BinaryElimination.positiveEven p))\n  (one : P NativeBridge.Incremental.BinaryElimination.positiveOne) (p : NativeBridge.RPositive),\n  Rocq.Corelib.Numbers.BinNums.positive_rect (fun p => P (NativeBridge.positiveIso.to p))\n      (fun p ih => odd (NativeBridge.positiveIso.to p) ih) (fun p ih => even (NativeBridge.positiveIso.to p) ih) one p =\n    NativeBridge.Incremental.BinaryElimination.positiveRec P odd even one (NativeBridge.positiveIso.to p)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Numbers.BinNums.positive_ind",
+    "profile": "BinaryElimination",
+    "certificate": "NativeBridge.Incremental.BinaryElimination.positive_ind_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.BinaryElimination.positiveInduction",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.BinaryElimination.positiveInduction",
+    "scope": "Full induction/case statement on the native carrier: positive subtype, Nat or Int. Both the original statement and the native statement are independently proved; iff does not assume the source theorem.",
+    "original_statement_proof": "NativeBridge.Incremental.BinaryElimination.positive_ind_proof",
+    "native_expression": "∀ (P : NativeBridge.Incremental.BinaryElimination.PositiveNat → Prop),\n  (∀ (p : NativeBridge.Incremental.BinaryElimination.PositiveNat),\n      P p → P (NativeBridge.Incremental.BinaryElimination.positiveOdd p)) →\n    (∀ (p : NativeBridge.Incremental.BinaryElimination.PositiveNat),\n        P p → P (NativeBridge.Incremental.BinaryElimination.positiveEven p)) →\n      P NativeBridge.Incremental.BinaryElimination.positiveOne →\n        ∀ (p : NativeBridge.Incremental.BinaryElimination.PositiveNat), P p",
+    "type": "Rocq.Corelib.Numbers.BinNums.positive_ind.statement ↔ NativeBridge.Incremental.BinaryElimination.positiveInduction",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Numbers.BinNums.positive_sind",
+    "profile": "BinaryElimination",
+    "certificate": "NativeBridge.Incremental.BinaryElimination.positive_sind_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.BinaryElimination.positiveInduction",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.BinaryElimination.positiveInduction",
+    "scope": "Full induction/case statement on the native carrier: positive subtype, Nat or Int. Both the original statement and the native statement are independently proved; iff does not assume the source theorem.",
+    "original_statement_proof": "NativeBridge.Incremental.BinaryElimination.positive_sind_proof",
+    "native_expression": "∀ (P : NativeBridge.Incremental.BinaryElimination.PositiveNat → Prop),\n  (∀ (p : NativeBridge.Incremental.BinaryElimination.PositiveNat),\n      P p → P (NativeBridge.Incremental.BinaryElimination.positiveOdd p)) →\n    (∀ (p : NativeBridge.Incremental.BinaryElimination.PositiveNat),\n        P p → P (NativeBridge.Incremental.BinaryElimination.positiveEven p)) →\n      P NativeBridge.Incremental.BinaryElimination.positiveOne →\n        ∀ (p : NativeBridge.Incremental.BinaryElimination.PositiveNat), P p",
+    "type": "Rocq.Corelib.Numbers.BinNums.positive_sind.statement ↔ NativeBridge.Incremental.BinaryElimination.positiveInduction",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Numbers.BinNums.N_rec",
+    "profile": "BinaryElimination",
+    "certificate": "NativeBridge.Incremental.BinaryElimination.n_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.BinaryElimination.natCases",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.BinaryElimination.natCases",
+    "scope": "Native dependent motive pulled back along the proven type Iso; rec preserves Type result, rect preserves arbitrary Sort result, including Prop. Native cases/recursion contains no source symbols.",
+    "native_expression": "fun P zero pos x =>\n  match x with\n  | 0 => zero\n  | n.succ => pos ⟨n + 1, ⋯⟩",
+    "type": "∀ (P : Nat → Type) (zero : P 0) (pos : (p : NativeBridge.Incremental.BinaryElimination.PositiveNat) → P p.val)\n  (n : NativeBridge.RNatBinary),\n  Rocq.Corelib.Numbers.BinNums.N_rec (fun n => P (NativeBridge.binaryNatTo n)) zero\n      (fun p => pos (NativeBridge.positiveIso.to p)) n =\n    NativeBridge.Incremental.BinaryElimination.natCases P zero pos (NativeBridge.binaryNatTo n)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Numbers.BinNums.N_rect",
+    "profile": "BinaryElimination",
+    "certificate": "NativeBridge.Incremental.BinaryElimination.n_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.BinaryElimination.natCases",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.BinaryElimination.natCases",
+    "scope": "Native dependent motive pulled back along the proven type Iso; rec preserves Type result, rect preserves arbitrary Sort result, including Prop. Native cases/recursion contains no source symbols.",
+    "native_expression": "fun P zero pos x =>\n  match x with\n  | 0 => zero\n  | n.succ => pos ⟨n + 1, ⋯⟩",
+    "type": "∀ (P : Nat → Sort u) (zero : P 0) (pos : (p : NativeBridge.Incremental.BinaryElimination.PositiveNat) → P p.val)\n  (n : NativeBridge.RNatBinary),\n  Rocq.Corelib.Numbers.BinNums.N_rect (fun n => P (NativeBridge.binaryNatTo n)) zero\n      (fun p => pos (NativeBridge.positiveIso.to p)) n =\n    NativeBridge.Incremental.BinaryElimination.natCases P zero pos (NativeBridge.binaryNatTo n)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Numbers.BinNums.N_ind",
+    "profile": "BinaryElimination",
+    "certificate": "NativeBridge.Incremental.BinaryElimination.n_ind_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.BinaryElimination.natInduction",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.BinaryElimination.natInduction",
+    "scope": "Full induction/case statement on the native carrier: positive subtype, Nat or Int. Both the original statement and the native statement are independently proved; iff does not assume the source theorem.",
+    "original_statement_proof": "NativeBridge.Incremental.BinaryElimination.n_ind_proof",
+    "native_expression": "∀ (P : Nat → Prop), P 0 → (∀ (p : NativeBridge.Incremental.BinaryElimination.PositiveNat), P p.val) → ∀ (n : Nat), P n",
+    "type": "Rocq.Corelib.Numbers.BinNums.N_ind.statement ↔ NativeBridge.Incremental.BinaryElimination.natInduction",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Numbers.BinNums.N_sind",
+    "profile": "BinaryElimination",
+    "certificate": "NativeBridge.Incremental.BinaryElimination.n_sind_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.BinaryElimination.natInduction",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.BinaryElimination.natInduction",
+    "scope": "Full induction/case statement on the native carrier: positive subtype, Nat or Int. Both the original statement and the native statement are independently proved; iff does not assume the source theorem.",
+    "original_statement_proof": "NativeBridge.Incremental.BinaryElimination.n_sind_proof",
+    "native_expression": "∀ (P : Nat → Prop), P 0 → (∀ (p : NativeBridge.Incremental.BinaryElimination.PositiveNat), P p.val) → ∀ (n : Nat), P n",
+    "type": "Rocq.Corelib.Numbers.BinNums.N_sind.statement ↔ NativeBridge.Incremental.BinaryElimination.natInduction",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Numbers.BinNums.Z_rec",
+    "profile": "BinaryElimination",
+    "certificate": "NativeBridge.Incremental.BinaryElimination.z_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.BinaryElimination.intCases",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.BinaryElimination.intCases",
+    "scope": "Native dependent motive pulled back along the proven type Iso; rec preserves Type result, rect preserves arbitrary Sort result, including Prop. Native cases/recursion contains no source symbols.",
+    "native_expression": "fun P zero pos neg x =>\n  match x with\n  | Int.ofNat 0 => zero\n  | Int.ofNat n.succ => pos ⟨n + 1, ⋯⟩\n  | Int.negSucc n => neg ⟨n + 1, ⋯⟩",
+    "type": "∀ (P : Int → Type) (zero : P 0)\n  (pos : (p : NativeBridge.Incremental.BinaryElimination.PositiveNat) → P (Int.ofNat p.val))\n  (neg : (p : NativeBridge.Incremental.BinaryElimination.PositiveNat) → P (-Int.ofNat p.val))\n  (z : NativeBridge.RIntBinary),\n  Rocq.Corelib.Numbers.BinNums.Z_rec (fun z => P (NativeBridge.binaryIntTo z)) zero\n      (fun p => pos (NativeBridge.positiveIso.to p)) (fun p => neg (NativeBridge.positiveIso.to p)) z =\n    NativeBridge.Incremental.BinaryElimination.intCases P zero pos neg (NativeBridge.binaryIntTo z)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Numbers.BinNums.Z_rect",
+    "profile": "BinaryElimination",
+    "certificate": "NativeBridge.Incremental.BinaryElimination.z_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.BinaryElimination.intCases",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.BinaryElimination.intCases",
+    "scope": "Native dependent motive pulled back along the proven type Iso; rec preserves Type result, rect preserves arbitrary Sort result, including Prop. Native cases/recursion contains no source symbols.",
+    "native_expression": "fun P zero pos neg x =>\n  match x with\n  | Int.ofNat 0 => zero\n  | Int.ofNat n.succ => pos ⟨n + 1, ⋯⟩\n  | Int.negSucc n => neg ⟨n + 1, ⋯⟩",
+    "type": "∀ (P : Int → Sort u) (zero : P 0)\n  (pos : (p : NativeBridge.Incremental.BinaryElimination.PositiveNat) → P (Int.ofNat p.val))\n  (neg : (p : NativeBridge.Incremental.BinaryElimination.PositiveNat) → P (-Int.ofNat p.val))\n  (z : NativeBridge.RIntBinary),\n  Rocq.Corelib.Numbers.BinNums.Z_rect (fun z => P (NativeBridge.binaryIntTo z)) zero\n      (fun p => pos (NativeBridge.positiveIso.to p)) (fun p => neg (NativeBridge.positiveIso.to p)) z =\n    NativeBridge.Incremental.BinaryElimination.intCases P zero pos neg (NativeBridge.binaryIntTo z)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Numbers.BinNums.Z_ind",
+    "profile": "BinaryElimination",
+    "certificate": "NativeBridge.Incremental.BinaryElimination.z_ind_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.BinaryElimination.intInduction",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.BinaryElimination.intInduction",
+    "scope": "Full induction/case statement on the native carrier: positive subtype, Nat or Int. Both the original statement and the native statement are independently proved; iff does not assume the source theorem.",
+    "original_statement_proof": "NativeBridge.Incremental.BinaryElimination.z_ind_proof",
+    "native_expression": "∀ (P : Int → Prop),\n  P 0 →\n    (∀ (p : NativeBridge.Incremental.BinaryElimination.PositiveNat), P (Int.ofNat p.val)) →\n      (∀ (p : NativeBridge.Incremental.BinaryElimination.PositiveNat), P (-Int.ofNat p.val)) → ∀ (z : Int), P z",
+    "type": "Rocq.Corelib.Numbers.BinNums.Z_ind.statement ↔ NativeBridge.Incremental.BinaryElimination.intInduction",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Numbers.BinNums.Z_sind",
+    "profile": "BinaryElimination",
+    "certificate": "NativeBridge.Incremental.BinaryElimination.z_sind_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.BinaryElimination.intInduction",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.BinaryElimination.intInduction",
+    "scope": "Full induction/case statement on the native carrier: positive subtype, Nat or Int. Both the original statement and the native statement are independently proved; iff does not assume the source theorem.",
+    "original_statement_proof": "NativeBridge.Incremental.BinaryElimination.z_sind_proof",
+    "native_expression": "∀ (P : Int → Prop),\n  P 0 →\n    (∀ (p : NativeBridge.Incremental.BinaryElimination.PositiveNat), P (Int.ofNat p.val)) →\n      (∀ (p : NativeBridge.Incremental.BinaryElimination.PositiveNat), P (-Int.ofNat p.val)) → ∀ (z : Int), P z",
+    "type": "Rocq.Corelib.Numbers.BinNums.Z_sind.statement ↔ NativeBridge.Incremental.BinaryElimination.intInduction",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Decimal.decimal",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.decimalIso",
+    "kind": "TYPE_ISO",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.DecimalNative",
+    "target_class": "native_representation",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.DecimalNative",
+    "scope": "Sign/digit tuple with optional signed exponent; preserves leading zeros, negative zero, empty digits and exponent presence. Both inverse laws.",
+    "native_expression": "NativeBridge.Incremental.DecimalRepresentation.SignedDigits ×\n  List (Fin 10) × Option NativeBridge.Incremental.DecimalRepresentation.SignedDigits",
+    "type": "NativeBridge.Iso Rocq.Corelib.Init.Decimal.decimal NativeBridge.Incremental.DecimalRepresentation.DecimalNative",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Decimal.decimal_beq",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.decimal_beq_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.decimalEqual",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.decimalEqual",
+    "scope": "All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation.",
+    "native_expression": "fun x y => x == y",
+    "type": "∀ (x y : NativeBridge.Incremental.DecimalRepresentation.D),\n  NativeBridge.Incremental.Decimal.digitBoolTo (Rocq.Corelib.Init.Decimal.decimal_beq x y) =\n    NativeBridge.Incremental.DecimalRepresentation.decimalEqual\n      (NativeBridge.Incremental.DecimalRepresentation.decimalTo x)\n      (NativeBridge.Incremental.DecimalRepresentation.decimalTo y)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Decimal.del_head",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.del_head_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.dropHead",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.dropHead",
+    "scope": "All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation.",
+    "native_expression": "fun n d => if d.length < n then [0] else List.drop n d",
+    "type": "∀ (n : NativeBridge.MN) (d : NativeBridge.Incremental.DecimalRepresentation.U),\n  NativeBridge.decimalDigitsTo (Rocq.Corelib.Init.Decimal.del_head n d) =\n    NativeBridge.Incremental.DecimalRepresentation.dropHead (NativeBridge.natTo n) (NativeBridge.decimalDigitsTo d)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Decimal.del_tail",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.del_tail_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.dropTail",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.dropTail",
+    "scope": "All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation.",
+    "native_expression": "fun n d => (NativeBridge.Incremental.DecimalRepresentation.dropHead n d.reverse).reverse",
+    "type": "∀ (n : NativeBridge.MN) (d : NativeBridge.Incremental.DecimalRepresentation.U),\n  NativeBridge.decimalDigitsTo (Rocq.Corelib.Init.Decimal.del_tail n d) =\n    NativeBridge.Incremental.DecimalRepresentation.dropTail (NativeBridge.natTo n) (NativeBridge.decimalDigitsTo d)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Decimal.del_head_int",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.del_head_int_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.dropHeadInt",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.dropHeadInt",
+    "scope": "All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation.",
+    "native_expression": "fun n d => NativeBridge.Incremental.DecimalRepresentation.dropHead n d.snd",
+    "type": "∀ (n : NativeBridge.MN) (d : NativeBridge.Incremental.DecimalRepresentation.S),\n  NativeBridge.decimalDigitsTo (Rocq.Corelib.Init.Decimal.del_head_int n d) =\n    NativeBridge.Incremental.DecimalRepresentation.dropHeadInt (NativeBridge.natTo n)\n      (NativeBridge.Incremental.Decimal.signedTo d)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Decimal.del_tail_int",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.del_tail_int_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.dropTailInt",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.dropTailInt",
+    "scope": "All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation.",
+    "native_expression": "fun n d => (d.fst, NativeBridge.Incremental.DecimalRepresentation.dropTail n d.snd)",
+    "type": "∀ (n : NativeBridge.MN) (d : NativeBridge.Incremental.DecimalRepresentation.S),\n  NativeBridge.Incremental.Decimal.signedTo (Rocq.Corelib.Init.Decimal.del_tail_int n d) =\n    NativeBridge.Incremental.DecimalRepresentation.dropTailInt (NativeBridge.natTo n)\n      (NativeBridge.Incremental.Decimal.signedTo d)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Decimal.nztail",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.nztail_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.trimTail",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.trimTail",
+    "scope": "All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation.",
+    "native_expression": "fun d =>\n  have x := NativeBridge.Incremental.DecimalRepresentation.trimHead d.reverse;\n  (x.fst.reverse, x.snd)",
+    "type": "∀ (d : NativeBridge.Incremental.DecimalRepresentation.U),\n  NativeBridge.Incremental.DecimalRepresentation.digitCountTo (Rocq.Corelib.Init.Decimal.nztail d) =\n    NativeBridge.Incremental.DecimalRepresentation.trimTail (NativeBridge.decimalDigitsTo d)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Decimal.nztail_int",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.nztail_int_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.trimTailInt",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.trimTailInt",
+    "scope": "All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation.",
+    "native_expression": "fun d =>\n  have x := NativeBridge.Incremental.DecimalRepresentation.trimTail d.snd;\n  ((d.fst, x.fst), x.snd)",
+    "type": "∀ (d : NativeBridge.Incremental.DecimalRepresentation.S),\n  NativeBridge.Incremental.DecimalRepresentation.signedCountTo (Rocq.Corelib.Init.Decimal.nztail_int d) =\n    NativeBridge.Incremental.DecimalRepresentation.trimTailInt (NativeBridge.Incremental.Decimal.signedTo d)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Decimal.Little.double",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.little_double_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.littleDouble",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.littleDouble",
+    "scope": "All little-endian digit lists, including empty and noncanonical zeros; double or double+1 with explicit carry. Represents the resulting digit sequence, not just its numeric value.",
+    "native_expression": "fun carry x =>\n  List.brecOn (motive := fun x => Bool → List (Fin 10)) x NativeBridge.Incremental.DecimalRepresentation.littleDouble._f\n    carry",
+    "type": "∀ (d : NativeBridge.Incremental.DecimalRepresentation.U),\n  NativeBridge.decimalDigitsTo (Rocq.Corelib.Init.Decimal.Little.double d) =\n    NativeBridge.Incremental.DecimalRepresentation.littleDouble false (NativeBridge.decimalDigitsTo d)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Decimal.Little.succ_double",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.little_succ_double_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.littleDouble",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.littleDouble",
+    "scope": "All little-endian digit lists, including empty and noncanonical zeros; double or double+1 with explicit carry. Represents the resulting digit sequence, not just its numeric value.",
+    "native_expression": "fun carry x =>\n  List.brecOn (motive := fun x => Bool → List (Fin 10)) x NativeBridge.Incremental.DecimalRepresentation.littleDouble._f\n    carry",
+    "type": "∀ (d : NativeBridge.Incremental.DecimalRepresentation.U),\n  NativeBridge.decimalDigitsTo (Rocq.Corelib.Init.Decimal.Little.succ_double d) =\n    NativeBridge.Incremental.DecimalRepresentation.littleDouble true (NativeBridge.decimalDigitsTo d)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Decimal.uint_rect",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.uint_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.digitsRec",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.digitsRec",
+    "scope": "Full native dependent motive over List (Fin 10); source branch family indexed by the ten digits, corresponding to List.rec. rect is Sort-polymorphic; rec returns Type.",
+    "native_expression": "fun P nil cons ds => List.rec nil cons ds",
+    "type": "∀ (P : List (Fin 10) → Sort u) (nil : P []) (cons : (d : Fin 10) → (ds : List (Fin 10)) → P ds → P (d :: ds))\n  (d : NativeBridge.Incremental.DecimalRepresentation.U),\n  Rocq.Corelib.Init.Decimal.uint_rect (fun d => P (NativeBridge.decimalDigitsTo d)) nil\n      (fun d ih => cons 0 (NativeBridge.decimalDigitsTo d) ih) (fun d ih => cons 1 (NativeBridge.decimalDigitsTo d) ih)\n      (fun d ih => cons 2 (NativeBridge.decimalDigitsTo d) ih) (fun d ih => cons 3 (NativeBridge.decimalDigitsTo d) ih)\n      (fun d ih => cons 4 (NativeBridge.decimalDigitsTo d) ih) (fun d ih => cons 5 (NativeBridge.decimalDigitsTo d) ih)\n      (fun d ih => cons 6 (NativeBridge.decimalDigitsTo d) ih) (fun d ih => cons 7 (NativeBridge.decimalDigitsTo d) ih)\n      (fun d ih => cons 8 (NativeBridge.decimalDigitsTo d) ih) (fun d ih => cons 9 (NativeBridge.decimalDigitsTo d) ih)\n      d =\n    NativeBridge.Incremental.DecimalRepresentation.digitsRec P nil cons (NativeBridge.decimalDigitsTo d)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Decimal.uint_rec",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.uint_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.digitsRec",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.digitsRec",
+    "scope": "Full native dependent motive over List (Fin 10); source branch family indexed by the ten digits, corresponding to List.rec. rect is Sort-polymorphic; rec returns Type.",
+    "native_expression": "fun P nil cons ds => List.rec nil cons ds",
+    "type": "∀ (P : List (Fin 10) → Type) (nil : P []) (cons : (d : Fin 10) → (ds : List (Fin 10)) → P ds → P (d :: ds))\n  (d : NativeBridge.Incremental.DecimalRepresentation.U),\n  Rocq.Corelib.Init.Decimal.uint_rec (fun d => P (NativeBridge.decimalDigitsTo d)) nil\n      (fun d ih => cons 0 (NativeBridge.decimalDigitsTo d) ih) (fun d ih => cons 1 (NativeBridge.decimalDigitsTo d) ih)\n      (fun d ih => cons 2 (NativeBridge.decimalDigitsTo d) ih) (fun d ih => cons 3 (NativeBridge.decimalDigitsTo d) ih)\n      (fun d ih => cons 4 (NativeBridge.decimalDigitsTo d) ih) (fun d ih => cons 5 (NativeBridge.decimalDigitsTo d) ih)\n      (fun d ih => cons 6 (NativeBridge.decimalDigitsTo d) ih) (fun d ih => cons 7 (NativeBridge.decimalDigitsTo d) ih)\n      (fun d ih => cons 8 (NativeBridge.decimalDigitsTo d) ih) (fun d ih => cons 9 (NativeBridge.decimalDigitsTo d) ih)\n      d =\n    NativeBridge.Incremental.DecimalRepresentation.digitsRec P nil cons (NativeBridge.decimalDigitsTo d)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Decimal.uint_of_uint",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.uint_of_uint_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id",
+    "target_class": "existing_api",
+    "native_target": "id",
+    "scope": "Identity on the lossless native digit or signed-digit representation.",
+    "native_expression": "fun {α} a => a",
+    "type": "∀ (d : NativeBridge.Incremental.DecimalRepresentation.U),\n  NativeBridge.decimalDigitsTo (Rocq.Corelib.Init.Decimal.uint_of_uint d) = id (NativeBridge.decimalDigitsTo d)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Decimal.int_of_int",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.int_of_int_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id",
+    "target_class": "existing_api",
+    "native_target": "id",
+    "scope": "Identity on the lossless native digit or signed-digit representation.",
+    "native_expression": "fun {α} a => a",
+    "type": "∀ (d : NativeBridge.Incremental.DecimalRepresentation.S),\n  NativeBridge.Incremental.Decimal.signedTo (Rocq.Corelib.Init.Decimal.int_of_int d) =\n    id (NativeBridge.Incremental.Decimal.signedTo d)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Decimal.uint_ind",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.uint_ind_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.digitInduction",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.digitInduction",
+    "scope": "Full native statement; original statement and native statement separately proved.",
+    "original_statement_proof": "NativeBridge.Incremental.DecimalRepresentation.uint_ind_proof",
+    "native_expression": "∀ (P : List (Fin 10) → Prop),\n  P [] → (∀ (d : Fin 10) (ds : List (Fin 10)), P ds → P (d :: ds)) → ∀ (ds : List (Fin 10)), P ds",
+    "type": "Rocq.Corelib.Init.Decimal.uint_ind.statement ↔ NativeBridge.Incremental.DecimalRepresentation.digitInduction",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Decimal.uint_sind",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.uint_sind_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.digitInduction",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.digitInduction",
+    "scope": "Full native statement; original statement and native statement separately proved.",
+    "original_statement_proof": "NativeBridge.Incremental.DecimalRepresentation.uint_sind_proof",
+    "native_expression": "∀ (P : List (Fin 10) → Prop),\n  P [] → (∀ (d : Fin 10) (ds : List (Fin 10)), P ds → P (d :: ds)) → ∀ (ds : List (Fin 10)), P ds",
+    "type": "Rocq.Corelib.Init.Decimal.uint_sind.statement ↔ NativeBridge.Incremental.DecimalRepresentation.digitInduction",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Decimal.internal_decimal_dec_bl",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.decimal_dec_bl_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.equalitySound",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.equalitySound",
+    "scope": "Full native statement; original statement and native statement separately proved.",
+    "original_statement_proof": "NativeBridge.Incremental.DecimalRepresentation.decimal_dec_bl_proof",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.DecimalRepresentation.DecimalNative),\n  NativeBridge.Incremental.DecimalRepresentation.decimalEqual x y = true → x = y",
+    "type": "Rocq.Corelib.Init.Decimal.internal_decimal_dec_bl.statement ↔\n  NativeBridge.Incremental.DecimalRepresentation.equalitySound",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Decimal.internal_decimal_dec_lb",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.decimal_dec_lb_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.equalityComplete",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.equalityComplete",
+    "scope": "Full native statement; original statement and native statement separately proved.",
+    "original_statement_proof": "NativeBridge.Incremental.DecimalRepresentation.decimal_dec_lb_proof",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.DecimalRepresentation.DecimalNative),\n  x = y → NativeBridge.Incremental.DecimalRepresentation.decimalEqual x y = true",
+    "type": "Rocq.Corelib.Init.Decimal.internal_decimal_dec_lb.statement ↔\n  NativeBridge.Incremental.DecimalRepresentation.equalityComplete",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Decimal.uint_eq_dec",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.uint_eq_dec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.nativeDecision",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.nativeDecision",
+    "scope": "All inputs; complete Decidable equality on lossless native representation. Four extracted proof prerequisites closed explicitly; source sumbool maps to the unique native decision.",
+    "closed_wrapper": "NativeBridge.Incremental.DecimalRepresentation.uintDecisionClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Decimal.uint_eq_dec__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.DecimalRepresentation.uint_eq_obligation_1"
+      },
+      {
+        "source": "Corelib.Init.Decimal.uint_eq_dec__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.DecimalRepresentation.uint_eq_obligation_2"
+      },
+      {
+        "source": "Corelib.Init.Decimal.uint_eq_dec__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.DecimalRepresentation.uint_eq_obligation_3"
+      },
+      {
+        "source": "Corelib.Init.Decimal.uint_eq_dec__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.DecimalRepresentation.uint_eq_obligation_4"
+      }
+    ],
+    "native_expression": "fun {A} [DecidableEq A] x y => inferInstance",
+    "type": "∀ (x y : NativeBridge.Incremental.DecimalRepresentation.U),\n  NativeBridge.Incremental.DecimalRepresentation.eqDecisionTo NativeBridge.decimalDigitsIso x y\n      (RocqPending.Corelib.Init.Decimal.uint_eq_dec x y) =\n    NativeBridge.Incremental.DecimalRepresentation.nativeDecision (NativeBridge.decimalDigitsTo x)\n      (NativeBridge.decimalDigitsTo y)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Decimal.signed_int_eq_dec",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.signed_int_eq_dec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.nativeDecision",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.nativeDecision",
+    "scope": "All inputs; complete Decidable equality on lossless native representation. Four extracted proof prerequisites closed explicitly; source sumbool maps to the unique native decision.",
+    "closed_wrapper": "NativeBridge.Incremental.DecimalRepresentation.signed_intDecisionClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Decimal.signed_int_eq_dec__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.DecimalRepresentation.signed_int_eq_obligation_1"
+      },
+      {
+        "source": "Corelib.Init.Decimal.signed_int_eq_dec__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.DecimalRepresentation.signed_int_eq_obligation_2"
+      },
+      {
+        "source": "Corelib.Init.Decimal.signed_int_eq_dec__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.DecimalRepresentation.signed_int_eq_obligation_3"
+      },
+      {
+        "source": "Corelib.Init.Decimal.signed_int_eq_dec__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.DecimalRepresentation.signed_int_eq_obligation_4"
+      }
+    ],
+    "native_expression": "fun {A} [DecidableEq A] x y => inferInstance",
+    "type": "∀ (x y : NativeBridge.Incremental.DecimalRepresentation.S),\n  NativeBridge.Incremental.DecimalRepresentation.eqDecisionTo NativeBridge.Incremental.Decimal.signedIso x y\n      (RocqPending.Corelib.Init.Decimal.signed_int_eq_dec x y) =\n    NativeBridge.Incremental.DecimalRepresentation.nativeDecision (NativeBridge.Incremental.Decimal.signedTo x)\n      (NativeBridge.Incremental.Decimal.signedTo y)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Decimal.decimal_eq_dec",
+    "profile": "DecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.DecimalRepresentation.decimal_eq_dec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.DecimalRepresentation.nativeDecision",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.DecimalRepresentation.nativeDecision",
+    "scope": "All inputs; complete Decidable equality on lossless native representation. Four extracted proof prerequisites closed explicitly; source sumbool maps to the unique native decision.",
+    "closed_wrapper": "NativeBridge.Incremental.DecimalRepresentation.decimalDecisionClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Decimal.decimal_eq_dec__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.DecimalRepresentation.decimal_eq_obligation_1"
+      },
+      {
+        "source": "Corelib.Init.Decimal.decimal_eq_dec__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.DecimalRepresentation.decimal_eq_obligation_2"
+      },
+      {
+        "source": "Corelib.Init.Decimal.decimal_eq_dec__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.DecimalRepresentation.decimal_eq_obligation_3"
+      },
+      {
+        "source": "Corelib.Init.Decimal.decimal_eq_dec__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.DecimalRepresentation.decimal_eq_obligation_4"
+      }
+    ],
+    "native_expression": "fun {A} [DecidableEq A] x y => inferInstance",
+    "type": "∀ (x y : NativeBridge.Incremental.DecimalRepresentation.D),\n  NativeBridge.Incremental.DecimalRepresentation.eqDecisionTo NativeBridge.Incremental.DecimalRepresentation.decimalIso\n      x y (RocqPending.Corelib.Init.Decimal.decimal_eq_dec x y) =\n    NativeBridge.Incremental.DecimalRepresentation.nativeDecision\n      (NativeBridge.Incremental.DecimalRepresentation.decimalTo x)\n      (NativeBridge.Incremental.DecimalRepresentation.decimalTo y)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.hexadecimal",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.hexadecimalIso",
+    "kind": "TYPE_ISO",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.HexadecimalNative",
+    "target_class": "native_representation",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.HexadecimalNative",
+    "scope": "Hexadecimal signed integer and fractional digit lists, with an optional DECIMAL signed exponent; preserves negative zero, all zeros and exponent presence. Both inverse laws.",
+    "native_expression": "NativeBridge.Incremental.HexadecimalRepresentation.SignedDigits × List (Fin 16) × Option (Bool × List (Fin 10))",
+    "type": "NativeBridge.Iso Rocq.Corelib.Init.Hexadecimal.hexadecimal\n  NativeBridge.Incremental.HexadecimalRepresentation.HexadecimalNative",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.hexadecimal_beq",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.hexadecimal_beq_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.hexadecimalEqual",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.hexadecimalEqual",
+    "scope": "All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation.",
+    "native_expression": "fun x y => x == y",
+    "type": "∀ (x y : NativeBridge.Incremental.HexadecimalRepresentation.D),\n  NativeBridge.Incremental.Hexadecimal.digitBoolTo (Rocq.Corelib.Init.Hexadecimal.hexadecimal_beq x y) =\n    NativeBridge.Incremental.HexadecimalRepresentation.hexadecimalEqual\n      (NativeBridge.Incremental.HexadecimalRepresentation.hexadecimalTo x)\n      (NativeBridge.Incremental.HexadecimalRepresentation.hexadecimalTo y)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.del_head",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.del_head_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.dropHead",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.dropHead",
+    "scope": "All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation.",
+    "native_expression": "fun n d => if d.length < n then [0] else List.drop n d",
+    "type": "∀ (n : NativeBridge.MN) (d : NativeBridge.Incremental.HexadecimalRepresentation.U),\n  NativeBridge.hexadecimalDigitsTo (Rocq.Corelib.Init.Hexadecimal.del_head n d) =\n    NativeBridge.Incremental.HexadecimalRepresentation.dropHead (NativeBridge.natTo n)\n      (NativeBridge.hexadecimalDigitsTo d)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.del_tail",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.del_tail_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.dropTail",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.dropTail",
+    "scope": "All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation.",
+    "native_expression": "fun n d => (NativeBridge.Incremental.HexadecimalRepresentation.dropHead n d.reverse).reverse",
+    "type": "∀ (n : NativeBridge.MN) (d : NativeBridge.Incremental.HexadecimalRepresentation.U),\n  NativeBridge.hexadecimalDigitsTo (Rocq.Corelib.Init.Hexadecimal.del_tail n d) =\n    NativeBridge.Incremental.HexadecimalRepresentation.dropTail (NativeBridge.natTo n)\n      (NativeBridge.hexadecimalDigitsTo d)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.del_head_int",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.del_head_int_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.dropHeadInt",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.dropHeadInt",
+    "scope": "All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation.",
+    "native_expression": "fun n d => NativeBridge.Incremental.HexadecimalRepresentation.dropHead n d.snd",
+    "type": "∀ (n : NativeBridge.MN) (d : NativeBridge.Incremental.HexadecimalRepresentation.S),\n  NativeBridge.hexadecimalDigitsTo (Rocq.Corelib.Init.Hexadecimal.del_head_int n d) =\n    NativeBridge.Incremental.HexadecimalRepresentation.dropHeadInt (NativeBridge.natTo n)\n      (NativeBridge.Incremental.Hexadecimal.signedTo d)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.del_tail_int",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.del_tail_int_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.dropTailInt",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.dropTailInt",
+    "scope": "All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation.",
+    "native_expression": "fun n d => (d.fst, NativeBridge.Incremental.HexadecimalRepresentation.dropTail n d.snd)",
+    "type": "∀ (n : NativeBridge.MN) (d : NativeBridge.Incremental.HexadecimalRepresentation.S),\n  NativeBridge.Incremental.Hexadecimal.signedTo (Rocq.Corelib.Init.Hexadecimal.del_tail_int n d) =\n    NativeBridge.Incremental.HexadecimalRepresentation.dropTailInt (NativeBridge.natTo n)\n      (NativeBridge.Incremental.Hexadecimal.signedTo d)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.nztail",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.nztail_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.trimTail",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.trimTail",
+    "scope": "All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation.",
+    "native_expression": "fun d =>\n  have x := NativeBridge.Incremental.HexadecimalRepresentation.trimHead d.reverse;\n  (x.fst.reverse, x.snd)",
+    "type": "∀ (d : NativeBridge.Incremental.HexadecimalRepresentation.U),\n  NativeBridge.Incremental.HexadecimalRepresentation.digitCountTo (Rocq.Corelib.Init.Hexadecimal.nztail d) =\n    NativeBridge.Incremental.HexadecimalRepresentation.trimTail (NativeBridge.hexadecimalDigitsTo d)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.nztail_int",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.nztail_int_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.trimTailInt",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.trimTailInt",
+    "scope": "All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation.",
+    "native_expression": "fun d =>\n  have x := NativeBridge.Incremental.HexadecimalRepresentation.trimTail d.snd;\n  ((d.fst, x.fst), x.snd)",
+    "type": "∀ (d : NativeBridge.Incremental.HexadecimalRepresentation.S),\n  NativeBridge.Incremental.HexadecimalRepresentation.signedCountTo (Rocq.Corelib.Init.Hexadecimal.nztail_int d) =\n    NativeBridge.Incremental.HexadecimalRepresentation.trimTailInt (NativeBridge.Incremental.Hexadecimal.signedTo d)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.Little.double",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.little_double_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.littleDouble",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.littleDouble",
+    "scope": "All little-endian digit lists, including empty and noncanonical zeros; double or double+1 with explicit carry. Represents the resulting digit sequence, not just its numeric value.",
+    "native_expression": "fun carry x =>\n  List.brecOn (motive := fun x => Bool → List (Fin 16)) x\n    NativeBridge.Incremental.HexadecimalRepresentation.littleDouble._f carry",
+    "type": "∀ (d : NativeBridge.Incremental.HexadecimalRepresentation.U),\n  NativeBridge.hexadecimalDigitsTo (Rocq.Corelib.Init.Hexadecimal.Little.double d) =\n    NativeBridge.Incremental.HexadecimalRepresentation.littleDouble false (NativeBridge.hexadecimalDigitsTo d)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.Little.succ_double",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.little_succ_double_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.littleDouble",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.littleDouble",
+    "scope": "All little-endian digit lists, including empty and noncanonical zeros; double or double+1 with explicit carry. Represents the resulting digit sequence, not just its numeric value.",
+    "native_expression": "fun carry x =>\n  List.brecOn (motive := fun x => Bool → List (Fin 16)) x\n    NativeBridge.Incremental.HexadecimalRepresentation.littleDouble._f carry",
+    "type": "∀ (d : NativeBridge.Incremental.HexadecimalRepresentation.U),\n  NativeBridge.hexadecimalDigitsTo (Rocq.Corelib.Init.Hexadecimal.Little.succ_double d) =\n    NativeBridge.Incremental.HexadecimalRepresentation.littleDouble true (NativeBridge.hexadecimalDigitsTo d)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.uint_rect",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.uint_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.digitsRec",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.digitsRec",
+    "scope": "Full native dependent motive over List (Fin 16); source branch family indexed by the sixteen digits, corresponding to List.rec. rect is Sort-polymorphic; rec returns Type.",
+    "native_expression": "fun P nil cons ds => List.rec nil cons ds",
+    "type": "∀ (P : List (Fin 16) → Sort u) (nil : P []) (cons : (d : Fin 16) → (ds : List (Fin 16)) → P ds → P (d :: ds))\n  (d : NativeBridge.Incremental.HexadecimalRepresentation.U),\n  Rocq.Corelib.Init.Hexadecimal.uint_rect (fun d => P (NativeBridge.hexadecimalDigitsTo d)) nil\n      (fun d ih => cons 0 (NativeBridge.hexadecimalDigitsTo d) ih)\n      (fun d ih => cons 1 (NativeBridge.hexadecimalDigitsTo d) ih)\n      (fun d ih => cons 2 (NativeBridge.hexadecimalDigitsTo d) ih)\n      (fun d ih => cons 3 (NativeBridge.hexadecimalDigitsTo d) ih)\n      (fun d ih => cons 4 (NativeBridge.hexadecimalDigitsTo d) ih)\n      (fun d ih => cons 5 (NativeBridge.hexadecimalDigitsTo d) ih)\n      (fun d ih => cons 6 (NativeBridge.hexadecimalDigitsTo d) ih)\n      (fun d ih => cons 7 (NativeBridge.hexadecimalDigitsTo d) ih)\n      (fun d ih => cons 8 (NativeBridge.hexadecimalDigitsTo d) ih)\n      (fun d ih => cons 9 (NativeBridge.hexadecimalDigitsTo d) ih)\n      (fun d ih => cons 10 (NativeBridge.hexadecimalDigitsTo d) ih)\n      (fun d ih => cons 11 (NativeBridge.hexadecimalDigitsTo d) ih)\n      (fun d ih => cons 12 (NativeBridge.hexadecimalDigitsTo d) ih)\n      (fun d ih => cons 13 (NativeBridge.hexadecimalDigitsTo d) ih)\n      (fun d ih => cons 14 (NativeBridge.hexadecimalDigitsTo d) ih)\n      (fun d ih => cons 15 (NativeBridge.hexadecimalDigitsTo d) ih) d =\n    NativeBridge.Incremental.HexadecimalRepresentation.digitsRec P nil cons (NativeBridge.hexadecimalDigitsTo d)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.uint_rec",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.uint_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.digitsRec",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.digitsRec",
+    "scope": "Full native dependent motive over List (Fin 16); source branch family indexed by the sixteen digits, corresponding to List.rec. rect is Sort-polymorphic; rec returns Type.",
+    "native_expression": "fun P nil cons ds => List.rec nil cons ds",
+    "type": "∀ (P : List (Fin 16) → Type) (nil : P []) (cons : (d : Fin 16) → (ds : List (Fin 16)) → P ds → P (d :: ds))\n  (d : NativeBridge.Incremental.HexadecimalRepresentation.U),\n  Rocq.Corelib.Init.Hexadecimal.uint_rec (fun d => P (NativeBridge.hexadecimalDigitsTo d)) nil\n      (fun d ih => cons 0 (NativeBridge.hexadecimalDigitsTo d) ih)\n      (fun d ih => cons 1 (NativeBridge.hexadecimalDigitsTo d) ih)\n      (fun d ih => cons 2 (NativeBridge.hexadecimalDigitsTo d) ih)\n      (fun d ih => cons 3 (NativeBridge.hexadecimalDigitsTo d) ih)\n      (fun d ih => cons 4 (NativeBridge.hexadecimalDigitsTo d) ih)\n      (fun d ih => cons 5 (NativeBridge.hexadecimalDigitsTo d) ih)\n      (fun d ih => cons 6 (NativeBridge.hexadecimalDigitsTo d) ih)\n      (fun d ih => cons 7 (NativeBridge.hexadecimalDigitsTo d) ih)\n      (fun d ih => cons 8 (NativeBridge.hexadecimalDigitsTo d) ih)\n      (fun d ih => cons 9 (NativeBridge.hexadecimalDigitsTo d) ih)\n      (fun d ih => cons 10 (NativeBridge.hexadecimalDigitsTo d) ih)\n      (fun d ih => cons 11 (NativeBridge.hexadecimalDigitsTo d) ih)\n      (fun d ih => cons 12 (NativeBridge.hexadecimalDigitsTo d) ih)\n      (fun d ih => cons 13 (NativeBridge.hexadecimalDigitsTo d) ih)\n      (fun d ih => cons 14 (NativeBridge.hexadecimalDigitsTo d) ih)\n      (fun d ih => cons 15 (NativeBridge.hexadecimalDigitsTo d) ih) d =\n    NativeBridge.Incremental.HexadecimalRepresentation.digitsRec P nil cons (NativeBridge.hexadecimalDigitsTo d)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.uint_ind",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.uint_ind_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.digitInduction",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.digitInduction",
+    "scope": "Full native statement; original statement and native statement separately proved.",
+    "original_statement_proof": "NativeBridge.Incremental.HexadecimalRepresentation.uint_ind_proof",
+    "native_expression": "∀ (P : List (Fin 16) → Prop),\n  P [] → (∀ (d : Fin 16) (ds : List (Fin 16)), P ds → P (d :: ds)) → ∀ (ds : List (Fin 16)), P ds",
+    "type": "Rocq.Corelib.Init.Hexadecimal.uint_ind.statement ↔ NativeBridge.Incremental.HexadecimalRepresentation.digitInduction",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.uint_sind",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.uint_sind_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.digitInduction",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.digitInduction",
+    "scope": "Full native statement; original statement and native statement separately proved.",
+    "original_statement_proof": "NativeBridge.Incremental.HexadecimalRepresentation.uint_sind_proof",
+    "native_expression": "∀ (P : List (Fin 16) → Prop),\n  P [] → (∀ (d : Fin 16) (ds : List (Fin 16)), P ds → P (d :: ds)) → ∀ (ds : List (Fin 16)), P ds",
+    "type": "Rocq.Corelib.Init.Hexadecimal.uint_sind.statement ↔ NativeBridge.Incremental.HexadecimalRepresentation.digitInduction",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.internal_hexadecimal_dec_bl",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.hexadecimal_dec_bl_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.equalitySound",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.equalitySound",
+    "scope": "Full native statement; original statement and native statement separately proved.",
+    "original_statement_proof": "NativeBridge.Incremental.HexadecimalRepresentation.hexadecimal_dec_bl_proof",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.HexadecimalRepresentation.HexadecimalNative),\n  NativeBridge.Incremental.HexadecimalRepresentation.hexadecimalEqual x y = true → x = y",
+    "type": "Rocq.Corelib.Init.Hexadecimal.internal_hexadecimal_dec_bl.statement ↔\n  NativeBridge.Incremental.HexadecimalRepresentation.equalitySound",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.internal_hexadecimal_dec_lb",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.hexadecimal_dec_lb_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.equalityComplete",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.equalityComplete",
+    "scope": "Full native statement; original statement and native statement separately proved.",
+    "original_statement_proof": "NativeBridge.Incremental.HexadecimalRepresentation.hexadecimal_dec_lb_proof",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.HexadecimalRepresentation.HexadecimalNative),\n  x = y → NativeBridge.Incremental.HexadecimalRepresentation.hexadecimalEqual x y = true",
+    "type": "Rocq.Corelib.Init.Hexadecimal.internal_hexadecimal_dec_lb.statement ↔\n  NativeBridge.Incremental.HexadecimalRepresentation.equalityComplete",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.uint_eq_dec",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.uint_eq_dec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.nativeDecision",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.nativeDecision",
+    "scope": "All inputs; complete Decidable equality on lossless native representation. Four extracted proof prerequisites closed explicitly; source sumbool maps to the unique native decision.",
+    "closed_wrapper": "NativeBridge.Incremental.HexadecimalRepresentation.uintDecisionClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Hexadecimal.uint_eq_dec__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.HexadecimalRepresentation.uint_eq_obligation_1"
+      },
+      {
+        "source": "Corelib.Init.Hexadecimal.uint_eq_dec__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.HexadecimalRepresentation.uint_eq_obligation_2"
+      },
+      {
+        "source": "Corelib.Init.Hexadecimal.uint_eq_dec__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.HexadecimalRepresentation.uint_eq_obligation_3"
+      },
+      {
+        "source": "Corelib.Init.Hexadecimal.uint_eq_dec__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.HexadecimalRepresentation.uint_eq_obligation_4"
+      }
+    ],
+    "native_expression": "fun {A} [DecidableEq A] x y => inferInstance",
+    "type": "∀ (x y : NativeBridge.Incremental.HexadecimalRepresentation.U),\n  NativeBridge.Incremental.HexadecimalRepresentation.eqDecisionTo NativeBridge.hexadecimalDigitsIso x y\n      (RocqPending.Corelib.Init.Hexadecimal.uint_eq_dec x y) =\n    NativeBridge.Incremental.HexadecimalRepresentation.nativeDecision (NativeBridge.hexadecimalDigitsTo x)\n      (NativeBridge.hexadecimalDigitsTo y)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.signed_int_eq_dec",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.signed_int_eq_dec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.nativeDecision",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.nativeDecision",
+    "scope": "All inputs; complete Decidable equality on lossless native representation. Four extracted proof prerequisites closed explicitly; source sumbool maps to the unique native decision.",
+    "closed_wrapper": "NativeBridge.Incremental.HexadecimalRepresentation.signed_intDecisionClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Hexadecimal.signed_int_eq_dec__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.HexadecimalRepresentation.signed_int_eq_obligation_1"
+      },
+      {
+        "source": "Corelib.Init.Hexadecimal.signed_int_eq_dec__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.HexadecimalRepresentation.signed_int_eq_obligation_2"
+      },
+      {
+        "source": "Corelib.Init.Hexadecimal.signed_int_eq_dec__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.HexadecimalRepresentation.signed_int_eq_obligation_3"
+      },
+      {
+        "source": "Corelib.Init.Hexadecimal.signed_int_eq_dec__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.HexadecimalRepresentation.signed_int_eq_obligation_4"
+      }
+    ],
+    "native_expression": "fun {A} [DecidableEq A] x y => inferInstance",
+    "type": "∀ (x y : NativeBridge.Incremental.HexadecimalRepresentation.S),\n  NativeBridge.Incremental.HexadecimalRepresentation.eqDecisionTo NativeBridge.Incremental.Hexadecimal.signedIso x y\n      (RocqPending.Corelib.Init.Hexadecimal.signed_int_eq_dec x y) =\n    NativeBridge.Incremental.HexadecimalRepresentation.nativeDecision (NativeBridge.Incremental.Hexadecimal.signedTo x)\n      (NativeBridge.Incremental.Hexadecimal.signedTo y)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.hexadecimal_eq_dec",
+    "profile": "HexadecimalRepresentation",
+    "certificate": "NativeBridge.Incremental.HexadecimalRepresentation.hexadecimal_eq_dec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.HexadecimalRepresentation.nativeDecision",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.HexadecimalRepresentation.nativeDecision",
+    "scope": "All inputs; complete Decidable equality on lossless native representation. Four extracted proof prerequisites closed explicitly; source sumbool maps to the unique native decision.",
+    "closed_wrapper": "NativeBridge.Incremental.HexadecimalRepresentation.hexadecimalDecisionClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Hexadecimal.hexadecimal_eq_dec__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.HexadecimalRepresentation.hexadecimal_eq_obligation_1"
+      },
+      {
+        "source": "Corelib.Init.Hexadecimal.hexadecimal_eq_dec__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.HexadecimalRepresentation.hexadecimal_eq_obligation_2"
+      },
+      {
+        "source": "Corelib.Init.Hexadecimal.hexadecimal_eq_dec__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.HexadecimalRepresentation.hexadecimal_eq_obligation_3"
+      },
+      {
+        "source": "Corelib.Init.Hexadecimal.hexadecimal_eq_dec__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.HexadecimalRepresentation.hexadecimal_eq_obligation_4"
+      }
+    ],
+    "native_expression": "fun {A} [DecidableEq A] x y => inferInstance",
+    "type": "∀ (x y : NativeBridge.Incremental.HexadecimalRepresentation.D),\n  NativeBridge.Incremental.HexadecimalRepresentation.eqDecisionTo\n      NativeBridge.Incremental.HexadecimalRepresentation.hexadecimalIso x y\n      (RocqPending.Corelib.Init.Hexadecimal.hexadecimal_eq_dec x y) =\n    NativeBridge.Incremental.HexadecimalRepresentation.nativeDecision\n      (NativeBridge.Incremental.HexadecimalRepresentation.hexadecimalTo x)\n      (NativeBridge.Incremental.HexadecimalRepresentation.hexadecimalTo y)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Number.number",
+    "profile": "NumberRepresentation",
+    "certificate": "NativeBridge.Incremental.NumberRepresentation.numberIso",
+    "kind": "TYPE_ISO",
+    "target": "NativeBridge.Incremental.NumberRepresentation.NumberNative",
+    "target_class": "native_representation",
+    "native_target": "NativeBridge.Incremental.NumberRepresentation.NumberNative",
+    "scope": "Sum of lossless decimal/hexadecimal numeral records; retains format tag, leading zeros, signs and optional decimal exponent.",
+    "native_expression": "NativeBridge.Incremental.NumberRepresentation.DecimalPart.DecimalNative ⊕\n  NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.HexadecimalNative",
+    "type": "NativeBridge.Iso Rocq.Corelib.Init.Number.number NativeBridge.Incremental.NumberRepresentation.NumberNative",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Number.uint_beq",
+    "profile": "NumberRepresentation",
+    "certificate": "NativeBridge.Incremental.NumberRepresentation.uint_beq_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.NumberRepresentation.nativeEqual",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.NumberRepresentation.nativeEqual",
+    "scope": "All inputs; native structural equality of the tagged representation, not equality of evaluated numeric values.",
+    "native_expression": "fun {A} [BEq A] x y => x == y",
+    "type": "∀ (x y : Rocq.Corelib.Init.Number.uint),\n  NativeBridge.Incremental.NumberRepresentation.digitBoolTo (Rocq.Corelib.Init.Number.uint_beq x y) =\n    NativeBridge.Incremental.NumberRepresentation.nativeEqual (NativeBridge.Incremental.NumberRepresentation.toUInt x)\n      (NativeBridge.Incremental.NumberRepresentation.toUInt y)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Number.signed_int_beq",
+    "profile": "NumberRepresentation",
+    "certificate": "NativeBridge.Incremental.NumberRepresentation.signed_int_beq_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.NumberRepresentation.nativeEqual",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.NumberRepresentation.nativeEqual",
+    "scope": "All inputs; native structural equality of the tagged representation, not equality of evaluated numeric values.",
+    "native_expression": "fun {A} [BEq A] x y => x == y",
+    "type": "∀ (x y : Rocq.Corelib.Init.Number.signed_int),\n  NativeBridge.Incremental.NumberRepresentation.digitBoolTo (Rocq.Corelib.Init.Number.signed_int_beq x y) =\n    NativeBridge.Incremental.NumberRepresentation.nativeEqual (NativeBridge.Incremental.NumberRepresentation.toSigned x)\n      (NativeBridge.Incremental.NumberRepresentation.toSigned y)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Number.number_beq",
+    "profile": "NumberRepresentation",
+    "certificate": "NativeBridge.Incremental.NumberRepresentation.number_beq_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.NumberRepresentation.nativeEqual",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.NumberRepresentation.nativeEqual",
+    "scope": "All inputs; native structural equality of the tagged representation, not equality of evaluated numeric values.",
+    "native_expression": "fun {A} [BEq A] x y => x == y",
+    "type": "∀ (x y : Rocq.Corelib.Init.Number.number),\n  NativeBridge.Incremental.NumberRepresentation.digitBoolTo (Rocq.Corelib.Init.Number.number_beq x y) =\n    NativeBridge.Incremental.NumberRepresentation.nativeEqual (NativeBridge.Incremental.NumberRepresentation.toNumber x)\n      (NativeBridge.Incremental.NumberRepresentation.toNumber y)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Number.uint_of_uint",
+    "profile": "NumberRepresentation",
+    "certificate": "NativeBridge.Incremental.NumberRepresentation.uint_of_uint_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id",
+    "target_class": "existing_api",
+    "native_target": "id",
+    "scope": "All tagged unsigned/signed digit representations; identity operation.",
+    "native_expression": "fun {α} a => a",
+    "type": "∀ (x : Rocq.Corelib.Init.Number.uint),\n  NativeBridge.Incremental.NumberRepresentation.toUInt (Rocq.Corelib.Init.Number.uint_of_uint x) =\n    id (NativeBridge.Incremental.NumberRepresentation.toUInt x)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Number.int_of_int",
+    "profile": "NumberRepresentation",
+    "certificate": "NativeBridge.Incremental.NumberRepresentation.int_of_int_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id",
+    "target_class": "existing_api",
+    "native_target": "id",
+    "scope": "All tagged unsigned/signed digit representations; identity operation.",
+    "native_expression": "fun {α} a => a",
+    "type": "∀ (x : Rocq.Corelib.Init.Number.signed_int),\n  NativeBridge.Incremental.NumberRepresentation.toSigned (Rocq.Corelib.Init.Number.int_of_int x) =\n    id (NativeBridge.Incremental.NumberRepresentation.toSigned x)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Number.internal_uint_dec_bl1",
+    "profile": "NumberRepresentation",
+    "certificate": "NativeBridge.Incremental.NumberRepresentation.uint_dec_bl_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.NumberRepresentation.equalitySound",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.NumberRepresentation.equalitySound",
+    "scope": "Full native reflection statement for tagged structural equality; original statement independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.NumberRepresentation.uint_dec_bl_proof",
+    "native_expression": "fun A [BEq A] => ∀ (x y : A), NativeBridge.Incremental.NumberRepresentation.nativeEqual x y = true → x = y",
+    "type": "Rocq.Corelib.Init.Number.internal_uint_dec_bl1.statement ↔\n  NativeBridge.Incremental.NumberRepresentation.equalitySound NativeBridge.Incremental.NumberRepresentation.UIntNative",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Number.internal_uint_dec_lb1",
+    "profile": "NumberRepresentation",
+    "certificate": "NativeBridge.Incremental.NumberRepresentation.uint_dec_lb_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.NumberRepresentation.equalityComplete",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.NumberRepresentation.equalityComplete",
+    "scope": "Full native reflection statement for tagged structural equality; original statement independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.NumberRepresentation.uint_dec_lb_proof",
+    "native_expression": "fun A [BEq A] => ∀ (x y : A), x = y → NativeBridge.Incremental.NumberRepresentation.nativeEqual x y = true",
+    "type": "Rocq.Corelib.Init.Number.internal_uint_dec_lb1.statement ↔\n  NativeBridge.Incremental.NumberRepresentation.equalityComplete\n    NativeBridge.Incremental.NumberRepresentation.UIntNative",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Number.internal_signed_int_dec_bl1",
+    "profile": "NumberRepresentation",
+    "certificate": "NativeBridge.Incremental.NumberRepresentation.signed_int_dec_bl_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.NumberRepresentation.equalitySound",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.NumberRepresentation.equalitySound",
+    "scope": "Full native reflection statement for tagged structural equality; original statement independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.NumberRepresentation.signed_int_dec_bl_proof",
+    "native_expression": "fun A [BEq A] => ∀ (x y : A), NativeBridge.Incremental.NumberRepresentation.nativeEqual x y = true → x = y",
+    "type": "Rocq.Corelib.Init.Number.internal_signed_int_dec_bl1.statement ↔\n  NativeBridge.Incremental.NumberRepresentation.equalitySound NativeBridge.Incremental.NumberRepresentation.SignedNative",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Number.internal_signed_int_dec_lb1",
+    "profile": "NumberRepresentation",
+    "certificate": "NativeBridge.Incremental.NumberRepresentation.signed_int_dec_lb_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.NumberRepresentation.equalityComplete",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.NumberRepresentation.equalityComplete",
+    "scope": "Full native reflection statement for tagged structural equality; original statement independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.NumberRepresentation.signed_int_dec_lb_proof",
+    "native_expression": "fun A [BEq A] => ∀ (x y : A), x = y → NativeBridge.Incremental.NumberRepresentation.nativeEqual x y = true",
+    "type": "Rocq.Corelib.Init.Number.internal_signed_int_dec_lb1.statement ↔\n  NativeBridge.Incremental.NumberRepresentation.equalityComplete\n    NativeBridge.Incremental.NumberRepresentation.SignedNative",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Number.internal_number_dec_bl",
+    "profile": "NumberRepresentation",
+    "certificate": "NativeBridge.Incremental.NumberRepresentation.number_dec_bl_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.NumberRepresentation.equalitySound",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.NumberRepresentation.equalitySound",
+    "scope": "Full native reflection statement for tagged structural equality; original statement independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.NumberRepresentation.number_dec_bl_proof",
+    "native_expression": "fun A [BEq A] => ∀ (x y : A), NativeBridge.Incremental.NumberRepresentation.nativeEqual x y = true → x = y",
+    "type": "Rocq.Corelib.Init.Number.internal_number_dec_bl.statement ↔\n  NativeBridge.Incremental.NumberRepresentation.equalitySound NativeBridge.Incremental.NumberRepresentation.NumberNative",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Number.internal_number_dec_lb",
+    "profile": "NumberRepresentation",
+    "certificate": "NativeBridge.Incremental.NumberRepresentation.number_dec_lb_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.NumberRepresentation.equalityComplete",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.NumberRepresentation.equalityComplete",
+    "scope": "Full native reflection statement for tagged structural equality; original statement independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.NumberRepresentation.number_dec_lb_proof",
+    "native_expression": "fun A [BEq A] => ∀ (x y : A), x = y → NativeBridge.Incremental.NumberRepresentation.nativeEqual x y = true",
+    "type": "Rocq.Corelib.Init.Number.internal_number_dec_lb.statement ↔\n  NativeBridge.Incremental.NumberRepresentation.equalityComplete\n    NativeBridge.Incremental.NumberRepresentation.NumberNative",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Number.uint_eq_dec",
+    "profile": "NumberRepresentation",
+    "certificate": "NativeBridge.Incremental.NumberRepresentation.uint_eq_dec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.NumberRepresentation.nativeDecision",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.NumberRepresentation.nativeDecision",
+    "scope": "All inputs; complete native Decidable equality derived from the proved lawful structural BEq. Four source proof prerequisites closed explicitly.",
+    "closed_wrapper": "NativeBridge.Incremental.NumberRepresentation.uintDecisionClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.NumberRepresentation.uint_eq_obligation_1"
+      },
+      {
+        "source": "Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.NumberRepresentation.uint_eq_obligation_2"
+      },
+      {
+        "source": "Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.NumberRepresentation.uint_eq_obligation_3"
+      },
+      {
+        "source": "Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.NumberRepresentation.uint_eq_obligation_4"
+      }
+    ],
+    "native_expression": "fun {A} [BEq A] [LawfulBEq A] x y => if h : (x == y) = true then isTrue ⋯ else isFalse ⋯",
+    "type": "∀ (x y : Rocq.Corelib.Init.Number.uint),\n  NativeBridge.Incremental.NumberRepresentation.eqDecisionTo NativeBridge.Incremental.NumberRepresentation.uintIso x y\n      (RocqPending.Corelib.Init.Number.uint_eq_dec x y) =\n    NativeBridge.Incremental.NumberRepresentation.nativeDecision\n      (NativeBridge.Incremental.NumberRepresentation.toUInt x) (NativeBridge.Incremental.NumberRepresentation.toUInt y)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Number.signed_int_eq_dec",
+    "profile": "NumberRepresentation",
+    "certificate": "NativeBridge.Incremental.NumberRepresentation.signed_int_eq_dec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.NumberRepresentation.nativeDecision",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.NumberRepresentation.nativeDecision",
+    "scope": "All inputs; complete native Decidable equality derived from the proved lawful structural BEq. Four source proof prerequisites closed explicitly.",
+    "closed_wrapper": "NativeBridge.Incremental.NumberRepresentation.signed_intDecisionClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.NumberRepresentation.signed_int_eq_obligation_1"
+      },
+      {
+        "source": "Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.NumberRepresentation.signed_int_eq_obligation_2"
+      },
+      {
+        "source": "Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.NumberRepresentation.signed_int_eq_obligation_3"
+      },
+      {
+        "source": "Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.NumberRepresentation.signed_int_eq_obligation_4"
+      }
+    ],
+    "native_expression": "fun {A} [BEq A] [LawfulBEq A] x y => if h : (x == y) = true then isTrue ⋯ else isFalse ⋯",
+    "type": "∀ (x y : Rocq.Corelib.Init.Number.signed_int),\n  NativeBridge.Incremental.NumberRepresentation.eqDecisionTo NativeBridge.Incremental.NumberRepresentation.signed_intIso\n      x y (RocqPending.Corelib.Init.Number.signed_int_eq_dec x y) =\n    NativeBridge.Incremental.NumberRepresentation.nativeDecision\n      (NativeBridge.Incremental.NumberRepresentation.toSigned x)\n      (NativeBridge.Incremental.NumberRepresentation.toSigned y)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Number.number_eq_dec",
+    "profile": "NumberRepresentation",
+    "certificate": "NativeBridge.Incremental.NumberRepresentation.number_eq_dec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.NumberRepresentation.nativeDecision",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.NumberRepresentation.nativeDecision",
+    "scope": "All inputs; complete native Decidable equality derived from the proved lawful structural BEq. Four source proof prerequisites closed explicitly.",
+    "closed_wrapper": "NativeBridge.Incremental.NumberRepresentation.numberDecisionClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.NumberRepresentation.number_eq_obligation_1"
+      },
+      {
+        "source": "Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.NumberRepresentation.number_eq_obligation_2"
+      },
+      {
+        "source": "Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.NumberRepresentation.number_eq_obligation_3"
+      },
+      {
+        "source": "Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.NumberRepresentation.number_eq_obligation_4"
+      }
+    ],
+    "native_expression": "fun {A} [BEq A] [LawfulBEq A] x y => if h : (x == y) = true then isTrue ⋯ else isFalse ⋯",
+    "type": "∀ (x y : Rocq.Corelib.Init.Number.number),\n  NativeBridge.Incremental.NumberRepresentation.eqDecisionTo NativeBridge.Incremental.NumberRepresentation.numberIso x y\n      (RocqPending.Corelib.Init.Number.number_eq_dec x y) =\n    NativeBridge.Incremental.NumberRepresentation.nativeDecision\n      (NativeBridge.Incremental.NumberRepresentation.toNumber x)\n      (NativeBridge.Incremental.NumberRepresentation.toNumber y)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
     "source": "Corelib.ssr.ssrbool.canLR_in",
     "profile": "SSRBoolClosedStatements",
     "certificate": "NativeBridge.Incremental.SSRBoolClosedStatements.RocqPending.Corelib.ssr.ssrbool.canLR_in.statement.correspondence",

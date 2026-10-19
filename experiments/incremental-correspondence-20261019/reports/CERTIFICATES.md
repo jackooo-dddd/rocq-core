@@ -10114,6 +10114,1023 @@ NativeBridge.Incremental.BinaryIterOp.iter_op_foldr
 
 公理闭包：propext, Quot.sound
 
+## Corelib.Numbers.BinNums.positive_rec
+
+NativeBridge.Incremental.BinaryElimination.positive_rec_agrees
+
+目标：NativeBridge.Incremental.BinaryElimination.positiveRec；范围：Native dependent motive pulled back along the proven type Iso; rec preserves Type result, rect preserves arbitrary Sort result, including Prop. Native cases/recursion contains no source symbols.
+
+```lean
+∀ (P : NativeBridge.Incremental.BinaryElimination.PositiveNat → Type)
+  (odd :
+    (p : NativeBridge.Incremental.BinaryElimination.PositiveNat) →
+      P p → P (NativeBridge.Incremental.BinaryElimination.positiveOdd p))
+  (even :
+    (p : NativeBridge.Incremental.BinaryElimination.PositiveNat) →
+      P p → P (NativeBridge.Incremental.BinaryElimination.positiveEven p))
+  (one : P NativeBridge.Incremental.BinaryElimination.positiveOne) (p : NativeBridge.RPositive),
+  Rocq.Corelib.Numbers.BinNums.positive_rec (fun p => P (NativeBridge.positiveIso.to p))
+      (fun p ih => odd (NativeBridge.positiveIso.to p) ih) (fun p ih => even (NativeBridge.positiveIso.to p) ih) one p =
+    NativeBridge.Incremental.BinaryElimination.positiveRec P odd even one (NativeBridge.positiveIso.to p)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.BinNums.positive_rect
+
+NativeBridge.Incremental.BinaryElimination.positive_rect_agrees
+
+目标：NativeBridge.Incremental.BinaryElimination.positiveRec；范围：Native dependent motive pulled back along the proven type Iso; rec preserves Type result, rect preserves arbitrary Sort result, including Prop. Native cases/recursion contains no source symbols.
+
+```lean
+∀ (P : NativeBridge.Incremental.BinaryElimination.PositiveNat → Sort u)
+  (odd :
+    (p : NativeBridge.Incremental.BinaryElimination.PositiveNat) →
+      P p → P (NativeBridge.Incremental.BinaryElimination.positiveOdd p))
+  (even :
+    (p : NativeBridge.Incremental.BinaryElimination.PositiveNat) →
+      P p → P (NativeBridge.Incremental.BinaryElimination.positiveEven p))
+  (one : P NativeBridge.Incremental.BinaryElimination.positiveOne) (p : NativeBridge.RPositive),
+  Rocq.Corelib.Numbers.BinNums.positive_rect (fun p => P (NativeBridge.positiveIso.to p))
+      (fun p ih => odd (NativeBridge.positiveIso.to p) ih) (fun p ih => even (NativeBridge.positiveIso.to p) ih) one p =
+    NativeBridge.Incremental.BinaryElimination.positiveRec P odd even one (NativeBridge.positiveIso.to p)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.BinNums.positive_ind
+
+NativeBridge.Incremental.BinaryElimination.positive_ind_correspondence
+
+目标：NativeBridge.Incremental.BinaryElimination.positiveInduction；范围：Full induction/case statement on the native carrier: positive subtype, Nat or Int. Both the original statement and the native statement are independently proved; iff does not assume the source theorem.
+
+```lean
+Rocq.Corelib.Numbers.BinNums.positive_ind.statement ↔ NativeBridge.Incremental.BinaryElimination.positiveInduction
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Numbers.BinNums.positive_sind
+
+NativeBridge.Incremental.BinaryElimination.positive_sind_correspondence
+
+目标：NativeBridge.Incremental.BinaryElimination.positiveInduction；范围：Full induction/case statement on the native carrier: positive subtype, Nat or Int. Both the original statement and the native statement are independently proved; iff does not assume the source theorem.
+
+```lean
+Rocq.Corelib.Numbers.BinNums.positive_sind.statement ↔ NativeBridge.Incremental.BinaryElimination.positiveInduction
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Numbers.BinNums.N_rec
+
+NativeBridge.Incremental.BinaryElimination.n_rec_agrees
+
+目标：NativeBridge.Incremental.BinaryElimination.natCases；范围：Native dependent motive pulled back along the proven type Iso; rec preserves Type result, rect preserves arbitrary Sort result, including Prop. Native cases/recursion contains no source symbols.
+
+```lean
+∀ (P : Nat → Type) (zero : P 0) (pos : (p : NativeBridge.Incremental.BinaryElimination.PositiveNat) → P p.val)
+  (n : NativeBridge.RNatBinary),
+  Rocq.Corelib.Numbers.BinNums.N_rec (fun n => P (NativeBridge.binaryNatTo n)) zero
+      (fun p => pos (NativeBridge.positiveIso.to p)) n =
+    NativeBridge.Incremental.BinaryElimination.natCases P zero pos (NativeBridge.binaryNatTo n)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.BinNums.N_rect
+
+NativeBridge.Incremental.BinaryElimination.n_rect_agrees
+
+目标：NativeBridge.Incremental.BinaryElimination.natCases；范围：Native dependent motive pulled back along the proven type Iso; rec preserves Type result, rect preserves arbitrary Sort result, including Prop. Native cases/recursion contains no source symbols.
+
+```lean
+∀ (P : Nat → Sort u) (zero : P 0) (pos : (p : NativeBridge.Incremental.BinaryElimination.PositiveNat) → P p.val)
+  (n : NativeBridge.RNatBinary),
+  Rocq.Corelib.Numbers.BinNums.N_rect (fun n => P (NativeBridge.binaryNatTo n)) zero
+      (fun p => pos (NativeBridge.positiveIso.to p)) n =
+    NativeBridge.Incremental.BinaryElimination.natCases P zero pos (NativeBridge.binaryNatTo n)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.BinNums.N_ind
+
+NativeBridge.Incremental.BinaryElimination.n_ind_correspondence
+
+目标：NativeBridge.Incremental.BinaryElimination.natInduction；范围：Full induction/case statement on the native carrier: positive subtype, Nat or Int. Both the original statement and the native statement are independently proved; iff does not assume the source theorem.
+
+```lean
+Rocq.Corelib.Numbers.BinNums.N_ind.statement ↔ NativeBridge.Incremental.BinaryElimination.natInduction
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Numbers.BinNums.N_sind
+
+NativeBridge.Incremental.BinaryElimination.n_sind_correspondence
+
+目标：NativeBridge.Incremental.BinaryElimination.natInduction；范围：Full induction/case statement on the native carrier: positive subtype, Nat or Int. Both the original statement and the native statement are independently proved; iff does not assume the source theorem.
+
+```lean
+Rocq.Corelib.Numbers.BinNums.N_sind.statement ↔ NativeBridge.Incremental.BinaryElimination.natInduction
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Numbers.BinNums.Z_rec
+
+NativeBridge.Incremental.BinaryElimination.z_rec_agrees
+
+目标：NativeBridge.Incremental.BinaryElimination.intCases；范围：Native dependent motive pulled back along the proven type Iso; rec preserves Type result, rect preserves arbitrary Sort result, including Prop. Native cases/recursion contains no source symbols.
+
+```lean
+∀ (P : Int → Type) (zero : P 0)
+  (pos : (p : NativeBridge.Incremental.BinaryElimination.PositiveNat) → P (Int.ofNat p.val))
+  (neg : (p : NativeBridge.Incremental.BinaryElimination.PositiveNat) → P (-Int.ofNat p.val))
+  (z : NativeBridge.RIntBinary),
+  Rocq.Corelib.Numbers.BinNums.Z_rec (fun z => P (NativeBridge.binaryIntTo z)) zero
+      (fun p => pos (NativeBridge.positiveIso.to p)) (fun p => neg (NativeBridge.positiveIso.to p)) z =
+    NativeBridge.Incremental.BinaryElimination.intCases P zero pos neg (NativeBridge.binaryIntTo z)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.BinNums.Z_rect
+
+NativeBridge.Incremental.BinaryElimination.z_rect_agrees
+
+目标：NativeBridge.Incremental.BinaryElimination.intCases；范围：Native dependent motive pulled back along the proven type Iso; rec preserves Type result, rect preserves arbitrary Sort result, including Prop. Native cases/recursion contains no source symbols.
+
+```lean
+∀ (P : Int → Sort u) (zero : P 0)
+  (pos : (p : NativeBridge.Incremental.BinaryElimination.PositiveNat) → P (Int.ofNat p.val))
+  (neg : (p : NativeBridge.Incremental.BinaryElimination.PositiveNat) → P (-Int.ofNat p.val))
+  (z : NativeBridge.RIntBinary),
+  Rocq.Corelib.Numbers.BinNums.Z_rect (fun z => P (NativeBridge.binaryIntTo z)) zero
+      (fun p => pos (NativeBridge.positiveIso.to p)) (fun p => neg (NativeBridge.positiveIso.to p)) z =
+    NativeBridge.Incremental.BinaryElimination.intCases P zero pos neg (NativeBridge.binaryIntTo z)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.BinNums.Z_ind
+
+NativeBridge.Incremental.BinaryElimination.z_ind_correspondence
+
+目标：NativeBridge.Incremental.BinaryElimination.intInduction；范围：Full induction/case statement on the native carrier: positive subtype, Nat or Int. Both the original statement and the native statement are independently proved; iff does not assume the source theorem.
+
+```lean
+Rocq.Corelib.Numbers.BinNums.Z_ind.statement ↔ NativeBridge.Incremental.BinaryElimination.intInduction
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Numbers.BinNums.Z_sind
+
+NativeBridge.Incremental.BinaryElimination.z_sind_correspondence
+
+目标：NativeBridge.Incremental.BinaryElimination.intInduction；范围：Full induction/case statement on the native carrier: positive subtype, Nat or Int. Both the original statement and the native statement are independently proved; iff does not assume the source theorem.
+
+```lean
+Rocq.Corelib.Numbers.BinNums.Z_sind.statement ↔ NativeBridge.Incremental.BinaryElimination.intInduction
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Decimal.decimal
+
+NativeBridge.Incremental.DecimalRepresentation.decimalIso
+
+目标：NativeBridge.Incremental.DecimalRepresentation.DecimalNative；范围：Sign/digit tuple with optional signed exponent; preserves leading zeros, negative zero, empty digits and exponent presence. Both inverse laws.
+
+```lean
+NativeBridge.Iso Rocq.Corelib.Init.Decimal.decimal NativeBridge.Incremental.DecimalRepresentation.DecimalNative
+```
+
+公理闭包：propext
+
+## Corelib.Init.Decimal.decimal_beq
+
+NativeBridge.Incremental.DecimalRepresentation.decimal_beq_agrees
+
+目标：NativeBridge.Incremental.DecimalRepresentation.decimalEqual；范围：All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation.
+
+```lean
+∀ (x y : NativeBridge.Incremental.DecimalRepresentation.D),
+  NativeBridge.Incremental.Decimal.digitBoolTo (Rocq.Corelib.Init.Decimal.decimal_beq x y) =
+    NativeBridge.Incremental.DecimalRepresentation.decimalEqual
+      (NativeBridge.Incremental.DecimalRepresentation.decimalTo x)
+      (NativeBridge.Incremental.DecimalRepresentation.decimalTo y)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Decimal.del_head
+
+NativeBridge.Incremental.DecimalRepresentation.del_head_agrees
+
+目标：NativeBridge.Incremental.DecimalRepresentation.dropHead；范围：All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation.
+
+```lean
+∀ (n : NativeBridge.MN) (d : NativeBridge.Incremental.DecimalRepresentation.U),
+  NativeBridge.decimalDigitsTo (Rocq.Corelib.Init.Decimal.del_head n d) =
+    NativeBridge.Incremental.DecimalRepresentation.dropHead (NativeBridge.natTo n) (NativeBridge.decimalDigitsTo d)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Decimal.del_tail
+
+NativeBridge.Incremental.DecimalRepresentation.del_tail_agrees
+
+目标：NativeBridge.Incremental.DecimalRepresentation.dropTail；范围：All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation.
+
+```lean
+∀ (n : NativeBridge.MN) (d : NativeBridge.Incremental.DecimalRepresentation.U),
+  NativeBridge.decimalDigitsTo (Rocq.Corelib.Init.Decimal.del_tail n d) =
+    NativeBridge.Incremental.DecimalRepresentation.dropTail (NativeBridge.natTo n) (NativeBridge.decimalDigitsTo d)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Decimal.del_head_int
+
+NativeBridge.Incremental.DecimalRepresentation.del_head_int_agrees
+
+目标：NativeBridge.Incremental.DecimalRepresentation.dropHeadInt；范围：All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation.
+
+```lean
+∀ (n : NativeBridge.MN) (d : NativeBridge.Incremental.DecimalRepresentation.S),
+  NativeBridge.decimalDigitsTo (Rocq.Corelib.Init.Decimal.del_head_int n d) =
+    NativeBridge.Incremental.DecimalRepresentation.dropHeadInt (NativeBridge.natTo n)
+      (NativeBridge.Incremental.Decimal.signedTo d)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Decimal.del_tail_int
+
+NativeBridge.Incremental.DecimalRepresentation.del_tail_int_agrees
+
+目标：NativeBridge.Incremental.DecimalRepresentation.dropTailInt；范围：All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation.
+
+```lean
+∀ (n : NativeBridge.MN) (d : NativeBridge.Incremental.DecimalRepresentation.S),
+  NativeBridge.Incremental.Decimal.signedTo (Rocq.Corelib.Init.Decimal.del_tail_int n d) =
+    NativeBridge.Incremental.DecimalRepresentation.dropTailInt (NativeBridge.natTo n)
+      (NativeBridge.Incremental.Decimal.signedTo d)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Decimal.nztail
+
+NativeBridge.Incremental.DecimalRepresentation.nztail_agrees
+
+目标：NativeBridge.Incremental.DecimalRepresentation.trimTail；范围：All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation.
+
+```lean
+∀ (d : NativeBridge.Incremental.DecimalRepresentation.U),
+  NativeBridge.Incremental.DecimalRepresentation.digitCountTo (Rocq.Corelib.Init.Decimal.nztail d) =
+    NativeBridge.Incremental.DecimalRepresentation.trimTail (NativeBridge.decimalDigitsTo d)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Decimal.nztail_int
+
+NativeBridge.Incremental.DecimalRepresentation.nztail_int_agrees
+
+目标：NativeBridge.Incremental.DecimalRepresentation.trimTailInt；范围：All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation.
+
+```lean
+∀ (d : NativeBridge.Incremental.DecimalRepresentation.S),
+  NativeBridge.Incremental.DecimalRepresentation.signedCountTo (Rocq.Corelib.Init.Decimal.nztail_int d) =
+    NativeBridge.Incremental.DecimalRepresentation.trimTailInt (NativeBridge.Incremental.Decimal.signedTo d)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Decimal.Little.double
+
+NativeBridge.Incremental.DecimalRepresentation.little_double_agrees
+
+目标：NativeBridge.Incremental.DecimalRepresentation.littleDouble；范围：All little-endian digit lists, including empty and noncanonical zeros; double or double+1 with explicit carry. Represents the resulting digit sequence, not just its numeric value.
+
+```lean
+∀ (d : NativeBridge.Incremental.DecimalRepresentation.U),
+  NativeBridge.decimalDigitsTo (Rocq.Corelib.Init.Decimal.Little.double d) =
+    NativeBridge.Incremental.DecimalRepresentation.littleDouble false (NativeBridge.decimalDigitsTo d)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Decimal.Little.succ_double
+
+NativeBridge.Incremental.DecimalRepresentation.little_succ_double_agrees
+
+目标：NativeBridge.Incremental.DecimalRepresentation.littleDouble；范围：All little-endian digit lists, including empty and noncanonical zeros; double or double+1 with explicit carry. Represents the resulting digit sequence, not just its numeric value.
+
+```lean
+∀ (d : NativeBridge.Incremental.DecimalRepresentation.U),
+  NativeBridge.decimalDigitsTo (Rocq.Corelib.Init.Decimal.Little.succ_double d) =
+    NativeBridge.Incremental.DecimalRepresentation.littleDouble true (NativeBridge.decimalDigitsTo d)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Decimal.uint_rect
+
+NativeBridge.Incremental.DecimalRepresentation.uint_rect_agrees
+
+目标：NativeBridge.Incremental.DecimalRepresentation.digitsRec；范围：Full native dependent motive over List (Fin 10); source branch family indexed by the ten digits, corresponding to List.rec. rect is Sort-polymorphic; rec returns Type.
+
+```lean
+∀ (P : List (Fin 10) → Sort u) (nil : P []) (cons : (d : Fin 10) → (ds : List (Fin 10)) → P ds → P (d :: ds))
+  (d : NativeBridge.Incremental.DecimalRepresentation.U),
+  Rocq.Corelib.Init.Decimal.uint_rect (fun d => P (NativeBridge.decimalDigitsTo d)) nil
+      (fun d ih => cons 0 (NativeBridge.decimalDigitsTo d) ih) (fun d ih => cons 1 (NativeBridge.decimalDigitsTo d) ih)
+      (fun d ih => cons 2 (NativeBridge.decimalDigitsTo d) ih) (fun d ih => cons 3 (NativeBridge.decimalDigitsTo d) ih)
+      (fun d ih => cons 4 (NativeBridge.decimalDigitsTo d) ih) (fun d ih => cons 5 (NativeBridge.decimalDigitsTo d) ih)
+      (fun d ih => cons 6 (NativeBridge.decimalDigitsTo d) ih) (fun d ih => cons 7 (NativeBridge.decimalDigitsTo d) ih)
+      (fun d ih => cons 8 (NativeBridge.decimalDigitsTo d) ih) (fun d ih => cons 9 (NativeBridge.decimalDigitsTo d) ih)
+      d =
+    NativeBridge.Incremental.DecimalRepresentation.digitsRec P nil cons (NativeBridge.decimalDigitsTo d)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Decimal.uint_rec
+
+NativeBridge.Incremental.DecimalRepresentation.uint_rec_agrees
+
+目标：NativeBridge.Incremental.DecimalRepresentation.digitsRec；范围：Full native dependent motive over List (Fin 10); source branch family indexed by the ten digits, corresponding to List.rec. rect is Sort-polymorphic; rec returns Type.
+
+```lean
+∀ (P : List (Fin 10) → Type) (nil : P []) (cons : (d : Fin 10) → (ds : List (Fin 10)) → P ds → P (d :: ds))
+  (d : NativeBridge.Incremental.DecimalRepresentation.U),
+  Rocq.Corelib.Init.Decimal.uint_rec (fun d => P (NativeBridge.decimalDigitsTo d)) nil
+      (fun d ih => cons 0 (NativeBridge.decimalDigitsTo d) ih) (fun d ih => cons 1 (NativeBridge.decimalDigitsTo d) ih)
+      (fun d ih => cons 2 (NativeBridge.decimalDigitsTo d) ih) (fun d ih => cons 3 (NativeBridge.decimalDigitsTo d) ih)
+      (fun d ih => cons 4 (NativeBridge.decimalDigitsTo d) ih) (fun d ih => cons 5 (NativeBridge.decimalDigitsTo d) ih)
+      (fun d ih => cons 6 (NativeBridge.decimalDigitsTo d) ih) (fun d ih => cons 7 (NativeBridge.decimalDigitsTo d) ih)
+      (fun d ih => cons 8 (NativeBridge.decimalDigitsTo d) ih) (fun d ih => cons 9 (NativeBridge.decimalDigitsTo d) ih)
+      d =
+    NativeBridge.Incremental.DecimalRepresentation.digitsRec P nil cons (NativeBridge.decimalDigitsTo d)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Decimal.uint_of_uint
+
+NativeBridge.Incremental.DecimalRepresentation.uint_of_uint_agrees
+
+目标：id；范围：Identity on the lossless native digit or signed-digit representation.
+
+```lean
+∀ (d : NativeBridge.Incremental.DecimalRepresentation.U),
+  NativeBridge.decimalDigitsTo (Rocq.Corelib.Init.Decimal.uint_of_uint d) = id (NativeBridge.decimalDigitsTo d)
+```
+
+公理闭包：空
+
+## Corelib.Init.Decimal.int_of_int
+
+NativeBridge.Incremental.DecimalRepresentation.int_of_int_agrees
+
+目标：id；范围：Identity on the lossless native digit or signed-digit representation.
+
+```lean
+∀ (d : NativeBridge.Incremental.DecimalRepresentation.S),
+  NativeBridge.Incremental.Decimal.signedTo (Rocq.Corelib.Init.Decimal.int_of_int d) =
+    id (NativeBridge.Incremental.Decimal.signedTo d)
+```
+
+公理闭包：空
+
+## Corelib.Init.Decimal.uint_ind
+
+NativeBridge.Incremental.DecimalRepresentation.uint_ind_correspondence
+
+目标：NativeBridge.Incremental.DecimalRepresentation.digitInduction；范围：Full native statement; original statement and native statement separately proved.
+
+```lean
+Rocq.Corelib.Init.Decimal.uint_ind.statement ↔ NativeBridge.Incremental.DecimalRepresentation.digitInduction
+```
+
+公理闭包：空
+
+## Corelib.Init.Decimal.uint_sind
+
+NativeBridge.Incremental.DecimalRepresentation.uint_sind_correspondence
+
+目标：NativeBridge.Incremental.DecimalRepresentation.digitInduction；范围：Full native statement; original statement and native statement separately proved.
+
+```lean
+Rocq.Corelib.Init.Decimal.uint_sind.statement ↔ NativeBridge.Incremental.DecimalRepresentation.digitInduction
+```
+
+公理闭包：空
+
+## Corelib.Init.Decimal.internal_decimal_dec_bl
+
+NativeBridge.Incremental.DecimalRepresentation.decimal_dec_bl_correspondence
+
+目标：NativeBridge.Incremental.DecimalRepresentation.equalitySound；范围：Full native statement; original statement and native statement separately proved.
+
+```lean
+Rocq.Corelib.Init.Decimal.internal_decimal_dec_bl.statement ↔
+  NativeBridge.Incremental.DecimalRepresentation.equalitySound
+```
+
+公理闭包：propext
+
+## Corelib.Init.Decimal.internal_decimal_dec_lb
+
+NativeBridge.Incremental.DecimalRepresentation.decimal_dec_lb_correspondence
+
+目标：NativeBridge.Incremental.DecimalRepresentation.equalityComplete；范围：Full native statement; original statement and native statement separately proved.
+
+```lean
+Rocq.Corelib.Init.Decimal.internal_decimal_dec_lb.statement ↔
+  NativeBridge.Incremental.DecimalRepresentation.equalityComplete
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Init.Decimal.uint_eq_dec
+
+NativeBridge.Incremental.DecimalRepresentation.uint_eq_dec_agrees
+
+目标：NativeBridge.Incremental.DecimalRepresentation.nativeDecision；范围：All inputs; complete Decidable equality on lossless native representation. Four extracted proof prerequisites closed explicitly; source sumbool maps to the unique native decision.
+
+```lean
+∀ (x y : NativeBridge.Incremental.DecimalRepresentation.U),
+  NativeBridge.Incremental.DecimalRepresentation.eqDecisionTo NativeBridge.decimalDigitsIso x y
+      (RocqPending.Corelib.Init.Decimal.uint_eq_dec x y) =
+    NativeBridge.Incremental.DecimalRepresentation.nativeDecision (NativeBridge.decimalDigitsTo x)
+      (NativeBridge.decimalDigitsTo y)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Init.Decimal.signed_int_eq_dec
+
+NativeBridge.Incremental.DecimalRepresentation.signed_int_eq_dec_agrees
+
+目标：NativeBridge.Incremental.DecimalRepresentation.nativeDecision；范围：All inputs; complete Decidable equality on lossless native representation. Four extracted proof prerequisites closed explicitly; source sumbool maps to the unique native decision.
+
+```lean
+∀ (x y : NativeBridge.Incremental.DecimalRepresentation.S),
+  NativeBridge.Incremental.DecimalRepresentation.eqDecisionTo NativeBridge.Incremental.Decimal.signedIso x y
+      (RocqPending.Corelib.Init.Decimal.signed_int_eq_dec x y) =
+    NativeBridge.Incremental.DecimalRepresentation.nativeDecision (NativeBridge.Incremental.Decimal.signedTo x)
+      (NativeBridge.Incremental.Decimal.signedTo y)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Init.Decimal.decimal_eq_dec
+
+NativeBridge.Incremental.DecimalRepresentation.decimal_eq_dec_agrees
+
+目标：NativeBridge.Incremental.DecimalRepresentation.nativeDecision；范围：All inputs; complete Decidable equality on lossless native representation. Four extracted proof prerequisites closed explicitly; source sumbool maps to the unique native decision.
+
+```lean
+∀ (x y : NativeBridge.Incremental.DecimalRepresentation.D),
+  NativeBridge.Incremental.DecimalRepresentation.eqDecisionTo NativeBridge.Incremental.DecimalRepresentation.decimalIso
+      x y (RocqPending.Corelib.Init.Decimal.decimal_eq_dec x y) =
+    NativeBridge.Incremental.DecimalRepresentation.nativeDecision
+      (NativeBridge.Incremental.DecimalRepresentation.decimalTo x)
+      (NativeBridge.Incremental.DecimalRepresentation.decimalTo y)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Init.Hexadecimal.hexadecimal
+
+NativeBridge.Incremental.HexadecimalRepresentation.hexadecimalIso
+
+目标：NativeBridge.Incremental.HexadecimalRepresentation.HexadecimalNative；范围：Hexadecimal signed integer and fractional digit lists, with an optional DECIMAL signed exponent; preserves negative zero, all zeros and exponent presence. Both inverse laws.
+
+```lean
+NativeBridge.Iso Rocq.Corelib.Init.Hexadecimal.hexadecimal
+  NativeBridge.Incremental.HexadecimalRepresentation.HexadecimalNative
+```
+
+公理闭包：propext
+
+## Corelib.Init.Hexadecimal.hexadecimal_beq
+
+NativeBridge.Incremental.HexadecimalRepresentation.hexadecimal_beq_agrees
+
+目标：NativeBridge.Incremental.HexadecimalRepresentation.hexadecimalEqual；范围：All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation.
+
+```lean
+∀ (x y : NativeBridge.Incremental.HexadecimalRepresentation.D),
+  NativeBridge.Incremental.Hexadecimal.digitBoolTo (Rocq.Corelib.Init.Hexadecimal.hexadecimal_beq x y) =
+    NativeBridge.Incremental.HexadecimalRepresentation.hexadecimalEqual
+      (NativeBridge.Incremental.HexadecimalRepresentation.hexadecimalTo x)
+      (NativeBridge.Incremental.HexadecimalRepresentation.hexadecimalTo y)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Hexadecimal.del_head
+
+NativeBridge.Incremental.HexadecimalRepresentation.del_head_agrees
+
+目标：NativeBridge.Incremental.HexadecimalRepresentation.dropHead；范围：All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation.
+
+```lean
+∀ (n : NativeBridge.MN) (d : NativeBridge.Incremental.HexadecimalRepresentation.U),
+  NativeBridge.hexadecimalDigitsTo (Rocq.Corelib.Init.Hexadecimal.del_head n d) =
+    NativeBridge.Incremental.HexadecimalRepresentation.dropHead (NativeBridge.natTo n)
+      (NativeBridge.hexadecimalDigitsTo d)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Hexadecimal.del_tail
+
+NativeBridge.Incremental.HexadecimalRepresentation.del_tail_agrees
+
+目标：NativeBridge.Incremental.HexadecimalRepresentation.dropTail；范围：All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation.
+
+```lean
+∀ (n : NativeBridge.MN) (d : NativeBridge.Incremental.HexadecimalRepresentation.U),
+  NativeBridge.hexadecimalDigitsTo (Rocq.Corelib.Init.Hexadecimal.del_tail n d) =
+    NativeBridge.Incremental.HexadecimalRepresentation.dropTail (NativeBridge.natTo n)
+      (NativeBridge.hexadecimalDigitsTo d)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Hexadecimal.del_head_int
+
+NativeBridge.Incremental.HexadecimalRepresentation.del_head_int_agrees
+
+目标：NativeBridge.Incremental.HexadecimalRepresentation.dropHeadInt；范围：All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation.
+
+```lean
+∀ (n : NativeBridge.MN) (d : NativeBridge.Incremental.HexadecimalRepresentation.S),
+  NativeBridge.hexadecimalDigitsTo (Rocq.Corelib.Init.Hexadecimal.del_head_int n d) =
+    NativeBridge.Incremental.HexadecimalRepresentation.dropHeadInt (NativeBridge.natTo n)
+      (NativeBridge.Incremental.Hexadecimal.signedTo d)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Hexadecimal.del_tail_int
+
+NativeBridge.Incremental.HexadecimalRepresentation.del_tail_int_agrees
+
+目标：NativeBridge.Incremental.HexadecimalRepresentation.dropTailInt；范围：All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation.
+
+```lean
+∀ (n : NativeBridge.MN) (d : NativeBridge.Incremental.HexadecimalRepresentation.S),
+  NativeBridge.Incremental.Hexadecimal.signedTo (Rocq.Corelib.Init.Hexadecimal.del_tail_int n d) =
+    NativeBridge.Incremental.HexadecimalRepresentation.dropTailInt (NativeBridge.natTo n)
+      (NativeBridge.Incremental.Hexadecimal.signedTo d)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Hexadecimal.nztail
+
+NativeBridge.Incremental.HexadecimalRepresentation.nztail_agrees
+
+目标：NativeBridge.Incremental.HexadecimalRepresentation.trimTail；范围：All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation.
+
+```lean
+∀ (d : NativeBridge.Incremental.HexadecimalRepresentation.U),
+  NativeBridge.Incremental.HexadecimalRepresentation.digitCountTo (Rocq.Corelib.Init.Hexadecimal.nztail d) =
+    NativeBridge.Incremental.HexadecimalRepresentation.trimTail (NativeBridge.hexadecimalDigitsTo d)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Hexadecimal.nztail_int
+
+NativeBridge.Incremental.HexadecimalRepresentation.nztail_int_agrees
+
+目标：NativeBridge.Incremental.HexadecimalRepresentation.trimTailInt；范围：All source values; exact native digit representation, not numeric-value equality. Empty digits and leading/trailing zeros preserved according to the source operation.
+
+```lean
+∀ (d : NativeBridge.Incremental.HexadecimalRepresentation.S),
+  NativeBridge.Incremental.HexadecimalRepresentation.signedCountTo (Rocq.Corelib.Init.Hexadecimal.nztail_int d) =
+    NativeBridge.Incremental.HexadecimalRepresentation.trimTailInt (NativeBridge.Incremental.Hexadecimal.signedTo d)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Hexadecimal.Little.double
+
+NativeBridge.Incremental.HexadecimalRepresentation.little_double_agrees
+
+目标：NativeBridge.Incremental.HexadecimalRepresentation.littleDouble；范围：All little-endian digit lists, including empty and noncanonical zeros; double or double+1 with explicit carry. Represents the resulting digit sequence, not just its numeric value.
+
+```lean
+∀ (d : NativeBridge.Incremental.HexadecimalRepresentation.U),
+  NativeBridge.hexadecimalDigitsTo (Rocq.Corelib.Init.Hexadecimal.Little.double d) =
+    NativeBridge.Incremental.HexadecimalRepresentation.littleDouble false (NativeBridge.hexadecimalDigitsTo d)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Hexadecimal.Little.succ_double
+
+NativeBridge.Incremental.HexadecimalRepresentation.little_succ_double_agrees
+
+目标：NativeBridge.Incremental.HexadecimalRepresentation.littleDouble；范围：All little-endian digit lists, including empty and noncanonical zeros; double or double+1 with explicit carry. Represents the resulting digit sequence, not just its numeric value.
+
+```lean
+∀ (d : NativeBridge.Incremental.HexadecimalRepresentation.U),
+  NativeBridge.hexadecimalDigitsTo (Rocq.Corelib.Init.Hexadecimal.Little.succ_double d) =
+    NativeBridge.Incremental.HexadecimalRepresentation.littleDouble true (NativeBridge.hexadecimalDigitsTo d)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Hexadecimal.uint_rect
+
+NativeBridge.Incremental.HexadecimalRepresentation.uint_rect_agrees
+
+目标：NativeBridge.Incremental.HexadecimalRepresentation.digitsRec；范围：Full native dependent motive over List (Fin 16); source branch family indexed by the sixteen digits, corresponding to List.rec. rect is Sort-polymorphic; rec returns Type.
+
+```lean
+∀ (P : List (Fin 16) → Sort u) (nil : P []) (cons : (d : Fin 16) → (ds : List (Fin 16)) → P ds → P (d :: ds))
+  (d : NativeBridge.Incremental.HexadecimalRepresentation.U),
+  Rocq.Corelib.Init.Hexadecimal.uint_rect (fun d => P (NativeBridge.hexadecimalDigitsTo d)) nil
+      (fun d ih => cons 0 (NativeBridge.hexadecimalDigitsTo d) ih)
+      (fun d ih => cons 1 (NativeBridge.hexadecimalDigitsTo d) ih)
+      (fun d ih => cons 2 (NativeBridge.hexadecimalDigitsTo d) ih)
+      (fun d ih => cons 3 (NativeBridge.hexadecimalDigitsTo d) ih)
+      (fun d ih => cons 4 (NativeBridge.hexadecimalDigitsTo d) ih)
+      (fun d ih => cons 5 (NativeBridge.hexadecimalDigitsTo d) ih)
+      (fun d ih => cons 6 (NativeBridge.hexadecimalDigitsTo d) ih)
+      (fun d ih => cons 7 (NativeBridge.hexadecimalDigitsTo d) ih)
+      (fun d ih => cons 8 (NativeBridge.hexadecimalDigitsTo d) ih)
+      (fun d ih => cons 9 (NativeBridge.hexadecimalDigitsTo d) ih)
+      (fun d ih => cons 10 (NativeBridge.hexadecimalDigitsTo d) ih)
+      (fun d ih => cons 11 (NativeBridge.hexadecimalDigitsTo d) ih)
+      (fun d ih => cons 12 (NativeBridge.hexadecimalDigitsTo d) ih)
+      (fun d ih => cons 13 (NativeBridge.hexadecimalDigitsTo d) ih)
+      (fun d ih => cons 14 (NativeBridge.hexadecimalDigitsTo d) ih)
+      (fun d ih => cons 15 (NativeBridge.hexadecimalDigitsTo d) ih) d =
+    NativeBridge.Incremental.HexadecimalRepresentation.digitsRec P nil cons (NativeBridge.hexadecimalDigitsTo d)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Hexadecimal.uint_rec
+
+NativeBridge.Incremental.HexadecimalRepresentation.uint_rec_agrees
+
+目标：NativeBridge.Incremental.HexadecimalRepresentation.digitsRec；范围：Full native dependent motive over List (Fin 16); source branch family indexed by the sixteen digits, corresponding to List.rec. rect is Sort-polymorphic; rec returns Type.
+
+```lean
+∀ (P : List (Fin 16) → Type) (nil : P []) (cons : (d : Fin 16) → (ds : List (Fin 16)) → P ds → P (d :: ds))
+  (d : NativeBridge.Incremental.HexadecimalRepresentation.U),
+  Rocq.Corelib.Init.Hexadecimal.uint_rec (fun d => P (NativeBridge.hexadecimalDigitsTo d)) nil
+      (fun d ih => cons 0 (NativeBridge.hexadecimalDigitsTo d) ih)
+      (fun d ih => cons 1 (NativeBridge.hexadecimalDigitsTo d) ih)
+      (fun d ih => cons 2 (NativeBridge.hexadecimalDigitsTo d) ih)
+      (fun d ih => cons 3 (NativeBridge.hexadecimalDigitsTo d) ih)
+      (fun d ih => cons 4 (NativeBridge.hexadecimalDigitsTo d) ih)
+      (fun d ih => cons 5 (NativeBridge.hexadecimalDigitsTo d) ih)
+      (fun d ih => cons 6 (NativeBridge.hexadecimalDigitsTo d) ih)
+      (fun d ih => cons 7 (NativeBridge.hexadecimalDigitsTo d) ih)
+      (fun d ih => cons 8 (NativeBridge.hexadecimalDigitsTo d) ih)
+      (fun d ih => cons 9 (NativeBridge.hexadecimalDigitsTo d) ih)
+      (fun d ih => cons 10 (NativeBridge.hexadecimalDigitsTo d) ih)
+      (fun d ih => cons 11 (NativeBridge.hexadecimalDigitsTo d) ih)
+      (fun d ih => cons 12 (NativeBridge.hexadecimalDigitsTo d) ih)
+      (fun d ih => cons 13 (NativeBridge.hexadecimalDigitsTo d) ih)
+      (fun d ih => cons 14 (NativeBridge.hexadecimalDigitsTo d) ih)
+      (fun d ih => cons 15 (NativeBridge.hexadecimalDigitsTo d) ih) d =
+    NativeBridge.Incremental.HexadecimalRepresentation.digitsRec P nil cons (NativeBridge.hexadecimalDigitsTo d)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Hexadecimal.uint_ind
+
+NativeBridge.Incremental.HexadecimalRepresentation.uint_ind_correspondence
+
+目标：NativeBridge.Incremental.HexadecimalRepresentation.digitInduction；范围：Full native statement; original statement and native statement separately proved.
+
+```lean
+Rocq.Corelib.Init.Hexadecimal.uint_ind.statement ↔ NativeBridge.Incremental.HexadecimalRepresentation.digitInduction
+```
+
+公理闭包：空
+
+## Corelib.Init.Hexadecimal.uint_sind
+
+NativeBridge.Incremental.HexadecimalRepresentation.uint_sind_correspondence
+
+目标：NativeBridge.Incremental.HexadecimalRepresentation.digitInduction；范围：Full native statement; original statement and native statement separately proved.
+
+```lean
+Rocq.Corelib.Init.Hexadecimal.uint_sind.statement ↔ NativeBridge.Incremental.HexadecimalRepresentation.digitInduction
+```
+
+公理闭包：空
+
+## Corelib.Init.Hexadecimal.internal_hexadecimal_dec_bl
+
+NativeBridge.Incremental.HexadecimalRepresentation.hexadecimal_dec_bl_correspondence
+
+目标：NativeBridge.Incremental.HexadecimalRepresentation.equalitySound；范围：Full native statement; original statement and native statement separately proved.
+
+```lean
+Rocq.Corelib.Init.Hexadecimal.internal_hexadecimal_dec_bl.statement ↔
+  NativeBridge.Incremental.HexadecimalRepresentation.equalitySound
+```
+
+公理闭包：propext
+
+## Corelib.Init.Hexadecimal.internal_hexadecimal_dec_lb
+
+NativeBridge.Incremental.HexadecimalRepresentation.hexadecimal_dec_lb_correspondence
+
+目标：NativeBridge.Incremental.HexadecimalRepresentation.equalityComplete；范围：Full native statement; original statement and native statement separately proved.
+
+```lean
+Rocq.Corelib.Init.Hexadecimal.internal_hexadecimal_dec_lb.statement ↔
+  NativeBridge.Incremental.HexadecimalRepresentation.equalityComplete
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Init.Hexadecimal.uint_eq_dec
+
+NativeBridge.Incremental.HexadecimalRepresentation.uint_eq_dec_agrees
+
+目标：NativeBridge.Incremental.HexadecimalRepresentation.nativeDecision；范围：All inputs; complete Decidable equality on lossless native representation. Four extracted proof prerequisites closed explicitly; source sumbool maps to the unique native decision.
+
+```lean
+∀ (x y : NativeBridge.Incremental.HexadecimalRepresentation.U),
+  NativeBridge.Incremental.HexadecimalRepresentation.eqDecisionTo NativeBridge.hexadecimalDigitsIso x y
+      (RocqPending.Corelib.Init.Hexadecimal.uint_eq_dec x y) =
+    NativeBridge.Incremental.HexadecimalRepresentation.nativeDecision (NativeBridge.hexadecimalDigitsTo x)
+      (NativeBridge.hexadecimalDigitsTo y)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Init.Hexadecimal.signed_int_eq_dec
+
+NativeBridge.Incremental.HexadecimalRepresentation.signed_int_eq_dec_agrees
+
+目标：NativeBridge.Incremental.HexadecimalRepresentation.nativeDecision；范围：All inputs; complete Decidable equality on lossless native representation. Four extracted proof prerequisites closed explicitly; source sumbool maps to the unique native decision.
+
+```lean
+∀ (x y : NativeBridge.Incremental.HexadecimalRepresentation.S),
+  NativeBridge.Incremental.HexadecimalRepresentation.eqDecisionTo NativeBridge.Incremental.Hexadecimal.signedIso x y
+      (RocqPending.Corelib.Init.Hexadecimal.signed_int_eq_dec x y) =
+    NativeBridge.Incremental.HexadecimalRepresentation.nativeDecision (NativeBridge.Incremental.Hexadecimal.signedTo x)
+      (NativeBridge.Incremental.Hexadecimal.signedTo y)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Init.Hexadecimal.hexadecimal_eq_dec
+
+NativeBridge.Incremental.HexadecimalRepresentation.hexadecimal_eq_dec_agrees
+
+目标：NativeBridge.Incremental.HexadecimalRepresentation.nativeDecision；范围：All inputs; complete Decidable equality on lossless native representation. Four extracted proof prerequisites closed explicitly; source sumbool maps to the unique native decision.
+
+```lean
+∀ (x y : NativeBridge.Incremental.HexadecimalRepresentation.D),
+  NativeBridge.Incremental.HexadecimalRepresentation.eqDecisionTo
+      NativeBridge.Incremental.HexadecimalRepresentation.hexadecimalIso x y
+      (RocqPending.Corelib.Init.Hexadecimal.hexadecimal_eq_dec x y) =
+    NativeBridge.Incremental.HexadecimalRepresentation.nativeDecision
+      (NativeBridge.Incremental.HexadecimalRepresentation.hexadecimalTo x)
+      (NativeBridge.Incremental.HexadecimalRepresentation.hexadecimalTo y)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Init.Number.number
+
+NativeBridge.Incremental.NumberRepresentation.numberIso
+
+目标：NativeBridge.Incremental.NumberRepresentation.NumberNative；范围：Sum of lossless decimal/hexadecimal numeral records; retains format tag, leading zeros, signs and optional decimal exponent.
+
+```lean
+NativeBridge.Iso Rocq.Corelib.Init.Number.number NativeBridge.Incremental.NumberRepresentation.NumberNative
+```
+
+公理闭包：propext
+
+## Corelib.Init.Number.uint_beq
+
+NativeBridge.Incremental.NumberRepresentation.uint_beq_agrees
+
+目标：NativeBridge.Incremental.NumberRepresentation.nativeEqual；范围：All inputs; native structural equality of the tagged representation, not equality of evaluated numeric values.
+
+```lean
+∀ (x y : Rocq.Corelib.Init.Number.uint),
+  NativeBridge.Incremental.NumberRepresentation.digitBoolTo (Rocq.Corelib.Init.Number.uint_beq x y) =
+    NativeBridge.Incremental.NumberRepresentation.nativeEqual (NativeBridge.Incremental.NumberRepresentation.toUInt x)
+      (NativeBridge.Incremental.NumberRepresentation.toUInt y)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Number.signed_int_beq
+
+NativeBridge.Incremental.NumberRepresentation.signed_int_beq_agrees
+
+目标：NativeBridge.Incremental.NumberRepresentation.nativeEqual；范围：All inputs; native structural equality of the tagged representation, not equality of evaluated numeric values.
+
+```lean
+∀ (x y : Rocq.Corelib.Init.Number.signed_int),
+  NativeBridge.Incremental.NumberRepresentation.digitBoolTo (Rocq.Corelib.Init.Number.signed_int_beq x y) =
+    NativeBridge.Incremental.NumberRepresentation.nativeEqual (NativeBridge.Incremental.NumberRepresentation.toSigned x)
+      (NativeBridge.Incremental.NumberRepresentation.toSigned y)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Number.number_beq
+
+NativeBridge.Incremental.NumberRepresentation.number_beq_agrees
+
+目标：NativeBridge.Incremental.NumberRepresentation.nativeEqual；范围：All inputs; native structural equality of the tagged representation, not equality of evaluated numeric values.
+
+```lean
+∀ (x y : Rocq.Corelib.Init.Number.number),
+  NativeBridge.Incremental.NumberRepresentation.digitBoolTo (Rocq.Corelib.Init.Number.number_beq x y) =
+    NativeBridge.Incremental.NumberRepresentation.nativeEqual (NativeBridge.Incremental.NumberRepresentation.toNumber x)
+      (NativeBridge.Incremental.NumberRepresentation.toNumber y)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Number.uint_of_uint
+
+NativeBridge.Incremental.NumberRepresentation.uint_of_uint_agrees
+
+目标：id；范围：All tagged unsigned/signed digit representations; identity operation.
+
+```lean
+∀ (x : Rocq.Corelib.Init.Number.uint),
+  NativeBridge.Incremental.NumberRepresentation.toUInt (Rocq.Corelib.Init.Number.uint_of_uint x) =
+    id (NativeBridge.Incremental.NumberRepresentation.toUInt x)
+```
+
+公理闭包：空
+
+## Corelib.Init.Number.int_of_int
+
+NativeBridge.Incremental.NumberRepresentation.int_of_int_agrees
+
+目标：id；范围：All tagged unsigned/signed digit representations; identity operation.
+
+```lean
+∀ (x : Rocq.Corelib.Init.Number.signed_int),
+  NativeBridge.Incremental.NumberRepresentation.toSigned (Rocq.Corelib.Init.Number.int_of_int x) =
+    id (NativeBridge.Incremental.NumberRepresentation.toSigned x)
+```
+
+公理闭包：空
+
+## Corelib.Init.Number.internal_uint_dec_bl1
+
+NativeBridge.Incremental.NumberRepresentation.uint_dec_bl_correspondence
+
+目标：NativeBridge.Incremental.NumberRepresentation.equalitySound；范围：Full native reflection statement for tagged structural equality; original statement independently proved.
+
+```lean
+Rocq.Corelib.Init.Number.internal_uint_dec_bl1.statement ↔
+  NativeBridge.Incremental.NumberRepresentation.equalitySound NativeBridge.Incremental.NumberRepresentation.UIntNative
+```
+
+公理闭包：propext
+
+## Corelib.Init.Number.internal_uint_dec_lb1
+
+NativeBridge.Incremental.NumberRepresentation.uint_dec_lb_correspondence
+
+目标：NativeBridge.Incremental.NumberRepresentation.equalityComplete；范围：Full native reflection statement for tagged structural equality; original statement independently proved.
+
+```lean
+Rocq.Corelib.Init.Number.internal_uint_dec_lb1.statement ↔
+  NativeBridge.Incremental.NumberRepresentation.equalityComplete
+    NativeBridge.Incremental.NumberRepresentation.UIntNative
+```
+
+公理闭包：propext
+
+## Corelib.Init.Number.internal_signed_int_dec_bl1
+
+NativeBridge.Incremental.NumberRepresentation.signed_int_dec_bl_correspondence
+
+目标：NativeBridge.Incremental.NumberRepresentation.equalitySound；范围：Full native reflection statement for tagged structural equality; original statement independently proved.
+
+```lean
+Rocq.Corelib.Init.Number.internal_signed_int_dec_bl1.statement ↔
+  NativeBridge.Incremental.NumberRepresentation.equalitySound NativeBridge.Incremental.NumberRepresentation.SignedNative
+```
+
+公理闭包：propext
+
+## Corelib.Init.Number.internal_signed_int_dec_lb1
+
+NativeBridge.Incremental.NumberRepresentation.signed_int_dec_lb_correspondence
+
+目标：NativeBridge.Incremental.NumberRepresentation.equalityComplete；范围：Full native reflection statement for tagged structural equality; original statement independently proved.
+
+```lean
+Rocq.Corelib.Init.Number.internal_signed_int_dec_lb1.statement ↔
+  NativeBridge.Incremental.NumberRepresentation.equalityComplete
+    NativeBridge.Incremental.NumberRepresentation.SignedNative
+```
+
+公理闭包：propext
+
+## Corelib.Init.Number.internal_number_dec_bl
+
+NativeBridge.Incremental.NumberRepresentation.number_dec_bl_correspondence
+
+目标：NativeBridge.Incremental.NumberRepresentation.equalitySound；范围：Full native reflection statement for tagged structural equality; original statement independently proved.
+
+```lean
+Rocq.Corelib.Init.Number.internal_number_dec_bl.statement ↔
+  NativeBridge.Incremental.NumberRepresentation.equalitySound NativeBridge.Incremental.NumberRepresentation.NumberNative
+```
+
+公理闭包：propext
+
+## Corelib.Init.Number.internal_number_dec_lb
+
+NativeBridge.Incremental.NumberRepresentation.number_dec_lb_correspondence
+
+目标：NativeBridge.Incremental.NumberRepresentation.equalityComplete；范围：Full native reflection statement for tagged structural equality; original statement independently proved.
+
+```lean
+Rocq.Corelib.Init.Number.internal_number_dec_lb.statement ↔
+  NativeBridge.Incremental.NumberRepresentation.equalityComplete
+    NativeBridge.Incremental.NumberRepresentation.NumberNative
+```
+
+公理闭包：propext
+
+## Corelib.Init.Number.uint_eq_dec
+
+NativeBridge.Incremental.NumberRepresentation.uint_eq_dec_agrees
+
+目标：NativeBridge.Incremental.NumberRepresentation.nativeDecision；范围：All inputs; complete native Decidable equality derived from the proved lawful structural BEq. Four source proof prerequisites closed explicitly.
+
+```lean
+∀ (x y : Rocq.Corelib.Init.Number.uint),
+  NativeBridge.Incremental.NumberRepresentation.eqDecisionTo NativeBridge.Incremental.NumberRepresentation.uintIso x y
+      (RocqPending.Corelib.Init.Number.uint_eq_dec x y) =
+    NativeBridge.Incremental.NumberRepresentation.nativeDecision
+      (NativeBridge.Incremental.NumberRepresentation.toUInt x) (NativeBridge.Incremental.NumberRepresentation.toUInt y)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Number.signed_int_eq_dec
+
+NativeBridge.Incremental.NumberRepresentation.signed_int_eq_dec_agrees
+
+目标：NativeBridge.Incremental.NumberRepresentation.nativeDecision；范围：All inputs; complete native Decidable equality derived from the proved lawful structural BEq. Four source proof prerequisites closed explicitly.
+
+```lean
+∀ (x y : Rocq.Corelib.Init.Number.signed_int),
+  NativeBridge.Incremental.NumberRepresentation.eqDecisionTo NativeBridge.Incremental.NumberRepresentation.signed_intIso
+      x y (RocqPending.Corelib.Init.Number.signed_int_eq_dec x y) =
+    NativeBridge.Incremental.NumberRepresentation.nativeDecision
+      (NativeBridge.Incremental.NumberRepresentation.toSigned x)
+      (NativeBridge.Incremental.NumberRepresentation.toSigned y)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Number.number_eq_dec
+
+NativeBridge.Incremental.NumberRepresentation.number_eq_dec_agrees
+
+目标：NativeBridge.Incremental.NumberRepresentation.nativeDecision；范围：All inputs; complete native Decidable equality derived from the proved lawful structural BEq. Four source proof prerequisites closed explicitly.
+
+```lean
+∀ (x y : Rocq.Corelib.Init.Number.number),
+  NativeBridge.Incremental.NumberRepresentation.eqDecisionTo NativeBridge.Incremental.NumberRepresentation.numberIso x y
+      (RocqPending.Corelib.Init.Number.number_eq_dec x y) =
+    NativeBridge.Incremental.NumberRepresentation.nativeDecision
+      (NativeBridge.Incremental.NumberRepresentation.toNumber x)
+      (NativeBridge.Incremental.NumberRepresentation.toNumber y)
+```
+
+公理闭包：propext
+
 ## Corelib.ssr.ssrbool.canLR_in
 
 NativeBridge.Incremental.SSRBoolClosedStatements.RocqPending.Corelib.ssr.ssrbool.canLR_in.statement.correspondence

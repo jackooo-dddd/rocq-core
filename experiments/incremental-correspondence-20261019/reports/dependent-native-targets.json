@@ -963,5 +963,205 @@
     "name": "List.foldr",
     "native_expression": "fun {α} {β} f init x => List.brecOn x (List.foldr._f f init)",
     "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.BinaryElimination.positiveRec",
+    "native_expression": "fun P odd even one =>\n  WellFounded.Nat.fix (fun x => x.val) fun p a =>\n    if h : p.val = 1 then ⋯ ▸ one\n    else\n      have hp := ⋯;\n      let q := ⟨p.val / 2, ⋯⟩;\n      if he : p.val % 2 = 0 then ⋯ ▸ even q (a q ⋯) else ⋯ ▸ odd q (a q ⋯)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.BinaryElimination.natCases",
+    "native_expression": "fun P zero pos x =>\n  match x with\n  | 0 => zero\n  | n.succ => pos ⟨n + 1, ⋯⟩",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.BinaryElimination.intCases",
+    "native_expression": "fun P zero pos neg x =>\n  match x with\n  | Int.ofNat 0 => zero\n  | Int.ofNat n.succ => pos ⟨n + 1, ⋯⟩\n  | Int.negSucc n => neg ⟨n + 1, ⋯⟩",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.BinaryElimination.positiveInduction",
+    "native_expression": "∀ (P : NativeBridge.Incremental.BinaryElimination.PositiveNat → Prop),\n  (∀ (p : NativeBridge.Incremental.BinaryElimination.PositiveNat),\n      P p → P (NativeBridge.Incremental.BinaryElimination.positiveOdd p)) →\n    (∀ (p : NativeBridge.Incremental.BinaryElimination.PositiveNat),\n        P p → P (NativeBridge.Incremental.BinaryElimination.positiveEven p)) →\n      P NativeBridge.Incremental.BinaryElimination.positiveOne →\n        ∀ (p : NativeBridge.Incremental.BinaryElimination.PositiveNat), P p",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.BinaryElimination.natInduction",
+    "native_expression": "∀ (P : Nat → Prop), P 0 → (∀ (p : NativeBridge.Incremental.BinaryElimination.PositiveNat), P p.val) → ∀ (n : Nat), P n",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.BinaryElimination.intInduction",
+    "native_expression": "∀ (P : Int → Prop),\n  P 0 →\n    (∀ (p : NativeBridge.Incremental.BinaryElimination.PositiveNat), P (Int.ofNat p.val)) →\n      (∀ (p : NativeBridge.Incremental.BinaryElimination.PositiveNat), P (-Int.ofNat p.val)) → ∀ (z : Int), P z",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.DecimalRepresentation.DecimalNative",
+    "native_expression": "NativeBridge.Incremental.DecimalRepresentation.SignedDigits ×\n  List (Fin 10) × Option NativeBridge.Incremental.DecimalRepresentation.SignedDigits",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.DecimalRepresentation.decimalEqual",
+    "native_expression": "fun x y => x == y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.DecimalRepresentation.digitInduction",
+    "native_expression": "∀ (P : List (Fin 10) → Prop),\n  P [] → (∀ (d : Fin 10) (ds : List (Fin 10)), P ds → P (d :: ds)) → ∀ (ds : List (Fin 10)), P ds",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.DecimalRepresentation.digitsRec",
+    "native_expression": "fun P nil cons ds => List.rec nil cons ds",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.DecimalRepresentation.dropHead",
+    "native_expression": "fun n d => if d.length < n then [0] else List.drop n d",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.DecimalRepresentation.dropHeadInt",
+    "native_expression": "fun n d => NativeBridge.Incremental.DecimalRepresentation.dropHead n d.snd",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.DecimalRepresentation.dropTail",
+    "native_expression": "fun n d => (NativeBridge.Incremental.DecimalRepresentation.dropHead n d.reverse).reverse",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.DecimalRepresentation.dropTailInt",
+    "native_expression": "fun n d => (d.fst, NativeBridge.Incremental.DecimalRepresentation.dropTail n d.snd)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.DecimalRepresentation.equalityComplete",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.DecimalRepresentation.DecimalNative),\n  x = y → NativeBridge.Incremental.DecimalRepresentation.decimalEqual x y = true",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.DecimalRepresentation.equalitySound",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.DecimalRepresentation.DecimalNative),\n  NativeBridge.Incremental.DecimalRepresentation.decimalEqual x y = true → x = y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.DecimalRepresentation.littleDouble",
+    "native_expression": "fun carry x =>\n  List.brecOn (motive := fun x => Bool → List (Fin 10)) x NativeBridge.Incremental.DecimalRepresentation.littleDouble._f\n    carry",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.DecimalRepresentation.nativeDecision",
+    "native_expression": "fun {A} [DecidableEq A] x y => inferInstance",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.DecimalRepresentation.trimTail",
+    "native_expression": "fun d =>\n  have x := NativeBridge.Incremental.DecimalRepresentation.trimHead d.reverse;\n  (x.fst.reverse, x.snd)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.DecimalRepresentation.trimTailInt",
+    "native_expression": "fun d =>\n  have x := NativeBridge.Incremental.DecimalRepresentation.trimTail d.snd;\n  ((d.fst, x.fst), x.snd)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "id",
+    "native_expression": "fun {α} a => a",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.HexadecimalRepresentation.HexadecimalNative",
+    "native_expression": "NativeBridge.Incremental.HexadecimalRepresentation.SignedDigits × List (Fin 16) × Option (Bool × List (Fin 10))",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.HexadecimalRepresentation.digitInduction",
+    "native_expression": "∀ (P : List (Fin 16) → Prop),\n  P [] → (∀ (d : Fin 16) (ds : List (Fin 16)), P ds → P (d :: ds)) → ∀ (ds : List (Fin 16)), P ds",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.HexadecimalRepresentation.digitsRec",
+    "native_expression": "fun P nil cons ds => List.rec nil cons ds",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.HexadecimalRepresentation.dropHead",
+    "native_expression": "fun n d => if d.length < n then [0] else List.drop n d",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.HexadecimalRepresentation.dropHeadInt",
+    "native_expression": "fun n d => NativeBridge.Incremental.HexadecimalRepresentation.dropHead n d.snd",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.HexadecimalRepresentation.dropTail",
+    "native_expression": "fun n d => (NativeBridge.Incremental.HexadecimalRepresentation.dropHead n d.reverse).reverse",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.HexadecimalRepresentation.dropTailInt",
+    "native_expression": "fun n d => (d.fst, NativeBridge.Incremental.HexadecimalRepresentation.dropTail n d.snd)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.HexadecimalRepresentation.equalityComplete",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.HexadecimalRepresentation.HexadecimalNative),\n  x = y → NativeBridge.Incremental.HexadecimalRepresentation.hexadecimalEqual x y = true",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.HexadecimalRepresentation.equalitySound",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.HexadecimalRepresentation.HexadecimalNative),\n  NativeBridge.Incremental.HexadecimalRepresentation.hexadecimalEqual x y = true → x = y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.HexadecimalRepresentation.hexadecimalEqual",
+    "native_expression": "fun x y => x == y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.HexadecimalRepresentation.littleDouble",
+    "native_expression": "fun carry x =>\n  List.brecOn (motive := fun x => Bool → List (Fin 16)) x\n    NativeBridge.Incremental.HexadecimalRepresentation.littleDouble._f carry",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.HexadecimalRepresentation.nativeDecision",
+    "native_expression": "fun {A} [DecidableEq A] x y => inferInstance",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.HexadecimalRepresentation.trimTail",
+    "native_expression": "fun d =>\n  have x := NativeBridge.Incremental.HexadecimalRepresentation.trimHead d.reverse;\n  (x.fst.reverse, x.snd)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.HexadecimalRepresentation.trimTailInt",
+    "native_expression": "fun d =>\n  have x := NativeBridge.Incremental.HexadecimalRepresentation.trimTail d.snd;\n  ((d.fst, x.fst), x.snd)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.NumberRepresentation.NumberNative",
+    "native_expression": "NativeBridge.Incremental.NumberRepresentation.DecimalPart.DecimalNative ⊕\n  NativeBridge.Incremental.NumberRepresentation.HexadecimalPart.HexadecimalNative",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.NumberRepresentation.equalityComplete",
+    "native_expression": "fun A [BEq A] => ∀ (x y : A), x = y → NativeBridge.Incremental.NumberRepresentation.nativeEqual x y = true",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.NumberRepresentation.equalitySound",
+    "native_expression": "fun A [BEq A] => ∀ (x y : A), NativeBridge.Incremental.NumberRepresentation.nativeEqual x y = true → x = y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.NumberRepresentation.nativeDecision",
+    "native_expression": "fun {A} [BEq A] [LawfulBEq A] x y => if h : (x == y) = true then isTrue ⋯ else isFalse ⋯",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.NumberRepresentation.nativeEqual",
+    "native_expression": "fun {A} [BEq A] x y => x == y",
+    "remaining_source_symbols": []
   }
 ]
