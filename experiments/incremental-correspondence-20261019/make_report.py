@@ -4,7 +4,7 @@ W=Path(__file__).resolve().parent;R=W.parents[1];D=W/'reports'
 B=R/'experiments/mechanical-correspondence-20261019/reports'
 specs=json.loads((W/'certificates.json').read_text())
 validation=json.loads((D/'validation.json').read_text())
-assert {r['profile'] for r in validation}=={'Basics','SSR','Iteration','Registry','SSRProperties','SSRBool','SSRBoolStatements','NumericRead','DecimalOperations','HexadecimalOperations','WellFounded','DependentElimination','PairRecursion','DependentStatements','DatatypeElimination','EqualityTransport','BooleanEquality','RelationDefinitions','RelationClasses','RelationClassStatements','VariadicPredicates','VariadicStatements','RelationConditions'}
+assert {r['profile'] for r in validation}=={'Basics','SSR','Iteration','Registry','SSRProperties','SSRBool','SSRBoolStatements','NumericRead','DecimalOperations','HexadecimalOperations','WellFounded','DependentElimination','PairRecursion','DependentStatements','DatatypeElimination','EqualityTransport','BooleanEquality','RelationDefinitions','RelationClasses','RelationClassStatements','VariadicPredicates','VariadicStatements','RelationConditions','Morphisms','MorphismStatements'}
 audits={}
 for r in validation:
  assert r['exit']==0 and r['audit_present'],r
@@ -14,7 +14,8 @@ base=list(csv.DictReader((B/'CORELIB_LEDGER.csv').open()))
 rows={r['source']:dict(r,baseline_bridge_status=r['bridge_status'],evidence_origin='inherited baseline',new_certificates='') for r in base}
 automatic_groups=[
  ('SSRBoolStatements','statement-selection.json','statement-candidates.json',216),
- ('RelationClassStatements','relation-statement-selection.json','relation-statement-candidates.json',65)]
+ ('RelationClassStatements','relation-statement-selection.json','relation-statement-candidates.json',65),
+ ('MorphismStatements','morphism-statement-selection.json','morphism-statement-candidates.json',55)]
 automatic_group_counts={}
 for profile,selection_file,output_file,expected_count in automatic_groups:
  selection={x['target']:x['source'] for x in json.loads((W/selection_file).read_text())}
@@ -96,7 +97,7 @@ def writecsv(path,rs):
  with path.open('w',newline='') as f:
   w=csv.DictWriter(f,fieldnames=list(rs[0]));w.writeheader();w.writerows(rs)
 module_coverage=[]
-for module,total in [('Corelib.Relations.Relation_Definitions',23),('Corelib.Classes.RelationClasses',103)]:
+for module,total in [('Corelib.Relations.Relation_Definitions',23),('Corelib.Classes.RelationClasses',103),('Corelib.Classes.Morphisms',87)]:
  rs=[r for r in rows.values() if r['module']==module]
  assert len(rs)==total
  assert all(r['bridge_status'] in {'TYPE_ISO','OPERATION_CORRESPONDENCE','STATEMENT_FULL_NATIVE'} for r in rs)
@@ -125,7 +126,7 @@ summary={'alias_regression_profiles':45,'alias_regression_lost':0,'alias_regress
  'correspondence_conditions_remaining':counts['EXPLICIT_PROOF_PARAMETERS'],
  'condition_resolved_roots':len({r['source'] for r in resolved_conditions}),
  'closed_obligation_witnesses':len({w['name'] for r in resolved_conditions for w in r['witnesses']}),
- 'full_sort_type_certificates_added':6,'completion':'nine incremental batches; overall plan remains incomplete',
+ 'full_sort_type_certificates_added':6,'completion':'ten incremental batches; overall plan remains incomplete',
  'explicit_target_classes_since_batch_3':dict(collections.Counter(sp['target_class'] for sp in specs if 'target_class' in sp))}
 assert sum(counts.values())==2180
 (D/'summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2))

@@ -147,3 +147,12 @@ flowchart TD
     原生关系转换 + 3 个无公理义务 → 2 个条件陈述闭合
 
 两个模块的 126 根覆盖由逐根账本核对；这里不表示其他 Classes 模块已完成。
+
+## 第十批：关系保持与 Morphisms
+
+    关系桥接 + 原生函数量词 → Proper / respectful / pointwise / forall relation
+    四个空标记构造器 → True 的 Iso
+    上述证书 + compose/impl/pointwise 整体函数等式 → 55 个完整原生陈述
+    载体 Iso + 显式运算对应 + 原生保持关系证明 → 机械 Proper
+
+重复关系辅助证明在 Morphisms 导出闭包内重检，不重复计入源根。
