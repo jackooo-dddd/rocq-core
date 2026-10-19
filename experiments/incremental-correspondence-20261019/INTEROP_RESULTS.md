@@ -80,3 +80,5 @@ opaque 支持的独立验证见 interop/check_opaque.py 与 reports/interop/opaq
 第五十五至五十六批：新增 Uint63Operations、Uint63Conversions，106 个覆盖 profile、1637 份证书共同导入通过；2203 个入口、16332 个依赖副本。BitVec.Lemmas 保持原生声明身份，当前 manifest 与注册表一致。
 
 第五十七至五十九批：新增 Uint63Statements、Uint63DefinitionSpecs、Uint63OrderSpecs。109 个覆盖 profile、1652 份证书共同导入，2233 个入口、16814 个依赖副本。新增 15 个原陈述证明随证书依赖闭包封装，当前 coverage manifest 一致。
+
+第六十至六十二批：Uint63ArithmeticSpecs、Uint63ShiftSpecs、Uint63CountSpecs 及其重检的算术依赖。112 个覆盖 profile、1661 份证书共同导入，2251 个入口、17904 个依赖副本。共享 Uint63ArithmeticSupport 不单独增加覆盖根。

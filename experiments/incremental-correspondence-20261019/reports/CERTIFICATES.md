@@ -13455,6 +13455,123 @@ Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.leb_spec.statement ↔
 
 公理闭包：propext, Classical.choice, Quot.sound
 
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.add_spec
+
+NativeBridge.Incremental.Uint63ArithmeticSpecs.addSpec_correspondence
+
+目标：NativeBridge.Incremental.Uint63ArithmeticSpecs.addSpec；范围：All 63-bit inputs including division by zero and subtraction underflow. Native Int.fdiv/fmod retain source floor-division semantics; addition, subtraction and multiplication are reduced modulo 2^63. Original source statement independently proved.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.add_spec.statement ↔
+  NativeBridge.Incremental.Uint63ArithmeticSpecs.addSpec
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.sub_spec
+
+NativeBridge.Incremental.Uint63ArithmeticSpecs.subSpec_correspondence
+
+目标：NativeBridge.Incremental.Uint63ArithmeticSpecs.subSpec；范围：All 63-bit inputs including division by zero and subtraction underflow. Native Int.fdiv/fmod retain source floor-division semantics; addition, subtraction and multiplication are reduced modulo 2^63. Original source statement independently proved.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.sub_spec.statement ↔
+  NativeBridge.Incremental.Uint63ArithmeticSpecs.subSpec
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.mul_spec
+
+NativeBridge.Incremental.Uint63ArithmeticSpecs.mulSpec_correspondence
+
+目标：NativeBridge.Incremental.Uint63ArithmeticSpecs.mulSpec；范围：All 63-bit inputs including division by zero and subtraction underflow. Native Int.fdiv/fmod retain source floor-division semantics; addition, subtraction and multiplication are reduced modulo 2^63. Original source statement independently proved.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.mul_spec.statement ↔
+  NativeBridge.Incremental.Uint63ArithmeticSpecs.mulSpec
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.div_spec
+
+NativeBridge.Incremental.Uint63ArithmeticSpecs.divSpec_correspondence
+
+目标：NativeBridge.Incremental.Uint63ArithmeticSpecs.divSpec；范围：All 63-bit inputs including division by zero and subtraction underflow. Native Int.fdiv/fmod retain source floor-division semantics; addition, subtraction and multiplication are reduced modulo 2^63. Original source statement independently proved.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.div_spec.statement ↔
+  NativeBridge.Incremental.Uint63ArithmeticSpecs.divSpec
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.mod_spec
+
+NativeBridge.Incremental.Uint63ArithmeticSpecs.modSpec_correspondence
+
+目标：NativeBridge.Incremental.Uint63ArithmeticSpecs.modSpec；范围：All 63-bit inputs including division by zero and subtraction underflow. Native Int.fdiv/fmod retain source floor-division semantics; addition, subtraction and multiplication are reduced modulo 2^63. Original source statement independently proved.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.mod_spec.statement ↔
+  NativeBridge.Incremental.Uint63ArithmeticSpecs.modSpec
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.lsl_spec
+
+NativeBridge.Incremental.Uint63ShiftSpecs.leftShiftSpec_correspondence
+
+目标：NativeBridge.Incremental.Uint63ShiftSpecs.leftShiftSpec；范围：All word-valued shift counts, including counts >=63. Left shift is multiplication by 2^p modulo 2^63; right shift is unsigned floor division by 2^p. Original source statements independently proved.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.lsl_spec.statement ↔
+  NativeBridge.Incremental.Uint63ShiftSpecs.leftShiftSpec
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.lsr_spec
+
+NativeBridge.Incremental.Uint63ShiftSpecs.rightShiftSpec_correspondence
+
+目标：NativeBridge.Incremental.Uint63ShiftSpecs.rightShiftSpec；范围：All word-valued shift counts, including counts >=63. Left shift is multiplication by 2^p modulo 2^63; right shift is unsigned floor division by 2^p. Original source statements independently proved.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.lsr_spec.statement ↔
+  NativeBridge.Incremental.Uint63ShiftSpecs.rightShiftSpec
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.head0_spec
+
+NativeBridge.Incremental.Uint63CountSpecs.leadingZeroSpec_correspondence
+
+目标：NativeBridge.Incremental.Uint63CountSpecs.leadingZeroSpec；范围：All nonzero word inputs, preserving the original premise. clz gives the normalization bounds; ctz gives an odd-factor decomposition with a nonnegative witness. Source existential witnesses are explicitly built using the Z isomorphism. Original source statements independently proved.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.head0_spec.statement ↔
+  NativeBridge.Incremental.Uint63CountSpecs.leadingZeroSpec
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.tail0_spec
+
+NativeBridge.Incremental.Uint63CountSpecs.trailingZeroSpec_correspondence
+
+目标：NativeBridge.Incremental.Uint63CountSpecs.trailingZeroSpec；范围：All nonzero word inputs, preserving the original premise. clz gives the normalization bounds; ctz gives an odd-factor decomposition with a nonnegative witness. Source existential witnesses are explicitly built using the Z isomorphism. Original source statements independently proved.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.tail0_spec.statement ↔
+  NativeBridge.Incremental.Uint63CountSpecs.trailingZeroSpec
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
 ## Corelib.ssr.ssrbool.canLR_in
 
 NativeBridge.Incremental.SSRBoolClosedStatements.RocqPending.Corelib.ssr.ssrbool.canLR_in.statement.correspondence

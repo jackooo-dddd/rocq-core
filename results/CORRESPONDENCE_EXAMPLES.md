@@ -223,3 +223,9 @@ Decimal.decimal 对应“带符号整数数字、小数数字、可选带符号�
 [Uint63Statements.lean](../experiments/incremental-correspondence-20261019/proofs/Uint63Statements.lean) 使用 BitVec.getLsbD 的 AND／OR／XOR 方程，结合已经证明的 bit 与原语运算对应，构造源 land_spec／lor_spec／lxor_spec 的证明。源结论仍使用机械 bool 与机械 Eq；通过对应转换回去，不把它们直接替换成原生类型。
 
 同一文件证明 of_Z (to_Z x) = x，对所有 63 位输入成立。[Uint63OrderSpecs.lean](../experiments/incremental-correspondence-20261019/proofs/Uint63OrderSpecs.lean) 则把源 Z 比较转到原生 Int 顺序，证明 ltb_spec／leb_spec。
+
+## 24. 把位计数规格证明回机械 Z
+
+[Uint63CountSpecs.lean](../experiments/incremental-correspondence-20261019/proofs/Uint63CountSpecs.lean) 对非零 x 证明 x = (2*y+1)*2^ctz(x)，并显式把原生 Nat 见证 y 转为机械 Z，构造源 exists 证明。例如 x=40 时 ctz=3、y=2；证明覆盖所有输入，并未依靠此例枚举。
+
+同一文件证明前导零给出的正规化范围 2^62 ≤ 2^clz(x)*x < 2^63。两项都复用已经完成的位计数、Z 算术、幂和顺序对应。

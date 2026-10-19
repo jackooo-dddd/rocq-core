@@ -551,3 +551,19 @@ flowchart TD
 ```
 
 前三个规格 profile 已验证，算术支持及剩余 11 项仍在进行。
+
+## 第六十至六十二批及宽运算
+
+```mermaid
+flowchart TD
+  Uint63ArithmeticSupport --> Uint63ArithmeticSpecs
+  Uint63ArithmeticSpecs --> Uint63ShiftSpecs
+  Uint63ShiftSpecs --> Uint63CountSpecs
+  BitVecClzBounds --> Uint63CountSpecs
+  BitVecCtzFirstBit --> OddFactorWitness
+  OddFactorWitness --> Uint63CountSpecs
+  Uint63ArithmeticSpecs --> Uint63WideSpecs
+  DoubleDivisionBounds --> Uint63WideSpecs
+```
+
+算术、移位、计数 profile 已通过审计。宽运算 profile 仍在进行，未加入覆盖统计。

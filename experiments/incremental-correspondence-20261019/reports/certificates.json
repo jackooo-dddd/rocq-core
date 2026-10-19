@@ -16292,6 +16292,168 @@
     ]
   },
   {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.add_spec",
+    "profile": "Uint63ArithmeticSpecs",
+    "certificate": "NativeBridge.Incremental.Uint63ArithmeticSpecs.addSpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Uint63ArithmeticSpecs.addSpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Uint63ArithmeticSpecs.addSpec",
+    "scope": "All 63-bit inputs including division by zero and subtraction underflow. Native Int.fdiv/fmod retain source floor-division semantics; addition, subtraction and multiplication are reduced modulo 2^63. Original source statement independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.Uint63ArithmeticSpecs.addSpec_proof",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.Uint63Operations.Word),\n  Int.ofNat (BitVec.toNat (x + y)) = (Int.ofNat (BitVec.toNat x) + Int.ofNat (BitVec.toNat y)).fmod (2 ^ 63)",
+    "type": "Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.add_spec.statement ↔\n  NativeBridge.Incremental.Uint63ArithmeticSpecs.addSpec",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.sub_spec",
+    "profile": "Uint63ArithmeticSpecs",
+    "certificate": "NativeBridge.Incremental.Uint63ArithmeticSpecs.subSpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Uint63ArithmeticSpecs.subSpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Uint63ArithmeticSpecs.subSpec",
+    "scope": "All 63-bit inputs including division by zero and subtraction underflow. Native Int.fdiv/fmod retain source floor-division semantics; addition, subtraction and multiplication are reduced modulo 2^63. Original source statement independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.Uint63ArithmeticSpecs.subSpec_proof",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.Uint63Operations.Word),\n  Int.ofNat (BitVec.toNat (x - y)) = (Int.ofNat (BitVec.toNat x) - Int.ofNat (BitVec.toNat y)).fmod (2 ^ 63)",
+    "type": "Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.sub_spec.statement ↔\n  NativeBridge.Incremental.Uint63ArithmeticSpecs.subSpec",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.mul_spec",
+    "profile": "Uint63ArithmeticSpecs",
+    "certificate": "NativeBridge.Incremental.Uint63ArithmeticSpecs.mulSpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Uint63ArithmeticSpecs.mulSpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Uint63ArithmeticSpecs.mulSpec",
+    "scope": "All 63-bit inputs including division by zero and subtraction underflow. Native Int.fdiv/fmod retain source floor-division semantics; addition, subtraction and multiplication are reduced modulo 2^63. Original source statement independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.Uint63ArithmeticSpecs.mulSpec_proof",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.Uint63Operations.Word),\n  Int.ofNat (BitVec.toNat (x * y)) = (Int.ofNat (BitVec.toNat x) * Int.ofNat (BitVec.toNat y)).fmod (2 ^ 63)",
+    "type": "Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.mul_spec.statement ↔\n  NativeBridge.Incremental.Uint63ArithmeticSpecs.mulSpec",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.div_spec",
+    "profile": "Uint63ArithmeticSpecs",
+    "certificate": "NativeBridge.Incremental.Uint63ArithmeticSpecs.divSpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Uint63ArithmeticSpecs.divSpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Uint63ArithmeticSpecs.divSpec",
+    "scope": "All 63-bit inputs including division by zero and subtraction underflow. Native Int.fdiv/fmod retain source floor-division semantics; addition, subtraction and multiplication are reduced modulo 2^63. Original source statement independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.Uint63ArithmeticSpecs.divSpec_proof",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.Uint63Operations.Word),\n  Int.ofNat (BitVec.toNat (x / y)) = (Int.ofNat (BitVec.toNat x)).fdiv (Int.ofNat (BitVec.toNat y))",
+    "type": "Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.div_spec.statement ↔\n  NativeBridge.Incremental.Uint63ArithmeticSpecs.divSpec",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.mod_spec",
+    "profile": "Uint63ArithmeticSpecs",
+    "certificate": "NativeBridge.Incremental.Uint63ArithmeticSpecs.modSpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Uint63ArithmeticSpecs.modSpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Uint63ArithmeticSpecs.modSpec",
+    "scope": "All 63-bit inputs including division by zero and subtraction underflow. Native Int.fdiv/fmod retain source floor-division semantics; addition, subtraction and multiplication are reduced modulo 2^63. Original source statement independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.Uint63ArithmeticSpecs.modSpec_proof",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.Uint63Operations.Word),\n  Int.ofNat (BitVec.toNat (x % y)) = (Int.ofNat (BitVec.toNat x)).fmod (Int.ofNat (BitVec.toNat y))",
+    "type": "Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.mod_spec.statement ↔\n  NativeBridge.Incremental.Uint63ArithmeticSpecs.modSpec",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.lsl_spec",
+    "profile": "Uint63ShiftSpecs",
+    "certificate": "NativeBridge.Incremental.Uint63ShiftSpecs.leftShiftSpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Uint63ShiftSpecs.leftShiftSpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Uint63ShiftSpecs.leftShiftSpec",
+    "scope": "All word-valued shift counts, including counts >=63. Left shift is multiplication by 2^p modulo 2^63; right shift is unsigned floor division by 2^p. Original source statements independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.Uint63ShiftSpecs.leftShiftSpec_proof",
+    "native_expression": "∀ (x p : NativeBridge.Incremental.Uint63Operations.Word),\n  Int.ofNat (x <<< BitVec.toNat p).toNat = (Int.ofNat (BitVec.toNat x) * 2 ^ BitVec.toNat p).fmod (2 ^ 63)",
+    "type": "Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.lsl_spec.statement ↔\n  NativeBridge.Incremental.Uint63ShiftSpecs.leftShiftSpec",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.lsr_spec",
+    "profile": "Uint63ShiftSpecs",
+    "certificate": "NativeBridge.Incremental.Uint63ShiftSpecs.rightShiftSpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Uint63ShiftSpecs.rightShiftSpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Uint63ShiftSpecs.rightShiftSpec",
+    "scope": "All word-valued shift counts, including counts >=63. Left shift is multiplication by 2^p modulo 2^63; right shift is unsigned floor division by 2^p. Original source statements independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.Uint63ShiftSpecs.rightShiftSpec_proof",
+    "native_expression": "∀ (x p : NativeBridge.Incremental.Uint63Operations.Word),\n  Int.ofNat (x >>> BitVec.toNat p).toNat = (Int.ofNat (BitVec.toNat x)).fdiv (2 ^ BitVec.toNat p)",
+    "type": "Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.lsr_spec.statement ↔\n  NativeBridge.Incremental.Uint63ShiftSpecs.rightShiftSpec",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.head0_spec",
+    "profile": "Uint63CountSpecs",
+    "certificate": "NativeBridge.Incremental.Uint63CountSpecs.leadingZeroSpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Uint63CountSpecs.leadingZeroSpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Uint63CountSpecs.leadingZeroSpec",
+    "scope": "All nonzero word inputs, preserving the original premise. clz gives the normalization bounds; ctz gives an odd-factor decomposition with a nonnegative witness. Source existential witnesses are explicitly built using the Z isomorphism. Original source statements independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.Uint63CountSpecs.leadingZeroSpec_proof",
+    "native_expression": "∀ (x : NativeBridge.Incremental.Uint63Operations.Word),\n  0 < BitVec.toNat x →\n    2 ^ 62 ≤ 2 ^ (BitVec.clz x).toNat * BitVec.toNat x ∧ 2 ^ (BitVec.clz x).toNat * BitVec.toNat x < 2 ^ 63",
+    "type": "Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.head0_spec.statement ↔\n  NativeBridge.Incremental.Uint63CountSpecs.leadingZeroSpec",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.tail0_spec",
+    "profile": "Uint63CountSpecs",
+    "certificate": "NativeBridge.Incremental.Uint63CountSpecs.trailingZeroSpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Uint63CountSpecs.trailingZeroSpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Uint63CountSpecs.trailingZeroSpec",
+    "scope": "All nonzero word inputs, preserving the original premise. clz gives the normalization bounds; ctz gives an odd-factor decomposition with a nonnegative witness. Source existential witnesses are explicitly built using the Z isomorphism. Original source statements independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.Uint63CountSpecs.trailingZeroSpec_proof",
+    "native_expression": "∀ (x : NativeBridge.Incremental.Uint63Operations.Word),\n  0 < BitVec.toNat x → ∃ y, BitVec.toNat x = (2 * y + 1) * 2 ^ (BitVec.ctz x).toNat",
+    "type": "Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.tail0_spec.statement ↔\n  NativeBridge.Incremental.Uint63CountSpecs.trailingZeroSpec",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
     "source": "Corelib.ssr.ssrbool.canLR_in",
     "profile": "SSRBoolClosedStatements",
     "certificate": "NativeBridge.Incremental.SSRBoolClosedStatements.RocqPending.Corelib.ssr.ssrbool.canLR_in.statement.correspondence",
