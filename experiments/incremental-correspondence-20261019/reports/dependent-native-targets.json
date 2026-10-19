@@ -23,5 +23,20 @@
     "name": "NativeBridge.Incremental.eqSig2HpropIffNative",
     "native_expression": "∀ (A : Sort u) (P Q : A → Prop),\n  (∀ (x : A) (p q : Q x), p = q) →\n    ∀ (s t : { x // P x ∧ Q x }),\n      s = t ↔ NativeBridge.Incremental.dropSecondProperty s = NativeBridge.Incremental.dropSecondProperty t",
     "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.eqSymInvolutiveNative",
+    "native_expression": "∀ (A : Sort u) (x y : A) (h : x = y), ⋯ = h",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.eqTrueIndNative",
+    "native_expression": "∀ (P : Bool → Prop), P true → ∀ (b : Bool), b = true → P b",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.eqTrueIndRNative",
+    "native_expression": "∀ (P : Bool → Prop) (b : Bool), P b → b = true → P true",
+    "remaining_source_symbols": []
   }
 ]

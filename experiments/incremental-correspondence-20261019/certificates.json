@@ -1323,5 +1323,220 @@
         "proof": "NativeBridge.Incremental.sig_of_sig2_obligation"
       }
     ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_rec",
+    "profile": "EqualityTransport",
+    "certificate": "NativeBridge.Incremental.eq_rec_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Eq.ndrec",
+    "scope": "full Sort carrier; rec result Type, other results Sort; reverse direction uses native equality symmetry; dependent variant retains the equality proof in its motive",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_rew",
+    "profile": "EqualityTransport",
+    "certificate": "NativeBridge.Incremental.eq_rew_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Eq.ndrec",
+    "scope": "full Sort carrier; rec result Type, other results Sort; reverse direction uses native equality symmetry; dependent variant retains the equality proof in its motive",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_rew_r",
+    "profile": "EqualityTransport",
+    "certificate": "NativeBridge.Incremental.eq_rew_r_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Eq.ndrec",
+    "scope": "full Sort carrier; rec result Type, other results Sort; reverse direction uses native equality symmetry; dependent variant retains the equality proof in its motive",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_rect_r",
+    "profile": "EqualityTransport",
+    "certificate": "NativeBridge.Incremental.eq_rect_r_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Eq.ndrec",
+    "scope": "full Sort carrier; rec result Type, other results Sort; reverse direction uses native equality symmetry; dependent variant retains the equality proof in its motive",
+    "target_class": "existing_api",
+    "closed_wrapper": "NativeBridge.Incremental.eqRectRClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.eq_rect_r_obligation"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_rec_r",
+    "profile": "EqualityTransport",
+    "certificate": "NativeBridge.Incremental.eq_rec_r_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Eq.ndrec",
+    "scope": "full Sort carrier; rec result Type, other results Sort; reverse direction uses native equality symmetry; dependent variant retains the equality proof in its motive",
+    "target_class": "existing_api",
+    "closed_wrapper": "NativeBridge.Incremental.eqRecRClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_rec_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.eq_rec_r_obligation"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_rew_r_dep",
+    "profile": "EqualityTransport",
+    "certificate": "NativeBridge.Incremental.eq_rew_r_dep_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.nativeEqRightRec",
+    "scope": "full Sort carrier; rec result Type, other results Sort; reverse direction uses native equality symmetry; dependent variant retains the equality proof in its motive",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.eqRewRDepClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_sym",
+        "proof": "NativeBridge.Incremental.eq_sym_closed"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_sym_involutive__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.eq_sym_involutive_obligation"
+      },
+      {
+        "source": "Corelib.Init.Logic.eq_sym_involutive",
+        "proof": "NativeBridge.Incremental.eq_sym_involutive_closed"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Logic.eq_sym_involutive",
+    "profile": "EqualityTransport",
+    "certificate": "NativeBridge.Incremental.eq_sym_involutive_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.eqSymInvolutiveNative",
+    "native_target": "NativeBridge.Incremental.eqSymInvolutiveNative",
+    "scope": "full Sort carrier; both source and native proof-equality statements proved by proof irrelevance; source extracted identity witness closed",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.eq_sym_involutive_closed",
+    "closed_wrapper": "NativeBridge.Incremental.eq_sym_involutive_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Logic.eq_sym_involutive__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.eq_sym_involutive_obligation"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.eq_true",
+    "profile": "BooleanEquality",
+    "certificate": "NativeBridge.Incremental.eqTrueIso",
+    "kind": "TYPE_ISO",
+    "target": "boolTo b = true",
+    "scope": "every mechanical Bool b; proof-valued equivalence with inverses by proof irrelevance",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.eq_true_rec",
+    "profile": "BooleanEquality",
+    "certificate": "NativeBridge.Incremental.eq_true_rec_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Eq.ndrec",
+    "scope": "native Bool motive; rec result Type, other results Sort; dependent motive includes native proof b = true",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.eq_true_rect",
+    "profile": "BooleanEquality",
+    "certificate": "NativeBridge.Incremental.eq_true_rect_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Eq.ndrec",
+    "scope": "native Bool motive; rec result Type, other results Sort; dependent motive includes native proof b = true",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.eq_true_rew",
+    "profile": "BooleanEquality",
+    "certificate": "NativeBridge.Incremental.eq_true_rew_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Eq.ndrec",
+    "scope": "native Bool motive; rec result Type, other results Sort; dependent motive includes native proof b = true",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.eq_true_rec_r",
+    "profile": "BooleanEquality",
+    "certificate": "NativeBridge.Incremental.eq_true_rec_r_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Eq.ndrec",
+    "scope": "native Bool motive; rec result Type, other results Sort; dependent motive includes native proof b = true",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.eq_true_rect_r",
+    "profile": "BooleanEquality",
+    "certificate": "NativeBridge.Incremental.eq_true_rect_r_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Eq.ndrec",
+    "scope": "native Bool motive; rec result Type, other results Sort; dependent motive includes native proof b = true",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.eq_true_rew_r",
+    "profile": "BooleanEquality",
+    "certificate": "NativeBridge.Incremental.eq_true_rew_r_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Eq.ndrec",
+    "scope": "native Bool motive; rec result Type, other results Sort; dependent motive includes native proof b = true",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.eq_true_rew_dep",
+    "profile": "BooleanEquality",
+    "certificate": "NativeBridge.Incremental.eq_true_rew_dep_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.eqTrueNativeRec",
+    "scope": "native Bool motive; rec result Type, other results Sort; dependent motive includes native proof b = true",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.eq_true_rew_fwd_dep",
+    "profile": "BooleanEquality",
+    "certificate": "NativeBridge.Incremental.eq_true_rew_fwd_dep_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.eqTrueNativeRecBack",
+    "scope": "native Bool motive; rec result Type, other results Sort; dependent motive includes native proof b = true",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.eq_true_ind",
+    "profile": "BooleanEquality",
+    "certificate": "NativeBridge.Incremental.eq_true_ind_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.eqTrueIndNative",
+    "native_target": "NativeBridge.Incremental.eqTrueIndNative",
+    "scope": "all native Bool predicates; original theorem proved; no source references in recursively expanded native target",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.eq_true_ind_closed"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.eq_true_sind",
+    "profile": "BooleanEquality",
+    "certificate": "NativeBridge.Incremental.eq_true_sind_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.eqTrueIndNative",
+    "native_target": "NativeBridge.Incremental.eqTrueIndNative",
+    "scope": "all native Bool predicates; original theorem proved; no source references in recursively expanded native target",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.eq_true_sind_closed"
+  },
+  {
+    "source": "Corelib.Init.Datatypes.eq_true_ind_r",
+    "profile": "BooleanEquality",
+    "certificate": "NativeBridge.Incremental.eq_true_ind_r_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.eqTrueIndRNative",
+    "native_target": "NativeBridge.Incremental.eqTrueIndRNative",
+    "scope": "all native Bool predicates; original theorem proved; no source references in recursively expanded native target",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.eq_true_ind_r_closed"
   }
 ]

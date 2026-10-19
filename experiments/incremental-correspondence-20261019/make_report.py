@@ -4,7 +4,7 @@ W=Path(__file__).resolve().parent;R=W.parents[1];D=W/'reports'
 B=R/'experiments/mechanical-correspondence-20261019/reports'
 specs=json.loads((W/'certificates.json').read_text())
 validation=json.loads((D/'validation.json').read_text())
-assert {r['profile'] for r in validation}=={'Basics','SSR','Iteration','Registry','SSRProperties','SSRBool','SSRBoolStatements','NumericRead','DecimalOperations','HexadecimalOperations','WellFounded','DependentElimination','PairRecursion','DependentStatements','DatatypeElimination'}
+assert {r['profile'] for r in validation}=={'Basics','SSR','Iteration','Registry','SSRProperties','SSRBool','SSRBoolStatements','NumericRead','DecimalOperations','HexadecimalOperations','WellFounded','DependentElimination','PairRecursion','DependentStatements','DatatypeElimination','EqualityTransport','BooleanEquality'}
 audits={}
 for r in validation:
  assert r['exit']==0 and r['audit_present'],r
@@ -23,9 +23,9 @@ for c in candidates:
   specs.append({'source':selection[c['source_target']],'profile':'SSRBoolStatements','certificate':c['certificate'],
     'kind':'STATEMENT_FULL_NATIVE','target':'native statement: '+c['native_expression'],
     'native_expression':c['native_expression'],'scope':'unconditional original statement; source-free body including NativeBridge alias expansion'})
-native_targets=[json.loads(l.split('NATIVE_TARGET ',1)[1]) for l in (D/'DependentStatements.log').read_text().splitlines() if 'NATIVE_TARGET ' in l]
+native_targets=[json.loads(l.split('NATIVE_TARGET ',1)[1]) for r in validation for l in (D/(r['profile']+'.log')).read_text().splitlines() if 'NATIVE_TARGET ' in l]
 native_targets={t['name']:t for t in native_targets}
-assert len(native_targets)==5
+assert set(native_targets)=={s['native_target'] for s in specs if s.get('native_target')}
 for sp in specs:
  if sp.get('native_target'):
   t=native_targets[sp['native_target']]
@@ -111,7 +111,7 @@ summary={'alias_regression_profiles':45,'alias_regression_lost':0,'alias_regress
  'correspondence_conditions_remaining':counts['EXPLICIT_PROOF_PARAMETERS'],
  'condition_resolved_roots':len({r['source'] for r in resolved_conditions}),
  'closed_obligation_witnesses':len({w['name'] for r in resolved_conditions for w in r['witnesses']}),
- 'full_sort_type_certificates_added':6,'completion':'six incremental batches; overall plan remains incomplete',
+ 'full_sort_type_certificates_added':6,'completion':'seven incremental batches; overall plan remains incomplete',
  'explicit_target_classes_since_batch_3':dict(collections.Counter(sp['target_class'] for sp in specs if 'target_class' in sp))}
 assert sum(counts.values())==2180
 (D/'summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2))

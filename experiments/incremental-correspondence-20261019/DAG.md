@@ -126,3 +126,13 @@ flowchart TD
     完整 Sort 的 sum ↔ PSum → sum_rec/sum_rect
 
 条件依赖集合从原始 translation_report 抽取并逐项核对；计数由实例化后的 kernel 检查和显式证书清单决定。
+
+## 第七批：Eq 与 Bool 索引命题
+
+    机械 Eq ↔ Eq → Eq.ndrec 的正向与反向对应
+    机械 Eq 对称性 → eq_rec_r / eq_rect_r 义务 → 两个闭合运算
+    eq_sym + 恒等义务 + 证明无关性 → eq_sym_involutive → eq_rew_r_dep
+    Bool Iso + eq_true 构造器 → eq_true ↔ (b = true) → 八个消去器
+    Bool 谓词的双向搬运 + eq_true Iso → 三个原生陈述 iff → 原陈述证明
+
+这些是已检查的桥接证明依赖；源 IR 的 9457 条依赖未修改。

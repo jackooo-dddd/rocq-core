@@ -1912,6 +1912,256 @@ RocqPending.Corelib.Init.Specif.eq_sig2_hprop_iff.statement ↔ NativeBridge.Inc
 
 公理闭包：propext, Quot.sound
 
+## Corelib.Init.Logic.eq_rec
+
+NativeBridge.Incremental.eq_rec_native
+
+目标：Eq.ndrec；范围：full Sort carrier; rec result Type, other results Sort; reverse direction uses native equality symmetry; dependent variant retains the equality proof in its motive
+
+```lean
+∀ {A : Sort u} (x : A) (P : A → Type) (h : P x) (y : A) (e : NativeBridge.ME A x y),
+  Rocq.Corelib.Init.Logic.eq_rec A x P h y e = ⋯ ▸ h
+```
+
+公理闭包：空
+
+## Corelib.Init.Logic.eq_rew
+
+NativeBridge.Incremental.eq_rew_native
+
+目标：Eq.ndrec；范围：full Sort carrier; rec result Type, other results Sort; reverse direction uses native equality symmetry; dependent variant retains the equality proof in its motive
+
+```lean
+∀ {A : Sort u} (x : A) (P : A → Sort v) (h : P x) (y : A) (e : NativeBridge.ME A x y),
+  Rocq.Corelib.Init.Logic.eq_rew A x P h y e = ⋯ ▸ h
+```
+
+公理闭包：空
+
+## Corelib.Init.Logic.eq_rew_r
+
+NativeBridge.Incremental.eq_rew_r_native
+
+目标：Eq.ndrec；范围：full Sort carrier; rec result Type, other results Sort; reverse direction uses native equality symmetry; dependent variant retains the equality proof in its motive
+
+```lean
+∀ {A : Sort u} (x y : A) (P : A → Sort v) (h : P y) (e : NativeBridge.ME A x y),
+  Rocq.Corelib.Init.Logic.eq_rew_r A x y P h e = ⋯ ▸ h
+```
+
+公理闭包：空
+
+## Corelib.Init.Logic.eq_rect_r
+
+NativeBridge.Incremental.eq_rect_r_native
+
+目标：Eq.ndrec；范围：full Sort carrier; rec result Type, other results Sort; reverse direction uses native equality symmetry; dependent variant retains the equality proof in its motive
+
+```lean
+∀ {A : Sort u} (x : A) (P : A → Sort v) (h : P x) (y : A) (e : NativeBridge.ME A y x),
+  RocqPending.Corelib.Init.Logic.eq_rect_r A x P h y e = ⋯ ▸ h
+```
+
+公理闭包：空
+
+## Corelib.Init.Logic.eq_rec_r
+
+NativeBridge.Incremental.eq_rec_r_native
+
+目标：Eq.ndrec；范围：full Sort carrier; rec result Type, other results Sort; reverse direction uses native equality symmetry; dependent variant retains the equality proof in its motive
+
+```lean
+∀ {A : Sort u} (x : A) (P : A → Type) (h : P x) (y : A) (e : NativeBridge.ME A y x),
+  RocqPending.Corelib.Init.Logic.eq_rec_r A x P h y e = ⋯ ▸ h
+```
+
+公理闭包：空
+
+## Corelib.Init.Logic.eq_rew_r_dep
+
+NativeBridge.Incremental.eq_rew_r_dep_native
+
+目标：NativeBridge.Incremental.nativeEqRightRec；范围：full Sort carrier; rec result Type, other results Sort; reverse direction uses native equality symmetry; dependent variant retains the equality proof in its motive
+
+```lean
+∀ {A : Sort u} (x y : A) (P : (x : A) → x = y → Sort v) (h : P y ⋯) (e : NativeBridge.ME A x y),
+  RocqPending.Corelib.Init.Logic.eq_rew_r_dep A x y (fun x e => P x ⋯) h e =
+    NativeBridge.Incremental.nativeEqRightRec y P h x ⋯
+```
+
+公理闭包：空
+
+## Corelib.Init.Logic.eq_sym_involutive
+
+NativeBridge.Incremental.eq_sym_involutive_native
+
+目标：NativeBridge.Incremental.eqSymInvolutiveNative；范围：full Sort carrier; both source and native proof-equality statements proved by proof irrelevance; source extracted identity witness closed
+
+```lean
+RocqPending.Corelib.Init.Logic.eq_sym_involutive.statement ↔ NativeBridge.Incremental.eqSymInvolutiveNative
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.eq_true
+
+NativeBridge.Incremental.eqTrueIso
+
+目标：boolTo b = true；范围：every mechanical Bool b; proof-valued equivalence with inverses by proof irrelevance
+
+```lean
+(b : NativeBridge.RBool) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.eq_true b) (NativeBridge.boolTo b = true)
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.eq_true_rec
+
+NativeBridge.Incremental.eq_true_rec_native
+
+目标：Eq.ndrec；范围：native Bool motive; rec result Type, other results Sort; dependent motive includes native proof b = true
+
+```lean
+∀ (P : Bool → Type) (b : NativeBridge.RBool) (h : P true) (e : Rocq.Corelib.Init.Datatypes.eq_true b),
+  Rocq.Corelib.Init.Datatypes.eq_true_rec (fun b => P (NativeBridge.boolTo b)) h b e = ⋯ ▸ h
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.eq_true_rect
+
+NativeBridge.Incremental.eq_true_rect_native
+
+目标：Eq.ndrec；范围：native Bool motive; rec result Type, other results Sort; dependent motive includes native proof b = true
+
+```lean
+∀ (P : Bool → Sort u) (b : NativeBridge.RBool) (h : P true) (e : Rocq.Corelib.Init.Datatypes.eq_true b),
+  Rocq.Corelib.Init.Datatypes.eq_true_rect (fun b => P (NativeBridge.boolTo b)) h b e = ⋯ ▸ h
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.eq_true_rew
+
+NativeBridge.Incremental.eq_true_rew_native
+
+目标：Eq.ndrec；范围：native Bool motive; rec result Type, other results Sort; dependent motive includes native proof b = true
+
+```lean
+∀ (P : Bool → Sort u) (b : NativeBridge.RBool) (h : P true) (e : Rocq.Corelib.Init.Datatypes.eq_true b),
+  Rocq.Corelib.Init.Datatypes.eq_true_rew (fun b => P (NativeBridge.boolTo b)) h b e = ⋯ ▸ h
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.eq_true_rec_r
+
+NativeBridge.Incremental.eq_true_rec_r_native
+
+目标：Eq.ndrec；范围：native Bool motive; rec result Type, other results Sort; dependent motive includes native proof b = true
+
+```lean
+∀ (P : Bool → Type) (b : NativeBridge.RBool) (h : P (NativeBridge.boolTo b))
+  (e : Rocq.Corelib.Init.Datatypes.eq_true b),
+  Rocq.Corelib.Init.Datatypes.eq_true_rec_r (fun b => P (NativeBridge.boolTo b)) b h e = ⋯ ▸ h
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.eq_true_rect_r
+
+NativeBridge.Incremental.eq_true_rect_r_native
+
+目标：Eq.ndrec；范围：native Bool motive; rec result Type, other results Sort; dependent motive includes native proof b = true
+
+```lean
+∀ (P : Bool → Sort u) (b : NativeBridge.RBool) (h : P (NativeBridge.boolTo b))
+  (e : Rocq.Corelib.Init.Datatypes.eq_true b),
+  Rocq.Corelib.Init.Datatypes.eq_true_rect_r (fun b => P (NativeBridge.boolTo b)) b h e = ⋯ ▸ h
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.eq_true_rew_r
+
+NativeBridge.Incremental.eq_true_rew_r_native
+
+目标：Eq.ndrec；范围：native Bool motive; rec result Type, other results Sort; dependent motive includes native proof b = true
+
+```lean
+∀ (P : Bool → Sort u) (b : NativeBridge.RBool) (h : P (NativeBridge.boolTo b))
+  (e : Rocq.Corelib.Init.Datatypes.eq_true b),
+  Rocq.Corelib.Init.Datatypes.eq_true_rew_r b (fun b => P (NativeBridge.boolTo b)) h e = ⋯ ▸ h
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.eq_true_rew_dep
+
+NativeBridge.Incremental.eq_true_rew_dep_native
+
+目标：NativeBridge.Incremental.eqTrueNativeRec；范围：native Bool motive; rec result Type, other results Sort; dependent motive includes native proof b = true
+
+```lean
+∀ (P : (b : Bool) → b = true → Sort u) (h : P true ⋯) (b : NativeBridge.RBool)
+  (e : Rocq.Corelib.Init.Datatypes.eq_true b),
+  Rocq.Corelib.Init.Datatypes.eq_true_rew_dep (fun b e => P (NativeBridge.boolTo b) ⋯) h b e =
+    NativeBridge.Incremental.eqTrueNativeRec P h (NativeBridge.boolTo b) ⋯
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.eq_true_rew_fwd_dep
+
+NativeBridge.Incremental.eq_true_rew_fwd_dep_native
+
+目标：NativeBridge.Incremental.eqTrueNativeRecBack；范围：native Bool motive; rec result Type, other results Sort; dependent motive includes native proof b = true
+
+```lean
+∀ (P : (b : Bool) → b = true → Sort u) (b : NativeBridge.RBool) (e : Rocq.Corelib.Init.Datatypes.eq_true b)
+  (h : P (NativeBridge.boolTo b) ⋯),
+  Rocq.Corelib.Init.Datatypes.eq_true_rew_fwd_dep b e (fun b e => P (NativeBridge.boolTo b) ⋯) h =
+    NativeBridge.Incremental.eqTrueNativeRecBack P (NativeBridge.boolTo b) ⋯ h
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.eq_true_ind
+
+NativeBridge.Incremental.eq_true_ind_native
+
+目标：NativeBridge.Incremental.eqTrueIndNative；范围：all native Bool predicates; original theorem proved; no source references in recursively expanded native target
+
+```lean
+Rocq.Corelib.Init.Datatypes.eq_true_ind.statement ↔ NativeBridge.Incremental.eqTrueIndNative
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.eq_true_sind
+
+NativeBridge.Incremental.eq_true_sind_native
+
+目标：NativeBridge.Incremental.eqTrueIndNative；范围：all native Bool predicates; original theorem proved; no source references in recursively expanded native target
+
+```lean
+Rocq.Corelib.Init.Datatypes.eq_true_sind.statement ↔ NativeBridge.Incremental.eqTrueIndNative
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.eq_true_ind_r
+
+NativeBridge.Incremental.eq_true_ind_r_native
+
+目标：NativeBridge.Incremental.eqTrueIndRNative；范围：all native Bool predicates; original theorem proved; no source references in recursively expanded native target
+
+```lean
+Rocq.Corelib.Init.Datatypes.eq_true_ind_r.statement ↔ NativeBridge.Incremental.eqTrueIndRNative
+```
+
+公理闭包：空
+
 ## Corelib.ssr.ssrbool.addFb
 
 NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addFb.statement.correspondence
