@@ -229,3 +229,25 @@ flowchart TD
 ```
 
 真实证明节点和边见 reports/logic-witness-dag.json；每条边来自冻结翻译报告 pending_hypotheses。此图的 151 个证明节点不是 151 个新增完成根。
+
+## 第二十一批：Init.Specif 依赖数据与相等
+
+```mermaid
+flowchart TD
+  A["70 个条件根 / 116 个不同前置声明"] --> B["140 个条件证明及闭合见证"]
+  B --> C["32 个带条件运算"]
+  B --> D["38 个带条件陈述"]
+  E["Subtype / PSigma / PSum 的完整 Sort 对应"] --> C
+  E --> F["原生端点的相等 motive 与 Exists 相等条件"]
+  F --> D
+  G["Eq.rec 转换自然性 + 原生证明参数"] --> D
+  H["Nat Iso + Nat.rec"] --> I["dependent_choice"]
+  C --> I
+  J["Option / False.elim / PSum.rec"] --> K["其余 10 根"]
+  D --> L["原生体检查与 kernel iff"]
+  C --> M["运算等式及共同导入"]
+  K --> M
+  L --> M
+```
+
+逐节点依赖来自 reports/specif-witness-dag.json，与冻结报告 pending_hypotheses 核对；不是根据规则名猜测依赖。140 个证明目标不重复计作对应根。

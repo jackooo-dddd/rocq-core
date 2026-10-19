@@ -4977,6 +4977,1195 @@ NativeBridge.Incremental.LogicProofElimination.eq_ex2_rect_ex_intro2_r_agrees
 
 公理闭包：空
 
+## Corelib.Init.Specif.Exc
+
+NativeBridge.Incremental.SpecifOperations.excIso
+
+目标：Option A；范围：A : Type u; both inverse laws
+
+```lean
+(A : Type u) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.Exc A) (Option A)
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.Choice
+
+NativeBridge.Incremental.SpecifOperations.choice_agrees
+
+目标：nativeChoice: dependent pointwise selection and its proof；范围：S,T : Type, R : S → T → Prop; explicit dependent selections supplied
+
+```lean
+∀ (S T : Type) (R : S → T → Prop) (H : (x : S) → Rocq.Corelib.Init.Specif.sig T (R x)),
+  NativeBridge.Incremental.subtypeTo (RocqPending.Corelib.Init.Specif.Choice S T R H) =
+    NativeBridge.Incremental.SpecifOperations.nativeChoice fun x => NativeBridge.Incremental.subtypeTo (H x)
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.Choice2
+
+NativeBridge.Incremental.SpecifOperations.choice2_agrees
+
+目标：nativeChoice2: PSigma distributes over a dependent function；范围：S,T : Type; R : S → T → Type; explicit dependent selections supplied
+
+```lean
+∀ (S T : Type) (R : S → T → Type) (H : (x : S) → Rocq.Corelib.Init.Specif.sigT T (R x)),
+  NativeBridge.Incremental.psigmaTo (Rocq.Corelib.Init.Specif.Choice2 S T R H) =
+    NativeBridge.Incremental.SpecifOperations.nativeChoice2 fun x => NativeBridge.Incremental.psigmaTo (H x)
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.sig2_of_sigT2
+
+NativeBridge.Incremental.SpecifOperations.sig2_of_sigT2_agrees
+
+目标：PSigma of two proofs → Subtype of conjunction；范围：A : Sort u; P,Q : A → Prop
+
+```lean
+∀ (A : Sort u) (P Q : A → Prop) (x : Rocq.Corelib.Init.Specif.sigT2 A P Q),
+  NativeBridge.Incremental.subtype2To (RocqPending.Corelib.Init.Specif.sig2_of_sigT2 A P Q x) =
+    ⟨(NativeBridge.Incremental.psigma2To x).fst, ⋯⟩
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.error
+
+NativeBridge.Incremental.SpecifOperations.error_agrees
+
+目标：Option.none；范围：A : Sort u; Option (PLift A) adapter
+
+```lean
+∀ (A : Sort u), NativeBridge.Incremental.SpecifOperations.optionToLift (Rocq.Corelib.Init.Specif.error A) = none
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.value
+
+NativeBridge.Incremental.SpecifOperations.value_agrees
+
+目标：Option.some；范围：A : Sort u; Option (PLift A) adapter
+
+```lean
+∀ (A : Sort u) (a : A),
+  NativeBridge.Incremental.SpecifOperations.optionToLift (Rocq.Corelib.Init.Specif.value A a) = some { down := a }
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.except
+
+NativeBridge.Incremental.SpecifOperations.except_agrees
+
+目标：False.elim；范围：A : Type as exported; input translated False converted to Lean False
+
+```lean
+∀ (A : Type) (h : Rocq.Corelib.Init.Logic.False), Rocq.Corelib.Init.Specif.except A h = ⋯.elim
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.absurd_set
+
+NativeBridge.Incremental.SpecifOperations.absurd_set_agrees
+
+目标：False.elim；范围：A : Prop, C : Type as exported
+
+```lean
+∀ (A : Prop) (C : Type) (h : A) (hn : Rocq.Corelib.Init.Logic.not A),
+  Rocq.Corelib.Init.Specif.absurd_set A C h hn = ⋯.elim
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.sumbool_rec
+
+NativeBridge.Incremental.SpecifOperations.sumbool_rec_agrees
+
+目标：PSum.rec；范围：A,B : Prop; native dependent motive returning Type
+
+```lean
+∀ (A B : Prop) (P : A ⊕' B → Type) (f : (a : A) → P (PSum.inl a)) (g : (b : B) → P (PSum.inr b))
+  (x : Rocq.Corelib.Init.Specif.sumbool A B),
+  Rocq.Corelib.Init.Specif.sumbool_rec A B (fun x => P (NativeBridge.sumboolTo x)) f g x =
+    PSum.rec f g (NativeBridge.sumboolTo x)
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.sumbool_rect
+
+NativeBridge.Incremental.SpecifOperations.sumbool_rect_agrees
+
+目标：PSum.rec；范围：A,B : Prop; native dependent motive returning Sort u
+
+```lean
+∀ (A B : Prop) (P : A ⊕' B → Sort u) (f : (a : A) → P (PSum.inl a)) (g : (b : B) → P (PSum.inr b))
+  (x : Rocq.Corelib.Init.Specif.sumbool A B),
+  Rocq.Corelib.Init.Specif.sumbool_rect A B (fun x => P (NativeBridge.sumboolTo x)) f g x =
+    PSum.rec f g (NativeBridge.sumboolTo x)
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.sumor_rec
+
+NativeBridge.Incremental.SpecifOperations.sumor_rec_agrees
+
+目标：PSum.rec；范围：A : Sort u, B : Prop; native dependent motive returning Type
+
+```lean
+∀ (A : Sort u) (B : Prop) (P : A ⊕' B → Type) (f : (a : A) → P (PSum.inl a)) (g : (b : B) → P (PSum.inr b))
+  (x : Rocq.Corelib.Init.Specif.sumor A B),
+  Rocq.Corelib.Init.Specif.sumor_rec A B (fun x => P (NativeBridge.Incremental.sumorSortTo x)) f g x =
+    PSum.rec f g (NativeBridge.Incremental.sumorSortTo x)
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.sumor_rect
+
+NativeBridge.Incremental.SpecifOperations.sumor_rect_agrees
+
+目标：PSum.rec；范围：A : Sort u, B : Prop; native dependent motive returning Sort v
+
+```lean
+∀ (A : Sort u) (B : Prop) (P : A ⊕' B → Sort v) (f : (a : A) → P (PSum.inl a)) (g : (b : B) → P (PSum.inr b))
+  (x : Rocq.Corelib.Init.Specif.sumor A B),
+  Rocq.Corelib.Init.Specif.sumor_rect A B (fun x => P (NativeBridge.Incremental.sumorSortTo x)) f g x =
+    PSum.rec f g (NativeBridge.Incremental.sumorSortTo x)
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.bool_choice
+
+NativeBridge.Incremental.SpecifChoice.bool_choice_agrees
+
+目标：nativeBoolChoice: Bool-valued choice with native disjunctive certificate；范围：S : Type, P,Q : S → Prop; supplied pointwise PSum evidence; no choice axiom
+
+```lean
+∀ (S : Type) (P Q : S → Prop) (H : (x : S) → Rocq.Corelib.Init.Specif.sumbool (P x) (Q x)),
+  NativeBridge.Incremental.SpecifChoice.boolChoiceTo (RocqPending.Corelib.Init.Specif.bool_choice S P Q H) =
+    NativeBridge.Incremental.SpecifChoice.nativeBoolChoice fun x => NativeBridge.sumboolTo (H x)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.dependent_choice
+
+NativeBridge.Incremental.SpecifChoice.dependent_choice_agrees
+
+目标：nativeDependentChoice: Nat.rec iteration with adjacent-step certificates；范围：X : Sort u; R : X → X → Prop; supplied successor-selection function
+
+```lean
+∀ (X : Sort u) (R : X → X → Prop) (H : (x : X) → Rocq.Corelib.Init.Specif.sig X (R x)) (x0 : X),
+  NativeBridge.Incremental.SpecifChoice.dependentChoiceTo (RocqPending.Corelib.Init.Specif.dependent_choice X R H x0) =
+    NativeBridge.Incremental.SpecifChoice.nativeDependentChoice (fun x => NativeBridge.Incremental.subtypeTo (H x)) x0
+```
+
+公理闭包：Quot.sound
+
+## Corelib.Init.Specif.eq_sig_rect
+
+NativeBridge.Incremental.SpecifEqualityElimination.eq_sig_rect_agrees
+
+目标：selected native branch value in a native equality-indexed motive；范围：full exported Sort parameters; source equality converted via sig type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result
+
+```lean
+∀ (A : Sort u) (P : A → Prop) (a b : Rocq.Corelib.Init.Specif.sig A P)
+  (e : NativeBridge.ME (Rocq.Corelib.Init.Specif.sig A P) a b)
+  (F : NativeBridge.Incremental.subtypeTo a = NativeBridge.Incremental.subtypeTo b → Sort z) (f : F ⋯),
+  RocqPending.Corelib.Init.Specif.eq_sig_rect A P a b (fun e => F ⋯) (fun x x_1 => f) e = f
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.eq_sig_rec
+
+NativeBridge.Incremental.SpecifEqualityElimination.eq_sig_rec_agrees
+
+目标：selected native branch value in a native equality-indexed motive；范围：full exported Sort parameters; source equality converted via sig type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Type result
+
+```lean
+∀ (A : Sort u) (P : A → Prop) (a b : Rocq.Corelib.Init.Specif.sig A P)
+  (e : NativeBridge.ME (Rocq.Corelib.Init.Specif.sig A P) a b)
+  (F : NativeBridge.Incremental.subtypeTo a = NativeBridge.Incremental.subtypeTo b → Type) (f : F ⋯),
+  RocqPending.Corelib.Init.Specif.eq_sig_rec A P a b (fun e => F ⋯) (fun x x_1 => f) e = f
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.eq_sig_rect_uncurried
+
+NativeBridge.Incremental.SpecifEqualityElimination.eq_sig_rect_uncurried_agrees
+
+目标：selected native branch value in a native equality-indexed motive；范围：full exported Sort parameters; source equality converted via sig type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result
+
+```lean
+∀ (A : Sort u) (P : A → Prop) (a b : Rocq.Corelib.Init.Specif.sig A P)
+  (e : NativeBridge.ME (Rocq.Corelib.Init.Specif.sig A P) a b)
+  (F : NativeBridge.Incremental.subtypeTo a = NativeBridge.Incremental.subtypeTo b → Sort z) (f : F ⋯),
+  RocqPending.Corelib.Init.Specif.eq_sig_rect_uncurried A P a b (fun e => F ⋯) (fun x => f) e = f
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.eq_sig_rec_uncurried
+
+NativeBridge.Incremental.SpecifEqualityElimination.eq_sig_rec_uncurried_agrees
+
+目标：selected native branch value in a native equality-indexed motive；范围：full exported Sort parameters; source equality converted via sig type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Type result
+
+```lean
+∀ (A : Sort u) (P : A → Prop) (a b : Rocq.Corelib.Init.Specif.sig A P)
+  (e : NativeBridge.ME (Rocq.Corelib.Init.Specif.sig A P) a b)
+  (F : NativeBridge.Incremental.subtypeTo a = NativeBridge.Incremental.subtypeTo b → Type) (f : F ⋯),
+  RocqPending.Corelib.Init.Specif.eq_sig_rec_uncurried A P a b (fun e => F ⋯) (fun x => f) e = f
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.eq_sig_rect_exist
+
+NativeBridge.Incremental.SpecifEqualityElimination.eq_sig_rect_exist_agrees
+
+目标：selected native branch value in a native equality-indexed motive；范围：full exported Sort parameters; source equality converted via sig type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result
+
+```lean
+∀ (A : Sort u) (P : A → Prop) (a1 : A) (a2 : P a1) (b1 : A) (b2 : P b1)
+  (e :
+    NativeBridge.ME (Rocq.Corelib.Init.Specif.sig A P) (Rocq.Corelib.Init.Specif.sig.exist A P a1 a2)
+      (Rocq.Corelib.Init.Specif.sig.exist A P b1 b2))
+  (F :
+    NativeBridge.Incremental.subtypeTo (Rocq.Corelib.Init.Specif.sig.exist A P a1 a2) =
+        NativeBridge.Incremental.subtypeTo (Rocq.Corelib.Init.Specif.sig.exist A P b1 b2) →
+      Sort z)
+  (f : F ⋯), RocqPending.Corelib.Init.Specif.eq_sig_rect_exist A P a1 a2 b1 b2 (fun e => F ⋯) (fun x x_1 => f) e = f
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.eq_sig_rect_exist_l
+
+NativeBridge.Incremental.SpecifEqualityElimination.eq_sig_rect_exist_l_agrees
+
+目标：selected native branch value in a native equality-indexed motive；范围：full exported Sort parameters; source equality converted via sig type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result
+
+```lean
+∀ (A : Sort u) (P : A → Prop) (a1 : A) (a2 : P a1) (b : Rocq.Corelib.Init.Specif.sig A P)
+  (e : NativeBridge.ME (Rocq.Corelib.Init.Specif.sig A P) (Rocq.Corelib.Init.Specif.sig.exist A P a1 a2) b)
+  (F :
+    NativeBridge.Incremental.subtypeTo (Rocq.Corelib.Init.Specif.sig.exist A P a1 a2) =
+        NativeBridge.Incremental.subtypeTo b →
+      Sort z)
+  (f : F ⋯), RocqPending.Corelib.Init.Specif.eq_sig_rect_exist_l A P a1 a2 b (fun e => F ⋯) (fun x x_1 => f) e = f
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.eq_sig_rect_exist_r
+
+NativeBridge.Incremental.SpecifEqualityElimination.eq_sig_rect_exist_r_agrees
+
+目标：selected native branch value in a native equality-indexed motive；范围：full exported Sort parameters; source equality converted via sig type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result
+
+```lean
+∀ (A : Sort u) (P : A → Prop) (a : Rocq.Corelib.Init.Specif.sig A P) (b1 : A) (b2 : P b1)
+  (e : NativeBridge.ME (Rocq.Corelib.Init.Specif.sig A P) a (Rocq.Corelib.Init.Specif.sig.exist A P b1 b2))
+  (F :
+    NativeBridge.Incremental.subtypeTo a =
+        NativeBridge.Incremental.subtypeTo (Rocq.Corelib.Init.Specif.sig.exist A P b1 b2) →
+      Sort z)
+  (f : F ⋯), RocqPending.Corelib.Init.Specif.eq_sig_rect_exist_r A P a b1 b2 (fun e => F ⋯) (fun x x_1 => f) e = f
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.eq_sig2_rect
+
+NativeBridge.Incremental.SpecifEqualityElimination.eq_sig2_rect_agrees
+
+目标：selected native branch value in a native equality-indexed motive；范围：full exported Sort parameters; source equality converted via sig2 type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result
+
+```lean
+∀ (A : Sort u) (P Q : A → Prop) (a b : Rocq.Corelib.Init.Specif.sig2 A P Q)
+  (e : NativeBridge.ME (Rocq.Corelib.Init.Specif.sig2 A P Q) a b)
+  (F : NativeBridge.Incremental.subtype2To a = NativeBridge.Incremental.subtype2To b → Sort z) (f : F ⋯),
+  RocqPending.Corelib.Init.Specif.eq_sig2_rect A P Q a b (fun e => F ⋯) (fun x x_1 x_2 => f) e = f
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.eq_sig2_rec
+
+NativeBridge.Incremental.SpecifEqualityElimination.eq_sig2_rec_agrees
+
+目标：selected native branch value in a native equality-indexed motive；范围：full exported Sort parameters; source equality converted via sig2 type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Type result
+
+```lean
+∀ (A : Sort u) (P Q : A → Prop) (a b : Rocq.Corelib.Init.Specif.sig2 A P Q)
+  (e : NativeBridge.ME (Rocq.Corelib.Init.Specif.sig2 A P Q) a b)
+  (F : NativeBridge.Incremental.subtype2To a = NativeBridge.Incremental.subtype2To b → Type) (f : F ⋯),
+  RocqPending.Corelib.Init.Specif.eq_sig2_rec A P Q a b (fun e => F ⋯) (fun x x_1 x_2 => f) e = f
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.eq_sig2_rect_uncurried
+
+NativeBridge.Incremental.SpecifEqualityElimination.eq_sig2_rect_uncurried_agrees
+
+目标：selected native branch value in a native equality-indexed motive；范围：full exported Sort parameters; source equality converted via sig2 type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result
+
+```lean
+∀ (A : Sort u) (P Q : A → Prop) (a b : Rocq.Corelib.Init.Specif.sig2 A P Q)
+  (e : NativeBridge.ME (Rocq.Corelib.Init.Specif.sig2 A P Q) a b)
+  (F : NativeBridge.Incremental.subtype2To a = NativeBridge.Incremental.subtype2To b → Sort z) (f : F ⋯),
+  RocqPending.Corelib.Init.Specif.eq_sig2_rect_uncurried A P Q a b (fun e => F ⋯) (fun x => f) e = f
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.eq_sig2_rec_uncurried
+
+NativeBridge.Incremental.SpecifEqualityElimination.eq_sig2_rec_uncurried_agrees
+
+目标：selected native branch value in a native equality-indexed motive；范围：full exported Sort parameters; source equality converted via sig2 type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Type result
+
+```lean
+∀ (A : Sort u) (P Q : A → Prop) (a b : Rocq.Corelib.Init.Specif.sig2 A P Q)
+  (e : NativeBridge.ME (Rocq.Corelib.Init.Specif.sig2 A P Q) a b)
+  (F : NativeBridge.Incremental.subtype2To a = NativeBridge.Incremental.subtype2To b → Type) (f : F ⋯),
+  RocqPending.Corelib.Init.Specif.eq_sig2_rec_uncurried A P Q a b (fun e => F ⋯) (fun x => f) e = f
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.eq_sig2_rect_exist2
+
+NativeBridge.Incremental.SpecifEqualityElimination.eq_sig2_rect_exist2_agrees
+
+目标：selected native branch value in a native equality-indexed motive；范围：full exported Sort parameters; source equality converted via sig2 type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result
+
+```lean
+∀ (A : Sort u) (P Q : A → Prop) (a1 : A) (a2 : P a1) (a3 : Q a1) (b1 : A) (b2 : P b1) (b3 : Q b1)
+  (e :
+    NativeBridge.ME (Rocq.Corelib.Init.Specif.sig2 A P Q) (Rocq.Corelib.Init.Specif.sig2.exist2 A P Q a1 a2 a3)
+      (Rocq.Corelib.Init.Specif.sig2.exist2 A P Q b1 b2 b3))
+  (F :
+    NativeBridge.Incremental.subtype2To (Rocq.Corelib.Init.Specif.sig2.exist2 A P Q a1 a2 a3) =
+        NativeBridge.Incremental.subtype2To (Rocq.Corelib.Init.Specif.sig2.exist2 A P Q b1 b2 b3) →
+      Sort z)
+  (f : F ⋯),
+  RocqPending.Corelib.Init.Specif.eq_sig2_rect_exist2 A P Q a1 a2 a3 b1 b2 b3 (fun e => F ⋯) (fun x x_1 x_2 => f) e = f
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.eq_sig2_rect_exist2_l
+
+NativeBridge.Incremental.SpecifEqualityElimination.eq_sig2_rect_exist2_l_agrees
+
+目标：selected native branch value in a native equality-indexed motive；范围：full exported Sort parameters; source equality converted via sig2 type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result
+
+```lean
+∀ (A : Sort u) (P Q : A → Prop) (a1 : A) (a2 : P a1) (a3 : Q a1) (b : Rocq.Corelib.Init.Specif.sig2 A P Q)
+  (e : NativeBridge.ME (Rocq.Corelib.Init.Specif.sig2 A P Q) (Rocq.Corelib.Init.Specif.sig2.exist2 A P Q a1 a2 a3) b)
+  (F :
+    NativeBridge.Incremental.subtype2To (Rocq.Corelib.Init.Specif.sig2.exist2 A P Q a1 a2 a3) =
+        NativeBridge.Incremental.subtype2To b →
+      Sort z)
+  (f : F ⋯),
+  RocqPending.Corelib.Init.Specif.eq_sig2_rect_exist2_l A P Q a1 a2 a3 b (fun e => F ⋯) (fun x x_1 x_2 => f) e = f
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.eq_sig2_rect_exist2_r
+
+NativeBridge.Incremental.SpecifEqualityElimination.eq_sig2_rect_exist2_r_agrees
+
+目标：selected native branch value in a native equality-indexed motive；范围：full exported Sort parameters; source equality converted via sig2 type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result
+
+```lean
+∀ (A : Sort u) (P Q : A → Prop) (a : Rocq.Corelib.Init.Specif.sig2 A P Q) (b1 : A) (b2 : P b1) (b3 : Q b1)
+  (e : NativeBridge.ME (Rocq.Corelib.Init.Specif.sig2 A P Q) a (Rocq.Corelib.Init.Specif.sig2.exist2 A P Q b1 b2 b3))
+  (F :
+    NativeBridge.Incremental.subtype2To a =
+        NativeBridge.Incremental.subtype2To (Rocq.Corelib.Init.Specif.sig2.exist2 A P Q b1 b2 b3) →
+      Sort z)
+  (f : F ⋯),
+  RocqPending.Corelib.Init.Specif.eq_sig2_rect_exist2_r A P Q a b1 b2 b3 (fun e => F ⋯) (fun x x_1 x_2 => f) e = f
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.eq_sigT_rect
+
+NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT_rect_agrees
+
+目标：selected native branch value in a native equality-indexed motive；范围：full exported Sort parameters; source equality converted via sigT type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result
+
+```lean
+∀ (A : Sort u) (P : A → Sort v) (a b : Rocq.Corelib.Init.Specif.sigT A P)
+  (e : NativeBridge.ME (Rocq.Corelib.Init.Specif.sigT A P) a b)
+  (F : NativeBridge.Incremental.psigmaTo a = NativeBridge.Incremental.psigmaTo b → Sort z) (f : F ⋯),
+  RocqPending.Corelib.Init.Specif.eq_sigT_rect A P a b (fun e => F ⋯) (fun x x_1 => f) e = f
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.eq_sigT_rec
+
+NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT_rec_agrees
+
+目标：selected native branch value in a native equality-indexed motive；范围：full exported Sort parameters; source equality converted via sigT type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Type result
+
+```lean
+∀ (A : Sort u) (P : A → Sort v) (a b : Rocq.Corelib.Init.Specif.sigT A P)
+  (e : NativeBridge.ME (Rocq.Corelib.Init.Specif.sigT A P) a b)
+  (F : NativeBridge.Incremental.psigmaTo a = NativeBridge.Incremental.psigmaTo b → Type) (f : F ⋯),
+  RocqPending.Corelib.Init.Specif.eq_sigT_rec A P a b (fun e => F ⋯) (fun x x_1 => f) e = f
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.eq_sigT_rect_uncurried
+
+NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT_rect_uncurried_agrees
+
+目标：selected native branch value in a native equality-indexed motive；范围：full exported Sort parameters; source equality converted via sigT type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result
+
+```lean
+∀ (A : Sort u) (P : A → Sort v) (a b : Rocq.Corelib.Init.Specif.sigT A P)
+  (e : NativeBridge.ME (Rocq.Corelib.Init.Specif.sigT A P) a b)
+  (F : NativeBridge.Incremental.psigmaTo a = NativeBridge.Incremental.psigmaTo b → Sort z) (f : F ⋯),
+  RocqPending.Corelib.Init.Specif.eq_sigT_rect_uncurried A P a b (fun e => F ⋯) (fun x => f) e = f
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.eq_sigT_rec_uncurried
+
+NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT_rec_uncurried_agrees
+
+目标：selected native branch value in a native equality-indexed motive；范围：full exported Sort parameters; source equality converted via sigT type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Type result
+
+```lean
+∀ (A : Sort u) (P : A → Sort v) (a b : Rocq.Corelib.Init.Specif.sigT A P)
+  (e : NativeBridge.ME (Rocq.Corelib.Init.Specif.sigT A P) a b)
+  (F : NativeBridge.Incremental.psigmaTo a = NativeBridge.Incremental.psigmaTo b → Type) (f : F ⋯),
+  RocqPending.Corelib.Init.Specif.eq_sigT_rec_uncurried A P a b (fun e => F ⋯) (fun x => f) e = f
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.eq_sigT_rect_existT
+
+NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT_rect_existT_agrees
+
+目标：selected native branch value in a native equality-indexed motive；范围：full exported Sort parameters; source equality converted via sigT type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result
+
+```lean
+∀ (A : Sort u) (P : A → Sort v) (a1 : A) (a2 : P a1) (b1 : A) (b2 : P b1)
+  (e :
+    NativeBridge.ME (Rocq.Corelib.Init.Specif.sigT A P) (Rocq.Corelib.Init.Specif.sigT.existT A P a1 a2)
+      (Rocq.Corelib.Init.Specif.sigT.existT A P b1 b2))
+  (F :
+    NativeBridge.Incremental.psigmaTo (Rocq.Corelib.Init.Specif.sigT.existT A P a1 a2) =
+        NativeBridge.Incremental.psigmaTo (Rocq.Corelib.Init.Specif.sigT.existT A P b1 b2) →
+      Sort z)
+  (f : F ⋯), RocqPending.Corelib.Init.Specif.eq_sigT_rect_existT A P a1 a2 b1 b2 (fun e => F ⋯) (fun x x_1 => f) e = f
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.eq_sigT_rect_existT_l
+
+NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT_rect_existT_l_agrees
+
+目标：selected native branch value in a native equality-indexed motive；范围：full exported Sort parameters; source equality converted via sigT type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result
+
+```lean
+∀ (A : Sort u) (P : A → Sort v) (a1 : A) (a2 : P a1) (b : Rocq.Corelib.Init.Specif.sigT A P)
+  (e : NativeBridge.ME (Rocq.Corelib.Init.Specif.sigT A P) (Rocq.Corelib.Init.Specif.sigT.existT A P a1 a2) b)
+  (F :
+    NativeBridge.Incremental.psigmaTo (Rocq.Corelib.Init.Specif.sigT.existT A P a1 a2) =
+        NativeBridge.Incremental.psigmaTo b →
+      Sort z)
+  (f : F ⋯), RocqPending.Corelib.Init.Specif.eq_sigT_rect_existT_l A P a1 a2 b (fun e => F ⋯) (fun x x_1 => f) e = f
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.eq_sigT_rect_existT_r
+
+NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT_rect_existT_r_agrees
+
+目标：selected native branch value in a native equality-indexed motive；范围：full exported Sort parameters; source equality converted via sigT type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result
+
+```lean
+∀ (A : Sort u) (P : A → Sort v) (a : Rocq.Corelib.Init.Specif.sigT A P) (b1 : A) (b2 : P b1)
+  (e : NativeBridge.ME (Rocq.Corelib.Init.Specif.sigT A P) a (Rocq.Corelib.Init.Specif.sigT.existT A P b1 b2))
+  (F :
+    NativeBridge.Incremental.psigmaTo a =
+        NativeBridge.Incremental.psigmaTo (Rocq.Corelib.Init.Specif.sigT.existT A P b1 b2) →
+      Sort z)
+  (f : F ⋯), RocqPending.Corelib.Init.Specif.eq_sigT_rect_existT_r A P a b1 b2 (fun e => F ⋯) (fun x x_1 => f) e = f
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.eq_sigT2_rect
+
+NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT2_rect_agrees
+
+目标：selected native branch value in a native equality-indexed motive；范围：full exported Sort parameters; source equality converted via sigT2 type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result
+
+```lean
+∀ (A : Sort u) (P : A → Sort v) (Q : A → Sort w) (a b : Rocq.Corelib.Init.Specif.sigT2 A P Q)
+  (e : NativeBridge.ME (Rocq.Corelib.Init.Specif.sigT2 A P Q) a b)
+  (F : NativeBridge.Incremental.psigma2To a = NativeBridge.Incremental.psigma2To b → Sort z) (f : F ⋯),
+  RocqPending.Corelib.Init.Specif.eq_sigT2_rect A P Q a b (fun e => F ⋯) (fun x x_1 x_2 => f) e = f
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.eq_sigT2_rec
+
+NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT2_rec_agrees
+
+目标：selected native branch value in a native equality-indexed motive；范围：full exported Sort parameters; source equality converted via sigT2 type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Type result
+
+```lean
+∀ (A : Sort u) (P : A → Sort v) (Q : A → Sort w) (a b : Rocq.Corelib.Init.Specif.sigT2 A P Q)
+  (e : NativeBridge.ME (Rocq.Corelib.Init.Specif.sigT2 A P Q) a b)
+  (F : NativeBridge.Incremental.psigma2To a = NativeBridge.Incremental.psigma2To b → Type) (f : F ⋯),
+  RocqPending.Corelib.Init.Specif.eq_sigT2_rec A P Q a b (fun e => F ⋯) (fun x x_1 x_2 => f) e = f
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.eq_sigT2_rect_uncurried
+
+NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT2_rect_uncurried_agrees
+
+目标：selected native branch value in a native equality-indexed motive；范围：full exported Sort parameters; source equality converted via sigT2 type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result
+
+```lean
+∀ (A : Sort u) (P : A → Sort v) (Q : A → Sort w) (a b : Rocq.Corelib.Init.Specif.sigT2 A P Q)
+  (e : NativeBridge.ME (Rocq.Corelib.Init.Specif.sigT2 A P Q) a b)
+  (F : NativeBridge.Incremental.psigma2To a = NativeBridge.Incremental.psigma2To b → Sort z) (f : F ⋯),
+  RocqPending.Corelib.Init.Specif.eq_sigT2_rect_uncurried A P Q a b (fun e => F ⋯) (fun x => f) e = f
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.eq_sigT2_rec_uncurried
+
+NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT2_rec_uncurried_agrees
+
+目标：selected native branch value in a native equality-indexed motive；范围：full exported Sort parameters; source equality converted via sigT2 type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Type result
+
+```lean
+∀ (A : Sort u) (P : A → Sort v) (Q : A → Sort w) (a b : Rocq.Corelib.Init.Specif.sigT2 A P Q)
+  (e : NativeBridge.ME (Rocq.Corelib.Init.Specif.sigT2 A P Q) a b)
+  (F : NativeBridge.Incremental.psigma2To a = NativeBridge.Incremental.psigma2To b → Type) (f : F ⋯),
+  RocqPending.Corelib.Init.Specif.eq_sigT2_rec_uncurried A P Q a b (fun e => F ⋯) (fun x => f) e = f
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.eq_sigT2_rect_existT2
+
+NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT2_rect_existT2_agrees
+
+目标：selected native branch value in a native equality-indexed motive；范围：full exported Sort parameters; source equality converted via sigT2 type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result
+
+```lean
+∀ (A : Sort u) (P : A → Sort v) (Q : A → Sort w) (a1 : A) (a2 : P a1) (a3 : Q a1) (b1 : A) (b2 : P b1) (b3 : Q b1)
+  (e :
+    NativeBridge.ME (Rocq.Corelib.Init.Specif.sigT2 A P Q) (Rocq.Corelib.Init.Specif.sigT2.existT2 A P Q a1 a2 a3)
+      (Rocq.Corelib.Init.Specif.sigT2.existT2 A P Q b1 b2 b3))
+  (F :
+    NativeBridge.Incremental.psigma2To (Rocq.Corelib.Init.Specif.sigT2.existT2 A P Q a1 a2 a3) =
+        NativeBridge.Incremental.psigma2To (Rocq.Corelib.Init.Specif.sigT2.existT2 A P Q b1 b2 b3) →
+      Sort z)
+  (f : F ⋯),
+  RocqPending.Corelib.Init.Specif.eq_sigT2_rect_existT2 A P Q a1 a2 a3 b1 b2 b3 (fun e => F ⋯) (fun x x_1 x_2 => f) e =
+    f
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.eq_sigT2_rect_existT2_l
+
+NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT2_rect_existT2_l_agrees
+
+目标：selected native branch value in a native equality-indexed motive；范围：full exported Sort parameters; source equality converted via sigT2 type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result
+
+```lean
+∀ (A : Sort u) (P : A → Sort v) (Q : A → Sort w) (a1 : A) (a2 : P a1) (a3 : Q a1)
+  (b : Rocq.Corelib.Init.Specif.sigT2 A P Q)
+  (e : NativeBridge.ME (Rocq.Corelib.Init.Specif.sigT2 A P Q) (Rocq.Corelib.Init.Specif.sigT2.existT2 A P Q a1 a2 a3) b)
+  (F :
+    NativeBridge.Incremental.psigma2To (Rocq.Corelib.Init.Specif.sigT2.existT2 A P Q a1 a2 a3) =
+        NativeBridge.Incremental.psigma2To b →
+      Sort z)
+  (f : F ⋯),
+  RocqPending.Corelib.Init.Specif.eq_sigT2_rect_existT2_l A P Q a1 a2 a3 b (fun e => F ⋯) (fun x x_1 x_2 => f) e = f
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.eq_sigT2_rect_existT2_r
+
+NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT2_rect_existT2_r_agrees
+
+目标：selected native branch value in a native equality-indexed motive；范围：full exported Sort parameters; source equality converted via sigT2 type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result
+
+```lean
+∀ (A : Sort u) (P : A → Sort v) (Q : A → Sort w) (a : Rocq.Corelib.Init.Specif.sigT2 A P Q) (b1 : A) (b2 : P b1)
+  (b3 : Q b1)
+  (e : NativeBridge.ME (Rocq.Corelib.Init.Specif.sigT2 A P Q) a (Rocq.Corelib.Init.Specif.sigT2.existT2 A P Q b1 b2 b3))
+  (F :
+    NativeBridge.Incremental.psigma2To a =
+        NativeBridge.Incremental.psigma2To (Rocq.Corelib.Init.Specif.sigT2.existT2 A P Q b1 b2 b3) →
+      Sort z)
+  (f : F ⋯),
+  RocqPending.Corelib.Init.Specif.eq_sigT2_rect_existT2_r A P Q a b1 b2 b3 (fun e => F ⋯) (fun x x_1 x_2 => f) e = f
+```
+
+公理闭包：空
+
+## Corelib.Init.Specif.eq_exist2_curried
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_exist2_curried.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_1177) (P Q : A → Prop) (u1 v1 : A) (u2 : P u1) (v2 : P v1) (u3 : Q u1) (v3 : Q v1),
+  u1 = v1 → True → True → ⟨u1, ⋯⟩ = ⟨v1, ⋯⟩；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.eq_exist2_curried.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_exist2_curried.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_exist2_l
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_exist2_l.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_1196) (P Q : A → Prop) (u1 : A) (u2 : P u1) (u3 : Q u1) (s : { x // P x ∧ Q x }),
+  u1 = s.val → True → True → ⟨u1, ⋯⟩ = s；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.eq_exist2_l.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_exist2_l.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_exist2_r
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_exist2_r.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_1206) (P Q : A → Prop) (s : { x // P x ∧ Q x }) (v1 : A) (v2 : P v1) (v3 : Q v1),
+  s.val = v1 → True → True → s = ⟨v1, ⋯⟩；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.eq_exist2_r.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_exist2_r.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_exist2_uncurried
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_exist2_uncurried.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_1157) (P Q : A → Prop) (u1 v1 : A) (u2 : P u1) (v2 : P v1) (u3 : Q u1) (v3 : Q v1),
+  (∃ h, True ∧ True) → ⟨u1, ⋯⟩ = ⟨v1, ⋯⟩；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.eq_exist2_uncurried.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_exist2_uncurried.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_existT_curried_congr
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_existT_curried_congr.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_309) (P : A → Sort u_Corelib_Init_Specif_312) (u1 v1 : A) (u2 : P u1) (v2 : P v1)
+  (p p' : u1 = v1), p ▸ u2 = v2 → p' ▸ u2 = v2 → True → True → True；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.eq_existT_curried_congr.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_existT_curried_congr.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_existT_curried_map
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_existT_curried_map.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_274) (A' : Sort u_Corelib_Init_Specif_275) (P : A → Sort u_Corelib_Init_Specif_278)
+  (P' : A' → Sort u_Corelib_Init_Specif_281) (f : A → A') (g : (u : A) → P u → P' (f u)) (u1 v1 : A) (u2 : P u1)
+  (v2 : P v1) (p : u1 = v1), p ▸ u2 = v2 → True；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.eq_existT_curried_map.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_existT_curried_map.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_existT_curried_trans
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_existT_curried_trans.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_295) (P : A → Sort u_Corelib_Init_Specif_298) (u1 v1 w1 : A) (u2 : P u1) (v2 : P v1)
+  (w2 : P w1) (p : u1 = v1), p ▸ u2 = v2 → ∀ (p' : v1 = w1), p' ▸ v2 = w2 → True；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.eq_existT_curried_trans.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_existT_curried_trans.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_exist_curried
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_exist_curried.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_564) (P : A → Prop) (u1 v1 : A) (u2 : P u1) (v2 : P v1),
+  u1 = v1 → True → ⟨u1, u2⟩ = ⟨v1, v2⟩；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.eq_exist_curried.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_exist_curried.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_exist_l
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_exist_l.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_579) (P : A → Prop) (u1 : A) (u2 : P u1) (x : { a // P a }),
+  u1 = x.val → True → ⟨u1, u2⟩ = x；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.eq_exist_l.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_exist_l.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_exist_r
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_exist_r.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_587) (P : A → Prop) (x : { a // P a }) (v1 : A) (v2 : P v1),
+  x.val = v1 → True → x = ⟨v1, v2⟩；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.eq_exist_r.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_exist_r.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_exist_uncurried
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_exist_uncurried.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_548) (P : A → Prop) (u1 v1 : A) (u2 : P u1) (v2 : P v1),
+  (∃ h, True) → ⟨u1, u2⟩ = ⟨v1, v2⟩；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.eq_exist_uncurried.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_exist_uncurried.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_sig
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_sig.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_572) (P : A → Prop) (x x_1 : { a // P a }), x.val = x_1.val → True → x = x_1；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.eq_sig.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_sig.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_sig2
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_sig2.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_1188) (P Q : A → Prop) (s s_1 : { x // P x ∧ Q x }),
+  s.val = s_1.val → True → True → s = s_1；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.eq_sig2.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_sig2.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_sig2_ind
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_sig2_ind.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_1272) (P Q : A → Prop) (s s_1 : { x // P x ∧ Q x }) (R : s = s_1 → Prop),
+  (∀ (p : s.val = s_1.val), True → True → R ⋯) → ∀ (p : s = s_1), R p；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.eq_sig2_ind.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_sig2_ind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_sig2_ind_uncurried
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_sig2_ind_uncurried.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_1355) (P Q : A → Prop) (s s_1 : { x // P x ∧ Q x }) (R : s = s_1 → Prop),
+  (∀ (pqr : ∃ h, True ∧ True), R ⋯) → ∀ (p : s = s_1), R p；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.eq_sig2_ind_uncurried.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_sig2_ind_uncurried.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_sig2_nondep
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_sig2_nondep.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_1371) (B C : Prop) (s s_1 : { x // B ∧ C }), s.val = s_1.val → True → True → s = s_1；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.eq_sig2_nondep.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_sig2_nondep.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_sig2_uncurried
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_sig2_uncurried.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_1169) (P Q : A → Prop) (s s_1 : { x // P x ∧ Q x }), (∃ h, True ∧ True) → s = s_1；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.eq_sig2_uncurried.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_sig2_uncurried.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_sig2_uncurried_iff
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_sig2_uncurried_iff.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_1225) (P Q : A → Prop) (s s_1 : { x // P x ∧ Q x }), s = s_1 ↔ ∃ h, True ∧ True；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.eq_sig2_uncurried_iff.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_sig2_uncurried_iff.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_sigT2_ind
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_sigT2_ind.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_965) (P : A → Sort u_Corelib_Init_Specif_966) (Q : A → Sort u_Corelib_Init_Specif_969)
+  (x x_1 : (x : A) ×' P x ×' Q x) (R : x = x_1 → Prop),
+  (∀ (p : x.fst = x_1.fst) (q : p ▸ x.snd.1 = x_1.snd.1) (r : p ▸ x.snd.snd = x_1.snd.snd), R ⋯) → ∀ (p : x = x_1), R p；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.eq_sigT2_ind.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_sigT2_ind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_sigT2_ind_uncurried
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_sigT2_ind_uncurried.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_1062) (P : A → Sort u_Corelib_Init_Specif_1063)
+  (Q : A → Sort u_Corelib_Init_Specif_1066) (x x_1 : (x : A) ×' P x ×' Q x) (R : x = x_1 → Prop),
+  (∀ (pqr : ∃ h, h ▸ x.snd.1 = x_1.snd.1 ∧ h ▸ x.snd.snd = x_1.snd.snd), R ⋯) → ∀ (p : x = x_1), R p；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.eq_sigT2_ind_uncurried.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_sigT2_ind_uncurried.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_sigT_ind
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_sigT_ind.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_417) (P : A → Sort u_Corelib_Init_Specif_418) (x x_1 : (a : A) ×' P a)
+  (R : x = x_1 → Prop), (∀ (p : x.fst = x_1.fst) (q : p ▸ x.snd = x_1.snd), R ⋯) → ∀ (p : x = x_1), R p；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.eq_sigT_ind.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_sigT_ind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_sigT_ind_uncurried
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_sigT_ind_uncurried.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_486) (P : A → Sort u_Corelib_Init_Specif_487) (x x_1 : (a : A) ×' P a)
+  (R : x = x_1 → Prop), (∀ (pq : ∃ h, h ▸ x.snd = x_1.snd), R ⋯) → ∀ (p : x = x_1), R p；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.eq_sigT_ind_uncurried.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_sigT_ind_uncurried.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_sig_ind
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_sig_ind.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_618) (P : A → Prop) (x x_1 : { a // P a }) (R : x = x_1 → Prop),
+  (∀ (p : x.val = x_1.val), True → R ⋯) → ∀ (p : x = x_1), R p；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.eq_sig_ind.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_sig_ind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_sig_ind_uncurried
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_sig_ind_uncurried.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_680) (P : A → Prop) (x x_1 : { a // P a }) (R : x = x_1 → Prop),
+  (∀ (pq : ∃ h, True), R ⋯) → ∀ (p : x = x_1), R p；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.eq_sig_ind_uncurried.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_sig_ind_uncurried.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_sig_uncurried
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_sig_uncurried.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_557) (P : A → Prop) (x x_1 : { a // P a }), (∃ h, True) → x = x_1；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.eq_sig_uncurried.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_sig_uncurried.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.eq_sig_uncurried_iff
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_sig_uncurried_iff.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_691) (P : A → Prop) (x x_1 : { a // P a }), x = x_1 ↔ ∃ h, True；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.eq_sig_uncurried_iff.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_sig_uncurried_iff.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.proj2_sig_eq
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.proj2_sig_eq.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_542) (P : A → Prop) (x x_1 : { a // P a }), x = x_1 → True；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.proj2_sig_eq.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.proj2_sig_eq.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.proj2_sig_of_sig2_eq
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.proj2_sig_of_sig2_eq.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_1143) (P Q : A → Prop) (s s_1 : { x // P x ∧ Q x }), s = s_1 → True；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.proj2_sig_of_sig2_eq.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.proj2_sig_of_sig2_eq.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.proj3_sig_eq
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.proj3_sig_eq.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_1150) (P Q : A → Prop) (s s_1 : { x // P x ∧ Q x }), s = s_1 → True；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.proj3_sig_eq.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.proj3_sig_eq.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.projT2_eq
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.projT2_eq.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_223) (P : A → Sort u_Corelib_Init_Specif_224) (x x_1 : (a : A) ×' P a) (p : x = x_1),
+  ⋯ ▸ x.snd = x_1.snd；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.projT2_eq.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.projT2_eq.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.projT2_of_sigT2_eq
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.projT2_of_sigT2_eq.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_751) (P : A → Sort u_Corelib_Init_Specif_752) (Q : A → Sort u_Corelib_Init_Specif_753)
+  (x x_1 : (x : A) ×' P x ×' Q x) (p : x = x_1), ⋯ ▸ x.snd.1 = x_1.snd.1；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.projT2_of_sigT2_eq.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.projT2_of_sigT2_eq.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.projT3_eq
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.projT3_eq.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_764) (P : A → Sort u_Corelib_Init_Specif_765) (Q : A → Sort u_Corelib_Init_Specif_766)
+  (x x_1 : (x : A) ×' P x ×' Q x) (p : x = x_1), ⋯ ▸ x.snd.snd = x_1.snd.snd；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.projT3_eq.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.projT3_eq.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.rew_sig
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.rew_sig.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_713) (x : A) (P : A → Sort u_Corelib_Init_Specif_714) (Q : (a : A) → P a → Prop)
+  (x_1 : { p // Q x p }) (y : A) (H : x = y), H ▸ x_1 = ⟨H ▸ x_1.val, ⋯⟩；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.rew_sig.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.rew_sig.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.rew_sig2
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.rew_sig2.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_1381) (x : A) (P : A → Sort u_Corelib_Init_Specif_1382) (Q R : (a : A) → P a → Prop)
+  (s : { x_1 // Q x x_1 ∧ R x x_1 }) (y : A) (H : x = y), H ▸ s = ⟨H ▸ s.val, ⋯⟩；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.rew_sig2.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.rew_sig2.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.rew_sigT
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.rew_sigT.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_519) (x : A) (P : A → Sort u_Corelib_Init_Specif_520) (Q : (a : A) → P a → Prop)
+  (x_1 : (p : P x) ×' Q x p) (y : A) (H : x = y), H ▸ x_1 = ⟨H ▸ x_1.fst, ⋯⟩；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.rew_sigT.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.rew_sigT.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.rew_sigT2
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.rew_sigT2.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_1110) (x : A) (P : A → Sort u_Corelib_Init_Specif_1111) (Q R : (a : A) → P a → Prop)
+  (x_1 : (x_1 : P x) ×' Q x x_1 ×' R x x_1) (y : A) (H : x = y), H ▸ x_1 = ⟨H ▸ x_1.1, ⟨⋯, ⋯⟩⟩；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.rew_sigT2.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.rew_sigT2.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.sig2_eta
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.sig2_eta.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_168) (P Q : A → Prop) (s : { x // P x ∧ Q x }), s = ⟨s.val, ⋯⟩；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.sig2_eta.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.sig2_eta.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Specif.sig_eta
+
+NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.sig_eta.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Specif_144) (P : A → Prop) (x : { a // P a }), x = ⟨x.val, ⋯⟩；范围：all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.Init.Specif.sig_eta.statement ↔
+  NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.sig_eta.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
 ## Corelib.Init.Logic.eq_ex
 
 NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Logic.eq_ex.statement.correspondence

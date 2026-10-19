@@ -4234,5 +4234,1519 @@
         "proof": "NativeBridge.Incremental.LogicWitnesses.closed.Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement"
       }
     ]
+  },
+  {
+    "source": "Corelib.Init.Specif.Exc",
+    "profile": "SpecifOperations",
+    "certificate": "NativeBridge.Incremental.SpecifOperations.excIso",
+    "kind": "TYPE_ISO",
+    "target": "Option A",
+    "scope": "A : Type u; both inverse laws",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.Init.Specif.Choice",
+    "profile": "SpecifOperations",
+    "certificate": "NativeBridge.Incremental.SpecifOperations.choice_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "nativeChoice: dependent pointwise selection and its proof",
+    "scope": "S,T : Type, R : S → T → Prop; explicit dependent selections supplied",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifOperations.choiceClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.Choice__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.Choice__rocq2lean_obligation_1.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.Choice2",
+    "profile": "SpecifOperations",
+    "certificate": "NativeBridge.Incremental.SpecifOperations.choice2_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "nativeChoice2: PSigma distributes over a dependent function",
+    "scope": "S,T : Type; R : S → T → Type; explicit dependent selections supplied",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Init.Specif.sig2_of_sigT2",
+    "profile": "SpecifOperations",
+    "certificate": "NativeBridge.Incremental.SpecifOperations.sig2_of_sigT2_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PSigma of two proofs → Subtype of conjunction",
+    "scope": "A : Sort u; P,Q : A → Prop",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifOperations.sig2OfSigT2Closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.sig2_of_sigT2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.sig2_of_sigT2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.sig2_of_sigT2__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.sig2_of_sigT2__rocq2lean_obligation_2.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.error",
+    "profile": "SpecifOperations",
+    "certificate": "NativeBridge.Incremental.SpecifOperations.error_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Option.none",
+    "scope": "A : Sort u; Option (PLift A) adapter",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Specif.value",
+    "profile": "SpecifOperations",
+    "certificate": "NativeBridge.Incremental.SpecifOperations.value_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Option.some",
+    "scope": "A : Sort u; Option (PLift A) adapter",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Specif.except",
+    "profile": "SpecifOperations",
+    "certificate": "NativeBridge.Incremental.SpecifOperations.except_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "False.elim",
+    "scope": "A : Type as exported; input translated False converted to Lean False",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Specif.absurd_set",
+    "profile": "SpecifOperations",
+    "certificate": "NativeBridge.Incremental.SpecifOperations.absurd_set_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "False.elim",
+    "scope": "A : Prop, C : Type as exported",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Specif.sumbool_rec",
+    "profile": "SpecifOperations",
+    "certificate": "NativeBridge.Incremental.SpecifOperations.sumbool_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PSum.rec",
+    "scope": "A,B : Prop; native dependent motive returning Type",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Specif.sumbool_rect",
+    "profile": "SpecifOperations",
+    "certificate": "NativeBridge.Incremental.SpecifOperations.sumbool_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PSum.rec",
+    "scope": "A,B : Prop; native dependent motive returning Sort u",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Specif.sumor_rec",
+    "profile": "SpecifOperations",
+    "certificate": "NativeBridge.Incremental.SpecifOperations.sumor_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PSum.rec",
+    "scope": "A : Sort u, B : Prop; native dependent motive returning Type",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Specif.sumor_rect",
+    "profile": "SpecifOperations",
+    "certificate": "NativeBridge.Incremental.SpecifOperations.sumor_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PSum.rec",
+    "scope": "A : Sort u, B : Prop; native dependent motive returning Sort v",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Init.Specif.bool_choice",
+    "profile": "SpecifChoice",
+    "certificate": "NativeBridge.Incremental.SpecifChoice.bool_choice_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "nativeBoolChoice: Bool-valued choice with native disjunctive certificate",
+    "scope": "S : Type, P,Q : S → Prop; supplied pointwise PSum evidence; no choice axiom",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifChoice.boolChoiceClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.bool_choice__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.bool_choice__rocq2lean_obligation_1.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.dependent_choice",
+    "profile": "SpecifChoice",
+    "certificate": "NativeBridge.Incremental.SpecifChoice.dependent_choice_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "nativeDependentChoice: Nat.rec iteration with adjacent-step certificates",
+    "scope": "X : Sort u; R : X → X → Prop; supplied successor-selection function",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifChoice.dependentChoiceClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.dependent_choice__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.dependent_choice__rocq2lean_obligation_1.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sig_rect",
+    "profile": "SpecifEqualityElimination",
+    "certificate": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sig_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value in a native equality-indexed motive",
+    "scope": "full exported Sort parameters; source equality converted via sig type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sig_rect_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.proj2_sig",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj2_sig.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_sig__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_sig__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj1_sig_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj1_sig_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj2_sig_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_eq__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj2_sig_eq__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj2_sig_eq.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sig_rec",
+    "profile": "SpecifEqualityElimination",
+    "certificate": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sig_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value in a native equality-indexed motive",
+    "scope": "full exported Sort parameters; source equality converted via sig type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Type result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sig_rec_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.proj2_sig",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj2_sig.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_sig__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_sig__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj1_sig_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj1_sig_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj2_sig_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_eq__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj2_sig_eq__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj2_sig_eq.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sig_rect_uncurried",
+    "profile": "SpecifEqualityElimination",
+    "certificate": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sig_rect_uncurried_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value in a native equality-indexed motive",
+    "scope": "full exported Sort parameters; source equality converted via sig type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sig_rect_uncurried_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.proj2_sig",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj2_sig.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_sig__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_sig__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj1_sig_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj1_sig_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj2_sig_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_eq__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj2_sig_eq__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj2_sig_eq.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sig_rec_uncurried",
+    "profile": "SpecifEqualityElimination",
+    "certificate": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sig_rec_uncurried_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value in a native equality-indexed motive",
+    "scope": "full exported Sort parameters; source equality converted via sig type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Type result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sig_rec_uncurried_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.proj2_sig",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj2_sig.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_sig__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_sig__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj1_sig_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj1_sig_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj2_sig_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_eq__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj2_sig_eq__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj2_sig_eq.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sig_rect_exist",
+    "profile": "SpecifEqualityElimination",
+    "certificate": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sig_rect_exist_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value in a native equality-indexed motive",
+    "scope": "full exported Sort parameters; source equality converted via sig type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sig_rect_exist_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.eq_exist_curried__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_exist_curried__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_exist_curried",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_exist_curried.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj2_sig.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_sig__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_sig__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj1_sig_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj1_sig_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj2_sig_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_eq__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj2_sig_eq__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj2_sig_eq.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sig_rect_exist_l",
+    "profile": "SpecifEqualityElimination",
+    "certificate": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sig_rect_exist_l_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value in a native equality-indexed motive",
+    "scope": "full exported Sort parameters; source equality converted via sig type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sig_rect_exist_l_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.proj2_sig",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj2_sig.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_exist_l__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_exist_l__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_exist_l__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_exist_l__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_exist_l",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_exist_l.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_sig__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_sig__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj1_sig_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj1_sig_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj2_sig_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_eq__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj2_sig_eq__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj2_sig_eq.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sig_rect_exist_r",
+    "profile": "SpecifEqualityElimination",
+    "certificate": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sig_rect_exist_r_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value in a native equality-indexed motive",
+    "scope": "full exported Sort parameters; source equality converted via sig type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sig_rect_exist_r_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.proj2_sig",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj2_sig.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_exist_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_exist_r__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_exist_r",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_exist_r.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_sig__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_sig__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj1_sig_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj1_sig_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj2_sig_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_eq__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj2_sig_eq__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj2_sig_eq.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sig2_rect",
+    "profile": "SpecifEqualityElimination",
+    "certificate": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sig2_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value in a native equality-indexed motive",
+    "scope": "full exported Sort parameters; source equality converted via sig2 type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sig2_rect_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj2_sig.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj3_sig",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj3_sig.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_3.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_4.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj1_sig_of_sig2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj1_sig_of_sig2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_of_sig2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj2_sig_of_sig2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_of_sig2_eq__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj2_sig_of_sig2_eq__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_of_sig2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj2_sig_of_sig2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj3_sig_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj3_sig_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj3_sig_eq__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj3_sig_eq__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj3_sig_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj3_sig_eq.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sig2_rec",
+    "profile": "SpecifEqualityElimination",
+    "certificate": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sig2_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value in a native equality-indexed motive",
+    "scope": "full exported Sort parameters; source equality converted via sig2 type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Type result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sig2_rec_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj2_sig.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj3_sig",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj3_sig.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_3.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_4.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj1_sig_of_sig2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj1_sig_of_sig2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_of_sig2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj2_sig_of_sig2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_of_sig2_eq__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj2_sig_of_sig2_eq__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_of_sig2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj2_sig_of_sig2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj3_sig_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj3_sig_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj3_sig_eq__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj3_sig_eq__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj3_sig_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj3_sig_eq.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sig2_rect_uncurried",
+    "profile": "SpecifEqualityElimination",
+    "certificate": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sig2_rect_uncurried_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value in a native equality-indexed motive",
+    "scope": "full exported Sort parameters; source equality converted via sig2 type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sig2_rect_uncurried_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj2_sig.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj3_sig",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj3_sig.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_3.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_4.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj1_sig_of_sig2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj1_sig_of_sig2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_of_sig2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj2_sig_of_sig2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_of_sig2_eq__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj2_sig_of_sig2_eq__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_of_sig2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj2_sig_of_sig2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj3_sig_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj3_sig_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj3_sig_eq__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj3_sig_eq__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj3_sig_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj3_sig_eq.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sig2_rec_uncurried",
+    "profile": "SpecifEqualityElimination",
+    "certificate": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sig2_rec_uncurried_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value in a native equality-indexed motive",
+    "scope": "full exported Sort parameters; source equality converted via sig2 type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Type result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sig2_rec_uncurried_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj2_sig.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj3_sig",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj3_sig.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_3.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_4.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj1_sig_of_sig2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj1_sig_of_sig2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_of_sig2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj2_sig_of_sig2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_of_sig2_eq__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj2_sig_of_sig2_eq__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_of_sig2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj2_sig_of_sig2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj3_sig_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj3_sig_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj3_sig_eq__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj3_sig_eq__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj3_sig_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj3_sig_eq.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sig2_rect_exist2",
+    "profile": "SpecifEqualityElimination",
+    "certificate": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sig2_rect_exist2_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value in a native equality-indexed motive",
+    "scope": "full exported Sort parameters; source equality converted via sig2 type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sig2_rect_exist2_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.eq_exist2_curried__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_exist2_curried__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_exist2_curried__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_exist2_curried__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_exist2_curried",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_exist2_curried.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj2_sig.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj3_sig",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj3_sig.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_3.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_4.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj1_sig_of_sig2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj1_sig_of_sig2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_of_sig2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj2_sig_of_sig2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_of_sig2_eq__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj2_sig_of_sig2_eq__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_of_sig2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj2_sig_of_sig2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj3_sig_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj3_sig_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj3_sig_eq__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj3_sig_eq__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj3_sig_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj3_sig_eq.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sig2_rect_exist2_l",
+    "profile": "SpecifEqualityElimination",
+    "certificate": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sig2_rect_exist2_l_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value in a native equality-indexed motive",
+    "scope": "full exported Sort parameters; source equality converted via sig2 type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sig2_rect_exist2_l_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj2_sig.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj3_sig",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj3_sig.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_exist2_l__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_exist2_l__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_exist2_l__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_exist2_l__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_exist2_l__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_exist2_l__rocq2lean_obligation_3.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_exist2_l__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_exist2_l__rocq2lean_obligation_4.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_exist2_l",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_exist2_l.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_3.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_4.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj1_sig_of_sig2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj1_sig_of_sig2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_of_sig2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj2_sig_of_sig2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_of_sig2_eq__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj2_sig_of_sig2_eq__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_of_sig2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj2_sig_of_sig2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj3_sig_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj3_sig_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj3_sig_eq__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj3_sig_eq__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj3_sig_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj3_sig_eq.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sig2_rect_exist2_r",
+    "profile": "SpecifEqualityElimination",
+    "certificate": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sig2_rect_exist2_r_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value in a native equality-indexed motive",
+    "scope": "full exported Sort parameters; source equality converted via sig2 type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sig2_rect_exist2_r_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.sig_of_sig2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.proj2_sig.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj3_sig",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj3_sig.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_exist2_r__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_exist2_r__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_exist2_r__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_exist2_r__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_exist2_r",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_exist2_r.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_3.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2__rocq2lean_obligation_4.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sig2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.eq_sig2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj1_sig_of_sig2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj1_sig_of_sig2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_of_sig2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj2_sig_of_sig2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_of_sig2_eq__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj2_sig_of_sig2_eq__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj2_sig_of_sig2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj2_sig_of_sig2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj3_sig_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj3_sig_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj3_sig_eq__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj3_sig_eq__rocq2lean_obligation_2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.proj3_sig_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.proj3_sig_eq.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sigT_rect",
+    "profile": "SpecifEqualityElimination",
+    "certificate": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value in a native equality-indexed motive",
+    "scope": "full exported Sort parameters; source equality converted via sigT type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT_rect_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.eq_sigT",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_sigT.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT1_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT1_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.projT2_eq.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sigT_rec",
+    "profile": "SpecifEqualityElimination",
+    "certificate": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value in a native equality-indexed motive",
+    "scope": "full exported Sort parameters; source equality converted via sigT type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Type result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT_rec_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.eq_sigT",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_sigT.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT1_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT1_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.projT2_eq.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sigT_rect_uncurried",
+    "profile": "SpecifEqualityElimination",
+    "certificate": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT_rect_uncurried_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value in a native equality-indexed motive",
+    "scope": "full exported Sort parameters; source equality converted via sigT type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT_rect_uncurried_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.eq_sigT",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_sigT.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT1_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT1_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.projT2_eq.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sigT_rec_uncurried",
+    "profile": "SpecifEqualityElimination",
+    "certificate": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT_rec_uncurried_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value in a native equality-indexed motive",
+    "scope": "full exported Sort parameters; source equality converted via sigT type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Type result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT_rec_uncurried_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.eq_sigT",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_sigT.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT1_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT1_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.projT2_eq.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sigT_rect_existT",
+    "profile": "SpecifEqualityElimination",
+    "certificate": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT_rect_existT_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value in a native equality-indexed motive",
+    "scope": "full exported Sort parameters; source equality converted via sigT type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT_rect_existT_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.eq_existT_curried",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_existT_curried.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sigT",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_sigT.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT1_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT1_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.projT2_eq.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sigT_rect_existT_l",
+    "profile": "SpecifEqualityElimination",
+    "certificate": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT_rect_existT_l_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value in a native equality-indexed motive",
+    "scope": "full exported Sort parameters; source equality converted via sigT type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT_rect_existT_l_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.eq_existT_l",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_existT_l.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sigT",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_sigT.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT1_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT1_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.projT2_eq.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sigT_rect_existT_r",
+    "profile": "SpecifEqualityElimination",
+    "certificate": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT_rect_existT_r_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value in a native equality-indexed motive",
+    "scope": "full exported Sort parameters; source equality converted via sigT type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT_rect_existT_r_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.eq_existT_r",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_existT_r.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sigT",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_sigT.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT1_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT1_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.projT2_eq.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sigT2_rect",
+    "profile": "SpecifEqualityElimination",
+    "certificate": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT2_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value in a native equality-indexed motive",
+    "scope": "full exported Sort parameters; source equality converted via sigT2 type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT2_rect_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.eq_sigT2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_sigT2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT1_of_sigT2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT1_of_sigT2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT2_of_sigT2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT2_of_sigT2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT2_of_sigT2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.projT2_of_sigT2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT3_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT3_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT3_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.projT3_eq.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sigT2_rec",
+    "profile": "SpecifEqualityElimination",
+    "certificate": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT2_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value in a native equality-indexed motive",
+    "scope": "full exported Sort parameters; source equality converted via sigT2 type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Type result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT2_rec_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.eq_sigT2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_sigT2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT1_of_sigT2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT1_of_sigT2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT2_of_sigT2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT2_of_sigT2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT2_of_sigT2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.projT2_of_sigT2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT3_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT3_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT3_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.projT3_eq.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sigT2_rect_uncurried",
+    "profile": "SpecifEqualityElimination",
+    "certificate": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT2_rect_uncurried_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value in a native equality-indexed motive",
+    "scope": "full exported Sort parameters; source equality converted via sigT2 type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT2_rect_uncurried_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.eq_sigT2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_sigT2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT1_of_sigT2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT1_of_sigT2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT2_of_sigT2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT2_of_sigT2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT2_of_sigT2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.projT2_of_sigT2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT3_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT3_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT3_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.projT3_eq.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sigT2_rec_uncurried",
+    "profile": "SpecifEqualityElimination",
+    "certificate": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT2_rec_uncurried_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value in a native equality-indexed motive",
+    "scope": "full exported Sort parameters; source equality converted via sigT2 type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Type result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT2_rec_uncurried_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.eq_sigT2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_sigT2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT1_of_sigT2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT1_of_sigT2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT2_of_sigT2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT2_of_sigT2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT2_of_sigT2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.projT2_of_sigT2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT3_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT3_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT3_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.projT3_eq.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sigT2_rect_existT2",
+    "profile": "SpecifEqualityElimination",
+    "certificate": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT2_rect_existT2_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value in a native equality-indexed motive",
+    "scope": "full exported Sort parameters; source equality converted via sigT2 type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT2_rect_existT2_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.eq_existT2_curried",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_existT2_curried.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sigT2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_sigT2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT1_of_sigT2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT1_of_sigT2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT2_of_sigT2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT2_of_sigT2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT2_of_sigT2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.projT2_of_sigT2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT3_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT3_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT3_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.projT3_eq.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sigT2_rect_existT2_l",
+    "profile": "SpecifEqualityElimination",
+    "certificate": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT2_rect_existT2_l_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value in a native equality-indexed motive",
+    "scope": "full exported Sort parameters; source equality converted via sigT2 type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT2_rect_existT2_l_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.eq_existT2_l",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_existT2_l.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sigT2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_sigT2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT1_of_sigT2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT1_of_sigT2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT2_of_sigT2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT2_of_sigT2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT2_of_sigT2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.projT2_of_sigT2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT3_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT3_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT3_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.projT3_eq.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Specif.eq_sigT2_rect_existT2_r",
+    "profile": "SpecifEqualityElimination",
+    "certificate": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT2_rect_existT2_r_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "selected native branch value in a native equality-indexed motive",
+    "scope": "full exported Sort parameters; source equality converted via sigT2 type isomorphism; proof-indexed branch represented by its value, justified by proof_branch1/2/3; Sort result",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT2_rect_existT2_r_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Specif.eq_existT2_r",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_existT2_r.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.eq_sigT2",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.eq_sigT2.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT1_of_sigT2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT1_of_sigT2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT2_of_sigT2_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT2_of_sigT2_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT2_of_sigT2_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.projT2_of_sigT2_eq.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT3_eq__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.Rocq.Corelib.Init.Specif.projT3_eq__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.Init.Specif.projT3_eq",
+        "proof": "NativeBridge.Incremental.SpecifWitnesses.closed.RocqPending.Corelib.Init.Specif.projT3_eq.statement"
+      }
+    ]
   }
 ]

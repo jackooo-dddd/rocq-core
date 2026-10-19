@@ -10,6 +10,7 @@ nat 和 eq 都通过普通归纳规则翻译为独立目标类型。与 Lean Nat
 
 - [逐模块翻译、目标 AST 与条件](results/corelib-complete/README.md)
 - [2180 项翻译总表](results/corelib-complete/declarations.csv)
+- [实际使用规则](results/USED_RULES.md)：仅收录当前机械基线的使用证据。
 - [规则清单](results/corelib-complete/ALL_RULES.md)与[逐项使用次数](results/corelib-complete/RULE_USAGE.md)
 - [Universe 统计](results/corelib-complete/UNIVERSES.md)
 - [correspondence 总览](results/corelib-complete/CORRESPONDENCE.md)
@@ -18,3 +19,5 @@ nat 和 eq 都通过普通归纳规则翻译为独立目标类型。与 Lean Nat
 - [统一使用示例](experiments/mechanical-correspondence-20261019/UseNative.lean)
 
 main74→main75 的精简证据保留为历史比较；取消 nat/eq bootstrap 没有增加新翻译规则。
+
+当前增量对应完成类别为 1159 / 2180：67 类型、423 运算、669 完全原生陈述；另有 137 份原陈述闭合证明。63 个增量 profile 有成功记录，全部 892 份覆盖证书共同导入通过。最新为 [Init.Specif 完成结果](experiments/incremental-correspondence-20261019/SPECIF_COMPLETION_RESULTS.md)。
