@@ -2436,5 +2436,122 @@
     "scope": "Type u for constructor/projections; gen_st exactly Type 0 as source; original theorem proved using native Equivalence",
     "target_class": "native_statement",
     "original_statement_proof": "NativeBridge.Incremental.SetoidBridge.gen_st_closed"
+  },
+  {
+    "source": "Corelib.Init.Specif.sumor",
+    "profile": "SpecifNormalization",
+    "certificate": "NativeBridge.Incremental.sumorSortIso",
+    "kind": "TYPE_ISO",
+    "target": "PSum A P",
+    "target_class": "native_representation",
+    "scope": "A : Sort u, P : Prop; full Sort extension of the inherited Type-only sumor bridge; source root counted once"
+  },
+  {
+    "source": "Corelib.Init.Decimal.Little.succ",
+    "profile": "NumericWrite",
+    "certificate": "NativeBridge.Incremental.NumericWrite.decimal_increment_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Native carry on List (Fin 10)",
+    "target_class": "native_expression",
+    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved."
+  },
+  {
+    "source": "Corelib.Init.Hexadecimal.Little.succ",
+    "profile": "NumericWrite",
+    "certificate": "NativeBridge.Incremental.NumericWrite.hexadecimal_increment_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Native carry on List (Fin 16)",
+    "target_class": "native_expression",
+    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved."
+  },
+  {
+    "source": "Corelib.Init.Nat.to_little_uint",
+    "profile": "NumericWrite",
+    "certificate": "NativeBridge.Incremental.NumericWrite.decimal_little_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Native Nat.rec iteration of decimal digit carry",
+    "target_class": "native_expression",
+    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved."
+  },
+  {
+    "source": "Corelib.Init.Nat.to_little_hex_uint",
+    "profile": "NumericWrite",
+    "certificate": "NativeBridge.Incremental.NumericWrite.hexadecimal_little_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Native Nat.rec iteration of hexadecimal digit carry",
+    "target_class": "native_expression",
+    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved."
+  },
+  {
+    "source": "Corelib.Init.Nat.to_uint",
+    "profile": "NumericWrite",
+    "certificate": "NativeBridge.Incremental.NumericWrite.decimal_print_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Native decimal digit printing: iterate carry from [0], then reverse",
+    "target_class": "native_expression",
+    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved."
+  },
+  {
+    "source": "Corelib.Init.Nat.to_hex_uint",
+    "profile": "NumericWrite",
+    "certificate": "NativeBridge.Incremental.NumericWrite.hexadecimal_print_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Native hexadecimal digit printing: iterate carry from [0], then reverse",
+    "target_class": "native_expression",
+    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved."
+  },
+  {
+    "source": "Corelib.Init.Nat.to_int",
+    "profile": "NumericWrite",
+    "certificate": "NativeBridge.Incremental.NumericWrite.decimal_signed_print_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "False sign tag paired with native decimal printDigits",
+    "target_class": "native_expression",
+    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved."
+  },
+  {
+    "source": "Corelib.Init.Nat.to_hex_int",
+    "profile": "NumericWrite",
+    "certificate": "NativeBridge.Incremental.NumericWrite.hexadecimal_signed_print_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "False sign tag paired with native hexadecimal printDigits",
+    "target_class": "native_expression",
+    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved."
+  },
+  {
+    "source": "Corelib.Init.Nat.to_num_uint",
+    "profile": "NumericWrite",
+    "certificate": "NativeBridge.Incremental.NumericWrite.number_decimal_print_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Sum.inl of native decimal printDigits",
+    "target_class": "native_expression",
+    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved."
+  },
+  {
+    "source": "Corelib.Init.Nat.to_num_hex_uint",
+    "profile": "NumericWrite",
+    "certificate": "NativeBridge.Incremental.NumericWrite.number_hexadecimal_print_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Sum.inr of native hexadecimal printDigits",
+    "target_class": "native_expression",
+    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved."
+  },
+  {
+    "source": "Corelib.Init.Nat.to_num_int",
+    "profile": "NumericWrite",
+    "certificate": "NativeBridge.Incremental.NumericWrite.number_signed_print_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Sum.inl of positive native signed decimal printDigits",
+    "target_class": "native_expression",
+    "scope": "All mechanical Nat inputs; arbitrary digit accumulators for Little operations. Radix 10 or 16. Native expression has no source operations; print value separately proved, direct equality to Mathlib Nat.digits not yet proved."
+  },
+  {
+    "source": "Corelib.Init.Number.signed_int",
+    "profile": "NumericWrite",
+    "certificate": "NativeBridge.Incremental.NumericWrite.numberSignedIso",
+    "kind": "TYPE_ISO",
+    "target": "Sum (Bool × List (Fin 10)) (Bool × List (Fin 16))",
+    "target_class": "native_representation",
+    "scope": "Radix, sign tag, empty representation and redundant zeros retained. Not a bijection to Int."
   }
 ]

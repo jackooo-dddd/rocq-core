@@ -4,7 +4,7 @@ W=Path(__file__).resolve().parent;R=W.parents[1];D=W/'reports'
 B=R/'experiments/mechanical-correspondence-20261019/reports'
 specs=json.loads((W/'certificates.json').read_text())
 validation=json.loads((D/'validation.json').read_text())
-assert {r['profile'] for r in validation}=={'SpecifNormalization','SpecifStatements','Basics','SSR','Iteration','Registry','SSRProperties','SSRBool','SSRBoolStatements','NumericRead','DecimalOperations','HexadecimalOperations','WellFounded','DependentElimination','PairRecursion','DependentStatements','DatatypeElimination','EqualityTransport','BooleanEquality','RelationDefinitions','RelationClasses','RelationClassStatements','VariadicPredicates','VariadicStatements','RelationConditions','Morphisms','MorphismStatements','EquivalenceBridge','EquivalenceStatements','MorphismsProp','SetoidBridge'}
+assert {r['profile'] for r in validation}=={'NumericWrite','SpecifNormalization','SpecifStatements','Basics','SSR','Iteration','Registry','SSRProperties','SSRBool','SSRBoolStatements','NumericRead','DecimalOperations','HexadecimalOperations','WellFounded','DependentElimination','PairRecursion','DependentStatements','DatatypeElimination','EqualityTransport','BooleanEquality','RelationDefinitions','RelationClasses','RelationClassStatements','VariadicPredicates','VariadicStatements','RelationConditions','Morphisms','MorphismStatements','EquivalenceBridge','EquivalenceStatements','MorphismsProp','SetoidBridge'}
 audits={}
 for r in validation:
  assert r['exit']==0 and r['audit_present'],r
@@ -129,7 +129,7 @@ summary={'alias_regression_profiles':45,'alias_regression_lost':0,'alias_regress
  'correspondence_conditions_remaining':counts['EXPLICIT_PROOF_PARAMETERS'],
  'condition_resolved_roots':len({r['source'] for r in resolved_conditions}),
  'closed_obligation_witnesses':len({w['name'] for r in resolved_conditions for w in r['witnesses']}),
- 'full_sort_type_certificates_added':6,'completion':'twelve incremental batches plus P7 coexistence; overall plan remains incomplete',
+ 'full_sort_type_certificates_added':7,'completion':'thirteen incremental batches plus P7 coexistence; overall plan remains incomplete',
  'explicit_target_classes_since_batch_3':dict(collections.Counter(sp['target_class'] for sp in specs if 'target_class' in sp))}
 interop_path=D/'interop/all/import-all-validation.json'
 if interop_path.exists():

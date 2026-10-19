@@ -5,6 +5,12 @@
   "kind": "theorem",
   "axioms": []},
  {"type":
+  "{A : Sort u} → {P : Prop} → A ⊕' P → Rocq.Corelib.Init.Specif.sumor A P",
+  "source_references": ["Rocq.Corelib.Init.Specif.sumor"],
+  "name": "NativeBridge.Incremental.sumorSortOf",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
   "∀ {A : Sort u} {P : A → Sort v} {Q : A → Sort w} (x : A) (p : P x) (q : Q x),\n  NativeBridge.Incremental.psigma2To (Rocq.Corelib.Init.Specif.sigT2.existT2 A P Q x p q) = ⟨x, ⟨p, q⟩⟩",
   "source_references": ["Rocq.Corelib.Init.Specif.sigT2.existT2"],
   "name": "NativeBridge.Incremental.psigma2_constructor_native",
@@ -17,9 +23,21 @@
   "kind": "theorem",
   "axioms": []},
  {"type":
+  "∀ {P Q : Prop} {B : Sort z} (F : (Rocq.Corelib.Init.Specif.sumbool P Q → B) → Prop),\n  (∀ (f : Rocq.Corelib.Init.Specif.sumbool P Q → B), F f) ↔ ∀ (f : P ⊕' Q → B), F fun x => f (NativeBridge.sumboolTo x)",
+  "source_references": ["Rocq.Corelib.Init.Specif.sumbool"],
+  "name": "NativeBridge.Incremental.sumbool_family_forall",
+  "kind": "theorem",
+  "axioms": ["Quot.sound"]},
+ {"type":
   "∀ {A : Sort u} {P : A → Prop}, Nonempty (Rocq.Corelib.Init.Specif.sig A P) ↔ Nonempty (Subtype P)",
   "source_references": ["Rocq.Corelib.Init.Specif.sig"],
   "name": "NativeBridge.Incremental.subtype_nonempty_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} {P : A → Sort v} (F : Rocq.Corelib.Init.Specif.sigT A P → Prop),\n  (∀ (x : Rocq.Corelib.Init.Specif.sigT A P), F x) ↔ ∀ (x : PSigma P), F (NativeBridge.Incremental.psigmaOf x)",
+  "source_references": ["Rocq.Corelib.Init.Specif.sigT"],
+  "name": "NativeBridge.Incremental.psigma_forall_native",
   "kind": "theorem",
   "axioms": []},
  {"type":
@@ -29,9 +47,21 @@
   "kind": "theorem",
   "axioms": []},
  {"type":
-  "∀ {A : Sort u} {P : A → Sort v} (F : Rocq.Corelib.Init.Specif.sigT A P → Prop),\n  (∀ (x : Rocq.Corelib.Init.Specif.sigT A P), F x) ↔ ∀ (x : PSigma P), F (NativeBridge.Incremental.psigmaOf x)",
-  "source_references": ["Rocq.Corelib.Init.Specif.sigT"],
-  "name": "NativeBridge.Incremental.psigma_forall_native",
+  "∀ (A : Sort u_1) (P : Prop) (x : A ⊕' P),\n  NativeBridge.Incremental.sumorSortTo (NativeBridge.Incremental.sumorSortOf x) = x",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.sumorSortIso._proof_2",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} {P : Prop} (p : P),\n  NativeBridge.Incremental.sumorSortTo (Rocq.Corelib.Init.Specif.sumor.inright A P p) = PSum.inr p",
+  "source_references": ["Rocq.Corelib.Init.Specif.sumor.inright"],
+  "name": "NativeBridge.Incremental.sumor_right_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Prop) (P Q : A → Prop), Rocq.Corelib.Init.Specif.sigT2.qualityProp A P Q ↔ ∃ x, P x ∧ Q x",
+  "source_references": ["Rocq.Corelib.Init.Specif.sigT2.qualityProp"],
+  "name": "NativeBridge.Incremental.quality_sigT2_native",
   "kind": "theorem",
   "axioms": []},
  {"type":
@@ -45,6 +75,12 @@
   "source_references": ["Rocq.Corelib.Init.Specif.sig"],
   "name": "NativeBridge.Incremental.subtype_of_equality",
   "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "{A : Sort u} → {P : Prop} → Rocq.Corelib.Init.Specif.sumor A P → A ⊕' P",
+  "source_references": ["Rocq.Corelib.Init.Specif.sumor"],
+  "name": "NativeBridge.Incremental.sumorSortTo",
+  "kind": "definition",
   "axioms": []},
  {"type":
   "∀ {A : Sort u} {P : A → Sort v} {Q : A → Sort w} (x : Rocq.Corelib.Init.Specif.sigT2 A P Q),\n  NativeBridge.Incremental.psigma2Of (NativeBridge.Incremental.psigma2To x) = x",
@@ -65,10 +101,22 @@
   "kind": "definition",
   "axioms": []},
  {"type":
+  "∀ {A : Sort u} {P Q : A → Prop} (x y : { x // P x ∧ Q x }),\n  NativeBridge.Incremental.subtype2Of x = NativeBridge.Incremental.subtype2Of y ↔ x = y",
+  "source_references": ["Rocq.Corelib.Init.Specif.sig2"],
+  "name": "NativeBridge.Incremental.subtype2_of_equality",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
   "∀ {A : Sort u} {P : A → Prop} (x : Rocq.Corelib.Init.Specif.sig A P),\n  NativeBridge.Incremental.subtypeOf (NativeBridge.Incremental.subtypeTo x) = x",
   "source_references": ["Rocq.Corelib.Init.Specif.sig"],
   "name": "NativeBridge.Incremental.subtype_back_roundtrip",
   "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "{A : Sort u_1} →\n  {P : Prop} →\n    (motive : A ⊕' P → Sort u_2) →\n      (x : A ⊕' P) → ((a : A) → motive (PSum.inl a)) → ((p : P) → motive (PSum.inr p)) → motive x",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.sumorSortOf.match_1",
+  "kind": "definition",
   "axioms": []},
  {"type":
   "∀ {A : Sort u} {P Q : A → Prop} {B : Sort z} (F : (Rocq.Corelib.Init.Specif.sig2 A P Q → B) → Prop),\n  (∀ (f : Rocq.Corelib.Init.Specif.sig2 A P Q → B), F f) ↔\n    ∀ (f : { x // P x ∧ Q x } → B), F fun x => f (NativeBridge.Incremental.subtype2To x)",
@@ -94,9 +142,33 @@
   "kind": "theorem",
   "axioms": []},
  {"type":
+  "∀ {P Q : Prop} (q : Q), NativeBridge.sumboolTo (Rocq.Corelib.Init.Specif.sumbool.right P Q q) = PSum.inr q",
+  "source_references": ["Rocq.Corelib.Init.Specif.sumbool.right"],
+  "name": "NativeBridge.Incremental.sumbool_right_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
   "∀ {A : Sort u} {P : A → Sort v} (x : PSigma P),\n  Rocq.Corelib.Init.Specif.projT1 A P (NativeBridge.Incremental.psigmaOf x) = x.fst",
   "source_references": ["Rocq.Corelib.Init.Specif.projT1"],
   "name": "NativeBridge.Incremental.psigma_projection_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} {B : Sort v} (F : Rocq.Corelib.Init.Datatypes.prod A B → Prop),\n  (∀ (x : Rocq.Corelib.Init.Datatypes.prod A B), F x) ↔ ∀ (x : A ×' B), F (NativeBridge.Incremental.pprodOf x)",
+  "source_references": ["Rocq.Corelib.Init.Datatypes.prod"],
+  "name": "NativeBridge.Incremental.pprod_forall_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} {B : Sort v} (x : A ×' B), NativeBridge.Incremental.pprodTo (NativeBridge.Incremental.pprodOf x) = x",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.pprod_forward_roundtrip",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {P Q : Prop} (F : Rocq.Corelib.Init.Specif.sumbool P Q → Prop),\n  (∀ (x : Rocq.Corelib.Init.Specif.sumbool P Q), F x) ↔ ∀ (x : P ⊕' Q), F (NativeBridge.sumboolOf x)",
+  "source_references": ["Rocq.Corelib.Init.Specif.sumbool"],
+  "name": "NativeBridge.Incremental.sumbool_forall_native",
   "kind": "theorem",
   "axioms": []},
  {"type":
@@ -104,6 +176,19 @@
   "source_references":
   ["Rocq.Corelib.Init.Specif.sigT", "Rocq.Corelib.Init.Specif.sigT_of_sigT2"],
   "name": "NativeBridge.Incremental.psigma2_drop_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} {P : A → Sort v} (x : PSigma P),\n  Rocq.Corelib.Init.Specif.projT2 A (fun a => P a) (NativeBridge.Incremental.psigmaOf x) = x.snd",
+  "source_references":
+  ["Rocq.Corelib.Init.Specif.projT1", "Rocq.Corelib.Init.Specif.projT2"],
+  "name": "NativeBridge.Incremental.psigma_eta_value_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} {P Q : A → Prop} (x : A) (p : P x) (q : Q x),\n  NativeBridge.Incremental.subtype2To (Rocq.Corelib.Init.Specif.sig2.exist2 A P Q x p q) = ⟨x, ⋯⟩",
+  "source_references": ["Rocq.Corelib.Init.Specif.sig2.exist2"],
+  "name": "NativeBridge.Incremental.subtype2_constructor_native",
   "kind": "theorem",
   "axioms": []},
  {"type":
@@ -117,6 +202,24 @@
   "∀ {A : Sort u} {P : A → Prop} (F : Rocq.Corelib.Init.Specif.sig A P → Prop),\n  (∀ (x : Rocq.Corelib.Init.Specif.sig A P), F x) ↔ ∀ (x : Subtype P), F (NativeBridge.Incremental.subtypeOf x)",
   "source_references": ["Rocq.Corelib.Init.Specif.sig"],
   "name": "NativeBridge.Incremental.subtype_forall_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} {P : Prop} (a : A),\n  NativeBridge.Incremental.sumorSortTo (Rocq.Corelib.Init.Specif.sumor.inleft A P a) = PSum.inl a",
+  "source_references": ["Rocq.Corelib.Init.Specif.sumor.inleft"],
+  "name": "NativeBridge.Incremental.sumor_left_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} {P : Prop} (F : Rocq.Corelib.Init.Specif.sumor A P → Prop),\n  (∀ (x : Rocq.Corelib.Init.Specif.sumor A P), F x) ↔ ∀ (x : A ⊕' P), F (NativeBridge.Incremental.sumorSortOf x)",
+  "source_references": ["Rocq.Corelib.Init.Specif.sumor"],
+  "name": "NativeBridge.Incremental.sumor_forall_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} {x y : A} (F : NativeBridge.ME A x y → Prop), (∀ (h : NativeBridge.ME A x y), F h) ↔ ∀ (h : x = y), F ⋯",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.eq_proof_forall_native",
   "kind": "theorem",
   "axioms": []},
  {"type":
@@ -156,21 +259,51 @@
   "kind": "theorem",
   "axioms": ["Quot.sound"]},
  {"type":
-  "∀ {A : Sort u_1} {P : A → Prop} (motive : Nonempty (Subtype P) → Prop) (x : Nonempty (Subtype P)),\n  (∀ (x : Subtype P), motive ⋯) → motive x",
-  "source_references": [],
-  "name": "NativeBridge.Incremental.subtype_nonempty_native.match_1_3",
-  "kind": "definition",
-  "axioms": []},
- {"type":
   "∀ {A : Sort u} {P : A → Prop} (F : Rocq.Corelib.Init.Specif.sig A P → Prop),\n  (∃ x, F x) ↔ ∃ x, F (NativeBridge.Incremental.subtypeOf x)",
   "source_references": ["Rocq.Corelib.Init.Specif.sig"],
   "name": "NativeBridge.Incremental.subtype_exists_native",
   "kind": "theorem",
   "axioms": []},
  {"type":
+  "∀ {A : Sort u} {x y : A} (F : NativeBridge.ME A x y → Prop), (∃ h, F h) ↔ ∃ h, F ⋯",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.eq_proof_exists_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u_1} {P : A → Prop} (motive : Nonempty (Subtype P) → Prop) (x : Nonempty (Subtype P)),\n  (∀ (x : Subtype P), motive ⋯) → motive x",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.subtype_nonempty_native.match_1_3",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} {P : Prop} {B : Sort z} (F : (Rocq.Corelib.Init.Specif.sumor A P → B) → Prop),\n  (∀ (f : Rocq.Corelib.Init.Specif.sumor A P → B), F f) ↔\n    ∀ (f : A ⊕' P → B), F fun x => f (NativeBridge.Incremental.sumorSortTo x)",
+  "source_references": ["Rocq.Corelib.Init.Specif.sumor"],
+  "name": "NativeBridge.Incremental.sumor_family_forall",
+  "kind": "theorem",
+  "axioms": ["Quot.sound"]},
+ {"type":
   "∀ {A : Sort u} {P : A → Sort v} (x : A) (p : P x),\n  NativeBridge.Incremental.psigmaTo (Rocq.Corelib.Init.Specif.sigT.existT A P x p) = ⟨x, p⟩",
   "source_references": ["Rocq.Corelib.Init.Specif.sigT.existT"],
   "name": "NativeBridge.Incremental.psigma_constructor_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "(A : Sort u) → (P : Prop) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sumor A P) (A ⊕' P)",
+  "source_references": ["Rocq.Corelib.Init.Specif.sumor"],
+  "name": "NativeBridge.Incremental.sumorSortIso",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} {P : Prop} (x : A ⊕' P),\n  NativeBridge.Incremental.sumorSortTo (NativeBridge.Incremental.sumorSortOf x) = x",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.sumor_forward_roundtrip",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Sort u_1) (P : Prop) (x : Rocq.Corelib.Init.Specif.sumor A P),\n  NativeBridge.Incremental.sumorSortOf (NativeBridge.Incremental.sumorSortTo x) = x",
+  "source_references": ["Rocq.Corelib.Init.Specif.sumor"],
+  "name": "NativeBridge.Incremental.sumorSortIso._proof_1",
   "kind": "theorem",
   "axioms": []},
  {"type":
@@ -201,15 +334,52 @@
   "kind": "theorem",
   "axioms": []},
  {"type":
+  "∀ {P Q : Prop} (p : P), NativeBridge.sumboolTo (Rocq.Corelib.Init.Specif.sumbool.left P Q p) = PSum.inl p",
+  "source_references": ["Rocq.Corelib.Init.Specif.sumbool.left"],
+  "name": "NativeBridge.Incremental.sumbool_left_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} {P : A → Sort v} (x : PSigma P),\n  Rocq.Corelib.Init.Specif.projT1 A (fun a => P a) (NativeBridge.Incremental.psigmaOf x) = x.fst",
+  "source_references": ["Rocq.Corelib.Init.Specif.projT1"],
+  "name": "NativeBridge.Incremental.psigma_eta_projection_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
   "∀ {A : Sort u} {P : A → Sort v} (x y : Rocq.Corelib.Init.Specif.sigT A P),\n  x = y ↔ NativeBridge.Incremental.psigmaTo x = NativeBridge.Incremental.psigmaTo y",
   "source_references": ["Rocq.Corelib.Init.Specif.sigT"],
   "name": "NativeBridge.Incremental.psigma_equality_native",
   "kind": "theorem",
   "axioms": []},
  {"type":
+  "∀ {A : Sort u} {P : A → Sort v} {Q : A → Sort w} (x : (x : A) ×' P x ×' Q x),\n  Rocq.Corelib.Init.Specif.sigT_of_sigT2 A (fun a => P a) (fun a => Q a) (NativeBridge.Incremental.psigma2Of x) =\n    NativeBridge.Incremental.psigmaOf ⟨x.fst, x.snd.fst⟩",
+  "source_references":
+  ["Rocq.Corelib.Init.Specif.sigT", "Rocq.Corelib.Init.Specif.sigT_of_sigT2"],
+  "name": "NativeBridge.Incremental.psigma2_eta_drop_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} {P : A → Prop} (x : A) (p : P x),\n  NativeBridge.Incremental.subtypeTo (Rocq.Corelib.Init.Specif.sig.exist A P x p) = ⟨x, p⟩",
+  "source_references": ["Rocq.Corelib.Init.Specif.sig.exist"],
+  "name": "NativeBridge.Incremental.subtype_constructor_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
   "∀ {A : Sort u} {P : A → Sort v} (x : Rocq.Corelib.Init.Specif.sigT A P),\n  NativeBridge.Incremental.psigmaOf (NativeBridge.Incremental.psigmaTo x) = x",
   "source_references": ["Rocq.Corelib.Init.Specif.sigT"],
   "name": "NativeBridge.Incremental.psigma_back_roundtrip",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} {B : Sort v} (x y : Rocq.Corelib.Init.Datatypes.prod A B),\n  x = y ↔ NativeBridge.Incremental.pprodTo x = NativeBridge.Incremental.pprodTo y",
+  "source_references": ["Rocq.Corelib.Init.Datatypes.prod"],
+  "name": "NativeBridge.Incremental.pprod_equality_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Prop) (P : A → Prop), Rocq.Corelib.Init.Specif.sigT.qualityProp A P ↔ ∃ x, P x",
+  "source_references": ["Rocq.Corelib.Init.Specif.sigT.qualityProp"],
+  "name": "NativeBridge.Incremental.quality_sigT_native",
   "kind": "theorem",
   "axioms": []},
  {"type":

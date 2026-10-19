@@ -178,6 +178,17 @@ flowchart TD
 
     完整 Sort 的 Subtype / PSigma Iso → 量词与函数族双向搬运
     Eq 对应 + 构造器/投影对应 + 逻辑存在量词 → 49 候选重写
-    原生目标体递归检查 + kernel iff → 23 个完整原生陈述
+    原生目标体递归检查 + kernel iff → 49 个完整原生陈述
+    qualityProp → 原生存在量词；机械 Eq 证明量词 → 原生 Eq 证明量词
+    明确的证明往返/cast → isDefEq 清理 → kernel 再检
 
-剩余 26 项含依赖等式搬运、qualityProp 或其他未消除的源符号；不计入完成。
+49 个无条件候选均通过；带条件的 Specif 声明仍在后续计划。
+
+## 第十三批：数字写出
+
+    digits Iso → 原生 increment → 两种 Little.succ 对应
+    Nat Iso + increment → 两种 to_little_uint 对应 → reverse → to_uint
+    increment 数值 + Nat.rec → 打印数值正确
+    sign × digits + Sum 进制标签 → Number.signed_int Iso → 五种带标签的打印
+
+与 Mathlib Nat.digits 的原生现成 API 对应尚待补充，零表示需显式适配。
