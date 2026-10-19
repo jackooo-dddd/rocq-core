@@ -1538,5 +1538,695 @@
     "scope": "all native Bool predicates; original theorem proved; no source references in recursively expanded native target",
     "target_class": "native_statement",
     "original_statement_proof": "NativeBridge.Incremental.eq_true_ind_r_closed"
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.relation",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.relationIso",
+    "kind": "TYPE_ISO",
+    "target": "A → A → Prop",
+    "scope": "A : Type u, arbitrary Prop-valued relation; proof structures use proof irrelevance for inverse laws",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.equivalence",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.equivalenceIso",
+    "kind": "TYPE_ISO",
+    "target": "Equivalence R",
+    "scope": "A : Type u, arbitrary Prop-valued relation; proof structures use proof irrelevance for inverse laws",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.preorder",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.preorderIso",
+    "kind": "TYPE_ISO",
+    "target": "(∀ x, R x x) ∧ (∀ x y z, R x y → R y z → R x z)",
+    "scope": "A : Type u, arbitrary Prop-valued relation; proof structures use proof irrelevance for inverse laws",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.order",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.orderIso",
+    "kind": "TYPE_ISO",
+    "target": "NativePreorder R ∧ (∀ x y, R x y → R y x → x = y)",
+    "scope": "A : Type u, arbitrary Prop-valued relation; proof structures use proof irrelevance for inverse laws",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.PER",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.perIso",
+    "kind": "TYPE_ISO",
+    "target": "symmetry ∧ transitivity",
+    "scope": "A : Type u, arbitrary Prop-valued relation; proof structures use proof irrelevance for inverse laws",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.reflexive",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.reflexive_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x, R x x",
+    "scope": "A : Type u; iff of relation predicates",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.symmetric",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.symmetric_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x y, R x y → R y x",
+    "scope": "A : Type u; iff of relation predicates",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.transitive",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.transitive_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x y z, R x y → R y z → R x z",
+    "scope": "A : Type u; iff of relation predicates",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.antisymmetric",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.antisymmetric_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x y, R x y → R y x → x = y",
+    "scope": "A : Type u; iff of relation predicates",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.inclusion",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.inclusion_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Subrelation R S",
+    "scope": "A : Type u; iff of relation predicates",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.same_relation",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.same_relation_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x y, R x y ↔ S x y",
+    "scope": "A : Type u; iff of relation predicates",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.commut",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.commut_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x y, R y x → ∀ z, S z y → ∃ t, S t x ∧ R z t",
+    "scope": "A : Type u; iff of relation predicates",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.equiv",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.equiv_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Equivalence R",
+    "scope": "A : Type u; iff of relation predicates",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.equiv_refl",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.equiv_refl_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.RD.equiv_reflNative",
+    "native_target": "NativeBridge.Incremental.RD.equiv_reflNative",
+    "scope": "all Type u carriers and Prop-valued relations; native target recursively checked; original projection theorem proved",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.RD.equiv_refl_closed"
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.equiv_sym",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.equiv_sym_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.RD.equiv_symNative",
+    "native_target": "NativeBridge.Incremental.RD.equiv_symNative",
+    "scope": "all Type u carriers and Prop-valued relations; native target recursively checked; original projection theorem proved",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.RD.equiv_sym_closed"
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.equiv_trans",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.equiv_trans_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.RD.equiv_transNative",
+    "native_target": "NativeBridge.Incremental.RD.equiv_transNative",
+    "scope": "all Type u carriers and Prop-valued relations; native target recursively checked; original projection theorem proved",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.RD.equiv_trans_closed"
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.ord_refl",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.ord_refl_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.RD.ord_reflNative",
+    "native_target": "NativeBridge.Incremental.RD.ord_reflNative",
+    "scope": "all Type u carriers and Prop-valued relations; native target recursively checked; original projection theorem proved",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.RD.ord_refl_closed"
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.ord_trans",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.ord_trans_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.RD.ord_transNative",
+    "native_target": "NativeBridge.Incremental.RD.ord_transNative",
+    "scope": "all Type u carriers and Prop-valued relations; native target recursively checked; original projection theorem proved",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.RD.ord_trans_closed"
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.ord_antisym",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.ord_antisym_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.RD.ord_antisymNative",
+    "native_target": "NativeBridge.Incremental.RD.ord_antisymNative",
+    "scope": "all Type u carriers and Prop-valued relations; native target recursively checked; original projection theorem proved",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.RD.ord_antisym_closed"
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.per_sym",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.per_sym_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.RD.per_symNative",
+    "native_target": "NativeBridge.Incremental.RD.per_symNative",
+    "scope": "all Type u carriers and Prop-valued relations; native target recursively checked; original projection theorem proved",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.RD.per_sym_closed"
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.per_trans",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.per_trans_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.RD.per_transNative",
+    "native_target": "NativeBridge.Incremental.RD.per_transNative",
+    "scope": "all Type u carriers and Prop-valued relations; native target recursively checked; original projection theorem proved",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.RD.per_trans_closed"
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.preord_refl",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.preord_refl_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.RD.preord_reflNative",
+    "native_target": "NativeBridge.Incremental.RD.preord_reflNative",
+    "scope": "all Type u carriers and Prop-valued relations; native target recursively checked; original projection theorem proved",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.RD.preord_refl_closed"
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.preord_trans",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.preord_trans_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.RD.preord_transNative",
+    "native_target": "NativeBridge.Incremental.RD.preord_transNative",
+    "scope": "all Type u carriers and Prop-valued relations; native target recursively checked; original projection theorem proved",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.RD.preord_trans_closed"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.Equivalence",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.equivalenceIso",
+    "kind": "TYPE_ISO",
+    "target": "Equivalence R",
+    "scope": "A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.PreOrder",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.preorderIso",
+    "kind": "TYPE_ISO",
+    "target": "NativePreorder R",
+    "scope": "A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.PER",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.perIso",
+    "kind": "TYPE_ISO",
+    "target": "NativePER R",
+    "scope": "A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.StrictOrder",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.strictOrderIso",
+    "kind": "TYPE_ISO",
+    "target": "NativeStrictOrder R",
+    "scope": "A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.RewriteRelation",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.rewriteRelationIso",
+    "kind": "TYPE_ISO",
+    "target": "True",
+    "scope": "A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.unary_operation",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.unaryOperationIso",
+    "kind": "TYPE_ISO",
+    "target": "A → A",
+    "scope": "A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.binary_operation",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.binaryOperationIso",
+    "kind": "TYPE_ISO",
+    "target": "A → A → A",
+    "scope": "A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.ternary_operation",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.ternaryOperationIso",
+    "kind": "TYPE_ISO",
+    "target": "A → A → A → A",
+    "scope": "A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.unary_predicate",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.unaryPredicateIso",
+    "kind": "TYPE_ISO",
+    "target": "A → Prop",
+    "scope": "A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.binary_relation",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.binaryRelationIso",
+    "kind": "TYPE_ISO",
+    "target": "A → A → Prop",
+    "scope": "A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.Reflexive",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.reflexive_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x, R x x",
+    "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.Symmetric",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.symmetric_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x y, R x y → R y x",
+    "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.Transitive",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.transitive_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x y z, R x y → R y z → R x z",
+    "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.complement",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.complement_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "¬ R x y",
+    "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.Irreflexive",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.irreflexive_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x, ¬ R x x",
+    "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.Asymmetric",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.asymmetric_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x y, R x y → ¬ R y x",
+    "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.subrelation",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.subrelation_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Subrelation R S",
+    "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.relation_conjunction",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.conjunction_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "R x y ∧ S x y",
+    "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.relation_disjunction",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.disjunction_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "R x y ∨ S x y",
+    "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.relation_equivalence",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.relation_equivalence_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x y, R x y ↔ S x y",
+    "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.Antisymmetric",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.antisymmetric_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x y, R x y → R y x → E x y",
+    "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.PartialOrder",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.partialOrder_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x y, E x y ↔ R x y ∧ R y x",
+    "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.Tlist",
+    "profile": "VariadicPredicates",
+    "certificate": "NativeBridge.Incremental.Variadic.typesIso",
+    "kind": "TYPE_ISO",
+    "target": "List (Type u)",
+    "scope": "arbitrary universe u and finite heterogeneous Type u argument list; B : Type u; explicit curry/uncurry inverse proofs",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.arrows",
+    "profile": "VariadicPredicates",
+    "certificate": "NativeBridge.Incremental.Variadic.arrowsIso",
+    "kind": "TYPE_ISO",
+    "target": "Arguments (typesTo ts) → B",
+    "scope": "arbitrary universe u and finite heterogeneous Type u argument list; B : Type u; explicit curry/uncurry inverse proofs",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.Tlist_rec",
+    "profile": "VariadicPredicates",
+    "certificate": "NativeBridge.Incremental.Variadic.tlist_rec_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "List.rec",
+    "scope": "all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.Tlist_rect",
+    "profile": "VariadicPredicates",
+    "certificate": "NativeBridge.Incremental.Variadic.tlist_rect_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "List.rec",
+    "scope": "all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.pointwise_extension",
+    "profile": "VariadicPredicates",
+    "certificate": "NativeBridge.Incremental.Variadic.pointwise_extension_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "fun args => op (f args) (g args)",
+    "scope": "all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.pointwise_lifting",
+    "profile": "VariadicPredicates",
+    "certificate": "NativeBridge.Incremental.Variadic.pointwise_lifting_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ args, op (f args) (g args)",
+    "scope": "all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.predicate_all",
+    "profile": "VariadicPredicates",
+    "certificate": "NativeBridge.Incremental.Variadic.predicate_all_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ args, f args",
+    "scope": "all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.predicate_exists",
+    "profile": "VariadicPredicates",
+    "certificate": "NativeBridge.Incremental.Variadic.predicate_exists_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∃ args, f args",
+    "scope": "all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.predicate_equivalence",
+    "profile": "VariadicPredicates",
+    "certificate": "NativeBridge.Incremental.Variadic.predicate_equivalence_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ args, f args ↔ g args",
+    "scope": "all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.predicate_implication",
+    "profile": "VariadicPredicates",
+    "certificate": "NativeBridge.Incremental.Variadic.predicate_implication_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ args, f args → g args",
+    "scope": "all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.predicate_intersection",
+    "profile": "VariadicPredicates",
+    "certificate": "NativeBridge.Incremental.Variadic.predicate_intersection_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "fun args => f args ∧ g args",
+    "scope": "all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.predicate_union",
+    "profile": "VariadicPredicates",
+    "certificate": "NativeBridge.Incremental.Variadic.predicate_union_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "fun args => f args ∨ g args",
+    "scope": "all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.true_predicate",
+    "profile": "VariadicPredicates",
+    "certificate": "NativeBridge.Incremental.Variadic.true_predicate_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "fun _ => True",
+    "scope": "all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.false_predicate",
+    "profile": "VariadicPredicates",
+    "certificate": "NativeBridge.Incremental.Variadic.false_predicate_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "fun _ => False",
+    "scope": "all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.Tlist_ind",
+    "profile": "VariadicStatements",
+    "certificate": "NativeBridge.Incremental.VariadicStatements.Tlist_ind_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.VariadicStatements.listIndNative",
+    "native_target": "NativeBridge.Incremental.VariadicStatements.listIndNative",
+    "scope": "exact native list/tuple predicate law; iff assembled from independently checked source/native proofs; operation-level transport separately proved in VariadicPredicates",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.VariadicStatements.Tlist_ind_closed"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.Tlist_sind",
+    "profile": "VariadicStatements",
+    "certificate": "NativeBridge.Incremental.VariadicStatements.Tlist_sind_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.VariadicStatements.listIndNative",
+    "native_target": "NativeBridge.Incremental.VariadicStatements.listIndNative",
+    "scope": "exact native list/tuple predicate law; iff assembled from independently checked source/native proofs; operation-level transport separately proved in VariadicPredicates",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.VariadicStatements.Tlist_sind_closed"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence",
+    "profile": "VariadicStatements",
+    "certificate": "NativeBridge.Incremental.VariadicStatements.predicate_equivalence_equivalence_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.VariadicStatements.predEquivalenceNative",
+    "native_target": "NativeBridge.Incremental.VariadicStatements.predEquivalenceNative",
+    "scope": "exact native list/tuple predicate law; iff assembled from independently checked source/native proofs; operation-level transport separately proved in VariadicPredicates",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.VariadicStatements.predicate_equivalence_equivalence_closed"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_1",
+    "profile": "VariadicStatements",
+    "certificate": "NativeBridge.Incremental.VariadicStatements.predicate_equivalence_equivalence_obligation_1_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.VariadicStatements.predEquivReflNative",
+    "native_target": "NativeBridge.Incremental.VariadicStatements.predEquivReflNative",
+    "scope": "exact native list/tuple predicate law; iff assembled from independently checked source/native proofs; operation-level transport separately proved in VariadicPredicates",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.VariadicStatements.predicate_equivalence_equivalence_obligation_1_closed"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_2",
+    "profile": "VariadicStatements",
+    "certificate": "NativeBridge.Incremental.VariadicStatements.predicate_equivalence_equivalence_obligation_2_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.VariadicStatements.predEquivSymmNative",
+    "native_target": "NativeBridge.Incremental.VariadicStatements.predEquivSymmNative",
+    "scope": "exact native list/tuple predicate law; iff assembled from independently checked source/native proofs; operation-level transport separately proved in VariadicPredicates",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.VariadicStatements.predicate_equivalence_equivalence_obligation_2_closed"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_3",
+    "profile": "VariadicStatements",
+    "certificate": "NativeBridge.Incremental.VariadicStatements.predicate_equivalence_equivalence_obligation_3_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.VariadicStatements.predEquivTransNative",
+    "native_target": "NativeBridge.Incremental.VariadicStatements.predEquivTransNative",
+    "scope": "exact native list/tuple predicate law; iff assembled from independently checked source/native proofs; operation-level transport separately proved in VariadicPredicates",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.VariadicStatements.predicate_equivalence_equivalence_obligation_3_closed"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.predicate_implication_preorder",
+    "profile": "VariadicStatements",
+    "certificate": "NativeBridge.Incremental.VariadicStatements.predicate_implication_preorder_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.VariadicStatements.predPreorderNative",
+    "native_target": "NativeBridge.Incremental.VariadicStatements.predPreorderNative",
+    "scope": "exact native list/tuple predicate law; iff assembled from independently checked source/native proofs; operation-level transport separately proved in VariadicPredicates",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.VariadicStatements.predicate_implication_preorder_closed"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_1",
+    "profile": "VariadicStatements",
+    "certificate": "NativeBridge.Incremental.VariadicStatements.predicate_implication_preorder_obligation_1_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.VariadicStatements.predImpReflNative",
+    "native_target": "NativeBridge.Incremental.VariadicStatements.predImpReflNative",
+    "scope": "exact native list/tuple predicate law; iff assembled from independently checked source/native proofs; operation-level transport separately proved in VariadicPredicates",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.VariadicStatements.predicate_implication_preorder_obligation_1_closed"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_2",
+    "profile": "VariadicStatements",
+    "certificate": "NativeBridge.Incremental.VariadicStatements.predicate_implication_preorder_obligation_2_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.VariadicStatements.predImpTransNative",
+    "native_target": "NativeBridge.Incremental.VariadicStatements.predImpTransNative",
+    "scope": "exact native list/tuple predicate law; iff assembled from independently checked source/native proofs; operation-level transport separately proved in VariadicPredicates",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.VariadicStatements.predicate_implication_preorder_obligation_2_closed"
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.PartialOrder_inverse",
+    "profile": "RelationConditions",
+    "certificate": "NativeBridge.Incremental.RelationConditions.PartialOrder_inverse_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.RelationConditions.inversePartialOrderNative",
+    "native_target": "NativeBridge.Incremental.RelationConditions.inversePartialOrderNative",
+    "scope": "all Type u carriers; generalized equivalence relation retained; all extracted obligations explicitly supplied",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.RelationConditions.PartialOrder_inverse_closed",
+    "closed_wrapper": "NativeBridge.Incremental.RelationConditions.PartialOrder_inverse_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Classes.RelationClasses.PartialOrder_inverse__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.RelationConditions.inverse_preorder_obligation"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.subrelation_partial_order",
+    "profile": "RelationConditions",
+    "certificate": "NativeBridge.Incremental.RelationConditions.subrelation_partial_order_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.RelationConditions.subrelationPartialOrderNative",
+    "native_target": "NativeBridge.Incremental.RelationConditions.subrelationPartialOrderNative",
+    "scope": "all Type u carriers; generalized equivalence relation retained; all extracted obligations explicitly supplied",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.RelationConditions.subrelation_partial_order_closed",
+    "closed_wrapper": "NativeBridge.Incremental.RelationConditions.subrelation_partial_order_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Classes.RelationClasses.subrelation_partial_order__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.RelationConditions.subrelation_equivalence_obligation"
+      },
+      {
+        "source": "Corelib.Classes.RelationClasses.subrelation_partial_order__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.RelationConditions.subrelation_preorder_obligation"
+      }
+    ]
   }
 ]

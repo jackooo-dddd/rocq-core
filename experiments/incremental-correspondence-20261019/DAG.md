@@ -136,3 +136,14 @@ flowchart TD
     Bool 谓词的双向搬运 + eq_true Iso → 三个原生陈述 iff → 原陈述证明
 
 这些是已检查的桥接证明依赖；源 IR 的 9457 条依赖未修改。
+
+## 第八、九批：关系与可变参数证明 DAG
+
+    Eq/And/Or/iff 对应 → 关系性质 → Equivalence Iso → Setoid → Quotient.sound
+    类关系转换 + 函数整体转换 → 65 个陈述自动重写 → 56 完整原生 iff
+    Tlist ↔ List (Type u) → Arguments → arrows curry/uncurry Iso
+    arrows Iso + PULift Prop 转换 → 原生元组谓词 → 12 个变参运算
+    变参运算对应 + 原生逻辑性质 → 剩余 9 个原陈述证明与原生 iff
+    原生关系转换 + 3 个无公理义务 → 2 个条件陈述闭合
+
+两个模块的 126 根覆盖由逐根账本核对；这里不表示其他 Classes 模块已完成。

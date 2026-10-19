@@ -38,5 +38,105 @@
     "name": "NativeBridge.Incremental.eqTrueIndRNative",
     "native_expression": "∀ (P : Bool → Prop) (b : Bool), P b → b = true → P true",
     "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.RD.equiv_reflNative",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop), Equivalence R → ∀ (x : A), R x x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.RD.equiv_symNative",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop), Equivalence R → ∀ (x y : A), R x y → R y x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.RD.equiv_transNative",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop), Equivalence R → ∀ (x y z : A), R x y → R y z → R x z",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.RD.ord_reflNative",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop), NativeBridge.Incremental.RD.NativeOrder R → ∀ (x : A), R x x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.RD.ord_transNative",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop), NativeBridge.Incremental.RD.NativeOrder R → ∀ (x y z : A), R x y → R y z → R x z",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.RD.ord_antisymNative",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop), NativeBridge.Incremental.RD.NativeOrder R → ∀ (x y : A), R x y → R y x → x = y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.RD.per_symNative",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop), NativeBridge.Incremental.RD.NativePER R → ∀ (x y : A), R x y → R y x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.RD.per_transNative",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop), NativeBridge.Incremental.RD.NativePER R → ∀ (x y z : A), R x y → R y z → R x z",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.RD.preord_reflNative",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop), NativeBridge.Incremental.RD.NativePreorder R → ∀ (x : A), R x x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.RD.preord_transNative",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop), NativeBridge.Incremental.RD.NativePreorder R → ∀ (x y z : A), R x y → R y z → R x z",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.VariadicStatements.listIndNative",
+    "native_expression": "∀ (P : List (Type u) → Prop),\n  P [] → (∀ (A : Type u) (ts : List (Type u)), P ts → P (A :: ts)) → ∀ (ts : List (Type u)), P ts",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.VariadicStatements.predEquivalenceNative",
+    "native_expression": "∀ (ts : List (Type u)), Equivalence fun f g => ∀ (xs : NativeBridge.Incremental.Variadic.Arguments ts), f xs ↔ g xs",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.VariadicStatements.predEquivReflNative",
+    "native_expression": "∀ (ts : List (Type u)) (f : NativeBridge.Incremental.Variadic.Arguments ts → Prop)\n  (xs : NativeBridge.Incremental.Variadic.Arguments ts), f xs ↔ f xs",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.VariadicStatements.predEquivSymmNative",
+    "native_expression": "∀ (ts : List (Type u)) (f g : NativeBridge.Incremental.Variadic.Arguments ts → Prop),\n  (∀ (xs : NativeBridge.Incremental.Variadic.Arguments ts), f xs ↔ g xs) →\n    ∀ (xs : NativeBridge.Incremental.Variadic.Arguments ts), g xs ↔ f xs",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.VariadicStatements.predEquivTransNative",
+    "native_expression": "∀ (ts : List (Type u)) (f g h : NativeBridge.Incremental.Variadic.Arguments ts → Prop),\n  (∀ (xs : NativeBridge.Incremental.Variadic.Arguments ts), f xs ↔ g xs) →\n    (∀ (xs : NativeBridge.Incremental.Variadic.Arguments ts), g xs ↔ h xs) →\n      ∀ (xs : NativeBridge.Incremental.Variadic.Arguments ts), f xs ↔ h xs",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.VariadicStatements.predPreorderNative",
+    "native_expression": "∀ (ts : List (Type u)),\n  NativeBridge.Incremental.RC.NativePreorder fun f g =>\n    ∀ (xs : NativeBridge.Incremental.Variadic.Arguments ts), f xs → g xs",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.VariadicStatements.predImpReflNative",
+    "native_expression": "∀ (ts : List (Type u)) (f : NativeBridge.Incremental.Variadic.Arguments ts → Prop)\n  (xs : NativeBridge.Incremental.Variadic.Arguments ts), f xs → f xs",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.VariadicStatements.predImpTransNative",
+    "native_expression": "∀ (ts : List (Type u)) (f g h : NativeBridge.Incremental.Variadic.Arguments ts → Prop),\n  (∀ (xs : NativeBridge.Incremental.Variadic.Arguments ts), f xs → g xs) →\n    (∀ (xs : NativeBridge.Incremental.Variadic.Arguments ts), g xs → h xs) →\n      ∀ (xs : NativeBridge.Incremental.Variadic.Arguments ts), f xs → h xs",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.RelationConditions.inversePartialOrderNative",
+    "native_expression": "∀ (A : Type u) (E : A → A → Prop),\n  Equivalence E →\n    ∀ (R : A → A → Prop),\n      NativeBridge.Incremental.RC.NativePreorder R →\n        (∀ (x y : A), E x y ↔ R x y ∧ R y x) → ∀ (x y : A), E x y ↔ R y x ∧ R x y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.RelationConditions.subrelationPartialOrderNative",
+    "native_expression": "∀ (A : Type u) (R S : A → A → Prop), (∀ (x y : A), R x y ↔ S x y) ↔ Subrelation R S ∧ Subrelation S R",
+    "remaining_source_symbols": []
   }
 ]

@@ -2,9 +2,9 @@
 
 先写计划与 DAG，再按步骤推进。入口：[PLAN.md](PLAN.md)、[DAG.md](DAG.md)、[逐根任务表](tasks.csv)。
 
-## 已验证进展（七批）
+## 已验证进展（九批）
 
-17 个 Lean profile 均有与当前源码匹配的成功验证记录。七批累计显式登记 301 份新增覆盖证书，覆盖 9 个新类型根、127 个新运算根、158 个新完整原生陈述（152 个原部分陈述、6 个已闭合条件陈述）。另有 6 份既有类型根的完整 Sort 证书，不重复计根；17 份新增原陈述证明也不重复计根。
+23 个 Lean profile 均有与当前源码匹配的成功验证记录。九批累计登记 427 份新增覆盖证书，覆盖 26 个新类型根、159 个新运算根、235 个新完整原生陈述（227 个原部分陈述、8 个已闭合条件陈述）。另有 6 份既有类型根的完整 Sort 证书，不重复计根；38 份新增原陈述证明也不重复计根。
 
 - Program.Basics：apply、arrow、compose、const、flip、impl。
 - SSR Option：apply、default、lift、map、bind。
@@ -15,20 +15,21 @@
 - 第五批：[依赖消去与条件实例化](DEPENDENT_RESULTS.md)：16 个运算根，包括 4 个带条件根的闭合实例化；5 个既有类型根扩展到完整 Sort。
 - 第六批：[二元递归、依赖陈述与基本消去器](RECURSION_STATEMENTS_RESULTS.md)：25 个新运算、5 个完整原生陈述；同一义务证明复用到 5 个下游根。
 - 第七批：[Eq transport 与布尔等式](EQUALITY_RESULTS.md)：1 类型、14 运算、4 完整原生陈述；4 个条件根已闭合。
+- 第八、九批：[关系、Classes 与可变参数谓词](RELATIONS_RESULTS.md)：两个模块的 126 根均有对应；包括实际 Setoid/Quotient 使用例和两个闭合条件根。
 - Nat.iter：原生 Nat.rec 迭代表达式；另证带载体 Iso 和显式步函数对应假设的版本。
 
 | 主分类 | 基线 | 当前 |
 |---|---:|---:|
-| 类型对应 | 29 | 38 |
-| 运算/谓词对应 | 114 | 241 |
-| 只有接口 | 375 | 308 |
-| 尚无证书 | 485 | 423 |
-| 完全原生陈述 | 143 | 301 |
-| 部分原生陈述 | 702 | 550 |
-| 本层尚带条件 | 331 | 318 |
+| 类型对应 | 29 | 55 |
+| 运算/谓词对应 | 114 | 273 |
+| 只有接口 | 375 | 284 |
+| 尚无证书 | 485 | 398 |
+| 完全原生陈述 | 143 | 378 |
+| 部分原生陈述 | 702 | 475 |
+| 本层尚带条件 | 331 | 316 |
 | 非 Prop 特殊陈述 | 1 | 1 |
 
-原始机械产物仍有 331 个带条件根；本层已用闭合证明实例化其中 13 个（7 定义、6 陈述），剩余 318。最新证据见 EQUALITY_RESULTS.md。
+原始机械产物仍有 331 个带条件根；本层已用闭合证明实例化其中 15 个（7 定义、8 陈述），剩余 316。最新证据见 RELATIONS_RESULTS.md。
 
 根计数表示已有明示范围内的对应证明，不保证所有 universe 实例均已覆盖；例如 List/Option/Except 本批操作覆盖 Type 参数，PProd/PSum 覆盖 Sort 参数。
 
@@ -64,6 +65,7 @@ Registry.lean 将 simplFunIso 接入接口生成器，并组合已有函数、Bo
     python3 build_dag.py
     python3 build_registry.py
     python3 build_statements.py
+    python3 build_relation_statements.py
     python3 build_digit_operations.py
     python3 verify.py
     python3 make_report.py
@@ -74,7 +76,7 @@ build_dag.py 重新生成基线任务表后，运行 make_report.py 恢复本轮
 
 ## 下一步
 
-P2/P3/P4/P5/P6 已有七批进展，整个计划未完成。Eq transport 已推进；接下来处理依赖陈述、剩余条件义务、数字写出及统一导入。最终覆盖的主观预估见 [ESTIMATE.md](ESTIMATE.md)，不作为已证结果。
+P2/P3/P4/P5/P6 已有九批进展，整个计划未完成。Eq transport 已推进；接下来处理依赖陈述、剩余条件义务、数字写出及统一导入。最终覆盖的主观预估见 [ESTIMATE.md](ESTIMATE.md)，不作为已证结果。
 
 ## 第二批检查
 

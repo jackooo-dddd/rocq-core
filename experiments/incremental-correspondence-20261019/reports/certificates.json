@@ -2041,6 +2041,933 @@
     "axioms": []
   },
   {
+    "source": "Corelib.Relations.Relation_Definitions.relation",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.relationIso",
+    "kind": "TYPE_ISO",
+    "target": "A → A → Prop",
+    "scope": "A : Type u, arbitrary Prop-valued relation; proof structures use proof irrelevance for inverse laws",
+    "target_class": "native_representation",
+    "type": "(A : Type u) → NativeBridge.Iso (Rocq.Corelib.Relations.Relation_Definitions.relation A) (A → A → Prop)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.equivalence",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.equivalenceIso",
+    "kind": "TYPE_ISO",
+    "target": "Equivalence R",
+    "scope": "A : Type u, arbitrary Prop-valued relation; proof structures use proof irrelevance for inverse laws",
+    "target_class": "existing_api",
+    "type": "(A : Type u) →\n  (R : A → A → Prop) → NativeBridge.Iso (Rocq.Corelib.Relations.Relation_Definitions.equivalence A R) (Equivalence R)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.preorder",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.preorderIso",
+    "kind": "TYPE_ISO",
+    "target": "(∀ x, R x x) ∧ (∀ x y z, R x y → R y z → R x z)",
+    "scope": "A : Type u, arbitrary Prop-valued relation; proof structures use proof irrelevance for inverse laws",
+    "target_class": "native_representation",
+    "type": "(A : Type u) →\n  (R : A → A → Prop) →\n    NativeBridge.Iso (Rocq.Corelib.Relations.Relation_Definitions.preorder A R)\n      (NativeBridge.Incremental.RD.NativePreorder R)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.order",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.orderIso",
+    "kind": "TYPE_ISO",
+    "target": "NativePreorder R ∧ (∀ x y, R x y → R y x → x = y)",
+    "scope": "A : Type u, arbitrary Prop-valued relation; proof structures use proof irrelevance for inverse laws",
+    "target_class": "native_representation",
+    "type": "(A : Type u) →\n  (R : A → A → Prop) →\n    NativeBridge.Iso (Rocq.Corelib.Relations.Relation_Definitions.order A R) (NativeBridge.Incremental.RD.NativeOrder R)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.PER",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.perIso",
+    "kind": "TYPE_ISO",
+    "target": "symmetry ∧ transitivity",
+    "scope": "A : Type u, arbitrary Prop-valued relation; proof structures use proof irrelevance for inverse laws",
+    "target_class": "native_representation",
+    "type": "(A : Type u) →\n  (R : A → A → Prop) →\n    NativeBridge.Iso (Rocq.Corelib.Relations.Relation_Definitions.PER A R) (NativeBridge.Incremental.RD.NativePER R)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.reflexive",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.reflexive_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x, R x x",
+    "scope": "A : Type u; iff of relation predicates",
+    "target_class": "native_expression",
+    "type": "∀ (A : Type u) (R : A → A → Prop), Rocq.Corelib.Relations.Relation_Definitions.reflexive A R ↔ ∀ (x : A), R x x",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.symmetric",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.symmetric_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x y, R x y → R y x",
+    "scope": "A : Type u; iff of relation predicates",
+    "target_class": "native_expression",
+    "type": "∀ (A : Type u) (R : A → A → Prop),\n  Rocq.Corelib.Relations.Relation_Definitions.symmetric A R ↔ ∀ (x y : A), R x y → R y x",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.transitive",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.transitive_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x y z, R x y → R y z → R x z",
+    "scope": "A : Type u; iff of relation predicates",
+    "target_class": "native_expression",
+    "type": "∀ (A : Type u) (R : A → A → Prop),\n  Rocq.Corelib.Relations.Relation_Definitions.transitive A R ↔ ∀ (x y z : A), R x y → R y z → R x z",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.antisymmetric",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.antisymmetric_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x y, R x y → R y x → x = y",
+    "scope": "A : Type u; iff of relation predicates",
+    "target_class": "native_expression",
+    "type": "∀ (A : Type u) (R : A → A → Prop),\n  Rocq.Corelib.Relations.Relation_Definitions.antisymmetric A R ↔ ∀ (x y : A), R x y → R y x → x = y",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.inclusion",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.inclusion_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Subrelation R S",
+    "scope": "A : Type u; iff of relation predicates",
+    "target_class": "existing_api",
+    "type": "∀ (A : Type u) (R S : A → A → Prop), Rocq.Corelib.Relations.Relation_Definitions.inclusion A R S ↔ Subrelation R S",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.same_relation",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.same_relation_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x y, R x y ↔ S x y",
+    "scope": "A : Type u; iff of relation predicates",
+    "target_class": "native_expression",
+    "type": "∀ (A : Type u) (R S : A → A → Prop),\n  Rocq.Corelib.Relations.Relation_Definitions.same_relation A R S ↔ ∀ (x y : A), R x y ↔ S x y",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.commut",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.commut_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x y, R y x → ∀ z, S z y → ∃ t, S t x ∧ R z t",
+    "scope": "A : Type u; iff of relation predicates",
+    "target_class": "native_expression",
+    "type": "∀ (A : Type u) (R S : A → A → Prop),\n  Rocq.Corelib.Relations.Relation_Definitions.commut A R S ↔ ∀ (x y : A), R y x → ∀ (z : A), S z y → ∃ t, S t x ∧ R z t",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.equiv",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.equiv_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Equivalence R",
+    "scope": "A : Type u; iff of relation predicates",
+    "target_class": "existing_api",
+    "type": "∀ (A : Type u) (R : A → A → Prop), Rocq.Corelib.Relations.Relation_Definitions.equiv A R ↔ Equivalence R",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.equiv_refl",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.equiv_refl_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.RD.equiv_reflNative",
+    "native_target": "NativeBridge.Incremental.RD.equiv_reflNative",
+    "scope": "all Type u carriers and Prop-valued relations; native target recursively checked; original projection theorem proved",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.RD.equiv_refl_closed",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop), Equivalence R → ∀ (x : A), R x x",
+    "type": "Rocq.Corelib.Relations.Relation_Definitions.equiv_refl.statement ↔ NativeBridge.Incremental.RD.equiv_reflNative",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.equiv_sym",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.equiv_sym_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.RD.equiv_symNative",
+    "native_target": "NativeBridge.Incremental.RD.equiv_symNative",
+    "scope": "all Type u carriers and Prop-valued relations; native target recursively checked; original projection theorem proved",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.RD.equiv_sym_closed",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop), Equivalence R → ∀ (x y : A), R x y → R y x",
+    "type": "Rocq.Corelib.Relations.Relation_Definitions.equiv_sym.statement ↔ NativeBridge.Incremental.RD.equiv_symNative",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.equiv_trans",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.equiv_trans_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.RD.equiv_transNative",
+    "native_target": "NativeBridge.Incremental.RD.equiv_transNative",
+    "scope": "all Type u carriers and Prop-valued relations; native target recursively checked; original projection theorem proved",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.RD.equiv_trans_closed",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop), Equivalence R → ∀ (x y z : A), R x y → R y z → R x z",
+    "type": "Rocq.Corelib.Relations.Relation_Definitions.equiv_trans.statement ↔ NativeBridge.Incremental.RD.equiv_transNative",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.ord_refl",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.ord_refl_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.RD.ord_reflNative",
+    "native_target": "NativeBridge.Incremental.RD.ord_reflNative",
+    "scope": "all Type u carriers and Prop-valued relations; native target recursively checked; original projection theorem proved",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.RD.ord_refl_closed",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop), NativeBridge.Incremental.RD.NativeOrder R → ∀ (x : A), R x x",
+    "type": "Rocq.Corelib.Relations.Relation_Definitions.ord_refl.statement ↔ NativeBridge.Incremental.RD.ord_reflNative",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.ord_trans",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.ord_trans_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.RD.ord_transNative",
+    "native_target": "NativeBridge.Incremental.RD.ord_transNative",
+    "scope": "all Type u carriers and Prop-valued relations; native target recursively checked; original projection theorem proved",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.RD.ord_trans_closed",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop), NativeBridge.Incremental.RD.NativeOrder R → ∀ (x y z : A), R x y → R y z → R x z",
+    "type": "Rocq.Corelib.Relations.Relation_Definitions.ord_trans.statement ↔ NativeBridge.Incremental.RD.ord_transNative",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.ord_antisym",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.ord_antisym_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.RD.ord_antisymNative",
+    "native_target": "NativeBridge.Incremental.RD.ord_antisymNative",
+    "scope": "all Type u carriers and Prop-valued relations; native target recursively checked; original projection theorem proved",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.RD.ord_antisym_closed",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop), NativeBridge.Incremental.RD.NativeOrder R → ∀ (x y : A), R x y → R y x → x = y",
+    "type": "Rocq.Corelib.Relations.Relation_Definitions.ord_antisym.statement ↔ NativeBridge.Incremental.RD.ord_antisymNative",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.per_sym",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.per_sym_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.RD.per_symNative",
+    "native_target": "NativeBridge.Incremental.RD.per_symNative",
+    "scope": "all Type u carriers and Prop-valued relations; native target recursively checked; original projection theorem proved",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.RD.per_sym_closed",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop), NativeBridge.Incremental.RD.NativePER R → ∀ (x y : A), R x y → R y x",
+    "type": "Rocq.Corelib.Relations.Relation_Definitions.per_sym.statement ↔ NativeBridge.Incremental.RD.per_symNative",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.per_trans",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.per_trans_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.RD.per_transNative",
+    "native_target": "NativeBridge.Incremental.RD.per_transNative",
+    "scope": "all Type u carriers and Prop-valued relations; native target recursively checked; original projection theorem proved",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.RD.per_trans_closed",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop), NativeBridge.Incremental.RD.NativePER R → ∀ (x y z : A), R x y → R y z → R x z",
+    "type": "Rocq.Corelib.Relations.Relation_Definitions.per_trans.statement ↔ NativeBridge.Incremental.RD.per_transNative",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.preord_refl",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.preord_refl_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.RD.preord_reflNative",
+    "native_target": "NativeBridge.Incremental.RD.preord_reflNative",
+    "scope": "all Type u carriers and Prop-valued relations; native target recursively checked; original projection theorem proved",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.RD.preord_refl_closed",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop), NativeBridge.Incremental.RD.NativePreorder R → ∀ (x : A), R x x",
+    "type": "Rocq.Corelib.Relations.Relation_Definitions.preord_refl.statement ↔ NativeBridge.Incremental.RD.preord_reflNative",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Relations.Relation_Definitions.preord_trans",
+    "profile": "RelationDefinitions",
+    "certificate": "NativeBridge.Incremental.RD.preord_trans_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.RD.preord_transNative",
+    "native_target": "NativeBridge.Incremental.RD.preord_transNative",
+    "scope": "all Type u carriers and Prop-valued relations; native target recursively checked; original projection theorem proved",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.RD.preord_trans_closed",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop), NativeBridge.Incremental.RD.NativePreorder R → ∀ (x y z : A), R x y → R y z → R x z",
+    "type": "Rocq.Corelib.Relations.Relation_Definitions.preord_trans.statement ↔ NativeBridge.Incremental.RD.preord_transNative",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.Equivalence",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.equivalenceIso",
+    "kind": "TYPE_ISO",
+    "target": "Equivalence R",
+    "scope": "A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion",
+    "target_class": "existing_api",
+    "type": "(A : Type u) →\n  (R : A → A → Prop) → NativeBridge.Iso (Rocq.Corelib.Classes.RelationClasses.Equivalence A R) (Equivalence R)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.PreOrder",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.preorderIso",
+    "kind": "TYPE_ISO",
+    "target": "NativePreorder R",
+    "scope": "A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion",
+    "target_class": "native_representation",
+    "type": "(A : Type u) →\n  (R : A → A → Prop) →\n    NativeBridge.Iso (Rocq.Corelib.Classes.RelationClasses.PreOrder A R) (NativeBridge.Incremental.RC.NativePreorder R)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.PER",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.perIso",
+    "kind": "TYPE_ISO",
+    "target": "NativePER R",
+    "scope": "A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion",
+    "target_class": "native_representation",
+    "type": "(A : Type u) →\n  (R : A → A → Prop) →\n    NativeBridge.Iso (Rocq.Corelib.Classes.RelationClasses.PER A R) (NativeBridge.Incremental.RC.NativePER R)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.StrictOrder",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.strictOrderIso",
+    "kind": "TYPE_ISO",
+    "target": "NativeStrictOrder R",
+    "scope": "A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion",
+    "target_class": "native_representation",
+    "type": "(A : Type u) →\n  (R : A → A → Prop) →\n    NativeBridge.Iso (Rocq.Corelib.Classes.RelationClasses.StrictOrder A R)\n      (NativeBridge.Incremental.RC.NativeStrictOrder R)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.RewriteRelation",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.rewriteRelationIso",
+    "kind": "TYPE_ISO",
+    "target": "True",
+    "scope": "A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion",
+    "target_class": "native_representation",
+    "type": "(A : Type u) → (R : A → A → Prop) → NativeBridge.Iso (Rocq.Corelib.Classes.RelationClasses.RewriteRelation A R) True",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.unary_operation",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.unaryOperationIso",
+    "kind": "TYPE_ISO",
+    "target": "A → A",
+    "scope": "A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion",
+    "target_class": "native_representation",
+    "type": "(A : Type u) → NativeBridge.Iso (Rocq.Corelib.Classes.RelationClasses.unary_operation A) (A → A)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.binary_operation",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.binaryOperationIso",
+    "kind": "TYPE_ISO",
+    "target": "A → A → A",
+    "scope": "A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion",
+    "target_class": "native_representation",
+    "type": "(A : Type u) → NativeBridge.Iso (Rocq.Corelib.Classes.RelationClasses.binary_operation A) (A → A → A)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.ternary_operation",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.ternaryOperationIso",
+    "kind": "TYPE_ISO",
+    "target": "A → A → A → A",
+    "scope": "A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion",
+    "target_class": "native_representation",
+    "type": "(A : Type u) → NativeBridge.Iso (Rocq.Corelib.Classes.RelationClasses.ternary_operation A) (A → A → A → A)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.unary_predicate",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.unaryPredicateIso",
+    "kind": "TYPE_ISO",
+    "target": "A → Prop",
+    "scope": "A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion",
+    "target_class": "native_representation",
+    "type": "(A : Type u) → NativeBridge.Iso (Rocq.Corelib.Classes.RelationClasses.unary_predicate A) (A → Prop)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.binary_relation",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.binaryRelationIso",
+    "kind": "TYPE_ISO",
+    "target": "A → A → Prop",
+    "scope": "A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion",
+    "target_class": "native_representation",
+    "type": "(A : Type u) → NativeBridge.Iso (Rocq.Corelib.Classes.RelationClasses.binary_relation A) (A → A → Prop)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.Reflexive",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.reflexive_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x, R x x",
+    "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
+    "target_class": "native_expression",
+    "type": "∀ (A : Type u) (R : A → A → Prop), Rocq.Corelib.Classes.RelationClasses.Reflexive A R ↔ ∀ (x : A), R x x",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.Symmetric",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.symmetric_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x y, R x y → R y x",
+    "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
+    "target_class": "native_expression",
+    "type": "∀ (A : Type u) (R : A → A → Prop), Rocq.Corelib.Classes.RelationClasses.Symmetric A R ↔ ∀ (x y : A), R x y → R y x",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.Transitive",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.transitive_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x y z, R x y → R y z → R x z",
+    "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
+    "target_class": "native_expression",
+    "type": "∀ (A : Type u) (R : A → A → Prop),\n  Rocq.Corelib.Classes.RelationClasses.Transitive A R ↔ ∀ (x y z : A), R x y → R y z → R x z",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.complement",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.complement_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "¬ R x y",
+    "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
+    "target_class": "native_expression",
+    "type": "∀ (A : Type u) (R : A → A → Prop) (x y : A), Rocq.Corelib.Classes.RelationClasses.complement A R x y ↔ ¬R x y",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.Irreflexive",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.irreflexive_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x, ¬ R x x",
+    "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
+    "target_class": "native_expression",
+    "type": "∀ (A : Type u) (R : A → A → Prop), Rocq.Corelib.Classes.RelationClasses.Irreflexive A R ↔ ∀ (x : A), ¬R x x",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.Asymmetric",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.asymmetric_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x y, R x y → ¬ R y x",
+    "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
+    "target_class": "native_expression",
+    "type": "∀ (A : Type u) (R : A → A → Prop), Rocq.Corelib.Classes.RelationClasses.Asymmetric A R ↔ ∀ (x y : A), R x y → ¬R y x",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.subrelation",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.subrelation_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Subrelation R S",
+    "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
+    "target_class": "existing_api",
+    "type": "∀ (A : Type u) (R S : A → A → Prop), Rocq.Corelib.Classes.RelationClasses.subrelation A R S ↔ Subrelation R S",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.relation_conjunction",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.conjunction_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "R x y ∧ S x y",
+    "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
+    "target_class": "native_expression",
+    "type": "∀ (A : Type u) (R S : A → A → Prop) (x y : A),\n  Rocq.Corelib.Classes.RelationClasses.relation_conjunction A R S x y ↔ R x y ∧ S x y",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.relation_disjunction",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.disjunction_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "R x y ∨ S x y",
+    "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
+    "target_class": "native_expression",
+    "type": "∀ (A : Type u) (R S : A → A → Prop) (x y : A),\n  Rocq.Corelib.Classes.RelationClasses.relation_disjunction A R S x y ↔ R x y ∨ S x y",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.relation_equivalence",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.relation_equivalence_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x y, R x y ↔ S x y",
+    "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
+    "target_class": "native_expression",
+    "type": "∀ (A : Type u) (R S : A → A → Prop),\n  Rocq.Corelib.Classes.RelationClasses.relation_equivalence A R S ↔ ∀ (x y : A), R x y ↔ S x y",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.Antisymmetric",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.antisymmetric_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x y, R x y → R y x → E x y",
+    "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
+    "target_class": "native_expression",
+    "type": "∀ (A : Type u) (E R : A → A → Prop) (h : Equivalence E),\n  Rocq.Corelib.Classes.RelationClasses.Antisymmetric A E ⋯ R ↔ ∀ (x y : A), R x y → R y x → E x y",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.PartialOrder",
+    "profile": "RelationClasses",
+    "certificate": "NativeBridge.Incremental.RC.partialOrder_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x y, E x y ↔ R x y ∧ R y x",
+    "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
+    "target_class": "native_expression",
+    "type": "∀ (A : Type u) (E R : A → A → Prop) (h : Equivalence E) (p : NativeBridge.Incremental.RC.NativePreorder R),\n  Rocq.Corelib.Classes.RelationClasses.PartialOrder A E ⋯ R ⋯ ↔ ∀ (x y : A), E x y ↔ R x y ∧ R y x",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.Tlist",
+    "profile": "VariadicPredicates",
+    "certificate": "NativeBridge.Incremental.Variadic.typesIso",
+    "kind": "TYPE_ISO",
+    "target": "List (Type u)",
+    "scope": "arbitrary universe u and finite heterogeneous Type u argument list; B : Type u; explicit curry/uncurry inverse proofs",
+    "target_class": "native_representation",
+    "type": "NativeBridge.Iso Rocq.Corelib.Classes.RelationClasses.Tlist (List (Type u))",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.arrows",
+    "profile": "VariadicPredicates",
+    "certificate": "NativeBridge.Incremental.Variadic.arrowsIso",
+    "kind": "TYPE_ISO",
+    "target": "Arguments (typesTo ts) → B",
+    "scope": "arbitrary universe u and finite heterogeneous Type u argument list; B : Type u; explicit curry/uncurry inverse proofs",
+    "target_class": "native_representation",
+    "type": "(ts : Rocq.Corelib.Classes.RelationClasses.Tlist) →\n  (B : Type u) →\n    NativeBridge.Iso (Rocq.Corelib.Classes.RelationClasses.arrows ts B)\n      (NativeBridge.Incremental.Variadic.Arguments (NativeBridge.Incremental.Variadic.typesTo ts) → B)",
+    "axioms": [
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.Tlist_rec",
+    "profile": "VariadicPredicates",
+    "certificate": "NativeBridge.Incremental.Variadic.tlist_rec_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "List.rec",
+    "scope": "all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v",
+    "target_class": "existing_api",
+    "type": "∀ (P : List (Type u) → Type) (n : P []) (c : (A : Type u) → (ts : List (Type u)) → P ts → P (A :: ts))\n  (ts : Rocq.Corelib.Classes.RelationClasses.Tlist),\n  Rocq.Corelib.Classes.RelationClasses.Tlist_rec (fun ts => P (NativeBridge.Incremental.Variadic.typesTo ts)) n\n      (fun A ts ih => c A (NativeBridge.Incremental.Variadic.typesTo ts) ih) ts =\n    List.rec n c (NativeBridge.Incremental.Variadic.typesTo ts)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.Tlist_rect",
+    "profile": "VariadicPredicates",
+    "certificate": "NativeBridge.Incremental.Variadic.tlist_rect_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "List.rec",
+    "scope": "all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v",
+    "target_class": "existing_api",
+    "type": "∀ (P : List (Type u) → Type v) (n : P []) (c : (A : Type u) → (ts : List (Type u)) → P ts → P (A :: ts))\n  (ts : Rocq.Corelib.Classes.RelationClasses.Tlist),\n  Rocq.Corelib.Classes.RelationClasses.Tlist_rect (fun ts => P (NativeBridge.Incremental.Variadic.typesTo ts)) n\n      (fun A ts ih => c A (NativeBridge.Incremental.Variadic.typesTo ts) ih) ts =\n    List.rec n c (NativeBridge.Incremental.Variadic.typesTo ts)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.pointwise_extension",
+    "profile": "VariadicPredicates",
+    "certificate": "NativeBridge.Incremental.Variadic.pointwise_extension_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "fun args => op (f args) (g args)",
+    "scope": "all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v",
+    "target_class": "native_expression",
+    "type": "∀ (B : Type u) (op : B → B → B) (ts : Rocq.Corelib.Classes.RelationClasses.Tlist)\n  (f g : Rocq.Corelib.Classes.RelationClasses.arrows ts B)\n  (xs : NativeBridge.Incremental.Variadic.Arguments (NativeBridge.Incremental.Variadic.typesTo ts)),\n  NativeBridge.Incremental.Variadic.arrowsTo ts B (Rocq.Corelib.Classes.RelationClasses.pointwise_extension B op ts f g)\n      xs =\n    op (NativeBridge.Incremental.Variadic.arrowsTo ts B f xs) (NativeBridge.Incremental.Variadic.arrowsTo ts B g xs)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.pointwise_lifting",
+    "profile": "VariadicPredicates",
+    "certificate": "NativeBridge.Incremental.Variadic.pointwise_lifting_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ args, op (f args) (g args)",
+    "scope": "all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v",
+    "target_class": "native_expression",
+    "type": "∀ (op : Prop → Prop → Prop) (ts : Rocq.Corelib.Classes.RelationClasses.Tlist)\n  (f g : Rocq.Corelib.Classes.RelationClasses.arrows ts (PULift Prop)),\n  (Rocq.Corelib.Classes.RelationClasses.pointwise_lifting (fun p q => { down := op p.down q.down }) ts f g).down ↔\n    ∀ (xs : NativeBridge.Incremental.Variadic.Arguments (NativeBridge.Incremental.Variadic.typesTo ts)),\n      op (NativeBridge.Incremental.Variadic.predicateTo ts f xs) (NativeBridge.Incremental.Variadic.predicateTo ts g xs)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.predicate_all",
+    "profile": "VariadicPredicates",
+    "certificate": "NativeBridge.Incremental.Variadic.predicate_all_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ args, f args",
+    "scope": "all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v",
+    "target_class": "native_expression",
+    "type": "∀ (ts : Rocq.Corelib.Classes.RelationClasses.Tlist) (f : Rocq.Corelib.Classes.RelationClasses.arrows ts (PULift Prop)),\n  Rocq.Corelib.Classes.RelationClasses.predicate_all ts f ↔\n    ∀ (xs : NativeBridge.Incremental.Variadic.Arguments (NativeBridge.Incremental.Variadic.typesTo ts)),\n      NativeBridge.Incremental.Variadic.predicateTo ts f xs",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.predicate_exists",
+    "profile": "VariadicPredicates",
+    "certificate": "NativeBridge.Incremental.Variadic.predicate_exists_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∃ args, f args",
+    "scope": "all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v",
+    "target_class": "native_expression",
+    "type": "∀ (ts : Rocq.Corelib.Classes.RelationClasses.Tlist) (f : Rocq.Corelib.Classes.RelationClasses.arrows ts (PULift Prop)),\n  Rocq.Corelib.Classes.RelationClasses.predicate_exists ts f ↔\n    ∃ xs, NativeBridge.Incremental.Variadic.predicateTo ts f xs",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.predicate_equivalence",
+    "profile": "VariadicPredicates",
+    "certificate": "NativeBridge.Incremental.Variadic.predicate_equivalence_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ args, f args ↔ g args",
+    "scope": "all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v",
+    "target_class": "native_expression",
+    "type": "∀ (ts : Rocq.Corelib.Classes.RelationClasses.Tlist)\n  (f g : Rocq.Corelib.Classes.RelationClasses.arrows ts (PULift Prop)),\n  (Rocq.Corelib.Classes.RelationClasses.predicate_equivalence ts f g).down ↔\n    ∀ (xs : NativeBridge.Incremental.Variadic.Arguments (NativeBridge.Incremental.Variadic.typesTo ts)),\n      NativeBridge.Incremental.Variadic.predicateTo ts f xs ↔ NativeBridge.Incremental.Variadic.predicateTo ts g xs",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.predicate_implication",
+    "profile": "VariadicPredicates",
+    "certificate": "NativeBridge.Incremental.Variadic.predicate_implication_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ args, f args → g args",
+    "scope": "all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v",
+    "target_class": "native_expression",
+    "type": "∀ (ts : Rocq.Corelib.Classes.RelationClasses.Tlist)\n  (f g : Rocq.Corelib.Classes.RelationClasses.arrows ts (PULift Prop)),\n  (Rocq.Corelib.Classes.RelationClasses.predicate_implication ts f g).down ↔\n    ∀ (xs : NativeBridge.Incremental.Variadic.Arguments (NativeBridge.Incremental.Variadic.typesTo ts)),\n      NativeBridge.Incremental.Variadic.predicateTo ts f xs → NativeBridge.Incremental.Variadic.predicateTo ts g xs",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.predicate_intersection",
+    "profile": "VariadicPredicates",
+    "certificate": "NativeBridge.Incremental.Variadic.predicate_intersection_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "fun args => f args ∧ g args",
+    "scope": "all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v",
+    "target_class": "native_expression",
+    "type": "∀ (ts : Rocq.Corelib.Classes.RelationClasses.Tlist) (f g : Rocq.Corelib.Classes.RelationClasses.arrows ts (PULift Prop))\n  (xs : NativeBridge.Incremental.Variadic.Arguments (NativeBridge.Incremental.Variadic.typesTo ts)),\n  NativeBridge.Incremental.Variadic.predicateTo ts (Rocq.Corelib.Classes.RelationClasses.predicate_intersection ts f g)\n      xs ↔\n    NativeBridge.Incremental.Variadic.predicateTo ts f xs ∧ NativeBridge.Incremental.Variadic.predicateTo ts g xs",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.predicate_union",
+    "profile": "VariadicPredicates",
+    "certificate": "NativeBridge.Incremental.Variadic.predicate_union_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "fun args => f args ∨ g args",
+    "scope": "all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v",
+    "target_class": "native_expression",
+    "type": "∀ (ts : Rocq.Corelib.Classes.RelationClasses.Tlist) (f g : Rocq.Corelib.Classes.RelationClasses.arrows ts (PULift Prop))\n  (xs : NativeBridge.Incremental.Variadic.Arguments (NativeBridge.Incremental.Variadic.typesTo ts)),\n  NativeBridge.Incremental.Variadic.predicateTo ts (Rocq.Corelib.Classes.RelationClasses.predicate_union ts f g) xs ↔\n    NativeBridge.Incremental.Variadic.predicateTo ts f xs ∨ NativeBridge.Incremental.Variadic.predicateTo ts g xs",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.true_predicate",
+    "profile": "VariadicPredicates",
+    "certificate": "NativeBridge.Incremental.Variadic.true_predicate_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "fun _ => True",
+    "scope": "all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v",
+    "target_class": "native_expression",
+    "type": "∀ (ts : Rocq.Corelib.Classes.RelationClasses.Tlist)\n  (xs : NativeBridge.Incremental.Variadic.Arguments (NativeBridge.Incremental.Variadic.typesTo ts)),\n  NativeBridge.Incremental.Variadic.predicateTo ts (Rocq.Corelib.Classes.RelationClasses.true_predicate ts) xs ↔ True",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.false_predicate",
+    "profile": "VariadicPredicates",
+    "certificate": "NativeBridge.Incremental.Variadic.false_predicate_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "fun _ => False",
+    "scope": "all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v",
+    "target_class": "native_expression",
+    "type": "∀ (ts : Rocq.Corelib.Classes.RelationClasses.Tlist)\n  (xs : NativeBridge.Incremental.Variadic.Arguments (NativeBridge.Incremental.Variadic.typesTo ts)),\n  NativeBridge.Incremental.Variadic.predicateTo ts (Rocq.Corelib.Classes.RelationClasses.false_predicate ts) xs ↔ False",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.Tlist_ind",
+    "profile": "VariadicStatements",
+    "certificate": "NativeBridge.Incremental.VariadicStatements.Tlist_ind_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.VariadicStatements.listIndNative",
+    "native_target": "NativeBridge.Incremental.VariadicStatements.listIndNative",
+    "scope": "exact native list/tuple predicate law; iff assembled from independently checked source/native proofs; operation-level transport separately proved in VariadicPredicates",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.VariadicStatements.Tlist_ind_closed",
+    "native_expression": "∀ (P : List (Type u) → Prop),\n  P [] → (∀ (A : Type u) (ts : List (Type u)), P ts → P (A :: ts)) → ∀ (ts : List (Type u)), P ts",
+    "type": "Rocq.Corelib.Classes.RelationClasses.Tlist_ind.statement ↔ NativeBridge.Incremental.VariadicStatements.listIndNative",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.Tlist_sind",
+    "profile": "VariadicStatements",
+    "certificate": "NativeBridge.Incremental.VariadicStatements.Tlist_sind_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.VariadicStatements.listIndNative",
+    "native_target": "NativeBridge.Incremental.VariadicStatements.listIndNative",
+    "scope": "exact native list/tuple predicate law; iff assembled from independently checked source/native proofs; operation-level transport separately proved in VariadicPredicates",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.VariadicStatements.Tlist_sind_closed",
+    "native_expression": "∀ (P : List (Type u) → Prop),\n  P [] → (∀ (A : Type u) (ts : List (Type u)), P ts → P (A :: ts)) → ∀ (ts : List (Type u)), P ts",
+    "type": "Rocq.Corelib.Classes.RelationClasses.Tlist_sind.statement ↔ NativeBridge.Incremental.VariadicStatements.listIndNative",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence",
+    "profile": "VariadicStatements",
+    "certificate": "NativeBridge.Incremental.VariadicStatements.predicate_equivalence_equivalence_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.VariadicStatements.predEquivalenceNative",
+    "native_target": "NativeBridge.Incremental.VariadicStatements.predEquivalenceNative",
+    "scope": "exact native list/tuple predicate law; iff assembled from independently checked source/native proofs; operation-level transport separately proved in VariadicPredicates",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.VariadicStatements.predicate_equivalence_equivalence_closed",
+    "native_expression": "∀ (ts : List (Type u)), Equivalence fun f g => ∀ (xs : NativeBridge.Incremental.Variadic.Arguments ts), f xs ↔ g xs",
+    "type": "Rocq.Corelib.Classes.RelationClasses.predicate_equivalence_equivalence.statement ↔\n  NativeBridge.Incremental.VariadicStatements.predEquivalenceNative",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_1",
+    "profile": "VariadicStatements",
+    "certificate": "NativeBridge.Incremental.VariadicStatements.predicate_equivalence_equivalence_obligation_1_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.VariadicStatements.predEquivReflNative",
+    "native_target": "NativeBridge.Incremental.VariadicStatements.predEquivReflNative",
+    "scope": "exact native list/tuple predicate law; iff assembled from independently checked source/native proofs; operation-level transport separately proved in VariadicPredicates",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.VariadicStatements.predicate_equivalence_equivalence_obligation_1_closed",
+    "native_expression": "∀ (ts : List (Type u)) (f : NativeBridge.Incremental.Variadic.Arguments ts → Prop)\n  (xs : NativeBridge.Incremental.Variadic.Arguments ts), f xs ↔ f xs",
+    "type": "Rocq.Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_1.statement ↔\n  NativeBridge.Incremental.VariadicStatements.predEquivReflNative",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_2",
+    "profile": "VariadicStatements",
+    "certificate": "NativeBridge.Incremental.VariadicStatements.predicate_equivalence_equivalence_obligation_2_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.VariadicStatements.predEquivSymmNative",
+    "native_target": "NativeBridge.Incremental.VariadicStatements.predEquivSymmNative",
+    "scope": "exact native list/tuple predicate law; iff assembled from independently checked source/native proofs; operation-level transport separately proved in VariadicPredicates",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.VariadicStatements.predicate_equivalence_equivalence_obligation_2_closed",
+    "native_expression": "∀ (ts : List (Type u)) (f g : NativeBridge.Incremental.Variadic.Arguments ts → Prop),\n  (∀ (xs : NativeBridge.Incremental.Variadic.Arguments ts), f xs ↔ g xs) →\n    ∀ (xs : NativeBridge.Incremental.Variadic.Arguments ts), g xs ↔ f xs",
+    "type": "Rocq.Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_2.statement ↔\n  NativeBridge.Incremental.VariadicStatements.predEquivSymmNative",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_3",
+    "profile": "VariadicStatements",
+    "certificate": "NativeBridge.Incremental.VariadicStatements.predicate_equivalence_equivalence_obligation_3_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.VariadicStatements.predEquivTransNative",
+    "native_target": "NativeBridge.Incremental.VariadicStatements.predEquivTransNative",
+    "scope": "exact native list/tuple predicate law; iff assembled from independently checked source/native proofs; operation-level transport separately proved in VariadicPredicates",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.VariadicStatements.predicate_equivalence_equivalence_obligation_3_closed",
+    "native_expression": "∀ (ts : List (Type u)) (f g h : NativeBridge.Incremental.Variadic.Arguments ts → Prop),\n  (∀ (xs : NativeBridge.Incremental.Variadic.Arguments ts), f xs ↔ g xs) →\n    (∀ (xs : NativeBridge.Incremental.Variadic.Arguments ts), g xs ↔ h xs) →\n      ∀ (xs : NativeBridge.Incremental.Variadic.Arguments ts), f xs ↔ h xs",
+    "type": "Rocq.Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_3.statement ↔\n  NativeBridge.Incremental.VariadicStatements.predEquivTransNative",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.predicate_implication_preorder",
+    "profile": "VariadicStatements",
+    "certificate": "NativeBridge.Incremental.VariadicStatements.predicate_implication_preorder_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.VariadicStatements.predPreorderNative",
+    "native_target": "NativeBridge.Incremental.VariadicStatements.predPreorderNative",
+    "scope": "exact native list/tuple predicate law; iff assembled from independently checked source/native proofs; operation-level transport separately proved in VariadicPredicates",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.VariadicStatements.predicate_implication_preorder_closed",
+    "native_expression": "∀ (ts : List (Type u)),\n  NativeBridge.Incremental.RC.NativePreorder fun f g =>\n    ∀ (xs : NativeBridge.Incremental.Variadic.Arguments ts), f xs → g xs",
+    "type": "Rocq.Corelib.Classes.RelationClasses.predicate_implication_preorder.statement ↔\n  NativeBridge.Incremental.VariadicStatements.predPreorderNative",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_1",
+    "profile": "VariadicStatements",
+    "certificate": "NativeBridge.Incremental.VariadicStatements.predicate_implication_preorder_obligation_1_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.VariadicStatements.predImpReflNative",
+    "native_target": "NativeBridge.Incremental.VariadicStatements.predImpReflNative",
+    "scope": "exact native list/tuple predicate law; iff assembled from independently checked source/native proofs; operation-level transport separately proved in VariadicPredicates",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.VariadicStatements.predicate_implication_preorder_obligation_1_closed",
+    "native_expression": "∀ (ts : List (Type u)) (f : NativeBridge.Incremental.Variadic.Arguments ts → Prop)\n  (xs : NativeBridge.Incremental.Variadic.Arguments ts), f xs → f xs",
+    "type": "Rocq.Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_1.statement ↔\n  NativeBridge.Incremental.VariadicStatements.predImpReflNative",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_2",
+    "profile": "VariadicStatements",
+    "certificate": "NativeBridge.Incremental.VariadicStatements.predicate_implication_preorder_obligation_2_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.VariadicStatements.predImpTransNative",
+    "native_target": "NativeBridge.Incremental.VariadicStatements.predImpTransNative",
+    "scope": "exact native list/tuple predicate law; iff assembled from independently checked source/native proofs; operation-level transport separately proved in VariadicPredicates",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.VariadicStatements.predicate_implication_preorder_obligation_2_closed",
+    "native_expression": "∀ (ts : List (Type u)) (f g h : NativeBridge.Incremental.Variadic.Arguments ts → Prop),\n  (∀ (xs : NativeBridge.Incremental.Variadic.Arguments ts), f xs → g xs) →\n    (∀ (xs : NativeBridge.Incremental.Variadic.Arguments ts), g xs → h xs) →\n      ∀ (xs : NativeBridge.Incremental.Variadic.Arguments ts), f xs → h xs",
+    "type": "Rocq.Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_2.statement ↔\n  NativeBridge.Incremental.VariadicStatements.predImpTransNative",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.PartialOrder_inverse",
+    "profile": "RelationConditions",
+    "certificate": "NativeBridge.Incremental.RelationConditions.PartialOrder_inverse_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.RelationConditions.inversePartialOrderNative",
+    "native_target": "NativeBridge.Incremental.RelationConditions.inversePartialOrderNative",
+    "scope": "all Type u carriers; generalized equivalence relation retained; all extracted obligations explicitly supplied",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.RelationConditions.PartialOrder_inverse_closed",
+    "closed_wrapper": "NativeBridge.Incremental.RelationConditions.PartialOrder_inverse_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Classes.RelationClasses.PartialOrder_inverse__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.RelationConditions.inverse_preorder_obligation"
+      }
+    ],
+    "native_expression": "∀ (A : Type u) (E : A → A → Prop),\n  Equivalence E →\n    ∀ (R : A → A → Prop),\n      NativeBridge.Incremental.RC.NativePreorder R →\n        (∀ (x y : A), E x y ↔ R x y ∧ R y x) → ∀ (x y : A), E x y ↔ R y x ∧ R x y",
+    "type": "RocqPending.Corelib.Classes.RelationClasses.PartialOrder_inverse.statement ↔\n  NativeBridge.Incremental.RelationConditions.inversePartialOrderNative",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.subrelation_partial_order",
+    "profile": "RelationConditions",
+    "certificate": "NativeBridge.Incremental.RelationConditions.subrelation_partial_order_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.RelationConditions.subrelationPartialOrderNative",
+    "native_target": "NativeBridge.Incremental.RelationConditions.subrelationPartialOrderNative",
+    "scope": "all Type u carriers; generalized equivalence relation retained; all extracted obligations explicitly supplied",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.RelationConditions.subrelation_partial_order_closed",
+    "closed_wrapper": "NativeBridge.Incremental.RelationConditions.subrelation_partial_order_closed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Classes.RelationClasses.subrelation_partial_order__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.RelationConditions.subrelation_equivalence_obligation"
+      },
+      {
+        "source": "Corelib.Classes.RelationClasses.subrelation_partial_order__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.RelationConditions.subrelation_preorder_obligation"
+      }
+    ],
+    "native_expression": "∀ (A : Type u) (R S : A → A → Prop), (∀ (x y : A), R x y ↔ S x y) ↔ Subrelation R S ∧ Subrelation S R",
+    "type": "RocqPending.Corelib.Classes.RelationClasses.subrelation_partial_order.statement ↔\n  NativeBridge.Incremental.RelationConditions.subrelationPartialOrderNative",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
     "source": "Corelib.ssr.ssrbool.addFb",
     "profile": "SSRBoolStatements",
     "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addFb.statement.correspondence",
@@ -4005,6 +4932,780 @@
     "native_expression": "∀ (P Q : Prop) (b : Bool), (P ↔ (!b) = true) → Q ∨ P → ¬(Q ∧ P) → if b = true then Q else ¬Q",
     "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
     "type": "Rocq.Corelib.ssr.ssrbool.xorPifn.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.xorPifn.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.Equivalence_PER",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_PER.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),\n  Equivalence R → (∀ (x y : A), R x y → R y x) ∧ ∀ (x y z : A), R x y → R y z → R x z",
+    "native_expression": "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),\n  Equivalence R → (∀ (x y : A), R x y → R y x) ∧ ∀ (x y z : A), R x y → R y z → R x z",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.Equivalence_PER.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_PER.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.Equivalence_PreOrder",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_PreOrder.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),\n  Equivalence R → (∀ (x : A), R x x) ∧ ∀ (x y z : A), R x y → R y z → R x z",
+    "native_expression": "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),\n  Equivalence R → (∀ (x : A), R x x) ∧ ∀ (x y z : A), R x y → R y z → R x z",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.Equivalence_PreOrder.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_PreOrder.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.Equivalence_Reflexive",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_Reflexive.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop), Equivalence R → ∀ (x : A), R x x",
+    "native_expression": "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop), Equivalence R → ∀ (x : A), R x x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.Equivalence_Reflexive.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_Reflexive.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.Equivalence_Symmetric",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_Symmetric.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop), Equivalence R → ∀ (x y : A), R x y → R y x",
+    "native_expression": "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop), Equivalence R → ∀ (x y : A), R x y → R y x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.Equivalence_Symmetric.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_Symmetric.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.Equivalence_Transitive",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_Transitive.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),\n  Equivalence R → ∀ (x y z : A), R x y → R y z → R x z",
+    "native_expression": "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),\n  Equivalence R → ∀ (x y z : A), R x y → R y z → R x z",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.Equivalence_Transitive.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_Transitive.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.PER_Symmetric",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.PER_Symmetric.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),\n  ((∀ (x y : A), R x y → R y x) ∧ ∀ (x y z : A), R x y → R y z → R x z) → ∀ (x y : A), R x y → R y x",
+    "native_expression": "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),\n  ((∀ (x y : A), R x y → R y x) ∧ ∀ (x y z : A), R x y → R y z → R x z) → ∀ (x y : A), R x y → R y x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.PER_Symmetric.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.PER_Symmetric.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.PER_Transitive",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.PER_Transitive.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),\n  ((∀ (x y : A), R x y → R y x) ∧ ∀ (x y z : A), R x y → R y z → R x z) → ∀ (x y z : A), R x y → R y z → R x z",
+    "native_expression": "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),\n  ((∀ (x y : A), R x y → R y x) ∧ ∀ (x y z : A), R x y → R y z → R x z) → ∀ (x y z : A), R x y → R y z → R x z",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.PER_Transitive.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.PER_Transitive.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.PreOrder_Reflexive",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.PreOrder_Reflexive.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),\n  ((∀ (x : A), R x x) ∧ ∀ (x y z : A), R x y → R y z → R x z) → ∀ (x : A), R x x",
+    "native_expression": "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),\n  ((∀ (x : A), R x x) ∧ ∀ (x y z : A), R x y → R y z → R x z) → ∀ (x : A), R x x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.PreOrder_Reflexive.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.PreOrder_Reflexive.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.PreOrder_Transitive",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.PreOrder_Transitive.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),\n  ((∀ (x : A), R x x) ∧ ∀ (x y z : A), R x y → R y z → R x z) → ∀ (x y z : A), R x y → R y z → R x z",
+    "native_expression": "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),\n  ((∀ (x : A), R x x) ∧ ∀ (x y z : A), R x y → R y z → R x z) → ∀ (x y z : A), R x y → R y z → R x z",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.PreOrder_Transitive.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.PreOrder_Transitive.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.StrictOrder_Asymmetric",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.StrictOrder_Asymmetric.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),\n  ((∀ (x : A), ¬R x x) ∧ ∀ (x y z : A), R x y → R y z → R x z) → ∀ (x y : A), R x y → ¬R y x",
+    "native_expression": "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),\n  ((∀ (x : A), ¬R x x) ∧ ∀ (x y z : A), R x y → R y z → R x z) → ∀ (x y : A), R x y → ¬R y x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.StrictOrder_Asymmetric.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.StrictOrder_Asymmetric.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.StrictOrder_Irreflexive",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.StrictOrder_Irreflexive.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),\n  ((∀ (x : A), ¬R x x) ∧ ∀ (x y z : A), R x y → R y z → R x z) → ∀ (x : A), ¬R x x",
+    "native_expression": "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),\n  ((∀ (x : A), ¬R x x) ∧ ∀ (x y z : A), R x y → R y z → R x z) → ∀ (x : A), ¬R x x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.StrictOrder_Irreflexive.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.StrictOrder_Irreflexive.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.StrictOrder_Transitive",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.StrictOrder_Transitive.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),\n  ((∀ (x : A), ¬R x x) ∧ ∀ (x y z : A), R x y → R y z → R x z) → ∀ (x y z : A), R x y → R y z → R x z",
+    "native_expression": "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),\n  ((∀ (x : A), ¬R x x) ∧ ∀ (x y z : A), R x y → R y z → R x z) → ∀ (x y z : A), R x y → R y z → R x z",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.StrictOrder_Transitive.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.StrictOrder_Transitive.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.antisymmetry",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.antisymmetry.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (eqA : A → A → Prop),\n  Equivalence eqA → ∀ (R : A → A → Prop), (∀ (x y : A), R x y → R y x → eqA x y) → ∀ (x y : A), R x y → R y x → eqA x y",
+    "native_expression": "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (eqA : A → A → Prop),\n  Equivalence eqA → ∀ (R : A → A → Prop), (∀ (x y : A), R x y → R y x → eqA x y) → ∀ (x y : A), R x y → R y x → eqA x y",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.antisymmetry.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.antisymmetry.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.asymmetry",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.asymmetry.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop),\n  (∀ (x y : A), R x y → ¬R y x) → ∀ (x y : A), R x y → R y x → False",
+    "native_expression": "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop),\n  (∀ (x y : A), R x y → ¬R y x) → ∀ (x y : A), R x y → R y x → False",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.asymmetry.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.asymmetry.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.complement_Irreflexive",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.complement_Irreflexive.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop), (∀ (x : A), R x x) → ∀ (x : A), ¬¬R x x",
+    "native_expression": "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop), (∀ (x : A), R x x) → ∀ (x : A), ¬¬R x x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.complement_Irreflexive.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.complement_Irreflexive.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.complement_Symmetric",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.complement_Symmetric.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop),\n  (∀ (x y : A), R x y → R y x) → ∀ (x y : A), ¬R x y → ¬R y x",
+    "native_expression": "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop),\n  (∀ (x y : A), R x y → R y x) → ∀ (x y : A), ¬R x y → ¬R y x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.complement_Symmetric.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.complement_Symmetric.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.complement_inverse",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.complement_inverse.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop), (fun x y => ¬R y x) = fun x y => ¬R y x",
+    "native_expression": "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop), (fun x y => ¬R y x) = fun x y => ¬R y x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.complement_inverse.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.complement_inverse.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.eq_Reflexive",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.eq_Reflexive.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (x : A), x = x",
+    "native_expression": "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (x : A), x = x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.eq_Reflexive.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.eq_Reflexive.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.eq_Symmetric",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.eq_Symmetric.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (x y : A), x = y → y = x",
+    "native_expression": "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (x y : A), x = y → y = x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.eq_Symmetric.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.eq_Symmetric.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.eq_Transitive",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.eq_Transitive.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (x y z : A), x = y → y = z → x = z",
+    "native_expression": "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (x y z : A), x = y → y = z → x = z",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.eq_Transitive.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.eq_Transitive.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.eq_equivalence",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.eq_equivalence.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21), Equivalence fun x y => x = y",
+    "native_expression": "∀ (A : Type u_Corelib_Classes_RelationClasses_21), Equivalence fun x y => x = y",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.eq_equivalence.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.eq_equivalence.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.equivalence_rewrite_relation",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.equivalence_rewrite_relation.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (eqA : A → A → Prop), Equivalence eqA → True",
+    "native_expression": "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (eqA : A → A → Prop), Equivalence eqA → True",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.equivalence_rewrite_relation.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.equivalence_rewrite_relation.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.flip_Antisymmetric",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Antisymmetric.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (eqA : A → A → Prop),\n  Equivalence eqA → ∀ (R : A → A → Prop), (∀ (x y : A), R x y → R y x → eqA x y) → ∀ (x y : A), R y x → R x y → eqA x y",
+    "native_expression": "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (eqA : A → A → Prop),\n  Equivalence eqA → ∀ (R : A → A → Prop), (∀ (x y : A), R x y → R y x → eqA x y) → ∀ (x y : A), R y x → R x y → eqA x y",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.flip_Antisymmetric.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Antisymmetric.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.flip_Asymmetric",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Asymmetric.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop),\n  (∀ (x y : A), R x y → ¬R y x) → ∀ (x y : A), R y x → ¬R x y",
+    "native_expression": "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop),\n  (∀ (x y : A), R x y → ¬R y x) → ∀ (x y : A), R y x → ¬R x y",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.flip_Asymmetric.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Asymmetric.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.flip_Equivalence",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Equivalence.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop), Equivalence R → Equivalence fun b a => R a b",
+    "native_expression": "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop), Equivalence R → Equivalence fun b a => R a b",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.flip_Equivalence.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Equivalence.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.flip_Irreflexive",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Irreflexive.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop), (∀ (x : A), ¬R x x) → ∀ (x : A), ¬R x x",
+    "native_expression": "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop), (∀ (x : A), ¬R x x) → ∀ (x : A), ¬R x x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.flip_Irreflexive.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Irreflexive.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.flip_PER",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_PER.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),\n  ((∀ (x y : A), R x y → R y x) ∧ ∀ (x y z : A), R x y → R y z → R x z) →\n    (∀ (x y : A), R y x → R x y) ∧ ∀ (x y z : A), R y x → R z y → R z x",
+    "native_expression": "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),\n  ((∀ (x y : A), R x y → R y x) ∧ ∀ (x y z : A), R x y → R y z → R x z) →\n    (∀ (x y : A), R y x → R x y) ∧ ∀ (x y z : A), R y x → R z y → R z x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.flip_PER.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_PER.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.flip_PreOrder",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_PreOrder.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),\n  ((∀ (x : A), R x x) ∧ ∀ (x y z : A), R x y → R y z → R x z) →\n    (∀ (x : A), R x x) ∧ ∀ (x y z : A), R y x → R z y → R z x",
+    "native_expression": "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),\n  ((∀ (x : A), R x x) ∧ ∀ (x y z : A), R x y → R y z → R x z) →\n    (∀ (x : A), R x x) ∧ ∀ (x y z : A), R y x → R z y → R z x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.flip_PreOrder.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_PreOrder.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.flip_Reflexive",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Reflexive.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop), (∀ (x : A), R x x) → ∀ (x : A), R x x",
+    "native_expression": "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop), (∀ (x : A), R x x) → ∀ (x : A), R x x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.flip_Reflexive.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Reflexive.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.flip_StrictOrder",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_StrictOrder.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),\n  ((∀ (x : A), ¬R x x) ∧ ∀ (x y z : A), R x y → R y z → R x z) →\n    (∀ (x : A), ¬R x x) ∧ ∀ (x y z : A), R y x → R z y → R z x",
+    "native_expression": "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),\n  ((∀ (x : A), ¬R x x) ∧ ∀ (x y z : A), R x y → R y z → R x z) →\n    (∀ (x : A), ¬R x x) ∧ ∀ (x y z : A), R y x → R z y → R z x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.flip_StrictOrder.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_StrictOrder.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.flip_Symmetric",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Symmetric.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop),\n  (∀ (x y : A), R x y → R y x) → ∀ (x y : A), R y x → R x y",
+    "native_expression": "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop),\n  (∀ (x y : A), R x y → R y x) → ∀ (x y : A), R y x → R x y",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.flip_Symmetric.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Symmetric.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.flip_Transitive",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Transitive.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop),\n  (∀ (x y z : A), R x y → R y z → R x z) → ∀ (x y z : A), R y x → R z y → R z x",
+    "native_expression": "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop),\n  (∀ (x y z : A), R x y → R y z → R x z) → ∀ (x y z : A), R y x → R z y → R z x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.flip_Transitive.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Transitive.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.iff_Reflexive",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.iff_Reflexive.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (x : Prop), x ↔ x",
+    "native_expression": "∀ (x : Prop), x ↔ x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.iff_Reflexive.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.iff_Reflexive.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.iff_Symmetric",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.iff_Symmetric.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (x y : Prop), (x ↔ y) → (y ↔ x)",
+    "native_expression": "∀ (x y : Prop), (x ↔ y) → (y ↔ x)",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.iff_Symmetric.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.iff_Symmetric.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.iff_Transitive",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.iff_Transitive.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (x y z : Prop), (x ↔ y) → (y ↔ z) → (x ↔ z)",
+    "native_expression": "∀ (x y z : Prop), (x ↔ y) → (y ↔ z) → (x ↔ z)",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.iff_Transitive.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.iff_Transitive.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.iff_equivalence",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.iff_equivalence.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: Equivalence fun P Q => P ↔ Q",
+    "native_expression": "Equivalence fun P Q => P ↔ Q",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.iff_equivalence.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.iff_equivalence.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.iff_rewrite_relation",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.iff_rewrite_relation.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: True",
+    "native_expression": "True",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.iff_rewrite_relation.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.iff_rewrite_relation.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.impl_Reflexive",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.impl_Reflexive.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (x : Prop), x → x",
+    "native_expression": "∀ (x : Prop), x → x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.impl_Reflexive.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.impl_Reflexive.statement.native",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.impl_Reflexive_obligation_1",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.impl_Reflexive_obligation_1.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (x : Prop), x → x",
+    "native_expression": "∀ (x : Prop), x → x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.impl_Reflexive_obligation_1.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.impl_Reflexive_obligation_1.statement.native",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.impl_Transitive",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.impl_Transitive.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (x y z : Prop), (x → y) → (y → z) → x → z",
+    "native_expression": "∀ (x y z : Prop), (x → y) → (y → z) → x → z",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.impl_Transitive.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.impl_Transitive.statement.native",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.impl_Transitive_obligation_1",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.impl_Transitive_obligation_1.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (x y z : Prop), (x → y) → (y → z) → x → z",
+    "native_expression": "∀ (x y z : Prop), (x → y) → (y → z) → x → z",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.impl_Transitive_obligation_1.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.impl_Transitive_obligation_1.statement.native",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.impl_rewrite_relation",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.impl_rewrite_relation.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: True",
+    "native_expression": "True",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.impl_rewrite_relation.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.impl_rewrite_relation.statement.native",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.inverse_impl_rewrite_relation",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.inverse_impl_rewrite_relation.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: True",
+    "native_expression": "True",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.inverse_impl_rewrite_relation.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.inverse_impl_rewrite_relation.statement.native",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.irreflexivity",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.irreflexivity.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop), (∀ (x : A), ¬R x x) → ∀ (x : A), ¬R x x",
+    "native_expression": "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop), (∀ (x : A), ¬R x x) → ∀ (x : A), ¬R x x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.irreflexivity.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.irreflexivity.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.is_subrelation",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.is_subrelation.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R R' : A → A → Prop),\n  Subrelation R R' → ∀ (x y : A), R x y → R' x y",
+    "native_expression": "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R R' : A → A → Prop),\n  Subrelation R R' → ∀ (x y : A), R x y → R' x y",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.is_subrelation.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.is_subrelation.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.neq_Symmetric",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.neq_Symmetric.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (x y : A), (x = y → False) → y = x → False",
+    "native_expression": "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (x y : A), (x = y → False) → y = x → False",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.neq_Symmetric.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.neq_Symmetric.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.partial_order_antisym",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.partial_order_antisym.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_98) (eqA : A → A → Prop),\n  Equivalence eqA →\n    ∀ (R : A → A → Prop),\n      ((∀ (x : A), R x x) ∧ ∀ (x y z : A), R x y → R y z → R x z) →\n        (∀ (x y : A), eqA x y ↔ R x y ∧ R y x) → ∀ (x y : A), R x y → R y x → eqA x y",
+    "native_expression": "∀ (A : Type u_Corelib_Classes_RelationClasses_98) (eqA : A → A → Prop),\n  Equivalence eqA →\n    ∀ (R : A → A → Prop),\n      ((∀ (x : A), R x x) ∧ ∀ (x y z : A), R x y → R y z → R x z) →\n        (∀ (x y : A), eqA x y ↔ R x y ∧ R y x) → ∀ (x y : A), R x y → R y x → eqA x y",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.partial_order_antisym.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.partial_order_antisym.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.partial_order_equivalence",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.partial_order_equivalence.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_98) (eqA : A → A → Prop),\n  Equivalence eqA →\n    ∀ (R : A → A → Prop),\n      ((∀ (x : A), R x x) ∧ ∀ (x y z : A), R x y → R y z → R x z) →\n        (∀ (x y : A), eqA x y ↔ R x y ∧ R y x) → ∀ (x y : A), eqA x y ↔ R x y ∧ R y x",
+    "native_expression": "∀ (A : Type u_Corelib_Classes_RelationClasses_98) (eqA : A → A → Prop),\n  Equivalence eqA →\n    ∀ (R : A → A → Prop),\n      ((∀ (x : A), R x x) ∧ ∀ (x y z : A), R x y → R y z → R x z) →\n        (∀ (x y : A), eqA x y ↔ R x y ∧ R y x) → ∀ (x y : A), eqA x y ↔ R x y ∧ R y x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.partial_order_equivalence.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.partial_order_equivalence.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.reflexivity",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.reflexivity.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop), (∀ (x : A), R x x) → ∀ (x : A), R x x",
+    "native_expression": "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop), (∀ (x : A), R x x) → ∀ (x : A), R x x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.reflexivity.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.reflexivity.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.relation_equivalence_equivalence",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.relation_equivalence_equivalence.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_98), Equivalence fun R S => ∀ (x y : A), R x y ↔ S x y",
+    "native_expression": "∀ (A : Type u_Corelib_Classes_RelationClasses_98), Equivalence fun R S => ∀ (x y : A), R x y ↔ S x y",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.relation_equivalence_equivalence.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.relation_equivalence_equivalence.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.relation_equivalence_rewrite_relation",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.relation_equivalence_rewrite_relation.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_98), True",
+    "native_expression": "∀ (A : Type u_Corelib_Classes_RelationClasses_98), True",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.relation_equivalence_rewrite_relation.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.relation_equivalence_rewrite_relation.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.relation_implication_preorder",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.relation_implication_preorder.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21),\n  (∀ (x : A → A → Prop), Subrelation x x) ∧\n    ∀ (x y z : A → A → Prop), Subrelation x y → Subrelation y z → Subrelation x z",
+    "native_expression": "∀ (A : Type u_Corelib_Classes_RelationClasses_21),\n  (∀ (x : A → A → Prop), Subrelation x x) ∧\n    ∀ (x y z : A → A → Prop), Subrelation x y → Subrelation y z → Subrelation x z",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.relation_implication_preorder.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.relation_implication_preorder.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.subrelation_partial_order_obligation_1",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.subrelation_partial_order_obligation_1.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_98) (x y : A → A → Prop),\n  (∀ (x_1 y_1 : A), x x_1 y_1 ↔ y x_1 y_1) ↔ Subrelation x y ∧ Subrelation y x",
+    "native_expression": "∀ (A : Type u_Corelib_Classes_RelationClasses_98) (x y : A → A → Prop),\n  (∀ (x_1 y_1 : A), x x_1 y_1 ↔ y x_1 y_1) ↔ Subrelation x y ∧ Subrelation y x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.subrelation_partial_order_obligation_1.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.subrelation_partial_order_obligation_1.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.subrelation_symmetric",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.subrelation_symmetric.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop),\n  (∀ (x y : A), R x y → R y x) → Subrelation (fun b a => R a b) R",
+    "native_expression": "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop),\n  (∀ (x y : A), R x y → R y x) → Subrelation (fun b a => R a b) R",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.subrelation_symmetric.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.subrelation_symmetric.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.symmetry",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.symmetry.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop),\n  (∀ (x y : A), R x y → R y x) → ∀ (x y : A), R x y → R y x",
+    "native_expression": "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop),\n  (∀ (x y : A), R x y → R y x) → ∀ (x y : A), R x y → R y x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.symmetry.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.symmetry.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.RelationClasses.transitivity",
+    "profile": "RelationClassStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.transitivity.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop),\n  (∀ (x y z : A), R x y → R y z → R x z) → ∀ (x y z : A), R x y → R y z → R x z",
+    "native_expression": "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop),\n  (∀ (x y z : A), R x y → R y z → R x z) → ∀ (x y z : A), R x y → R y z → R x z",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Classes.RelationClasses.transitivity.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.transitivity.statement.native",
     "axioms": [
       "propext",
       "Quot.sound"

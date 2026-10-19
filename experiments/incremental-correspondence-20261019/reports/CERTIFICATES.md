@@ -2162,6 +2162,926 @@ Rocq.Corelib.Init.Datatypes.eq_true_ind_r.statement ↔ NativeBridge.Incremental
 
 公理闭包：空
 
+## Corelib.Relations.Relation_Definitions.relation
+
+NativeBridge.Incremental.RD.relationIso
+
+目标：A → A → Prop；范围：A : Type u, arbitrary Prop-valued relation; proof structures use proof irrelevance for inverse laws
+
+```lean
+(A : Type u) → NativeBridge.Iso (Rocq.Corelib.Relations.Relation_Definitions.relation A) (A → A → Prop)
+```
+
+公理闭包：空
+
+## Corelib.Relations.Relation_Definitions.equivalence
+
+NativeBridge.Incremental.RD.equivalenceIso
+
+目标：Equivalence R；范围：A : Type u, arbitrary Prop-valued relation; proof structures use proof irrelevance for inverse laws
+
+```lean
+(A : Type u) →
+  (R : A → A → Prop) → NativeBridge.Iso (Rocq.Corelib.Relations.Relation_Definitions.equivalence A R) (Equivalence R)
+```
+
+公理闭包：空
+
+## Corelib.Relations.Relation_Definitions.preorder
+
+NativeBridge.Incremental.RD.preorderIso
+
+目标：(∀ x, R x x) ∧ (∀ x y z, R x y → R y z → R x z)；范围：A : Type u, arbitrary Prop-valued relation; proof structures use proof irrelevance for inverse laws
+
+```lean
+(A : Type u) →
+  (R : A → A → Prop) →
+    NativeBridge.Iso (Rocq.Corelib.Relations.Relation_Definitions.preorder A R)
+      (NativeBridge.Incremental.RD.NativePreorder R)
+```
+
+公理闭包：空
+
+## Corelib.Relations.Relation_Definitions.order
+
+NativeBridge.Incremental.RD.orderIso
+
+目标：NativePreorder R ∧ (∀ x y, R x y → R y x → x = y)；范围：A : Type u, arbitrary Prop-valued relation; proof structures use proof irrelevance for inverse laws
+
+```lean
+(A : Type u) →
+  (R : A → A → Prop) →
+    NativeBridge.Iso (Rocq.Corelib.Relations.Relation_Definitions.order A R) (NativeBridge.Incremental.RD.NativeOrder R)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Relations.Relation_Definitions.PER
+
+NativeBridge.Incremental.RD.perIso
+
+目标：symmetry ∧ transitivity；范围：A : Type u, arbitrary Prop-valued relation; proof structures use proof irrelevance for inverse laws
+
+```lean
+(A : Type u) →
+  (R : A → A → Prop) →
+    NativeBridge.Iso (Rocq.Corelib.Relations.Relation_Definitions.PER A R) (NativeBridge.Incremental.RD.NativePER R)
+```
+
+公理闭包：空
+
+## Corelib.Relations.Relation_Definitions.reflexive
+
+NativeBridge.Incremental.RD.reflexive_native
+
+目标：∀ x, R x x；范围：A : Type u; iff of relation predicates
+
+```lean
+∀ (A : Type u) (R : A → A → Prop), Rocq.Corelib.Relations.Relation_Definitions.reflexive A R ↔ ∀ (x : A), R x x
+```
+
+公理闭包：空
+
+## Corelib.Relations.Relation_Definitions.symmetric
+
+NativeBridge.Incremental.RD.symmetric_native
+
+目标：∀ x y, R x y → R y x；范围：A : Type u; iff of relation predicates
+
+```lean
+∀ (A : Type u) (R : A → A → Prop),
+  Rocq.Corelib.Relations.Relation_Definitions.symmetric A R ↔ ∀ (x y : A), R x y → R y x
+```
+
+公理闭包：空
+
+## Corelib.Relations.Relation_Definitions.transitive
+
+NativeBridge.Incremental.RD.transitive_native
+
+目标：∀ x y z, R x y → R y z → R x z；范围：A : Type u; iff of relation predicates
+
+```lean
+∀ (A : Type u) (R : A → A → Prop),
+  Rocq.Corelib.Relations.Relation_Definitions.transitive A R ↔ ∀ (x y z : A), R x y → R y z → R x z
+```
+
+公理闭包：空
+
+## Corelib.Relations.Relation_Definitions.antisymmetric
+
+NativeBridge.Incremental.RD.antisymmetric_native
+
+目标：∀ x y, R x y → R y x → x = y；范围：A : Type u; iff of relation predicates
+
+```lean
+∀ (A : Type u) (R : A → A → Prop),
+  Rocq.Corelib.Relations.Relation_Definitions.antisymmetric A R ↔ ∀ (x y : A), R x y → R y x → x = y
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Relations.Relation_Definitions.inclusion
+
+NativeBridge.Incremental.RD.inclusion_native
+
+目标：Subrelation R S；范围：A : Type u; iff of relation predicates
+
+```lean
+∀ (A : Type u) (R S : A → A → Prop), Rocq.Corelib.Relations.Relation_Definitions.inclusion A R S ↔ Subrelation R S
+```
+
+公理闭包：空
+
+## Corelib.Relations.Relation_Definitions.same_relation
+
+NativeBridge.Incremental.RD.same_relation_native
+
+目标：∀ x y, R x y ↔ S x y；范围：A : Type u; iff of relation predicates
+
+```lean
+∀ (A : Type u) (R S : A → A → Prop),
+  Rocq.Corelib.Relations.Relation_Definitions.same_relation A R S ↔ ∀ (x y : A), R x y ↔ S x y
+```
+
+公理闭包：空
+
+## Corelib.Relations.Relation_Definitions.commut
+
+NativeBridge.Incremental.RD.commut_native
+
+目标：∀ x y, R y x → ∀ z, S z y → ∃ t, S t x ∧ R z t；范围：A : Type u; iff of relation predicates
+
+```lean
+∀ (A : Type u) (R S : A → A → Prop),
+  Rocq.Corelib.Relations.Relation_Definitions.commut A R S ↔ ∀ (x y : A), R y x → ∀ (z : A), S z y → ∃ t, S t x ∧ R z t
+```
+
+公理闭包：空
+
+## Corelib.Relations.Relation_Definitions.equiv
+
+NativeBridge.Incremental.RD.equiv_native
+
+目标：Equivalence R；范围：A : Type u; iff of relation predicates
+
+```lean
+∀ (A : Type u) (R : A → A → Prop), Rocq.Corelib.Relations.Relation_Definitions.equiv A R ↔ Equivalence R
+```
+
+公理闭包：空
+
+## Corelib.Relations.Relation_Definitions.equiv_refl
+
+NativeBridge.Incremental.RD.equiv_refl_native
+
+目标：NativeBridge.Incremental.RD.equiv_reflNative；范围：all Type u carriers and Prop-valued relations; native target recursively checked; original projection theorem proved
+
+```lean
+Rocq.Corelib.Relations.Relation_Definitions.equiv_refl.statement ↔ NativeBridge.Incremental.RD.equiv_reflNative
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Relations.Relation_Definitions.equiv_sym
+
+NativeBridge.Incremental.RD.equiv_sym_native
+
+目标：NativeBridge.Incremental.RD.equiv_symNative；范围：all Type u carriers and Prop-valued relations; native target recursively checked; original projection theorem proved
+
+```lean
+Rocq.Corelib.Relations.Relation_Definitions.equiv_sym.statement ↔ NativeBridge.Incremental.RD.equiv_symNative
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Relations.Relation_Definitions.equiv_trans
+
+NativeBridge.Incremental.RD.equiv_trans_native
+
+目标：NativeBridge.Incremental.RD.equiv_transNative；范围：all Type u carriers and Prop-valued relations; native target recursively checked; original projection theorem proved
+
+```lean
+Rocq.Corelib.Relations.Relation_Definitions.equiv_trans.statement ↔ NativeBridge.Incremental.RD.equiv_transNative
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Relations.Relation_Definitions.ord_refl
+
+NativeBridge.Incremental.RD.ord_refl_native
+
+目标：NativeBridge.Incremental.RD.ord_reflNative；范围：all Type u carriers and Prop-valued relations; native target recursively checked; original projection theorem proved
+
+```lean
+Rocq.Corelib.Relations.Relation_Definitions.ord_refl.statement ↔ NativeBridge.Incremental.RD.ord_reflNative
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Relations.Relation_Definitions.ord_trans
+
+NativeBridge.Incremental.RD.ord_trans_native
+
+目标：NativeBridge.Incremental.RD.ord_transNative；范围：all Type u carriers and Prop-valued relations; native target recursively checked; original projection theorem proved
+
+```lean
+Rocq.Corelib.Relations.Relation_Definitions.ord_trans.statement ↔ NativeBridge.Incremental.RD.ord_transNative
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Relations.Relation_Definitions.ord_antisym
+
+NativeBridge.Incremental.RD.ord_antisym_native
+
+目标：NativeBridge.Incremental.RD.ord_antisymNative；范围：all Type u carriers and Prop-valued relations; native target recursively checked; original projection theorem proved
+
+```lean
+Rocq.Corelib.Relations.Relation_Definitions.ord_antisym.statement ↔ NativeBridge.Incremental.RD.ord_antisymNative
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Relations.Relation_Definitions.per_sym
+
+NativeBridge.Incremental.RD.per_sym_native
+
+目标：NativeBridge.Incremental.RD.per_symNative；范围：all Type u carriers and Prop-valued relations; native target recursively checked; original projection theorem proved
+
+```lean
+Rocq.Corelib.Relations.Relation_Definitions.per_sym.statement ↔ NativeBridge.Incremental.RD.per_symNative
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Relations.Relation_Definitions.per_trans
+
+NativeBridge.Incremental.RD.per_trans_native
+
+目标：NativeBridge.Incremental.RD.per_transNative；范围：all Type u carriers and Prop-valued relations; native target recursively checked; original projection theorem proved
+
+```lean
+Rocq.Corelib.Relations.Relation_Definitions.per_trans.statement ↔ NativeBridge.Incremental.RD.per_transNative
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Relations.Relation_Definitions.preord_refl
+
+NativeBridge.Incremental.RD.preord_refl_native
+
+目标：NativeBridge.Incremental.RD.preord_reflNative；范围：all Type u carriers and Prop-valued relations; native target recursively checked; original projection theorem proved
+
+```lean
+Rocq.Corelib.Relations.Relation_Definitions.preord_refl.statement ↔ NativeBridge.Incremental.RD.preord_reflNative
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Relations.Relation_Definitions.preord_trans
+
+NativeBridge.Incremental.RD.preord_trans_native
+
+目标：NativeBridge.Incremental.RD.preord_transNative；范围：all Type u carriers and Prop-valued relations; native target recursively checked; original projection theorem proved
+
+```lean
+Rocq.Corelib.Relations.Relation_Definitions.preord_trans.statement ↔ NativeBridge.Incremental.RD.preord_transNative
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.Equivalence
+
+NativeBridge.Incremental.RC.equivalenceIso
+
+目标：Equivalence R；范围：A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion
+
+```lean
+(A : Type u) →
+  (R : A → A → Prop) → NativeBridge.Iso (Rocq.Corelib.Classes.RelationClasses.Equivalence A R) (Equivalence R)
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.PreOrder
+
+NativeBridge.Incremental.RC.preorderIso
+
+目标：NativePreorder R；范围：A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion
+
+```lean
+(A : Type u) →
+  (R : A → A → Prop) →
+    NativeBridge.Iso (Rocq.Corelib.Classes.RelationClasses.PreOrder A R) (NativeBridge.Incremental.RC.NativePreorder R)
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.PER
+
+NativeBridge.Incremental.RC.perIso
+
+目标：NativePER R；范围：A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion
+
+```lean
+(A : Type u) →
+  (R : A → A → Prop) →
+    NativeBridge.Iso (Rocq.Corelib.Classes.RelationClasses.PER A R) (NativeBridge.Incremental.RC.NativePER R)
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.StrictOrder
+
+NativeBridge.Incremental.RC.strictOrderIso
+
+目标：NativeStrictOrder R；范围：A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion
+
+```lean
+(A : Type u) →
+  (R : A → A → Prop) →
+    NativeBridge.Iso (Rocq.Corelib.Classes.RelationClasses.StrictOrder A R)
+      (NativeBridge.Incremental.RC.NativeStrictOrder R)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.RewriteRelation
+
+NativeBridge.Incremental.RC.rewriteRelationIso
+
+目标：True；范围：A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion
+
+```lean
+(A : Type u) → (R : A → A → Prop) → NativeBridge.Iso (Rocq.Corelib.Classes.RelationClasses.RewriteRelation A R) True
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.unary_operation
+
+NativeBridge.Incremental.RC.unaryOperationIso
+
+目标：A → A；范围：A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion
+
+```lean
+(A : Type u) → NativeBridge.Iso (Rocq.Corelib.Classes.RelationClasses.unary_operation A) (A → A)
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.binary_operation
+
+NativeBridge.Incremental.RC.binaryOperationIso
+
+目标：A → A → A；范围：A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion
+
+```lean
+(A : Type u) → NativeBridge.Iso (Rocq.Corelib.Classes.RelationClasses.binary_operation A) (A → A → A)
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.ternary_operation
+
+NativeBridge.Incremental.RC.ternaryOperationIso
+
+目标：A → A → A → A；范围：A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion
+
+```lean
+(A : Type u) → NativeBridge.Iso (Rocq.Corelib.Classes.RelationClasses.ternary_operation A) (A → A → A → A)
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.unary_predicate
+
+NativeBridge.Incremental.RC.unaryPredicateIso
+
+目标：A → Prop；范围：A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion
+
+```lean
+(A : Type u) → NativeBridge.Iso (Rocq.Corelib.Classes.RelationClasses.unary_predicate A) (A → Prop)
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.binary_relation
+
+NativeBridge.Incremental.RC.binaryRelationIso
+
+目标：A → A → Prop；范围：A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion
+
+```lean
+(A : Type u) → NativeBridge.Iso (Rocq.Corelib.Classes.RelationClasses.binary_relation A) (A → A → Prop)
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.Reflexive
+
+NativeBridge.Incremental.RC.reflexive_native
+
+目标：∀ x, R x x；范围：A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder
+
+```lean
+∀ (A : Type u) (R : A → A → Prop), Rocq.Corelib.Classes.RelationClasses.Reflexive A R ↔ ∀ (x : A), R x x
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.Symmetric
+
+NativeBridge.Incremental.RC.symmetric_native
+
+目标：∀ x y, R x y → R y x；范围：A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder
+
+```lean
+∀ (A : Type u) (R : A → A → Prop), Rocq.Corelib.Classes.RelationClasses.Symmetric A R ↔ ∀ (x y : A), R x y → R y x
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.Transitive
+
+NativeBridge.Incremental.RC.transitive_native
+
+目标：∀ x y z, R x y → R y z → R x z；范围：A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder
+
+```lean
+∀ (A : Type u) (R : A → A → Prop),
+  Rocq.Corelib.Classes.RelationClasses.Transitive A R ↔ ∀ (x y z : A), R x y → R y z → R x z
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.complement
+
+NativeBridge.Incremental.RC.complement_native
+
+目标：¬ R x y；范围：A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder
+
+```lean
+∀ (A : Type u) (R : A → A → Prop) (x y : A), Rocq.Corelib.Classes.RelationClasses.complement A R x y ↔ ¬R x y
+```
+
+公理闭包：propext
+
+## Corelib.Classes.RelationClasses.Irreflexive
+
+NativeBridge.Incremental.RC.irreflexive_native
+
+目标：∀ x, ¬ R x x；范围：A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder
+
+```lean
+∀ (A : Type u) (R : A → A → Prop), Rocq.Corelib.Classes.RelationClasses.Irreflexive A R ↔ ∀ (x : A), ¬R x x
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.Asymmetric
+
+NativeBridge.Incremental.RC.asymmetric_native
+
+目标：∀ x y, R x y → ¬ R y x；范围：A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder
+
+```lean
+∀ (A : Type u) (R : A → A → Prop), Rocq.Corelib.Classes.RelationClasses.Asymmetric A R ↔ ∀ (x y : A), R x y → ¬R y x
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.subrelation
+
+NativeBridge.Incremental.RC.subrelation_native
+
+目标：Subrelation R S；范围：A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder
+
+```lean
+∀ (A : Type u) (R S : A → A → Prop), Rocq.Corelib.Classes.RelationClasses.subrelation A R S ↔ Subrelation R S
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.relation_conjunction
+
+NativeBridge.Incremental.RC.conjunction_native
+
+目标：R x y ∧ S x y；范围：A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder
+
+```lean
+∀ (A : Type u) (R S : A → A → Prop) (x y : A),
+  Rocq.Corelib.Classes.RelationClasses.relation_conjunction A R S x y ↔ R x y ∧ S x y
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.relation_disjunction
+
+NativeBridge.Incremental.RC.disjunction_native
+
+目标：R x y ∨ S x y；范围：A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder
+
+```lean
+∀ (A : Type u) (R S : A → A → Prop) (x y : A),
+  Rocq.Corelib.Classes.RelationClasses.relation_disjunction A R S x y ↔ R x y ∨ S x y
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.relation_equivalence
+
+NativeBridge.Incremental.RC.relation_equivalence_native
+
+目标：∀ x y, R x y ↔ S x y；范围：A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder
+
+```lean
+∀ (A : Type u) (R S : A → A → Prop),
+  Rocq.Corelib.Classes.RelationClasses.relation_equivalence A R S ↔ ∀ (x y : A), R x y ↔ S x y
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.Antisymmetric
+
+NativeBridge.Incremental.RC.antisymmetric_native
+
+目标：∀ x y, R x y → R y x → E x y；范围：A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder
+
+```lean
+∀ (A : Type u) (E R : A → A → Prop) (h : Equivalence E),
+  Rocq.Corelib.Classes.RelationClasses.Antisymmetric A E ⋯ R ↔ ∀ (x y : A), R x y → R y x → E x y
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.PartialOrder
+
+NativeBridge.Incremental.RC.partialOrder_native
+
+目标：∀ x y, E x y ↔ R x y ∧ R y x；范围：A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder
+
+```lean
+∀ (A : Type u) (E R : A → A → Prop) (h : Equivalence E) (p : NativeBridge.Incremental.RC.NativePreorder R),
+  Rocq.Corelib.Classes.RelationClasses.PartialOrder A E ⋯ R ⋯ ↔ ∀ (x y : A), E x y ↔ R x y ∧ R y x
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.Tlist
+
+NativeBridge.Incremental.Variadic.typesIso
+
+目标：List (Type u)；范围：arbitrary universe u and finite heterogeneous Type u argument list; B : Type u; explicit curry/uncurry inverse proofs
+
+```lean
+NativeBridge.Iso Rocq.Corelib.Classes.RelationClasses.Tlist (List (Type u))
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.arrows
+
+NativeBridge.Incremental.Variadic.arrowsIso
+
+目标：Arguments (typesTo ts) → B；范围：arbitrary universe u and finite heterogeneous Type u argument list; B : Type u; explicit curry/uncurry inverse proofs
+
+```lean
+(ts : Rocq.Corelib.Classes.RelationClasses.Tlist) →
+  (B : Type u) →
+    NativeBridge.Iso (Rocq.Corelib.Classes.RelationClasses.arrows ts B)
+      (NativeBridge.Incremental.Variadic.Arguments (NativeBridge.Incremental.Variadic.typesTo ts) → B)
+```
+
+公理闭包：Quot.sound
+
+## Corelib.Classes.RelationClasses.Tlist_rec
+
+NativeBridge.Incremental.Variadic.tlist_rec_native
+
+目标：List.rec；范围：all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v
+
+```lean
+∀ (P : List (Type u) → Type) (n : P []) (c : (A : Type u) → (ts : List (Type u)) → P ts → P (A :: ts))
+  (ts : Rocq.Corelib.Classes.RelationClasses.Tlist),
+  Rocq.Corelib.Classes.RelationClasses.Tlist_rec (fun ts => P (NativeBridge.Incremental.Variadic.typesTo ts)) n
+      (fun A ts ih => c A (NativeBridge.Incremental.Variadic.typesTo ts) ih) ts =
+    List.rec n c (NativeBridge.Incremental.Variadic.typesTo ts)
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.Tlist_rect
+
+NativeBridge.Incremental.Variadic.tlist_rect_native
+
+目标：List.rec；范围：all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v
+
+```lean
+∀ (P : List (Type u) → Type v) (n : P []) (c : (A : Type u) → (ts : List (Type u)) → P ts → P (A :: ts))
+  (ts : Rocq.Corelib.Classes.RelationClasses.Tlist),
+  Rocq.Corelib.Classes.RelationClasses.Tlist_rect (fun ts => P (NativeBridge.Incremental.Variadic.typesTo ts)) n
+      (fun A ts ih => c A (NativeBridge.Incremental.Variadic.typesTo ts) ih) ts =
+    List.rec n c (NativeBridge.Incremental.Variadic.typesTo ts)
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.pointwise_extension
+
+NativeBridge.Incremental.Variadic.pointwise_extension_native
+
+目标：fun args => op (f args) (g args)；范围：all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v
+
+```lean
+∀ (B : Type u) (op : B → B → B) (ts : Rocq.Corelib.Classes.RelationClasses.Tlist)
+  (f g : Rocq.Corelib.Classes.RelationClasses.arrows ts B)
+  (xs : NativeBridge.Incremental.Variadic.Arguments (NativeBridge.Incremental.Variadic.typesTo ts)),
+  NativeBridge.Incremental.Variadic.arrowsTo ts B (Rocq.Corelib.Classes.RelationClasses.pointwise_extension B op ts f g)
+      xs =
+    op (NativeBridge.Incremental.Variadic.arrowsTo ts B f xs) (NativeBridge.Incremental.Variadic.arrowsTo ts B g xs)
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.pointwise_lifting
+
+NativeBridge.Incremental.Variadic.pointwise_lifting_native
+
+目标：∀ args, op (f args) (g args)；范围：all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v
+
+```lean
+∀ (op : Prop → Prop → Prop) (ts : Rocq.Corelib.Classes.RelationClasses.Tlist)
+  (f g : Rocq.Corelib.Classes.RelationClasses.arrows ts (PULift Prop)),
+  (Rocq.Corelib.Classes.RelationClasses.pointwise_lifting (fun p q => { down := op p.down q.down }) ts f g).down ↔
+    ∀ (xs : NativeBridge.Incremental.Variadic.Arguments (NativeBridge.Incremental.Variadic.typesTo ts)),
+      op (NativeBridge.Incremental.Variadic.predicateTo ts f xs) (NativeBridge.Incremental.Variadic.predicateTo ts g xs)
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.predicate_all
+
+NativeBridge.Incremental.Variadic.predicate_all_native
+
+目标：∀ args, f args；范围：all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v
+
+```lean
+∀ (ts : Rocq.Corelib.Classes.RelationClasses.Tlist) (f : Rocq.Corelib.Classes.RelationClasses.arrows ts (PULift Prop)),
+  Rocq.Corelib.Classes.RelationClasses.predicate_all ts f ↔
+    ∀ (xs : NativeBridge.Incremental.Variadic.Arguments (NativeBridge.Incremental.Variadic.typesTo ts)),
+      NativeBridge.Incremental.Variadic.predicateTo ts f xs
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.predicate_exists
+
+NativeBridge.Incremental.Variadic.predicate_exists_native
+
+目标：∃ args, f args；范围：all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v
+
+```lean
+∀ (ts : Rocq.Corelib.Classes.RelationClasses.Tlist) (f : Rocq.Corelib.Classes.RelationClasses.arrows ts (PULift Prop)),
+  Rocq.Corelib.Classes.RelationClasses.predicate_exists ts f ↔
+    ∃ xs, NativeBridge.Incremental.Variadic.predicateTo ts f xs
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.predicate_equivalence
+
+NativeBridge.Incremental.Variadic.predicate_equivalence_native
+
+目标：∀ args, f args ↔ g args；范围：all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v
+
+```lean
+∀ (ts : Rocq.Corelib.Classes.RelationClasses.Tlist)
+  (f g : Rocq.Corelib.Classes.RelationClasses.arrows ts (PULift Prop)),
+  (Rocq.Corelib.Classes.RelationClasses.predicate_equivalence ts f g).down ↔
+    ∀ (xs : NativeBridge.Incremental.Variadic.Arguments (NativeBridge.Incremental.Variadic.typesTo ts)),
+      NativeBridge.Incremental.Variadic.predicateTo ts f xs ↔ NativeBridge.Incremental.Variadic.predicateTo ts g xs
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.predicate_implication
+
+NativeBridge.Incremental.Variadic.predicate_implication_native
+
+目标：∀ args, f args → g args；范围：all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v
+
+```lean
+∀ (ts : Rocq.Corelib.Classes.RelationClasses.Tlist)
+  (f g : Rocq.Corelib.Classes.RelationClasses.arrows ts (PULift Prop)),
+  (Rocq.Corelib.Classes.RelationClasses.predicate_implication ts f g).down ↔
+    ∀ (xs : NativeBridge.Incremental.Variadic.Arguments (NativeBridge.Incremental.Variadic.typesTo ts)),
+      NativeBridge.Incremental.Variadic.predicateTo ts f xs → NativeBridge.Incremental.Variadic.predicateTo ts g xs
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.predicate_intersection
+
+NativeBridge.Incremental.Variadic.predicate_intersection_native
+
+目标：fun args => f args ∧ g args；范围：all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v
+
+```lean
+∀ (ts : Rocq.Corelib.Classes.RelationClasses.Tlist) (f g : Rocq.Corelib.Classes.RelationClasses.arrows ts (PULift Prop))
+  (xs : NativeBridge.Incremental.Variadic.Arguments (NativeBridge.Incremental.Variadic.typesTo ts)),
+  NativeBridge.Incremental.Variadic.predicateTo ts (Rocq.Corelib.Classes.RelationClasses.predicate_intersection ts f g)
+      xs ↔
+    NativeBridge.Incremental.Variadic.predicateTo ts f xs ∧ NativeBridge.Incremental.Variadic.predicateTo ts g xs
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.predicate_union
+
+NativeBridge.Incremental.Variadic.predicate_union_native
+
+目标：fun args => f args ∨ g args；范围：all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v
+
+```lean
+∀ (ts : Rocq.Corelib.Classes.RelationClasses.Tlist) (f g : Rocq.Corelib.Classes.RelationClasses.arrows ts (PULift Prop))
+  (xs : NativeBridge.Incremental.Variadic.Arguments (NativeBridge.Incremental.Variadic.typesTo ts)),
+  NativeBridge.Incremental.Variadic.predicateTo ts (Rocq.Corelib.Classes.RelationClasses.predicate_union ts f g) xs ↔
+    NativeBridge.Incremental.Variadic.predicateTo ts f xs ∨ NativeBridge.Incremental.Variadic.predicateTo ts g xs
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.true_predicate
+
+NativeBridge.Incremental.Variadic.true_predicate_native
+
+目标：fun _ => True；范围：all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v
+
+```lean
+∀ (ts : Rocq.Corelib.Classes.RelationClasses.Tlist)
+  (xs : NativeBridge.Incremental.Variadic.Arguments (NativeBridge.Incremental.Variadic.typesTo ts)),
+  NativeBridge.Incremental.Variadic.predicateTo ts (Rocq.Corelib.Classes.RelationClasses.true_predicate ts) xs ↔ True
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.false_predicate
+
+NativeBridge.Incremental.Variadic.false_predicate_native
+
+目标：fun _ => False；范围：all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v
+
+```lean
+∀ (ts : Rocq.Corelib.Classes.RelationClasses.Tlist)
+  (xs : NativeBridge.Incremental.Variadic.Arguments (NativeBridge.Incremental.Variadic.typesTo ts)),
+  NativeBridge.Incremental.Variadic.predicateTo ts (Rocq.Corelib.Classes.RelationClasses.false_predicate ts) xs ↔ False
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.Tlist_ind
+
+NativeBridge.Incremental.VariadicStatements.Tlist_ind_native
+
+目标：NativeBridge.Incremental.VariadicStatements.listIndNative；范围：exact native list/tuple predicate law; iff assembled from independently checked source/native proofs; operation-level transport separately proved in VariadicPredicates
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.Tlist_ind.statement ↔ NativeBridge.Incremental.VariadicStatements.listIndNative
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.Tlist_sind
+
+NativeBridge.Incremental.VariadicStatements.Tlist_sind_native
+
+目标：NativeBridge.Incremental.VariadicStatements.listIndNative；范围：exact native list/tuple predicate law; iff assembled from independently checked source/native proofs; operation-level transport separately proved in VariadicPredicates
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.Tlist_sind.statement ↔ NativeBridge.Incremental.VariadicStatements.listIndNative
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.predicate_equivalence_equivalence
+
+NativeBridge.Incremental.VariadicStatements.predicate_equivalence_equivalence_native
+
+目标：NativeBridge.Incremental.VariadicStatements.predEquivalenceNative；范围：exact native list/tuple predicate law; iff assembled from independently checked source/native proofs; operation-level transport separately proved in VariadicPredicates
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.predicate_equivalence_equivalence.statement ↔
+  NativeBridge.Incremental.VariadicStatements.predEquivalenceNative
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_1
+
+NativeBridge.Incremental.VariadicStatements.predicate_equivalence_equivalence_obligation_1_native
+
+目标：NativeBridge.Incremental.VariadicStatements.predEquivReflNative；范围：exact native list/tuple predicate law; iff assembled from independently checked source/native proofs; operation-level transport separately proved in VariadicPredicates
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_1.statement ↔
+  NativeBridge.Incremental.VariadicStatements.predEquivReflNative
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_2
+
+NativeBridge.Incremental.VariadicStatements.predicate_equivalence_equivalence_obligation_2_native
+
+目标：NativeBridge.Incremental.VariadicStatements.predEquivSymmNative；范围：exact native list/tuple predicate law; iff assembled from independently checked source/native proofs; operation-level transport separately proved in VariadicPredicates
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_2.statement ↔
+  NativeBridge.Incremental.VariadicStatements.predEquivSymmNative
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_3
+
+NativeBridge.Incremental.VariadicStatements.predicate_equivalence_equivalence_obligation_3_native
+
+目标：NativeBridge.Incremental.VariadicStatements.predEquivTransNative；范围：exact native list/tuple predicate law; iff assembled from independently checked source/native proofs; operation-level transport separately proved in VariadicPredicates
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_3.statement ↔
+  NativeBridge.Incremental.VariadicStatements.predEquivTransNative
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.predicate_implication_preorder
+
+NativeBridge.Incremental.VariadicStatements.predicate_implication_preorder_native
+
+目标：NativeBridge.Incremental.VariadicStatements.predPreorderNative；范围：exact native list/tuple predicate law; iff assembled from independently checked source/native proofs; operation-level transport separately proved in VariadicPredicates
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.predicate_implication_preorder.statement ↔
+  NativeBridge.Incremental.VariadicStatements.predPreorderNative
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_1
+
+NativeBridge.Incremental.VariadicStatements.predicate_implication_preorder_obligation_1_native
+
+目标：NativeBridge.Incremental.VariadicStatements.predImpReflNative；范围：exact native list/tuple predicate law; iff assembled from independently checked source/native proofs; operation-level transport separately proved in VariadicPredicates
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_1.statement ↔
+  NativeBridge.Incremental.VariadicStatements.predImpReflNative
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_2
+
+NativeBridge.Incremental.VariadicStatements.predicate_implication_preorder_obligation_2_native
+
+目标：NativeBridge.Incremental.VariadicStatements.predImpTransNative；范围：exact native list/tuple predicate law; iff assembled from independently checked source/native proofs; operation-level transport separately proved in VariadicPredicates
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_2.statement ↔
+  NativeBridge.Incremental.VariadicStatements.predImpTransNative
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.PartialOrder_inverse
+
+NativeBridge.Incremental.RelationConditions.PartialOrder_inverse_native
+
+目标：NativeBridge.Incremental.RelationConditions.inversePartialOrderNative；范围：all Type u carriers; generalized equivalence relation retained; all extracted obligations explicitly supplied
+
+```lean
+RocqPending.Corelib.Classes.RelationClasses.PartialOrder_inverse.statement ↔
+  NativeBridge.Incremental.RelationConditions.inversePartialOrderNative
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.subrelation_partial_order
+
+NativeBridge.Incremental.RelationConditions.subrelation_partial_order_native
+
+目标：NativeBridge.Incremental.RelationConditions.subrelationPartialOrderNative；范围：all Type u carriers; generalized equivalence relation retained; all extracted obligations explicitly supplied
+
+```lean
+RocqPending.Corelib.Classes.RelationClasses.subrelation_partial_order.statement ↔
+  NativeBridge.Incremental.RelationConditions.subrelationPartialOrderNative
+```
+
+公理闭包：propext, Quot.sound
+
 ## Corelib.ssr.ssrbool.addFb
 
 NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addFb.statement.correspondence
@@ -3996,6 +4916,772 @@ NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.xorPifn.statement.c
 ```lean
 Rocq.Corelib.ssr.ssrbool.xorPifn.statement ↔
   NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.xorPifn.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.Equivalence_PER
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_PER.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),
+  Equivalence R → (∀ (x y : A), R x y → R y x) ∧ ∀ (x y z : A), R x y → R y z → R x z；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.Equivalence_PER.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_PER.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.Equivalence_PreOrder
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_PreOrder.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),
+  Equivalence R → (∀ (x : A), R x x) ∧ ∀ (x y z : A), R x y → R y z → R x z；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.Equivalence_PreOrder.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_PreOrder.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.Equivalence_Reflexive
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_Reflexive.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop), Equivalence R → ∀ (x : A), R x x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.Equivalence_Reflexive.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_Reflexive.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.Equivalence_Symmetric
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_Symmetric.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop), Equivalence R → ∀ (x y : A), R x y → R y x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.Equivalence_Symmetric.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_Symmetric.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.Equivalence_Transitive
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_Transitive.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),
+  Equivalence R → ∀ (x y z : A), R x y → R y z → R x z；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.Equivalence_Transitive.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_Transitive.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.PER_Symmetric
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.PER_Symmetric.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),
+  ((∀ (x y : A), R x y → R y x) ∧ ∀ (x y z : A), R x y → R y z → R x z) → ∀ (x y : A), R x y → R y x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.PER_Symmetric.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.PER_Symmetric.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.PER_Transitive
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.PER_Transitive.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),
+  ((∀ (x y : A), R x y → R y x) ∧ ∀ (x y z : A), R x y → R y z → R x z) → ∀ (x y z : A), R x y → R y z → R x z；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.PER_Transitive.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.PER_Transitive.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.PreOrder_Reflexive
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.PreOrder_Reflexive.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),
+  ((∀ (x : A), R x x) ∧ ∀ (x y z : A), R x y → R y z → R x z) → ∀ (x : A), R x x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.PreOrder_Reflexive.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.PreOrder_Reflexive.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.PreOrder_Transitive
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.PreOrder_Transitive.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),
+  ((∀ (x : A), R x x) ∧ ∀ (x y z : A), R x y → R y z → R x z) → ∀ (x y z : A), R x y → R y z → R x z；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.PreOrder_Transitive.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.PreOrder_Transitive.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.StrictOrder_Asymmetric
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.StrictOrder_Asymmetric.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),
+  ((∀ (x : A), ¬R x x) ∧ ∀ (x y z : A), R x y → R y z → R x z) → ∀ (x y : A), R x y → ¬R y x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.StrictOrder_Asymmetric.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.StrictOrder_Asymmetric.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.StrictOrder_Irreflexive
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.StrictOrder_Irreflexive.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),
+  ((∀ (x : A), ¬R x x) ∧ ∀ (x y z : A), R x y → R y z → R x z) → ∀ (x : A), ¬R x x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.StrictOrder_Irreflexive.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.StrictOrder_Irreflexive.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.StrictOrder_Transitive
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.StrictOrder_Transitive.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),
+  ((∀ (x : A), ¬R x x) ∧ ∀ (x y z : A), R x y → R y z → R x z) → ∀ (x y z : A), R x y → R y z → R x z；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.StrictOrder_Transitive.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.StrictOrder_Transitive.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.antisymmetry
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.antisymmetry.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (eqA : A → A → Prop),
+  Equivalence eqA → ∀ (R : A → A → Prop), (∀ (x y : A), R x y → R y x → eqA x y) → ∀ (x y : A), R x y → R y x → eqA x y；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.antisymmetry.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.antisymmetry.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.asymmetry
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.asymmetry.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop),
+  (∀ (x y : A), R x y → ¬R y x) → ∀ (x y : A), R x y → R y x → False；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.asymmetry.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.asymmetry.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.complement_Irreflexive
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.complement_Irreflexive.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop), (∀ (x : A), R x x) → ∀ (x : A), ¬¬R x x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.complement_Irreflexive.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.complement_Irreflexive.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.complement_Symmetric
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.complement_Symmetric.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop),
+  (∀ (x y : A), R x y → R y x) → ∀ (x y : A), ¬R x y → ¬R y x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.complement_Symmetric.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.complement_Symmetric.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.complement_inverse
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.complement_inverse.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop), (fun x y => ¬R y x) = fun x y => ¬R y x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.complement_inverse.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.complement_inverse.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.eq_Reflexive
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.eq_Reflexive.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (x : A), x = x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.eq_Reflexive.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.eq_Reflexive.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.eq_Symmetric
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.eq_Symmetric.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (x y : A), x = y → y = x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.eq_Symmetric.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.eq_Symmetric.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.eq_Transitive
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.eq_Transitive.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (x y z : A), x = y → y = z → x = z；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.eq_Transitive.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.eq_Transitive.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.eq_equivalence
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.eq_equivalence.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21), Equivalence fun x y => x = y；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.eq_equivalence.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.eq_equivalence.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.equivalence_rewrite_relation
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.equivalence_rewrite_relation.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (eqA : A → A → Prop), Equivalence eqA → True；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.equivalence_rewrite_relation.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.equivalence_rewrite_relation.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.flip_Antisymmetric
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Antisymmetric.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (eqA : A → A → Prop),
+  Equivalence eqA → ∀ (R : A → A → Prop), (∀ (x y : A), R x y → R y x → eqA x y) → ∀ (x y : A), R y x → R x y → eqA x y；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.flip_Antisymmetric.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Antisymmetric.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.flip_Asymmetric
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Asymmetric.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop),
+  (∀ (x y : A), R x y → ¬R y x) → ∀ (x y : A), R y x → ¬R x y；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.flip_Asymmetric.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Asymmetric.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.flip_Equivalence
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Equivalence.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop), Equivalence R → Equivalence fun b a => R a b；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.flip_Equivalence.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Equivalence.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.flip_Irreflexive
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Irreflexive.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop), (∀ (x : A), ¬R x x) → ∀ (x : A), ¬R x x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.flip_Irreflexive.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Irreflexive.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.flip_PER
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_PER.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),
+  ((∀ (x y : A), R x y → R y x) ∧ ∀ (x y z : A), R x y → R y z → R x z) →
+    (∀ (x y : A), R y x → R x y) ∧ ∀ (x y z : A), R y x → R z y → R z x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.flip_PER.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_PER.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.flip_PreOrder
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_PreOrder.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),
+  ((∀ (x : A), R x x) ∧ ∀ (x y z : A), R x y → R y z → R x z) →
+    (∀ (x : A), R x x) ∧ ∀ (x y z : A), R y x → R z y → R z x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.flip_PreOrder.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_PreOrder.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.flip_Reflexive
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Reflexive.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop), (∀ (x : A), R x x) → ∀ (x : A), R x x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.flip_Reflexive.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Reflexive.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.flip_StrictOrder
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_StrictOrder.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : A → A → Prop),
+  ((∀ (x : A), ¬R x x) ∧ ∀ (x y z : A), R x y → R y z → R x z) →
+    (∀ (x : A), ¬R x x) ∧ ∀ (x y z : A), R y x → R z y → R z x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.flip_StrictOrder.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_StrictOrder.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.flip_Symmetric
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Symmetric.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop),
+  (∀ (x y : A), R x y → R y x) → ∀ (x y : A), R y x → R x y；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.flip_Symmetric.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Symmetric.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.flip_Transitive
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Transitive.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop),
+  (∀ (x y z : A), R x y → R y z → R x z) → ∀ (x y z : A), R y x → R z y → R z x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.flip_Transitive.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Transitive.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.iff_Reflexive
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.iff_Reflexive.statement.correspondence
+
+目标：native statement: ∀ (x : Prop), x ↔ x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.iff_Reflexive.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.iff_Reflexive.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.iff_Symmetric
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.iff_Symmetric.statement.correspondence
+
+目标：native statement: ∀ (x y : Prop), (x ↔ y) → (y ↔ x)；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.iff_Symmetric.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.iff_Symmetric.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.iff_Transitive
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.iff_Transitive.statement.correspondence
+
+目标：native statement: ∀ (x y z : Prop), (x ↔ y) → (y ↔ z) → (x ↔ z)；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.iff_Transitive.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.iff_Transitive.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.iff_equivalence
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.iff_equivalence.statement.correspondence
+
+目标：native statement: Equivalence fun P Q => P ↔ Q；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.iff_equivalence.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.iff_equivalence.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.iff_rewrite_relation
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.iff_rewrite_relation.statement.correspondence
+
+目标：native statement: True；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.iff_rewrite_relation.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.iff_rewrite_relation.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.impl_Reflexive
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.impl_Reflexive.statement.correspondence
+
+目标：native statement: ∀ (x : Prop), x → x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.impl_Reflexive.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.impl_Reflexive.statement.native
+```
+
+公理闭包：propext
+
+## Corelib.Classes.RelationClasses.impl_Reflexive_obligation_1
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.impl_Reflexive_obligation_1.statement.correspondence
+
+目标：native statement: ∀ (x : Prop), x → x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.impl_Reflexive_obligation_1.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.impl_Reflexive_obligation_1.statement.native
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.impl_Transitive
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.impl_Transitive.statement.correspondence
+
+目标：native statement: ∀ (x y z : Prop), (x → y) → (y → z) → x → z；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.impl_Transitive.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.impl_Transitive.statement.native
+```
+
+公理闭包：propext
+
+## Corelib.Classes.RelationClasses.impl_Transitive_obligation_1
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.impl_Transitive_obligation_1.statement.correspondence
+
+目标：native statement: ∀ (x y z : Prop), (x → y) → (y → z) → x → z；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.impl_Transitive_obligation_1.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.impl_Transitive_obligation_1.statement.native
+```
+
+公理闭包：空
+
+## Corelib.Classes.RelationClasses.impl_rewrite_relation
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.impl_rewrite_relation.statement.correspondence
+
+目标：native statement: True；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.impl_rewrite_relation.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.impl_rewrite_relation.statement.native
+```
+
+公理闭包：propext
+
+## Corelib.Classes.RelationClasses.inverse_impl_rewrite_relation
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.inverse_impl_rewrite_relation.statement.correspondence
+
+目标：native statement: True；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.inverse_impl_rewrite_relation.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.inverse_impl_rewrite_relation.statement.native
+```
+
+公理闭包：propext
+
+## Corelib.Classes.RelationClasses.irreflexivity
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.irreflexivity.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop), (∀ (x : A), ¬R x x) → ∀ (x : A), ¬R x x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.irreflexivity.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.irreflexivity.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.is_subrelation
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.is_subrelation.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R R' : A → A → Prop),
+  Subrelation R R' → ∀ (x y : A), R x y → R' x y；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.is_subrelation.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.is_subrelation.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.neq_Symmetric
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.neq_Symmetric.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (x y : A), (x = y → False) → y = x → False；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.neq_Symmetric.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.neq_Symmetric.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.partial_order_antisym
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.partial_order_antisym.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_98) (eqA : A → A → Prop),
+  Equivalence eqA →
+    ∀ (R : A → A → Prop),
+      ((∀ (x : A), R x x) ∧ ∀ (x y z : A), R x y → R y z → R x z) →
+        (∀ (x y : A), eqA x y ↔ R x y ∧ R y x) → ∀ (x y : A), R x y → R y x → eqA x y；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.partial_order_antisym.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.partial_order_antisym.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.partial_order_equivalence
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.partial_order_equivalence.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_98) (eqA : A → A → Prop),
+  Equivalence eqA →
+    ∀ (R : A → A → Prop),
+      ((∀ (x : A), R x x) ∧ ∀ (x y z : A), R x y → R y z → R x z) →
+        (∀ (x y : A), eqA x y ↔ R x y ∧ R y x) → ∀ (x y : A), eqA x y ↔ R x y ∧ R y x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.partial_order_equivalence.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.partial_order_equivalence.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.reflexivity
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.reflexivity.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop), (∀ (x : A), R x x) → ∀ (x : A), R x x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.reflexivity.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.reflexivity.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.relation_equivalence_equivalence
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.relation_equivalence_equivalence.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_98), Equivalence fun R S => ∀ (x y : A), R x y ↔ S x y；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.relation_equivalence_equivalence.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.relation_equivalence_equivalence.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.relation_equivalence_rewrite_relation
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.relation_equivalence_rewrite_relation.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_98), True；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.relation_equivalence_rewrite_relation.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.relation_equivalence_rewrite_relation.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.relation_implication_preorder
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.relation_implication_preorder.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_21),
+  (∀ (x : A → A → Prop), Subrelation x x) ∧
+    ∀ (x y z : A → A → Prop), Subrelation x y → Subrelation y z → Subrelation x z；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.relation_implication_preorder.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.relation_implication_preorder.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.subrelation_partial_order_obligation_1
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.subrelation_partial_order_obligation_1.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_RelationClasses_98) (x y : A → A → Prop),
+  (∀ (x_1 y_1 : A), x x_1 y_1 ↔ y x_1 y_1) ↔ Subrelation x y ∧ Subrelation y x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.subrelation_partial_order_obligation_1.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.subrelation_partial_order_obligation_1.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.subrelation_symmetric
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.subrelation_symmetric.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop),
+  (∀ (x y : A), R x y → R y x) → Subrelation (fun b a => R a b) R；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.subrelation_symmetric.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.subrelation_symmetric.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.symmetry
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.symmetry.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop),
+  (∀ (x y : A), R x y → R y x) → ∀ (x y : A), R x y → R y x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.symmetry.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.symmetry.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.RelationClasses.transitivity
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.transitivity.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop),
+  (∀ (x y z : A), R x y → R y z → R x z) → ∀ (x y z : A), R x y → R y z → R x z；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.RelationClasses.transitivity.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.RelationClasses.transitivity.statement.native
 ```
 
 公理闭包：propext, Quot.sound

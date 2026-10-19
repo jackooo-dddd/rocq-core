@@ -4,7 +4,7 @@ W=Path(__file__).resolve().parent;R=W.parents[1];D=W/'reports'
 B=R/'experiments/mechanical-correspondence-20261019/reports'
 specs=json.loads((W/'certificates.json').read_text())
 validation=json.loads((D/'validation.json').read_text())
-assert {r['profile'] for r in validation}=={'Basics','SSR','Iteration','Registry','SSRProperties','SSRBool','SSRBoolStatements','NumericRead','DecimalOperations','HexadecimalOperations','WellFounded','DependentElimination','PairRecursion','DependentStatements','DatatypeElimination','EqualityTransport','BooleanEquality'}
+assert {r['profile'] for r in validation}=={'Basics','SSR','Iteration','Registry','SSRProperties','SSRBool','SSRBoolStatements','NumericRead','DecimalOperations','HexadecimalOperations','WellFounded','DependentElimination','PairRecursion','DependentStatements','DatatypeElimination','EqualityTransport','BooleanEquality','RelationDefinitions','RelationClasses','RelationClassStatements','VariadicPredicates','VariadicStatements','RelationConditions'}
 audits={}
 for r in validation:
  assert r['exit']==0 and r['audit_present'],r
@@ -12,17 +12,23 @@ for r in validation:
  audits[r['profile']]={x['name']:x for x in json.loads((D/(r['profile']+'-audit.json')).read_text())}
 base=list(csv.DictReader((B/'CORELIB_LEDGER.csv').open()))
 rows={r['source']:dict(r,baseline_bridge_status=r['bridge_status'],evidence_origin='inherited baseline',new_certificates='') for r in base}
-selection={x['target']:x['source'] for x in json.loads((W/'statement-selection.json').read_text())}
-candidates=[json.loads(l.split('NATIVE_RESULT ',1)[1]) for l in (D/'SSRBoolStatements.log').read_text().splitlines() if 'NATIVE_RESULT ' in l]
-assert len(candidates)==len(selection)==216
-assert {x['source_target'] for x in candidates}==set(selection)
-(D/'statement-candidates.json').write_text(json.dumps(candidates,ensure_ascii=False,indent=2))
-for c in candidates:
- if c['full']:
-  assert not c['remaining_source_symbols']
-  specs.append({'source':selection[c['source_target']],'profile':'SSRBoolStatements','certificate':c['certificate'],
-    'kind':'STATEMENT_FULL_NATIVE','target':'native statement: '+c['native_expression'],
-    'native_expression':c['native_expression'],'scope':'unconditional original statement; source-free body including NativeBridge alias expansion'})
+automatic_groups=[
+ ('SSRBoolStatements','statement-selection.json','statement-candidates.json',216),
+ ('RelationClassStatements','relation-statement-selection.json','relation-statement-candidates.json',65)]
+automatic_group_counts={}
+for profile,selection_file,output_file,expected_count in automatic_groups:
+ selection={x['target']:x['source'] for x in json.loads((W/selection_file).read_text())}
+ candidates=[json.loads(l.split('NATIVE_RESULT ',1)[1]) for l in (D/(profile+'.log')).read_text().splitlines() if 'NATIVE_RESULT ' in l]
+ assert len(candidates)==len(selection)==expected_count
+ assert {x['source_target'] for x in candidates}==set(selection)
+ (D/output_file).write_text(json.dumps(candidates,ensure_ascii=False,indent=2))
+ automatic_group_counts[profile]={'candidates':len(candidates),'full':sum(c['full'] for c in candidates)}
+ for c in candidates:
+  if c['full']:
+   assert not c['remaining_source_symbols']
+   specs.append({'source':selection[c['source_target']],'profile':profile,'certificate':c['certificate'],
+     'kind':'STATEMENT_FULL_NATIVE','target':'native statement: '+c['native_expression'],
+     'native_expression':c['native_expression'],'scope':'unconditional original statement; source-free body including NativeBridge alias expansion'})
 native_targets=[json.loads(l.split('NATIVE_TARGET ',1)[1]) for r in validation for l in (D/(r['profile']+'.log')).read_text().splitlines() if 'NATIVE_TARGET ' in l]
 native_targets={t['name']:t for t in native_targets}
 assert set(native_targets)=={s['native_target'] for s in specs if s.get('native_target')}
@@ -89,6 +95,13 @@ r['interface_skip_reason']='';r['interface_type_specialized']=False
 def writecsv(path,rs):
  with path.open('w',newline='') as f:
   w=csv.DictWriter(f,fieldnames=list(rs[0]));w.writeheader();w.writerows(rs)
+module_coverage=[]
+for module,total in [('Corelib.Relations.Relation_Definitions',23),('Corelib.Classes.RelationClasses',103)]:
+ rs=[r for r in rows.values() if r['module']==module]
+ assert len(rs)==total
+ assert all(r['bridge_status'] in {'TYPE_ISO','OPERATION_CORRESPONDENCE','STATEMENT_FULL_NATIVE'} for r in rs)
+ module_coverage.append(dict(module=module,total=len(rs),counts=dict(collections.Counter(r['bridge_status'] for r in rs))))
+(D/'relations-module-coverage.json').write_text(json.dumps(module_coverage,indent=2))
 writecsv(D/'CORELIB_LEDGER.csv',list(rows.values()))
 counts=dict(collections.Counter(r['bridge_status'] for r in rows.values()))
 bcounts=dict(collections.Counter(r['bridge_status'] for r in base))
@@ -98,7 +111,8 @@ summary={'alias_regression_profiles':45,'alias_regression_lost':0,'alias_regress
  'new_type_roots':len({s['source'] for s in specs if s['kind']=='TYPE_ISO' and rows[s['source']]['baseline_bridge_status']!='TYPE_ISO'}),
  'new_operation_roots':len({s['source'] for s in specs if s['kind']=='OPERATION_CORRESPONDENCE' and rows[s['source']]['baseline_bridge_status']!='OPERATION_CORRESPONDENCE'}),
  'new_fully_native_statements':len({s['source'] for s in specs if s['kind']=='STATEMENT_FULL_NATIVE'}),
- 'automatic_statement_candidates_rechecked':len(candidates),
+ 'automatic_statement_candidates_rechecked':sum(g['candidates'] for g in automatic_group_counts.values()),
+ 'automatic_statement_groups':automatic_group_counts,
  'manual_native_statement_certificates':sum(s['kind']=='STATEMENT_FULL_NATIVE' for s in json.loads((W/'certificates.json').read_text())),
  'additional_original_statement_proofs':len(original_proofs),
  'new_certificates':len(specs),'baseline_operation_certificates':119,'operation_certificates_total':119+sum(s['kind']=='OPERATION_CORRESPONDENCE' for s in specs),
@@ -111,7 +125,7 @@ summary={'alias_regression_profiles':45,'alias_regression_lost':0,'alias_regress
  'correspondence_conditions_remaining':counts['EXPLICIT_PROOF_PARAMETERS'],
  'condition_resolved_roots':len({r['source'] for r in resolved_conditions}),
  'closed_obligation_witnesses':len({w['name'] for r in resolved_conditions for w in r['witnesses']}),
- 'full_sort_type_certificates_added':6,'completion':'seven incremental batches; overall plan remains incomplete',
+ 'full_sort_type_certificates_added':6,'completion':'nine incremental batches; overall plan remains incomplete',
  'explicit_target_classes_since_batch_3':dict(collections.Counter(sp['target_class'] for sp in specs if 'target_class' in sp))}
 assert sum(counts.values())==2180
 (D/'summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2))
