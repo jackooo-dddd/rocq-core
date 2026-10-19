@@ -3784,6 +3784,443 @@ NativeBridge.Incremental.PeanoBridge.isSucc_agrees
 
 公理闭包：propext, Classical.choice, Quot.sound
 
+## Corelib.Lists.ListDef.list_compare
+
+NativeBridge.Incremental.ListBridge.list_compare_agrees
+
+目标：List.compareLex；范围：All lists over Type u and all supplied comparators, with comparator results converted to native Ordering. No total-order assumption.
+
+```lean
+∀ {A : Type u} (cmp : A → A → Rocq.Corelib.Init.Datatypes.comparison) (xs ys : NativeBridge.RList A),
+  NativeBridge.Incremental.ListBridge.comparisonTo (Rocq.Corelib.Lists.ListDef.list_compare A cmp xs ys) =
+    List.compareLex (fun x y => NativeBridge.Incremental.ListBridge.comparisonTo (cmp x y)) (NativeBridge.listTo xs)
+      (NativeBridge.listTo ys)
+```
+
+公理闭包：propext
+
+## Corelib.BinNums.PosDef.Pos.compare_cont
+
+NativeBridge.Incremental.BinaryOrder.compare_cont_agrees
+
+目标：Native Nat comparison with a supplied Ordering on equality；范围：All values of the mechanical numeric input types; no extra hypotheses.
+
+```lean
+∀ (r : NativeBridge.RComparison) (p q : NativeBridge.RPositive),
+  NativeBridge.comparisonTo (Rocq.Corelib.BinNums.PosDef.Pos.compare_cont r p q) =
+    NativeBridge.Incremental.BinaryOrder.compareCont (NativeBridge.comparisonTo r) (NativeBridge.positiveTo p)
+      (NativeBridge.positiveTo q)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.PosDef.Pos.compare
+
+NativeBridge.Incremental.BinaryOrder.positive_compare_agrees
+
+目标：compare on Nat；范围：All values of the mechanical numeric input types; no extra hypotheses.
+
+```lean
+∀ (p q : NativeBridge.RPositive),
+  NativeBridge.comparisonTo (Rocq.Corelib.BinNums.PosDef.Pos.compare p q) =
+    compare (NativeBridge.positiveTo p) (NativeBridge.positiveTo q)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.PosDef.Pos.div2
+
+NativeBridge.Incremental.BinaryOrder.positive_div2_agrees
+
+目标：max 1 (n / 2)；范围：All values of the mechanical numeric input types; no extra hypotheses.
+
+```lean
+∀ (p : NativeBridge.RPositive),
+  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.div2 p) = max 1 (NativeBridge.positiveTo p / 2)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.PosDef.Pos.div2_up
+
+NativeBridge.Incremental.BinaryOrder.positive_div2_up_agrees
+
+目标：(n+1) / 2；范围：All values of the mechanical numeric input types; no extra hypotheses.
+
+```lean
+∀ (p : NativeBridge.RPositive),
+  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.div2_up p) = (NativeBridge.positiveTo p + 1) / 2
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.PosDef.Pos.pred_N
+
+NativeBridge.Incremental.BinaryOrder.positive_pred_N_agrees
+
+目标：n - 1 : Nat；范围：All values of the mechanical numeric input types; no extra hypotheses.
+
+```lean
+∀ (p : NativeBridge.RPositive),
+  NativeBridge.binaryNatTo (Rocq.Corelib.BinNums.PosDef.Pos.pred_N p) = NativeBridge.positiveTo p - 1
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.PosDef.Pos.eqb
+
+NativeBridge.Incremental.BinaryOrder.positive_eqb_agrees
+
+目标：Nat BEq；范围：All values of the mechanical numeric input types; no extra hypotheses.
+
+```lean
+∀ (p q : NativeBridge.RPositive),
+  NativeBridge.boolTo (Rocq.Corelib.BinNums.PosDef.Pos.eqb p q) =
+    (NativeBridge.positiveTo p == NativeBridge.positiveTo q)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.PosDef.Pos.leb
+
+NativeBridge.Incremental.BinaryOrder.positive_leb_agrees
+
+目标：decide (n ≤ m) : Bool；范围：All values of the mechanical numeric input types; no extra hypotheses.
+
+```lean
+∀ (p q : NativeBridge.RPositive),
+  NativeBridge.boolTo (Rocq.Corelib.BinNums.PosDef.Pos.leb p q) =
+    decide (NativeBridge.positiveTo p ≤ NativeBridge.positiveTo q)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.NatDef.N.compare
+
+NativeBridge.Incremental.BinaryOrder.n_compare_agrees
+
+目标：compare on Nat；范围：All values of the mechanical numeric input types; no extra hypotheses.
+
+```lean
+∀ (p q : NativeBridge.RNatBinary),
+  NativeBridge.comparisonTo (Rocq.Corelib.BinNums.NatDef.N.compare p q) =
+    compare (NativeBridge.binaryNatTo p) (NativeBridge.binaryNatTo q)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.NatDef.N.leb
+
+NativeBridge.Incremental.BinaryOrder.n_leb_agrees
+
+目标：decide (n ≤ m) : Bool；范围：All values of the mechanical numeric input types; no extra hypotheses.
+
+```lean
+∀ (p q : NativeBridge.RNatBinary),
+  NativeBridge.boolTo (Rocq.Corelib.BinNums.NatDef.N.leb p q) =
+    decide (NativeBridge.binaryNatTo p ≤ NativeBridge.binaryNatTo q)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.NatDef.N.double
+
+NativeBridge.Incremental.BinaryInt.n_double_agrees
+
+目标：2*n : Nat；范围：All values of the mechanical numeric input types; no extra hypotheses.
+
+```lean
+∀ (n : NativeBridge.RNatBinary),
+  NativeBridge.binaryNatTo (Rocq.Corelib.BinNums.NatDef.N.double n) = 2 * NativeBridge.binaryNatTo n
+```
+
+公理闭包：空
+
+## Corelib.BinNums.NatDef.N.succ_double
+
+NativeBridge.Incremental.BinaryInt.n_succ_double_agrees
+
+目标：2*n+1 : Nat；范围：All values of the mechanical numeric input types; no extra hypotheses.
+
+```lean
+∀ (n : NativeBridge.RNatBinary),
+  NativeBridge.binaryNatTo (Rocq.Corelib.BinNums.NatDef.N.succ_double n) = 2 * NativeBridge.binaryNatTo n + 1
+```
+
+公理闭包：空
+
+## Corelib.BinNums.NatDef.N.succ_pos
+
+NativeBridge.Incremental.BinaryInt.n_succ_pos_agrees
+
+目标：n+1 : Nat；范围：All values of the mechanical numeric input types; no extra hypotheses.
+
+```lean
+∀ (n : NativeBridge.RNatBinary),
+  NativeBridge.positiveTo (Rocq.Corelib.BinNums.NatDef.N.succ_pos n) = NativeBridge.binaryNatTo n + 1
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.PosDef.Pos.Ndouble
+
+NativeBridge.Incremental.BinaryInt.pos_Ndouble_agrees
+
+目标：2*n : Nat；范围：All values of the mechanical numeric input types; no extra hypotheses.
+
+```lean
+∀ (n : NativeBridge.RNatBinary),
+  NativeBridge.binaryNatTo (Rocq.Corelib.BinNums.PosDef.Pos.Ndouble n) = 2 * NativeBridge.binaryNatTo n
+```
+
+公理闭包：空
+
+## Corelib.BinNums.PosDef.Pos.Nsucc_double
+
+NativeBridge.Incremental.BinaryInt.pos_Nsucc_double_agrees
+
+目标：2*n+1 : Nat；范围：All values of the mechanical numeric input types; no extra hypotheses.
+
+```lean
+∀ (n : NativeBridge.RNatBinary),
+  NativeBridge.binaryNatTo (Rocq.Corelib.BinNums.PosDef.Pos.Nsucc_double n) = 2 * NativeBridge.binaryNatTo n + 1
+```
+
+公理闭包：空
+
+## Corelib.BinNums.IntDef.Z.compare
+
+NativeBridge.Incremental.BinaryInt.z_compare_agrees
+
+目标：compare on Int；范围：All values of the mechanical numeric input types; no extra hypotheses.
+
+```lean
+∀ (x y : NativeBridge.RIntBinary),
+  NativeBridge.comparisonTo (Rocq.Corelib.BinNums.IntDef.Z.compare x y) =
+    compare (NativeBridge.binaryIntTo x) (NativeBridge.binaryIntTo y)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.double
+
+NativeBridge.Incremental.BinaryInt.z_double_agrees
+
+目标：2*z : Int；范围：All values of the mechanical numeric input types; no extra hypotheses.
+
+```lean
+∀ (z : NativeBridge.RIntBinary),
+  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.double z) = 2 * NativeBridge.binaryIntTo z
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.succ_double
+
+NativeBridge.Incremental.BinaryInt.z_succ_double_agrees
+
+目标：2*z+1 : Int；范围：All values of the mechanical numeric input types; no extra hypotheses.
+
+```lean
+∀ (z : NativeBridge.RIntBinary),
+  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.succ_double z) = 2 * NativeBridge.binaryIntTo z + 1
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.pred_double
+
+NativeBridge.Incremental.BinaryInt.z_pred_double_agrees
+
+目标：2*z-1 : Int；范围：All values of the mechanical numeric input types; no extra hypotheses.
+
+```lean
+∀ (z : NativeBridge.RIntBinary),
+  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.pred_double z) = 2 * NativeBridge.binaryIntTo z - 1
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.to_pos
+
+NativeBridge.Incremental.BinaryInt.z_to_pos_agrees
+
+目标：max 1 z.toNat；范围：All values of the mechanical numeric input types; no extra hypotheses.
+
+```lean
+∀ (z : NativeBridge.RIntBinary),
+  NativeBridge.positiveTo (Rocq.Corelib.BinNums.IntDef.Z.to_pos z) = max 1 (NativeBridge.binaryIntTo z).toNat
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.div2
+
+NativeBridge.Incremental.BinaryInt.z_div2_agrees
+
+目标：z / 2 : Int (Euclidean division)；范围：All values of the mechanical numeric input types; no extra hypotheses.
+
+```lean
+∀ (z : NativeBridge.RIntBinary),
+  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.div2 z) = NativeBridge.binaryIntTo z / 2
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.lt
+
+NativeBridge.Incremental.BinaryInt.z_lt_agrees
+
+目标：Int <；范围：All values of the mechanical numeric input types; no extra hypotheses.
+
+```lean
+∀ (x y : NativeBridge.RIntBinary),
+  Rocq.Corelib.BinNums.IntDef.Z.lt x y ↔ NativeBridge.binaryIntTo x < NativeBridge.binaryIntTo y
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.gt
+
+NativeBridge.Incremental.BinaryInt.z_gt_agrees
+
+目标：Int >；范围：All values of the mechanical numeric input types; no extra hypotheses.
+
+```lean
+∀ (x y : NativeBridge.RIntBinary),
+  Rocq.Corelib.BinNums.IntDef.Z.gt x y ↔ NativeBridge.binaryIntTo x > NativeBridge.binaryIntTo y
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.le
+
+NativeBridge.Incremental.BinaryInt.z_le_agrees
+
+目标：Int ≤；范围：All values of the mechanical numeric input types; no extra hypotheses.
+
+```lean
+∀ (x y : NativeBridge.RIntBinary),
+  Rocq.Corelib.BinNums.IntDef.Z.le x y ↔ NativeBridge.binaryIntTo x ≤ NativeBridge.binaryIntTo y
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.ge
+
+NativeBridge.Incremental.BinaryInt.z_ge_agrees
+
+目标：Int ≥；范围：All values of the mechanical numeric input types; no extra hypotheses.
+
+```lean
+∀ (x y : NativeBridge.RIntBinary),
+  Rocq.Corelib.BinNums.IntDef.Z.ge x y ↔ NativeBridge.binaryIntTo x ≥ NativeBridge.binaryIntTo y
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.ltb
+
+NativeBridge.Incremental.BinaryInt.z_ltb_agrees
+
+目标：decide (x < y) : Bool；范围：All values of the mechanical numeric input types; no extra hypotheses.
+
+```lean
+∀ (x y : NativeBridge.RIntBinary),
+  NativeBridge.boolTo (Rocq.Corelib.BinNums.IntDef.Z.ltb x y) =
+    decide (NativeBridge.binaryIntTo x < NativeBridge.binaryIntTo y)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.leb
+
+NativeBridge.Incremental.BinaryInt.z_leb_agrees
+
+目标：decide (x ≤ y) : Bool；范围：All values of the mechanical numeric input types; no extra hypotheses.
+
+```lean
+∀ (x y : NativeBridge.RIntBinary),
+  NativeBridge.boolTo (Rocq.Corelib.BinNums.IntDef.Z.leb x y) =
+    decide (NativeBridge.binaryIntTo x ≤ NativeBridge.binaryIntTo y)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.eqb
+
+NativeBridge.Incremental.BinaryInt.z_eqb_agrees
+
+目标：Int BEq；范围：All values of the mechanical numeric input types; no extra hypotheses.
+
+```lean
+∀ (x y : NativeBridge.RIntBinary),
+  NativeBridge.boolTo (Rocq.Corelib.BinNums.IntDef.Z.eqb x y) =
+    (NativeBridge.binaryIntTo x == NativeBridge.binaryIntTo y)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.max
+
+NativeBridge.Incremental.BinaryInt.z_max_agrees
+
+目标：max : Int → Int → Int；范围：All values of the mechanical numeric input types; no extra hypotheses.
+
+```lean
+∀ (x y : NativeBridge.RIntBinary),
+  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.max x y) =
+    max (NativeBridge.binaryIntTo x) (NativeBridge.binaryIntTo y)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.min
+
+NativeBridge.Incremental.BinaryInt.z_min_agrees
+
+目标：min : Int → Int → Int；范围：All values of the mechanical numeric input types; no extra hypotheses.
+
+```lean
+∀ (x y : NativeBridge.RIntBinary),
+  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.min x y) =
+    min (NativeBridge.binaryIntTo x) (NativeBridge.binaryIntTo y)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Lists.ListDef.Forall_ind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Lists.ListDef.Forall_ind.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Lists_ListDef_53) (P : A → Prop) (f : List A → Prop),
+  f [] →
+    (∀ (x : A) (xs : List A), P x → (∀ (x : A), x ∈ xs → P x) → f xs → f (x :: xs)) →
+      ∀ (xs : List A), (∀ (x : A), x ∈ xs → P x) → f xs；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Lists.ListDef.Forall_ind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Lists.ListDef.Forall_ind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Lists.ListDef.Forall_sind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Lists.ListDef.Forall_sind.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Lists_ListDef_53) (P : A → Prop) (f : List A → Prop),
+  f [] →
+    (∀ (x : A) (xs : List A), P x → (∀ (x : A), x ∈ xs → P x) → f xs → f (x :: xs)) →
+      ∀ (xs : List A), (∀ (x : A), x ∈ xs → P x) → f xs；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Lists.ListDef.Forall_sind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Lists.ListDef.Forall_sind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
 ## Corelib.Init.Peano.f_equal_pred
 
 NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Peano.f_equal_pred.statement.correspondence

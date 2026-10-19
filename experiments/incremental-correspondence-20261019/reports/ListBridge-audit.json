@@ -1,0 +1,45 @@
+[{"type":
+  "∀ (t : Rocq.Corelib.Init.Datatypes.comparison),\n  NativeBridge.Incremental.ListBridge.comparisonTo t =\n    Rocq.Corelib.Init.Datatypes.comparison.rec Ordering.eq Ordering.lt Ordering.gt t",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.comparison",
+   "Rocq.Corelib.Init.Datatypes.comparison.rec"],
+  "name": "NativeBridge.Incremental.ListBridge.comparisonTo.eq_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Type u} (P : NativeBridge.RList A → Prop),\n  (∀ (xs : NativeBridge.RList A), P xs) ↔ ∀ (xs : List A), P (NativeBridge.listOf xs)",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.ListBridge.list_forall",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Datatypes.comparison → Ordering",
+  "source_references": ["Rocq.Corelib.Init.Datatypes.comparison"],
+  "name": "NativeBridge.Incremental.ListBridge.comparisonTo",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Type u} (cmp : A → A → Rocq.Corelib.Init.Datatypes.comparison) (xs ys : NativeBridge.RList A),\n  NativeBridge.Incremental.ListBridge.comparisonTo (Rocq.Corelib.Lists.ListDef.list_compare A cmp xs ys) =\n    List.compareLex (fun x y => NativeBridge.Incremental.ListBridge.comparisonTo (cmp x y)) (NativeBridge.listTo xs)\n      (NativeBridge.listTo ys)",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.comparison",
+   "Rocq.Corelib.Lists.ListDef.list_compare"],
+  "name": "NativeBridge.Incremental.ListBridge.list_compare_agrees",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ {A : Type u} (x : A) (xs : NativeBridge.RList A),\n  NativeBridge.listTo (Rocq.Corelib.Init.Datatypes.list.cons A x xs) = x :: NativeBridge.listTo xs",
+  "source_references": ["Rocq.Corelib.Init.Datatypes.list.cons"],
+  "name": "NativeBridge.Incremental.ListBridge.listTo_cons",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Type u} {B : Sort v} (F : (NativeBridge.RList A → B) → Prop),\n  (∀ (f : NativeBridge.RList A → B), F f) ↔ ∀ (f : List A → B), F fun xs => f (NativeBridge.listTo xs)",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.ListBridge.list_family_forall",
+  "kind": "theorem",
+  "axioms": ["Quot.sound"]},
+ {"type":
+  "∀ {A : Type u}, NativeBridge.listTo (Rocq.Corelib.Init.Datatypes.list.nil A) = []",
+  "source_references": ["Rocq.Corelib.Init.Datatypes.list.nil"],
+  "name": "NativeBridge.Incremental.ListBridge.listTo_nil",
+  "kind": "theorem",
+  "axioms": []}]

@@ -2713,5 +2713,275 @@
     "target": "0 < n",
     "target_class": "existing_api",
     "scope": "All mechanical natural numbers; IsSucc corresponds to native Nat positivity."
+  },
+  {
+    "source": "Corelib.Lists.ListDef.list_compare",
+    "profile": "ListBridge",
+    "certificate": "NativeBridge.Incremental.ListBridge.list_compare_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "List.compareLex",
+    "target_class": "existing_api",
+    "scope": "All lists over Type u and all supplied comparators, with comparator results converted to native Ordering. No total-order assumption."
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.compare_cont",
+    "profile": "BinaryOrder",
+    "certificate": "NativeBridge.Incremental.BinaryOrder.compare_cont_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Native Nat comparison with a supplied Ordering on equality",
+    "target_class": "native_expression",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses."
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.compare",
+    "profile": "BinaryOrder",
+    "certificate": "NativeBridge.Incremental.BinaryOrder.positive_compare_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "compare on Nat",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses."
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.div2",
+    "profile": "BinaryOrder",
+    "certificate": "NativeBridge.Incremental.BinaryOrder.positive_div2_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "max 1 (n / 2)",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses."
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.div2_up",
+    "profile": "BinaryOrder",
+    "certificate": "NativeBridge.Incremental.BinaryOrder.positive_div2_up_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "(n+1) / 2",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses."
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.pred_N",
+    "profile": "BinaryOrder",
+    "certificate": "NativeBridge.Incremental.BinaryOrder.positive_pred_N_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "n - 1 : Nat",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses."
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.eqb",
+    "profile": "BinaryOrder",
+    "certificate": "NativeBridge.Incremental.BinaryOrder.positive_eqb_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Nat BEq",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses."
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.leb",
+    "profile": "BinaryOrder",
+    "certificate": "NativeBridge.Incremental.BinaryOrder.positive_leb_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "decide (n ≤ m) : Bool",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses."
+  },
+  {
+    "source": "Corelib.BinNums.NatDef.N.compare",
+    "profile": "BinaryOrder",
+    "certificate": "NativeBridge.Incremental.BinaryOrder.n_compare_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "compare on Nat",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses."
+  },
+  {
+    "source": "Corelib.BinNums.NatDef.N.leb",
+    "profile": "BinaryOrder",
+    "certificate": "NativeBridge.Incremental.BinaryOrder.n_leb_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "decide (n ≤ m) : Bool",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses."
+  },
+  {
+    "source": "Corelib.BinNums.NatDef.N.double",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.n_double_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "2*n : Nat",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses."
+  },
+  {
+    "source": "Corelib.BinNums.NatDef.N.succ_double",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.n_succ_double_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "2*n+1 : Nat",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses."
+  },
+  {
+    "source": "Corelib.BinNums.NatDef.N.succ_pos",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.n_succ_pos_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "n+1 : Nat",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses."
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.Ndouble",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.pos_Ndouble_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "2*n : Nat",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses."
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.Nsucc_double",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.pos_Nsucc_double_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "2*n+1 : Nat",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses."
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.compare",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.z_compare_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "compare on Int",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses."
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.double",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.z_double_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "2*z : Int",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses."
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.succ_double",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.z_succ_double_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "2*z+1 : Int",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses."
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.pred_double",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.z_pred_double_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "2*z-1 : Int",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses."
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.to_pos",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.z_to_pos_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "max 1 z.toNat",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses."
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.div2",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.z_div2_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "z / 2 : Int (Euclidean division)",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses."
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.lt",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.z_lt_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Int <",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses."
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.gt",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.z_gt_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Int >",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses."
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.le",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.z_le_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Int ≤",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses."
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.ge",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.z_ge_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Int ≥",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses."
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.ltb",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.z_ltb_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "decide (x < y) : Bool",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses."
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.leb",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.z_leb_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "decide (x ≤ y) : Bool",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses."
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.eqb",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.z_eqb_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Int BEq",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses."
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.max",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.z_max_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "max : Int → Int → Int",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses."
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.min",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.z_min_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "min : Int → Int → Int",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses."
   }
 ]

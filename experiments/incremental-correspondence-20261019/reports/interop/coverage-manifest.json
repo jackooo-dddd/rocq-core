@@ -3672,6 +3672,446 @@
     ]
   },
   {
+    "source": "Corelib.Lists.ListDef.list_compare",
+    "profile": "ListBridge",
+    "certificate": "NativeBridge.Incremental.ListBridge.list_compare_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "List.compareLex",
+    "target_class": "existing_api",
+    "scope": "All lists over Type u and all supplied comparators, with comparator results converted to native Ordering. No total-order assumption.",
+    "type": "∀ {A : Type u} (cmp : A → A → Rocq.Corelib.Init.Datatypes.comparison) (xs ys : NativeBridge.RList A),\n  NativeBridge.Incremental.ListBridge.comparisonTo (Rocq.Corelib.Lists.ListDef.list_compare A cmp xs ys) =\n    List.compareLex (fun x y => NativeBridge.Incremental.ListBridge.comparisonTo (cmp x y)) (NativeBridge.listTo xs)\n      (NativeBridge.listTo ys)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.compare_cont",
+    "profile": "BinaryOrder",
+    "certificate": "NativeBridge.Incremental.BinaryOrder.compare_cont_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Native Nat comparison with a supplied Ordering on equality",
+    "target_class": "native_expression",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses.",
+    "type": "∀ (r : NativeBridge.RComparison) (p q : NativeBridge.RPositive),\n  NativeBridge.comparisonTo (Rocq.Corelib.BinNums.PosDef.Pos.compare_cont r p q) =\n    NativeBridge.Incremental.BinaryOrder.compareCont (NativeBridge.comparisonTo r) (NativeBridge.positiveTo p)\n      (NativeBridge.positiveTo q)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.compare",
+    "profile": "BinaryOrder",
+    "certificate": "NativeBridge.Incremental.BinaryOrder.positive_compare_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "compare on Nat",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses.",
+    "type": "∀ (p q : NativeBridge.RPositive),\n  NativeBridge.comparisonTo (Rocq.Corelib.BinNums.PosDef.Pos.compare p q) =\n    compare (NativeBridge.positiveTo p) (NativeBridge.positiveTo q)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.div2",
+    "profile": "BinaryOrder",
+    "certificate": "NativeBridge.Incremental.BinaryOrder.positive_div2_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "max 1 (n / 2)",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses.",
+    "type": "∀ (p : NativeBridge.RPositive),\n  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.div2 p) = max 1 (NativeBridge.positiveTo p / 2)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.div2_up",
+    "profile": "BinaryOrder",
+    "certificate": "NativeBridge.Incremental.BinaryOrder.positive_div2_up_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "(n+1) / 2",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses.",
+    "type": "∀ (p : NativeBridge.RPositive),\n  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.div2_up p) = (NativeBridge.positiveTo p + 1) / 2",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.pred_N",
+    "profile": "BinaryOrder",
+    "certificate": "NativeBridge.Incremental.BinaryOrder.positive_pred_N_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "n - 1 : Nat",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses.",
+    "type": "∀ (p : NativeBridge.RPositive),\n  NativeBridge.binaryNatTo (Rocq.Corelib.BinNums.PosDef.Pos.pred_N p) = NativeBridge.positiveTo p - 1",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.eqb",
+    "profile": "BinaryOrder",
+    "certificate": "NativeBridge.Incremental.BinaryOrder.positive_eqb_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Nat BEq",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses.",
+    "type": "∀ (p q : NativeBridge.RPositive),\n  NativeBridge.boolTo (Rocq.Corelib.BinNums.PosDef.Pos.eqb p q) =\n    (NativeBridge.positiveTo p == NativeBridge.positiveTo q)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.leb",
+    "profile": "BinaryOrder",
+    "certificate": "NativeBridge.Incremental.BinaryOrder.positive_leb_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "decide (n ≤ m) : Bool",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses.",
+    "type": "∀ (p q : NativeBridge.RPositive),\n  NativeBridge.boolTo (Rocq.Corelib.BinNums.PosDef.Pos.leb p q) =\n    decide (NativeBridge.positiveTo p ≤ NativeBridge.positiveTo q)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.NatDef.N.compare",
+    "profile": "BinaryOrder",
+    "certificate": "NativeBridge.Incremental.BinaryOrder.n_compare_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "compare on Nat",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses.",
+    "type": "∀ (p q : NativeBridge.RNatBinary),\n  NativeBridge.comparisonTo (Rocq.Corelib.BinNums.NatDef.N.compare p q) =\n    compare (NativeBridge.binaryNatTo p) (NativeBridge.binaryNatTo q)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.NatDef.N.leb",
+    "profile": "BinaryOrder",
+    "certificate": "NativeBridge.Incremental.BinaryOrder.n_leb_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "decide (n ≤ m) : Bool",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses.",
+    "type": "∀ (p q : NativeBridge.RNatBinary),\n  NativeBridge.boolTo (Rocq.Corelib.BinNums.NatDef.N.leb p q) =\n    decide (NativeBridge.binaryNatTo p ≤ NativeBridge.binaryNatTo q)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.NatDef.N.double",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.n_double_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "2*n : Nat",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses.",
+    "type": "∀ (n : NativeBridge.RNatBinary),\n  NativeBridge.binaryNatTo (Rocq.Corelib.BinNums.NatDef.N.double n) = 2 * NativeBridge.binaryNatTo n",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.BinNums.NatDef.N.succ_double",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.n_succ_double_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "2*n+1 : Nat",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses.",
+    "type": "∀ (n : NativeBridge.RNatBinary),\n  NativeBridge.binaryNatTo (Rocq.Corelib.BinNums.NatDef.N.succ_double n) = 2 * NativeBridge.binaryNatTo n + 1",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.BinNums.NatDef.N.succ_pos",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.n_succ_pos_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "n+1 : Nat",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses.",
+    "type": "∀ (n : NativeBridge.RNatBinary),\n  NativeBridge.positiveTo (Rocq.Corelib.BinNums.NatDef.N.succ_pos n) = NativeBridge.binaryNatTo n + 1",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.Ndouble",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.pos_Ndouble_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "2*n : Nat",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses.",
+    "type": "∀ (n : NativeBridge.RNatBinary),\n  NativeBridge.binaryNatTo (Rocq.Corelib.BinNums.PosDef.Pos.Ndouble n) = 2 * NativeBridge.binaryNatTo n",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.Nsucc_double",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.pos_Nsucc_double_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "2*n+1 : Nat",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses.",
+    "type": "∀ (n : NativeBridge.RNatBinary),\n  NativeBridge.binaryNatTo (Rocq.Corelib.BinNums.PosDef.Pos.Nsucc_double n) = 2 * NativeBridge.binaryNatTo n + 1",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.compare",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.z_compare_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "compare on Int",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses.",
+    "type": "∀ (x y : NativeBridge.RIntBinary),\n  NativeBridge.comparisonTo (Rocq.Corelib.BinNums.IntDef.Z.compare x y) =\n    compare (NativeBridge.binaryIntTo x) (NativeBridge.binaryIntTo y)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.double",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.z_double_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "2*z : Int",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses.",
+    "type": "∀ (z : NativeBridge.RIntBinary),\n  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.double z) = 2 * NativeBridge.binaryIntTo z",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.succ_double",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.z_succ_double_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "2*z+1 : Int",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses.",
+    "type": "∀ (z : NativeBridge.RIntBinary),\n  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.succ_double z) = 2 * NativeBridge.binaryIntTo z + 1",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.pred_double",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.z_pred_double_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "2*z-1 : Int",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses.",
+    "type": "∀ (z : NativeBridge.RIntBinary),\n  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.pred_double z) = 2 * NativeBridge.binaryIntTo z - 1",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.to_pos",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.z_to_pos_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "max 1 z.toNat",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses.",
+    "type": "∀ (z : NativeBridge.RIntBinary),\n  NativeBridge.positiveTo (Rocq.Corelib.BinNums.IntDef.Z.to_pos z) = max 1 (NativeBridge.binaryIntTo z).toNat",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.div2",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.z_div2_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "z / 2 : Int (Euclidean division)",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses.",
+    "type": "∀ (z : NativeBridge.RIntBinary),\n  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.div2 z) = NativeBridge.binaryIntTo z / 2",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.lt",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.z_lt_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Int <",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses.",
+    "type": "∀ (x y : NativeBridge.RIntBinary),\n  Rocq.Corelib.BinNums.IntDef.Z.lt x y ↔ NativeBridge.binaryIntTo x < NativeBridge.binaryIntTo y",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.gt",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.z_gt_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Int >",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses.",
+    "type": "∀ (x y : NativeBridge.RIntBinary),\n  Rocq.Corelib.BinNums.IntDef.Z.gt x y ↔ NativeBridge.binaryIntTo x > NativeBridge.binaryIntTo y",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.le",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.z_le_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Int ≤",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses.",
+    "type": "∀ (x y : NativeBridge.RIntBinary),\n  Rocq.Corelib.BinNums.IntDef.Z.le x y ↔ NativeBridge.binaryIntTo x ≤ NativeBridge.binaryIntTo y",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.ge",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.z_ge_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Int ≥",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses.",
+    "type": "∀ (x y : NativeBridge.RIntBinary),\n  Rocq.Corelib.BinNums.IntDef.Z.ge x y ↔ NativeBridge.binaryIntTo x ≥ NativeBridge.binaryIntTo y",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.ltb",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.z_ltb_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "decide (x < y) : Bool",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses.",
+    "type": "∀ (x y : NativeBridge.RIntBinary),\n  NativeBridge.boolTo (Rocq.Corelib.BinNums.IntDef.Z.ltb x y) =\n    decide (NativeBridge.binaryIntTo x < NativeBridge.binaryIntTo y)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.leb",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.z_leb_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "decide (x ≤ y) : Bool",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses.",
+    "type": "∀ (x y : NativeBridge.RIntBinary),\n  NativeBridge.boolTo (Rocq.Corelib.BinNums.IntDef.Z.leb x y) =\n    decide (NativeBridge.binaryIntTo x ≤ NativeBridge.binaryIntTo y)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.eqb",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.z_eqb_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Int BEq",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses.",
+    "type": "∀ (x y : NativeBridge.RIntBinary),\n  NativeBridge.boolTo (Rocq.Corelib.BinNums.IntDef.Z.eqb x y) =\n    (NativeBridge.binaryIntTo x == NativeBridge.binaryIntTo y)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.max",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.z_max_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "max : Int → Int → Int",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses.",
+    "type": "∀ (x y : NativeBridge.RIntBinary),\n  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.max x y) =\n    max (NativeBridge.binaryIntTo x) (NativeBridge.binaryIntTo y)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.min",
+    "profile": "BinaryInt",
+    "certificate": "NativeBridge.Incremental.BinaryInt.z_min_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "min : Int → Int → Int",
+    "target_class": "existing_api",
+    "scope": "All values of the mechanical numeric input types; no extra hypotheses.",
+    "type": "∀ (x y : NativeBridge.RIntBinary),\n  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.min x y) =\n    min (NativeBridge.binaryIntTo x) (NativeBridge.binaryIntTo y)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Lists.ListDef.Forall_ind",
+    "profile": "ListStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Lists.ListDef.Forall_ind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Lists_ListDef_53) (P : A → Prop) (f : List A → Prop),\n  f [] →\n    (∀ (x : A) (xs : List A), P x → (∀ (x : A), x ∈ xs → P x) → f xs → f (x :: xs)) →\n      ∀ (xs : List A), (∀ (x : A), x ∈ xs → P x) → f xs",
+    "native_expression": "∀ (A : Type u_Corelib_Lists_ListDef_53) (P : A → Prop) (f : List A → Prop),\n  f [] →\n    (∀ (x : A) (xs : List A), P x → (∀ (x : A), x ∈ xs → P x) → f xs → f (x :: xs)) →\n      ∀ (xs : List A), (∀ (x : A), x ∈ xs → P x) → f xs",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Lists.ListDef.Forall_ind.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Lists.ListDef.Forall_ind.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Lists.ListDef.Forall_sind",
+    "profile": "ListStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Lists.ListDef.Forall_sind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Type u_Corelib_Lists_ListDef_53) (P : A → Prop) (f : List A → Prop),\n  f [] →\n    (∀ (x : A) (xs : List A), P x → (∀ (x : A), x ∈ xs → P x) → f xs → f (x :: xs)) →\n      ∀ (xs : List A), (∀ (x : A), x ∈ xs → P x) → f xs",
+    "native_expression": "∀ (A : Type u_Corelib_Lists_ListDef_53) (P : A → Prop) (f : List A → Prop),\n  f [] →\n    (∀ (x : A) (xs : List A), P x → (∀ (x : A), x ∈ xs → P x) → f xs → f (x :: xs)) →\n      ∀ (xs : List A), (∀ (x : A), x ∈ xs → P x) → f xs",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Lists.ListDef.Forall_sind.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Lists.ListDef.Forall_sind.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
     "source": "Corelib.Init.Peano.f_equal_pred",
     "profile": "PeanoStatements",
     "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Peano.f_equal_pred.statement.correspondence",

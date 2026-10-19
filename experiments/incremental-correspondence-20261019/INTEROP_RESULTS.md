@@ -40,3 +40,5 @@ Lean 版本 4.33.1。复用远程已安装的 Mathlib，提交为 `0df444a360eaa
 NumericMathlib 的打包模块显式导入 Mathlib.Data.Nat.Digits.Defs，保留原生 Mathlib 常量身份；NatIterators 导入对应 Init 算术引理。pack_all.py 可传 profile 名，仅重建改变的模块；继承部分逐项核对源码、打包器和证书入口集合，最后仍执行全部模块的共同导入检查。
 
 Peano 扩展后：38 个含覆盖证书的 profile、619 份覆盖证书共同导入通过。实际入口和依赖副本数见 reports/interop/all/import-all-validation.json。
+
+第十七批扩展后：42 个包含覆盖证书的 profile、651 份覆盖证书共同导入通过；对应全部当前增量覆盖。
