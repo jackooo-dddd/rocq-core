@@ -3,7 +3,10 @@ W=Path(__file__).resolve().parent
 B=W.parent/'mechanical-correspondence-20261019'
 s=(B/'fragments/NativeInterfaces.lean').read_text()
 s=s.replace('exportNative','exportNativeIncremental').replace('elabExportNative','elabExportNativeIncremental').replace('#export_native ','#export_native_incremental ').replace('NativeBridge.Interfaces.','NativeBridge.IncrementalInterfaces.')
-s=s.replace('let ty ← Core.betaReduce ty','let ty ← whnf (← Core.betaReduce ty)')
+fallback=' let reduced ← whnf ty\n if reduced != ty then return ← findNativeIso reduced\n'
+s=s.replace(fallback,'')
+s=s.replace(' -- Preserve arbitrary parameters',fallback+' -- Preserve arbitrary parameters')
+
 needle=' for (source,bridge) in simple do'
 extra=''' if name.toString == "Rocq.Corelib.ssr.ssrfun.simpl_fun" && args.size == 2 then
   let a ← findNativeIso args[0]!

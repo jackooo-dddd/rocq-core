@@ -280,5 +280,2155 @@
       "propext",
       "Quot.sound"
     ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.pred",
+    "profile": "SSRBool",
+    "certificate": "NativeBridge.Incremental.ssrPredIso",
+    "kind": "TYPE_ISO",
+    "target": "B → Bool",
+    "scope": "Type carriers with explicit Iso A B",
+    "type": "{A : Type u} → {B : Type v} → NativeBridge.Iso A B → NativeBridge.Iso (Rocq.Corelib.ssr.ssrbool.pred A) (B → Bool)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.rel",
+    "profile": "SSRBool",
+    "certificate": "NativeBridge.Incremental.ssrRelIso",
+    "kind": "TYPE_ISO",
+    "target": "B → B → Bool",
+    "scope": "Type carriers with explicit Iso A B",
+    "type": "{A : Type u} → {B : Type v} → NativeBridge.Iso A B → NativeBridge.Iso (Rocq.Corelib.ssr.ssrbool.rel A) (B → B → Bool)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.reflect",
+    "profile": "SSRBool",
+    "certificate": "NativeBridge.Incremental.reflectIso",
+    "kind": "TYPE_ISO",
+    "target": "P ↔ boolTo b = true",
+    "scope": "P : Prop; fixed mechanical Bool index; both inverses; reflectedDecision also gives Decidable P",
+    "type": "(P : Prop) →\n  (b : NativeBridge.RBool) →\n    NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.reflect P b) (P ↔ NativeBridge.boolTo b = true)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.addb",
+    "profile": "SSRBool",
+    "certificate": "NativeBridge.Incremental.ssr_addb_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Bool.xor",
+    "scope": "mechanical Bool inputs",
+    "type": "∀ (a b : NativeBridge.RBool),\n  NativeBridge.boolTo (Rocq.Corelib.ssr.ssrbool.addb a b) = (NativeBridge.boolTo a ^^ NativeBridge.boolTo b)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.if_expr",
+    "profile": "SSRBool",
+    "certificate": "NativeBridge.Incremental.ssr_if_expr_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "native if on Bool",
+    "scope": "Sort result",
+    "type": "∀ {C : Sort u} (b : NativeBridge.RBool) (t f : C),\n  Rocq.Corelib.ssr.ssrbool.if_expr C b t f = if NativeBridge.boolTo b = true then t else f",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.isSome",
+    "profile": "SSRBool",
+    "certificate": "NativeBridge.Incremental.ssr_isSome_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Option.isSome",
+    "scope": "Type carriers; exact converted predicate/operation in certificate",
+    "type": "∀ {A : Type u} (x : Rocq.Corelib.Init.Datatypes.option A),\n  NativeBridge.boolTo (Rocq.Corelib.ssr.ssrbool.isSome A x) = (NativeBridge.optionTo x).isSome",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.is_inl",
+    "profile": "SSRBool",
+    "certificate": "NativeBridge.Incremental.ssr_is_inl_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "native Sum case expression",
+    "scope": "Type carriers; exact converted predicate/operation in certificate",
+    "type": "∀ {A : Type u} {B : Type v} (x : Rocq.Corelib.Init.Datatypes.sum A B),\n  NativeBridge.boolTo (Rocq.Corelib.ssr.ssrbool.is_inl A B x) =\n    match NativeBridge.sumTo x with\n    | Sum.inl val => true\n    | Sum.inr val => false",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.subpred",
+    "profile": "SSRBool",
+    "certificate": "NativeBridge.Incremental.ssr_subpred_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "native quantified Boolean/equality formula (see theorem)",
+    "scope": "Type carriers; exact converted predicate/operation in certificate",
+    "type": "∀ {A : Type u} (p q : A → NativeBridge.RBool),\n  Rocq.Corelib.ssr.ssrbool.subpred A p q ↔\n    ∀ (x : A), NativeBridge.boolTo (p x) = true → NativeBridge.boolTo (q x) = true",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.subrel",
+    "profile": "SSRBool",
+    "certificate": "NativeBridge.Incremental.ssr_subrel_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "native quantified Boolean/equality formula (see theorem)",
+    "scope": "Type carriers; exact converted predicate/operation in certificate",
+    "type": "∀ {A : Type u} (p q : A → A → NativeBridge.RBool),\n  Rocq.Corelib.ssr.ssrbool.subrel A p q ↔\n    ∀ (x y : A), NativeBridge.boolTo (p x y) = true → NativeBridge.boolTo (q x y) = true",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.reflexive",
+    "profile": "SSRBool",
+    "certificate": "NativeBridge.Incremental.ssr_reflexive_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "native quantified Boolean/equality formula (see theorem)",
+    "scope": "Type carriers; exact converted predicate/operation in certificate",
+    "type": "∀ {A : Type u} (r : A → A → NativeBridge.RBool),\n  Rocq.Corelib.ssr.ssrbool.reflexive A r ↔ ∀ (x : A), NativeBridge.boolTo (r x x) = true",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.irreflexive",
+    "profile": "SSRBool",
+    "certificate": "NativeBridge.Incremental.ssr_irreflexive_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "native quantified Boolean/equality formula (see theorem)",
+    "scope": "Type carriers; exact converted predicate/operation in certificate",
+    "type": "∀ {A : Type u} (r : A → A → NativeBridge.RBool),\n  Rocq.Corelib.ssr.ssrbool.irreflexive A r ↔ ∀ (x : A), NativeBridge.boolTo (r x x) = false",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.symmetric",
+    "profile": "SSRBool",
+    "certificate": "NativeBridge.Incremental.ssr_symmetric_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "native quantified Boolean/equality formula (see theorem)",
+    "scope": "Type carriers; exact converted predicate/operation in certificate",
+    "type": "∀ {A : Type u} (r : A → A → NativeBridge.RBool),\n  Rocq.Corelib.ssr.ssrbool.symmetric A r ↔ ∀ (x y : A), NativeBridge.boolTo (r x y) = NativeBridge.boolTo (r y x)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.transitive",
+    "profile": "SSRBool",
+    "certificate": "NativeBridge.Incremental.ssr_transitive_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "native quantified Boolean/equality formula (see theorem)",
+    "scope": "Type carriers; exact converted predicate/operation in certificate",
+    "type": "∀ {A : Type u} (r : A → A → NativeBridge.RBool),\n  Rocq.Corelib.ssr.ssrbool.transitive A r ↔\n    ∀ (y x z : A),\n      NativeBridge.boolTo (r x y) = true → NativeBridge.boolTo (r y z) = true → NativeBridge.boolTo (r x z) = true",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.antisymmetric",
+    "profile": "SSRBool",
+    "certificate": "NativeBridge.Incremental.ssr_antisymmetric_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "native quantified Boolean/equality formula (see theorem)",
+    "scope": "Type carriers; exact converted predicate/operation in certificate",
+    "type": "∀ {A : Type u} (r : A → A → NativeBridge.RBool),\n  Rocq.Corelib.ssr.ssrbool.antisymmetric A r ↔\n    ∀ (x y : A), NativeBridge.boolTo (r x y) = true ∧ NativeBridge.boolTo (r y x) = true → x = y",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.total",
+    "profile": "SSRBool",
+    "certificate": "NativeBridge.Incremental.ssr_total_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "native quantified Boolean/equality formula (see theorem)",
+    "scope": "Type carriers; exact converted predicate/operation in certificate",
+    "type": "∀ {A : Type u} (r : A → A → NativeBridge.RBool),\n  Rocq.Corelib.ssr.ssrbool.total A r ↔\n    ∀ (x y : A), NativeBridge.boolTo (r x y) = true ∨ NativeBridge.boolTo (r y x) = true",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.addFb",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addFb.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), (false ^^ b) = b",
+    "native_expression": "∀ (b : Bool), (false ^^ b) = b",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.addFb.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addFb.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.addKb",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addKb.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (b ^^ (b ^^ b_1)) = b_1",
+    "native_expression": "∀ (b b_1 : Bool), (b ^^ (b ^^ b_1)) = b_1",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.addKb.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addKb.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.addNb",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addNb.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (!b ^^ b_1) = !(b ^^ b_1)",
+    "native_expression": "∀ (b b_1 : Bool), (!b ^^ b_1) = !(b ^^ b_1)",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.addNb.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addNb.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.addTb",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addTb.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), (true ^^ b) = !b",
+    "native_expression": "∀ (b : Bool), (true ^^ b) = !b",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.addTb.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addTb.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.addbA",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addbA.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 b_2 : Bool), (b ^^ (b_1 ^^ b_2)) = (b ^^ b_1 ^^ b_2)",
+    "native_expression": "∀ (b b_1 b_2 : Bool), (b ^^ (b_1 ^^ b_2)) = (b ^^ b_1 ^^ b_2)",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.addbA.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addbA.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.addbAC",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addbAC.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 b_2 : Bool), (b ^^ b_1 ^^ b_2) = (b ^^ b_2 ^^ b_1)",
+    "native_expression": "∀ (b b_1 b_2 : Bool), (b ^^ b_1 ^^ b_2) = (b ^^ b_2 ^^ b_1)",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.addbAC.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addbAC.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.addbACA",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addbACA.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 b_2 b_3 : Bool), (b ^^ b_1 ^^ (b_2 ^^ b_3)) = (b ^^ b_2 ^^ (b_1 ^^ b_3))",
+    "native_expression": "∀ (b b_1 b_2 b_3 : Bool), (b ^^ b_1 ^^ (b_2 ^^ b_3)) = (b ^^ b_2 ^^ (b_1 ^^ b_3))",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.addbACA.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addbACA.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.addbC",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addbC.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (b ^^ b_1) = (b_1 ^^ b)",
+    "native_expression": "∀ (b b_1 : Bool), (b ^^ b_1) = (b_1 ^^ b)",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.addbC.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addbC.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.addbCA",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addbCA.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 b_2 : Bool), (b ^^ (b_1 ^^ b_2)) = (b_1 ^^ (b ^^ b_2))",
+    "native_expression": "∀ (b b_1 b_2 : Bool), (b ^^ (b_1 ^^ b_2)) = (b_1 ^^ (b ^^ b_2))",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.addbCA.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addbCA.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.addbF",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addbF.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), (b ^^ false) = b",
+    "native_expression": "∀ (b : Bool), (b ^^ false) = b",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.addbF.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addbF.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.addbI",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addbI.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 b_2 : Bool), (b ^^ b_1) = (b ^^ b_2) → b_1 = b_2",
+    "native_expression": "∀ (b b_1 b_2 : Bool), (b ^^ b_1) = (b ^^ b_2) → b_1 = b_2",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.addbI.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addbI.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.addbK",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addbK.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (b_1 ^^ b ^^ b) = b_1",
+    "native_expression": "∀ (b b_1 : Bool), (b_1 ^^ b ^^ b) = b_1",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.addbK.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addbK.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.addbN",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addbN.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (b ^^ !b_1) = !(b ^^ b_1)",
+    "native_expression": "∀ (b b_1 : Bool), (b ^^ !b_1) = !(b ^^ b_1)",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.addbN.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addbN.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.addbT",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addbT.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), (b ^^ true) = !b",
+    "native_expression": "∀ (b : Bool), (b ^^ true) = !b",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.addbT.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addbT.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.addbb",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addbb.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), (b ^^ b) = false",
+    "native_expression": "∀ (b : Bool), (b ^^ b) = false",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.addbb.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addbb.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.andFb",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andFb.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), (false && b) = false",
+    "native_expression": "∀ (b : Bool), (false && b) = false",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.andFb.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andFb.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.andKb",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andKb.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (b || b_1 && b) = b",
+    "native_expression": "∀ (b b_1 : Bool), (b || b_1 && b) = b",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.andKb.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andKb.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.andNb",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andNb.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), (!b && b) = false",
+    "native_expression": "∀ (b : Bool), (!b && b) = false",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.andNb.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andNb.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.andTb",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andTb.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), (true && b) = b",
+    "native_expression": "∀ (b : Bool), (true && b) = b",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.andTb.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andTb.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.andbA",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andbA.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 b_2 : Bool), (b && (b_1 && b_2)) = (b && b_1 && b_2)",
+    "native_expression": "∀ (b b_1 b_2 : Bool), (b && (b_1 && b_2)) = (b && b_1 && b_2)",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.andbA.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andbA.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.andbAC",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andbAC.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 b_2 : Bool), (b && b_1 && b_2) = (b && b_2 && b_1)",
+    "native_expression": "∀ (b b_1 b_2 : Bool), (b && b_1 && b_2) = (b && b_2 && b_1)",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.andbAC.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andbAC.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.andbACA",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andbACA.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 b_2 b_3 : Bool), (b && b_1 && (b_2 && b_3)) = (b && b_2 && (b_1 && b_3))",
+    "native_expression": "∀ (b b_1 b_2 b_3 : Bool), (b && b_1 && (b_2 && b_3)) = (b && b_2 && (b_1 && b_3))",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.andbACA.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andbACA.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.andbC",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andbC.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (b && b_1) = (b_1 && b)",
+    "native_expression": "∀ (b b_1 : Bool), (b && b_1) = (b_1 && b)",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.andbC.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andbC.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.andbCA",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andbCA.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 b_2 : Bool), (b && (b_1 && b_2)) = (b_1 && (b && b_2))",
+    "native_expression": "∀ (b b_1 b_2 : Bool), (b && (b_1 && b_2)) = (b_1 && (b && b_2))",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.andbCA.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andbCA.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.andbF",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andbF.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), (b && false) = false",
+    "native_expression": "∀ (b : Bool), (b && false) = false",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.andbF.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andbF.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.andbK",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andbK.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (b && b_1 || b) = b",
+    "native_expression": "∀ (b b_1 : Bool), (b && b_1 || b) = b",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.andbK.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andbK.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.andbN",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andbN.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), (b && !b) = false",
+    "native_expression": "∀ (b : Bool), (b && !b) = false",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.andbN.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andbN.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.andbT",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andbT.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), (b && true) = b",
+    "native_expression": "∀ (b : Bool), (b && true) = b",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.andbT.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andbT.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.andb_id2l",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andb_id2l.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 b_2 : Bool), (b = true → b_1 = b_2) → (b && b_1) = (b && b_2)",
+    "native_expression": "∀ (b b_1 b_2 : Bool), (b = true → b_1 = b_2) → (b && b_1) = (b && b_2)",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.andb_id2l.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andb_id2l.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.andb_id2r",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andb_id2r.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 b_2 : Bool), (b_1 = true → b = b_2) → (b && b_1) = (b_2 && b_1)",
+    "native_expression": "∀ (b b_1 b_2 : Bool), (b_1 = true → b = b_2) → (b && b_1) = (b_2 && b_1)",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.andb_id2r.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andb_id2r.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.andb_idl",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andb_idl.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (b_1 = true → b = true) → (b && b_1) = b_1",
+    "native_expression": "∀ (b b_1 : Bool), (b_1 = true → b = true) → (b && b_1) = b_1",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.andb_idl.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andb_idl.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.andb_idr",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andb_idr.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (b = true → b_1 = true) → (b && b_1) = b",
+    "native_expression": "∀ (b b_1 : Bool), (b = true → b_1 = true) → (b && b_1) = b",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.andb_idr.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andb_idr.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.andbb",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andbb.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), (b && b) = b",
+    "native_expression": "∀ (b : Bool), (b && b) = b",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.andbb.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.andbb.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.appP",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.appP.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P Q : Prop) (b : Bool), (P ↔ b = true) → (Q ↔ b = true) → P → Q",
+    "native_expression": "∀ (P Q : Prop) (b : Bool), (P ↔ b = true) → (Q ↔ b = true) → P → Q",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.appP.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.appP.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.contra",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contra.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (b = true → b_1 = true) → (!b_1) = true → (!b) = true",
+    "native_expression": "∀ (b b_1 : Bool), (b = true → b_1 = true) → (!b_1) = true → (!b) = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.contra.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contra.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.contraFF",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraFF.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (b = true → b_1 = true) → b_1 = false → b = false",
+    "native_expression": "∀ (b b_1 : Bool), (b = true → b_1 = true) → b_1 = false → b = false",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.contraFF.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraFF.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.contraFN",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraFN.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (b = true → b_1 = true) → b_1 = false → (!b) = true",
+    "native_expression": "∀ (b b_1 : Bool), (b = true → b_1 = true) → b_1 = false → (!b) = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.contraFN.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraFN.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.contraFT",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraFT.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), ((!b) = true → b_1 = true) → b_1 = false → b = true",
+    "native_expression": "∀ (b b_1 : Bool), ((!b) = true → b_1 = true) → b_1 = false → b = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.contraFT.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraFT.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.contraFnot",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraFnot.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P : Prop) (b : Bool), (P → b = true) → b = false → ¬P",
+    "native_expression": "∀ (P : Prop) (b : Bool), (P → b = true) → b = false → ¬P",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.contraFnot.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraFnot.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.contraL",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraL.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (b = true → (!b_1) = true) → b_1 = true → (!b) = true",
+    "native_expression": "∀ (b b_1 : Bool), (b = true → (!b_1) = true) → b_1 = true → (!b) = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.contraL.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraL.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.contraLR",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraLR.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), ((!b) = true → (!b_1) = true) → b_1 = true → b = true",
+    "native_expression": "∀ (b b_1 : Bool), ((!b) = true → (!b_1) = true) → b_1 = true → b = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.contraLR.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraLR.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.contraNF",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraNF.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (b = true → b_1 = true) → (!b_1) = true → b = false",
+    "native_expression": "∀ (b b_1 : Bool), (b = true → b_1 = true) → (!b_1) = true → b = false",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.contraNF.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraNF.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.contraNN",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraNN.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (b = true → b_1 = true) → (!b_1) = true → (!b) = true",
+    "native_expression": "∀ (b b_1 : Bool), (b = true → b_1 = true) → (!b_1) = true → (!b) = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.contraNN.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraNN.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.contraNT",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraNT.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), ((!b) = true → b_1 = true) → (!b_1) = true → b = true",
+    "native_expression": "∀ (b b_1 : Bool), ((!b) = true → b_1 = true) → (!b_1) = true → b = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.contraNT.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraNT.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.contraNnot",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraNnot.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P : Prop) (b : Bool), (P → b = true) → (!b) = true → ¬P",
+    "native_expression": "∀ (P : Prop) (b : Bool), (P → b = true) → (!b) = true → ¬P",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.contraNnot.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraNnot.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.contraPF",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraPF.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P : Prop) (b : Bool), (b = true → ¬P) → P → b = false",
+    "native_expression": "∀ (P : Prop) (b : Bool), (b = true → ¬P) → P → b = false",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.contraPF.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraPF.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.contraPN",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraPN.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P : Prop) (b : Bool), (b = true → ¬P) → P → (!b) = true",
+    "native_expression": "∀ (P : Prop) (b : Bool), (b = true → ¬P) → P → (!b) = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.contraPN.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraPN.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.contraPT",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraPT.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P : Prop) (b : Bool), ((!b) = true → ¬P) → P → b = true",
+    "native_expression": "∀ (P : Prop) (b : Bool), ((!b) = true → ¬P) → P → b = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.contraPT.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraPT.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.contraR",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraR.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), ((!b) = true → b_1 = true) → (!b_1) = true → b = true",
+    "native_expression": "∀ (b b_1 : Bool), ((!b) = true → b_1 = true) → (!b_1) = true → b = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.contraR.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraR.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.contraT",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraT.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), ((!b) = true → false = true) → b = true",
+    "native_expression": "∀ (b : Bool), ((!b) = true → false = true) → b = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.contraT.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraT.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.contraTF",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraTF.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (b = true → (!b_1) = true) → b_1 = true → b = false",
+    "native_expression": "∀ (b b_1 : Bool), (b = true → (!b_1) = true) → b_1 = true → b = false",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.contraTF.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraTF.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.contraTN",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraTN.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (b = true → (!b_1) = true) → b_1 = true → (!b) = true",
+    "native_expression": "∀ (b b_1 : Bool), (b = true → (!b_1) = true) → b_1 = true → (!b) = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.contraTN.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraTN.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.contraTT",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraTT.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), ((!b) = true → (!b_1) = true) → b_1 = true → b = true",
+    "native_expression": "∀ (b b_1 : Bool), ((!b) = true → (!b_1) = true) → b_1 = true → b = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.contraTT.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraTT.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.contraTnot",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraTnot.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool) (P : Prop), (P → (!b) = true) → b = true → ¬P",
+    "native_expression": "∀ (b : Bool) (P : Prop), (P → (!b) = true) → b = true → ¬P",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.contraTnot.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contraTnot.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.contra_notF",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contra_notF.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P : Prop) (b : Bool), (b = true → P) → ¬P → b = false",
+    "native_expression": "∀ (P : Prop) (b : Bool), (b = true → P) → ¬P → b = false",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.contra_notF.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contra_notF.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.contra_notN",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contra_notN.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P : Prop) (b : Bool), (b = true → P) → ¬P → (!b) = true",
+    "native_expression": "∀ (P : Prop) (b : Bool), (b = true → P) → ¬P → (!b) = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.contra_notN.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contra_notN.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.contra_notT",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contra_notT.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P : Prop) (b : Bool), ((!b) = true → P) → ¬P → b = true",
+    "native_expression": "∀ (P : Prop) (b : Bool), ((!b) = true → P) → ¬P → b = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.contra_notT.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.contra_notT.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.decPcases",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.decPcases.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P : Prop) (b : Bool), (P ↔ b = true) → if b = true then P else ¬P",
+    "native_expression": "∀ (P : Prop) (b : Bool), (P ↔ b = true) → if b = true then P else ¬P",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.decPcases.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.decPcases.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.elimF",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.elimF.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P : Prop) (b : Bool), (P ↔ b = true) → b = false → ¬P",
+    "native_expression": "∀ (P : Prop) (b : Bool), (P ↔ b = true) → b = false → ¬P",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.elimF.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.elimF.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.elimFn",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.elimFn.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P : Prop) (b : Bool), (P ↔ (!b) = true) → b = false → P",
+    "native_expression": "∀ (P : Prop) (b : Bool), (P ↔ (!b) = true) → b = false → P",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.elimFn.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.elimFn.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.elimN",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.elimN.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P : Prop) (b : Bool), (P ↔ b = true) → (!b) = true → ¬P",
+    "native_expression": "∀ (P : Prop) (b : Bool), (P ↔ b = true) → (!b) = true → ¬P",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.elimN.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.elimN.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.elimNTF",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.elimNTF.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P : Prop) (b b_1 : Bool), (P ↔ b = true) → (!b) = b_1 → if b_1 = true then ¬P else P",
+    "native_expression": "∀ (P : Prop) (b b_1 : Bool), (P ↔ b = true) → (!b) = b_1 → if b_1 = true then ¬P else P",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.elimNTF.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.elimNTF.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.elimNf",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.elimNf.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P : Prop) (b : Bool), (P ↔ b = true) → (!b) = false → P",
+    "native_expression": "∀ (P : Prop) (b : Bool), (P ↔ b = true) → (!b) = false → P",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.elimNf.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.elimNf.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.elimT",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.elimT.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P : Prop) (b : Bool), (P ↔ b = true) → b = true → P",
+    "native_expression": "∀ (P : Prop) (b : Bool), (P ↔ b = true) → b = true → P",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.elimT.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.elimT.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.elimTF",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.elimTF.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P : Prop) (b b_1 : Bool), (P ↔ b = true) → b = b_1 → if b_1 = true then P else ¬P",
+    "native_expression": "∀ (P : Prop) (b b_1 : Bool), (P ↔ b = true) → b = b_1 → if b_1 = true then P else ¬P",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.elimTF.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.elimTF.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.elimTFn",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.elimTFn.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P : Prop) (b b_1 : Bool), (P ↔ (!b) = true) → b = b_1 → if b_1 = true then ¬P else P",
+    "native_expression": "∀ (P : Prop) (b b_1 : Bool), (P ↔ (!b) = true) → b = b_1 → if b_1 = true then ¬P else P",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.elimTFn.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.elimTFn.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.elimTn",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.elimTn.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P : Prop) (b : Bool), (P ↔ (!b) = true) → b = true → ¬P",
+    "native_expression": "∀ (P : Prop) (b : Bool), (P ↔ (!b) = true) → b = true → ¬P",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.elimTn.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.elimTn.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.eqbLR",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.eqbLR.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), b = b_1 → b = true → b_1 = true",
+    "native_expression": "∀ (b b_1 : Bool), b = b_1 → b = true → b_1 = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.eqbLR.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.eqbLR.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.eqbRL",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.eqbRL.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), b = b_1 → b_1 = true → b = true",
+    "native_expression": "∀ (b b_1 : Bool), b = b_1 → b_1 = true → b = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.eqbRL.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.eqbRL.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.equivPif",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.equivPif.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P Q : Prop) (b : Bool), (P ↔ b = true) → (Q → P) → (P → Q) → if b = true then Q else ¬Q",
+    "native_expression": "∀ (P Q : Prop) (b : Bool), (P ↔ b = true) → (Q → P) → (P → Q) → if b = true then Q else ¬Q",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.equivPif.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.equivPif.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.equivPifn",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.equivPifn.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P Q : Prop) (b : Bool), (P ↔ (!b) = true) → (Q → P) → (P → Q) → if b = true then ¬Q else Q",
+    "native_expression": "∀ (P Q : Prop) (b : Bool), (P ↔ (!b) = true) → (Q → P) → (P → Q) → if b = true then ¬Q else Q",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.equivPifn.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.equivPifn.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.fun_if",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.fun_if.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_ssr_ssrbool_178) (B : Sort u_Corelib_ssr_ssrbool_179) (f : A → B) (b : Bool) (vT vF : A),\n  f (if b = true then vT else vF) = if b = true then f vT else f vF",
+    "native_expression": "∀ (A : Sort u_Corelib_ssr_ssrbool_178) (B : Sort u_Corelib_ssr_ssrbool_179) (f : A → B) (b : Bool) (vT vF : A),\n  f (if b = true then vT else vF) = if b = true then f vT else f vF",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.fun_if.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.fun_if.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.ifE",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.ifE.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_ssr_ssrbool_178) (b : Bool) (vT vF : A),\n  (if b = true then vT else vF) = if b = true then vT else vF",
+    "native_expression": "∀ (A : Sort u_Corelib_ssr_ssrbool_178) (b : Bool) (vT vF : A),\n  (if b = true then vT else vF) = if b = true then vT else vF",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.ifE.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.ifE.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.ifF",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.ifF.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_ssr_ssrbool_178) (b : Bool) (vT vF : A), b = false → (if b = true then vT else vF) = vF",
+    "native_expression": "∀ (A : Sort u_Corelib_ssr_ssrbool_178) (b : Bool) (vT vF : A), b = false → (if b = true then vT else vF) = vF",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.ifF.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.ifF.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.ifN",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.ifN.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_ssr_ssrbool_178) (b : Bool) (vT vF : A), (!b) = true → (if b = true then vT else vF) = vF",
+    "native_expression": "∀ (A : Sort u_Corelib_ssr_ssrbool_178) (b : Bool) (vT vF : A), (!b) = true → (if b = true then vT else vF) = vF",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.ifN.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.ifN.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.ifT",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.ifT.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_ssr_ssrbool_178) (b : Bool) (vT vF : A), b = true → (if b = true then vT else vF) = vT",
+    "native_expression": "∀ (A : Sort u_Corelib_ssr_ssrbool_178) (b : Bool) (vT vF : A), b = true → (if b = true then vT else vF) = vT",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.ifT.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.ifT.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.if_neg",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.if_neg.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_ssr_ssrbool_178) (b : Bool) (vT vF : A),\n  (if (!b) = true then vT else vF) = if b = true then vF else vT",
+    "native_expression": "∀ (A : Sort u_Corelib_ssr_ssrbool_178) (b : Bool) (vT vF : A),\n  (if (!b) = true then vT else vF) = if b = true then vF else vT",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.if_neg.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.if_neg.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.if_same",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.if_same.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_ssr_ssrbool_178) (b : Bool) (vT : A), (if b = true then vT else vT) = vT",
+    "native_expression": "∀ (A : Sort u_Corelib_ssr_ssrbool_178) (b : Bool) (vT : A), (if b = true then vT else vT) = vT",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.if_same.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.if_same.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.implyFb",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.implyFb.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), (!false || b) = true",
+    "native_expression": "∀ (b : Bool), (!false || b) = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.implyFb.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.implyFb.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.implyNb",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.implyNb.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (!!b || b_1) = (b || b_1)",
+    "native_expression": "∀ (b b_1 : Bool), (!!b || b_1) = (b || b_1)",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.implyNb.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.implyNb.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.implyTb",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.implyTb.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), (!true || b) = b",
+    "native_expression": "∀ (b : Bool), (!true || b) = b",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.implyTb.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.implyTb.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.implybE",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.implybE.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (!b || b_1) = (!b || b_1)",
+    "native_expression": "∀ (b b_1 : Bool), (!b || b_1) = (!b || b_1)",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.implybE.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.implybE.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.implybF",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.implybF.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), (!b || false) = !b",
+    "native_expression": "∀ (b : Bool), (!b || false) = !b",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.implybF.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.implybF.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.implybN",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.implybN.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (!b || !b_1) = (!b_1 || !b)",
+    "native_expression": "∀ (b b_1 : Bool), (!b || !b_1) = (!b_1 || !b)",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.implybN.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.implybN.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.implybNN",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.implybNN.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (!!b || !b_1) = (!b_1 || b)",
+    "native_expression": "∀ (b b_1 : Bool), (!!b || !b_1) = (!b_1 || b)",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.implybNN.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.implybNN.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.implybT",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.implybT.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), (!b || true) = true",
+    "native_expression": "∀ (b : Bool), (!b || true) = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.implybT.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.implybT.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.implyb_id2l",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.implyb_id2l.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 b_2 : Bool), (b = true → b_1 = b_2) → (!b || b_1) = (!b || b_2)",
+    "native_expression": "∀ (b b_1 b_2 : Bool), (b = true → b_1 = b_2) → (!b || b_1) = (!b || b_2)",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.implyb_id2l.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.implyb_id2l.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.implyb_idl",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.implyb_idl.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), ((!b) = true → b_1 = true) → (!b || b_1) = b_1",
+    "native_expression": "∀ (b b_1 : Bool), ((!b) = true → b_1 = true) → (!b || b_1) = b_1",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.implyb_idl.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.implyb_idl.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.implyb_idr",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.implyb_idr.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (b_1 = true → (!b) = true) → (!b || b_1) = !b",
+    "native_expression": "∀ (b b_1 : Bool), (b_1 = true → (!b) = true) → (!b || b_1) = !b",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.implyb_idr.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.implyb_idr.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.implybb",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.implybb.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), (!b || b) = true",
+    "native_expression": "∀ (b : Bool), (!b || b) = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.implybb.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.implybb.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.introF",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.introF.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P : Prop) (b : Bool), (P ↔ b = true) → ¬P → b = false",
+    "native_expression": "∀ (P : Prop) (b : Bool), (P ↔ b = true) → ¬P → b = false",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.introF.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.introF.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.introFn",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.introFn.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P : Prop) (b : Bool), (P ↔ (!b) = true) → P → b = false",
+    "native_expression": "∀ (P : Prop) (b : Bool), (P ↔ (!b) = true) → P → b = false",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.introFn.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.introFn.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.introN",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.introN.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P : Prop) (b : Bool), (P ↔ b = true) → ¬P → (!b) = true",
+    "native_expression": "∀ (P : Prop) (b : Bool), (P ↔ b = true) → ¬P → (!b) = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.introN.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.introN.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.introNTF",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.introNTF.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P : Prop) (b b_1 : Bool), (P ↔ b = true) → (if b_1 = true then ¬P else P) → (!b) = b_1",
+    "native_expression": "∀ (P : Prop) (b b_1 : Bool), (P ↔ b = true) → (if b_1 = true then ¬P else P) → (!b) = b_1",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.introNTF.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.introNTF.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.introNf",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.introNf.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P : Prop) (b : Bool), (P ↔ b = true) → P → (!b) = false",
+    "native_expression": "∀ (P : Prop) (b : Bool), (P ↔ b = true) → P → (!b) = false",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.introNf.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.introNf.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.introT",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.introT.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P : Prop) (b : Bool), (P ↔ b = true) → P → b = true",
+    "native_expression": "∀ (P : Prop) (b : Bool), (P ↔ b = true) → P → b = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.introT.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.introT.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.introTF",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.introTF.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P : Prop) (b b_1 : Bool), (P ↔ b = true) → (if b_1 = true then P else ¬P) → b = b_1",
+    "native_expression": "∀ (P : Prop) (b b_1 : Bool), (P ↔ b = true) → (if b_1 = true then P else ¬P) → b = b_1",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.introTF.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.introTF.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.introTFn",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.introTFn.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P : Prop) (b b_1 : Bool), (P ↔ (!b) = true) → (if b_1 = true then ¬P else P) → b = b_1",
+    "native_expression": "∀ (P : Prop) (b b_1 : Bool), (P ↔ (!b) = true) → (if b_1 = true then ¬P else P) → b = b_1",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.introTFn.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.introTFn.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.introTn",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.introTn.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P : Prop) (b : Bool), (P ↔ (!b) = true) → ¬P → b = true",
+    "native_expression": "∀ (P : Prop) (b : Bool), (P ↔ (!b) = true) → ¬P → b = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.introTn.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.introTn.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.isT",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.isT.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: true = true",
+    "native_expression": "true = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.isT.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.isT.statement.native",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.is_true_true",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.is_true_true.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: true = true",
+    "native_expression": "true = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.is_true_true.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.is_true_true.statement.native",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.negbF",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.negbF.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), b = true → (!b) = false",
+    "native_expression": "∀ (b : Bool), b = true → (!b) = false",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.negbF.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.negbF.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.negbFE",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.negbFE.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), (!b) = false → b = true",
+    "native_expression": "∀ (b : Bool), (!b) = false → b = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.negbFE.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.negbFE.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.negbK",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.negbK.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), (!!b) = b",
+    "native_expression": "∀ (b : Bool), (!!b) = b",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.negbK.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.negbK.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.negbLR",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.negbLR.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), b = !b_1 → (!b) = b_1",
+    "native_expression": "∀ (b b_1 : Bool), b = !b_1 → (!b) = b_1",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.negbLR.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.negbLR.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.negbNE",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.negbNE.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), (!!b) = true → b = true",
+    "native_expression": "∀ (b : Bool), (!!b) = true → b = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.negbNE.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.negbNE.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.negbRL",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.negbRL.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (!b) = b_1 → b = !b_1",
+    "native_expression": "∀ (b b_1 : Bool), (!b) = b_1 → b = !b_1",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.negbRL.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.negbRL.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.negbT",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.negbT.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), b = false → (!b) = true",
+    "native_expression": "∀ (b : Bool), b = false → (!b) = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.negbT.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.negbT.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.negbTE",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.negbTE.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), (!b) = true → b = false",
+    "native_expression": "∀ (b : Bool), (!b) = true → b = false",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.negbTE.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.negbTE.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.negb_and",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.negb_and.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (!(b && b_1)) = (!b || !b_1)",
+    "native_expression": "∀ (b b_1 : Bool), (!(b && b_1)) = (!b || !b_1)",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.negb_and.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.negb_and.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.negb_imply",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.negb_imply.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (!(!b || b_1)) = (b && !b_1)",
+    "native_expression": "∀ (b b_1 : Bool), (!(!b || b_1)) = (b && !b_1)",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.negb_imply.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.negb_imply.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.negb_inj",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.negb_inj.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (!b) = !b_1 → b = b_1",
+    "native_expression": "∀ (b b_1 : Bool), (!b) = !b_1 → b = b_1",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.negb_inj.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.negb_inj.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.negb_or",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.negb_or.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (!(b || b_1)) = (!b && !b_1)",
+    "native_expression": "∀ (b b_1 : Bool), (!(b || b_1)) = (!b && !b_1)",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.negb_or.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.negb_or.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.notF",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.notF.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ¬false = true",
+    "native_expression": "¬false = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.notF.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.notF.statement.native",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.not_false_is_true",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.not_false_is_true.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ¬false = true",
+    "native_expression": "¬false = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.not_false_is_true.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.not_false_is_true.statement.native",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.orFb",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orFb.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), (false || b) = b",
+    "native_expression": "∀ (b : Bool), (false || b) = b",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.orFb.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orFb.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.orKb",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orKb.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (b && (b_1 || b)) = b",
+    "native_expression": "∀ (b b_1 : Bool), (b && (b_1 || b)) = b",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.orKb.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orKb.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.orNb",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orNb.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), (!b || b) = true",
+    "native_expression": "∀ (b : Bool), (!b || b) = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.orNb.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orNb.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.orTb",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orTb.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), (true || b) = true",
+    "native_expression": "∀ (b : Bool), (true || b) = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.orTb.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orTb.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.orbA",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orbA.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 b_2 : Bool), (b || (b_1 || b_2)) = (b || b_1 || b_2)",
+    "native_expression": "∀ (b b_1 b_2 : Bool), (b || (b_1 || b_2)) = (b || b_1 || b_2)",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.orbA.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orbA.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.orbAC",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orbAC.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 b_2 : Bool), (b || b_1 || b_2) = (b || b_2 || b_1)",
+    "native_expression": "∀ (b b_1 b_2 : Bool), (b || b_1 || b_2) = (b || b_2 || b_1)",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.orbAC.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orbAC.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.orbACA",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orbACA.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 b_2 b_3 : Bool), (b || b_1 || (b_2 || b_3)) = (b || b_2 || (b_1 || b_3))",
+    "native_expression": "∀ (b b_1 b_2 b_3 : Bool), (b || b_1 || (b_2 || b_3)) = (b || b_2 || (b_1 || b_3))",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.orbACA.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orbACA.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.orbC",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orbC.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (b || b_1) = (b_1 || b)",
+    "native_expression": "∀ (b b_1 : Bool), (b || b_1) = (b_1 || b)",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.orbC.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orbC.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.orbCA",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orbCA.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 b_2 : Bool), (b || (b_1 || b_2)) = (b_1 || (b || b_2))",
+    "native_expression": "∀ (b b_1 b_2 : Bool), (b || (b_1 || b_2)) = (b_1 || (b || b_2))",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.orbCA.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orbCA.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.orbF",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orbF.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), (b || false) = b",
+    "native_expression": "∀ (b : Bool), (b || false) = b",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.orbF.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orbF.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.orbK",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orbK.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), ((b || b_1) && b) = b",
+    "native_expression": "∀ (b b_1 : Bool), ((b || b_1) && b) = b",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.orbK.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orbK.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.orbN",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orbN.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), (b || !b) = true",
+    "native_expression": "∀ (b : Bool), (b || !b) = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.orbN.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orbN.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.orbT",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orbT.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), (b || true) = true",
+    "native_expression": "∀ (b : Bool), (b || true) = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.orbT.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orbT.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.orb_id2l",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orb_id2l.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 b_2 : Bool), ((!b) = true → b_1 = b_2) → (b || b_1) = (b || b_2)",
+    "native_expression": "∀ (b b_1 b_2 : Bool), ((!b) = true → b_1 = b_2) → (b || b_1) = (b || b_2)",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.orb_id2l.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orb_id2l.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.orb_id2r",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orb_id2r.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 b_2 : Bool), ((!b_1) = true → b = b_2) → (b || b_1) = (b_2 || b_1)",
+    "native_expression": "∀ (b b_1 b_2 : Bool), ((!b_1) = true → b = b_2) → (b || b_1) = (b_2 || b_1)",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.orb_id2r.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orb_id2r.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.orb_idl",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orb_idl.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (b = true → b_1 = true) → (b || b_1) = b_1",
+    "native_expression": "∀ (b b_1 : Bool), (b = true → b_1 = true) → (b || b_1) = b_1",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.orb_idl.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orb_idl.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.orb_idr",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orb_idr.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), (b_1 = true → b = true) → (b || b_1) = b",
+    "native_expression": "∀ (b b_1 : Bool), (b_1 = true → b = true) → (b || b_1) = b",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.orb_idr.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orb_idr.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.orbb",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orbb.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), (b || b) = b",
+    "native_expression": "∀ (b : Bool), (b || b) = b",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.orbb.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.orbb.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.prop_congr",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.prop_congr.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b b_1 : Bool), b = b_1 → (b = true) = (b_1 = true)",
+    "native_expression": "∀ (b b_1 : Bool), b = b_1 → (b = true) = (b_1 = true)",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.prop_congr.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.prop_congr.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.rev_trans",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.rev_trans.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (T : Type u_Corelib_ssr_ssrbool_1105) (f : T → T → Bool),\n  (∀ (y x z : T), f x y = true → f y z = true → f x z = true) →\n    ∀ (y x z : T), f y x = true → f z y = true → f z x = true",
+    "native_expression": "∀ (T : Type u_Corelib_ssr_ssrbool_1105) (f : T → T → Bool),\n  (∀ (y x z : T), f x y = true → f y z = true → f x z = true) →\n    ∀ (y x z : T), f y x = true → f z y = true → f z x = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.rev_trans.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.rev_trans.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.rwP",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.rwP.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P : Prop) (b : Bool), (P ↔ b = true) → (P ↔ b = true)",
+    "native_expression": "∀ (P : Prop) (b : Bool), (P ↔ b = true) → (P ↔ b = true)",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.rwP.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.rwP.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.rwP2",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.rwP2.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P Q : Prop) (b : Bool), (P ↔ b = true) → (Q ↔ b = true) → (P ↔ Q)",
+    "native_expression": "∀ (P Q : Prop) (b : Bool), (P ↔ b = true) → (Q ↔ b = true) → (P ↔ Q)",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.rwP2.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.rwP2.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.sameP",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.sameP.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P : Prop) (b b_1 : Bool), (P ↔ b = true) → (P ↔ b_1 = true) → b = b_1",
+    "native_expression": "∀ (P : Prop) (b b_1 : Bool), (P ↔ b = true) → (P ↔ b_1 = true) → b = b_1",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.sameP.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.sameP.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.wlog_neg",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.wlog_neg.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (b : Bool), ((!b) = true → b = true) → b = true",
+    "native_expression": "∀ (b : Bool), ((!b) = true → b = true) → b = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.wlog_neg.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.wlog_neg.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.xorPif",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.xorPif.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P Q : Prop) (b : Bool), (P ↔ b = true) → Q ∨ P → ¬(Q ∧ P) → if b = true then ¬Q else Q",
+    "native_expression": "∀ (P Q : Prop) (b : Bool), (P ↔ b = true) → Q ∨ P → ¬(Q ∧ P) → if b = true then ¬Q else Q",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.xorPif.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.xorPif.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.xorPifn",
+    "profile": "SSRBoolStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.xorPifn.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P Q : Prop) (b : Bool), (P ↔ (!b) = true) → Q ∨ P → ¬(Q ∧ P) → if b = true then Q else ¬Q",
+    "native_expression": "∀ (P Q : Prop) (b : Bool), (P ↔ (!b) = true) → Q ∨ P → ¬(Q ∧ P) → if b = true then Q else ¬Q",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.ssr.ssrbool.xorPifn.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.xorPifn.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
   }
 ]

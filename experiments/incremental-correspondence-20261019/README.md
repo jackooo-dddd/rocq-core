@@ -2,23 +2,24 @@
 
 先写计划与 DAG，再按步骤推进。入口：[PLAN.md](PLAN.md)、[DAG.md](DAG.md)、[逐根任务表](tasks.csv)。
 
-## 第一批已验证结果
+## 已验证进展（两批）
 
-5 个 Lean profile 全部通过；显式登记 26 份新增证书，覆盖 1 个新类型根和 24 个新运算/谓词根。
+7 个 Lean profile 全部通过。两批累计显式登记 182 份新增证书，覆盖 4 个新类型根、36 个新运算/谓词根，并将 141 个部分陈述升级为完全原生陈述。
 - Program.Basics：apply、arrow、compose、const、flip、impl。
 - SSR Option：apply、default、lift、map、bind。
 - SSR 函数：comp、catcomp、idfun、fun_of_simpl；simpl_fun 与普通函数的 Iso。
 - SSR 谓词：cancel、commutative、associative、involutive、injective、eqfun、eqrel、left_id。
+- 第二批：pred/rel Iso、reflect Iso 及到 Decidable P 的转换；SSR 布尔运算与关系谓词 12 项；216 项陈述复查中 141 项完全原生化。
 - Nat.iter：原生 Nat.rec 迭代表达式；另证带载体 Iso 和显式步函数对应假设的版本。
 
 | 主分类 | 基线 | 当前 |
 |---|---:|---:|
-| 类型对应 | 29 | 30 |
-| 运算/谓词对应 | 114 | 138 |
-| 只有接口 | 375 | 352 |
-| 尚无证书 | 485 | 483 |
-| 完全原生陈述 | 143 | 143 |
-| 部分原生陈述 | 702 | 702 |
+| 类型对应 | 29 | 33 |
+| 运算/谓词对应 | 114 | 150 |
+| 只有接口 | 375 | 338 |
+| 尚无证书 | 485 | 482 |
+| 完全原生陈述 | 143 | 284 |
+| 部分原生陈述 | 702 | 561 |
 | 带条件 | 331 | 331 |
 | 非 Prop 特殊陈述 | 1 | 1 |
 
@@ -30,7 +31,7 @@
 Registry.lean 将 simplFunIso 接入接口生成器，并组合已有函数、Bool Iso：
 - 恢复 fun_of_simpl 的自动接口往返证明（未启用 Type 特化）；源根接口证书总数 478 → 479。
 - 一个额外探测函数自动得到 (Bool → Bool) → Bool 接口，并证明其结果等于 f true。探测函数不是 Corelib 根，不计入覆盖数。
-- 修正了本工作区生成器的别名处理：先将类型头化为弱头正规形，再判断是否使用 identityIso。旧逻辑可能将 RBool 等别名误当成已经原生的类型。
+- 修正了本工作区生成器的别名处理：先查已登记的类型桥接，再展开未识别的类型别名，最后才判断 identityIso。旧逻辑可能将 RBool 等别名误当成已经原生的类型。
 - native_correspondence 组合 SSR Option/函数规则，自动完成两个复合表达式的对应证明；错误的加一/加二对应被拒绝。
 
 当前需要显式给出原生目标表达式；尚未实现任意函数的原生目标自动合成。新生成器仍局限于本实验，并未全面替换旧接口流水线。
@@ -53,6 +54,7 @@ Registry.lean 将 simplFunIso 接入接口生成器，并组合已有函数、Bo
 
     python3 build_dag.py
     python3 build_registry.py
+    python3 build_statements.py
     python3 verify.py
     python3 make_report.py
 
@@ -62,4 +64,10 @@ build_dag.py 重新生成基线任务表后，运行 make_report.py 恢复本轮
 
 ## 下一步
 
-P2/P3a 完成第一批，不是整个计划完成。接下来检查别名正规化对其他接口的影响，扩展 SSR 布尔谓词，并处理数值/数字表示与依赖类型；每批继续更新 PLAN.md 和 tasks.csv。
+P2/P3a/P5/P6 已有两批进展，整个计划未完成。接下来处理数值/数字表示、依赖类型及剩余 SSR 包装。最终覆盖的主观预估见 [ESTIMATE.md](ESTIMATE.md)，不作为已证结果。
+
+## 第二批检查
+
+SSRBoolStatements 使用转换证书自动生成原生目标和 iff，不依赖源定理证明。检查会展开 NativeBridge 别名，避免把隐藏源类型误计成原生；包括一个源别名反例和原生 Bool 正例。
+
+接口别名回归可用 python3 check_alias_regression.py 重跑；45 个旧 profile 全部通过，无旧接口丢失、无新增包装；结果在 reports/alias-regression.json。完整生成文件与详细回归日志仅在远程 .work/，保留脚本与紧凑结果。回归仅比较接口生成，不将新包装数当作运算 correspondence。

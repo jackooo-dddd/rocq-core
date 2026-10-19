@@ -77,3 +77,13 @@ flowchart TD
 | 复合 Option / 函数表达式 | Option.map/bind 对应 + comp 对应 | 两例自动组合通过；目标表达式仍显式提供 |
 | N/Z、数字表示进一步运算 | 已有数值 Iso + 未补齐的语义证书 | 待后续批次 |
 | 依赖类型/Acc | Eq transport + motive/index 转换 + 终止性证据 | 待后续批次 |
+
+## 第二批：证书复用到下游陈述
+
+    Bool Iso + 函数 Iso → pred/rel Iso
+    Bool 构造器 + 源逻辑否定 → reflect Iso → Decidable P
+    Eq Iso + Bool 运算 → SSR 布尔关系性质
+    Bool 量词/高阶函数/消去器转换 + 上述证书 → 216 个陈述的重新规范化
+    规范化 + 原陈述 iff + 递归检查桥接别名 → 141 个完全原生陈述
+
+75 个候选仍残留源符号，主要涉及 mem_pred/mem、phantom、classically、部分高阶函数及依赖 Bool 消去；未计作完全对应。详细记录见 reports/statement-candidates.json。

@@ -13,7 +13,7 @@ private def hasSource (e : Expr) : Bool :=
   n.toString.startsWith "Rocq." || n.toString.startsWith "RocqPending." ||
   n.toString.startsWith "Rocq2Lean."
 private partial def findNativeIso (ty : Expr) : MetaM Expr := do
- let ty ← whnf (← Core.betaReduce ty)
+ let ty ← Core.betaReduce ty
  let fn := ty.getAppFn
  let args := ty.getAppArgs
  let name := fn.constName?.getD .anonymous
@@ -87,12 +87,12 @@ private partial def findNativeIso (ty : Expr) : MetaM Expr := do
   let bn := ("NativeBridge."++bridge).toName
   if name.toString == source && !args.any hasSource && (← getEnv).contains bn then
    return ← mkAppM bn args
+ let reduced ← whnf ty
+ if reduced != ty then return ← findNativeIso reduced
  -- Preserve arbitrary parameters only when their type contains no source API.
  if !hasSource ty then
   let u ← getLevel ty
   return mkApp (mkConst "NativeBridge.identityIso".toName [u]) ty
- let reduced ← whnf ty
- if reduced != ty then return ← findNativeIso reduced
  throwError "No registered type bijection for {ty}"
 private partial def exportInterface (value ty : Expr) : MetaM (Expr × Expr × Expr) := do
  if let .forallE n domain body bi := ty then

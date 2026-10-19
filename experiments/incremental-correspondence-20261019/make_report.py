@@ -4,7 +4,7 @@ W=Path(__file__).resolve().parent;R=W.parents[1];D=W/'reports'
 B=R/'experiments/mechanical-correspondence-20261019/reports'
 specs=json.loads((W/'certificates.json').read_text())
 validation=json.loads((D/'validation.json').read_text())
-assert {r['profile'] for r in validation}=={'Basics','SSR','Iteration','Registry','SSRProperties'}
+assert {r['profile'] for r in validation}=={'Basics','SSR','Iteration','Registry','SSRProperties','SSRBool','SSRBoolStatements'}
 audits={}
 for r in validation:
  assert r['exit']==0 and r['audit_present'],r
@@ -12,18 +12,37 @@ for r in validation:
  audits[r['profile']]={x['name']:x for x in json.loads((D/(r['profile']+'-audit.json')).read_text())}
 base=list(csv.DictReader((B/'CORELIB_LEDGER.csv').open()))
 rows={r['source']:dict(r,baseline_bridge_status=r['bridge_status'],evidence_origin='inherited baseline',new_certificates='') for r in base}
+selection={x['target']:x['source'] for x in json.loads((W/'statement-selection.json').read_text())}
+candidates=[json.loads(l.split('NATIVE_RESULT ',1)[1]) for l in (D/'SSRBoolStatements.log').read_text().splitlines() if 'NATIVE_RESULT ' in l]
+assert len(candidates)==len(selection)==216
+assert {x['source_target'] for x in candidates}==set(selection)
+(D/'statement-candidates.json').write_text(json.dumps(candidates,ensure_ascii=False,indent=2))
+for c in candidates:
+ if c['full']:
+  assert not c['remaining_source_symbols']
+  specs.append({'source':selection[c['source_target']],'profile':'SSRBoolStatements','certificate':c['certificate'],
+    'kind':'STATEMENT_FULL_NATIVE','target':'native statement: '+c['native_expression'],
+    'native_expression':c['native_expression'],'scope':'unconditional original statement; source-free body including NativeBridge alias expansion'})
 accepted=[]
 for sp in specs:
  cert=audits[sp['profile']][sp['certificate']]
  assert set(cert['axioms']) <= {'propext','Quot.sound','Classical.choice'}
  assert sp['source'] in rows
- assert 'Rocq.'+sp['source'] in cert['source_references'],sp
+ assert ('Rocq.'+sp['source'] in cert['source_references'] or rows[sp['source']]['target'] in cert['source_references']),sp
  item=dict(sp,**{k:cert[k] for k in ['type','axioms']})
  accepted.append(item)
  r=rows[sp['source']];r['bridge_status']=sp['kind'];r['evidence_origin']='baseline + checked incremental certificate'
  r['new_certificates']=';'.join(filter(None,[r['new_certificates'],sp['certificate']]))
  r['bridge_certificates']=';'.join(filter(None,[r['bridge_certificates'],sp['certificate']]))
- r['interpretation']='新增已检查的'+('类型双向逆。' if sp['kind']=='TYPE_ISO' else '指定原生运算/表达式/谓词对应。')+'适用范围见增量证书完整类型。'
+ if sp['kind']=='STATEMENT_FULL_NATIVE':
+  assert r['baseline_bridge_status']=='STATEMENT_PARTIAL'
+  r['statement_certificate']=sp['certificate']
+  r['native_statement']=sp['native_expression']
+  r['remaining_source_symbols']=''
+  r['interpretation']='新增原生陈述 iff；目标体及 NativeBridge 别名展开后无源端符号；不是业务定理证明。'
+ else:
+  r['interpretation']='新增已检查的'+('类型双向逆。' if sp['kind']=='TYPE_ISO' else '指定原生运算/表达式/谓词对应。')+'适用范围见增量证书完整类型。'
+
 reg=audits['Registry']
 newinterface='NativeBridge.IncrementalInterfaces.Rocq.Corelib.ssr.ssrfun.fun_of_simpl.roundtrip'
 assert newinterface in reg
@@ -37,15 +56,18 @@ def writecsv(path,rs):
 writecsv(D/'CORELIB_LEDGER.csv',list(rows.values()))
 counts=dict(collections.Counter(r['bridge_status'] for r in rows.values()))
 bcounts=dict(collections.Counter(r['bridge_status'] for r in base))
-summary={'root_declarations':len(rows),'baseline':str(B.relative_to(R)),'baseline_status':bcounts,'coverage_status':counts,
+alias=json.loads((D/'alias-regression.json').read_text())
+assert len(alias)==45 and all(x['exit']==0 and not x['lost'] and not x['gained'] for x in alias)
+summary={'alias_regression_profiles':45,'alias_regression_lost':0,'alias_regression_gained':0,'root_declarations':len(rows),'baseline':str(B.relative_to(R)),'baseline_status':bcounts,'coverage_status':counts,
  'new_type_roots':len({s['source'] for s in specs if s['kind']=='TYPE_ISO'}),
  'new_operation_roots':len({s['source'] for s in specs if s['kind']=='OPERATION_CORRESPONDENCE'}),
+ 'new_fully_native_statements':sum(x['full'] for x in candidates),'statement_candidates_rechecked':len(candidates),
  'new_certificates':len(specs),'baseline_operation_certificates':119,'operation_certificates_total':119+sum(s['kind']=='OPERATION_CORRESPONDENCE' for s in specs),
  'type_certificates_total':30+sum(s['kind']=='TYPE_ISO' for s in specs),
  'native_interface_roundtrips':479,'new_root_interface_roundtrips':1,'passing_incremental_profiles':len(validation),
  'full_baseline_rerun':False,'translation_rerun':False,'mathlib_tested':False,
- 'automatic_native_target_synthesis':False,'automatic_certificate_composition':'supported SSR Option/function rewrites; native target supplied',
- 'conditions_remaining':331,'completion':'first incremental batch; overall plan remains incomplete'}
+ 'automatic_native_target_synthesis':False,'automatic_certificate_composition':'SSR Option/function proof composition plus automatic statement normalization; arbitrary function targets still supplied',
+ 'conditions_remaining':331,'completion':'two incremental batches; overall plan remains incomplete'}
 assert sum(counts.values())==2180
 (D/'summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2))
 (D/'certificates.json').write_text(json.dumps(accepted,ensure_ascii=False,indent=2))
