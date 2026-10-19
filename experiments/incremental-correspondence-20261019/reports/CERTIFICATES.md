@@ -4373,6 +4373,767 @@ NativeBridge.Incremental.BinaryNatSub.n_sub_agrees
 
 公理闭包：propext, Classical.choice, Quot.sound
 
+## Corelib.Init.Datatypes.list
+
+NativeBridge.Incremental.DatatypeNormalization.fullListIso
+
+目标：List (PLift A)；范围：All A : Sort u; erasing PLift for A : Type u agrees with the existing List A bridge.
+
+```lean
+(A : Sort u) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.list A) (List (PLift A))
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.option
+
+NativeBridge.Incremental.DatatypeNormalization.fullOptionIso
+
+目标：Option (PLift A)；范围：All A : Sort u; erasing PLift for A : Type u agrees with the existing Option A bridge.
+
+```lean
+(A : Sort u) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.option A) (Option (PLift A))
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.result
+
+NativeBridge.Incremental.DatatypeNormalization.fullResultIso
+
+目标：Except (PLift E) (PLift A)；范围：All A : Sort u and E : Sort v; Type-specialized compatibility checked.
+
+```lean
+(A : Sort u) → (E : Sort v) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.result A E) (Except (PLift E) (PLift A))
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.CompareSpecT
+
+NativeBridge.Incremental.DatatypeNormalization.compareSpecTIso
+
+目标：PLift of the selected native comparison proposition；范围：All three propositions and all comparison indices.
+
+```lean
+(Peq Plt Pgt : Prop) →
+  (c : NativeBridge.RComparison) →
+    NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.CompareSpecT Peq Plt Pgt c)
+      (PLift (NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt (NativeBridge.comparisonTo c)))
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.CompSpecT
+
+NativeBridge.Incremental.DatatypeNormalization.compSpecTIso
+
+目标：PLift of the native relation proposition selected by Ordering；范围：All Type-valued carriers, relation arguments and comparison indices.
+
+```lean
+{A : Type u} →
+  (eq lt : A → A → Prop) →
+    (x y : A) →
+      (c : NativeBridge.RComparison) →
+        NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.CompSpecT A eq lt x y c)
+          (PLift
+            (NativeBridge.Incremental.DatatypeNormalization.compareSpec (eq x y) (lt x y) (lt y x)
+              (NativeBridge.comparisonTo c)))
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.reflect
+
+NativeBridge.Incremental.DatatypeNormalization.reflectIso
+
+目标：PLift (if b then P else ¬P)；范围：All P : Prop and boolean indices; indexed bridge in addition to the existing reflect correspondence.
+
+```lean
+(P : Prop) →
+  (b : NativeBridge.RBool) →
+    NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.reflect P b)
+      (PLift (NativeBridge.Incremental.DatatypeNormalization.boolSpec P (¬P) (NativeBridge.boolTo b)))
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.BoolSpec
+
+NativeBridge.Incremental.DatatypeNormalization.boolSpec_agrees
+
+目标：if b then P else Q；范围：All proposition/relation arguments and indices; iff of predicates, not a proof that arbitrary inputs satisfy them.
+
+```lean
+∀ (P Q : Prop) (b : NativeBridge.RBool),
+  Rocq.Corelib.Init.Datatypes.BoolSpec P Q b ↔
+    NativeBridge.Incremental.DatatypeNormalization.boolSpec P Q (NativeBridge.boolTo b)
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.CompareSpec
+
+NativeBridge.Incremental.DatatypeNormalization.compareSpec_agrees
+
+目标：Ordering-indexed selection of Peq / Plt / Pgt；范围：All proposition/relation arguments and indices; iff of predicates, not a proof that arbitrary inputs satisfy them.
+
+```lean
+∀ (Peq Plt Pgt : Prop) (c : NativeBridge.RComparison),
+  Rocq.Corelib.Init.Datatypes.CompareSpec Peq Plt Pgt c ↔
+    NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt (NativeBridge.comparisonTo c)
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.CompSpec
+
+NativeBridge.Incremental.DatatypeNormalization.compSpec_agrees
+
+目标：Ordering-indexed selection of eq x y / lt x y / lt y x；范围：All proposition/relation arguments and indices; iff of predicates, not a proof that arbitrary inputs satisfy them.
+
+```lean
+∀ {A : Sort u} (eq lt : A → A → Prop) (x y : A) (c : NativeBridge.RComparison),
+  Rocq.Corelib.Init.Datatypes.CompSpec A eq lt x y c ↔
+    NativeBridge.Incremental.DatatypeNormalization.compareSpec (eq x y) (lt x y) (lt y x) (NativeBridge.comparisonTo c)
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.CompareSpecT_rec
+
+NativeBridge.Incremental.DatatypeSpecs.compare_rec_agrees
+
+目标：Native Ordering / PLift elimination；范围：Type-valued motives pulled back from the native indexed representation.
+
+```lean
+∀ (Peq Plt Pgt : Prop)
+  (M : (c : Ordering) → PLift (NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt c) → Type)
+  (he : (h : Peq) → M Ordering.eq { down := h }) (hl : (h : Plt) → M Ordering.lt { down := h })
+  (hg : (h : Pgt) → M Ordering.gt { down := h }) (c : NativeBridge.RComparison)
+  (h : Rocq.Corelib.Init.Datatypes.CompareSpecT Peq Plt Pgt c),
+  Rocq.Corelib.Init.Datatypes.CompareSpecT_rec Peq Plt Pgt
+      (fun c h => M (NativeBridge.comparisonTo c) (NativeBridge.Incremental.DatatypeNormalization.compareSpecTTo h)) he
+      hl hg c h =
+    NativeBridge.Incremental.DatatypeSpecs.compareElim he hl hg (NativeBridge.comparisonTo c)
+      (NativeBridge.Incremental.DatatypeNormalization.compareSpecTTo h)
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.CompareSpecT_rect
+
+NativeBridge.Incremental.DatatypeSpecs.compare_rect_agrees
+
+目标：Native Ordering / PLift elimination；范围：Sort u-valued motives pulled back from the native indexed representation.
+
+```lean
+∀ (Peq Plt Pgt : Prop)
+  (M : (c : Ordering) → PLift (NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt c) → Sort u)
+  (he : (h : Peq) → M Ordering.eq { down := h }) (hl : (h : Plt) → M Ordering.lt { down := h })
+  (hg : (h : Pgt) → M Ordering.gt { down := h }) (c : NativeBridge.RComparison)
+  (h : Rocq.Corelib.Init.Datatypes.CompareSpecT Peq Plt Pgt c),
+  Rocq.Corelib.Init.Datatypes.CompareSpecT_rect Peq Plt Pgt
+      (fun c h => M (NativeBridge.comparisonTo c) (NativeBridge.Incremental.DatatypeNormalization.compareSpecTTo h)) he
+      hl hg c h =
+    NativeBridge.Incremental.DatatypeSpecs.compareElim he hl hg (NativeBridge.comparisonTo c)
+      (NativeBridge.Incremental.DatatypeNormalization.compareSpecTTo h)
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.reflect_rec
+
+NativeBridge.Incremental.DatatypeSpecs.reflect_rec_agrees
+
+目标：Native Bool / PLift elimination；范围：Type-valued motives pulled back from the native indexed representation.
+
+```lean
+∀ (P : Prop) (M : (b : Bool) → PLift (NativeBridge.Incremental.DatatypeNormalization.boolSpec P (¬P) b) → Type)
+  (ht : (h : P) → M true { down := h }) (hf : (h : ¬P) → M false { down := h }) (b : NativeBridge.RBool)
+  (h : Rocq.Corelib.Init.Datatypes.reflect P b),
+  Rocq.Corelib.Init.Datatypes.reflect_rec P
+      (fun b h => M (NativeBridge.boolTo b) (NativeBridge.Incremental.DatatypeNormalization.reflectTo h)) ht
+      (fun n => hf ⋯) b h =
+    NativeBridge.Incremental.DatatypeSpecs.reflectElim ht hf (NativeBridge.boolTo b)
+      (NativeBridge.Incremental.DatatypeNormalization.reflectTo h)
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.reflect_rect
+
+NativeBridge.Incremental.DatatypeSpecs.reflect_rect_agrees
+
+目标：Native Bool / PLift elimination；范围：Sort u-valued motives pulled back from the native indexed representation.
+
+```lean
+∀ (P : Prop) (M : (b : Bool) → PLift (NativeBridge.Incremental.DatatypeNormalization.boolSpec P (¬P) b) → Sort u)
+  (ht : (h : P) → M true { down := h }) (hf : (h : ¬P) → M false { down := h }) (b : NativeBridge.RBool)
+  (h : Rocq.Corelib.Init.Datatypes.reflect P b),
+  Rocq.Corelib.Init.Datatypes.reflect_rect P
+      (fun b h => M (NativeBridge.boolTo b) (NativeBridge.Incremental.DatatypeNormalization.reflectTo h)) ht
+      (fun n => hf ⋯) b h =
+    NativeBridge.Incremental.DatatypeSpecs.reflectElim ht hf (NativeBridge.boolTo b)
+      (NativeBridge.Incremental.DatatypeNormalization.reflectTo h)
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.CompareSpec2Type
+
+NativeBridge.Incremental.DatatypeSpecs.compareSpec2Type_agrees
+
+目标：PLift.up of the corresponding native proposition proof；范围：All inputs; all three source proof obligations instantiated by closed proofs.
+
+```lean
+∀ (Peq Plt Pgt : Prop) (c : NativeBridge.RComparison) (h : Rocq.Corelib.Init.Datatypes.CompareSpec Peq Plt Pgt c),
+  NativeBridge.Incremental.DatatypeNormalization.compareSpecTTo
+      (RocqPending.Corelib.Init.Datatypes.CompareSpec2Type Peq Plt Pgt c h) =
+    { down := ⋯ }
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.CompSpec2Type
+
+NativeBridge.Incremental.DatatypeSpecs.compSpec2Type_agrees
+
+目标：PLift.up of the corresponding native proposition proof；范围：All inputs; all three source proof obligations instantiated by closed proofs.
+
+```lean
+∀ {A : Type u} (eq lt : A → A → Prop) (x y : A) (c : NativeBridge.RComparison)
+  (h : Rocq.Corelib.Init.Datatypes.CompSpec A eq lt x y c),
+  NativeBridge.Incremental.DatatypeNormalization.compareSpecTTo
+      (RocqPending.Corelib.Init.Datatypes.CompSpec2Type A eq lt x y c h) =
+    { down := ⋯ }
+```
+
+公理闭包：空
+
+## Corelib.Init.Datatypes.BoolSpec_ind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.BoolSpec_ind.statement.correspondence
+
+目标：native statement: ∀ (P Q : Prop) (f : Bool → Prop),
+  (P → f true) → (Q → f false) → ∀ (x : Bool), NativeBridge.Incremental.DatatypeNormalization.boolSpec P Q x → f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.BoolSpec_ind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.BoolSpec_ind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.BoolSpec_sind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.BoolSpec_sind.statement.correspondence
+
+目标：native statement: ∀ (P Q : Prop) (f : Bool → Prop),
+  (P → f true) → (Q → f false) → ∀ (x : Bool), NativeBridge.Incremental.DatatypeNormalization.boolSpec P Q x → f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.BoolSpec_sind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.BoolSpec_sind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.CompOpp_iff
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompOpp_iff.statement.correspondence
+
+目标：native statement: ∀ (x x_1 : Ordering), x.swap = x_1 ↔ x = x_1.swap；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.CompOpp_iff.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompOpp_iff.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.CompOpp_inj
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompOpp_inj.statement.correspondence
+
+目标：native statement: ∀ (x x_1 : Ordering), x.swap = x_1.swap → x = x_1；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.CompOpp_inj.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompOpp_inj.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.CompOpp_involutive
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompOpp_involutive.statement.correspondence
+
+目标：native statement: ∀ (x : Ordering), x.swap.swap = x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.CompOpp_involutive.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompOpp_involutive.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.CompareSpecT_ind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompareSpecT_ind.statement.correspondence
+
+目标：native statement: ∀ (Peq Plt Pgt : Prop)
+  (f : (c : Ordering) → PLift (NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt c) → Prop),
+  (∀ (p : Peq), f Ordering.eq { down := p }) →
+    (∀ (p : Plt), f Ordering.lt { down := p }) →
+      (∀ (p : Pgt), f Ordering.gt { down := p }) →
+        ∀ (x : Ordering) (h : PLift (NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt x)), f x h；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.CompareSpecT_ind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompareSpecT_ind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.CompareSpecT_sind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompareSpecT_sind.statement.correspondence
+
+目标：native statement: ∀ (Peq Plt Pgt : Prop)
+  (f : (c : Ordering) → PLift (NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt c) → Prop),
+  (∀ (p : Peq), f Ordering.eq { down := p }) →
+    (∀ (p : Plt), f Ordering.lt { down := p }) →
+      (∀ (p : Pgt), f Ordering.gt { down := p }) →
+        ∀ (x : Ordering) (h : PLift (NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt x)), f x h；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.CompareSpecT_sind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompareSpecT_sind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.CompareSpec_ind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompareSpec_ind.statement.correspondence
+
+目标：native statement: ∀ (Peq Plt Pgt : Prop) (f : Ordering → Prop),
+  (Peq → f Ordering.eq) →
+    (Plt → f Ordering.lt) →
+      (Pgt → f Ordering.gt) →
+        ∀ (x : Ordering), NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt x → f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.CompareSpec_ind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompareSpec_ind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.CompareSpec_sind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompareSpec_sind.statement.correspondence
+
+目标：native statement: ∀ (Peq Plt Pgt : Prop) (f : Ordering → Prop),
+  (Peq → f Ordering.eq) →
+    (Plt → f Ordering.lt) →
+      (Pgt → f Ordering.gt) →
+        ∀ (x : Ordering), NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt x → f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.CompareSpec_sind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompareSpec_sind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.Empty_set_ind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.Empty_set_ind.statement.correspondence
+
+目标：native statement: ∀ (f : Empty → Prop) (x : Empty), f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.Empty_set_ind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.Empty_set_ind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.Empty_set_sind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.Empty_set_sind.statement.correspondence
+
+目标：native statement: ∀ (f : Empty → Prop) (x : Empty), f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.Empty_set_sind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.Empty_set_sind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.andb_prop
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.andb_prop.statement.correspondence
+
+目标：native statement: ∀ (x x_1 : Bool), (x && x_1) = true → x = true ∧ x_1 = true；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.andb_prop.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.andb_prop.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.andb_true_intro
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.andb_true_intro.statement.correspondence
+
+目标：native statement: ∀ (x x_1 : Bool), x = true ∧ x_1 = true → (x && x_1) = true；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.andb_true_intro.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.andb_true_intro.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.bool_ind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.bool_ind.statement.correspondence
+
+目标：native statement: ∀ (f : Bool → Prop), f true → f false → ∀ (x : Bool), f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.bool_ind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.bool_ind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.bool_sind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.bool_sind.statement.correspondence
+
+目标：native statement: ∀ (f : Bool → Prop), f true → f false → ∀ (x : Bool), f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.bool_sind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.bool_sind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.comparison_eq_stable
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.comparison_eq_stable.statement.correspondence
+
+目标：native statement: ∀ (x x_1 : Ordering), ¬¬x = x_1 → x = x_1；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.comparison_eq_stable.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.comparison_eq_stable.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.comparison_ind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.comparison_ind.statement.correspondence
+
+目标：native statement: ∀ (f : Ordering → Prop), f Ordering.eq → f Ordering.lt → f Ordering.gt → ∀ (x : Ordering), f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.comparison_ind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.comparison_ind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.comparison_sind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.comparison_sind.statement.correspondence
+
+目标：native statement: ∀ (f : Ordering → Prop), f Ordering.eq → f Ordering.lt → f Ordering.gt → ∀ (x : Ordering), f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.comparison_sind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.comparison_sind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.idProp
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.idProp.statement.correspondence
+
+目标：native statement: ∀ (A : Prop), A → A；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.idProp.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.idProp.statement.native
+```
+
+公理闭包：propext
+
+## Corelib.Init.Datatypes.injective_projections
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.injective_projections.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Datatypes_116) (B : Sort u_Corelib_Init_Datatypes_117) (x x_1 : A ×' B),
+  x.fst = x_1.fst → x.snd = x_1.snd → x = x_1；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.injective_projections.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.injective_projections.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.list_ind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.list_ind.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Datatypes_194) (f : List (PLift A) → Prop),
+  f [] → (∀ (a : A) (x : List (PLift A)), f x → f ({ down := a } :: x)) → ∀ (x : List (PLift A)), f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.list_ind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.list_ind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.list_sind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.list_sind.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Datatypes_196) (f : List (PLift A) → Prop),
+  f [] → (∀ (a : A) (x : List (PLift A)), f x → f ({ down := a } :: x)) → ∀ (x : List (PLift A)), f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.list_sind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.list_sind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.option_ind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.option_ind.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Datatypes_38) (f : Option (PLift A) → Prop),
+  (∀ (a : A), f (some { down := a })) → f none → ∀ (x : Option (PLift A)), f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.option_ind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.option_ind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.option_sind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.option_sind.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Datatypes_40) (f : Option (PLift A) → Prop),
+  (∀ (a : A), f (some { down := a })) → f none → ∀ (x : Option (PLift A)), f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.option_sind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.option_sind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.pair_equal_spec
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.pair_equal_spec.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Datatypes_126) (B : Sort u_Corelib_Init_Datatypes_127) (a1 a2 : A) (b1 b2 : B),
+  ⟨a1, b1⟩ = ⟨a2, b2⟩ ↔ a1 = a2 ∧ b1 = b2；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.pair_equal_spec.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.pair_equal_spec.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.prod_ind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.prod_ind.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Datatypes_80) (B : Sort u_Corelib_Init_Datatypes_81) (f : A ×' B → Prop),
+  (∀ (a : A) (b : B), f ⟨a, b⟩) → ∀ (x : A ×' B), f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.prod_ind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.prod_ind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.prod_sind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.prod_sind.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Datatypes_84) (B : Sort u_Corelib_Init_Datatypes_85) (f : A ×' B → Prop),
+  (∀ (a : A) (b : B), f ⟨a, b⟩) → ∀ (x : A ×' B), f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.prod_sind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.prod_sind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.reflect_ind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.reflect_ind.statement.correspondence
+
+目标：native statement: ∀ (P : Prop) (f : (b : Bool) → PLift (NativeBridge.Incremental.DatatypeNormalization.boolSpec P (¬P) b) → Prop),
+  (∀ (p : P), f true { down := p }) →
+    (∀ (n : ¬P), f false { down := n }) →
+      ∀ (x : Bool) (h : PLift (NativeBridge.Incremental.DatatypeNormalization.boolSpec P (¬P) x)), f x h；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.reflect_ind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.reflect_ind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.reflect_sind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.reflect_sind.statement.correspondence
+
+目标：native statement: ∀ (P : Prop) (f : (b : Bool) → PLift (NativeBridge.Incremental.DatatypeNormalization.boolSpec P (¬P) b) → Prop),
+  (∀ (p : P), f true { down := p }) →
+    (∀ (n : ¬P), f false { down := n }) →
+      ∀ (x : Bool) (h : PLift (NativeBridge.Incremental.DatatypeNormalization.boolSpec P (¬P) x)), f x h；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.reflect_sind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.reflect_sind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.result_ind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.result_ind.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Datatypes_68) (E : Sort u_Corelib_Init_Datatypes_69) (f : Except (PLift E) (PLift A) → Prop),
+  (∀ (a : A), f (Except.ok { down := a })) →
+    (∀ (e : E), f (Except.error { down := e })) → ∀ (x : Except (PLift E) (PLift A)), f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.result_ind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.result_ind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.result_sind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.result_sind.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Datatypes_72) (E : Sort u_Corelib_Init_Datatypes_73) (f : Except (PLift E) (PLift A) → Prop),
+  (∀ (a : A), f (Except.ok { down := a })) →
+    (∀ (e : E), f (Except.error { down := e })) → ∀ (x : Except (PLift E) (PLift A)), f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.result_sind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.result_sind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.rew_pair
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.rew_pair.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Datatypes_174) (P : A → Sort u_Corelib_Init_Datatypes_175)
+  (Q : A → Sort u_Corelib_Init_Datatypes_176) (x1 x2 : A) (y1 : P x1) (y2 : Q x1) (H : x1 = x2),
+  ⟨H ▸ y1, H ▸ y2⟩ = H ▸ ⟨y1, y2⟩；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.rew_pair.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.rew_pair.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.sum_ind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.sum_ind.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Datatypes_54) (B : Sort u_Corelib_Init_Datatypes_55) (f : A ⊕' B → Prop),
+  (∀ (a : A), f (PSum.inl a)) → (∀ (b : B), f (PSum.inr b)) → ∀ (x : A ⊕' B), f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.sum_ind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.sum_ind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.sum_sind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.sum_sind.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Datatypes_58) (B : Sort u_Corelib_Init_Datatypes_59) (f : A ⊕' B → Prop),
+  (∀ (a : A), f (PSum.inl a)) → (∀ (b : B), f (PSum.inr b)) → ∀ (x : A ⊕' B), f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.sum_sind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.sum_sind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.surjective_pairing
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.surjective_pairing.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_Init_Datatypes_108) (B : Sort u_Corelib_Init_Datatypes_109) (x : A ×' B), x = ⟨x.fst, x.snd⟩；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.surjective_pairing.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.surjective_pairing.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.unit_ind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.unit_ind.statement.correspondence
+
+目标：native statement: ∀ (f : Unit → Prop), f () → ∀ (x : Unit), f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.unit_ind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.unit_ind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Init.Datatypes.unit_sind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.unit_sind.statement.correspondence
+
+目标：native statement: ∀ (f : Unit → Prop), f () → ∀ (x : Unit), f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Init.Datatypes.unit_sind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.unit_sind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
 ## Corelib.BinNums.PosDef.Pos.mask_ind
 
 NativeBridge.Incremental.Statements.Rocq.Corelib.BinNums.PosDef.Pos.mask_ind.statement.correspondence

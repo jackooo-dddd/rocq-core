@@ -4,7 +4,7 @@ W=Path(__file__).resolve().parent;R=W.parents[1];D=W/'reports'
 B=R/'experiments/mechanical-correspondence-20261019/reports'
 specs=json.loads((W/'certificates.json').read_text())
 validation=json.loads((D/'validation.json').read_text())
-assert {r['profile'] for r in validation}=={'BinaryArithmetic','BinaryNatSub','BinaryMask','BinaryMaskStatements','ListBridge','ListStatements','BinaryOrder','BinaryInt','PeanoBridge','PeanoStatements','NatArithmetic','NatIterators','NatGcd','NumericSigned','NumericMathlib','NumericWrite','SpecifNormalization','SpecifStatements','Basics','SSR','Iteration','Registry','SSRProperties','SSRBool','SSRBoolStatements','NumericRead','DecimalOperations','HexadecimalOperations','WellFounded','DependentElimination','PairRecursion','DependentStatements','DatatypeElimination','EqualityTransport','BooleanEquality','RelationDefinitions','RelationClasses','RelationClassStatements','VariadicPredicates','VariadicStatements','RelationConditions','Morphisms','MorphismStatements','EquivalenceBridge','EquivalenceStatements','MorphismsProp','SetoidBridge'}
+assert {r['profile'] for r in validation}=={'DatatypeNormalization','DatatypeQuantifiers','DatatypeStatements','DatatypeSpecs','BinaryArithmetic','BinaryNatSub','BinaryMask','BinaryMaskStatements','ListBridge','ListStatements','BinaryOrder','BinaryInt','PeanoBridge','PeanoStatements','NatArithmetic','NatIterators','NatGcd','NumericSigned','NumericMathlib','NumericWrite','SpecifNormalization','SpecifStatements','Basics','SSR','Iteration','Registry','SSRProperties','SSRBool','SSRBoolStatements','NumericRead','DecimalOperations','HexadecimalOperations','WellFounded','DependentElimination','PairRecursion','DependentStatements','DatatypeElimination','EqualityTransport','BooleanEquality','RelationDefinitions','RelationClasses','RelationClassStatements','VariadicPredicates','VariadicStatements','RelationConditions','Morphisms','MorphismStatements','EquivalenceBridge','EquivalenceStatements','MorphismsProp','SetoidBridge'}
 audits={}
 for r in validation:
  assert r['exit']==0 and r['audit_present'],r
@@ -16,6 +16,7 @@ for r in validation:
 base=list(csv.DictReader((B/'CORELIB_LEDGER.csv').open()))
 rows={r['source']:dict(r,baseline_bridge_status=r['bridge_status'],evidence_origin='inherited baseline',new_certificates='') for r in base}
 automatic_groups=[
+ ('DatatypeStatements','datatype-statement-selection.json','datatype-statement-candidates.json',37),
  ('BinaryMaskStatements','binary-mask-statement-selection.json','binary-mask-statement-candidates.json',2),
  ('ListStatements','list-statement-selection.json','list-statement-candidates.json',2),
  ('PeanoStatements','peano-statement-selection.json','peano-statement-candidates.json',31),
@@ -54,7 +55,22 @@ for sp in specs:
 accepted=[]
 original_proofs=[]
 resolved_conditions=[]
-condition_inputs=json.loads((W/'condition-obligations.json').read_text())['roots']
+condition_book=json.loads((W/'condition-obligations.json').read_text())
+condition_inputs=condition_book['roots']
+condition_reports=[]
+for item in [condition_book]+condition_book.get('additional_inputs',[]):
+ path=R/item['provenance']
+ assert hashlib.sha256(path.read_bytes()).hexdigest()==item['report_sha256']
+ assert hashlib.sha256((R/item['source_ir']).read_bytes()).hexdigest()==item['source_ir_sha256']
+ assert json.loads(path.read_text())['input_sha256']==item['source_ir_sha256']
+ condition_reports.append({r['source']:r for r in json.loads(path.read_text())['results']})
+for source,expected in condition_inputs.items():
+ matches=[]
+ for report in condition_reports:
+  if source not in report:continue
+  actual=report[source];pending=actual['pending_hypotheses']
+  matches.append(dict(target=actual['target'],pending_hypotheses=pending,obligation_targets={h:report[h]['target'] for h in pending})==expected)
+ assert any(matches),('condition input metadata mismatch',source)
 for sp in specs:
  cert=audits[sp['profile']][sp['certificate']]
  assert set(cert['axioms']) <= {'propext','Quot.sound','Classical.choice'}
@@ -124,6 +140,9 @@ assert len(peano_rows)==36 and all(r['bridge_status'] in {'TYPE_ISO','OPERATION_
 list_rows=[r for r in rows.values() if r['module']=='Corelib.Lists.ListDef']
 assert len(list_rows)==10 and all(r['bridge_status'] in {'TYPE_ISO','OPERATION_CORRESPONDENCE','STATEMENT_FULL_NATIVE'} for r in list_rows)
 (D/'list-module-coverage.json').write_text(json.dumps(dict(module='Corelib.Lists.ListDef',total=10,counts=dict(collections.Counter(r['bridge_status'] for r in list_rows)),sources=[r['source'] for r in list_rows]),indent=2))
+datatype_rows=[r for r in rows.values() if r['module']=='Corelib.Init.Datatypes']
+assert all(r['bridge_status'] in {'TYPE_ISO','OPERATION_CORRESPONDENCE','STATEMENT_FULL_NATIVE'} for r in datatype_rows)
+(D/'datatype-module-coverage.json').write_text(json.dumps(dict(module='Corelib.Init.Datatypes',total=len(datatype_rows),counts=dict(collections.Counter(r['bridge_status'] for r in datatype_rows)),sources=[r['source'] for r in datatype_rows]),indent=2))
 writecsv(D/'CORELIB_LEDGER.csv',list(rows.values()))
 counts=dict(collections.Counter(r['bridge_status'] for r in rows.values()))
 bcounts=dict(collections.Counter(r['bridge_status'] for r in base))
@@ -149,7 +168,7 @@ summary={'alias_regression_profiles':45,'alias_regression_lost':0,'alias_regress
  'closed_obligation_witnesses':len({w['name'] for r in resolved_conditions for w in r['witnesses']}),
  'axiom_free_closed_witnesses':len({w['name'] for r in resolved_conditions for w in r['witnesses'] if not w['axioms']}),
  'standard_axiom_closed_witnesses':len({w['name'] for r in resolved_conditions for w in r['witnesses'] if w['axioms']}),
- 'full_sort_type_certificates_added':7,'completion':'eighteen incremental batches plus P7 coexistence; overall plan remains incomplete',
+ 'full_sort_type_certificates_added':10,'completion':'nineteen incremental batches plus P7 coexistence; overall plan remains incomplete',
  'explicit_target_classes_since_batch_3':dict(collections.Counter(sp['target_class'] for sp in specs if 'target_class' in sp))}
 interop_path=D/'interop/all/import-all-validation.json'
 if interop_path.exists():

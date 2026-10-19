@@ -4267,6 +4267,718 @@
     ]
   },
   {
+    "source": "Corelib.Init.Datatypes.list",
+    "profile": "DatatypeNormalization",
+    "certificate": "NativeBridge.Incremental.DatatypeNormalization.fullListIso",
+    "kind": "TYPE_ISO",
+    "target": "List (PLift A)",
+    "target_class": "native_representation",
+    "scope": "All A : Sort u; erasing PLift for A : Type u agrees with the existing List A bridge.",
+    "type": "(A : Sort u) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.list A) (List (PLift A))",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.option",
+    "profile": "DatatypeNormalization",
+    "certificate": "NativeBridge.Incremental.DatatypeNormalization.fullOptionIso",
+    "kind": "TYPE_ISO",
+    "target": "Option (PLift A)",
+    "target_class": "native_representation",
+    "scope": "All A : Sort u; erasing PLift for A : Type u agrees with the existing Option A bridge.",
+    "type": "(A : Sort u) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.option A) (Option (PLift A))",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.result",
+    "profile": "DatatypeNormalization",
+    "certificate": "NativeBridge.Incremental.DatatypeNormalization.fullResultIso",
+    "kind": "TYPE_ISO",
+    "target": "Except (PLift E) (PLift A)",
+    "target_class": "native_representation",
+    "scope": "All A : Sort u and E : Sort v; Type-specialized compatibility checked.",
+    "type": "(A : Sort u) → (E : Sort v) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.result A E) (Except (PLift E) (PLift A))",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.CompareSpecT",
+    "profile": "DatatypeNormalization",
+    "certificate": "NativeBridge.Incremental.DatatypeNormalization.compareSpecTIso",
+    "kind": "TYPE_ISO",
+    "target": "PLift of the selected native comparison proposition",
+    "target_class": "native_representation",
+    "scope": "All three propositions and all comparison indices.",
+    "type": "(Peq Plt Pgt : Prop) →\n  (c : NativeBridge.RComparison) →\n    NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.CompareSpecT Peq Plt Pgt c)\n      (PLift (NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt (NativeBridge.comparisonTo c)))",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.CompSpecT",
+    "profile": "DatatypeNormalization",
+    "certificate": "NativeBridge.Incremental.DatatypeNormalization.compSpecTIso",
+    "kind": "TYPE_ISO",
+    "target": "PLift of the native relation proposition selected by Ordering",
+    "target_class": "native_representation",
+    "scope": "All Type-valued carriers, relation arguments and comparison indices.",
+    "type": "{A : Type u} →\n  (eq lt : A → A → Prop) →\n    (x y : A) →\n      (c : NativeBridge.RComparison) →\n        NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.CompSpecT A eq lt x y c)\n          (PLift\n            (NativeBridge.Incremental.DatatypeNormalization.compareSpec (eq x y) (lt x y) (lt y x)\n              (NativeBridge.comparisonTo c)))",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.reflect",
+    "profile": "DatatypeNormalization",
+    "certificate": "NativeBridge.Incremental.DatatypeNormalization.reflectIso",
+    "kind": "TYPE_ISO",
+    "target": "PLift (if b then P else ¬P)",
+    "target_class": "native_representation",
+    "scope": "All P : Prop and boolean indices; indexed bridge in addition to the existing reflect correspondence.",
+    "type": "(P : Prop) →\n  (b : NativeBridge.RBool) →\n    NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.reflect P b)\n      (PLift (NativeBridge.Incremental.DatatypeNormalization.boolSpec P (¬P) (NativeBridge.boolTo b)))",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.BoolSpec",
+    "profile": "DatatypeNormalization",
+    "certificate": "NativeBridge.Incremental.DatatypeNormalization.boolSpec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "if b then P else Q",
+    "target_class": "native_expression",
+    "scope": "All proposition/relation arguments and indices; iff of predicates, not a proof that arbitrary inputs satisfy them.",
+    "type": "∀ (P Q : Prop) (b : NativeBridge.RBool),\n  Rocq.Corelib.Init.Datatypes.BoolSpec P Q b ↔\n    NativeBridge.Incremental.DatatypeNormalization.boolSpec P Q (NativeBridge.boolTo b)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.CompareSpec",
+    "profile": "DatatypeNormalization",
+    "certificate": "NativeBridge.Incremental.DatatypeNormalization.compareSpec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Ordering-indexed selection of Peq / Plt / Pgt",
+    "target_class": "native_expression",
+    "scope": "All proposition/relation arguments and indices; iff of predicates, not a proof that arbitrary inputs satisfy them.",
+    "type": "∀ (Peq Plt Pgt : Prop) (c : NativeBridge.RComparison),\n  Rocq.Corelib.Init.Datatypes.CompareSpec Peq Plt Pgt c ↔\n    NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt (NativeBridge.comparisonTo c)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.CompSpec",
+    "profile": "DatatypeNormalization",
+    "certificate": "NativeBridge.Incremental.DatatypeNormalization.compSpec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Ordering-indexed selection of eq x y / lt x y / lt y x",
+    "target_class": "native_expression",
+    "scope": "All proposition/relation arguments and indices; iff of predicates, not a proof that arbitrary inputs satisfy them.",
+    "type": "∀ {A : Sort u} (eq lt : A → A → Prop) (x y : A) (c : NativeBridge.RComparison),\n  Rocq.Corelib.Init.Datatypes.CompSpec A eq lt x y c ↔\n    NativeBridge.Incremental.DatatypeNormalization.compareSpec (eq x y) (lt x y) (lt y x) (NativeBridge.comparisonTo c)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.CompareSpecT_rec",
+    "profile": "DatatypeSpecs",
+    "certificate": "NativeBridge.Incremental.DatatypeSpecs.compare_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Native Ordering / PLift elimination",
+    "target_class": "native_expression",
+    "scope": "Type-valued motives pulled back from the native indexed representation.",
+    "type": "∀ (Peq Plt Pgt : Prop)\n  (M : (c : Ordering) → PLift (NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt c) → Type)\n  (he : (h : Peq) → M Ordering.eq { down := h }) (hl : (h : Plt) → M Ordering.lt { down := h })\n  (hg : (h : Pgt) → M Ordering.gt { down := h }) (c : NativeBridge.RComparison)\n  (h : Rocq.Corelib.Init.Datatypes.CompareSpecT Peq Plt Pgt c),\n  Rocq.Corelib.Init.Datatypes.CompareSpecT_rec Peq Plt Pgt\n      (fun c h => M (NativeBridge.comparisonTo c) (NativeBridge.Incremental.DatatypeNormalization.compareSpecTTo h)) he\n      hl hg c h =\n    NativeBridge.Incremental.DatatypeSpecs.compareElim he hl hg (NativeBridge.comparisonTo c)\n      (NativeBridge.Incremental.DatatypeNormalization.compareSpecTTo h)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.CompareSpecT_rect",
+    "profile": "DatatypeSpecs",
+    "certificate": "NativeBridge.Incremental.DatatypeSpecs.compare_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Native Ordering / PLift elimination",
+    "target_class": "native_expression",
+    "scope": "Sort u-valued motives pulled back from the native indexed representation.",
+    "type": "∀ (Peq Plt Pgt : Prop)\n  (M : (c : Ordering) → PLift (NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt c) → Sort u)\n  (he : (h : Peq) → M Ordering.eq { down := h }) (hl : (h : Plt) → M Ordering.lt { down := h })\n  (hg : (h : Pgt) → M Ordering.gt { down := h }) (c : NativeBridge.RComparison)\n  (h : Rocq.Corelib.Init.Datatypes.CompareSpecT Peq Plt Pgt c),\n  Rocq.Corelib.Init.Datatypes.CompareSpecT_rect Peq Plt Pgt\n      (fun c h => M (NativeBridge.comparisonTo c) (NativeBridge.Incremental.DatatypeNormalization.compareSpecTTo h)) he\n      hl hg c h =\n    NativeBridge.Incremental.DatatypeSpecs.compareElim he hl hg (NativeBridge.comparisonTo c)\n      (NativeBridge.Incremental.DatatypeNormalization.compareSpecTTo h)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.reflect_rec",
+    "profile": "DatatypeSpecs",
+    "certificate": "NativeBridge.Incremental.DatatypeSpecs.reflect_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Native Bool / PLift elimination",
+    "target_class": "native_expression",
+    "scope": "Type-valued motives pulled back from the native indexed representation.",
+    "type": "∀ (P : Prop) (M : (b : Bool) → PLift (NativeBridge.Incremental.DatatypeNormalization.boolSpec P (¬P) b) → Type)\n  (ht : (h : P) → M true { down := h }) (hf : (h : ¬P) → M false { down := h }) (b : NativeBridge.RBool)\n  (h : Rocq.Corelib.Init.Datatypes.reflect P b),\n  Rocq.Corelib.Init.Datatypes.reflect_rec P\n      (fun b h => M (NativeBridge.boolTo b) (NativeBridge.Incremental.DatatypeNormalization.reflectTo h)) ht\n      (fun n => hf ⋯) b h =\n    NativeBridge.Incremental.DatatypeSpecs.reflectElim ht hf (NativeBridge.boolTo b)\n      (NativeBridge.Incremental.DatatypeNormalization.reflectTo h)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.reflect_rect",
+    "profile": "DatatypeSpecs",
+    "certificate": "NativeBridge.Incremental.DatatypeSpecs.reflect_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Native Bool / PLift elimination",
+    "target_class": "native_expression",
+    "scope": "Sort u-valued motives pulled back from the native indexed representation.",
+    "type": "∀ (P : Prop) (M : (b : Bool) → PLift (NativeBridge.Incremental.DatatypeNormalization.boolSpec P (¬P) b) → Sort u)\n  (ht : (h : P) → M true { down := h }) (hf : (h : ¬P) → M false { down := h }) (b : NativeBridge.RBool)\n  (h : Rocq.Corelib.Init.Datatypes.reflect P b),\n  Rocq.Corelib.Init.Datatypes.reflect_rect P\n      (fun b h => M (NativeBridge.boolTo b) (NativeBridge.Incremental.DatatypeNormalization.reflectTo h)) ht\n      (fun n => hf ⋯) b h =\n    NativeBridge.Incremental.DatatypeSpecs.reflectElim ht hf (NativeBridge.boolTo b)\n      (NativeBridge.Incremental.DatatypeNormalization.reflectTo h)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.CompareSpec2Type",
+    "profile": "DatatypeSpecs",
+    "certificate": "NativeBridge.Incremental.DatatypeSpecs.compareSpec2Type_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PLift.up of the corresponding native proposition proof",
+    "target_class": "existing_api",
+    "scope": "All inputs; all three source proof obligations instantiated by closed proofs.",
+    "closed_wrapper": "NativeBridge.Incremental.DatatypeSpecs.compareSpecClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Datatypes.CompareSpec2Type__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.DatatypeSpecs.compare_eq_obligation"
+      },
+      {
+        "source": "Corelib.Init.Datatypes.CompareSpec2Type__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.DatatypeSpecs.compare_lt_obligation"
+      },
+      {
+        "source": "Corelib.Init.Datatypes.CompareSpec2Type__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.DatatypeSpecs.compare_gt_obligation"
+      }
+    ],
+    "type": "∀ (Peq Plt Pgt : Prop) (c : NativeBridge.RComparison) (h : Rocq.Corelib.Init.Datatypes.CompareSpec Peq Plt Pgt c),\n  NativeBridge.Incremental.DatatypeNormalization.compareSpecTTo\n      (RocqPending.Corelib.Init.Datatypes.CompareSpec2Type Peq Plt Pgt c h) =\n    { down := ⋯ }",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.CompSpec2Type",
+    "profile": "DatatypeSpecs",
+    "certificate": "NativeBridge.Incremental.DatatypeSpecs.compSpec2Type_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PLift.up of the corresponding native proposition proof",
+    "target_class": "existing_api",
+    "scope": "All inputs; all three source proof obligations instantiated by closed proofs.",
+    "closed_wrapper": "NativeBridge.Incremental.DatatypeSpecs.compSpecClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Datatypes.CompareSpec2Type__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.DatatypeSpecs.compare_eq_obligation"
+      },
+      {
+        "source": "Corelib.Init.Datatypes.CompareSpec2Type__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.DatatypeSpecs.compare_lt_obligation"
+      },
+      {
+        "source": "Corelib.Init.Datatypes.CompareSpec2Type__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.DatatypeSpecs.compare_gt_obligation"
+      }
+    ],
+    "type": "∀ {A : Type u} (eq lt : A → A → Prop) (x y : A) (c : NativeBridge.RComparison)\n  (h : Rocq.Corelib.Init.Datatypes.CompSpec A eq lt x y c),\n  NativeBridge.Incremental.DatatypeNormalization.compareSpecTTo\n      (RocqPending.Corelib.Init.Datatypes.CompSpec2Type A eq lt x y c h) =\n    { down := ⋯ }",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Datatypes.BoolSpec_ind",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.BoolSpec_ind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P Q : Prop) (f : Bool → Prop),\n  (P → f true) → (Q → f false) → ∀ (x : Bool), NativeBridge.Incremental.DatatypeNormalization.boolSpec P Q x → f x",
+    "native_expression": "∀ (P Q : Prop) (f : Bool → Prop),\n  (P → f true) → (Q → f false) → ∀ (x : Bool), NativeBridge.Incremental.DatatypeNormalization.boolSpec P Q x → f x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.BoolSpec_ind.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.BoolSpec_ind.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.BoolSpec_sind",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.BoolSpec_sind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P Q : Prop) (f : Bool → Prop),\n  (P → f true) → (Q → f false) → ∀ (x : Bool), NativeBridge.Incremental.DatatypeNormalization.boolSpec P Q x → f x",
+    "native_expression": "∀ (P Q : Prop) (f : Bool → Prop),\n  (P → f true) → (Q → f false) → ∀ (x : Bool), NativeBridge.Incremental.DatatypeNormalization.boolSpec P Q x → f x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.BoolSpec_sind.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.BoolSpec_sind.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.CompOpp_iff",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompOpp_iff.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (x x_1 : Ordering), x.swap = x_1 ↔ x = x_1.swap",
+    "native_expression": "∀ (x x_1 : Ordering), x.swap = x_1 ↔ x = x_1.swap",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.CompOpp_iff.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompOpp_iff.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.CompOpp_inj",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompOpp_inj.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (x x_1 : Ordering), x.swap = x_1.swap → x = x_1",
+    "native_expression": "∀ (x x_1 : Ordering), x.swap = x_1.swap → x = x_1",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.CompOpp_inj.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompOpp_inj.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.CompOpp_involutive",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompOpp_involutive.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (x : Ordering), x.swap.swap = x",
+    "native_expression": "∀ (x : Ordering), x.swap.swap = x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.CompOpp_involutive.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompOpp_involutive.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.CompareSpecT_ind",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompareSpecT_ind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (Peq Plt Pgt : Prop)\n  (f : (c : Ordering) → PLift (NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt c) → Prop),\n  (∀ (p : Peq), f Ordering.eq { down := p }) →\n    (∀ (p : Plt), f Ordering.lt { down := p }) →\n      (∀ (p : Pgt), f Ordering.gt { down := p }) →\n        ∀ (x : Ordering) (h : PLift (NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt x)), f x h",
+    "native_expression": "∀ (Peq Plt Pgt : Prop)\n  (f : (c : Ordering) → PLift (NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt c) → Prop),\n  (∀ (p : Peq), f Ordering.eq { down := p }) →\n    (∀ (p : Plt), f Ordering.lt { down := p }) →\n      (∀ (p : Pgt), f Ordering.gt { down := p }) →\n        ∀ (x : Ordering) (h : PLift (NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt x)), f x h",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.CompareSpecT_ind.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompareSpecT_ind.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.CompareSpecT_sind",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompareSpecT_sind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (Peq Plt Pgt : Prop)\n  (f : (c : Ordering) → PLift (NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt c) → Prop),\n  (∀ (p : Peq), f Ordering.eq { down := p }) →\n    (∀ (p : Plt), f Ordering.lt { down := p }) →\n      (∀ (p : Pgt), f Ordering.gt { down := p }) →\n        ∀ (x : Ordering) (h : PLift (NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt x)), f x h",
+    "native_expression": "∀ (Peq Plt Pgt : Prop)\n  (f : (c : Ordering) → PLift (NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt c) → Prop),\n  (∀ (p : Peq), f Ordering.eq { down := p }) →\n    (∀ (p : Plt), f Ordering.lt { down := p }) →\n      (∀ (p : Pgt), f Ordering.gt { down := p }) →\n        ∀ (x : Ordering) (h : PLift (NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt x)), f x h",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.CompareSpecT_sind.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompareSpecT_sind.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.CompareSpec_ind",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompareSpec_ind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (Peq Plt Pgt : Prop) (f : Ordering → Prop),\n  (Peq → f Ordering.eq) →\n    (Plt → f Ordering.lt) →\n      (Pgt → f Ordering.gt) →\n        ∀ (x : Ordering), NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt x → f x",
+    "native_expression": "∀ (Peq Plt Pgt : Prop) (f : Ordering → Prop),\n  (Peq → f Ordering.eq) →\n    (Plt → f Ordering.lt) →\n      (Pgt → f Ordering.gt) →\n        ∀ (x : Ordering), NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt x → f x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.CompareSpec_ind.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompareSpec_ind.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.CompareSpec_sind",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompareSpec_sind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (Peq Plt Pgt : Prop) (f : Ordering → Prop),\n  (Peq → f Ordering.eq) →\n    (Plt → f Ordering.lt) →\n      (Pgt → f Ordering.gt) →\n        ∀ (x : Ordering), NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt x → f x",
+    "native_expression": "∀ (Peq Plt Pgt : Prop) (f : Ordering → Prop),\n  (Peq → f Ordering.eq) →\n    (Plt → f Ordering.lt) →\n      (Pgt → f Ordering.gt) →\n        ∀ (x : Ordering), NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt x → f x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.CompareSpec_sind.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompareSpec_sind.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.Empty_set_ind",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.Empty_set_ind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (f : Empty → Prop) (x : Empty), f x",
+    "native_expression": "∀ (f : Empty → Prop) (x : Empty), f x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.Empty_set_ind.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.Empty_set_ind.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.Empty_set_sind",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.Empty_set_sind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (f : Empty → Prop) (x : Empty), f x",
+    "native_expression": "∀ (f : Empty → Prop) (x : Empty), f x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.Empty_set_sind.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.Empty_set_sind.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.andb_prop",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.andb_prop.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (x x_1 : Bool), (x && x_1) = true → x = true ∧ x_1 = true",
+    "native_expression": "∀ (x x_1 : Bool), (x && x_1) = true → x = true ∧ x_1 = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.andb_prop.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.andb_prop.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.andb_true_intro",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.andb_true_intro.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (x x_1 : Bool), x = true ∧ x_1 = true → (x && x_1) = true",
+    "native_expression": "∀ (x x_1 : Bool), x = true ∧ x_1 = true → (x && x_1) = true",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.andb_true_intro.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.andb_true_intro.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.bool_ind",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.bool_ind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (f : Bool → Prop), f true → f false → ∀ (x : Bool), f x",
+    "native_expression": "∀ (f : Bool → Prop), f true → f false → ∀ (x : Bool), f x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.bool_ind.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.bool_ind.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.bool_sind",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.bool_sind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (f : Bool → Prop), f true → f false → ∀ (x : Bool), f x",
+    "native_expression": "∀ (f : Bool → Prop), f true → f false → ∀ (x : Bool), f x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.bool_sind.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.bool_sind.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.comparison_eq_stable",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.comparison_eq_stable.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (x x_1 : Ordering), ¬¬x = x_1 → x = x_1",
+    "native_expression": "∀ (x x_1 : Ordering), ¬¬x = x_1 → x = x_1",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.comparison_eq_stable.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.comparison_eq_stable.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.comparison_ind",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.comparison_ind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (f : Ordering → Prop), f Ordering.eq → f Ordering.lt → f Ordering.gt → ∀ (x : Ordering), f x",
+    "native_expression": "∀ (f : Ordering → Prop), f Ordering.eq → f Ordering.lt → f Ordering.gt → ∀ (x : Ordering), f x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.comparison_ind.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.comparison_ind.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.comparison_sind",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.comparison_sind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (f : Ordering → Prop), f Ordering.eq → f Ordering.lt → f Ordering.gt → ∀ (x : Ordering), f x",
+    "native_expression": "∀ (f : Ordering → Prop), f Ordering.eq → f Ordering.lt → f Ordering.gt → ∀ (x : Ordering), f x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.comparison_sind.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.comparison_sind.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.idProp",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.idProp.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Prop), A → A",
+    "native_expression": "∀ (A : Prop), A → A",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.idProp.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.idProp.statement.native",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.injective_projections",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.injective_projections.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Datatypes_116) (B : Sort u_Corelib_Init_Datatypes_117) (x x_1 : A ×' B),\n  x.fst = x_1.fst → x.snd = x_1.snd → x = x_1",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Datatypes_116) (B : Sort u_Corelib_Init_Datatypes_117) (x x_1 : A ×' B),\n  x.fst = x_1.fst → x.snd = x_1.snd → x = x_1",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.injective_projections.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.injective_projections.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.list_ind",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.list_ind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Datatypes_194) (f : List (PLift A) → Prop),\n  f [] → (∀ (a : A) (x : List (PLift A)), f x → f ({ down := a } :: x)) → ∀ (x : List (PLift A)), f x",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Datatypes_194) (f : List (PLift A) → Prop),\n  f [] → (∀ (a : A) (x : List (PLift A)), f x → f ({ down := a } :: x)) → ∀ (x : List (PLift A)), f x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.list_ind.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.list_ind.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.list_sind",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.list_sind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Datatypes_196) (f : List (PLift A) → Prop),\n  f [] → (∀ (a : A) (x : List (PLift A)), f x → f ({ down := a } :: x)) → ∀ (x : List (PLift A)), f x",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Datatypes_196) (f : List (PLift A) → Prop),\n  f [] → (∀ (a : A) (x : List (PLift A)), f x → f ({ down := a } :: x)) → ∀ (x : List (PLift A)), f x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.list_sind.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.list_sind.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.option_ind",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.option_ind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Datatypes_38) (f : Option (PLift A) → Prop),\n  (∀ (a : A), f (some { down := a })) → f none → ∀ (x : Option (PLift A)), f x",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Datatypes_38) (f : Option (PLift A) → Prop),\n  (∀ (a : A), f (some { down := a })) → f none → ∀ (x : Option (PLift A)), f x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.option_ind.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.option_ind.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.option_sind",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.option_sind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Datatypes_40) (f : Option (PLift A) → Prop),\n  (∀ (a : A), f (some { down := a })) → f none → ∀ (x : Option (PLift A)), f x",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Datatypes_40) (f : Option (PLift A) → Prop),\n  (∀ (a : A), f (some { down := a })) → f none → ∀ (x : Option (PLift A)), f x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.option_sind.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.option_sind.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.pair_equal_spec",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.pair_equal_spec.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Datatypes_126) (B : Sort u_Corelib_Init_Datatypes_127) (a1 a2 : A) (b1 b2 : B),\n  ⟨a1, b1⟩ = ⟨a2, b2⟩ ↔ a1 = a2 ∧ b1 = b2",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Datatypes_126) (B : Sort u_Corelib_Init_Datatypes_127) (a1 a2 : A) (b1 b2 : B),\n  ⟨a1, b1⟩ = ⟨a2, b2⟩ ↔ a1 = a2 ∧ b1 = b2",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.pair_equal_spec.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.pair_equal_spec.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.prod_ind",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.prod_ind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Datatypes_80) (B : Sort u_Corelib_Init_Datatypes_81) (f : A ×' B → Prop),\n  (∀ (a : A) (b : B), f ⟨a, b⟩) → ∀ (x : A ×' B), f x",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Datatypes_80) (B : Sort u_Corelib_Init_Datatypes_81) (f : A ×' B → Prop),\n  (∀ (a : A) (b : B), f ⟨a, b⟩) → ∀ (x : A ×' B), f x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.prod_ind.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.prod_ind.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.prod_sind",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.prod_sind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Datatypes_84) (B : Sort u_Corelib_Init_Datatypes_85) (f : A ×' B → Prop),\n  (∀ (a : A) (b : B), f ⟨a, b⟩) → ∀ (x : A ×' B), f x",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Datatypes_84) (B : Sort u_Corelib_Init_Datatypes_85) (f : A ×' B → Prop),\n  (∀ (a : A) (b : B), f ⟨a, b⟩) → ∀ (x : A ×' B), f x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.prod_sind.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.prod_sind.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.reflect_ind",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.reflect_ind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P : Prop) (f : (b : Bool) → PLift (NativeBridge.Incremental.DatatypeNormalization.boolSpec P (¬P) b) → Prop),\n  (∀ (p : P), f true { down := p }) →\n    (∀ (n : ¬P), f false { down := n }) →\n      ∀ (x : Bool) (h : PLift (NativeBridge.Incremental.DatatypeNormalization.boolSpec P (¬P) x)), f x h",
+    "native_expression": "∀ (P : Prop) (f : (b : Bool) → PLift (NativeBridge.Incremental.DatatypeNormalization.boolSpec P (¬P) b) → Prop),\n  (∀ (p : P), f true { down := p }) →\n    (∀ (n : ¬P), f false { down := n }) →\n      ∀ (x : Bool) (h : PLift (NativeBridge.Incremental.DatatypeNormalization.boolSpec P (¬P) x)), f x h",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.reflect_ind.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.reflect_ind.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.reflect_sind",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.reflect_sind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (P : Prop) (f : (b : Bool) → PLift (NativeBridge.Incremental.DatatypeNormalization.boolSpec P (¬P) b) → Prop),\n  (∀ (p : P), f true { down := p }) →\n    (∀ (n : ¬P), f false { down := n }) →\n      ∀ (x : Bool) (h : PLift (NativeBridge.Incremental.DatatypeNormalization.boolSpec P (¬P) x)), f x h",
+    "native_expression": "∀ (P : Prop) (f : (b : Bool) → PLift (NativeBridge.Incremental.DatatypeNormalization.boolSpec P (¬P) b) → Prop),\n  (∀ (p : P), f true { down := p }) →\n    (∀ (n : ¬P), f false { down := n }) →\n      ∀ (x : Bool) (h : PLift (NativeBridge.Incremental.DatatypeNormalization.boolSpec P (¬P) x)), f x h",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.reflect_sind.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.reflect_sind.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.result_ind",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.result_ind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Datatypes_68) (E : Sort u_Corelib_Init_Datatypes_69) (f : Except (PLift E) (PLift A) → Prop),\n  (∀ (a : A), f (Except.ok { down := a })) →\n    (∀ (e : E), f (Except.error { down := e })) → ∀ (x : Except (PLift E) (PLift A)), f x",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Datatypes_68) (E : Sort u_Corelib_Init_Datatypes_69) (f : Except (PLift E) (PLift A) → Prop),\n  (∀ (a : A), f (Except.ok { down := a })) →\n    (∀ (e : E), f (Except.error { down := e })) → ∀ (x : Except (PLift E) (PLift A)), f x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.result_ind.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.result_ind.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.result_sind",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.result_sind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Datatypes_72) (E : Sort u_Corelib_Init_Datatypes_73) (f : Except (PLift E) (PLift A) → Prop),\n  (∀ (a : A), f (Except.ok { down := a })) →\n    (∀ (e : E), f (Except.error { down := e })) → ∀ (x : Except (PLift E) (PLift A)), f x",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Datatypes_72) (E : Sort u_Corelib_Init_Datatypes_73) (f : Except (PLift E) (PLift A) → Prop),\n  (∀ (a : A), f (Except.ok { down := a })) →\n    (∀ (e : E), f (Except.error { down := e })) → ∀ (x : Except (PLift E) (PLift A)), f x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.result_sind.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.result_sind.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.rew_pair",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.rew_pair.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Datatypes_174) (P : A → Sort u_Corelib_Init_Datatypes_175)\n  (Q : A → Sort u_Corelib_Init_Datatypes_176) (x1 x2 : A) (y1 : P x1) (y2 : Q x1) (H : x1 = x2),\n  ⟨H ▸ y1, H ▸ y2⟩ = H ▸ ⟨y1, y2⟩",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Datatypes_174) (P : A → Sort u_Corelib_Init_Datatypes_175)\n  (Q : A → Sort u_Corelib_Init_Datatypes_176) (x1 x2 : A) (y1 : P x1) (y2 : Q x1) (H : x1 = x2),\n  ⟨H ▸ y1, H ▸ y2⟩ = H ▸ ⟨y1, y2⟩",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.rew_pair.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.rew_pair.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.sum_ind",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.sum_ind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Datatypes_54) (B : Sort u_Corelib_Init_Datatypes_55) (f : A ⊕' B → Prop),\n  (∀ (a : A), f (PSum.inl a)) → (∀ (b : B), f (PSum.inr b)) → ∀ (x : A ⊕' B), f x",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Datatypes_54) (B : Sort u_Corelib_Init_Datatypes_55) (f : A ⊕' B → Prop),\n  (∀ (a : A), f (PSum.inl a)) → (∀ (b : B), f (PSum.inr b)) → ∀ (x : A ⊕' B), f x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.sum_ind.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.sum_ind.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.sum_sind",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.sum_sind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Datatypes_58) (B : Sort u_Corelib_Init_Datatypes_59) (f : A ⊕' B → Prop),\n  (∀ (a : A), f (PSum.inl a)) → (∀ (b : B), f (PSum.inr b)) → ∀ (x : A ⊕' B), f x",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Datatypes_58) (B : Sort u_Corelib_Init_Datatypes_59) (f : A ⊕' B → Prop),\n  (∀ (a : A), f (PSum.inl a)) → (∀ (b : B), f (PSum.inr b)) → ∀ (x : A ⊕' B), f x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.sum_sind.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.sum_sind.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.surjective_pairing",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.surjective_pairing.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (A : Sort u_Corelib_Init_Datatypes_108) (B : Sort u_Corelib_Init_Datatypes_109) (x : A ×' B), x = ⟨x.fst, x.snd⟩",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Datatypes_108) (B : Sort u_Corelib_Init_Datatypes_109) (x : A ×' B), x = ⟨x.fst, x.snd⟩",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.surjective_pairing.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.surjective_pairing.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.unit_ind",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.unit_ind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (f : Unit → Prop), f () → ∀ (x : Unit), f x",
+    "native_expression": "∀ (f : Unit → Prop), f () → ∀ (x : Unit), f x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.unit_ind.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.unit_ind.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.unit_sind",
+    "profile": "DatatypeStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.unit_sind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (f : Unit → Prop), f () → ∀ (x : Unit), f x",
+    "native_expression": "∀ (f : Unit → Prop), f () → ∀ (x : Unit), f x",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.Init.Datatypes.unit_sind.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.unit_sind.statement.native",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
     "source": "Corelib.BinNums.PosDef.Pos.mask_ind",
     "profile": "BinaryMaskStatements",
     "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.BinNums.PosDef.Pos.mask_ind.statement.correspondence",

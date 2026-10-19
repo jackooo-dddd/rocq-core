@@ -3100,5 +3100,170 @@
     "target": "Nat subtraction",
     "target_class": "existing_api",
     "scope": "All inputs; source mutual-recursion companion reconstructed as a local definition when not separately exported, with constructor equations checked by rfl. No new source declaration or axiom."
+  },
+  {
+    "source": "Corelib.Init.Datatypes.list",
+    "profile": "DatatypeNormalization",
+    "certificate": "NativeBridge.Incremental.DatatypeNormalization.fullListIso",
+    "kind": "TYPE_ISO",
+    "target": "List (PLift A)",
+    "target_class": "native_representation",
+    "scope": "All A : Sort u; erasing PLift for A : Type u agrees with the existing List A bridge."
+  },
+  {
+    "source": "Corelib.Init.Datatypes.option",
+    "profile": "DatatypeNormalization",
+    "certificate": "NativeBridge.Incremental.DatatypeNormalization.fullOptionIso",
+    "kind": "TYPE_ISO",
+    "target": "Option (PLift A)",
+    "target_class": "native_representation",
+    "scope": "All A : Sort u; erasing PLift for A : Type u agrees with the existing Option A bridge."
+  },
+  {
+    "source": "Corelib.Init.Datatypes.result",
+    "profile": "DatatypeNormalization",
+    "certificate": "NativeBridge.Incremental.DatatypeNormalization.fullResultIso",
+    "kind": "TYPE_ISO",
+    "target": "Except (PLift E) (PLift A)",
+    "target_class": "native_representation",
+    "scope": "All A : Sort u and E : Sort v; Type-specialized compatibility checked."
+  },
+  {
+    "source": "Corelib.Init.Datatypes.CompareSpecT",
+    "profile": "DatatypeNormalization",
+    "certificate": "NativeBridge.Incremental.DatatypeNormalization.compareSpecTIso",
+    "kind": "TYPE_ISO",
+    "target": "PLift of the selected native comparison proposition",
+    "target_class": "native_representation",
+    "scope": "All three propositions and all comparison indices."
+  },
+  {
+    "source": "Corelib.Init.Datatypes.CompSpecT",
+    "profile": "DatatypeNormalization",
+    "certificate": "NativeBridge.Incremental.DatatypeNormalization.compSpecTIso",
+    "kind": "TYPE_ISO",
+    "target": "PLift of the native relation proposition selected by Ordering",
+    "target_class": "native_representation",
+    "scope": "All Type-valued carriers, relation arguments and comparison indices."
+  },
+  {
+    "source": "Corelib.Init.Datatypes.reflect",
+    "profile": "DatatypeNormalization",
+    "certificate": "NativeBridge.Incremental.DatatypeNormalization.reflectIso",
+    "kind": "TYPE_ISO",
+    "target": "PLift (if b then P else ¬P)",
+    "target_class": "native_representation",
+    "scope": "All P : Prop and boolean indices; indexed bridge in addition to the existing reflect correspondence."
+  },
+  {
+    "source": "Corelib.Init.Datatypes.BoolSpec",
+    "profile": "DatatypeNormalization",
+    "certificate": "NativeBridge.Incremental.DatatypeNormalization.boolSpec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "if b then P else Q",
+    "target_class": "native_expression",
+    "scope": "All proposition/relation arguments and indices; iff of predicates, not a proof that arbitrary inputs satisfy them."
+  },
+  {
+    "source": "Corelib.Init.Datatypes.CompareSpec",
+    "profile": "DatatypeNormalization",
+    "certificate": "NativeBridge.Incremental.DatatypeNormalization.compareSpec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Ordering-indexed selection of Peq / Plt / Pgt",
+    "target_class": "native_expression",
+    "scope": "All proposition/relation arguments and indices; iff of predicates, not a proof that arbitrary inputs satisfy them."
+  },
+  {
+    "source": "Corelib.Init.Datatypes.CompSpec",
+    "profile": "DatatypeNormalization",
+    "certificate": "NativeBridge.Incremental.DatatypeNormalization.compSpec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Ordering-indexed selection of eq x y / lt x y / lt y x",
+    "target_class": "native_expression",
+    "scope": "All proposition/relation arguments and indices; iff of predicates, not a proof that arbitrary inputs satisfy them."
+  },
+  {
+    "source": "Corelib.Init.Datatypes.CompareSpecT_rec",
+    "profile": "DatatypeSpecs",
+    "certificate": "NativeBridge.Incremental.DatatypeSpecs.compare_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Native Ordering / PLift elimination",
+    "target_class": "native_expression",
+    "scope": "Type-valued motives pulled back from the native indexed representation."
+  },
+  {
+    "source": "Corelib.Init.Datatypes.CompareSpecT_rect",
+    "profile": "DatatypeSpecs",
+    "certificate": "NativeBridge.Incremental.DatatypeSpecs.compare_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Native Ordering / PLift elimination",
+    "target_class": "native_expression",
+    "scope": "Sort u-valued motives pulled back from the native indexed representation."
+  },
+  {
+    "source": "Corelib.Init.Datatypes.reflect_rec",
+    "profile": "DatatypeSpecs",
+    "certificate": "NativeBridge.Incremental.DatatypeSpecs.reflect_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Native Bool / PLift elimination",
+    "target_class": "native_expression",
+    "scope": "Type-valued motives pulled back from the native indexed representation."
+  },
+  {
+    "source": "Corelib.Init.Datatypes.reflect_rect",
+    "profile": "DatatypeSpecs",
+    "certificate": "NativeBridge.Incremental.DatatypeSpecs.reflect_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Native Bool / PLift elimination",
+    "target_class": "native_expression",
+    "scope": "Sort u-valued motives pulled back from the native indexed representation."
+  },
+  {
+    "source": "Corelib.Init.Datatypes.CompareSpec2Type",
+    "profile": "DatatypeSpecs",
+    "certificate": "NativeBridge.Incremental.DatatypeSpecs.compareSpec2Type_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PLift.up of the corresponding native proposition proof",
+    "target_class": "existing_api",
+    "scope": "All inputs; all three source proof obligations instantiated by closed proofs.",
+    "closed_wrapper": "NativeBridge.Incremental.DatatypeSpecs.compareSpecClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Datatypes.CompareSpec2Type__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.DatatypeSpecs.compare_eq_obligation"
+      },
+      {
+        "source": "Corelib.Init.Datatypes.CompareSpec2Type__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.DatatypeSpecs.compare_lt_obligation"
+      },
+      {
+        "source": "Corelib.Init.Datatypes.CompareSpec2Type__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.DatatypeSpecs.compare_gt_obligation"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Datatypes.CompSpec2Type",
+    "profile": "DatatypeSpecs",
+    "certificate": "NativeBridge.Incremental.DatatypeSpecs.compSpec2Type_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PLift.up of the corresponding native proposition proof",
+    "target_class": "existing_api",
+    "scope": "All inputs; all three source proof obligations instantiated by closed proofs.",
+    "closed_wrapper": "NativeBridge.Incremental.DatatypeSpecs.compSpecClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Datatypes.CompareSpec2Type__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.DatatypeSpecs.compare_eq_obligation"
+      },
+      {
+        "source": "Corelib.Init.Datatypes.CompareSpec2Type__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.DatatypeSpecs.compare_lt_obligation"
+      },
+      {
+        "source": "Corelib.Init.Datatypes.CompareSpec2Type__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.DatatypeSpecs.compare_gt_obligation"
+      }
+    ]
   }
 ]

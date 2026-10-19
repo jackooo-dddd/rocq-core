@@ -1,0 +1,298 @@
+[
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.BoolSpec_ind.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.BoolSpec_ind.statement.native",
+    "native_expression": "∀ (P Q : Prop) (f : Bool → Prop),\n  (P → f true) → (Q → f false) → ∀ (x : Bool), NativeBridge.Incremental.DatatypeNormalization.boolSpec P Q x → f x",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.BoolSpec_ind.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.BoolSpec_sind.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.BoolSpec_sind.statement.native",
+    "native_expression": "∀ (P Q : Prop) (f : Bool → Prop),\n  (P → f true) → (Q → f false) → ∀ (x : Bool), NativeBridge.Incremental.DatatypeNormalization.boolSpec P Q x → f x",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.BoolSpec_sind.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompOpp_iff.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompOpp_iff.statement.native",
+    "native_expression": "∀ (x x_1 : Ordering), x.swap = x_1 ↔ x = x_1.swap",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.CompOpp_iff.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompOpp_inj.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompOpp_inj.statement.native",
+    "native_expression": "∀ (x x_1 : Ordering), x.swap = x_1.swap → x = x_1",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.CompOpp_inj.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompOpp_involutive.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompOpp_involutive.statement.native",
+    "native_expression": "∀ (x : Ordering), x.swap.swap = x",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.CompOpp_involutive.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompareSpecT_ind.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompareSpecT_ind.statement.native",
+    "native_expression": "∀ (Peq Plt Pgt : Prop)\n  (f : (c : Ordering) → PLift (NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt c) → Prop),\n  (∀ (p : Peq), f Ordering.eq { down := p }) →\n    (∀ (p : Plt), f Ordering.lt { down := p }) →\n      (∀ (p : Pgt), f Ordering.gt { down := p }) →\n        ∀ (x : Ordering) (h : PLift (NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt x)), f x h",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.CompareSpecT_ind.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompareSpecT_sind.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompareSpecT_sind.statement.native",
+    "native_expression": "∀ (Peq Plt Pgt : Prop)\n  (f : (c : Ordering) → PLift (NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt c) → Prop),\n  (∀ (p : Peq), f Ordering.eq { down := p }) →\n    (∀ (p : Plt), f Ordering.lt { down := p }) →\n      (∀ (p : Pgt), f Ordering.gt { down := p }) →\n        ∀ (x : Ordering) (h : PLift (NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt x)), f x h",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.CompareSpecT_sind.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompareSpec_ind.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompareSpec_ind.statement.native",
+    "native_expression": "∀ (Peq Plt Pgt : Prop) (f : Ordering → Prop),\n  (Peq → f Ordering.eq) →\n    (Plt → f Ordering.lt) →\n      (Pgt → f Ordering.gt) →\n        ∀ (x : Ordering), NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt x → f x",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.CompareSpec_ind.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompareSpec_sind.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.CompareSpec_sind.statement.native",
+    "native_expression": "∀ (Peq Plt Pgt : Prop) (f : Ordering → Prop),\n  (Peq → f Ordering.eq) →\n    (Plt → f Ordering.lt) →\n      (Pgt → f Ordering.gt) →\n        ∀ (x : Ordering), NativeBridge.Incremental.DatatypeNormalization.compareSpec Peq Plt Pgt x → f x",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.CompareSpec_sind.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.Empty_set_ind.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.Empty_set_ind.statement.native",
+    "native_expression": "∀ (f : Empty → Prop) (x : Empty), f x",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.Empty_set_ind.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.Empty_set_sind.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.Empty_set_sind.statement.native",
+    "native_expression": "∀ (f : Empty → Prop) (x : Empty), f x",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.Empty_set_sind.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.andb_prop.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.andb_prop.statement.native",
+    "native_expression": "∀ (x x_1 : Bool), (x && x_1) = true → x = true ∧ x_1 = true",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.andb_prop.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.andb_true_intro.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.andb_true_intro.statement.native",
+    "native_expression": "∀ (x x_1 : Bool), x = true ∧ x_1 = true → (x && x_1) = true",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.andb_true_intro.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.bool_ind.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.bool_ind.statement.native",
+    "native_expression": "∀ (f : Bool → Prop), f true → f false → ∀ (x : Bool), f x",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.bool_ind.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.bool_sind.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.bool_sind.statement.native",
+    "native_expression": "∀ (f : Bool → Prop), f true → f false → ∀ (x : Bool), f x",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.bool_sind.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.comparison_eq_stable.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.comparison_eq_stable.statement.native",
+    "native_expression": "∀ (x x_1 : Ordering), ¬¬x = x_1 → x = x_1",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.comparison_eq_stable.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.comparison_ind.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.comparison_ind.statement.native",
+    "native_expression": "∀ (f : Ordering → Prop), f Ordering.eq → f Ordering.lt → f Ordering.gt → ∀ (x : Ordering), f x",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.comparison_ind.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.comparison_sind.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.comparison_sind.statement.native",
+    "native_expression": "∀ (f : Ordering → Prop), f Ordering.eq → f Ordering.lt → f Ordering.gt → ∀ (x : Ordering), f x",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.comparison_sind.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.idProp.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.idProp.statement.native",
+    "native_expression": "∀ (A : Prop), A → A",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.idProp.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.injective_projections.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.injective_projections.statement.native",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Datatypes_116) (B : Sort u_Corelib_Init_Datatypes_117) (x x_1 : A ×' B),\n  x.fst = x_1.fst → x.snd = x_1.snd → x = x_1",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.injective_projections.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.list_ind.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.list_ind.statement.native",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Datatypes_194) (f : List (PLift A) → Prop),\n  f [] → (∀ (a : A) (x : List (PLift A)), f x → f ({ down := a } :: x)) → ∀ (x : List (PLift A)), f x",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.list_ind.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.list_sind.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.list_sind.statement.native",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Datatypes_196) (f : List (PLift A) → Prop),\n  f [] → (∀ (a : A) (x : List (PLift A)), f x → f ({ down := a } :: x)) → ∀ (x : List (PLift A)), f x",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.list_sind.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.option_ind.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.option_ind.statement.native",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Datatypes_38) (f : Option (PLift A) → Prop),\n  (∀ (a : A), f (some { down := a })) → f none → ∀ (x : Option (PLift A)), f x",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.option_ind.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.option_sind.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.option_sind.statement.native",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Datatypes_40) (f : Option (PLift A) → Prop),\n  (∀ (a : A), f (some { down := a })) → f none → ∀ (x : Option (PLift A)), f x",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.option_sind.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.pair_equal_spec.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.pair_equal_spec.statement.native",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Datatypes_126) (B : Sort u_Corelib_Init_Datatypes_127) (a1 a2 : A) (b1 b2 : B),\n  ⟨a1, b1⟩ = ⟨a2, b2⟩ ↔ a1 = a2 ∧ b1 = b2",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.pair_equal_spec.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.prod_ind.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.prod_ind.statement.native",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Datatypes_80) (B : Sort u_Corelib_Init_Datatypes_81) (f : A ×' B → Prop),\n  (∀ (a : A) (b : B), f ⟨a, b⟩) → ∀ (x : A ×' B), f x",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.prod_ind.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.prod_sind.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.prod_sind.statement.native",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Datatypes_84) (B : Sort u_Corelib_Init_Datatypes_85) (f : A ×' B → Prop),\n  (∀ (a : A) (b : B), f ⟨a, b⟩) → ∀ (x : A ×' B), f x",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.prod_sind.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.reflect_ind.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.reflect_ind.statement.native",
+    "native_expression": "∀ (P : Prop) (f : (b : Bool) → PLift (NativeBridge.Incremental.DatatypeNormalization.boolSpec P (¬P) b) → Prop),\n  (∀ (p : P), f true { down := p }) →\n    (∀ (n : ¬P), f false { down := n }) →\n      ∀ (x : Bool) (h : PLift (NativeBridge.Incremental.DatatypeNormalization.boolSpec P (¬P) x)), f x h",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.reflect_ind.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.reflect_sind.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.reflect_sind.statement.native",
+    "native_expression": "∀ (P : Prop) (f : (b : Bool) → PLift (NativeBridge.Incremental.DatatypeNormalization.boolSpec P (¬P) b) → Prop),\n  (∀ (p : P), f true { down := p }) →\n    (∀ (n : ¬P), f false { down := n }) →\n      ∀ (x : Bool) (h : PLift (NativeBridge.Incremental.DatatypeNormalization.boolSpec P (¬P) x)), f x h",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.reflect_sind.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.result_ind.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.result_ind.statement.native",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Datatypes_68) (E : Sort u_Corelib_Init_Datatypes_69) (f : Except (PLift E) (PLift A) → Prop),\n  (∀ (a : A), f (Except.ok { down := a })) →\n    (∀ (e : E), f (Except.error { down := e })) → ∀ (x : Except (PLift E) (PLift A)), f x",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.result_ind.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.result_sind.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.result_sind.statement.native",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Datatypes_72) (E : Sort u_Corelib_Init_Datatypes_73) (f : Except (PLift E) (PLift A) → Prop),\n  (∀ (a : A), f (Except.ok { down := a })) →\n    (∀ (e : E), f (Except.error { down := e })) → ∀ (x : Except (PLift E) (PLift A)), f x",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.result_sind.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.rew_pair.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.rew_pair.statement.native",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Datatypes_174) (P : A → Sort u_Corelib_Init_Datatypes_175)\n  (Q : A → Sort u_Corelib_Init_Datatypes_176) (x1 x2 : A) (y1 : P x1) (y2 : Q x1) (H : x1 = x2),\n  ⟨H ▸ y1, H ▸ y2⟩ = H ▸ ⟨y1, y2⟩",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.rew_pair.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.sum_ind.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.sum_ind.statement.native",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Datatypes_54) (B : Sort u_Corelib_Init_Datatypes_55) (f : A ⊕' B → Prop),\n  (∀ (a : A), f (PSum.inl a)) → (∀ (b : B), f (PSum.inr b)) → ∀ (x : A ⊕' B), f x",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.sum_ind.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.sum_sind.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.sum_sind.statement.native",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Datatypes_58) (B : Sort u_Corelib_Init_Datatypes_59) (f : A ⊕' B → Prop),\n  (∀ (a : A), f (PSum.inl a)) → (∀ (b : B), f (PSum.inr b)) → ∀ (x : A ⊕' B), f x",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.sum_sind.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.surjective_pairing.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.surjective_pairing.statement.native",
+    "native_expression": "∀ (A : Sort u_Corelib_Init_Datatypes_108) (B : Sort u_Corelib_Init_Datatypes_109) (x : A ×' B), x = ⟨x.fst, x.snd⟩",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.surjective_pairing.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.unit_ind.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.unit_ind.statement.native",
+    "native_expression": "∀ (f : Unit → Prop), f () → ∀ (x : Unit), f x",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.unit_ind.statement"
+  },
+  {
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.unit_sind.statement.correspondence",
+    "full": true,
+    "native": "NativeBridge.Incremental.Statements.Rocq.Corelib.Init.Datatypes.unit_sind.statement.native",
+    "native_expression": "∀ (f : Unit → Prop), f () → ∀ (x : Unit), f x",
+    "remaining_source_symbols": [],
+    "source_target": "Rocq.Corelib.Init.Datatypes.unit_sind.statement"
+  }
+]
