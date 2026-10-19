@@ -15016,6 +15016,539 @@ NativeBridge.Incremental.SpecFloatSqrt.squareRoot_agrees
 
 公理闭包：propext, Classical.choice, Quot.sound
 
+## Corelib.Floats.PrimFloat.zero
+
+NativeBridge.Incremental.PrimFloatRepresentation.zero_agrees
+
+目标：NativeBridge.Incremental.PrimFloatRepresentation.zero；范围：Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.
+
+```lean
+NativeBridge.Incremental.PrimFloatRepresentation.floatTo Rocq.Corelib.Floats.PrimFloat.zero =
+  NativeBridge.Incremental.PrimFloatRepresentation.zero
+```
+
+公理闭包：空
+
+## Corelib.Floats.PrimFloat.neg_zero
+
+NativeBridge.Incremental.PrimFloatRepresentation.negativeZero_agrees
+
+目标：NativeBridge.Incremental.PrimFloatRepresentation.negativeZero；范围：Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.
+
+```lean
+NativeBridge.Incremental.PrimFloatRepresentation.floatTo Rocq.Corelib.Floats.PrimFloat.neg_zero =
+  NativeBridge.Incremental.PrimFloatRepresentation.negativeZero
+```
+
+公理闭包：空
+
+## Corelib.Floats.PrimFloat.infinity
+
+NativeBridge.Incremental.PrimFloatRepresentation.infinity_agrees
+
+目标：NativeBridge.Incremental.PrimFloatRepresentation.infinity；范围：Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.
+
+```lean
+NativeBridge.Incremental.PrimFloatRepresentation.floatTo Rocq.Corelib.Floats.PrimFloat.infinity =
+  NativeBridge.Incremental.PrimFloatRepresentation.infinity
+```
+
+公理闭包：空
+
+## Corelib.Floats.PrimFloat.neg_infinity
+
+NativeBridge.Incremental.PrimFloatRepresentation.negativeInfinity_agrees
+
+目标：NativeBridge.Incremental.PrimFloatRepresentation.negativeInfinity；范围：Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.
+
+```lean
+NativeBridge.Incremental.PrimFloatRepresentation.floatTo Rocq.Corelib.Floats.PrimFloat.neg_infinity =
+  NativeBridge.Incremental.PrimFloatRepresentation.negativeInfinity
+```
+
+公理闭包：空
+
+## Corelib.Floats.PrimFloat.nan
+
+NativeBridge.Incremental.PrimFloatRepresentation.nan_agrees
+
+目标：NativeBridge.Incremental.PrimFloatRepresentation.nan；范围：Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.
+
+```lean
+NativeBridge.Incremental.PrimFloatRepresentation.floatTo Rocq.Corelib.Floats.PrimFloat.nan =
+  NativeBridge.Incremental.PrimFloatRepresentation.nan
+```
+
+公理闭包：空
+
+## Corelib.Floats.PrimFloat.one
+
+NativeBridge.Incremental.PrimFloatRepresentation.one_agrees
+
+目标：NativeBridge.Incremental.PrimFloatRepresentation.one；范围：Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.
+
+```lean
+NativeBridge.Incremental.PrimFloatRepresentation.floatTo Rocq.Corelib.Floats.PrimFloat.one =
+  NativeBridge.Incremental.PrimFloatRepresentation.one
+```
+
+公理闭包：空
+
+## Corelib.Floats.PrimFloat.two
+
+NativeBridge.Incremental.PrimFloatRepresentation.two_agrees
+
+目标：NativeBridge.Incremental.PrimFloatRepresentation.two；范围：Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.
+
+```lean
+NativeBridge.Incremental.PrimFloatRepresentation.floatTo Rocq.Corelib.Floats.PrimFloat.two =
+  NativeBridge.Incremental.PrimFloatRepresentation.two
+```
+
+公理闭包：空
+
+## Corelib.Floats.PrimFloat.opp
+
+NativeBridge.Incremental.PrimFloatRepresentation.negate_agrees
+
+目标：NativeBridge.Incremental.PrimFloatRepresentation.negate；范围：Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.
+
+```lean
+∀ (x : Rocq.Corelib.Floats.PrimFloat.float),
+  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.PrimFloat.opp x) =
+    NativeBridge.Incremental.PrimFloatRepresentation.negate (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)
+```
+
+公理闭包：空
+
+## Corelib.Floats.PrimFloat.abs
+
+NativeBridge.Incremental.PrimFloatRepresentation.absolute_agrees
+
+目标：NativeBridge.Incremental.PrimFloatRepresentation.absolute；范围：Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.
+
+```lean
+∀ (x : Rocq.Corelib.Floats.PrimFloat.float),
+  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.PrimFloat.abs x) =
+    NativeBridge.Incremental.PrimFloatRepresentation.absolute
+      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)
+```
+
+公理闭包：空
+
+## Corelib.Floats.PrimFloat.parser
+
+NativeBridge.Incremental.PrimFloatRepresentation.parser_agrees
+
+目标：NativeBridge.Incremental.PrimFloatRepresentation.identity；范围：Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.
+
+```lean
+∀ (x : Rocq.Corelib.Floats.PrimFloat.float),
+  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.PrimFloat.parser x) =
+    NativeBridge.Incremental.PrimFloatRepresentation.identity
+      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)
+```
+
+公理闭包：空
+
+## Corelib.Floats.PrimFloat.printer
+
+NativeBridge.Incremental.PrimFloatRepresentation.printer_agrees
+
+目标：NativeBridge.Incremental.PrimFloatRepresentation.identity；范围：Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.
+
+```lean
+∀ (x : Rocq.Corelib.Floats.PrimFloat.float_wrapper),
+  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.PrimFloat.printer x) =
+    NativeBridge.Incremental.PrimFloatRepresentation.identity
+      (NativeBridge.Incremental.PrimFloatRepresentation.wrapperTo x)
+```
+
+公理闭包：空
+
+## Corelib.Floats.PrimFloat.float_wrap
+
+NativeBridge.Incremental.PrimFloatRepresentation.wrap_agrees
+
+目标：NativeBridge.Incremental.PrimFloatRepresentation.identity；范围：Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.
+
+```lean
+∀ (x : Rocq.Corelib.Floats.PrimFloat.float_wrapper),
+  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.PrimFloat.float_wrap x) =
+    NativeBridge.Incremental.PrimFloatRepresentation.identity
+      (NativeBridge.Incremental.PrimFloatRepresentation.wrapperTo x)
+```
+
+公理闭包：空
+
+## Corelib.Floats.PrimFloat.eqb
+
+NativeBridge.Incremental.PrimFloatRepresentation.ieeeEqual_agrees
+
+目标：NativeBridge.Incremental.PrimFloatRepresentation.ieeeEqual；范围：Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.
+
+```lean
+∀ (x y : Rocq.Corelib.Floats.PrimFloat.float),
+  NativeBridge.boolTo (Rocq.Corelib.Floats.PrimFloat.eqb x y) =
+    NativeBridge.Incremental.PrimFloatRepresentation.ieeeEqual
+      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)
+      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo y)
+```
+
+公理闭包：propext
+
+## Corelib.Floats.PrimFloat.Leibniz.eqb
+
+NativeBridge.Incremental.PrimFloatRepresentation.bitsEqual_agrees
+
+目标：NativeBridge.Incremental.PrimFloatRepresentation.bitsEqual；范围：Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.
+
+```lean
+∀ (x y : Rocq.Corelib.Floats.PrimFloat.float),
+  NativeBridge.boolTo (Rocq.Corelib.Floats.PrimFloat.Leibniz.eqb x y) =
+    NativeBridge.Incremental.PrimFloatRepresentation.bitsEqual
+      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)
+      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo y)
+```
+
+公理闭包：propext
+
+## Corelib.Floats.PrimFloat.ltb
+
+NativeBridge.Incremental.PrimFloatRepresentation.less_agrees
+
+目标：NativeBridge.Incremental.PrimFloatRepresentation.less；范围：Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.
+
+```lean
+∀ (x y : Rocq.Corelib.Floats.PrimFloat.float),
+  NativeBridge.boolTo (Rocq.Corelib.Floats.PrimFloat.ltb x y) =
+    NativeBridge.Incremental.PrimFloatRepresentation.less (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)
+      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo y)
+```
+
+公理闭包：propext
+
+## Corelib.Floats.PrimFloat.leb
+
+NativeBridge.Incremental.PrimFloatRepresentation.lessEqual_agrees
+
+目标：NativeBridge.Incremental.PrimFloatRepresentation.lessEqual；范围：Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.
+
+```lean
+∀ (x y : Rocq.Corelib.Floats.PrimFloat.float),
+  NativeBridge.boolTo (Rocq.Corelib.Floats.PrimFloat.leb x y) =
+    NativeBridge.Incremental.PrimFloatRepresentation.lessEqual
+      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)
+      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo y)
+```
+
+公理闭包：propext
+
+## Corelib.Floats.PrimFloat.compare
+
+NativeBridge.Incremental.PrimFloatRepresentation.comparison_agrees
+
+目标：NativeBridge.Incremental.PrimFloatRepresentation.comparison；范围：Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.
+
+```lean
+∀ (x y : Rocq.Corelib.Floats.PrimFloat.float),
+  NativeBridge.Incremental.PrimFloatRepresentation.comparisonTo (Rocq.Corelib.Floats.PrimFloat.compare x y) =
+    NativeBridge.Incremental.PrimFloatRepresentation.comparison
+      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)
+      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo y)
+```
+
+公理闭包：propext
+
+## Corelib.Floats.PrimFloat.is_nan
+
+NativeBridge.Incremental.PrimFloatRepresentation.isNaN_agrees
+
+目标：NativeBridge.Incremental.PrimFloatRepresentation.isNaN；范围：Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.
+
+```lean
+∀ (x : Rocq.Corelib.Floats.PrimFloat.float),
+  NativeBridge.boolTo (Rocq.Corelib.Floats.PrimFloat.is_nan x) =
+    NativeBridge.Incremental.PrimFloatRepresentation.isNaN (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.PrimFloat.is_zero
+
+NativeBridge.Incremental.PrimFloatRepresentation.zeroTest_agrees
+
+目标：NativeBridge.Incremental.PrimFloatRepresentation.zeroTest；范围：Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.
+
+```lean
+∀ (x : Rocq.Corelib.Floats.PrimFloat.float),
+  NativeBridge.boolTo (Rocq.Corelib.Floats.PrimFloat.is_zero x) =
+    NativeBridge.Incremental.PrimFloatRepresentation.zeroTest
+      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)
+```
+
+公理闭包：propext
+
+## Corelib.Floats.PrimFloat.is_infinity
+
+NativeBridge.Incremental.PrimFloatRepresentation.infinityTest_agrees
+
+目标：NativeBridge.Incremental.PrimFloatRepresentation.infinityTest；范围：Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.
+
+```lean
+∀ (x : Rocq.Corelib.Floats.PrimFloat.float),
+  NativeBridge.boolTo (Rocq.Corelib.Floats.PrimFloat.is_infinity x) =
+    NativeBridge.Incremental.PrimFloatRepresentation.infinityTest
+      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)
+```
+
+公理闭包：propext
+
+## Corelib.Floats.PrimFloat.is_finite
+
+NativeBridge.Incremental.PrimFloatRepresentation.finiteTest_agrees
+
+目标：NativeBridge.Incremental.PrimFloatRepresentation.finiteTest；范围：Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.
+
+```lean
+∀ (x : Rocq.Corelib.Floats.PrimFloat.float),
+  NativeBridge.boolTo (Rocq.Corelib.Floats.PrimFloat.is_finite x) =
+    NativeBridge.Incremental.PrimFloatRepresentation.finiteTest
+      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.PrimFloat.normfr_mantissa
+
+NativeBridge.Incremental.PrimFloatRepresentation.normalMantissa_agrees
+
+目标：NativeBridge.Incremental.PrimFloatRepresentation.normalMantissa；范围：Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.
+
+```lean
+∀ (x : Rocq.Corelib.Floats.PrimFloat.float),
+  Rocq.Corelib.Floats.PrimFloat.normfr_mantissa x =
+    NativeBridge.Incremental.PrimFloatRepresentation.normalMantissa
+      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)
+```
+
+公理闭包：propext
+
+## Corelib.Floats.PrimFloat.classify
+
+NativeBridge.Incremental.PrimFloatRepresentation.classification_agrees
+
+目标：NativeBridge.Incremental.PrimFloatRepresentation.classification；范围：Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.
+
+```lean
+∀ (x : Rocq.Corelib.Floats.PrimFloat.float),
+  NativeBridge.floatClassTo (Rocq.Corelib.Floats.PrimFloat.classify x) =
+    NativeBridge.Incremental.PrimFloatRepresentation.classification
+      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)
+```
+
+公理闭包：propext
+
+## Corelib.Floats.PrimFloat.float
+
+NativeBridge.Incremental.PrimFloatRepresentation.floatIso
+
+目标：NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat；范围：Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.
+
+```lean
+NativeBridge.Iso Rocq.Corelib.Floats.PrimFloat.float NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat
+```
+
+公理闭包：空
+
+## Corelib.Floats.PrimFloat.float_wrapper
+
+NativeBridge.Incremental.PrimFloatRepresentation.wrapperIso
+
+目标：NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat；范围：Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.
+
+```lean
+NativeBridge.Iso Rocq.Corelib.Floats.PrimFloat.float_wrapper
+  NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat
+```
+
+公理闭包：空
+
+## Corelib.Floats.PrimFloat.float_comparison
+
+NativeBridge.Incremental.PrimFloatRepresentation.comparisonIso
+
+目标：NativeBridge.Incremental.PrimFloatRepresentation.nativeComparison；范围：Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.
+
+```lean
+NativeBridge.Iso Rocq.Corelib.Floats.PrimFloat.float_comparison
+  NativeBridge.Incremental.PrimFloatRepresentation.nativeComparison
+```
+
+公理闭包：空
+
+## Corelib.Floats.PrimFloat.add
+
+NativeBridge.Incremental.PrimFloatArithmetic.addition_agrees
+
+目标：NativeBridge.Incremental.PrimFloatArithmetic.addition；范围：Canonical binary64 native field representation and exact integer/rational algorithms with nearest-even rounding; not runtime Float API equivalence.
+
+```lean
+∀ (x y : Rocq.Corelib.Floats.PrimFloat.float),
+  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.PrimFloat.add x y) =
+    NativeBridge.Incremental.PrimFloatArithmetic.addition (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)
+      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo y)
+```
+
+公理闭包：propext
+
+## Corelib.Floats.PrimFloat.sub
+
+NativeBridge.Incremental.PrimFloatArithmetic.subtraction_agrees
+
+目标：NativeBridge.Incremental.PrimFloatArithmetic.subtraction；范围：Canonical binary64 native field representation and exact integer/rational algorithms with nearest-even rounding; not runtime Float API equivalence.
+
+```lean
+∀ (x y : Rocq.Corelib.Floats.PrimFloat.float),
+  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.PrimFloat.sub x y) =
+    NativeBridge.Incremental.PrimFloatArithmetic.subtraction
+      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)
+      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo y)
+```
+
+公理闭包：propext
+
+## Corelib.Floats.PrimFloat.mul
+
+NativeBridge.Incremental.PrimFloatArithmetic.multiplication_agrees
+
+目标：NativeBridge.Incremental.PrimFloatArithmetic.multiplication；范围：Canonical binary64 native field representation and exact integer/rational algorithms with nearest-even rounding; not runtime Float API equivalence.
+
+```lean
+∀ (x y : Rocq.Corelib.Floats.PrimFloat.float),
+  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.PrimFloat.mul x y) =
+    NativeBridge.Incremental.PrimFloatArithmetic.multiplication
+      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)
+      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo y)
+```
+
+公理闭包：propext
+
+## Corelib.Floats.PrimFloat.div
+
+NativeBridge.Incremental.PrimFloatArithmetic.division_agrees
+
+目标：NativeBridge.Incremental.PrimFloatArithmetic.division；范围：Canonical binary64 native field representation and exact integer/rational algorithms with nearest-even rounding; not runtime Float API equivalence.
+
+```lean
+∀ (x y : Rocq.Corelib.Floats.PrimFloat.float),
+  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.PrimFloat.div x y) =
+    NativeBridge.Incremental.PrimFloatArithmetic.division (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)
+      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo y)
+```
+
+公理闭包：propext
+
+## Corelib.Floats.PrimFloat.get_sign
+
+NativeBridge.Incremental.PrimFloatArithmetic.getSign_agrees
+
+目标：NativeBridge.Incremental.PrimFloatArithmetic.getSign；范围：Canonical binary64 native field representation and exact integer/rational algorithms with nearest-even rounding; not runtime Float API equivalence.
+
+```lean
+∀ (x : Rocq.Corelib.Floats.PrimFloat.float),
+  NativeBridge.boolTo (Rocq.Corelib.Floats.PrimFloat.get_sign x) =
+    NativeBridge.Incremental.PrimFloatArithmetic.getSign (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)
+```
+
+公理闭包：propext
+
+## Corelib.Floats.PrimFloat.of_uint63
+
+NativeBridge.Incremental.PrimFloatExponent.fromWord_agrees
+
+目标：NativeBridge.Incremental.PrimFloatExponent.fromWord；范围：Canonical binary64 native field representation; exact shifted exponent bounds, nearest-even conversions and bit-based adjacent values, including all exceptional cases.
+
+```lean
+∀ (x : BitVec 63),
+  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.PrimFloat.of_uint63 x) =
+    NativeBridge.Incremental.PrimFloatExponent.fromWord x
+```
+
+公理闭包：空
+
+## Corelib.Floats.PrimFloat.ldshiftexp
+
+NativeBridge.Incremental.PrimFloatExponent.scaleShifted_agrees
+
+目标：NativeBridge.Incremental.PrimFloatExponent.scaleShifted；范围：Canonical binary64 native field representation; exact shifted exponent bounds, nearest-even conversions and bit-based adjacent values, including all exceptional cases.
+
+```lean
+∀ (x : Rocq.Corelib.Floats.PrimFloat.float) (e : BitVec 63),
+  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.PrimFloat.ldshiftexp x e) =
+    NativeBridge.Incremental.PrimFloatExponent.scaleShifted (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)
+      e
+```
+
+公理闭包：propext
+
+## Corelib.Floats.PrimFloat.frshiftexp
+
+NativeBridge.Incremental.PrimFloatExponent.fractionShifted_agrees
+
+目标：NativeBridge.Incremental.PrimFloatExponent.fractionShifted；范围：Canonical binary64 native field representation; exact shifted exponent bounds, nearest-even conversions and bit-based adjacent values, including all exceptional cases.
+
+```lean
+∀ (x : Rocq.Corelib.Floats.PrimFloat.float),
+  NativeBridge.Incremental.PrimFloatExponent.fractionTo (Rocq.Corelib.Floats.PrimFloat.frshiftexp x) =
+    NativeBridge.Incremental.PrimFloatExponent.fractionShifted
+      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)
+```
+
+公理闭包：propext
+
+## Corelib.Floats.PrimFloat.next_up
+
+NativeBridge.Incremental.PrimFloatExponent.nextUp_agrees
+
+目标：NativeBridge.Incremental.PrimFloatExponent.nextUp；范围：Canonical binary64 native field representation; exact shifted exponent bounds, nearest-even conversions and bit-based adjacent values, including all exceptional cases.
+
+```lean
+∀ (x : Rocq.Corelib.Floats.PrimFloat.float),
+  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.PrimFloat.next_up x) =
+    NativeBridge.Incremental.PrimFloatExponent.nextUp (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)
+```
+
+公理闭包：propext
+
+## Corelib.Floats.PrimFloat.next_down
+
+NativeBridge.Incremental.PrimFloatExponent.nextDown_agrees
+
+目标：NativeBridge.Incremental.PrimFloatExponent.nextDown；范围：Canonical binary64 native field representation; exact shifted exponent bounds, nearest-even conversions and bit-based adjacent values, including all exceptional cases.
+
+```lean
+∀ (x : Rocq.Corelib.Floats.PrimFloat.float),
+  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.PrimFloat.next_down x) =
+    NativeBridge.Incremental.PrimFloatExponent.nextDown (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)
+```
+
+公理闭包：propext
+
+## Corelib.Floats.PrimFloat.sqrt
+
+NativeBridge.Incremental.PrimFloatSqrt.squareRoot_agrees
+
+目标：NativeBridge.Incremental.PrimFloatSqrt.squareRoot；范围：Canonical binary64 square root with native Nat.sqrt. The source base-four integer algorithm is proved equal to Nat.sqrt for every Nat; full exceptional branches and nearest-even rounding preserved.
+
+```lean
+∀ (x : Rocq.Corelib.Floats.PrimFloat.float),
+  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.PrimFloat.sqrt x) =
+    NativeBridge.Incremental.PrimFloatSqrt.squareRoot (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
 ## Corelib.ssr.ssrbool.canLR_in
 
 NativeBridge.Incremental.SSRBoolClosedStatements.RocqPending.Corelib.ssr.ssrbool.canLR_in.statement.correspondence

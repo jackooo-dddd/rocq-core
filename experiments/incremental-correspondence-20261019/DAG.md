@@ -637,3 +637,19 @@ flowchart TD
 ```
 
 本图节点均已验证。上节的浮点算术待办已完成；PrimFloat 表示及其与 SpecFloat 的转换继续处理。
+
+## 第八十二至八十五批：规范 binary64 依赖已完成
+
+```mermaid
+flowchart TD
+  NativeFields[Option Sum Bool Fin BitVec] --> PrimFloatRepresentation
+  PrimFloatRepresentation --> PrimFloatArithmetic
+  PrimFloatArithmetic --> PrimFloatExponent
+  PrimFloatArithmetic --> PrimFloatSqrt
+  NatSqrt[Lean Nat.sqrt] --> IntegerSqrtProof[逐位算法的平方界限与唯一性]
+  IntegerSqrtProof --> PrimFloatSqrt
+  PrimFloatExponent --> FloatOpsNext[待完成 FloatOps]
+  SpecFloatShift --> FloatOpsNext
+```
+
+PrimFloat 的全部节点已验证；下一阶段在统一 FloatAxioms 源闭包重检这些证明。源闭包未导出的 parser、wrapper、消去器等不需要导入下一阶段支持文件。

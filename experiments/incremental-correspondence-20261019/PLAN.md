@@ -247,3 +247,7 @@ SSR Bool 的 314 个依赖/原陈述目标已有闭合证明，覆盖 271 / 275 
 ## 第七十六至八十一批：符号浮点完成
 
 新增 17 根，2017 / 2180；SpecFloat 55/55。154 个验证 profile，136 个覆盖 profile / 1765 份增量证书共同导入。详见 [结果](BATCH76_81_RESULTS.md)。接着处理 PrimFloat 规范二进制表示及运算、FloatOps 的表示转换，再逐项处理浮点规格；与运行时 Float API 的等价尚未证明。
+
+## 第八十二至八十五批：PrimFloat 完成
+
+新增 37 根，2054 / 2180；PrimFloat 37/37。158 个验证 profile，140 个覆盖 profile / 1802 份证书共同导入。见 [结果](BATCH82_85_RESULTS.md)。继续在 FloatAxioms 实际闭包中重检依赖，随后证明 FloatOps 的 8 项和 FloatAxioms 的 33 项原生对应；原规格的独立证明另行区分。

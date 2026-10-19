@@ -90,3 +90,5 @@ opaque 支持的独立验证见 interop/check_opaque.py 与 reports/interop/opaq
 第七十一至七十五批：六个基础标记/决策/兼容 profile 与四个符号浮点覆盖 profile。130 个覆盖 profile / 1748 份证书共同导入，2372 个入口、21186 个副本。浮点目标为精确符号算法，未宣称对应运行时 Float；支持 profile 不单独计根。
 
 第七十六至八十一批：六个符号浮点覆盖 profile；136 个覆盖 profile、1765 份证书共同导入，2389 个入口、23420 个依赖副本。Nat.Sqrt.Lemmas 显式导入，保留平方根原生声明身份。未重跑旧 Mathlib 消费例；符号浮点目标不等于已证明运行时 Float 对应。
+
+第八十二至八十五批：PrimFloatRepresentation、PrimFloatArithmetic、PrimFloatExponent、PrimFloatSqrt；140 个覆盖 profile、1802 份证书共同导入，2426 个入口、23746 个副本。新增类型目标由现成 Option/Sum/Fin/BitVec 组成；开方保留 Nat.sqrt 原生身份。

@@ -2358,5 +2358,175 @@
     "name": "NativeBridge.Incremental.SpecFloatSqrt.squareRoot",
     "native_expression": "fun prec emax x =>\n  match x with\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero s =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero s\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity s =>\n    if s = true then NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan\n    else NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity s\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite s m e =>\n    if s = true then NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan\n    else\n      have r := NativeBridge.Incremental.SpecFloatSqrt.sqrtCore prec emax (↑m.val) e;\n      NativeBridge.Incremental.SpecFloatNormalize.roundAux prec emax false r.fst.fst r.fst.snd r.snd",
     "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatRepresentation.absolute",
+    "native_expression": "fun x =>\n  match x with\n  | some (Sum.inl (fst, e, f)) => some (Sum.inl (false, e, f))\n  | some (Sum.inr val) => some (Sum.inr false)\n  | none => none",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatRepresentation.bitsEqual",
+    "native_expression": "fun x y =>\n  (NativeBridge.Incremental.PrimFloatRepresentation.toBits x).toNat ==\n    (NativeBridge.Incremental.PrimFloatRepresentation.toBits y).toNat",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatRepresentation.classification",
+    "native_expression": "fun x =>\n  match x with\n  | none => 8\n  | some (Sum.inr s) => if s = true then 7 else 6\n  | some (Sum.inl (s, e, f)) =>\n    if (↑e == 0) = true then if (f.toNat == 0) = true then if s = true then 5 else 4 else if s = true then 3 else 2\n    else if s = true then 1 else 0",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatRepresentation.comparison",
+    "native_expression": "fun x y =>\n  if NativeBridge.Incremental.PrimFloatRepresentation.less x y = true then some Ordering.lt\n  else\n    if NativeBridge.Incremental.PrimFloatRepresentation.less y x = true then some Ordering.gt\n    else if NativeBridge.Incremental.PrimFloatRepresentation.ieeeEqual x y = true then some Ordering.eq else none",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatRepresentation.finiteTest",
+    "native_expression": "fun x =>\n  !(NativeBridge.Incremental.PrimFloatRepresentation.isNaN x ||\n      NativeBridge.Incremental.PrimFloatRepresentation.infinityTest x)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatRepresentation.identity",
+    "native_expression": "fun x => x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatRepresentation.ieeeEqual",
+    "native_expression": "fun x y =>\n  if\n      (NativeBridge.Incremental.PrimFloatRepresentation.isNaN x ||\n          NativeBridge.Incremental.PrimFloatRepresentation.isNaN y) =\n        true then\n    false\n  else\n    NativeBridge.Incremental.PrimFloatRepresentation.isZero x &&\n        NativeBridge.Incremental.PrimFloatRepresentation.isZero y ||\n      (NativeBridge.Incremental.PrimFloatRepresentation.toBits x).toNat ==\n        (NativeBridge.Incremental.PrimFloatRepresentation.toBits y).toNat",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatRepresentation.infinity",
+    "native_expression": "some (Sum.inr false)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatRepresentation.infinityTest",
+    "native_expression": "fun x =>\n  NativeBridge.Incremental.PrimFloatRepresentation.ieeeEqual\n    (NativeBridge.Incremental.PrimFloatRepresentation.absolute x)\n    NativeBridge.Incremental.PrimFloatRepresentation.infinity",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatRepresentation.isNaN",
+    "native_expression": "fun x =>\n  match x with\n  | none => true\n  | x => false",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatRepresentation.less",
+    "native_expression": "fun x y =>\n  if\n      (NativeBridge.Incremental.PrimFloatRepresentation.isNaN x ||\n            NativeBridge.Incremental.PrimFloatRepresentation.isNaN y ||\n          NativeBridge.Incremental.PrimFloatRepresentation.ieeeEqual x y) =\n        true then\n    false\n  else\n    if\n        (NativeBridge.Incremental.PrimFloatRepresentation.sign x !=\n            NativeBridge.Incremental.PrimFloatRepresentation.sign y) =\n          true then\n      NativeBridge.Incremental.PrimFloatRepresentation.sign x\n    else\n      if NativeBridge.Incremental.PrimFloatRepresentation.sign x = true then\n        decide\n          ((NativeBridge.Incremental.PrimFloatRepresentation.toBits y).toNat <\n            (NativeBridge.Incremental.PrimFloatRepresentation.toBits x).toNat)\n      else\n        decide\n          ((NativeBridge.Incremental.PrimFloatRepresentation.toBits x).toNat <\n            (NativeBridge.Incremental.PrimFloatRepresentation.toBits y).toNat)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatRepresentation.lessEqual",
+    "native_expression": "fun x y =>\n  NativeBridge.Incremental.PrimFloatRepresentation.ieeeEqual x y ||\n    NativeBridge.Incremental.PrimFloatRepresentation.less x y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatRepresentation.nan",
+    "native_expression": "none",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatRepresentation.nativeComparison",
+    "native_expression": "Option Ordering",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat",
+    "native_expression": "Option (Bool × Fin 2047 × BitVec 52 ⊕ Bool)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatRepresentation.negate",
+    "native_expression": "fun x =>\n  match x with\n  | some (Sum.inl (s, e, f)) => some (Sum.inl (!s, e, f))\n  | some (Sum.inr s) => some (Sum.inr !s)\n  | none => none",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatRepresentation.negativeInfinity",
+    "native_expression": "some (Sum.inr true)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatRepresentation.negativeZero",
+    "native_expression": "NativeBridge.Incremental.PrimFloatRepresentation.signedZero true",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatRepresentation.normalMantissa",
+    "native_expression": "fun x =>\n  match x with\n  | some (Sum.inl (fst, e, f)) =>\n    BitVec.ofNat 63\n      (if (↑e == 1022) = true then\n        NativeBridge.Incremental.PrimFloatRepresentation.mantissa (some (Sum.inl (false, e, f)))\n      else 0)\n  | x => 0",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatRepresentation.one",
+    "native_expression": "NativeBridge.Incremental.PrimFloatRepresentation.finite false 1023 0",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatRepresentation.two",
+    "native_expression": "NativeBridge.Incremental.PrimFloatRepresentation.finite false 1024 0",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatRepresentation.zero",
+    "native_expression": "NativeBridge.Incremental.PrimFloatRepresentation.signedZero false",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatRepresentation.zeroTest",
+    "native_expression": "fun x =>\n  NativeBridge.Incremental.PrimFloatRepresentation.ieeeEqual x NativeBridge.Incremental.PrimFloatRepresentation.zero",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatArithmetic.addition",
+    "native_expression": "fun x y =>\n  match x with\n  | none => none\n  | some (Sum.inr s) =>\n    match y with\n    | none => none\n    | some (Sum.inr t) => if (s == t) = true then some (Sum.inr s) else none\n    | some (Sum.inl val) => some (Sum.inr s)\n  | some (Sum.inl (sx, fst, snd)) =>\n    match y with\n    | none => none\n    | some (Sum.inr s) => some (Sum.inr s)\n    | some (Sum.inl (sy, fst, snd)) =>\n      have e :=\n        min (NativeBridge.Incremental.PrimFloatRepresentation.exponent x)\n          (NativeBridge.Incremental.PrimFloatRepresentation.exponent y);\n      have a :=\n        NativeBridge.Incremental.PrimFloatRepresentation.mantissa x *\n          2 ^ (NativeBridge.Incremental.PrimFloatRepresentation.exponent x - e).toNat;\n      have b :=\n        NativeBridge.Incremental.PrimFloatRepresentation.mantissa y *\n          2 ^ (NativeBridge.Incremental.PrimFloatRepresentation.exponent y - e).toNat;\n      have n :=\n        NativeBridge.Incremental.PrimFloatArithmetic.signed sx a +\n          NativeBridge.Incremental.PrimFloatArithmetic.signed sy b;\n      if (n == 0) = true then NativeBridge.Incremental.PrimFloatRepresentation.signedZero (sx && sy)\n      else NativeBridge.Incremental.PrimFloatArithmetic.round (decide (n < 0)) n.natAbs 1 e",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatArithmetic.division",
+    "native_expression": "fun x y =>\n  have s :=\n    NativeBridge.Incremental.PrimFloatRepresentation.sign x != NativeBridge.Incremental.PrimFloatRepresentation.sign y;\n  match x with\n  | none => none\n  | some (Sum.inr val) =>\n    match y with\n    | none => none\n    | some (Sum.inr val) => none\n    | some (Sum.inl val) => some (Sum.inr s)\n  | some (Sum.inl val) =>\n    match y with\n    | none => none\n    | some (Sum.inr val) => NativeBridge.Incremental.PrimFloatRepresentation.signedZero s\n    | some (Sum.inl val) =>\n      if NativeBridge.Incremental.PrimFloatRepresentation.isZero y = true then\n        if NativeBridge.Incremental.PrimFloatRepresentation.isZero x = true then none else some (Sum.inr s)\n      else\n        NativeBridge.Incremental.PrimFloatArithmetic.round s\n          (NativeBridge.Incremental.PrimFloatRepresentation.mantissa x)\n          (NativeBridge.Incremental.PrimFloatRepresentation.mantissa y)\n          (NativeBridge.Incremental.PrimFloatRepresentation.exponent x -\n            NativeBridge.Incremental.PrimFloatRepresentation.exponent y)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatArithmetic.getSign",
+    "native_expression": "fun x =>\n  NativeBridge.Incremental.PrimFloatRepresentation.less\n    (if NativeBridge.Incremental.PrimFloatRepresentation.zeroTest x = true then\n      NativeBridge.Incremental.PrimFloatArithmetic.division NativeBridge.Incremental.PrimFloatRepresentation.one x\n    else x)\n    NativeBridge.Incremental.PrimFloatRepresentation.zero",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatArithmetic.multiplication",
+    "native_expression": "fun x y =>\n  have s :=\n    NativeBridge.Incremental.PrimFloatRepresentation.sign x != NativeBridge.Incremental.PrimFloatRepresentation.sign y;\n  match x with\n  | none => none\n  | some (Sum.inr val) =>\n    match y with\n    | none => none\n    | some (Sum.inr val) => some (Sum.inr s)\n    | some (Sum.inl val) =>\n      if NativeBridge.Incremental.PrimFloatRepresentation.isZero y = true then none else some (Sum.inr s)\n  | some (Sum.inl val) =>\n    match y with\n    | none => none\n    | some (Sum.inr val) =>\n      if NativeBridge.Incremental.PrimFloatRepresentation.isZero x = true then none else some (Sum.inr s)\n    | some (Sum.inl val) =>\n      NativeBridge.Incremental.PrimFloatArithmetic.round s\n        (NativeBridge.Incremental.PrimFloatRepresentation.mantissa x *\n          NativeBridge.Incremental.PrimFloatRepresentation.mantissa y)\n        1\n        (NativeBridge.Incremental.PrimFloatRepresentation.exponent x +\n          NativeBridge.Incremental.PrimFloatRepresentation.exponent y)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatArithmetic.subtraction",
+    "native_expression": "fun x y =>\n  NativeBridge.Incremental.PrimFloatArithmetic.addition x (NativeBridge.Incremental.PrimFloatRepresentation.negate y)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatExponent.fractionShifted",
+    "native_expression": "fun x =>\n  match x with\n  | some (Sum.inl (s, fst, snd)) =>\n    if NativeBridge.Incremental.PrimFloatRepresentation.isZero x = true then (x, 0)\n    else\n      have e :=\n        ↑(NativeBridge.Incremental.PrimFloatRepresentation.mantissa x).log2 +\n            NativeBridge.Incremental.PrimFloatRepresentation.exponent x +\n          1;\n      (NativeBridge.Incremental.PrimFloatArithmetic.round s\n          (NativeBridge.Incremental.PrimFloatRepresentation.mantissa x) 1\n          (NativeBridge.Incremental.PrimFloatRepresentation.exponent x - e),\n        BitVec.ofNat 63 (e + 2101).toNat)\n  | x_1 => (x, 0)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatExponent.fromWord",
+    "native_expression": "fun x => NativeBridge.Incremental.PrimFloatArithmetic.round false x.toNat 1 0",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatExponent.nextDown",
+    "native_expression": "fun x =>\n  NativeBridge.Incremental.PrimFloatRepresentation.negate\n    (NativeBridge.Incremental.PrimFloatExponent.nextUp (NativeBridge.Incremental.PrimFloatRepresentation.negate x))",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatExponent.nextUp",
+    "native_expression": "fun x =>\n  match x with\n  | none => none\n  | some (Sum.inr false) => x\n  | some (Sum.inr true) =>\n    NativeBridge.Incremental.PrimFloatRepresentation.fromBits (BitVec.ofNat 64 (2 ^ 64 - 2 ^ 52 - 1))\n  | some (Sum.inl (s, fst, snd)) =>\n    if NativeBridge.Incremental.PrimFloatRepresentation.isZero x = true then\n      NativeBridge.Incremental.PrimFloatRepresentation.finite false 0 1\n    else\n      NativeBridge.Incremental.PrimFloatRepresentation.fromBits\n        (BitVec.ofNat 64\n          (if s = true then (NativeBridge.Incremental.PrimFloatRepresentation.toBits x).toNat - 1\n          else (NativeBridge.Incremental.PrimFloatRepresentation.toBits x).toNat + 1))",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatExponent.scaleShifted",
+    "native_expression": "fun x e =>\n  match x with\n  | some (Sum.inl (s, fst, snd)) =>\n    NativeBridge.Incremental.PrimFloatArithmetic.round s (NativeBridge.Incremental.PrimFloatRepresentation.mantissa x) 1\n      (NativeBridge.Incremental.PrimFloatRepresentation.exponent x + ↑(min e.toNat 4202) - 2101)\n  | x_1 => x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimFloatSqrt.squareRoot",
+    "native_expression": "fun x =>\n  match x with\n  | none => none\n  | some (Sum.inr s) => if s = true then none else x\n  | some (Sum.inl (s, fst, snd)) =>\n    if NativeBridge.Incremental.PrimFloatRepresentation.isZero x = true then x\n    else\n      if s = true then none\n      else\n        have k :=\n          ↑(NativeBridge.Incremental.PrimFloatRepresentation.mantissa x).log2 +\n            NativeBridge.Incremental.PrimFloatRepresentation.exponent x;\n        have q := max (-1074) (k / 2 - 52);\n        have shift := NativeBridge.Incremental.PrimFloatRepresentation.exponent x - 2 * q;\n        have n :=\n          if shift < 0 then NativeBridge.Incremental.PrimFloatRepresentation.mantissa x\n          else NativeBridge.Incremental.PrimFloatRepresentation.mantissa x * 2 ^ shift.toNat;\n        have d := if shift < 0 then 2 ^ (-shift).toNat else 1;\n        have m := (n / d).sqrt;\n        have mid := d * (2 * m + 1) ^ 2;\n        have m := if (decide (4 * n > mid) || 4 * n == mid && m % 2 == 1) = true then m + 1 else m;\n        NativeBridge.Incremental.PrimFloatArithmetic.pack false m q",
+    "remaining_source_symbols": []
   }
 ]

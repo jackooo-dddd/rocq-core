@@ -267,3 +267,9 @@ Decimal.decimal 对应“带符号整数数字、小数数字、可选带符号�
 [SpecFloatDivision.lean](../experiments/incremental-correspondence-20261019/proofs/SpecFloatDivision.lean) 的 divisionCore_agrees 将机械商与余数转换为 Int.fdiv/fmod；division_agrees 再接入完整 roundAux。NaN、无穷、零除及符号分支均覆盖。
 
 [SpecFloatSqrt.lean](../experiments/incremental-correspondence-20261019/proofs/SpecFloatSqrt.lean) 的 sqrtCore_agrees 将整数开方转换为 Nat.sqrt，同时证明余数以及 Exact/Lt/Gt 舍入位置；squareRoot_agrees 组合完整浮点开方，包括保留负零与负数返回 NaN。目标是原生精确符号算法，尚非 Lean Float.sqrt 的等价定理。
+
+## 33. 规范 binary64 的双向对应与整数开方
+
+[PrimFloatRepresentation.lean](../experiments/incremental-correspondence-20261019/proofs/PrimFloatRepresentation.lean) 中 floatIso 证明机械原语浮点与 Option ((Bool × Fin 2047 × BitVec 52) ⊕ Bool) 双向逆。正负零可区分，所有 NaN 按原语表示合为一个值。
+
+[PrimFloatSqrt.lean](../experiments/incremental-correspondence-20261019/proofs/PrimFloatSqrt.lean) 中 integerSqrt_agrees 对任意 n 证明源逐位开方 = Nat.sqrt n。证明先按 fuel 归纳建立 r*r ≤ n < (r+1)*(r+1)，再用 log2 确定足够的位数；squareRoot_agrees 用它组合完整符号浮点舍入。这不是 Float.sqrt 的等价证明。

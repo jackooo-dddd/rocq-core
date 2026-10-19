@@ -18142,6 +18142,535 @@
     ]
   },
   {
+    "source": "Corelib.Floats.PrimFloat.zero",
+    "profile": "PrimFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.PrimFloatRepresentation.zero_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatRepresentation.zero",
+    "native_target": "NativeBridge.Incremental.PrimFloatRepresentation.zero",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.",
+    "native_expression": "NativeBridge.Incremental.PrimFloatRepresentation.signedZero false",
+    "type": "NativeBridge.Incremental.PrimFloatRepresentation.floatTo Rocq.Corelib.Floats.PrimFloat.zero =\n  NativeBridge.Incremental.PrimFloatRepresentation.zero",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.neg_zero",
+    "profile": "PrimFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.PrimFloatRepresentation.negativeZero_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatRepresentation.negativeZero",
+    "native_target": "NativeBridge.Incremental.PrimFloatRepresentation.negativeZero",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.",
+    "native_expression": "NativeBridge.Incremental.PrimFloatRepresentation.signedZero true",
+    "type": "NativeBridge.Incremental.PrimFloatRepresentation.floatTo Rocq.Corelib.Floats.PrimFloat.neg_zero =\n  NativeBridge.Incremental.PrimFloatRepresentation.negativeZero",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.infinity",
+    "profile": "PrimFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.PrimFloatRepresentation.infinity_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatRepresentation.infinity",
+    "native_target": "NativeBridge.Incremental.PrimFloatRepresentation.infinity",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.",
+    "native_expression": "some (Sum.inr false)",
+    "type": "NativeBridge.Incremental.PrimFloatRepresentation.floatTo Rocq.Corelib.Floats.PrimFloat.infinity =\n  NativeBridge.Incremental.PrimFloatRepresentation.infinity",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.neg_infinity",
+    "profile": "PrimFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.PrimFloatRepresentation.negativeInfinity_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatRepresentation.negativeInfinity",
+    "native_target": "NativeBridge.Incremental.PrimFloatRepresentation.negativeInfinity",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.",
+    "native_expression": "some (Sum.inr true)",
+    "type": "NativeBridge.Incremental.PrimFloatRepresentation.floatTo Rocq.Corelib.Floats.PrimFloat.neg_infinity =\n  NativeBridge.Incremental.PrimFloatRepresentation.negativeInfinity",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.nan",
+    "profile": "PrimFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.PrimFloatRepresentation.nan_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatRepresentation.nan",
+    "native_target": "NativeBridge.Incremental.PrimFloatRepresentation.nan",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.",
+    "native_expression": "none",
+    "type": "NativeBridge.Incremental.PrimFloatRepresentation.floatTo Rocq.Corelib.Floats.PrimFloat.nan =\n  NativeBridge.Incremental.PrimFloatRepresentation.nan",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.one",
+    "profile": "PrimFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.PrimFloatRepresentation.one_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatRepresentation.one",
+    "native_target": "NativeBridge.Incremental.PrimFloatRepresentation.one",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.",
+    "native_expression": "NativeBridge.Incremental.PrimFloatRepresentation.finite false 1023 0",
+    "type": "NativeBridge.Incremental.PrimFloatRepresentation.floatTo Rocq.Corelib.Floats.PrimFloat.one =\n  NativeBridge.Incremental.PrimFloatRepresentation.one",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.two",
+    "profile": "PrimFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.PrimFloatRepresentation.two_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatRepresentation.two",
+    "native_target": "NativeBridge.Incremental.PrimFloatRepresentation.two",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.",
+    "native_expression": "NativeBridge.Incremental.PrimFloatRepresentation.finite false 1024 0",
+    "type": "NativeBridge.Incremental.PrimFloatRepresentation.floatTo Rocq.Corelib.Floats.PrimFloat.two =\n  NativeBridge.Incremental.PrimFloatRepresentation.two",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.opp",
+    "profile": "PrimFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.PrimFloatRepresentation.negate_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatRepresentation.negate",
+    "native_target": "NativeBridge.Incremental.PrimFloatRepresentation.negate",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.",
+    "native_expression": "fun x =>\n  match x with\n  | some (Sum.inl (s, e, f)) => some (Sum.inl (!s, e, f))\n  | some (Sum.inr s) => some (Sum.inr !s)\n  | none => none",
+    "type": "∀ (x : Rocq.Corelib.Floats.PrimFloat.float),\n  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.PrimFloat.opp x) =\n    NativeBridge.Incremental.PrimFloatRepresentation.negate (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.abs",
+    "profile": "PrimFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.PrimFloatRepresentation.absolute_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatRepresentation.absolute",
+    "native_target": "NativeBridge.Incremental.PrimFloatRepresentation.absolute",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.",
+    "native_expression": "fun x =>\n  match x with\n  | some (Sum.inl (fst, e, f)) => some (Sum.inl (false, e, f))\n  | some (Sum.inr val) => some (Sum.inr false)\n  | none => none",
+    "type": "∀ (x : Rocq.Corelib.Floats.PrimFloat.float),\n  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.PrimFloat.abs x) =\n    NativeBridge.Incremental.PrimFloatRepresentation.absolute\n      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.parser",
+    "profile": "PrimFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.PrimFloatRepresentation.parser_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatRepresentation.identity",
+    "native_target": "NativeBridge.Incremental.PrimFloatRepresentation.identity",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.",
+    "native_expression": "fun x => x",
+    "type": "∀ (x : Rocq.Corelib.Floats.PrimFloat.float),\n  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.PrimFloat.parser x) =\n    NativeBridge.Incremental.PrimFloatRepresentation.identity\n      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.printer",
+    "profile": "PrimFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.PrimFloatRepresentation.printer_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatRepresentation.identity",
+    "native_target": "NativeBridge.Incremental.PrimFloatRepresentation.identity",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.",
+    "native_expression": "fun x => x",
+    "type": "∀ (x : Rocq.Corelib.Floats.PrimFloat.float_wrapper),\n  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.PrimFloat.printer x) =\n    NativeBridge.Incremental.PrimFloatRepresentation.identity\n      (NativeBridge.Incremental.PrimFloatRepresentation.wrapperTo x)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.float_wrap",
+    "profile": "PrimFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.PrimFloatRepresentation.wrap_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatRepresentation.identity",
+    "native_target": "NativeBridge.Incremental.PrimFloatRepresentation.identity",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.",
+    "native_expression": "fun x => x",
+    "type": "∀ (x : Rocq.Corelib.Floats.PrimFloat.float_wrapper),\n  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.PrimFloat.float_wrap x) =\n    NativeBridge.Incremental.PrimFloatRepresentation.identity\n      (NativeBridge.Incremental.PrimFloatRepresentation.wrapperTo x)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.eqb",
+    "profile": "PrimFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.PrimFloatRepresentation.ieeeEqual_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatRepresentation.ieeeEqual",
+    "native_target": "NativeBridge.Incremental.PrimFloatRepresentation.ieeeEqual",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.",
+    "native_expression": "fun x y =>\n  if\n      (NativeBridge.Incremental.PrimFloatRepresentation.isNaN x ||\n          NativeBridge.Incremental.PrimFloatRepresentation.isNaN y) =\n        true then\n    false\n  else\n    NativeBridge.Incremental.PrimFloatRepresentation.isZero x &&\n        NativeBridge.Incremental.PrimFloatRepresentation.isZero y ||\n      (NativeBridge.Incremental.PrimFloatRepresentation.toBits x).toNat ==\n        (NativeBridge.Incremental.PrimFloatRepresentation.toBits y).toNat",
+    "type": "∀ (x y : Rocq.Corelib.Floats.PrimFloat.float),\n  NativeBridge.boolTo (Rocq.Corelib.Floats.PrimFloat.eqb x y) =\n    NativeBridge.Incremental.PrimFloatRepresentation.ieeeEqual\n      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)\n      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo y)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.Leibniz.eqb",
+    "profile": "PrimFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.PrimFloatRepresentation.bitsEqual_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatRepresentation.bitsEqual",
+    "native_target": "NativeBridge.Incremental.PrimFloatRepresentation.bitsEqual",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.",
+    "native_expression": "fun x y =>\n  (NativeBridge.Incremental.PrimFloatRepresentation.toBits x).toNat ==\n    (NativeBridge.Incremental.PrimFloatRepresentation.toBits y).toNat",
+    "type": "∀ (x y : Rocq.Corelib.Floats.PrimFloat.float),\n  NativeBridge.boolTo (Rocq.Corelib.Floats.PrimFloat.Leibniz.eqb x y) =\n    NativeBridge.Incremental.PrimFloatRepresentation.bitsEqual\n      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)\n      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo y)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.ltb",
+    "profile": "PrimFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.PrimFloatRepresentation.less_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatRepresentation.less",
+    "native_target": "NativeBridge.Incremental.PrimFloatRepresentation.less",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.",
+    "native_expression": "fun x y =>\n  if\n      (NativeBridge.Incremental.PrimFloatRepresentation.isNaN x ||\n            NativeBridge.Incremental.PrimFloatRepresentation.isNaN y ||\n          NativeBridge.Incremental.PrimFloatRepresentation.ieeeEqual x y) =\n        true then\n    false\n  else\n    if\n        (NativeBridge.Incremental.PrimFloatRepresentation.sign x !=\n            NativeBridge.Incremental.PrimFloatRepresentation.sign y) =\n          true then\n      NativeBridge.Incremental.PrimFloatRepresentation.sign x\n    else\n      if NativeBridge.Incremental.PrimFloatRepresentation.sign x = true then\n        decide\n          ((NativeBridge.Incremental.PrimFloatRepresentation.toBits y).toNat <\n            (NativeBridge.Incremental.PrimFloatRepresentation.toBits x).toNat)\n      else\n        decide\n          ((NativeBridge.Incremental.PrimFloatRepresentation.toBits x).toNat <\n            (NativeBridge.Incremental.PrimFloatRepresentation.toBits y).toNat)",
+    "type": "∀ (x y : Rocq.Corelib.Floats.PrimFloat.float),\n  NativeBridge.boolTo (Rocq.Corelib.Floats.PrimFloat.ltb x y) =\n    NativeBridge.Incremental.PrimFloatRepresentation.less (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)\n      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo y)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.leb",
+    "profile": "PrimFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.PrimFloatRepresentation.lessEqual_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatRepresentation.lessEqual",
+    "native_target": "NativeBridge.Incremental.PrimFloatRepresentation.lessEqual",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.",
+    "native_expression": "fun x y =>\n  NativeBridge.Incremental.PrimFloatRepresentation.ieeeEqual x y ||\n    NativeBridge.Incremental.PrimFloatRepresentation.less x y",
+    "type": "∀ (x y : Rocq.Corelib.Floats.PrimFloat.float),\n  NativeBridge.boolTo (Rocq.Corelib.Floats.PrimFloat.leb x y) =\n    NativeBridge.Incremental.PrimFloatRepresentation.lessEqual\n      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)\n      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo y)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.compare",
+    "profile": "PrimFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.PrimFloatRepresentation.comparison_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatRepresentation.comparison",
+    "native_target": "NativeBridge.Incremental.PrimFloatRepresentation.comparison",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.",
+    "native_expression": "fun x y =>\n  if NativeBridge.Incremental.PrimFloatRepresentation.less x y = true then some Ordering.lt\n  else\n    if NativeBridge.Incremental.PrimFloatRepresentation.less y x = true then some Ordering.gt\n    else if NativeBridge.Incremental.PrimFloatRepresentation.ieeeEqual x y = true then some Ordering.eq else none",
+    "type": "∀ (x y : Rocq.Corelib.Floats.PrimFloat.float),\n  NativeBridge.Incremental.PrimFloatRepresentation.comparisonTo (Rocq.Corelib.Floats.PrimFloat.compare x y) =\n    NativeBridge.Incremental.PrimFloatRepresentation.comparison\n      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)\n      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo y)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.is_nan",
+    "profile": "PrimFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.PrimFloatRepresentation.isNaN_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatRepresentation.isNaN",
+    "native_target": "NativeBridge.Incremental.PrimFloatRepresentation.isNaN",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.",
+    "native_expression": "fun x =>\n  match x with\n  | none => true\n  | x => false",
+    "type": "∀ (x : Rocq.Corelib.Floats.PrimFloat.float),\n  NativeBridge.boolTo (Rocq.Corelib.Floats.PrimFloat.is_nan x) =\n    NativeBridge.Incremental.PrimFloatRepresentation.isNaN (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.is_zero",
+    "profile": "PrimFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.PrimFloatRepresentation.zeroTest_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatRepresentation.zeroTest",
+    "native_target": "NativeBridge.Incremental.PrimFloatRepresentation.zeroTest",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.",
+    "native_expression": "fun x =>\n  NativeBridge.Incremental.PrimFloatRepresentation.ieeeEqual x NativeBridge.Incremental.PrimFloatRepresentation.zero",
+    "type": "∀ (x : Rocq.Corelib.Floats.PrimFloat.float),\n  NativeBridge.boolTo (Rocq.Corelib.Floats.PrimFloat.is_zero x) =\n    NativeBridge.Incremental.PrimFloatRepresentation.zeroTest\n      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.is_infinity",
+    "profile": "PrimFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.PrimFloatRepresentation.infinityTest_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatRepresentation.infinityTest",
+    "native_target": "NativeBridge.Incremental.PrimFloatRepresentation.infinityTest",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.",
+    "native_expression": "fun x =>\n  NativeBridge.Incremental.PrimFloatRepresentation.ieeeEqual\n    (NativeBridge.Incremental.PrimFloatRepresentation.absolute x)\n    NativeBridge.Incremental.PrimFloatRepresentation.infinity",
+    "type": "∀ (x : Rocq.Corelib.Floats.PrimFloat.float),\n  NativeBridge.boolTo (Rocq.Corelib.Floats.PrimFloat.is_infinity x) =\n    NativeBridge.Incremental.PrimFloatRepresentation.infinityTest\n      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.is_finite",
+    "profile": "PrimFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.PrimFloatRepresentation.finiteTest_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatRepresentation.finiteTest",
+    "native_target": "NativeBridge.Incremental.PrimFloatRepresentation.finiteTest",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.",
+    "native_expression": "fun x =>\n  !(NativeBridge.Incremental.PrimFloatRepresentation.isNaN x ||\n      NativeBridge.Incremental.PrimFloatRepresentation.infinityTest x)",
+    "type": "∀ (x : Rocq.Corelib.Floats.PrimFloat.float),\n  NativeBridge.boolTo (Rocq.Corelib.Floats.PrimFloat.is_finite x) =\n    NativeBridge.Incremental.PrimFloatRepresentation.finiteTest\n      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.normfr_mantissa",
+    "profile": "PrimFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.PrimFloatRepresentation.normalMantissa_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatRepresentation.normalMantissa",
+    "native_target": "NativeBridge.Incremental.PrimFloatRepresentation.normalMantissa",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.",
+    "native_expression": "fun x =>\n  match x with\n  | some (Sum.inl (fst, e, f)) =>\n    BitVec.ofNat 63\n      (if (↑e == 1022) = true then\n        NativeBridge.Incremental.PrimFloatRepresentation.mantissa (some (Sum.inl (false, e, f)))\n      else 0)\n  | x => 0",
+    "type": "∀ (x : Rocq.Corelib.Floats.PrimFloat.float),\n  Rocq.Corelib.Floats.PrimFloat.normfr_mantissa x =\n    NativeBridge.Incremental.PrimFloatRepresentation.normalMantissa\n      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.classify",
+    "profile": "PrimFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.PrimFloatRepresentation.classification_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatRepresentation.classification",
+    "native_target": "NativeBridge.Incremental.PrimFloatRepresentation.classification",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.",
+    "native_expression": "fun x =>\n  match x with\n  | none => 8\n  | some (Sum.inr s) => if s = true then 7 else 6\n  | some (Sum.inl (s, e, f)) =>\n    if (↑e == 0) = true then if (f.toNat == 0) = true then if s = true then 5 else 4 else if s = true then 3 else 2\n    else if s = true then 1 else 0",
+    "type": "∀ (x : Rocq.Corelib.Floats.PrimFloat.float),\n  NativeBridge.floatClassTo (Rocq.Corelib.Floats.PrimFloat.classify x) =\n    NativeBridge.Incremental.PrimFloatRepresentation.classification\n      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.float",
+    "profile": "PrimFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.PrimFloatRepresentation.floatIso",
+    "kind": "TYPE_ISO",
+    "target": "NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat",
+    "native_target": "NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat",
+    "target_class": "native_representation",
+    "scope": "Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.",
+    "native_expression": "Option (Bool × Fin 2047 × BitVec 52 ⊕ Bool)",
+    "type": "NativeBridge.Iso Rocq.Corelib.Floats.PrimFloat.float NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.float_wrapper",
+    "profile": "PrimFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.PrimFloatRepresentation.wrapperIso",
+    "kind": "TYPE_ISO",
+    "target": "NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat",
+    "native_target": "NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat",
+    "target_class": "native_representation",
+    "scope": "Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.",
+    "native_expression": "Option (Bool × Fin 2047 × BitVec 52 ⊕ Bool)",
+    "type": "NativeBridge.Iso Rocq.Corelib.Floats.PrimFloat.float_wrapper\n  NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.float_comparison",
+    "profile": "PrimFloatRepresentation",
+    "certificate": "NativeBridge.Incremental.PrimFloatRepresentation.comparisonIso",
+    "kind": "TYPE_ISO",
+    "target": "NativeBridge.Incremental.PrimFloatRepresentation.nativeComparison",
+    "native_target": "NativeBridge.Incremental.PrimFloatRepresentation.nativeComparison",
+    "target_class": "native_representation",
+    "scope": "Canonical binary64 as native Option/Sum/Bool/Fin/BitVec fields. Preserves signed zeros and a single NaN; exact bit-based predicates, not Lean runtime Float correspondence.",
+    "native_expression": "Option Ordering",
+    "type": "NativeBridge.Iso Rocq.Corelib.Floats.PrimFloat.float_comparison\n  NativeBridge.Incremental.PrimFloatRepresentation.nativeComparison",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.add",
+    "profile": "PrimFloatArithmetic",
+    "certificate": "NativeBridge.Incremental.PrimFloatArithmetic.addition_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatArithmetic.addition",
+    "native_target": "NativeBridge.Incremental.PrimFloatArithmetic.addition",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 native field representation and exact integer/rational algorithms with nearest-even rounding; not runtime Float API equivalence.",
+    "native_expression": "fun x y =>\n  match x with\n  | none => none\n  | some (Sum.inr s) =>\n    match y with\n    | none => none\n    | some (Sum.inr t) => if (s == t) = true then some (Sum.inr s) else none\n    | some (Sum.inl val) => some (Sum.inr s)\n  | some (Sum.inl (sx, fst, snd)) =>\n    match y with\n    | none => none\n    | some (Sum.inr s) => some (Sum.inr s)\n    | some (Sum.inl (sy, fst, snd)) =>\n      have e :=\n        min (NativeBridge.Incremental.PrimFloatRepresentation.exponent x)\n          (NativeBridge.Incremental.PrimFloatRepresentation.exponent y);\n      have a :=\n        NativeBridge.Incremental.PrimFloatRepresentation.mantissa x *\n          2 ^ (NativeBridge.Incremental.PrimFloatRepresentation.exponent x - e).toNat;\n      have b :=\n        NativeBridge.Incremental.PrimFloatRepresentation.mantissa y *\n          2 ^ (NativeBridge.Incremental.PrimFloatRepresentation.exponent y - e).toNat;\n      have n :=\n        NativeBridge.Incremental.PrimFloatArithmetic.signed sx a +\n          NativeBridge.Incremental.PrimFloatArithmetic.signed sy b;\n      if (n == 0) = true then NativeBridge.Incremental.PrimFloatRepresentation.signedZero (sx && sy)\n      else NativeBridge.Incremental.PrimFloatArithmetic.round (decide (n < 0)) n.natAbs 1 e",
+    "type": "∀ (x y : Rocq.Corelib.Floats.PrimFloat.float),\n  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.PrimFloat.add x y) =\n    NativeBridge.Incremental.PrimFloatArithmetic.addition (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)\n      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo y)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.sub",
+    "profile": "PrimFloatArithmetic",
+    "certificate": "NativeBridge.Incremental.PrimFloatArithmetic.subtraction_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatArithmetic.subtraction",
+    "native_target": "NativeBridge.Incremental.PrimFloatArithmetic.subtraction",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 native field representation and exact integer/rational algorithms with nearest-even rounding; not runtime Float API equivalence.",
+    "native_expression": "fun x y =>\n  NativeBridge.Incremental.PrimFloatArithmetic.addition x (NativeBridge.Incremental.PrimFloatRepresentation.negate y)",
+    "type": "∀ (x y : Rocq.Corelib.Floats.PrimFloat.float),\n  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.PrimFloat.sub x y) =\n    NativeBridge.Incremental.PrimFloatArithmetic.subtraction\n      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)\n      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo y)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.mul",
+    "profile": "PrimFloatArithmetic",
+    "certificate": "NativeBridge.Incremental.PrimFloatArithmetic.multiplication_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatArithmetic.multiplication",
+    "native_target": "NativeBridge.Incremental.PrimFloatArithmetic.multiplication",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 native field representation and exact integer/rational algorithms with nearest-even rounding; not runtime Float API equivalence.",
+    "native_expression": "fun x y =>\n  have s :=\n    NativeBridge.Incremental.PrimFloatRepresentation.sign x != NativeBridge.Incremental.PrimFloatRepresentation.sign y;\n  match x with\n  | none => none\n  | some (Sum.inr val) =>\n    match y with\n    | none => none\n    | some (Sum.inr val) => some (Sum.inr s)\n    | some (Sum.inl val) =>\n      if NativeBridge.Incremental.PrimFloatRepresentation.isZero y = true then none else some (Sum.inr s)\n  | some (Sum.inl val) =>\n    match y with\n    | none => none\n    | some (Sum.inr val) =>\n      if NativeBridge.Incremental.PrimFloatRepresentation.isZero x = true then none else some (Sum.inr s)\n    | some (Sum.inl val) =>\n      NativeBridge.Incremental.PrimFloatArithmetic.round s\n        (NativeBridge.Incremental.PrimFloatRepresentation.mantissa x *\n          NativeBridge.Incremental.PrimFloatRepresentation.mantissa y)\n        1\n        (NativeBridge.Incremental.PrimFloatRepresentation.exponent x +\n          NativeBridge.Incremental.PrimFloatRepresentation.exponent y)",
+    "type": "∀ (x y : Rocq.Corelib.Floats.PrimFloat.float),\n  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.PrimFloat.mul x y) =\n    NativeBridge.Incremental.PrimFloatArithmetic.multiplication\n      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)\n      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo y)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.div",
+    "profile": "PrimFloatArithmetic",
+    "certificate": "NativeBridge.Incremental.PrimFloatArithmetic.division_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatArithmetic.division",
+    "native_target": "NativeBridge.Incremental.PrimFloatArithmetic.division",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 native field representation and exact integer/rational algorithms with nearest-even rounding; not runtime Float API equivalence.",
+    "native_expression": "fun x y =>\n  have s :=\n    NativeBridge.Incremental.PrimFloatRepresentation.sign x != NativeBridge.Incremental.PrimFloatRepresentation.sign y;\n  match x with\n  | none => none\n  | some (Sum.inr val) =>\n    match y with\n    | none => none\n    | some (Sum.inr val) => none\n    | some (Sum.inl val) => some (Sum.inr s)\n  | some (Sum.inl val) =>\n    match y with\n    | none => none\n    | some (Sum.inr val) => NativeBridge.Incremental.PrimFloatRepresentation.signedZero s\n    | some (Sum.inl val) =>\n      if NativeBridge.Incremental.PrimFloatRepresentation.isZero y = true then\n        if NativeBridge.Incremental.PrimFloatRepresentation.isZero x = true then none else some (Sum.inr s)\n      else\n        NativeBridge.Incremental.PrimFloatArithmetic.round s\n          (NativeBridge.Incremental.PrimFloatRepresentation.mantissa x)\n          (NativeBridge.Incremental.PrimFloatRepresentation.mantissa y)\n          (NativeBridge.Incremental.PrimFloatRepresentation.exponent x -\n            NativeBridge.Incremental.PrimFloatRepresentation.exponent y)",
+    "type": "∀ (x y : Rocq.Corelib.Floats.PrimFloat.float),\n  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.PrimFloat.div x y) =\n    NativeBridge.Incremental.PrimFloatArithmetic.division (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)\n      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo y)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.get_sign",
+    "profile": "PrimFloatArithmetic",
+    "certificate": "NativeBridge.Incremental.PrimFloatArithmetic.getSign_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatArithmetic.getSign",
+    "native_target": "NativeBridge.Incremental.PrimFloatArithmetic.getSign",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 native field representation and exact integer/rational algorithms with nearest-even rounding; not runtime Float API equivalence.",
+    "native_expression": "fun x =>\n  NativeBridge.Incremental.PrimFloatRepresentation.less\n    (if NativeBridge.Incremental.PrimFloatRepresentation.zeroTest x = true then\n      NativeBridge.Incremental.PrimFloatArithmetic.division NativeBridge.Incremental.PrimFloatRepresentation.one x\n    else x)\n    NativeBridge.Incremental.PrimFloatRepresentation.zero",
+    "type": "∀ (x : Rocq.Corelib.Floats.PrimFloat.float),\n  NativeBridge.boolTo (Rocq.Corelib.Floats.PrimFloat.get_sign x) =\n    NativeBridge.Incremental.PrimFloatArithmetic.getSign (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.of_uint63",
+    "profile": "PrimFloatExponent",
+    "certificate": "NativeBridge.Incremental.PrimFloatExponent.fromWord_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatExponent.fromWord",
+    "native_target": "NativeBridge.Incremental.PrimFloatExponent.fromWord",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 native field representation; exact shifted exponent bounds, nearest-even conversions and bit-based adjacent values, including all exceptional cases.",
+    "native_expression": "fun x => NativeBridge.Incremental.PrimFloatArithmetic.round false x.toNat 1 0",
+    "type": "∀ (x : BitVec 63),\n  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.PrimFloat.of_uint63 x) =\n    NativeBridge.Incremental.PrimFloatExponent.fromWord x",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.ldshiftexp",
+    "profile": "PrimFloatExponent",
+    "certificate": "NativeBridge.Incremental.PrimFloatExponent.scaleShifted_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatExponent.scaleShifted",
+    "native_target": "NativeBridge.Incremental.PrimFloatExponent.scaleShifted",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 native field representation; exact shifted exponent bounds, nearest-even conversions and bit-based adjacent values, including all exceptional cases.",
+    "native_expression": "fun x e =>\n  match x with\n  | some (Sum.inl (s, fst, snd)) =>\n    NativeBridge.Incremental.PrimFloatArithmetic.round s (NativeBridge.Incremental.PrimFloatRepresentation.mantissa x) 1\n      (NativeBridge.Incremental.PrimFloatRepresentation.exponent x + ↑(min e.toNat 4202) - 2101)\n  | x_1 => x",
+    "type": "∀ (x : Rocq.Corelib.Floats.PrimFloat.float) (e : BitVec 63),\n  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.PrimFloat.ldshiftexp x e) =\n    NativeBridge.Incremental.PrimFloatExponent.scaleShifted (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)\n      e",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.frshiftexp",
+    "profile": "PrimFloatExponent",
+    "certificate": "NativeBridge.Incremental.PrimFloatExponent.fractionShifted_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatExponent.fractionShifted",
+    "native_target": "NativeBridge.Incremental.PrimFloatExponent.fractionShifted",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 native field representation; exact shifted exponent bounds, nearest-even conversions and bit-based adjacent values, including all exceptional cases.",
+    "native_expression": "fun x =>\n  match x with\n  | some (Sum.inl (s, fst, snd)) =>\n    if NativeBridge.Incremental.PrimFloatRepresentation.isZero x = true then (x, 0)\n    else\n      have e :=\n        ↑(NativeBridge.Incremental.PrimFloatRepresentation.mantissa x).log2 +\n            NativeBridge.Incremental.PrimFloatRepresentation.exponent x +\n          1;\n      (NativeBridge.Incremental.PrimFloatArithmetic.round s\n          (NativeBridge.Incremental.PrimFloatRepresentation.mantissa x) 1\n          (NativeBridge.Incremental.PrimFloatRepresentation.exponent x - e),\n        BitVec.ofNat 63 (e + 2101).toNat)\n  | x_1 => (x, 0)",
+    "type": "∀ (x : Rocq.Corelib.Floats.PrimFloat.float),\n  NativeBridge.Incremental.PrimFloatExponent.fractionTo (Rocq.Corelib.Floats.PrimFloat.frshiftexp x) =\n    NativeBridge.Incremental.PrimFloatExponent.fractionShifted\n      (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.next_up",
+    "profile": "PrimFloatExponent",
+    "certificate": "NativeBridge.Incremental.PrimFloatExponent.nextUp_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatExponent.nextUp",
+    "native_target": "NativeBridge.Incremental.PrimFloatExponent.nextUp",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 native field representation; exact shifted exponent bounds, nearest-even conversions and bit-based adjacent values, including all exceptional cases.",
+    "native_expression": "fun x =>\n  match x with\n  | none => none\n  | some (Sum.inr false) => x\n  | some (Sum.inr true) =>\n    NativeBridge.Incremental.PrimFloatRepresentation.fromBits (BitVec.ofNat 64 (2 ^ 64 - 2 ^ 52 - 1))\n  | some (Sum.inl (s, fst, snd)) =>\n    if NativeBridge.Incremental.PrimFloatRepresentation.isZero x = true then\n      NativeBridge.Incremental.PrimFloatRepresentation.finite false 0 1\n    else\n      NativeBridge.Incremental.PrimFloatRepresentation.fromBits\n        (BitVec.ofNat 64\n          (if s = true then (NativeBridge.Incremental.PrimFloatRepresentation.toBits x).toNat - 1\n          else (NativeBridge.Incremental.PrimFloatRepresentation.toBits x).toNat + 1))",
+    "type": "∀ (x : Rocq.Corelib.Floats.PrimFloat.float),\n  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.PrimFloat.next_up x) =\n    NativeBridge.Incremental.PrimFloatExponent.nextUp (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.next_down",
+    "profile": "PrimFloatExponent",
+    "certificate": "NativeBridge.Incremental.PrimFloatExponent.nextDown_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatExponent.nextDown",
+    "native_target": "NativeBridge.Incremental.PrimFloatExponent.nextDown",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 native field representation; exact shifted exponent bounds, nearest-even conversions and bit-based adjacent values, including all exceptional cases.",
+    "native_expression": "fun x =>\n  NativeBridge.Incremental.PrimFloatRepresentation.negate\n    (NativeBridge.Incremental.PrimFloatExponent.nextUp (NativeBridge.Incremental.PrimFloatRepresentation.negate x))",
+    "type": "∀ (x : Rocq.Corelib.Floats.PrimFloat.float),\n  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.PrimFloat.next_down x) =\n    NativeBridge.Incremental.PrimFloatExponent.nextDown (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.PrimFloat.sqrt",
+    "profile": "PrimFloatSqrt",
+    "certificate": "NativeBridge.Incremental.PrimFloatSqrt.squareRoot_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimFloatSqrt.squareRoot",
+    "native_target": "NativeBridge.Incremental.PrimFloatSqrt.squareRoot",
+    "target_class": "native_expression",
+    "scope": "Canonical binary64 square root with native Nat.sqrt. The source base-four integer algorithm is proved equal to Nat.sqrt for every Nat; full exceptional branches and nearest-even rounding preserved.",
+    "native_expression": "fun x =>\n  match x with\n  | none => none\n  | some (Sum.inr s) => if s = true then none else x\n  | some (Sum.inl (s, fst, snd)) =>\n    if NativeBridge.Incremental.PrimFloatRepresentation.isZero x = true then x\n    else\n      if s = true then none\n      else\n        have k :=\n          ↑(NativeBridge.Incremental.PrimFloatRepresentation.mantissa x).log2 +\n            NativeBridge.Incremental.PrimFloatRepresentation.exponent x;\n        have q := max (-1074) (k / 2 - 52);\n        have shift := NativeBridge.Incremental.PrimFloatRepresentation.exponent x - 2 * q;\n        have n :=\n          if shift < 0 then NativeBridge.Incremental.PrimFloatRepresentation.mantissa x\n          else NativeBridge.Incremental.PrimFloatRepresentation.mantissa x * 2 ^ shift.toNat;\n        have d := if shift < 0 then 2 ^ (-shift).toNat else 1;\n        have m := (n / d).sqrt;\n        have mid := d * (2 * m + 1) ^ 2;\n        have m := if (decide (4 * n > mid) || 4 * n == mid && m % 2 == 1) = true then m + 1 else m;\n        NativeBridge.Incremental.PrimFloatArithmetic.pack false m q",
+    "type": "∀ (x : Rocq.Corelib.Floats.PrimFloat.float),\n  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.PrimFloat.sqrt x) =\n    NativeBridge.Incremental.PrimFloatSqrt.squareRoot (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
     "source": "Corelib.ssr.ssrbool.canLR_in",
     "profile": "SSRBoolClosedStatements",
     "certificate": "NativeBridge.Incremental.SSRBoolClosedStatements.RocqPending.Corelib.ssr.ssrbool.canLR_in.statement.correspondence",
