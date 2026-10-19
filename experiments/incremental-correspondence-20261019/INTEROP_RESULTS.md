@@ -42,3 +42,5 @@ NumericMathlib 的打包模块显式导入 Mathlib.Data.Nat.Digits.Defs，保留
 Peano 扩展后：38 个含覆盖证书的 profile、619 份覆盖证书共同导入通过。实际入口和依赖副本数见 reports/interop/all/import-all-validation.json。
 
 第十七批扩展后：42 个包含覆盖证书的 profile、651 份覆盖证书共同导入通过；对应全部当前增量覆盖。
+
+第十八批扩展后：46 个包含覆盖证书的 profile、666 份覆盖证书全部共同导入通过。

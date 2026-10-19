@@ -2983,5 +2983,122 @@
     "target": "min : Int → Int → Int",
     "target_class": "existing_api",
     "scope": "All values of the mechanical numeric input types; no extra hypotheses."
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.mask",
+    "profile": "BinaryMask",
+    "certificate": "NativeBridge.Incremental.BinaryMask.maskIso",
+    "kind": "TYPE_ISO",
+    "target": "Option Nat",
+    "target_class": "native_representation",
+    "scope": "IsNeg ↔ none, IsNul ↔ some 0, IsPos p ↔ some (positiveTo p); both inverse laws, all values. Negative magnitude was not stored by source mask."
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.double_mask",
+    "profile": "BinaryMask",
+    "certificate": "NativeBridge.Incremental.BinaryMask.double_mask_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Option.map (2*·)",
+    "target_class": "existing_api",
+    "scope": "All masks."
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.succ_double_mask",
+    "profile": "BinaryMask",
+    "certificate": "NativeBridge.Incremental.BinaryMask.succ_double_mask_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Option.map (fun n => 2*n+1)",
+    "target_class": "existing_api",
+    "scope": "All masks."
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.double_pred_mask",
+    "profile": "BinaryMask",
+    "certificate": "NativeBridge.Incremental.BinaryMask.double_pred_mask_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "some (2*n-2)",
+    "target_class": "native_expression",
+    "scope": "All positive inputs."
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.sub_mask",
+    "profile": "BinaryMask",
+    "certificate": "NativeBridge.Incremental.BinaryMask.sub_mask_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "if m ≤ n then some (n-m) else none",
+    "target_class": "native_expression",
+    "scope": "All positive inputs; negative result distinguished from zero."
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.sub_mask_carry",
+    "profile": "BinaryMask",
+    "certificate": "NativeBridge.Incremental.BinaryMask.sub_mask_carry_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "if m+1 ≤ n then some (n-(m+1)) else none",
+    "target_class": "native_expression",
+    "scope": "All positive inputs; includes explicit borrow."
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.sub",
+    "profile": "BinaryMask",
+    "certificate": "NativeBridge.Incremental.BinaryMask.positive_sub_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "max 1 (n-m)",
+    "target_class": "existing_api",
+    "scope": "All positive inputs; zero and negative differences saturate to one."
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.mask_rec",
+    "profile": "BinaryMask",
+    "certificate": "NativeBridge.Incremental.BinaryMask.mask_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Native Option/Nat elimination with zero/positive/none branches",
+    "target_class": "native_expression",
+    "scope": "All masks; Type-valued motives pulled back from Option Nat."
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.mask_rect",
+    "profile": "BinaryMask",
+    "certificate": "NativeBridge.Incremental.BinaryMask.mask_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Native Option/Nat elimination with zero/positive/none branches",
+    "target_class": "native_expression",
+    "scope": "All masks; Sort u-valued motives pulled back from Option Nat."
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.pos_sub",
+    "profile": "BinaryArithmetic",
+    "certificate": "NativeBridge.Incremental.BinaryArithmetic.z_pos_sub_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "(n : Int) - (m : Int)",
+    "target_class": "existing_api",
+    "scope": "All inputs; source mutual-recursion companion reconstructed as a local definition when not separately exported, with constructor equations checked by rfl. No new source declaration or axiom."
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.add",
+    "profile": "BinaryArithmetic",
+    "certificate": "NativeBridge.Incremental.BinaryArithmetic.z_add_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Int addition",
+    "target_class": "existing_api",
+    "scope": "All inputs; source mutual-recursion companion reconstructed as a local definition when not separately exported, with constructor equations checked by rfl. No new source declaration or axiom."
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.sub",
+    "profile": "BinaryArithmetic",
+    "certificate": "NativeBridge.Incremental.BinaryArithmetic.z_sub_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Int subtraction",
+    "target_class": "existing_api",
+    "scope": "All inputs; source mutual-recursion companion reconstructed as a local definition when not separately exported, with constructor equations checked by rfl. No new source declaration or axiom."
+  },
+  {
+    "source": "Corelib.BinNums.NatDef.N.sub",
+    "profile": "BinaryNatSub",
+    "certificate": "NativeBridge.Incremental.BinaryNatSub.n_sub_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Nat subtraction",
+    "target_class": "existing_api",
+    "scope": "All inputs; source mutual-recursion companion reconstructed as a local definition when not separately exported, with constructor equations checked by rfl. No new source declaration or axiom."
   }
 ]

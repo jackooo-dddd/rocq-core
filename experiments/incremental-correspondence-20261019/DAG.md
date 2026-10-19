@@ -206,3 +206,5 @@ flowchart TD
 Peano 本批实证依赖：机械 Nat Iso → pred/add/迭代器辅助对应 → 5 个新完全原生陈述；IsSucc → 原生 Nat 正性。旧原生目标审计依据 statement ledger → 实际 Auto profile → 展开别名后的目标体，不以手写同名 profile 替代。
 
 第十七批实证依赖：List Iso → 任意比较器适配 → List.compareLex；List 家族量词转换 → Forall 归纳陈述。positive 数值转换 → compare_cont → Pos.compare → N.compare / Z.compare → 大小关系、布尔比较、min/max。positive 的进位/前驱辅助对应 → 倍增、折半和边界适配。
+
+第十八批实证依赖：positive Iso → mask/Option Nat Iso → 倍增 mask → sub_mask/sub_mask_carry 联合不变量 → Pos.sub、N.sub；Z.double/succ_double/pred_double → Z.pos_sub → Z.add（另依赖 Pos.add）→ Z.sub。mask Iso → motive/量词转换 → 2 个纯原生归纳陈述。

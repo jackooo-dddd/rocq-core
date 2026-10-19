@@ -4084,6 +4084,219 @@
     ]
   },
   {
+    "source": "Corelib.BinNums.PosDef.Pos.mask",
+    "profile": "BinaryMask",
+    "certificate": "NativeBridge.Incremental.BinaryMask.maskIso",
+    "kind": "TYPE_ISO",
+    "target": "Option Nat",
+    "target_class": "native_representation",
+    "scope": "IsNeg ↔ none, IsNul ↔ some 0, IsPos p ↔ some (positiveTo p); both inverse laws, all values. Negative magnitude was not stored by source mask.",
+    "type": "NativeBridge.Iso Rocq.Corelib.BinNums.PosDef.Pos.mask (Option Nat)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.double_mask",
+    "profile": "BinaryMask",
+    "certificate": "NativeBridge.Incremental.BinaryMask.double_mask_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Option.map (2*·)",
+    "target_class": "existing_api",
+    "scope": "All masks.",
+    "type": "∀ (m : NativeBridge.Incremental.BinaryMask.RMask),\n  NativeBridge.Incremental.BinaryMask.maskTo (Rocq.Corelib.BinNums.PosDef.Pos.double_mask m) =\n    Option.map (fun x => 2 * x) (NativeBridge.Incremental.BinaryMask.maskTo m)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.succ_double_mask",
+    "profile": "BinaryMask",
+    "certificate": "NativeBridge.Incremental.BinaryMask.succ_double_mask_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Option.map (fun n => 2*n+1)",
+    "target_class": "existing_api",
+    "scope": "All masks.",
+    "type": "∀ (m : NativeBridge.Incremental.BinaryMask.RMask),\n  NativeBridge.Incremental.BinaryMask.maskTo (Rocq.Corelib.BinNums.PosDef.Pos.succ_double_mask m) =\n    Option.map (fun n => 2 * n + 1) (NativeBridge.Incremental.BinaryMask.maskTo m)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.double_pred_mask",
+    "profile": "BinaryMask",
+    "certificate": "NativeBridge.Incremental.BinaryMask.double_pred_mask_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "some (2*n-2)",
+    "target_class": "native_expression",
+    "scope": "All positive inputs.",
+    "type": "∀ (p : NativeBridge.RPositive),\n  NativeBridge.Incremental.BinaryMask.maskTo (Rocq.Corelib.BinNums.PosDef.Pos.double_pred_mask p) =\n    some (2 * NativeBridge.positiveTo p - 2)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.sub_mask",
+    "profile": "BinaryMask",
+    "certificate": "NativeBridge.Incremental.BinaryMask.sub_mask_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "if m ≤ n then some (n-m) else none",
+    "target_class": "native_expression",
+    "scope": "All positive inputs; negative result distinguished from zero.",
+    "type": "∀ (p q : NativeBridge.RPositive),\n  NativeBridge.Incremental.BinaryMask.maskTo (Rocq.Corelib.BinNums.PosDef.Pos.sub_mask p q) =\n    NativeBridge.Incremental.BinaryMask.checkedSub (NativeBridge.positiveTo p) (NativeBridge.positiveTo q)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.sub_mask_carry",
+    "profile": "BinaryMask",
+    "certificate": "NativeBridge.Incremental.BinaryMask.sub_mask_carry_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "if m+1 ≤ n then some (n-(m+1)) else none",
+    "target_class": "native_expression",
+    "scope": "All positive inputs; includes explicit borrow.",
+    "type": "∀ (p q : NativeBridge.RPositive),\n  NativeBridge.Incremental.BinaryMask.maskTo (Rocq.Corelib.BinNums.PosDef.Pos.sub_mask_carry p q) =\n    NativeBridge.Incremental.BinaryMask.checkedSub (NativeBridge.positiveTo p) (NativeBridge.positiveTo q + 1)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.sub",
+    "profile": "BinaryMask",
+    "certificate": "NativeBridge.Incremental.BinaryMask.positive_sub_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "max 1 (n-m)",
+    "target_class": "existing_api",
+    "scope": "All positive inputs; zero and negative differences saturate to one.",
+    "type": "∀ (p q : NativeBridge.RPositive),\n  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.sub p q) =\n    max 1 (NativeBridge.positiveTo p - NativeBridge.positiveTo q)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.mask_rec",
+    "profile": "BinaryMask",
+    "certificate": "NativeBridge.Incremental.BinaryMask.mask_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Native Option/Nat elimination with zero/positive/none branches",
+    "target_class": "native_expression",
+    "scope": "All masks; Type-valued motives pulled back from Option Nat.",
+    "type": "∀ (P : Option Nat → Type) (z : P (some 0)) (p : (n : { n // 0 < n }) → P (some n.val)) (neg : P none)\n  (m : NativeBridge.Incremental.BinaryMask.RMask),\n  Rocq.Corelib.BinNums.PosDef.Pos.mask_rec (fun m => P (NativeBridge.Incremental.BinaryMask.maskTo m)) z\n      (fun x => p ⟨NativeBridge.positiveTo x, ⋯⟩) neg m =\n    NativeBridge.Incremental.BinaryMask.maskElim z p neg (NativeBridge.Incremental.BinaryMask.maskTo m)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.mask_rect",
+    "profile": "BinaryMask",
+    "certificate": "NativeBridge.Incremental.BinaryMask.mask_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Native Option/Nat elimination with zero/positive/none branches",
+    "target_class": "native_expression",
+    "scope": "All masks; Sort u-valued motives pulled back from Option Nat.",
+    "type": "∀ (P : Option Nat → Sort u) (z : P (some 0)) (p : (n : { n // 0 < n }) → P (some n.val)) (neg : P none)\n  (m : NativeBridge.Incremental.BinaryMask.RMask),\n  Rocq.Corelib.BinNums.PosDef.Pos.mask_rect (fun m => P (NativeBridge.Incremental.BinaryMask.maskTo m)) z\n      (fun x => p ⟨NativeBridge.positiveTo x, ⋯⟩) neg m =\n    NativeBridge.Incremental.BinaryMask.maskElim z p neg (NativeBridge.Incremental.BinaryMask.maskTo m)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.pos_sub",
+    "profile": "BinaryArithmetic",
+    "certificate": "NativeBridge.Incremental.BinaryArithmetic.z_pos_sub_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "(n : Int) - (m : Int)",
+    "target_class": "existing_api",
+    "scope": "All inputs; source mutual-recursion companion reconstructed as a local definition when not separately exported, with constructor equations checked by rfl. No new source declaration or axiom.",
+    "type": "∀ (p q : NativeBridge.RPositive),\n  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.pos_sub p q) =\n    ↑(NativeBridge.positiveTo p) - ↑(NativeBridge.positiveTo q)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.add",
+    "profile": "BinaryArithmetic",
+    "certificate": "NativeBridge.Incremental.BinaryArithmetic.z_add_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Int addition",
+    "target_class": "existing_api",
+    "scope": "All inputs; source mutual-recursion companion reconstructed as a local definition when not separately exported, with constructor equations checked by rfl. No new source declaration or axiom.",
+    "type": "∀ (x y : NativeBridge.RIntBinary),\n  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.add x y) =\n    NativeBridge.binaryIntTo x + NativeBridge.binaryIntTo y",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.sub",
+    "profile": "BinaryArithmetic",
+    "certificate": "NativeBridge.Incremental.BinaryArithmetic.z_sub_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Int subtraction",
+    "target_class": "existing_api",
+    "scope": "All inputs; source mutual-recursion companion reconstructed as a local definition when not separately exported, with constructor equations checked by rfl. No new source declaration or axiom.",
+    "type": "∀ (x y : NativeBridge.RIntBinary),\n  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.sub x y) =\n    NativeBridge.binaryIntTo x - NativeBridge.binaryIntTo y",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.NatDef.N.sub",
+    "profile": "BinaryNatSub",
+    "certificate": "NativeBridge.Incremental.BinaryNatSub.n_sub_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Nat subtraction",
+    "target_class": "existing_api",
+    "scope": "All inputs; source mutual-recursion companion reconstructed as a local definition when not separately exported, with constructor equations checked by rfl. No new source declaration or axiom.",
+    "type": "∀ (x y : NativeBridge.RNatBinary),\n  NativeBridge.binaryNatTo (Rocq.Corelib.BinNums.NatDef.N.sub x y) =\n    NativeBridge.binaryNatTo x - NativeBridge.binaryNatTo y",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.mask_ind",
+    "profile": "BinaryMaskStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.BinNums.PosDef.Pos.mask_ind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (f : Option Nat → Prop), f (some 0) → (∀ (n : { n // 0 < n }), f (some n.val)) → f none → ∀ (m : Option Nat), f m",
+    "native_expression": "∀ (f : Option Nat → Prop), f (some 0) → (∀ (n : { n // 0 < n }), f (some n.val)) → f none → ∀ (m : Option Nat), f m",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.BinNums.PosDef.Pos.mask_ind.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.BinNums.PosDef.Pos.mask_ind.statement.native",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.mask_sind",
+    "profile": "BinaryMaskStatements",
+    "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.BinNums.PosDef.Pos.mask_sind.statement.correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "native statement: ∀ (f : Option Nat → Prop), f (some 0) → (∀ (n : { n // 0 < n }), f (some n.val)) → f none → ∀ (m : Option Nat), f m",
+    "native_expression": "∀ (f : Option Nat → Prop), f (some 0) → (∀ (n : { n // 0 < n }), f (some n.val)) → f none → ∀ (m : Option Nat), f m",
+    "scope": "unconditional original statement; source-free body including NativeBridge alias expansion",
+    "type": "Rocq.Corelib.BinNums.PosDef.Pos.mask_sind.statement ↔\n  NativeBridge.Incremental.Statements.Rocq.Corelib.BinNums.PosDef.Pos.mask_sind.statement.native",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
     "source": "Corelib.Lists.ListDef.Forall_ind",
     "profile": "ListStatements",
     "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.Lists.ListDef.Forall_ind.statement.correspondence",

@@ -1,51 +1,99 @@
 [
   {
+    "profile": "BinaryOrder",
+    "module": "BinNums/IntDef",
+    "exit": 0,
+    "seconds": 1.22,
+    "proof_sha256": "b3078241b8932052179e02e16bf34ef171eb80572d789369d9164aedc2a2feca",
+    "audit_present": true,
+    "incremental_dependencies": {}
+  },
+  {
+    "profile": "BinaryInt",
+    "module": "BinNums/IntDef",
+    "exit": 0,
+    "seconds": 1.269,
+    "proof_sha256": "49816d8101a7b846df9392bdab6e3e66d68cfa59bc38a25d4bd7de9743f95871",
+    "audit_present": true,
+    "incremental_dependencies": {
+      "BinaryOrder": {
+        "proof_sha256": "b3078241b8932052179e02e16bf34ef171eb80572d789369d9164aedc2a2feca",
+        "olean_sha256": "94ff3a96f1c361bb706b094b1785b20c96d1bc9e84e832e3da9491ffd09720aa"
+      }
+    }
+  },
+  {
+    "profile": "BinaryMask",
+    "module": "BinNums/PosDef",
+    "exit": 0,
+    "seconds": 1.369,
+    "proof_sha256": "f8284e53b2c061b265269d9f1611f8f4e0efbf41c7d0ba274c1cdc373b5027a0",
+    "audit_present": true,
+    "incremental_dependencies": {}
+  },
+  {
+    "profile": "BinaryMaskStatements",
+    "module": "BinNums/PosDef",
+    "exit": 0,
+    "seconds": 1.118,
+    "proof_sha256": "7223c63842f88cde7c5cc6d0507f72a0e94e14cd237d2b739a7096d1a9dbcdd7",
+    "audit_present": true,
+    "incremental_dependencies": {
+      "BinaryMask": {
+        "proof_sha256": "f8284e53b2c061b265269d9f1611f8f4e0efbf41c7d0ba274c1cdc373b5027a0",
+        "olean_sha256": "8a306bfb95d3aff3b3b7f103a4b27e1050e9a2a116da066f998b81a739b25f63"
+      }
+    }
+  },
+  {
+    "profile": "ListBridge",
+    "module": "Lists/ListDef",
+    "exit": 0,
+    "seconds": 0.869,
+    "proof_sha256": "1ad584f42a39b8f4aae7e9716dcec31f11b4f593d869f8471e8991e6116b89dd",
+    "audit_present": true,
+    "incremental_dependencies": {}
+  },
+  {
+    "profile": "ListStatements",
+    "module": "Lists/ListDef",
+    "exit": 0,
+    "seconds": 1.068,
+    "proof_sha256": "e9d4c65f05f0f7a1f49fcd5303d2d251dafa17ce90d0c077683783c290a9cba6",
+    "audit_present": true,
+    "incremental_dependencies": {
+      "ListBridge": {
+        "proof_sha256": "1ad584f42a39b8f4aae7e9716dcec31f11b4f593d869f8471e8991e6116b89dd",
+        "olean_sha256": "552a1600752d6267d72b7cef2e233c767dcdaa36ab00a385d18b950669e167ad"
+      }
+    }
+  },
+  {
     "profile": "Basics",
     "module": "Program/Basics",
     "exit": 0,
-    "seconds": 0.866,
+    "seconds": 0.867,
     "proof_sha256": "9d6b1f53ecb3a83d6bc808ab01c671bd7373cc2aa60e6d35ab2e5889bc823061",
-    "audit_present": true
+    "audit_present": true,
+    "incremental_dependencies": {}
   },
   {
     "profile": "SSR",
     "module": "ssr/ssrfun",
     "exit": 0,
-    "seconds": 0.969,
+    "seconds": 0.968,
     "proof_sha256": "63f4b375faf089dbe26221a0eab8d7d6b44ba881f5ad4baa8a12ba9414435039",
-    "audit_present": true
+    "audit_present": true,
+    "incremental_dependencies": {}
   },
   {
     "profile": "Iteration",
     "module": "Init/Nat",
     "exit": 0,
-    "seconds": 0.918,
-    "proof_sha256": "118572aeb37570f2a79af81b96fad5a80aa9f40f29563164f64c8d798dca3fe5",
-    "audit_present": true
-  },
-  {
-    "profile": "SSRProperties",
-    "module": "ssr/ssrfun",
-    "exit": 0,
     "seconds": 0.917,
-    "proof_sha256": "1dd9076a6be1ea8b684845d62b315167e70f64f36196b4639a75a735636ec059",
-    "audit_present": true
-  },
-  {
-    "profile": "SSRBool",
-    "module": "ssr/ssrbool",
-    "exit": 0,
-    "seconds": 0.968,
-    "proof_sha256": "39ed173723c756135556d74bcfa791249b3d7d6f3bee6f9b6c54804ae63d8fad",
-    "audit_present": true
-  },
-  {
-    "profile": "SSRBoolStatements",
-    "module": "ssr/ssrbool",
-    "exit": 0,
-    "seconds": 2.572,
-    "proof_sha256": "ba25cc23cf75112224a12dd0e154f58a7bf3b93fc0664f5458242817c56f8ba8",
-    "audit_present": true
+    "proof_sha256": "118572aeb37570f2a79af81b96fad5a80aa9f40f29563164f64c8d798dca3fe5",
+    "audit_present": true,
+    "incremental_dependencies": {}
   },
   {
     "profile": "Registry",
@@ -53,79 +101,141 @@
     "exit": 0,
     "seconds": 1.218,
     "proof_sha256": "f8f192d421294d137b56603cc0fbcfc182ccc38c6375848b5cbe007d79788b78",
-    "audit_present": true
+    "audit_present": true,
+    "incremental_dependencies": {
+      "SSR": {
+        "proof_sha256": "63f4b375faf089dbe26221a0eab8d7d6b44ba881f5ad4baa8a12ba9414435039",
+        "olean_sha256": "6bee706f39a80e38d9b0c02268f25d016a4a62fdd7ddfdaf8e57658ffeb0871e"
+      }
+    }
+  },
+  {
+    "profile": "SSRProperties",
+    "module": "ssr/ssrfun",
+    "exit": 0,
+    "seconds": 0.917,
+    "proof_sha256": "1dd9076a6be1ea8b684845d62b315167e70f64f36196b4639a75a735636ec059",
+    "audit_present": true,
+    "incremental_dependencies": {
+      "SSR": {
+        "proof_sha256": "63f4b375faf089dbe26221a0eab8d7d6b44ba881f5ad4baa8a12ba9414435039",
+        "olean_sha256": "6bee706f39a80e38d9b0c02268f25d016a4a62fdd7ddfdaf8e57658ffeb0871e"
+      }
+    }
+  },
+  {
+    "profile": "SSRBool",
+    "module": "ssr/ssrbool",
+    "exit": 0,
+    "seconds": 0.968,
+    "proof_sha256": "39ed173723c756135556d74bcfa791249b3d7d6f3bee6f9b6c54804ae63d8fad",
+    "audit_present": true,
+    "incremental_dependencies": {}
+  },
+  {
+    "profile": "SSRBoolStatements",
+    "module": "ssr/ssrbool",
+    "exit": 0,
+    "seconds": 2.571,
+    "proof_sha256": "ba25cc23cf75112224a12dd0e154f58a7bf3b93fc0664f5458242817c56f8ba8",
+    "audit_present": true,
+    "incremental_dependencies": {
+      "SSRBool": {
+        "proof_sha256": "39ed173723c756135556d74bcfa791249b3d7d6f3bee6f9b6c54804ae63d8fad",
+        "olean_sha256": "685d5de2730a48a180a98cdbc5d79a85e70f8569b68f623ef14c0bf8a8783301"
+      }
+    }
   },
   {
     "profile": "NumericRead",
     "module": "Init/Nat",
     "exit": 0,
-    "seconds": 1.469,
+    "seconds": 1.471,
     "proof_sha256": "a302725cdc3ad42e2d36f4b9b05d3bd3a3b0c3ca8614dbddb85f4fc13394a3e0",
-    "audit_present": true
-  },
-  {
-    "profile": "WellFounded",
-    "module": "Init/Wf",
-    "exit": 0,
-    "seconds": 0.968,
-    "proof_sha256": "403113e04c60591c8b393cef9e6eb2266258c3255ae841b5295dadde47e336c5",
-    "audit_present": true
+    "audit_present": true,
+    "incremental_dependencies": {}
   },
   {
     "profile": "DecimalOperations",
     "module": "Init/Decimal",
     "exit": 0,
-    "seconds": 2.274,
+    "seconds": 2.322,
     "proof_sha256": "bbdedfdb69518cffc837e0b9839df8d6394d88be6cf839fc15ddd3248eafa8c0",
-    "audit_present": true
+    "audit_present": true,
+    "incremental_dependencies": {}
   },
   {
     "profile": "HexadecimalOperations",
     "module": "Init/Hexadecimal",
     "exit": 0,
-    "seconds": 5.387,
+    "seconds": 5.536,
     "proof_sha256": "82ca35d201e0ed26b2d62b0bcad0c95c23c9fee04730d76696c026790b81bc42",
-    "audit_present": true
+    "audit_present": true,
+    "incremental_dependencies": {}
+  },
+  {
+    "profile": "WellFounded",
+    "module": "Init/Wf",
+    "exit": 0,
+    "seconds": 0.967,
+    "proof_sha256": "403113e04c60591c8b393cef9e6eb2266258c3255ae841b5295dadde47e336c5",
+    "audit_present": true,
+    "incremental_dependencies": {}
   },
   {
     "profile": "DependentElimination",
     "module": "Init/Specif",
     "exit": 0,
-    "seconds": 1.068,
+    "seconds": 1.017,
     "proof_sha256": "3ca62101a363d1e4998e47110e49cce6e563c0341f83efd4ff7a819600f9a78d",
-    "audit_present": true
-  },
-  {
-    "profile": "DatatypeElimination",
-    "module": "Init/Datatypes",
-    "exit": 0,
-    "seconds": 0.968,
-    "proof_sha256": "7003b5bfc3b24362849ad5acbad3077ebd7efdffbd876b9459aa27c1ed8d11cf",
-    "audit_present": true
-  },
-  {
-    "profile": "DependentStatements",
-    "module": "Init/Specif",
-    "exit": 0,
-    "seconds": 1.167,
-    "proof_sha256": "52de4c5bf5381fe06aaaf9aa651730c9a0bf309e23419696b47cdb2a788dbb65",
-    "audit_present": true
+    "audit_present": true,
+    "incremental_dependencies": {}
   },
   {
     "profile": "PairRecursion",
     "module": "Init/Wf",
     "exit": 0,
-    "seconds": 0.968,
+    "seconds": 1.018,
     "proof_sha256": "cd9f9de8c3f911955802e0332267e371647b671cba11b853aed1d0d7bd1ba50b",
-    "audit_present": true
+    "audit_present": true,
+    "incremental_dependencies": {
+      "WellFounded": {
+        "proof_sha256": "403113e04c60591c8b393cef9e6eb2266258c3255ae841b5295dadde47e336c5",
+        "olean_sha256": "3875acfe91470a5705cabe272fdbdb2c008aa19ebeb4a3f10fc289a9ed56e1ca"
+      }
+    }
+  },
+  {
+    "profile": "DependentStatements",
+    "module": "Init/Specif",
+    "exit": 0,
+    "seconds": 1.067,
+    "proof_sha256": "52de4c5bf5381fe06aaaf9aa651730c9a0bf309e23419696b47cdb2a788dbb65",
+    "audit_present": true,
+    "incremental_dependencies": {
+      "DependentElimination": {
+        "proof_sha256": "3ca62101a363d1e4998e47110e49cce6e563c0341f83efd4ff7a819600f9a78d",
+        "olean_sha256": "604b469b9b6a53b63f3764c8adb0d023e5b7e8e1030c0099403d988117d1eaf6"
+      }
+    }
+  },
+  {
+    "profile": "DatatypeElimination",
+    "module": "Init/Datatypes",
+    "exit": 0,
+    "seconds": 1.018,
+    "proof_sha256": "7003b5bfc3b24362849ad5acbad3077ebd7efdffbd876b9459aa27c1ed8d11cf",
+    "audit_present": true,
+    "incremental_dependencies": {}
   },
   {
     "profile": "EqualityTransport",
     "module": "Init/Logic",
     "exit": 0,
-    "seconds": 0.968,
+    "seconds": 0.967,
     "proof_sha256": "7411314d06a7c28c29a3dc39ab0e42969772051b1e37165d49ba934413794e1e",
-    "audit_present": true
+    "audit_present": true,
+    "incremental_dependencies": {}
   },
   {
     "profile": "BooleanEquality",
@@ -133,23 +243,26 @@
     "exit": 0,
     "seconds": 1.018,
     "proof_sha256": "51de859884875414e59dcd814152ea3c8cafa9f84106e099e0535df49bceb9ee",
-    "audit_present": true
+    "audit_present": true,
+    "incremental_dependencies": {}
   },
   {
     "profile": "RelationDefinitions",
     "module": "Relations/Relation_Definitions",
     "exit": 0,
-    "seconds": 1.018,
+    "seconds": 1.067,
     "proof_sha256": "f072945197a2f5d6ecbce4699f678d6e0716084f6efb156b926cbf33602689a9",
-    "audit_present": true
+    "audit_present": true,
+    "incremental_dependencies": {}
   },
   {
     "profile": "RelationClasses",
     "module": "Classes/RelationClasses",
     "exit": 0,
-    "seconds": 0.968,
+    "seconds": 0.967,
     "proof_sha256": "fef2bcb464a205fd908f2733d263641bf123002d052e3d2060f3e0d1e577cb35",
-    "audit_present": true
+    "audit_present": true,
+    "incremental_dependencies": {}
   },
   {
     "profile": "RelationClassStatements",
@@ -157,23 +270,41 @@
     "exit": 0,
     "seconds": 1.369,
     "proof_sha256": "1844d6a314ea445e5f99f14b2cd8c67a0f9bd5de2996ab0575b73cfb284ab474",
-    "audit_present": true
+    "audit_present": true,
+    "incremental_dependencies": {
+      "RelationClasses": {
+        "proof_sha256": "fef2bcb464a205fd908f2733d263641bf123002d052e3d2060f3e0d1e577cb35",
+        "olean_sha256": "496d8f33e9d91cd58e9b5b69944d898751c3bcd021b4ba0017645cf1315cfb4e"
+      }
+    }
   },
   {
     "profile": "VariadicPredicates",
     "module": "Classes/RelationClasses",
     "exit": 0,
-    "seconds": 1.018,
+    "seconds": 1.019,
     "proof_sha256": "02e5e4b1fe243b5d7a7cc2c197b936ff58985fbe81310a98589848040140bcbb",
-    "audit_present": true
+    "audit_present": true,
+    "incremental_dependencies": {
+      "RelationClasses": {
+        "proof_sha256": "fef2bcb464a205fd908f2733d263641bf123002d052e3d2060f3e0d1e577cb35",
+        "olean_sha256": "496d8f33e9d91cd58e9b5b69944d898751c3bcd021b4ba0017645cf1315cfb4e"
+      }
+    }
   },
   {
     "profile": "VariadicStatements",
     "module": "Classes/RelationClasses",
     "exit": 0,
-    "seconds": 1.019,
+    "seconds": 1.069,
     "proof_sha256": "4e640d42759e8083d18834a9347d758a4eed1f60bc2a4dde590fdf0cf7895517",
-    "audit_present": true
+    "audit_present": true,
+    "incremental_dependencies": {
+      "VariadicPredicates": {
+        "proof_sha256": "02e5e4b1fe243b5d7a7cc2c197b936ff58985fbe81310a98589848040140bcbb",
+        "olean_sha256": "752c1a1e38933fbc986f94d751b02ae3a090dc2b0a73db3f4aef31170a76b98b"
+      }
+    }
   },
   {
     "profile": "RelationConditions",
@@ -181,15 +312,22 @@
     "exit": 0,
     "seconds": 0.968,
     "proof_sha256": "ec5b7a90166e84eda9c59c3c3c0a4a8e560b8543dcec49738a1aae07fa0e099d",
-    "audit_present": true
+    "audit_present": true,
+    "incremental_dependencies": {
+      "RelationClasses": {
+        "proof_sha256": "fef2bcb464a205fd908f2733d263641bf123002d052e3d2060f3e0d1e577cb35",
+        "olean_sha256": "496d8f33e9d91cd58e9b5b69944d898751c3bcd021b4ba0017645cf1315cfb4e"
+      }
+    }
   },
   {
     "profile": "Morphisms",
     "module": "Classes/Morphisms",
     "exit": 0,
-    "seconds": 1.068,
+    "seconds": 1.018,
     "proof_sha256": "c18c2fc5a227c88c2bf5ed1b9624d313235e64fa8fa2dd1de418c739d7c0d764",
-    "audit_present": true
+    "audit_present": true,
+    "incremental_dependencies": {}
   },
   {
     "profile": "MorphismStatements",
@@ -197,23 +335,36 @@
     "exit": 0,
     "seconds": 1.419,
     "proof_sha256": "559bc93e07ca925fab9d028e388c8a49179e48623f915390b32b890e24f69c9e",
-    "audit_present": true
+    "audit_present": true,
+    "incremental_dependencies": {
+      "Morphisms": {
+        "proof_sha256": "c18c2fc5a227c88c2bf5ed1b9624d313235e64fa8fa2dd1de418c739d7c0d764",
+        "olean_sha256": "59e5d990b17e5f26dfbb8da0017152b88a5434571703f14fd86f09445a5b9b5e"
+      }
+    }
   },
   {
     "profile": "EquivalenceBridge",
     "module": "Classes/Equivalence",
     "exit": 0,
-    "seconds": 1.018,
+    "seconds": 0.917,
     "proof_sha256": "793e7c5581bf1e299ba2f0b3f39ab821e6463b18abefbe69a7902449f09894d9",
-    "audit_present": true
+    "audit_present": true,
+    "incremental_dependencies": {}
   },
   {
     "profile": "EquivalenceStatements",
     "module": "Classes/Equivalence",
     "exit": 0,
-    "seconds": 1.118,
+    "seconds": 1.168,
     "proof_sha256": "7e774d2685d7356e1229f205ec8398dd20701925a92fda968f34d5a784f90008",
-    "audit_present": true
+    "audit_present": true,
+    "incremental_dependencies": {
+      "EquivalenceBridge": {
+        "proof_sha256": "793e7c5581bf1e299ba2f0b3f39ab821e6463b18abefbe69a7902449f09894d9",
+        "olean_sha256": "4c5a6cd1a05c08b8d1f18fc8f928e6817c2e7384de1c51138dd3c4532159ea7f"
+      }
+    }
   },
   {
     "profile": "MorphismsProp",
@@ -221,7 +372,8 @@
     "exit": 0,
     "seconds": 1.118,
     "proof_sha256": "9a5db697f14b45d48fc0bd78750ffe4c45a8155a0df6a95b9db51200cb6243f1",
-    "audit_present": true
+    "audit_present": true,
+    "incremental_dependencies": {}
   },
   {
     "profile": "SetoidBridge",
@@ -229,120 +381,172 @@
     "exit": 0,
     "seconds": 1.018,
     "proof_sha256": "cf7584cb246ac5f14d90a6824396a90e48849917e3e65c268690bebadf17f34c",
-    "audit_present": true
+    "audit_present": true,
+    "incremental_dependencies": {}
   },
   {
     "profile": "SpecifNormalization",
     "module": "Init/Specif",
     "exit": 0,
-    "seconds": 1.168,
+    "seconds": 1.118,
     "proof_sha256": "27c27a8fcdd2287d913fabdb110540d906ceac4f8978447295b9f88db078173b",
-    "audit_present": true
+    "audit_present": true,
+    "incremental_dependencies": {
+      "DependentStatements": {
+        "proof_sha256": "52de4c5bf5381fe06aaaf9aa651730c9a0bf309e23419696b47cdb2a788dbb65",
+        "olean_sha256": "ee481cfc466b2389b166c3e45775c87ebdaa02142f203ad27ff4e1563cdcc453"
+      }
+    }
   },
   {
     "profile": "SpecifStatements",
     "module": "Init/Specif",
     "exit": 0,
-    "seconds": 2.071,
+    "seconds": 1.971,
     "proof_sha256": "04510121e90ec808d4ee7a1397dd214a6df14778162da71c078d35510bc4ad6b",
-    "audit_present": true
+    "audit_present": true,
+    "incremental_dependencies": {
+      "SpecifNormalization": {
+        "proof_sha256": "27c27a8fcdd2287d913fabdb110540d906ceac4f8978447295b9f88db078173b",
+        "olean_sha256": "30c1e72b2db054d8e1e023abf373bfba7b574ef3de4e7a4819d711500588a23b"
+      }
+    }
   },
   {
     "profile": "NumericWrite",
     "module": "Init/Nat",
     "exit": 0,
-    "seconds": 1.369,
+    "seconds": 1.219,
     "proof_sha256": "196a837c108adaf2d05471a01080fab093d9a1f5ccfa123490dfa98461ac24b6",
-    "audit_present": true
+    "audit_present": true,
+    "incremental_dependencies": {
+      "NumericRead": {
+        "proof_sha256": "a302725cdc3ad42e2d36f4b9b05d3bd3a3b0c3ca8614dbddb85f4fc13394a3e0",
+        "olean_sha256": "f1f1d182dab96844cf887d13d07f3749916de77d4030509649be4e1d1d2b42fd"
+      }
+    }
   },
   {
     "profile": "NumericMathlib",
     "module": "Init/Nat",
     "exit": 0,
-    "seconds": 1.571,
+    "seconds": 1.52,
     "proof_sha256": "269fa1bc4e6071eb5d767a50b3fee7fed6a09f63acf30b0bfa9ebfc9b2268b66",
     "audit_present": true,
     "mathlib_commit": "0df444a360eaa60ab8c11dca51a86af692955474",
-    "mathlib_digits_olean_sha256": "fba14e44f8f827910edae875088349d49c583cb1f038bf67f9e452ef3a605c49"
+    "mathlib_digits_olean_sha256": "fba14e44f8f827910edae875088349d49c583cb1f038bf67f9e452ef3a605c49",
+    "incremental_dependencies": {
+      "NumericWrite": {
+        "proof_sha256": "196a837c108adaf2d05471a01080fab093d9a1f5ccfa123490dfa98461ac24b6",
+        "olean_sha256": "87a77bddcd76a0ea111e074864b77ff8ae26dbd1cee09ab024d7871d0ed4cd0d"
+      }
+    }
   },
   {
     "profile": "NumericSigned",
     "module": "Init/Nat",
     "exit": 0,
-    "seconds": 1.321,
+    "seconds": 1.218,
     "proof_sha256": "68c005a87322e4deb67ef13fba0906ca9dc7a4672b62455ea5b88f07dc512d92",
-    "audit_present": true
+    "audit_present": true,
+    "incremental_dependencies": {
+      "NumericWrite": {
+        "proof_sha256": "196a837c108adaf2d05471a01080fab093d9a1f5ccfa123490dfa98461ac24b6",
+        "olean_sha256": "87a77bddcd76a0ea111e074864b77ff8ae26dbd1cee09ab024d7871d0ed4cd0d"
+      }
+    }
   },
   {
     "profile": "NatGcd",
     "module": "Init/Nat",
     "exit": 0,
-    "seconds": 1.067,
+    "seconds": 1.068,
     "proof_sha256": "171e875914efddecb36f5168d00772b9eee9920352b821c2300dc3bbe4461dac",
-    "audit_present": true
+    "audit_present": true,
+    "incremental_dependencies": {
+      "NumericSigned": {
+        "proof_sha256": "68c005a87322e4deb67ef13fba0906ca9dc7a4672b62455ea5b88f07dc512d92",
+        "olean_sha256": "f03314306ec1b2901cf22fe2c06b1a598e559c7c63d4f63b4c88402f0092bfbd"
+      }
+    }
   },
   {
     "profile": "NatArithmetic",
     "module": "Init/Nat",
     "exit": 0,
-    "seconds": 1.168,
+    "seconds": 1.122,
     "proof_sha256": "3c8779ba4a21bdff6d4490c33345460e41de8f1be581eee8cb48f6b09e91d942",
-    "audit_present": true
+    "audit_present": true,
+    "incremental_dependencies": {
+      "NatGcd": {
+        "proof_sha256": "171e875914efddecb36f5168d00772b9eee9920352b821c2300dc3bbe4461dac",
+        "olean_sha256": "e1c4f26631eba01a226adf0f24dfd50ad6de3d13ae5fca65c919da68ae33e1a6"
+      }
+    }
   },
   {
     "profile": "NatIterators",
     "module": "Init/Nat",
     "exit": 0,
-    "seconds": 1.269,
+    "seconds": 1.219,
     "proof_sha256": "e0d9a2ad933a02c42d447f3ecd87cd1e19e07a1f036ad75006499e844efbac91",
-    "audit_present": true
+    "audit_present": true,
+    "incremental_dependencies": {
+      "NatArithmetic": {
+        "proof_sha256": "3c8779ba4a21bdff6d4490c33345460e41de8f1be581eee8cb48f6b09e91d942",
+        "olean_sha256": "304aa9c7674bc67950a575e69884b875de6859357dffed8ba0c37558fc51fa40"
+      }
+    }
   },
   {
     "profile": "PeanoBridge",
     "module": "Init/Peano",
     "exit": 0,
-    "seconds": 0.968,
+    "seconds": 0.967,
     "proof_sha256": "8b9ebef6b24dd98ba382b701a1080d8b0d2abaa4abdfb487be56c9acda046737",
-    "audit_present": true
+    "audit_present": true,
+    "incremental_dependencies": {}
   },
   {
     "profile": "PeanoStatements",
     "module": "Init/Peano",
     "exit": 0,
-    "seconds": 1.573,
+    "seconds": 1.52,
     "proof_sha256": "7c134f3dd9827756e61ca2b2db71a8fa722eaf69209bb85ea3d965a52f207762",
-    "audit_present": true
+    "audit_present": true,
+    "incremental_dependencies": {
+      "PeanoBridge": {
+        "proof_sha256": "8b9ebef6b24dd98ba382b701a1080d8b0d2abaa4abdfb487be56c9acda046737",
+        "olean_sha256": "d3b1a4b0ee597d5a50cff84e2795fc77f53a061d37bdc22a1942dbfaad3efeba"
+      }
+    }
   },
   {
-    "profile": "ListBridge",
-    "module": "Lists/ListDef",
-    "exit": 0,
-    "seconds": 0.918,
-    "proof_sha256": "1ad584f42a39b8f4aae7e9716dcec31f11b4f593d869f8471e8991e6116b89dd",
-    "audit_present": true
-  },
-  {
-    "profile": "ListStatements",
-    "module": "Lists/ListDef",
-    "exit": 0,
-    "seconds": 1.119,
-    "proof_sha256": "e9d4c65f05f0f7a1f49fcd5303d2d251dafa17ce90d0c077683783c290a9cba6",
-    "audit_present": true
-  },
-  {
-    "profile": "BinaryOrder",
+    "profile": "BinaryArithmetic",
     "module": "BinNums/IntDef",
     "exit": 0,
-    "seconds": 1.218,
-    "proof_sha256": "b3078241b8932052179e02e16bf34ef171eb80572d789369d9164aedc2a2feca",
-    "audit_present": true
+    "seconds": 1.32,
+    "proof_sha256": "a85b57ea1dc810957fcc83b7cf6ce9642a8a1893a4b88a049de09515d7b85e9c",
+    "audit_present": true,
+    "incremental_dependencies": {
+      "BinaryInt": {
+        "proof_sha256": "49816d8101a7b846df9392bdab6e3e66d68cfa59bc38a25d4bd7de9743f95871",
+        "olean_sha256": "0b0f9d77d9ac725d69a08fb07a1635eedf6cf3eef6c05813a714f8b476ec0309"
+      }
+    }
   },
   {
-    "profile": "BinaryInt",
+    "profile": "BinaryNatSub",
     "module": "BinNums/IntDef",
     "exit": 0,
-    "seconds": 1.218,
-    "proof_sha256": "49816d8101a7b846df9392bdab6e3e66d68cfa59bc38a25d4bd7de9743f95871",
-    "audit_present": true
+    "seconds": 1.47,
+    "proof_sha256": "0701c7d4f3227285dd9bf96107281f865d552019e4c2bfa18685530fbf4a1ff7",
+    "audit_present": true,
+    "incremental_dependencies": {
+      "BinaryArithmetic": {
+        "proof_sha256": "a85b57ea1dc810957fcc83b7cf6ce9642a8a1893a4b88a049de09515d7b85e9c",
+        "olean_sha256": "f52cd617f35366e48aa6b4d6202c68d5f587b8a8ddfd9a13ee692f50ef43dc61"
+      }
+    }
   }
 ]

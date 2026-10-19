@@ -4189,6 +4189,216 @@ NativeBridge.Incremental.BinaryInt.z_min_agrees
 
 公理闭包：propext, Quot.sound
 
+## Corelib.BinNums.PosDef.Pos.mask
+
+NativeBridge.Incremental.BinaryMask.maskIso
+
+目标：Option Nat；范围：IsNeg ↔ none, IsNul ↔ some 0, IsPos p ↔ some (positiveTo p); both inverse laws, all values. Negative magnitude was not stored by source mask.
+
+```lean
+NativeBridge.Iso Rocq.Corelib.BinNums.PosDef.Pos.mask (Option Nat)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.PosDef.Pos.double_mask
+
+NativeBridge.Incremental.BinaryMask.double_mask_agrees
+
+目标：Option.map (2*·)；范围：All masks.
+
+```lean
+∀ (m : NativeBridge.Incremental.BinaryMask.RMask),
+  NativeBridge.Incremental.BinaryMask.maskTo (Rocq.Corelib.BinNums.PosDef.Pos.double_mask m) =
+    Option.map (fun x => 2 * x) (NativeBridge.Incremental.BinaryMask.maskTo m)
+```
+
+公理闭包：空
+
+## Corelib.BinNums.PosDef.Pos.succ_double_mask
+
+NativeBridge.Incremental.BinaryMask.succ_double_mask_agrees
+
+目标：Option.map (fun n => 2*n+1)；范围：All masks.
+
+```lean
+∀ (m : NativeBridge.Incremental.BinaryMask.RMask),
+  NativeBridge.Incremental.BinaryMask.maskTo (Rocq.Corelib.BinNums.PosDef.Pos.succ_double_mask m) =
+    Option.map (fun n => 2 * n + 1) (NativeBridge.Incremental.BinaryMask.maskTo m)
+```
+
+公理闭包：空
+
+## Corelib.BinNums.PosDef.Pos.double_pred_mask
+
+NativeBridge.Incremental.BinaryMask.double_pred_mask_agrees
+
+目标：some (2*n-2)；范围：All positive inputs.
+
+```lean
+∀ (p : NativeBridge.RPositive),
+  NativeBridge.Incremental.BinaryMask.maskTo (Rocq.Corelib.BinNums.PosDef.Pos.double_pred_mask p) =
+    some (2 * NativeBridge.positiveTo p - 2)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.PosDef.Pos.sub_mask
+
+NativeBridge.Incremental.BinaryMask.sub_mask_agrees
+
+目标：if m ≤ n then some (n-m) else none；范围：All positive inputs; negative result distinguished from zero.
+
+```lean
+∀ (p q : NativeBridge.RPositive),
+  NativeBridge.Incremental.BinaryMask.maskTo (Rocq.Corelib.BinNums.PosDef.Pos.sub_mask p q) =
+    NativeBridge.Incremental.BinaryMask.checkedSub (NativeBridge.positiveTo p) (NativeBridge.positiveTo q)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.PosDef.Pos.sub_mask_carry
+
+NativeBridge.Incremental.BinaryMask.sub_mask_carry_agrees
+
+目标：if m+1 ≤ n then some (n-(m+1)) else none；范围：All positive inputs; includes explicit borrow.
+
+```lean
+∀ (p q : NativeBridge.RPositive),
+  NativeBridge.Incremental.BinaryMask.maskTo (Rocq.Corelib.BinNums.PosDef.Pos.sub_mask_carry p q) =
+    NativeBridge.Incremental.BinaryMask.checkedSub (NativeBridge.positiveTo p) (NativeBridge.positiveTo q + 1)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.PosDef.Pos.sub
+
+NativeBridge.Incremental.BinaryMask.positive_sub_agrees
+
+目标：max 1 (n-m)；范围：All positive inputs; zero and negative differences saturate to one.
+
+```lean
+∀ (p q : NativeBridge.RPositive),
+  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.sub p q) =
+    max 1 (NativeBridge.positiveTo p - NativeBridge.positiveTo q)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.PosDef.Pos.mask_rec
+
+NativeBridge.Incremental.BinaryMask.mask_rec_agrees
+
+目标：Native Option/Nat elimination with zero/positive/none branches；范围：All masks; Type-valued motives pulled back from Option Nat.
+
+```lean
+∀ (P : Option Nat → Type) (z : P (some 0)) (p : (n : { n // 0 < n }) → P (some n.val)) (neg : P none)
+  (m : NativeBridge.Incremental.BinaryMask.RMask),
+  Rocq.Corelib.BinNums.PosDef.Pos.mask_rec (fun m => P (NativeBridge.Incremental.BinaryMask.maskTo m)) z
+      (fun x => p ⟨NativeBridge.positiveTo x, ⋯⟩) neg m =
+    NativeBridge.Incremental.BinaryMask.maskElim z p neg (NativeBridge.Incremental.BinaryMask.maskTo m)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.PosDef.Pos.mask_rect
+
+NativeBridge.Incremental.BinaryMask.mask_rect_agrees
+
+目标：Native Option/Nat elimination with zero/positive/none branches；范围：All masks; Sort u-valued motives pulled back from Option Nat.
+
+```lean
+∀ (P : Option Nat → Sort u) (z : P (some 0)) (p : (n : { n // 0 < n }) → P (some n.val)) (neg : P none)
+  (m : NativeBridge.Incremental.BinaryMask.RMask),
+  Rocq.Corelib.BinNums.PosDef.Pos.mask_rect (fun m => P (NativeBridge.Incremental.BinaryMask.maskTo m)) z
+      (fun x => p ⟨NativeBridge.positiveTo x, ⋯⟩) neg m =
+    NativeBridge.Incremental.BinaryMask.maskElim z p neg (NativeBridge.Incremental.BinaryMask.maskTo m)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.pos_sub
+
+NativeBridge.Incremental.BinaryArithmetic.z_pos_sub_agrees
+
+目标：(n : Int) - (m : Int)；范围：All inputs; source mutual-recursion companion reconstructed as a local definition when not separately exported, with constructor equations checked by rfl. No new source declaration or axiom.
+
+```lean
+∀ (p q : NativeBridge.RPositive),
+  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.pos_sub p q) =
+    ↑(NativeBridge.positiveTo p) - ↑(NativeBridge.positiveTo q)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.add
+
+NativeBridge.Incremental.BinaryArithmetic.z_add_agrees
+
+目标：Int addition；范围：All inputs; source mutual-recursion companion reconstructed as a local definition when not separately exported, with constructor equations checked by rfl. No new source declaration or axiom.
+
+```lean
+∀ (x y : NativeBridge.RIntBinary),
+  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.add x y) =
+    NativeBridge.binaryIntTo x + NativeBridge.binaryIntTo y
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.sub
+
+NativeBridge.Incremental.BinaryArithmetic.z_sub_agrees
+
+目标：Int subtraction；范围：All inputs; source mutual-recursion companion reconstructed as a local definition when not separately exported, with constructor equations checked by rfl. No new source declaration or axiom.
+
+```lean
+∀ (x y : NativeBridge.RIntBinary),
+  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.sub x y) =
+    NativeBridge.binaryIntTo x - NativeBridge.binaryIntTo y
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.NatDef.N.sub
+
+NativeBridge.Incremental.BinaryNatSub.n_sub_agrees
+
+目标：Nat subtraction；范围：All inputs; source mutual-recursion companion reconstructed as a local definition when not separately exported, with constructor equations checked by rfl. No new source declaration or axiom.
+
+```lean
+∀ (x y : NativeBridge.RNatBinary),
+  NativeBridge.binaryNatTo (Rocq.Corelib.BinNums.NatDef.N.sub x y) =
+    NativeBridge.binaryNatTo x - NativeBridge.binaryNatTo y
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.PosDef.Pos.mask_ind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.BinNums.PosDef.Pos.mask_ind.statement.correspondence
+
+目标：native statement: ∀ (f : Option Nat → Prop), f (some 0) → (∀ (n : { n // 0 < n }), f (some n.val)) → f none → ∀ (m : Option Nat), f m；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.BinNums.PosDef.Pos.mask_ind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.BinNums.PosDef.Pos.mask_ind.statement.native
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.PosDef.Pos.mask_sind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.BinNums.PosDef.Pos.mask_sind.statement.correspondence
+
+目标：native statement: ∀ (f : Option Nat → Prop), f (some 0) → (∀ (n : { n // 0 < n }), f (some n.val)) → f none → ∀ (m : Option Nat), f m；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.BinNums.PosDef.Pos.mask_sind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.BinNums.PosDef.Pos.mask_sind.statement.native
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
 ## Corelib.Lists.ListDef.Forall_ind
 
 NativeBridge.Incremental.Statements.Rocq.Corelib.Lists.ListDef.Forall_ind.statement.correspondence

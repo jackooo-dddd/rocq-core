@@ -4,15 +4,19 @@ W=Path(__file__).resolve().parent;R=W.parents[1];D=W/'reports'
 B=R/'experiments/mechanical-correspondence-20261019/reports'
 specs=json.loads((W/'certificates.json').read_text())
 validation=json.loads((D/'validation.json').read_text())
-assert {r['profile'] for r in validation}=={'ListBridge','ListStatements','BinaryOrder','BinaryInt','PeanoBridge','PeanoStatements','NatArithmetic','NatIterators','NatGcd','NumericSigned','NumericMathlib','NumericWrite','SpecifNormalization','SpecifStatements','Basics','SSR','Iteration','Registry','SSRProperties','SSRBool','SSRBoolStatements','NumericRead','DecimalOperations','HexadecimalOperations','WellFounded','DependentElimination','PairRecursion','DependentStatements','DatatypeElimination','EqualityTransport','BooleanEquality','RelationDefinitions','RelationClasses','RelationClassStatements','VariadicPredicates','VariadicStatements','RelationConditions','Morphisms','MorphismStatements','EquivalenceBridge','EquivalenceStatements','MorphismsProp','SetoidBridge'}
+assert {r['profile'] for r in validation}=={'BinaryArithmetic','BinaryNatSub','BinaryMask','BinaryMaskStatements','ListBridge','ListStatements','BinaryOrder','BinaryInt','PeanoBridge','PeanoStatements','NatArithmetic','NatIterators','NatGcd','NumericSigned','NumericMathlib','NumericWrite','SpecifNormalization','SpecifStatements','Basics','SSR','Iteration','Registry','SSRProperties','SSRBool','SSRBoolStatements','NumericRead','DecimalOperations','HexadecimalOperations','WellFounded','DependentElimination','PairRecursion','DependentStatements','DatatypeElimination','EqualityTransport','BooleanEquality','RelationDefinitions','RelationClasses','RelationClassStatements','VariadicPredicates','VariadicStatements','RelationConditions','Morphisms','MorphismStatements','EquivalenceBridge','EquivalenceStatements','MorphismsProp','SetoidBridge'}
 audits={}
 for r in validation:
  assert r['exit']==0 and r['audit_present'],r
  assert hashlib.sha256((W/'proofs'/(r['profile']+'.lean')).read_bytes()).hexdigest()==r['proof_sha256']
+ for dep,record in r['incremental_dependencies'].items():
+  assert record['proof_sha256']==hashlib.sha256((W/'proofs'/(dep+'.lean')).read_bytes()).hexdigest()
+  assert record['olean_sha256']==hashlib.sha256((W/'.work'/(dep+'.olean')).read_bytes()).hexdigest()
  audits[r['profile']]={x['name']:x for x in json.loads((D/(r['profile']+'-audit.json')).read_text())}
 base=list(csv.DictReader((B/'CORELIB_LEDGER.csv').open()))
 rows={r['source']:dict(r,baseline_bridge_status=r['bridge_status'],evidence_origin='inherited baseline',new_certificates='') for r in base}
 automatic_groups=[
+ ('BinaryMaskStatements','binary-mask-statement-selection.json','binary-mask-statement-candidates.json',2),
  ('ListStatements','list-statement-selection.json','list-statement-candidates.json',2),
  ('PeanoStatements','peano-statement-selection.json','peano-statement-candidates.json',31),
  ('SpecifStatements','specif-statement-selection.json','specif-statement-candidates.json',49),
@@ -136,7 +140,7 @@ summary={'alias_regression_profiles':45,'alias_regression_lost':0,'alias_regress
  'new_certificates':len(specs),'baseline_operation_certificates':119,'operation_certificates_total':119+sum(s['kind']=='OPERATION_CORRESPONDENCE' for s in specs),
  'type_certificates_total':30+sum(s['kind']=='TYPE_ISO' for s in specs),
  'native_interface_roundtrips':479,'new_root_interface_roundtrips':1,'passing_incremental_profiles':len(validation),
- 'full_baseline_rerun':False,'translation_rerun':False,'mathlib_tested':False,
+ 'incremental_dependency_fingerprints_checked':True,'full_baseline_rerun':False,'translation_rerun':False,'mathlib_tested':False,
  'automatic_native_target_synthesis':False,'automatic_certificate_composition':'SSR Option/function proof composition plus automatic statement normalization; arbitrary function targets still supplied',
  'conditions_remaining':counts['EXPLICIT_PROOF_PARAMETERS'],
  'mechanical_declarations_with_explicit_conditions':331,
@@ -145,7 +149,7 @@ summary={'alias_regression_profiles':45,'alias_regression_lost':0,'alias_regress
  'closed_obligation_witnesses':len({w['name'] for r in resolved_conditions for w in r['witnesses']}),
  'axiom_free_closed_witnesses':len({w['name'] for r in resolved_conditions for w in r['witnesses'] if not w['axioms']}),
  'standard_axiom_closed_witnesses':len({w['name'] for r in resolved_conditions for w in r['witnesses'] if w['axioms']}),
- 'full_sort_type_certificates_added':7,'completion':'seventeen incremental batches plus P7 coexistence; overall plan remains incomplete',
+ 'full_sort_type_certificates_added':7,'completion':'eighteen incremental batches plus P7 coexistence; overall plan remains incomplete',
  'explicit_target_classes_since_batch_3':dict(collections.Counter(sp['target_class'] for sp in specs if 'target_class' in sp))}
 interop_path=D/'interop/all/import-all-validation.json'
 if interop_path.exists():
