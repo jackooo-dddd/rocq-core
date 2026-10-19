@@ -4,7 +4,7 @@ W=Path(__file__).resolve().parent;R=W.parents[1];D=W/'reports'
 B=R/'experiments/mechanical-correspondence-20261019/reports'
 specs=json.loads((W/'certificates.json').read_text())
 validation=json.loads((D/'validation.json').read_text())
-assert {r['profile'] for r in validation}=={'SSRFunNormalization','SSRFunPredicates','SSRFunStatements','SSRFunOption','SSRNonProp','SpecifWitnesses','SpecifConditionalNormalization','SpecifClosedStatements','SpecifOperations','SpecifChoice','SpecifEqualityElimination','LogicWitnesses','LogicNormalization','LogicStatements','LogicElimination','LogicExistsElimination','LogicProofElimination','DatatypeNormalization','DatatypeQuantifiers','DatatypeStatements','DatatypeSpecs','BinaryArithmetic','BinaryNatSub','BinaryMask','BinaryMaskStatements','ListBridge','ListStatements','BinaryOrder','BinaryInt','PeanoBridge','PeanoStatements','NatArithmetic','NatIterators','NatGcd','NumericSigned','NumericMathlib','NumericWrite','SpecifNormalization','SpecifStatements','Basics','SSR','Iteration','Registry','SSRProperties','SSRBool','SSRBoolStatements','NumericRead','DecimalOperations','HexadecimalOperations','WellFounded','DependentElimination','PairRecursion','DependentStatements','DatatypeElimination','EqualityTransport','BooleanEquality','RelationDefinitions','RelationClasses','RelationClassStatements','VariadicPredicates','VariadicStatements','RelationConditions','Morphisms','MorphismStatements','EquivalenceBridge','EquivalenceStatements','MorphismsProp','SetoidBridge'}
+assert {r['profile'] for r in validation}=={'SSRFunOpacity','SSRFunData','SSRFunConditions','SSRFunNormalization','SSRFunPredicates','SSRFunStatements','SSRFunOption','SSRNonProp','SpecifWitnesses','SpecifConditionalNormalization','SpecifClosedStatements','SpecifOperations','SpecifChoice','SpecifEqualityElimination','LogicWitnesses','LogicNormalization','LogicStatements','LogicElimination','LogicExistsElimination','LogicProofElimination','DatatypeNormalization','DatatypeQuantifiers','DatatypeStatements','DatatypeSpecs','BinaryArithmetic','BinaryNatSub','BinaryMask','BinaryMaskStatements','ListBridge','ListStatements','BinaryOrder','BinaryInt','PeanoBridge','PeanoStatements','NatArithmetic','NatIterators','NatGcd','NumericSigned','NumericMathlib','NumericWrite','SpecifNormalization','SpecifStatements','Basics','SSR','Iteration','Registry','SSRProperties','SSRBool','SSRBoolStatements','NumericRead','DecimalOperations','HexadecimalOperations','WellFounded','DependentElimination','PairRecursion','DependentStatements','DatatypeElimination','EqualityTransport','BooleanEquality','RelationDefinitions','RelationClasses','RelationClassStatements','VariadicPredicates','VariadicStatements','RelationConditions','Morphisms','MorphismStatements','EquivalenceBridge','EquivalenceStatements','MorphismsProp','SetoidBridge'}
 audits={}
 for r in validation:
  assert r['exit']==0 and r['audit_present'],r
@@ -185,6 +185,10 @@ assert len(specif_rows)==159 and all(r['bridge_status'] in {'TYPE_ISO','OPERATIO
 (D/'specif-module-coverage.json').write_text(json.dumps(dict(module='Corelib.Init.Specif',total=len(specif_rows),counts=dict(collections.Counter(r['bridge_status'] for r in specif_rows)),sources=[r['source'] for r in specif_rows]),indent=2))
 ssrfun_rows=[r for r in rows.values() if r['module']=='Corelib.ssr.ssrfun']
 assert len(ssrfun_rows)==128
+opaque_records=[json.loads(l.split('OPAQUE_AUDIT ',1)[1]) for l in (D/'SSRFunOpacity.log').read_text().splitlines() if 'OPAQUE_AUDIT ' in l]
+assert len(opaque_records)==4 and all(x['body_present'] and x['kernel_rejected_body_rfl'] and not x['direct_existing_theorems'] for x in opaque_records)
+assert {x['target'] for x in opaque_records}=={r['target'] for r in ssrfun_rows if r['bridge_status'] not in {'TYPE_ISO','OPERATION_CORRESPONDENCE','STATEMENT_FULL_NATIVE'}}
+(D/'ssrfun-opacity.json').write_text(json.dumps(opaque_records,indent=2))
 (D/'ssrfun-module-coverage.json').write_text(json.dumps(dict(module='Corelib.ssr.ssrfun',total=len(ssrfun_rows),counts=dict(collections.Counter(r['bridge_status'] for r in ssrfun_rows)),remaining=[dict(source=r['source'],status=r['bridge_status']) for r in ssrfun_rows if r['bridge_status'] not in {'TYPE_ISO','OPERATION_CORRESPONDENCE','STATEMENT_FULL_NATIVE'}]),ensure_ascii=False,indent=2))
 writecsv(D/'CORELIB_LEDGER.csv',list(rows.values()))
 counts=dict(collections.Counter(r['bridge_status'] for r in rows.values()))
@@ -211,7 +215,7 @@ summary={'alias_regression_profiles':45,'alias_regression_lost':0,'alias_regress
  'closed_obligation_witnesses':len({w['name'] for r in resolved_conditions for w in r['witnesses']}),
  'axiom_free_closed_witnesses':len({w['name'] for r in resolved_conditions for w in r['witnesses'] if not w['axioms']}),
  'standard_axiom_closed_witnesses':len({w['name'] for r in resolved_conditions for w in r['witnesses'] if w['axioms']}),
- 'full_sort_type_certificates_added':10,'completion':'twenty-two incremental batches plus P7 coexistence; overall plan remains incomplete',
+ 'full_sort_type_certificates_added':10,'completion':'twenty-three incremental batches plus P7 coexistence; overall plan remains incomplete',
  'explicit_target_classes_since_batch_3':dict(collections.Counter(sp['target_class'] for sp in specs if 'target_class' in sp))}
 interop_path=D/'interop/all/import-all-validation.json'
 if interop_path.exists():

@@ -7570,6 +7570,304 @@
     "axioms": []
   },
   {
+    "source": "Corelib.ssr.ssrfun.wrapped",
+    "profile": "SSRFunData",
+    "certificate": "NativeBridge.Incremental.SSRFunData.wrappedIso",
+    "kind": "TYPE_ISO",
+    "target": "A",
+    "scope": "A : Type u; both inverse laws",
+    "target_class": "native_expression",
+    "type": "(A : Type u) → NativeBridge.Iso (Rocq.Corelib.ssr.ssrfun.wrapped A) A",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.wrap",
+    "profile": "SSRFunData",
+    "certificate": "NativeBridge.Incremental.SSRFunData.wrap_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id",
+    "scope": "A : Type u",
+    "target_class": "existing_api",
+    "type": "∀ (A : Type u) (x : A), (NativeBridge.Incremental.SSRFunData.wrappedIso A).to (Rocq.Corelib.ssr.ssrfun.wrap A x) = id x",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.unwrap",
+    "profile": "SSRFunData",
+    "certificate": "NativeBridge.Incremental.SSRFunData.unwrap_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id",
+    "scope": "A : Type u",
+    "target_class": "existing_api",
+    "type": "∀ (A : Type u) (x : Rocq.Corelib.ssr.ssrfun.wrapped A),\n  Rocq.Corelib.ssr.ssrfun.unwrap A x = id ((NativeBridge.Incremental.SSRFunData.wrappedIso A).to x)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.SimplFunDelta",
+    "profile": "SSRFunData",
+    "certificate": "NativeBridge.Incremental.SSRFunData.simpl_delta_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "fun x => f x x",
+    "scope": "full Sort parameters",
+    "target_class": "native_expression",
+    "type": "∀ (A : Sort u) (B : Sort v) (f : A → A → B),\n  (NativeBridge.Incremental.simplFunIso A B).to (Rocq.Corelib.ssr.ssrfun.SimplFunDelta A B f) = fun x => f x x",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.Tagged",
+    "profile": "SSRFunData",
+    "certificate": "NativeBridge.Incremental.SSRFunData.tagged_constructor_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PSigma.mk",
+    "scope": "full Sort parameters",
+    "target_class": "existing_api",
+    "type": "∀ (A : Sort u) (a : A) (P : A → Sort v) (p : P a),\n  NativeBridge.Incremental.SSRFunData.sigmaTo (Rocq.Corelib.ssr.ssrfun.Tagged A a P p) = ⟨a, p⟩",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.Tagged2",
+    "profile": "SSRFunData",
+    "certificate": "NativeBridge.Incremental.SSRFunData.tagged2_constructor_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PSigma.mk with PProd.mk",
+    "scope": "full Sort parameters",
+    "target_class": "existing_api",
+    "type": "∀ (A : Sort u) (a : A) (P : A → Sort v) (Q : A → Sort w) (p : P a) (q : Q a),\n  NativeBridge.Incremental.SSRFunData.sigma2To (Rocq.Corelib.ssr.ssrfun.Tagged2 A a P Q p q) = ⟨a, ⟨p, q⟩⟩",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.tag",
+    "profile": "SSRFunData",
+    "certificate": "NativeBridge.Incremental.SSRFunData.tag_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PSigma.fst",
+    "scope": "full Sort parameters",
+    "target_class": "existing_api",
+    "type": "∀ (A : Sort u) (P : A → Sort v) (x : Rocq.Corelib.Init.Specif.sigT A P),\n  Rocq.Corelib.ssr.ssrfun.tag A P x = (NativeBridge.Incremental.SSRFunData.sigmaTo x).fst",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.tagged",
+    "profile": "SSRFunData",
+    "certificate": "NativeBridge.Incremental.SSRFunData.tagged_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PSigma.snd",
+    "scope": "native PSigma inputs; full Sort parameters; sigmaOf/sigmaTo inverse laws",
+    "target_class": "existing_api",
+    "type": "∀ (A : Sort u) (P : A → Sort v) (x : PSigma P),\n  Rocq.Corelib.ssr.ssrfun.tagged A P (NativeBridge.Incremental.SSRFunData.sigmaOf x) = x.snd",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.tag2",
+    "profile": "SSRFunData",
+    "certificate": "NativeBridge.Incremental.SSRFunData.tag2_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PSigma.fst",
+    "scope": "full Sort parameters",
+    "target_class": "existing_api",
+    "type": "∀ (A : Sort u) (P : A → Sort v) (Q : A → Sort w) (x : Rocq.Corelib.Init.Specif.sigT2 A P Q),\n  Rocq.Corelib.ssr.ssrfun.tag2 A P Q x = (NativeBridge.Incremental.SSRFunData.sigma2To x).fst",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.tagged2",
+    "profile": "SSRFunData",
+    "certificate": "NativeBridge.Incremental.SSRFunData.tagged2_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PSigma.snd followed by PProd.fst",
+    "scope": "native PSigma inputs; full Sort parameters; sigma2Of/sigma2To inverse laws",
+    "target_class": "existing_api",
+    "type": "∀ (A : Sort u) (P : A → Sort v) (Q : A → Sort w) (x : (a : A) ×' P a ×' Q a),\n  Rocq.Corelib.ssr.ssrfun.tagged2 A P Q (NativeBridge.Incremental.SSRFunData.sigma2Of x) = x.snd.fst",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.tagged2'",
+    "profile": "SSRFunData",
+    "certificate": "NativeBridge.Incremental.SSRFunData.tagged2_second_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PSigma.snd followed by PProd.snd",
+    "scope": "native PSigma inputs; full Sort parameters; sigma2Of/sigma2To inverse laws",
+    "target_class": "existing_api",
+    "type": "∀ (A : Sort u) (P : A → Sort v) (Q : A → Sort w) (x : (a : A) ×' P a ×' Q a),\n  Rocq.Corelib.ssr.ssrfun.tagged2' A P Q (NativeBridge.Incremental.SSRFunData.sigma2Of x) = x.snd.snd",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.tag_of_tag2",
+    "profile": "SSRFunData",
+    "certificate": "NativeBridge.Incremental.SSRFunData.tag_of_tag2_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id on PSigma of PProd",
+    "scope": "full Sort parameters",
+    "target_class": "existing_api",
+    "type": "∀ (A : Sort u) (P : A → Sort v) (Q : A → Sort w) (x : Rocq.Corelib.Init.Specif.sigT2 A P Q),\n  NativeBridge.Incremental.SSRFunData.sigmaPairTo (Rocq.Corelib.ssr.ssrfun.tag_of_tag2 A P Q x) =\n    id (NativeBridge.Incremental.SSRFunData.sigma2To x)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.all_pair",
+    "profile": "SSRFunData",
+    "certificate": "NativeBridge.Incremental.SSRFunData.all_pair_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "fun f => PProd.mk (fun i => (f i).fst) (fun i => (f i).snd)",
+    "scope": "dependent function families over Sort",
+    "target_class": "native_expression",
+    "type": "∀ (I : Sort u) (T : I → Sort v) (U : I → Sort w) (f : (i : I) → Rocq.Corelib.Init.Datatypes.prod (T i) (U i)),\n  NativeBridge.Incremental.SSRFunData.pairTo (Rocq.Corelib.ssr.ssrfun.all_pair I T U f) =\n    ⟨fun i => (NativeBridge.Incremental.SSRFunData.pairTo (f i)).fst, fun i =>\n      (NativeBridge.Incremental.SSRFunData.pairTo (f i)).snd⟩",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.s2val",
+    "profile": "SSRFunData",
+    "certificate": "NativeBridge.Incremental.SSRFunData.s2val_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Subtype.val",
+    "scope": "A : Sort u; P,Q : A → Prop",
+    "target_class": "existing_api",
+    "type": "∀ (A : Sort u) (P Q : A → Prop) (x : Rocq.Corelib.Init.Specif.sig2 A P Q),\n  Rocq.Corelib.ssr.ssrfun.s2val A P Q x = (NativeBridge.Incremental.SSRFunNormalization.sig2To x).val",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.of_void",
+    "profile": "SSRFunData",
+    "certificate": "NativeBridge.Incremental.SSRFunData.of_void_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Empty.elim",
+    "scope": "result : Sort u",
+    "target_class": "existing_api",
+    "type": "∀ (A : Sort u) (x : Rocq.Corelib.Init.Datatypes.Empty_set),\n  Rocq.Corelib.ssr.ssrfun.of_void A x = (NativeBridge.Incremental.SSRFunData.emptyTo x).elim",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.phant_id",
+    "profile": "SSRFunData",
+    "certificate": "NativeBridge.Incremental.SSRFunData.phant_id_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "True → True",
+    "scope": "full Sort parameters; source phantom has one proof constructor",
+    "target_class": "native_expression",
+    "type": "∀ (A : Sort u) (B : Sort v) (a : A) (b : B), Rocq.Corelib.ssr.ssrfun.phant_id A B a b ↔ True → True",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.pcancel",
+    "profile": "SSRFunData",
+    "certificate": "NativeBridge.Incremental.SSRFunData.pcancel_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x, g (f x) = some (PLift.up x)",
+    "scope": "full Sort parameters; native Option(PLift A) inputs with inverse conversion",
+    "target_class": "native_expression",
+    "type": "∀ (A : Sort u) (B : Sort v) (f : B → A) (g : A → Option (PLift B)),\n  (Rocq.Corelib.ssr.ssrfun.pcancel A B f fun x => NativeBridge.Incremental.SSRFunOption.of (g x)) ↔\n    ∀ (x : B), g (f x) = some { down := x }",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.ocancel",
+    "profile": "SSRFunData",
+    "certificate": "NativeBridge.Incremental.SSRFunData.ocancel_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x, (g x).elim x (fun a => h a.down) = x",
+    "scope": "full Sort parameters; native Option(PLift A) inputs with inverse conversion",
+    "target_class": "native_expression",
+    "type": "∀ (A : Sort u) (B : Sort v) (g : B → Option (PLift A)) (h : A → B),\n  Rocq.Corelib.ssr.ssrfun.ocancel A B (fun x => NativeBridge.Incremental.SSRFunOption.of (g x)) h ↔\n    ∀ (x : B), ((g x).elim x fun a => h a.down) = x",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.pcomp",
+    "profile": "SSRFunData",
+    "certificate": "NativeBridge.Incremental.SSRFunData.pcomp_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Option.bind",
+    "scope": "full Sort parameters; native Option(PLift A) inputs with inverse conversion",
+    "target_class": "existing_api",
+    "type": "∀ (A : Sort u) (B : Sort v) (C : Sort w) (f : B → Option (PLift A)) (g : C → Option (PLift B)) (x : C),\n  NativeBridge.Incremental.SSRFunOption.to\n      (Rocq.Corelib.ssr.ssrfun.pcomp A B C (fun b => NativeBridge.Incremental.SSRFunOption.of (f b))\n        (fun c => NativeBridge.Incremental.SSRFunOption.of (g c)) x) =\n    (g x).bind fun b => f b.down",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.tag_of_sig",
+    "profile": "SSRFunConditions",
+    "certificate": "NativeBridge.Incremental.SSRFunConditions.tag_of_sig_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "fun (x : Subtype P) => PSigma.mk x.val x.property",
+    "scope": "all explicit prerequisites discharged; source universe parameters preserved",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SSRFunConditions.tagOfSig",
+    "condition_discharges": [
+      {
+        "source": "Corelib.ssr.ssrfun.tag_of_sig__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SSRFunConditions.tagWitness"
+      }
+    ],
+    "type": "∀ (A : Sort u) (P : A → Prop) (x : Rocq.Corelib.Init.Specif.sig A P),\n  NativeBridge.Incremental.SSRFunData.sigmaTo (RocqPending.Corelib.ssr.ssrfun.tag_of_sig A P x) =\n    NativeBridge.Incremental.SSRFunConditions.nativeTagOfSig (NativeBridge.Incremental.SSRFunNormalization.sigTo x)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.sig_of_sig2",
+    "profile": "SSRFunConditions",
+    "certificate": "NativeBridge.Incremental.SSRFunConditions.sig_of_sig2_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id on Subtype of conjunction",
+    "scope": "all explicit prerequisites discharged; source universe parameters preserved",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SSRFunConditions.sigOfSig2",
+    "condition_discharges": [
+      {
+        "source": "Corelib.ssr.ssrfun.sig_of_sig2__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SSRFunConditions.sigWitness"
+      }
+    ],
+    "type": "∀ (A : Sort u) (P Q : A → Prop) (x : Rocq.Corelib.Init.Specif.sig2 A P Q),\n  NativeBridge.Incremental.SSRFunConditions.andSubtypeTo (RocqPending.Corelib.ssr.ssrfun.sig_of_sig2 A P Q x) =\n    id (NativeBridge.Incremental.SSRFunNormalization.sig2To x)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.esymK",
+    "profile": "SSRFunConditions",
+    "certificate": "NativeBridge.Incremental.SSRFunConditions.esym_agrees",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "∀ (T : Sort u) (x y : T) (h : x = y), h.symm.symm = h",
+    "scope": "all explicit prerequisites discharged; source universe parameters preserved",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SSRFunConditions.esymClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.ssr.ssrfun.esymK__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SSRFunConditions.esymWitness1"
+      },
+      {
+        "source": "Corelib.ssr.ssrfun.esymK__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SSRFunConditions.esymWitness2"
+      }
+    ],
+    "native_expression": "∀ (T : Sort u) (x y : T) (h : x = y), h.symm.symm = h",
+    "original_statement_proof": "NativeBridge.Incremental.SSRFunConditions.esym_proof",
+    "type": "RocqPending.Corelib.ssr.ssrfun.esymK.statement ↔ NativeBridge.Incremental.SSRFunConditions.nativeEsym",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrfun.etrans_id",
+    "profile": "SSRFunConditions",
+    "certificate": "NativeBridge.Incremental.SSRFunConditions.etrans_agrees",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "∀ (T : Sort u) (x y : T) (h : x = y), h.trans rfl = h",
+    "scope": "all explicit prerequisites discharged; source universe parameters preserved",
+    "target_class": "native_expression",
+    "closed_wrapper": "NativeBridge.Incremental.SSRFunConditions.etransClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.ssr.ssrfun.etrans_id__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SSRFunConditions.etransWitness"
+      }
+    ],
+    "native_expression": "∀ (T : Sort u) (x y : T) (h : x = y), h.trans rfl = h",
+    "original_statement_proof": "NativeBridge.Incremental.SSRFunConditions.etrans_proof",
+    "type": "RocqPending.Corelib.ssr.ssrfun.etrans_id.statement ↔ NativeBridge.Incremental.SSRFunConditions.nativeEtrans",
+    "axioms": []
+  },
+  {
     "source": "Corelib.ssr.ssrfun.Some_inj",
     "profile": "SSRFunStatements",
     "certificate": "NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.Some_inj.statement.correspondence",

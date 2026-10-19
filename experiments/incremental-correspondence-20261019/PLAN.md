@@ -130,3 +130,7 @@ Init.Specif 的 140 个共享依赖/原陈述目标已有空公理闭包的闭�
 ## 第二十二批执行记录
 
 SSR 新增 27 个谓词、50 个完全原生陈述、bijective 与 NonPropType.type 两个类型对应；5 个 Option 运算补充完整 Sort 证明。新增完成根 79，累计 1238，68 个 profile 验证通过。ssrfun 仍有 27 根未完成，下一步处理包装类型、数据投影与六个条件根。见 SSR_FUN_RESULTS.md。
+
+## 第二十三批执行记录
+
+SSR 包装类型、依赖数据与部分函数新增 23 根，总完成 1261。71 个验证 profile、999 份增量证书共同导入通过；ssrfun 剩余四个 opaque 计算函数，需额外计算方程，不能只读 body 后视为对应。接下来在记录该依赖缺口后继续 ssrbool 等透明操作与证明条件闭合；不改变冻结机械产物的声明含义。见 SSR_DATA_RESULTS.md。

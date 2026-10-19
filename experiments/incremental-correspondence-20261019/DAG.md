@@ -272,3 +272,20 @@ flowchart TD
 ```
 
 本批不增加业务定理的独立证明；只登记对应证书。对应关系被重复用到不重复计源根。
+
+## 第二十三批：数据接口与不透明计算缺口
+
+```mermaid
+flowchart TD
+  A["PSigma / PProd 双向转换"] --> B["依赖构造与投影"]
+  C["Option / PLift 双向转换"] --> D["pcancel / ocancel / pcomp"]
+  E["五个闭合前置见证"] --> F["四个带条件根完成"]
+  B --> G["23 个新完成根与共同导入"]
+  D --> G
+  F --> G
+  H["all_tag 的可核验计算方程：尚缺"] --> I["all_tag2 / all_sig"]
+  I --> J["all_sig2"]
+  K["all_sig2 的额外前置见证"] --> J
+```
+
+不透明函数的 body 存在不提供声明与 body 的等式。同步 kernel 的 rfl 拒绝及实际前置条件分别见 reports/ssrfun-opacity.json 与冻结翻译报告；这四项没有加入完成数。

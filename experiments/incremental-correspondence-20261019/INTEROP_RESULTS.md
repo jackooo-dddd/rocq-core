@@ -1,6 +1,6 @@
 # 跨模块导入与 Mathlib 消费结果
 
-当前共同导入验收通过：63 个含增量覆盖证书的 profile、976 份覆盖证书，连同原陈述证明和闭合包装函数，共 1265 个导出入口，在同一 Lean 文件中导入并审计。复制依赖声明 7828 个；这些副本不增加 correspondence 覆盖数量。
+当前共同导入验收通过：65 个含增量覆盖证书的 profile、999 份覆盖证书，连同原陈述证明和闭合包装函数，共 1294 个导出入口，在同一 Lean 文件中导入并审计。复制依赖声明 8015 个；这些副本不增加 correspondence 覆盖数量。
 
 ## 具体可以怎样使用
 
@@ -20,7 +20,7 @@ Lean 版本 4.33.1。复用远程已安装的 Mathlib，提交为 `0df444a360eaa
 
 每个 profile 的机械类型仍有独立身份；这是带命名空间的共同导入。跨闭包通过已证明的原生接口组合，尚未把所有机械类型合成单一规范命名空间。打包器也未生成计算用的 native code，当前验收是证明消费，不是运行性能。
 
-目前显式拒绝新增公理、不安全声明、opaque 声明、嵌套归纳组和有继承字段的结构。现有 976 份覆盖证书的闭包无需这些未支持分支。负向 fixture 证实新公理不能进入输出。允许的公理闭包仅 propext、Quot.sound、Classical.choice；实际各入口闭包在 JSON 中逐项列出。
+目前显式拒绝新增公理、不安全声明、opaque 声明、嵌套归纳组和有继承字段的结构。现有 999 份覆盖证书的闭包无需这些未支持分支。负向 fixture 证实新公理不能进入输出。允许的公理闭包仅 propext、Quot.sound、Classical.choice；实际各入口闭包在 JSON 中逐项列出。
 
 ## 文件与复现
 
@@ -30,7 +30,7 @@ Lean 版本 4.33.1。复用远程已安装的 Mathlib，提交为 `0df444a360eaa
 - `interop/pack_profiles.py`、`check_consumer.py`：三个独立模块及 Mathlib 消费例。
 - `interop/check_rejection.py`：新公理拒绝测试。
 - `reports/interop/all/import-all-validation.json`：共同导入证据。
-- `reports/interop/coverage-manifest.json`：当前 976 份覆盖证书的固定清单。
+- `reports/interop/coverage-manifest.json`：当前 999 份覆盖证书的固定清单。
 - `reports/interop/consumer-validation.json`：实际 Mathlib 提交、工具链和消费结果。
 
 在工作区依次执行 pack_all.py、check_all.py，以及 pack_profiles.py、check_consumer.py、check_rejection.py。编译缓存和生成的打包源码位于 .work/interop，仅远程保存。脚本需要先完成原 profile 编译；它们不下载依赖。
@@ -52,3 +52,5 @@ Peano 扩展后：38 个含覆盖证书的 profile、619 份覆盖证书共同�
 第二十一批扩展后：58 个包含覆盖证书的 profile、892 份覆盖证书共同导入通过。新增 SpecifOperations、SpecifChoice、SpecifEqualityElimination、SpecifClosedStatements；共享见证及归一化模块随依赖闭包纳入。当前清单与 certificates.json 一致，coimport_not_current_coverage=false。
 
 第二十二批扩展后：63 个覆盖 profile、976 份覆盖证书共同导入通过，1265 个入口、7828 个依赖声明副本。新增 SSRFunNormalization、SSRFunPredicates、SSRFunOption、SSRNonProp、SSRFunStatements。
+
+第二十三批扩展后：65 个覆盖 profile、999 份覆盖证书共同导入通过，1294 个入口、8015 个依赖声明副本。SSRFunOpacity 只作诊断，不产生覆盖入口。

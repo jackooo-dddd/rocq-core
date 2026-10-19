@@ -6125,6 +6125,310 @@ NativeBridge.Incremental.SSRFunOption.lift_agrees
 
 公理闭包：空
 
+## Corelib.ssr.ssrfun.wrapped
+
+NativeBridge.Incremental.SSRFunData.wrappedIso
+
+目标：A；范围：A : Type u; both inverse laws
+
+```lean
+(A : Type u) → NativeBridge.Iso (Rocq.Corelib.ssr.ssrfun.wrapped A) A
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrfun.wrap
+
+NativeBridge.Incremental.SSRFunData.wrap_agrees
+
+目标：id；范围：A : Type u
+
+```lean
+∀ (A : Type u) (x : A), (NativeBridge.Incremental.SSRFunData.wrappedIso A).to (Rocq.Corelib.ssr.ssrfun.wrap A x) = id x
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrfun.unwrap
+
+NativeBridge.Incremental.SSRFunData.unwrap_agrees
+
+目标：id；范围：A : Type u
+
+```lean
+∀ (A : Type u) (x : Rocq.Corelib.ssr.ssrfun.wrapped A),
+  Rocq.Corelib.ssr.ssrfun.unwrap A x = id ((NativeBridge.Incremental.SSRFunData.wrappedIso A).to x)
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrfun.SimplFunDelta
+
+NativeBridge.Incremental.SSRFunData.simpl_delta_agrees
+
+目标：fun x => f x x；范围：full Sort parameters
+
+```lean
+∀ (A : Sort u) (B : Sort v) (f : A → A → B),
+  (NativeBridge.Incremental.simplFunIso A B).to (Rocq.Corelib.ssr.ssrfun.SimplFunDelta A B f) = fun x => f x x
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrfun.Tagged
+
+NativeBridge.Incremental.SSRFunData.tagged_constructor_agrees
+
+目标：PSigma.mk；范围：full Sort parameters
+
+```lean
+∀ (A : Sort u) (a : A) (P : A → Sort v) (p : P a),
+  NativeBridge.Incremental.SSRFunData.sigmaTo (Rocq.Corelib.ssr.ssrfun.Tagged A a P p) = ⟨a, p⟩
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrfun.Tagged2
+
+NativeBridge.Incremental.SSRFunData.tagged2_constructor_agrees
+
+目标：PSigma.mk with PProd.mk；范围：full Sort parameters
+
+```lean
+∀ (A : Sort u) (a : A) (P : A → Sort v) (Q : A → Sort w) (p : P a) (q : Q a),
+  NativeBridge.Incremental.SSRFunData.sigma2To (Rocq.Corelib.ssr.ssrfun.Tagged2 A a P Q p q) = ⟨a, ⟨p, q⟩⟩
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrfun.tag
+
+NativeBridge.Incremental.SSRFunData.tag_agrees
+
+目标：PSigma.fst；范围：full Sort parameters
+
+```lean
+∀ (A : Sort u) (P : A → Sort v) (x : Rocq.Corelib.Init.Specif.sigT A P),
+  Rocq.Corelib.ssr.ssrfun.tag A P x = (NativeBridge.Incremental.SSRFunData.sigmaTo x).fst
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrfun.tagged
+
+NativeBridge.Incremental.SSRFunData.tagged_agrees
+
+目标：PSigma.snd；范围：native PSigma inputs; full Sort parameters; sigmaOf/sigmaTo inverse laws
+
+```lean
+∀ (A : Sort u) (P : A → Sort v) (x : PSigma P),
+  Rocq.Corelib.ssr.ssrfun.tagged A P (NativeBridge.Incremental.SSRFunData.sigmaOf x) = x.snd
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrfun.tag2
+
+NativeBridge.Incremental.SSRFunData.tag2_agrees
+
+目标：PSigma.fst；范围：full Sort parameters
+
+```lean
+∀ (A : Sort u) (P : A → Sort v) (Q : A → Sort w) (x : Rocq.Corelib.Init.Specif.sigT2 A P Q),
+  Rocq.Corelib.ssr.ssrfun.tag2 A P Q x = (NativeBridge.Incremental.SSRFunData.sigma2To x).fst
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrfun.tagged2
+
+NativeBridge.Incremental.SSRFunData.tagged2_agrees
+
+目标：PSigma.snd followed by PProd.fst；范围：native PSigma inputs; full Sort parameters; sigma2Of/sigma2To inverse laws
+
+```lean
+∀ (A : Sort u) (P : A → Sort v) (Q : A → Sort w) (x : (a : A) ×' P a ×' Q a),
+  Rocq.Corelib.ssr.ssrfun.tagged2 A P Q (NativeBridge.Incremental.SSRFunData.sigma2Of x) = x.snd.fst
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrfun.tagged2'
+
+NativeBridge.Incremental.SSRFunData.tagged2_second_agrees
+
+目标：PSigma.snd followed by PProd.snd；范围：native PSigma inputs; full Sort parameters; sigma2Of/sigma2To inverse laws
+
+```lean
+∀ (A : Sort u) (P : A → Sort v) (Q : A → Sort w) (x : (a : A) ×' P a ×' Q a),
+  Rocq.Corelib.ssr.ssrfun.tagged2' A P Q (NativeBridge.Incremental.SSRFunData.sigma2Of x) = x.snd.snd
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrfun.tag_of_tag2
+
+NativeBridge.Incremental.SSRFunData.tag_of_tag2_agrees
+
+目标：id on PSigma of PProd；范围：full Sort parameters
+
+```lean
+∀ (A : Sort u) (P : A → Sort v) (Q : A → Sort w) (x : Rocq.Corelib.Init.Specif.sigT2 A P Q),
+  NativeBridge.Incremental.SSRFunData.sigmaPairTo (Rocq.Corelib.ssr.ssrfun.tag_of_tag2 A P Q x) =
+    id (NativeBridge.Incremental.SSRFunData.sigma2To x)
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrfun.all_pair
+
+NativeBridge.Incremental.SSRFunData.all_pair_agrees
+
+目标：fun f => PProd.mk (fun i => (f i).fst) (fun i => (f i).snd)；范围：dependent function families over Sort
+
+```lean
+∀ (I : Sort u) (T : I → Sort v) (U : I → Sort w) (f : (i : I) → Rocq.Corelib.Init.Datatypes.prod (T i) (U i)),
+  NativeBridge.Incremental.SSRFunData.pairTo (Rocq.Corelib.ssr.ssrfun.all_pair I T U f) =
+    ⟨fun i => (NativeBridge.Incremental.SSRFunData.pairTo (f i)).fst, fun i =>
+      (NativeBridge.Incremental.SSRFunData.pairTo (f i)).snd⟩
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrfun.s2val
+
+NativeBridge.Incremental.SSRFunData.s2val_agrees
+
+目标：Subtype.val；范围：A : Sort u; P,Q : A → Prop
+
+```lean
+∀ (A : Sort u) (P Q : A → Prop) (x : Rocq.Corelib.Init.Specif.sig2 A P Q),
+  Rocq.Corelib.ssr.ssrfun.s2val A P Q x = (NativeBridge.Incremental.SSRFunNormalization.sig2To x).val
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrfun.of_void
+
+NativeBridge.Incremental.SSRFunData.of_void_agrees
+
+目标：Empty.elim；范围：result : Sort u
+
+```lean
+∀ (A : Sort u) (x : Rocq.Corelib.Init.Datatypes.Empty_set),
+  Rocq.Corelib.ssr.ssrfun.of_void A x = (NativeBridge.Incremental.SSRFunData.emptyTo x).elim
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrfun.phant_id
+
+NativeBridge.Incremental.SSRFunData.phant_id_agrees
+
+目标：True → True；范围：full Sort parameters; source phantom has one proof constructor
+
+```lean
+∀ (A : Sort u) (B : Sort v) (a : A) (b : B), Rocq.Corelib.ssr.ssrfun.phant_id A B a b ↔ True → True
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrfun.pcancel
+
+NativeBridge.Incremental.SSRFunData.pcancel_agrees
+
+目标：∀ x, g (f x) = some (PLift.up x)；范围：full Sort parameters; native Option(PLift A) inputs with inverse conversion
+
+```lean
+∀ (A : Sort u) (B : Sort v) (f : B → A) (g : A → Option (PLift B)),
+  (Rocq.Corelib.ssr.ssrfun.pcancel A B f fun x => NativeBridge.Incremental.SSRFunOption.of (g x)) ↔
+    ∀ (x : B), g (f x) = some { down := x }
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.ocancel
+
+NativeBridge.Incremental.SSRFunData.ocancel_agrees
+
+目标：∀ x, (g x).elim x (fun a => h a.down) = x；范围：full Sort parameters; native Option(PLift A) inputs with inverse conversion
+
+```lean
+∀ (A : Sort u) (B : Sort v) (g : B → Option (PLift A)) (h : A → B),
+  Rocq.Corelib.ssr.ssrfun.ocancel A B (fun x => NativeBridge.Incremental.SSRFunOption.of (g x)) h ↔
+    ∀ (x : B), ((g x).elim x fun a => h a.down) = x
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.pcomp
+
+NativeBridge.Incremental.SSRFunData.pcomp_agrees
+
+目标：Option.bind；范围：full Sort parameters; native Option(PLift A) inputs with inverse conversion
+
+```lean
+∀ (A : Sort u) (B : Sort v) (C : Sort w) (f : B → Option (PLift A)) (g : C → Option (PLift B)) (x : C),
+  NativeBridge.Incremental.SSRFunOption.to
+      (Rocq.Corelib.ssr.ssrfun.pcomp A B C (fun b => NativeBridge.Incremental.SSRFunOption.of (f b))
+        (fun c => NativeBridge.Incremental.SSRFunOption.of (g c)) x) =
+    (g x).bind fun b => f b.down
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.tag_of_sig
+
+NativeBridge.Incremental.SSRFunConditions.tag_of_sig_agrees
+
+目标：fun (x : Subtype P) => PSigma.mk x.val x.property；范围：all explicit prerequisites discharged; source universe parameters preserved
+
+```lean
+∀ (A : Sort u) (P : A → Prop) (x : Rocq.Corelib.Init.Specif.sig A P),
+  NativeBridge.Incremental.SSRFunData.sigmaTo (RocqPending.Corelib.ssr.ssrfun.tag_of_sig A P x) =
+    NativeBridge.Incremental.SSRFunConditions.nativeTagOfSig (NativeBridge.Incremental.SSRFunNormalization.sigTo x)
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrfun.sig_of_sig2
+
+NativeBridge.Incremental.SSRFunConditions.sig_of_sig2_agrees
+
+目标：id on Subtype of conjunction；范围：all explicit prerequisites discharged; source universe parameters preserved
+
+```lean
+∀ (A : Sort u) (P Q : A → Prop) (x : Rocq.Corelib.Init.Specif.sig2 A P Q),
+  NativeBridge.Incremental.SSRFunConditions.andSubtypeTo (RocqPending.Corelib.ssr.ssrfun.sig_of_sig2 A P Q x) =
+    id (NativeBridge.Incremental.SSRFunNormalization.sig2To x)
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrfun.esymK
+
+NativeBridge.Incremental.SSRFunConditions.esym_agrees
+
+目标：∀ (T : Sort u) (x y : T) (h : x = y), h.symm.symm = h；范围：all explicit prerequisites discharged; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.ssr.ssrfun.esymK.statement ↔ NativeBridge.Incremental.SSRFunConditions.nativeEsym
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrfun.etrans_id
+
+NativeBridge.Incremental.SSRFunConditions.etrans_agrees
+
+目标：∀ (T : Sort u) (x y : T) (h : x = y), h.trans rfl = h；范围：all explicit prerequisites discharged; source universe parameters preserved
+
+```lean
+RocqPending.Corelib.ssr.ssrfun.etrans_id.statement ↔ NativeBridge.Incremental.SSRFunConditions.nativeEtrans
+```
+
+公理闭包：空
+
 ## Corelib.ssr.ssrfun.Some_inj
 
 NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.Some_inj.statement.correspondence

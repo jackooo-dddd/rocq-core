@@ -20,4 +20,4 @@ nat 和 eq 都通过普通归纳规则翻译为独立目标类型。与 Lean Nat
 
 main74→main75 的精简证据保留为历史比较；取消 nat/eq bootstrap 没有增加新翻译规则。
 
-当前增量对应完成类别为 1238 / 2180：69 类型、450 运算、719 完全原生陈述；另有 137 份原陈述闭合证明。68 个增量 profile 有成功记录，全部 976 份覆盖证书共同导入通过。最新为 [SSR 函数与谓词结果](experiments/incremental-correspondence-20261019/SSR_FUN_RESULTS.md)。
+当前增量对应完成类别为 1261 / 2180：70 类型、470 运算、721 完全原生陈述；另有 139 份原陈述闭合证明。71 个增量 profile 有成功记录，全部 999 份覆盖证书共同导入通过。最新为 [SSR 数据与条件声明结果](experiments/incremental-correspondence-20261019/SSR_DATA_RESULTS.md)。
