@@ -1,0 +1,27 @@
+{
+  "rollback_test": "PASS",
+  "tests": [
+    {
+      "case": "accepted",
+      "exit": 0,
+      "status": "TRANSLATED_AND_CHECKED",
+      "retained_M_rules": [
+        "M03"
+      ]
+    },
+    {
+      "case": "disabled",
+      "exit": 2,
+      "status": "TRANSLATION_FAILED",
+      "retained_M_rules": []
+    },
+    {
+      "case": "normal_failure",
+      "exit": 2,
+      "status": "KERNEL_REJECTED",
+      "retained_M_rules": []
+    }
+  ],
+  "meaning": "accepted conversion retained; disabled path rejected; normal kernel-rejection status leaves no translation hits",
+  "documented_entrypoint": "PASS"
+}

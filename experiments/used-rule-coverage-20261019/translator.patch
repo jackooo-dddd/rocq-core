@@ -1,0 +1,68 @@
+--- a/Rocq2Lean/Translate.lean
++++ b/Rocq2Lean/Translate.lean
+@@ -2,0 +3 @@
++import Rocq2Lean.RuleTrace
+@@ -24,0 +26,2 @@
++
++deriving instance BEq for IR.Term
+@@ -1781,0 +1785 @@
++  liftMeta (ruleHit "M05")
+@@ -1888 +1892,3 @@
+-    if ok then return some (mkApp (mkAppN recC (params ++ #[motive] ++ minors ++ #[v])) c)
++    if ok then
++      ruleHit "M13"
++      return some (mkApp (mkAppN recC (params ++ #[motive] ++ minors ++ #[v])) c)
+@@ -2586,0 +2593 @@
++  liftMeta (ruleHit "M01")
+@@ -2641 +2648,3 @@
+-    return ← withPath s!"iota{ci}" (withSourceLocals fields (scopes.bind fun sc => sc.2[ci]?) (trans bbody))
++    let out ← withPath s!"iota{ci}" (withSourceLocals fields (scopes.bind fun sc => sc.2[ci]?) (trans bbody))
++    liftMeta (ruleHit "M02")
++    return out
+@@ -2716,0 +2726 @@
++  liftMeta (ruleHit "M02")
+@@ -2788,0 +2799 @@
++  let oldDefs := defs
+@@ -2791,0 +2803 @@
++  if defs != oldDefs then liftMeta (ruleHit "M08")
+@@ -2972,0 +2985,5 @@
++    liftMeta (ruleHit (if cov then "M09" else "M03"))
++    if !gpos.isEmpty then liftMeta (ruleHit "M04")
++    if !idx.isEmpty then liftMeta (ruleHit "M05")
++    if outerCase.isNone then liftMeta (ruleHit "M06")
++    if hasPattern then liftMeta (ruleHit "M12")
+@@ -3083,0 +3101 @@
++    liftMeta (ruleHit "M10")
+@@ -3204,0 +3223 @@
++    liftMeta (ruleHit "M11")
+@@ -3381,0 +3401,4 @@
++      liftMeta (ruleHit "M07")
++      if !gpos.isEmpty then liftMeta (ruleHit "M04")
++      if !idx.isEmpty then liftMeta (ruleHit "M05")
++      if outerCases.any Option.isNone then liftMeta (ruleHit "M06")
+@@ -3458,0 +3482 @@
++  let oldDefs := defs
+@@ -3460,0 +3485 @@
++  if defs != oldDefs then liftMeta (ruleHit "M08")
+--- a/Rocq2Lean/Emit.lean
++++ b/Rocq2Lean/Emit.lean
+@@ -594,0 +595 @@
++  ruleTraceBegin c.name
+@@ -1354,0 +1356 @@
++  ruleTraceBegin i.name
+@@ -1785,0 +1788 @@
++  let traceBefore := ruleTraceExt.getState (← getEnv)
+@@ -1809,0 +1813,2 @@
++  unless r.accepted do
++    modifyEnv fun env => ruleTraceExt.modifyState env fun _ => traceBefore
+@@ -1815,0 +1821 @@
++  let traceBefore := ruleTraceExt.getState (← getEnv)
+@@ -1831,0 +1838,2 @@
++  unless r.1.accepted do
++    modifyEnv fun env => ruleTraceExt.modifyState env fun _ => traceBefore
+--- a/Rocq2Lean/Command.lean
++++ b/Rocq2Lean/Command.lean
+@@ -144,0 +145,3 @@
++  let hits := (ruleTraceExt.getState (← getEnv)).hits
++  IO.FS.writeFile ((System.FilePath.mk repPath).withFileName "rule_hits.json")
++    ((toJson hits).pretty ++ "\n")

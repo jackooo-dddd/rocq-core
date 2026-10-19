@@ -1,7 +1,7 @@
 # Rocq Corelib → Lean
 
 
-- [逐条规则与启用状态](results/USED_RULES.md)：逐项列出翻译规则、使用证据及保留理由；整套配置已重新通过 2180 根验证。
+- [实际使用规则清单](results/USED_RULES.md)：原 34 条＋实测命中的 10 条 M 规则，共 44 项；关闭 3 条零命中 M 路径后，2180 根仍全部通过。
 - [Nat 完整案例](results/casestudy/README.md)：源类型与58项运算、逐声明译文/过程、导出文件解释及原生对应证明。
 
 当前基线：**先机械翻译，后证明与 Lean 原生对象的 correspondence**。
