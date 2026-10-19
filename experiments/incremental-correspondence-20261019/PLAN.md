@@ -251,3 +251,7 @@ SSR Bool 的 314 个依赖/原陈述目标已有闭合证明，覆盖 271 / 275 
 ## 第八十二至八十五批：PrimFloat 完成
 
 新增 37 根，2054 / 2180；PrimFloat 37/37。158 个验证 profile，140 个覆盖 profile / 1802 份证书共同导入。见 [结果](BATCH82_85_RESULTS.md)。继续在 FloatAxioms 实际闭包中重检依赖，随后证明 FloatOps 的 8 项和 FloatAxioms 的 33 项原生对应；原规格的独立证明另行区分。
+
+## 第八十六至八十九批：浮点转换和规格陈述完成
+
+新增 41 根，2095 / 2180。FloatOps 8/8，FloatAxioms 33/33；其中 24 项为陈述 iff，原陈述独立证明仍为 318。165 个验证 profile，144 个覆盖 profile / 1843 份证书共同导入。见 [结果](BATCH86_89_RESULTS.md)。下一步审查 SSR predicate package 的承载类型双向对应及谓词字段，继而处理剩余 Type 值数据。

@@ -14107,5 +14107,415 @@
     "native_target": "NativeBridge.Incremental.PrimFloatSqrt.squareRoot",
     "target_class": "native_expression",
     "scope": "Canonical binary64 square root with native Nat.sqrt. The source base-four integer algorithm is proved equal to Nat.sqrt for every Nat; full exceptional branches and nearest-even rounding preserved."
+  },
+  {
+    "source": "Corelib.Floats.FloatOps.prec",
+    "profile": "FloatOperations",
+    "certificate": "NativeBridge.Incremental.FloatOperations.precision_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.FloatOperations.precision",
+    "native_target": "NativeBridge.Incremental.FloatOperations.precision",
+    "target_class": "native_expression",
+    "scope": "Exact native binary64 and symbolic SpecValue conversion algorithms on all inputs. The function correspondences do not themselves prove inverse laws or runtime Float equivalence. Rechecked in FloatAxioms closure."
+  },
+  {
+    "source": "Corelib.Floats.FloatOps.emax",
+    "profile": "FloatOperations",
+    "certificate": "NativeBridge.Incremental.FloatOperations.maximumExponent_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.FloatOperations.maximumExponent",
+    "native_target": "NativeBridge.Incremental.FloatOperations.maximumExponent",
+    "target_class": "native_expression",
+    "scope": "Exact native binary64 and symbolic SpecValue conversion algorithms on all inputs. The function correspondences do not themselves prove inverse laws or runtime Float equivalence. Rechecked in FloatAxioms closure."
+  },
+  {
+    "source": "Corelib.Floats.FloatOps.shift",
+    "profile": "FloatOperations",
+    "certificate": "NativeBridge.Incremental.FloatOperations.exponentOffset_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.FloatOperations.exponentOffset",
+    "native_target": "NativeBridge.Incremental.FloatOperations.exponentOffset",
+    "target_class": "native_expression",
+    "scope": "Exact native binary64 and symbolic SpecValue conversion algorithms on all inputs. The function correspondences do not themselves prove inverse laws or runtime Float equivalence. Rechecked in FloatAxioms closure."
+  },
+  {
+    "source": "Corelib.Floats.FloatOps.Z.ldexp",
+    "profile": "FloatOperations",
+    "certificate": "NativeBridge.Incremental.FloatOperations.scale_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.FloatOperations.scale",
+    "native_target": "NativeBridge.Incremental.FloatOperations.scale",
+    "target_class": "native_expression",
+    "scope": "Exact native binary64 and symbolic SpecValue conversion algorithms on all inputs. The function correspondences do not themselves prove inverse laws or runtime Float equivalence. Rechecked in FloatAxioms closure."
+  },
+  {
+    "source": "Corelib.Floats.FloatOps.Z.frexp",
+    "profile": "FloatOperations",
+    "certificate": "NativeBridge.Incremental.FloatOperations.fraction_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.FloatOperations.fraction",
+    "native_target": "NativeBridge.Incremental.FloatOperations.fraction",
+    "target_class": "native_expression",
+    "scope": "Exact native binary64 and symbolic SpecValue conversion algorithms on all inputs. The function correspondences do not themselves prove inverse laws or runtime Float equivalence. Rechecked in FloatAxioms closure."
+  },
+  {
+    "source": "Corelib.Floats.FloatOps.SF2Prim",
+    "profile": "FloatOperations",
+    "certificate": "NativeBridge.Incremental.FloatOperations.fromSpec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.FloatOperations.fromSpec",
+    "native_target": "NativeBridge.Incremental.FloatOperations.fromSpec",
+    "target_class": "native_expression",
+    "scope": "Exact native binary64 and symbolic SpecValue conversion algorithms on all inputs. The function correspondences do not themselves prove inverse laws or runtime Float equivalence. Rechecked in FloatAxioms closure."
+  },
+  {
+    "source": "Corelib.Floats.FloatOps.Prim2SF",
+    "profile": "FloatOperations",
+    "certificate": "NativeBridge.Incremental.FloatOperations.toSpec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.FloatOperations.toSpec",
+    "native_target": "NativeBridge.Incremental.FloatOperations.toSpec",
+    "target_class": "native_expression",
+    "scope": "Exact native binary64 and symbolic SpecValue conversion algorithms on all inputs. The function correspondences do not themselves prove inverse laws or runtime Float equivalence. Rechecked in FloatAxioms closure."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.SF64add",
+    "profile": "Float64Operations",
+    "certificate": "NativeBridge.Incremental.Float64Operations.addition_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Float64Operations.addition",
+    "native_target": "NativeBridge.Incremental.Float64Operations.addition",
+    "target_class": "native_expression",
+    "scope": "Transparent FloatAxioms wrappers specialized at precision 53 and emax 1024, with native symbolic operations. Not a proof of primitive/specification agreement axioms."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.SF64sub",
+    "profile": "Float64Operations",
+    "certificate": "NativeBridge.Incremental.Float64Operations.subtraction_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Float64Operations.subtraction",
+    "native_target": "NativeBridge.Incremental.Float64Operations.subtraction",
+    "target_class": "native_expression",
+    "scope": "Transparent FloatAxioms wrappers specialized at precision 53 and emax 1024, with native symbolic operations. Not a proof of primitive/specification agreement axioms."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.SF64mul",
+    "profile": "Float64Operations",
+    "certificate": "NativeBridge.Incremental.Float64Operations.multiplication_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Float64Operations.multiplication",
+    "native_target": "NativeBridge.Incremental.Float64Operations.multiplication",
+    "target_class": "native_expression",
+    "scope": "Transparent FloatAxioms wrappers specialized at precision 53 and emax 1024, with native symbolic operations. Not a proof of primitive/specification agreement axioms."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.SF64div",
+    "profile": "Float64Operations",
+    "certificate": "NativeBridge.Incremental.Float64Operations.division_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Float64Operations.division",
+    "native_target": "NativeBridge.Incremental.Float64Operations.division",
+    "target_class": "native_expression",
+    "scope": "Transparent FloatAxioms wrappers specialized at precision 53 and emax 1024, with native symbolic operations. Not a proof of primitive/specification agreement axioms."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.SF64sqrt",
+    "profile": "Float64Operations",
+    "certificate": "NativeBridge.Incremental.Float64Operations.squareRoot_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Float64Operations.squareRoot",
+    "native_target": "NativeBridge.Incremental.Float64Operations.squareRoot",
+    "target_class": "native_expression",
+    "scope": "Transparent FloatAxioms wrappers specialized at precision 53 and emax 1024, with native symbolic operations. Not a proof of primitive/specification agreement axioms."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.SF64succ",
+    "profile": "Float64Operations",
+    "certificate": "NativeBridge.Incremental.Float64Operations.successor_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Float64Operations.successor",
+    "native_target": "NativeBridge.Incremental.Float64Operations.successor",
+    "target_class": "native_expression",
+    "scope": "Transparent FloatAxioms wrappers specialized at precision 53 and emax 1024, with native symbolic operations. Not a proof of primitive/specification agreement axioms."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.SF64pred",
+    "profile": "Float64Operations",
+    "certificate": "NativeBridge.Incremental.Float64Operations.predecessor_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Float64Operations.predecessor",
+    "native_target": "NativeBridge.Incremental.Float64Operations.predecessor",
+    "target_class": "native_expression",
+    "scope": "Transparent FloatAxioms wrappers specialized at precision 53 and emax 1024, with native symbolic operations. Not a proof of primitive/specification agreement axioms."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.SF64classify",
+    "profile": "Float64Operations",
+    "certificate": "NativeBridge.Incremental.Float64Operations.classification_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Float64Operations.classification",
+    "native_target": "NativeBridge.Incremental.Float64Operations.classification",
+    "target_class": "native_expression",
+    "scope": "Transparent FloatAxioms wrappers specialized at precision 53 and emax 1024, with native symbolic operations. Not a proof of primitive/specification agreement axioms."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.flatten_cmp_opt",
+    "profile": "Float64Operations",
+    "certificate": "NativeBridge.Incremental.Float64Operations.flatten_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Float64Operations.flatten",
+    "native_target": "NativeBridge.Incremental.Float64Operations.flatten",
+    "target_class": "native_expression",
+    "scope": "Transparent FloatAxioms wrappers specialized at precision 53 and emax 1024, with native symbolic operations. Not a proof of primitive/specification agreement axioms."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.abs_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.absolute_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.absolute",
+    "native_target": "NativeBridge.Incremental.FloatStatements.absolute",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.opp_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.negate_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.negate",
+    "native_target": "NativeBridge.Incremental.FloatStatements.negate",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.add_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.addition_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.addition",
+    "native_target": "NativeBridge.Incremental.FloatStatements.addition",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.sub_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.subtraction_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.subtraction",
+    "native_target": "NativeBridge.Incremental.FloatStatements.subtraction",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.mul_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.multiplication_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.multiplication",
+    "native_target": "NativeBridge.Incremental.FloatStatements.multiplication",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.div_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.division_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.division",
+    "native_target": "NativeBridge.Incremental.FloatStatements.division",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.sqrt_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.squareRoot_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.squareRoot",
+    "native_target": "NativeBridge.Incremental.FloatStatements.squareRoot",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.next_up_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.successor_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.successor",
+    "native_target": "NativeBridge.Incremental.FloatStatements.successor",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.next_down_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.predecessor_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.predecessor",
+    "native_target": "NativeBridge.Incremental.FloatStatements.predecessor",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.eqb_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.equal_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.equal",
+    "native_target": "NativeBridge.Incremental.FloatStatements.equal",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.ltb_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.less_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.less",
+    "native_target": "NativeBridge.Incremental.FloatStatements.less",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.leb_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.lessEqual_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.lessEqual",
+    "native_target": "NativeBridge.Incremental.FloatStatements.lessEqual",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.classify_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.classification_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.classification",
+    "native_target": "NativeBridge.Incremental.FloatStatements.classification",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.compare_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.comparison_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.comparison",
+    "native_target": "NativeBridge.Incremental.FloatStatements.comparison",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.Prim2SF_SF2Prim",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.specificationRoundtrip_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.specificationRoundtrip",
+    "native_target": "NativeBridge.Incremental.FloatStatements.specificationRoundtrip",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.SF2Prim_Prim2SF",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.primitiveRoundtrip_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.primitiveRoundtrip",
+    "native_target": "NativeBridge.Incremental.FloatStatements.primitiveRoundtrip",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.Prim2SF_inj",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.toSpecInjective_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.toSpecInjective",
+    "native_target": "NativeBridge.Incremental.FloatStatements.toSpecInjective",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.SF2Prim_inj",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.fromSpecInjective_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.fromSpecInjective",
+    "native_target": "NativeBridge.Incremental.FloatStatements.fromSpecInjective",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.Prim2SF_valid",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.primitiveValid_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.primitiveValid",
+    "native_target": "NativeBridge.Incremental.FloatStatements.primitiveValid",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.Leibniz.eqb_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.leibnizEqual_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.leibnizEqual",
+    "native_target": "NativeBridge.Incremental.FloatStatements.leibnizEqual",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.of_uint63_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.fromWord_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.fromWord",
+    "native_target": "NativeBridge.Incremental.FloatStatements.fromWord",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.normfr_mantissa_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.normalMantissa_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.normalMantissa",
+    "native_target": "NativeBridge.Incremental.FloatStatements.normalMantissa",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.ldshiftexp_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.scaleShifted_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.scaleShifted",
+    "native_target": "NativeBridge.Incremental.FloatStatements.scaleShifted",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered."
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.frshiftexp_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.fractionShifted_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.fractionShifted",
+    "native_target": "NativeBridge.Incremental.FloatStatements.fractionShifted",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered."
+  },
+  {
+    "source": "Corelib.Floats.FloatOps.ulp",
+    "profile": "FloatUlp",
+    "certificate": "NativeBridge.Incremental.FloatUlp.ulp_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.FloatUlp.ulp",
+    "native_target": "NativeBridge.Incremental.FloatUlp.ulp",
+    "target_class": "native_expression",
+    "scope": "Exact native canonical-binary64 algorithm for FloatOps.ulp, independently rechecked in FloatOps closure; not runtime Float API equivalence."
   }
 ]

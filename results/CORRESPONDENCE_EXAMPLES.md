@@ -273,3 +273,13 @@ Decimal.decimal 对应“带符号整数数字、小数数字、可选带符号�
 [PrimFloatRepresentation.lean](../experiments/incremental-correspondence-20261019/proofs/PrimFloatRepresentation.lean) 中 floatIso 证明机械原语浮点与 Option ((Bool × Fin 2047 × BitVec 52) ⊕ Bool) 双向逆。正负零可区分，所有 NaN 按原语表示合为一个值。
 
 [PrimFloatSqrt.lean](../experiments/incremental-correspondence-20261019/proofs/PrimFloatSqrt.lean) 中 integerSqrt_agrees 对任意 n 证明源逐位开方 = Nat.sqrt n。证明先按 fuel 归纳建立 r*r ≤ n < (r+1)*(r+1)，再用 log2 确定足够的位数；squareRoot_agrees 用它组合完整符号浮点舍入。这不是 Float.sqrt 的等价证明。
+
+## 34. 浮点表示转换和保留前提的规格陈述
+
+[FloatOperations.lean](../experiments/incremental-correspondence-20261019/proofs/FloatOperations.lean) 的 fromSpec_agrees、toSpec_agrees 证明机械 SF2Prim、Prim2SF 等于原生字段表示上的具体转换算法。
+
+[FloatStatements.lean](../experiments/incremental-correspondence-20261019/proofs/FloatStatements.lean) 的 specificationRoundtrip_correspondence 将源陈述完整对应为：
+```lean
+∀ x : nativeSpec, valid x = true → toSpec (fromSpec x) = x
+```
+这里证明的是源陈述与此命题等价，保留了 valid 前提；尚未由这个证书独立证明该往返命题为真。primitiveRoundtrip、加法/除法/开方规格等也严格作同样区分。

@@ -2528,5 +2528,210 @@
     "name": "NativeBridge.Incremental.PrimFloatSqrt.squareRoot",
     "native_expression": "fun x =>\n  match x with\n  | none => none\n  | some (Sum.inr s) => if s = true then none else x\n  | some (Sum.inl (s, fst, snd)) =>\n    if NativeBridge.Incremental.PrimFloatRepresentation.isZero x = true then x\n    else\n      if s = true then none\n      else\n        have k :=\n          ↑(NativeBridge.Incremental.PrimFloatRepresentation.mantissa x).log2 +\n            NativeBridge.Incremental.PrimFloatRepresentation.exponent x;\n        have q := max (-1074) (k / 2 - 52);\n        have shift := NativeBridge.Incremental.PrimFloatRepresentation.exponent x - 2 * q;\n        have n :=\n          if shift < 0 then NativeBridge.Incremental.PrimFloatRepresentation.mantissa x\n          else NativeBridge.Incremental.PrimFloatRepresentation.mantissa x * 2 ^ shift.toNat;\n        have d := if shift < 0 then 2 ^ (-shift).toNat else 1;\n        have m := (n / d).sqrt;\n        have mid := d * (2 * m + 1) ^ 2;\n        have m := if (decide (4 * n > mid) || 4 * n == mid && m % 2 == 1) = true then m + 1 else m;\n        NativeBridge.Incremental.PrimFloatArithmetic.pack false m q",
     "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatOperations.exponentOffset",
+    "native_expression": "2101",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatOperations.fraction",
+    "native_expression": "fun x =>\n  have p := NativeBridge.Incremental.PrimFloatExponent.fractionShifted x;\n  (p.fst, ↑p.snd.toNat - NativeBridge.Incremental.FloatOperations.exponentOffset)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatOperations.fromSpec",
+    "native_expression": "fun x =>\n  match x with\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero s =>\n    NativeBridge.Incremental.PrimFloatRepresentation.signedZero s\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity s => some (Sum.inr s)\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan => none\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite s m e =>\n    have f :=\n      NativeBridge.Incremental.FloatOperations.scale\n        (NativeBridge.Incremental.PrimFloatExponent.fromWord (BitVec.ofInt 63 ↑m.val)) e;\n    if s = true then NativeBridge.Incremental.PrimFloatRepresentation.negate f else f",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatOperations.maximumExponent",
+    "native_expression": "1024",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatOperations.precision",
+    "native_expression": "53",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatOperations.scale",
+    "native_expression": "fun x e =>\n  NativeBridge.Incremental.PrimFloatExponent.scaleShifted x\n    (BitVec.ofInt 63 (max (min e 2098) (-2099) + NativeBridge.Incremental.FloatOperations.exponentOffset))",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatOperations.toSpec",
+    "native_expression": "fun x =>\n  if NativeBridge.Incremental.PrimFloatRepresentation.isNaN x = true then\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan\n  else\n    if NativeBridge.Incremental.PrimFloatRepresentation.zeroTest x = true then\n      NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero\n        (NativeBridge.Incremental.PrimFloatArithmetic.getSign x)\n    else\n      if NativeBridge.Incremental.PrimFloatRepresentation.infinityTest x = true then\n        NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity\n          (NativeBridge.Incremental.PrimFloatArithmetic.getSign x)\n      else\n        NativeBridge.Incremental.FloatOperations.finiteToSpec x\n          (NativeBridge.Incremental.FloatOperations.fraction x).fst\n          (NativeBridge.Incremental.FloatOperations.fraction x).snd",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Float64Operations.addition",
+    "native_expression": "fun x y =>\n  NativeBridge.Incremental.SpecFloatArithmetic.addition NativeBridge.Incremental.FloatOperations.precision\n    NativeBridge.Incremental.FloatOperations.maximumExponent x y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Float64Operations.classification",
+    "native_expression": "fun x => NativeBridge.Incremental.SpecFloatNormalize.classify NativeBridge.Incremental.FloatOperations.precision x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Float64Operations.division",
+    "native_expression": "fun x y =>\n  NativeBridge.Incremental.SpecFloatDivision.division NativeBridge.Incremental.FloatOperations.precision\n    NativeBridge.Incremental.FloatOperations.maximumExponent x y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Float64Operations.flatten",
+    "native_expression": "fun x => x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Float64Operations.multiplication",
+    "native_expression": "fun x y =>\n  NativeBridge.Incremental.SpecFloatArithmetic.multiplication NativeBridge.Incremental.FloatOperations.precision\n    NativeBridge.Incremental.FloatOperations.maximumExponent x y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Float64Operations.predecessor",
+    "native_expression": "fun x =>\n  NativeBridge.Incremental.SpecFloatAdjacent.predecessor NativeBridge.Incremental.FloatOperations.precision\n    NativeBridge.Incremental.FloatOperations.maximumExponent x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Float64Operations.squareRoot",
+    "native_expression": "fun x =>\n  NativeBridge.Incremental.SpecFloatSqrt.squareRoot NativeBridge.Incremental.FloatOperations.precision\n    NativeBridge.Incremental.FloatOperations.maximumExponent x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Float64Operations.subtraction",
+    "native_expression": "fun x y =>\n  NativeBridge.Incremental.SpecFloatArithmetic.subtraction NativeBridge.Incremental.FloatOperations.precision\n    NativeBridge.Incremental.FloatOperations.maximumExponent x y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Float64Operations.successor",
+    "native_expression": "fun x =>\n  NativeBridge.Incremental.SpecFloatAdjacent.successor NativeBridge.Incremental.FloatOperations.precision\n    NativeBridge.Incremental.FloatOperations.maximumExponent x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatStatements.absolute",
+    "native_expression": "∀ (x : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.FloatOperations.toSpec (NativeBridge.Incremental.PrimFloatRepresentation.absolute x) =\n    NativeBridge.Incremental.SpecFloatRepresentation.absolute (NativeBridge.Incremental.FloatOperations.toSpec x)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatStatements.addition",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.FloatOperations.toSpec (NativeBridge.Incremental.PrimFloatArithmetic.addition x y) =\n    NativeBridge.Incremental.Float64Operations.addition (NativeBridge.Incremental.FloatOperations.toSpec x)\n      (NativeBridge.Incremental.FloatOperations.toSpec y)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatStatements.classification",
+    "native_expression": "∀ (x : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.PrimFloatRepresentation.classification x =\n    NativeBridge.Incremental.Float64Operations.classification (NativeBridge.Incremental.FloatOperations.toSpec x)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatStatements.comparison",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.PrimFloatRepresentation.comparison x y =\n    NativeBridge.Incremental.SpecFloatComparison.comparison (NativeBridge.Incremental.FloatOperations.toSpec x)\n      (NativeBridge.Incremental.FloatOperations.toSpec y)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatStatements.division",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.FloatOperations.toSpec (NativeBridge.Incremental.PrimFloatArithmetic.division x y) =\n    NativeBridge.Incremental.Float64Operations.division (NativeBridge.Incremental.FloatOperations.toSpec x)\n      (NativeBridge.Incremental.FloatOperations.toSpec y)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatStatements.equal",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.PrimFloatRepresentation.ieeeEqual x y =\n    NativeBridge.Incremental.SpecFloatComparison.equal (NativeBridge.Incremental.FloatOperations.toSpec x)\n      (NativeBridge.Incremental.FloatOperations.toSpec y)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatStatements.fractionShifted",
+    "native_expression": "∀ (x : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  (NativeBridge.Incremental.FloatOperations.toSpec (NativeBridge.Incremental.PrimFloatExponent.fractionShifted x).fst,\n      ↑(NativeBridge.Incremental.PrimFloatExponent.fractionShifted x).snd.toNat -\n        NativeBridge.Incremental.FloatOperations.exponentOffset) =\n    NativeBridge.Incremental.SpecFloatExponent.fraction NativeBridge.Incremental.FloatOperations.precision\n      NativeBridge.Incremental.FloatOperations.maximumExponent (NativeBridge.Incremental.FloatOperations.toSpec x)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatStatements.fromSpecInjective",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.SpecFloatRepresentation.nativeSpec),\n  NativeBridge.Incremental.FloatOperations.fromSpec x = NativeBridge.Incremental.FloatOperations.fromSpec y →\n    NativeBridge.Incremental.FloatStatements.valid x = true →\n      NativeBridge.Incremental.FloatStatements.valid y = true → x = y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatStatements.fromWord",
+    "native_expression": "∀ (w : BitVec 63),\n  NativeBridge.Incremental.FloatOperations.toSpec (NativeBridge.Incremental.PrimFloatExponent.fromWord w) =\n    NativeBridge.Incremental.SpecFloatNormalize.normalize NativeBridge.Incremental.FloatOperations.precision\n      NativeBridge.Incremental.FloatOperations.maximumExponent (↑w.toNat) 0 false",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatStatements.leibnizEqual",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.PrimFloatRepresentation.bitsEqual x y = true ↔ x = y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatStatements.less",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.PrimFloatRepresentation.less x y =\n    NativeBridge.Incremental.SpecFloatComparison.less (NativeBridge.Incremental.FloatOperations.toSpec x)\n      (NativeBridge.Incremental.FloatOperations.toSpec y)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatStatements.lessEqual",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.PrimFloatRepresentation.lessEqual x y =\n    NativeBridge.Incremental.SpecFloatComparison.lessEqual (NativeBridge.Incremental.FloatOperations.toSpec x)\n      (NativeBridge.Incremental.FloatOperations.toSpec y)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatStatements.multiplication",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.FloatOperations.toSpec (NativeBridge.Incremental.PrimFloatArithmetic.multiplication x y) =\n    NativeBridge.Incremental.Float64Operations.multiplication (NativeBridge.Incremental.FloatOperations.toSpec x)\n      (NativeBridge.Incremental.FloatOperations.toSpec y)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatStatements.negate",
+    "native_expression": "∀ (x : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.FloatOperations.toSpec (NativeBridge.Incremental.PrimFloatRepresentation.negate x) =\n    NativeBridge.Incremental.SpecFloatRepresentation.negate (NativeBridge.Incremental.FloatOperations.toSpec x)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatStatements.normalMantissa",
+    "native_expression": "∀ (x : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  ↑(NativeBridge.Incremental.PrimFloatRepresentation.normalMantissa x).toNat =\n    ↑(NativeBridge.Incremental.SpecFloatNormalize.normalMantissa NativeBridge.Incremental.FloatOperations.precision\n        (NativeBridge.Incremental.FloatOperations.toSpec x))",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatStatements.predecessor",
+    "native_expression": "∀ (x : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.FloatOperations.toSpec (NativeBridge.Incremental.PrimFloatExponent.nextDown x) =\n    NativeBridge.Incremental.Float64Operations.predecessor (NativeBridge.Incremental.FloatOperations.toSpec x)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatStatements.primitiveRoundtrip",
+    "native_expression": "∀ (x : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.FloatOperations.fromSpec (NativeBridge.Incremental.FloatOperations.toSpec x) = x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatStatements.primitiveValid",
+    "native_expression": "∀ (x : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.FloatStatements.valid (NativeBridge.Incremental.FloatOperations.toSpec x) = true",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatStatements.scaleShifted",
+    "native_expression": "∀ (x : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat) (e : BitVec 63),\n  NativeBridge.Incremental.FloatOperations.toSpec (NativeBridge.Incremental.PrimFloatExponent.scaleShifted x e) =\n    NativeBridge.Incremental.SpecFloatNormalize.scale NativeBridge.Incremental.FloatOperations.precision\n      NativeBridge.Incremental.FloatOperations.maximumExponent (NativeBridge.Incremental.FloatOperations.toSpec x)\n      (↑e.toNat - NativeBridge.Incremental.FloatOperations.exponentOffset)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatStatements.specificationRoundtrip",
+    "native_expression": "∀ (x : NativeBridge.Incremental.SpecFloatRepresentation.nativeSpec),\n  NativeBridge.Incremental.FloatStatements.valid x = true →\n    NativeBridge.Incremental.FloatOperations.toSpec (NativeBridge.Incremental.FloatOperations.fromSpec x) = x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatStatements.squareRoot",
+    "native_expression": "∀ (x : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.FloatOperations.toSpec (NativeBridge.Incremental.PrimFloatSqrt.squareRoot x) =\n    NativeBridge.Incremental.Float64Operations.squareRoot (NativeBridge.Incremental.FloatOperations.toSpec x)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatStatements.subtraction",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.FloatOperations.toSpec (NativeBridge.Incremental.PrimFloatArithmetic.subtraction x y) =\n    NativeBridge.Incremental.Float64Operations.subtraction (NativeBridge.Incremental.FloatOperations.toSpec x)\n      (NativeBridge.Incremental.FloatOperations.toSpec y)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatStatements.successor",
+    "native_expression": "∀ (x : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.FloatOperations.toSpec (NativeBridge.Incremental.PrimFloatExponent.nextUp x) =\n    NativeBridge.Incremental.Float64Operations.successor (NativeBridge.Incremental.FloatOperations.toSpec x)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatStatements.toSpecInjective",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.FloatOperations.toSpec x = NativeBridge.Incremental.FloatOperations.toSpec y → x = y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.FloatUlp.ulp",
+    "native_expression": "fun x => NativeBridge.Incremental.FloatOperations.unitInLastPlace x",
+    "remaining_source_symbols": []
   }
 ]

@@ -653,3 +653,19 @@ flowchart TD
 ```
 
 PrimFloat 的全部节点已验证；下一阶段在统一 FloatAxioms 源闭包重检这些证明。源闭包未导出的 parser、wrapper、消去器等不需要导入下一阶段支持文件。
+
+## 第八十六至八十九批：转换和规格依赖已完成
+
+```mermaid
+flowchart TD
+  Symbolic[SpecFloat 已证明链] --> FloatClosureSupport
+  Primitive[PrimFloat 已证明链] --> FloatClosureSupport
+  FloatClosureSupport --> FloatWordSupport
+  FloatWordSupport --> FloatOperations
+  FloatOperations --> Float64Operations
+  Float64Operations --> FloatStatements
+  FloatOpsClosure[FloatOps 独立源闭包] --> FloatUlpSupport
+  FloatUlpSupport --> FloatUlp
+```
+
+所有节点已通过。FloatStatements 的边表示组合陈述等价所需的运算对应，不表示这些规格已经独立证明为真。

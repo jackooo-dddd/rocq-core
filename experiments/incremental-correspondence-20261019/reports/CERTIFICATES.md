@@ -15549,6 +15549,535 @@ NativeBridge.Incremental.PrimFloatSqrt.squareRoot_agrees
 
 公理闭包：propext, Classical.choice, Quot.sound
 
+## Corelib.Floats.FloatOps.prec
+
+NativeBridge.Incremental.FloatOperations.precision_agrees
+
+目标：NativeBridge.Incremental.FloatOperations.precision；范围：Exact native binary64 and symbolic SpecValue conversion algorithms on all inputs. The function correspondences do not themselves prove inverse laws or runtime Float equivalence. Rechecked in FloatAxioms closure.
+
+```lean
+NativeBridge.binaryIntTo Rocq.Corelib.Floats.FloatOps.prec = NativeBridge.Incremental.FloatOperations.precision
+```
+
+公理闭包：空
+
+## Corelib.Floats.FloatOps.emax
+
+NativeBridge.Incremental.FloatOperations.maximumExponent_agrees
+
+目标：NativeBridge.Incremental.FloatOperations.maximumExponent；范围：Exact native binary64 and symbolic SpecValue conversion algorithms on all inputs. The function correspondences do not themselves prove inverse laws or runtime Float equivalence. Rechecked in FloatAxioms closure.
+
+```lean
+NativeBridge.binaryIntTo Rocq.Corelib.Floats.FloatOps.emax = NativeBridge.Incremental.FloatOperations.maximumExponent
+```
+
+公理闭包：空
+
+## Corelib.Floats.FloatOps.shift
+
+NativeBridge.Incremental.FloatOperations.exponentOffset_agrees
+
+目标：NativeBridge.Incremental.FloatOperations.exponentOffset；范围：Exact native binary64 and symbolic SpecValue conversion algorithms on all inputs. The function correspondences do not themselves prove inverse laws or runtime Float equivalence. Rechecked in FloatAxioms closure.
+
+```lean
+NativeBridge.binaryIntTo Rocq.Corelib.Floats.FloatOps.shift = NativeBridge.Incremental.FloatOperations.exponentOffset
+```
+
+公理闭包：空
+
+## Corelib.Floats.FloatOps.Z.ldexp
+
+NativeBridge.Incremental.FloatOperations.scale_agrees
+
+目标：NativeBridge.Incremental.FloatOperations.scale；范围：Exact native binary64 and symbolic SpecValue conversion algorithms on all inputs. The function correspondences do not themselves prove inverse laws or runtime Float equivalence. Rechecked in FloatAxioms closure.
+
+```lean
+∀ (x : Rocq.Corelib.Floats.PrimFloat.float) (e : NativeBridge.RIntBinary),
+  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.FloatOps.Z.ldexp x e) =
+    NativeBridge.Incremental.FloatOperations.scale (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)
+      (NativeBridge.binaryIntTo e)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Floats.FloatOps.Z.frexp
+
+NativeBridge.Incremental.FloatOperations.fraction_agrees
+
+目标：NativeBridge.Incremental.FloatOperations.fraction；范围：Exact native binary64 and symbolic SpecValue conversion algorithms on all inputs. The function correspondences do not themselves prove inverse laws or runtime Float equivalence. Rechecked in FloatAxioms closure.
+
+```lean
+∀ (x : Rocq.Corelib.Floats.PrimFloat.float),
+  NativeBridge.Incremental.FloatOperations.fractionTo (Rocq.Corelib.Floats.FloatOps.Z.frexp x) =
+    NativeBridge.Incremental.FloatOperations.fraction (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatOps.SF2Prim
+
+NativeBridge.Incremental.FloatOperations.fromSpec_agrees
+
+目标：NativeBridge.Incremental.FloatOperations.fromSpec；范围：Exact native binary64 and symbolic SpecValue conversion algorithms on all inputs. The function correspondences do not themselves prove inverse laws or runtime Float equivalence. Rechecked in FloatAxioms closure.
+
+```lean
+∀ (x : Rocq.Corelib.Floats.SpecFloat.spec_float),
+  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.FloatOps.SF2Prim x) =
+    NativeBridge.Incremental.FloatOperations.fromSpec (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatOps.Prim2SF
+
+NativeBridge.Incremental.FloatOperations.toSpec_agrees
+
+目标：NativeBridge.Incremental.FloatOperations.toSpec；范围：Exact native binary64 and symbolic SpecValue conversion algorithms on all inputs. The function correspondences do not themselves prove inverse laws or runtime Float equivalence. Rechecked in FloatAxioms closure.
+
+```lean
+∀ (x : Rocq.Corelib.Floats.PrimFloat.float),
+  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.FloatOps.Prim2SF x) =
+    NativeBridge.Incremental.FloatOperations.toSpec (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatAxioms.SF64add
+
+NativeBridge.Incremental.Float64Operations.addition_agrees
+
+目标：NativeBridge.Incremental.Float64Operations.addition；范围：Transparent FloatAxioms wrappers specialized at precision 53 and emax 1024, with native symbolic operations. Not a proof of primitive/specification agreement axioms.
+
+```lean
+∀ (x y : Rocq.Corelib.Floats.SpecFloat.spec_float),
+  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.FloatAxioms.SF64add x y) =
+    NativeBridge.Incremental.Float64Operations.addition (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)
+      (NativeBridge.Incremental.SpecFloatRepresentation.specTo y)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatAxioms.SF64sub
+
+NativeBridge.Incremental.Float64Operations.subtraction_agrees
+
+目标：NativeBridge.Incremental.Float64Operations.subtraction；范围：Transparent FloatAxioms wrappers specialized at precision 53 and emax 1024, with native symbolic operations. Not a proof of primitive/specification agreement axioms.
+
+```lean
+∀ (x y : Rocq.Corelib.Floats.SpecFloat.spec_float),
+  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.FloatAxioms.SF64sub x y) =
+    NativeBridge.Incremental.Float64Operations.subtraction (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)
+      (NativeBridge.Incremental.SpecFloatRepresentation.specTo y)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatAxioms.SF64mul
+
+NativeBridge.Incremental.Float64Operations.multiplication_agrees
+
+目标：NativeBridge.Incremental.Float64Operations.multiplication；范围：Transparent FloatAxioms wrappers specialized at precision 53 and emax 1024, with native symbolic operations. Not a proof of primitive/specification agreement axioms.
+
+```lean
+∀ (x y : Rocq.Corelib.Floats.SpecFloat.spec_float),
+  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.FloatAxioms.SF64mul x y) =
+    NativeBridge.Incremental.Float64Operations.multiplication
+      (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)
+      (NativeBridge.Incremental.SpecFloatRepresentation.specTo y)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatAxioms.SF64div
+
+NativeBridge.Incremental.Float64Operations.division_agrees
+
+目标：NativeBridge.Incremental.Float64Operations.division；范围：Transparent FloatAxioms wrappers specialized at precision 53 and emax 1024, with native symbolic operations. Not a proof of primitive/specification agreement axioms.
+
+```lean
+∀ (x y : Rocq.Corelib.Floats.SpecFloat.spec_float),
+  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.FloatAxioms.SF64div x y) =
+    NativeBridge.Incremental.Float64Operations.division (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)
+      (NativeBridge.Incremental.SpecFloatRepresentation.specTo y)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatAxioms.SF64sqrt
+
+NativeBridge.Incremental.Float64Operations.squareRoot_agrees
+
+目标：NativeBridge.Incremental.Float64Operations.squareRoot；范围：Transparent FloatAxioms wrappers specialized at precision 53 and emax 1024, with native symbolic operations. Not a proof of primitive/specification agreement axioms.
+
+```lean
+∀ (x : Rocq.Corelib.Floats.SpecFloat.spec_float),
+  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.FloatAxioms.SF64sqrt x) =
+    NativeBridge.Incremental.Float64Operations.squareRoot (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatAxioms.SF64succ
+
+NativeBridge.Incremental.Float64Operations.successor_agrees
+
+目标：NativeBridge.Incremental.Float64Operations.successor；范围：Transparent FloatAxioms wrappers specialized at precision 53 and emax 1024, with native symbolic operations. Not a proof of primitive/specification agreement axioms.
+
+```lean
+∀ (x : Rocq.Corelib.Floats.SpecFloat.spec_float),
+  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.FloatAxioms.SF64succ x) =
+    NativeBridge.Incremental.Float64Operations.successor (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatAxioms.SF64pred
+
+NativeBridge.Incremental.Float64Operations.predecessor_agrees
+
+目标：NativeBridge.Incremental.Float64Operations.predecessor；范围：Transparent FloatAxioms wrappers specialized at precision 53 and emax 1024, with native symbolic operations. Not a proof of primitive/specification agreement axioms.
+
+```lean
+∀ (x : Rocq.Corelib.Floats.SpecFloat.spec_float),
+  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.FloatAxioms.SF64pred x) =
+    NativeBridge.Incremental.Float64Operations.predecessor (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatAxioms.SF64classify
+
+NativeBridge.Incremental.Float64Operations.classification_agrees
+
+目标：NativeBridge.Incremental.Float64Operations.classification；范围：Transparent FloatAxioms wrappers specialized at precision 53 and emax 1024, with native symbolic operations. Not a proof of primitive/specification agreement axioms.
+
+```lean
+∀ (x : Rocq.Corelib.Floats.SpecFloat.spec_float),
+  NativeBridge.floatClassTo (Rocq.Corelib.Floats.FloatAxioms.SF64classify x) =
+    NativeBridge.Incremental.Float64Operations.classification
+      (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatAxioms.flatten_cmp_opt
+
+NativeBridge.Incremental.Float64Operations.flatten_agrees
+
+目标：NativeBridge.Incremental.Float64Operations.flatten；范围：Transparent FloatAxioms wrappers specialized at precision 53 and emax 1024, with native symbolic operations. Not a proof of primitive/specification agreement axioms.
+
+```lean
+∀ (x : Rocq.Corelib.Init.Datatypes.option NativeBridge.RComparison),
+  NativeBridge.Incremental.PrimFloatRepresentation.comparisonTo (Rocq.Corelib.Floats.FloatAxioms.flatten_cmp_opt x) =
+    NativeBridge.Incremental.Float64Operations.flatten
+      (NativeBridge.Incremental.SpecFloatComparison.comparisonResultTo x)
+```
+
+公理闭包：空
+
+## Corelib.Floats.FloatAxioms.abs_spec
+
+NativeBridge.Incremental.FloatStatements.absolute_correspondence
+
+目标：NativeBridge.Incremental.FloatStatements.absolute；范围：Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.
+
+```lean
+Rocq.Corelib.Floats.FloatAxioms.abs_spec.statement ↔ NativeBridge.Incremental.FloatStatements.absolute
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatAxioms.opp_spec
+
+NativeBridge.Incremental.FloatStatements.negate_correspondence
+
+目标：NativeBridge.Incremental.FloatStatements.negate；范围：Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.
+
+```lean
+Rocq.Corelib.Floats.FloatAxioms.opp_spec.statement ↔ NativeBridge.Incremental.FloatStatements.negate
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatAxioms.add_spec
+
+NativeBridge.Incremental.FloatStatements.addition_correspondence
+
+目标：NativeBridge.Incremental.FloatStatements.addition；范围：Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.
+
+```lean
+Rocq.Corelib.Floats.FloatAxioms.add_spec.statement ↔ NativeBridge.Incremental.FloatStatements.addition
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatAxioms.sub_spec
+
+NativeBridge.Incremental.FloatStatements.subtraction_correspondence
+
+目标：NativeBridge.Incremental.FloatStatements.subtraction；范围：Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.
+
+```lean
+Rocq.Corelib.Floats.FloatAxioms.sub_spec.statement ↔ NativeBridge.Incremental.FloatStatements.subtraction
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatAxioms.mul_spec
+
+NativeBridge.Incremental.FloatStatements.multiplication_correspondence
+
+目标：NativeBridge.Incremental.FloatStatements.multiplication；范围：Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.
+
+```lean
+Rocq.Corelib.Floats.FloatAxioms.mul_spec.statement ↔ NativeBridge.Incremental.FloatStatements.multiplication
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatAxioms.div_spec
+
+NativeBridge.Incremental.FloatStatements.division_correspondence
+
+目标：NativeBridge.Incremental.FloatStatements.division；范围：Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.
+
+```lean
+Rocq.Corelib.Floats.FloatAxioms.div_spec.statement ↔ NativeBridge.Incremental.FloatStatements.division
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatAxioms.sqrt_spec
+
+NativeBridge.Incremental.FloatStatements.squareRoot_correspondence
+
+目标：NativeBridge.Incremental.FloatStatements.squareRoot；范围：Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.
+
+```lean
+Rocq.Corelib.Floats.FloatAxioms.sqrt_spec.statement ↔ NativeBridge.Incremental.FloatStatements.squareRoot
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatAxioms.next_up_spec
+
+NativeBridge.Incremental.FloatStatements.successor_correspondence
+
+目标：NativeBridge.Incremental.FloatStatements.successor；范围：Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.
+
+```lean
+Rocq.Corelib.Floats.FloatAxioms.next_up_spec.statement ↔ NativeBridge.Incremental.FloatStatements.successor
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatAxioms.next_down_spec
+
+NativeBridge.Incremental.FloatStatements.predecessor_correspondence
+
+目标：NativeBridge.Incremental.FloatStatements.predecessor；范围：Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.
+
+```lean
+Rocq.Corelib.Floats.FloatAxioms.next_down_spec.statement ↔ NativeBridge.Incremental.FloatStatements.predecessor
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatAxioms.eqb_spec
+
+NativeBridge.Incremental.FloatStatements.equal_correspondence
+
+目标：NativeBridge.Incremental.FloatStatements.equal；范围：Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.
+
+```lean
+Rocq.Corelib.Floats.FloatAxioms.eqb_spec.statement ↔ NativeBridge.Incremental.FloatStatements.equal
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatAxioms.ltb_spec
+
+NativeBridge.Incremental.FloatStatements.less_correspondence
+
+目标：NativeBridge.Incremental.FloatStatements.less；范围：Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.
+
+```lean
+Rocq.Corelib.Floats.FloatAxioms.ltb_spec.statement ↔ NativeBridge.Incremental.FloatStatements.less
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatAxioms.leb_spec
+
+NativeBridge.Incremental.FloatStatements.lessEqual_correspondence
+
+目标：NativeBridge.Incremental.FloatStatements.lessEqual；范围：Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.
+
+```lean
+Rocq.Corelib.Floats.FloatAxioms.leb_spec.statement ↔ NativeBridge.Incremental.FloatStatements.lessEqual
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatAxioms.classify_spec
+
+NativeBridge.Incremental.FloatStatements.classification_correspondence
+
+目标：NativeBridge.Incremental.FloatStatements.classification；范围：Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.
+
+```lean
+Rocq.Corelib.Floats.FloatAxioms.classify_spec.statement ↔ NativeBridge.Incremental.FloatStatements.classification
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatAxioms.compare_spec
+
+NativeBridge.Incremental.FloatStatements.comparison_correspondence
+
+目标：NativeBridge.Incremental.FloatStatements.comparison；范围：Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.
+
+```lean
+Rocq.Corelib.Floats.FloatAxioms.compare_spec.statement ↔ NativeBridge.Incremental.FloatStatements.comparison
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatAxioms.Prim2SF_SF2Prim
+
+NativeBridge.Incremental.FloatStatements.specificationRoundtrip_correspondence
+
+目标：NativeBridge.Incremental.FloatStatements.specificationRoundtrip；范围：Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.
+
+```lean
+Rocq.Corelib.Floats.FloatAxioms.Prim2SF_SF2Prim.statement ↔
+  NativeBridge.Incremental.FloatStatements.specificationRoundtrip
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatAxioms.SF2Prim_Prim2SF
+
+NativeBridge.Incremental.FloatStatements.primitiveRoundtrip_correspondence
+
+目标：NativeBridge.Incremental.FloatStatements.primitiveRoundtrip；范围：Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.
+
+```lean
+Rocq.Corelib.Floats.FloatAxioms.SF2Prim_Prim2SF.statement ↔ NativeBridge.Incremental.FloatStatements.primitiveRoundtrip
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatAxioms.Prim2SF_inj
+
+NativeBridge.Incremental.FloatStatements.toSpecInjective_correspondence
+
+目标：NativeBridge.Incremental.FloatStatements.toSpecInjective；范围：Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.
+
+```lean
+Rocq.Corelib.Floats.FloatAxioms.Prim2SF_inj.statement ↔ NativeBridge.Incremental.FloatStatements.toSpecInjective
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatAxioms.SF2Prim_inj
+
+NativeBridge.Incremental.FloatStatements.fromSpecInjective_correspondence
+
+目标：NativeBridge.Incremental.FloatStatements.fromSpecInjective；范围：Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.
+
+```lean
+Rocq.Corelib.Floats.FloatAxioms.SF2Prim_inj.statement ↔ NativeBridge.Incremental.FloatStatements.fromSpecInjective
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatAxioms.Prim2SF_valid
+
+NativeBridge.Incremental.FloatStatements.primitiveValid_correspondence
+
+目标：NativeBridge.Incremental.FloatStatements.primitiveValid；范围：Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.
+
+```lean
+Rocq.Corelib.Floats.FloatAxioms.Prim2SF_valid.statement ↔ NativeBridge.Incremental.FloatStatements.primitiveValid
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatAxioms.Leibniz.eqb_spec
+
+NativeBridge.Incremental.FloatStatements.leibnizEqual_correspondence
+
+目标：NativeBridge.Incremental.FloatStatements.leibnizEqual；范围：Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.
+
+```lean
+Rocq.Corelib.Floats.FloatAxioms.Leibniz.eqb_spec.statement ↔ NativeBridge.Incremental.FloatStatements.leibnizEqual
+```
+
+公理闭包：propext
+
+## Corelib.Floats.FloatAxioms.of_uint63_spec
+
+NativeBridge.Incremental.FloatStatements.fromWord_correspondence
+
+目标：NativeBridge.Incremental.FloatStatements.fromWord；范围：Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.
+
+```lean
+Rocq.Corelib.Floats.FloatAxioms.of_uint63_spec.statement ↔ NativeBridge.Incremental.FloatStatements.fromWord
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatAxioms.normfr_mantissa_spec
+
+NativeBridge.Incremental.FloatStatements.normalMantissa_correspondence
+
+目标：NativeBridge.Incremental.FloatStatements.normalMantissa；范围：Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.
+
+```lean
+Rocq.Corelib.Floats.FloatAxioms.normfr_mantissa_spec.statement ↔ NativeBridge.Incremental.FloatStatements.normalMantissa
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatAxioms.ldshiftexp_spec
+
+NativeBridge.Incremental.FloatStatements.scaleShifted_correspondence
+
+目标：NativeBridge.Incremental.FloatStatements.scaleShifted；范围：Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.
+
+```lean
+Rocq.Corelib.Floats.FloatAxioms.ldshiftexp_spec.statement ↔ NativeBridge.Incremental.FloatStatements.scaleShifted
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatAxioms.frshiftexp_spec
+
+NativeBridge.Incremental.FloatStatements.fractionShifted_correspondence
+
+目标：NativeBridge.Incremental.FloatStatements.fractionShifted；范围：Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.
+
+```lean
+Rocq.Corelib.Floats.FloatAxioms.frshiftexp_spec.statement ↔ NativeBridge.Incremental.FloatStatements.fractionShifted
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.FloatOps.ulp
+
+NativeBridge.Incremental.FloatUlp.ulp_agrees
+
+目标：NativeBridge.Incremental.FloatUlp.ulp；范围：Exact native canonical-binary64 algorithm for FloatOps.ulp, independently rechecked in FloatOps closure; not runtime Float API equivalence.
+
+```lean
+∀ (x : Rocq.Corelib.Floats.PrimFloat.float),
+  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.FloatOps.ulp x) =
+    NativeBridge.Incremental.FloatUlp.ulp (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
 ## Corelib.ssr.ssrbool.canLR_in
 
 NativeBridge.Incremental.SSRBoolClosedStatements.RocqPending.Corelib.ssr.ssrbool.canLR_in.statement.correspondence

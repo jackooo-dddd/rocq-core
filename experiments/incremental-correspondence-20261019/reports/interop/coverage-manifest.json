@@ -18671,6 +18671,684 @@
     ]
   },
   {
+    "source": "Corelib.Floats.FloatOps.prec",
+    "profile": "FloatOperations",
+    "certificate": "NativeBridge.Incremental.FloatOperations.precision_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.FloatOperations.precision",
+    "native_target": "NativeBridge.Incremental.FloatOperations.precision",
+    "target_class": "native_expression",
+    "scope": "Exact native binary64 and symbolic SpecValue conversion algorithms on all inputs. The function correspondences do not themselves prove inverse laws or runtime Float equivalence. Rechecked in FloatAxioms closure.",
+    "native_expression": "53",
+    "type": "NativeBridge.binaryIntTo Rocq.Corelib.Floats.FloatOps.prec = NativeBridge.Incremental.FloatOperations.precision",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Floats.FloatOps.emax",
+    "profile": "FloatOperations",
+    "certificate": "NativeBridge.Incremental.FloatOperations.maximumExponent_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.FloatOperations.maximumExponent",
+    "native_target": "NativeBridge.Incremental.FloatOperations.maximumExponent",
+    "target_class": "native_expression",
+    "scope": "Exact native binary64 and symbolic SpecValue conversion algorithms on all inputs. The function correspondences do not themselves prove inverse laws or runtime Float equivalence. Rechecked in FloatAxioms closure.",
+    "native_expression": "1024",
+    "type": "NativeBridge.binaryIntTo Rocq.Corelib.Floats.FloatOps.emax = NativeBridge.Incremental.FloatOperations.maximumExponent",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Floats.FloatOps.shift",
+    "profile": "FloatOperations",
+    "certificate": "NativeBridge.Incremental.FloatOperations.exponentOffset_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.FloatOperations.exponentOffset",
+    "native_target": "NativeBridge.Incremental.FloatOperations.exponentOffset",
+    "target_class": "native_expression",
+    "scope": "Exact native binary64 and symbolic SpecValue conversion algorithms on all inputs. The function correspondences do not themselves prove inverse laws or runtime Float equivalence. Rechecked in FloatAxioms closure.",
+    "native_expression": "2101",
+    "type": "NativeBridge.binaryIntTo Rocq.Corelib.Floats.FloatOps.shift = NativeBridge.Incremental.FloatOperations.exponentOffset",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Floats.FloatOps.Z.ldexp",
+    "profile": "FloatOperations",
+    "certificate": "NativeBridge.Incremental.FloatOperations.scale_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.FloatOperations.scale",
+    "native_target": "NativeBridge.Incremental.FloatOperations.scale",
+    "target_class": "native_expression",
+    "scope": "Exact native binary64 and symbolic SpecValue conversion algorithms on all inputs. The function correspondences do not themselves prove inverse laws or runtime Float equivalence. Rechecked in FloatAxioms closure.",
+    "native_expression": "fun x e =>\n  NativeBridge.Incremental.PrimFloatExponent.scaleShifted x\n    (BitVec.ofInt 63 (max (min e 2098) (-2099) + NativeBridge.Incremental.FloatOperations.exponentOffset))",
+    "type": "∀ (x : Rocq.Corelib.Floats.PrimFloat.float) (e : NativeBridge.RIntBinary),\n  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.FloatOps.Z.ldexp x e) =\n    NativeBridge.Incremental.FloatOperations.scale (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)\n      (NativeBridge.binaryIntTo e)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatOps.Z.frexp",
+    "profile": "FloatOperations",
+    "certificate": "NativeBridge.Incremental.FloatOperations.fraction_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.FloatOperations.fraction",
+    "native_target": "NativeBridge.Incremental.FloatOperations.fraction",
+    "target_class": "native_expression",
+    "scope": "Exact native binary64 and symbolic SpecValue conversion algorithms on all inputs. The function correspondences do not themselves prove inverse laws or runtime Float equivalence. Rechecked in FloatAxioms closure.",
+    "native_expression": "fun x =>\n  have p := NativeBridge.Incremental.PrimFloatExponent.fractionShifted x;\n  (p.fst, ↑p.snd.toNat - NativeBridge.Incremental.FloatOperations.exponentOffset)",
+    "type": "∀ (x : Rocq.Corelib.Floats.PrimFloat.float),\n  NativeBridge.Incremental.FloatOperations.fractionTo (Rocq.Corelib.Floats.FloatOps.Z.frexp x) =\n    NativeBridge.Incremental.FloatOperations.fraction (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatOps.SF2Prim",
+    "profile": "FloatOperations",
+    "certificate": "NativeBridge.Incremental.FloatOperations.fromSpec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.FloatOperations.fromSpec",
+    "native_target": "NativeBridge.Incremental.FloatOperations.fromSpec",
+    "target_class": "native_expression",
+    "scope": "Exact native binary64 and symbolic SpecValue conversion algorithms on all inputs. The function correspondences do not themselves prove inverse laws or runtime Float equivalence. Rechecked in FloatAxioms closure.",
+    "native_expression": "fun x =>\n  match x with\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero s =>\n    NativeBridge.Incremental.PrimFloatRepresentation.signedZero s\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity s => some (Sum.inr s)\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan => none\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite s m e =>\n    have f :=\n      NativeBridge.Incremental.FloatOperations.scale\n        (NativeBridge.Incremental.PrimFloatExponent.fromWord (BitVec.ofInt 63 ↑m.val)) e;\n    if s = true then NativeBridge.Incremental.PrimFloatRepresentation.negate f else f",
+    "type": "∀ (x : Rocq.Corelib.Floats.SpecFloat.spec_float),\n  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.FloatOps.SF2Prim x) =\n    NativeBridge.Incremental.FloatOperations.fromSpec (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatOps.Prim2SF",
+    "profile": "FloatOperations",
+    "certificate": "NativeBridge.Incremental.FloatOperations.toSpec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.FloatOperations.toSpec",
+    "native_target": "NativeBridge.Incremental.FloatOperations.toSpec",
+    "target_class": "native_expression",
+    "scope": "Exact native binary64 and symbolic SpecValue conversion algorithms on all inputs. The function correspondences do not themselves prove inverse laws or runtime Float equivalence. Rechecked in FloatAxioms closure.",
+    "native_expression": "fun x =>\n  if NativeBridge.Incremental.PrimFloatRepresentation.isNaN x = true then\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan\n  else\n    if NativeBridge.Incremental.PrimFloatRepresentation.zeroTest x = true then\n      NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero\n        (NativeBridge.Incremental.PrimFloatArithmetic.getSign x)\n    else\n      if NativeBridge.Incremental.PrimFloatRepresentation.infinityTest x = true then\n        NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity\n          (NativeBridge.Incremental.PrimFloatArithmetic.getSign x)\n      else\n        NativeBridge.Incremental.FloatOperations.finiteToSpec x\n          (NativeBridge.Incremental.FloatOperations.fraction x).fst\n          (NativeBridge.Incremental.FloatOperations.fraction x).snd",
+    "type": "∀ (x : Rocq.Corelib.Floats.PrimFloat.float),\n  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.FloatOps.Prim2SF x) =\n    NativeBridge.Incremental.FloatOperations.toSpec (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.SF64add",
+    "profile": "Float64Operations",
+    "certificate": "NativeBridge.Incremental.Float64Operations.addition_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Float64Operations.addition",
+    "native_target": "NativeBridge.Incremental.Float64Operations.addition",
+    "target_class": "native_expression",
+    "scope": "Transparent FloatAxioms wrappers specialized at precision 53 and emax 1024, with native symbolic operations. Not a proof of primitive/specification agreement axioms.",
+    "native_expression": "fun x y =>\n  NativeBridge.Incremental.SpecFloatArithmetic.addition NativeBridge.Incremental.FloatOperations.precision\n    NativeBridge.Incremental.FloatOperations.maximumExponent x y",
+    "type": "∀ (x y : Rocq.Corelib.Floats.SpecFloat.spec_float),\n  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.FloatAxioms.SF64add x y) =\n    NativeBridge.Incremental.Float64Operations.addition (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)\n      (NativeBridge.Incremental.SpecFloatRepresentation.specTo y)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.SF64sub",
+    "profile": "Float64Operations",
+    "certificate": "NativeBridge.Incremental.Float64Operations.subtraction_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Float64Operations.subtraction",
+    "native_target": "NativeBridge.Incremental.Float64Operations.subtraction",
+    "target_class": "native_expression",
+    "scope": "Transparent FloatAxioms wrappers specialized at precision 53 and emax 1024, with native symbolic operations. Not a proof of primitive/specification agreement axioms.",
+    "native_expression": "fun x y =>\n  NativeBridge.Incremental.SpecFloatArithmetic.subtraction NativeBridge.Incremental.FloatOperations.precision\n    NativeBridge.Incremental.FloatOperations.maximumExponent x y",
+    "type": "∀ (x y : Rocq.Corelib.Floats.SpecFloat.spec_float),\n  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.FloatAxioms.SF64sub x y) =\n    NativeBridge.Incremental.Float64Operations.subtraction (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)\n      (NativeBridge.Incremental.SpecFloatRepresentation.specTo y)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.SF64mul",
+    "profile": "Float64Operations",
+    "certificate": "NativeBridge.Incremental.Float64Operations.multiplication_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Float64Operations.multiplication",
+    "native_target": "NativeBridge.Incremental.Float64Operations.multiplication",
+    "target_class": "native_expression",
+    "scope": "Transparent FloatAxioms wrappers specialized at precision 53 and emax 1024, with native symbolic operations. Not a proof of primitive/specification agreement axioms.",
+    "native_expression": "fun x y =>\n  NativeBridge.Incremental.SpecFloatArithmetic.multiplication NativeBridge.Incremental.FloatOperations.precision\n    NativeBridge.Incremental.FloatOperations.maximumExponent x y",
+    "type": "∀ (x y : Rocq.Corelib.Floats.SpecFloat.spec_float),\n  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.FloatAxioms.SF64mul x y) =\n    NativeBridge.Incremental.Float64Operations.multiplication\n      (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)\n      (NativeBridge.Incremental.SpecFloatRepresentation.specTo y)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.SF64div",
+    "profile": "Float64Operations",
+    "certificate": "NativeBridge.Incremental.Float64Operations.division_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Float64Operations.division",
+    "native_target": "NativeBridge.Incremental.Float64Operations.division",
+    "target_class": "native_expression",
+    "scope": "Transparent FloatAxioms wrappers specialized at precision 53 and emax 1024, with native symbolic operations. Not a proof of primitive/specification agreement axioms.",
+    "native_expression": "fun x y =>\n  NativeBridge.Incremental.SpecFloatDivision.division NativeBridge.Incremental.FloatOperations.precision\n    NativeBridge.Incremental.FloatOperations.maximumExponent x y",
+    "type": "∀ (x y : Rocq.Corelib.Floats.SpecFloat.spec_float),\n  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.FloatAxioms.SF64div x y) =\n    NativeBridge.Incremental.Float64Operations.division (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)\n      (NativeBridge.Incremental.SpecFloatRepresentation.specTo y)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.SF64sqrt",
+    "profile": "Float64Operations",
+    "certificate": "NativeBridge.Incremental.Float64Operations.squareRoot_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Float64Operations.squareRoot",
+    "native_target": "NativeBridge.Incremental.Float64Operations.squareRoot",
+    "target_class": "native_expression",
+    "scope": "Transparent FloatAxioms wrappers specialized at precision 53 and emax 1024, with native symbolic operations. Not a proof of primitive/specification agreement axioms.",
+    "native_expression": "fun x =>\n  NativeBridge.Incremental.SpecFloatSqrt.squareRoot NativeBridge.Incremental.FloatOperations.precision\n    NativeBridge.Incremental.FloatOperations.maximumExponent x",
+    "type": "∀ (x : Rocq.Corelib.Floats.SpecFloat.spec_float),\n  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.FloatAxioms.SF64sqrt x) =\n    NativeBridge.Incremental.Float64Operations.squareRoot (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.SF64succ",
+    "profile": "Float64Operations",
+    "certificate": "NativeBridge.Incremental.Float64Operations.successor_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Float64Operations.successor",
+    "native_target": "NativeBridge.Incremental.Float64Operations.successor",
+    "target_class": "native_expression",
+    "scope": "Transparent FloatAxioms wrappers specialized at precision 53 and emax 1024, with native symbolic operations. Not a proof of primitive/specification agreement axioms.",
+    "native_expression": "fun x =>\n  NativeBridge.Incremental.SpecFloatAdjacent.successor NativeBridge.Incremental.FloatOperations.precision\n    NativeBridge.Incremental.FloatOperations.maximumExponent x",
+    "type": "∀ (x : Rocq.Corelib.Floats.SpecFloat.spec_float),\n  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.FloatAxioms.SF64succ x) =\n    NativeBridge.Incremental.Float64Operations.successor (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.SF64pred",
+    "profile": "Float64Operations",
+    "certificate": "NativeBridge.Incremental.Float64Operations.predecessor_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Float64Operations.predecessor",
+    "native_target": "NativeBridge.Incremental.Float64Operations.predecessor",
+    "target_class": "native_expression",
+    "scope": "Transparent FloatAxioms wrappers specialized at precision 53 and emax 1024, with native symbolic operations. Not a proof of primitive/specification agreement axioms.",
+    "native_expression": "fun x =>\n  NativeBridge.Incremental.SpecFloatAdjacent.predecessor NativeBridge.Incremental.FloatOperations.precision\n    NativeBridge.Incremental.FloatOperations.maximumExponent x",
+    "type": "∀ (x : Rocq.Corelib.Floats.SpecFloat.spec_float),\n  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.FloatAxioms.SF64pred x) =\n    NativeBridge.Incremental.Float64Operations.predecessor (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.SF64classify",
+    "profile": "Float64Operations",
+    "certificate": "NativeBridge.Incremental.Float64Operations.classification_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Float64Operations.classification",
+    "native_target": "NativeBridge.Incremental.Float64Operations.classification",
+    "target_class": "native_expression",
+    "scope": "Transparent FloatAxioms wrappers specialized at precision 53 and emax 1024, with native symbolic operations. Not a proof of primitive/specification agreement axioms.",
+    "native_expression": "fun x => NativeBridge.Incremental.SpecFloatNormalize.classify NativeBridge.Incremental.FloatOperations.precision x",
+    "type": "∀ (x : Rocq.Corelib.Floats.SpecFloat.spec_float),\n  NativeBridge.floatClassTo (Rocq.Corelib.Floats.FloatAxioms.SF64classify x) =\n    NativeBridge.Incremental.Float64Operations.classification\n      (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.flatten_cmp_opt",
+    "profile": "Float64Operations",
+    "certificate": "NativeBridge.Incremental.Float64Operations.flatten_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Float64Operations.flatten",
+    "native_target": "NativeBridge.Incremental.Float64Operations.flatten",
+    "target_class": "native_expression",
+    "scope": "Transparent FloatAxioms wrappers specialized at precision 53 and emax 1024, with native symbolic operations. Not a proof of primitive/specification agreement axioms.",
+    "native_expression": "fun x => x",
+    "type": "∀ (x : Rocq.Corelib.Init.Datatypes.option NativeBridge.RComparison),\n  NativeBridge.Incremental.PrimFloatRepresentation.comparisonTo (Rocq.Corelib.Floats.FloatAxioms.flatten_cmp_opt x) =\n    NativeBridge.Incremental.Float64Operations.flatten\n      (NativeBridge.Incremental.SpecFloatComparison.comparisonResultTo x)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.abs_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.absolute_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.absolute",
+    "native_target": "NativeBridge.Incremental.FloatStatements.absolute",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.",
+    "native_expression": "∀ (x : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.FloatOperations.toSpec (NativeBridge.Incremental.PrimFloatRepresentation.absolute x) =\n    NativeBridge.Incremental.SpecFloatRepresentation.absolute (NativeBridge.Incremental.FloatOperations.toSpec x)",
+    "type": "Rocq.Corelib.Floats.FloatAxioms.abs_spec.statement ↔ NativeBridge.Incremental.FloatStatements.absolute",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.opp_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.negate_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.negate",
+    "native_target": "NativeBridge.Incremental.FloatStatements.negate",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.",
+    "native_expression": "∀ (x : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.FloatOperations.toSpec (NativeBridge.Incremental.PrimFloatRepresentation.negate x) =\n    NativeBridge.Incremental.SpecFloatRepresentation.negate (NativeBridge.Incremental.FloatOperations.toSpec x)",
+    "type": "Rocq.Corelib.Floats.FloatAxioms.opp_spec.statement ↔ NativeBridge.Incremental.FloatStatements.negate",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.add_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.addition_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.addition",
+    "native_target": "NativeBridge.Incremental.FloatStatements.addition",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.FloatOperations.toSpec (NativeBridge.Incremental.PrimFloatArithmetic.addition x y) =\n    NativeBridge.Incremental.Float64Operations.addition (NativeBridge.Incremental.FloatOperations.toSpec x)\n      (NativeBridge.Incremental.FloatOperations.toSpec y)",
+    "type": "Rocq.Corelib.Floats.FloatAxioms.add_spec.statement ↔ NativeBridge.Incremental.FloatStatements.addition",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.sub_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.subtraction_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.subtraction",
+    "native_target": "NativeBridge.Incremental.FloatStatements.subtraction",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.FloatOperations.toSpec (NativeBridge.Incremental.PrimFloatArithmetic.subtraction x y) =\n    NativeBridge.Incremental.Float64Operations.subtraction (NativeBridge.Incremental.FloatOperations.toSpec x)\n      (NativeBridge.Incremental.FloatOperations.toSpec y)",
+    "type": "Rocq.Corelib.Floats.FloatAxioms.sub_spec.statement ↔ NativeBridge.Incremental.FloatStatements.subtraction",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.mul_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.multiplication_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.multiplication",
+    "native_target": "NativeBridge.Incremental.FloatStatements.multiplication",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.FloatOperations.toSpec (NativeBridge.Incremental.PrimFloatArithmetic.multiplication x y) =\n    NativeBridge.Incremental.Float64Operations.multiplication (NativeBridge.Incremental.FloatOperations.toSpec x)\n      (NativeBridge.Incremental.FloatOperations.toSpec y)",
+    "type": "Rocq.Corelib.Floats.FloatAxioms.mul_spec.statement ↔ NativeBridge.Incremental.FloatStatements.multiplication",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.div_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.division_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.division",
+    "native_target": "NativeBridge.Incremental.FloatStatements.division",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.FloatOperations.toSpec (NativeBridge.Incremental.PrimFloatArithmetic.division x y) =\n    NativeBridge.Incremental.Float64Operations.division (NativeBridge.Incremental.FloatOperations.toSpec x)\n      (NativeBridge.Incremental.FloatOperations.toSpec y)",
+    "type": "Rocq.Corelib.Floats.FloatAxioms.div_spec.statement ↔ NativeBridge.Incremental.FloatStatements.division",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.sqrt_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.squareRoot_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.squareRoot",
+    "native_target": "NativeBridge.Incremental.FloatStatements.squareRoot",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.",
+    "native_expression": "∀ (x : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.FloatOperations.toSpec (NativeBridge.Incremental.PrimFloatSqrt.squareRoot x) =\n    NativeBridge.Incremental.Float64Operations.squareRoot (NativeBridge.Incremental.FloatOperations.toSpec x)",
+    "type": "Rocq.Corelib.Floats.FloatAxioms.sqrt_spec.statement ↔ NativeBridge.Incremental.FloatStatements.squareRoot",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.next_up_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.successor_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.successor",
+    "native_target": "NativeBridge.Incremental.FloatStatements.successor",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.",
+    "native_expression": "∀ (x : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.FloatOperations.toSpec (NativeBridge.Incremental.PrimFloatExponent.nextUp x) =\n    NativeBridge.Incremental.Float64Operations.successor (NativeBridge.Incremental.FloatOperations.toSpec x)",
+    "type": "Rocq.Corelib.Floats.FloatAxioms.next_up_spec.statement ↔ NativeBridge.Incremental.FloatStatements.successor",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.next_down_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.predecessor_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.predecessor",
+    "native_target": "NativeBridge.Incremental.FloatStatements.predecessor",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.",
+    "native_expression": "∀ (x : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.FloatOperations.toSpec (NativeBridge.Incremental.PrimFloatExponent.nextDown x) =\n    NativeBridge.Incremental.Float64Operations.predecessor (NativeBridge.Incremental.FloatOperations.toSpec x)",
+    "type": "Rocq.Corelib.Floats.FloatAxioms.next_down_spec.statement ↔ NativeBridge.Incremental.FloatStatements.predecessor",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.eqb_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.equal_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.equal",
+    "native_target": "NativeBridge.Incremental.FloatStatements.equal",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.PrimFloatRepresentation.ieeeEqual x y =\n    NativeBridge.Incremental.SpecFloatComparison.equal (NativeBridge.Incremental.FloatOperations.toSpec x)\n      (NativeBridge.Incremental.FloatOperations.toSpec y)",
+    "type": "Rocq.Corelib.Floats.FloatAxioms.eqb_spec.statement ↔ NativeBridge.Incremental.FloatStatements.equal",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.ltb_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.less_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.less",
+    "native_target": "NativeBridge.Incremental.FloatStatements.less",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.PrimFloatRepresentation.less x y =\n    NativeBridge.Incremental.SpecFloatComparison.less (NativeBridge.Incremental.FloatOperations.toSpec x)\n      (NativeBridge.Incremental.FloatOperations.toSpec y)",
+    "type": "Rocq.Corelib.Floats.FloatAxioms.ltb_spec.statement ↔ NativeBridge.Incremental.FloatStatements.less",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.leb_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.lessEqual_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.lessEqual",
+    "native_target": "NativeBridge.Incremental.FloatStatements.lessEqual",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.PrimFloatRepresentation.lessEqual x y =\n    NativeBridge.Incremental.SpecFloatComparison.lessEqual (NativeBridge.Incremental.FloatOperations.toSpec x)\n      (NativeBridge.Incremental.FloatOperations.toSpec y)",
+    "type": "Rocq.Corelib.Floats.FloatAxioms.leb_spec.statement ↔ NativeBridge.Incremental.FloatStatements.lessEqual",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.classify_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.classification_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.classification",
+    "native_target": "NativeBridge.Incremental.FloatStatements.classification",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.",
+    "native_expression": "∀ (x : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.PrimFloatRepresentation.classification x =\n    NativeBridge.Incremental.Float64Operations.classification (NativeBridge.Incremental.FloatOperations.toSpec x)",
+    "type": "Rocq.Corelib.Floats.FloatAxioms.classify_spec.statement ↔ NativeBridge.Incremental.FloatStatements.classification",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.compare_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.comparison_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.comparison",
+    "native_target": "NativeBridge.Incremental.FloatStatements.comparison",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.PrimFloatRepresentation.comparison x y =\n    NativeBridge.Incremental.SpecFloatComparison.comparison (NativeBridge.Incremental.FloatOperations.toSpec x)\n      (NativeBridge.Incremental.FloatOperations.toSpec y)",
+    "type": "Rocq.Corelib.Floats.FloatAxioms.compare_spec.statement ↔ NativeBridge.Incremental.FloatStatements.comparison",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.Prim2SF_SF2Prim",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.specificationRoundtrip_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.specificationRoundtrip",
+    "native_target": "NativeBridge.Incremental.FloatStatements.specificationRoundtrip",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.",
+    "native_expression": "∀ (x : NativeBridge.Incremental.SpecFloatRepresentation.nativeSpec),\n  NativeBridge.Incremental.FloatStatements.valid x = true →\n    NativeBridge.Incremental.FloatOperations.toSpec (NativeBridge.Incremental.FloatOperations.fromSpec x) = x",
+    "type": "Rocq.Corelib.Floats.FloatAxioms.Prim2SF_SF2Prim.statement ↔\n  NativeBridge.Incremental.FloatStatements.specificationRoundtrip",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.SF2Prim_Prim2SF",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.primitiveRoundtrip_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.primitiveRoundtrip",
+    "native_target": "NativeBridge.Incremental.FloatStatements.primitiveRoundtrip",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.",
+    "native_expression": "∀ (x : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.FloatOperations.fromSpec (NativeBridge.Incremental.FloatOperations.toSpec x) = x",
+    "type": "Rocq.Corelib.Floats.FloatAxioms.SF2Prim_Prim2SF.statement ↔ NativeBridge.Incremental.FloatStatements.primitiveRoundtrip",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.Prim2SF_inj",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.toSpecInjective_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.toSpecInjective",
+    "native_target": "NativeBridge.Incremental.FloatStatements.toSpecInjective",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.FloatOperations.toSpec x = NativeBridge.Incremental.FloatOperations.toSpec y → x = y",
+    "type": "Rocq.Corelib.Floats.FloatAxioms.Prim2SF_inj.statement ↔ NativeBridge.Incremental.FloatStatements.toSpecInjective",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.SF2Prim_inj",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.fromSpecInjective_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.fromSpecInjective",
+    "native_target": "NativeBridge.Incremental.FloatStatements.fromSpecInjective",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.SpecFloatRepresentation.nativeSpec),\n  NativeBridge.Incremental.FloatOperations.fromSpec x = NativeBridge.Incremental.FloatOperations.fromSpec y →\n    NativeBridge.Incremental.FloatStatements.valid x = true →\n      NativeBridge.Incremental.FloatStatements.valid y = true → x = y",
+    "type": "Rocq.Corelib.Floats.FloatAxioms.SF2Prim_inj.statement ↔ NativeBridge.Incremental.FloatStatements.fromSpecInjective",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.Prim2SF_valid",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.primitiveValid_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.primitiveValid",
+    "native_target": "NativeBridge.Incremental.FloatStatements.primitiveValid",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.",
+    "native_expression": "∀ (x : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.FloatStatements.valid (NativeBridge.Incremental.FloatOperations.toSpec x) = true",
+    "type": "Rocq.Corelib.Floats.FloatAxioms.Prim2SF_valid.statement ↔ NativeBridge.Incremental.FloatStatements.primitiveValid",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.Leibniz.eqb_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.leibnizEqual_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.leibnizEqual",
+    "native_target": "NativeBridge.Incremental.FloatStatements.leibnizEqual",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  NativeBridge.Incremental.PrimFloatRepresentation.bitsEqual x y = true ↔ x = y",
+    "type": "Rocq.Corelib.Floats.FloatAxioms.Leibniz.eqb_spec.statement ↔ NativeBridge.Incremental.FloatStatements.leibnizEqual",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.of_uint63_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.fromWord_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.fromWord",
+    "native_target": "NativeBridge.Incremental.FloatStatements.fromWord",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.",
+    "native_expression": "∀ (w : BitVec 63),\n  NativeBridge.Incremental.FloatOperations.toSpec (NativeBridge.Incremental.PrimFloatExponent.fromWord w) =\n    NativeBridge.Incremental.SpecFloatNormalize.normalize NativeBridge.Incremental.FloatOperations.precision\n      NativeBridge.Incremental.FloatOperations.maximumExponent (↑w.toNat) 0 false",
+    "type": "Rocq.Corelib.Floats.FloatAxioms.of_uint63_spec.statement ↔ NativeBridge.Incremental.FloatStatements.fromWord",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.normfr_mantissa_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.normalMantissa_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.normalMantissa",
+    "native_target": "NativeBridge.Incremental.FloatStatements.normalMantissa",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.",
+    "native_expression": "∀ (x : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  ↑(NativeBridge.Incremental.PrimFloatRepresentation.normalMantissa x).toNat =\n    ↑(NativeBridge.Incremental.SpecFloatNormalize.normalMantissa NativeBridge.Incremental.FloatOperations.precision\n        (NativeBridge.Incremental.FloatOperations.toSpec x))",
+    "type": "Rocq.Corelib.Floats.FloatAxioms.normfr_mantissa_spec.statement ↔ NativeBridge.Incremental.FloatStatements.normalMantissa",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.ldshiftexp_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.scaleShifted_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.scaleShifted",
+    "native_target": "NativeBridge.Incremental.FloatStatements.scaleShifted",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.",
+    "native_expression": "∀ (x : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat) (e : BitVec 63),\n  NativeBridge.Incremental.FloatOperations.toSpec (NativeBridge.Incremental.PrimFloatExponent.scaleShifted x e) =\n    NativeBridge.Incremental.SpecFloatNormalize.scale NativeBridge.Incremental.FloatOperations.precision\n      NativeBridge.Incremental.FloatOperations.maximumExponent (NativeBridge.Incremental.FloatOperations.toSpec x)\n      (↑e.toNat - NativeBridge.Incremental.FloatOperations.exponentOffset)",
+    "type": "Rocq.Corelib.Floats.FloatAxioms.ldshiftexp_spec.statement ↔ NativeBridge.Incremental.FloatStatements.scaleShifted",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatAxioms.frshiftexp_spec",
+    "profile": "FloatStatements",
+    "certificate": "NativeBridge.Incremental.FloatStatements.fractionShifted_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.FloatStatements.fractionShifted",
+    "native_target": "NativeBridge.Incremental.FloatStatements.fractionShifted",
+    "target_class": "native_statement",
+    "scope": "Equivalence of the complete source statement and a source-free native proposition, preserving all validity hypotheses and exact algorithms. Does not independently prove the proposition; no original_statement_proof is registered.",
+    "native_expression": "∀ (x : NativeBridge.Incremental.PrimFloatRepresentation.nativeFloat),\n  (NativeBridge.Incremental.FloatOperations.toSpec (NativeBridge.Incremental.PrimFloatExponent.fractionShifted x).fst,\n      ↑(NativeBridge.Incremental.PrimFloatExponent.fractionShifted x).snd.toNat -\n        NativeBridge.Incremental.FloatOperations.exponentOffset) =\n    NativeBridge.Incremental.SpecFloatExponent.fraction NativeBridge.Incremental.FloatOperations.precision\n      NativeBridge.Incremental.FloatOperations.maximumExponent (NativeBridge.Incremental.FloatOperations.toSpec x)",
+    "type": "Rocq.Corelib.Floats.FloatAxioms.frshiftexp_spec.statement ↔ NativeBridge.Incremental.FloatStatements.fractionShifted",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Floats.FloatOps.ulp",
+    "profile": "FloatUlp",
+    "certificate": "NativeBridge.Incremental.FloatUlp.ulp_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.FloatUlp.ulp",
+    "native_target": "NativeBridge.Incremental.FloatUlp.ulp",
+    "target_class": "native_expression",
+    "scope": "Exact native canonical-binary64 algorithm for FloatOps.ulp, independently rechecked in FloatOps closure; not runtime Float API equivalence.",
+    "native_expression": "fun x => NativeBridge.Incremental.FloatOperations.unitInLastPlace x",
+    "type": "∀ (x : Rocq.Corelib.Floats.PrimFloat.float),\n  NativeBridge.Incremental.PrimFloatRepresentation.floatTo (Rocq.Corelib.Floats.FloatOps.ulp x) =\n    NativeBridge.Incremental.FloatUlp.ulp (NativeBridge.Incremental.PrimFloatRepresentation.floatTo x)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
     "source": "Corelib.ssr.ssrbool.canLR_in",
     "profile": "SSRBoolClosedStatements",
     "certificate": "NativeBridge.Incremental.SSRBoolClosedStatements.RocqPending.Corelib.ssr.ssrbool.canLR_in.statement.correspondence",

@@ -1,17 +1,17 @@
 # 增量 correspondence 工作区
 
-当前完成 **2054 / 2180 个去重源根**，经过八十五批增量工作。计划：[PLAN.md](PLAN.md)；依赖图：[DAG.md](DAG.md)；[具体例子](../../results/CORRESPONDENCE_EXAMPLES.md)。
+当前完成 **2095 / 2180 个去重源根**，经过八十九批增量工作。计划：[PLAN.md](PLAN.md)；依赖图：[DAG.md](DAG.md)；[具体例子](../../results/CORRESPONDENCE_EXAMPLES.md)。
 
 “完成”表示已经证明明示范围内的类型双向逆、指定原生运算对应或原生陈述 iff。只有接口、部分原生陈述或尚未闭合的对应不计入。
 
 | 主分类 | 冻结基线 | 当前 |
 |---|---:|---:|
 | 类型对应 | 29 | 164 |
-| 运算／谓词对应 | 114 | 886 |
-| 完全原生陈述 | 143 | 1004 |
+| 运算／谓词对应 | 114 | 903 |
+| 完全原生陈述 | 143 | 1028 |
 | 只有接口 | 375 | 6 |
-| 部分原生陈述 | 702 | 24 |
-| 尚无证书 | 485 | 79 |
+| 部分原生陈述 | 702 | 0 |
+| 尚无证书 | 485 | 62 |
 | 条件根尚未完成对应 | 331 | 17 |
 | 非 Prop 特殊陈述尚未处理 | 1 | 0 |
 
@@ -21,13 +21,13 @@
 
 ## 本轮新增
 
-[第八十二至八十五批](BATCH82_85_RESULTS.md) 新增 **37 个去重根**，PrimFloat **37/37**，此前 SpecFloat **55/55**。规范 binary64 对应原生 Option/Sum/Bool/Fin/BitVec 组合；运算使用精确整数/有理数算法和最近偶数舍入。内部逐位平方根已额外证明等于 Nat.sqrt。
+[第八十六至八十九批](BATCH86_89_RESULTS.md) 新增 **41 个去重根**：FloatOps **8/8**、FloatAxioms **33/33**。此前 SpecFloat **55/55**、PrimFloat **37/37** 均完成明示范围内对应。24 项浮点规格现在是完整原生陈述 iff；未据此宣称规格本身已独立证明。
 
-当前 **2054 / 2180**，剩余 126 根。继续 FloatOps 转换、FloatAxioms 规格和未完成的 Type 值计算。原生字段及算法对应不自动意味着 Lean 运行时 Float API 等价。
+当前 **2095 / 2180**，剩余 85 根。部分原生陈述类别已清零；继续处理 SSR 包装值及 Type 值计算，区分承载类型的双向对应、值等式和缺失的 opaque 计算信息。运行时 Float API 等价仍未证明。
 
 ## 验证范围
 
-158 个增量 Lean profile 有与当前源码和依赖产物匹配的成功验证记录。1802 份增量覆盖证书已共同导入检查，见 [共同导入记录](reports/interop/all/import-all-validation.json)。
+165 个增量 Lean profile 有与当前源码和依赖产物匹配的成功验证记录。1843 份增量覆盖证书已共同导入检查，见 [共同导入记录](reports/interop/all/import-all-validation.json)。
 
 新证明检查公理闭包。指定原生目标递归检查类型、正文及 NativeBridge 辅助定义，不允许隐藏源符号。限制范围或函数对应假设在证书 scope 和完整类型中保留。
 
@@ -52,4 +52,4 @@
     python3 interop/check_all.py
     python3 make_report.py
 
-Mathlib profile 使用远程已经安装的相同 Lean 工具链与库。以上命令会完整重检；第八十二至八十五批增量编译四个覆盖 profile，并执行全体共同导入检查。
+Mathlib profile 使用远程已经安装的相同 Lean 工具链与库。以上命令会完整重检；第八十六至八十九批增量编译四个覆盖 profile 及三个依赖支持 profile，并执行全体共同导入检查。
