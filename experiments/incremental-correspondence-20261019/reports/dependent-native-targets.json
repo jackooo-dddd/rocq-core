@@ -138,5 +138,30 @@
     "name": "NativeBridge.Incremental.RelationConditions.subrelationPartialOrderNative",
     "native_expression": "∀ (A : Type u) (R S : A → A → Prop), (∀ (x y : A), R x y ↔ S x y) ↔ Subrelation R S ∧ Subrelation S R",
     "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SetoidBridge.buildTheoryNative",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop),\n  (∀ (x : A), R x x) → (∀ (x y : A), R x y → R y x) → (∀ (x y z : A), R x y → R y z → R x z) → Equivalence R",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SetoidBridge.seqReflNative",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop), Equivalence R → ∀ (x : A), R x x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SetoidBridge.seqSymmNative",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop), Equivalence R → ∀ (x y : A), R x y → R y x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SetoidBridge.seqTransNative",
+    "native_expression": "∀ (A : Type u) (R : A → A → Prop), Equivalence R → ∀ (x y z : A), R x y → R y z → R x z",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SetoidBridge.genStNative",
+    "native_expression": "∀ (A : Type), Equivalence fun x y => x = y",
+    "remaining_source_symbols": []
   }
 ]

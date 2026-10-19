@@ -3244,6 +3244,121 @@ NativeBridge.Incremental.Morphisms.normalizes_native
 
 公理闭包：propext, Quot.sound
 
+## Corelib.Classes.Equivalence.equiv
+
+NativeBridge.Incremental.EquivalenceBridge.equiv_native
+
+目标：R；范围：A : Type u; native Equivalence/PER evidence explicitly converted to source evidence; relation identity
+
+```lean
+∀ (A : Type u) (R : A → A → Prop) (h : Equivalence R), Rocq.Corelib.Classes.Equivalence.equiv A R ⋯ = R
+```
+
+公理闭包：空
+
+## Corelib.Classes.Equivalence.pequiv
+
+NativeBridge.Incremental.EquivalenceBridge.pequiv_native
+
+目标：R；范围：A : Type u; native Equivalence/PER evidence explicitly converted to source evidence; relation identity
+
+```lean
+∀ (A : Type u) (R : A → A → Prop) (h : NativeBridge.Incremental.RC.NativePER R),
+  Rocq.Corelib.Classes.Equivalence.pequiv A R ⋯ = R
+```
+
+公理闭包：空
+
+## Corelib.Classes.Equivalence.respecting
+
+NativeBridge.Incremental.EquivalenceBridge.respectingIso
+
+目标：{f : A → B // ∀ x y, R x y → S (f x) (f y)}；范围：A, B : Type u as in source signature; arbitrary native equivalence relations and explicit converted evidence
+
+```lean
+(A B : Type u) →
+  (R : A → A → Prop) →
+    (S : B → B → Prop) →
+      (ha : Equivalence R) →
+        (hb : Equivalence S) →
+          NativeBridge.Iso (Rocq.Corelib.Classes.Equivalence.respecting A R ⋯ B S ⋯)
+            { f // ∀ (x y : A), R x y → S (f x) (f y) }
+```
+
+公理闭包：空
+
+## Corelib.Setoids.Setoid.Setoid_Theory
+
+NativeBridge.Incremental.SetoidBridge.setoidTheoryIso
+
+目标：Equivalence R；范围：all Type u carriers and relations
+
+```lean
+(A : Type u) → (R : A → A → Prop) → NativeBridge.Iso (Rocq.Corelib.Setoids.Setoid.Setoid_Theory A R) (Equivalence R)
+```
+
+公理闭包：空
+
+## Corelib.Setoids.Setoid.Build_Setoid_Theory
+
+NativeBridge.Incremental.SetoidBridge.Build_Setoid_Theory_native
+
+目标：NativeBridge.Incremental.SetoidBridge.buildTheoryNative；范围：Type u for constructor/projections; gen_st exactly Type 0 as source; original theorem proved using native Equivalence
+
+```lean
+Rocq.Corelib.Setoids.Setoid.Build_Setoid_Theory.statement ↔ NativeBridge.Incremental.SetoidBridge.buildTheoryNative
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Setoids.Setoid.Seq_refl
+
+NativeBridge.Incremental.SetoidBridge.Seq_refl_native
+
+目标：NativeBridge.Incremental.SetoidBridge.seqReflNative；范围：Type u for constructor/projections; gen_st exactly Type 0 as source; original theorem proved using native Equivalence
+
+```lean
+Rocq.Corelib.Setoids.Setoid.Seq_refl.statement ↔ NativeBridge.Incremental.SetoidBridge.seqReflNative
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Setoids.Setoid.Seq_sym
+
+NativeBridge.Incremental.SetoidBridge.Seq_sym_native
+
+目标：NativeBridge.Incremental.SetoidBridge.seqSymmNative；范围：Type u for constructor/projections; gen_st exactly Type 0 as source; original theorem proved using native Equivalence
+
+```lean
+Rocq.Corelib.Setoids.Setoid.Seq_sym.statement ↔ NativeBridge.Incremental.SetoidBridge.seqSymmNative
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Setoids.Setoid.Seq_trans
+
+NativeBridge.Incremental.SetoidBridge.Seq_trans_native
+
+目标：NativeBridge.Incremental.SetoidBridge.seqTransNative；范围：Type u for constructor/projections; gen_st exactly Type 0 as source; original theorem proved using native Equivalence
+
+```lean
+Rocq.Corelib.Setoids.Setoid.Seq_trans.statement ↔ NativeBridge.Incremental.SetoidBridge.seqTransNative
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Setoids.Setoid.gen_st
+
+NativeBridge.Incremental.SetoidBridge.gen_st_native
+
+目标：NativeBridge.Incremental.SetoidBridge.genStNative；范围：Type u for constructor/projections; gen_st exactly Type 0 as source; original theorem proved using native Equivalence
+
+```lean
+Rocq.Corelib.Setoids.Setoid.gen_st.statement ↔ NativeBridge.Incremental.SetoidBridge.genStNative
+```
+
+公理闭包：propext, Quot.sound
+
 ## Corelib.ssr.ssrbool.addFb
 
 NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrbool.addFb.statement.correspondence
@@ -6648,6 +6763,461 @@ NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms.trans_sym_con
 ```lean
 Rocq.Corelib.Classes.Morphisms.trans_sym_contra_impl_morphism_obligation_1.statement ↔
   NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms.trans_sym_contra_impl_morphism_obligation_1.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.Equivalence.equiv_reflexive
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Equivalence.equiv_reflexive.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop),
+  ((∀ (x : A), R x x) ∧ (∀ (x y : A), R x y → R y x) ∧ ∀ (x y z : A), R x y → R y z → R x z) → ∀ (x : A), R x x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.Equivalence.equiv_reflexive.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Equivalence.equiv_reflexive.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.Equivalence.equiv_reflexive_obligation_1
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Equivalence.equiv_reflexive_obligation_1.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop),
+  ((∀ (x : A), R x x) ∧ (∀ (x y : A), R x y → R y x) ∧ ∀ (x y z : A), R x y → R y z → R x z) → ∀ (x : A), R x x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.Equivalence.equiv_reflexive_obligation_1.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Equivalence.equiv_reflexive_obligation_1.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.Equivalence.equiv_symmetric
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Equivalence.equiv_symmetric.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop),
+  ((∀ (x : A), R x x) ∧ (∀ (x y : A), R x y → R y x) ∧ ∀ (x y z : A), R x y → R y z → R x z) →
+    ∀ (x y : A), R x y → R y x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.Equivalence.equiv_symmetric.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Equivalence.equiv_symmetric.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.Equivalence.equiv_symmetric_obligation_1
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Equivalence.equiv_symmetric_obligation_1.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop),
+  ((∀ (x : A), R x x) ∧ (∀ (x y : A), R x y → R y x) ∧ ∀ (x y z : A), R x y → R y z → R x z) →
+    ∀ (x y : A), R x y → R y x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.Equivalence.equiv_symmetric_obligation_1.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Equivalence.equiv_symmetric_obligation_1.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.Equivalence.equiv_transitive
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Equivalence.equiv_transitive.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop),
+  ((∀ (x : A), R x x) ∧ (∀ (x y : A), R x y → R y x) ∧ ∀ (x y z : A), R x y → R y z → R x z) →
+    ∀ (x y z : A), R x y → R y z → R x z；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.Equivalence.equiv_transitive.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Equivalence.equiv_transitive.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.Equivalence.equiv_transitive_obligation_1
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Equivalence.equiv_transitive_obligation_1.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop),
+  ((∀ (x : A), R x x) ∧ (∀ (x y : A), R x y → R y x) ∧ ∀ (x y z : A), R x y → R y z → R x z) →
+    ∀ (x y z : A), R x y → R y z → R x z；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.Equivalence.equiv_transitive_obligation_1.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Equivalence.equiv_transitive_obligation_1.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.Equivalence.pointwise_equivalence
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Equivalence.pointwise_equivalence.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_Morphisms_39) (B : Type u_Corelib_Classes_Morphisms_38) (eqB : B → B → Prop),
+  ((∀ (x : B), eqB x x) ∧ (∀ (x y : B), eqB x y → eqB y x) ∧ ∀ (x y z : B), eqB x y → eqB y z → eqB x z) →
+    (∀ (x : A → B) (x_1 : A), eqB (x x_1) (x x_1)) ∧
+      (∀ (x y : A → B), (∀ (x_1 : A), eqB (x x_1) (y x_1)) → ∀ (x_1 : A), eqB (y x_1) (x x_1)) ∧
+        ∀ (x y z : A → B),
+          (∀ (x_1 : A), eqB (x x_1) (y x_1)) → (∀ (x : A), eqB (y x) (z x)) → ∀ (x_1 : A), eqB (x x_1) (z x_1)；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.Equivalence.pointwise_equivalence.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Equivalence.pointwise_equivalence.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.Equivalence.pointwise_reflexive
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Equivalence.pointwise_reflexive.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_Morphisms_39) (B : Type u_Corelib_Classes_Morphisms_38) (eqB : B → B → Prop),
+  (∀ (x : B), eqB x x) → ∀ (x : A → B) (x_1 : A), eqB (x x_1) (x x_1)；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.Equivalence.pointwise_reflexive.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Equivalence.pointwise_reflexive.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.Equivalence.pointwise_symmetric
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Equivalence.pointwise_symmetric.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_Morphisms_39) (B : Type u_Corelib_Classes_Morphisms_38) (eqB : B → B → Prop),
+  (∀ (x y : B), eqB x y → eqB y x) →
+    ∀ (x y : A → B), (∀ (x_1 : A), eqB (x x_1) (y x_1)) → ∀ (x_1 : A), eqB (y x_1) (x x_1)；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.Equivalence.pointwise_symmetric.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Equivalence.pointwise_symmetric.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.Equivalence.pointwise_transitive
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Equivalence.pointwise_transitive.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_Morphisms_39) (B : Type u_Corelib_Classes_Morphisms_38) (eqB : B → B → Prop),
+  (∀ (x y z : B), eqB x y → eqB y z → eqB x z) →
+    ∀ (x y z : A → B),
+      (∀ (x_1 : A), eqB (x x_1) (y x_1)) → (∀ (x : A), eqB (y x) (z x)) → ∀ (x_1 : A), eqB (x x_1) (z x_1)；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.Equivalence.pointwise_transitive.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Equivalence.pointwise_transitive.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.Equivalence.respecting_equiv
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Equivalence.respecting_equiv.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_Equivalence_46) (R : A → A → Prop),
+  ((∀ (x : A), R x x) ∧ (∀ (x y : A), R x y → R y x) ∧ ∀ (x y z : A), R x y → R y z → R x z) →
+    ∀ (B : Type u_Corelib_Classes_Equivalence_49) (R' : B → B → Prop),
+      ((∀ (x : B), R' x x) ∧ (∀ (x y : B), R' x y → R' y x) ∧ ∀ (x y z : B), R' x y → R' y z → R' x z) →
+        (∀ (s : { morph // ∀ (x y : A), R x y → R' (morph x) (morph y) }) (x y : A), R x y → R' (s.val x) (s.val y)) ∧
+          (∀ (s s_1 : { morph // ∀ (x y : A), R x y → R' (morph x) (morph y) }),
+              (∀ (x y : A), R x y → R' (s.val x) (s_1.val y)) → ∀ (x y : A), R x y → R' (s_1.val x) (s.val y)) ∧
+            ∀ (s s_1 s_2 : { morph // ∀ (x y : A), R x y → R' (morph x) (morph y) }),
+              (∀ (x y : A), R x y → R' (s.val x) (s_1.val y)) →
+                (∀ (x y : A), R x y → R' (s_1.val x) (s_2.val y)) → ∀ (x y : A), R x y → R' (s.val x) (s_2.val y)；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.Equivalence.respecting_equiv.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Equivalence.respecting_equiv.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.Equivalence.respecting_equiv_obligation_1
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Equivalence.respecting_equiv_obligation_1.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_Equivalence_46) (R : A → A → Prop),
+  ((∀ (x : A), R x x) ∧ (∀ (x y : A), R x y → R y x) ∧ ∀ (x y z : A), R x y → R y z → R x z) →
+    ∀ (B : Type u_Corelib_Classes_Equivalence_49) (R' : B → B → Prop),
+      ((∀ (x : B), R' x x) ∧ (∀ (x y : B), R' x y → R' y x) ∧ ∀ (x y z : B), R' x y → R' y z → R' x z) →
+        ∀ (s : { morph // ∀ (x y : A), R x y → R' (morph x) (morph y) }) (x y : A), R x y → R' (s.val x) (s.val y)；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.Equivalence.respecting_equiv_obligation_1.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Equivalence.respecting_equiv_obligation_1.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.Equivalence.respecting_equiv_obligation_2
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Equivalence.respecting_equiv_obligation_2.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_Equivalence_46) (R : A → A → Prop),
+  ((∀ (x : A), R x x) ∧ (∀ (x y : A), R x y → R y x) ∧ ∀ (x y z : A), R x y → R y z → R x z) →
+    ∀ (B : Type u_Corelib_Classes_Equivalence_49) (R' : B → B → Prop),
+      ((∀ (x : B), R' x x) ∧ (∀ (x y : B), R' x y → R' y x) ∧ ∀ (x y z : B), R' x y → R' y z → R' x z) →
+        ∀ (s s_1 : { morph // ∀ (x y : A), R x y → R' (morph x) (morph y) }),
+          (∀ (x y : A), R x y → R' (s.val x) (s_1.val y)) → ∀ (x y : A), R x y → R' (s_1.val x) (s.val y)；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.Equivalence.respecting_equiv_obligation_2.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Equivalence.respecting_equiv_obligation_2.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.Equivalence.respecting_equiv_obligation_3
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Equivalence.respecting_equiv_obligation_3.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_Equivalence_46) (R : A → A → Prop),
+  ((∀ (x : A), R x x) ∧ (∀ (x y : A), R x y → R y x) ∧ ∀ (x y z : A), R x y → R y z → R x z) →
+    ∀ (B : Type u_Corelib_Classes_Equivalence_49) (R' : B → B → Prop),
+      ((∀ (x : B), R' x x) ∧ (∀ (x y : B), R' x y → R' y x) ∧ ∀ (x y z : B), R' x y → R' y z → R' x z) →
+        ∀ (s s_1 s_2 : { morph // ∀ (x y : A), R x y → R' (morph x) (morph y) }),
+          (∀ (x y : A), R x y → R' (s.val x) (s_1.val y)) →
+            (∀ (x y : A), R x y → R' (s_1.val x) (s_2.val y)) → ∀ (x y : A), R x y → R' (s.val x) (s_2.val y)；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.Equivalence.respecting_equiv_obligation_3.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Equivalence.respecting_equiv_obligation_3.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.Morphisms_Prop.Acc_pt_morphism
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.Acc_pt_morphism.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_Morphisms_Prop_34) (E R : A → A → Prop),
+  Equivalence E →
+    (∀ (x y : A), E x y → ∀ (x_1 y_1 : A), E x_1 y_1 → (R x x_1 → R y y_1) ∧ (R y y_1 → R x x_1)) →
+      ∀ (x y : A), E x y → (Acc R x → Acc R y) ∧ (Acc R y → Acc R x)；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.Morphisms_Prop.Acc_pt_morphism.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.Acc_pt_morphism.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.Morphisms_Prop.Acc_rel_morphism
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.Acc_rel_morphism.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_Morphisms_Prop_36) (x y : A → A → Prop),
+  (∀ (x_1 x_2 : A), x x_1 x_2 ↔ y x_1 x_2) →
+    ∀ (x_1 y_1 : A), x_1 = y_1 → (Acc x x_1 → Acc y y_1) ∧ (Acc y y_1 → Acc x x_1)；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.Morphisms_Prop.Acc_rel_morphism.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.Acc_rel_morphism.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.Morphisms_Prop.and_iff_morphism
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.and_iff_morphism.statement.correspondence
+
+目标：native statement: ∀ (x y : Prop), (x ↔ y) → ∀ (x_1 y_1 : Prop), (x_1 ↔ y_1) → (x ∧ x_1 ↔ y ∧ y_1)；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.Morphisms_Prop.and_iff_morphism.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.and_iff_morphism.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.Morphisms_Prop.and_iff_morphism_obligation_1
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.and_iff_morphism_obligation_1.statement.correspondence
+
+目标：native statement: ∀ (x y : Prop), (x ↔ y) → ∀ (x_1 y_1 : Prop), (x_1 ↔ y_1) → (x ∧ x_1 ↔ y ∧ y_1)；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.Morphisms_Prop.and_iff_morphism_obligation_1.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.and_iff_morphism_obligation_1.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.Morphisms_Prop.and_impl_morphism
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.and_impl_morphism.statement.correspondence
+
+目标：native statement: ∀ (x y : Prop), (x → y) → ∀ (x_1 y_1 : Prop), (x_1 → y_1) → x ∧ x_1 → y ∧ y_1；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.Morphisms_Prop.and_impl_morphism.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.and_impl_morphism.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.Morphisms_Prop.and_impl_morphism_obligation_1
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.and_impl_morphism_obligation_1.statement.correspondence
+
+目标：native statement: ∀ (x y : Prop), (x → y) → ∀ (x_1 y_1 : Prop), (x_1 → y_1) → x ∧ x_1 → y ∧ y_1；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.Morphisms_Prop.and_impl_morphism_obligation_1.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.and_impl_morphism_obligation_1.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.Morphisms_Prop.iff_iff_iff_impl_morphism
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.iff_iff_iff_impl_morphism.statement.correspondence
+
+目标：native statement: ∀ (x y : Prop), (x ↔ y) → ∀ (x_1 y_1 : Prop), (x_1 ↔ y_1) → (x → x_1 ↔ y → y_1)；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.Morphisms_Prop.iff_iff_iff_impl_morphism.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.iff_iff_iff_impl_morphism.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.Morphisms_Prop.iff_iff_iff_impl_morphism_obligation_1
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.iff_iff_iff_impl_morphism_obligation_1.statement.correspondence
+
+目标：native statement: ∀ (x y : Prop), (x ↔ y) → ∀ (x_1 y_1 : Prop), (x_1 ↔ y_1) → (x → x_1 ↔ y → y_1)；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.Morphisms_Prop.iff_iff_iff_impl_morphism_obligation_1.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.iff_iff_iff_impl_morphism_obligation_1.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.Morphisms_Prop.not_iff_morphism
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.not_iff_morphism.statement.correspondence
+
+目标：native statement: ∀ (x y : Prop), (x ↔ y) → (¬x ↔ ¬y)；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.Morphisms_Prop.not_iff_morphism.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.not_iff_morphism.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.Morphisms_Prop.not_iff_morphism_obligation_1
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.not_iff_morphism_obligation_1.statement.correspondence
+
+目标：native statement: ∀ (x y : Prop), (x ↔ y) → (¬x ↔ ¬y)；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.Morphisms_Prop.not_iff_morphism_obligation_1.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.not_iff_morphism_obligation_1.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.Morphisms_Prop.not_impl_morphism
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.not_impl_morphism.statement.correspondence
+
+目标：native statement: ∀ (x y : Prop), (y → x) → ¬x → ¬y；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.Morphisms_Prop.not_impl_morphism.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.not_impl_morphism.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.Morphisms_Prop.not_impl_morphism_obligation_1
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.not_impl_morphism_obligation_1.statement.correspondence
+
+目标：native statement: ∀ (x y : Prop), (y → x) → ¬x → ¬y；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.Morphisms_Prop.not_impl_morphism_obligation_1.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.not_impl_morphism_obligation_1.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.Morphisms_Prop.or_iff_morphism
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.or_iff_morphism.statement.correspondence
+
+目标：native statement: ∀ (x y : Prop), (x ↔ y) → ∀ (x_1 y_1 : Prop), (x_1 ↔ y_1) → (x ∨ x_1 ↔ y ∨ y_1)；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.Morphisms_Prop.or_iff_morphism.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.or_iff_morphism.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.Morphisms_Prop.or_iff_morphism_obligation_1
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.or_iff_morphism_obligation_1.statement.correspondence
+
+目标：native statement: ∀ (x y : Prop), (x ↔ y) → ∀ (x_1 y_1 : Prop), (x_1 ↔ y_1) → (x ∨ x_1 ↔ y ∨ y_1)；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.Morphisms_Prop.or_iff_morphism_obligation_1.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.or_iff_morphism_obligation_1.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.Morphisms_Prop.or_impl_morphism
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.or_impl_morphism.statement.correspondence
+
+目标：native statement: ∀ (x y : Prop), (x → y) → ∀ (x_1 y_1 : Prop), (x_1 → y_1) → x ∨ x_1 → y ∨ y_1；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.Morphisms_Prop.or_impl_morphism.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.or_impl_morphism.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.Morphisms_Prop.or_impl_morphism_obligation_1
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.or_impl_morphism_obligation_1.statement.correspondence
+
+目标：native statement: ∀ (x y : Prop), (x → y) → ∀ (x_1 y_1 : Prop), (x_1 → y_1) → x ∨ x_1 → y ∨ y_1；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.Morphisms_Prop.or_impl_morphism_obligation_1.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.or_impl_morphism_obligation_1.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Classes.Morphisms_Prop.well_founded_morphism
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.well_founded_morphism.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_Classes_Morphisms_Prop_39) (x y : A → A → Prop),
+  (∀ (x_1 x_2 : A), x x_1 x_2 ↔ y x_1 x_2) →
+    ((∀ (a : A), Acc x a) → ∀ (a : A), Acc y a) ∧ ((∀ (a : A), Acc y a) → ∀ (a : A), Acc x a)；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.Classes.Morphisms_Prop.well_founded_morphism.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.Classes.Morphisms_Prop.well_founded_morphism.statement.native
 ```
 
 公理闭包：propext, Quot.sound

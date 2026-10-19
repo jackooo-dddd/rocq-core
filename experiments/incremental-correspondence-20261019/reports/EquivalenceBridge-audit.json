@@ -1,0 +1,108 @@
+[{"type":
+  "(A : Type u) →\n  (R : A → A → Prop) →\n    NativeBridge.Iso (Rocq.Corelib.Classes.RelationClasses.PER A R) (NativeBridge.Incremental.RC.NativePER R)",
+  "source_references": ["Rocq.Corelib.Classes.RelationClasses.PER"],
+  "name": "NativeBridge.Incremental.RC.perIso",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Type u} {P : A → Prop} (s : Subtype P), Rocq.Corelib.Init.Specif.proj1_sig A P (NativeBridge.sigOf s) = s.val",
+  "source_references": ["Rocq.Corelib.Init.Specif.proj1_sig"],
+  "name": "NativeBridge.Incremental.EquivalenceBridge.proj_sigOf_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "(A : Type u) →\n  (R : A → A → Prop) → NativeBridge.Iso (Rocq.Corelib.Classes.RelationClasses.Equivalence A R) (Equivalence R)",
+  "source_references": ["Rocq.Corelib.Classes.RelationClasses.Equivalence"],
+  "name": "NativeBridge.Incremental.RC.equivalenceIso",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "(A B : Type u) →\n  (R : A → A → Prop) →\n    (S : B → B → Prop) →\n      (ha : Equivalence R) →\n        (hb : Equivalence S) →\n          NativeBridge.Iso (Rocq.Corelib.Classes.Equivalence.respecting A R ⋯ B S ⋯)\n            { f // ∀ (x y : A), R x y → S (f x) (f y) }",
+  "source_references":
+  ["Rocq.Corelib.Classes.Equivalence.respecting",
+   "Rocq.Corelib.Classes.RelationClasses.Equivalence"],
+  "name": "NativeBridge.Incremental.EquivalenceBridge.respectingIso",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (A : Type u) (R : A → A → Prop), Rocq.Corelib.Classes.RelationClasses.Symmetric A R ↔ ∀ (x y : A), R x y → R y x",
+  "source_references": ["Rocq.Corelib.Classes.RelationClasses.Symmetric"],
+  "name": "NativeBridge.Incremental.RC.symmetric_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Type u) (R : A → A → Prop), Rocq.Corelib.Classes.RelationClasses.Reflexive A R ↔ ∀ (x : A), R x x",
+  "source_references": ["Rocq.Corelib.Classes.RelationClasses.Reflexive"],
+  "name": "NativeBridge.Incremental.RC.reflexive_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Type u) (R : A → A → Prop) (h : NativeBridge.Incremental.RC.NativePER R),\n  Rocq.Corelib.Classes.Equivalence.pequiv A R ⋯ = R",
+  "source_references":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.Equivalence.pequiv",
+   "Rocq.Corelib.Classes.RelationClasses.PER"],
+  "name": "NativeBridge.Incremental.EquivalenceBridge.pequiv_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Type u) (R : A → A → Prop) (h : Equivalence R), Rocq.Corelib.Classes.Equivalence.equiv A R ⋯ = R",
+  "source_references":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.Equivalence.equiv",
+   "Rocq.Corelib.Classes.RelationClasses.Equivalence"],
+  "name": "NativeBridge.Incremental.EquivalenceBridge.equiv_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Type u) (B : Type v),\n  Rocq.Corelib.Classes.Morphisms.pointwise_relation A B = fun R f g => ∀ (x : A), R (f x) (g x)",
+  "source_references":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.Morphisms.pointwise_relation"],
+  "name":
+  "NativeBridge.Incremental.EquivalenceBridge.pointwise_function_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Type u) (R : A → A → Prop), Rocq.Corelib.Classes.RelationClasses.Equivalence A R ↔ Equivalence R",
+  "source_references": ["Rocq.Corelib.Classes.RelationClasses.Equivalence"],
+  "name": "NativeBridge.Incremental.RC.equivalence_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} (R : A → A → Prop),\n  Equivalence R ↔ (∀ (x : A), R x x) ∧ (∀ (x y : A), R x y → R y x) ∧ ∀ (x y z : A), R x y → R y z → R x z",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.EquivalenceBridge.equivalence_fields_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Type u} {P : A → Prop} (Q : Rocq.Corelib.Init.Specif.sig A P → Prop),\n  (∀ (s : Rocq.Corelib.Init.Specif.sig A P), Q s) ↔ ∀ (s : Subtype P), Q (NativeBridge.sigOf s)",
+  "source_references": ["Rocq.Corelib.Init.Specif.sig"],
+  "name": "NativeBridge.Incremental.EquivalenceBridge.sig_forall_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (A : Type u) (R : A → A → Prop),\n  Rocq.Corelib.Classes.RelationClasses.PER A R ↔ NativeBridge.Incremental.RC.NativePER R",
+  "source_references": ["Rocq.Corelib.Classes.RelationClasses.PER"],
+  "name": "NativeBridge.Incremental.RC.per_native",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A B C : Type u} (R : A → A → Prop) (S : B → B → Prop) (T : C → C → Prop)\n  (f : { f // ∀ (x y : A), R x y → S (f x) (f y) }) (g : { g // ∀ (x y : B), S x y → T (g x) (g y) }) (x y : A),\n  R x y → T ((g.val ∘ f.val) x) ((g.val ∘ f.val) y)",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.EquivalenceBridge.native_respecting_closed_under_composition",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "{A : Type u} → (A → A → Prop) → Prop",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.RC.NativePER",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (A : Type u) (R : A → A → Prop),\n  Rocq.Corelib.Classes.RelationClasses.Transitive A R ↔ ∀ (x y z : A), R x y → R y z → R x z",
+  "source_references": ["Rocq.Corelib.Classes.RelationClasses.Transitive"],
+  "name": "NativeBridge.Incremental.RC.transitive_native",
+  "kind": "theorem",
+  "axioms": []}]

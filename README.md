@@ -6,9 +6,9 @@
 
 - 67 个模块、2180 个根声明：0 受阻，0 验证失败。
 - 1003 项定义／数据类型、846 项无条件陈述、148 项带条件定义、183 项带条件陈述；331 项条件仍在机械产物中显式保留；correspondence 层已闭合实例化其中 15 项，本层剩余 316。
-- Relation_Definitions 的 23 根、RelationClasses 的 103 根、Morphisms 的 87 根均有明示范围内的对应证书；其他 Classes 模块继续推进。
+- Relation_Definitions、RelationClasses、Morphisms、Equivalence、Morphisms_Prop、Setoid 六个模块的 265 根均有明示范围内的对应证书；其他 Classes 模块继续推进。
 - 源 nat、eq 均生成独立归纳类型，不再映射原生 Nat/Eq。其双向对应和依赖消去对应已在 Lean 中证明。
-- 最新覆盖：60 个类型根、281 个运算根、433 个完整原生陈述；其他覆盖与限制见对应报告。陈述 iff 本身不是业务定理证明；其中 38 个陈述另有原生性质推导的证明（8 个数字比较、5 个依赖 Subtype、4 个 Eq/布尔等式、21 个关系与 Classes 性质）。
+- 最新覆盖：62 个类型根、283 个运算根、469 个完整原生陈述；其他覆盖与限制见对应报告。陈述 iff 本身不是业务定理证明；其中 43 个陈述另有原生性质推导的证明（8 个数字比较、5 个依赖 Subtype、4 个 Eq/布尔等式、26 个关系与 Classes/Setoid 性质）。
 
 [最新 correspondence 计划与增量结果](experiments/incremental-correspondence-20261019/README.md) · [依赖 DAG](experiments/incremental-correspondence-20261019/DAG.md)
 

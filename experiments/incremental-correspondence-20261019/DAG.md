@@ -156,3 +156,11 @@ flowchart TD
     载体 Iso + 显式运算对应 + 原生保持关系证明 → 机械 Proper
 
 重复关系辅助证明在 Morphisms 导出闭包内重检，不重复计入源根。
+
+## 第十一批：关系包、Subtype 与可达性
+
+    Equivalence/PER 证据转换 → equiv/pequiv 原关系
+    Subtype Iso + respectful → respecting 函数包 → 原生复合示例
+    Subtype 量词/投影转换 + 关系性质 → 14 个完全原生陈述
+    Acc Iso + 原生逻辑整体函数等式 → Morphisms_Prop 的 17 个原生 iff
+    Equivalence Iso → Setoid_Theory → 5 个 iff 与原陈述证明

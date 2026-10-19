@@ -2345,5 +2345,96 @@
     "target": "∀ x y, R x y ↔ S x y",
     "scope": "A : Type u; logical relation equivalence, not a runtime normalization algorithm",
     "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Classes.Equivalence.equiv",
+    "profile": "EquivalenceBridge",
+    "certificate": "NativeBridge.Incremental.EquivalenceBridge.equiv_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "R",
+    "scope": "A : Type u; native Equivalence/PER evidence explicitly converted to source evidence; relation identity",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Classes.Equivalence.pequiv",
+    "profile": "EquivalenceBridge",
+    "certificate": "NativeBridge.Incremental.EquivalenceBridge.pequiv_native",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "R",
+    "scope": "A : Type u; native Equivalence/PER evidence explicitly converted to source evidence; relation identity",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.Classes.Equivalence.respecting",
+    "profile": "EquivalenceBridge",
+    "certificate": "NativeBridge.Incremental.EquivalenceBridge.respectingIso",
+    "kind": "TYPE_ISO",
+    "target": "{f : A → B // ∀ x y, R x y → S (f x) (f y)}",
+    "scope": "A, B : Type u as in source signature; arbitrary native equivalence relations and explicit converted evidence",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.Setoids.Setoid.Setoid_Theory",
+    "profile": "SetoidBridge",
+    "certificate": "NativeBridge.Incremental.SetoidBridge.setoidTheoryIso",
+    "kind": "TYPE_ISO",
+    "target": "Equivalence R",
+    "scope": "all Type u carriers and relations",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.Setoids.Setoid.Build_Setoid_Theory",
+    "profile": "SetoidBridge",
+    "certificate": "NativeBridge.Incremental.SetoidBridge.Build_Setoid_Theory_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.SetoidBridge.buildTheoryNative",
+    "native_target": "NativeBridge.Incremental.SetoidBridge.buildTheoryNative",
+    "scope": "Type u for constructor/projections; gen_st exactly Type 0 as source; original theorem proved using native Equivalence",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.SetoidBridge.Build_Setoid_Theory_closed"
+  },
+  {
+    "source": "Corelib.Setoids.Setoid.Seq_refl",
+    "profile": "SetoidBridge",
+    "certificate": "NativeBridge.Incremental.SetoidBridge.Seq_refl_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.SetoidBridge.seqReflNative",
+    "native_target": "NativeBridge.Incremental.SetoidBridge.seqReflNative",
+    "scope": "Type u for constructor/projections; gen_st exactly Type 0 as source; original theorem proved using native Equivalence",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.SetoidBridge.Seq_refl_closed"
+  },
+  {
+    "source": "Corelib.Setoids.Setoid.Seq_sym",
+    "profile": "SetoidBridge",
+    "certificate": "NativeBridge.Incremental.SetoidBridge.Seq_sym_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.SetoidBridge.seqSymmNative",
+    "native_target": "NativeBridge.Incremental.SetoidBridge.seqSymmNative",
+    "scope": "Type u for constructor/projections; gen_st exactly Type 0 as source; original theorem proved using native Equivalence",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.SetoidBridge.Seq_sym_closed"
+  },
+  {
+    "source": "Corelib.Setoids.Setoid.Seq_trans",
+    "profile": "SetoidBridge",
+    "certificate": "NativeBridge.Incremental.SetoidBridge.Seq_trans_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.SetoidBridge.seqTransNative",
+    "native_target": "NativeBridge.Incremental.SetoidBridge.seqTransNative",
+    "scope": "Type u for constructor/projections; gen_st exactly Type 0 as source; original theorem proved using native Equivalence",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.SetoidBridge.Seq_trans_closed"
+  },
+  {
+    "source": "Corelib.Setoids.Setoid.gen_st",
+    "profile": "SetoidBridge",
+    "certificate": "NativeBridge.Incremental.SetoidBridge.gen_st_native",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.SetoidBridge.genStNative",
+    "native_target": "NativeBridge.Incremental.SetoidBridge.genStNative",
+    "scope": "Type u for constructor/projections; gen_st exactly Type 0 as source; original theorem proved using native Equivalence",
+    "target_class": "native_statement",
+    "original_statement_proof": "NativeBridge.Incremental.SetoidBridge.gen_st_closed"
   }
 ]
