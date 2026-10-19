@@ -13567,5 +13567,175 @@
     "native_target": "NativeBridge.Incremental.SpecFloatNormalize.classify",
     "target_class": "native_expression",
     "scope": "Exact composition of alignment, round-to-nearest-even, overflow and sign handling, for all precision/exponent inputs and symbolic float values. Classification uses the registered nine-value Fin code. Not Lean runtime Float."
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.SFcompare",
+    "profile": "SpecFloatComparison",
+    "certificate": "NativeBridge.Incremental.SpecFloatComparison.comparison_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatComparison.comparison",
+    "native_target": "NativeBridge.Incremental.SpecFloatComparison.comparison",
+    "target_class": "native_expression",
+    "scope": "All symbolic values. NaN yields no ordering and all Boolean comparisons false; signed zeros compare equal. Finite same-sign values use the source exponent/mantissa ordering, reversed for negative values; no unstated validity assumption."
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.SFeqb",
+    "profile": "SpecFloatComparison",
+    "certificate": "NativeBridge.Incremental.SpecFloatComparison.equal_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatComparison.equal",
+    "native_target": "NativeBridge.Incremental.SpecFloatComparison.equal",
+    "target_class": "native_expression",
+    "scope": "All symbolic values. NaN yields no ordering and all Boolean comparisons false; signed zeros compare equal. Finite same-sign values use the source exponent/mantissa ordering, reversed for negative values; no unstated validity assumption."
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.SFltb",
+    "profile": "SpecFloatComparison",
+    "certificate": "NativeBridge.Incremental.SpecFloatComparison.less_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatComparison.less",
+    "native_target": "NativeBridge.Incremental.SpecFloatComparison.less",
+    "target_class": "native_expression",
+    "scope": "All symbolic values. NaN yields no ordering and all Boolean comparisons false; signed zeros compare equal. Finite same-sign values use the source exponent/mantissa ordering, reversed for negative values; no unstated validity assumption."
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.SFleb",
+    "profile": "SpecFloatComparison",
+    "certificate": "NativeBridge.Incremental.SpecFloatComparison.lessEqual_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatComparison.lessEqual",
+    "native_target": "NativeBridge.Incremental.SpecFloatComparison.lessEqual",
+    "target_class": "native_expression",
+    "scope": "All symbolic values. NaN yields no ordering and all Boolean comparisons false; signed zeros compare equal. Finite same-sign values use the source exponent/mantissa ordering, reversed for negative values; no unstated validity assumption."
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.SFadd",
+    "profile": "SpecFloatArithmetic",
+    "certificate": "NativeBridge.Incremental.SpecFloatArithmetic.addition_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatArithmetic.addition",
+    "native_target": "NativeBridge.Incremental.SpecFloatArithmetic.addition",
+    "target_class": "native_expression",
+    "scope": "All symbolic floats and all precision/exponent parameters. Signed zero, infinity, NaN, exact mantissa alignment and existing round/normalize correspondences preserved. Subtraction proved equal to native addition with sign negation; not runtime Float arithmetic."
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.SFsub",
+    "profile": "SpecFloatArithmetic",
+    "certificate": "NativeBridge.Incremental.SpecFloatArithmetic.subtraction_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatArithmetic.subtraction",
+    "native_target": "NativeBridge.Incremental.SpecFloatArithmetic.subtraction",
+    "target_class": "native_expression",
+    "scope": "All symbolic floats and all precision/exponent parameters. Signed zero, infinity, NaN, exact mantissa alignment and existing round/normalize correspondences preserved. Subtraction proved equal to native addition with sign negation; not runtime Float arithmetic."
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.SFmul",
+    "profile": "SpecFloatArithmetic",
+    "certificate": "NativeBridge.Incremental.SpecFloatArithmetic.multiplication_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatArithmetic.multiplication",
+    "native_target": "NativeBridge.Incremental.SpecFloatArithmetic.multiplication",
+    "target_class": "native_expression",
+    "scope": "All symbolic floats and all precision/exponent parameters. Signed zero, infinity, NaN, exact mantissa alignment and existing round/normalize correspondences preserved. Subtraction proved equal to native addition with sign negation; not runtime Float arithmetic."
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.SFmax_float",
+    "profile": "SpecFloatExponent",
+    "certificate": "NativeBridge.Incremental.SpecFloatExponent.maximum_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatExponent.maximum",
+    "native_target": "NativeBridge.Incremental.SpecFloatExponent.maximum",
+    "target_class": "native_expression",
+    "scope": "All symbolic values and all precision/exponent parameters. Positive conversion clamps to at least one, frexp preserves exceptional-value exponent convention, and ulp composes certified rounding/scale/exponent operations. Exact symbolic model, not runtime Float."
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.SFfrexp",
+    "profile": "SpecFloatExponent",
+    "certificate": "NativeBridge.Incremental.SpecFloatExponent.fraction_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatExponent.fraction",
+    "native_target": "NativeBridge.Incremental.SpecFloatExponent.fraction",
+    "target_class": "native_expression",
+    "scope": "All symbolic values and all precision/exponent parameters. Positive conversion clamps to at least one, frexp preserves exceptional-value exponent convention, and ulp composes certified rounding/scale/exponent operations. Exact symbolic model, not runtime Float."
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.SFulp",
+    "profile": "SpecFloatExponent",
+    "certificate": "NativeBridge.Incremental.SpecFloatExponent.unitInLastPlace_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatExponent.unitInLastPlace",
+    "native_target": "NativeBridge.Incremental.SpecFloatExponent.unitInLastPlace",
+    "target_class": "native_expression",
+    "scope": "All symbolic values and all precision/exponent parameters. Positive conversion clamps to at least one, frexp preserves exceptional-value exponent convention, and ulp composes certified rounding/scale/exponent operations. Exact symbolic model, not runtime Float."
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.SFpred_pos",
+    "profile": "SpecFloatAdjacent",
+    "certificate": "NativeBridge.Incremental.SpecFloatAdjacent.predecessorPositive_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatAdjacent.predecessorPositive",
+    "native_target": "NativeBridge.Incremental.SpecFloatAdjacent.predecessorPositive",
+    "target_class": "native_expression",
+    "scope": "Exact symbolic SpecValue behavior on all inputs, including signed zero, infinities, NaN and boundary mantissas; native Int/Nat arithmetic, not the runtime Float API."
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.SFsucc",
+    "profile": "SpecFloatAdjacent",
+    "certificate": "NativeBridge.Incremental.SpecFloatAdjacent.successor_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatAdjacent.successor",
+    "native_target": "NativeBridge.Incremental.SpecFloatAdjacent.successor",
+    "target_class": "native_expression",
+    "scope": "Exact symbolic SpecValue behavior on all inputs, including signed zero, infinities, NaN and boundary mantissas; native Int/Nat arithmetic, not the runtime Float API."
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.SFpred",
+    "profile": "SpecFloatAdjacent",
+    "certificate": "NativeBridge.Incremental.SpecFloatAdjacent.predecessor_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatAdjacent.predecessor",
+    "native_target": "NativeBridge.Incremental.SpecFloatAdjacent.predecessor",
+    "target_class": "native_expression",
+    "scope": "Exact symbolic SpecValue behavior on all inputs, including signed zero, infinities, NaN and boundary mantissas; native Int/Nat arithmetic, not the runtime Float API."
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.SFdiv_core_binary",
+    "profile": "SpecFloatDivision",
+    "certificate": "NativeBridge.Incremental.SpecFloatDivision.divisionCore_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatDivision.divisionCore",
+    "native_target": "NativeBridge.Incremental.SpecFloatDivision.divisionCore",
+    "target_class": "native_expression",
+    "scope": "All symbolic inputs, exact native Int floor division/remainder and previously proved rounding; not runtime Float division."
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.SFdiv",
+    "profile": "SpecFloatDivision",
+    "certificate": "NativeBridge.Incremental.SpecFloatDivision.division_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatDivision.division",
+    "native_target": "NativeBridge.Incremental.SpecFloatDivision.division",
+    "target_class": "native_expression",
+    "scope": "All symbolic inputs, exact native Int floor division/remainder and previously proved rounding; not runtime Float division."
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.SFsqrt_core_binary",
+    "profile": "SpecFloatSqrt",
+    "certificate": "NativeBridge.Incremental.SpecFloatSqrt.sqrtCore_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatSqrt.sqrtCore",
+    "native_target": "NativeBridge.Incremental.SpecFloatSqrt.sqrtCore",
+    "target_class": "native_expression",
+    "scope": "All symbolic inputs, native Nat.sqrt plus proved remainder and exact rounding; preserves negative zero and NaN/infinity cases. Not runtime Float sqrt."
+  },
+  {
+    "source": "Corelib.Floats.SpecFloat.SFsqrt",
+    "profile": "SpecFloatSqrt",
+    "certificate": "NativeBridge.Incremental.SpecFloatSqrt.squareRoot_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.SpecFloatSqrt.squareRoot",
+    "native_target": "NativeBridge.Incremental.SpecFloatSqrt.squareRoot",
+    "target_class": "native_expression",
+    "scope": "All symbolic inputs, native Nat.sqrt plus proved remainder and exact rounding; preserves negative zero and NaN/infinity cases. Not runtime Float sqrt."
   }
 ]

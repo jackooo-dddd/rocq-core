@@ -2273,5 +2273,90 @@
     "name": "NativeBridge.Incremental.SpecFloatNormalize.scale",
     "native_expression": "fun prec emax x n =>\n  match x with\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite sign m e =>\n    NativeBridge.Incremental.SpecFloatNormalize.roundPositive prec emax sign m.val (e + n)\n  | x_1 => x",
     "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatComparison.comparison",
+    "native_expression": "fun x x_1 =>\n  match x, x_1 with\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan, x => none\n  | x, NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan => none\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero a,\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero a_1 => some Ordering.eq\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero a,\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity t =>\n    some (if t = true then Ordering.gt else Ordering.lt)\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero a,\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite t a_1 a_2 =>\n    some (if t = true then Ordering.gt else Ordering.lt)\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity s,\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero a =>\n    some (if s = true then Ordering.lt else Ordering.gt)\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity s,\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity t =>\n    some (if s = t then Ordering.eq else if s = true then Ordering.lt else Ordering.gt)\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity s,\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite a a_1 a_2 =>\n    some (if s = true then Ordering.lt else Ordering.gt)\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite s a a_1,\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero a_2 =>\n    some (if s = true then Ordering.lt else Ordering.gt)\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite a a_1 a_2,\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity t =>\n    some (if t = true then Ordering.gt else Ordering.lt)\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite s m e,\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite t n f =>\n    some\n      (if s = t then\n        if s = true then (NativeBridge.Incremental.SpecFloatComparison.finiteCompare m.val e n.val f).swap\n        else NativeBridge.Incremental.SpecFloatComparison.finiteCompare m.val e n.val f\n      else if s = true then Ordering.lt else Ordering.gt)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatComparison.equal",
+    "native_expression": "fun x y => NativeBridge.Incremental.SpecFloatComparison.comparison x y == some Ordering.eq",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatComparison.less",
+    "native_expression": "fun x y => NativeBridge.Incremental.SpecFloatComparison.comparison x y == some Ordering.lt",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatComparison.lessEqual",
+    "native_expression": "fun x y =>\n  match NativeBridge.Incremental.SpecFloatComparison.comparison x y with\n  | some Ordering.eq => true\n  | some Ordering.lt => true\n  | x => false",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatArithmetic.addition",
+    "native_expression": "fun prec emax x x_1 =>\n  match x, x_1 with\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan, x =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan\n  | x, NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero s,\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero t =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero (s && t)\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity s,\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity t =>\n    if s = t then NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity s\n    else NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity s, x =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity s\n  | x, NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity t =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity t\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero a, y => y\n  | x, NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero a => x\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite s m e,\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite t n f =>\n    have lo := min e f;\n    NativeBridge.Incremental.SpecFloatNormalize.normalize prec emax\n      (NativeBridge.Incremental.SpecFloatRounding.conditionalNegate s\n          ↑(NativeBridge.Incremental.SpecFloatShift.alignment m.val e lo).fst +\n        NativeBridge.Incremental.SpecFloatRounding.conditionalNegate t\n          ↑(NativeBridge.Incremental.SpecFloatShift.alignment n.val f lo).fst)\n      lo false",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatArithmetic.multiplication",
+    "native_expression": "fun prec emax x x_1 =>\n  match x, x_1 with\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan, x =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan\n  | x, NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero a,\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity a_1 =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity a,\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero a_1 =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero s,\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero t =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero (s ^^ t)\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero s,\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite t a a_1 =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero (s ^^ t)\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite s a a_1,\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero t =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero (s ^^ t)\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity s,\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity t =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity (s ^^ t)\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity s,\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite t a a_1 =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity (s ^^ t)\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite s a a_1,\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity t =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity (s ^^ t)\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite s m e,\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite t n f =>\n    NativeBridge.Incremental.SpecFloatNormalize.roundAux prec emax (s ^^ t) (↑(m.val * n.val)) (e + f) none",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatArithmetic.subtraction",
+    "native_expression": "fun prec emax x y =>\n  NativeBridge.Incremental.SpecFloatArithmetic.addition prec emax x\n    (NativeBridge.Incremental.SpecFloatRepresentation.negate y)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatExponent.fraction",
+    "native_expression": "fun prec emax x =>\n  match x with\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite s m e =>\n    have digits := ↑(NativeBridge.Incremental.SpecFloatRounding.positiveDigits m.val);\n    if prec ≤ digits then (NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite s m (-prec), e + prec)\n    else\n      have d := prec - digits;\n      (NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite s\n          (NativeBridge.Incremental.SpecFloatExponent.grow m (max 1 d.toNat)) (-prec),\n        e + prec - d)\n  | x_1 => (x, -2 * emax - prec)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatExponent.maximum",
+    "native_expression": "fun prec emax =>\n  NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite false ⟨max 1 (2 ^ max 1 prec.toNat - 1), ⋯⟩\n    (emax - prec)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatExponent.unitInLastPlace",
+    "native_expression": "fun prec emax x =>\n  NativeBridge.Incremental.SpecFloatNormalize.scale prec emax\n    (NativeBridge.Incremental.SpecFloatNormalize.one prec emax)\n    (NativeBridge.Incremental.SpecFloatRounding.exponent prec emax\n      (NativeBridge.Incremental.SpecFloatExponent.fraction prec emax x).snd)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatAdjacent.predecessor",
+    "native_expression": "fun prec emax x =>\n  NativeBridge.Incremental.SpecFloatRepresentation.negate\n    (NativeBridge.Incremental.SpecFloatAdjacent.successor prec emax\n      (NativeBridge.Incremental.SpecFloatRepresentation.negate x))",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatAdjacent.predecessorPositive",
+    "native_expression": "fun prec emax x =>\n  match x with\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite a m a_1 =>\n    have step :=\n      if (2 * m.val == 2 ^ max 1 prec.toNat) = true then\n        NativeBridge.Incremental.SpecFloatNormalize.scale prec emax\n          (NativeBridge.Incremental.SpecFloatNormalize.one prec emax)\n          (NativeBridge.Incremental.SpecFloatRounding.exponent prec emax\n            ((NativeBridge.Incremental.SpecFloatExponent.fraction prec emax x).snd - 1))\n      else NativeBridge.Incremental.SpecFloatExponent.unitInLastPlace prec emax x;\n    NativeBridge.Incremental.SpecFloatArithmetic.subtraction prec emax x step\n  | x_1 => x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatAdjacent.successor",
+    "native_expression": "fun prec emax x =>\n  match x with\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero a =>\n    NativeBridge.Incremental.SpecFloatNormalize.scale prec emax\n      (NativeBridge.Incremental.SpecFloatNormalize.one prec emax)\n      (NativeBridge.Incremental.SpecFloatRounding.minimumExponent prec emax)\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity s =>\n    if s = true then\n      NativeBridge.Incremental.SpecFloatRepresentation.negate\n        (NativeBridge.Incremental.SpecFloatExponent.maximum prec emax)\n    else x\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan => x\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite s a a_1 =>\n    if s = true then\n      NativeBridge.Incremental.SpecFloatRepresentation.negate\n        (NativeBridge.Incremental.SpecFloatAdjacent.predecessorPositive prec emax\n          (NativeBridge.Incremental.SpecFloatRepresentation.negate x))\n    else\n      NativeBridge.Incremental.SpecFloatArithmetic.addition prec emax x\n        (NativeBridge.Incremental.SpecFloatExponent.unitInLastPlace prec emax x)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatDivision.division",
+    "native_expression": "fun prec emax x x_1 =>\n  match x, x_1 with\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan, x =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan\n  | x, NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero a,\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero a_1 =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity a,\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity a_1 =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero s,\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity t =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero (s ^^ t)\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero s,\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite t a a_1 =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero (s ^^ t)\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity s,\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero t =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity (s ^^ t)\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity s,\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite t a a_1 =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity (s ^^ t)\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite s a a_1,\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero t =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity (s ^^ t)\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite s a a_1,\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity t =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero (s ^^ t)\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite s m e,\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite t n f =>\n    have r := NativeBridge.Incremental.SpecFloatDivision.divisionCore prec emax (↑m.val) e (↑n.val) f;\n    NativeBridge.Incremental.SpecFloatNormalize.roundAux prec emax (s ^^ t) r.fst.fst r.fst.snd r.snd",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatDivision.divisionCore",
+    "native_expression": "fun prec emax m1 e1 m2 e2 =>\n  have e :=\n    min\n      (NativeBridge.Incremental.SpecFloatRounding.exponent prec emax\n        (NativeBridge.Incremental.SpecFloatRounding.integerDigits m1 + e1 -\n          (NativeBridge.Incremental.SpecFloatRounding.integerDigits m2 + e2)))\n      (e1 - e2);\n  NativeBridge.Incremental.SpecFloatDivision.divisionResult\n    (NativeBridge.Incremental.SpecFloatDivision.scaledInput m1 (e1 - e2 - e)) m2 e",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatSqrt.sqrtCore",
+    "native_expression": "fun prec emax m e =>\n  have e' :=\n    min\n      (NativeBridge.Incremental.SpecFloatRounding.exponent prec emax\n        ((NativeBridge.Incremental.SpecFloatRounding.integerDigits m + e + 1) / 2))\n      (e / 2);\n  NativeBridge.Incremental.SpecFloatSqrt.sqrtResult\n    (NativeBridge.Incremental.SpecFloatDivision.scaledInput m (e - 2 * e')) e'",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SpecFloatSqrt.squareRoot",
+    "native_expression": "fun prec emax x =>\n  match x with\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero s =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.zero s\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity s =>\n    if s = true then NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan\n    else NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.infinity s\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan =>\n    NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan\n  | NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.finite s m e =>\n    if s = true then NativeBridge.Incremental.SpecFloatRepresentation.SpecValue.nan\n    else\n      have r := NativeBridge.Incremental.SpecFloatSqrt.sqrtCore prec emax (↑m.val) e;\n      NativeBridge.Incremental.SpecFloatNormalize.roundAux prec emax false r.fst.fst r.fst.snd r.snd",
+    "remaining_source_symbols": []
   }
 ]

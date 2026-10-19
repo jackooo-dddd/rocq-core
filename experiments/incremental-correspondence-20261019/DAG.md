@@ -617,3 +617,23 @@ flowchart TD
 ```
 
 前五个节点已完成，后两个节点待处理。nearest-even 的半单位分支和 shr_1 的向零取整均显式保留。基础标记证明独立成模块，不依赖浮点链。
+
+## 第七十六至八十一批：浮点运算依赖已完成
+
+```mermaid
+flowchart TD
+  SpecFloatNormalize --> SpecFloatComparison
+  SpecFloatNormalize --> SpecFloatArithmetic
+  SpecFloatNormalize --> SpecFloatMaskSupport
+  SpecFloatMaskSupport --> SpecFloatExponent
+  SpecFloatExponent --> SpecFloatAdjacent
+  SpecFloatArithmetic --> SpecFloatAdjacent
+  SpecFloatNormalize --> SpecFloatDivisionSupport
+  SpecFloatDivisionSupport --> SpecFloatDivision
+  SpecFloatArithmetic --> SpecFloatDivision
+  SpecFloatDivision --> SpecFloatSqrtSupport
+  NatSqrt[Lean Nat.sqrt 与余数唯一性] --> SpecFloatSqrtSupport
+  SpecFloatSqrtSupport --> SpecFloatSqrt
+```
+
+本图节点均已验证。上节的浮点算术待办已完成；PrimFloat 表示及其与 SpecFloat 的转换继续处理。

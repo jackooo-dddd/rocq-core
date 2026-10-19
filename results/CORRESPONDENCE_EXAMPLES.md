@@ -261,3 +261,9 @@ Decimal.decimal 对应“带符号整数数字、小数数字、可选带符号�
 ## 31. 完整浮点舍入由已有对应组合
 
 [SpecFloatNormalize.lean](../experiments/incremental-correspondence-20261019/proofs/SpecFloatNormalize.lean) 证明 binary_round 的“对齐 → 指数调整 → 最近偶数舍入 → 溢出/零处理”完整链。输入精度和指数仍取原定义允许的所有整数值。目标是无 Rocq 符号的 SpecValue/Int/Nat 算法，并非 Lean 运行时 Float。
+
+## 32. 符号浮点除法和平方根
+
+[SpecFloatDivision.lean](../experiments/incremental-correspondence-20261019/proofs/SpecFloatDivision.lean) 的 divisionCore_agrees 将机械商与余数转换为 Int.fdiv/fmod；division_agrees 再接入完整 roundAux。NaN、无穷、零除及符号分支均覆盖。
+
+[SpecFloatSqrt.lean](../experiments/incremental-correspondence-20261019/proofs/SpecFloatSqrt.lean) 的 sqrtCore_agrees 将整数开方转换为 Nat.sqrt，同时证明余数以及 Exact/Lt/Gt 舍入位置；squareRoot_agrees 组合完整浮点开方，包括保留负零与负数返回 NaN。目标是原生精确符号算法，尚非 Lean Float.sqrt 的等价定理。

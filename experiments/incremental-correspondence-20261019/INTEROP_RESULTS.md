@@ -88,3 +88,5 @@ opaque 支持的独立验证见 interop/check_opaque.py 与 reports/interop/opaq
 第六十六至七十批：ArraySpecs、StringOperations、StringSpecs、StringRoundtrip、StringComparison。120 个覆盖 profile、1698 份证书共同导入，2316 个入口、19997 个副本。字节串比较使用原生 List.compareLex；数组保留默认值，字节串保留容量及字节截断。
 
 第七十一至七十五批：六个基础标记/决策/兼容 profile 与四个符号浮点覆盖 profile。130 个覆盖 profile / 1748 份证书共同导入，2372 个入口、21186 个副本。浮点目标为精确符号算法，未宣称对应运行时 Float；支持 profile 不单独计根。
+
+第七十六至八十一批：六个符号浮点覆盖 profile；136 个覆盖 profile、1765 份证书共同导入，2389 个入口、23420 个依赖副本。Nat.Sqrt.Lemmas 显式导入，保留平方根原生声明身份。未重跑旧 Mathlib 消费例；符号浮点目标不等于已证明运行时 Float 对应。

@@ -14756,6 +14756,266 @@ NativeBridge.Incremental.SpecFloatNormalize.classify_agrees
 
 公理闭包：propext, Classical.choice, Quot.sound
 
+## Corelib.Floats.SpecFloat.SFcompare
+
+NativeBridge.Incremental.SpecFloatComparison.comparison_agrees
+
+目标：NativeBridge.Incremental.SpecFloatComparison.comparison；范围：All symbolic values. NaN yields no ordering and all Boolean comparisons false; signed zeros compare equal. Finite same-sign values use the source exponent/mantissa ordering, reversed for negative values; no unstated validity assumption.
+
+```lean
+∀ (x y : Rocq.Corelib.Floats.SpecFloat.spec_float),
+  NativeBridge.Incremental.SpecFloatComparison.comparisonResultTo (Rocq.Corelib.Floats.SpecFloat.SFcompare x y) =
+    NativeBridge.Incremental.SpecFloatComparison.comparison (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)
+      (NativeBridge.Incremental.SpecFloatRepresentation.specTo y)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.SFeqb
+
+NativeBridge.Incremental.SpecFloatComparison.equal_agrees
+
+目标：NativeBridge.Incremental.SpecFloatComparison.equal；范围：All symbolic values. NaN yields no ordering and all Boolean comparisons false; signed zeros compare equal. Finite same-sign values use the source exponent/mantissa ordering, reversed for negative values; no unstated validity assumption.
+
+```lean
+∀ (x y : Rocq.Corelib.Floats.SpecFloat.spec_float),
+  NativeBridge.boolTo (Rocq.Corelib.Floats.SpecFloat.SFeqb x y) =
+    NativeBridge.Incremental.SpecFloatComparison.equal (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)
+      (NativeBridge.Incremental.SpecFloatRepresentation.specTo y)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.SFltb
+
+NativeBridge.Incremental.SpecFloatComparison.less_agrees
+
+目标：NativeBridge.Incremental.SpecFloatComparison.less；范围：All symbolic values. NaN yields no ordering and all Boolean comparisons false; signed zeros compare equal. Finite same-sign values use the source exponent/mantissa ordering, reversed for negative values; no unstated validity assumption.
+
+```lean
+∀ (x y : Rocq.Corelib.Floats.SpecFloat.spec_float),
+  NativeBridge.boolTo (Rocq.Corelib.Floats.SpecFloat.SFltb x y) =
+    NativeBridge.Incremental.SpecFloatComparison.less (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)
+      (NativeBridge.Incremental.SpecFloatRepresentation.specTo y)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.SFleb
+
+NativeBridge.Incremental.SpecFloatComparison.lessEqual_agrees
+
+目标：NativeBridge.Incremental.SpecFloatComparison.lessEqual；范围：All symbolic values. NaN yields no ordering and all Boolean comparisons false; signed zeros compare equal. Finite same-sign values use the source exponent/mantissa ordering, reversed for negative values; no unstated validity assumption.
+
+```lean
+∀ (x y : Rocq.Corelib.Floats.SpecFloat.spec_float),
+  NativeBridge.boolTo (Rocq.Corelib.Floats.SpecFloat.SFleb x y) =
+    NativeBridge.Incremental.SpecFloatComparison.lessEqual (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)
+      (NativeBridge.Incremental.SpecFloatRepresentation.specTo y)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.SFadd
+
+NativeBridge.Incremental.SpecFloatArithmetic.addition_agrees
+
+目标：NativeBridge.Incremental.SpecFloatArithmetic.addition；范围：All symbolic floats and all precision/exponent parameters. Signed zero, infinity, NaN, exact mantissa alignment and existing round/normalize correspondences preserved. Subtraction proved equal to native addition with sign negation; not runtime Float arithmetic.
+
+```lean
+∀ (prec emax : NativeBridge.RIntBinary) (x y : Rocq.Corelib.Floats.SpecFloat.spec_float),
+  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.SpecFloat.SFadd prec emax x y) =
+    NativeBridge.Incremental.SpecFloatArithmetic.addition (NativeBridge.binaryIntTo prec)
+      (NativeBridge.binaryIntTo emax) (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)
+      (NativeBridge.Incremental.SpecFloatRepresentation.specTo y)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.SFsub
+
+NativeBridge.Incremental.SpecFloatArithmetic.subtraction_agrees
+
+目标：NativeBridge.Incremental.SpecFloatArithmetic.subtraction；范围：All symbolic floats and all precision/exponent parameters. Signed zero, infinity, NaN, exact mantissa alignment and existing round/normalize correspondences preserved. Subtraction proved equal to native addition with sign negation; not runtime Float arithmetic.
+
+```lean
+∀ (prec emax : NativeBridge.RIntBinary) (x y : Rocq.Corelib.Floats.SpecFloat.spec_float),
+  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.SpecFloat.SFsub prec emax x y) =
+    NativeBridge.Incremental.SpecFloatArithmetic.subtraction (NativeBridge.binaryIntTo prec)
+      (NativeBridge.binaryIntTo emax) (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)
+      (NativeBridge.Incremental.SpecFloatRepresentation.specTo y)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.SFmul
+
+NativeBridge.Incremental.SpecFloatArithmetic.multiplication_agrees
+
+目标：NativeBridge.Incremental.SpecFloatArithmetic.multiplication；范围：All symbolic floats and all precision/exponent parameters. Signed zero, infinity, NaN, exact mantissa alignment and existing round/normalize correspondences preserved. Subtraction proved equal to native addition with sign negation; not runtime Float arithmetic.
+
+```lean
+∀ (prec emax : NativeBridge.RIntBinary) (x y : Rocq.Corelib.Floats.SpecFloat.spec_float),
+  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.SpecFloat.SFmul prec emax x y) =
+    NativeBridge.Incremental.SpecFloatArithmetic.multiplication (NativeBridge.binaryIntTo prec)
+      (NativeBridge.binaryIntTo emax) (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)
+      (NativeBridge.Incremental.SpecFloatRepresentation.specTo y)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.SFmax_float
+
+NativeBridge.Incremental.SpecFloatExponent.maximum_agrees
+
+目标：NativeBridge.Incremental.SpecFloatExponent.maximum；范围：All symbolic values and all precision/exponent parameters. Positive conversion clamps to at least one, frexp preserves exceptional-value exponent convention, and ulp composes certified rounding/scale/exponent operations. Exact symbolic model, not runtime Float.
+
+```lean
+∀ (prec emax : NativeBridge.RIntBinary),
+  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.SpecFloat.SFmax_float prec emax) =
+    NativeBridge.Incremental.SpecFloatExponent.maximum (NativeBridge.binaryIntTo prec) (NativeBridge.binaryIntTo emax)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.SFfrexp
+
+NativeBridge.Incremental.SpecFloatExponent.fraction_agrees
+
+目标：NativeBridge.Incremental.SpecFloatExponent.fraction；范围：All symbolic values and all precision/exponent parameters. Positive conversion clamps to at least one, frexp preserves exceptional-value exponent convention, and ulp composes certified rounding/scale/exponent operations. Exact symbolic model, not runtime Float.
+
+```lean
+∀ (prec emax : NativeBridge.RIntBinary) (x : Rocq.Corelib.Floats.SpecFloat.spec_float),
+  NativeBridge.Incremental.SpecFloatExponent.specPairTo (Rocq.Corelib.Floats.SpecFloat.SFfrexp prec emax x) =
+    NativeBridge.Incremental.SpecFloatExponent.fraction (NativeBridge.binaryIntTo prec) (NativeBridge.binaryIntTo emax)
+      (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.SFulp
+
+NativeBridge.Incremental.SpecFloatExponent.unitInLastPlace_agrees
+
+目标：NativeBridge.Incremental.SpecFloatExponent.unitInLastPlace；范围：All symbolic values and all precision/exponent parameters. Positive conversion clamps to at least one, frexp preserves exceptional-value exponent convention, and ulp composes certified rounding/scale/exponent operations. Exact symbolic model, not runtime Float.
+
+```lean
+∀ (prec emax : NativeBridge.RIntBinary) (x : Rocq.Corelib.Floats.SpecFloat.spec_float),
+  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.SpecFloat.SFulp prec emax x) =
+    NativeBridge.Incremental.SpecFloatExponent.unitInLastPlace (NativeBridge.binaryIntTo prec)
+      (NativeBridge.binaryIntTo emax) (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.SFpred_pos
+
+NativeBridge.Incremental.SpecFloatAdjacent.predecessorPositive_agrees
+
+目标：NativeBridge.Incremental.SpecFloatAdjacent.predecessorPositive；范围：Exact symbolic SpecValue behavior on all inputs, including signed zero, infinities, NaN and boundary mantissas; native Int/Nat arithmetic, not the runtime Float API.
+
+```lean
+∀ (prec emax : NativeBridge.RIntBinary) (x : Rocq.Corelib.Floats.SpecFloat.spec_float),
+  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.SpecFloat.SFpred_pos prec emax x) =
+    NativeBridge.Incremental.SpecFloatAdjacent.predecessorPositive (NativeBridge.binaryIntTo prec)
+      (NativeBridge.binaryIntTo emax) (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.SFsucc
+
+NativeBridge.Incremental.SpecFloatAdjacent.successor_agrees
+
+目标：NativeBridge.Incremental.SpecFloatAdjacent.successor；范围：Exact symbolic SpecValue behavior on all inputs, including signed zero, infinities, NaN and boundary mantissas; native Int/Nat arithmetic, not the runtime Float API.
+
+```lean
+∀ (prec emax : NativeBridge.RIntBinary) (x : Rocq.Corelib.Floats.SpecFloat.spec_float),
+  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.SpecFloat.SFsucc prec emax x) =
+    NativeBridge.Incremental.SpecFloatAdjacent.successor (NativeBridge.binaryIntTo prec) (NativeBridge.binaryIntTo emax)
+      (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.SFpred
+
+NativeBridge.Incremental.SpecFloatAdjacent.predecessor_agrees
+
+目标：NativeBridge.Incremental.SpecFloatAdjacent.predecessor；范围：Exact symbolic SpecValue behavior on all inputs, including signed zero, infinities, NaN and boundary mantissas; native Int/Nat arithmetic, not the runtime Float API.
+
+```lean
+∀ (prec emax : NativeBridge.RIntBinary) (x : Rocq.Corelib.Floats.SpecFloat.spec_float),
+  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.SpecFloat.SFpred prec emax x) =
+    NativeBridge.Incremental.SpecFloatAdjacent.predecessor (NativeBridge.binaryIntTo prec)
+      (NativeBridge.binaryIntTo emax) (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.SFdiv_core_binary
+
+NativeBridge.Incremental.SpecFloatDivision.divisionCore_agrees
+
+目标：NativeBridge.Incremental.SpecFloatDivision.divisionCore；范围：All symbolic inputs, exact native Int floor division/remainder and previously proved rounding; not runtime Float division.
+
+```lean
+∀ (prec emax m1 e1 m2 e2 : NativeBridge.RIntBinary),
+  NativeBridge.Incremental.SpecFloatDivision.coreTo
+      (Rocq.Corelib.Floats.SpecFloat.SFdiv_core_binary prec emax m1 e1 m2 e2) =
+    NativeBridge.Incremental.SpecFloatDivision.divisionCore (NativeBridge.binaryIntTo prec)
+      (NativeBridge.binaryIntTo emax) (NativeBridge.binaryIntTo m1) (NativeBridge.binaryIntTo e1)
+      (NativeBridge.binaryIntTo m2) (NativeBridge.binaryIntTo e2)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.SFdiv
+
+NativeBridge.Incremental.SpecFloatDivision.division_agrees
+
+目标：NativeBridge.Incremental.SpecFloatDivision.division；范围：All symbolic inputs, exact native Int floor division/remainder and previously proved rounding; not runtime Float division.
+
+```lean
+∀ (prec emax : NativeBridge.RIntBinary) (x y : Rocq.Corelib.Floats.SpecFloat.spec_float),
+  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.SpecFloat.SFdiv prec emax x y) =
+    NativeBridge.Incremental.SpecFloatDivision.division (NativeBridge.binaryIntTo prec) (NativeBridge.binaryIntTo emax)
+      (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)
+      (NativeBridge.Incremental.SpecFloatRepresentation.specTo y)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.SFsqrt_core_binary
+
+NativeBridge.Incremental.SpecFloatSqrt.sqrtCore_agrees
+
+目标：NativeBridge.Incremental.SpecFloatSqrt.sqrtCore；范围：All symbolic inputs, native Nat.sqrt plus proved remainder and exact rounding; preserves negative zero and NaN/infinity cases. Not runtime Float sqrt.
+
+```lean
+∀ (prec emax m e : NativeBridge.RIntBinary),
+  NativeBridge.Incremental.SpecFloatDivision.coreTo (Rocq.Corelib.Floats.SpecFloat.SFsqrt_core_binary prec emax m e) =
+    NativeBridge.Incremental.SpecFloatSqrt.sqrtCore (NativeBridge.binaryIntTo prec) (NativeBridge.binaryIntTo emax)
+      (NativeBridge.binaryIntTo m) (NativeBridge.binaryIntTo e)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Floats.SpecFloat.SFsqrt
+
+NativeBridge.Incremental.SpecFloatSqrt.squareRoot_agrees
+
+目标：NativeBridge.Incremental.SpecFloatSqrt.squareRoot；范围：All symbolic inputs, native Nat.sqrt plus proved remainder and exact rounding; preserves negative zero and NaN/infinity cases. Not runtime Float sqrt.
+
+```lean
+∀ (prec emax : NativeBridge.RIntBinary) (x : Rocq.Corelib.Floats.SpecFloat.spec_float),
+  NativeBridge.Incremental.SpecFloatRepresentation.specTo (Rocq.Corelib.Floats.SpecFloat.SFsqrt prec emax x) =
+    NativeBridge.Incremental.SpecFloatSqrt.squareRoot (NativeBridge.binaryIntTo prec) (NativeBridge.binaryIntTo emax)
+      (NativeBridge.Incremental.SpecFloatRepresentation.specTo x)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
 ## Corelib.ssr.ssrbool.canLR_in
 
 NativeBridge.Incremental.SSRBoolClosedStatements.RocqPending.Corelib.ssr.ssrbool.canLR_in.statement.correspondence
