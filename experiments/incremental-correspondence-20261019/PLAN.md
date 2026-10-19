@@ -227,3 +227,9 @@ SSR Bool 的 314 个依赖/原陈述目标已有闭合证明，覆盖 271 / 275 
 新增 9 根，1917 / 2180；Uint63Axioms 46/48。加减乘除模、左右移位、clz/ctz 规格全部独立证明。122 个 profile 验证；112 个覆盖 profile、1661 份证书共同导入。见 [结果](BATCH60_62_RESULTS.md)。
 
 继续 Uint63WideSpecs：mulc 的宽乘法等式已单独通过；diveucl_21 正在处理商的范围界限和源 product 返回值的转换。该 profile 整体通过后再登记两根。
+
+## 第六十三至六十五批：机器整数规格完成
+
+新增 10 根、13 份证书，1927 / 2180。Uint63Axioms 48/48，Sint63Axioms 8/8；所有原始前提保留，规格均独立证明。128 个 profile 验证，115 个覆盖 profile / 1674 份证书共同导入。见 [结果](BATCH63_65_RESULTS.md)。
+
+下一步：ArrayAxioms 11 项。保留有界长度、默认值和越界读取／更新语义，先证明普通 get/set/make/copy 规格，再证明数组外延性；随后 PrimStringAxioms 12 项。

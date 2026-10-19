@@ -13572,6 +13572,174 @@ Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.tail0_spec.statement ↔
 
 公理闭包：propext, Classical.choice, Quot.sound
 
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.mulc_spec
+
+NativeBridge.Incremental.Uint63WideSpecs.wideProductSpec_correspondence
+
+目标：NativeBridge.Incremental.Uint63WideSpecs.wideProductSpec；范围：Full-width multiplication reconstructs the exact product from high and low words. Double-word division preserves the source hi<divisor premise and proves quotient/remainder fit 63 bits, hence word truncation leaves the exact quotient/remainder unchanged. Source statements independently proved.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.mulc_spec.statement ↔
+  NativeBridge.Incremental.Uint63WideSpecs.wideProductSpec
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.diveucl_21_spec
+
+NativeBridge.Incremental.Uint63WideSpecs.doubleDivisionSpec_correspondence
+
+目标：NativeBridge.Incremental.Uint63WideSpecs.doubleDivisionSpec；范围：Full-width multiplication reconstructs the exact product from high and low words. Double-word division preserves the source hi<divisor premise and proves quotient/remainder fit 63 bits, hence word truncation leaves the exact quotient/remainder unchanged. Source statements independently proved.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.diveucl_21_spec.statement ↔
+  NativeBridge.Incremental.Uint63WideSpecs.doubleDivisionSpec
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Sint63Axioms.min_int
+
+NativeBridge.Incremental.Sint63Operations.minimum_agrees
+
+目标：NativeBridge.Incremental.Sint63Operations.minimum；范围：All 63-bit inputs. Minimum is the high-bit word; source signed to_Z equals BitVec.toInt. Signed comparison/order statements are fully native and independently proved, including the negative half of the word range.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Sint63Axioms.min_int = NativeBridge.Incremental.Sint63Operations.minimum
+```
+
+公理闭包：空
+
+## Corelib.Numbers.Cyclic.Int63.Sint63Axioms.to_Z
+
+NativeBridge.Incremental.Sint63Operations.signedInteger_agrees
+
+目标：NativeBridge.Incremental.Sint63Operations.signedInteger；范围：All 63-bit inputs. Minimum is the high-bit word; source signed to_Z equals BitVec.toInt. Signed comparison/order statements are fully native and independently proved, including the negative half of the word range.
+
+```lean
+∀ (x : NativeBridge.Incremental.Sint63UnsignedSupport.Word),
+  NativeBridge.binaryIntTo (Rocq.Corelib.Numbers.Cyclic.Int63.Sint63Axioms.to_Z x) =
+    NativeBridge.Incremental.Sint63Operations.signedInteger x
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Sint63Axioms.compare_spec
+
+NativeBridge.Incremental.Sint63Operations.comparisonSpec_correspondence
+
+目标：NativeBridge.Incremental.Sint63Operations.comparisonSpec；范围：All 63-bit inputs. Minimum is the high-bit word; source signed to_Z equals BitVec.toInt. Signed comparison/order statements are fully native and independently proved, including the negative half of the word range.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Sint63Axioms.compare_spec.statement ↔
+  NativeBridge.Incremental.Sint63Operations.comparisonSpec
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Sint63Axioms.ltb_spec
+
+NativeBridge.Incremental.Sint63Operations.lessSpec_correspondence
+
+目标：NativeBridge.Incremental.Sint63Operations.lessSpec；范围：All 63-bit inputs. Minimum is the high-bit word; source signed to_Z equals BitVec.toInt. Signed comparison/order statements are fully native and independently proved, including the negative half of the word range.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Sint63Axioms.ltb_spec.statement ↔ NativeBridge.Incremental.Sint63Operations.lessSpec
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Sint63Axioms.leb_spec
+
+NativeBridge.Incremental.Sint63Operations.lessEqualSpec_correspondence
+
+目标：NativeBridge.Incremental.Sint63Operations.lessEqualSpec；范围：All 63-bit inputs. Minimum is the high-bit word; source signed to_Z equals BitVec.toInt. Signed comparison/order statements are fully native and independently proved, including the negative half of the word range.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Sint63Axioms.leb_spec.statement ↔
+  NativeBridge.Incremental.Sint63Operations.lessEqualSpec
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Sint63Axioms.div_spec
+
+NativeBridge.Incremental.Sint63Specs.signedDivisionSpec_correspondence
+
+目标：NativeBridge.Incremental.Sint63Specs.signedDivisionSpec；范围：All inputs within original premises: division excludes min_int/-1 overflow; remainder is unconditional; arithmetic right shift preserves negative signed-count behavior. Original source statements independently proved using signed Z arithmetic and native BitVec APIs.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Sint63Axioms.div_spec.statement ↔
+  NativeBridge.Incremental.Sint63Specs.signedDivisionSpec
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Sint63Axioms.mod_spec
+
+NativeBridge.Incremental.Sint63Specs.signedRemainderSpec_correspondence
+
+目标：NativeBridge.Incremental.Sint63Specs.signedRemainderSpec；范围：All inputs within original premises: division excludes min_int/-1 overflow; remainder is unconditional; arithmetic right shift preserves negative signed-count behavior. Original source statements independently proved using signed Z arithmetic and native BitVec APIs.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Sint63Axioms.mod_spec.statement ↔
+  NativeBridge.Incremental.Sint63Specs.signedRemainderSpec
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Sint63Axioms.asr_spec
+
+NativeBridge.Incremental.Sint63Specs.arithmeticShiftSpec_correspondence
+
+目标：NativeBridge.Incremental.Sint63Specs.arithmeticShiftSpec；范围：All inputs within original premises: division excludes min_int/-1 overflow; remainder is unconditional; arithmetic right shift preserves negative signed-count behavior. Original source statements independently proved using signed Z arithmetic and native BitVec APIs.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Sint63Axioms.asr_spec.statement ↔
+  NativeBridge.Incremental.Sint63Specs.arithmeticShiftSpec
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.PrimInt63.divs
+
+NativeBridge.Incremental.Sint63Specs.primitiveDiv_agrees
+
+目标：BitVec.sdiv；范围：Additional certificate for an already covered root. All 63-bit inputs; divs/mods equal existing BitVec.sdiv/srem APIs, including overflow word wrapping and zero divisor. asr returns zero for negative signed count, otherwise native sshiftRight.
+
+```lean
+∀ (x y : NativeBridge.Incremental.Sint63UnsignedSupport.Word),
+  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.divs x y = BitVec.sdiv x y
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.PrimInt63.mods
+
+NativeBridge.Incremental.Sint63Specs.primitiveMod_agrees
+
+目标：BitVec.srem；范围：Additional certificate for an already covered root. All 63-bit inputs; divs/mods equal existing BitVec.sdiv/srem APIs, including overflow word wrapping and zero divisor. asr returns zero for negative signed count, otherwise native sshiftRight.
+
+```lean
+∀ (x y : NativeBridge.Incremental.Sint63UnsignedSupport.Word),
+  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.mods x y = BitVec.srem x y
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.PrimInt63.asr
+
+NativeBridge.Incremental.Sint63Specs.primitiveShift_agrees
+
+目标：NativeBridge.Incremental.Sint63Specs.arithmeticShift；范围：Additional certificate for an already covered root. All 63-bit inputs; divs/mods equal existing BitVec.sdiv/srem APIs, including overflow word wrapping and zero divisor. asr returns zero for negative signed count, otherwise native sshiftRight.
+
+```lean
+∀ (x p : NativeBridge.Incremental.Sint63UnsignedSupport.Word),
+  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.asr x p = NativeBridge.Incremental.Sint63Specs.arithmeticShift x p
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
 ## Corelib.ssr.ssrbool.canLR_in
 
 NativeBridge.Incremental.SSRBoolClosedStatements.RocqPending.Corelib.ssr.ssrbool.canLR_in.statement.correspondence

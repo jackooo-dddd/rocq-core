@@ -12663,5 +12663,143 @@
     "native_target": "NativeBridge.Incremental.Uint63CountSpecs.trailingZeroSpec",
     "scope": "All nonzero word inputs, preserving the original premise. clz gives the normalization bounds; ctz gives an odd-factor decomposition with a nonnegative witness. Source existential witnesses are explicitly built using the Z isomorphism. Original source statements independently proved.",
     "original_statement_proof": "NativeBridge.Incremental.Uint63CountSpecs.trailingZeroSpec_proof"
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.mulc_spec",
+    "profile": "Uint63WideSpecs",
+    "certificate": "NativeBridge.Incremental.Uint63WideSpecs.wideProductSpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Uint63WideSpecs.wideProductSpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Uint63WideSpecs.wideProductSpec",
+    "scope": "Full-width multiplication reconstructs the exact product from high and low words. Double-word division preserves the source hi<divisor premise and proves quotient/remainder fit 63 bits, hence word truncation leaves the exact quotient/remainder unchanged. Source statements independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.Uint63WideSpecs.wideProductSpec_proof"
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.diveucl_21_spec",
+    "profile": "Uint63WideSpecs",
+    "certificate": "NativeBridge.Incremental.Uint63WideSpecs.doubleDivisionSpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Uint63WideSpecs.doubleDivisionSpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Uint63WideSpecs.doubleDivisionSpec",
+    "scope": "Full-width multiplication reconstructs the exact product from high and low words. Double-word division preserves the source hi<divisor premise and proves quotient/remainder fit 63 bits, hence word truncation leaves the exact quotient/remainder unchanged. Source statements independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.Uint63WideSpecs.doubleDivisionSpec_proof"
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Sint63Axioms.min_int",
+    "profile": "Sint63Operations",
+    "certificate": "NativeBridge.Incremental.Sint63Operations.minimum_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Sint63Operations.minimum",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.Sint63Operations.minimum",
+    "scope": "All 63-bit inputs. Minimum is the high-bit word; source signed to_Z equals BitVec.toInt. Signed comparison/order statements are fully native and independently proved, including the negative half of the word range."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Sint63Axioms.to_Z",
+    "profile": "Sint63Operations",
+    "certificate": "NativeBridge.Incremental.Sint63Operations.signedInteger_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Sint63Operations.signedInteger",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.Sint63Operations.signedInteger",
+    "scope": "All 63-bit inputs. Minimum is the high-bit word; source signed to_Z equals BitVec.toInt. Signed comparison/order statements are fully native and independently proved, including the negative half of the word range."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Sint63Axioms.compare_spec",
+    "profile": "Sint63Operations",
+    "certificate": "NativeBridge.Incremental.Sint63Operations.comparisonSpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Sint63Operations.comparisonSpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Sint63Operations.comparisonSpec",
+    "scope": "All 63-bit inputs. Minimum is the high-bit word; source signed to_Z equals BitVec.toInt. Signed comparison/order statements are fully native and independently proved, including the negative half of the word range.",
+    "original_statement_proof": "NativeBridge.Incremental.Sint63Operations.comparisonSpec_proof"
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Sint63Axioms.ltb_spec",
+    "profile": "Sint63Operations",
+    "certificate": "NativeBridge.Incremental.Sint63Operations.lessSpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Sint63Operations.lessSpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Sint63Operations.lessSpec",
+    "scope": "All 63-bit inputs. Minimum is the high-bit word; source signed to_Z equals BitVec.toInt. Signed comparison/order statements are fully native and independently proved, including the negative half of the word range.",
+    "original_statement_proof": "NativeBridge.Incremental.Sint63Operations.lessSpec_proof"
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Sint63Axioms.leb_spec",
+    "profile": "Sint63Operations",
+    "certificate": "NativeBridge.Incremental.Sint63Operations.lessEqualSpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Sint63Operations.lessEqualSpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Sint63Operations.lessEqualSpec",
+    "scope": "All 63-bit inputs. Minimum is the high-bit word; source signed to_Z equals BitVec.toInt. Signed comparison/order statements are fully native and independently proved, including the negative half of the word range.",
+    "original_statement_proof": "NativeBridge.Incremental.Sint63Operations.lessEqualSpec_proof"
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Sint63Axioms.div_spec",
+    "profile": "Sint63Specs",
+    "certificate": "NativeBridge.Incremental.Sint63Specs.signedDivisionSpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Sint63Specs.signedDivisionSpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Sint63Specs.signedDivisionSpec",
+    "scope": "All inputs within original premises: division excludes min_int/-1 overflow; remainder is unconditional; arithmetic right shift preserves negative signed-count behavior. Original source statements independently proved using signed Z arithmetic and native BitVec APIs.",
+    "original_statement_proof": "NativeBridge.Incremental.Sint63Specs.signedDivisionSpec_proof"
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Sint63Axioms.mod_spec",
+    "profile": "Sint63Specs",
+    "certificate": "NativeBridge.Incremental.Sint63Specs.signedRemainderSpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Sint63Specs.signedRemainderSpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Sint63Specs.signedRemainderSpec",
+    "scope": "All inputs within original premises: division excludes min_int/-1 overflow; remainder is unconditional; arithmetic right shift preserves negative signed-count behavior. Original source statements independently proved using signed Z arithmetic and native BitVec APIs.",
+    "original_statement_proof": "NativeBridge.Incremental.Sint63Specs.signedRemainderSpec_proof"
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Sint63Axioms.asr_spec",
+    "profile": "Sint63Specs",
+    "certificate": "NativeBridge.Incremental.Sint63Specs.arithmeticShiftSpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Sint63Specs.arithmeticShiftSpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Sint63Specs.arithmeticShiftSpec",
+    "scope": "All inputs within original premises: division excludes min_int/-1 overflow; remainder is unconditional; arithmetic right shift preserves negative signed-count behavior. Original source statements independently proved using signed Z arithmetic and native BitVec APIs.",
+    "original_statement_proof": "NativeBridge.Incremental.Sint63Specs.arithmeticShiftSpec_proof"
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.PrimInt63.divs",
+    "profile": "Sint63Specs",
+    "certificate": "NativeBridge.Incremental.Sint63Specs.primitiveDiv_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "BitVec.sdiv",
+    "target_class": "existing_api",
+    "native_target": "BitVec.sdiv",
+    "scope": "Additional certificate for an already covered root. All 63-bit inputs; divs/mods equal existing BitVec.sdiv/srem APIs, including overflow word wrapping and zero divisor. asr returns zero for negative signed count, otherwise native sshiftRight."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.PrimInt63.mods",
+    "profile": "Sint63Specs",
+    "certificate": "NativeBridge.Incremental.Sint63Specs.primitiveMod_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "BitVec.srem",
+    "target_class": "existing_api",
+    "native_target": "BitVec.srem",
+    "scope": "Additional certificate for an already covered root. All 63-bit inputs; divs/mods equal existing BitVec.sdiv/srem APIs, including overflow word wrapping and zero divisor. asr returns zero for negative signed count, otherwise native sshiftRight."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.PrimInt63.asr",
+    "profile": "Sint63Specs",
+    "certificate": "NativeBridge.Incremental.Sint63Specs.primitiveShift_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Sint63Specs.arithmeticShift",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.Sint63Specs.arithmeticShift",
+    "scope": "Additional certificate for an already covered root. All 63-bit inputs; divs/mods equal existing BitVec.sdiv/srem APIs, including overflow word wrapping and zero divisor. asr returns zero for negative signed count, otherwise native sshiftRight."
   }
 ]

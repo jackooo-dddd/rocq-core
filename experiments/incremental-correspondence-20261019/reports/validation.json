@@ -1553,5 +1553,84 @@
         "olean_sha256": "c63ed511c63006f207c14f06432d4debfa4c4e6461d26a0415f7f07e32096545"
       }
     }
+  },
+  {
+    "profile": "Sint63UnsignedSupport",
+    "module": "Numbers/Cyclic/Int63/Sint63Axioms",
+    "exit": 0,
+    "seconds": 0.967,
+    "proof_sha256": "82d1dbcbd0882a908bd5b20fa9795ddd69f404eea4fe658fc07c7eab17739704",
+    "audit_present": true,
+    "incremental_dependencies": {}
+  },
+  {
+    "profile": "Sint63ArithmeticSupport",
+    "module": "Numbers/Cyclic/Int63/Sint63Axioms",
+    "exit": 0,
+    "seconds": 1.971,
+    "proof_sha256": "4504885e133f9c6c9da0b68855c03996c5e551788cbbec86810b4a44d5dd44c4",
+    "audit_present": true,
+    "incremental_dependencies": {
+      "Sint63UnsignedSupport": {
+        "proof_sha256": "82d1dbcbd0882a908bd5b20fa9795ddd69f404eea4fe658fc07c7eab17739704",
+        "olean_sha256": "5f0e6676bf30897e9587586679d7f970bc5ffbb79d948efdc0515ace587b818e"
+      }
+    }
+  },
+  {
+    "profile": "Sint63Operations",
+    "module": "Numbers/Cyclic/Int63/Sint63Axioms",
+    "exit": 0,
+    "seconds": 1.168,
+    "proof_sha256": "9f648b622d588457f9142da2b0f75112bb85bc06806287903b4adde84ba72382",
+    "audit_present": true,
+    "incremental_dependencies": {
+      "Sint63ArithmeticSupport": {
+        "proof_sha256": "4504885e133f9c6c9da0b68855c03996c5e551788cbbec86810b4a44d5dd44c4",
+        "olean_sha256": "68ec7e0157c4e249f7201fccb9de3ed17cf2642d8422997b15b99fb2538614cc"
+      }
+    }
+  },
+  {
+    "profile": "Sint63QuotientSupport",
+    "module": "Numbers/Cyclic/Int63/Sint63Axioms",
+    "exit": 0,
+    "seconds": 1.57,
+    "proof_sha256": "24c667812af256e0bac681d22a631e525d9faff87a4cbe07dc12606475976dcc",
+    "audit_present": true,
+    "incremental_dependencies": {
+      "Sint63Operations": {
+        "proof_sha256": "9f648b622d588457f9142da2b0f75112bb85bc06806287903b4adde84ba72382",
+        "olean_sha256": "60b5cc2ea90582ebc34ea265e4df4d2becbe34606b722bb4f3dacfad9e41d136"
+      }
+    }
+  },
+  {
+    "profile": "Sint63Specs",
+    "module": "Numbers/Cyclic/Int63/Sint63Axioms",
+    "exit": 0,
+    "seconds": 1.269,
+    "proof_sha256": "ba5d0600f4c2659ac1f050e25354736f796f12e1bae8028c9bd4b87883d14eda",
+    "audit_present": true,
+    "incremental_dependencies": {
+      "Sint63QuotientSupport": {
+        "proof_sha256": "24c667812af256e0bac681d22a631e525d9faff87a4cbe07dc12606475976dcc",
+        "olean_sha256": "77c7b7590401912367ade4633c2e44acfd44836f9219c588531868b4bc4a4abf"
+      }
+    }
+  },
+  {
+    "profile": "Uint63WideSpecs",
+    "module": "Numbers/Cyclic/Int63/Uint63Axioms",
+    "exit": 0,
+    "seconds": 1.369,
+    "proof_sha256": "1b08842a70f17d0a6993e37809c08b635ef6fef66de90afefb4de066bbc25c78",
+    "audit_present": true,
+    "incremental_dependencies": {
+      "Uint63ShiftSpecs": {
+        "proof_sha256": "257bc628ffe0eca2c95e803ecc4041a569c53dab262705d26964b45aeb15bcdf",
+        "olean_sha256": "c63ed511c63006f207c14f06432d4debfa4c4e6461d26a0415f7f07e32096545"
+      }
+    }
   }
 ]

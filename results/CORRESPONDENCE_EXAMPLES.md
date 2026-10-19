@@ -229,3 +229,13 @@ Decimal.decimal 对应“带符号整数数字、小数数字、可选带符号�
 [Uint63CountSpecs.lean](../experiments/incremental-correspondence-20261019/proofs/Uint63CountSpecs.lean) 对非零 x 证明 x = (2*y+1)*2^ctz(x)，并显式把原生 Nat 见证 y 转为机械 Z，构造源 exists 证明。例如 x=40 时 ctz=3、y=2；证明覆盖所有输入，并未依靠此例枚举。
 
 同一文件证明前导零给出的正规化范围 2^62 ≤ 2^clz(x)*x < 2^63。两项都复用已经完成的位计数、Z 算术、幂和顺序对应。
+
+## 25. 有符号除法直接使用 BitVec API
+
+[Sint63Specs.lean](../experiments/incremental-correspondence-20261019/proofs/Sint63Specs.lean) 对所有 63 位字证明源 divs x y = x.sdiv y、mods x y = x.srem y。整数值规格进一步保留原有溢出例外：除法须排除 min_int / -1；余数没有该额外前提。
+
+算术右移对非负移位量等于 sshiftRight，包括超过字宽的移位；若移位量按有符号整数解释为负，则保持源函数返回零的行为。
+
+## 26. 双字除法的商为什么能直接使用
+
+[Uint63WideSpecs.lean](../experiments/incremental-correspondence-20261019/proofs/Uint63WideSpecs.lean) 对 n = hi*2^63+lo，在 hi < divisor 时证明 n/divisor < 2^63，余数也小于 2^63。因此把商／余数装入 BitVec 63 不丢信息，源返回的两个机械 Z 值分别等于原生精确商和余数。

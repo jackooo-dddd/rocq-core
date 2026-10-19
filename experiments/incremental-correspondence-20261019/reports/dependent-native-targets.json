@@ -1863,5 +1863,70 @@
     "name": "NativeBridge.Incremental.Uint63CountSpecs.trailingZeroSpec",
     "native_expression": "∀ (x : NativeBridge.Incremental.Uint63Operations.Word),\n  0 < BitVec.toNat x → ∃ y, BitVec.toNat x = (2 * y + 1) * 2 ^ (BitVec.ctz x).toNat",
     "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Sint63Operations.comparisonSpec",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.Sint63UnsignedSupport.Word),\n  (if BitVec.toInt x < BitVec.toInt y then Ordering.lt\n    else if BitVec.toInt y < BitVec.toInt x then Ordering.gt else Ordering.eq) =\n    compare (BitVec.toInt x) (BitVec.toInt y)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Sint63Operations.lessEqualSpec",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.Sint63UnsignedSupport.Word),\n  decide (BitVec.toInt x ≤ BitVec.toInt y) = true ↔ compare (BitVec.toInt x) (BitVec.toInt y) ≠ Ordering.gt",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Sint63Operations.lessSpec",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.Sint63UnsignedSupport.Word),\n  decide (BitVec.toInt x < BitVec.toInt y) = true ↔ compare (BitVec.toInt x) (BitVec.toInt y) = Ordering.lt",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Sint63Operations.minimum",
+    "native_expression": "BitVec.ofNat 63 (2 ^ 62)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Sint63Operations.signedInteger",
+    "native_expression": "fun x => BitVec.toInt x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "BitVec.sdiv",
+    "native_expression": "fun {n} x y =>\n  match x.msb, y.msb with\n  | false, false => x.udiv y\n  | false, true => (x.udiv y.neg).neg\n  | true, false => (x.neg.udiv y).neg\n  | true, true => x.neg.udiv y.neg",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "BitVec.srem",
+    "native_expression": "fun {n} x y =>\n  match x.msb, y.msb with\n  | false, false => x.umod y\n  | false, true => x.umod y.neg\n  | true, false => (x.neg.umod y).neg\n  | true, true => (x.neg.umod y.neg).neg",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Sint63Specs.arithmeticShift",
+    "native_expression": "fun x p => if BitVec.toInt p < 0 then 0 else BitVec.sshiftRight x (BitVec.toNat p)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Sint63Specs.arithmeticShiftSpec",
+    "native_expression": "∀ (x p : NativeBridge.Incremental.Sint63UnsignedSupport.Word),\n  BitVec.toInt (NativeBridge.Incremental.Sint63Specs.arithmeticShift x p) =\n    (BitVec.toInt x).fdiv (NativeBridge.Incremental.BinaryPower.zPowNative 2 (BitVec.toInt p))",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Sint63Specs.signedDivisionSpec",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.Sint63UnsignedSupport.Word),\n  BitVec.toInt x ≠ -2 ^ 62 ∨ BitVec.toInt y ≠ -1 → (BitVec.sdiv x y).toInt = (BitVec.toInt x).tdiv (BitVec.toInt y)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Sint63Specs.signedRemainderSpec",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.Sint63UnsignedSupport.Word),\n  (BitVec.srem x y).toInt = (BitVec.toInt x).tmod (BitVec.toInt y)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63WideSpecs.doubleDivisionSpec",
+    "native_expression": "∀ (hi lo b : NativeBridge.Incremental.Uint63Operations.Word),\n  BitVec.toNat hi < BitVec.toNat b →\n    NativeBridge.Incremental.Uint63WideSpecs.doubleDividend hi lo / BitVec.toNat b % 2 ^ 63 =\n        NativeBridge.Incremental.Uint63WideSpecs.doubleDividend hi lo / BitVec.toNat b ∧\n      NativeBridge.Incremental.Uint63WideSpecs.doubleDividend hi lo % BitVec.toNat b % 2 ^ 63 =\n        NativeBridge.Incremental.Uint63WideSpecs.doubleDividend hi lo % BitVec.toNat b",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63WideSpecs.wideProductSpec",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.Uint63Operations.Word),\n  BitVec.toNat x * BitVec.toNat y =\n    BitVec.toNat (NativeBridge.Incremental.Uint63WideSpecs.highProduct x y) * 2 ^ 63 +\n      BitVec.toNat (NativeBridge.Incremental.Uint63WideSpecs.lowProduct x y)",
+    "remaining_source_symbols": []
   }
 ]

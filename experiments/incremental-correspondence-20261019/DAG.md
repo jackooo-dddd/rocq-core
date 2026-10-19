@@ -567,3 +567,21 @@ flowchart TD
 ```
 
 算术、移位、计数 profile 已通过审计。宽运算 profile 仍在进行，未加入覆盖统计。
+
+## 第六十三至六十五批及容器规格
+
+```mermaid
+flowchart TD
+  Uint63ArithmeticSupport --> Uint63WideSpecs
+  GenericDoubleDivisionBound --> Uint63WideSpecs
+  Sint63UnsignedSupport --> Sint63ArithmeticSupport
+  Sint63ArithmeticSupport --> Sint63Operations
+  Sint63Operations --> Sint63QuotientSupport
+  Sint63QuotientSupport --> Sint63Specs
+  NativeBitVecSdivSrem --> Sint63Specs
+  NativeArrayIso --> ArrayAxiomsSpecs
+  NativeVectorOperations --> ArrayAxiomsSpecs
+  NativeByteStringRepresentation --> StringAxiomsSpecs
+```
+
+整数节点已验证；容器规格节点为后续工作。不同源闭包中的同名声明通过重新检查来使用，不直接混合。
