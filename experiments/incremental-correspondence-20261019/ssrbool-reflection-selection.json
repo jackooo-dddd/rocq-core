@@ -1,0 +1,140 @@
+[
+  {
+    "source": "Corelib.ssr.ssrbool.addbP",
+    "native": "NativeBridge.Incremental.SSRBoolReflection.addbP_native",
+    "certificate": "NativeBridge.Incremental.SSRBoolReflection.addbP.correspondence",
+    "native_expression": "(((!a) = b) \u2194 Bool.xor a b = true)"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.andP",
+    "native": "NativeBridge.Incremental.SSRBoolReflection.andP_native",
+    "certificate": "NativeBridge.Incremental.SSRBoolReflection.andP.correspondence",
+    "native_expression": "((a = true \u2227 b = true) \u2194 (a && b) = true)"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.and3P",
+    "native": "NativeBridge.Incremental.SSRBoolReflection.and3P_native",
+    "certificate": "NativeBridge.Incremental.SSRBoolReflection.and3P.correspondence",
+    "native_expression": "((a = true \u2227 b = true \u2227 c = true) \u2194 (a && (b && c)) = true)"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.and4P",
+    "native": "NativeBridge.Incremental.SSRBoolReflection.and4P_native",
+    "certificate": "NativeBridge.Incremental.SSRBoolReflection.and4P.correspondence",
+    "native_expression": "((a = true \u2227 b = true \u2227 c = true \u2227 d = true) \u2194 (a && (b && (c && d))) = true)"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.and5P",
+    "native": "NativeBridge.Incremental.SSRBoolReflection.and5P_native",
+    "certificate": "NativeBridge.Incremental.SSRBoolReflection.and5P.correspondence",
+    "native_expression": "((a = true \u2227 b = true \u2227 c = true \u2227 d = true \u2227 e = true) \u2194 (a && (b && (c && (d && e)))) = true)"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.idP",
+    "native": "NativeBridge.Incremental.SSRBoolReflection.idP_native",
+    "certificate": "NativeBridge.Incremental.SSRBoolReflection.idP.correspondence",
+    "native_expression": "((a = true) \u2194 a = true)"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.idPn",
+    "native": "NativeBridge.Incremental.SSRBoolReflection.idPn_native",
+    "certificate": "NativeBridge.Incremental.SSRBoolReflection.idPn.correspondence",
+    "native_expression": "(((!a) = true) \u2194 (!a) = true)"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.implyP",
+    "native": "NativeBridge.Incremental.SSRBoolReflection.implyP_native",
+    "certificate": "NativeBridge.Incremental.SSRBoolReflection.implyP.correspondence",
+    "native_expression": "((a = true \u2192 b = true) \u2194 ((!a) || b) = true)"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.nandP",
+    "native": "NativeBridge.Incremental.SSRBoolReflection.nandP_native",
+    "certificate": "NativeBridge.Incremental.SSRBoolReflection.nandP.correspondence",
+    "native_expression": "(((!a) = true \u2228 (!b) = true) \u2194 (!(a && b)) = true)"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.negP",
+    "native": "NativeBridge.Incremental.SSRBoolReflection.negP_native",
+    "certificate": "NativeBridge.Incremental.SSRBoolReflection.negP.correspondence",
+    "native_expression": "((\u00aca = true) \u2194 (!a) = true)"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.negPf",
+    "native": "NativeBridge.Incremental.SSRBoolReflection.negPf_native",
+    "certificate": "NativeBridge.Incremental.SSRBoolReflection.negPf.correspondence",
+    "native_expression": "((a = false) \u2194 (!a) = true)"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.negPn",
+    "native": "NativeBridge.Incremental.SSRBoolReflection.negPn_native",
+    "certificate": "NativeBridge.Incremental.SSRBoolReflection.negPn.correspondence",
+    "native_expression": "((a = true) \u2194 (!(!a)) = true)"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.norP",
+    "native": "NativeBridge.Incremental.SSRBoolReflection.norP_native",
+    "certificate": "NativeBridge.Incremental.SSRBoolReflection.norP.correspondence",
+    "native_expression": "(((!a) = true \u2227 (!b) = true) \u2194 (!(a || b)) = true)"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.orP",
+    "native": "NativeBridge.Incremental.SSRBoolReflection.orP_native",
+    "certificate": "NativeBridge.Incremental.SSRBoolReflection.orP.correspondence",
+    "native_expression": "((a = true \u2228 b = true) \u2194 (a || b) = true)"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.or3P",
+    "native": "NativeBridge.Incremental.SSRBoolReflection.or3P_native",
+    "certificate": "NativeBridge.Incremental.SSRBoolReflection.or3P.correspondence",
+    "native_expression": "((a = true \u2228 b = true \u2228 c = true) \u2194 (a || (b || c)) = true)"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.or4P",
+    "native": "NativeBridge.Incremental.SSRBoolReflection.or4P_native",
+    "certificate": "NativeBridge.Incremental.SSRBoolReflection.or4P.correspondence",
+    "native_expression": "((a = true \u2228 b = true \u2228 c = true \u2228 d = true) \u2194 (a || (b || (c || d))) = true)"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.andPP",
+    "native": "NativeBridge.Incremental.SSRBoolReflection.andPP_native",
+    "certificate": "NativeBridge.Incremental.SSRBoolReflection.andPP.correspondence",
+    "native_expression": "((P \u2227 Q) \u2194 (p && q) = true)"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.orPP",
+    "native": "NativeBridge.Incremental.SSRBoolReflection.orPP_native",
+    "certificate": "NativeBridge.Incremental.SSRBoolReflection.orPP.correspondence",
+    "native_expression": "((P \u2228 Q) \u2194 (p || q) = true)"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.implyPP",
+    "native": "NativeBridge.Incremental.SSRBoolReflection.implyPP_native",
+    "certificate": "NativeBridge.Incremental.SSRBoolReflection.implyPP.correspondence",
+    "native_expression": "((P \u2192 Q) \u2194 ((!p) || q) = true)"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.negPP",
+    "native": "NativeBridge.Incremental.SSRBoolReflection.negPP_native",
+    "certificate": "NativeBridge.Incremental.SSRBoolReflection.negPP.correspondence",
+    "native_expression": "(\u00ac P) \u2194 (!p) = true"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.iffP",
+    "native": "NativeBridge.Incremental.SSRBoolReflection.iffP_native",
+    "certificate": "NativeBridge.Incremental.SSRBoolReflection.iffP.correspondence",
+    "native_expression": "Q \u2194 b = true"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.equivP",
+    "native": "NativeBridge.Incremental.SSRBoolReflection.equivP_native",
+    "certificate": "NativeBridge.Incremental.SSRBoolReflection.equivP.correspondence",
+    "native_expression": "Q \u2194 b = true"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.introP",
+    "native": "NativeBridge.Incremental.SSRBoolReflection.introP_native",
+    "certificate": "NativeBridge.Incremental.SSRBoolReflection.introP.correspondence",
+    "native_expression": "Q \u2194 b = true"
+  }
+]

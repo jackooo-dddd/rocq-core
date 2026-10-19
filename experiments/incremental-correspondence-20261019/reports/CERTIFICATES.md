@@ -7551,6 +7551,459 @@ NativeBridge.Incremental.SSRBoolClosedOperations.bijective_on_agrees
 
 公理闭包：propext, Quot.sound
 
+## Corelib.ssr.ssrbool.addbP
+
+NativeBridge.Incremental.SSRBoolReflection.addbP.correspondence
+
+目标：native Boolean reflection proof；范围：native Bool/Prop inputs; reflect Iso and proof irrelevance; opaque source remains opaque
+
+```lean
+∀ (a b : Bool), ⋯ = ⋯
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.ssr.ssrbool.andP
+
+NativeBridge.Incremental.SSRBoolReflection.andP.correspondence
+
+目标：native Boolean reflection proof；范围：native Bool/Prop inputs; reflect Iso and proof irrelevance; opaque source remains opaque
+
+```lean
+∀ (a b : Bool), ⋯ = ⋯
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.ssr.ssrbool.and3P
+
+NativeBridge.Incremental.SSRBoolReflection.and3P.correspondence
+
+目标：native Boolean reflection proof；范围：native Bool/Prop inputs; reflect Iso and proof irrelevance; opaque source remains opaque
+
+```lean
+∀ (a b c : Bool), ⋯ = ⋯
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.ssr.ssrbool.and4P
+
+NativeBridge.Incremental.SSRBoolReflection.and4P.correspondence
+
+目标：native Boolean reflection proof；范围：native Bool/Prop inputs; reflect Iso and proof irrelevance; opaque source remains opaque
+
+```lean
+∀ (a b c d : Bool), ⋯ = ⋯
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.ssr.ssrbool.and5P
+
+NativeBridge.Incremental.SSRBoolReflection.and5P.correspondence
+
+目标：native Boolean reflection proof；范围：native Bool/Prop inputs; reflect Iso and proof irrelevance; opaque source remains opaque
+
+```lean
+∀ (a b c d e : Bool), ⋯ = ⋯
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.ssr.ssrbool.idP
+
+NativeBridge.Incremental.SSRBoolReflection.idP.correspondence
+
+目标：native Boolean reflection proof；范围：native Bool/Prop inputs; reflect Iso and proof irrelevance; opaque source remains opaque
+
+```lean
+∀ (a : Bool), ⋯ = ⋯
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.ssr.ssrbool.idPn
+
+NativeBridge.Incremental.SSRBoolReflection.idPn.correspondence
+
+目标：native Boolean reflection proof；范围：native Bool/Prop inputs; reflect Iso and proof irrelevance; opaque source remains opaque
+
+```lean
+∀ (a : Bool), ⋯ = ⋯
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.ssr.ssrbool.implyP
+
+NativeBridge.Incremental.SSRBoolReflection.implyP.correspondence
+
+目标：native Boolean reflection proof；范围：native Bool/Prop inputs; reflect Iso and proof irrelevance; opaque source remains opaque
+
+```lean
+∀ (a b : Bool), ⋯ = ⋯
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.ssr.ssrbool.nandP
+
+NativeBridge.Incremental.SSRBoolReflection.nandP.correspondence
+
+目标：native Boolean reflection proof；范围：native Bool/Prop inputs; reflect Iso and proof irrelevance; opaque source remains opaque
+
+```lean
+∀ (a b : Bool), ⋯ = ⋯
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.ssr.ssrbool.negP
+
+NativeBridge.Incremental.SSRBoolReflection.negP.correspondence
+
+目标：native Boolean reflection proof；范围：native Bool/Prop inputs; reflect Iso and proof irrelevance; opaque source remains opaque
+
+```lean
+∀ (a : Bool), ⋯ = ⋯
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.ssr.ssrbool.negPf
+
+NativeBridge.Incremental.SSRBoolReflection.negPf.correspondence
+
+目标：native Boolean reflection proof；范围：native Bool/Prop inputs; reflect Iso and proof irrelevance; opaque source remains opaque
+
+```lean
+∀ (a : Bool), ⋯ = ⋯
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.ssr.ssrbool.negPn
+
+NativeBridge.Incremental.SSRBoolReflection.negPn.correspondence
+
+目标：native Boolean reflection proof；范围：native Bool/Prop inputs; reflect Iso and proof irrelevance; opaque source remains opaque
+
+```lean
+∀ (a : Bool), ⋯ = ⋯
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.ssr.ssrbool.norP
+
+NativeBridge.Incremental.SSRBoolReflection.norP.correspondence
+
+目标：native Boolean reflection proof；范围：native Bool/Prop inputs; reflect Iso and proof irrelevance; opaque source remains opaque
+
+```lean
+∀ (a b : Bool), ⋯ = ⋯
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.ssr.ssrbool.orP
+
+NativeBridge.Incremental.SSRBoolReflection.orP.correspondence
+
+目标：native Boolean reflection proof；范围：native Bool/Prop inputs; reflect Iso and proof irrelevance; opaque source remains opaque
+
+```lean
+∀ (a b : Bool), ⋯ = ⋯
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.ssr.ssrbool.or3P
+
+NativeBridge.Incremental.SSRBoolReflection.or3P.correspondence
+
+目标：native Boolean reflection proof；范围：native Bool/Prop inputs; reflect Iso and proof irrelevance; opaque source remains opaque
+
+```lean
+∀ (a b c : Bool), ⋯ = ⋯
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.ssr.ssrbool.or4P
+
+NativeBridge.Incremental.SSRBoolReflection.or4P.correspondence
+
+目标：native Boolean reflection proof；范围：native Bool/Prop inputs; reflect Iso and proof irrelevance; opaque source remains opaque
+
+```lean
+∀ (a b c d : Bool), ⋯ = ⋯
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.ssr.ssrbool.andPP
+
+NativeBridge.Incremental.SSRBoolReflection.andPP.correspondence
+
+目标：native Boolean reflection proof；范围：native Bool/Prop inputs; reflect Iso and proof irrelevance; opaque source remains opaque
+
+```lean
+∀ (P Q : Prop) (p q : Bool) (hp : P ↔ p = true) (hq : Q ↔ q = true), ⋯ = ⋯
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.ssr.ssrbool.orPP
+
+NativeBridge.Incremental.SSRBoolReflection.orPP.correspondence
+
+目标：native Boolean reflection proof；范围：native Bool/Prop inputs; reflect Iso and proof irrelevance; opaque source remains opaque
+
+```lean
+∀ (P Q : Prop) (p q : Bool) (hp : P ↔ p = true) (hq : Q ↔ q = true), ⋯ = ⋯
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.ssr.ssrbool.implyPP
+
+NativeBridge.Incremental.SSRBoolReflection.implyPP.correspondence
+
+目标：native Boolean reflection proof；范围：native Bool/Prop inputs; reflect Iso and proof irrelevance; opaque source remains opaque
+
+```lean
+∀ (P Q : Prop) (p q : Bool) (hp : P ↔ p = true) (hq : Q ↔ q = true), ⋯ = ⋯
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.ssr.ssrbool.negPP
+
+NativeBridge.Incremental.SSRBoolReflection.negPP.correspondence
+
+目标：native Boolean reflection proof；范围：native Bool/Prop inputs; reflect Iso and proof irrelevance; opaque source remains opaque
+
+```lean
+∀ (P : Prop) (p : Bool) (hp : P ↔ p = true), ⋯ = ⋯
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.ssr.ssrbool.iffP
+
+NativeBridge.Incremental.SSRBoolReflection.iffP.correspondence
+
+目标：native Boolean reflection proof；范围：native Bool/Prop inputs; reflect Iso and proof irrelevance; opaque source remains opaque
+
+```lean
+∀ (P Q : Prop) (b : Bool) (hp : P ↔ b = true) (f : P → Q) (g : Q → P), ⋯ = ⋯
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrbool.equivP
+
+NativeBridge.Incremental.SSRBoolReflection.equivP.correspondence
+
+目标：native Boolean reflection proof；范围：native Bool/Prop inputs; reflect Iso and proof irrelevance; opaque source remains opaque
+
+```lean
+∀ (P Q : Prop) (b : Bool) (hp : P ↔ b = true) (h : P ↔ Q), ⋯ = ⋯
+```
+
+公理闭包：propext
+
+## Corelib.ssr.ssrbool.introP
+
+NativeBridge.Incremental.SSRBoolReflection.introP.correspondence
+
+目标：native Boolean reflection proof；范围：native Bool/Prop inputs; reflect Iso and proof irrelevance; opaque source remains opaque
+
+```lean
+∀ (Q : Prop) (b : Bool) (ht : b = true → Q) (hf : (!b) = true → ¬Q), ⋯ = ⋯
+```
+
+公理闭包：propext
+
+## Corelib.ssr.ssrbool.all_and2
+
+NativeBridge.Incremental.SSRBoolProofFunctions.all_and2_agrees
+
+目标：native logical function / Decidable / singleton Unit identity；范围：source universe parameters preserved; native logical inputs and output conversions; keyed output carrier uses original diagonal universe
+
+```lean
+∀ (T : Sort u) (P1 P2 : T → Prop) (h : ∀ (x : T), P1 x ∧ P2 x), ⋯ = ⋯
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.ssr.ssrbool.all_and3
+
+NativeBridge.Incremental.SSRBoolProofFunctions.all_and3_agrees
+
+目标：native logical function / Decidable / singleton Unit identity；范围：source universe parameters preserved; native logical inputs and output conversions; keyed output carrier uses original diagonal universe
+
+```lean
+∀ (T : Sort u) (P1 P2 P3 : T → Prop) (h : ∀ (x : T), P1 x ∧ P2 x ∧ P3 x), ⋯ = ⋯
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.ssr.ssrbool.all_and4
+
+NativeBridge.Incremental.SSRBoolProofFunctions.all_and4_agrees
+
+目标：native logical function / Decidable / singleton Unit identity；范围：source universe parameters preserved; native logical inputs and output conversions; keyed output carrier uses original diagonal universe
+
+```lean
+∀ (T : Sort u) (P1 P2 P3 P4 : T → Prop) (h : ∀ (x : T), P1 x ∧ P2 x ∧ P3 x ∧ P4 x), ⋯ = ⋯
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.ssr.ssrbool.all_and5
+
+NativeBridge.Incremental.SSRBoolProofFunctions.all_and5_agrees
+
+目标：native logical function / Decidable / singleton Unit identity；范围：source universe parameters preserved; native logical inputs and output conversions; keyed output carrier uses original diagonal universe
+
+```lean
+∀ (T : Sort u) (P1 P2 P3 P4 P5 : T → Prop) (h : ∀ (x : T), P1 x ∧ P2 x ∧ P3 x ∧ P4 x ∧ P5 x), ⋯ = ⋯
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.ssr.ssrbool.unlessL
+
+NativeBridge.Incremental.SSRBoolProofFunctions.unlessL_agrees
+
+目标：native logical function / Decidable / singleton Unit identity；范围：source universe parameters preserved; native logical inputs and output conversions; keyed output carrier uses original diagonal universe
+
+```lean
+∀ (C : Sort u) (P : Sort v) (c : C), ⋯ = ⋯
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrbool.unlessR
+
+NativeBridge.Incremental.SSRBoolProofFunctions.unlessR_agrees
+
+目标：native logical function / Decidable / singleton Unit identity；范围：source universe parameters preserved; native logical inputs and output conversions; keyed output carrier uses original diagonal universe
+
+```lean
+∀ (C : Sort u) (P : Sort v) (p : P), ⋯ = ⋯
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrbool.unless_sym
+
+NativeBridge.Incremental.SSRBoolProofFunctions.unless_sym_agrees
+
+目标：native logical function / Decidable / singleton Unit identity；范围：source universe parameters preserved; native logical inputs and output conversions; keyed output carrier uses original diagonal universe
+
+```lean
+∀ (C : Sort u) (P : Sort v) (h : Nonempty C ∨ Nonempty P), ⋯ = ⋯
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrbool.bind_unless
+
+NativeBridge.Incremental.SSRBoolProofFunctions.bind_unless_agrees
+
+目标：native logical function / Decidable / singleton Unit identity；范围：source universe parameters preserved; native logical inputs and output conversions; keyed output carrier uses original diagonal universe
+
+```lean
+∀ (C : Sort u) (P : Sort v) (Q : Sort w) (h : Nonempty C ∨ Nonempty P), ⋯ = ⋯
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrbool.keyed_mem
+
+NativeBridge.Incremental.SSRBoolProofFunctions.keyed_mem_agrees
+
+目标：native logical function / Decidable / singleton Unit identity；范围：source universe parameters preserved; native logical inputs and output conversions; keyed output carrier uses original diagonal universe
+
+```lean
+∀ (A : Type u) (p : A → Bool) (k : True) (x : Unit),
+  (NativeBridge.Incremental.SSRBoolPackaging.keyedPredIso A (NativeBridge.Incremental.SSRBoolData.predOf p) ⋯).to
+      (RocqPending.Corelib.ssr.ssrbool.keyed_mem A (NativeBridge.Incremental.SSRBoolData.predOf p) ⋯
+        ((NativeBridge.Incremental.SSRBoolPackaging.keyedPredIso A (NativeBridge.Incremental.SSRBoolData.predOf p) ⋯).of
+          x)) =
+    id x
+```
+
+公理闭包：Quot.sound
+
+## Corelib.ssr.ssrbool.keyed_mem_simpl
+
+NativeBridge.Incremental.SSRBoolProofFunctions.keyed_mem_simpl_agrees
+
+目标：native logical function / Decidable / singleton Unit identity；范围：source universe parameters preserved; native logical inputs and output conversions; keyed output carrier uses original diagonal universe
+
+```lean
+∀ (A : Type u) (p : A → Bool) (k : True) (x : Unit),
+  (NativeBridge.Incremental.SSRBoolPackaging.keyedPredIso A (NativeBridge.Incremental.SSRBoolData.predOf p) ⋯).to
+      (RocqPending.Corelib.ssr.ssrbool.keyed_mem_simpl A (NativeBridge.Incremental.SSRBoolData.predOf p) ⋯
+        ((NativeBridge.Incremental.SSRBoolPackaging.keyedPredIso A (NativeBridge.Incremental.SSRBoolData.predOf p) ⋯).of
+          x)) =
+    id x
+```
+
+公理闭包：Quot.sound
+
+## Corelib.ssr.ssrbool.keyed_qualifier_keyed
+
+NativeBridge.Incremental.SSRBoolProofFunctions.keyed_qualifier_keyed_agrees
+
+目标：native logical function / Decidable / singleton Unit identity；范围：source universe parameters preserved; native logical inputs and output conversions; keyed output carrier uses original diagonal universe
+
+```lean
+∀ (A : Type u) (n : Nat) (p : A → Bool) (k : True) (x : Unit),
+  (NativeBridge.Incremental.SSRBoolPackaging.keyedPredIso A (NativeBridge.Incremental.SSRBoolData.predOf p) ⋯).to
+      (RocqPending.Corelib.ssr.ssrbool.keyed_qualifier_keyed A (NativeBridge.natOf n)
+        ((NativeBridge.Incremental.SSRBoolPackaging.qualifierIso (NativeBridge.natOf n) A).of p) ⋯
+        ((NativeBridge.Incremental.SSRBoolPackaging.keyedQualifierIso A (NativeBridge.natOf n)
+              ((NativeBridge.Incremental.SSRBoolPackaging.qualifierIso (NativeBridge.natOf n) A).of p) ⋯).of
+          x)) =
+    id x
+```
+
+公理闭包：Quot.sound
+
+## Corelib.ssr.ssrbool.decP
+
+NativeBridge.Incremental.SSRBoolProofFunctions.decP_agrees
+
+目标：native logical function / Decidable / singleton Unit identity；范围：source universe parameters preserved; native logical inputs and output conversions; keyed output carrier uses original diagonal universe
+
+```lean
+∀ (P : Prop) (b : Bool) (hp : P ↔ b = true),
+  NativeBridge.Incremental.SSRBoolData.decidableTo P
+      (RocqPending.Corelib.ssr.ssrbool.decP P (NativeBridge.boolOf b)
+        (NativeBridge.Incremental.SSRBoolProofFunctions.reflectNativeOf P b hp)) =
+    NativeBridge.Incremental.SSRBoolProofFunctions.decP_native P b hp
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.ssr.ssrbool.unless_contra
+
+NativeBridge.Incremental.SSRBoolProofFunctions.unless_contra_agrees
+
+目标：native logical function / Decidable / singleton Unit identity；范围：source universe parameters preserved; native logical inputs and output conversions; keyed output carrier uses original diagonal universe
+
+```lean
+∀ (b : Bool) (C : Sort u) (f : (!b) = true → C), ⋯ = ⋯
+```
+
+公理闭包：空
+
 ## Corelib.ssr.ssrbool.canLR_in
 
 NativeBridge.Incremental.SSRBoolClosedStatements.RocqPending.Corelib.ssr.ssrbool.canLR_in.statement.correspondence

@@ -4,7 +4,7 @@ W=Path(__file__).resolve().parent;R=W.parents[1];D=W/'reports'
 B=R/'experiments/mechanical-correspondence-20261019/reports'
 specs=json.loads((W/'certificates.json').read_text())
 validation=json.loads((D/'validation.json').read_text())
-assert {r['profile'] for r in validation}=={'SSRBoolClosedOperations','SSRBoolWitnesses','SSRBoolClosedStatements','SSRBoolConditionalNormalization','SSRBoolPackaging','SSRBoolRemainingStatements','SSRBoolData','SSRBoolLogic','SSRBoolExtendedStatements','SSRFunOpacity','SSRFunData','SSRFunConditions','SSRFunNormalization','SSRFunPredicates','SSRFunStatements','SSRFunOption','SSRNonProp','SpecifWitnesses','SpecifConditionalNormalization','SpecifClosedStatements','SpecifOperations','SpecifChoice','SpecifEqualityElimination','LogicWitnesses','LogicNormalization','LogicStatements','LogicElimination','LogicExistsElimination','LogicProofElimination','DatatypeNormalization','DatatypeQuantifiers','DatatypeStatements','DatatypeSpecs','BinaryArithmetic','BinaryNatSub','BinaryMask','BinaryMaskStatements','ListBridge','ListStatements','BinaryOrder','BinaryInt','PeanoBridge','PeanoStatements','NatArithmetic','NatIterators','NatGcd','NumericSigned','NumericMathlib','NumericWrite','SpecifNormalization','SpecifStatements','Basics','SSR','Iteration','Registry','SSRProperties','SSRBool','SSRBoolStatements','NumericRead','DecimalOperations','HexadecimalOperations','WellFounded','DependentElimination','PairRecursion','DependentStatements','DatatypeElimination','EqualityTransport','BooleanEquality','RelationDefinitions','RelationClasses','RelationClassStatements','VariadicPredicates','VariadicStatements','RelationConditions','Morphisms','MorphismStatements','EquivalenceBridge','EquivalenceStatements','MorphismsProp','SetoidBridge'}
+assert {r['profile'] for r in validation}=={'SSRBoolFinalWitnesses','SSRBoolReflection','SSRBoolProofFunctions','SSRBoolClosedOperations','SSRBoolWitnesses','SSRBoolClosedStatements','SSRBoolConditionalNormalization','SSRBoolPackaging','SSRBoolRemainingStatements','SSRBoolData','SSRBoolLogic','SSRBoolExtendedStatements','SSRFunOpacity','SSRFunData','SSRFunConditions','SSRFunNormalization','SSRFunPredicates','SSRFunStatements','SSRFunOption','SSRNonProp','SpecifWitnesses','SpecifConditionalNormalization','SpecifClosedStatements','SpecifOperations','SpecifChoice','SpecifEqualityElimination','LogicWitnesses','LogicNormalization','LogicStatements','LogicElimination','LogicExistsElimination','LogicProofElimination','DatatypeNormalization','DatatypeQuantifiers','DatatypeStatements','DatatypeSpecs','BinaryArithmetic','BinaryNatSub','BinaryMask','BinaryMaskStatements','ListBridge','ListStatements','BinaryOrder','BinaryInt','PeanoBridge','PeanoStatements','NatArithmetic','NatIterators','NatGcd','NumericSigned','NumericMathlib','NumericWrite','SpecifNormalization','SpecifStatements','Basics','SSR','Iteration','Registry','SSRProperties','SSRBool','SSRBoolStatements','NumericRead','DecimalOperations','HexadecimalOperations','WellFounded','DependentElimination','PairRecursion','DependentStatements','DatatypeElimination','EqualityTransport','BooleanEquality','RelationDefinitions','RelationClasses','RelationClassStatements','VariadicPredicates','VariadicStatements','RelationConditions','Morphisms','MorphismStatements','EquivalenceBridge','EquivalenceStatements','MorphismsProp','SetoidBridge'}
 audits={}
 for r in validation:
  assert r['exit']==0 and r['audit_present'],r
@@ -165,6 +165,20 @@ for sp in specs:
  if sp.get('closed_wrapper'):
   r['interpretation']='原始机械声明仍有显式条件；本桥接已用闭合证明实例化全部 '+str(r['prerequisites'])+' 项，使用 '+sp['closed_wrapper']+'。没有假定义务成立。'
 
+# A root may still lack operation correspondence after every source prerequisite is proved.
+ssrb_all_witnesses={r['source']:r for r in json.loads((W/'ssrbool-witness-selection.json').read_text())+json.loads((W/'ssrbool-final-witness-selection.json').read_text())}
+ssrb_conditions={source:expected for source,expected in condition_inputs.items() if source.startswith('Corelib.ssr.ssrbool.')}
+ssrb_prerequisites={h for expected in ssrb_conditions.values() for h in expected['pending_hypotheses']}
+assert len(ssrb_conditions)==128 and len(ssrb_prerequisites)==275
+for h in ssrb_prerequisites:
+ witness=audits['SSRBoolFinalWitnesses'][ssrb_all_witnesses[h]['closed']]
+ assert set(witness['axioms']) <= {'propext','Quot.sound','Classical.choice'}
+ expected_targets={expected['obligation_targets'][h] for expected in ssrb_conditions.values() if h in expected['pending_hypotheses']}
+ assert expected_targets <= set(witness['source_references'])
+for source in ssrb_conditions:
+ if rows[source]['bridge_status']=='EXPLICIT_PROOF_PARAMETERS':
+  rows[source]['interpretation']='本桥接已证明全部源端前置条件；该根的运算对应仍未完成。沿用条件根分类不表示前置证明仍缺失。'
+
 reg=audits['Registry']
 newinterface='NativeBridge.IncrementalInterfaces.Rocq.Corelib.ssr.ssrfun.fun_of_simpl.roundtrip'
 assert newinterface in reg
@@ -209,7 +223,7 @@ assert {x['target'] for x in opaque_records}=={r['target'] for r in ssrfun_rows 
 (D/'ssrfun-module-coverage.json').write_text(json.dumps(dict(module='Corelib.ssr.ssrfun',total=len(ssrfun_rows),counts=dict(collections.Counter(r['bridge_status'] for r in ssrfun_rows)),remaining=[dict(source=r['source'],status=r['bridge_status']) for r in ssrfun_rows if r['bridge_status'] not in {'TYPE_ISO','OPERATION_CORRESPONDENCE','STATEMENT_FULL_NATIVE'}]),ensure_ascii=False,indent=2))
 ssrbool_rows=[r for r in rows.values() if r['module']=='Corelib.ssr.ssrbool']
 assert len(ssrbool_rows)==451
-(D/'ssrbool-module-coverage.json').write_text(json.dumps(dict(module='Corelib.ssr.ssrbool',total=len(ssrbool_rows),counts=dict(collections.Counter(r['bridge_status'] for r in ssrbool_rows)),remaining=[dict(source=r['source'],status=r['bridge_status']) for r in ssrbool_rows if r['bridge_status'] not in {'TYPE_ISO','OPERATION_CORRESPONDENCE','STATEMENT_FULL_NATIVE'}]),ensure_ascii=False,indent=2))
+(D/'ssrbool-module-coverage.json').write_text(json.dumps(dict(module='Corelib.ssr.ssrbool',total=len(ssrbool_rows),counts=dict(collections.Counter(r['bridge_status'] for r in ssrbool_rows)),remaining=[dict(source=r['source'],status=r['bridge_status'],all_prerequisites_proved=(True if r['source'] in ssrb_conditions else None)) for r in ssrbool_rows if r['bridge_status'] not in {'TYPE_ISO','OPERATION_CORRESPONDENCE','STATEMENT_FULL_NATIVE'}]),ensure_ascii=False,indent=2))
 writecsv(D/'CORELIB_LEDGER.csv',list(rows.values()))
 counts=dict(collections.Counter(r['bridge_status'] for r in rows.values()))
 bcounts=dict(collections.Counter(r['bridge_status'] for r in base))
@@ -229,13 +243,16 @@ summary={'alias_regression_profiles':45,'alias_regression_lost':0,'alias_regress
  'incremental_dependency_fingerprints_checked':True,'full_baseline_rerun':False,'translation_rerun':False,'mathlib_tested':False,
  'automatic_native_target_synthesis':False,'automatic_predicate_body_normalization':27,'automatic_certificate_composition':'SSR Option/function proof composition plus automatic statement normalization; arbitrary function targets still supplied',
  'conditions_remaining':counts['EXPLICIT_PROOF_PARAMETERS'],
+ 'ssrbool_prerequisites_proved':len(ssrb_prerequisites),
+ 'ssrbool_condition_roots_with_all_prerequisites_proved':len(ssrb_conditions),
+ 'ssrbool_closed_condition_roots_still_missing_correspondence':sum(rows[source]['bridge_status']=='EXPLICIT_PROOF_PARAMETERS' for source in ssrb_conditions),
  'mechanical_declarations_with_explicit_conditions':331,
  'correspondence_conditions_remaining':counts['EXPLICIT_PROOF_PARAMETERS'],
  'condition_resolved_roots':len({r['source'] for r in resolved_conditions}),
  'closed_obligation_witnesses':len({w['name'] for r in resolved_conditions for w in r['witnesses']}),
  'axiom_free_closed_witnesses':len({w['name'] for r in resolved_conditions for w in r['witnesses'] if not w['axioms']}),
  'standard_axiom_closed_witnesses':len({w['name'] for r in resolved_conditions for w in r['witnesses'] if w['axioms']}),
- 'full_sort_type_certificates_added':10,'completion':'twenty-six incremental batches plus P7 coexistence; overall plan remains incomplete',
+ 'full_sort_type_certificates_added':10,'completion':'twenty-seven incremental batches plus P7 coexistence; overall plan remains incomplete',
  'explicit_target_classes_since_batch_3':dict(collections.Counter(sp['target_class'] for sp in specs if 'target_class' in sp))}
 interop_path=D/'interop/all/import-all-validation.json'
 if interop_path.exists():

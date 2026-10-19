@@ -163,5 +163,170 @@
     "name": "NativeBridge.Incremental.SetoidBridge.genStNative",
     "native_expression": "∀ (A : Type), Equivalence fun x y => x = y",
     "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolReflection.addbP_native",
+    "native_expression": "fun a b => (!a) = b ↔ (a ^^ b) = true",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolReflection.andP_native",
+    "native_expression": "fun a b => a = true ∧ b = true ↔ (a && b) = true",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolReflection.and3P_native",
+    "native_expression": "fun a b c => a = true ∧ b = true ∧ c = true ↔ (a && (b && c)) = true",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolReflection.and4P_native",
+    "native_expression": "fun a b c d => a = true ∧ b = true ∧ c = true ∧ d = true ↔ (a && (b && (c && d))) = true",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolReflection.and5P_native",
+    "native_expression": "fun a b c d e => a = true ∧ b = true ∧ c = true ∧ d = true ∧ e = true ↔ (a && (b && (c && (d && e)))) = true",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolReflection.idP_native",
+    "native_expression": "fun a => a = true ↔ a = true",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolReflection.idPn_native",
+    "native_expression": "fun a => (!a) = true ↔ (!a) = true",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolReflection.implyP_native",
+    "native_expression": "fun a b => a = true → b = true ↔ (!a || b) = true",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolReflection.nandP_native",
+    "native_expression": "fun a b => (!a) = true ∨ (!b) = true ↔ (!(a && b)) = true",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolReflection.negP_native",
+    "native_expression": "fun a => ¬a = true ↔ (!a) = true",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolReflection.negPf_native",
+    "native_expression": "fun a => a = false ↔ (!a) = true",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolReflection.negPn_native",
+    "native_expression": "fun a => a = true ↔ (!!a) = true",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolReflection.norP_native",
+    "native_expression": "fun a b => (!a) = true ∧ (!b) = true ↔ (!(a || b)) = true",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolReflection.orP_native",
+    "native_expression": "fun a b => a = true ∨ b = true ↔ (a || b) = true",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolReflection.or3P_native",
+    "native_expression": "fun a b c => a = true ∨ b = true ∨ c = true ↔ (a || (b || c)) = true",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolReflection.or4P_native",
+    "native_expression": "fun a b c d => a = true ∨ b = true ∨ c = true ∨ d = true ↔ (a || (b || (c || d))) = true",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolReflection.andPP_native",
+    "native_expression": "fun P Q p q hp hq => P ∧ Q ↔ (p && q) = true",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolReflection.orPP_native",
+    "native_expression": "fun P Q p q hp hq => P ∨ Q ↔ (p || q) = true",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolReflection.implyPP_native",
+    "native_expression": "fun P Q p q hp hq => P → Q ↔ (!p || q) = true",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolReflection.negPP_native",
+    "native_expression": "fun P p hp => ¬P ↔ (!p) = true",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolReflection.iffP_native",
+    "native_expression": "fun P Q b hp f g => Q ↔ b = true",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolReflection.equivP_native",
+    "native_expression": "fun P Q b hp h => Q ↔ b = true",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolReflection.introP_native",
+    "native_expression": "fun Q b ht hf => Q ↔ b = true",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolProofFunctions.all_and2_native",
+    "native_expression": "fun T P1 P2 h => ⟨fun x => (h x).left, fun x => (h x).right⟩",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolProofFunctions.all_and3_native",
+    "native_expression": "fun T P1 P2 P3 h => ⟨fun x => (h x).left, ⟨fun x => (h x).right.left, fun x => (h x).right.right⟩⟩",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolProofFunctions.all_and4_native",
+    "native_expression": "fun T P1 P2 P3 P4 h =>\n  ⟨fun x => (h x).left,\n    ⟨fun x => (h x).right.left, ⟨fun x => (h x).right.right.left, fun x => (h x).right.right.right⟩⟩⟩",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolProofFunctions.all_and5_native",
+    "native_expression": "fun T P1 P2 P3 P4 P5 h =>\n  ⟨fun x => (h x).left,\n    ⟨fun x => (h x).right.left,\n      ⟨fun x => (h x).right.right.left,\n        ⟨fun x => (h x).right.right.right.left, fun x => (h x).right.right.right.right⟩⟩⟩⟩",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolProofFunctions.unlessL_native",
+    "native_expression": "fun C P c => Or.inl (Nonempty.intro c)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolProofFunctions.unlessR_native",
+    "native_expression": "fun C P p => Or.inr (Nonempty.intro p)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolProofFunctions.unless_sym_native",
+    "native_expression": "fun C P h => Or.symm h",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolProofFunctions.bind_unless_native",
+    "native_expression": "fun C P Q h => Or.elim h (fun hc => Or.inl (Or.inl hc)) Or.inr",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolProofFunctions.decP_native",
+    "native_expression": "fun P b hp =>\n  Bool.casesOn (motive := fun t => b = t → Decidable P) b\n    (fun h => Eq.ndrec (motive := fun b => (P ↔ b = true) → Decidable P) (fun hp => isFalse ⋯) ⋯ hp)\n    (fun h => Eq.ndrec (motive := fun b => (P ↔ b = true) → Decidable P) (fun hp => isTrue ⋯) ⋯ hp) ⋯",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolProofFunctions.unless_contra_native",
+    "native_expression": "fun b C f =>\n  Bool.casesOn (motive := fun t => b = t → Nonempty C ∨ b = true) b\n    (fun h =>\n      Eq.ndrec (motive := fun b => ∀ (f : (!b) = true → C), Nonempty C ∨ b = true)\n        (fun f => Or.inl (Nonempty.intro (f rfl))) (Eq.symm h) f)\n    (fun h =>\n      Eq.ndrec (motive := fun b => ∀ (f : (!b) = true → C), Nonempty C ∨ b = true) (fun f => Or.inr rfl) (Eq.symm h) f)\n    (Eq.refl b)",
+    "remaining_source_symbols": []
   }
 ]

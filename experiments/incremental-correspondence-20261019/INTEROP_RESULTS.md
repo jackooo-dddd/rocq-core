@@ -1,6 +1,6 @@
 # 跨模块导入与 Mathlib 消费结果
 
-当前共同导入验收通过：72 个含增量覆盖证书的 profile、1228 份覆盖证书，连同原陈述证明和闭合包装函数，共 1650 个导出入口，在同一 Lean 文件中导入并审计。复制依赖声明 10315 个；这些副本不增加 correspondence 覆盖数量。
+当前共同导入验收通过：74 个含增量覆盖证书的 profile、1264 份覆盖证书，连同原陈述证明和闭合包装函数，共 1722 个导出入口，在同一 Lean 文件中导入并审计。复制依赖声明 11260 个；这些副本不增加 correspondence 覆盖数量。
 
 ## 具体可以怎样使用
 
@@ -30,7 +30,7 @@ Lean 版本 4.33.1。复用远程已安装的 Mathlib，提交为 `0df444a360eaa
 - `interop/pack_profiles.py`、`check_consumer.py`：三个独立模块及 Mathlib 消费例。
 - `interop/check_rejection.py`：新公理拒绝测试。
 - `reports/interop/all/import-all-validation.json`：共同导入证据。
-- `reports/interop/coverage-manifest.json`：当前 1228 份覆盖证书的固定清单。
+- `reports/interop/coverage-manifest.json`：当前 1264 份覆盖证书的固定清单。
 - `reports/interop/consumer-validation.json`：实际 Mathlib 提交、工具链和消费结果。
 
 在工作区依次执行 pack_all.py、check_all.py，以及 pack_profiles.py、check_consumer.py、check_rejection.py。编译缓存和生成的打包源码位于 .work/interop，仅远程保存。脚本需要先完成原 profile 编译；它们不下载依赖。
@@ -62,3 +62,5 @@ Peano 扩展后：38 个含覆盖证书的 profile、619 份覆盖证书共同�
 opaque 支持的独立验证见 interop/check_opaque.py 与 reports/interop/opaque-preservation.json：种类保留，任意 opaque Nat 的 body 等式被同步 kernel 拒绝，unit 单值证明可用。check_rejection.py 同时验证直接新公理和 opaque body 中的新公理都被拒绝。
 
 第二十六批扩展后：72 个覆盖 profile、1228 份覆盖证书共同导入通过，1650 个入口、10315 个依赖副本。新增 SSRBoolClosedStatements、SSRBoolClosedOperations。
+
+第二十七批扩展后：74 个覆盖 profile、1264 份覆盖证书共同导入通过，1722 个入口、11260 个依赖副本。新增 SSRBoolReflection、SSRBoolProofFunctions，opaque 函数保持原种类。
