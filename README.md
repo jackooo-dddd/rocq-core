@@ -1,5 +1,6 @@
 # Rocq Corelib → Lean
 
+- [实际使用规则清单](results/USED_RULES.md)：仅列当前机械基线有使用证据的条目及原语映射。
 - [Nat 完整案例](results/casestudy/README.md)：源类型与58项运算、逐声明译文/过程、导出文件解释及原生对应证明。
 
 当前基线：**先机械翻译，后证明与 Lean 原生对象的 correspondence**。
