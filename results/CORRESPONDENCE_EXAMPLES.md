@@ -207,3 +207,19 @@ Decimal.decimal 对应“带符号整数数字、小数数字、可选带符号�
 ## 20. 把 SSR 自反性作为原生实例使用
 
 [SSRClasses.lean](../experiments/incremental-correspondence-20261019/proofs/SSRClasses.lean) 证明源 Reflexive A R ↔ Std.Refl R。转换后的证据可用于 Lean 的 Std.Refl.refl；Eq 和 Iff 的两个原陈述也都有独立证明。
+
+## 21. 带截断位数的整数转换
+
+[Uint63Conversions.lean](../experiments/incremental-correspondence-20261019/proofs/Uint63Conversions.lean) 对所有 n 和 positive p 证明 of_pos_rec n p 对应 BitVec.ofNat 63 (p % 2^n)。例如 n=3、p=13 时保留低三位得到 5；完整 of_pos 使用 n=63。of_Z 的负整数分支对应 BitVec.ofInt 63，-1 的结果为 2^63-1。
+
+反向 to_Z_rec n x 对应 Int.ofNat (x.toNat % 2^n)，完整 to_Z 返回无符号整数值。以上结论来自全域证明，而非只验证示例输入。
+
+## 22. 两种位测试的统一语义
+
+[Uint63Operations.lean](../experiments/incremental-correspondence-20261019/proofs/Uint63Operations.lean) 分别证明 get_digit 与 bit 等于 BitVec.getLsbD，尽管两者的机械实现分别使用掩码和移位／零判定。set_digit 0 62 true 设置最高位，set_digit 5 63 true 保持 5；越界行为也保留在对应证明中。
+
+## 23. 从原生位运算性质回到机械定理
+
+[Uint63Statements.lean](../experiments/incremental-correspondence-20261019/proofs/Uint63Statements.lean) 使用 BitVec.getLsbD 的 AND／OR／XOR 方程，结合已经证明的 bit 与原语运算对应，构造源 land_spec／lor_spec／lxor_spec 的证明。源结论仍使用机械 bool 与机械 Eq；通过对应转换回去，不把它们直接替换成原生类型。
+
+同一文件证明 of_Z (to_Z x) = x，对所有 63 位输入成立。[Uint63OrderSpecs.lean](../experiments/incremental-correspondence-20261019/proofs/Uint63OrderSpecs.lean) 则把源 Z 比较转到原生 Int 顺序，证明 ltb_spec／leb_spec。

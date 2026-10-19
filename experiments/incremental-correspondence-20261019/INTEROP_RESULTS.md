@@ -76,3 +76,7 @@ opaque 支持的独立验证见 interop/check_opaque.py 与 reports/interop/opaq
 第三十七至三十九批：新增 BinaryDivision、BinarySqrtRem、BinaryPositiveSqrt、BinaryIterOp。88 个覆盖 profile、1408 份证书共同导入通过，1893 个入口、13257 个副本。额外导入 Init.Data.Nat.Log2 / Sqrt.Lemmas 保持原生声明身份；未重跑旧 Mathlib 消费例。
 
 第四十至四十三批：新增 BinaryElimination、DecimalRepresentation、HexadecimalRepresentation、NumberRepresentation。92 个覆盖 profile、1475 份证书共同导入通过；1989 个入口、16091 个副本。检查程序对增长的入口清单设置 maxRecDepth=16384，未减少任何检查。
+
+第五十五至五十六批：新增 Uint63Operations、Uint63Conversions，106 个覆盖 profile、1637 份证书共同导入通过；2203 个入口、16332 个依赖副本。BitVec.Lemmas 保持原生声明身份，当前 manifest 与注册表一致。
+
+第五十七至五十九批：新增 Uint63Statements、Uint63DefinitionSpecs、Uint63OrderSpecs。109 个覆盖 profile、1652 份证书共同导入，2233 个入口、16814 个依赖副本。新增 15 个原陈述证明随证书依赖闭包封装，当前 coverage manifest 一致。

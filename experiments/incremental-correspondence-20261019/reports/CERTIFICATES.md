@@ -12963,6 +12963,498 @@ Rocq.Corelib.ssr.ssrunder.Under_rel.under_rel_done.statement ↔ NativeBridge.In
 
 公理闭包：空
 
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.digits
+
+NativeBridge.Incremental.Uint63Operations.digits_agrees
+
+目标：NativeBridge.Incremental.Uint63Operations.width；范围：All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.digits = NativeBridge.Incremental.Uint63Operations.width
+```
+
+公理闭包：空
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.size
+
+NativeBridge.Incremental.Uint63Operations.size_agrees
+
+目标：NativeBridge.Incremental.Uint63Operations.bitCount；范围：All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63.
+
+```lean
+NativeBridge.natTo Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.size =
+  NativeBridge.Incremental.Uint63Operations.bitCount
+```
+
+公理闭包：空
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.max_int
+
+NativeBridge.Incremental.Uint63Operations.maxInt_agrees
+
+目标：NativeBridge.Incremental.Uint63Operations.largest；范围：All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.max_int = NativeBridge.Incremental.Uint63Operations.largest
+```
+
+公理闭包：空
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addcarry
+
+NativeBridge.Incremental.Uint63Operations.addcarry_agrees
+
+目标：NativeBridge.Incremental.Uint63Operations.addOne；范围：All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63.
+
+```lean
+∀ (x y : NativeBridge.Incremental.Uint63Operations.Word),
+  Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addcarry x y = NativeBridge.Incremental.Uint63Operations.addOne x y
+```
+
+公理闭包：空
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addc_def
+
+NativeBridge.Incremental.Uint63Operations.addc_agrees
+
+目标：NativeBridge.Incremental.Uint63Operations.addWithCarry；范围：All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63.
+
+```lean
+∀ (x y : NativeBridge.Incremental.Uint63Operations.Word),
+  NativeBridge.Incremental.Uint63Operations.carryTo (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addc_def x y) =
+    NativeBridge.Incremental.Uint63Operations.addWithCarry x y
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addcarryc_def
+
+NativeBridge.Incremental.Uint63Operations.addcarryc_agrees
+
+目标：NativeBridge.Incremental.Uint63Operations.addOneWithCarry；范围：All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63.
+
+```lean
+∀ (x y : NativeBridge.Incremental.Uint63Operations.Word),
+  NativeBridge.Incremental.Uint63Operations.carryTo (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addcarryc_def x y) =
+    NativeBridge.Incremental.Uint63Operations.addOneWithCarry x y
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.subc_def
+
+NativeBridge.Incremental.Uint63Operations.subc_agrees
+
+目标：NativeBridge.Incremental.Uint63Operations.subWithBorrow；范围：All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63.
+
+```lean
+∀ (x y : NativeBridge.Incremental.Uint63Operations.Word),
+  NativeBridge.Incremental.Uint63Operations.carryTo (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.subc_def x y) =
+    NativeBridge.Incremental.Uint63Operations.subWithBorrow x y
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.subcarryc_def
+
+NativeBridge.Incremental.Uint63Operations.subcarryc_agrees
+
+目标：NativeBridge.Incremental.Uint63Operations.subOneWithBorrow；范围：All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63.
+
+```lean
+∀ (x y : NativeBridge.Incremental.Uint63Operations.Word),
+  NativeBridge.Incremental.Uint63Operations.carryTo (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.subcarryc_def x y) =
+    NativeBridge.Incremental.Uint63Operations.subOneWithBorrow x y
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.diveucl_def
+
+NativeBridge.Incremental.Uint63Operations.divPair_agrees
+
+目标：NativeBridge.Incremental.Uint63Operations.divisionPair；范围：All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63.
+
+```lean
+∀ (x y : NativeBridge.Incremental.Uint63Operations.Word),
+  NativeBridge.prodTo (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.diveucl_def x y) =
+    NativeBridge.Incremental.Uint63Operations.divisionPair x y
+```
+
+公理闭包：propext
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.compare_def
+
+NativeBridge.Incremental.Uint63Operations.compare_agrees
+
+目标：NativeBridge.Incremental.Uint63Operations.compareWords；范围：All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63.
+
+```lean
+∀ (x y : NativeBridge.Incremental.Uint63Operations.Word),
+  NativeBridge.comparisonTo (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.compare_def x y) =
+    NativeBridge.Incremental.Uint63Operations.compareWords x y
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.is_zero
+
+NativeBridge.Incremental.Uint63Operations.isZero_agrees
+
+目标：NativeBridge.Incremental.Uint63Operations.isZero；范围：All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63.
+
+```lean
+∀ (x : NativeBridge.Incremental.Uint63Operations.Word),
+  NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.is_zero x) =
+    NativeBridge.Incremental.Uint63Operations.isZero x
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addmuldiv_def
+
+NativeBridge.Incremental.Uint63Operations.funnel_agrees
+
+目标：NativeBridge.Incremental.Uint63Operations.funnelShift；范围：All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63.
+
+```lean
+∀ (p x y : NativeBridge.Incremental.Uint63Operations.Word),
+  Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addmuldiv_def p x y =
+    NativeBridge.Incremental.Uint63Operations.funnelShift p x y
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.is_even
+
+NativeBridge.Incremental.Uint63Operations.isEven_agrees
+
+目标：NativeBridge.Incremental.Uint63Operations.isEven；范围：All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63.
+
+```lean
+∀ (x : NativeBridge.Incremental.Uint63Operations.Word),
+  NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.is_even x) =
+    NativeBridge.Incremental.Uint63Operations.isEven x
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.get_digit
+
+NativeBridge.Incremental.Uint63Operations.getDigit_agrees
+
+目标：NativeBridge.Incremental.Uint63Operations.readBit；范围：All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63.
+
+```lean
+∀ (x p : NativeBridge.Incremental.Uint63Operations.Word),
+  NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.get_digit x p) =
+    NativeBridge.Incremental.Uint63Operations.readBit x p
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.bit
+
+NativeBridge.Incremental.Uint63Operations.bit_agrees
+
+目标：NativeBridge.Incremental.Uint63Operations.readBit；范围：All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63.
+
+```lean
+∀ (x p : NativeBridge.Incremental.Uint63Operations.Word),
+  NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.bit x p) =
+    NativeBridge.Incremental.Uint63Operations.readBit x p
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.set_digit
+
+NativeBridge.Incremental.Uint63Operations.setDigit_agrees
+
+目标：NativeBridge.Incremental.Uint63Operations.writeBit；范围：All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63.
+
+```lean
+∀ (x p : NativeBridge.Incremental.Uint63Operations.Word) (b : NativeBridge.RBool),
+  Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.set_digit x p b =
+    NativeBridge.Incremental.Uint63Operations.writeBit x p (NativeBridge.boolTo b)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.of_pos_rec
+
+NativeBridge.Incremental.Uint63Conversions.ofPosRec_agrees
+
+目标：NativeBridge.Incremental.Uint63Conversions.positiveFuel；范围：All inputs, including arbitrary recursion fuel and negative integers. of_pos_rec keeps low n bits then constructs BitVec 63; of_Z equals BitVec.ofInt 63; to_Z_rec equals the unsigned value modulo 2^n; to_Z equals unsigned toNat cast to Int.
+
+```lean
+∀ (n : NativeBridge.MN) (p : NativeBridge.RPositive),
+  Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.of_pos_rec n p =
+    NativeBridge.Incremental.Uint63Conversions.positiveFuel (NativeBridge.natTo n) (NativeBridge.positiveTo p)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.of_pos
+
+NativeBridge.Incremental.Uint63Conversions.ofPos_agrees
+
+目标：NativeBridge.Incremental.Uint63Conversions.ofPositive；范围：All inputs, including arbitrary recursion fuel and negative integers. of_pos_rec keeps low n bits then constructs BitVec 63; of_Z equals BitVec.ofInt 63; to_Z_rec equals the unsigned value modulo 2^n; to_Z equals unsigned toNat cast to Int.
+
+```lean
+∀ (p : NativeBridge.RPositive),
+  Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.of_pos p =
+    NativeBridge.Incremental.Uint63Conversions.ofPositive (NativeBridge.positiveTo p)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.of_Z
+
+NativeBridge.Incremental.Uint63Conversions.ofZ_agrees
+
+目标：NativeBridge.Incremental.Uint63Conversions.ofInteger；范围：All inputs, including arbitrary recursion fuel and negative integers. of_pos_rec keeps low n bits then constructs BitVec 63; of_Z equals BitVec.ofInt 63; to_Z_rec equals the unsigned value modulo 2^n; to_Z equals unsigned toNat cast to Int.
+
+```lean
+∀ (z : NativeBridge.Incremental.Uint63Conversions.RZ),
+  Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.of_Z z =
+    NativeBridge.Incremental.Uint63Conversions.ofInteger (NativeBridge.Incremental.Uint63Conversions.zTo z)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.wB
+
+NativeBridge.Incremental.Uint63Conversions.wordBase_agrees
+
+目标：NativeBridge.Incremental.Uint63Conversions.wordBase；范围：All inputs, including arbitrary recursion fuel and negative integers. of_pos_rec keeps low n bits then constructs BitVec 63; of_Z equals BitVec.ofInt 63; to_Z_rec equals the unsigned value modulo 2^n; to_Z equals unsigned toNat cast to Int.
+
+```lean
+NativeBridge.Incremental.Uint63Conversions.zTo Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.wB =
+  NativeBridge.Incremental.Uint63Conversions.wordBase
+```
+
+公理闭包：空
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z_rec
+
+NativeBridge.Incremental.Uint63Conversions.toZRec_agrees
+
+目标：NativeBridge.Incremental.Uint63Conversions.unsignedFuel；范围：All inputs, including arbitrary recursion fuel and negative integers. of_pos_rec keeps low n bits then constructs BitVec 63; of_Z equals BitVec.ofInt 63; to_Z_rec equals the unsigned value modulo 2^n; to_Z equals unsigned toNat cast to Int.
+
+```lean
+∀ (n : NativeBridge.MN) (x : NativeBridge.Incremental.Uint63Operations.Word),
+  NativeBridge.Incremental.Uint63Conversions.zTo (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z_rec n x) =
+    NativeBridge.Incremental.Uint63Conversions.unsignedFuel (NativeBridge.natTo n) x
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z
+
+NativeBridge.Incremental.Uint63Conversions.toZ_agrees
+
+目标：NativeBridge.Incremental.Uint63Conversions.unsignedInteger；范围：All inputs, including arbitrary recursion fuel and negative integers. of_pos_rec keeps low n bits then constructs BitVec 63; of_Z equals BitVec.ofInt 63; to_Z_rec equals the unsigned value modulo 2^n; to_Z equals unsigned toNat cast to Int.
+
+```lean
+∀ (x : NativeBridge.Incremental.Uint63Operations.Word),
+  NativeBridge.Incremental.Uint63Conversions.zTo (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z x) =
+    NativeBridge.Incremental.Uint63Conversions.unsignedInteger x
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.eqb_correct
+
+NativeBridge.Incremental.Uint63Statements.eqbCorrect_correspondence
+
+目标：NativeBridge.Incremental.Uint63Statements.eqbCorrect；范围：All 63-bit inputs and all word-valued bit indices, including out-of-range indices. Original mechanical statements independently proved; native statements use BitVec equality, getLsbD and unsigned integer roundtrip.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.eqb_correct.statement ↔
+  NativeBridge.Incremental.Uint63Statements.eqbCorrect
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.eqb_refl
+
+NativeBridge.Incremental.Uint63Statements.eqbRefl_correspondence
+
+目标：NativeBridge.Incremental.Uint63Statements.eqbRefl；范围：All 63-bit inputs and all word-valued bit indices, including out-of-range indices. Original mechanical statements independently proved; native statements use BitVec equality, getLsbD and unsigned integer roundtrip.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.eqb_refl.statement ↔ NativeBridge.Incremental.Uint63Statements.eqbRefl
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.land_spec
+
+NativeBridge.Incremental.Uint63Statements.andBits_correspondence
+
+目标：NativeBridge.Incremental.Uint63Statements.andBits；范围：All 63-bit inputs and all word-valued bit indices, including out-of-range indices. Original mechanical statements independently proved; native statements use BitVec equality, getLsbD and unsigned integer roundtrip.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.land_spec.statement ↔ NativeBridge.Incremental.Uint63Statements.andBits
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.lor_spec
+
+NativeBridge.Incremental.Uint63Statements.orBits_correspondence
+
+目标：NativeBridge.Incremental.Uint63Statements.orBits；范围：All 63-bit inputs and all word-valued bit indices, including out-of-range indices. Original mechanical statements independently proved; native statements use BitVec equality, getLsbD and unsigned integer roundtrip.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.lor_spec.statement ↔ NativeBridge.Incremental.Uint63Statements.orBits
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.lxor_spec
+
+NativeBridge.Incremental.Uint63Statements.xorBits_correspondence
+
+目标：NativeBridge.Incremental.Uint63Statements.xorBits；范围：All 63-bit inputs and all word-valued bit indices, including out-of-range indices. Original mechanical statements independently proved; native statements use BitVec equality, getLsbD and unsigned integer roundtrip.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.lxor_spec.statement ↔ NativeBridge.Incremental.Uint63Statements.xorBits
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.of_to_Z
+
+NativeBridge.Incremental.Uint63Statements.unsignedRoundtrip_correspondence
+
+目标：NativeBridge.Incremental.Uint63Statements.unsignedRoundtrip；范围：All 63-bit inputs and all word-valued bit indices, including out-of-range indices. Original mechanical statements independently proved; native statements use BitVec equality, getLsbD and unsigned integer roundtrip.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.of_to_Z.statement ↔
+  NativeBridge.Incremental.Uint63Statements.unsignedRoundtrip
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addc_def_spec
+
+NativeBridge.Incremental.Uint63DefinitionSpecs.addAgreement_correspondence
+
+目标：NativeBridge.Incremental.Uint63DefinitionSpecs.addAgreement；范围：All 63-bit inputs. Independently proved equality of source primitive and source definitional implementations. Native carry/borrow specifications retain overflow inequalities; division-pair and funnel specifications normalize to equality of the same native expression.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addc_def_spec.statement ↔
+  NativeBridge.Incremental.Uint63DefinitionSpecs.addAgreement
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addcarryc_def_spec
+
+NativeBridge.Incremental.Uint63DefinitionSpecs.addOneAgreement_correspondence
+
+目标：NativeBridge.Incremental.Uint63DefinitionSpecs.addOneAgreement；范围：All 63-bit inputs. Independently proved equality of source primitive and source definitional implementations. Native carry/borrow specifications retain overflow inequalities; division-pair and funnel specifications normalize to equality of the same native expression.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addcarryc_def_spec.statement ↔
+  NativeBridge.Incremental.Uint63DefinitionSpecs.addOneAgreement
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.subc_def_spec
+
+NativeBridge.Incremental.Uint63DefinitionSpecs.subAgreement_correspondence
+
+目标：NativeBridge.Incremental.Uint63DefinitionSpecs.subAgreement；范围：All 63-bit inputs. Independently proved equality of source primitive and source definitional implementations. Native carry/borrow specifications retain overflow inequalities; division-pair and funnel specifications normalize to equality of the same native expression.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.subc_def_spec.statement ↔
+  NativeBridge.Incremental.Uint63DefinitionSpecs.subAgreement
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.subcarryc_def_spec
+
+NativeBridge.Incremental.Uint63DefinitionSpecs.subOneAgreement_correspondence
+
+目标：NativeBridge.Incremental.Uint63DefinitionSpecs.subOneAgreement；范围：All 63-bit inputs. Independently proved equality of source primitive and source definitional implementations. Native carry/borrow specifications retain overflow inequalities; division-pair and funnel specifications normalize to equality of the same native expression.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.subcarryc_def_spec.statement ↔
+  NativeBridge.Incremental.Uint63DefinitionSpecs.subOneAgreement
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.compare_def_spec
+
+NativeBridge.Incremental.Uint63DefinitionSpecs.compareAgreement_correspondence
+
+目标：NativeBridge.Incremental.Uint63DefinitionSpecs.compareAgreement；范围：All 63-bit inputs. Independently proved equality of source primitive and source definitional implementations. Native carry/borrow specifications retain overflow inequalities; division-pair and funnel specifications normalize to equality of the same native expression.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.compare_def_spec.statement ↔
+  NativeBridge.Incremental.Uint63DefinitionSpecs.compareAgreement
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.diveucl_def_spec
+
+NativeBridge.Incremental.Uint63DefinitionSpecs.divPairAgreement_correspondence
+
+目标：NativeBridge.Incremental.Uint63DefinitionSpecs.divPairAgreement；范围：All 63-bit inputs. Independently proved equality of source primitive and source definitional implementations. Native carry/borrow specifications retain overflow inequalities; division-pair and funnel specifications normalize to equality of the same native expression.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.diveucl_def_spec.statement ↔
+  NativeBridge.Incremental.Uint63DefinitionSpecs.divPairAgreement
+```
+
+公理闭包：propext
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addmuldiv_def_spec
+
+NativeBridge.Incremental.Uint63DefinitionSpecs.funnelAgreement_correspondence
+
+目标：NativeBridge.Incremental.Uint63DefinitionSpecs.funnelAgreement；范围：All 63-bit inputs. Independently proved equality of source primitive and source definitional implementations. Native carry/borrow specifications retain overflow inequalities; division-pair and funnel specifications normalize to equality of the same native expression.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addmuldiv_def_spec.statement ↔
+  NativeBridge.Incremental.Uint63DefinitionSpecs.funnelAgreement
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.ltb_spec
+
+NativeBridge.Incremental.Uint63OrderSpecs.unsignedLtSpec_correspondence
+
+目标：NativeBridge.Incremental.Uint63OrderSpecs.unsignedLtSpec；范围：All 63-bit inputs. Boolean unsigned comparison iff the corresponding order on unsigned native integers. Source Z comparison is independently rechecked in this module closure; original statement independently proved.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.ltb_spec.statement ↔
+  NativeBridge.Incremental.Uint63OrderSpecs.unsignedLtSpec
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.Uint63Axioms.leb_spec
+
+NativeBridge.Incremental.Uint63OrderSpecs.unsignedLeSpec_correspondence
+
+目标：NativeBridge.Incremental.Uint63OrderSpecs.unsignedLeSpec；范围：All 63-bit inputs. Boolean unsigned comparison iff the corresponding order on unsigned native integers. Source Z comparison is independently rechecked in this module closure; original statement independently proved.
+
+```lean
+Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.leb_spec.statement ↔
+  NativeBridge.Incremental.Uint63OrderSpecs.unsignedLeSpec
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
 ## Corelib.ssr.ssrbool.canLR_in
 
 NativeBridge.Incremental.SSRBoolClosedStatements.RocqPending.Corelib.ssr.ssrbool.canLR_in.statement.correspondence

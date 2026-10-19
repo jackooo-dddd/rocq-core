@@ -1638,5 +1638,185 @@
     "name": "NativeBridge.Incremental.SSRUnder.underFromRelation",
     "native_expression": "∀ (A : Type u) (R : A → A → Prop) (x y : A), R x y → R x y",
     "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63Operations.addOne",
+    "native_expression": "fun x y => x + y + 1",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63Operations.addOneWithCarry",
+    "native_expression": "fun x y => (decide (2 ^ 63 ≤ BitVec.toNat x + BitVec.toNat y + 1), x + y + 1)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63Operations.addWithCarry",
+    "native_expression": "fun x y => (BitVec.uaddOverflow x y, x + y)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63Operations.bitCount",
+    "native_expression": "63",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63Operations.compareWords",
+    "native_expression": "fun x y => compare (BitVec.toNat x) (BitVec.toNat y)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63Operations.divisionPair",
+    "native_expression": "fun x y => (x / y, x % y)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63Operations.funnelShift",
+    "native_expression": "fun p x y => x <<< BitVec.toNat p ||| y >>> BitVec.toNat (63 - p)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63Operations.isEven",
+    "native_expression": "fun x => !BitVec.getLsbD x 0",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63Operations.isZero",
+    "native_expression": "fun x => x == 0",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63Operations.largest",
+    "native_expression": "BitVec.ofNat 63 (2 ^ 63 - 1)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63Operations.readBit",
+    "native_expression": "fun x p => BitVec.getLsbD x (BitVec.toNat p)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63Operations.subOneWithBorrow",
+    "native_expression": "fun x y => (decide (BitVec.toNat x ≤ BitVec.toNat y), x - y - 1)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63Operations.subWithBorrow",
+    "native_expression": "fun x y => (BitVec.usubOverflow x y, x - y)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63Operations.width",
+    "native_expression": "63",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63Operations.writeBit",
+    "native_expression": "fun x p b =>\n  if BitVec.toNat p < 63 then\n    if b = true then x ||| 1#63 <<< BitVec.toNat p\n    else x &&& (NativeBridge.Incremental.Uint63Operations.largest ^^^ 1#63 <<< BitVec.toNat p)\n  else x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63Conversions.ofInteger",
+    "native_expression": "fun z => BitVec.ofInt 63 z",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63Conversions.ofPositive",
+    "native_expression": "fun p => BitVec.ofNat 63 p",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63Conversions.positiveFuel",
+    "native_expression": "fun n p => BitVec.ofNat 63 (p % 2 ^ n)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63Conversions.unsignedFuel",
+    "native_expression": "fun n x => Int.ofNat (BitVec.toNat x % 2 ^ n)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63Conversions.unsignedInteger",
+    "native_expression": "fun x => Int.ofNat (BitVec.toNat x)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63Conversions.wordBase",
+    "native_expression": "2 ^ 63",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63Statements.andBits",
+    "native_expression": "∀ (x y i : NativeBridge.Incremental.Uint63Operations.Word),\n  NativeBridge.Incremental.Uint63Operations.readBit (x &&& y) i =\n    (NativeBridge.Incremental.Uint63Operations.readBit x i && NativeBridge.Incremental.Uint63Operations.readBit y i)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63Statements.eqbCorrect",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.Uint63Operations.Word), (x == y) = true → x = y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63Statements.eqbRefl",
+    "native_expression": "∀ (x : NativeBridge.Incremental.Uint63Operations.Word), (x == x) = true",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63Statements.orBits",
+    "native_expression": "∀ (x y i : NativeBridge.Incremental.Uint63Operations.Word),\n  NativeBridge.Incremental.Uint63Operations.readBit (x ||| y) i =\n    (NativeBridge.Incremental.Uint63Operations.readBit x i || NativeBridge.Incremental.Uint63Operations.readBit y i)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63Statements.unsignedRoundtrip",
+    "native_expression": "∀ (x : NativeBridge.Incremental.Uint63Operations.Word), BitVec.ofInt 63 (Int.ofNat (BitVec.toNat x)) = x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63Statements.xorBits",
+    "native_expression": "∀ (x y i : NativeBridge.Incremental.Uint63Operations.Word),\n  NativeBridge.Incremental.Uint63Operations.readBit (x ^^^ y) i =\n    (NativeBridge.Incremental.Uint63Operations.readBit x i ^^ NativeBridge.Incremental.Uint63Operations.readBit y i)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63DefinitionSpecs.addAgreement",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.Uint63Operations.Word),\n  NativeBridge.Incremental.Uint63DefinitionSpecs.primitiveAddCarry x y =\n    NativeBridge.Incremental.Uint63Operations.addWithCarry x y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63DefinitionSpecs.addOneAgreement",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.Uint63Operations.Word),\n  NativeBridge.Incremental.Uint63DefinitionSpecs.primitiveAddOneCarry x y =\n    NativeBridge.Incremental.Uint63Operations.addOneWithCarry x y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63DefinitionSpecs.compareAgreement",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.Uint63Operations.Word),\n  (if BitVec.toNat x < BitVec.toNat y then Ordering.lt\n    else if BitVec.toNat y < BitVec.toNat x then Ordering.gt else Ordering.eq) =\n    NativeBridge.Incremental.Uint63Operations.compareWords x y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63DefinitionSpecs.divPairAgreement",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.Uint63Operations.Word),\n  (x / y, x % y) = NativeBridge.Incremental.Uint63Operations.divisionPair x y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63DefinitionSpecs.funnelAgreement",
+    "native_expression": "∀ (p x y : NativeBridge.Incremental.Uint63Operations.Word),\n  x <<< BitVec.toNat p ||| y >>> BitVec.toNat (63 - p) = NativeBridge.Incremental.Uint63Operations.funnelShift p x y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63DefinitionSpecs.subAgreement",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.Uint63Operations.Word),\n  NativeBridge.Incremental.Uint63DefinitionSpecs.primitiveSubCarry x y =\n    NativeBridge.Incremental.Uint63Operations.subWithBorrow x y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63DefinitionSpecs.subOneAgreement",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.Uint63Operations.Word),\n  NativeBridge.Incremental.Uint63DefinitionSpecs.primitiveSubOneCarry x y =\n    NativeBridge.Incremental.Uint63Operations.subOneWithBorrow x y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63OrderSpecs.unsignedLeSpec",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.Uint63Operations.Word),\n  decide (BitVec.toNat x ≤ BitVec.toNat y) = true ↔ Int.ofNat (BitVec.toNat x) ≤ Int.ofNat (BitVec.toNat y)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.Uint63OrderSpecs.unsignedLtSpec",
+    "native_expression": "∀ (x y : NativeBridge.Incremental.Uint63Operations.Word),\n  decide (BitVec.toNat x < BitVec.toNat y) = true ↔ Int.ofNat (BitVec.toNat x) < Int.ofNat (BitVec.toNat y)",
+    "remaining_source_symbols": []
   }
 ]

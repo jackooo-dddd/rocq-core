@@ -1,0 +1,15 @@
+NATIVE_TARGET {"name":"NativeBridge.Incremental.Uint63Operations.addOne","native_expression":"fun x y => x + y + 1","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.Uint63Operations.addOneWithCarry","native_expression":"fun x y => (decide (2 ^ 63 ≤ BitVec.toNat x + BitVec.toNat y + 1), x + y + 1)","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.Uint63Operations.addWithCarry","native_expression":"fun x y => (BitVec.uaddOverflow x y, x + y)","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.Uint63Operations.bitCount","native_expression":"63","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.Uint63Operations.compareWords","native_expression":"fun x y => compare (BitVec.toNat x) (BitVec.toNat y)","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.Uint63Operations.divisionPair","native_expression":"fun x y => (x / y, x % y)","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.Uint63Operations.funnelShift","native_expression":"fun p x y => x <<< BitVec.toNat p ||| y >>> BitVec.toNat (63 - p)","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.Uint63Operations.isEven","native_expression":"fun x => !BitVec.getLsbD x 0","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.Uint63Operations.isZero","native_expression":"fun x => x == 0","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.Uint63Operations.largest","native_expression":"BitVec.ofNat 63 (2 ^ 63 - 1)","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.Uint63Operations.readBit","native_expression":"fun x p => BitVec.getLsbD x (BitVec.toNat p)","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.Uint63Operations.subOneWithBorrow","native_expression":"fun x y => (decide (BitVec.toNat x ≤ BitVec.toNat y), x - y - 1)","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.Uint63Operations.subWithBorrow","native_expression":"fun x y => (BitVec.usubOverflow x y, x - y)","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.Uint63Operations.width","native_expression":"63","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.Uint63Operations.writeBit","native_expression":"fun x p b =>\n  if BitVec.toNat p < 63 then\n    if b = true then x ||| 1#63 <<< BitVec.toNat p\n    else x &&& (NativeBridge.Incremental.Uint63Operations.largest ^^^ 1#63 <<< BitVec.toNat p)\n  else x","remaining_source_symbols":[]}

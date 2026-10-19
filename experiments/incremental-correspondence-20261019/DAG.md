@@ -519,3 +519,35 @@ flowchart TD
 ```
 
 Program.Wf 的两个 Type 值 opaque 消去器，以及 ssreflect_rw 的三个 Type 值 opaque 计算函数，仍需额外计算证据。它们不阻止透明整数定义和规格对应继续推进。
+
+## 第五十五至五十六批：位操作与整数转换
+
+```mermaid
+flowchart TD
+  BitVecLemmas --> Uint63Operations
+  MechanicalPositiveNat --> Uint63Conversions
+  Uint63Operations --> Uint63Conversions
+  LowBitsInduction --> Uint63Conversions
+  NatModuloDecomposition --> Uint63Conversions
+  Uint63Conversions --> Uint63Statements
+  Uint63Operations --> Uint63Statements
+  BinaryZArithmetic --> RemainingUint63Specifications
+  Uint63Statements --> RemainingUint63Specifications
+```
+
+Uint63Operations 与 Uint63Conversions 已验证；Uint63Statements 为下一批。跨源闭包的旧证明通过文本复用后重新检查，不直接混合不同 Rocq2LeanOut。
+
+## 第五十七至五十九批及算术规格
+
+```mermaid
+flowchart TD
+  Uint63Conversions --> Uint63Statements
+  Uint63Operations --> Uint63DefinitionSpecs
+  MechanicalZCompare --> Uint63OrderSpecs
+  Uint63Conversions --> Uint63OrderSpecs
+  Uint63OrderSpecs --> Uint63ArithmeticSupport
+  RecheckedZAddSubMulDivPow --> Uint63ArithmeticSupport
+  Uint63ArithmeticSupport --> Remaining11Specs
+```
+
+前三个规格 profile 已验证，算术支持及剩余 11 项仍在进行。

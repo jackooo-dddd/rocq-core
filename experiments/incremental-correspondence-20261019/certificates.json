@@ -12179,5 +12179,390 @@
     "native_target": "NativeBridge.Incremental.SSRUnder.reflexiveDone",
     "scope": "Full source universe range. Under/Over are the supplied native relation; reflexivity is Lean Std.Refl. Original statements independently proved and related to matching source-free universal propositions.",
     "original_statement_proof": "NativeBridge.Incremental.SSRUnder.under_done_proof"
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.digits",
+    "profile": "Uint63Operations",
+    "certificate": "NativeBridge.Incremental.Uint63Operations.digits_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Uint63Operations.width",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.Uint63Operations.width",
+    "scope": "All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.size",
+    "profile": "Uint63Operations",
+    "certificate": "NativeBridge.Incremental.Uint63Operations.size_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Uint63Operations.bitCount",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.Uint63Operations.bitCount",
+    "scope": "All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.max_int",
+    "profile": "Uint63Operations",
+    "certificate": "NativeBridge.Incremental.Uint63Operations.maxInt_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Uint63Operations.largest",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.Uint63Operations.largest",
+    "scope": "All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addcarry",
+    "profile": "Uint63Operations",
+    "certificate": "NativeBridge.Incremental.Uint63Operations.addcarry_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Uint63Operations.addOne",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.Uint63Operations.addOne",
+    "scope": "All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addc_def",
+    "profile": "Uint63Operations",
+    "certificate": "NativeBridge.Incremental.Uint63Operations.addc_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Uint63Operations.addWithCarry",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.Uint63Operations.addWithCarry",
+    "scope": "All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addcarryc_def",
+    "profile": "Uint63Operations",
+    "certificate": "NativeBridge.Incremental.Uint63Operations.addcarryc_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Uint63Operations.addOneWithCarry",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.Uint63Operations.addOneWithCarry",
+    "scope": "All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.subc_def",
+    "profile": "Uint63Operations",
+    "certificate": "NativeBridge.Incremental.Uint63Operations.subc_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Uint63Operations.subWithBorrow",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.Uint63Operations.subWithBorrow",
+    "scope": "All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.subcarryc_def",
+    "profile": "Uint63Operations",
+    "certificate": "NativeBridge.Incremental.Uint63Operations.subcarryc_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Uint63Operations.subOneWithBorrow",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.Uint63Operations.subOneWithBorrow",
+    "scope": "All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.diveucl_def",
+    "profile": "Uint63Operations",
+    "certificate": "NativeBridge.Incremental.Uint63Operations.divPair_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Uint63Operations.divisionPair",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.Uint63Operations.divisionPair",
+    "scope": "All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.compare_def",
+    "profile": "Uint63Operations",
+    "certificate": "NativeBridge.Incremental.Uint63Operations.compare_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Uint63Operations.compareWords",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.Uint63Operations.compareWords",
+    "scope": "All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.is_zero",
+    "profile": "Uint63Operations",
+    "certificate": "NativeBridge.Incremental.Uint63Operations.isZero_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Uint63Operations.isZero",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.Uint63Operations.isZero",
+    "scope": "All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addmuldiv_def",
+    "profile": "Uint63Operations",
+    "certificate": "NativeBridge.Incremental.Uint63Operations.funnel_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Uint63Operations.funnelShift",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.Uint63Operations.funnelShift",
+    "scope": "All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.is_even",
+    "profile": "Uint63Operations",
+    "certificate": "NativeBridge.Incremental.Uint63Operations.isEven_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Uint63Operations.isEven",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.Uint63Operations.isEven",
+    "scope": "All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.get_digit",
+    "profile": "Uint63Operations",
+    "certificate": "NativeBridge.Incremental.Uint63Operations.getDigit_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Uint63Operations.readBit",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.Uint63Operations.readBit",
+    "scope": "All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.bit",
+    "profile": "Uint63Operations",
+    "certificate": "NativeBridge.Incremental.Uint63Operations.bit_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Uint63Operations.readBit",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.Uint63Operations.readBit",
+    "scope": "All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.set_digit",
+    "profile": "Uint63Operations",
+    "certificate": "NativeBridge.Incremental.Uint63Operations.setDigit_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Uint63Operations.writeBit",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.Uint63Operations.writeBit",
+    "scope": "All inputs. Native BitVec/Nat operations with explicit index conversion. Carry/borrow flags use uaddOverflow/usubOverflow or the stated extra-one inequality; get_digit/bit equal getLsbD even out of range. set_digit preserves x for indices >=63."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.of_pos_rec",
+    "profile": "Uint63Conversions",
+    "certificate": "NativeBridge.Incremental.Uint63Conversions.ofPosRec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Uint63Conversions.positiveFuel",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.Uint63Conversions.positiveFuel",
+    "scope": "All inputs, including arbitrary recursion fuel and negative integers. of_pos_rec keeps low n bits then constructs BitVec 63; of_Z equals BitVec.ofInt 63; to_Z_rec equals the unsigned value modulo 2^n; to_Z equals unsigned toNat cast to Int."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.of_pos",
+    "profile": "Uint63Conversions",
+    "certificate": "NativeBridge.Incremental.Uint63Conversions.ofPos_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Uint63Conversions.ofPositive",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.Uint63Conversions.ofPositive",
+    "scope": "All inputs, including arbitrary recursion fuel and negative integers. of_pos_rec keeps low n bits then constructs BitVec 63; of_Z equals BitVec.ofInt 63; to_Z_rec equals the unsigned value modulo 2^n; to_Z equals unsigned toNat cast to Int."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.of_Z",
+    "profile": "Uint63Conversions",
+    "certificate": "NativeBridge.Incremental.Uint63Conversions.ofZ_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Uint63Conversions.ofInteger",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.Uint63Conversions.ofInteger",
+    "scope": "All inputs, including arbitrary recursion fuel and negative integers. of_pos_rec keeps low n bits then constructs BitVec 63; of_Z equals BitVec.ofInt 63; to_Z_rec equals the unsigned value modulo 2^n; to_Z equals unsigned toNat cast to Int."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.wB",
+    "profile": "Uint63Conversions",
+    "certificate": "NativeBridge.Incremental.Uint63Conversions.wordBase_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Uint63Conversions.wordBase",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.Uint63Conversions.wordBase",
+    "scope": "All inputs, including arbitrary recursion fuel and negative integers. of_pos_rec keeps low n bits then constructs BitVec 63; of_Z equals BitVec.ofInt 63; to_Z_rec equals the unsigned value modulo 2^n; to_Z equals unsigned toNat cast to Int."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z_rec",
+    "profile": "Uint63Conversions",
+    "certificate": "NativeBridge.Incremental.Uint63Conversions.toZRec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Uint63Conversions.unsignedFuel",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.Uint63Conversions.unsignedFuel",
+    "scope": "All inputs, including arbitrary recursion fuel and negative integers. of_pos_rec keeps low n bits then constructs BitVec 63; of_Z equals BitVec.ofInt 63; to_Z_rec equals the unsigned value modulo 2^n; to_Z equals unsigned toNat cast to Int."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z",
+    "profile": "Uint63Conversions",
+    "certificate": "NativeBridge.Incremental.Uint63Conversions.toZ_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.Uint63Conversions.unsignedInteger",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.Uint63Conversions.unsignedInteger",
+    "scope": "All inputs, including arbitrary recursion fuel and negative integers. of_pos_rec keeps low n bits then constructs BitVec 63; of_Z equals BitVec.ofInt 63; to_Z_rec equals the unsigned value modulo 2^n; to_Z equals unsigned toNat cast to Int."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.eqb_correct",
+    "profile": "Uint63Statements",
+    "certificate": "NativeBridge.Incremental.Uint63Statements.eqbCorrect_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Uint63Statements.eqbCorrect",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Uint63Statements.eqbCorrect",
+    "scope": "All 63-bit inputs and all word-valued bit indices, including out-of-range indices. Original mechanical statements independently proved; native statements use BitVec equality, getLsbD and unsigned integer roundtrip.",
+    "original_statement_proof": "NativeBridge.Incremental.Uint63Statements.eqbCorrect_proof"
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.eqb_refl",
+    "profile": "Uint63Statements",
+    "certificate": "NativeBridge.Incremental.Uint63Statements.eqbRefl_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Uint63Statements.eqbRefl",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Uint63Statements.eqbRefl",
+    "scope": "All 63-bit inputs and all word-valued bit indices, including out-of-range indices. Original mechanical statements independently proved; native statements use BitVec equality, getLsbD and unsigned integer roundtrip.",
+    "original_statement_proof": "NativeBridge.Incremental.Uint63Statements.eqbRefl_proof"
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.land_spec",
+    "profile": "Uint63Statements",
+    "certificate": "NativeBridge.Incremental.Uint63Statements.andBits_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Uint63Statements.andBits",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Uint63Statements.andBits",
+    "scope": "All 63-bit inputs and all word-valued bit indices, including out-of-range indices. Original mechanical statements independently proved; native statements use BitVec equality, getLsbD and unsigned integer roundtrip.",
+    "original_statement_proof": "NativeBridge.Incremental.Uint63Statements.andBits_proof"
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.lor_spec",
+    "profile": "Uint63Statements",
+    "certificate": "NativeBridge.Incremental.Uint63Statements.orBits_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Uint63Statements.orBits",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Uint63Statements.orBits",
+    "scope": "All 63-bit inputs and all word-valued bit indices, including out-of-range indices. Original mechanical statements independently proved; native statements use BitVec equality, getLsbD and unsigned integer roundtrip.",
+    "original_statement_proof": "NativeBridge.Incremental.Uint63Statements.orBits_proof"
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.lxor_spec",
+    "profile": "Uint63Statements",
+    "certificate": "NativeBridge.Incremental.Uint63Statements.xorBits_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Uint63Statements.xorBits",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Uint63Statements.xorBits",
+    "scope": "All 63-bit inputs and all word-valued bit indices, including out-of-range indices. Original mechanical statements independently proved; native statements use BitVec equality, getLsbD and unsigned integer roundtrip.",
+    "original_statement_proof": "NativeBridge.Incremental.Uint63Statements.xorBits_proof"
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.of_to_Z",
+    "profile": "Uint63Statements",
+    "certificate": "NativeBridge.Incremental.Uint63Statements.unsignedRoundtrip_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Uint63Statements.unsignedRoundtrip",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Uint63Statements.unsignedRoundtrip",
+    "scope": "All 63-bit inputs and all word-valued bit indices, including out-of-range indices. Original mechanical statements independently proved; native statements use BitVec equality, getLsbD and unsigned integer roundtrip.",
+    "original_statement_proof": "NativeBridge.Incremental.Uint63Statements.unsignedRoundtrip_proof"
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addc_def_spec",
+    "profile": "Uint63DefinitionSpecs",
+    "certificate": "NativeBridge.Incremental.Uint63DefinitionSpecs.addAgreement_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Uint63DefinitionSpecs.addAgreement",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Uint63DefinitionSpecs.addAgreement",
+    "scope": "All 63-bit inputs. Independently proved equality of source primitive and source definitional implementations. Native carry/borrow specifications retain overflow inequalities; division-pair and funnel specifications normalize to equality of the same native expression.",
+    "original_statement_proof": "NativeBridge.Incremental.Uint63DefinitionSpecs.addAgreement_proof"
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addcarryc_def_spec",
+    "profile": "Uint63DefinitionSpecs",
+    "certificate": "NativeBridge.Incremental.Uint63DefinitionSpecs.addOneAgreement_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Uint63DefinitionSpecs.addOneAgreement",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Uint63DefinitionSpecs.addOneAgreement",
+    "scope": "All 63-bit inputs. Independently proved equality of source primitive and source definitional implementations. Native carry/borrow specifications retain overflow inequalities; division-pair and funnel specifications normalize to equality of the same native expression.",
+    "original_statement_proof": "NativeBridge.Incremental.Uint63DefinitionSpecs.addOneAgreement_proof"
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.subc_def_spec",
+    "profile": "Uint63DefinitionSpecs",
+    "certificate": "NativeBridge.Incremental.Uint63DefinitionSpecs.subAgreement_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Uint63DefinitionSpecs.subAgreement",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Uint63DefinitionSpecs.subAgreement",
+    "scope": "All 63-bit inputs. Independently proved equality of source primitive and source definitional implementations. Native carry/borrow specifications retain overflow inequalities; division-pair and funnel specifications normalize to equality of the same native expression.",
+    "original_statement_proof": "NativeBridge.Incremental.Uint63DefinitionSpecs.subAgreement_proof"
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.subcarryc_def_spec",
+    "profile": "Uint63DefinitionSpecs",
+    "certificate": "NativeBridge.Incremental.Uint63DefinitionSpecs.subOneAgreement_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Uint63DefinitionSpecs.subOneAgreement",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Uint63DefinitionSpecs.subOneAgreement",
+    "scope": "All 63-bit inputs. Independently proved equality of source primitive and source definitional implementations. Native carry/borrow specifications retain overflow inequalities; division-pair and funnel specifications normalize to equality of the same native expression.",
+    "original_statement_proof": "NativeBridge.Incremental.Uint63DefinitionSpecs.subOneAgreement_proof"
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.compare_def_spec",
+    "profile": "Uint63DefinitionSpecs",
+    "certificate": "NativeBridge.Incremental.Uint63DefinitionSpecs.compareAgreement_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Uint63DefinitionSpecs.compareAgreement",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Uint63DefinitionSpecs.compareAgreement",
+    "scope": "All 63-bit inputs. Independently proved equality of source primitive and source definitional implementations. Native carry/borrow specifications retain overflow inequalities; division-pair and funnel specifications normalize to equality of the same native expression.",
+    "original_statement_proof": "NativeBridge.Incremental.Uint63DefinitionSpecs.compareAgreement_proof"
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.diveucl_def_spec",
+    "profile": "Uint63DefinitionSpecs",
+    "certificate": "NativeBridge.Incremental.Uint63DefinitionSpecs.divPairAgreement_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Uint63DefinitionSpecs.divPairAgreement",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Uint63DefinitionSpecs.divPairAgreement",
+    "scope": "All 63-bit inputs. Independently proved equality of source primitive and source definitional implementations. Native carry/borrow specifications retain overflow inequalities; division-pair and funnel specifications normalize to equality of the same native expression.",
+    "original_statement_proof": "NativeBridge.Incremental.Uint63DefinitionSpecs.divPairAgreement_proof"
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addmuldiv_def_spec",
+    "profile": "Uint63DefinitionSpecs",
+    "certificate": "NativeBridge.Incremental.Uint63DefinitionSpecs.funnelAgreement_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Uint63DefinitionSpecs.funnelAgreement",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Uint63DefinitionSpecs.funnelAgreement",
+    "scope": "All 63-bit inputs. Independently proved equality of source primitive and source definitional implementations. Native carry/borrow specifications retain overflow inequalities; division-pair and funnel specifications normalize to equality of the same native expression.",
+    "original_statement_proof": "NativeBridge.Incremental.Uint63DefinitionSpecs.funnelAgreement_proof"
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.ltb_spec",
+    "profile": "Uint63OrderSpecs",
+    "certificate": "NativeBridge.Incremental.Uint63OrderSpecs.unsignedLtSpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Uint63OrderSpecs.unsignedLtSpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Uint63OrderSpecs.unsignedLtSpec",
+    "scope": "All 63-bit inputs. Boolean unsigned comparison iff the corresponding order on unsigned native integers. Source Z comparison is independently rechecked in this module closure; original statement independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.Uint63OrderSpecs.unsignedLtSpec_proof"
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.leb_spec",
+    "profile": "Uint63OrderSpecs",
+    "certificate": "NativeBridge.Incremental.Uint63OrderSpecs.unsignedLeSpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.Uint63OrderSpecs.unsignedLeSpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.Uint63OrderSpecs.unsignedLeSpec",
+    "scope": "All 63-bit inputs. Boolean unsigned comparison iff the corresponding order on unsigned native integers. Source Z comparison is independently rechecked in this module closure; original statement independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.Uint63OrderSpecs.unsignedLeSpec_proof"
   }
 ]
