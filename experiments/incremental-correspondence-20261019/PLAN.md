@@ -134,3 +134,7 @@ SSR 新增 27 个谓词、50 个完全原生陈述、bijective 与 NonPropType.t
 ## 第二十三批执行记录
 
 SSR 包装类型、依赖数据与部分函数新增 23 根，总完成 1261。71 个验证 profile、999 份增量证书共同导入通过；ssrfun 剩余四个 opaque 计算函数，需额外计算方程，不能只读 body 后视为对应。接下来在记录该依赖缺口后继续 ssrbool 等透明操作与证明条件闭合；不改变冻结机械产物的声明含义。见 SSR_DATA_RESULTS.md。
+
+## 第二十四批执行记录
+
+SSR Bool 新增 14 类型、34 运算、46 完整原生陈述，共 94 根，总完成 1355。模块 451 根完成 251 根；75 个部分陈述中 46 个完成，29 个继续保留源符号。74 个验证 profile、1093 份覆盖证书共同导入通过。下一步补 manifest/keyed 包装、mem/prop_in/prop_on 依赖及共享证明条件。计算性 opaque 的方程缺口单独保留，不以 body 副本冒充对应证明。见 SSR_BOOL_DATA_RESULTS.md。

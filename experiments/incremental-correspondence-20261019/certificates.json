@@ -6324,5 +6324,437 @@
     ],
     "native_expression": "∀ (T : Sort u) (x y : T) (h : x = y), h.trans rfl = h",
     "original_statement_proof": "NativeBridge.Incremental.SSRFunConditions.etrans_proof"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.simpl_pred",
+    "profile": "SSRBoolData",
+    "certificate": "NativeBridge.Incremental.SSRBoolData.simplPredIso",
+    "kind": "TYPE_ISO",
+    "target": "A → Bool",
+    "scope": "A : Type u; both inverse laws",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.simpl_rel",
+    "profile": "SSRBoolData",
+    "certificate": "NativeBridge.Incremental.SSRBoolData.simplRelIso",
+    "kind": "TYPE_ISO",
+    "target": "A → A → Bool",
+    "scope": "A : Type u; both inverse laws",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.mem_pred",
+    "profile": "SSRBoolData",
+    "certificate": "NativeBridge.Incremental.SSRBoolData.memIso",
+    "kind": "TYPE_ISO",
+    "target": "A → Bool",
+    "scope": "A : Type u; both inverse laws",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.predArgType",
+    "profile": "SSRBoolData",
+    "certificate": "NativeBridge.Incremental.SSRBoolData.predArgIso",
+    "kind": "TYPE_ISO",
+    "target": "Type u",
+    "scope": "universe preserved; both inverse laws",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.predType",
+    "profile": "SSRBoolData",
+    "certificate": "NativeBridge.Incremental.SSRBoolData.predTypeIso",
+    "kind": "TYPE_ISO",
+    "target": "Sigma (fun S : Type u => S → A → Bool)",
+    "scope": "A : Type v; independent carrier universe u; both inverse laws",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.implies",
+    "profile": "SSRBoolData",
+    "certificate": "NativeBridge.Incremental.SSRBoolData.impliesIso",
+    "kind": "TYPE_ISO",
+    "target": "P → Q",
+    "scope": "P : Sort u; Q : Sort v; both inverse laws",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.decidable",
+    "profile": "SSRBoolData",
+    "certificate": "NativeBridge.Incremental.SSRBoolData.decidableIso",
+    "kind": "TYPE_ISO",
+    "target": "Decidable P",
+    "scope": "P : Prop; both inverse laws; no choice axiom",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.sort_of_predArgType",
+    "profile": "SSRBoolData",
+    "certificate": "NativeBridge.Incremental.SSRBoolData.sort_of_predArgType_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id on Type u",
+    "scope": "Type parameters with source universe levels preserved",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.SimplPred",
+    "profile": "SSRBoolData",
+    "certificate": "NativeBridge.Incremental.SSRBoolData.simplPred_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id on A → Bool",
+    "scope": "Type parameters with source universe levels preserved",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.SimplRel",
+    "profile": "SSRBoolData",
+    "certificate": "NativeBridge.Incremental.SSRBoolData.simplRel_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id on A → A → Bool",
+    "scope": "Type parameters with source universe levels preserved",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.fun_of_pred",
+    "profile": "SSRBoolData",
+    "certificate": "NativeBridge.Incremental.SSRBoolData.fun_of_pred_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id on A → Bool",
+    "scope": "Type parameters with source universe levels preserved",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.fun_of_rel",
+    "profile": "SSRBoolData",
+    "certificate": "NativeBridge.Incremental.SSRBoolData.fun_of_rel_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id on A → A → Bool",
+    "scope": "Type parameters with source universe levels preserved",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.pred0",
+    "profile": "SSRBoolData",
+    "certificate": "NativeBridge.Incremental.SSRBoolData.pred0_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "fun _ => false",
+    "scope": "Type parameters with source universe levels preserved",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.predT",
+    "profile": "SSRBoolData",
+    "certificate": "NativeBridge.Incremental.SSRBoolData.predT_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "fun _ => true",
+    "scope": "Type parameters with source universe levels preserved",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.predI",
+    "profile": "SSRBoolData",
+    "certificate": "NativeBridge.Incremental.SSRBoolData.predI_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "fun x => p x && q x",
+    "scope": "Type parameters with source universe levels preserved",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.predU",
+    "profile": "SSRBoolData",
+    "certificate": "NativeBridge.Incremental.SSRBoolData.predU_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "fun x => p x || q x",
+    "scope": "Type parameters with source universe levels preserved",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.predC",
+    "profile": "SSRBoolData",
+    "certificate": "NativeBridge.Incremental.SSRBoolData.predC_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "fun x => !(p x)",
+    "scope": "Type parameters with source universe levels preserved",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.predD",
+    "profile": "SSRBoolData",
+    "certificate": "NativeBridge.Incremental.SSRBoolData.predD_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "fun x => !(q x) && p x",
+    "scope": "Type parameters with source universe levels preserved",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.preim",
+    "profile": "SSRBoolData",
+    "certificate": "NativeBridge.Incremental.SSRBoolData.preim_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Function.comp",
+    "scope": "Type parameters with source universe levels preserved",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.relU",
+    "profile": "SSRBoolData",
+    "certificate": "NativeBridge.Incremental.SSRBoolData.relU_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "fun x y => r x y || s x y",
+    "scope": "Type parameters with source universe levels preserved",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.relpre",
+    "profile": "SSRBoolData",
+    "certificate": "NativeBridge.Incremental.SSRBoolData.relpre_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "fun x y => r (f x) (f y)",
+    "scope": "Type parameters with source universe levels preserved",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.pred_of_argType",
+    "profile": "SSRBoolData",
+    "certificate": "NativeBridge.Incremental.SSRBoolData.pred_of_argType_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "fun _ => true",
+    "scope": "Type parameters with source universe levels preserved",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.pred_of_mem",
+    "profile": "SSRBoolData",
+    "certificate": "NativeBridge.Incremental.SSRBoolData.pred_of_mem_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id on A → Bool",
+    "scope": "Type parameters with source universe levels preserved",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.in_mem",
+    "profile": "SSRBoolData",
+    "certificate": "NativeBridge.Incremental.SSRBoolData.in_mem_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "function application",
+    "scope": "Type parameters with source universe levels preserved",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.simpl_of_mem",
+    "profile": "SSRBoolData",
+    "certificate": "NativeBridge.Incremental.SSRBoolData.simpl_of_mem_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id on A → Bool",
+    "scope": "Type parameters with source universe levels preserved",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.pred_oapp",
+    "profile": "SSRBoolData",
+    "certificate": "NativeBridge.Incremental.SSRBoolData.pred_oapp_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Option.any",
+    "scope": "Type parameters with source universe levels preserved",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.pred_sort",
+    "profile": "SSRBoolData",
+    "certificate": "NativeBridge.Incremental.SSRBoolData.pred_sort_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Sigma.fst",
+    "scope": "Type parameters with source universe levels preserved",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.topred",
+    "profile": "SSRBoolData",
+    "certificate": "NativeBridge.Incremental.SSRBoolData.topred_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Sigma.snd applied to native carrier element",
+    "scope": "Type parameters with source universe levels preserved",
+    "target_class": "existing_api"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.unless",
+    "profile": "SSRBoolData",
+    "certificate": "NativeBridge.Incremental.SSRBoolData.unless_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Nonempty P ∨ Nonempty Q",
+    "scope": "full Sort parameters; constructive equivalence; no classical axiom",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.classically",
+    "profile": "SSRBoolData",
+    "certificate": "NativeBridge.Incremental.SSRBoolData.classically_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "¬¬ Nonempty P",
+    "scope": "full Sort parameters; constructive equivalence; no classical axiom",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.and3",
+    "profile": "SSRBoolLogic",
+    "certificate": "NativeBridge.Incremental.SSRBoolLogic.and3Iso",
+    "kind": "TYPE_ISO",
+    "target": "right-associated native And of 3 propositions",
+    "scope": "Prop; both inverse laws",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.and3_rec",
+    "profile": "SSRBoolLogic",
+    "certificate": "NativeBridge.Incremental.SSRBoolLogic.and3_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "apply branch function to native conjunction projections",
+    "scope": "native conjunction inputs; inverse conversion; result Type",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.and3_rect",
+    "profile": "SSRBoolLogic",
+    "certificate": "NativeBridge.Incremental.SSRBoolLogic.and3_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "apply branch function to native conjunction projections",
+    "scope": "native conjunction inputs; inverse conversion; result Sort u",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.and4",
+    "profile": "SSRBoolLogic",
+    "certificate": "NativeBridge.Incremental.SSRBoolLogic.and4Iso",
+    "kind": "TYPE_ISO",
+    "target": "right-associated native And of 4 propositions",
+    "scope": "Prop; both inverse laws",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.and4_rec",
+    "profile": "SSRBoolLogic",
+    "certificate": "NativeBridge.Incremental.SSRBoolLogic.and4_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "apply branch function to native conjunction projections",
+    "scope": "native conjunction inputs; inverse conversion; result Type",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.and4_rect",
+    "profile": "SSRBoolLogic",
+    "certificate": "NativeBridge.Incremental.SSRBoolLogic.and4_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "apply branch function to native conjunction projections",
+    "scope": "native conjunction inputs; inverse conversion; result Sort u",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.and5",
+    "profile": "SSRBoolLogic",
+    "certificate": "NativeBridge.Incremental.SSRBoolLogic.and5Iso",
+    "kind": "TYPE_ISO",
+    "target": "right-associated native And of 5 propositions",
+    "scope": "Prop; both inverse laws",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.and5_rec",
+    "profile": "SSRBoolLogic",
+    "certificate": "NativeBridge.Incremental.SSRBoolLogic.and5_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "apply branch function to native conjunction projections",
+    "scope": "native conjunction inputs; inverse conversion; result Type",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.and5_rect",
+    "profile": "SSRBoolLogic",
+    "certificate": "NativeBridge.Incremental.SSRBoolLogic.and5_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "apply branch function to native conjunction projections",
+    "scope": "native conjunction inputs; inverse conversion; result Sort u",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.or3",
+    "profile": "SSRBoolLogic",
+    "certificate": "NativeBridge.Incremental.SSRBoolLogic.or3Iso",
+    "kind": "TYPE_ISO",
+    "target": "right-associated native Or of 3 propositions",
+    "scope": "Prop; both inverse laws",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.or4",
+    "profile": "SSRBoolLogic",
+    "certificate": "NativeBridge.Incremental.SSRBoolLogic.or4Iso",
+    "kind": "TYPE_ISO",
+    "target": "right-associated native Or of 4 propositions",
+    "scope": "Prop; both inverse laws",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.collective_pred",
+    "profile": "SSRBoolLogic",
+    "certificate": "NativeBridge.Incremental.SSRBoolLogic.collectiveIso",
+    "kind": "TYPE_ISO",
+    "target": "A → Bool",
+    "scope": "A : Type u; both inverse laws",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.applicative_pred",
+    "profile": "SSRBoolLogic",
+    "certificate": "NativeBridge.Incremental.SSRBoolLogic.applicativeIso",
+    "kind": "TYPE_ISO",
+    "target": "A → Bool",
+    "scope": "A : Type u; both inverse laws",
+    "target_class": "native_representation"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.PredOfSimpl.coerce",
+    "profile": "SSRBoolLogic",
+    "certificate": "NativeBridge.Incremental.SSRBoolLogic.coerce_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id on A → Bool",
+    "scope": "A : Type u; native Bool-valued predicates",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.pre_symmetric",
+    "profile": "SSRBoolLogic",
+    "certificate": "NativeBridge.Incremental.SSRBoolLogic.pre_symmetric_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x y, r x y = true → r y x = true",
+    "scope": "A : Type u; native Bool-valued predicates",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.left_transitive",
+    "profile": "SSRBoolLogic",
+    "certificate": "NativeBridge.Incremental.SSRBoolLogic.left_transitive_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x y, r x y = true → ∀ z, r x z = r y z",
+    "scope": "A : Type u; native Bool-valued predicates",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.right_transitive",
+    "profile": "SSRBoolLogic",
+    "certificate": "NativeBridge.Incremental.SSRBoolLogic.right_transitive_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x y, r x y = true → ∀ z, r z x = r z y",
+    "scope": "A : Type u; native Bool-valued predicates",
+    "target_class": "native_expression"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.equivalence_rel",
+    "profile": "SSRBoolLogic",
+    "certificate": "NativeBridge.Incremental.SSRBoolLogic.equivalence_rel_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "∀ x y z, r z z = true ∧ (r x y = true → r x z = r y z)",
+    "scope": "A : Type u; native Bool-valued predicates",
+    "target_class": "native_expression"
   }
 ]

@@ -289,3 +289,21 @@ flowchart TD
 ```
 
 不透明函数的 body 存在不提供声明与 body 的等式。同步 kernel 的 rfl 拒绝及实际前置条件分别见 reports/ssrfun-opacity.json 与冻结翻译报告；这四项没有加入完成数。
+
+## 第二十四批：谓词包装支撑陈述原生化
+
+```mermaid
+flowchart TD
+  A["机械 Bool 双向逆"] --> B["simpl_pred / simpl_rel / mem_pred"]
+  B --> C["逐点布尔运算与 Option.any"]
+  A --> D["predType 的载体及解释函数 Sigma"]
+  E["And / Or 与 Decidable 的双向逆"] --> F["消去器及量词对应"]
+  G["classically 双重否定 / unless 析取"] --> H["46 个完整原生陈述"]
+  C --> H
+  D --> H
+  F --> H
+  I["manifest / keyed 等包装：尚未完成"] --> J["其余 29 个部分陈述"]
+  K["128 个条件根的共享前置证明"] --> L["后续条件闭合"]
+```
+
+本批 46 个陈述 iff 不增加业务定理证明数。剩余符号逐项保存在 reports/ssrbool-extended-statement-candidates.json。
