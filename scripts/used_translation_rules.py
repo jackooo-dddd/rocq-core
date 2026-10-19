@@ -102,83 +102,161 @@ def render():
             assert target in x["primary"]["consts"]
             type_rows.append((x["name"], target))
     assert len(type_rows) == 4
-    mpath = ROOT / "experiments/used-rule-coverage-20261019/M_RULE_USAGE.json"
-    measurement = json.loads(mpath.read_text()) if mpath.exists() else None
-    mrules = [x for x in measurement["rules"] if x["used"]] if measurement else []
-    if measurement:
-        assert measurement["scope"]["success"] and measurement["scope"]["distinct_requested"] == 2180
-        assert not measurement["target_changes"]
-        assert all(x["surviving_events_including_repeated_dependencies"] > 0 for x in mrules)
+    mbase = ROOT / "experiments/used-rule-coverage-20261019"
+    measurement = json.loads((mbase / "M_RULE_USAGE.json").read_text())
+    validation = json.loads((mbase / "M_PRUNING_VALIDATION.json").read_text())
+    instrumentation = json.loads((mbase / "INSTRUMENTATION_TESTS.json").read_text())
+    mrules = [x for x in measurement["rules"] if x["used"]]
+    unused_m = [x["id"] for x in measurement["rules"] if not x["used"]]
+    scope = measurement["scope"]
+    assert scope == validation, "M measurement and replay must describe the same run"
+    assert scope["success"] and scope["status"] == "PASS"
+    assert scope["distinct_requested"] == scope["roots"] == len(evidence)
+    assert scope["blocked_roots"] == 0 and not scope["validation_failures"]
+    assert not measurement["target_changes"] and scope["target_changes"] == 0
+    assert scope["modules"] == len(scope["records"]) == 67
+    assert all(r["checked"] for r in scope["records"])
+    for r in scope["records"]:
+        if r["roots"]:
+            assert r["translate_exit"] == 0
+            assert all(r[k] == "OK" for k in ("consumer", "audit", "source_roundtrip"))
+    assert sorted(scope["disabled_M_rules"]) == sorted(unused_m)
+    assert len(mrules) == measurement["rule_count_used"]
+    for r in measurement["rules"]:
+        roots, decls = set(r["direct_roots"]), set(r["distinct_declarations"])
+        assert len(roots) == len(r["direct_roots"]) == r["direct_root_count"]
+        assert len(decls) == len(r["distinct_declarations"]) == r["distinct_declaration_count"]
+        assert roots == decls.intersection(by_name)
+        assert r["used"] == (r["surviving_events_including_repeated_dependencies"] > 0)
+        assert r["used"] == bool(decls)
+    assert instrumentation["rollback_test"] == instrumentation["documented_entrypoint"] == "PASS"
+    tests = {x["case"]: x for x in instrumentation["tests"]}
+    assert tests["accepted"]["status"] == "TRANSLATED_AND_CHECKED"
+    assert tests["accepted"]["retained_M_rules"] == ["M03"]
+    for case, status in [("disabled", "TRANSLATION_FAILED"), ("normal_failure", "KERNEL_REJECTED")]:
+        assert tests[case]["status"] == status and not tests[case]["retained_M_rules"]
+    from collections import Counter
+    statuses = Counter(x["primary"]["status"] for x in evidence)
+    assert dict(statuses) == scope["root_counts"]
+    ids = [r[0] for r in rules] + [r["id"] for r in mrules]
+    assert len(ids) == len(set(ids))
+    count = len(ids)
+    populated = sum(bool(r["roots"]) for r in scope["records"])
     link = "../experiments/mechanical-nat-eq-20261019/results/"
+    mlink = "../experiments/used-rule-coverage-20261019/"
     lines = [
         "# 当前 Corelib 翻译中有使用证据的规则", "",
-        "范围：机械 nat／eq 基线 mechanical-nat-eq-20261019/full-v1，67 个模块、2180 个去重根声明。"
-        "依据最终通过检查的译文、导出产物和最终报告；不是历史所有运行的并集，也不包含后续 correspondence 证明规则。", "",
-        f"本文件列出 **{len(rules)} 个有证据的翻译／宇宙处理条目**，并逐项列出 **4 个原语类型映射、61 个原语操作映射**。"
-        "三个数字按不同粒度分列，不能相加后宣称是独立语义规则的最小数量。", "",
-        "只收录当前产物能确认的使用。仅有源语法特征、策略开关、失败尝试、检查覆盖范围或代码实现，"
-        "不足以进入本表。缺少独立记录的机制也不列出；因此这是**已确认使用的清单，不是所有实际执行路径的完整追踪**。"
-        "未列出不等于从未使用，更不构成删除该代码的依据。", "",
-        "“主项 / 含分支”均为去重根声明数：左数检查根的主表示，右数将该根的 quality 分支纳入后去重。"
-        "同一根可以使用多项规则，各行不能相加；这些数字不是执行调用次数。"
-        "statement 通过检查仅表示陈述合法，带前提的译文通过检查也不表示其前提已证明。", "",
-        "**已确认的翻译与宇宙处理**", "",
-        "| 原编号 | 规则／机制 | 实际作用 | 主项 / 含分支 | 使用证据 | 命中实例 |",
-        "|---|---|---|---:|---|---|"]
+        f"当前共 **{count} 个有使用证据的翻译／宇宙处理条目 = {len(rules)} 个原有条目 + {len(mrules)} 个实测 M 类条目**。"
+        f"另列 **{len(type_rows)} 个原语类型映射、{len(primitive_rows)} 个原语操作映射**；映射实例与机制条目粒度不同，分别统计。", "",
+        f"范围：当前 Corelib 清单的 **{scope['modules']} 个模块、{scope['roots']} 个去重根声明**。"
+        "原有条目依据机械 nat／eq 基线 mechanical-nat-eq-20261019/full-v1 的导出产物、最终译文与报告；"
+        "M 类依据 used-rule-coverage-20261019 的成功路径记录及同范围重跑。重跑目标声明与原基线一致。"
+        "本文件不汇总历史运行的命中，也不包含后续 correspondence 证明规则。", "",
+        "源 nat、eq 均生成独立的机械归纳类型，计入 T07；没有启用将这两个根直接替换为 Lean Nat、Eq 的旧 T06 bootstrap。", "",
+        "**如何读数量和证据**", "",
+        "本表只纳入能由当前产物或最终保留路径确认的条目。规则有实现、开关打开、源端出现某种语法，"
+        "或失败尝试曾经过某分支，都不能单独算作使用证据。", "",
+        "| 计数列 | 单位与含义 |",
+        "|---|---|",
+        "| 主表示根数 | 检查每个根的主译文；符合该行证据条件的根按源名称去重。 |",
+        "| 含 quality 分支根数 | 同时检查主译文和该根的 quality 分支；任一表示命中即计该根一次。 |",
+        "| M 直接根数 | 本次保留记录归属到请求根本身的声明数；不把仅在其依赖中命中的规则归给该根。 |",
+        "| M 全部声明数 | 本次保留记录涉及的全部源声明，含根、依赖和辅助声明；跨模块重复出现按名称去重。 |",
+        "| 映射根数 | 该原语映射涉及的去重源根；已检查这些根自身的目标 AST。 |", "",
+        "这些列均不是执行调用次数，也不是成功率。同一声明可命中多条规则，各行不能相加。"
+        "M 的“全部声明数”与“含 quality 分支根数”统计对象不同，不能互换。"
+        "M 原始 JSON 另有含重复依赖的保留事件数，本文没有把它当作独立声明数或尝试总次数。", "",
+        "| 证据类别 | 具体检查了什么 |",
+        "|---|---|",
+        "| 产物结构 | 在最终通过检查的目标 AST 中找到变量、绑定结构、引用或 Sort 等对应结构。 |",
+        "| 导出产物 | 导出 IR 已实际产生具名 obligation，且对应根译文通过检查；不只是源端有证明语法。 |",
+        "| 结果报告字段 | 最终接受结果有对应字段和值，例如实际展开名称、层级解或提升信息；逐行说明判断条件。 |",
+        "| 分支核对 | 源 quality 家族成员数与全部已通过检查的译文分支一致。 |",
+        "| 成功路径记录 | M 转换实际生效，且其记录留在最终接受环境中；被回滚或返回失败状态的尝试不计。 |",
+        "| 原语目标引用 | 映射根自身的最终 AST 实际引用指定目标表示或操作。 |", "",
+        f"**翻译、导出与宇宙处理：{len(rules)} 项**", "",
+        "保留原编号便于追溯；编号不连续表示其他目录项没有列入本次已确认清单。"
+        "U06 等条目属于接受条件检查，因此这里使用“处理条目”，不把所有条目都称作语义改写。", "",
+        "| 原编号 | 规则／机制 | 实际作用 | 主表示根数 | 含 quality 分支根数 | 证据类别及判断条件 | 命中实例 |",
+        "|---|---|---|---:|---:|---|---|"]
     def esc(s):
         return str(s).replace("|", "&#124;").replace("\n", " ")
+    ast_rules = {"T01", "T02", "T03", "U02"}
     for key, name, desc, primary, family, basis in sorted(rules, key=lambda r: r[0]):
         example = family[0]
         if key == "T07":
             example = "Corelib.Init.Datatypes.nat；Corelib.Init.Logic.eq"
             assert all(n in family for n in example.split("；"))
-        cells = [key, name, desc, f"{len(primary)} / {len(family)}", basis, example]
+        category = ("产物结构" if key in ast_rules else "导出产物" if key == "E04"
+                    else "分支核对" if key == "Q05" else "结果报告字段")
+        cells = [key, name, desc, len(primary), len(family), category + "：" + basis, example]
         lines.append("| " + " | ".join(esc(x) for x in cells) + " |")
-    lines += ["", "**M：最终保留路径上的匹配与递归转换**", ""]
-    pruning_ok = False
-    if measurement:
-        lines += ["命中记录随翻译环境回滚。零命中项不进入本表；原 34 条的 C-整体、L03、U04 等继续保持原有合并粒度。",
-                  "下表分别列直接根数和全部声明数（含依赖、辅助声明），均按名字去重；不是受该规则间接影响的根数。",
-                  "", "| 编号 | 规则 | 实际作用 | 直接根 / 全部声明 | 命中实例 |", "|---|---|---|---:|---|"]
-        for x in mrules:
-            examples=x["direct_roots"] or x["distinct_declarations"]
-            lines.append("| "+" | ".join(map(esc,[x["id"],x["name"],x["description"],
-                str(x["direct_root_count"])+" / "+str(x["distinct_declaration_count"]),examples[0]]))+" |")
-        lines += ["", "[M 类完整统计与零命中项](../experiments/used-rule-coverage-20261019/M_RULE_USAGE.json)。"]
-        pruning=ROOT/"experiments/used-rule-coverage-20261019/M_PRUNING_VALIDATION.json"
-        if pruning.exists():
-            v=json.loads(pruning.read_text())
-            assert v["status"]=="PASS" and v["roots"]==2180 and v["target_changes"]==0
-            pruning_ok = True
-            lines += ["禁用零命中 M 路径后，2180 根重新翻译及独立检查通过，目标声明不变；"
-                      "[验证结果](../experiments/used-rule-coverage-20261019/M_PRUNING_VALIDATION.json)。"]
-    else:
-        lines += ["M01–M13 正在补充独立执行记录。未测得的规则不加入已使用清单。"]
-    lines += ["", "**完整性边界**", "",
-              "原 34 条含合并机制，例如 C-整体涵盖透明展开，L03 未拆分内部 Type 转换路径，U04 未拆分公开／局部层级求解。",
-              ("全库验证说明这版翻译器可翻译 2180 根；M 的禁用重跑验证零命中 M 路径可以退出本次配置。"
-               if pruning_ok else "M 的排除结果以完成后的独立重跑验证为准。"),
-              "非 M 路径尚未逐项关闭验证，不能据此宣布“34＋M 已经穷尽所有翻译机制”。",
-              "[原 34 条的合并范围](../experiments/used-rule-coverage-20261019/NON_M_SCOPE.md)。"]
-    lines += ["", "**原语类型：已检查映射根本身的目标 AST**", "",
-              "| 源类型根 | 目标表示 | 根数 |", "|---|---|---:|"]
+    lines += ["", f"**匹配与递归转换：{len(mrules)} 项 M 规则**", "",
+              "以下每项都有独立的成功路径记录。记录随环境 saveState／restore 回滚；"
+              "重试正常返回失败状态时也会清除该次记录。只进入转换函数、产生后又被丢弃的候选结果不计入。", "",
+              "| 编号 | 规则 | 实际作用 | 直接根数 | 全部声明数（含依赖／辅助声明） | 命中实例 |",
+              "|---|---|---|---:|---:|---|"]
+    for r in mrules:
+        examples = r["direct_roots"] or r["distinct_declarations"]
+        lines.append("| " + " | ".join(map(esc, [
+            r["id"], r["name"], r["description"], r["direct_root_count"],
+            r["distinct_declaration_count"], examples[0]])) + " |")
+    lines += ["", "各行的全部命中名称见 [M 类逐项统计](" + mlink + "M_RULE_USAGE.json)。"
+              "M11 的显式良基回退仍可能引入待证明条件；命中不表示良基性证明已完成。", "",
+              f"**原语类型映射：{len(type_rows)} 项**", "",
+              "证据类别为“原语目标引用”：已检查映射根自身的最终 AST。"
+              "这里列的是 Rocq 原语的表示选择；机械 nat、eq 不属于这四项原语映射。", "",
+              "| 源类型根 | 目标表示 | 映射根数 |", "|---|---|---:|"]
     for name, target in type_rows:
         lines.append(f"| {name} | {target} | 1 |")
-    lines += ["", "**原语操作：已检查映射根本身实际引用指定目标**", "",
-              "这些是操作映射表的逐项实例，不另行重复列四个原语家族的汇总。"
-              "目标可以是 Rocq2Lean 适配实现；出现目标名称本身不等于另有与 Mathlib 运算一致的 correspondence 证明。", "",
+    lines += ["", f"**原语操作映射：{len(primitive_rows)} 项**", "",
+              "证据类别同为“原语目标引用”：下列源根自身实际引用指定 Lean 目标。"
+              "每个操作单独列出，不重复加入原语家族汇总项。"
+              "目标可以是 Rocq2Lean 适配实现；此证据不等于已证明该操作与 Lean／Mathlib 现成运算的 correspondence。", "",
               "| 源操作标识 | Lean 目标 | 映射根数 | 源声明 |", "|---|---|---:|---|"]
     for source, target, names in primitive_rows:
         lines.append("| " + " | ".join(map(esc, [source, target, len(names), "；".join(names)])) + " |")
-    lines += ["", "**证据与复现**", "",
-              f"- [逐根紧凑证据]({link}rule-usage-evidence.json)：每根的 source、primary、variants 及验证结果。",
-              f"- [逐条命中名单]({link}RULE_USAGE.json)：表内原编号的 names / family_names。C-整体直接筛选 delta_inlined。",
-              f"- [完整历史编号说明]({link}ALL_RULES.md)：用于追溯名称，本文件没有把其中所有条目当成已使用。",
-              "- [生成脚本](../scripts/used_translation_rules.py)：逐项验证非空命中、成功状态、名单一致、quality 分支完整和原语实际目标引用。", "",
-              "在仓库根运行：", "", "    python3 scripts/used_translation_rules.py",
+    lines += ["", "**全库验证结果与清单的适用范围**", "",
+              f"同范围重跑覆盖 {scope['modules']} 个模块，其中 {populated} 个含请求根，"
+              f"{scope['modules'] - populated} 个在此层面没有请求根。"
+              f"{scope['roots']} 个根的结果如下；有请求根的模块均通过源端 roundtrip、独立 Lean consumer 和结构 audit。", "",
+              "| 最终状态 | 根数 | 通过检查意味着什么 |", "|---|---:|---|"]
+    status_meanings = [
+        ("TRANSLATED_AND_CHECKED", "译文通过检查，未携带待装配证明前提。"),
+        ("STATEMENT_KERNEL_CHECKED", "定理等声明的陈述通过内核检查，未携带待装配证明前提；不表示源证明已翻译。"),
+        ("PENDING_KERNEL_CHECKED", "带显式证明前提的译文通过检查；这些前提尚待证明或装配。"),
+        ("STATEMENT_PENDING_KERNEL_CHECKED", "带显式证明前提的陈述通过内核检查；源证明及前提不能据此视为已完成。")]
+    for status, meaning in status_meanings:
+        lines.append(f"| {status} | {statuses[status]} | {meaning} |")
+    pending = statuses["PENDING_KERNEL_CHECKED"] + statuses["STATEMENT_PENDING_KERNEL_CHECKED"]
+    disabled = "、".join(scope["disabled_M_rules"])
+    lines += ["", f"合计 {sum(statuses.values())} 根；受阻 {scope['blocked_roots']}，验证失败 "
+              f"{len(scope['validation_failures'])}。其中 {pending} 根带显式待证明前提。", "",
+              f"M 测量中的零命中项 {disabled} 未收入上面的使用清单；"
+              "已关闭这些路径并完成同范围重跑，目标类型、正文、构造器、宇宙与前提保持不变。"
+              "[禁用重跑记录](" + mlink + "M_PRUNING_VALIDATION.json) 保存逐模块结果。", "",
+              f"这支持当前配置完成上述 Corelib 范围的机械翻译，及这 {len(unused_m)} 条 M 路径在本范围可以禁用。"
+              f"**{count} 是当前证据粒度下的清单条目数，不是已证明最小且穷尽所有实现分支的规则数。**"
+              "原有 C-整体、L03、U04 等仍合并了内部子机制；非 M 路径尚未逐项关闭验证。"
+              "未列出的非 M 子机制不能据此判为未使用，完整合并口径见 [非 M 范围说明](" + mlink + "NON_M_SCOPE.md)。", "",
+              "**证据文件与复现**", "",
+              "| 文件 | 内容与用途 |", "|---|---|",
+              f"| [逐根产物证据]({link}rule-usage-evidence.json) | source、primary、variants 及检查结果；用于原有条目的筛选。 |",
+              f"| [原有条目的命中名单]({link}RULE_USAGE.json) | 原编号的 names／family_names；C-整体直接筛选 delta_inlined。 |",
+              f"| [M 成功路径统计]({mlink}M_RULE_USAGE.json) | 每条 M 规则的根名单、全部声明名单和保留事件数。 |",
+              f"| [M 禁用后的全库验证]({mlink}M_PRUNING_VALIDATION.json) | 同范围重跑、逐模块检查、状态计数和目标不变结果。 |",
+              f"| [记录可靠性测试]({mlink}INSTRUMENTATION_TESTS.json) | 验证接受路径保留记录、禁用路径拒绝、回滚和正常返回失败均不留下命中。 |",
+              f"| [完整规则目录]({link}ALL_RULES.md) | 追溯历史编号与规则说明；目录成员不自动视为本次已使用。 |",
+              "| [本文生成脚本](../scripts/used_translation_rules.py) | 从上述证据生成全文，核对名单、计数、成功状态、原语引用及 M 验证的一致性。 |", "",
+              "在仓库根生成或检查本文：", "",
+              "    python3 scripts/used_translation_rules.py",
               "    python3 scripts/used_translation_rules.py --check", "",
-              "该命令读取现有机械基线证据，不重新运行翻译器。", ""]
-    return "\n".join(lines), len(rules) + len(mrules)
+              "上述命令读取已保存证据，不重新编译或翻译 Corelib。"
+              "完整测量、编译和重跑步骤见 [M 工作区说明](" + mlink + "README.md)。"
+              "原始导出、编译文件及日志保留在远程 .work/used-rule-coverage-20261019/，不提交到 Git。", ""]
+    # The introduction, table sizes and CLI summary share the same counts.
+    assert sum(line.startswith("| " + key + " |") for key in ids for line in lines) == count
+    return "\n".join(lines), count
 
 def main():
     parser = argparse.ArgumentParser()
