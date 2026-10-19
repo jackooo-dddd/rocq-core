@@ -1,0 +1,25 @@
+/home/shunqwang4/research/rocq-core/experiments/incremental-correspondence-20261019/.work/SSRBoolRestrictions.lean:85:0: warning: Definition `sumboolP_native` is a proposition; use `theorem` instead of `def`
+
+Note: This linter can be disabled with `set_option linter.defProp false`
+/home/shunqwang4/research/rocq-core/experiments/incremental-correspondence-20261019/.work/SSRBoolRestrictions.lean:93:14: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+/home/shunqwang4/research/rocq-core/experiments/incremental-correspondence-20261019/.work/SSRBoolRestrictions.lean:93:14: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+/home/shunqwang4/research/rocq-core/experiments/incremental-correspondence-20261019/.work/SSRBoolRestrictions.lean:88:0: warning: Definition `sumboolPTo` is a proposition; use `theorem` instead of `def`
+
+Note: This linter can be disabled with `set_option linter.defProp false`
+NATIVE_TARGET {"name":"NativeBridge.Incremental.SSRBoolRestrictions.prop_for_native","native_expression":"fun A x P => P x","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.SSRBoolRestrictions.prop_in111_native","native_expression":"fun T1 T2 T3 d1 d2 d3 P => ∀ (x : T1) (y : T2) (z : T3), d1 x = true → d2 y = true → d3 z = true → P x y z","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.SSRBoolRestrictions.prop_in11_native","native_expression":"fun T1 T2 d1 d2 P => ∀ (x : T1) (y : T2), d1 x = true → d2 y = true → P x y","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.SSRBoolRestrictions.prop_in12_native","native_expression":"fun T1 T2 d1 d2 P => ∀ (x : T1) (y z : T2), d1 x = true → d2 y = true → d2 z = true → P x y z","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.SSRBoolRestrictions.prop_in1_native","native_expression":"fun T1 d1 P => ∀ (x : T1), d1 x = true → P x","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.SSRBoolRestrictions.prop_in21_native","native_expression":"fun T1 T2 d1 d2 P => ∀ (x y : T1) (z : T2), d1 x = true → d1 y = true → d2 z = true → P x y z","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.SSRBoolRestrictions.prop_in2_native","native_expression":"fun T1 d1 P => ∀ (x y : T1), d1 x = true → d1 y = true → P x y","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.SSRBoolRestrictions.prop_in3_native","native_expression":"fun T1 d1 P => ∀ (x y z : T1), d1 x = true → d1 y = true → d1 z = true → P x y z","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.SSRBoolRestrictions.prop_on1_native","native_expression":"fun A B d f P => ∀ (x : A), d (f x) = true → P x","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.SSRBoolRestrictions.prop_on2_native","native_expression":"fun A B d f P => ∀ (x y : A), d (f x) = true → d (f y) = true → P x y","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.SSRBoolRestrictions.sumIsLeft","native_expression":"fun A B x =>\n  match x with\n  | PSum.inl val => true\n  | PSum.inr val => false","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.SSRBoolRestrictions.sumboolP_native","native_expression":"fun P d =>\n  Decidable.casesOn (motive := fun t => d = t → (P ↔ decide P = true)) d\n    (fun h h_1 =>\n      Eq.symm h_1 ▸\n        of_eq_true\n          (Eq.trans\n            (congr (congrArg Iff (eq_false h))\n              (Eq.trans\n                (congrFun'\n                  (congrArg Eq\n                    (Eq.trans (Decidable.decide.congr_simp P False (eq_false h)) (decide_false instDecidableFalse)))\n                  true)\n                Bool.false_eq_true))\n            (iff_self False)))\n    (fun h h_1 =>\n      Eq.symm h_1 ▸\n        of_eq_true\n          (Eq.trans\n            (congr (congrArg Iff (eq_true h))\n              (Eq.trans\n                (congrFun'\n                  (congrArg Eq\n                    (Eq.trans (Decidable.decide.congr_simp P True (eq_true h)) (decide_true instDecidableTrue)))\n                  true)\n                (eq_self true)))\n            (iff_self True)))\n    (Eq.refl d)","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.SSRBoolRestrictions.unitIdentity","native_expression":"fun x => x","remaining_source_symbols":[]}

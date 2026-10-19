@@ -8004,6 +8004,1090 @@ NativeBridge.Incremental.SSRBoolProofFunctions.unless_contra_agrees
 
 公理闭包：空
 
+## Corelib.ssr.ssrbool.alt_spec
+
+NativeBridge.Incremental.SSRBoolIndexed.altIso
+
+目标：PLift of indexed native branch predicate altNative；范围：all Bool indices; if_spec preserves arbitrary Type u carrier and value index; both inverse laws checked
+
+```lean
+(P : Prop) →
+  (b c : NativeBridge.RBool) →
+    NativeBridge.Iso (Rocq.Corelib.ssr.ssrbool.alt_spec P b c)
+      (PLift (NativeBridge.Incremental.SSRBoolIndexed.altNative P (NativeBridge.boolTo b) (NativeBridge.boolTo c)))
+```
+
+公理闭包：propext
+
+## Corelib.ssr.ssrbool.if_spec
+
+NativeBridge.Incremental.SSRBoolIndexed.ifIso
+
+目标：PLift of indexed native branch predicate ifNative；范围：all Bool indices; if_spec preserves arbitrary Type u carrier and value index; both inverse laws checked
+
+```lean
+(A : Type u) →
+  (b : NativeBridge.RBool) →
+    (vT vF : A) →
+      (notB : Prop) →
+        (c : NativeBridge.RBool) →
+          (x : A) →
+            NativeBridge.Iso (Rocq.Corelib.ssr.ssrbool.if_spec A b vT vF notB c x)
+              (PLift
+                (NativeBridge.Incremental.SSRBoolIndexed.ifNative A (NativeBridge.boolTo b) vT vF notB
+                  (NativeBridge.boolTo c) x))
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrbool.altP
+
+NativeBridge.Incremental.SSRBoolIndexed.altP_agrees
+
+目标：independently constructed native indexed branch evidence altP_native；范围：all Bool inputs; arbitrary Type u carrier for ifP/ifPn; original opacity preserved, all source prerequisites discharged
+
+```lean
+∀ (P : Prop) (b : Bool) (h : P ↔ b = true),
+  (NativeBridge.Incremental.SSRBoolIndexed.altIso P (NativeBridge.boolOf b) (NativeBridge.boolOf b)).to
+      (RocqPending.Corelib.ssr.ssrbool.altP P (NativeBridge.boolOf b)
+        (NativeBridge.Incremental.SSRBoolProofFunctions.reflectNativeOf P b h)) =
+    have this := ⋯.mpr (NativeBridge.Incremental.SSRBoolIndexed.altP_native P b h);
+    this
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.ssr.ssrbool.boolP
+
+NativeBridge.Incremental.SSRBoolIndexed.boolP_agrees
+
+目标：independently constructed native indexed branch evidence boolP_native；范围：all Bool inputs; arbitrary Type u carrier for ifP/ifPn; original opacity preserved, all source prerequisites discharged
+
+```lean
+∀ (b : Bool),
+  NativeBridge.Incremental.SSRBoolIndexed.boolPTo b (RocqPending.Corelib.ssr.ssrbool.boolP (NativeBridge.boolOf b)) =
+    NativeBridge.Incremental.SSRBoolIndexed.boolP_native b
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.ssr.ssrbool.ifP
+
+NativeBridge.Incremental.SSRBoolIndexed.ifP_agrees
+
+目标：independently constructed native indexed branch evidence ifP_native；范围：all Bool inputs; arbitrary Type u carrier for ifP/ifPn; original opacity preserved, all source prerequisites discharged
+
+```lean
+∀ (A : Type u) (b : Bool) (vT vF : A),
+  NativeBridge.Incremental.SSRBoolIndexed.ifPTo A b vT vF
+      (RocqPending.Corelib.ssr.ssrbool.ifP A (NativeBridge.boolOf b) vT vF) =
+    NativeBridge.Incremental.SSRBoolIndexed.ifP_native A b vT vF
+```
+
+公理闭包：propext
+
+## Corelib.ssr.ssrbool.ifPn
+
+NativeBridge.Incremental.SSRBoolIndexed.ifPn_agrees
+
+目标：independently constructed native indexed branch evidence ifPn_native；范围：all Bool inputs; arbitrary Type u carrier for ifP/ifPn; original opacity preserved, all source prerequisites discharged
+
+```lean
+∀ (A : Type u) (b : Bool) (vT vF : A),
+  NativeBridge.Incremental.SSRBoolIndexed.ifPnTo A b vT vF
+      (RocqPending.Corelib.ssr.ssrbool.ifPn A (NativeBridge.boolOf b) vT vF) =
+    NativeBridge.Incremental.SSRBoolIndexed.ifPn_native A b vT vF
+```
+
+公理闭包：propext
+
+## Corelib.ssr.ssrbool.is_left
+
+NativeBridge.Incremental.SSRBoolRestrictions.is_left_agrees
+
+目标：sumIsLeft；范围：source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity
+
+```lean
+∀ (P Q : Prop) (x : P ⊕' Q),
+  NativeBridge.boolTo (Rocq.Corelib.ssr.ssrbool.is_left P Q (NativeBridge.sumboolOf x)) =
+    NativeBridge.Incremental.SSRBoolRestrictions.sumIsLeft P Q x
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrbool.is_inleft
+
+NativeBridge.Incremental.SSRBoolRestrictions.is_inleft_agrees
+
+目标：sumIsLeft；范围：source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity
+
+```lean
+∀ (A : Sort u) (P : Prop) (x : A ⊕' P),
+  NativeBridge.boolTo
+      (Rocq.Corelib.ssr.ssrbool.is_inleft A P (NativeBridge.Incremental.SSRBoolRestrictions.sumorSortOf x)) =
+    NativeBridge.Incremental.SSRBoolRestrictions.sumIsLeft A P x
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrbool.prop_for
+
+NativeBridge.Incremental.SSRBoolRestrictions.prop_for_agrees
+
+目标：prop_for_native；范围：source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity
+
+```lean
+∀ (A : Sort u) (x : A) (P : A → Prop) (ph : Rocq.Corelib.ssr.ssreflect_rw.phantom Prop (∀ (a : A), P a)),
+  Rocq.Corelib.ssr.ssrbool.prop_for A x P ph ↔ NativeBridge.Incremental.SSRBoolRestrictions.prop_for_native A x P
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrbool.prop_in1
+
+NativeBridge.Incremental.SSRBoolRestrictions.prop_in1_agrees
+
+目标：prop_in1_native；范围：source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity
+
+```lean
+∀ (T1 : Type u) (d1 : T1 → Bool) (P : T1 → Prop) (ph : Rocq.Corelib.ssr.ssreflect_rw.phantom Prop (∀ (x : T1), P x)),
+  Rocq.Corelib.ssr.ssrbool.prop_in1 T1 ((NativeBridge.Incremental.SSRBoolData.memIso T1).of d1) P ph ↔
+    NativeBridge.Incremental.SSRBoolRestrictions.prop_in1_native T1 d1 P
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.prop_in11
+
+NativeBridge.Incremental.SSRBoolRestrictions.prop_in11_agrees
+
+目标：prop_in11_native；范围：source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity
+
+```lean
+∀ (T1 : Type u) (T2 : Type v) (d1 : T1 → Bool) (d2 : T2 → Bool) (P : T1 → T2 → Prop)
+  (ph : Rocq.Corelib.ssr.ssreflect_rw.phantom Prop (∀ (x : T1) (y : T2), P x y)),
+  Rocq.Corelib.ssr.ssrbool.prop_in11 T1 T2 ((NativeBridge.Incremental.SSRBoolData.memIso T1).of d1)
+      ((NativeBridge.Incremental.SSRBoolData.memIso T2).of d2) P ph ↔
+    NativeBridge.Incremental.SSRBoolRestrictions.prop_in11_native T1 T2 d1 d2 P
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.prop_in111
+
+NativeBridge.Incremental.SSRBoolRestrictions.prop_in111_agrees
+
+目标：prop_in111_native；范围：source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity
+
+```lean
+∀ (T1 : Type u) (T2 : Type v) (T3 : Type w) (d1 : T1 → Bool) (d2 : T2 → Bool) (d3 : T3 → Bool) (P : T1 → T2 → T3 → Prop)
+  (ph : Rocq.Corelib.ssr.ssreflect_rw.phantom Prop (∀ (x : T1) (y : T2) (z : T3), P x y z)),
+  Rocq.Corelib.ssr.ssrbool.prop_in111 T1 T2 T3 ((NativeBridge.Incremental.SSRBoolData.memIso T1).of d1)
+      ((NativeBridge.Incremental.SSRBoolData.memIso T2).of d2) ((NativeBridge.Incremental.SSRBoolData.memIso T3).of d3)
+      P ph ↔
+    NativeBridge.Incremental.SSRBoolRestrictions.prop_in111_native T1 T2 T3 d1 d2 d3 P
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.prop_in12
+
+NativeBridge.Incremental.SSRBoolRestrictions.prop_in12_agrees
+
+目标：prop_in12_native；范围：source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity
+
+```lean
+∀ (T1 : Type u) (T2 : Type v) (d1 : T1 → Bool) (d2 : T2 → Bool) (P : T1 → T2 → T2 → Prop)
+  (ph : Rocq.Corelib.ssr.ssreflect_rw.phantom Prop (∀ (x : T1) (y z : T2), P x y z)),
+  Rocq.Corelib.ssr.ssrbool.prop_in12 T1 T2 ((NativeBridge.Incremental.SSRBoolData.memIso T1).of d1)
+      ((NativeBridge.Incremental.SSRBoolData.memIso T2).of d2) P ph ↔
+    NativeBridge.Incremental.SSRBoolRestrictions.prop_in12_native T1 T2 d1 d2 P
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.prop_in2
+
+NativeBridge.Incremental.SSRBoolRestrictions.prop_in2_agrees
+
+目标：prop_in2_native；范围：source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity
+
+```lean
+∀ (T1 : Type u) (d1 : T1 → Bool) (P : T1 → T1 → Prop)
+  (ph : Rocq.Corelib.ssr.ssreflect_rw.phantom Prop (∀ (x y : T1), P x y)),
+  Rocq.Corelib.ssr.ssrbool.prop_in2 T1 ((NativeBridge.Incremental.SSRBoolData.memIso T1).of d1) P ph ↔
+    NativeBridge.Incremental.SSRBoolRestrictions.prop_in2_native T1 d1 P
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.prop_in21
+
+NativeBridge.Incremental.SSRBoolRestrictions.prop_in21_agrees
+
+目标：prop_in21_native；范围：source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity
+
+```lean
+∀ (T1 : Type u) (T2 : Type v) (d1 : T1 → Bool) (d2 : T2 → Bool) (P : T1 → T1 → T2 → Prop)
+  (ph : Rocq.Corelib.ssr.ssreflect_rw.phantom Prop (∀ (x y : T1) (z : T2), P x y z)),
+  Rocq.Corelib.ssr.ssrbool.prop_in21 T1 T2 ((NativeBridge.Incremental.SSRBoolData.memIso T1).of d1)
+      ((NativeBridge.Incremental.SSRBoolData.memIso T2).of d2) P ph ↔
+    NativeBridge.Incremental.SSRBoolRestrictions.prop_in21_native T1 T2 d1 d2 P
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.prop_in3
+
+NativeBridge.Incremental.SSRBoolRestrictions.prop_in3_agrees
+
+目标：prop_in3_native；范围：source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity
+
+```lean
+∀ (T1 : Type u) (d1 : T1 → Bool) (P : T1 → T1 → T1 → Prop)
+  (ph : Rocq.Corelib.ssr.ssreflect_rw.phantom Prop (∀ (x y z : T1), P x y z)),
+  Rocq.Corelib.ssr.ssrbool.prop_in3 T1 ((NativeBridge.Incremental.SSRBoolData.memIso T1).of d1) P ph ↔
+    NativeBridge.Incremental.SSRBoolRestrictions.prop_in3_native T1 d1 P
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.prop_on1
+
+NativeBridge.Incremental.SSRBoolRestrictions.prop_on1_agrees
+
+目标：prop_on1_native；范围：source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity
+
+```lean
+∀ (A : Type u) (B : Type v) (C : Type w) (d : B → Bool) (f : A → B) (Pf : (A → B) → C) (P : A → Prop)
+  (phf : Rocq.Corelib.ssr.ssreflect_rw.phantom C (Pf f))
+  (ph : Rocq.Corelib.ssr.ssreflect_rw.phantom Prop (∀ (x : A), P x)),
+  Rocq.Corelib.ssr.ssrbool.prop_on1 A B C ((NativeBridge.Incremental.SSRBoolData.memIso B).of d) f Pf P phf ph ↔
+    NativeBridge.Incremental.SSRBoolRestrictions.prop_on1_native A B d f P
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.prop_on2
+
+NativeBridge.Incremental.SSRBoolRestrictions.prop_on2_agrees
+
+目标：prop_on2_native；范围：source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity
+
+```lean
+∀ (A : Type u) (B : Type v) (C : Type w) (d : B → Bool) (f : A → B) (Pf : (A → B) → C) (P : A → A → Prop)
+  (phf : Rocq.Corelib.ssr.ssreflect_rw.phantom C (Pf f))
+  (ph : Rocq.Corelib.ssr.ssreflect_rw.phantom Prop (∀ (x y : A), P x y)),
+  Rocq.Corelib.ssr.ssrbool.prop_on2 A B C ((NativeBridge.Incremental.SSRBoolData.memIso B).of d) f Pf P phf ph ↔
+    NativeBridge.Incremental.SSRBoolRestrictions.prop_on2_native A B d f P
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.sumboolP
+
+NativeBridge.Incremental.SSRBoolRestrictions.sumboolP_agrees
+
+目标：sumboolP_native；范围：source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity
+
+```lean
+∀ (P : Prop) (d : Decidable P), ⋯ = ⋯
+```
+
+公理闭包：propext
+
+## Corelib.ssr.ssrbool.check_applicative_mem_pred
+
+NativeBridge.Incremental.SSRBoolRestrictions.check_applicative_mem_pred_agrees
+
+目标：unitIdentity；范围：source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity
+
+```lean
+∀ (A : Type u) (p : A → Bool) (a x : Unit),
+  (NativeBridge.Incremental.SSRBoolPackaging.applicativeMemIso A (NativeBridge.Incremental.SSRBoolData.predOf p)).to
+      (Rocq.Corelib.ssr.ssrbool.check_applicative_mem_pred A (NativeBridge.Incremental.SSRBoolData.predOf p)
+        ((NativeBridge.Incremental.SSRBoolPackaging.registeredIso A (NativeBridge.Incremental.SSRBoolData.predOf p)).of
+          a)
+        ((NativeBridge.Incremental.SSRBoolPackaging.manifestMemIso A (NativeBridge.Incremental.SSRBoolData.predOf p)).of
+          x)) =
+    NativeBridge.Incremental.SSRBoolRestrictions.unitIdentity x
+```
+
+公理闭包：空
+
+## Corelib.BinNums.PosDef.Pos.iter
+
+NativeBridge.Incremental.BinaryPower.positive_iter_agrees
+
+目标：repeatNative；范围：arbitrary Sort carriers; transport version explicitly assumes step-function correspondence
+
+```lean
+∀ {A : Sort u} (f : A → A) (x : A) (p : NativeBridge.RPositive),
+  Rocq.Corelib.BinNums.PosDef.Pos.iter A f x p =
+    NativeBridge.Incremental.BinaryPower.repeatNative f (NativeBridge.positiveTo p) x
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.PosDef.Pos.iter
+
+NativeBridge.Incremental.BinaryPower.positive_iter_transport
+
+目标：repeatNative；范围：arbitrary Sort carriers; transport version explicitly assumes step-function correspondence
+
+```lean
+∀ {A : Sort u} {B : Sort v} (toB : A → B) (f : A → A) (g : B → B),
+  (∀ (x : A), toB (f x) = g (toB x)) →
+    ∀ (p : NativeBridge.RPositive) (x : A),
+      toB (Rocq.Corelib.BinNums.PosDef.Pos.iter A f x p) =
+        NativeBridge.Incremental.BinaryPower.repeatNative g (NativeBridge.positiveTo p) (toB x)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.pow_pos
+
+NativeBridge.Incremental.BinaryPower.z_pow_pos_agrees
+
+目标：powPosNative；范围：all integer inputs; negative powers return zero; signed shifts preserve floor division and negative shift counts
+
+```lean
+∀ (z : NativeBridge.RIntBinary) (p : NativeBridge.RPositive),
+  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.pow_pos z p) =
+    NativeBridge.Incremental.BinaryPower.powPosNative (NativeBridge.binaryIntTo z) (NativeBridge.positiveTo p)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.pow
+
+NativeBridge.Incremental.BinaryPower.z_pow_agrees
+
+目标：zPowNative；范围：all integer inputs; negative powers return zero; signed shifts preserve floor division and negative shift counts
+
+```lean
+∀ (x y : NativeBridge.RIntBinary),
+  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.pow x y) =
+    NativeBridge.Incremental.BinaryPower.zPowNative (NativeBridge.binaryIntTo x) (NativeBridge.binaryIntTo y)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.even
+
+NativeBridge.Incremental.BinaryPower.z_even_agrees
+
+目标：evenNative；范围：all integer inputs; negative powers return zero; signed shifts preserve floor division and negative shift counts
+
+```lean
+∀ (z : NativeBridge.RIntBinary),
+  NativeBridge.boolTo (Rocq.Corelib.BinNums.IntDef.Z.even z) =
+    NativeBridge.Incremental.BinaryPower.evenNative (NativeBridge.binaryIntTo z)
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.shiftl
+
+NativeBridge.Incremental.BinaryPower.z_shiftl_agrees
+
+目标：shiftLeftNative；范围：all integer inputs; negative powers return zero; signed shifts preserve floor division and negative shift counts
+
+```lean
+∀ (x n : NativeBridge.RIntBinary),
+  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.shiftl x n) =
+    NativeBridge.Incremental.BinaryPower.shiftLeftNative (NativeBridge.binaryIntTo x) (NativeBridge.binaryIntTo n)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.shiftr
+
+NativeBridge.Incremental.BinaryPower.z_shiftr_agrees
+
+目标：shiftRightNative；范围：all integer inputs; negative powers return zero; signed shifts preserve floor division and negative shift counts
+
+```lean
+∀ (x n : NativeBridge.RIntBinary),
+  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.shiftr x n) =
+    NativeBridge.Incremental.BinaryPower.shiftRightNative (NativeBridge.binaryIntTo x) (NativeBridge.binaryIntTo n)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Init.Sumbool.bool_eq_ind
+
+NativeBridge.Incremental.SumboolBridge.bool_eq_ind_agrees
+
+目标：nativeBoolInd；范围：all source parameters; bool_eq_rec uses the exported Type-valued motive; sumbool_and/or allow arbitrary A B C D, not only complementary propositions
+
+```lean
+Rocq.Corelib.Init.Sumbool.bool_eq_ind.statement ↔ NativeBridge.Incremental.SumboolBridge.nativeBoolInd
+```
+
+公理闭包：空
+
+## Corelib.Init.Sumbool.bool_eq_rec
+
+NativeBridge.Incremental.SumboolBridge.bool_eq_rec_agrees
+
+目标：nativeBoolRec；范围：all source parameters; bool_eq_rec uses the exported Type-valued motive; sumbool_and/or allow arbitrary A B C D, not only complementary propositions
+
+```lean
+∀ (b : Bool) (P : Bool → Type) (ht : b = true → P true) (hf : b = false → P false),
+  (RocqPending.Corelib.Init.Sumbool.bool_eq_rec (NativeBridge.boolOf b) (fun r => P (NativeBridge.boolTo r))
+      (fun h => ht ⋯) fun h => hf ⋯) =
+    have this := ⋯.mpr (NativeBridge.Incremental.SumboolBridge.nativeBoolRec b P ht hf);
+    this
+```
+
+公理闭包：空
+
+## Corelib.Init.Sumbool.bool_of_sumbool
+
+NativeBridge.Incremental.SumboolBridge.bool_of_sumbool_agrees
+
+目标：nativeToBool；范围：all source parameters; bool_eq_rec uses the exported Type-valued motive; sumbool_and/or allow arbitrary A B C D, not only complementary propositions
+
+```lean
+∀ (A B : Prop) (x : A ⊕' B),
+  NativeBridge.Incremental.SumboolBridge.boolSubtypeTo A B
+      (Rocq.Corelib.Init.Sumbool.bool_of_sumbool A B (NativeBridge.sumboolOf x)) =
+    NativeBridge.Incremental.SumboolBridge.nativeToBool A B x
+```
+
+公理闭包：空
+
+## Corelib.Init.Sumbool.sumbool_and
+
+NativeBridge.Incremental.SumboolBridge.sumbool_and_agrees
+
+目标：nativeAnd；范围：all source parameters; bool_eq_rec uses the exported Type-valued motive; sumbool_and/or allow arbitrary A B C D, not only complementary propositions
+
+```lean
+∀ (A B C D : Prop) (x : A ⊕' B) (y : C ⊕' D),
+  NativeBridge.Incremental.SumboolBridge.sumAndTo
+      (RocqPending.Corelib.Init.Sumbool.sumbool_and A B C D (NativeBridge.sumboolOf x) (NativeBridge.sumboolOf y)) =
+    NativeBridge.Incremental.SumboolBridge.nativeAnd A B C D x y
+```
+
+公理闭包：空
+
+## Corelib.Init.Sumbool.sumbool_not
+
+NativeBridge.Incremental.SumboolBridge.sumbool_not_agrees
+
+目标：nativeNot；范围：all source parameters; bool_eq_rec uses the exported Type-valued motive; sumbool_and/or allow arbitrary A B C D, not only complementary propositions
+
+```lean
+∀ (A B : Prop) (x : A ⊕' B),
+  NativeBridge.sumboolTo (Rocq.Corelib.Init.Sumbool.sumbool_not A B (NativeBridge.sumboolOf x)) =
+    NativeBridge.Incremental.SumboolBridge.nativeNot A B x
+```
+
+公理闭包：空
+
+## Corelib.Init.Sumbool.sumbool_of_bool
+
+NativeBridge.Incremental.SumboolBridge.sumbool_of_bool_agrees
+
+目标：nativeOfBool；范围：all source parameters; bool_eq_rec uses the exported Type-valued motive; sumbool_and/or allow arbitrary A B C D, not only complementary propositions
+
+```lean
+∀ (b : Bool),
+  NativeBridge.Incremental.SumboolBridge.ofBoolTo b
+      (RocqPending.Corelib.Init.Sumbool.sumbool_of_bool (NativeBridge.boolOf b)) =
+    NativeBridge.Incremental.SumboolBridge.nativeOfBool b
+```
+
+公理闭包：空
+
+## Corelib.Init.Sumbool.sumbool_or
+
+NativeBridge.Incremental.SumboolBridge.sumbool_or_agrees
+
+目标：nativeOr；范围：all source parameters; bool_eq_rec uses the exported Type-valued motive; sumbool_and/or allow arbitrary A B C D, not only complementary propositions
+
+```lean
+∀ (A B C D : Prop) (x : A ⊕' B) (y : C ⊕' D),
+  NativeBridge.Incremental.SumboolBridge.sumOrTo
+      (RocqPending.Corelib.Init.Sumbool.sumbool_or A B C D (NativeBridge.sumboolOf x) (NativeBridge.sumboolOf y)) =
+    NativeBridge.Incremental.SumboolBridge.nativeOr A B C D x y
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.crelation
+
+NativeBridge.Incremental.CRelationData.crelationIso
+
+目标：relationNative；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+(A : Type u) →
+  NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.crelation A)
+    (NativeBridge.Incremental.CRelationData.relationNative A)
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.Reflexive
+
+NativeBridge.Incremental.CRelationData.ReflexiveIso
+
+目标：reflexiveNative；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+(A : Type u) →
+  (R : A → A → Type v) →
+    NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.Reflexive A R)
+      (NativeBridge.Incremental.CRelationData.reflexiveNative A R)
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.Symmetric
+
+NativeBridge.Incremental.CRelationData.SymmetricIso
+
+目标：symmetricNative；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+(A : Type u) →
+  (R : A → A → Type v) →
+    NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.Symmetric A R)
+      (NativeBridge.Incremental.CRelationData.symmetricNative A R)
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.Transitive
+
+NativeBridge.Incremental.CRelationData.TransitiveIso
+
+目标：transitiveNative；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+(A : Type u) →
+  (R : A → A → Type v) →
+    NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.Transitive A R)
+      (NativeBridge.Incremental.CRelationData.transitiveNative A R)
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.subrelation
+
+NativeBridge.Incremental.CRelationData.subrelationIso
+
+目标：subrelationNative；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+(A : Type u) →
+  (R : A → A → Type v) →
+    (S : A → A → Type w) →
+      NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.subrelation A R S)
+        (NativeBridge.Incremental.CRelationData.subrelationNative A R S)
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.arrow
+
+NativeBridge.Incremental.CRelationData.arrowIso
+
+目标：arrowNative；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+(A : Type u) →
+  (B : Type v) →
+    NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.arrow A B)
+      (NativeBridge.Incremental.CRelationData.arrowNative A B)
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.PreOrder
+
+NativeBridge.Incremental.CRelationData.PreOrderIso
+
+目标：preorderNative；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+(A : Type u) →
+  (R : A → A → Type v) →
+    NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.PreOrder A R)
+      (NativeBridge.Incremental.CRelationData.preorderNative A R)
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.PER
+
+NativeBridge.Incremental.CRelationData.PERIso
+
+目标：perNative；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+(A : Type u) →
+  (R : A → A → Type v) →
+    NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.PER A R)
+      (NativeBridge.Incremental.CRelationData.perNative A R)
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.Equivalence
+
+NativeBridge.Incremental.CRelationData.EquivalenceIso
+
+目标：equivalenceNative；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+(A : Type u) →
+  (R : A → A → Type v) →
+    NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.Equivalence A R)
+      (NativeBridge.Incremental.CRelationData.equivalenceNative A R)
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.iffT
+
+NativeBridge.Incremental.CRelationData.iffTIso
+
+目标：iffNative；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+(A : Type u) →
+  (B : Type v) →
+    NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.iffT A B)
+      (NativeBridge.Incremental.CRelationData.iffNative A B)
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.relation_conjunction
+
+NativeBridge.Incremental.CRelationData.conjunctionIso
+
+目标：conjunctionNative；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+(A : Type u) →
+  (R : A → A → Type v) →
+    (S : A → A → Type w) →
+      (x y : A) →
+        NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.relation_conjunction A R S x y)
+          (NativeBridge.Incremental.CRelationData.conjunctionNative A R S x y)
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.relation_disjunction
+
+NativeBridge.Incremental.CRelationData.disjunctionIso
+
+目标：disjunctionNative；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+(A : Type u) →
+  (R : A → A → Type v) →
+    (S : A → A → Type w) →
+      (x y : A) →
+        NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.relation_disjunction A R S x y)
+          (NativeBridge.Incremental.CRelationData.disjunctionNative A R S x y)
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.Antisymmetric
+
+NativeBridge.Incremental.CRelationData.antisymmetricIso
+
+目标：antisymmetricNative；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+(A : Type u) →
+  (E : A → A → Type v) →
+    (equ : NativeBridge.Incremental.CRelationData.equivalenceNative A E) →
+      (R : A → A → Type w) →
+        NativeBridge.Iso
+          (Rocq.Corelib.Classes.CRelationClasses.Antisymmetric A E
+            ((NativeBridge.Incremental.CRelationData.EquivalenceIso A E).of equ) R)
+          (NativeBridge.Incremental.CRelationData.antisymmetricNative A E R)
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.relation_equivalence
+
+NativeBridge.Incremental.CRelationData.relationEquivalenceIso
+
+目标：relationEquivalenceNative；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+(A : Type u) →
+  (R S : A → A → Type v) →
+    NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.relation_equivalence A R S)
+      (NativeBridge.Incremental.CRelationData.relationEquivalenceNative A R S)
+```
+
+公理闭包：Quot.sound
+
+## Corelib.Classes.CRelationClasses.RewriteRelation
+
+NativeBridge.Incremental.CRelationData.rewriteIso
+
+目标：rewriteNative；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+(A : Type u) →
+  (R : A → A → Type v) →
+    NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.RewriteRelation A R)
+      (NativeBridge.Incremental.CRelationData.rewriteNative A R)
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.complement
+
+NativeBridge.Incremental.CRelationData.complementIso
+
+目标：complementNative；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+(A : Type u) →
+  (R : A → A → Type v) →
+    (x y : A) →
+      NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.complement A R x y)
+        (NativeBridge.Incremental.CRelationData.complementNative A R x y)
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.Irreflexive
+
+NativeBridge.Incremental.CRelationData.irreflexiveIso
+
+目标：irreflexiveNative；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+(A : Type u) →
+  (R : A → A → Type v) →
+    NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.Irreflexive A R)
+      (NativeBridge.Incremental.CRelationData.irreflexiveNative A R)
+```
+
+公理闭包：Quot.sound
+
+## Corelib.Classes.CRelationClasses.Asymmetric
+
+NativeBridge.Incremental.CRelationData.asymmetricIso
+
+目标：asymmetricNative；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+(A : Type u) →
+  (R : A → A → Type v) →
+    NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.Asymmetric A R)
+      (NativeBridge.Incremental.CRelationData.asymmetricNative A R)
+```
+
+公理闭包：Quot.sound
+
+## Corelib.Classes.CRelationClasses.PreOrder_Reflexive
+
+NativeBridge.Incremental.CRelationData.PreOrder_Reflexive_agrees
+
+目标：PreOrder_Reflexive_native；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+∀ (A : Type u) (R : A → A → Type v) (h : NativeBridge.Incremental.CRelationData.preorderNative A R),
+  Rocq.Corelib.Classes.CRelationClasses.PreOrder_Reflexive A R
+      ((NativeBridge.Incremental.CRelationData.PreOrderIso A R).of h) =
+    NativeBridge.Incremental.CRelationData.PreOrder_Reflexive_native A R h
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.PreOrder_Transitive
+
+NativeBridge.Incremental.CRelationData.PreOrder_Transitive_agrees
+
+目标：PreOrder_Transitive_native；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+∀ (A : Type u) (R : A → A → Type v) (h : NativeBridge.Incremental.CRelationData.preorderNative A R),
+  Rocq.Corelib.Classes.CRelationClasses.PreOrder_Transitive A R
+      ((NativeBridge.Incremental.CRelationData.PreOrderIso A R).of h) =
+    NativeBridge.Incremental.CRelationData.PreOrder_Transitive_native A R h
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.PER_Symmetric
+
+NativeBridge.Incremental.CRelationData.PER_Symmetric_agrees
+
+目标：PER_Symmetric_native；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+∀ (A : Type u) (R : A → A → Type v) (h : NativeBridge.Incremental.CRelationData.perNative A R),
+  Rocq.Corelib.Classes.CRelationClasses.PER_Symmetric A R ((NativeBridge.Incremental.CRelationData.PERIso A R).of h) =
+    NativeBridge.Incremental.CRelationData.PER_Symmetric_native A R h
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.PER_Transitive
+
+NativeBridge.Incremental.CRelationData.PER_Transitive_agrees
+
+目标：PER_Transitive_native；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+∀ (A : Type u) (R : A → A → Type v) (h : NativeBridge.Incremental.CRelationData.perNative A R),
+  Rocq.Corelib.Classes.CRelationClasses.PER_Transitive A R ((NativeBridge.Incremental.CRelationData.PERIso A R).of h) =
+    NativeBridge.Incremental.CRelationData.PER_Transitive_native A R h
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.Equivalence_Reflexive
+
+NativeBridge.Incremental.CRelationData.Equivalence_Reflexive_agrees
+
+目标：Equivalence_Reflexive_native；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+∀ (A : Type u) (R : A → A → Type v) (h : NativeBridge.Incremental.CRelationData.equivalenceNative A R),
+  Rocq.Corelib.Classes.CRelationClasses.Equivalence_Reflexive A R
+      ((NativeBridge.Incremental.CRelationData.EquivalenceIso A R).of h) =
+    NativeBridge.Incremental.CRelationData.Equivalence_Reflexive_native A R h
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.Equivalence_Symmetric
+
+NativeBridge.Incremental.CRelationData.Equivalence_Symmetric_agrees
+
+目标：Equivalence_Symmetric_native；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+∀ (A : Type u) (R : A → A → Type v) (h : NativeBridge.Incremental.CRelationData.equivalenceNative A R),
+  Rocq.Corelib.Classes.CRelationClasses.Equivalence_Symmetric A R
+      ((NativeBridge.Incremental.CRelationData.EquivalenceIso A R).of h) =
+    NativeBridge.Incremental.CRelationData.Equivalence_Symmetric_native A R h
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.Equivalence_Transitive
+
+NativeBridge.Incremental.CRelationData.Equivalence_Transitive_agrees
+
+目标：Equivalence_Transitive_native；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+∀ (A : Type u) (R : A → A → Type v) (h : NativeBridge.Incremental.CRelationData.equivalenceNative A R),
+  Rocq.Corelib.Classes.CRelationClasses.Equivalence_Transitive A R
+      ((NativeBridge.Incremental.CRelationData.EquivalenceIso A R).of h) =
+    NativeBridge.Incremental.CRelationData.Equivalence_Transitive_native A R h
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.Equivalence_PER
+
+NativeBridge.Incremental.CRelationData.equivalence_PER_agrees
+
+目标：equivalencePERNative；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+∀ (A : Type u) (R : A → A → Type v) (h : NativeBridge.Incremental.CRelationData.equivalenceNative A R),
+  (NativeBridge.Incremental.CRelationData.PERIso A R).to
+      (Rocq.Corelib.Classes.CRelationClasses.Equivalence_PER A R
+        ((NativeBridge.Incremental.CRelationData.EquivalenceIso A R).of h)) =
+    NativeBridge.Incremental.CRelationData.equivalencePERNative A R h
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.reflexivity
+
+NativeBridge.Incremental.CRelationData.reflexivity_agrees
+
+目标：reflexivityNative；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+∀ (A : Type u) (R : A → A → Type v) (h : NativeBridge.Incremental.CRelationData.reflexiveNative A R),
+  Rocq.Corelib.Classes.CRelationClasses.reflexivity A R h =
+    NativeBridge.Incremental.CRelationData.reflexivityNative A R h
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.symmetry
+
+NativeBridge.Incremental.CRelationData.symmetry_agrees
+
+目标：symmetryNative；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+∀ (A : Type u) (R : A → A → Type v) (h : NativeBridge.Incremental.CRelationData.symmetricNative A R),
+  Rocq.Corelib.Classes.CRelationClasses.symmetry A R h = NativeBridge.Incremental.CRelationData.symmetryNative A R h
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.transitivity
+
+NativeBridge.Incremental.CRelationData.transitivity_agrees
+
+目标：transitivityNative；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+∀ (A : Type u) (R : A → A → Type v) (h : NativeBridge.Incremental.CRelationData.transitiveNative A R),
+  Rocq.Corelib.Classes.CRelationClasses.transitivity A R h =
+    NativeBridge.Incremental.CRelationData.transitivityNative A R h
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.is_subrelation
+
+NativeBridge.Incremental.CRelationData.is_subrelation_agrees
+
+目标：isSubrelationNative；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+∀ (A : Type u) (R : A → A → Type v) (S : A → A → Type w)
+  (h : NativeBridge.Incremental.CRelationData.subrelationNative A R S),
+  Rocq.Corelib.Classes.CRelationClasses.is_subrelation A R S h =
+    NativeBridge.Incremental.CRelationData.isSubrelationNative A R S h
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.flip
+
+NativeBridge.Incremental.CRelationData.flip_agrees
+
+目标：flipNative；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+∀ (A : Type u) (B : Type v) (C : Type w) (f : A → B → C),
+  Rocq.Corelib.Classes.CRelationClasses.flip A B C f = NativeBridge.Incremental.CRelationData.flipNative A B C f
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.iffT_Reflexive
+
+NativeBridge.Incremental.CRelationData.iffT_Reflexive_agrees
+
+目标：iffReflexiveNative；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+∀ (A : Type u),
+  (NativeBridge.Incremental.CRelationData.iffTIso A A).to (Rocq.Corelib.Classes.CRelationClasses.iffT_Reflexive A) =
+    NativeBridge.Incremental.CRelationData.iffReflexiveNative A
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.iffT_Symmetric
+
+NativeBridge.Incremental.CRelationData.iffT_Symmetric_agrees
+
+目标：iffSymmetricNative；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+∀ (A B : Type u) (h : NativeBridge.Incremental.CRelationData.iffNative A B),
+  (NativeBridge.Incremental.CRelationData.iffTIso B A).to
+      (Rocq.Corelib.Classes.CRelationClasses.iffT_Symmetric A B
+        ((NativeBridge.Incremental.CRelationData.iffTIso A B).of h)) =
+    NativeBridge.Incremental.CRelationData.iffSymmetricNative A B h
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.iffT_Transitive
+
+NativeBridge.Incremental.CRelationData.iffT_Transitive_agrees
+
+目标：iffTransitiveNative；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+∀ (A B C : Type u) (h : NativeBridge.Incremental.CRelationData.iffNative A B)
+  (k : NativeBridge.Incremental.CRelationData.iffNative B C),
+  (NativeBridge.Incremental.CRelationData.iffTIso A C).to
+      (Rocq.Corelib.Classes.CRelationClasses.iffT_Transitive A B C
+        ((NativeBridge.Incremental.CRelationData.iffTIso A B).of h)
+        ((NativeBridge.Incremental.CRelationData.iffTIso B C).of k)) =
+    NativeBridge.Incremental.CRelationData.iffTransitiveNative A B C h k
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.arrow_Reflexive
+
+NativeBridge.Incremental.CRelationData.arrow_Reflexive_agrees
+
+目标：arrowReflexiveNative；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+∀ (A : Type u),
+  Rocq.Corelib.Classes.CRelationClasses.arrow_Reflexive A =
+    NativeBridge.Incremental.CRelationData.arrowReflexiveNative A
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.arrow_Transitive
+
+NativeBridge.Incremental.CRelationData.arrow_Transitive_agrees
+
+目标：arrowTransitiveNative；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+∀ (A B C : Type u) (f : A → B) (g : B → C),
+  Rocq.Corelib.Classes.CRelationClasses.arrow_Transitive A B C f g =
+    NativeBridge.Incremental.CRelationData.arrowTransitiveNative A B C f g
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.arrow_Reflexive_obligation_1
+
+NativeBridge.Incremental.CRelationData.arrow_Reflexive_obligation_1_agrees
+
+目标：arrowReflexiveNative；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+∀ (A : Type u),
+  Rocq.Corelib.Classes.CRelationClasses.arrow_Reflexive_obligation_1 A =
+    NativeBridge.Incremental.CRelationData.arrowReflexiveNative A
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.arrow_Transitive_obligation_1
+
+NativeBridge.Incremental.CRelationData.arrow_Transitive_obligation_1_agrees
+
+目标：arrowTransitiveNative；范围：Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv
+
+```lean
+∀ (A B C : Type u) (f : A → B) (g : B → C),
+  Rocq.Corelib.Classes.CRelationClasses.arrow_Transitive_obligation_1 A B C f g =
+    NativeBridge.Incremental.CRelationData.arrowTransitiveNative A B C f g
+```
+
+公理闭包：空
+
 ## Corelib.ssr.ssrbool.canLR_in
 
 NativeBridge.Incremental.SSRBoolClosedStatements.RocqPending.Corelib.ssr.ssrbool.canLR_in.statement.correspondence

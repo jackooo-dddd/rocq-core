@@ -359,3 +359,29 @@ graph TD
 ```
 
 既有机械 opacity 保留。证明对象可利用证明无关性；任意数据选择函数不据此认定计算结果相等。
+
+
+## 第二十八至三十一批：本轮新增证书依赖
+
+以下是证明任务依赖；完整源码声明依赖仍见 dependency-graph.json。
+
+```mermaid
+graph TD
+  A[Bool / Eq / reflect 既有 Iso] --> B[alt_spec / if_spec 双向逆]
+  W[既有 275 个 SSR 前置证明] --> C[altP boolP ifP ifPn 闭合实例]
+  B --> C
+  M[memIso / sumboolIso] --> D[限制域谓词与容器分支]
+  I[Pos.iter 结构递归] --> J[Nat.rec 迭代对应]
+  J --> K[整数幂与有符号移位]
+  L[乘法 / div2 对应] --> K
+  S[12 个 Sumbool 前置证明] --> T[6 运算和 1 陈述对应]
+  R[Type 值关系函数与 Prod / Sum] --> E[18 个类型双向逆]
+  E --> F[20 个投影与组合运算]
+  C --> P[1336 份覆盖证书共同导入]
+  D --> P
+  K --> P
+  T --> P
+  F --> P
+```
+
+下一层复用 E/F 处理 CRelationClasses 剩余陈述；携带数据的 opaque 输出需要独立计算证据，不能套用仅适用于证明对象的无关性。

@@ -1,0 +1,6 @@
+NATIVE_TARGET {"name":"NativeBridge.Incremental.BinaryPower.evenNative","native_expression":"fun z => decide (z % 2 = 0)","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.BinaryPower.powPosNative","native_expression":"fun z p => z ^ p","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.BinaryPower.repeatNative","native_expression":"fun {A} f n x => Nat.rec x (fun x a => f a) n","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.BinaryPower.shiftLeftNative","native_expression":"fun x n => if n < 0 then x / 2 ^ (-n).toNat else 2 ^ n.toNat * x","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.BinaryPower.shiftRightNative","native_expression":"fun x n => NativeBridge.Incremental.BinaryPower.shiftLeftNative x (-n)","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.BinaryPower.zPowNative","native_expression":"fun x y => if y < 0 then 0 else x ^ y.toNat","remaining_source_symbols":[]}

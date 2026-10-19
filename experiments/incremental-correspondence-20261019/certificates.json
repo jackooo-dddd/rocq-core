@@ -8183,5 +8183,842 @@
       }
     ],
     "native_target": "NativeBridge.Incremental.SSRBoolProofFunctions.unless_contra_native"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.alt_spec",
+    "profile": "SSRBoolIndexed",
+    "certificate": "NativeBridge.Incremental.SSRBoolIndexed.altIso",
+    "kind": "TYPE_ISO",
+    "target": "PLift of indexed native branch predicate altNative",
+    "target_class": "native_expression",
+    "scope": "all Bool indices; if_spec preserves arbitrary Type u carrier and value index; both inverse laws checked",
+    "native_target": "NativeBridge.Incremental.SSRBoolIndexed.altNative"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.if_spec",
+    "profile": "SSRBoolIndexed",
+    "certificate": "NativeBridge.Incremental.SSRBoolIndexed.ifIso",
+    "kind": "TYPE_ISO",
+    "target": "PLift of indexed native branch predicate ifNative",
+    "target_class": "native_expression",
+    "scope": "all Bool indices; if_spec preserves arbitrary Type u carrier and value index; both inverse laws checked",
+    "native_target": "NativeBridge.Incremental.SSRBoolIndexed.ifNative"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.altP",
+    "profile": "SSRBoolIndexed",
+    "certificate": "NativeBridge.Incremental.SSRBoolIndexed.altP_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "independently constructed native indexed branch evidence altP_native",
+    "target_class": "native_expression",
+    "scope": "all Bool inputs; arbitrary Type u carrier for ifP/ifPn; original opacity preserved, all source prerequisites discharged",
+    "native_target": "NativeBridge.Incremental.SSRBoolIndexed.altP_native",
+    "closed_wrapper": "NativeBridge.Incremental.SSRBoolClosedOperations.closed.RocqPending.Corelib.ssr.ssrbool.altP",
+    "condition_discharges": [
+      {
+        "source": "Corelib.ssr.ssrbool.altP__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SSRBoolWitnesses.closed.Rocq.Corelib.ssr.ssrbool.altP__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.ssr.ssrbool.altP__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SSRBoolWitnesses.closed.Rocq.Corelib.ssr.ssrbool.altP__rocq2lean_obligation_2.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.boolP",
+    "profile": "SSRBoolIndexed",
+    "certificate": "NativeBridge.Incremental.SSRBoolIndexed.boolP_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "independently constructed native indexed branch evidence boolP_native",
+    "target_class": "native_expression",
+    "scope": "all Bool inputs; arbitrary Type u carrier for ifP/ifPn; original opacity preserved, all source prerequisites discharged",
+    "native_target": "NativeBridge.Incremental.SSRBoolIndexed.boolP_native",
+    "closed_wrapper": "NativeBridge.Incremental.SSRBoolClosedOperations.closed.RocqPending.Corelib.ssr.ssrbool.boolP",
+    "condition_discharges": [
+      {
+        "source": "Corelib.ssr.ssrbool.is_true_true",
+        "proof": "NativeBridge.Incremental.SSRBoolWitnesses.closed.Rocq.Corelib.ssr.ssrbool.is_true_true.statement"
+      },
+      {
+        "source": "Corelib.ssr.ssrbool.not_false_is_true",
+        "proof": "NativeBridge.Incremental.SSRBoolWitnesses.closed.Rocq.Corelib.ssr.ssrbool.not_false_is_true.statement"
+      },
+      {
+        "source": "Corelib.ssr.ssrbool.altP__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SSRBoolWitnesses.closed.Rocq.Corelib.ssr.ssrbool.altP__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.ssr.ssrbool.altP__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SSRBoolWitnesses.closed.Rocq.Corelib.ssr.ssrbool.altP__rocq2lean_obligation_2.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.ifP",
+    "profile": "SSRBoolIndexed",
+    "certificate": "NativeBridge.Incremental.SSRBoolIndexed.ifP_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "independently constructed native indexed branch evidence ifP_native",
+    "target_class": "native_expression",
+    "scope": "all Bool inputs; arbitrary Type u carrier for ifP/ifPn; original opacity preserved, all source prerequisites discharged",
+    "native_target": "NativeBridge.Incremental.SSRBoolIndexed.ifP_native",
+    "closed_wrapper": "NativeBridge.Incremental.SSRBoolClosedOperations.closed.RocqPending.Corelib.ssr.ssrbool.ifP",
+    "condition_discharges": [
+      {
+        "source": "Corelib.ssr.ssrbool.ifP__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SSRBoolWitnesses.closed.Rocq.Corelib.ssr.ssrbool.ifP__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.ssr.ssrbool.ifP__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SSRBoolWitnesses.closed.Rocq.Corelib.ssr.ssrbool.ifP__rocq2lean_obligation_2.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.ifPn",
+    "profile": "SSRBoolIndexed",
+    "certificate": "NativeBridge.Incremental.SSRBoolIndexed.ifPn_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "independently constructed native indexed branch evidence ifPn_native",
+    "target_class": "native_expression",
+    "scope": "all Bool inputs; arbitrary Type u carrier for ifP/ifPn; original opacity preserved, all source prerequisites discharged",
+    "native_target": "NativeBridge.Incremental.SSRBoolIndexed.ifPn_native",
+    "closed_wrapper": "NativeBridge.Incremental.SSRBoolClosedOperations.closed.RocqPending.Corelib.ssr.ssrbool.ifPn",
+    "condition_discharges": [
+      {
+        "source": "Corelib.ssr.ssrbool.ifPn__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SSRBoolWitnesses.closed.Rocq.Corelib.ssr.ssrbool.ifPn__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.ssr.ssrbool.is_true_true",
+        "proof": "NativeBridge.Incremental.SSRBoolWitnesses.closed.Rocq.Corelib.ssr.ssrbool.is_true_true.statement"
+      },
+      {
+        "source": "Corelib.ssr.ssrbool.ifPn__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SSRBoolWitnesses.closed.Rocq.Corelib.ssr.ssrbool.ifPn__rocq2lean_obligation_2.statement"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.is_left",
+    "profile": "SSRBoolRestrictions",
+    "certificate": "NativeBridge.Incremental.SSRBoolRestrictions.is_left_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "sumIsLeft",
+    "target_class": "native_expression",
+    "scope": "source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity",
+    "native_target": "NativeBridge.Incremental.SSRBoolRestrictions.sumIsLeft"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.is_inleft",
+    "profile": "SSRBoolRestrictions",
+    "certificate": "NativeBridge.Incremental.SSRBoolRestrictions.is_inleft_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "sumIsLeft",
+    "target_class": "native_expression",
+    "scope": "source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity",
+    "native_target": "NativeBridge.Incremental.SSRBoolRestrictions.sumIsLeft"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.prop_for",
+    "profile": "SSRBoolRestrictions",
+    "certificate": "NativeBridge.Incremental.SSRBoolRestrictions.prop_for_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "prop_for_native",
+    "target_class": "native_expression",
+    "scope": "source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity",
+    "native_target": "NativeBridge.Incremental.SSRBoolRestrictions.prop_for_native"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.prop_in1",
+    "profile": "SSRBoolRestrictions",
+    "certificate": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in1_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "prop_in1_native",
+    "target_class": "native_expression",
+    "scope": "source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity",
+    "native_target": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in1_native"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.prop_in11",
+    "profile": "SSRBoolRestrictions",
+    "certificate": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in11_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "prop_in11_native",
+    "target_class": "native_expression",
+    "scope": "source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity",
+    "native_target": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in11_native"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.prop_in111",
+    "profile": "SSRBoolRestrictions",
+    "certificate": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in111_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "prop_in111_native",
+    "target_class": "native_expression",
+    "scope": "source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity",
+    "native_target": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in111_native"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.prop_in12",
+    "profile": "SSRBoolRestrictions",
+    "certificate": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in12_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "prop_in12_native",
+    "target_class": "native_expression",
+    "scope": "source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity",
+    "native_target": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in12_native"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.prop_in2",
+    "profile": "SSRBoolRestrictions",
+    "certificate": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in2_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "prop_in2_native",
+    "target_class": "native_expression",
+    "scope": "source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity",
+    "native_target": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in2_native"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.prop_in21",
+    "profile": "SSRBoolRestrictions",
+    "certificate": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in21_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "prop_in21_native",
+    "target_class": "native_expression",
+    "scope": "source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity",
+    "native_target": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in21_native"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.prop_in3",
+    "profile": "SSRBoolRestrictions",
+    "certificate": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in3_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "prop_in3_native",
+    "target_class": "native_expression",
+    "scope": "source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity",
+    "native_target": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in3_native"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.prop_on1",
+    "profile": "SSRBoolRestrictions",
+    "certificate": "NativeBridge.Incremental.SSRBoolRestrictions.prop_on1_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "prop_on1_native",
+    "target_class": "native_expression",
+    "scope": "source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity",
+    "native_target": "NativeBridge.Incremental.SSRBoolRestrictions.prop_on1_native"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.prop_on2",
+    "profile": "SSRBoolRestrictions",
+    "certificate": "NativeBridge.Incremental.SSRBoolRestrictions.prop_on2_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "prop_on2_native",
+    "target_class": "native_expression",
+    "scope": "source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity",
+    "native_target": "NativeBridge.Incremental.SSRBoolRestrictions.prop_on2_native"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.sumboolP",
+    "profile": "SSRBoolRestrictions",
+    "certificate": "NativeBridge.Incremental.SSRBoolRestrictions.sumboolP_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "sumboolP_native",
+    "target_class": "native_expression",
+    "scope": "source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity",
+    "native_target": "NativeBridge.Incremental.SSRBoolRestrictions.sumboolP_native"
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.check_applicative_mem_pred",
+    "profile": "SSRBoolRestrictions",
+    "certificate": "NativeBridge.Incremental.SSRBoolRestrictions.check_applicative_mem_pred_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "unitIdentity",
+    "target_class": "native_expression",
+    "scope": "source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity",
+    "native_target": "NativeBridge.Incremental.SSRBoolRestrictions.unitIdentity"
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.iter",
+    "profile": "BinaryPower",
+    "certificate": "NativeBridge.Incremental.BinaryPower.positive_iter_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "repeatNative",
+    "target_class": "native_expression",
+    "scope": "arbitrary Sort carriers; transport version explicitly assumes step-function correspondence",
+    "native_target": "NativeBridge.Incremental.BinaryPower.repeatNative"
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.iter",
+    "profile": "BinaryPower",
+    "certificate": "NativeBridge.Incremental.BinaryPower.positive_iter_transport",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "repeatNative",
+    "target_class": "native_expression",
+    "scope": "arbitrary Sort carriers; transport version explicitly assumes step-function correspondence",
+    "native_target": "NativeBridge.Incremental.BinaryPower.repeatNative"
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.pow_pos",
+    "profile": "BinaryPower",
+    "certificate": "NativeBridge.Incremental.BinaryPower.z_pow_pos_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "powPosNative",
+    "target_class": "existing_api",
+    "scope": "all integer inputs; negative powers return zero; signed shifts preserve floor division and negative shift counts",
+    "native_target": "NativeBridge.Incremental.BinaryPower.powPosNative"
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.pow",
+    "profile": "BinaryPower",
+    "certificate": "NativeBridge.Incremental.BinaryPower.z_pow_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "zPowNative",
+    "target_class": "native_expression",
+    "scope": "all integer inputs; negative powers return zero; signed shifts preserve floor division and negative shift counts",
+    "native_target": "NativeBridge.Incremental.BinaryPower.zPowNative"
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.even",
+    "profile": "BinaryPower",
+    "certificate": "NativeBridge.Incremental.BinaryPower.z_even_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "evenNative",
+    "target_class": "native_expression",
+    "scope": "all integer inputs; negative powers return zero; signed shifts preserve floor division and negative shift counts",
+    "native_target": "NativeBridge.Incremental.BinaryPower.evenNative"
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.shiftl",
+    "profile": "BinaryPower",
+    "certificate": "NativeBridge.Incremental.BinaryPower.z_shiftl_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "shiftLeftNative",
+    "target_class": "native_expression",
+    "scope": "all integer inputs; negative powers return zero; signed shifts preserve floor division and negative shift counts",
+    "native_target": "NativeBridge.Incremental.BinaryPower.shiftLeftNative"
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.shiftr",
+    "profile": "BinaryPower",
+    "certificate": "NativeBridge.Incremental.BinaryPower.z_shiftr_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "shiftRightNative",
+    "target_class": "native_expression",
+    "scope": "all integer inputs; negative powers return zero; signed shifts preserve floor division and negative shift counts",
+    "native_target": "NativeBridge.Incremental.BinaryPower.shiftRightNative"
+  },
+  {
+    "source": "Corelib.Init.Sumbool.bool_eq_ind",
+    "profile": "SumboolBridge",
+    "certificate": "NativeBridge.Incremental.SumboolBridge.bool_eq_ind_agrees",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "nativeBoolInd",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.SumboolBridge.nativeBoolInd",
+    "scope": "all source parameters; bool_eq_rec uses the exported Type-valued motive; sumbool_and/or allow arbitrary A B C D, not only complementary propositions",
+    "original_statement_proof": "NativeBridge.Incremental.SumboolBridge.sourceBoolInd_proof"
+  },
+  {
+    "source": "Corelib.Init.Sumbool.bool_eq_rec",
+    "profile": "SumboolBridge",
+    "certificate": "NativeBridge.Incremental.SumboolBridge.bool_eq_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "nativeBoolRec",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.SumboolBridge.nativeBoolRec",
+    "scope": "all source parameters; bool_eq_rec uses the exported Type-valued motive; sumbool_and/or allow arbitrary A B C D, not only complementary propositions",
+    "closed_wrapper": "NativeBridge.Incremental.SumboolBridge.boolRecClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Sumbool.bool_eq_rec__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SumboolBridge.bool_eq_rec_proof1"
+      },
+      {
+        "source": "Corelib.Init.Sumbool.bool_eq_rec__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SumboolBridge.bool_eq_rec_proof2"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Sumbool.bool_of_sumbool",
+    "profile": "SumboolBridge",
+    "certificate": "NativeBridge.Incremental.SumboolBridge.bool_of_sumbool_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "nativeToBool",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.SumboolBridge.nativeToBool",
+    "scope": "all source parameters; bool_eq_rec uses the exported Type-valued motive; sumbool_and/or allow arbitrary A B C D, not only complementary propositions"
+  },
+  {
+    "source": "Corelib.Init.Sumbool.sumbool_and",
+    "profile": "SumboolBridge",
+    "certificate": "NativeBridge.Incremental.SumboolBridge.sumbool_and_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "nativeAnd",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.SumboolBridge.nativeAnd",
+    "scope": "all source parameters; bool_eq_rec uses the exported Type-valued motive; sumbool_and/or allow arbitrary A B C D, not only complementary propositions",
+    "closed_wrapper": "NativeBridge.Incremental.SumboolBridge.andClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SumboolBridge.sumbool_and_proof1"
+      },
+      {
+        "source": "Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SumboolBridge.sumbool_and_proof2"
+      },
+      {
+        "source": "Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.SumboolBridge.sumbool_and_proof3"
+      },
+      {
+        "source": "Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.SumboolBridge.sumbool_and_proof4"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Sumbool.sumbool_not",
+    "profile": "SumboolBridge",
+    "certificate": "NativeBridge.Incremental.SumboolBridge.sumbool_not_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "nativeNot",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.SumboolBridge.nativeNot",
+    "scope": "all source parameters; bool_eq_rec uses the exported Type-valued motive; sumbool_and/or allow arbitrary A B C D, not only complementary propositions"
+  },
+  {
+    "source": "Corelib.Init.Sumbool.sumbool_of_bool",
+    "profile": "SumboolBridge",
+    "certificate": "NativeBridge.Incremental.SumboolBridge.sumbool_of_bool_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "nativeOfBool",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.SumboolBridge.nativeOfBool",
+    "scope": "all source parameters; bool_eq_rec uses the exported Type-valued motive; sumbool_and/or allow arbitrary A B C D, not only complementary propositions",
+    "closed_wrapper": "NativeBridge.Incremental.SumboolBridge.ofBoolClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Sumbool.sumbool_of_bool__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SumboolBridge.sumbool_of_bool_proof1"
+      },
+      {
+        "source": "Corelib.Init.Sumbool.sumbool_of_bool__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SumboolBridge.sumbool_of_bool_proof2"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Init.Sumbool.sumbool_or",
+    "profile": "SumboolBridge",
+    "certificate": "NativeBridge.Incremental.SumboolBridge.sumbool_or_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "nativeOr",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.SumboolBridge.nativeOr",
+    "scope": "all source parameters; bool_eq_rec uses the exported Type-valued motive; sumbool_and/or allow arbitrary A B C D, not only complementary propositions",
+    "closed_wrapper": "NativeBridge.Incremental.SumboolBridge.orClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SumboolBridge.sumbool_or_proof1"
+      },
+      {
+        "source": "Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SumboolBridge.sumbool_or_proof2"
+      },
+      {
+        "source": "Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.SumboolBridge.sumbool_or_proof3"
+      },
+      {
+        "source": "Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.SumboolBridge.sumbool_or_proof4"
+      }
+    ]
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.crelation",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.crelationIso",
+    "kind": "TYPE_ISO",
+    "target": "relationNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.relationNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.Reflexive",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.ReflexiveIso",
+    "kind": "TYPE_ISO",
+    "target": "reflexiveNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.reflexiveNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.Symmetric",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.SymmetricIso",
+    "kind": "TYPE_ISO",
+    "target": "symmetricNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.symmetricNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.Transitive",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.TransitiveIso",
+    "kind": "TYPE_ISO",
+    "target": "transitiveNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.transitiveNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.subrelation",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.subrelationIso",
+    "kind": "TYPE_ISO",
+    "target": "subrelationNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.subrelationNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.arrow",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.arrowIso",
+    "kind": "TYPE_ISO",
+    "target": "arrowNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.arrowNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.PreOrder",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.PreOrderIso",
+    "kind": "TYPE_ISO",
+    "target": "preorderNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.preorderNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.PER",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.PERIso",
+    "kind": "TYPE_ISO",
+    "target": "perNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.perNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.Equivalence",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.EquivalenceIso",
+    "kind": "TYPE_ISO",
+    "target": "equivalenceNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.equivalenceNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.iffT",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.iffTIso",
+    "kind": "TYPE_ISO",
+    "target": "iffNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.iffNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.relation_conjunction",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.conjunctionIso",
+    "kind": "TYPE_ISO",
+    "target": "conjunctionNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.conjunctionNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.relation_disjunction",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.disjunctionIso",
+    "kind": "TYPE_ISO",
+    "target": "disjunctionNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.disjunctionNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.Antisymmetric",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.antisymmetricIso",
+    "kind": "TYPE_ISO",
+    "target": "antisymmetricNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.antisymmetricNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.relation_equivalence",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.relationEquivalenceIso",
+    "kind": "TYPE_ISO",
+    "target": "relationEquivalenceNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.relationEquivalenceNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.RewriteRelation",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.rewriteIso",
+    "kind": "TYPE_ISO",
+    "target": "rewriteNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.rewriteNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.complement",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.complementIso",
+    "kind": "TYPE_ISO",
+    "target": "complementNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.complementNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.Irreflexive",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.irreflexiveIso",
+    "kind": "TYPE_ISO",
+    "target": "irreflexiveNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.irreflexiveNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.Asymmetric",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.asymmetricIso",
+    "kind": "TYPE_ISO",
+    "target": "asymmetricNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.asymmetricNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.PreOrder_Reflexive",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.PreOrder_Reflexive_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PreOrder_Reflexive_native",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.PreOrder_Reflexive_native"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.PreOrder_Transitive",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.PreOrder_Transitive_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PreOrder_Transitive_native",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.PreOrder_Transitive_native"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.PER_Symmetric",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.PER_Symmetric_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PER_Symmetric_native",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.PER_Symmetric_native"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.PER_Transitive",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.PER_Transitive_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PER_Transitive_native",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.PER_Transitive_native"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.Equivalence_Reflexive",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.Equivalence_Reflexive_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Equivalence_Reflexive_native",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.Equivalence_Reflexive_native"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.Equivalence_Symmetric",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.Equivalence_Symmetric_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Equivalence_Symmetric_native",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.Equivalence_Symmetric_native"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.Equivalence_Transitive",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.Equivalence_Transitive_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Equivalence_Transitive_native",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.Equivalence_Transitive_native"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.Equivalence_PER",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.equivalence_PER_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "equivalencePERNative",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.equivalencePERNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.reflexivity",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.reflexivity_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "reflexivityNative",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.reflexivityNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.symmetry",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.symmetry_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "symmetryNative",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.symmetryNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.transitivity",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.transitivity_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "transitivityNative",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.transitivityNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.is_subrelation",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.is_subrelation_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "isSubrelationNative",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.isSubrelationNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.flip",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.flip_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "flipNative",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.flipNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.iffT_Reflexive",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.iffT_Reflexive_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "iffReflexiveNative",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.iffReflexiveNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.iffT_Symmetric",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.iffT_Symmetric_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "iffSymmetricNative",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.iffSymmetricNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.iffT_Transitive",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.iffT_Transitive_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "iffTransitiveNative",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.iffTransitiveNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.arrow_Reflexive",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.arrow_Reflexive_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "arrowReflexiveNative",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.arrowReflexiveNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.arrow_Transitive",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.arrow_Transitive_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "arrowTransitiveNative",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.arrowTransitiveNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.arrow_Reflexive_obligation_1",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.arrow_Reflexive_obligation_1_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "arrowReflexiveNative",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.arrowReflexiveNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.arrow_Transitive_obligation_1",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.arrow_Transitive_obligation_1_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "arrowTransitiveNative",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.arrowTransitiveNative"
   }
 ]

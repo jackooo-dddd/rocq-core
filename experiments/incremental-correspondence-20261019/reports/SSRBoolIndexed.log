@@ -1,0 +1,18 @@
+/home/shunqwang4/research/rocq-core/experiments/incremental-correspondence-20261019/.work/SSRBoolIndexed.lean:24:26: warning: Try `simp at hh` instead of `simpa using hh`
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+/home/shunqwang4/research/rocq-core/experiments/incremental-correspondence-20261019/.work/SSRBoolIndexed.lean:24:26: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+/home/shunqwang4/research/rocq-core/experiments/incremental-correspondence-20261019/.work/SSRBoolIndexed.lean:31:18: warning: Try `simp at h` instead of `simpa using h`
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+/home/shunqwang4/research/rocq-core/experiments/incremental-correspondence-20261019/.work/SSRBoolIndexed.lean:31:18: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+NATIVE_TARGET {"name":"NativeBridge.Incremental.SSRBoolIndexed.altNative","native_expression":"fun P b c => if c = true then P else b = false","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.SSRBoolIndexed.altP_native","native_expression":"fun P b h =>\n  Bool.casesOn (motive := fun t => b = t → PLift (NativeBridge.Incremental.SSRBoolIndexed.altNative P b b)) b\n    (fun h_1 =>\n      Eq.ndrec (motive := fun b => (P ↔ b = true) → PLift (NativeBridge.Incremental.SSRBoolIndexed.altNative P b b))\n        (fun h => { down := ⋯ }) ⋯ h)\n    (fun h_1 =>\n      Eq.ndrec (motive := fun b => (P ↔ b = true) → PLift (NativeBridge.Incremental.SSRBoolIndexed.altNative P b b))\n        (fun h => { down := ⋯ }) ⋯ h)\n    ⋯","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.SSRBoolIndexed.boolP_native","native_expression":"fun b =>\n  Bool.casesOn (motive := fun t => b = t → PLift (NativeBridge.Incremental.SSRBoolIndexed.altNative (b = true) b b)) b\n    (fun h => ⋯ ▸ { down := ⋯ }) (fun h => ⋯ ▸ { down := ⋯ }) ⋯","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.SSRBoolIndexed.ifNative","native_expression":"fun A b vT vF notB c x => if c = true then b = true ∧ x = vT else notB ∧ x = vF","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.SSRBoolIndexed.ifP_native","native_expression":"fun A b vT vF =>\n  Bool.casesOn (motive := fun t =>\n    b = t →\n      PLift (NativeBridge.Incremental.SSRBoolIndexed.ifNative A b vT vF (b = false) b (if b = true then vT else vF)))\n    b (fun h => ⋯ ▸ { down := ⋯ }) (fun h => ⋯ ▸ { down := ⋯ }) ⋯","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.SSRBoolIndexed.ifPn_native","native_expression":"fun A b vT vF =>\n  Bool.casesOn (motive := fun t =>\n    b = t →\n      PLift (NativeBridge.Incremental.SSRBoolIndexed.ifNative A b vT vF ((!b) = true) b (if b = true then vT else vF)))\n    b (fun h => ⋯ ▸ { down := ⋯ }) (fun h => ⋯ ▸ { down := ⋯ }) ⋯","remaining_source_symbols":[]}

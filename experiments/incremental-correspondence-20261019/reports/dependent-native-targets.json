@@ -328,5 +328,345 @@
     "name": "NativeBridge.Incremental.SSRBoolProofFunctions.unless_contra_native",
     "native_expression": "fun b C f =>\n  Bool.casesOn (motive := fun t => b = t → Nonempty C ∨ b = true) b\n    (fun h =>\n      Eq.ndrec (motive := fun b => ∀ (f : (!b) = true → C), Nonempty C ∨ b = true)\n        (fun f => Or.inl (Nonempty.intro (f rfl))) (Eq.symm h) f)\n    (fun h =>\n      Eq.ndrec (motive := fun b => ∀ (f : (!b) = true → C), Nonempty C ∨ b = true) (fun f => Or.inr rfl) (Eq.symm h) f)\n    (Eq.refl b)",
     "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolIndexed.altNative",
+    "native_expression": "fun P b c => if c = true then P else b = false",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolIndexed.altP_native",
+    "native_expression": "fun P b h =>\n  Bool.casesOn (motive := fun t => b = t → PLift (NativeBridge.Incremental.SSRBoolIndexed.altNative P b b)) b\n    (fun h_1 =>\n      Eq.ndrec (motive := fun b => (P ↔ b = true) → PLift (NativeBridge.Incremental.SSRBoolIndexed.altNative P b b))\n        (fun h => { down := ⋯ }) ⋯ h)\n    (fun h_1 =>\n      Eq.ndrec (motive := fun b => (P ↔ b = true) → PLift (NativeBridge.Incremental.SSRBoolIndexed.altNative P b b))\n        (fun h => { down := ⋯ }) ⋯ h)\n    ⋯",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolIndexed.boolP_native",
+    "native_expression": "fun b =>\n  Bool.casesOn (motive := fun t => b = t → PLift (NativeBridge.Incremental.SSRBoolIndexed.altNative (b = true) b b)) b\n    (fun h => ⋯ ▸ { down := ⋯ }) (fun h => ⋯ ▸ { down := ⋯ }) ⋯",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolIndexed.ifNative",
+    "native_expression": "fun A b vT vF notB c x => if c = true then b = true ∧ x = vT else notB ∧ x = vF",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolIndexed.ifP_native",
+    "native_expression": "fun A b vT vF =>\n  Bool.casesOn (motive := fun t =>\n    b = t →\n      PLift (NativeBridge.Incremental.SSRBoolIndexed.ifNative A b vT vF (b = false) b (if b = true then vT else vF)))\n    b (fun h => ⋯ ▸ { down := ⋯ }) (fun h => ⋯ ▸ { down := ⋯ }) ⋯",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolIndexed.ifPn_native",
+    "native_expression": "fun A b vT vF =>\n  Bool.casesOn (motive := fun t =>\n    b = t →\n      PLift (NativeBridge.Incremental.SSRBoolIndexed.ifNative A b vT vF ((!b) = true) b (if b = true then vT else vF)))\n    b (fun h => ⋯ ▸ { down := ⋯ }) (fun h => ⋯ ▸ { down := ⋯ }) ⋯",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolRestrictions.prop_for_native",
+    "native_expression": "fun A x P => P x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in111_native",
+    "native_expression": "fun T1 T2 T3 d1 d2 d3 P => ∀ (x : T1) (y : T2) (z : T3), d1 x = true → d2 y = true → d3 z = true → P x y z",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in11_native",
+    "native_expression": "fun T1 T2 d1 d2 P => ∀ (x : T1) (y : T2), d1 x = true → d2 y = true → P x y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in12_native",
+    "native_expression": "fun T1 T2 d1 d2 P => ∀ (x : T1) (y z : T2), d1 x = true → d2 y = true → d2 z = true → P x y z",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in1_native",
+    "native_expression": "fun T1 d1 P => ∀ (x : T1), d1 x = true → P x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in21_native",
+    "native_expression": "fun T1 T2 d1 d2 P => ∀ (x y : T1) (z : T2), d1 x = true → d1 y = true → d2 z = true → P x y z",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in2_native",
+    "native_expression": "fun T1 d1 P => ∀ (x y : T1), d1 x = true → d1 y = true → P x y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in3_native",
+    "native_expression": "fun T1 d1 P => ∀ (x y z : T1), d1 x = true → d1 y = true → d1 z = true → P x y z",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolRestrictions.prop_on1_native",
+    "native_expression": "fun A B d f P => ∀ (x : A), d (f x) = true → P x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolRestrictions.prop_on2_native",
+    "native_expression": "fun A B d f P => ∀ (x y : A), d (f x) = true → d (f y) = true → P x y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolRestrictions.sumIsLeft",
+    "native_expression": "fun A B x =>\n  match x with\n  | PSum.inl val => true\n  | PSum.inr val => false",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolRestrictions.sumboolP_native",
+    "native_expression": "fun P d =>\n  Decidable.casesOn (motive := fun t => d = t → (P ↔ decide P = true)) d\n    (fun h h_1 =>\n      Eq.symm h_1 ▸\n        of_eq_true\n          (Eq.trans\n            (congr (congrArg Iff (eq_false h))\n              (Eq.trans\n                (congrFun'\n                  (congrArg Eq\n                    (Eq.trans (Decidable.decide.congr_simp P False (eq_false h)) (decide_false instDecidableFalse)))\n                  true)\n                Bool.false_eq_true))\n            (iff_self False)))\n    (fun h h_1 =>\n      Eq.symm h_1 ▸\n        of_eq_true\n          (Eq.trans\n            (congr (congrArg Iff (eq_true h))\n              (Eq.trans\n                (congrFun'\n                  (congrArg Eq\n                    (Eq.trans (Decidable.decide.congr_simp P True (eq_true h)) (decide_true instDecidableTrue)))\n                  true)\n                (eq_self true)))\n            (iff_self True)))\n    (Eq.refl d)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SSRBoolRestrictions.unitIdentity",
+    "native_expression": "fun x => x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SumboolBridge.nativeAnd",
+    "native_expression": "fun A B C D x x_1 =>\n  match x, x_1 with\n  | PSum.inl a, PSum.inl c => PSum.inl ⋯\n  | PSum.inl val, PSum.inr d => PSum.inr ⋯\n  | PSum.inr b, x => PSum.inr ⋯",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SumboolBridge.nativeBoolInd",
+    "native_expression": "∀ (b : Bool) (P : Bool → Prop), (b = true → P true) → (b = false → P false) → P b",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SumboolBridge.nativeBoolRec",
+    "native_expression": "fun b P ht hf =>\n  Bool.casesOn (motive := fun t => b = t → P b) b\n    (fun h =>\n      Eq.ndrec (motive := fun b => (b = true → P true) → (b = false → P false) → P b) (fun ht hf => hf ⋯) ⋯ ht hf)\n    (fun h =>\n      Eq.ndrec (motive := fun b => (b = true → P true) → (b = false → P false) → P b) (fun ht hf => ht ⋯) ⋯ ht hf)\n    ⋯",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SumboolBridge.nativeNot",
+    "native_expression": "fun A B x =>\n  match x with\n  | PSum.inl a => PSum.inr a\n  | PSum.inr b => PSum.inl b",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SumboolBridge.nativeOfBool",
+    "native_expression": "fun x =>\n  match x with\n  | true => PSum.inl ⋯\n  | false => PSum.inr ⋯",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SumboolBridge.nativeOr",
+    "native_expression": "fun A B C D x x_1 =>\n  match x, x_1 with\n  | PSum.inl a, x => PSum.inl ⋯\n  | PSum.inr val, PSum.inl c => PSum.inl ⋯\n  | PSum.inr b, PSum.inr d => PSum.inr ⋯",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.SumboolBridge.nativeToBool",
+    "native_expression": "fun A B x =>\n  match x with\n  | PSum.inl a => ⟨true, a⟩\n  | PSum.inr b => ⟨false, b⟩",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.Equivalence_Reflexive_native",
+    "native_expression": "fun A R h => h.fst",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.Equivalence_Symmetric_native",
+    "native_expression": "fun A R h => h.snd.fst",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.Equivalence_Transitive_native",
+    "native_expression": "fun A R h => h.snd.snd",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.PER_Symmetric_native",
+    "native_expression": "fun A R h => h.fst",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.PER_Transitive_native",
+    "native_expression": "fun A R h => h.snd",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.PreOrder_Reflexive_native",
+    "native_expression": "fun A R h => h.fst",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.PreOrder_Transitive_native",
+    "native_expression": "fun A R h => h.snd",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.antisymmetricNative",
+    "native_expression": "fun A E R => (x y : A) → R x y → R y x → E x y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.arrowNative",
+    "native_expression": "fun A B => A → B",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.arrowReflexiveNative",
+    "native_expression": "fun A => id",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.arrowTransitiveNative",
+    "native_expression": "fun A B C f g => g ∘ f",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.asymmetricNative",
+    "native_expression": "fun A R => ∀ (x y : A) (a : R x y) (a : R y x), False",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.complementNative",
+    "native_expression": "fun A R x y => ∀ (a : R x y), False",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.conjunctionNative",
+    "native_expression": "fun A R S x y => R x y × S x y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.disjunctionNative",
+    "native_expression": "fun A R S x y => R x y ⊕ S x y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.equivalenceNative",
+    "native_expression": "fun A R =>\n  NativeBridge.Incremental.CRelationData.reflexiveNative A R ×\n    NativeBridge.Incremental.CRelationData.symmetricNative A R ×\n      NativeBridge.Incremental.CRelationData.transitiveNative A R",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.equivalencePERNative",
+    "native_expression": "fun A R h => h.snd",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.flipNative",
+    "native_expression": "fun A B C f b a => f a b",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.iffNative",
+    "native_expression": "fun A B => (A → B) × (B → A)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.iffReflexiveNative",
+    "native_expression": "fun A => (id, id)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.iffSymmetricNative",
+    "native_expression": "fun A B h => (h.snd, h.fst)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.iffTransitiveNative",
+    "native_expression": "fun A B C h k => (k.fst ∘ h.fst, h.snd ∘ k.snd)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.irreflexiveNative",
+    "native_expression": "fun A R => ∀ (x : A) (a : R x x), False",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.isSubrelationNative",
+    "native_expression": "fun A R S h => h",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.perNative",
+    "native_expression": "fun A R =>\n  NativeBridge.Incremental.CRelationData.symmetricNative A R ×\n    NativeBridge.Incremental.CRelationData.transitiveNative A R",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.preorderNative",
+    "native_expression": "fun A R =>\n  NativeBridge.Incremental.CRelationData.reflexiveNative A R ×\n    NativeBridge.Incremental.CRelationData.transitiveNative A R",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.reflexiveNative",
+    "native_expression": "fun A R => (x : A) → R x x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.reflexivityNative",
+    "native_expression": "fun A R h => h",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.relationEquivalenceNative",
+    "native_expression": "fun A R S => (x y : A) → (R x y → S x y) × (S x y → R x y)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.relationNative",
+    "native_expression": "fun A => A → A → Type v",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.rewriteNative",
+    "native_expression": "fun A R => True",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.subrelationNative",
+    "native_expression": "fun A R S => (x y : A) → R x y → S x y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.symmetricNative",
+    "native_expression": "fun A R => (x y : A) → R x y → R y x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.symmetryNative",
+    "native_expression": "fun A R h => h",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.transitiveNative",
+    "native_expression": "fun A R => (x y z : A) → R x y → R y z → R x z",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationData.transitivityNative",
+    "native_expression": "fun A R h => h",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.BinaryPower.evenNative",
+    "native_expression": "fun z => decide (z % 2 = 0)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.BinaryPower.powPosNative",
+    "native_expression": "fun z p => z ^ p",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.BinaryPower.repeatNative",
+    "native_expression": "fun {A} f n x => Nat.rec x (fun x a => f a) n",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.BinaryPower.shiftLeftNative",
+    "native_expression": "fun x n => if n < 0 then x / 2 ^ (-n).toNat else 2 ^ n.toNat * x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.BinaryPower.shiftRightNative",
+    "native_expression": "fun x n => NativeBridge.Incremental.BinaryPower.shiftLeftNative x (-n)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.BinaryPower.zPowNative",
+    "native_expression": "fun x y => if y < 0 then 0 else x ^ y.toNat",
+    "remaining_source_symbols": []
   }
 ]

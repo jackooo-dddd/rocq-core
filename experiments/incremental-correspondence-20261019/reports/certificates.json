@@ -10208,6 +10208,1131 @@
     "axioms": []
   },
   {
+    "source": "Corelib.ssr.ssrbool.alt_spec",
+    "profile": "SSRBoolIndexed",
+    "certificate": "NativeBridge.Incremental.SSRBoolIndexed.altIso",
+    "kind": "TYPE_ISO",
+    "target": "PLift of indexed native branch predicate altNative",
+    "target_class": "native_expression",
+    "scope": "all Bool indices; if_spec preserves arbitrary Type u carrier and value index; both inverse laws checked",
+    "native_target": "NativeBridge.Incremental.SSRBoolIndexed.altNative",
+    "native_expression": "fun P b c => if c = true then P else b = false",
+    "type": "(P : Prop) →\n  (b c : NativeBridge.RBool) →\n    NativeBridge.Iso (Rocq.Corelib.ssr.ssrbool.alt_spec P b c)\n      (PLift (NativeBridge.Incremental.SSRBoolIndexed.altNative P (NativeBridge.boolTo b) (NativeBridge.boolTo c)))",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.if_spec",
+    "profile": "SSRBoolIndexed",
+    "certificate": "NativeBridge.Incremental.SSRBoolIndexed.ifIso",
+    "kind": "TYPE_ISO",
+    "target": "PLift of indexed native branch predicate ifNative",
+    "target_class": "native_expression",
+    "scope": "all Bool indices; if_spec preserves arbitrary Type u carrier and value index; both inverse laws checked",
+    "native_target": "NativeBridge.Incremental.SSRBoolIndexed.ifNative",
+    "native_expression": "fun A b vT vF notB c x => if c = true then b = true ∧ x = vT else notB ∧ x = vF",
+    "type": "(A : Type u) →\n  (b : NativeBridge.RBool) →\n    (vT vF : A) →\n      (notB : Prop) →\n        (c : NativeBridge.RBool) →\n          (x : A) →\n            NativeBridge.Iso (Rocq.Corelib.ssr.ssrbool.if_spec A b vT vF notB c x)\n              (PLift\n                (NativeBridge.Incremental.SSRBoolIndexed.ifNative A (NativeBridge.boolTo b) vT vF notB\n                  (NativeBridge.boolTo c) x))",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.altP",
+    "profile": "SSRBoolIndexed",
+    "certificate": "NativeBridge.Incremental.SSRBoolIndexed.altP_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "independently constructed native indexed branch evidence altP_native",
+    "target_class": "native_expression",
+    "scope": "all Bool inputs; arbitrary Type u carrier for ifP/ifPn; original opacity preserved, all source prerequisites discharged",
+    "native_target": "NativeBridge.Incremental.SSRBoolIndexed.altP_native",
+    "closed_wrapper": "NativeBridge.Incremental.SSRBoolClosedOperations.closed.RocqPending.Corelib.ssr.ssrbool.altP",
+    "condition_discharges": [
+      {
+        "source": "Corelib.ssr.ssrbool.altP__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SSRBoolWitnesses.closed.Rocq.Corelib.ssr.ssrbool.altP__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.ssr.ssrbool.altP__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SSRBoolWitnesses.closed.Rocq.Corelib.ssr.ssrbool.altP__rocq2lean_obligation_2.statement"
+      }
+    ],
+    "native_expression": "fun P b h =>\n  Bool.casesOn (motive := fun t => b = t → PLift (NativeBridge.Incremental.SSRBoolIndexed.altNative P b b)) b\n    (fun h_1 =>\n      Eq.ndrec (motive := fun b => (P ↔ b = true) → PLift (NativeBridge.Incremental.SSRBoolIndexed.altNative P b b))\n        (fun h => { down := ⋯ }) ⋯ h)\n    (fun h_1 =>\n      Eq.ndrec (motive := fun b => (P ↔ b = true) → PLift (NativeBridge.Incremental.SSRBoolIndexed.altNative P b b))\n        (fun h => { down := ⋯ }) ⋯ h)\n    ⋯",
+    "type": "∀ (P : Prop) (b : Bool) (h : P ↔ b = true),\n  (NativeBridge.Incremental.SSRBoolIndexed.altIso P (NativeBridge.boolOf b) (NativeBridge.boolOf b)).to\n      (RocqPending.Corelib.ssr.ssrbool.altP P (NativeBridge.boolOf b)\n        (NativeBridge.Incremental.SSRBoolProofFunctions.reflectNativeOf P b h)) =\n    have this := ⋯.mpr (NativeBridge.Incremental.SSRBoolIndexed.altP_native P b h);\n    this",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.boolP",
+    "profile": "SSRBoolIndexed",
+    "certificate": "NativeBridge.Incremental.SSRBoolIndexed.boolP_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "independently constructed native indexed branch evidence boolP_native",
+    "target_class": "native_expression",
+    "scope": "all Bool inputs; arbitrary Type u carrier for ifP/ifPn; original opacity preserved, all source prerequisites discharged",
+    "native_target": "NativeBridge.Incremental.SSRBoolIndexed.boolP_native",
+    "closed_wrapper": "NativeBridge.Incremental.SSRBoolClosedOperations.closed.RocqPending.Corelib.ssr.ssrbool.boolP",
+    "condition_discharges": [
+      {
+        "source": "Corelib.ssr.ssrbool.is_true_true",
+        "proof": "NativeBridge.Incremental.SSRBoolWitnesses.closed.Rocq.Corelib.ssr.ssrbool.is_true_true.statement"
+      },
+      {
+        "source": "Corelib.ssr.ssrbool.not_false_is_true",
+        "proof": "NativeBridge.Incremental.SSRBoolWitnesses.closed.Rocq.Corelib.ssr.ssrbool.not_false_is_true.statement"
+      },
+      {
+        "source": "Corelib.ssr.ssrbool.altP__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SSRBoolWitnesses.closed.Rocq.Corelib.ssr.ssrbool.altP__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.ssr.ssrbool.altP__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SSRBoolWitnesses.closed.Rocq.Corelib.ssr.ssrbool.altP__rocq2lean_obligation_2.statement"
+      }
+    ],
+    "native_expression": "fun b =>\n  Bool.casesOn (motive := fun t => b = t → PLift (NativeBridge.Incremental.SSRBoolIndexed.altNative (b = true) b b)) b\n    (fun h => ⋯ ▸ { down := ⋯ }) (fun h => ⋯ ▸ { down := ⋯ }) ⋯",
+    "type": "∀ (b : Bool),\n  NativeBridge.Incremental.SSRBoolIndexed.boolPTo b (RocqPending.Corelib.ssr.ssrbool.boolP (NativeBridge.boolOf b)) =\n    NativeBridge.Incremental.SSRBoolIndexed.boolP_native b",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.ifP",
+    "profile": "SSRBoolIndexed",
+    "certificate": "NativeBridge.Incremental.SSRBoolIndexed.ifP_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "independently constructed native indexed branch evidence ifP_native",
+    "target_class": "native_expression",
+    "scope": "all Bool inputs; arbitrary Type u carrier for ifP/ifPn; original opacity preserved, all source prerequisites discharged",
+    "native_target": "NativeBridge.Incremental.SSRBoolIndexed.ifP_native",
+    "closed_wrapper": "NativeBridge.Incremental.SSRBoolClosedOperations.closed.RocqPending.Corelib.ssr.ssrbool.ifP",
+    "condition_discharges": [
+      {
+        "source": "Corelib.ssr.ssrbool.ifP__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SSRBoolWitnesses.closed.Rocq.Corelib.ssr.ssrbool.ifP__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.ssr.ssrbool.ifP__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SSRBoolWitnesses.closed.Rocq.Corelib.ssr.ssrbool.ifP__rocq2lean_obligation_2.statement"
+      }
+    ],
+    "native_expression": "fun A b vT vF =>\n  Bool.casesOn (motive := fun t =>\n    b = t →\n      PLift (NativeBridge.Incremental.SSRBoolIndexed.ifNative A b vT vF (b = false) b (if b = true then vT else vF)))\n    b (fun h => ⋯ ▸ { down := ⋯ }) (fun h => ⋯ ▸ { down := ⋯ }) ⋯",
+    "type": "∀ (A : Type u) (b : Bool) (vT vF : A),\n  NativeBridge.Incremental.SSRBoolIndexed.ifPTo A b vT vF\n      (RocqPending.Corelib.ssr.ssrbool.ifP A (NativeBridge.boolOf b) vT vF) =\n    NativeBridge.Incremental.SSRBoolIndexed.ifP_native A b vT vF",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.ifPn",
+    "profile": "SSRBoolIndexed",
+    "certificate": "NativeBridge.Incremental.SSRBoolIndexed.ifPn_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "independently constructed native indexed branch evidence ifPn_native",
+    "target_class": "native_expression",
+    "scope": "all Bool inputs; arbitrary Type u carrier for ifP/ifPn; original opacity preserved, all source prerequisites discharged",
+    "native_target": "NativeBridge.Incremental.SSRBoolIndexed.ifPn_native",
+    "closed_wrapper": "NativeBridge.Incremental.SSRBoolClosedOperations.closed.RocqPending.Corelib.ssr.ssrbool.ifPn",
+    "condition_discharges": [
+      {
+        "source": "Corelib.ssr.ssrbool.ifPn__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SSRBoolWitnesses.closed.Rocq.Corelib.ssr.ssrbool.ifPn__rocq2lean_obligation_1.statement"
+      },
+      {
+        "source": "Corelib.ssr.ssrbool.is_true_true",
+        "proof": "NativeBridge.Incremental.SSRBoolWitnesses.closed.Rocq.Corelib.ssr.ssrbool.is_true_true.statement"
+      },
+      {
+        "source": "Corelib.ssr.ssrbool.ifPn__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SSRBoolWitnesses.closed.Rocq.Corelib.ssr.ssrbool.ifPn__rocq2lean_obligation_2.statement"
+      }
+    ],
+    "native_expression": "fun A b vT vF =>\n  Bool.casesOn (motive := fun t =>\n    b = t →\n      PLift (NativeBridge.Incremental.SSRBoolIndexed.ifNative A b vT vF ((!b) = true) b (if b = true then vT else vF)))\n    b (fun h => ⋯ ▸ { down := ⋯ }) (fun h => ⋯ ▸ { down := ⋯ }) ⋯",
+    "type": "∀ (A : Type u) (b : Bool) (vT vF : A),\n  NativeBridge.Incremental.SSRBoolIndexed.ifPnTo A b vT vF\n      (RocqPending.Corelib.ssr.ssrbool.ifPn A (NativeBridge.boolOf b) vT vF) =\n    NativeBridge.Incremental.SSRBoolIndexed.ifPn_native A b vT vF",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.is_left",
+    "profile": "SSRBoolRestrictions",
+    "certificate": "NativeBridge.Incremental.SSRBoolRestrictions.is_left_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "sumIsLeft",
+    "target_class": "native_expression",
+    "scope": "source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity",
+    "native_target": "NativeBridge.Incremental.SSRBoolRestrictions.sumIsLeft",
+    "native_expression": "fun A B x =>\n  match x with\n  | PSum.inl val => true\n  | PSum.inr val => false",
+    "type": "∀ (P Q : Prop) (x : P ⊕' Q),\n  NativeBridge.boolTo (Rocq.Corelib.ssr.ssrbool.is_left P Q (NativeBridge.sumboolOf x)) =\n    NativeBridge.Incremental.SSRBoolRestrictions.sumIsLeft P Q x",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.is_inleft",
+    "profile": "SSRBoolRestrictions",
+    "certificate": "NativeBridge.Incremental.SSRBoolRestrictions.is_inleft_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "sumIsLeft",
+    "target_class": "native_expression",
+    "scope": "source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity",
+    "native_target": "NativeBridge.Incremental.SSRBoolRestrictions.sumIsLeft",
+    "native_expression": "fun A B x =>\n  match x with\n  | PSum.inl val => true\n  | PSum.inr val => false",
+    "type": "∀ (A : Sort u) (P : Prop) (x : A ⊕' P),\n  NativeBridge.boolTo\n      (Rocq.Corelib.ssr.ssrbool.is_inleft A P (NativeBridge.Incremental.SSRBoolRestrictions.sumorSortOf x)) =\n    NativeBridge.Incremental.SSRBoolRestrictions.sumIsLeft A P x",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.prop_for",
+    "profile": "SSRBoolRestrictions",
+    "certificate": "NativeBridge.Incremental.SSRBoolRestrictions.prop_for_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "prop_for_native",
+    "target_class": "native_expression",
+    "scope": "source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity",
+    "native_target": "NativeBridge.Incremental.SSRBoolRestrictions.prop_for_native",
+    "native_expression": "fun A x P => P x",
+    "type": "∀ (A : Sort u) (x : A) (P : A → Prop) (ph : Rocq.Corelib.ssr.ssreflect_rw.phantom Prop (∀ (a : A), P a)),\n  Rocq.Corelib.ssr.ssrbool.prop_for A x P ph ↔ NativeBridge.Incremental.SSRBoolRestrictions.prop_for_native A x P",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.prop_in1",
+    "profile": "SSRBoolRestrictions",
+    "certificate": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in1_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "prop_in1_native",
+    "target_class": "native_expression",
+    "scope": "source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity",
+    "native_target": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in1_native",
+    "native_expression": "fun T1 d1 P => ∀ (x : T1), d1 x = true → P x",
+    "type": "∀ (T1 : Type u) (d1 : T1 → Bool) (P : T1 → Prop) (ph : Rocq.Corelib.ssr.ssreflect_rw.phantom Prop (∀ (x : T1), P x)),\n  Rocq.Corelib.ssr.ssrbool.prop_in1 T1 ((NativeBridge.Incremental.SSRBoolData.memIso T1).of d1) P ph ↔\n    NativeBridge.Incremental.SSRBoolRestrictions.prop_in1_native T1 d1 P",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.prop_in11",
+    "profile": "SSRBoolRestrictions",
+    "certificate": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in11_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "prop_in11_native",
+    "target_class": "native_expression",
+    "scope": "source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity",
+    "native_target": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in11_native",
+    "native_expression": "fun T1 T2 d1 d2 P => ∀ (x : T1) (y : T2), d1 x = true → d2 y = true → P x y",
+    "type": "∀ (T1 : Type u) (T2 : Type v) (d1 : T1 → Bool) (d2 : T2 → Bool) (P : T1 → T2 → Prop)\n  (ph : Rocq.Corelib.ssr.ssreflect_rw.phantom Prop (∀ (x : T1) (y : T2), P x y)),\n  Rocq.Corelib.ssr.ssrbool.prop_in11 T1 T2 ((NativeBridge.Incremental.SSRBoolData.memIso T1).of d1)\n      ((NativeBridge.Incremental.SSRBoolData.memIso T2).of d2) P ph ↔\n    NativeBridge.Incremental.SSRBoolRestrictions.prop_in11_native T1 T2 d1 d2 P",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.prop_in111",
+    "profile": "SSRBoolRestrictions",
+    "certificate": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in111_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "prop_in111_native",
+    "target_class": "native_expression",
+    "scope": "source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity",
+    "native_target": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in111_native",
+    "native_expression": "fun T1 T2 T3 d1 d2 d3 P => ∀ (x : T1) (y : T2) (z : T3), d1 x = true → d2 y = true → d3 z = true → P x y z",
+    "type": "∀ (T1 : Type u) (T2 : Type v) (T3 : Type w) (d1 : T1 → Bool) (d2 : T2 → Bool) (d3 : T3 → Bool) (P : T1 → T2 → T3 → Prop)\n  (ph : Rocq.Corelib.ssr.ssreflect_rw.phantom Prop (∀ (x : T1) (y : T2) (z : T3), P x y z)),\n  Rocq.Corelib.ssr.ssrbool.prop_in111 T1 T2 T3 ((NativeBridge.Incremental.SSRBoolData.memIso T1).of d1)\n      ((NativeBridge.Incremental.SSRBoolData.memIso T2).of d2) ((NativeBridge.Incremental.SSRBoolData.memIso T3).of d3)\n      P ph ↔\n    NativeBridge.Incremental.SSRBoolRestrictions.prop_in111_native T1 T2 T3 d1 d2 d3 P",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.prop_in12",
+    "profile": "SSRBoolRestrictions",
+    "certificate": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in12_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "prop_in12_native",
+    "target_class": "native_expression",
+    "scope": "source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity",
+    "native_target": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in12_native",
+    "native_expression": "fun T1 T2 d1 d2 P => ∀ (x : T1) (y z : T2), d1 x = true → d2 y = true → d2 z = true → P x y z",
+    "type": "∀ (T1 : Type u) (T2 : Type v) (d1 : T1 → Bool) (d2 : T2 → Bool) (P : T1 → T2 → T2 → Prop)\n  (ph : Rocq.Corelib.ssr.ssreflect_rw.phantom Prop (∀ (x : T1) (y z : T2), P x y z)),\n  Rocq.Corelib.ssr.ssrbool.prop_in12 T1 T2 ((NativeBridge.Incremental.SSRBoolData.memIso T1).of d1)\n      ((NativeBridge.Incremental.SSRBoolData.memIso T2).of d2) P ph ↔\n    NativeBridge.Incremental.SSRBoolRestrictions.prop_in12_native T1 T2 d1 d2 P",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.prop_in2",
+    "profile": "SSRBoolRestrictions",
+    "certificate": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in2_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "prop_in2_native",
+    "target_class": "native_expression",
+    "scope": "source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity",
+    "native_target": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in2_native",
+    "native_expression": "fun T1 d1 P => ∀ (x y : T1), d1 x = true → d1 y = true → P x y",
+    "type": "∀ (T1 : Type u) (d1 : T1 → Bool) (P : T1 → T1 → Prop)\n  (ph : Rocq.Corelib.ssr.ssreflect_rw.phantom Prop (∀ (x y : T1), P x y)),\n  Rocq.Corelib.ssr.ssrbool.prop_in2 T1 ((NativeBridge.Incremental.SSRBoolData.memIso T1).of d1) P ph ↔\n    NativeBridge.Incremental.SSRBoolRestrictions.prop_in2_native T1 d1 P",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.prop_in21",
+    "profile": "SSRBoolRestrictions",
+    "certificate": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in21_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "prop_in21_native",
+    "target_class": "native_expression",
+    "scope": "source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity",
+    "native_target": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in21_native",
+    "native_expression": "fun T1 T2 d1 d2 P => ∀ (x y : T1) (z : T2), d1 x = true → d1 y = true → d2 z = true → P x y z",
+    "type": "∀ (T1 : Type u) (T2 : Type v) (d1 : T1 → Bool) (d2 : T2 → Bool) (P : T1 → T1 → T2 → Prop)\n  (ph : Rocq.Corelib.ssr.ssreflect_rw.phantom Prop (∀ (x y : T1) (z : T2), P x y z)),\n  Rocq.Corelib.ssr.ssrbool.prop_in21 T1 T2 ((NativeBridge.Incremental.SSRBoolData.memIso T1).of d1)\n      ((NativeBridge.Incremental.SSRBoolData.memIso T2).of d2) P ph ↔\n    NativeBridge.Incremental.SSRBoolRestrictions.prop_in21_native T1 T2 d1 d2 P",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.prop_in3",
+    "profile": "SSRBoolRestrictions",
+    "certificate": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in3_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "prop_in3_native",
+    "target_class": "native_expression",
+    "scope": "source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity",
+    "native_target": "NativeBridge.Incremental.SSRBoolRestrictions.prop_in3_native",
+    "native_expression": "fun T1 d1 P => ∀ (x y z : T1), d1 x = true → d1 y = true → d1 z = true → P x y z",
+    "type": "∀ (T1 : Type u) (d1 : T1 → Bool) (P : T1 → T1 → T1 → Prop)\n  (ph : Rocq.Corelib.ssr.ssreflect_rw.phantom Prop (∀ (x y z : T1), P x y z)),\n  Rocq.Corelib.ssr.ssrbool.prop_in3 T1 ((NativeBridge.Incremental.SSRBoolData.memIso T1).of d1) P ph ↔\n    NativeBridge.Incremental.SSRBoolRestrictions.prop_in3_native T1 d1 P",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.prop_on1",
+    "profile": "SSRBoolRestrictions",
+    "certificate": "NativeBridge.Incremental.SSRBoolRestrictions.prop_on1_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "prop_on1_native",
+    "target_class": "native_expression",
+    "scope": "source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity",
+    "native_target": "NativeBridge.Incremental.SSRBoolRestrictions.prop_on1_native",
+    "native_expression": "fun A B d f P => ∀ (x : A), d (f x) = true → P x",
+    "type": "∀ (A : Type u) (B : Type v) (C : Type w) (d : B → Bool) (f : A → B) (Pf : (A → B) → C) (P : A → Prop)\n  (phf : Rocq.Corelib.ssr.ssreflect_rw.phantom C (Pf f))\n  (ph : Rocq.Corelib.ssr.ssreflect_rw.phantom Prop (∀ (x : A), P x)),\n  Rocq.Corelib.ssr.ssrbool.prop_on1 A B C ((NativeBridge.Incremental.SSRBoolData.memIso B).of d) f Pf P phf ph ↔\n    NativeBridge.Incremental.SSRBoolRestrictions.prop_on1_native A B d f P",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.prop_on2",
+    "profile": "SSRBoolRestrictions",
+    "certificate": "NativeBridge.Incremental.SSRBoolRestrictions.prop_on2_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "prop_on2_native",
+    "target_class": "native_expression",
+    "scope": "source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity",
+    "native_target": "NativeBridge.Incremental.SSRBoolRestrictions.prop_on2_native",
+    "native_expression": "fun A B d f P => ∀ (x y : A), d (f x) = true → d (f y) = true → P x y",
+    "type": "∀ (A : Type u) (B : Type v) (C : Type w) (d : B → Bool) (f : A → B) (Pf : (A → B) → C) (P : A → A → Prop)\n  (phf : Rocq.Corelib.ssr.ssreflect_rw.phantom C (Pf f))\n  (ph : Rocq.Corelib.ssr.ssreflect_rw.phantom Prop (∀ (x y : A), P x y)),\n  Rocq.Corelib.ssr.ssrbool.prop_on2 A B C ((NativeBridge.Incremental.SSRBoolData.memIso B).of d) f Pf P phf ph ↔\n    NativeBridge.Incremental.SSRBoolRestrictions.prop_on2_native A B d f P",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.sumboolP",
+    "profile": "SSRBoolRestrictions",
+    "certificate": "NativeBridge.Incremental.SSRBoolRestrictions.sumboolP_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "sumboolP_native",
+    "target_class": "native_expression",
+    "scope": "source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity",
+    "native_target": "NativeBridge.Incremental.SSRBoolRestrictions.sumboolP_native",
+    "native_expression": "fun P d =>\n  Decidable.casesOn (motive := fun t => d = t → (P ↔ decide P = true)) d\n    (fun h h_1 =>\n      Eq.symm h_1 ▸\n        of_eq_true\n          (Eq.trans\n            (congr (congrArg Iff (eq_false h))\n              (Eq.trans\n                (congrFun'\n                  (congrArg Eq\n                    (Eq.trans (Decidable.decide.congr_simp P False (eq_false h)) (decide_false instDecidableFalse)))\n                  true)\n                Bool.false_eq_true))\n            (iff_self False)))\n    (fun h h_1 =>\n      Eq.symm h_1 ▸\n        of_eq_true\n          (Eq.trans\n            (congr (congrArg Iff (eq_true h))\n              (Eq.trans\n                (congrFun'\n                  (congrArg Eq\n                    (Eq.trans (Decidable.decide.congr_simp P True (eq_true h)) (decide_true instDecidableTrue)))\n                  true)\n                (eq_self true)))\n            (iff_self True)))\n    (Eq.refl d)",
+    "type": "∀ (P : Prop) (d : Decidable P), ⋯ = ⋯",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.ssr.ssrbool.check_applicative_mem_pred",
+    "profile": "SSRBoolRestrictions",
+    "certificate": "NativeBridge.Incremental.SSRBoolRestrictions.check_applicative_mem_pred_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "unitIdentity",
+    "target_class": "native_expression",
+    "scope": "source universes preserved; all phantom proof arguments allowed and erased by native expression; membership inputs converted through memIso; is_inleft covers Sort u; sumboolP preserves opacity",
+    "native_target": "NativeBridge.Incremental.SSRBoolRestrictions.unitIdentity",
+    "native_expression": "fun x => x",
+    "type": "∀ (A : Type u) (p : A → Bool) (a x : Unit),\n  (NativeBridge.Incremental.SSRBoolPackaging.applicativeMemIso A (NativeBridge.Incremental.SSRBoolData.predOf p)).to\n      (Rocq.Corelib.ssr.ssrbool.check_applicative_mem_pred A (NativeBridge.Incremental.SSRBoolData.predOf p)\n        ((NativeBridge.Incremental.SSRBoolPackaging.registeredIso A (NativeBridge.Incremental.SSRBoolData.predOf p)).of\n          a)\n        ((NativeBridge.Incremental.SSRBoolPackaging.manifestMemIso A (NativeBridge.Incremental.SSRBoolData.predOf p)).of\n          x)) =\n    NativeBridge.Incremental.SSRBoolRestrictions.unitIdentity x",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.iter",
+    "profile": "BinaryPower",
+    "certificate": "NativeBridge.Incremental.BinaryPower.positive_iter_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "repeatNative",
+    "target_class": "native_expression",
+    "scope": "arbitrary Sort carriers; transport version explicitly assumes step-function correspondence",
+    "native_target": "NativeBridge.Incremental.BinaryPower.repeatNative",
+    "native_expression": "fun {A} f n x => Nat.rec x (fun x a => f a) n",
+    "type": "∀ {A : Sort u} (f : A → A) (x : A) (p : NativeBridge.RPositive),\n  Rocq.Corelib.BinNums.PosDef.Pos.iter A f x p =\n    NativeBridge.Incremental.BinaryPower.repeatNative f (NativeBridge.positiveTo p) x",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.iter",
+    "profile": "BinaryPower",
+    "certificate": "NativeBridge.Incremental.BinaryPower.positive_iter_transport",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "repeatNative",
+    "target_class": "native_expression",
+    "scope": "arbitrary Sort carriers; transport version explicitly assumes step-function correspondence",
+    "native_target": "NativeBridge.Incremental.BinaryPower.repeatNative",
+    "native_expression": "fun {A} f n x => Nat.rec x (fun x a => f a) n",
+    "type": "∀ {A : Sort u} {B : Sort v} (toB : A → B) (f : A → A) (g : B → B),\n  (∀ (x : A), toB (f x) = g (toB x)) →\n    ∀ (p : NativeBridge.RPositive) (x : A),\n      toB (Rocq.Corelib.BinNums.PosDef.Pos.iter A f x p) =\n        NativeBridge.Incremental.BinaryPower.repeatNative g (NativeBridge.positiveTo p) (toB x)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.pow_pos",
+    "profile": "BinaryPower",
+    "certificate": "NativeBridge.Incremental.BinaryPower.z_pow_pos_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "powPosNative",
+    "target_class": "existing_api",
+    "scope": "all integer inputs; negative powers return zero; signed shifts preserve floor division and negative shift counts",
+    "native_target": "NativeBridge.Incremental.BinaryPower.powPosNative",
+    "native_expression": "fun z p => z ^ p",
+    "type": "∀ (z : NativeBridge.RIntBinary) (p : NativeBridge.RPositive),\n  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.pow_pos z p) =\n    NativeBridge.Incremental.BinaryPower.powPosNative (NativeBridge.binaryIntTo z) (NativeBridge.positiveTo p)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.pow",
+    "profile": "BinaryPower",
+    "certificate": "NativeBridge.Incremental.BinaryPower.z_pow_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "zPowNative",
+    "target_class": "native_expression",
+    "scope": "all integer inputs; negative powers return zero; signed shifts preserve floor division and negative shift counts",
+    "native_target": "NativeBridge.Incremental.BinaryPower.zPowNative",
+    "native_expression": "fun x y => if y < 0 then 0 else x ^ y.toNat",
+    "type": "∀ (x y : NativeBridge.RIntBinary),\n  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.pow x y) =\n    NativeBridge.Incremental.BinaryPower.zPowNative (NativeBridge.binaryIntTo x) (NativeBridge.binaryIntTo y)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.even",
+    "profile": "BinaryPower",
+    "certificate": "NativeBridge.Incremental.BinaryPower.z_even_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "evenNative",
+    "target_class": "native_expression",
+    "scope": "all integer inputs; negative powers return zero; signed shifts preserve floor division and negative shift counts",
+    "native_target": "NativeBridge.Incremental.BinaryPower.evenNative",
+    "native_expression": "fun z => decide (z % 2 = 0)",
+    "type": "∀ (z : NativeBridge.RIntBinary),\n  NativeBridge.boolTo (Rocq.Corelib.BinNums.IntDef.Z.even z) =\n    NativeBridge.Incremental.BinaryPower.evenNative (NativeBridge.binaryIntTo z)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.shiftl",
+    "profile": "BinaryPower",
+    "certificate": "NativeBridge.Incremental.BinaryPower.z_shiftl_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "shiftLeftNative",
+    "target_class": "native_expression",
+    "scope": "all integer inputs; negative powers return zero; signed shifts preserve floor division and negative shift counts",
+    "native_target": "NativeBridge.Incremental.BinaryPower.shiftLeftNative",
+    "native_expression": "fun x n => if n < 0 then x / 2 ^ (-n).toNat else 2 ^ n.toNat * x",
+    "type": "∀ (x n : NativeBridge.RIntBinary),\n  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.shiftl x n) =\n    NativeBridge.Incremental.BinaryPower.shiftLeftNative (NativeBridge.binaryIntTo x) (NativeBridge.binaryIntTo n)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.shiftr",
+    "profile": "BinaryPower",
+    "certificate": "NativeBridge.Incremental.BinaryPower.z_shiftr_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "shiftRightNative",
+    "target_class": "native_expression",
+    "scope": "all integer inputs; negative powers return zero; signed shifts preserve floor division and negative shift counts",
+    "native_target": "NativeBridge.Incremental.BinaryPower.shiftRightNative",
+    "native_expression": "fun x n => NativeBridge.Incremental.BinaryPower.shiftLeftNative x (-n)",
+    "type": "∀ (x n : NativeBridge.RIntBinary),\n  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.shiftr x n) =\n    NativeBridge.Incremental.BinaryPower.shiftRightNative (NativeBridge.binaryIntTo x) (NativeBridge.binaryIntTo n)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Init.Sumbool.bool_eq_ind",
+    "profile": "SumboolBridge",
+    "certificate": "NativeBridge.Incremental.SumboolBridge.bool_eq_ind_agrees",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "nativeBoolInd",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.SumboolBridge.nativeBoolInd",
+    "scope": "all source parameters; bool_eq_rec uses the exported Type-valued motive; sumbool_and/or allow arbitrary A B C D, not only complementary propositions",
+    "original_statement_proof": "NativeBridge.Incremental.SumboolBridge.sourceBoolInd_proof",
+    "native_expression": "∀ (b : Bool) (P : Bool → Prop), (b = true → P true) → (b = false → P false) → P b",
+    "type": "Rocq.Corelib.Init.Sumbool.bool_eq_ind.statement ↔ NativeBridge.Incremental.SumboolBridge.nativeBoolInd",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Sumbool.bool_eq_rec",
+    "profile": "SumboolBridge",
+    "certificate": "NativeBridge.Incremental.SumboolBridge.bool_eq_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "nativeBoolRec",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.SumboolBridge.nativeBoolRec",
+    "scope": "all source parameters; bool_eq_rec uses the exported Type-valued motive; sumbool_and/or allow arbitrary A B C D, not only complementary propositions",
+    "closed_wrapper": "NativeBridge.Incremental.SumboolBridge.boolRecClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Sumbool.bool_eq_rec__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SumboolBridge.bool_eq_rec_proof1"
+      },
+      {
+        "source": "Corelib.Init.Sumbool.bool_eq_rec__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SumboolBridge.bool_eq_rec_proof2"
+      }
+    ],
+    "native_expression": "fun b P ht hf =>\n  Bool.casesOn (motive := fun t => b = t → P b) b\n    (fun h =>\n      Eq.ndrec (motive := fun b => (b = true → P true) → (b = false → P false) → P b) (fun ht hf => hf ⋯) ⋯ ht hf)\n    (fun h =>\n      Eq.ndrec (motive := fun b => (b = true → P true) → (b = false → P false) → P b) (fun ht hf => ht ⋯) ⋯ ht hf)\n    ⋯",
+    "type": "∀ (b : Bool) (P : Bool → Type) (ht : b = true → P true) (hf : b = false → P false),\n  (RocqPending.Corelib.Init.Sumbool.bool_eq_rec (NativeBridge.boolOf b) (fun r => P (NativeBridge.boolTo r))\n      (fun h => ht ⋯) fun h => hf ⋯) =\n    have this := ⋯.mpr (NativeBridge.Incremental.SumboolBridge.nativeBoolRec b P ht hf);\n    this",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Sumbool.bool_of_sumbool",
+    "profile": "SumboolBridge",
+    "certificate": "NativeBridge.Incremental.SumboolBridge.bool_of_sumbool_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "nativeToBool",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.SumboolBridge.nativeToBool",
+    "scope": "all source parameters; bool_eq_rec uses the exported Type-valued motive; sumbool_and/or allow arbitrary A B C D, not only complementary propositions",
+    "native_expression": "fun A B x =>\n  match x with\n  | PSum.inl a => ⟨true, a⟩\n  | PSum.inr b => ⟨false, b⟩",
+    "type": "∀ (A B : Prop) (x : A ⊕' B),\n  NativeBridge.Incremental.SumboolBridge.boolSubtypeTo A B\n      (Rocq.Corelib.Init.Sumbool.bool_of_sumbool A B (NativeBridge.sumboolOf x)) =\n    NativeBridge.Incremental.SumboolBridge.nativeToBool A B x",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Sumbool.sumbool_and",
+    "profile": "SumboolBridge",
+    "certificate": "NativeBridge.Incremental.SumboolBridge.sumbool_and_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "nativeAnd",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.SumboolBridge.nativeAnd",
+    "scope": "all source parameters; bool_eq_rec uses the exported Type-valued motive; sumbool_and/or allow arbitrary A B C D, not only complementary propositions",
+    "closed_wrapper": "NativeBridge.Incremental.SumboolBridge.andClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SumboolBridge.sumbool_and_proof1"
+      },
+      {
+        "source": "Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SumboolBridge.sumbool_and_proof2"
+      },
+      {
+        "source": "Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.SumboolBridge.sumbool_and_proof3"
+      },
+      {
+        "source": "Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.SumboolBridge.sumbool_and_proof4"
+      }
+    ],
+    "native_expression": "fun A B C D x x_1 =>\n  match x, x_1 with\n  | PSum.inl a, PSum.inl c => PSum.inl ⋯\n  | PSum.inl val, PSum.inr d => PSum.inr ⋯\n  | PSum.inr b, x => PSum.inr ⋯",
+    "type": "∀ (A B C D : Prop) (x : A ⊕' B) (y : C ⊕' D),\n  NativeBridge.Incremental.SumboolBridge.sumAndTo\n      (RocqPending.Corelib.Init.Sumbool.sumbool_and A B C D (NativeBridge.sumboolOf x) (NativeBridge.sumboolOf y)) =\n    NativeBridge.Incremental.SumboolBridge.nativeAnd A B C D x y",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Sumbool.sumbool_not",
+    "profile": "SumboolBridge",
+    "certificate": "NativeBridge.Incremental.SumboolBridge.sumbool_not_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "nativeNot",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.SumboolBridge.nativeNot",
+    "scope": "all source parameters; bool_eq_rec uses the exported Type-valued motive; sumbool_and/or allow arbitrary A B C D, not only complementary propositions",
+    "native_expression": "fun A B x =>\n  match x with\n  | PSum.inl a => PSum.inr a\n  | PSum.inr b => PSum.inl b",
+    "type": "∀ (A B : Prop) (x : A ⊕' B),\n  NativeBridge.sumboolTo (Rocq.Corelib.Init.Sumbool.sumbool_not A B (NativeBridge.sumboolOf x)) =\n    NativeBridge.Incremental.SumboolBridge.nativeNot A B x",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Sumbool.sumbool_of_bool",
+    "profile": "SumboolBridge",
+    "certificate": "NativeBridge.Incremental.SumboolBridge.sumbool_of_bool_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "nativeOfBool",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.SumboolBridge.nativeOfBool",
+    "scope": "all source parameters; bool_eq_rec uses the exported Type-valued motive; sumbool_and/or allow arbitrary A B C D, not only complementary propositions",
+    "closed_wrapper": "NativeBridge.Incremental.SumboolBridge.ofBoolClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Sumbool.sumbool_of_bool__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SumboolBridge.sumbool_of_bool_proof1"
+      },
+      {
+        "source": "Corelib.Init.Sumbool.sumbool_of_bool__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SumboolBridge.sumbool_of_bool_proof2"
+      }
+    ],
+    "native_expression": "fun x =>\n  match x with\n  | true => PSum.inl ⋯\n  | false => PSum.inr ⋯",
+    "type": "∀ (b : Bool),\n  NativeBridge.Incremental.SumboolBridge.ofBoolTo b\n      (RocqPending.Corelib.Init.Sumbool.sumbool_of_bool (NativeBridge.boolOf b)) =\n    NativeBridge.Incremental.SumboolBridge.nativeOfBool b",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Init.Sumbool.sumbool_or",
+    "profile": "SumboolBridge",
+    "certificate": "NativeBridge.Incremental.SumboolBridge.sumbool_or_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "nativeOr",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.SumboolBridge.nativeOr",
+    "scope": "all source parameters; bool_eq_rec uses the exported Type-valued motive; sumbool_and/or allow arbitrary A B C D, not only complementary propositions",
+    "closed_wrapper": "NativeBridge.Incremental.SumboolBridge.orClosed",
+    "condition_discharges": [
+      {
+        "source": "Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_1",
+        "proof": "NativeBridge.Incremental.SumboolBridge.sumbool_or_proof1"
+      },
+      {
+        "source": "Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_2",
+        "proof": "NativeBridge.Incremental.SumboolBridge.sumbool_or_proof2"
+      },
+      {
+        "source": "Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_3",
+        "proof": "NativeBridge.Incremental.SumboolBridge.sumbool_or_proof3"
+      },
+      {
+        "source": "Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_4",
+        "proof": "NativeBridge.Incremental.SumboolBridge.sumbool_or_proof4"
+      }
+    ],
+    "native_expression": "fun A B C D x x_1 =>\n  match x, x_1 with\n  | PSum.inl a, x => PSum.inl ⋯\n  | PSum.inr val, PSum.inl c => PSum.inl ⋯\n  | PSum.inr b, PSum.inr d => PSum.inr ⋯",
+    "type": "∀ (A B C D : Prop) (x : A ⊕' B) (y : C ⊕' D),\n  NativeBridge.Incremental.SumboolBridge.sumOrTo\n      (RocqPending.Corelib.Init.Sumbool.sumbool_or A B C D (NativeBridge.sumboolOf x) (NativeBridge.sumboolOf y)) =\n    NativeBridge.Incremental.SumboolBridge.nativeOr A B C D x y",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.crelation",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.crelationIso",
+    "kind": "TYPE_ISO",
+    "target": "relationNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.relationNative",
+    "native_expression": "fun A => A → A → Type v",
+    "type": "(A : Type u) →\n  NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.crelation A)\n    (NativeBridge.Incremental.CRelationData.relationNative A)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.Reflexive",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.ReflexiveIso",
+    "kind": "TYPE_ISO",
+    "target": "reflexiveNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.reflexiveNative",
+    "native_expression": "fun A R => (x : A) → R x x",
+    "type": "(A : Type u) →\n  (R : A → A → Type v) →\n    NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.Reflexive A R)\n      (NativeBridge.Incremental.CRelationData.reflexiveNative A R)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.Symmetric",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.SymmetricIso",
+    "kind": "TYPE_ISO",
+    "target": "symmetricNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.symmetricNative",
+    "native_expression": "fun A R => (x y : A) → R x y → R y x",
+    "type": "(A : Type u) →\n  (R : A → A → Type v) →\n    NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.Symmetric A R)\n      (NativeBridge.Incremental.CRelationData.symmetricNative A R)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.Transitive",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.TransitiveIso",
+    "kind": "TYPE_ISO",
+    "target": "transitiveNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.transitiveNative",
+    "native_expression": "fun A R => (x y z : A) → R x y → R y z → R x z",
+    "type": "(A : Type u) →\n  (R : A → A → Type v) →\n    NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.Transitive A R)\n      (NativeBridge.Incremental.CRelationData.transitiveNative A R)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.subrelation",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.subrelationIso",
+    "kind": "TYPE_ISO",
+    "target": "subrelationNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.subrelationNative",
+    "native_expression": "fun A R S => (x y : A) → R x y → S x y",
+    "type": "(A : Type u) →\n  (R : A → A → Type v) →\n    (S : A → A → Type w) →\n      NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.subrelation A R S)\n        (NativeBridge.Incremental.CRelationData.subrelationNative A R S)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.arrow",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.arrowIso",
+    "kind": "TYPE_ISO",
+    "target": "arrowNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.arrowNative",
+    "native_expression": "fun A B => A → B",
+    "type": "(A : Type u) →\n  (B : Type v) →\n    NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.arrow A B)\n      (NativeBridge.Incremental.CRelationData.arrowNative A B)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.PreOrder",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.PreOrderIso",
+    "kind": "TYPE_ISO",
+    "target": "preorderNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.preorderNative",
+    "native_expression": "fun A R =>\n  NativeBridge.Incremental.CRelationData.reflexiveNative A R ×\n    NativeBridge.Incremental.CRelationData.transitiveNative A R",
+    "type": "(A : Type u) →\n  (R : A → A → Type v) →\n    NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.PreOrder A R)\n      (NativeBridge.Incremental.CRelationData.preorderNative A R)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.PER",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.PERIso",
+    "kind": "TYPE_ISO",
+    "target": "perNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.perNative",
+    "native_expression": "fun A R =>\n  NativeBridge.Incremental.CRelationData.symmetricNative A R ×\n    NativeBridge.Incremental.CRelationData.transitiveNative A R",
+    "type": "(A : Type u) →\n  (R : A → A → Type v) →\n    NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.PER A R)\n      (NativeBridge.Incremental.CRelationData.perNative A R)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.Equivalence",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.EquivalenceIso",
+    "kind": "TYPE_ISO",
+    "target": "equivalenceNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.equivalenceNative",
+    "native_expression": "fun A R =>\n  NativeBridge.Incremental.CRelationData.reflexiveNative A R ×\n    NativeBridge.Incremental.CRelationData.symmetricNative A R ×\n      NativeBridge.Incremental.CRelationData.transitiveNative A R",
+    "type": "(A : Type u) →\n  (R : A → A → Type v) →\n    NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.Equivalence A R)\n      (NativeBridge.Incremental.CRelationData.equivalenceNative A R)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.iffT",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.iffTIso",
+    "kind": "TYPE_ISO",
+    "target": "iffNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.iffNative",
+    "native_expression": "fun A B => (A → B) × (B → A)",
+    "type": "(A : Type u) →\n  (B : Type v) →\n    NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.iffT A B)\n      (NativeBridge.Incremental.CRelationData.iffNative A B)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.relation_conjunction",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.conjunctionIso",
+    "kind": "TYPE_ISO",
+    "target": "conjunctionNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.conjunctionNative",
+    "native_expression": "fun A R S x y => R x y × S x y",
+    "type": "(A : Type u) →\n  (R : A → A → Type v) →\n    (S : A → A → Type w) →\n      (x y : A) →\n        NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.relation_conjunction A R S x y)\n          (NativeBridge.Incremental.CRelationData.conjunctionNative A R S x y)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.relation_disjunction",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.disjunctionIso",
+    "kind": "TYPE_ISO",
+    "target": "disjunctionNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.disjunctionNative",
+    "native_expression": "fun A R S x y => R x y ⊕ S x y",
+    "type": "(A : Type u) →\n  (R : A → A → Type v) →\n    (S : A → A → Type w) →\n      (x y : A) →\n        NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.relation_disjunction A R S x y)\n          (NativeBridge.Incremental.CRelationData.disjunctionNative A R S x y)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.Antisymmetric",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.antisymmetricIso",
+    "kind": "TYPE_ISO",
+    "target": "antisymmetricNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.antisymmetricNative",
+    "native_expression": "fun A E R => (x y : A) → R x y → R y x → E x y",
+    "type": "(A : Type u) →\n  (E : A → A → Type v) →\n    (equ : NativeBridge.Incremental.CRelationData.equivalenceNative A E) →\n      (R : A → A → Type w) →\n        NativeBridge.Iso\n          (Rocq.Corelib.Classes.CRelationClasses.Antisymmetric A E\n            ((NativeBridge.Incremental.CRelationData.EquivalenceIso A E).of equ) R)\n          (NativeBridge.Incremental.CRelationData.antisymmetricNative A E R)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.relation_equivalence",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.relationEquivalenceIso",
+    "kind": "TYPE_ISO",
+    "target": "relationEquivalenceNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.relationEquivalenceNative",
+    "native_expression": "fun A R S => (x y : A) → (R x y → S x y) × (S x y → R x y)",
+    "type": "(A : Type u) →\n  (R S : A → A → Type v) →\n    NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.relation_equivalence A R S)\n      (NativeBridge.Incremental.CRelationData.relationEquivalenceNative A R S)",
+    "axioms": [
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.RewriteRelation",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.rewriteIso",
+    "kind": "TYPE_ISO",
+    "target": "rewriteNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.rewriteNative",
+    "native_expression": "fun A R => True",
+    "type": "(A : Type u) →\n  (R : A → A → Type v) →\n    NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.RewriteRelation A R)\n      (NativeBridge.Incremental.CRelationData.rewriteNative A R)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.complement",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.complementIso",
+    "kind": "TYPE_ISO",
+    "target": "complementNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.complementNative",
+    "native_expression": "fun A R x y => ∀ (a : R x y), False",
+    "type": "(A : Type u) →\n  (R : A → A → Type v) →\n    (x y : A) →\n      NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.complement A R x y)\n        (NativeBridge.Incremental.CRelationData.complementNative A R x y)",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.Irreflexive",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.irreflexiveIso",
+    "kind": "TYPE_ISO",
+    "target": "irreflexiveNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.irreflexiveNative",
+    "native_expression": "fun A R => ∀ (x : A) (a : R x x), False",
+    "type": "(A : Type u) →\n  (R : A → A → Type v) →\n    NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.Irreflexive A R)\n      (NativeBridge.Incremental.CRelationData.irreflexiveNative A R)",
+    "axioms": [
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.Asymmetric",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.asymmetricIso",
+    "kind": "TYPE_ISO",
+    "target": "asymmetricNative",
+    "target_class": "native_representation",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.asymmetricNative",
+    "native_expression": "fun A R => ∀ (x y : A) (a : R x y) (a : R y x), False",
+    "type": "(A : Type u) →\n  (R : A → A → Type v) →\n    NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.Asymmetric A R)\n      (NativeBridge.Incremental.CRelationData.asymmetricNative A R)",
+    "axioms": [
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.PreOrder_Reflexive",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.PreOrder_Reflexive_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PreOrder_Reflexive_native",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.PreOrder_Reflexive_native",
+    "native_expression": "fun A R h => h.fst",
+    "type": "∀ (A : Type u) (R : A → A → Type v) (h : NativeBridge.Incremental.CRelationData.preorderNative A R),\n  Rocq.Corelib.Classes.CRelationClasses.PreOrder_Reflexive A R\n      ((NativeBridge.Incremental.CRelationData.PreOrderIso A R).of h) =\n    NativeBridge.Incremental.CRelationData.PreOrder_Reflexive_native A R h",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.PreOrder_Transitive",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.PreOrder_Transitive_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PreOrder_Transitive_native",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.PreOrder_Transitive_native",
+    "native_expression": "fun A R h => h.snd",
+    "type": "∀ (A : Type u) (R : A → A → Type v) (h : NativeBridge.Incremental.CRelationData.preorderNative A R),\n  Rocq.Corelib.Classes.CRelationClasses.PreOrder_Transitive A R\n      ((NativeBridge.Incremental.CRelationData.PreOrderIso A R).of h) =\n    NativeBridge.Incremental.CRelationData.PreOrder_Transitive_native A R h",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.PER_Symmetric",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.PER_Symmetric_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PER_Symmetric_native",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.PER_Symmetric_native",
+    "native_expression": "fun A R h => h.fst",
+    "type": "∀ (A : Type u) (R : A → A → Type v) (h : NativeBridge.Incremental.CRelationData.perNative A R),\n  Rocq.Corelib.Classes.CRelationClasses.PER_Symmetric A R ((NativeBridge.Incremental.CRelationData.PERIso A R).of h) =\n    NativeBridge.Incremental.CRelationData.PER_Symmetric_native A R h",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.PER_Transitive",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.PER_Transitive_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "PER_Transitive_native",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.PER_Transitive_native",
+    "native_expression": "fun A R h => h.snd",
+    "type": "∀ (A : Type u) (R : A → A → Type v) (h : NativeBridge.Incremental.CRelationData.perNative A R),\n  Rocq.Corelib.Classes.CRelationClasses.PER_Transitive A R ((NativeBridge.Incremental.CRelationData.PERIso A R).of h) =\n    NativeBridge.Incremental.CRelationData.PER_Transitive_native A R h",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.Equivalence_Reflexive",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.Equivalence_Reflexive_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Equivalence_Reflexive_native",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.Equivalence_Reflexive_native",
+    "native_expression": "fun A R h => h.fst",
+    "type": "∀ (A : Type u) (R : A → A → Type v) (h : NativeBridge.Incremental.CRelationData.equivalenceNative A R),\n  Rocq.Corelib.Classes.CRelationClasses.Equivalence_Reflexive A R\n      ((NativeBridge.Incremental.CRelationData.EquivalenceIso A R).of h) =\n    NativeBridge.Incremental.CRelationData.Equivalence_Reflexive_native A R h",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.Equivalence_Symmetric",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.Equivalence_Symmetric_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Equivalence_Symmetric_native",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.Equivalence_Symmetric_native",
+    "native_expression": "fun A R h => h.snd.fst",
+    "type": "∀ (A : Type u) (R : A → A → Type v) (h : NativeBridge.Incremental.CRelationData.equivalenceNative A R),\n  Rocq.Corelib.Classes.CRelationClasses.Equivalence_Symmetric A R\n      ((NativeBridge.Incremental.CRelationData.EquivalenceIso A R).of h) =\n    NativeBridge.Incremental.CRelationData.Equivalence_Symmetric_native A R h",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.Equivalence_Transitive",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.Equivalence_Transitive_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Equivalence_Transitive_native",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.Equivalence_Transitive_native",
+    "native_expression": "fun A R h => h.snd.snd",
+    "type": "∀ (A : Type u) (R : A → A → Type v) (h : NativeBridge.Incremental.CRelationData.equivalenceNative A R),\n  Rocq.Corelib.Classes.CRelationClasses.Equivalence_Transitive A R\n      ((NativeBridge.Incremental.CRelationData.EquivalenceIso A R).of h) =\n    NativeBridge.Incremental.CRelationData.Equivalence_Transitive_native A R h",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.Equivalence_PER",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.equivalence_PER_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "equivalencePERNative",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.equivalencePERNative",
+    "native_expression": "fun A R h => h.snd",
+    "type": "∀ (A : Type u) (R : A → A → Type v) (h : NativeBridge.Incremental.CRelationData.equivalenceNative A R),\n  (NativeBridge.Incremental.CRelationData.PERIso A R).to\n      (Rocq.Corelib.Classes.CRelationClasses.Equivalence_PER A R\n        ((NativeBridge.Incremental.CRelationData.EquivalenceIso A R).of h)) =\n    NativeBridge.Incremental.CRelationData.equivalencePERNative A R h",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.reflexivity",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.reflexivity_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "reflexivityNative",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.reflexivityNative",
+    "native_expression": "fun A R h => h",
+    "type": "∀ (A : Type u) (R : A → A → Type v) (h : NativeBridge.Incremental.CRelationData.reflexiveNative A R),\n  Rocq.Corelib.Classes.CRelationClasses.reflexivity A R h =\n    NativeBridge.Incremental.CRelationData.reflexivityNative A R h",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.symmetry",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.symmetry_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "symmetryNative",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.symmetryNative",
+    "native_expression": "fun A R h => h",
+    "type": "∀ (A : Type u) (R : A → A → Type v) (h : NativeBridge.Incremental.CRelationData.symmetricNative A R),\n  Rocq.Corelib.Classes.CRelationClasses.symmetry A R h = NativeBridge.Incremental.CRelationData.symmetryNative A R h",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.transitivity",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.transitivity_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "transitivityNative",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.transitivityNative",
+    "native_expression": "fun A R h => h",
+    "type": "∀ (A : Type u) (R : A → A → Type v) (h : NativeBridge.Incremental.CRelationData.transitiveNative A R),\n  Rocq.Corelib.Classes.CRelationClasses.transitivity A R h =\n    NativeBridge.Incremental.CRelationData.transitivityNative A R h",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.is_subrelation",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.is_subrelation_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "isSubrelationNative",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.isSubrelationNative",
+    "native_expression": "fun A R S h => h",
+    "type": "∀ (A : Type u) (R : A → A → Type v) (S : A → A → Type w)\n  (h : NativeBridge.Incremental.CRelationData.subrelationNative A R S),\n  Rocq.Corelib.Classes.CRelationClasses.is_subrelation A R S h =\n    NativeBridge.Incremental.CRelationData.isSubrelationNative A R S h",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.flip",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.flip_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "flipNative",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.flipNative",
+    "native_expression": "fun A B C f b a => f a b",
+    "type": "∀ (A : Type u) (B : Type v) (C : Type w) (f : A → B → C),\n  Rocq.Corelib.Classes.CRelationClasses.flip A B C f = NativeBridge.Incremental.CRelationData.flipNative A B C f",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.iffT_Reflexive",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.iffT_Reflexive_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "iffReflexiveNative",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.iffReflexiveNative",
+    "native_expression": "fun A => (id, id)",
+    "type": "∀ (A : Type u),\n  (NativeBridge.Incremental.CRelationData.iffTIso A A).to (Rocq.Corelib.Classes.CRelationClasses.iffT_Reflexive A) =\n    NativeBridge.Incremental.CRelationData.iffReflexiveNative A",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.iffT_Symmetric",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.iffT_Symmetric_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "iffSymmetricNative",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.iffSymmetricNative",
+    "native_expression": "fun A B h => (h.snd, h.fst)",
+    "type": "∀ (A B : Type u) (h : NativeBridge.Incremental.CRelationData.iffNative A B),\n  (NativeBridge.Incremental.CRelationData.iffTIso B A).to\n      (Rocq.Corelib.Classes.CRelationClasses.iffT_Symmetric A B\n        ((NativeBridge.Incremental.CRelationData.iffTIso A B).of h)) =\n    NativeBridge.Incremental.CRelationData.iffSymmetricNative A B h",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.iffT_Transitive",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.iffT_Transitive_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "iffTransitiveNative",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.iffTransitiveNative",
+    "native_expression": "fun A B C h k => (k.fst ∘ h.fst, h.snd ∘ k.snd)",
+    "type": "∀ (A B C : Type u) (h : NativeBridge.Incremental.CRelationData.iffNative A B)\n  (k : NativeBridge.Incremental.CRelationData.iffNative B C),\n  (NativeBridge.Incremental.CRelationData.iffTIso A C).to\n      (Rocq.Corelib.Classes.CRelationClasses.iffT_Transitive A B C\n        ((NativeBridge.Incremental.CRelationData.iffTIso A B).of h)\n        ((NativeBridge.Incremental.CRelationData.iffTIso B C).of k)) =\n    NativeBridge.Incremental.CRelationData.iffTransitiveNative A B C h k",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.arrow_Reflexive",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.arrow_Reflexive_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "arrowReflexiveNative",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.arrowReflexiveNative",
+    "native_expression": "fun A => id",
+    "type": "∀ (A : Type u),\n  Rocq.Corelib.Classes.CRelationClasses.arrow_Reflexive A =\n    NativeBridge.Incremental.CRelationData.arrowReflexiveNative A",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.arrow_Transitive",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.arrow_Transitive_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "arrowTransitiveNative",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.arrowTransitiveNative",
+    "native_expression": "fun A B C f g => g ∘ f",
+    "type": "∀ (A B C : Type u) (f : A → B) (g : B → C),\n  Rocq.Corelib.Classes.CRelationClasses.arrow_Transitive A B C f g =\n    NativeBridge.Incremental.CRelationData.arrowTransitiveNative A B C f g",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.arrow_Reflexive_obligation_1",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.arrow_Reflexive_obligation_1_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "arrowReflexiveNative",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.arrowReflexiveNative",
+    "native_expression": "fun A => id",
+    "type": "∀ (A : Type u),\n  Rocq.Corelib.Classes.CRelationClasses.arrow_Reflexive_obligation_1 A =\n    NativeBridge.Incremental.CRelationData.arrowReflexiveNative A",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.arrow_Transitive_obligation_1",
+    "profile": "CRelationData",
+    "certificate": "NativeBridge.Incremental.CRelationData.arrow_Transitive_obligation_1_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "arrowTransitiveNative",
+    "target_class": "native_expression",
+    "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
+    "native_target": "NativeBridge.Incremental.CRelationData.arrowTransitiveNative",
+    "native_expression": "fun A B C f g => g ∘ f",
+    "type": "∀ (A B C : Type u) (f : A → B) (g : B → C),\n  Rocq.Corelib.Classes.CRelationClasses.arrow_Transitive_obligation_1 A B C f g =\n    NativeBridge.Incremental.CRelationData.arrowTransitiveNative A B C f g",
+    "axioms": []
+  },
+  {
     "source": "Corelib.ssr.ssrbool.canLR_in",
     "profile": "SSRBoolClosedStatements",
     "certificate": "NativeBridge.Incremental.SSRBoolClosedStatements.RocqPending.Corelib.ssr.ssrbool.canLR_in.statement.correspondence",

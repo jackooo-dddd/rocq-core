@@ -1,0 +1,13 @@
+/home/shunqwang4/research/rocq-core/experiments/incremental-correspondence-20261019/.work/SumboolBridge.lean:33:0: warning: Definition `andTo` is a proposition; use `theorem` instead of `def`
+
+Note: This linter can be disabled with `set_option linter.defProp false`
+/home/shunqwang4/research/rocq-core/experiments/incremental-correspondence-20261019/.work/SumboolBridge.lean:35:0: warning: Definition `orTo` is a proposition; use `theorem` instead of `def`
+
+Note: This linter can be disabled with `set_option linter.defProp false`
+NATIVE_TARGET {"name":"NativeBridge.Incremental.SumboolBridge.nativeAnd","native_expression":"fun A B C D x x_1 =>\n  match x, x_1 with\n  | PSum.inl a, PSum.inl c => PSum.inl ⋯\n  | PSum.inl val, PSum.inr d => PSum.inr ⋯\n  | PSum.inr b, x => PSum.inr ⋯","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.SumboolBridge.nativeBoolInd","native_expression":"∀ (b : Bool) (P : Bool → Prop), (b = true → P true) → (b = false → P false) → P b","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.SumboolBridge.nativeBoolRec","native_expression":"fun b P ht hf =>\n  Bool.casesOn (motive := fun t => b = t → P b) b\n    (fun h =>\n      Eq.ndrec (motive := fun b => (b = true → P true) → (b = false → P false) → P b) (fun ht hf => hf ⋯) ⋯ ht hf)\n    (fun h =>\n      Eq.ndrec (motive := fun b => (b = true → P true) → (b = false → P false) → P b) (fun ht hf => ht ⋯) ⋯ ht hf)\n    ⋯","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.SumboolBridge.nativeNot","native_expression":"fun A B x =>\n  match x with\n  | PSum.inl a => PSum.inr a\n  | PSum.inr b => PSum.inl b","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.SumboolBridge.nativeOfBool","native_expression":"fun x =>\n  match x with\n  | true => PSum.inl ⋯\n  | false => PSum.inr ⋯","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.SumboolBridge.nativeOr","native_expression":"fun A B C D x x_1 =>\n  match x, x_1 with\n  | PSum.inl a, x => PSum.inl ⋯\n  | PSum.inr val, PSum.inl c => PSum.inl ⋯\n  | PSum.inr b, PSum.inr d => PSum.inr ⋯","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.SumboolBridge.nativeToBool","native_expression":"fun A B x =>\n  match x with\n  | PSum.inl a => ⟨true, a⟩\n  | PSum.inr b => ⟨false, b⟩","remaining_source_symbols":[]}
