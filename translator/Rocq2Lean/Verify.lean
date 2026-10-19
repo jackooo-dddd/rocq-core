@@ -134,7 +134,7 @@ def checkRecIndices (v : Expr) : MetaM (Nat × Array String) := do
 `Eq.rec.{_, u} A`, `u` is the sort level of `A`'s type; at every application of a large recursor
 `I.rec.{v, …} params motive …`, `v` is the level of the motive's codomain. Returns the number of
 checked arguments and any violations. -/
-def checkInstanceLevels (tmpl : Std.HashMap Name (Array (Nat × Nat))) (v : Expr) : MetaM (Nat × Array String) := do
+def checkInstanceLevels (tmpl : Std.HashMap Name (Array (Nat × Nat × Bool))) (v : Expr) : MetaM (Nat × Array String) := do
   let checked ← IO.mkRef 0
   let bad ← IO.mkRef (#[] : Array String)
   let same (what : String) (got want : Level) : MetaM Unit := do
@@ -160,7 +160,7 @@ def checkInstanceLevels (tmpl : Std.HashMap Name (Array (Nat × Nat))) (v : Expr
       -- R5: a template inductive's level is the level of its template parameter (A : Sort (σ+1))
       if let some bind := tmpl[c]? then
         let off := if large then 1 else 0
-        for (j, k) in bind do
+        for (j, k, isSort) in bind do
           if h : k < args.size then
             if j + off < us.length then
               -- the codomain sort of the argument's type (arity parameters: of the type family)
@@ -169,7 +169,7 @@ def checkInstanceLevels (tmpl : Std.HashMap Name (Array (Nat × Nat))) (v : Expr
                 | .sort s => pure (some s)
                 | _ => pure none
               match s with
-              | some s => same s!"{c} (template level {j} from parameter {k})" (.succ us[j + off]!) s
+              | some s => same s!"{c} (template level {j} from parameter {k})" (if isSort then us[j + off]! else .succ us[j + off]!) s
               | none => bad.modify (·.push s!"{c}: template parameter {k} does not have an arity type")
       if let some (.recInfo rv) := (← getEnv).find? c then
         if rv.numMotives == 1 && args.size > rv.numParams && !us.isEmpty then
@@ -293,6 +293,45 @@ partial def splitPositionOk (ty : Expr) (nh pos : Nat) (p : Name) : Bool :=
   let status (s : String) : String := match rows[s]? with
     | some #[r] => getStr r "status"
     | _ => "MISSING"
+  -- Independent finite-family coverage and branch identity, from the source
+  -- contract rather than translator flags. These are uniform implementations
+  -- of an originally quality-polymorphic definition, including proof instances.
+  let mut familyKinds : Std.HashMap String String := {}
+  for f in (contract.getObjValAs? (Array Json) "quality_families").toOption.getD #[] do
+    let source := getStr f "source"
+    let nq := (f.getObjValAs? Nat "quality_parameters").toOption.getD 0
+    let nu := (f.getObjValAs? Nat "level_parameters").toOption.getD 0
+    let members := (f.getObjValAs? (Array Json) "members").toOption.getD #[]
+    if nq == 0 || getStr f "implementation_policy" != "uniform_source_implementation" ||
+        (f.getObjValAs? Bool "source_proof_valued").toOption != some false ||
+        (f.getObjValAs? (Array Json) "quality_constraints").toOption != some #[] ||
+        !["transparent", "opaque"].contains (getStr f "body_kind") then
+      problems := note "quality_family" s!"{source}: malformed original quality context" problems
+    let mut choices : Array (Array String) := #[#[]]
+    for _ in [:nq] do
+      choices := choices.flatMap fun qs => #["SProp", "Prop", "Type"].map (qs.push ·)
+    unless members.size == choices.size do
+      problems := note "quality_family" s!"{source}: incomplete finite quality family" problems
+    for m in members, qs in choices do
+      let suffix := String.join ((qs.map fun q => if q == "SProp" then "S" else if q == "Prop" then "P" else "T").toList)
+      let name := if qs.all (· == "Type") then source else source ++ "__rocq2lean_quality_" ++ suffix
+      if getStr m "name" != name || (m.getObjValAs? (Array String) "qualities").toOption != some qs ||
+          !exported.contains name || !required.contains name || familyKinds.contains name then
+        problems := note "quality_family" s!"{source}: quality branch identity or closure differs: {name}" problems
+      let proof? := (m.getObjValAs? Bool "proof_valued").toOption
+      if proof?.isNone then problems := note "quality_family" s!"{name}: missing native branch role" problems
+      let kind := if getStr f "body_kind" == "transparent" then "def" else if proof? == some true then "theorem" else "opaque"
+      familyKinds := familyKinds.insert name kind
+      if status source == "TRANSLATED_AND_CHECKED" && status name != "TRANSLATED_AND_CHECKED" then
+        problems := note "quality_family" s!"{source}: accepted root has an unchecked branch {name}" problems
+      if status name == "TRANSLATED_AND_CHECKED" then
+        let r := (rows.getD name #[])[0]!
+        if getStr r "target_kind" != kind ||
+            (r.getObjValAs? (Array String) "level_params").toOption != some ((Array.range nu).map (fun i => s!"v_{i}")) then
+          problems := note "quality_family" s!"{name}: family opacity or public levels changed" problems
+        for key in #["r2bp_levels", "sort_lowered_levels", "pending_hypotheses"] do
+          unless ((r.getObjValAs? (Array Json) key).toOption.getD #[]).isEmpty do
+            problems := note "quality_family" s!"{name}: family implementation is specialized or conditional ({key})" problems
   unless stmtMode do
     for s in required do
       let st := status s
@@ -354,6 +393,21 @@ partial def splitPositionOk (ty : Expr) (nh pos : Nat) (p : Name) : Bool :=
           for t in rule.target.types do allowed := allowed.insert t |>.insert (t.str "rec")
           for cs in rule.target.ctors do for c in cs do allowed := allowed.insert c
     | _ => pure ()
+  -- Auxiliary representations are checked exactly like imported declarations,
+  -- but remain outside the exported/root coverage ledger.
+  let mut auxiliary : Array (String × Json) := #[]
+  for (s,r) in accepted do
+    match qualityAuxRows r with
+    | .error message => problems := note "quality_family" s!"{s}: {message}" problems
+    | .ok qs =>
+      for q in qs do
+        let t := (getStr q "target").toName
+        allowed := allowed.insert t |>.insert (t.str "rec")
+        for c in (q.getObjValAs? (Array Json) "target_ctors").toOption.getD #[] do
+          allowed := allowed.insert (getStr c "name").toName
+        auxiliary := auxiliary.push (getStr q "source",q)
+  let sourceAcceptedCount := accepted.size
+  accepted := auxiliary ++ accepted
   if accepted.isEmpty then problems := note "coverage" "no accepted declaration" problems
   -- M6 construction primitives (docs/TRUST.md): Lean prelude inductive types used only by the
   -- accessibility lowering (Acc, PSigma, Exists, Or, False), the convoy lowering (Eq), the mutual
@@ -364,14 +418,41 @@ partial def splitPositionOk (ty : Expr) (nh pos : Nat) (p : Name) : Bool :=
             ``PProd, ``PProd.mk, ``PUnit, ``PUnit.unit,
             -- rule P (docs/PROP_LIFT.md): Lean core's lift of a proposition to a type, with its constructor
             -- and projection (a structure of the prelude, no axiom)
-            ``PULift, ``PULift.up, ``PULift.down] do
+            ``PULift, ``PULift.up, ``PULift.down,
+            -- Native int63 representation; exact width/value checked by the independent audit.
+            ``BitVec, ``BitVec.ofNat, ``BitVec.add, ``BitVec.sub, ``BitVec.mul,
+            ``PrimInt63.udiv, ``PrimInt63.umod, ``PrimInt63.land, ``PrimInt63.lor, ``PrimInt63.lxor,
+            ``PrimInt63.sdiv, ``PrimInt63.smod, ``PrimInt63.lsl, ``PrimInt63.lsr, ``PrimInt63.asr,
+            ``PrimInt63.eqb, ``PrimInt63.ltb, ``PrimInt63.leb, ``PrimInt63.ltsb, ``PrimInt63.lesb,
+            -- Native predicate results are rebuilt with the registered source constructors.
+            ``Bool, ``Bool.rec,
+            ``PrimArray.Rep, ``PrimArray.make, ``PrimArray.get, ``PrimArray.set,
+            ``PrimArray.length, ``PrimArray.default, ``PrimArray.copy,
+            ``PrimArray.ofList, ``List.nil, ``List.cons,
+            ``PrimString.Rep, ``PrimString.make, ``PrimString.length,
+            ``PrimString.get, ``PrimString.sub, ``PrimString.cat,
+            ``PrimString.compare, ``PrimString.ofBytes,
+            ``PrimInt63.compare, ``PrimInt63.compares,
+            ``PrimInt63.head0, ``PrimInt63.tail0, ``PrimInt63.addmuldiv,
+            ``PrimInt63.addc, ``PrimInt63.addcarryc, ``PrimInt63.subc, ``PrimInt63.subcarryc,
+            ``PrimInt63.mulc, ``PrimInt63.diveucl, ``PrimInt63.div21,
+            ``Ordering, ``Ordering.rec,
+            ``PrimFloat.Rep, ``PrimFloat.fromBits,
+            ``PrimFloat.abs, ``PrimFloat.opp, ``PrimFloat.add, ``PrimFloat.sub,
+            ``PrimFloat.mul, ``PrimFloat.div, ``PrimFloat.sqrt,
+            ``PrimFloat.ofUint63, ``PrimFloat.normfrMantissa, ``PrimFloat.ldshiftexp,
+            ``PrimFloat.nextUp, ``PrimFloat.nextDown, ``PrimFloat.frshiftexp,
+            ``PrimFloat.eqb, ``PrimFloat.equal, ``PrimFloat.ltb, ``PrimFloat.leb,
+            ``PrimFloat.compare, ``PrimFloat.classify,
+            -- Natural-number literals are the width and value arguments of BitVec constructors.
+            ``Nat] do
     allowed := allowed.insert c
   -- per declaration
   let env ← getEnv
   let mut recs : Std.HashMap Name RecursorVal := {}
   let mut recApps : Nat := 0
   -- template inductives of this run (report): head ↦ [(level index, template parameter)]
-  let mut tmpl : Std.HashMap Name (Array (Nat × Nat)) := {}
+  let mut tmpl : Std.HashMap Name (Array (Nat × Nat × Bool)) := {}
   for (_, r) in accepted do
     if (r.getObjValAs? Bool "template").toOption == some true then
       let lps := (r.getObjValAs? (Array String) "level_params").toOption.getD #[]
@@ -379,7 +460,7 @@ partial def splitPositionOk (ty : Expr) (nh pos : Nat) (p : Name) : Bool :=
         let l ← (x.getObjValAs? String "level").toOption
         let k ← (x.getObjValAs? Nat "param").toOption
         let j ← lps.findIdx? (· == (levelParamName l).toString)
-        return (j, k)
+        return (j, k, (r.getObjValAs? Bool "template_sort").toOption == some true)
       let t := (getStr r "target").toName
       for n in #[t, t.str "rec"] ++ ((r.getObjValAs? (Array Json) "target_ctors").toOption.getD #[]).map (fun c => (getStr c "name").toName) do
         tmpl := tmpl.insert n bind
@@ -404,14 +485,15 @@ partial def splitPositionOk (ty : Expr) (nh pos : Nat) (p : Name) : Bool :=
         problems := note "namespaces" s!"{tgt}: {st} target outside {ns}" problems
       -- (A′: a definition row may be an `opaque` constant — opaque data translated with its body —
       -- never a theorem or an axiom, and never a statement)
-      if ["theorem", "axiom"].contains (kindOf ci) || (kindOf ci == "opaque" && st.startsWith "STATEMENT_") then
+      if kindOf ci == "axiom" || (kindOf ci == "theorem" && !familyKinds.contains s) ||
+          (kindOf ci == "opaque" && st.startsWith "STATEMENT_") then
         problems := note "statements" s!"{tgt}: {kindOf ci} in a statement-mode library" problems
       let nh := ((r.getObjValAs? (Array Json) "pending_hypotheses").toOption.getD #[]).size
       if isPending == (nh == 0) then
         problems := note "statements" s!"{tgt}: status {st} with {nh} hypotheses" problems
       if kind == "opaque" then
         let bad ← liftTermElabM <| forallBoundedTelescope ci.type (some nh) fun _ body => isProp body
-        if bad then problems := note "statements" s!"{tgt}: opaque constant of a proposition (a proof)" problems
+        if bad && !familyKinds.contains s then problems := note "statements" s!"{tgt}: opaque constant of a proposition (a proof)" problems
       if kind == "def" then
         let isStmt := st.startsWith "STATEMENT_"
         let bad ← liftTermElabM <| forallBoundedTelescope ci.type (some nh) fun _ body => do
@@ -420,7 +502,7 @@ partial def splitPositionOk (ty : Expr) (nh pos : Nat) (p : Name) : Bool :=
             | .sort l => pure (tgt.endsWith ".statement" && !l.isZero || !(tgt.endsWith ".statement" || tgt.endsWith ".type"))
             | _ => pure true
           else pure (← isProp body)
-        if bad then
+        if bad && (isStmt || !familyKinds.contains s) then
           problems := note "statements" (if isStmt then s!"{tgt}: a proof task's statement is not `Prop` (or a sort for opaque data)"
             else s!"{tgt}: an accepted definition is a proof") problems
     if ci.isUnsafe || ci.isPartial then problems := note "safety" s!"{tgt}: unsafe or partial" problems
@@ -624,7 +706,7 @@ partial def splitPositionOk (ty : Expr) (nh pos : Nat) (p : Name) : Bool :=
             problems := note "levels" s!"{s}: level copy {c} is not a universe parameter occurring in the declaration's type" problems
   for (d, _) in problems do detectors := detectors.insert d (detectors.getD d 0 + 1)
   let dets := ["binding", "coverage", "roots", "presence", "kind", "safety", "levels", "type", "value", "ctors",
-               "target_deps", "axioms", "rec_indices", "residual_levels", "instance_levels", "interface"].map fun d => (d, Json.str (if detectors.getD d 0 == 0 then "OK" else "FAIL"))
+               "target_deps", "axioms", "rec_indices", "residual_levels", "instance_levels", "interface", "quality_family"].map fun d => (d, Json.str (if detectors.getD d 0 == 0 then "OK" else "FAIL"))
   let dets := if stmtMode then dets ++ ["namespaces", "statements"].map fun d => (d, Json.str (if detectors.getD d 0 == 0 then "OK" else "FAIL")) else dets
   let dets := if asm then dets ++ ["proofs", "assembly"].map fun d => (d, Json.str (if detectors.getD d 0 == 0 then "OK" else "FAIL")) else dets
   let asmFields : List (String × Json) := if asm then [("assembly", Json.bool true), ("proofs_checked", proofsChecked),
@@ -632,7 +714,8 @@ partial def splitPositionOk (ty : Expr) (nh pos : Nat) (p : Name) : Bool :=
   let modeField : List (String × Json) := if stmtMode then [("mode", Json.str "statement")] else []
   let fields : List (String × Json) := [
     ("schema", "rocq2lean-consumer/1"), ("status", if problems.isEmpty then "OK" else "AUDIT_REJECTED"),
-    ("run_id", getStr contract "run_id"), ("accepted_checked", accepted.size),
+    ("run_id", getStr contract "run_id"), ("accepted_checked", sourceAcceptedCount),
+    ("auxiliary_representations_checked", auxiliary.size),
     ("recursor_applications_checked", recApps),
     ("residual_levels_checked", residualsChecked),
     ("instance_levels_checked", instChecked),
@@ -644,6 +727,6 @@ partial def splitPositionOk (ty : Expr) (nh pos : Nat) (p : Name) : Bool :=
   IO.FS.writeFile outPath (res.pretty ++ "\n")
   unless problems.isEmpty do
     throwError "AUDIT_REJECTED (consumer):\n{String.intercalate "\n" (problems.map fun (d, m) => s!"[{d}] {m}").toList}"
-  logInfo m!"rocq2lean verify: {accepted.size} accepted declaration(s) of the required closure match; no axioms"
+  logInfo m!"rocq2lean verify: {sourceAcceptedCount} accepted source declaration(s), {auxiliary.size} auxiliary representation(s) match; no axioms"
 
 end Rocq2Lean

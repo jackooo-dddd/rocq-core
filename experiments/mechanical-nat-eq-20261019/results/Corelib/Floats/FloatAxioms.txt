@@ -1,0 +1,186 @@
+rocq2lean: 33 root(s) TRANSLATED_AND_CHECKED; summary {"bootstrap_resolved":0,"generated_helpers":0,"not_ok":24,"roots":33,"translated_dependencies":162}
+def Rocq.Corelib.Floats.FloatAxioms.Leibniz.eqb_spec.statement : Prop :=
+∀ (x y : Rocq.Corelib.Floats.PrimFloat.float),
+  Rocq.Corelib.Init.Logic.iff
+    (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Floats.PrimFloat.Leibniz.eqb x y)
+      Rocq.Corelib.Init.Datatypes.bool.true)
+    (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Floats.PrimFloat.float x y)
+def Rocq.Corelib.Floats.FloatAxioms.Prim2SF_SF2Prim.statement : Prop :=
+∀ (x : Rocq.Corelib.Floats.SpecFloat.spec_float),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool
+      (Rocq.Corelib.Floats.SpecFloat.valid_binary Rocq.Corelib.Floats.FloatOps.prec Rocq.Corelib.Floats.FloatOps.emax x)
+      Rocq.Corelib.Init.Datatypes.bool.true →
+    Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Floats.SpecFloat.spec_float
+      (Rocq.Corelib.Floats.FloatOps.Prim2SF (Rocq.Corelib.Floats.FloatOps.SF2Prim x)) x
+def Rocq.Corelib.Floats.FloatAxioms.Prim2SF_inj.statement : Prop :=
+∀ (x y : Rocq.Corelib.Floats.PrimFloat.float),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Floats.SpecFloat.spec_float (Rocq.Corelib.Floats.FloatOps.Prim2SF x)
+      (Rocq.Corelib.Floats.FloatOps.Prim2SF y) →
+    Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Floats.PrimFloat.float x y
+def Rocq.Corelib.Floats.FloatAxioms.Prim2SF_valid.statement : Prop :=
+∀ (x : Rocq.Corelib.Floats.PrimFloat.float),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool
+    (Rocq.Corelib.Floats.SpecFloat.valid_binary Rocq.Corelib.Floats.FloatOps.prec Rocq.Corelib.Floats.FloatOps.emax
+      (Rocq.Corelib.Floats.FloatOps.Prim2SF x))
+    Rocq.Corelib.Init.Datatypes.bool.true
+def Rocq.Corelib.Floats.FloatAxioms.SF2Prim_Prim2SF.statement : Prop :=
+∀ (x : Rocq.Corelib.Floats.PrimFloat.float),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Floats.PrimFloat.float
+    (Rocq.Corelib.Floats.FloatOps.SF2Prim (Rocq.Corelib.Floats.FloatOps.Prim2SF x)) x
+def Rocq.Corelib.Floats.FloatAxioms.SF2Prim_inj.statement : Prop :=
+∀ (x y : Rocq.Corelib.Floats.SpecFloat.spec_float),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Floats.PrimFloat.float (Rocq.Corelib.Floats.FloatOps.SF2Prim x)
+      (Rocq.Corelib.Floats.FloatOps.SF2Prim y) →
+    Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool
+        (Rocq.Corelib.Floats.SpecFloat.valid_binary Rocq.Corelib.Floats.FloatOps.prec Rocq.Corelib.Floats.FloatOps.emax
+          x)
+        Rocq.Corelib.Init.Datatypes.bool.true →
+      Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool
+          (Rocq.Corelib.Floats.SpecFloat.valid_binary Rocq.Corelib.Floats.FloatOps.prec
+            Rocq.Corelib.Floats.FloatOps.emax y)
+          Rocq.Corelib.Init.Datatypes.bool.true →
+        Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Floats.SpecFloat.spec_float x y
+def Rocq.Corelib.Floats.FloatAxioms.SF64add : Rocq.Corelib.Floats.SpecFloat.spec_float →
+  Rocq.Corelib.Floats.SpecFloat.spec_float → Rocq.Corelib.Floats.SpecFloat.spec_float :=
+Rocq.Corelib.Floats.SpecFloat.SFadd Rocq.Corelib.Floats.FloatOps.prec Rocq.Corelib.Floats.FloatOps.emax
+def Rocq.Corelib.Floats.FloatAxioms.SF64classify : Rocq.Corelib.Floats.SpecFloat.spec_float →
+  Rocq.Corelib.Floats.FloatClass.float_class :=
+Rocq.Corelib.Floats.SpecFloat.SFclassify Rocq.Corelib.Floats.FloatOps.prec
+def Rocq.Corelib.Floats.FloatAxioms.SF64div : Rocq.Corelib.Floats.SpecFloat.spec_float →
+  Rocq.Corelib.Floats.SpecFloat.spec_float → Rocq.Corelib.Floats.SpecFloat.spec_float :=
+Rocq.Corelib.Floats.SpecFloat.SFdiv Rocq.Corelib.Floats.FloatOps.prec Rocq.Corelib.Floats.FloatOps.emax
+def Rocq.Corelib.Floats.FloatAxioms.SF64mul : Rocq.Corelib.Floats.SpecFloat.spec_float →
+  Rocq.Corelib.Floats.SpecFloat.spec_float → Rocq.Corelib.Floats.SpecFloat.spec_float :=
+Rocq.Corelib.Floats.SpecFloat.SFmul Rocq.Corelib.Floats.FloatOps.prec Rocq.Corelib.Floats.FloatOps.emax
+def Rocq.Corelib.Floats.FloatAxioms.SF64pred : Rocq.Corelib.Floats.SpecFloat.spec_float →
+  Rocq.Corelib.Floats.SpecFloat.spec_float :=
+Rocq.Corelib.Floats.SpecFloat.SFpred Rocq.Corelib.Floats.FloatOps.prec Rocq.Corelib.Floats.FloatOps.emax
+def Rocq.Corelib.Floats.FloatAxioms.SF64sqrt : Rocq.Corelib.Floats.SpecFloat.spec_float →
+  Rocq.Corelib.Floats.SpecFloat.spec_float :=
+Rocq.Corelib.Floats.SpecFloat.SFsqrt Rocq.Corelib.Floats.FloatOps.prec Rocq.Corelib.Floats.FloatOps.emax
+def Rocq.Corelib.Floats.FloatAxioms.SF64sub : Rocq.Corelib.Floats.SpecFloat.spec_float →
+  Rocq.Corelib.Floats.SpecFloat.spec_float → Rocq.Corelib.Floats.SpecFloat.spec_float :=
+Rocq.Corelib.Floats.SpecFloat.SFsub Rocq.Corelib.Floats.FloatOps.prec Rocq.Corelib.Floats.FloatOps.emax
+def Rocq.Corelib.Floats.FloatAxioms.SF64succ : Rocq.Corelib.Floats.SpecFloat.spec_float →
+  Rocq.Corelib.Floats.SpecFloat.spec_float :=
+Rocq.Corelib.Floats.SpecFloat.SFsucc Rocq.Corelib.Floats.FloatOps.prec Rocq.Corelib.Floats.FloatOps.emax
+def Rocq.Corelib.Floats.FloatAxioms.abs_spec.statement : Prop :=
+∀ (x : Rocq.Corelib.Floats.PrimFloat.float),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Floats.SpecFloat.spec_float
+    (Rocq.Corelib.Floats.FloatOps.Prim2SF (Rocq.Corelib.Floats.PrimFloat.abs x))
+    (Rocq.Corelib.Floats.SpecFloat.SFabs (Rocq.Corelib.Floats.FloatOps.Prim2SF x))
+def Rocq.Corelib.Floats.FloatAxioms.add_spec.statement : Prop :=
+∀ (x y : Rocq.Corelib.Floats.PrimFloat.float),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Floats.SpecFloat.spec_float
+    (Rocq.Corelib.Floats.FloatOps.Prim2SF (Rocq.Corelib.Floats.PrimFloat.add x y))
+    (Rocq.Corelib.Floats.FloatAxioms.SF64add (Rocq.Corelib.Floats.FloatOps.Prim2SF x)
+      (Rocq.Corelib.Floats.FloatOps.Prim2SF y))
+def Rocq.Corelib.Floats.FloatAxioms.classify_spec.statement : Prop :=
+∀ (x : Rocq.Corelib.Floats.PrimFloat.float),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Floats.FloatClass.float_class (Rocq.Corelib.Floats.PrimFloat.classify x)
+    (Rocq.Corelib.Floats.FloatAxioms.SF64classify (Rocq.Corelib.Floats.FloatOps.Prim2SF x))
+def Rocq.Corelib.Floats.FloatAxioms.compare_spec.statement : Prop :=
+∀ (x y : Rocq.Corelib.Floats.PrimFloat.float),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Floats.PrimFloat.float_comparison
+    (Rocq.Corelib.Floats.PrimFloat.compare x y)
+    (Rocq.Corelib.Floats.FloatAxioms.flatten_cmp_opt
+      (Rocq.Corelib.Floats.SpecFloat.SFcompare (Rocq.Corelib.Floats.FloatOps.Prim2SF x)
+        (Rocq.Corelib.Floats.FloatOps.Prim2SF y)))
+def Rocq.Corelib.Floats.FloatAxioms.div_spec.statement : Prop :=
+∀ (x y : Rocq.Corelib.Floats.PrimFloat.float),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Floats.SpecFloat.spec_float
+    (Rocq.Corelib.Floats.FloatOps.Prim2SF (Rocq.Corelib.Floats.PrimFloat.div x y))
+    (Rocq.Corelib.Floats.FloatAxioms.SF64div (Rocq.Corelib.Floats.FloatOps.Prim2SF x)
+      (Rocq.Corelib.Floats.FloatOps.Prim2SF y))
+def Rocq.Corelib.Floats.FloatAxioms.eqb_spec.statement : Prop :=
+∀ (x y : Rocq.Corelib.Floats.PrimFloat.float),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Floats.PrimFloat.eqb x y)
+    (Rocq.Corelib.Floats.SpecFloat.SFeqb (Rocq.Corelib.Floats.FloatOps.Prim2SF x)
+      (Rocq.Corelib.Floats.FloatOps.Prim2SF y))
+def Rocq.Corelib.Floats.FloatAxioms.flatten_cmp_opt : Rocq.Corelib.Init.Datatypes.option.{1}
+    Rocq.Corelib.Init.Datatypes.comparison →
+  Rocq.Corelib.Floats.PrimFloat.float_comparison :=
+fun c =>
+  Rocq.Corelib.Init.Datatypes.option.rec.{1, 1}
+    (fun a =>
+      Rocq.Corelib.Init.Datatypes.comparison.rec.{1} Rocq.Corelib.Floats.PrimFloat.float_comparison.FEq
+        Rocq.Corelib.Floats.PrimFloat.float_comparison.FLt Rocq.Corelib.Floats.PrimFloat.float_comparison.FGt a)
+    Rocq.Corelib.Floats.PrimFloat.float_comparison.FNotComparable c
+def Rocq.Corelib.Floats.FloatAxioms.frshiftexp_spec.statement : Prop :=
+∀ (f : Rocq.Corelib.Floats.PrimFloat.float),
+  Rocq.Corelib.Init.Datatypes.prod.rec.{1, 1, 1}
+    (fun a a_1 =>
+      Rocq.Corelib.Init.Logic.eq.{1}
+        (Rocq.Corelib.Init.Datatypes.prod.{1, 1} Rocq.Corelib.Floats.SpecFloat.spec_float
+          Rocq.Corelib.Numbers.BinNums.Z)
+        (Rocq.Corelib.Init.Datatypes.prod.pair.{1, 1} Rocq.Corelib.Floats.SpecFloat.spec_float
+          Rocq.Corelib.Numbers.BinNums.Z (Rocq.Corelib.Floats.FloatOps.Prim2SF a)
+          (Rocq.Corelib.BinNums.IntDef.Z.sub (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z a_1)
+            Rocq.Corelib.Floats.FloatOps.shift))
+        (Rocq.Corelib.Floats.SpecFloat.SFfrexp Rocq.Corelib.Floats.FloatOps.prec Rocq.Corelib.Floats.FloatOps.emax
+          (Rocq.Corelib.Floats.FloatOps.Prim2SF f)))
+    (Rocq.Corelib.Floats.PrimFloat.frshiftexp f)
+def Rocq.Corelib.Floats.FloatAxioms.ldshiftexp_spec.statement : Prop :=
+∀ (f : Rocq.Corelib.Floats.PrimFloat.float) (e : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Floats.SpecFloat.spec_float
+    (Rocq.Corelib.Floats.FloatOps.Prim2SF (Rocq.Corelib.Floats.PrimFloat.ldshiftexp f e))
+    (Rocq.Corelib.Floats.SpecFloat.SFldexp Rocq.Corelib.Floats.FloatOps.prec Rocq.Corelib.Floats.FloatOps.emax
+      (Rocq.Corelib.Floats.FloatOps.Prim2SF f)
+      (Rocq.Corelib.BinNums.IntDef.Z.sub (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z e)
+        Rocq.Corelib.Floats.FloatOps.shift))
+def Rocq.Corelib.Floats.FloatAxioms.leb_spec.statement : Prop :=
+∀ (x y : Rocq.Corelib.Floats.PrimFloat.float),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Floats.PrimFloat.leb x y)
+    (Rocq.Corelib.Floats.SpecFloat.SFleb (Rocq.Corelib.Floats.FloatOps.Prim2SF x)
+      (Rocq.Corelib.Floats.FloatOps.Prim2SF y))
+def Rocq.Corelib.Floats.FloatAxioms.ltb_spec.statement : Prop :=
+∀ (x y : Rocq.Corelib.Floats.PrimFloat.float),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Floats.PrimFloat.ltb x y)
+    (Rocq.Corelib.Floats.SpecFloat.SFltb (Rocq.Corelib.Floats.FloatOps.Prim2SF x)
+      (Rocq.Corelib.Floats.FloatOps.Prim2SF y))
+def Rocq.Corelib.Floats.FloatAxioms.mul_spec.statement : Prop :=
+∀ (x y : Rocq.Corelib.Floats.PrimFloat.float),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Floats.SpecFloat.spec_float
+    (Rocq.Corelib.Floats.FloatOps.Prim2SF (Rocq.Corelib.Floats.PrimFloat.mul x y))
+    (Rocq.Corelib.Floats.FloatAxioms.SF64mul (Rocq.Corelib.Floats.FloatOps.Prim2SF x)
+      (Rocq.Corelib.Floats.FloatOps.Prim2SF y))
+def Rocq.Corelib.Floats.FloatAxioms.next_down_spec.statement : Prop :=
+∀ (x : Rocq.Corelib.Floats.PrimFloat.float),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Floats.SpecFloat.spec_float
+    (Rocq.Corelib.Floats.FloatOps.Prim2SF (Rocq.Corelib.Floats.PrimFloat.next_down x))
+    (Rocq.Corelib.Floats.FloatAxioms.SF64pred (Rocq.Corelib.Floats.FloatOps.Prim2SF x))
+def Rocq.Corelib.Floats.FloatAxioms.next_up_spec.statement : Prop :=
+∀ (x : Rocq.Corelib.Floats.PrimFloat.float),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Floats.SpecFloat.spec_float
+    (Rocq.Corelib.Floats.FloatOps.Prim2SF (Rocq.Corelib.Floats.PrimFloat.next_up x))
+    (Rocq.Corelib.Floats.FloatAxioms.SF64succ (Rocq.Corelib.Floats.FloatOps.Prim2SF x))
+def Rocq.Corelib.Floats.FloatAxioms.normfr_mantissa_spec.statement : Prop :=
+∀ (f : Rocq.Corelib.Floats.PrimFloat.float),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Numbers.BinNums.Z
+    (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z (Rocq.Corelib.Floats.PrimFloat.normfr_mantissa f))
+    (Rocq.Corelib.BinNums.IntDef.Z.of_N
+      (Rocq.Corelib.Floats.SpecFloat.SFnormfr_mantissa Rocq.Corelib.Floats.FloatOps.prec
+        (Rocq.Corelib.Floats.FloatOps.Prim2SF f)))
+def Rocq.Corelib.Floats.FloatAxioms.of_uint63_spec.statement : Prop :=
+∀ (n : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Floats.SpecFloat.spec_float
+    (Rocq.Corelib.Floats.FloatOps.Prim2SF (Rocq.Corelib.Floats.PrimFloat.of_uint63 n))
+    (Rocq.Corelib.Floats.SpecFloat.binary_normalize Rocq.Corelib.Floats.FloatOps.prec Rocq.Corelib.Floats.FloatOps.emax
+      (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z n) Rocq.Corelib.Numbers.BinNums.Z.Z0
+      Rocq.Corelib.Init.Datatypes.bool.false)
+def Rocq.Corelib.Floats.FloatAxioms.opp_spec.statement : Prop :=
+∀ (x : Rocq.Corelib.Floats.PrimFloat.float),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Floats.SpecFloat.spec_float
+    (Rocq.Corelib.Floats.FloatOps.Prim2SF (Rocq.Corelib.Floats.PrimFloat.opp x))
+    (Rocq.Corelib.Floats.SpecFloat.SFopp (Rocq.Corelib.Floats.FloatOps.Prim2SF x))
+def Rocq.Corelib.Floats.FloatAxioms.sqrt_spec.statement : Prop :=
+∀ (x : Rocq.Corelib.Floats.PrimFloat.float),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Floats.SpecFloat.spec_float
+    (Rocq.Corelib.Floats.FloatOps.Prim2SF (Rocq.Corelib.Floats.PrimFloat.sqrt x))
+    (Rocq.Corelib.Floats.FloatAxioms.SF64sqrt (Rocq.Corelib.Floats.FloatOps.Prim2SF x))
+def Rocq.Corelib.Floats.FloatAxioms.sub_spec.statement : Prop :=
+∀ (x y : Rocq.Corelib.Floats.PrimFloat.float),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Floats.SpecFloat.spec_float
+    (Rocq.Corelib.Floats.FloatOps.Prim2SF (Rocq.Corelib.Floats.PrimFloat.sub x y))
+    (Rocq.Corelib.Floats.FloatAxioms.SF64sub (Rocq.Corelib.Floats.FloatOps.Prim2SF x)
+      (Rocq.Corelib.Floats.FloatOps.Prim2SF y))

@@ -55,6 +55,8 @@ syntax (name := rocqReplay) "#rocq2lean_replay " str str : command
   let some outPath := stx[2].isStrLit? | throwError "expected an output path"
   let report ← IO.ofExcept (Json.parse (← IO.FS.readFile repPath))
   let results ← IO.ofExcept (report.getObjValAs? (Array Json) "results")
+  let results ← IO.ofExcept <| results.foldlM (init := #[]) fun acc r => do
+    return acc ++ (← qualityAuxRows r) ++ #[r]
   let out ← liftTermElabM do
     let mut out : Array Json := #[]
     for r in results do

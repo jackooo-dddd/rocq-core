@@ -1,0 +1,12 @@
+import Rocq2Lean
+#rocq2lean_import "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Array/PrimArray/source.ndjson" "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Array/PrimArray/translation_report.json" "757cabf53e23de8c22ede4d759aae6231a2469cb731b35104a6bdcabbad29fd9" "407c9a86-73fb-4184-87ad-5dd0163d3bdb" "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Array/PrimArray/contract.json" "0e302b324435d62e87e369b3ec39f7187f2470f7bc0ea0d4c0bc68baf56d5520"
+
+set_option pp.universes true
+#print «Rocq».«Corelib».«Array».«PrimArray».«array»
+#print «Rocq».«Corelib».«Array».«PrimArray».«copy»
+#print «Rocq».«Corelib».«Array».«PrimArray».«default»
+#print «Rocq».«Corelib».«Array».«PrimArray».«get»
+#print «Rocq».«Corelib».«Array».«PrimArray».«length»
+#print «Rocq».«Corelib».«Array».«PrimArray».«make»
+#print «Rocq».«Corelib».«Array».«PrimArray».«max_length»
+#print «Rocq».«Corelib».«Array».«PrimArray».«set»

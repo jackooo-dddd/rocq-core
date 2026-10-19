@@ -1,0 +1,225 @@
+2026-10-18: independent full-Corelib effort started from published candidate snapshot. Preparing reproducible full-scope baseline; historical 189-blocker count covered only 839 basic declarations.
+Independent-project interface protection extended from 4474 existing Prosa roots to their union with all 2180 Corelib declarations (6654 total); no existing protected root removed. The new baseline uses this stricter scope. Original project manifest unchanged.
+SP candidate: SProp -> Lean Prop with typed relevance guard, independent exact-sort audit, unchanged source roundtrip. Candidate only; full validation pending.
+SP synthetic dependent-index fixture exposed a real exporter bug: generated obligations always had Relevant, even when their statement is SProp. Added one shared kernel-derived relevance helper for both obligation insertion sites. Original SP type/binder rule passed real Datatypes/Logic/Specif source, consumer, and audit checks (+30 roots relative to those baseline modules); complete fixture validation still pending.
+SP validated on all 67 modules / 2180 roots: 48 UNSUPPORTED_FEATURE -> STATEMENT_KERNEL_CHECKED, zero status regressions, all 48 changes in modules passing source roundtrip + consumer + independent audit. Status blockers 654 -> 606; pre-existing 13 validation-failing modules unchanged. Synthetic SP positive/negative tests PASS and existing statement suite OK. Evidence: work/runs/sp-full, work/tests/sp-relevance, work/logs/sp-statement-suite.log, work/sp-delta.json.
+Scope reconciliation: original 839 roots are all in full 2180; baseline still exactly 189 blocked in original scope, 465 in 1341 added roots, no success/block boundary changes. SP fixes 40 original + 8 added. Evidence work/scope-comparison.json.
+WF dispatch probe: removal of early deferred-guard refusal yields no status gains; Init.Wf and Program.Wf independently validate their surviving artifacts. Actual blockers expose proof extraction obscuring local recursive fields. Testing neutral local-hypothesis application preservation.
+Poly inductive candidate remains experimental: synthetic supported fragment 8 checked, 2 explicitly unresolved cumulativity examples; real Classes modules retain validation failures. Not counted as verified full-scope gains.
+Local proof spines: Init.Wf probe validates 4 newly complete roots (Acc_rec, Acc_rect, well_founded_induction, well_founded_induction_type). Synthetic local/constructed/nested proof fixture PASS. Full snapshot reports 579 status blockers but Classes validations still fail in that frozen version, so 579 is not a fully certified result.
+Statement suite on local-proof-spine: all pipelines and semantic negative controls pass; one exact prerequisite expectation obsolete because iffP's local hypothesis application no longer creates obligation_2. Updated that exact expectation; retained all validation and negative controls.
+Classes corrections: reduced proof-type classification prevents five proof implementations being exported as data; native context-level collection covers global bounds mentioned only by polymorphic constraints; bottom-up source reconstruction fixes nested delta-expansion audit order, without relaxing target comparison. classes-checks-probe: both CMorphisms and CRelationClasses pass roundtrip/consumer/audit, 159 roots / 89 remaining status blockers. Full regression and revised statement suite running.
+classes-checks-full complete: 67 modules / 2180 roots; status blockers 654 -> 572 against independent baseline, original scope 189 -> 145. All 82 newly unblocked roots are in independently checked modules, no status or validation regressions. Fully checked good roots 1471 -> 1593; remaining good statuses in unvalidated modules 55 -> 15. Validation-failing modules 13 -> 11. Evidence work/classes-checks-delta.json. Statement suite OK; inline-audit negative controls PASS; reduced proof-classification fixture PASS_PROOF_CLASSIFICATION with ordinary_type cumulativity failure explicitly retained.
+Polymorphic prerequisites: explicit instances now registered and passed through pending paths; audit checks source instance at each hypothesis use. Synthetic two-instance fixture PASS including wrong-instance/missing-instance rejection. Classes probe remains 89 blocked: two unsupported-instance errors advance to genuine cumulative-type failures, not counted as gains. Full regression running; statement suite OK.
+Int literal roundtrip candidate: decoder and structural comparator added, four boundary literals roundtrip successfully; changed-literal and malformed/out-of-range encodings rejected (work/tests/int-literals-checked3/result.json). Full primitive module still aborts at tmQuoteConstant on primitive operation bodies (MetaRocq limitation), not counted as validated. First trial also exposed missing uint63 scope in generated RoundTrip.v; corrected in int-roundtrip2 snapshot.
+poly-prereq-full complete: 2180 roots / 572 status blockers, no success/block boundary changes or validation regressions against classes-checks-full. The only two status changes are unsupported-instance -> kernel type mismatch. Full tested translator snapshot is now work/snapshots/poly-prereq/translator. Active translator additionally contains the independently tested int literal roundtrip candidate, not yet full-scope regressed.
+
+2026-10-18: Primitive source verification completed.
+Fresh native process checks primitive operator ID, full type, universes, relevance,
+body state and absence of fabricated bodies. Negative controls reject each field
+mutation, including coherent export/signature type alteration. Float signed zero
+and NaN, NUL/non-UTF8 byte strings, and array elements/defaults roundtrip exactly;
+changed payloads fail source checking. The signed-zero fixture was corrected to
+evaluate PrimFloat.neg_zero so that both signs really occur in the exported IR.
+Evidence: work/tests/primitive-roundtrip-signed-zero/result.json.
+Full run work/runs/primitive-roundtrip-full: 67 modules, 2180 declarations,
+572 blocked, 1608 good/check-complete, no good/check-incomplete roots. Original
+839 scope remains 145 blocked / 694 checked. No status or validation regressions.
+Module validation failures reduced 11 -> 2 (PrimArray has no accepted declaration;
+Init.Equality has export blockers). Retained the consumer's coverage requirement.
+Delta: work/primitive-roundtrip-delta.json. This is a validation repair, not a claim
+that primitive operations have been translated.
+
+Int63 representation under active development: kernel-registered int63 -> BitVec 63,
+exact in-range literal conversion, and 8 unsigned operations. Native registration
+is freshly rechecked; no arbitrary source axiom is admitted. Initial model fixtures
+exposed mkNatLit's OfNat wrapper rather than a raw kernel literal, first at consumer
+dependency checking then structural audit. Replaced these constructed literals with
+mkRawNatLit, preserving exact structural auditing. Rebuild/tests pending; no new
+translation gains counted yet. Added 384 source-kernel computation cases covering
+boundaries, overflow/underflow, zero division/remainder and deterministic random pairs.
+
+2026-10-18: Native int63 type, literals and eight unsigned operations certified.
+Frozen translator: work/snapshots/int63-pure/translator.
+Integer type is BitVec 63; in-range literals retain exact values. Source registration
+is fresh-process checked, and false registrations rejected. No arbitrary assumption
+is treated as an implemented primitive. Semantic operations: add/sub/mul, div/rem,
+and/or/xor. Built-in BitVec division/modulo/bitwise helpers were rejected by the
+unchanged axiom detector (propext, some also Quot.sound). Replaced those helpers
+with Nat division/modulo followed by ofNat, and one structural width recursion for
+all three bitwise operations. Empty axiom closures now pass independently.
+
+work/tests/int63-pure/result.json: 384 source-kernel vs Lean-kernel computations
+pass, including overflow, underflow, upper-half words, division/modulo by zero and
+deterministic random inputs. work/tests/int63-pure-model-checked/result.json:
+literal/type/registration negative controls and standalone Lean use pass.
+The translated integer type is a named def, so overloaded notation may need a
+BitVec 63 annotation; explicit BitVec.add directly consumes translated values.
+work/tests/int63-pure-audit/result.json: wrong arithmetic operator, wrong division
+operator, wrong bitwise operator, and wrong width all structurally rejected.
+
+Full 67-module/2180-root regression: 546 blocked, 1634 checked good roots, zero
+good-but-validation-incomplete. Newly unblocked 26, all definitions/data, including
+native operators, wrappers/parser/printer, array/string limits, unsigned derived
+definitions, and char63 support. Original 839 remains 145 blocked / 694 checked.
+No status or module-validation regressions. Only Init.Equality fails module
+validation because of its export blockers. All other modules have their accepted
+closure checked (this does not mean every root of those modules is accepted).
+Evidence: work/int63-pure-delta.json and work/int63-pure-total-delta.json.
+Since full baseline: 654 -> 546 blocked, 108 verified unblocked.
+
+Statement suite first stopped because the snapshot lacked .work/prosa-0.6-rocq93.
+Restored the existing compiled fixture from the previous certified snapshot,
+without modifying Prosa. Rerun work/logs/int63-pure-statement-suite2.log ends
+test-statement: OK, including all semantic mutations and sorry/axiom submissions.
+Campaign setup now restores that dependency. No validation requirement weakened.
+
+Next R3 defect reproduced independently in fixtures/corelib-poly-global:
+a direct bound u <= g and a transitive bound u <= v <= g both source-check but
+fail target R3 at v_0. Exact current output: work/logs/poly-global-before.log.
+Notes: work/notes/r3-polymorphic-context.txt. No R3 repair implemented yet.
+Goal remains active; 546 blocked roots remain; final rule minimization not begun.
+
+2026-10-18: Declaration-local universe bounds (R3-P) certified.
+Explicit v_i parameters are recognized only within the referring UDecl. Required
+bounds use its source-checked constraints plus native global relations, with
+equality, signed offsets and transitive chains. No local fact is added to GEnv.
+Lean uses single-source weighted relaxation; Python independently uses weighted
+transitive closure. Missing/overlarge bounds, foreign variables, global/local name
+collisions, malformed constraints and inconsistent cycles fail closed.
+Fixture work/tests/poly-global/result.json passes 17 local cases plus R3 entry
+checks and 3 end-to-end definitions. Existing per-instance prerequisite fixture
+passes at work/tests/poly-global-prereq/result.json.
+Full run work/runs/poly-global-full: 541 blocked (5 fewer), 1639 checked good,
+0 incomplete-validation good roots. Original 839 remains 145 blocked. No status
+or validation regressions. Statement suite log ends test-statement: OK.
+Only Init.Equality remains a module-level validation failure due to export blockers.
+
+Signed int63 / shifts: added axiom-free ofSigned conversion, tdiv/tmod and guarded
+logical/arithmetic shifts. Preserves Rocq's zero result for a negative signed shift
+amount; large nonnegative shifts saturate before computation. 312 differential
+kernel cases and wrong-operator audit controls pass. Full scope still running.
+
+Native comparisons: added eq/lt/le/lts/les and one Bool.rec conversion to the
+source's registered Boolean constructors. Identities are read from native
+retroknowledge and independently re-read with the primitive signature. The audit
+requires exact helper, width, arguments and true/false roles. 240 differential
+cases plus target/source mutation controls are running. No gains claimed yet.
+
+2026-10-18: Signed and Boolean int63 stages certified.
+Signed full run: 532 blocked / 1648 checked, +9 newly unblocked, no regressions.
+Boolean full run: 494 blocked / 1686 checked, +38 newly unblocked, no regressions.
+Both full statement suites passed. Total improvement over full baseline is 160
+roots; original 839 remains 145 blocked / 694 checked. Statement success denotes
+a checked proposition, not a proof. Evidence: work/int63-bool-total-delta.json.
+Array work in progress: bounded finite-function representation preserves runtime
+max_length=4194303, polymorphic element type, default and persistent updates.
+The bound is exported from Parray.max_length and independently re-read in source
+roundtrip; a mismatching bound refuses translation. No array gains counted yet.
+
+2026-10-18: Native arrays certified, literals and strings in progress.
+Native array snapshot native-array2: 476 blocked /1704 checked across fixed2180,
+18 newly unblocked (7 definitions/type, 11 statements), no regressions. Full
+statement suite passed. Fixture118 differential cases and mutation controls pass.
+Initial native-array snapshot exposed an audit field typo (kind instead of k);
+its rejected result is retained. Corrected active source, froze native-array2,
+reran all required checks. No accepted snapshot was edited.
+Array-literal full run also has476 blocked, no regressions; statement suite
+pending. Literal fixtures cover nested and arbitrary-universe elements.
+String+comparison fixture212 cases,6 literal uses,224 roots and source/target
+mutations pass; its full run is in progress. New head0/tail0/addmuldiv model and
+302-case fixture are prepared while those campaigns run.
+
+2026-10-18: Byte strings, comparisons and integer count/combined shifts certified.
+Array-literal full statement suite passed. Native-string full run:448 blocked,
+1732 checked, +28 unblocked, no regressions; statement suite passed.
+int63-counts2 full run:442 blocked,1738 checked,+6 unblocked,no regressions;
+statement suite passed.302 source/target cases and semantic mutation tests pass.
+The first count snapshot rejected addmuldiv because the native operator ID is
+addMulDiv; corrected exact ID and froze counts2. Failed artifact retained.
+Since full baseline654,212 roots now verified unblocked; original839 scope
+remains145 blocked/694 checked. Source axioms still produce statements only.
+
+int63-structured fixture passes363 computation cases and wrong-helper, carry-role,
+pair-constructor,width and source-registration negative controls. Helpers accept
+the exact registered constructors as arguments; no assumed theorem or new axiom.
+Full regression in progress. Helpers include div21's source-defined zero result
+when the upper word is not below the divisor, including division by zero.
+
+Remaining frontier report: work/notes/native-string-frontiers.json (448 blocked,
+198 direct/250 dependent; graph reach counts overlap). New general-universe-lift
+design and source fixture prepared during background runs. Axiom-free Lean
+inverse laws checked at work/tests/universe-lift-design/check.log. This is only
+investigation, not an integrated rule or a coverage gain.
+
+2026-10-18: Entire Int63, Strings and Array families now unblocked.
+int63-structured full run and statement suite PASS. Fixed2180 scope:428 blocked,
+1752 checked good,0 good-unvalidated; +14 newly unblocked, no regressions.
+Total baseline654->428 is226 verified improvements. Original839 stays145 blocked.
+Int63 94/94, Strings29/29, Array19/19 have checked accepted outputs and zero
+blockers. Theorem/axiom outputs remain statements, not assumed or proved theorems.
+All measured source snapshots remain unchanged. Current goal still active;
+428 blockers remain and final rule minimization has not begun.
+
+General-lift protected probe exposed existing R2B-V normalization of a global
+result-only upper universe even with protection; four global roots accepted,
+two explicitly polymorphic roots blocked. This is documented, not counted as new
+general-lift support. Added six probe names to active protection manifest only,
+retaining all6654 prior protected names. New float-model note identifies the
+canonical-NaN requirement and the already-translatable pure SpecFloat algorithms.
+
+Native float certification: native-float2 full campaign COMPLETE. 2199 differential kernel cases and negative controls PASS; 2180 roots,1817 checked good,363 blocked;65 newly checked,zero regressions; full statement suite PASS. Native Floats family {'total': 134, 'blocked': 0, 'good_checked': 134}. Four protected poly-abbrev fixture roots and four structural mutations PASS; three Classes modules +9 checked; frozen full regression running. Meaningful work overlapped both background campaigns.
+
+Poly-abbrev full campaign COMPLETE:2180roots,1826checked good,354blocked,+9checked,no regressions; statement suite PASS. Template Sort prototype restricts to source-native fixed-Prop conclusion; four core modules +35checked,no regressions. Lean rejects mixed Sort(max u v) product/sigma inductives; these stay out of the new rule. Client match syntax failed (explicit-recursion client retry); not a translator or core-module validation failure.
+
+Overlapping campaigns: template-sort full found +35 checked but3 SetoidTactics regressions; its322 blocked total is NOT certified. prop-cast adds1 but inherits those3; not certified. Monomorphic transparent type-alias expansion restores DefaultRelation/default_relation/equivalence_default, checked in fresh module run; direct Lean Eq client at arbitrary Sort is axiom-free. Constructor-proof fallback adds5 checked data functions in Init while preserving existing successful preparations;20 kernel computations,3 arbitrary-universe beta laws and a wrong-reflexivity negative pass. Combined mono-abbrev snapshot's four fixture suites PASS and full2180 regression is RUNNING against last certified354-block baseline. Do not count unvalidated gains.
+
+mono-abbrev COMPLETE:2180roots,1874checked,306blocked,+48checked,zero regressions; full statement suite PASS. Original839 blocked=105. Certifies all combined rules from previous turn. New proof-reference retry removes source extraction failures in the three tested Init modules and adds19 pending checked roots; full regression not yet run.
+
+Proof-reference full regression: 1893 checked good / 287 blocked of unchanged2180; +19 conditional data definitions, zero regressions. Native Eq client + beta law axiom-free, proof implementations omitted, two mutation controls rejected. Statement suite running; certified baseline remains306 until it passes. Carrier-sort follow-up: zero-argument R8 eligibility gains6 in first four-module probe. Statement generalization v1 regressed due missing admitting metadata registration; v2 fixes registration for all accepted artifact statuses and is under test. All negative snapshots retained. Recursion frontier diagnosis in work/notes/accessibility-recursion-frontier.txt.
+
+CERTIFIED proof-references: full2180 scope1893checked/287blocked, original839 scope753checked/86blocked. Statement suitePASS and dedicated fixturePASS. Compared654 baseline367verifiedunblocked; zero status/validation regressions. Active carrier-sort-statements3 remains experimental, build/targeted run in progress.
+
+Carrier/Type-template combined progress: carrier probe+34 but originalfull crashes2modules; NOT CERTIFIED. MinimalUnder_rel source exposes cyclic residual default. closeUniverseDefaults resolves acyclic graphs and rejects cycles before assignment; six directruntimecasesPASS. universe-default2 four-moduleprobe+36/no regressions, previouslycrashed2modules source/Lean/auditPASS; carrier/template/proof-referencefixturesPASS. Full2180 campaignrunning. Nativequalitydiagnostic shows sharedq0 forprod/sig/sigT/sigT2; no quality translation rule implemented.
+
+2026-10-18: Native template audit derives exact Type0 field levels from source bindings and accepted Sort mode; previously failing Int63 audits pass, strengthened wrong-level controls pass. Frozen native-template full campaign running. Poly-lift adds nonnegative local constraint closure retaining all universe parameters and separate Type-to-Type result transport; independent closure/shape/lower-sort audit. Two-module159-root probe +44 with no regressions; fixture PASS (7 negatives,2 axiom-free inverse laws,165 contexts,6220 valuations,1400 fixed points). Frozen poly-lift full campaign running. No new baseline certified yet.
+
+2026-10-18: CERTIFIED native-template: all2180 roots,1939 checked good,241 blocked,0 good-unvalidated; original839 has52 blocked. +46 over proof-references,zero status/validation regressions. Five fixtures and full statement suite PASS. Total verified unblock since654 baseline:413. Poly-lift full still running.
+
+2026-10-18: CERTIFIED poly-lift:2180 roots,1983 checked good,197 blocked,0 good-unvalidated; +44 over native-template241 and457 unblocked since654baseline. No regressions; fixture,negative controls,arbitrary-universe inverse laws and complete statement suite PASS. Type-coercions remains experimental.
+
+2026-10-18: Type-coercions2 frozen,262-root probe +3 (flip_atom,symmetric_equiv_flip,flip_StrictOrder),0 regressions;3 axiom-free protected clients and9 negative controls PASS, poly-lift andProp-cast suitesPASS. Detached gated full campaign PID2669323. Source global raise_type synthetic audit failure preserved separately; not counted as a passed fixture. Certified197 baseline unchanged pending campaign.
+
+2026-10-18: CERTIFIED type-coercions2:2180 roots,1986 checked good,194 blocked,0 good-unvalidated. +3 over poly-lift197,no regressions,all fixtures and statement suitePASS. Source-compute experimental probe +2; binary_relation andunary_predicate nowchecked without narrowing carriers. Source Rocq conversion proofs binary/empty/three-carrier allcompile. Remaining downstreamTlist constraint stillblocked.
+
+source-compute certified:2180 roots,1988 checked,192 blocked,+2,0 regressions, complete statement suite. cast-retry262 probe +4; missing unused universe-image metadata can legitimately be redundant after alias expansion, replace that negative with incorrect explicit image.
+
+cast-retry certified:2180 roots,1992 checked,188 blocked,+4,0 regressions,complete statement suite. Nested cast probes no additional gains. Template quality metadata now exported and freshly checked (8 records,5 mutations); Prop/Type family prototypes pass8 source and target combinations and beta laws,not integrated. Alias eligibility closure probe running.
+
+alias-closure2 dedicated6-root fixture PASS(12 report mutations,4 eligibility negatives). Initial campaign correctly stopped before full run: old fixture required>=3 actual coercion users, but new legal alias expansion reduces that number to1. Preserve coercion negatives on certified cast-retry artifacts under the current auditor, while full2180 validates all newly generated artifacts. Resume script/output created; failed campaign retained.
+
+alias-closure2 certified:2180 roots,1998 checked,182 blocked,+6 versus cast-retry188,0 regressions,0 good-unvalidated, complete statement suite. Original839 remains787 checked/52 blocked. Classification closure discovers relation_equivalence through its crelation result alias. 5 implementations+1 statement; no theorem proof claim. Native-context optional diagnostics and conversion fixtures determine quality-dispatch requirements without claiming more coverage.
+
+Quality family plans prototype PASS: five real core inductives generate ten kernel-checked Prop/Type signatures; independent source-derived audit, five binding negatives and twenty target mutations PASS. No production dispatch or newly certified roots; baseline remains182 blocked. Next: generated recursor clients and coherent source-context dispatch.
+
+Generated quality-family consumers PASS: ten autogenerated branches imported via fresh Generated.olean, ten dependent recursor beta laws over arbitrary motive Sort checked with rfl; all axiom-free. Production family selection/replay/audit integration remains outstanding; certified182 baseline unchanged.
+
+Quality source analysis: 54 source definitions/45 native template applications, native Rocq=Lean=Python; unknown information refuses. Added optional source-directed hooks to type/constructor/case translation with exact-scope raw binder tracking. Full2180 hook-inactive regression COMPLETE at1998checked/182blocked,zero regressions,complete statement suite. Initial statement attempt lacked compiled Prosa cache; preserved failure and reran with required cache in fresh snapshot4.
+Family audit prototype: independently derive both signatures and rewrite source reference choices from original source contexts;10 signatures/20 implementation types+bodies PASS,30 negative controls including10 kernel-valid wrong-data bodies. Main report/family registration not integrated.
+Result-transport ordering: pre-coercion isDefEq prematurely solved declared result upper levels to payload lower levels. Skip that equality for type-valued results in polyLift tier, letting existing explicit PULift retain upper bounds. Six protected universe-lift fixture roots now source/consumer/auditVALIDATED;four arbitrary-universe axiom-free laws andsix negative controlsPASS(two kernel-valid wrong-payload/narrowed-result mutations). First client test had an invalid named universe argument; corrected in fresh checked2 fixture. Quality dispatch synthetic54-root fixture improves34→51kernel-checked;3 failures retained. Frozen result-transport6 gated full campaign running PID2745823. No new Corelib coverage claimed yet.
+
+CERTIFIED result-transport6:full2180 unchanged1998checked/182blocked,0good-unvalidated,zero status/validation regressions,complete statement suite. No Corelib gain claimed because family registration is not enabled. Source quality family experiment now51independently audited function types/bodies(10derived branch signatures),own-level/transport checks and30negative controls,including10wrong-data implementations accepted by kernel and rejected by structural audit. Scope-context test confirms source Type wins over target Prop and stale same-sized contexts are refused. Rocq compiler rejects13SProp-template instances; no omitted admissible SProp branch was demonstrated. All background jobs terminal; nextmainstep production family record/registration/consumer/audit integration.
+
+Quality main integration (2026-10-18, ongoing): paired families and independent report/consumer/audit wiring. main7 exact445-root probe removes all20 previous blockers with no validation failures; main3 regressions from lost match source scopes are resolved. main8 54-root production fixtures: proof export/translate/verify and statement export/translate/validate all exit0. main7 45 negatives include10 kernel-valid corrupt implementations; main8 adds4 local-let controls. Full2180 and statement suite still pending; certified182 unchanged. Logs: work/logs/quality-main8-campaign.log; PID2780728.
+
+quality-main10 CERTIFIED: full2180/67, 2030 checked /150 blocked; +32 versus result-transport6, zero status/validation regressions, zero good-unvalidated. Full statement suite PASS. main8 regression repaired, main11 Wf scope probe no additional gains. Active exporter proof-projection preservation not yet certified.
+
+main15 Wf projection experiment: 33-root Init.Wf/Program.Wf probe 31 checked/2 blocked (+17). Preserves neutral proof projections, source beta/delta expansion, records source preparation without obligations, extends iota lowering over non-uniform indices; independent audit checks functional recursive-field projections. 3 kernel-valid wrong computations rejected; 4 proof extraction boundaries and omitted preparation marker rejected. Full2180 plus statement suite launched PID 2810521. Certified remains main10/150.
+
+quality-main15 CERTIFIED: complete2180/67,2047checked/133blocked,+17,no regressions,0good-unvalidated,complete statement suite PASS. Original839=814checked/25blocked;added1341=1233checked/108blocked. Candidate source snapshot immutable. Pair-index standalone arbitrary-universe target beta law axiom-free; source uncurrying not definitional, generic lowering/audit required. Tlist minimal reproduction PID2816312.
+
+Constructor-shaped index rule candidate main18: target discovers unique leading-variable paths through nonrecursive record constructors; independent source audit derives paths and checks motive/minor projections. Main16 failed due to unification on bound variables; main17 uses only literal constructor projection reduction. Wf33 all checked (+2). main18 strengthens recursive-record exclusion. 5 positive patterns,2 eligibility refusals,arbitrary-universe beta and3 axiom-free generated definitions,3 kernel-valid wrong computations rejected. Full campaign PID2818980. Certified remains133.
+
+quality-main18 CERTIFIED: all2180/67,2049checked/131blocked,+2,no status/validation regressions,0good-unvalidated,full statement suite PASS. Original839=816checked/23blocked;added1341=1233checked/108blocked. BothWf modules all33 checked. Tlist control passed only by unprotected universe specialization; test-only added protection reproduces failure. Standalone lifted-family design5 axiom-free checks. New branch transport candidate tlist-branch-lift1 PID2825114, independent branch audit pending; not certified.
+
+2026-10-19: nat/eq bootstrap removed; 2180 roots / 67 modules remain 0 blocked. Separate correspondence proofs and 101 proof profiles pass; prior 28 type, 109 operation, 845 statement certificates migrated. Current docs/rule counts updated and publication/synchronization authorized. See RESULTS.md and experiments/mechanical-correspondence-20261019/VERIFIED.json.

@@ -33,11 +33,11 @@ import json
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import quality_families
+
 # Independent copy of the bootstrap table (names and universe rule only).
-BOOTSTRAP = {
-    "Corelib.Init.Datatypes.nat": {"types": ["Nat"], "ctors": [["Nat.zero", "Nat.succ"]], "univ": "mono"},
-    "Corelib.Init.Logic.eq": {"types": ["Eq"], "ctors": [["Eq.refl"]], "univ": "template"},
-}
+BOOTSTRAP = {}  # Mechanical source nat/eq: no native source mappings.
 
 
 class Mismatch(Exception):
@@ -45,6 +45,7 @@ class Mismatch(Exception):
 
 
 FACTS = None     # native universe facts of the audited export (set by main)
+POLY_IMAGE = [[]]  # source-derived local universe interpretation for the current row
 STATEMENT_MODE = [False]     # set by main_statement
 
 
@@ -130,14 +131,14 @@ ADMIT = [set()]         # motive levels of the row being audited (R8: Type@{l + 
 
 def motive_levels(ty):
     """R8, independently: levels occurring in a source type only as the codomain sort Type@{l} (one
-    summand, offset 0) of a binder type with at least one argument; any other occurrence (another
+    summand, offset 0) of a carrier or motive binder type; any other occurrence (another
     sort, a universe instance) disqualifies the level."""
     mot, oth = set(), set()
 
     def codomain(t, n):
         while t["k"] == "prod":
             t, n = t["b"], n + 1
-        if n >= 1 and t["k"] == "sort" and t["s"]["k"] == "type" and len(t["s"]["u"]) == 1 \
+        if t["k"] == "sort" and t["s"]["k"] == "type" and len(t["s"]["u"]) == 1 \
                 and t["s"]["u"][0]["l"]["k"] == "global" and t["s"]["u"][0]["n"] == 0:
             return t["s"]["u"][0]["l"]["n"]
         return None
@@ -207,7 +208,9 @@ def source_sort_nf(s, body=None):
     """Normal form of the target sort a source sort must become: global levels of the declaration's
     type are parameters u_<name> (R2); proof-local levels (R2B) are read through their solutions
     `body[name]` (a Lean level JSON, as claimed by the report and checked by check_body_levels)."""
-    if s["k"] == "prop":
+    # SP: both proof sorts embed in Lean Prop. This checks the exact target level;
+    # mapping SProp to Type or a fresh universe remains an audit mismatch.
+    if s["k"] in ("prop", "sprop"):
         return canon(0, {})
     if s["k"] == "type":
         c, ps = None, {}
@@ -226,8 +229,13 @@ def source_sort_nf(s, body=None):
                 off = e["n"] if e["l"]["n"] in ADMIT[0] else e["n"] + 1      # R8: motive level is a sort level
                 ps[p] = max(ps.get(p, 0), off)
             elif e["l"]["k"] == "var":           # R6: universe variable of a polymorphic constant
-                p = poly_param(e["l"]["i"])
-                ps[p] = max(ps.get(p, 0), e["n"] + 1)
+                i = e["l"]["i"]
+                image = POLY_IMAGE[0][i] if POLY_IMAGE[0] else {"k":"param","n":poly_param(i)}
+                bc, bps = level_raw(image)
+                if bc is not None:
+                    c = max(c or 0, bc + e["n"] + 1)
+                for p, o in bps.items():
+                    ps[p] = max(ps.get(p, 0), o + e["n"] + 1)
             else:
                 raise Mismatch(f"source universe outside the audited fragment: {e}")
         return canon(c, ps)
@@ -241,7 +249,7 @@ def source_inst_nf(l, body=None):
     if l["k"] == "set":
         return canon(0, {})
     if l["k"] == "var":
-        return canon(None, {poly_param(l["i"]): 0})
+        return level_nf(POLY_IMAGE[0][l["i"]]) if POLY_IMAGE[0] else canon(None, {poly_param(l["i"]): 0})
     if l["k"] == "global":
         if body is not None and l["n"] in body:
             return level_nf(body[l["n"]])
@@ -361,6 +369,38 @@ def template_binding(d):
     return out
 
 
+def template_sort_block(d, r):
+    tb=template_binding(d)
+    native=(d.get("native") or {}).get("template_info") or {}
+    bodies=d.get("bodies") or []
+    quoted=bodies[0].get("sort",{}) if len(bodies)==1 else {}
+    conclusion=native.get("concl") or {}
+    fixed_prop=quoted=={"k":"prop"} and conclusion=={"k":"prop"}
+    fixed_type=quoted.get("k")=="type" and conclusion.get("k")=="type"
+    allowed=tb is not None and len(bodies)==1 and (fixed_prop or fixed_type)
+    if r.get("template_sort") and not allowed:
+        raise Mismatch("template Sort mode is not permitted by the source fixed conclusion")
+    # False is the original Type interpretation; the structural comparison
+    # still requires Type parameters and rejects hidden Sort generalization.
+    return set(tb or {}) if r.get("template_sort") else set()
+
+
+def template_sort_arity(d, r, arity):
+    """Fixed Type retains its non-Prop floor under Sort-valued template arguments.
+    Only the arity's final sort is adjusted; parameter sorts stay unrestricted."""
+    template_sort_block(d, r)  # independently derive and check eligibility
+    conclusion=((d.get("native") or {}).get("template_info") or {}).get("concl") or {}
+    if not r.get("template_sort") or conclusion.get("k") != "type":
+        return arity
+    def floor(t):
+        if t.get("k")=="prod":
+            return dict(t,b=floor(t["b"]))
+        if t.get("k")!="sort" or t["s"].get("k")!="type":
+            raise Mismatch("fixed-Type template arity does not end in Type")
+        return dict(t,s=dict(t["s"],u=t["s"]["u"]+[{"l":{"k":"set"},"n":0}]))
+    return floor(arity)
+
+
 def changed_params(t, nl, r, depth=0, acc=None, nfun=1):
     """Independent copy of the rule deciding generalized fixpoint arguments: positions i < r of the
     leading arguments that some recursive call changes (`depth` binders below the fix binder: the
@@ -403,6 +443,23 @@ def changed_params(t, nl, r, depth=0, acc=None, nfun=1):
     return acc
 
 
+def quality_audit_views(lines, decls, rows, views=None):
+    # Original source coverage is checked before constructing these audit views.
+    sys.modules.setdefault("audit", sys.modules[__name__])
+    # CLI runs Python with -I: load this checked-in sibling explicitly instead
+    # of relying on the working directory or ambient import paths.
+    import importlib.util
+    module_path = Path(__file__).resolve().with_name("quality_source.py")
+    spec = importlib.util.spec_from_file_location("rocq2lean_quality_source", module_path)
+    quality_source = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(quality_source)
+    original = {d["name"]: d for d in lines if d.get("kind") in ("constant", "inductive")}
+    try:
+        return quality_source.expand_report_views(original, decls, rows, views)
+    except (quality_source.UnknownQuality, KeyError, IndexError, TypeError, ValueError) as e:
+        raise Mismatch("quality family source view: " + str(e)) from e
+
+
 class Auditor:
     def __init__(self, decls, results, recursors=None):
         self.body = None          # proof-local level solutions of the declaration being audited
@@ -422,6 +479,14 @@ class Auditor:
         # (source -> (pending target, its hypotheses in order)); a reference to a leaf is its hypothesis
         # (env entry ("hyp", leaf, bvar)), a reference to a pending definition its artifact applied to
         # the hypotheses of its own telescope
+        # Types independently compared against source declarations elsewhere in
+        # this audit; use their instantiated domains to validate argument lifts.
+        self.target_types = {}
+        for row in self.ok.values():
+            if row.get("target") and row.get("target_type") is not None:
+                self.target_types[row["target"]] = (row.get("level_params") or [], row["target_type"])
+            for ctor in row.get("target_ctors", []):
+                self.target_types[ctor["name"]] = (row.get("level_params") or [], ctor["type"])
         self.leaves = {}
         self.pending = {}
         # assembly (docs/ASSEMBLY.md): proof tasks whose final theorem `Rocq.<leaf>` was assembled
@@ -431,6 +496,15 @@ class Auditor:
         # B (docs/TERMINATION.md): termination obligations used by the Acc.rec lowerings of the
         # declaration being audited, in order (each must be one of its own termination leaves)
         self.wf_used = []
+
+    def register_pending_types(self, rows):
+        # Full conditional signatures, INCLUDING every prerequisite binder.
+        # Their source interfaces and hypothesis telescopes are independently
+        # checked by main_statement; a rejected row still rejects the audit.
+        for name, (target, _) in self.pending.items():
+            row = rows[name]
+            if row.get("target_type") is not None:
+                self.target_types[target] = (row.get("level_params") or [], row["target_type"])
 
     def ind_target(self, ref):
         mind, idx = ref["mind"], ref["i"]
@@ -446,6 +520,25 @@ class Auditor:
                 t, cs = pending_target_name(t[len("Rocq."):]), [pending_target_name(c[len("Rocq."):]) for c in cs]
             return t, cs, ("mono" if n == 0 else ("params", n))
         raise Mismatch(f"inductive {mind} has no audited realisation")
+
+    def native_type0_template_levels(self, ref, count):
+        """Universe instances for native result fields whose types are in Type 0.
+        Re-derive the template binding from source metadata. A Sort-valued
+        parameter receives 1; the original Type-valued parameter receives 0.
+        This does not permit arbitrary levels or trust the primitive's output."""
+        mind = ref["mind"]
+        row = self.ok.get(mind)
+        if row is None or ref["i"] != 0:
+            raise Mismatch("native result requires an accepted single template block")
+        d = self.decls[mind]
+        params, _, binding = ind_params(d, row)
+        if (binding is None or len(d.get("bodies") or []) != 1
+                or len(params) != count or set(params) != set(binding)
+                or sorted(binding.values()) != [(i, 0) for i in range(count)]):
+            raise Mismatch("native result template binding differs from its Type-0 fields")
+        sort_levels = template_sort_block(d, row)
+        zero = {"k": "zero"}
+        return [{"k": "succ", "l": zero} if p in sort_levels else zero for p in params]
 
     def head(self, t):
         """(expected const name, universe rule) for a global head."""
@@ -469,12 +562,17 @@ class Auditor:
             if kp:
                 return target_name(t["c"]), ("poly", kp, n, t["u"])
             return target_name(t["c"]), ("mono" if n == 0 else ("params", n))
-        if k == "ind":
-            name, _, univ = self.ind_target(t["ind"])
-            return name, univ
-        if k == "construct":
-            _, ctors, univ = self.ind_target(t["ind"])
-            return ctors[t["c"]], univ
+        if k in ("ind", "construct"):
+            name, ctors, univ = self.ind_target(t["ind"])
+            mind = t["ind"]["mind"]
+            if mind not in BOOTSTRAP:
+                row = self.ok.get(mind) or self.pending_inds.get(mind)
+                kp = poly_count(self.decls[mind], row)
+                if len(t["u"]) != kp:
+                    raise Mismatch(f"inductive universe instance length differs from source declaration: {mind}")
+                if kp:
+                    univ = ("poly", kp, kp + len(ind_params(self.decls[mind], row)[0]), t["u"])
+            return (name if k == "ind" else ctors[t["c"]]), univ
         return None
 
     # Variable environments: env[i] is what source `rel i` must become in the target, either
@@ -486,16 +584,20 @@ class Auditor:
         for x in env:
             if x[0] == "bvar" and len(x) > 5:      # a field with its course-of-values result term
                 out.append(("bvar", x[1] + n, *x[2:5], lift(x[5], n)))
+            elif x[0] == "bvar" and len(x) == 4 and x[2] == "typed":
+                out.append(("bvar", x[1] + n, "typed", lift(x[3], n)))
             elif x[0] == "bvar":
                 out.append(("bvar", x[1] + n, *x[2:]))
             elif x[0] == "tgt":
                 out.append(("tgt", lift(x[1], n)))
             elif x[0] == "expect":
                 out.append(("expect", x[1], Auditor.shift(x[2], n), *x[3:]))
+            elif x[0] == "expect_proj":
+                out.append(("expect_proj", x[1], x[2], Auditor.shift(x[3], n)))
             elif x[0] == "accrec":           # the induction hypothesis' position moves with the binders
                 out.append(("accrec", dict(x[1], ih=x[1]["ih"] + n)))
             elif x[0] == "hyp":              # statement mode: a pending prerequisite's hypothesis
-                out.append(("hyp", x[1], x[2] + n))
+                out.append(("hyp", x[1], x[2] + n, *x[3:]))
             else:
                 out.append(x)
         return out
@@ -505,6 +607,178 @@ class Auditor:
         for _ in range(n):
             env = [("bvar", 0)] + cls.shift(env, 1)
         return env
+
+    def application_domain(self, function, path, env=()):
+        """Instantiate the source-audited callee signature at the preceding arguments."""
+        # A source lambda can remain the callee after exact alias expansion.
+        # Its annotated domain is checked by the ordinary structural comparison
+        # of the function itself; instantiate preceding arguments by beta.
+        reduced = beta(function)
+        if reduced.get("k") == "lam":
+            return reduced["t"]
+        head, preceding = self.unspine(function)
+        info = self.target_types.get(head.get("n")) if head.get("k") == "const" else None
+        if head.get("k") == "bvar":
+            for entry in env:
+                if len(entry) == 4 and entry[:3] == ("bvar", head["i"], "typed"):
+                    info = ([], entry[3])
+                    break
+        if info is None and head.get("k") == "const" and head.get("n") in BOOT_TYPES:
+            ty, params = BOOT_TYPES[head["n"]]
+            info = (params, ty)
+        if info is None and head.get("k") == "const":
+            # Matches may return functions. Use the real kernel recursor
+            # signature already required by check_rec_binders; the source case,
+            # motive, minors and major are still compared independently.
+            rec = (self.recursors or {}).get(head.get("n"))
+            if rec is not None:
+                info = (rec["level_params"], rec["type"])
+        if info is None or len(info[0]) != len(head.get("u", [])):
+            raise Mismatch(f"{path}: cumulative type argument lacks an audited callee signature")
+        ty = inst_levels(info[1], dict(zip(info[0], head.get("u", []))))
+        for a in preceding:
+            ty = self.transport_whnf(ty)
+            if ty.get("k") != "forall":
+                raise Mismatch(f"{path}: cumulative type argument exceeds callee arity")
+            ty = subst(ty["b"], a)
+        ty = self.transport_whnf(ty)
+        if ty.get("k") != "forall":
+            raise Mismatch(f"{path}: cumulative argument lacks a function domain")
+        return ty["t"]
+
+    def transport_whnf(self, ty):
+        for _ in range(16):
+            ty = beta(ty)
+            if ty.get("k") in ("forall", "sort"):
+                return ty
+            unfolded = self.unfold_head(ty)
+            if unfolded is None:
+                return ty
+            ty = unfolded
+        return beta(ty)
+
+    def strip_argument_type_result(self, arg, expected, path, type_result=True):
+        """One cumulative type result, possibly below eta binders; retain the whole payload."""
+        if arg.get("k") == "lam":
+            expected = self.transport_whnf(expected)
+            if expected.get("k") != "forall" or not self.same_mod_beta_delta(arg["t"], expected["t"]):
+                raise Mismatch(f"{path}: cumulative function argument changes its domain")
+            # A preceding cumulative type argument can make this domain PULift A.
+            # Its complete target domain was checked against the instantiated
+            # audited signature above. Compare the source binder with A and its
+            # uses through the already checked up/down correspondence.
+            domain = arg["t"]
+            if (TYPE_COERCE[0] and domain.get("k") == "app"
+                    and domain.get("f", {}).get("k") == "const"
+                    and domain["f"].get("n") == "PULift"
+                    and len(domain["f"].get("u", [])) == 2):
+                domain = domain["a"]
+            return dict(arg, t=domain, b=self.strip_argument_type_result(arg["b"], expected["b"], path + ["result"], type_result))
+        if not type_result:
+            return arg
+        head = arg.get("f", {}) if arg.get("k") == "app" else {}
+        if head.get("k") != "const" or head.get("n") != "PULift" or not TYPE_COERCE[0]:
+            raise Mismatch(f"{path}: unreported cumulative type argument/result")
+        expected = self.transport_whnf(expected)
+        levels = head.get("u", [])
+        if expected.get("k") != "sort" or len(levels) != 2 or level_nf(levels[0]) != level_nf(expected["l"]):
+            raise Mismatch(f"{path}: cumulative type result changes the callee universe")
+        # The fresh kernel checks the complete payload's lower sort.
+        return arg["a"]
+
+    def peel_record_transport(self, e, path, depth=0):
+        """Fieldwise identity through a nonrecursive, single-constructor record.
+        Only PULift up/down (and their function eta extensions) may change fields.
+        Kernel recursor metadata checks all binders; source metadata identifies
+        the constructor. Parameters agree after removing those representations.
+        """
+        if not TYPE_COERCE[0] or depth > 12:
+            return None
+        head, args = self.unspine(e)
+        if head.get("k") != "const" or not head["n"].endswith(".rec"):
+            return None
+        rec = (self.recursors or {}).get(head["n"])
+        if not rec or (rec["num_indices"], rec["num_minors"], rec["num_motives"]) != (0, 1, 1):
+            return None
+        np, nf = rec["num_params"], rec["rule_nfields"][0]
+        if len(args) != np + 3:
+            return None
+        iname = head["n"][:-4]
+        source = None
+        for name, row in self.ok.items():
+            d = self.decls.get(name, {})
+            if d.get("kind") != "inductive" or len(d["bodies"]) != 1:
+                continue
+            target, ctors, _ = self.ind_target({"mind": name, "i": 0})
+            if target == iname:
+                source = d
+                break
+        if source is None or len(ctors) != 1:
+            return None
+        ctor = source["bodies"][0]["ctors"][0]
+        if len(ctor["args"]) != nf or np != source["npars"]:
+            return None
+        for k, field in enumerate(ctor["args"]):
+            if mentions_rels(field["ty"], nf - 1 - k + np, 1):
+                return None
+        motive = args[np]
+        if motive.get("k") != "lam" or has_bvar(motive["b"], 0):
+            return None
+        result = subst(motive["b"], {"k": "const", "n": "True", "u": []})
+        rh, rp = self.unspine(result)
+        if rh.get("k") != "const" or rh.get("n") != iname or len(rp) != np:
+            return None
+        def representation(t, fuel=12):
+            # Definitions such as is_true can occur below family binders.
+            # Unfold only bodies already checked against their source.
+            if fuel:
+                unfolded = self.unfold_head(t)
+                if unfolded is not None:
+                    return representation(unfolded, fuel - 1)
+            inner = peel_lift_coercion(t)
+            if inner is not None:
+                return representation(inner, fuel)
+            h, xs = self.unspine(t)
+            if h.get("k") == "const" and h.get("n") == "PULift" and len(xs) == 1 and len(h.get("u", [])) == 2:
+                return representation(xs[0], fuel)
+            if t.get("k") == "app":
+                return beta(dict(t, f=representation(t["f"], fuel), a=representation(t["a"], fuel)))
+            if t.get("k") in ("lam", "forall"):
+                out = dict(t, t=representation(t["t"], fuel), b=representation(t["b"], fuel))
+                b = out["b"]
+                if out["k"] == "lam" and b.get("k") == "app" and b["a"] == {"k":"bvar","i":0} and not has_bvar(b["f"], 0):
+                    return subst(b["f"], {"k":"const","n":"True","u":[]})
+                return out
+            return t
+        if any(not self.same_mod_beta_delta(representation(a), representation(b)) for a, b in zip(args[:np], rp)):
+            return None
+        self.check_rec_binders(head, args, np, 1, 0, path, [0], [nf], 0)
+        _, body = lam_domains(args[np + 1], nf, path + ["record-fields"])
+        ch, ca = self.unspine(body)
+        if ch.get("k") != "const" or ch.get("n") != ctors[0] or len(ca) != np + nf:
+            return None
+        if canon_levels(ch.get("u", [])) != canon_levels(rh.get("u", [])):
+            raise Mismatch(f"{path}: record transport changes constructor universe")
+        for a, b in zip(ca[:np], rp):
+            if not self.same_mod_beta_delta(a, lift(b, nf)):
+                raise Mismatch(f"{path}: record transport changes output parameters")
+        for j, value in enumerate(ca[np:]):
+            while True:
+                inner = peel_lift_coercion(value)
+                if inner is None:
+                    inner = self.peel_record_transport(value, path + ["record-field"], depth + 1)
+                if inner is None:
+                    break
+                value = inner
+            extra = 0
+            if value.get("k") == "lam":
+                eta = peel_eta(value)
+                if eta is None:
+                    raise Mismatch(f"{path}: record transport changes a function field")
+                value, extra = eta
+            if value != {"k": "bvar", "i": nf - 1 - j + extra}:
+                raise Mismatch(f"{path}: record transport must preserve field {j}")
+        return args[-1]
 
     def check(self, s, e, path, env=()):
         """Compare source term `s` with target Lean expr JSON `e` under `env`."""
@@ -517,22 +791,119 @@ class Auditor:
         # `PULift.down X t` with `PULift.{_, 0}` (X a proposition: the kernel checks t's type against it)
         # stands for t, the source term at that position (C1: up/down are the two sides of PULift X ≃ X)
         if COERCE[0]:
+            # Eta-adapted domains can retain a transparent alias while the
+            # source view has unfolded it. Replay only an audited target body.
+            sh = s.get("f", {}) if k == "app" else s
+            eh, eargs = self.unspine(e)
+            # Reused function domains can retain exact beta redexes after the
+            # source conversion view normalized them. No non-beta term changes.
+            if TYPE_COERCE[0] and k != "app" and eh.get("k") == "lam" and eargs:
+                reduced = beta(e)
+                if reduced != e:
+                    return self.check(s, reduced, path + ["target-beta"], env)
+            if TYPE_COERCE[0] and sh.get("k") in ("ind", "construct") and eh.get("k") == "const" and eh.get("n") in self.defs:
+                unfolded = self.unfold_head(e)
+                if unfolded is not None:
+                    return self.check(s, unfolded, path + ["target-alias"], env)
             inner = peel_lift_coercion(e)
             if inner is not None:
                 return self.check(s, inner, path + ["lift"], env)
+            record = self.peel_record_transport(e, path)
+            if record is not None:
+                return self.check(s, record, path + ["record-transport"], env)
             # (η: a source function used at a function type differing by lifts is η-expanded, its
             # arguments and result coerced; the head is compared under the n extra binders, so it cannot
             # mention them)
-            if e["k"] == "lam" and k not in ("lam", "cast"):
+            if e["k"] == "lam" and k not in ("lam", "cast", "fix"):
                 eta = peel_eta(e)
                 if eta is not None:
                     head, n = eta
                     return self.check(s, head, path + ["eta"], Auditor.shift(env, n))
+        if k == "float":
+            import re, struct
+            value=s.get("v")
+            if value=="nan": bits=0x7ff8000000000000
+            elif value=="infinity": bits=0x7ff0000000000000
+            elif value=="neg_infinity": bits=0xfff0000000000000
+            else:
+                if not isinstance(value,str) or not re.fullmatch(r"-?0x[0-9a-f]+(?:\.[0-9a-f]+)?p[+-][0-9]+",value):
+                    raise Mismatch(f"{path}: invalid hexadecimal float literal")
+                try: bits=int.from_bytes(struct.pack(">d",float.fromhex(value)),"big")
+                except (ValueError,OverflowError):raise Mismatch(f"{path}: non-binary64 float literal")
+            expected={"k":"app","f":{"k":"const","n":"Rocq2Lean.PrimFloat.fromBits","u":[]},
+                "a":{"k":"app","f":{"k":"app","f":{"k":"const","n":"BitVec.ofNat","u":[]},"a":{"k":"natlit","v":64}},
+                     "a":{"k":"natlit","v":bits}}}
+            if e!=expected:
+                raise Mismatch(f"{path}: float literal sign, exponent, significand or canonical representation differs")
+            return
+        if k == "string":
+            bs = s.get("bytes")
+            if not isinstance(bs, list) or len(bs) > 16777211 or any(type(b) is not int or not 0 <= b < 256 for b in bs):
+                raise Mismatch(f"{path}: invalid source primitive byte string")
+            def const(n, u=None): return {"k":"const","n":n,"u":u or []}
+            def app(f,a): return {"k":"app","f":f,"a":a}
+            def nat(n): return {"k":"natlit","v":n}
+            ty=app(const("BitVec"),nat(8));zero=[{"k":"zero"}]
+            xs=app(const("List.nil",zero),ty)
+            for b in reversed(bs):
+                elem=app(app(const("BitVec.ofNat"),nat(8)),nat(b))
+                xs=app(app(app(const("List.cons",zero),ty),elem),xs)
+            if e != app(const("Rocq2Lean.PrimString.ofBytes"),xs):
+                raise Mismatch(f"{path}: primitive string bytes, order, width or constructors differ")
+            return
+        if k == "array":
+            elems = s.get("elems")
+            if not isinstance(elems, list) or len(elems) > 4194303:
+                raise Mismatch(f"{path}: invalid array literal payload length")
+            want_level = source_inst_nf(s["u"], self.body)
+            def check_const(h, name):
+                if h.get("k") != "const" or h.get("n") != name or len(h.get("u") or []) != 1 or level_nf(h["u"][0]) != want_level:
+                    raise Mismatch(f"{path}: array literal constructor/universe differs")
+            head, args = self.unspine(e)
+            check_const(head, "Rocq2Lean.PrimArray.ofList")
+            if len(args) != 3:
+                raise Mismatch(f"{path}: array literal needs type, elements and default")
+            C(s["ty"], args[0], "array-type")
+            C(s["default"], args[2], "array-default")
+            xs = args[1]
+            for i, elem in enumerate(elems):
+                h, a = self.unspine(xs)
+                check_const(h, "List.cons")
+                if len(a) != 3:
+                    raise Mismatch(f"{path}: malformed array payload cell")
+                C(s["ty"], a[0], f"array-cell-type-{i}")
+                C(elem, a[1], f"array-element-{i}")
+                xs = a[2]
+            h, a = self.unspine(xs)
+            check_const(h, "List.nil")
+            if len(a) != 1:
+                raise Mismatch(f"{path}: array literal payload has extra elements")
+            C(s["ty"], a[0], "array-nil-type")
+            return
+        if k == "int":
+            value = s.get("v")
+            if not isinstance(value, str) or not value.isascii() or not value.isdecimal() or not 0 <= int(value) < 2**63:
+                raise Mismatch(f"{path}: invalid source int63 literal")
+            expected = {"k": "app", "f": {"k": "app",
+                "f": {"k": "const", "n": "BitVec.ofNat", "u": []},
+                "a": {"k": "natlit", "v": 63}}, "a": {"k": "natlit", "v": int(value)}}
+            if e != expected:
+                raise Mismatch(f"{path}: int63 literal is not BitVec.ofNat 63 with the same value")
+            return
         if k == "phantom_sort":           # rule Q-a: a phantom check's sort argument, lowered per occurrence
             if e["k"] != "sort":
                 raise Mismatch(f"{path}: a phantom check's sort argument is not a sort")
             return
         if k == "cast":
+            # Proposition-as-type casts preserve the source annotation's exact
+            # sort and the complete proposition; the kernel checks PULift's Prop input.
+            if COERCE[0] and e.get("k")=="app" and e.get("f",{}).get("n")=="PULift":
+                h=e["f"];ty=s["ty"]
+                if h.get("k")!="const" or len(h.get("u",[]))!=2 or level_nf(h["u"][1])!=canon(0,{}) or ty.get("k")!="sort" or ty["s"].get("k")!="type":
+                    raise Mismatch(f"{path}: invalid proposition-as-type cast lift")
+                if level_nf(h["u"][0])!=source_sort_nf(ty["s"],self.body):
+                    raise Mismatch(f"{path}: cast lift does not preserve the annotation universe")
+                return C(s["t"],e["a"],"cast-proposition")
             # the cast's term as is; otherwise a cast repair around it (a source convoy match has the
             # same outer shape as a repair, so the direct comparison comes first)
             try:
@@ -548,6 +919,12 @@ class Auditor:
             want = env[s["i"]]
             if want[0] == "expect":       # a source variable that denotes a source term here
                 return self.check(want[1], e, path + ["as-term"], want[2])
+            if want[0] == "expect_proj":
+                for sn, field in reversed(want[1]):
+                    if e.get("k") != "proj" or e.get("s") != sn or e.get("i") != field:
+                        raise Mismatch(f"{path}: index-pattern projection path differs from the source")
+                    e = e["e"]
+                return self.check(want[2], e, path + ["index-pattern"], want[3])
             if want[0] == "castpat":      # M6 convoy: the major of the return clause is the cast
                 if not want[1](e):
                     raise Mismatch(f"{path}: the return clause's major is not the convoy cast")
@@ -577,13 +954,21 @@ class Auditor:
             if e["k"] != want:
                 raise Mismatch(f"{path}: expected {want}, found {e['k']}")
             C(s["ty"], e["t"], k + ".ty")
-            C(s["b"], e["b"], k + ".b", self.push(env))
+            # Retain only a binder domain already structurally compared to
+            # the source; shift it with its bvar through all later scopes.
+            scoped = [("bvar", 0, "typed", lift(e["t"], 1))] + self.shift(env, 1)
+            C(s["b"], e["b"], k + ".b", scoped)
             return
         if k == "let":
             if e["k"] != "let":
                 raise Mismatch(f"{path}: expected let, found {e['k']}")
             C(s["ty"], e["t"], "let.ty")
-            C(s["v"], e["v"], "let.v")
+            if COERCE[0] and e["v"].get("k") == "app" and e["v"].get("f", {}).get("n") == "PULift":
+                # Reuse the exact annotation/payload checks for source cumulative
+                # casts; the original local binder type was checked just above.
+                C({"k": "cast", "t": s["v"], "ty": s["ty"]}, e["v"], "let.v")
+            else:
+                C(s["v"], e["v"], "let.v")
             C(s["b"], e["b"], "let.b", self.push(env))
             return
         if k == "app" and s["f"]["k"] == "rel" and s["f"]["i"] < len(env) and env[s["f"]["i"]][0] == "rec":
@@ -596,7 +981,32 @@ class Auditor:
             for i in reversed(range(len(args))):
                 if cur["k"] != "app":
                     raise Mismatch(f"{path}: expected application with {len(args)} arguments")
-                C(args[i], cur["a"], f"arg{i}")
+                arg = cur["a"]
+                result = arg
+                lifted_domain = False
+                while result.get("k") == "lam":
+                    domain = result["t"]
+                    lifted_domain = lifted_domain or (domain.get("k") == "app"
+                        and domain.get("f", {}).get("k") == "const"
+                        and domain["f"].get("n") == "PULift")
+                    result = result["b"]
+                if (result.get("k") == "app" and result.get("f", {}).get("k") == "const"
+                        and result["f"].get("n") == "PULift"):
+                    expected = self.application_domain(cur["f"], path + [f"arg{i}"], env)
+                    payload = self.strip_argument_type_result(arg, expected, path + [f"arg{i}"])
+                    C(args[i], payload, f"arg{i}.type-payload")
+                elif TYPE_COERCE[0] and lifted_domain:
+                    # Existing source binders may already have an audited lifted
+                    # representation. Prefer the full ordinary comparison; use
+                    # the signature-derived adaptation only when it is needed.
+                    try:
+                        C(args[i], arg, f"arg{i}")
+                    except Mismatch:
+                        expected = self.application_domain(cur["f"], path + [f"arg{i}"], env)
+                        payload = self.strip_argument_type_result(arg, expected, path + [f"arg{i}"], False)
+                        C(args[i], payload, f"arg{i}.domain-payload")
+                else:
+                    C(args[i], arg, f"arg{i}")
                 cur = cur["f"]
             return self.check_head(s["f"], cur, path + ["f"], env)
         if k in ("const", "ind", "construct"):
@@ -671,12 +1081,22 @@ class Auditor:
         """Statement mode: a source reference to a leaf (proof task) is its hypothesis; a reference to a
         pending definition is its artifact applied to the hypotheses of its telescope, in order."""
         c = s["c"]
-        if s.get("u"):
-            raise Mismatch(f"{path}: universe-polymorphic prerequisite {c}")
+        ud = self.decls[c].get("universes") or {}
+        kp = len(ud.get("names") or []) if ud.get("k") == "polymorphic" else 0
+        if len(s.get("u") or []) != kp:
+            raise Mismatch(f"{path}: prerequisite {c} has the wrong source universe instance length")
+        def check_instance(levels):
+            if len(levels) < kp:
+                raise Mismatch(f"{path}: prerequisite {c} lacks its explicit universe instance")
+            for i in range(kp):
+                if level_nf(levels[i]) != source_inst_nf(s["u"][i], self.body):
+                    raise Mismatch(f"{path}: prerequisite {c} is used at the wrong universe instance {i}")
         if c in self.leaves:
             js = self.hyp_indices(env, c, path)
             if e not in [{"k": "bvar", "i": j} for j in js]:
                 raise Mismatch(f"{path}: {c} must be one of its hypotheses (bvar {js}), found {e.get('k')}")
+            entry = next(x for x in env if x[0] == "hyp" and x[1] == c and x[2] == e["i"])
+            check_instance(entry[3] if len(entry) > 3 else [])
             return
         tgt, hs = self.pending[c]
         cur = e
@@ -687,8 +1107,13 @@ class Auditor:
             cur = cur["f"]
         if cur.get("k") != "const" or cur["n"] != tgt:
             raise Mismatch(f"{path}: expected the pending artifact {tgt}, found {cur.get('n', cur.get('k'))}")
+        check_instance(cur.get("u") or [])
 
     def check_head(self, s, e, path, env=()):
+        if TYPE_COERCE[0]:
+            inner = peel_lift_coercion(e)
+            if inner is not None:
+                return self.check(s, inner, path + ["type-lift-head"], env)
         if s["k"] == "const" and (s["c"] in self.leaves or s["c"] in self.pending):
             return self.check_prereq_ref(s, e, path, env)
         h = self.head(s) if s["k"] in ("const", "ind", "construct") else None
@@ -1109,8 +1534,6 @@ class Auditor:
                 raise Mismatch(f"{path}: UNAUDITABLE fixpoint shape (decreasing argument not of an inductive type)")
             ref = xty["ind"]
             npar = self.decls[ref["mind"]]["npars"]
-            if self.nonuniform(ref):
-                raise Mismatch(f"{path}: UNAUDITABLE ι-generalized fixpoint on a non-uniform inductive")
             if len(self.decls[ref["mind"]]["bodies"]) != 1:
                 raise Mismatch(f"{path}: UNAUDITABLE fixpoint on a mutual block")
             branches = [(len(c["args"]), None) for c in self.decls[ref["mind"]]["bodies"][ref["i"]]["ctors"]]
@@ -1122,9 +1545,47 @@ class Auditor:
             nidx = len(b["p"]["ctx"]) - 1
         # M6: non-uniform parameters are Lean indices (the leading ones) and the leading fields of
         # Lean's constructors; Rocq's match counts them as parameters, its branches bind the others
-        nu = 0 if iota else self.nonuniform(ref)
+        nu = self.nonuniform(ref)
         rnpar, npar, nidx = npar, npar - nu, nidx + nu
-        idx_pos = {r - 1 - a["i"] for a in xargs[npar:] if a["k"] == "rel" and a["i"] < r}
+        index_paths = {}
+        def pattern(a, j, fields=(), fuel=32):
+            if fuel == 0:
+                raise Mismatch(f"{path}: structural index pattern budget exhausted")
+            if a["k"] == "rel" and a["i"] < r:
+                i = r - 1 - a["i"]
+                if i in index_paths:
+                    raise Mismatch(f"{path}: repeated variable in structural index pattern")
+                index_paths[i] = (j, fields)
+                return
+            h, args = a, []
+            while h["k"] == "app":
+                args = h["args"] + args
+                h = h["f"]
+            if h["k"] != "construct":
+                raise Mismatch(f"{path}: structural index is not a constructor pattern")
+            pref = h["ind"];mib = self.decls[pref["mind"]]
+            ib = mib["bodies"][pref["i"]]
+            if len(mib["bodies"]) != 1 or len(ib["ctors"]) != 1 or ib["indices"] or self.nonuniform(pref) or h["c"] != 0 or self.recursive_positions(pref, 0, nested=True):
+                raise Mismatch(f"{path}: structural index pattern is not a nonrecursive record")
+            nf = len(ib["ctors"][0]["args"]);np = mib["npars"]
+            if nf == 0 or len(args) != np + nf:
+                raise Mismatch(f"{path}: structural index constructor arity mismatch")
+            if any(mentions_src_rel(a, i) for a in args[:np] for i in range(r)):
+                raise Mismatch(f"{path}: index record parameters depend on leading variables")
+            target, _, _ = self.ind_target(pref)
+            for field, a in enumerate(args[np:]):
+                pattern(a, j, fields + ((target, field),), fuel - 1)
+        for j, a in enumerate(xargs[npar:]):
+            pattern(a, j)
+        idx_pos = set(index_paths)
+        def projection(e, fields):
+            for sn, field in fields:
+                e = {"k":"proj", "s":sn, "i":field, "e":e}
+            return e
+        def motive_image(i, extra):
+            j, fields = index_paths[i]
+            e = {"k":"bvar", "i":extra + nidx - j}
+            return ("tgt", projection(e, fields)) if fields else ("bvar", e["i"])
         # Leading arguments changed by recursive calls (not indices) are generalized in the motive.
         gpos = sorted(changed_params(d["body"], nl, r) - idx_pos)
         ng = len(gpos)
@@ -1156,18 +1617,13 @@ class Auditor:
         env_r = self.shift(env_r, nl - r)
         if len(xargs) != npar + nidx:
             raise Mismatch(f"{path}: decreasing argument's type has {len(xargs)} arguments, expected {npar + nidx}")
-        if nu and any(not (a["k"] == "rel" and a["i"] < r) for a in xargs[npar:npar + nu]):
-            raise Mismatch(f"{path}: UNAUDITABLE non-uniform parameter of the decreasing argument that is not a leading argument")
         for i in range(npar):
             self.check(xargs[i], spine[i], path + [f"param{i}"], env_r)
         for j in range(nidx):
             self.check(xargs[npar + j], spine[npar + 1 + nmin + j], path + [f"index{j}"], env_r)
         # Motive body = the source fixpoint type after P and x, under: x -> motive binder 0,
         # index parameters -> motive index binders, other parameters -> the outer lambdas.
-        idx_of = {}
-        for j, a in enumerate(xargs[npar:]):
-            if a["k"] == "rel" and a["i"] < r:
-                idx_of[r - 1 - a["i"]] = j
+        idx_of = {i: jp[0] for i, jp in index_paths.items()}
         def lead_env(i, extra):
             """Target images of the source context of leading lambda i's type (lambdas 0..i-1, then
             the fix binder, then the outer context), at `extra` binders below the motive's
@@ -1177,7 +1633,7 @@ class Auditor:
                 if kk in gpos:
                     e.append(("bvar", extra - 1 - gpos.index(kk)))
                 elif kk in idx_of:
-                    e.append(("bvar", extra + nidx - idx_of[kk]))
+                    e.append(motive_image(kk, extra))
                 else:
                     e.append(("bvar", (nl - 1 - kk) + nidx + 1 + extra))
             return e + [("forbid",)] + self.shift(list(env), nl + nidx + 1 + extra)
@@ -1187,7 +1643,7 @@ class Auditor:
             if i in gpos:
                 menv.append(("bvar", ng - 1 - gpos.index(i)))
             else:
-                menv.append(("bvar", ng + nidx - idx_of[i]) if i in idx_of else ("bvar", (nl - 1 - i) + nidx + 1 + ng))
+                menv.append(motive_image(i, ng) if i in idx_of else ("bvar", (nl - 1 - i) + nidx + 1 + ng))
         menv += self.shift(list(env), nl + nidx + 1 + ng)
         fty = d["ty"]
         for _ in range(r + 1):
@@ -1262,13 +1718,33 @@ class Auditor:
                 elif i in gpos:
                     benv.append(("bvar", nq + ng - 1 - gpos.index(i), "gen", i))
                 elif i in idx_of:
-                    benv.append(nuvar(idx_of[i]) if idx_of[i] < nu else ("expect", cidx[idx_of[i]], ctor_env))
+                    j, fields = index_paths[i]
+                    if j < nu:
+                        ent = nuvar(j)
+                        benv.append(("tgt", projection({"k":"bvar", "i":ent[1]}, fields)) if fields else ent)
+                    else:
+                        benv.append(("expect_proj", fields, cidx[j], ctor_env) if fields else ("expect", cidx[j], ctor_env))
                 else:
                     benv.append(("bvar", senv[t][1] + depth, "param", i))
             info = {"minor": k, "r": r, "nf": nf, "nq": nq, "rec_q": [nf - 1 - p for p in rpos], "idx_pos": idx_pos,
                     "gpos": gpos, "fun_q": [nf - 1 - p for p in self.functional_positions(ref, k)], "cov": cov, "ref": ref}
             benv.append(("rec", info))
             benv += self.shift(senv[nl + 1:], depth)
+            if body.get("k") == "app" and body.get("f", {}).get("k") == "const" and body["f"].get("n") == "PULift":
+                # A type-valued recursive branch may inhabit a cumulative source
+                # result sort. Its representation lift must preserve that exact
+                # declared sort, and its complete payload is still source-audited.
+                cod = fty
+                for _ in range(nq):
+                    if cod["k"] != "prod":
+                        raise Mismatch(f"{path}: recursive branch result annotation lacks trailing binders")
+                    cod = cod["b"]
+                levels = body["f"].get("u", [])
+                if not TYPE_COERCE[0] or cod["k"] != "sort" or cod["s"]["k"] != "type" or len(levels) != 2:
+                    raise Mismatch(f"{path}: unauthorised type-valued recursive branch lift")
+                if level_nf(levels[0]) != source_sort_nf(cod["s"], self.body):
+                    raise Mismatch(f"{path}: recursive branch lift changes the declared result universe")
+                body = body["a"]
             if iota:
                 self.check(b, body, path + [f"minor{k}"], benv[nf:])
             else:
@@ -1683,10 +2159,31 @@ class Auditor:
             ent = env[a["i"]] if a["k"] == "rel" and a["i"] < len(env) else None
             if not (ent and ent[0] == "bvar" and ent[2:4] == ("param", i)):
                 raise Mismatch(f"{path}: recursive call changes parameter {i}")
-        y, zs = args[r], []
-        if y["k"] == "app" and y["f"]["k"] == "rel":      # a functional recursive field applied: g zs
-            y, zs = y["f"], y["args"]
-        ent = env[y["i"]] if y["k"] == "rel" and y["i"] < len(env) else None
+        def field_view(term, scope, fuel=32):
+            # Independently evaluate only source matches whose major is the
+            # constructor fixed by this recursive minor. Keep each application
+            # argument's own source context for its later structural comparison.
+            if fuel == 0:
+                raise Mismatch(f"{path}: recursive-field projection budget exhausted")
+            if term["k"] == "app":
+                ent, zs = field_view(term["f"], scope, fuel - 1)
+                return ent, zs + [(a, scope) for a in term["args"]]
+            if term["k"] == "case":
+                c = term["c"]
+                ent = scope[c["i"]] if c["k"] == "rel" and c["i"] < len(scope) else None
+                if not (ent and ent[0] == "expect" and len(ent) == 4):
+                    return None, []
+                _, _, cenv, (tag, k, nf, ref) = ent
+                if tag != "iota" or term["ci"]["ind"] != ref or k >= len(term["brs"]):
+                    raise Mismatch(f"{path}: recursive-field projection has another constructor")
+                br = term["brs"][k]
+                if len(br["ctx"]) != nf:
+                    raise Mismatch(f"{path}: recursive-field projection has the wrong field arity")
+                fenv = [("bvar", cenv[q][1], "field", k, q) for q in range(nf)]
+                return field_view(br["body"], fenv + list(scope), fuel - 1)
+            ent = scope[term["i"]] if term["k"] == "rel" and term["i"] < len(scope) else None
+            return ent, []
+        ent, zs = field_view(args[r], env)
         if info.get("cov"):
             # course-of-values: any subterm with a known result r becomes (r).1 G' rest
             if zs or not (ent and ent[0] == "bvar" and len(ent) > 5 and ent[2] == "field"):
@@ -1726,7 +2223,7 @@ class Auditor:
         for j in reversed(range(len(zs))):          # a functional field's recursive result, applied: ih zs
             if cur["k"] != "app":
                 raise Mismatch(f"{path}: recursive result of a functional field applied to too few arguments")
-            self.check(zs[j], cur["a"], path + [f"rec-z{j}"], env)
+            self.check(zs[j][0], cur["a"], path + [f"rec-z{j}"], zs[j][1])
             cur = cur["f"]
         if cur != {"k": "bvar", "i": ih}:
             raise Mismatch(f"{path}: recursive call must become recursive result bvar {ih}, found {cur}")
@@ -1803,6 +2300,7 @@ def anon(e):
     return e
 
 
+TYPE_COERCE = [False]  # separate arbitrary-Type PULift term transport
 COERCE = [False]      # whether the row being audited reports rule P coercions
 PHANTOM = "Corelib.ssr.ssreflect_rw.phantom"
 
@@ -1881,7 +2379,7 @@ def peel_lift_coercion(e):
     h = e["f"]["f"]
     if h.get("k") != "const" or h.get("n") not in ("PULift.up", "PULift.down") or len(h.get("u") or []) != 2:
         return None
-    if level_nf(h["u"][1]) != level_nf({"k": "zero"}):
+    if not TYPE_COERCE[0] and level_nf(h["u"][1]) != level_nf({"k": "zero"}):
         raise Mismatch(f"rule P: {h['n']} at a non-Prop universe {h['u'][1]}")
     return e["a"]
 
@@ -1913,9 +2411,16 @@ def check_coinductive(d, r):
 def peel_eta(e):
     """`fun x₀ … xₙ₋₁ => c (f a… c x₀ … c xₙ₋₁)` (c: optional lift coercions) -> (f a…, n); otherwise None."""
     n, b = 0, e
-    while b.get("k") == "lam":
-        n, b = n + 1, b["b"]
-    while (x := peel_lift_coercion(b)) is not None:
+    # A lifted function can sit between two eta binders:
+    # fun x => up (fun y => f x (down y)). Every removed wrapper is
+    # still exactly the audited up/down correspondence.
+    while True:
+        if b.get("k") == "lam":
+            n, b = n + 1, b["b"]
+            continue
+        x = peel_lift_coercion(b)
+        if x is None:
+            break
         b = x
     args = []
     while b.get("k") == "app" and len(args) < n:
@@ -1926,7 +2431,13 @@ def peel_eta(e):
     for i, a in enumerate(args):               # args[0] is the last argument, x_{n-1} = bvar 0
         while (x := peel_lift_coercion(a)) is not None:
             a = x
-        if a != {"k": "bvar", "i": i}:
+        depth = 0
+        if TYPE_COERCE[0] and a.get("k") == "lam":
+            nested = peel_eta(a)
+            if nested is None:
+                return None
+            a, depth = nested
+        if a != {"k": "bvar", "i": i + depth}:
             return None
     return b, n
 
@@ -1969,6 +2480,42 @@ def strip_prop_lift(r, tv, src_type, body):
     return tv
 
 
+def strip_type_lift(r, tv, src_type, body, inst, context=()):
+    """Exact Type-to-Type result transport, separate from the Prop-only rule P."""
+    k = r.get("type_lift")
+    if k is None:
+        return tv
+    if (type(k) is not int or k < 0 or r.get("prop_lift") is not None
+            or ((r.get("universe_poly_params") or 0) > 0 and not r.get("poly_level_interp"))):
+        raise Mismatch("invalid local type lift metadata")
+    st = src_type
+    out = copy.deepcopy(tv)
+    cur, holder, ctx = out, None, list(context)
+    for _ in range(k):
+        if st.get("k") != "prod" or cur.get("k") != "lam":
+            raise Mismatch("local type lift depth exceeds source or target telescope")
+        st = st["b"]
+        ctx = [cur["t"]] + ctx
+        holder, cur = cur, cur["b"]
+    if st.get("k") != "sort" or st["s"].get("k") != "type":
+        raise Mismatch("local type lift must preserve a source Type result")
+    if (cur.get("k") != "app" or cur["f"].get("k") != "const"
+            or cur["f"].get("n") != "PULift" or len(cur["f"].get("u") or []) != 2):
+        raise Mismatch("local type lift lacks its exact PULift wrapper")
+    upper, lower = cur["f"]["u"]
+    if level_nf(upper) != source_sort_nf(st["s"], body):
+        raise Mismatch("local type lift upper universe differs from the source result")
+    want_lower = inst.sort_of_type(cur["a"], ctx)
+    if want_lower is None or level_nf(lower) != level_nf(want_lower) or level_nf(lower) == canon(0, {}):
+        raise Mismatch("local type lift lower universe differs from the payload type")
+    if level_nf({"k":"max","a":upper,"b":lower}) != level_nf(upper):
+        raise Mismatch("local type lift exceeds the declared upper universe")
+    if holder is None:
+        return cur["a"]
+    holder["b"] = cur["a"]
+    return out
+
+
 def src_has_univ_var(t):
     """Whether a source term mentions a universe variable ({"k": "var", "i": n}, in a sort or an instance)."""
     if isinstance(t, list):
@@ -1981,37 +2528,190 @@ def src_has_univ_var(t):
 
 
 def erasing_poly_body(d):
-    """Entry 14, independently: a transparent universe-polymorphic constant whose body, after its
-    leading lambdas, mentions no universe variable (its applications are δβ-reducible without leaving
-    any level of the instance). Returns the body, or None."""
+    """Transparent polymorphic erasing definitions or type abbreviations.
+    Actual universe instances are substituted before beta reduction."""
     if d.get("kind") != "constant" or d.get("body_state") != "transparent" or d.get("body") is None:
         return None
-    if (d.get("universes") or {}).get("k") != "polymorphic":
-        return None
-    b, n = d["body"], 0
+    def prefix_view(t):
+        if t.get("k") == "let":
+            return prefix_view(src_subst0(t["b"], t["v"]))
+        if t.get("k") == "lam":
+            return dict(t, b=prefix_view(t["b"]))
+        return t
+    body = prefix_view(d["body"])
+    if body.get("k")=="const" or (body.get("k")=="app" and body["f"].get("k")=="const"):
+        return body
+    b, n = body, 0
     while b.get("k") == "lam":
         b, n = b["b"], n + 1
-    return d["body"] if n > 0 and not src_has_univ_var(b) else None
+    # Independently recognize bound-variable applications only. Eligibility
+    # does not authorize a replacement term: source substitution and every
+    # argument are still compared by inline_erasing_term below.
+    def binder_only(t):
+        return t.get("k")=="rel" or (t.get("k")=="app"
+            and binder_only(t["f"]) and all(binder_only(a) for a in t["args"]))
+    if n>0 and binder_only(b):
+        return body
+    ty=d["type"]
+    while ty.get("k")=="prod":ty=ty["b"]
+    if (d.get("universes") or {}).get("k")!="polymorphic" and ty.get("k")!="sort":return None
+    return body if n>0 and (not src_has_univ_var(b) or ty.get("k")=="sort") else None
 
 
-def inline_erasing_block(d, bodies):
-    """The block `d` with every application of the given erasing definitions δβ-reduced (no fuel bound:
-    each reduct is smaller, the definitions erase their arguments' levels)."""
-    def pre(x, k):
-        if x.get("k") == "app" and x["f"].get("k") == "const" and x["f"]["c"] in bodies:
-            return src_flatten_apps(beta_app(bodies[x["f"]["c"]], x["args"]))
+def computing_type_body(d):
+    if (d.get("kind") != "constant" or d.get("body_state") != "transparent"
+            or d.get("body") is None or (d.get("termination") or {}).get("state") == "deferred"):
         return None
+    ty,b=d["type"],d["body"]
+    while ty.get("k")=="prod":ty=ty["b"]
+    while b.get("k")=="lam":b=b["b"]
+    # Native guardedness and non-deferred source termination are required above.
+    # The evaluator separately requires a known constructor at the structural
+    # argument, and replays the exact body rather than assuming a result type.
+    if b.get("k")!="fix" or b.get("idx")!=0 or len(b["defs"])!=1:return None
+    return d["body"]
+
+def source_fix_ready(t):
+    if t.get("k")!="app" or t["f"].get("k")!="fix":return False
+    f=t["f"]
+    if f["idx"]!=0 or len(f["defs"])!=1:return False
+    r=f["defs"][0]["rarg"]
+    if r>=len(t["args"]):return False
+    a=t["args"][r]
+    return a.get("k")=="construct" or a.get("k")=="app" and a["f"].get("k")=="construct"
+
+def compute_source_types(t,bodies,fuel=128):
+    """Independently replay source conversion; branch substitution is simultaneous."""
+    if not fuel:return t,set()
+    go=lambda x:compute_source_types(x,bodies,fuel)
+    next_=lambda x:compute_source_types(x,bodies,fuel-1)
+    def children(xs):
+        out,used=[],set()
+        for x in xs:
+            y,u=go(x);out.append(y);used|=u
+        return out,used
+    k=t.get("k")
+    if k=="app":
+        f,used=go(t["f"]);args,u=children(t["args"]);used|=u
+        app=src_flatten_apps(beta_app(f,args))
+        if f.get("k")in("lam","app"):
+            value,u=next_(app);return value,used|u
+        if f.get("k")=="const" and f["c"]in bodies:
+            expanded=src_flatten_apps(beta_app(instantiate_source_universes(bodies[f["c"]],f["u"]),args))
+            if source_fix_ready(expanded):
+                value,u=next_(expanded);return value,used|u|{f["c"]}
+        if f.get("k")=="fix" and source_fix_ready(app):
+            expanded=src_flatten_apps(beta_app(src_subst0(f["defs"][0]["body"],f),args))
+            value,u=next_(expanded);return value,used|u
+        return app,used
+    if k=="case":
+        scrut,used=go(t["c"])
+        head,args=(scrut["f"],scrut["args"])if scrut.get("k")=="app"else(scrut,[])
+        if head.get("k")=="construct":
+            np,ix=t["ci"]["npar"],head["c"]
+            if head["ind"]!=t["ci"]["ind"]or ix>=len(t["brs"])or np>len(args):return t,set()
+            branch=t["brs"][ix];fields=args[np:]
+            if len(branch["ctx"])!=len(fields):return t,set()
+            def sub(x,depth):
+                if x.get("k")!="rel"or x["i"]<depth:return None
+                j=x["i"]-depth
+                return src_lift(fields[len(fields)-1-j],depth)if j<len(fields)else{"k":"rel","i":x["i"]-len(fields)}
+            value,u=next_(src_rewrite(branch["body"],sub,again=False));return value,used|u
+        params,u=children(t["p"]["params"]);used|=u
+        ret,u=go(t["p"]["ret"]);used|=u
+        branches=[]
+        for branch in t["brs"]:
+            b,u=go(branch["body"]);used|=u;branches.append(dict(branch,body=b))
+        return dict(t,c=scrut,p=dict(t["p"],params=params,ret=ret),brs=branches),used
+    if k in("prod","lam"):
+        a,ua=go(t["ty"]);b,ub=go(t["b"]);return dict(t,ty=a,b=b),ua|ub
+    if k=="let":
+        v,uv=go(t["v"]);b,ub=next_(src_subst0(t["b"],v));return b,uv|ub
+    if k=="cast":
+        v,uv=go(t["t"]);ty,ut=go(t["ty"]);return dict(t,t=v,ty=ty),uv|ut
+    if k=="fix":
+        defs,used=[],set()
+        for d in t["defs"]:
+            ty,ut=go(d["ty"]);body,ub=go(d["body"]);used|=ut|ub;defs.append(dict(d,ty=ty,body=body))
+        return dict(t,defs=defs),used
+    if k=="proj":
+        v,u=go(t["t"]);return dict(t,t=v),u
+    return t,set()
+
+def instantiate_source_universes(t, instance):
+    """Substitute source universe variables, including native literal payloads;
+    source term variables use id, and bound terms use rel, so neither is touched."""
+    if isinstance(t,list):return [instantiate_source_universes(v,instance) for v in t]
+    if not isinstance(t,dict):return t
+    if t.get("k")=="var" and "i" in t:
+        i=t["i"]
+        if type(i) is not int or not 0<=i<len(instance):
+            raise Mismatch("universe variable outside the source constant's instance")
+        return copy.deepcopy(instance[i])
+    return {k:instantiate_source_universes(v,instance) for k,v in t.items()}
+
+def inline_erasing_term(t, bodies, fuel=256, used=None):
+    """Instantiate listed source definitions after preparing their arguments.
+    This preserves the exact beta redexes left by the bottom-up source rewrite;
+    it does not normalize or disregard any target binder or argument."""
+    if isinstance(t, list):
+        return [inline_erasing_term(x, bodies, fuel, used) for x in t]
+    if not isinstance(t, dict):
+        return t
+    t = {k: inline_erasing_term(v, bodies, fuel, used) if isinstance(v, (dict, list)) else v
+         for k, v in t.items()}
+    if t.get("k") == "app" and t["f"].get("k") == "const" and t["f"]["c"] in bodies:
+        if fuel <= 0:
+            raise Mismatch("erasing-definition source rewrite exceeded its depth bound")
+        if used is not None:
+            used.add(t["f"]["c"])
+        return inline_erasing_term(src_flatten_apps(beta_app(instantiate_source_universes(bodies[t["f"]["c"]],t["f"]["u"]), t["args"])),
+                                   bodies, fuel - 1, used)
+    return t
+
+
+
+def source_conversion_closure(source):
+    """Least joint closure of independently checked transparent source views.
+    Candidate result sorts are derived using only the previous round's aliases
+    and constructor-driven computations; raw recursive bodies remain unchanged."""
+    aliases={name:b for name,d in source.items() if (b:=erasing_poly_body(d)) is not None}
+    computations={name:b for name,d in source.items() if (b:=computing_type_body(d)) is not None}
+    for _ in range(2*len(source)):
+        add_aliases,add_computations={},{}
+        for name,d in source.items():
+            if d.get("kind")!="constant" or d.get("body_state")!="transparent":
+                continue
+            if name in aliases and name in computations:
+                continue
+            ty=inline_erasing_term(d["type"],aliases)
+            ty,_=compute_source_types(ty,computations)
+            viewed=dict(d,type=ty)
+            if name not in aliases:
+                b=erasing_poly_body(viewed)
+                if b is not None:add_aliases[name]=b
+            if name not in computations:
+                b=computing_type_body(viewed)
+                if b is not None:add_computations[name]=b
+        if not add_aliases and not add_computations:
+            break
+        aliases.update(add_aliases);computations.update(add_computations)
+    return aliases,computations
+
+
+def inline_erasing_block(d, bodies, used=None):
+    """The block with applications expanded by the bounded source delta/beta rewrite."""
     d2 = copy.deepcopy(d)
     for p_ in d2.get("params") or []:
-        p_["ty"] = src_rewrite(p_["ty"], pre)        # (context declarations: n, body, ty)
+        p_["ty"] = inline_erasing_term(p_["ty"], bodies, used=used)        # (context declarations: n, body, ty)
     for b in d2.get("bodies") or []:
-        b["type"] = src_rewrite(b["type"], pre)
+        b["type"] = inline_erasing_term(b["type"], bodies, used=used)
         for c in b.get("ctors") or []:
-            c["type"] = src_rewrite(c["type"], pre)
+            c["type"] = inline_erasing_term(c["type"], bodies, used=used)
             for a in c.get("args") or []:
-                a["ty"] = src_rewrite(a["ty"], pre)
+                a["ty"] = inline_erasing_term(a["ty"], bodies, used=used)
         for pj in b.get("projs") or []:              # (primitive records: the projections' types)
-            pj["type"] = src_rewrite(pj["type"], pre)
+            pj["type"] = inline_erasing_term(pj["type"], bodies, used=used)
     return d2
 
 
@@ -2126,7 +2826,7 @@ def inline_rec_args(body, need, bodies, fuel=16):
         if x.get("k") == "app" and x["f"].get("k") == "const" and x["f"]["c"] in bodies and fuel > 0 \
                 and any(partial_rec_use(a, d, need) for a in x["args"]):
             fuel -= 1
-            return src_flatten_apps(beta_app(bodies[x["f"]["c"]], x["args"]))
+            return src_flatten_apps(beta_app(instantiate_source_universes(bodies[x["f"]["c"]],x["f"]["u"]), x["args"]))
         return None
     return src_rewrite(body, pre)
 
@@ -2555,8 +3255,66 @@ def equal_at_models(facts, own_params, a, b):
     return sa is not None and sb is not None and leq(sa, sb) and leq(sb, sa)
 
 
+def poly_context_entails(facts, context, start, end, offset):
+    """Independent weighted transitive closure for a single abstract universe context.
+    Nodes are tagged tuples, so local variables cannot alias global names.
+    An edge a -> b of weight k means a + k <= b. No target-reported facts are used.
+    """
+    if not context or context.get("k") != "polymorphic":
+        return False
+    count = len(context.get("names", []))
+    def native(n):
+        return ("set",) if n == "Set" else ("global", n)
+    def node(j):
+        k = j.get("k")
+        if k == "set":
+            return ("set",)
+        if k == "global" and isinstance(j.get("n"), str):
+            return native(j["n"])
+        if k == "var" and type(j.get("i")) is int and 0 <= j["i"] < count:
+            return ("var", j["i"])
+        raise ValueError("unknown or unbound source universe")
+    if any(n[0] == "var" and not 0 <= n[1] < count for n in (start, end)):
+        return False
+    edges = {}
+    nodes = {start, end, ("set",)}
+    def edge(a, b, weight):
+        nodes.update((a, b))
+        edges[a, b] = max(weight, edges.get((a, b), weight))
+    for (a, b), r in facts.rel.items():
+        if r in ("le", "lt"):
+            edge(native(a), native(b), int(r == "lt"))
+    try:
+        for c in context["constraints"]:
+            a, b, r = node(c["l"]), node(c["r"]), c["rel"]
+            if r["k"] == "eq":
+                edge(a, b, 0); edge(b, a, 0)
+            elif r["k"] == "le" and type(r.get("offset")) is int:
+                edge(a, b, r["offset"])
+            else:
+                return False
+    except (KeyError, TypeError, ValueError):
+        return False
+    nodes.update(("var", i) for i in range(count))
+    for n in nodes:
+        edge(("set",), n, 0)
+        edge(n, n, 0)
+    # Floyd-Warshall, independent of the translator's single-source relaxation.
+    ordered = sorted(nodes)
+    for mid in ordered:
+        for a in ordered:
+            if (a, mid) not in edges:
+                continue
+            for b in ordered:
+                if (mid, b) in edges:
+                    edge(a, b, edges[a, mid] + edges[mid, b])
+    if any(edges[n, n] > 0 for n in nodes):
+        return False
+    return (start, end) in edges and edges[start, end] >= offset
+
+
 def check_universe_args(facts, own, gen, exprs, body=None, poly=None, admit=None, own_admit=frozenset(), lift=False,
-                        lower=False):
+                        lower=False, source_context=None):
     """Rule R3 (docs/UNIVERSE_TRANSLATION.md) for every reference in `exprs`.
     own: source global levels of the referring declaration; gen: target name -> source levels;
     poly: target name -> number of leading R6 instance arguments (checked structurally, not by R3)."""
@@ -2603,11 +3361,22 @@ def check_universe_args(facts, own, gen, exprs, body=None, poly=None, admit=None
                 else:
                     # (R3-down, rows of the lowered tier only: an argument for a shared level that is not its
                     # variable must not raise either, as for a level of another declaration)
-                    if c is not None and not (ca and c == 0) and not facts.entails("Set", l, c - 1 if ca else c):
+                    floor = c - 1 if ca and c is not None else c
+                    if c is not None and not (ca and c == 0) and not (
+                            facts.entails("Set", l, floor) or poly_context_entails(
+                                facts, source_context, ("set",), ("global", l), floor)):
                         raise Mismatch(f"{name}: Set + {c} <= {l} not entailed by the source universe graph")
                     for p, k in ps:
                         if p not in own_params:
-                            raise Mismatch(f"{name}: argument mentions {p}, not a parameter of the referring declaration")
+                            count = len(source_context.get("names", [])) if source_context and source_context.get("k") == "polymorphic" else 0
+                            local = {f"v_{i}": ("var", i) for i in range(count)}
+                            if p not in local:
+                                raise Mismatch(f"{name}: argument mentions {p}, not a parameter of the referring declaration")
+                            effective = k - int(ca)
+                            if not (poly_context_entails(facts, source_context, local[p], ("global", l), max(effective, 0)) or
+                                    (lift and effective == 0 and poly_context_entails(facts, source_context, ("global", l), local[p], 0))):
+                                raise Mismatch(f"{name}: local polymorphic bound {p} + {max(effective, 0)} <= {l} not entailed")
+                            continue
                         m = own_params[p]
                         e = k + (1 if m in own_admit else 0) - (1 if ca else 0)
                         # no raising; in rows of the cumulativity tier only (R3-up), also the own level
@@ -2914,9 +3683,9 @@ class InstanceLevels:
                 if off is None:
                     rec_ = self.recursors.get(n)
                     off = 1 if rec_ is not None and self.large(rec_) else 0
-                for j, k, nz in bind:
+                for j, k, nz, is_sort in bind:
                     if k < len(args) and j + off < len(us):
-                        self.expect({"k": "succ", "l": us[j + off]}, self.arity_level(args[k], nz, ctx),
+                        self.expect(us[j + off] if is_sort else {"k": "succ", "l": us[j + off]}, self.arity_level(args[k], nz, ctx),
                                     f"{where}: {n} (template level {j} from parameter {k})", problems)
             rec = self.recursors.get(n)
             if rec is not None and rec["num_motives"] == 1 and us:
@@ -2987,11 +3756,91 @@ def check_residuals(r):
         raise Mismatch("generic declaration with residual levels at their defaults differs from the reported declaration")
 
 
+def checked_poly_interpretation(d, r):
+    """Independent longest-path closure (bounded edge relaxation, not translator Floyd).
+    Images satisfy every accepted bound and fix every source-admissible valuation.
+    Outward global bounds are retained and checked on every closure summand;
+    inward/equality global bounds and negative bounds remain unsupported."""
+    claimed = r.get("poly_level_interp") or []
+    if not claimed:
+        return []
+    u = d.get("universes") or {}
+    if u.get("k") != "polymorphic" or d.get("kind") != "constant":
+        raise Mismatch("local universe interpretation outside the implemented constant fragment")
+    n = len(u.get("names") or [])
+    if not n or len(claimed) != n:
+        raise Mismatch("local universe interpretation has the wrong arity")
+    def node(j):
+        if j.get("k") == "set":
+            return n
+        if j.get("k") == "var" and type(j.get("i")) is int and 0 <= j["i"] < n:
+            return j["i"]
+        raise Mismatch("local universe interpretation needs in-range variables or Set")
+    edges = [(n, i, 0) for i in range(n)]
+    guards = []
+    for c in u.get("constraints") or []:
+        a, rel = node(c["l"]), c["rel"]
+        if c["r"].get("k") == "global":
+            if rel.get("k") != "le" or type(rel.get("offset")) is not int or rel["offset"] < 0:
+                raise Mismatch("unsupported global bound in local universe interpretation")
+            guards.append((a, c["r"]["n"], rel["offset"]))
+            continue
+        b = node(c["r"])
+        if rel.get("k") == "eq":
+            edges.extend([(a,b,0),(b,a,0)])
+        elif rel.get("k") == "le" and type(rel.get("offset")) is int and rel["offset"] >= 0:
+            edges.append((a,b,rel["offset"]))
+        else:
+            raise Mismatch("unsupported bound in local universe interpretation")
+    reach = []
+    for origin in range(n+1):
+        dist = {origin:0}
+        for step in range(n+1):
+            next_dist = dict(dist)
+            for a,b,k in edges:
+                if a in dist:
+                    next_dist[b] = max(next_dist.get(b, -1), dist[a]+k)
+            if next_dist == dist:
+                break
+            if step == n:
+                raise Mismatch("inconsistent positive cycle in local universe interpretation")
+            dist = next_dist
+        reach.append(dist)
+    # Independent edge relaxation above; globals are sinks. Retain every
+    # original outward edge when checking each interpreted guard summand.
+    for i, g, k in guards:
+        for origin, dist in enumerate(reach):
+            if i in dist and not any(h == g and a in dist and dist[a] + w >= dist[i] + k
+                                     for a, h, w in guards):
+                raise Mismatch("local universe image violates a native global upper guard")
+    expected = []
+    for i in range(n):
+        if n in reach[i]:
+            want = {"k":"zero"}
+        else:
+            want = {"k":"zero"}
+            for j in range(n+1):
+                if i not in reach[j]:
+                    continue
+                term = {"k":"zero"} if j == n or n in reach[j] else {"k":"param","n":poly_param(j)}
+                for _ in range(reach[j][i]):
+                    term = {"k":"succ","l":term}
+                want = {"k":"max","a":want,"b":term}
+        if level_nf(claimed[i]) != level_nf(want):
+            raise Mismatch(f"local universe image {i} differs from source constraint closure")
+        expected.append(want)
+    if guards and all(level_nf(x) == level_nf({"k":"param","n":poly_param(i)})
+                      for i, x in enumerate(expected)):
+        raise Mismatch("identity global fragment must retain exact R6 parameters")
+    return expected
+
+
 def poly_count(d, r):
     """R6: number of universe variables of a polymorphic source constant (0 if monomorphic); the
     report's count must agree with the source declaration."""
     u = d.get("universes") or {}
     k = len(u.get("names", [])) if u.get("k") == "polymorphic" else 0
+    checked_poly_interpretation(d, r)
     if (r.get("universe_poly_params") or 0) != k:
         raise Mismatch(f"reported {r.get('universe_poly_params')} universe variables, the source declares {k}")
     return k
@@ -3133,6 +3982,7 @@ def required_closure(decls, roots):
         seen.add(n)
         d = decls[n]
         refs = closure_refs([d["type"], d["body"]] if d["kind"] == "constant" else [d["params"], d["bodies"]], set())
+        refs.update(quality_families.members(d))
         refs.discard(n)
         todo.extend(refs - seen)
     return seen
@@ -3195,6 +4045,7 @@ def universe_and_instance_checks(lines, decls, rows, metadata_path, problem, ali
                 TEMPLATE_LEVELS.update(tb_ or {})
                 for n_ in [r_["target"]] + [c["name"] for c in r_.get("target_ctors", [])]:
                     gen[n_] = params_
+                    poly[n_] = poly_count(d_, r_)
     # R3G-F: the result-sort-only levels of each generated inductive type, from its source (and its own
     # R3G-F levels, themselves checked when that row is audited)
     t2s_ = {}
@@ -3260,7 +4111,8 @@ def universe_and_instance_checks(lines, decls, rows, metadata_path, problem, ali
                     own = set(params)
                     own_admit = frozenset(r_.get("admitting_levels") or [])
                     # R8: reported motive levels must be motive levels of the source type, and type levels
-                    if not own_admit <= motive_levels(d_["type"]) & set(source_globals(d_["type"], set())):
+                    admit_type = d_["body"] if "statement_levels" in d_ else d_["type"]
+                    if not own_admit <= motive_levels(admit_type) & set(source_globals(admit_type, set())):
                         raise Mismatch(f"admitting levels {sorted(own_admit)} are not motive levels of the source type")
                     # R2B-P / R2B-S: the relaxed levels must be reported, R2B-P ones proof-local (not in the
                     # source type; their source instance is checked at verify), R2B-S ones only in the
@@ -3346,7 +4198,7 @@ def universe_and_instance_checks(lines, decls, rows, metadata_path, problem, ali
                 gen_ = {k: v for k, v in gen.items() if k not in self_names} if d_["kind"] == "inductive" else gen
                 univ_checked += check_universe_args(facts, own, gen_, [x for x in exprs if x is not None], bl, poly,
                                                     gen_admit, own_admit, bool(r_.get("universe_cumulativity")),
-                                                    bool(r_.get("universe_lowered")))
+                                                    bool(r_.get("universe_lowered")), source_context=d_.get("universes"))
                 if d_["kind"] == "inductive" and s_ in definitions:
                     # an inductive block: the binder domains of its arity and of its constructors
                     # (parameters and fields: quantification ranges); its own references are at its own
@@ -3416,7 +4268,12 @@ def universe_and_instance_checks(lines, decls, rows, metadata_path, problem, ali
                 except Mismatch:
                     params_ = sorted(tb)
                 lps = [level_param(g) for g in params_]
-                bind = [(lps.index(level_param(l)), k, nz) for l, (k, nz) in tb.items() if level_param(l) in lps]
+                try:
+                    sort_levels = template_sort_block(d_, r_)
+                except Mismatch as e:
+                    problem("universes", f"{s_}: {e}")
+                    sort_levels = set()
+                bind = [(lps.index(level_param(l)), k, nz, l in sort_levels) for l, (k, nz) in tb.items() if level_param(l) in lps]
                 inst.template[r_["target"]] = (bind, 0)
                 for c in r_.get("target_ctors", []):
                     inst.template[c["name"]] = (bind, 0)
@@ -3439,6 +4296,69 @@ def universe_and_instance_checks(lines, decls, rows, metadata_path, problem, ali
     return univ_checked, recursors, inst
 
 
+def normalize_source_computation(decls, rows, problem):
+    """Reconstruct only independently eligible source conversions, in both modes."""
+    ERASED.clear()
+    erasing_source = dict(decls)  # every row rewrites against the same source environment
+    erasing_eligible, computing_eligible = source_conversion_closure(erasing_source)
+    for n, r in sorted(rows.items()):
+        di = r.get("delta_inlined") or []
+        if not di or n not in decls:
+            continue
+        if decls[n]["kind"] == "constant":
+            # entry 15: a constant translated with erasing definitions δβ-inlined in its type and value (the
+            # other reported names are M6 Set-motive constants, checked where the value is audited)
+            bodies = {n_: erasing_eligible.get(n_) for n_ in di if n_ in decls}
+            bodies = {k: v for k, v in bodies.items() if v is not None}
+            if not bodies:
+                continue
+            d2 = copy.deepcopy(decls[n])
+            used = set()
+            d2["type"] = inline_erasing_term(d2["type"], bodies, used=used)
+            if d2.get("body") is not None:
+                d2["body"] = inline_erasing_term(d2["body"], bodies, used=used)
+            # The rule rewrites applications, not bare higher-order references.
+            # Replay records every definition actually expanded. Bare references
+            # remain in the source term and must still match the target exactly.
+            if d2 == decls[n] or used != set(bodies):
+                problem("structure", f"{n}: the reported inlining differs from the source applications: claimed {sorted(bodies)}, expanded {sorted(used)}")
+            decls[n] = d2
+            ERASED[n] = set(bodies)
+            continue
+        if decls[n]["kind"] != "inductive":
+            continue
+        bodies = {}
+        for n_ in di:
+            b_ = erasing_eligible.get(n_) if n_ in decls else None
+            if b_ is None:
+                problem("structure", f"{n}: inlined {n_} is not an erasing polymorphic definition")
+            else:
+                bodies[n_] = b_
+        if len(bodies) == len(di):
+            used = set()
+            d2 = inline_erasing_block(decls[n], bodies, used=used)
+            if used != set(bodies) or d2 == decls[n]:
+                problem("structure", f"{n}: the reported inlining differs from the source applications: claimed {sorted(bodies)}, expanded {sorted(used)}")
+            decls[n] = d2
+    # Independently reconstruct the source computation before checking target structure.
+    for n,r in sorted(rows.items()):
+        names=r.get("source_computed")or[]
+        if not names:continue
+        try:
+            if n not in decls or decls[n].get("kind")!="constant"or names!=sorted(set(names)):
+                raise Mismatch("invalid computational type reduction metadata")
+            bodies={}
+            for name in names:
+                body=computing_eligible.get(name)
+                if body is None:raise Mismatch(f"computed {name} is not a checked transparent recursive type definition")
+                bodies[name]=body
+            d=decls[n];ty,u1=compute_source_types(d["type"],bodies)
+            body,u2=compute_source_types(d["body"],bodies)if d.get("body")is not None else(None,set())
+            if u1|u2!=set(names):raise Mismatch("computational reduction names differ from source replay")
+            decls[n]=dict(d,type=ty,body=body)
+        except Mismatch as e:problem("structure",f"{n}: {e}")
+
+
 def main(src_path, contract_path, report_path, out_path, metadata_path=None, assembly=None, validated=None):
     from collections import Counter
     lines = [json.loads(l) for l in open(src_path)]
@@ -3455,6 +4375,8 @@ def main(src_path, contract_path, report_path, out_path, metadata_path=None, ass
 
     def problem(det, msg):
         problems.append({"detector": det, "message": msg})
+
+    quality_families.check_rows(decls, con, results, problem)
 
     # Binding.
     ir_sha = sha256_path(src_path)
@@ -3555,11 +4477,18 @@ def main(src_path, contract_path, report_path, out_path, metadata_path=None, ass
         problem("coverage", f"report summary {report.get('summary')} differs from recomputed {want_summary}")
     if not accepted:
         problem("coverage", "no accepted declaration")
+    normalize_source_computation(decls, rows, problem)
+    quality_aux = set()
+    try:
+        decls, rows, _, quality_aux = quality_audit_views(lines, decls, rows)
+    except Mismatch as e:
+        problem("quality_family", str(e))
     univ_checked, recursors, inst = universe_and_instance_checks(lines, decls, rows, metadata_path, problem)
     aud = Auditor(decls, list(rows.values()), recursors)
     for s in sorted(decls):
         r, d = rows.get(s), decls[s]
-        COERCE[0] = bool(r and r.get("prop_lift_coercions"))
+        TYPE_COERCE[0] = bool(r and r.get("type_lift_coercions"))
+        COERCE[0] = bool(r and r.get("prop_lift_coercions")) or TYPE_COERCE[0]
         v = {"source": s, "status": r.get("status") if r else None,
              "role": "root" if s in canon else ("required" if s in closure else "extra_not_required")}
         try:
@@ -3579,7 +4508,7 @@ def main(src_path, contract_path, report_path, out_path, metadata_path=None, ass
                 if r.get("num_params") != nrec or nrec > d["npars"]:
                     raise Mismatch("parameter count differs from the source's uniform parameters")
                 params0, sol0, _ = ind_params(d, r)
-                want_lp = [level_param(g) for g in params0]
+                want_lp = [poly_param(i) for i in range(poly_count(d, r))] + [level_param(g) for g in params0]
                 if r.get("level_params", []) != want_lp:
                     raise Mismatch(f"universe parameters {r.get('level_params')} are not the generalized globals {want_lp}")
                 if bool(b["projs"]) != bool(r.get("primitive_record")) or (b["projs"] and (
@@ -3593,7 +4522,7 @@ def main(src_path, contract_path, report_path, out_path, metadata_path=None, ass
                 # R2F: sorts of a non-template block are read through the fact-respecting interpretation
                 # R2F (non-template): sorts read through the fact-respecting interpretation;
                 # R5S (template): other levels read through their reported solutions (fact-checked)
-                src_ar, tgt_ar = b["type"], r["target_type"]
+                src_ar, tgt_ar = template_sort_arity(d, r, b["type"]), r["target_type"]
                 if r.get("sort_interp") and not (tb is None and r.get("plain_levels")):
                     raise Mismatch("sort_interp reported for a block without plain parameters")
                 if tb is None and r.get("plain_levels"):
@@ -3609,6 +4538,7 @@ def main(src_path, contract_path, report_path, out_path, metadata_path=None, ass
                     if FACTS is not None:
                         check_body_levels(FACTS, d, sol0, params0)
                     aud.body = sol0
+                ADMIT[0] = template_sort_block(d, r)
                 try:
                     aud.check(src_ar, tgt_ar, ["arity"])
                     self_ref = ("const", t, [{"k": "param", "n": l} for l in want_lp])
@@ -3616,6 +4546,7 @@ def main(src_path, contract_path, report_path, out_path, metadata_path=None, ass
                         aud.check(c["type"], tc["type"], ["ctor " + c["name"]], [self_ref])
                 finally:
                     aud.body = None
+                    ADMIT[0] = set()
                 v["verdict"] = "MATCH"
             elif r["status"] == "TRANSLATED_AND_CHECKED":
                 if d["kind"] != "constant":
@@ -3630,6 +4561,7 @@ def main(src_path, contract_path, report_path, out_path, metadata_path=None, ass
                     raise Mismatch("success claimed without target type/value")
                 params, sol = own_partition(d, r)
                 aud.body = sol
+                POLY_IMAGE[0] = checked_poly_interpretation(d, r)
                 REDUCE[0] = bool(r.get("sort_fact_reduced"))
                 ADMIT[0] = set(r.get("admitting_levels") or [])
                 try:
@@ -3642,9 +4574,10 @@ def main(src_path, contract_path, report_path, out_path, metadata_path=None, ass
                             if n_ not in aud.ir_bodies or not has_set_motive(decls[n_]["type"]):
                                 raise Mismatch(f"inlined {n_} is not a transparent constant with a Set-motive binder")
                         body_s = inline_consts(body_s, set(m6), aud.ir_bodies)
-                    aud.check(body_s, strip_prop_lift(r, r["target_value"], d["type"], aud.body), ["body"])
+                    aud.check(body_s, strip_type_lift(r, strip_prop_lift(r, r["target_value"], d["type"], aud.body), d["type"], aud.body, inst), ["body"])
                 finally:
                     aud.body = None
+                    POLY_IMAGE[0] = []
                     REDUCE[0] = False
                     ADMIT[0] = set()
                 v["verdict"] = "MATCH"
@@ -3660,13 +4593,15 @@ def main(src_path, contract_path, report_path, out_path, metadata_path=None, ass
             v["reason"] = str(e)
             problem("structure", f"{s}: {e}")
         verdicts.append(v)
+    representation_verdicts = [dict(v, role="representation") for v in verdicts if v["source"] in quality_aux]
+    verdicts = [v for v in verdicts if v["source"] not in quality_aux]
     out = {"schema": "rocq2lean-audit/2", "status": "OK" if not problems else "AUDIT_REJECTED",
            "universe_arguments_checked": univ_checked,
            "interface_checked": iface_checked,
            "instance_levels": {"checked": inst.checked, "deferred_to_consumer": inst.deferred},
            "coverage": {"requested_roots": len(canon), "required_closure": len(closure), "accepted": len(accepted),
-                        "extra_exported": sorted(set(decls) - closure)},
-           "problems": problems, "verdicts": verdicts}
+                        "extra_exported": sorted(set(decls) - closure - quality_aux)},
+           "problems": problems, "verdicts": verdicts, "quality_representations": representation_verdicts}
     json.dump(out, open(out_path, "w"), indent=2)
     print(out["status"], f"({len(problems)} problem(s))")
     return 0 if not problems else 1
@@ -3707,6 +4642,14 @@ def statement_view(d):
     if d.get("body") is not None:
         raise Mismatch("a proof task exported with a body")
     return dict(d, type=_PROP, body=d["type"], body_state="transparent", statement_levels=lv), ".statement"
+
+
+def hyp_environment(hs, hyp_t):
+    """Keep each prerequisite's explicit universe instance at its use site."""
+    if len(hs) != len(hyp_t):
+        raise Mismatch("hypothesis telescope length differs from prerequisites")
+    return [("hyp", name, len(hs) - 1 - i, Auditor.unspine(hyp_t[i])[0].get("u") or [])
+            for i, name in reversed(list(enumerate(hs)))]
 
 
 def check_hyp_telescope(rows, leaves, hs, hyp_t):
@@ -3803,7 +4746,7 @@ def check_unfolding_equation(aud, pd, prow, r, leaves, tele_rows):
         flams.append(fb)
         fb = fb["b"]
     o, a, nh = len(olams), len(flams), len(hs)
-    env = [("hyp", l, nh - 1 - i) for i, l in enumerate(hs)][::-1]
+    env = hyp_environment(hs, hyp_t)
     cur = val
     for i, lam in enumerate(olams):
         if cur.get("k") != "forall":
@@ -3862,6 +4805,12 @@ def main_statement(lines, src_path, contract_path, report_path, out_path, metada
 
     def problem(det, msg):
         problems.append({"detector": det, "message": msg})
+
+    quality_families.check_rows(decls, con, results, problem)
+    try:
+        family_kinds = quality_families.branch_kinds(decls)
+    except (ValueError, KeyError, TypeError):
+        family_kinds = {}  # check_rows already records the invalid family
 
     ir_sha = sha256_path(src_path)
     if con.get("ir_sha256") != ir_sha:
@@ -3977,45 +4926,7 @@ def main_statement(lines, src_path, contract_path, report_path, out_path, metada
             decls[n] = dict(d, type=src_rewrite(d["type"], pre))
         except Mismatch as e:
             problem("structure", f"{n}: {e}")
-    for n, r in sorted(rows.items()):
-        di = r.get("delta_inlined") or []
-        if not di or n not in decls:
-            continue
-        if decls[n]["kind"] == "constant":
-            # entry 15: a constant translated with erasing definitions δβ-inlined in its type and value (the
-            # other reported names are M6 Set-motive constants, checked where the value is audited)
-            bodies = {n_: erasing_poly_body(decls[n_]) for n_ in di if n_ in decls}
-            bodies = {k: v for k, v in bodies.items() if v is not None}
-            if not bodies:
-                continue
-            def pre(x, k, bodies=bodies):
-                if x.get("k") == "app" and x["f"].get("k") == "const" and x["f"]["c"] in bodies:
-                    return src_flatten_apps(beta_app(bodies[x["f"]["c"]], x["args"]))
-                return None
-            d2 = copy.deepcopy(decls[n])
-            d2["type"] = src_rewrite(d2["type"], pre)
-            if d2.get("body") is not None:
-                d2["body"] = src_rewrite(d2["body"], pre)
-            txt = json.dumps([d2["type"], d2.get("body")])
-            if d2 == decls[n] or any(f'"c": "{n_}"' in txt for n_ in bodies):
-                problem("structure", f"{n}: the reported inlining does not remove the definitions {sorted(bodies)}")
-            decls[n] = d2
-            ERASED[n] = set(bodies)
-            continue
-        if decls[n]["kind"] != "inductive":
-            continue
-        bodies = {}
-        for n_ in di:
-            b_ = erasing_poly_body(decls[n_]) if n_ in decls else None
-            if b_ is None:
-                problem("structure", f"{n}: inlined {n_} is not an erasing polymorphic definition")
-            else:
-                bodies[n_] = b_
-        if len(bodies) == len(di):
-            d2 = inline_erasing_block(decls[n], bodies)
-            if any(json.dumps(d2).count(f'"c": "{n_}"') or json.dumps(d2).count(f'"c":"{n_}"') for n_ in di) or d2 == decls[n]:
-                problem("structure", f"{n}: the reported inlining does not remove the definitions {di}")
-            decls[n] = d2
+    normalize_source_computation(decls, rows, problem)
     rep_roots = report.get("roots", [])
     if [(r.get("requested"), r.get("name")) for r in rep_roots] != [(r["requested"], r["name"]) for r in src_roots] \
             or any(r.get("status") != st(r.get("name")) for r in rep_roots):
@@ -4215,7 +5126,7 @@ def main_statement(lines, src_path, contract_path, report_path, out_path, metada
                 a_ = r.get("assembly")
                 v_ = vrows.get(n) or {}
                 keys = ("status", "target", "target_kind", "target_type", "target_value", "target_ctors",
-                        "level_params", "pending_hypotheses")
+                        "level_params", "pending_hypotheses", "quality_prop")
                 if a_ == "VALIDATED" or r["status"] in PENDING_ST:
                     if any(r.get(k) != v_.get(k) for k in keys):
                         raise Mismatch(f"{a_} row differs from the validated row")
@@ -4246,6 +5157,16 @@ def main_statement(lines, src_path, contract_path, report_path, out_path, metada
                 raise Mismatch(f"status {r['status']}, the source and the prerequisites give {want}")
         except Mismatch as e:
             problem("prerequisites", f"{n}: {e}")
+    quality_aux = set()
+    try:
+        # Both reports derive their views from the same pre-quality source.
+        # Re-specializing the first view would lose original binder annotations.
+        if assembly:
+            _, vrows, _, _ = quality_audit_views(lines, decls, vrows)
+        decls, rows, views, quality_aux = quality_audit_views(lines, decls, rows, views)
+        claimed |= quality_aux
+    except Mismatch as e:
+        problem("quality_family", str(e))
     # normalized rows (statement views, hypotheses peeled) for the universe and instance checks
     norm_decls, norm_rows, peeled = dict(decls), {}, {}
     for n, r in rows.items():
@@ -4268,6 +5189,7 @@ def main_statement(lines, src_path, contract_path, report_path, out_path, metada
     aud.pending = {n: (rows[n]["target"], rows[n].get("pending_hypotheses") or []) for n in pend_defs
                    if decls[n]["kind"] == "constant"}
     aud.pending_inds = {n: rows[n] for n in pend_defs if decls[n]["kind"] == "inductive"}
+    aud.register_pending_types(rows)
     aud_carried = None
     if assembly:
         # accepted rows: a proved leaf is its final theorem; a carried-over pending artifact is audited
@@ -4277,6 +5199,7 @@ def main_statement(lines, src_path, contract_path, report_path, out_path, metada
         aud.pending = {n: (rows[n]["target"], rows[n].get("pending_hypotheses") or []) for n in claimed
                        if st(n) == "PENDING_KERNEL_CHECKED" and decls[n]["kind"] == "constant"}
         aud.pending_inds = {n: rows[n] for n in claimed if st(n) == "PENDING_KERNEL_CHECKED" and decls[n]["kind"] == "inductive"}
+        aud.register_pending_types(rows)
         v_acc = [r for n, r in vrows.items() if r["status"] in ("TRANSLATED_AND_CHECKED", "BOOTSTRAP_RESOLVED")]
         aud_carried = Auditor(decls, v_acc, recursors)
         aud_carried.leaves = {n: vrows[n] for n in leaves if vrows.get(n, {}).get("status") in
@@ -4284,6 +5207,7 @@ def main_statement(lines, src_path, contract_path, report_path, out_path, metada
         aud_carried.pending = {n: (vrows[n]["target"], vrows[n].get("pending_hypotheses") or []) for n in pend_defs
                                if decls[n]["kind"] == "constant"}
         aud_carried.pending_inds = {n: vrows[n] for n in pend_defs if decls[n]["kind"] == "inductive"}
+        aud_carried.register_pending_types(vrows)
         # final theorems: type exactly the accepted statement, value the manifest's template applied to
         # the prerequisites' final theorems (prerequisites: the validated statement's hypotheses)
         for n, r in proved.items():
@@ -4312,7 +5236,8 @@ def main_statement(lines, src_path, contract_path, report_path, out_path, metada
     wf_users = {}
     for s_ in sorted(decls):
         r, d = rows.get(s_), views[s_]
-        COERCE[0] = bool(r and r.get("prop_lift_coercions"))
+        TYPE_COERCE[0] = bool(r and r.get("type_lift_coercions"))
+        COERCE[0] = bool(r and r.get("prop_lift_coercions")) or TYPE_COERCE[0]
         v = {"source": s_, "status": r.get("status") if r else None, "leaf": s_ in leaves,
              "role": "root" if s_ in canon else ("required" if s_ in closure else "extra_not_required")}
         try:
@@ -4348,7 +5273,7 @@ def main_statement(lines, src_path, contract_path, report_path, out_path, metada
                 if r.get("num_params") != nrec + len(hs) or nrec > d["npars"]:
                     raise Mismatch("parameter count differs from the source's uniform parameters")
                 params0, sol0, _ = ind_params(d, r)
-                want_lp = [level_param(g) for g in params0]
+                want_lp = [poly_param(i) for i in range(poly_count(d, r))] + [level_param(g) for g in params0]
                 if r.get("level_params", []) != want_lp:
                     raise Mismatch(f"universe parameters {r.get('level_params')} are not the generalized globals {want_lp}")
                 tb = template_binding(d)
@@ -4362,6 +5287,7 @@ def main_statement(lines, src_path, contract_path, report_path, out_path, metada
                     aud.body = own_level_interp(FACTS, params0, set(ind_globals(d)), rs_deps(d) | set(r.get("result_sort_implicit_levels") or [])) if FACTS is not None else None
                 else:
                     aud.body = sol0
+                ADMIT[0] = template_sort_block(d, r)
                 try:
                     # hypotheses: the leading parameters of the type and of every constructor
                     hyp_t = []
@@ -4372,8 +5298,8 @@ def main_statement(lines, src_path, contract_path, report_path, out_path, metada
                         hyp_t.append(ty_t["t"])
                         ty_t = ty_t["b"]
                     check_hyp_telescope(tele_rows, leaves, hs, hyp_t)
-                    henv = [("hyp", l, len(hs) - 1 - i) for i, l in enumerate(hs)][::-1]
-                    src_ar = b["type"]
+                    henv = hyp_environment(hs, hyp_t)
+                    src_ar = template_sort_arity(d, r, b["type"])
                     if r.get("sort_interp"):
                         if FACTS is None:
                             raise Mismatch("sort_interp without native facts")
@@ -4391,6 +5317,7 @@ def main_statement(lines, src_path, contract_path, report_path, out_path, metada
                         aud.check(c["type"], ct, ["ctor " + c["name"]], [self_ref] + aud.shift(henv, 0))
                 finally:
                     aud.body = None
+                    ADMIT[0] = set()
                 v["verdict"] = "MATCH"
                 verdicts.append(v)
                 continue
@@ -4403,9 +5330,66 @@ def main_statement(lines, src_path, contract_path, report_path, out_path, metada
             # A′: opaque data with its prepared body is an opaque constant (Rocq never unfolds Qed;
             # Lean's kernel never unfolds `opaque`); every other definition is a `def`
             want_k = ("statement",) if s_ in leaves else (("opaque",) if d.get("body_state") == "opaque_data" else ("def",))
+            if s_ in family_kinds:
+                want_k = (family_kinds[s_],)
+
             if r["target_kind"] not in want_k:
                 raise Mismatch(f"{'proof task' if s_ in leaves else 'definition'} emitted as {r['target_kind']}")
-            if d.get("body_state") not in ("transparent", "sealed_implementation", "opaque_data"):
+            native_int = ((d.get("native") or {}).get("primitive_type") == "int63"
+                          and d.get("body_state") == "assumption" and d.get("body") is None)
+            native_array_type = ((d.get("native") or {}).get("primitive_type") == "array"
+                                 and d.get("body_state") == "assumption" and d.get("body") is None)
+            native_string_type = ((d.get("native") or {}).get("primitive_type") == "string"
+                                  and d.get("body_state") == "assumption" and d.get("body") is None)
+            native_float_type = ((d.get("native") or {}).get("primitive_type") == "float64"
+                                 and d.get("body_state") == "assumption" and d.get("body") is None)
+            native_float_op,native_float_ctor,float_bool=None,None,False
+            native_op, native_bool, native_array_op, native_string_op, native_comparison, native_structured = None, None, None, None, None, None
+            if (d.get("body_state") == "unsupported_primitive" and d.get("body") is None
+                    and (d.get("native") or {}).get("body_kind") == "primitive"):
+                native_op = {"add": "BitVec.add", "sub": "BitVec.sub", "mul": "BitVec.mul",
+                             "div": "Rocq2Lean.PrimInt63.udiv", "rem": "Rocq2Lean.PrimInt63.umod", "l_and": "Rocq2Lean.PrimInt63.land",
+                             "l_or": "Rocq2Lean.PrimInt63.lor", "l_xor": "Rocq2Lean.PrimInt63.lxor",
+                             "divs": "Rocq2Lean.PrimInt63.sdiv", "rems": "Rocq2Lean.PrimInt63.smod",
+                             "l_sl": "Rocq2Lean.PrimInt63.lsl", "l_sr": "Rocq2Lean.PrimInt63.lsr",
+                             "a_sr": "Rocq2Lean.PrimInt63.asr", "head0": "Rocq2Lean.PrimInt63.head0",
+                             "tail0": "Rocq2Lean.PrimInt63.tail0", "addMulDiv": "Rocq2Lean.PrimInt63.addmuldiv"}.get(
+                                 ((d.get("native") or {}).get("primitive_signature") or {}).get("operator"))
+                native_bool = {"eq": "Rocq2Lean.PrimInt63.eqb", "lt": "Rocq2Lean.PrimInt63.ltb",
+                               "le": "Rocq2Lean.PrimInt63.leb", "lts": "Rocq2Lean.PrimInt63.ltsb",
+                               "les": "Rocq2Lean.PrimInt63.lesb"}.get(
+                                   ((d.get("native") or {}).get("primitive_signature") or {}).get("operator"))
+                native_array_op = {"arraymake": "Rocq2Lean.PrimArray.make", "arrayget": "Rocq2Lean.PrimArray.get",
+                                   "arrayset": "Rocq2Lean.PrimArray.set", "arraylength": "Rocq2Lean.PrimArray.length",
+                                   "arraydefault": "Rocq2Lean.PrimArray.default", "arraycopy": "Rocq2Lean.PrimArray.copy"}.get(
+                                       ((d.get("native") or {}).get("primitive_signature") or {}).get("operator"))
+                native_string_op = {"string_make": "Rocq2Lean.PrimString.make", "string_length": "Rocq2Lean.PrimString.length",
+                                    "string_get": "Rocq2Lean.PrimString.get", "string_sub": "Rocq2Lean.PrimString.sub",
+                                    "string_cat": "Rocq2Lean.PrimString.cat"}.get(
+                                        ((d.get("native") or {}).get("primitive_signature") or {}).get("operator"))
+                native_comparison = {"string_compare": "Rocq2Lean.PrimString.compare", "compare": "Rocq2Lean.PrimInt63.compare",
+                                     "compares": "Rocq2Lean.PrimInt63.compares"}.get(
+                                         ((d.get("native") or {}).get("primitive_signature") or {}).get("operator"))
+                native_structured = {"addc": ("Rocq2Lean.PrimInt63.addc", True),
+                                     "addCarryC": ("Rocq2Lean.PrimInt63.addcarryc", True),
+                                     "subc": ("Rocq2Lean.PrimInt63.subc", True),
+                                     "subCarryC": ("Rocq2Lean.PrimInt63.subcarryc", True),
+                                     "mulc": ("Rocq2Lean.PrimInt63.mulc", False),
+                                     "diveucl": ("Rocq2Lean.PrimInt63.diveucl", False),
+                                     "div21": ("Rocq2Lean.PrimInt63.div21", False)}.get(
+                                         ((d.get("native") or {}).get("primitive_signature") or {}).get("operator"))
+                float_code=((d.get("native") or {}).get("primitive_signature") or {}).get("operator")
+                native_float_op={"fabs":"abs","fopp":"opp","fadd":"add","fsub":"sub","fmul":"mul","fdiv":"div",
+                    "fsqrt":"sqrt","float_of_int":"ofUint63","normfr_mantissa":"normfrMantissa",
+                    "ldshiftexp":"ldshiftexp","next_up":"nextUp","next_down":"nextDown"}.get(float_code)
+                fb={"feq":"eqb","fequal":"equal","flt":"ltb","fle":"leb"}.get(float_code)
+                if fb:
+                    native_bool="Rocq2Lean.PrimFloat."+fb
+                    float_bool=True
+                native_float_ctor={"fcompare":("compare","float_comparison_constructors",["eq","lt","gt","nc"]),
+                    "fclassify":("classify","float_class_constructors",["pn","nn","ps","ns","pz","nz","pi","ni","nan"]),
+                    "frshiftexp":("frshiftexp","pair_constructor",[])}.get(float_code)
+            if d.get("body_state") not in ("transparent", "sealed_implementation", "opaque_data") and s_ not in family_kinds and not (native_int or native_op or native_bool or native_array_type or native_array_op or native_string_type or native_string_op or native_comparison or native_structured or native_float_type or native_float_op or native_float_ctor):
                 raise Mismatch(f"body state {d.get('body_state')} is not a definition in statement mode")
             if d.get("body_state") == "opaque_data" and (d.get("native") or {}).get("body_kind") != "opaque":
                 raise Mismatch("opaque_data whose native body is not opaque")
@@ -4421,9 +5405,10 @@ def main_statement(lines, src_path, contract_path, report_path, out_path, metada
                 hyp_t.append(ty["t"])
                 ty, val = ty["b"], val["b"]
             check_hyp_telescope(tele_rows, leaves, hs, hyp_t)
-            env = [("hyp", l, len(hs) - 1 - i) for i, l in enumerate(hs)][::-1]
+            env = hyp_environment(hs, hyp_t)
             params, sol = own_partition(d, r)
             aud.body = sol
+            POLY_IMAGE[0] = checked_poly_interpretation(d, r)
             REDUCE[0] = bool(r.get("sort_fact_reduced"))
             ADMIT[0] = set(r.get("admitting_levels") or [])
             try:
@@ -4441,7 +5426,143 @@ def main_statement(lines, src_path, contract_path, report_path, out_path, metada
                         if n_ not in aud.ir_bodies or not has_set_motive(decls[n_]["type"]):
                             raise Mismatch(f"inlined {n_} is not a transparent constant with a Set-motive binder")
                     body_s = inline_consts(body_s, set(m6), aud.ir_bodies)
-                aud.check(body_s, strip_prop_lift(r, val, decls[s_]["type"], aud.body), ["body"], env)
+                if native_float_type or native_float_op:
+                    expected={"k":"const","n":"Rocq2Lean.PrimFloat."+(native_float_op or "Rep"),"u":[]}
+                    if val!=expected or hs or r.get("level_params"):
+                        raise Mismatch("native float must retain the exact canonical representation or operator")
+                elif native_float_ctor:
+                    helper,key,names=native_float_ctor
+                    sig=d["native"]["primitive_signature"];roles=sig.get(key)
+                    ctors=[roles.get(k) for k in names] if names and isinstance(roles,dict) else [roles]
+                    if not all(c and c.get("k")=="construct" and c.get("u")==[] for c in ctors) or not all(c["ind"]==ctors[0]["ind"] for c in ctors) or len({c["c"] for c in ctors})!=len(ctors):
+                        raise Mismatch("native float result must use its distinct registered constructors")
+                    targets=[aud.head(c) for c in ctors];btype,_,bu=aud.ind_target(ctors[0]["ind"])
+                    expected_rule="mono" if names else ("params",2)
+                    if bu!=expected_rule or any(u!=bu for _,u in targets):
+                        raise Mismatch("native float result constructor universe rule differs")
+                    def const(n,u=None):return {"k":"const","n":n,"u":u or []}
+                    def apps(f,*args):
+                        for a in args:f={"k":"app","f":f,"a":a}
+                        return f
+                    if names:
+                        result=const(btype);cexprs=[const(n) for n,_ in targets]
+                    else:
+                        args=[const("Rocq2Lean.PrimFloat.Rep"),apps(const("BitVec"),{"k":"natlit","v":63})]
+                        levels=aud.native_type0_template_levels(ctors[0]["ind"],2)
+                        result=apps(const(btype,levels),*args)
+                        cexprs=[apps(const(n,levels),*args) for n,_ in targets]
+                    expected=apps(const("Rocq2Lean.PrimFloat."+helper,[{"k":"zero"}]),result,*cexprs)
+                    if val!=expected or hs or r.get("level_params"):
+                        raise Mismatch("native float result must preserve the helper, result type, field order and constructor roles")
+                elif native_structured:
+                    helper,carry=native_structured
+                    sig=d["native"]["primitive_signature"];count=1 if carry else 2
+                    roles=sig.get("carry_constructors") or {}
+                    ctors=[roles.get(k) for k in ["C0","C1"]] if carry else [sig.get("pair_constructor")]
+                    if not all(c and c.get("k")=="construct" and c.get("u")==[] for c in ctors) or not all(c["ind"]==ctors[0]["ind"] for c in ctors) or (carry and ctors[0]["c"]==ctors[1]["c"]):
+                        raise Mismatch("native structured result lacks its distinct registered constructors")
+                    targets=[aud.head(c) for c in ctors];btype,_,bu=aud.ind_target(ctors[0]["ind"])
+                    if bu!=("params",count) or any(u!=bu for _,u in targets):
+                        raise Mismatch("native structured result must retain its template parameters")
+                    def const(n,u=None):return {"k":"const","n":n,"u":u or []}
+                    def apps(f,*args):
+                        for a in args:f={"k":"app","f":f,"a":a}
+                        return f
+                    width={"k":"natlit","v":63};word=apps(const("BitVec"),width)
+                    levels=aud.native_type0_template_levels(ctors[0]["ind"],count)
+                    result=apps(const(btype,levels),*([word]*count))
+                    cexprs=[apps(const(n,levels),*([word]*count)) for n,_ in targets]
+                    expected=apps(const(helper,[{"k":"zero"}]),width,result,*cexprs)
+                    if val!=expected or hs or r.get("level_params"):
+                        raise Mismatch("native structured result must retain its exact helper, width, result type and constructor roles")
+                elif native_comparison:
+                    sig=d["native"]["primitive_signature"]
+                    is_string=sig["operator"]=="string_compare"
+                    if is_string and sig.get("string_max_length") != "16777211":
+                        raise Mismatch("native string bound differs from the model")
+                    roles=sig.get("comparison_constructors") or {}
+                    ctors=[roles.get(k) for k in ["lt","eq","gt"]]
+                    if not all(c and c.get("k")=="construct" and c.get("u")==[] for c in ctors) or len({c["c"] for c in ctors})!=3 or not all(c["ind"]==ctors[0]["ind"] for c in ctors):
+                        raise Mismatch("native comparison lacks three distinct registered constructors")
+                    targets=[aud.head(c) for c in ctors]
+                    btype,_,bu=aud.ind_target(ctors[0]["ind"])
+                    if bu!="mono" or any(u!="mono" for _,u in targets):
+                        raise Mismatch("native comparison constructors must be monomorphic")
+                    def const(n,u=None):return {"k":"const","n":n,"u":u or []}
+                    def apps(f,*args):
+                        for a in args:f={"k":"app","f":f,"a":a}
+                        return f
+                    def lam(n,t,b):return {"k":"lam","n":n,"t":t,"b":b}
+                    width={"k":"natlit","v":63}
+                    domain=const("Rocq2Lean.PrimString.Rep") if is_string else apps(const("BitVec"),width)
+                    helper=const(native_comparison) if is_string else apps(const(native_comparison),width)
+                    compared=apps(helper,{"k":"bvar","i":1},{"k":"bvar","i":0})
+                    motive=lam("o",const("Ordering"),const(btype))
+                    expected=lam("x",domain,lam("y",domain,apps(
+                        const("Ordering.rec",[{"k":"succ","l":{"k":"zero"}}]),motive,
+                        *[const(n) for n,_ in targets],compared)))
+                    def alpha(e):
+                        if isinstance(e,dict):return {k:alpha(v) for k,v in e.items() if not(k=="n" and e.get("k") in ("lam","forall","let"))}
+                        if isinstance(e,list):return [alpha(v) for v in e]
+                        return e
+                    if alpha(val)!=alpha(expected) or hs or r.get("level_params"):
+                        raise Mismatch("native comparison must retain its helper, domain, argument order and registered result roles")
+                elif native_string_type or native_string_op:
+                    metadata=d["native"] if native_string_type else d["native"]["primitive_signature"]
+                    if metadata.get("string_max_length") != "16777211":
+                        raise Mismatch("native string bound differs from the model")
+                    expected={"k":"const","n":native_string_op or "Rocq2Lean.PrimString.Rep","u":[]}
+                    if val!=expected or hs or r.get("level_params"):
+                        raise Mismatch("native string must retain its exact representation and operator")
+                elif native_array_type or native_array_op:
+                    metadata = d["native"] if native_array_type else d["native"]["primitive_signature"]
+                    if metadata.get("array_max_length") != "4194303":
+                        raise Mismatch("native array bound differs from the model")
+                    if (d.get("universes") or {}).get("k") != "polymorphic" or len(d["universes"].get("names", [])) != 1:
+                        raise Mismatch("native array requires one source universe parameter")
+                    expected = {"k": "const", "n": native_array_op or "Rocq2Lean.PrimArray.Rep",
+                                "u": [{"k": "param", "n": "v_0"}]}
+                    if val != expected or hs or r.get("level_params") != ["v_0"]:
+                        raise Mismatch("native array must retain its exact operation and polymorphic parameter")
+                elif native_bool:
+                    roles = (d["native"].get("primitive_signature") or {}).get("bool_constructors") or {}
+                    ct, cf = roles.get("true"), roles.get("false")
+                    if not (ct and cf and ct.get("k") == cf.get("k") == "construct" and
+                            ct.get("ind") == cf.get("ind") and ct.get("c") != cf.get("c") and
+                            ct.get("u") == cf.get("u") == []):
+                        raise Mismatch("native predicate lacks distinct registered Boolean constructors")
+                    tn, tu = aud.head(ct); fn, fu = aud.head(cf)
+                    btype, _, bu = aud.ind_target(ct["ind"])
+                    if tu != "mono" or fu != "mono" or bu != "mono":
+                        raise Mismatch("native Boolean result must be monomorphic")
+                    def constant(n, u=None):return {"k":"const","n":n,"u":u or []}
+                    def apps(f,*args):
+                        for arg in args:f={"k":"app","f":f,"a":arg}
+                        return f
+                    def lam(n,t,b):return {"k":"lam","n":n,"t":t,"b":b}
+                    width={"k":"natlit","v":63}
+                    word=constant("Rocq2Lean.PrimFloat.Rep") if float_bool else apps(constant("BitVec"),width)
+                    helper=constant(native_bool) if float_bool else apps(constant(native_bool),width)
+                    pred=apps(helper,{"k":"bvar","i":1},{"k":"bvar","i":0})
+                    motive=lam("b",constant("Bool"),constant(btype))
+                    expected=lam("x",word,lam("y",word,apps(
+                        constant("Bool.rec",[{"k":"succ","l":{"k":"zero"}}]),
+                        motive,constant(fn),constant(tn),pred)))
+                    def alpha(e):
+                        if isinstance(e,dict):
+                            return {k:alpha(v) for k,v in e.items()
+                                    if not (k=="n" and e.get("k") in ("lam","forall","let"))}
+                        if isinstance(e,list):return [alpha(v) for v in e]
+                        return e
+                    if alpha(val) != alpha(expected) or hs or r.get("level_params"):
+                        raise Mismatch("native predicate must preserve its exact comparison, width, argument order and registered Boolean roles")
+                elif native_int or native_op:
+                    expected = {"k": "app", "f": {"k": "const", "n": native_op or "BitVec", "u": []},
+                                "a": {"k": "natlit", "v": 63}}
+                    if val != expected or hs or r.get("level_params"):
+                        raise Mismatch("native int63 representation/operator must use the exact BitVec constant at width 63, with no prerequisites or universe parameters")
+                else:
+                    aud.check(body_s, strip_type_lift(r, strip_prop_lift(r, val, decls[s_]["type"], aud.body), d["type"], aud.body, inst, reversed(hyp_t)), ["body"], env)
                 # B: its termination lowerings use exactly its own termination obligations
                 want_wf = sorted(x for x, rx in syn.items() if rx["synthesized_from"] == s_ and rx["synthetic_kind"] == "termination")
                 if sorted(aud.wf_used) != want_wf:
@@ -4449,6 +5570,7 @@ def main_statement(lines, src_path, contract_path, report_path, out_path, metada
                 wf_users[s_] = list(aud.wf_used)
             finally:
                 aud.body = None
+                POLY_IMAGE[0] = []
                 REDUCE[0] = False
                 ADMIT[0] = set()
             v["verdict"] = "MATCH"
@@ -4488,6 +5610,8 @@ def main_statement(lines, src_path, contract_path, report_path, out_path, metada
             v["reason"] = str(e)
             problem("structure", f"{s_}: {e}")
         verdicts.append(v)
+    representation_verdicts = [dict(v, role="representation") for v in verdicts if v["source"] in quality_aux]
+    verdicts = [v for v in verdicts if v["source"] not in quality_aux]
     by = Counter((v["status"], v["verdict"]) for v in verdicts)
     if assembly:
         by_asm = Counter(r.get("assembly") for r in rows.values())
@@ -4504,12 +5628,12 @@ def main_statement(lines, src_path, contract_path, report_path, out_path, metada
                        "type that no applied argument determines and that is not its parameter (it may be fixed by "
                        "the definition's value); diagnostic, not a rejection",
                "count": len(DEF_TYPE_CANDIDATES), "rows": DEF_TYPE_CANDIDATES},
-           "coverage": {"requested_roots": len(canon), "required_closure": len(closure), "claimed": len(claimed),
-                        "accepted": sum(1 for n in claimed if st(n) in ACCEPTED_ST),
-                        "pending": sum(1 for n in claimed if st(n) in PENDING_ST),
+           "coverage": {"requested_roots": len(canon), "required_closure": len(closure), "claimed": len(claimed - quality_aux),
+                        "accepted": sum(1 for n in claimed - quality_aux if st(n) in ACCEPTED_ST),
+                        "pending": sum(1 for n in claimed - quality_aux if st(n) in PENDING_ST),
                         "not_accepted": len(decls) - len(claimed),
                         "by_status_and_verdict": {f"{a}/{b}": c for (a, b), c in sorted(by.items(), key=str)}},
-           "problems": problems, "verdicts": verdicts}
+           "problems": problems, "verdicts": verdicts, "quality_representations": representation_verdicts}
     json.dump(out, open(out_path, "w"), indent=2)
     print(out["status"], f"({len(problems)} problem(s))")
     return 0 if not problems else 1

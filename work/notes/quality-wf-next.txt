@@ -1,0 +1,29 @@
+2026-10-18: quality integration and well-founded frontier
+
+Certified baseline remains result-transport6, 182 blocked.
+quality-main8 full run is diagnostic only: 212 blocked, 32 gains, 62 regressions,
+zero new module validation failures (Init.Equality remains the export exception).
+The regressions all reach missing source scopes in single structural recursion
+or native Type0 operands to pair-result primitives. main10 targeted probes fix
+these paths; full certification is running separately.
+
+Init.Wf.Fix_F_2 is NOT a new baseline regression: it was already blocked.
+main10 exposes quality-context loss in its accessibility fallback. main11 adds
+the same original lambda telescope there and in the well-founded fallback;
+this is a diagnostic experiment, not yet a coverage improvement.
+
+Underlying Wf evidence from main10-frontiers/Corelib/Init/Wf/source.ndjson:
+Acc_inv has body_state=statement_only, body=null. Fix_F and Fix_F_2 are transparent
+but termination.state=deferred: rewritten body inference rejects recursive calls
+as not structural subterms. Their original source recursively calls on
+Acc_inv a ...; proof abstraction hides this transparent projection from guard
+reduction. transFixAcc only handles a Prop inductive lacking large elimination,
+so it is not the appropriate lowering for ordinary source Acc.
+
+Next investigate SOURCE definitional expansion of transparent proof projections
+in decreasing arguments before obligation extraction, retaining native source
+conversion/roundtrip evidence and recomputing dependencies. The resulting
+constructor-field call should use existing structural/iota lowering. Do not
+replace an arbitrary proof prerequisite by an IH or weaken recursive-call audit.
+The exported statement of Acc_inv can remain a proof task; only transparent
+computational occurrences expanded by Rocq conversion are candidates.

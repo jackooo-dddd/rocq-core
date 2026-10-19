@@ -15,3 +15,41 @@ __pycache__/
 *.o
 *.so
 *.tar.gz
+
+# Remote-only historical/intermediate outputs; retained on the workstation.
+/work/runs/*
+/work/snapshots/*
+!/work/snapshots/quality-main75/
+/work/tests/
+/work/logs/
+/experiments/*/scratch/
+/experiments/mechanical-nat-eq-20261019/runs/probe-v1/
+/experiments/*/translator/reports/
+/experiments/*/translator/rocq/exporter/_build/
+/translator/rocq/exporter/_build/
+*.a
+*.cmo
+*.cmxa
+*.cmt
+*.cmti
+*.aux
+*.lia.cache
+*.nia.cache
+
+# Generated mutation outputs are recreated from the small historical-bootstrap fixture.
+/experiments/mechanical-nat-eq-20261019/tests/forged-*.json
+
+# Plain copies of losslessly compressed final evidence; restore with scripts/restore_artifacts.py.
+/experiments/mechanical-nat-eq-20261019/results/Corelib/Init/Byte.json
+/experiments/mechanical-nat-eq-20261019/results/Corelib/Init/Equality.json
+/experiments/mechanical-nat-eq-20261019/results/Corelib/Init/Logic.json
+/experiments/mechanical-nat-eq-20261019/results/Corelib/Init/Specif.json
+/experiments/mechanical-nat-eq-20261019/results/Corelib/ssr/ssrbool.json
+/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Init/Byte/translation_report.json
+/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Init/Logic/translation_report.json
+/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Init/Specif/translation_report.json
+/results/corelib-complete/Corelib/Init/Byte.json
+/results/corelib-complete/Corelib/Init/Equality.json
+/results/corelib-complete/Corelib/Init/Logic.json
+/results/corelib-complete/Corelib/Init/Specif.json
+/results/corelib-complete/Corelib/ssr/ssrbool.json

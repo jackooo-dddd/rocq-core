@@ -1,0 +1,136 @@
+{
+  "interpretation": "488 means not yet bridged by this campaign, not proof that no correspondence exists.",
+  "formally_refuted_expected_mapping": [
+    {
+      "mapping": "Decimal.uint -> Nat via Corelib.Init.Nat.of_uint",
+      "reason": "Nil and D0 Nil have the same numeric value but are distinct representations.",
+      "proof": "NativeBridge.decimal_numeric_decode_not_injective",
+      "file": "fragments/Boundaries.lean",
+      "alternative": "decimalDigitsIso: Decimal.uint <-> List (Fin 10)"
+    }
+  ],
+  "representation_boundaries_not_universal_impossibility_proofs": [
+    {
+      "mapping": "positive <-> all Nat preserving numeric value",
+      "issue": "zero has no source positive value",
+      "proved_alternative": "positiveIso: positive <-> {n : Nat // 0 < n}"
+    },
+    {
+      "mapping": "bounded primitive array <-> plain Array A, forgetting fallback and length bound",
+      "issue": "forgets observable fallback and bounded-size semantics",
+      "proved_alternative": "arrayIso: bounded length + Vector A + fallback"
+    },
+    {
+      "mapping": "primitive byte string <-> UTF-8 String with unchanged bytes",
+      "issue": "arbitrary bytes and bounded length do not match unrestricted valid UTF-8 text",
+      "proved_alternative": "byteStringIso: bounded Vector (BitVec 8)"
+    },
+    {
+      "mapping": "Decimal/Hexadecimal digits <-> Nat by numeric value",
+      "issue": "numeric value loses leading zeros; Decimal counterexample is formalized, Hexadecimal not separately formalized here",
+      "proved_alternative": "digit lists with Fin 10 / Fin 16 elements"
+    },
+    {
+      "mapping": "Rocq Sort-polymorphic containers <-> Lean Type-polymorphic containers for all sorts",
+      "issue": "current bridges do not cover the source Prop branch",
+      "proved_alternative": "36 automatic interfaces explicitly specialize naked sort parameters to Type instances"
+    }
+  ],
+  "currently_unproved_examples": [
+    {
+      "family": "floating point",
+      "examples": [
+        "Corelib.Floats.PrimFloat.add",
+        "Corelib.Floats.PrimFloat.div",
+        "Corelib.Floats.SpecFloat.SFadd"
+      ],
+      "reason": "missing native Float value/operation bridge; enum float_class bridge does not establish floating-point arithmetic correspondence"
+    },
+    {
+      "family": "dependent eliminators and projections",
+      "examples": [
+        "Corelib.Init.Datatypes.CompareSpecT_rect",
+        "Corelib.Init.Specif.sig2_rec",
+        "Corelib.Init.Specif.projT3"
+      ],
+      "reason": "input-dependent result types need dependent transport, beyond the current nondependent function combinator"
+    },
+    {
+      "family": "relation structures",
+      "examples": [
+        "Corelib.Classes.CMorphisms.PER_type_morphism",
+        "Corelib.Classes.CMorphisms.PartialApplication"
+      ],
+      "reason": "missing record/structure correspondence including fields and proof parameters"
+    },
+    {
+      "family": "ssreflect wrappers and specifications",
+      "examples": [
+        "Corelib.ssr.ssrbool.SimplPred",
+        "Corelib.ssr.ssrbool.SimplRel",
+        "Corelib.ssr.ssrbool.alt_spec"
+      ],
+      "reason": "no registered correspondence for required wrapper/indexed specification types"
+    },
+    {
+      "family": "signed digit formats",
+      "examples": [
+        "Corelib.Init.Decimal.signed_int",
+        "Corelib.Init.Hexadecimal.signed_int"
+      ],
+      "reason": "unsigned digit-list bridge does not by itself prove the signed representation bridge"
+    },
+    {
+      "family": "already known type bridge not loaded in a profile",
+      "examples": [
+        "Corelib.BinNums.NatDef.N.compare",
+        "Corelib.BinNums.NatDef.N.land"
+      ],
+      "reason": "audit reports no registered N bijection even though binaryNatIso exists elsewhere; this is coverage/registration work, not evidence of semantic impossibility"
+    }
+  ],
+  "unbridged_total": 488,
+  "unbridged_by_module": {
+    "Corelib.BinNums.NatDef": 11,
+    "Corelib.BinNums.PosDef": 16,
+    "Corelib.Classes.CMorphisms": 48,
+    "Corelib.Classes.CRelationClasses": 29,
+    "Corelib.Classes.Equivalence": 3,
+    "Corelib.Classes.Morphisms": 5,
+    "Corelib.Classes.RelationClasses": 21,
+    "Corelib.Classes.SetoidTactics": 2,
+    "Corelib.Floats.FloatAxioms": 9,
+    "Corelib.Floats.FloatOps": 8,
+    "Corelib.Floats.PrimFloat": 36,
+    "Corelib.Floats.SpecFloat": 44,
+    "Corelib.Init.Byte": 2,
+    "Corelib.Init.Datatypes": 35,
+    "Corelib.Init.Decimal": 14,
+    "Corelib.Init.Hexadecimal": 13,
+    "Corelib.Init.Logic": 6,
+    "Corelib.Init.Nat": 9,
+    "Corelib.Init.Number": 8,
+    "Corelib.Init.Specif": 16,
+    "Corelib.Init.Sumbool": 1,
+    "Corelib.Init.Wf": 9,
+    "Corelib.Numbers.BinNums": 6,
+    "Corelib.Numbers.Cyclic.Int63.CarryType": 1,
+    "Corelib.Numbers.Cyclic.Int63.PrimInt63": 7,
+    "Corelib.Numbers.Cyclic.Int63.Uint63Axioms": 8,
+    "Corelib.Relations.Relation_Definitions": 4,
+    "Corelib.Strings.PrimString": 6,
+    "Corelib.ssr.ssrbool": 73,
+    "Corelib.ssr.ssreflect_rw": 24,
+    "Corelib.ssr.ssrfun": 14
+  },
+  "unbridged_with_recorded_interface_skip_reason": 358,
+  "unbridged_without_recorded_interface_skip_reason": 130,
+  "other_categories": {
+    "proof_parameter_declarations": 331,
+    "partial_statement_correspondences": 702,
+    "type_valued_statement": {
+      "source": "Corelib.Classes.CMorphisms.flip_arrow",
+      "reason": "needs a type correspondence, not Prop iff"
+    }
+  }
+}

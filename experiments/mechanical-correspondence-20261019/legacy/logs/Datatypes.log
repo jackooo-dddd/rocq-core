@@ -1,0 +1,39 @@
+/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Datatypes.lean:207:32: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+case true.mpr
+h : boolTo Rocq.Corelib.Init.Datatypes.bool.true = true
+⊢ Rocq.Corelib.Init.Datatypes.is_true Rocq.Corelib.Init.Datatypes.bool.true
+/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Datatypes.lean:210:28: error: Application type mismatch: The argument
+  h
+has type
+  Rocq.Corelib.Init.Datatypes.is_true Rocq.Corelib.Init.Datatypes.bool.false
+but is expected to have type
+  ?m.44 = ?m.45
+in the application
+  congrArg boolTo h
+/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Datatypes.lean:221:44: error: Type mismatch
+  (listTo xs).length
+has type
+  Nat
+but is expected to have type
+  Rocq.Corelib.Init.Datatypes.nat
+/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Datatypes.lean:220:2: error: Cannot add `simp` attribute to `length_agrees`: It is not a proposition nor a definition (to unfold)
+
+Note: The `[simp]` attribute can be added to lemmas that should be automatically used by the simplifier and to definitions that the simplifier should automatically unfold
+/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Datatypes.lean:222:95: error: Type mismatch
+  (listTo xs).length
+has type
+  Nat
+but is expected to have type
+  Rocq.Corelib.Init.Datatypes.nat
+/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Datatypes.lean:223:43: error: Application type mismatch: The argument
+  Rocq.Corelib.Init.Datatypes.length A xs
+has type
+  Rocq.Corelib.Init.Datatypes.nat
+but is expected to have type
+  Nat
+in the application
+  Nat.succ (Rocq.Corelib.Init.Datatypes.length A xs)
+/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Datatypes.lean:323:0: error: Unapproved axiom in NativeBridge.is_true_agrees: sorryAx

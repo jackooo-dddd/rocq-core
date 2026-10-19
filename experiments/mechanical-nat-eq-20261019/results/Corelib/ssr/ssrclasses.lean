@@ -1,0 +1,8 @@
+import Rocq2Lean
+#rocq2lean_import "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/ssr/ssrclasses/source.ndjson" "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/ssr/ssrclasses/translation_report.json" "c15b0ae80c785b7bf374f8d6a56aa893ae9de7bf0565276d2b15c5686a3cc824" "f5561dd7-6b4a-4f05-aafa-43af37b702de" "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/ssr/ssrclasses/contract.json" "b8f164bc04d48f4da6ea3bab5c2c93488fc2860b13036bc758b1925258cc33b6"
+
+set_option pp.universes true
+#print «Rocq».«Corelib».«ssr».«ssrclasses».«Reflexive»
+#print «Rocq».«Corelib».«ssr».«ssrclasses».«eq_Reflexive».«statement»
+#print «Rocq».«Corelib».«ssr».«ssrclasses».«iff_Reflexive».«statement»
+#print «Rocq».«Corelib».«ssr».«ssrclasses».«reflexivity».«statement»

@@ -1,0 +1,41 @@
+import Rocq2Lean
+#rocq2lean_import "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Floats/PrimFloat/source.ndjson" "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Floats/PrimFloat/translation_report.json" "fe5813a5f89185e03db391d8874b95244581debdf182724e685d7bafba53fadf" "a9f013eb-44ba-475e-85ff-81a0e49c3474" "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Floats/PrimFloat/contract.json" "d68404432659445d6d3c6e2bf6a42dc80b7a410062e7d8c712e30a8d6229d73b"
+
+set_option pp.universes true
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«Leibniz».«eqb»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«abs»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«add»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«classify»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«compare»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«div»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«eqb»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«float»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«float_comparison»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«float_wrap»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«float_wrapper»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«frshiftexp»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«get_sign»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«infinity»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«is_finite»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«is_infinity»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«is_nan»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«is_zero»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«ldshiftexp»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«leb»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«ltb»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«mul»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«nan»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«neg_infinity»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«neg_zero»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«next_down»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«next_up»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«normfr_mantissa»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«of_uint63»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«one»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«opp»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«parser»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«printer»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«sqrt»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«sub»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«two»
+#print «Rocq».«Corelib».«Floats».«PrimFloat».«zero»

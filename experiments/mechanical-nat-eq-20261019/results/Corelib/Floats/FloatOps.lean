@@ -1,0 +1,12 @@
+import Rocq2Lean
+#rocq2lean_import "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Floats/FloatOps/source.ndjson" "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Floats/FloatOps/translation_report.json" "ca5c9870da24e76a668eacfc29da6330e369ad5d302d4ea2e7637680e3cb97b3" "4cc318b1-a9b8-496d-b071-7f4e7dc3e427" "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Floats/FloatOps/contract.json" "057acb43784e3a2abce88d2be53c7e884d0dd9e8abe082a6da3f18c688a42ebe"
+
+set_option pp.universes true
+#print «Rocq».«Corelib».«Floats».«FloatOps».«Prim2SF»
+#print «Rocq».«Corelib».«Floats».«FloatOps».«SF2Prim»
+#print «Rocq».«Corelib».«Floats».«FloatOps».«Z».«frexp»
+#print «Rocq».«Corelib».«Floats».«FloatOps».«Z».«ldexp»
+#print «Rocq».«Corelib».«Floats».«FloatOps».«emax»
+#print «Rocq».«Corelib».«Floats».«FloatOps».«prec»
+#print «Rocq».«Corelib».«Floats».«FloatOps».«shift»
+#print «Rocq».«Corelib».«Floats».«FloatOps».«ulp»

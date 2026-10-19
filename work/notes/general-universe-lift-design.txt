@@ -1,0 +1,59 @@
+Investigation only; no translation rule integrated or gains counted.
+
+Largest current nonprimitive frontiers (native-string full, 2180 fixed roots):
+CMorphisms.respectful:43 blocked roots reach it.
+RelationClasses.binary_relation:36.
+Init.Logic.ex_proj1 (template Prop argument):27.
+CRelationClasses.relation_equivalence:20; complement:18.
+See native-string-frontiers.json for the exact graph and remaining categories.
+
+Do not solve these by specializing public universes.
+respectful's source type uses crelation@(v4,v5) (A->B), while its argument is
+Type(max v0 v2). Native constraints include v0,v2<=v4 and v0,v1,v3<=v5.
+Its body produces a type at max(v0,v1,v3), used at v5 by source cumulativity.
+Merely relaxing R3, dropping the interface check, or lowering v5 loses the public
+interface and is not an admissible repair.
+
+Candidate faithful route:
+1. Instantiate transparent source type abbreviations with their actual universe
+   arguments before delta-beta expansion. Existing erasingPoly only permits
+   bodies with no universe variables, so it excludes crelation.
+2. Transport a type into a larger sort with PULift and inverse up/down coercions.
+   Arbitrary-type roundtrips are definitional and axiom-free, as for the existing
+   Prop lift. Preserve original codomain and all quantification ranges.
+3. Interpret source upper universe constraints as maxima containing the lower
+   parameters plus a fresh upper parameter (not lowering to the minimal level).
+   This is already done in some global-level paths; local polymorphic constraints
+   require a corresponding checked interpretation. Caller/callee instances must
+   commute with the interpretation. Negative-weight constraints need separate
+   handling; never assume all such constraints are expressible as maxima.
+4. Separate arbitrary-sort lift evidence from existing prop_lift metadata.
+   Existing negative tests reject non-Prop lifts under that rule and must retain
+   that meaning. New audit checks source sort bound, exact image level, only
+   PULift/up/down transports, and exact original interface.
+5. Template Prop arguments additionally need type-argument lifts and dependent
+   family transport; simply removing checkTemplateArgs is not a repair.
+
+New source fixture fixtures/corelib-universe-lift covers global and local strict
+bounds, raising/lowering values and roundtrips. Prototype
+work/tests/universe-lift-design/Correspondence.lean checks general lift and the
+respectful result isomorphism. It is only a design check, not translator coverage.
+
+Baseline protection correction:
+The first synthetic fixture was outside the protected manifest. Four global
+definitions were accepted by the older unprotected specialization policy; the two
+explicitly polymorphic definitions failed. Those four are NOT evidence of public
+interface preservation. Added all six fixture names to the active protected
+manifest (only strengthening protection; every original6654 name retained), updated
+its pin and family count. Repeat baseline in universe-lift-before-protected.
+Historical frozen source/manifests and measurements are unchanged.
+
+Protected baseline result:
+The stronger six-name binding still accepts the four global cases, through the
+existing result_sort_inherited=True R2B-V path, not because of unprotected status.
+raise_type is emitted Type u_low -> Type u_low; the result-only high level is
+recorded as sort_lowered_levels. This preserves the input quantification range
+but does not retain the literal declared upper result sort. Do not claim that
+this probe demonstrates general universe transport. The two explicit-polymorphic
+cases remain KERNEL_REJECTED/BLOCKED_DEPENDENCY. General lift needs a separate
+evidence path preserving the chosen upper result sort and all call-site behavior.

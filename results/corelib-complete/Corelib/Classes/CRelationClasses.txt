@@ -1,0 +1,463 @@
+rocq2lean: 81 root(s) TRANSLATED_AND_CHECKED; summary {"bootstrap_resolved":0,"generated_helpers":0,"not_ok":28,"roots":81,"translated_dependencies":8}
+def Rocq.Corelib.Classes.CRelationClasses.Antisymmetric.{v_0, v_1, v_2} : (A : Type v_0) →
+  (eqA : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A) →
+    Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_0, v_1} A eqA →
+      Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_2} A → Type (max (max v_0 v_1) v_2) :=
+fun A eqA equ R => (x y : A) → R x y → R y x → eqA x y
+def Rocq.Corelib.Classes.CRelationClasses.Asymmetric.{v_0, v_1, v_2} : (A : Type v_0) →
+  (A → A → Type v_2) → Type (max (max v_0 v_1) v_2) :=
+fun A R => (x y : A) → R x y → PULift.{v_1 + 1, 0} (∀ (a : R y x), Rocq.Corelib.Init.Logic.False)
+inductive Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_0, v_1} : (A : Type v_0) →
+  Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A → Type (max v_0 v_1)
+number of parameters: 2
+constructors:
+Rocq.Corelib.Classes.CRelationClasses.Equivalence.Build_Equivalence : (A : Type v_0) →
+  (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A) →
+    Rocq.Corelib.Classes.CRelationClasses.Reflexive.{v_0, v_1} A R →
+      Rocq.Corelib.Classes.CRelationClasses.Symmetric.{v_0, v_1} A R →
+        Rocq.Corelib.Classes.CRelationClasses.Transitive.{v_0, v_1} A R →
+          Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_0, v_1} A R
+def Rocq.Corelib.Classes.CRelationClasses.Equivalence_PER.{v_0, v_1} : (A : Type v_0) →
+  (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A) →
+    Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_0, v_1} A R →
+      Rocq.Corelib.Classes.CRelationClasses.PER.{v_0, v_1} A R :=
+fun A R H =>
+  Rocq.Corelib.Classes.CRelationClasses.PER.Build_PER.{v_0, v_1} A R
+    (Rocq.Corelib.Classes.CRelationClasses.Equivalence_Symmetric.{v_0, v_1} A R H)
+    (Rocq.Corelib.Classes.CRelationClasses.Equivalence_Transitive.{v_0, v_1} A R H)
+def Rocq.Corelib.Classes.CRelationClasses.Equivalence_Reflexive.{v_0, v_1} : (A : Type v_0) →
+  (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A) →
+    Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_0, v_1} A R →
+      Rocq.Corelib.Classes.CRelationClasses.Reflexive.{v_0, v_1} A R :=
+fun A R Equivalence =>
+  Rocq.Corelib.Classes.CRelationClasses.Equivalence.rec.{max (v_0 + 1) (v_1 + 1), v_0, v_1}
+    (fun Equivalence_Reflexive Equivalence_Symmetric Equivalence_Transitive => Equivalence_Reflexive) Equivalence
+def Rocq.Corelib.Classes.CRelationClasses.Equivalence_Symmetric.{v_0, v_1} : (A : Type v_0) →
+  (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A) →
+    Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_0, v_1} A R →
+      Rocq.Corelib.Classes.CRelationClasses.Symmetric.{v_0, v_1} A R :=
+fun A R Equivalence =>
+  Rocq.Corelib.Classes.CRelationClasses.Equivalence.rec.{max (v_0 + 1) (v_1 + 1), v_0, v_1}
+    (fun Equivalence_Reflexive Equivalence_Symmetric Equivalence_Transitive => Equivalence_Symmetric) Equivalence
+def Rocq.Corelib.Classes.CRelationClasses.Equivalence_Transitive.{v_0, v_1} : (A : Type v_0) →
+  (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A) →
+    Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_0, v_1} A R →
+      Rocq.Corelib.Classes.CRelationClasses.Transitive.{v_0, v_1} A R :=
+fun A R Equivalence =>
+  Rocq.Corelib.Classes.CRelationClasses.Equivalence.rec.{max (v_0 + 1) (v_1 + 1), v_0, v_1}
+    (fun Equivalence_Reflexive Equivalence_Symmetric Equivalence_Transitive => Equivalence_Transitive) Equivalence
+def Rocq.Corelib.Classes.CRelationClasses.Irreflexive.{v_0, v_1} : (A : Type v_0) →
+  Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A → Type v_0 :=
+fun A R =>
+  Rocq.Corelib.Classes.CRelationClasses.Reflexive.{v_0, 0} A
+    (Rocq.Corelib.Classes.CRelationClasses.complement.{v_0, v_1} A R)
+inductive Rocq.Corelib.Classes.CRelationClasses.PER.{v_0, v_1} : (A : Type v_0) →
+  Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A → Type (max v_0 v_1)
+number of parameters: 2
+constructors:
+Rocq.Corelib.Classes.CRelationClasses.PER.Build_PER : (A : Type v_0) →
+  (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A) →
+    Rocq.Corelib.Classes.CRelationClasses.Symmetric.{v_0, v_1} A R →
+      Rocq.Corelib.Classes.CRelationClasses.Transitive.{v_0, v_1} A R →
+        Rocq.Corelib.Classes.CRelationClasses.PER.{v_0, v_1} A R
+def Rocq.Corelib.Classes.CRelationClasses.PER_Symmetric.{v_0, v_1} : (A : Type v_0) →
+  (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A) →
+    Rocq.Corelib.Classes.CRelationClasses.PER.{v_0, v_1} A R →
+      Rocq.Corelib.Classes.CRelationClasses.Symmetric.{v_0, v_1} A R :=
+fun A R PER =>
+  Rocq.Corelib.Classes.CRelationClasses.PER.rec.{max (v_0 + 1) (v_1 + 1), v_0, v_1}
+    (fun PER_Symmetric PER_Transitive => PER_Symmetric) PER
+def Rocq.Corelib.Classes.CRelationClasses.PER_Transitive.{v_0, v_1} : (A : Type v_0) →
+  (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A) →
+    Rocq.Corelib.Classes.CRelationClasses.PER.{v_0, v_1} A R →
+      Rocq.Corelib.Classes.CRelationClasses.Transitive.{v_0, v_1} A R :=
+fun A R PER =>
+  Rocq.Corelib.Classes.CRelationClasses.PER.rec.{max (v_0 + 1) (v_1 + 1), v_0, v_1}
+    (fun PER_Symmetric PER_Transitive => PER_Transitive) PER
+def Rocq.Corelib.Classes.CRelationClasses.PartialOrder.{v_0, v_1, v_2, v_3, v_4} : (A : Type v_0) →
+  (eqA : A → A → Type v_3) →
+    Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_0, v_3} A eqA →
+      (R : A → A → Type v_3) →
+        Rocq.Corelib.Classes.CRelationClasses.PreOrder.{v_0, v_3} A R → Type (max (max v_0 v_2) v_3) :=
+fun A eqA equ R preo =>
+  PULift.{max (max (v_0 + 1) (v_2 + 1)) (v_3 + 1), max (v_0 + 1) (v_3 + 1)}
+    ((x y : A) →
+      Rocq.Corelib.Init.Datatypes.prod.{v_3 + 1, v_3 + 1}
+        (eqA x y →
+          (fun x y => Rocq.Corelib.Init.Datatypes.prod.{v_3 + 1, v_3 + 1} (R x y) ((fun x y => R y x) x y)) x y)
+        ((fun x y => Rocq.Corelib.Init.Datatypes.prod.{v_3 + 1, v_3 + 1} (R x y) ((fun x y => R y x) x y)) x y →
+          eqA x y))
+opaque Rocq.Corelib.Classes.CRelationClasses.PartialOrder_inverse.{v_0, v_1, v_2, v_3, v_4} : (A : Type v_0) →
+  (eqA : A → A → Type v_4) →
+    Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_0, v_4} A eqA →
+      (R : A → A → Type v_4) →
+        Rocq.Corelib.Classes.CRelationClasses.PreOrder.{v_0, v_4} A R →
+          ((x y : A) →
+              Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1}
+                (eqA x y →
+                  (fun x y => Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1} (R x y) ((fun x y => R y x) x y)) x y)
+                ((fun x y => Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1} (R x y) ((fun x y => R y x) x y)) x y →
+                  eqA x y)) →
+            (x y : A) →
+              Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1}
+                (eqA x y →
+                  (fun x y =>
+                      Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1} ((fun x y => R y x) x y)
+                        ((fun x y => (fun x y => R y x) y x) x y))
+                    x y)
+                ((fun x y =>
+                      Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1} ((fun x y => R y x) x y)
+                        ((fun x y => (fun x y => R y x) y x) x y))
+                    x y →
+                  eqA x y)
+inductive Rocq.Corelib.Classes.CRelationClasses.PreOrder.{v_0, v_1} : (A : Type v_0) →
+  Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A → Type (max v_0 v_1)
+number of parameters: 2
+constructors:
+Rocq.Corelib.Classes.CRelationClasses.PreOrder.Build_PreOrder : (A : Type v_0) →
+  (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A) →
+    Rocq.Corelib.Classes.CRelationClasses.Reflexive.{v_0, v_1} A R →
+      Rocq.Corelib.Classes.CRelationClasses.Transitive.{v_0, v_1} A R →
+        Rocq.Corelib.Classes.CRelationClasses.PreOrder.{v_0, v_1} A R
+def Rocq.Corelib.Classes.CRelationClasses.PreOrder_Reflexive.{v_0, v_1} : (A : Type v_0) →
+  (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A) →
+    Rocq.Corelib.Classes.CRelationClasses.PreOrder.{v_0, v_1} A R →
+      Rocq.Corelib.Classes.CRelationClasses.Reflexive.{v_0, v_1} A R :=
+fun A R PreOrder =>
+  Rocq.Corelib.Classes.CRelationClasses.PreOrder.rec.{max (v_0 + 1) (v_1 + 1), v_0, v_1}
+    (fun PreOrder_Reflexive PreOrder_Transitive => PreOrder_Reflexive) PreOrder
+def Rocq.Corelib.Classes.CRelationClasses.PreOrder_Transitive.{v_0, v_1} : (A : Type v_0) →
+  (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A) →
+    Rocq.Corelib.Classes.CRelationClasses.PreOrder.{v_0, v_1} A R →
+      Rocq.Corelib.Classes.CRelationClasses.Transitive.{v_0, v_1} A R :=
+fun A R PreOrder =>
+  Rocq.Corelib.Classes.CRelationClasses.PreOrder.rec.{max (v_0 + 1) (v_1 + 1), v_0, v_1}
+    (fun PreOrder_Reflexive PreOrder_Transitive => PreOrder_Transitive) PreOrder
+def Rocq.Corelib.Classes.CRelationClasses.Reflexive.{v_0, v_1} : (A : Type v_0) →
+  Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A → Type (max v_0 v_1) :=
+fun A R => (x : A) → R x x
+inductive Rocq.Corelib.Classes.CRelationClasses.RewriteRelation.{v_0, v_1} : (A : Type v_0) →
+  Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A → Prop
+number of parameters: 2
+constructors:
+Rocq.Corelib.Classes.CRelationClasses.RewriteRelation.Build_RewriteRelation : ∀ (A : Type v_0)
+  (RA : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A),
+  Rocq.Corelib.Classes.CRelationClasses.RewriteRelation.{v_0, v_1} A RA
+def Rocq.Corelib.Classes.CRelationClasses.RewriteRelation_instance_0.statement.{v_0} : Prop :=
+Rocq.Corelib.Classes.CRelationClasses.RewriteRelation.{max 1 v_0, 0} (PULift.{(max 1 v_0) + 1, 1} Prop) fun a a_1 =>
+  PULift.{1, 0}
+    (Rocq.Corelib.Program.Basics.impl (PULift.down.{(max 1 v_0) + 1, 1} a) (PULift.down.{(max 1 v_0) + 1, 1} a_1))
+def Rocq.Corelib.Classes.CRelationClasses.RewriteRelation_instance_1.statement.{v_0} : Prop :=
+Rocq.Corelib.Classes.CRelationClasses.RewriteRelation.{max 1 v_0, 0} (PULift.{(max 1 v_0) + 1, 1} Prop) fun a a_1 =>
+  PULift.{1, 0}
+    (Rocq.Corelib.Init.Logic.iff (PULift.down.{(max 1 v_0) + 1, 1} a) (PULift.down.{(max 1 v_0) + 1, 1} a_1))
+def Rocq.Corelib.Classes.CRelationClasses.RewriteRelation_instance_2.statement.{v_0, v_1, v_2, v_3} : Prop :=
+∀ (A : Type v_0),
+  Rocq.Corelib.Classes.CRelationClasses.RewriteRelation.{max (max v_0 v_1) (v_3 + 1), max (max v_0 v_2) v_3}
+    (PULift.{(max (max v_0 v_1) (v_3 + 1)) + 1, max (v_0 + 1) (v_3 + 2)} (A → A → Type v_3)) fun a a_1 =>
+    PULift.{(max (max v_0 v_2) v_3) + 1, max (v_0 + 1) (v_3 + 1)}
+      ((x y : A) →
+        Rocq.Corelib.Init.Datatypes.prod.{v_3 + 1, v_3 + 1}
+          (PULift.down.{(max (max v_0 v_1) (v_3 + 1)) + 1, max (v_0 + 1) (v_3 + 2)} a x y →
+            PULift.down.{(max (max v_0 v_1) (v_3 + 1)) + 1, max (v_0 + 1) (v_3 + 2)} a_1 x y)
+          (PULift.down.{(max (max v_0 v_1) (v_3 + 1)) + 1, max (v_0 + 1) (v_3 + 2)} a_1 x y →
+            PULift.down.{(max (max v_0 v_1) (v_3 + 1)) + 1, max (v_0 + 1) (v_3 + 2)} a x y))
+inductive Rocq.Corelib.Classes.CRelationClasses.StrictOrder.{v_0, v_1} : (A : Type v_0) →
+  Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A → Type (max v_0 v_1)
+number of parameters: 2
+constructors:
+Rocq.Corelib.Classes.CRelationClasses.StrictOrder.Build_StrictOrder : (A : Type v_0) →
+  (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A) →
+    Rocq.Corelib.Classes.CRelationClasses.Irreflexive.{v_0, v_1} A R →
+      Rocq.Corelib.Classes.CRelationClasses.Transitive.{v_0, v_1} A R →
+        Rocq.Corelib.Classes.CRelationClasses.StrictOrder.{v_0, v_1} A R
+def Rocq.Corelib.Classes.CRelationClasses.StrictOrder_Asymmetric.statement.{v_0, v_1, v_2} : Prop :=
+∀ (A : Type v_0) (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_2} A)
+  (H : Rocq.Corelib.Classes.CRelationClasses.StrictOrder.{v_0, v_2} A R) (x y : A) (a : R x y) (a : R y x),
+  Rocq.Corelib.Init.Logic.False
+def Rocq.Corelib.Classes.CRelationClasses.StrictOrder_Irreflexive.statement.{v_0, v_1} : Prop :=
+∀ (A : Type v_0) (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A)
+  (StrictOrder : Rocq.Corelib.Classes.CRelationClasses.StrictOrder.{v_0, v_1} A R) (x : A) (a : R x x),
+  Rocq.Corelib.Init.Logic.False
+def Rocq.Corelib.Classes.CRelationClasses.StrictOrder_Transitive.{v_0, v_1} : (A : Type v_0) →
+  (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A) →
+    Rocq.Corelib.Classes.CRelationClasses.StrictOrder.{v_0, v_1} A R →
+      Rocq.Corelib.Classes.CRelationClasses.Transitive.{v_0, v_1} A R :=
+fun A R StrictOrder =>
+  Rocq.Corelib.Classes.CRelationClasses.StrictOrder.rec.{max (v_0 + 1) (v_1 + 1), v_0, v_1}
+    (fun StrictOrder_Irreflexive StrictOrder_Transitive => StrictOrder_Transitive) StrictOrder
+def Rocq.Corelib.Classes.CRelationClasses.Symmetric.{v_0, v_1} : (A : Type v_0) →
+  Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A → Type (max v_0 v_1) :=
+fun A R => (x y : A) → R x y → R y x
+def Rocq.Corelib.Classes.CRelationClasses.Transitive.{v_0, v_1} : (A : Type v_0) →
+  Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A → Type (max v_0 v_1) :=
+fun A R => (x y z : A) → R x y → R y z → R x z
+def Rocq.Corelib.Classes.CRelationClasses.antisymmetry.{v_0, v_1, v_2} : (A : Type v_0) →
+  (eqA : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A) →
+    (equ : Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_0, v_1} A eqA) →
+      (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_2} A) →
+        Rocq.Corelib.Classes.CRelationClasses.Antisymmetric.{v_0, v_1, v_2} A eqA equ R →
+          (x y : A) → R x y → R y x → eqA x y :=
+fun A eqA equ R Antisymmetric => Antisymmetric
+def Rocq.Corelib.Classes.CRelationClasses.arrow.{v_0, v_1} : Type v_0 → Type v_1 → Type (max v_0 v_1) :=
+fun A B => A → B
+def Rocq.Corelib.Classes.CRelationClasses.arrow_Reflexive.{v_0, v_1} : (x : Type v_1) → x → x :=
+Rocq.Corelib.Classes.CRelationClasses.arrow_Reflexive_obligation_1.{v_1}
+def Rocq.Corelib.Classes.CRelationClasses.arrow_Reflexive_obligation_1.{v_0} : (x : Type v_0) →
+  Rocq.Corelib.Classes.CRelationClasses.arrow.{v_0, v_0} x x :=
+fun x a => a
+def Rocq.Corelib.Classes.CRelationClasses.arrow_Transitive.{v_0, v_1} : (x y z : Type v_1) →
+  (x → y) → (y → z) → x → z :=
+Rocq.Corelib.Classes.CRelationClasses.arrow_Transitive_obligation_1.{v_1}
+def Rocq.Corelib.Classes.CRelationClasses.arrow_Transitive_obligation_1.{v_0} : (x y z : Type v_0) →
+  Rocq.Corelib.Classes.CRelationClasses.arrow.{v_0, v_0} x y →
+    Rocq.Corelib.Classes.CRelationClasses.arrow.{v_0, v_0} y z →
+      Rocq.Corelib.Classes.CRelationClasses.arrow.{v_0, v_0} x z :=
+fun x y z a a_1 a_2 => a_1 (a a_2)
+def Rocq.Corelib.Classes.CRelationClasses.asymmetry.statement.{v_0, v_1, v_2} : Prop :=
+∀ (A : Type v_0) (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_2} A)
+  (Asymmetric : Rocq.Corelib.Classes.CRelationClasses.Asymmetric.{v_0, v_1, v_2} A R) (x y : A) (a : R x y) (a : R y x),
+  Rocq.Corelib.Init.Logic.False
+def Rocq.Corelib.Classes.CRelationClasses.complement.{v_0, v_1} : (A : Type v_0) → (A → A → Type v_1) → A → A → Type :=
+fun A R a a_1 => PULift.{1, 0} (∀ (a : R a a_1), Rocq.Corelib.Init.Logic.False)
+def Rocq.Corelib.Classes.CRelationClasses.complement_Irreflexive.statement.{v_0, v_1} : Prop :=
+∀ (A : Type v_0) (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A)
+  (H : Rocq.Corelib.Classes.CRelationClasses.Reflexive.{v_0, v_1} A R) (x : A)
+  (a : Rocq.Corelib.Classes.CRelationClasses.complement.{v_0, v_1} A R x x), Rocq.Corelib.Init.Logic.False
+def Rocq.Corelib.Classes.CRelationClasses.complement_Symmetric.statement.{v_0, v_1} : Prop :=
+∀ (A : Type v_0) (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A)
+  (H : Rocq.Corelib.Classes.CRelationClasses.Symmetric.{v_0, v_1} A R) (x y : A)
+  (a : Rocq.Corelib.Classes.CRelationClasses.complement.{v_0, v_1} A R x y) (a : R y x), Rocq.Corelib.Init.Logic.False
+def Rocq.Corelib.Classes.CRelationClasses.complement_inverse.statement.{v_0, v_1, v_2, v_3} : Prop :=
+∀ (A : Type v_0) (R : A → A → Type v_1),
+  Rocq.Corelib.Init.Logic.eq.{max 2 (v_0 + 1)} (A → A → Type)
+    (fun a a_1 => PULift.{1, 0} (∀ (a : (fun x y => R y x) a a_1), Rocq.Corelib.Init.Logic.False)) fun a a_1 =>
+    PULift.{1, 0} ((fun x y => ∀ (a : R x y), Rocq.Corelib.Init.Logic.False) a_1 a)
+def Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} : Type v_0 → Type (max v_0 (v_1 + 1)) :=
+fun A => A → A → Type v_1
+def Rocq.Corelib.Classes.CRelationClasses.eq_Reflexive.statement.{v_0} : Prop :=
+∀ (A : Type v_0) (x : A), Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A x x
+def Rocq.Corelib.Classes.CRelationClasses.eq_Symmetric.statement.{v_0} : Prop :=
+∀ (A : Type v_0) (x y : A), Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A x y → Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A y x
+def Rocq.Corelib.Classes.CRelationClasses.eq_Transitive.statement.{v_0} : Prop :=
+∀ (A : Type v_0) (x y z : A),
+  Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A x y →
+    Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A y z → Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A x z
+def RocqPending.Corelib.Classes.CRelationClasses.eq_equivalence.{v_0} : {h_Corelib_Classes_CRelationClasses_eq_equivalence__rocq2lean_obligation_1 :
+    Rocq.Corelib.Classes.CRelationClasses.eq_equivalence__rocq2lean_obligation_1.statement.{v_0}} →
+  {h_Corelib_Classes_CRelationClasses_eq_equivalence__rocq2lean_obligation_2 :
+      Rocq.Corelib.Classes.CRelationClasses.eq_equivalence__rocq2lean_obligation_2.statement.{v_0}} →
+    {h_Corelib_Classes_CRelationClasses_eq_equivalence__rocq2lean_obligation_3 :
+        Rocq.Corelib.Classes.CRelationClasses.eq_equivalence__rocq2lean_obligation_3.statement.{v_0}} →
+      (A : Type v_0) →
+        Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_0, 0} A fun a a_1 =>
+          PULift.{1, 0} (Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A a a_1) :=
+fun {h_Corelib_Classes_CRelationClasses_eq_equivalence__rocq2lean_obligation_1}
+    {h_Corelib_Classes_CRelationClasses_eq_equivalence__rocq2lean_obligation_2}
+    {h_Corelib_Classes_CRelationClasses_eq_equivalence__rocq2lean_obligation_3} A =>
+  Rocq.Corelib.Classes.CRelationClasses.Equivalence.Build_Equivalence.{v_0, 0} A
+    (fun a a_1 => PULift.{1, 0} (Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A a a_1)) (fun x => PULift.up.{1, 0} ⋯)
+    (fun x y a => PULift.up.{1, 0} ⋯) fun x y z a a_1 => PULift.up.{1, 0} ⋯
+def Rocq.Corelib.Classes.CRelationClasses.eq_equivalence__rocq2lean_obligation_1.statement.{v_0} : Prop :=
+∀ (A : Type v_0) (x : A), Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A x x
+def Rocq.Corelib.Classes.CRelationClasses.eq_equivalence__rocq2lean_obligation_2.statement.{v_0} : Prop :=
+∀ (A : Type v_0) (x y : A), Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A x y → Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A y x
+def Rocq.Corelib.Classes.CRelationClasses.eq_equivalence__rocq2lean_obligation_3.statement.{v_0} : Prop :=
+∀ (A : Type v_0) (x y z : A),
+  Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A x y →
+    Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A y z → Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A x z
+def Rocq.Corelib.Classes.CRelationClasses.equivalence_rewrite_crelation.statement.{v_0, v_1} : Prop :=
+∀ (A : Type v_0) (eqA : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A)
+  (H : Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_0, v_1} A eqA),
+  Rocq.Corelib.Classes.CRelationClasses.RewriteRelation.{v_0, v_1} A eqA
+def Rocq.Corelib.Classes.CRelationClasses.flip.{v_0, v_1, v_2} : (A : Type v_0) →
+  (B : Type v_1) → (C : Type v_2) → (A → B → C) → B → A → C :=
+fun A B C f x y => f y x
+opaque Rocq.Corelib.Classes.CRelationClasses.flip_Antisymmetric.{v_0, v_1, v_2, v_3} : (A : Type v_0) →
+  (eqA : A → A → Type v_2) →
+    Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_0, v_2} A eqA →
+      (R : A → A → Type v_1) →
+        ((x y : A) → R x y → R y x → eqA x y) → (x y : A) → (fun x y => R y x) x y → (fun x y => R y x) y x → eqA x y
+def Rocq.Corelib.Classes.CRelationClasses.flip_Asymmetric.statement.{v_0, v_1, v_2, v_3, v_4} : Prop :=
+∀ (A : Type v_0) (R : A → A → Type v_4)
+  (H : (x y : A) → R x y → PULift.{v_3 + 1, 0} (∀ (a : R y x), Rocq.Corelib.Init.Logic.False)) (x y : A) (a : R y x)
+  (a : R x y), Rocq.Corelib.Init.Logic.False
+opaque Rocq.Corelib.Classes.CRelationClasses.flip_Equivalence.{v_0, v_1, v_2} : (A : Type v_0) →
+  (R : A → A → Type v_1) →
+    Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_0, v_1} A R →
+      Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_0, v_1} A fun x y => R y x
+def Rocq.Corelib.Classes.CRelationClasses.flip_Irreflexive.statement.{v_0, v_1, v_2} : Prop :=
+∀ (A : Type v_0) (R : A → A → Type v_2),
+  (∀ (x : A), (fun x y => ∀ (a : R x y), Rocq.Corelib.Init.Logic.False) x x) →
+    ∀ (x : A) (a : R x x), Rocq.Corelib.Init.Logic.False
+opaque Rocq.Corelib.Classes.CRelationClasses.flip_PER.{v_0, v_1, v_2} : (A : Type v_0) →
+  (R : A → A → Type v_1) →
+    Rocq.Corelib.Classes.CRelationClasses.PER.{v_0, v_1} A R →
+      Rocq.Corelib.Classes.CRelationClasses.PER.{v_0, v_1} A fun x y => R y x
+opaque Rocq.Corelib.Classes.CRelationClasses.flip_PreOrder.{v_0, v_1, v_2} : (A : Type v_0) →
+  (R : A → A → Type v_1) →
+    Rocq.Corelib.Classes.CRelationClasses.PreOrder.{v_0, v_1} A R →
+      Rocq.Corelib.Classes.CRelationClasses.PreOrder.{v_0, v_1} A fun x y => R y x
+opaque Rocq.Corelib.Classes.CRelationClasses.flip_Reflexive.{v_0, v_1, v_2} : (A : Type v_0) →
+  (R : A → A → Type v_1) → ((x : A) → R x x) → (x : A) → (fun x y => R y x) x x
+opaque Rocq.Corelib.Classes.CRelationClasses.flip_StrictOrder.{v_0, v_1, v_2} : (A : Type v_0) →
+  (R : A → A → Type v_1) →
+    Rocq.Corelib.Classes.CRelationClasses.StrictOrder.{v_0, v_1} A R →
+      Rocq.Corelib.Classes.CRelationClasses.StrictOrder.{v_0, v_1} A fun x y => R y x
+def Rocq.Corelib.Classes.CRelationClasses.flip_Symmetric.{v_0, v_1, v_2} : (A : Type v_0) →
+  (R : A → A → Type v_2) → ((x y : A) → R x y → R y x) → (x y : A) → (fun x y => R y x) x y → (fun x y => R y x) y x :=
+fun A R H x y H_1 => H y x H_1
+def Rocq.Corelib.Classes.CRelationClasses.flip_Transitive.{v_0, v_1, v_2} : (A : Type v_0) →
+  (R : A → A → Type v_2) →
+    ((x y z : A) → R x y → R y z → R x z) →
+      (x y z : A) → (fun x y => R y x) x y → (fun x y => R y x) y z → (fun x y => R y x) x z :=
+fun A R H x y z H_1 H' => H z y x H' H_1
+def Rocq.Corelib.Classes.CRelationClasses.iffT.{v_0, v_1} : Type v_0 → Type v_1 → Type (max v_0 v_1) :=
+fun A B => Rocq.Corelib.Init.Datatypes.prod.{max (v_0 + 1) (v_1 + 1), max (v_0 + 1) (v_1 + 1)} (A → B) (B → A)
+def Rocq.Corelib.Classes.CRelationClasses.iffT_Reflexive.{v_0, v_1} : (x : Type v_1) →
+  Rocq.Corelib.Init.Datatypes.prod.{v_1 + 1, v_1 + 1} (x → x) (x → x) :=
+fun x => Rocq.Corelib.Init.Datatypes.prod.pair.{v_1 + 1, v_1 + 1} (x → x) (x → x) (fun X => X) fun X => X
+def Rocq.Corelib.Classes.CRelationClasses.iffT_Symmetric.{v_0, v_1} : (x y : Type v_1) →
+  Rocq.Corelib.Init.Datatypes.prod.{v_1 + 1, v_1 + 1} (x → y) (y → x) →
+    Rocq.Corelib.Init.Datatypes.prod.{v_1 + 1, v_1 + 1} (y → x) (x → y) :=
+fun x y X =>
+  Rocq.Corelib.Init.Datatypes.prod_rect.{v_1 + 1, v_1 + 1, v_1 + 1} (x → y) (y → x)
+    (fun X => Rocq.Corelib.Init.Datatypes.prod.{v_1 + 1, v_1 + 1} (y → x) (x → y))
+    (fun a b => Rocq.Corelib.Init.Datatypes.prod.pair.{v_1 + 1, v_1 + 1} (y → x) (x → y) b a) X
+def Rocq.Corelib.Classes.CRelationClasses.iffT_Transitive.{v_0, v_1} : (x y z : Type v_1) →
+  Rocq.Corelib.Init.Datatypes.prod.{v_1 + 1, v_1 + 1} (x → y) (y → x) →
+    Rocq.Corelib.Init.Datatypes.prod.{v_1 + 1, v_1 + 1} (y → z) (z → y) →
+      Rocq.Corelib.Init.Datatypes.prod.{v_1 + 1, v_1 + 1} (x → z) (z → x) :=
+fun x y z X X0 =>
+  Rocq.Corelib.Init.Datatypes.prod_rect.{v_1 + 1, v_1 + 1, v_1 + 1} (y → z) (z → y)
+    (fun X0 => Rocq.Corelib.Init.Datatypes.prod.{v_1 + 1, v_1 + 1} (x → z) (z → x))
+    (fun a b =>
+      Rocq.Corelib.Init.Datatypes.prod_rect.{v_1 + 1, v_1 + 1, v_1 + 1} (x → y) (y → x)
+        (fun X => Rocq.Corelib.Init.Datatypes.prod.{v_1 + 1, v_1 + 1} (x → z) (z → x))
+        (fun a0 b0 =>
+          Rocq.Corelib.Init.Datatypes.prod.pair.{v_1 + 1, v_1 + 1} (x → z) (z → x)
+            (fun X => (fun X0 => (fun X1 => (fun X2 => X2) (a X0)) (b0 X0)) (a0 X)) fun X =>
+            (fun X0 => (fun X1 => (fun X2 => X2) (b0 X0)) (a X0)) (b X))
+        X)
+    X0
+def Rocq.Corelib.Classes.CRelationClasses.iff_Reflexive.statement.{v_0} : Prop :=
+∀ (x : Prop), Rocq.Corelib.Init.Logic.iff x x
+def Rocq.Corelib.Classes.CRelationClasses.iff_Symmetric.statement.{v_0} : Prop :=
+∀ (x y : Prop), Rocq.Corelib.Init.Logic.iff x y → Rocq.Corelib.Init.Logic.iff y x
+def Rocq.Corelib.Classes.CRelationClasses.iff_Transitive.statement.{v_0} : Prop :=
+∀ (x y z : Prop), Rocq.Corelib.Init.Logic.iff x y → Rocq.Corelib.Init.Logic.iff y z → Rocq.Corelib.Init.Logic.iff x z
+def RocqPending.Corelib.Classes.CRelationClasses.iff_equivalence.{v_0} : {h_Corelib_Classes_CRelationClasses_iff_Reflexive :
+    Rocq.Corelib.Classes.CRelationClasses.iff_Reflexive.statement.{max 1 v_0}} →
+  {h_Corelib_Classes_CRelationClasses_iff_Symmetric :
+      Rocq.Corelib.Classes.CRelationClasses.iff_Symmetric.statement.{max 1 v_0}} →
+    {h_Corelib_Classes_CRelationClasses_iff_Transitive :
+        Rocq.Corelib.Classes.CRelationClasses.iff_Transitive.statement.{max 1 v_0}} →
+      Rocq.Corelib.Classes.CRelationClasses.Equivalence.{max 1 v_0, 0} (PULift.{(max 1 v_0) + 1, 1} Prop) fun a a_1 =>
+        PULift.{1, 0}
+          (Rocq.Corelib.Init.Logic.iff (PULift.down.{(max 1 v_0) + 1, 1} a) (PULift.down.{(max 1 v_0) + 1, 1} a_1)) :=
+fun {h_Corelib_Classes_CRelationClasses_iff_Reflexive} {h_Corelib_Classes_CRelationClasses_iff_Symmetric}
+    {h_Corelib_Classes_CRelationClasses_iff_Transitive} =>
+  Rocq.Corelib.Classes.CRelationClasses.Equivalence.Build_Equivalence.{max 1 v_0, 0} (PULift.{(max 1 v_0) + 1, 1} Prop)
+    (fun a a_1 =>
+      PULift.{1, 0}
+        (Rocq.Corelib.Init.Logic.iff (PULift.down.{(max 1 v_0) + 1, 1} a) (PULift.down.{(max 1 v_0) + 1, 1} a_1)))
+    (fun x => PULift.up.{1, 0} ⋯) (fun x y a => PULift.up.{1, 0} ⋯) fun x y z a a_1 => PULift.up.{1, 0} ⋯
+def Rocq.Corelib.Classes.CRelationClasses.impl_Reflexive.statement.{v_0} : Prop :=
+∀ (x : Prop), Rocq.Corelib.Program.Basics.impl x x
+def Rocq.Corelib.Classes.CRelationClasses.impl_Reflexive_obligation_1.statement : Prop :=
+∀ (x : Prop), Rocq.Corelib.Program.Basics.impl x x
+def Rocq.Corelib.Classes.CRelationClasses.impl_Transitive.statement.{v_0} : Prop :=
+∀ (x y z : Prop),
+  Rocq.Corelib.Program.Basics.impl x y → Rocq.Corelib.Program.Basics.impl y z → Rocq.Corelib.Program.Basics.impl x z
+def Rocq.Corelib.Classes.CRelationClasses.impl_Transitive_obligation_1.statement : Prop :=
+∀ (x y z : Prop),
+  Rocq.Corelib.Program.Basics.impl x y → Rocq.Corelib.Program.Basics.impl y z → Rocq.Corelib.Program.Basics.impl x z
+def Rocq.Corelib.Classes.CRelationClasses.irreflexivity.statement.{v_0, v_1} : Prop :=
+∀ (A : Type v_0) (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A)
+  (Irreflexive : Rocq.Corelib.Classes.CRelationClasses.Irreflexive.{v_0, v_1} A R) (x : A) (a : R x x),
+  Rocq.Corelib.Init.Logic.False
+def Rocq.Corelib.Classes.CRelationClasses.is_subrelation.{v_0, v_1, v_2} : (A : Type v_0) →
+  (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A) →
+    (R' : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_2} A) →
+      Rocq.Corelib.Classes.CRelationClasses.subrelation.{v_0, v_1, v_2} A R R' → (x y : A) → R x y → R' x y :=
+fun A R R' subrelation => subrelation
+opaque Rocq.Corelib.Classes.CRelationClasses.partial_order_antisym.{v_0, v_1, v_2, v_3, v_4} : (A : Type v_0) →
+  (eqA : A → A → Type v_4) →
+    Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_0, v_4} A eqA →
+      (R : A → A → Type v_4) →
+        Rocq.Corelib.Classes.CRelationClasses.PreOrder.{v_0, v_4} A R →
+          ((x y : A) →
+              Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1}
+                (eqA x y →
+                  (fun x y => Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1} (R x y) ((fun x y => R y x) x y)) x y)
+                ((fun x y => Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1} (R x y) ((fun x y => R y x) x y)) x y →
+                  eqA x y)) →
+            (x y : A) → R x y → R y x → eqA x y
+def Rocq.Corelib.Classes.CRelationClasses.partial_order_equivalence.{v_0, v_1, v_2, v_3, v_4} : (A : Type v_0) →
+  (eqA : A → A → Type v_3) →
+    Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_0, v_3} A eqA →
+      (R : A → A → Type v_3) →
+        Rocq.Corelib.Classes.CRelationClasses.PreOrder.{v_0, v_3} A R →
+          ((x y : A) →
+              Rocq.Corelib.Init.Datatypes.prod.{v_3 + 1, v_3 + 1}
+                (eqA x y →
+                  (fun x y => Rocq.Corelib.Init.Datatypes.prod.{v_3 + 1, v_3 + 1} (R x y) ((fun x y => R y x) x y)) x y)
+                ((fun x y => Rocq.Corelib.Init.Datatypes.prod.{v_3 + 1, v_3 + 1} (R x y) ((fun x y => R y x) x y)) x y →
+                  eqA x y)) →
+            (x y : A) →
+              Rocq.Corelib.Init.Datatypes.prod.{v_3 + 1, v_3 + 1}
+                (eqA x y →
+                  (fun x y => Rocq.Corelib.Init.Datatypes.prod.{v_3 + 1, v_3 + 1} (R x y) ((fun x y => R y x) x y)) x y)
+                ((fun x y => Rocq.Corelib.Init.Datatypes.prod.{v_3 + 1, v_3 + 1} (R x y) ((fun x y => R y x) x y)) x y →
+                  eqA x y) :=
+fun A eqA equ R preo PartialOrder => PartialOrder
+def Rocq.Corelib.Classes.CRelationClasses.reflexivity.{v_0, v_1} : (A : Type v_0) →
+  (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A) →
+    Rocq.Corelib.Classes.CRelationClasses.Reflexive.{v_0, v_1} A R → (x : A) → R x x :=
+fun A R Reflexive => Reflexive
+def Rocq.Corelib.Classes.CRelationClasses.relation_conjunction.{v_0, v_1, v_2, v_3} : (A : Type v_0) →
+  (A → A → Type v_1) → (A → A → Type v_2) → A → A → Type (max (max v_1 v_2) v_3) :=
+fun A R R' a a_1 =>
+  PULift.{max (max (v_1 + 1) (v_2 + 1)) (v_3 + 1), max (v_1 + 1) (v_2 + 1)}
+    (Rocq.Corelib.Init.Datatypes.prod.{v_1 + 1, v_2 + 1} (R a a_1) (R' a a_1))
+def Rocq.Corelib.Classes.CRelationClasses.relation_disjunction.{v_0, v_1, v_2, v_3} : (A : Type v_0) →
+  (A → A → Type v_1) → (A → A → Type v_2) → A → A → Type (max (max v_1 v_2) v_3) :=
+fun A R R' a a_1 =>
+  PULift.{max (max (v_1 + 1) (v_2 + 1)) (v_3 + 1), max (v_1 + 1) (v_2 + 1)}
+    (Rocq.Corelib.Init.Datatypes.sum.{v_1 + 1, v_2 + 1} (R a a_1) (R' a a_1))
+def Rocq.Corelib.Classes.CRelationClasses.relation_equivalence.{v_0, v_1, v_2, v_3} : (A : Type v_0) →
+  (A → A → Type v_3) → (A → A → Type v_3) → Type (max (max v_0 v_2) v_3) :=
+fun A a a_1 =>
+  PULift.{max (max (v_0 + 1) (v_2 + 1)) (v_3 + 1), max (v_0 + 1) (v_3 + 1)}
+    ((x y : A) → Rocq.Corelib.Init.Datatypes.prod.{v_3 + 1, v_3 + 1} (a x y → a_1 x y) (a_1 x y → a x y))
+opaque Rocq.Corelib.Classes.CRelationClasses.relation_equivalence_equivalence.{v_0, v_1, v_2, v_3} : (A : Type v_0) →
+  Rocq.Corelib.Classes.CRelationClasses.Equivalence.{max (max v_0 v_1) (v_3 + 1), max (max v_0 v_2) v_3}
+    (PULift.{(max (max v_0 v_1) (v_3 + 1)) + 1, max (v_0 + 1) (v_3 + 2)} (A → A → Type v_3)) fun a a_1 =>
+    PULift.{(max (max v_0 v_2) v_3) + 1, max (v_0 + 1) (v_3 + 1)}
+      ((x y : A) →
+        Rocq.Corelib.Init.Datatypes.prod.{v_3 + 1, v_3 + 1}
+          (PULift.down.{(max (max v_0 v_1) (v_3 + 1)) + 1, max (v_0 + 1) (v_3 + 2)} a x y →
+            PULift.down.{(max (max v_0 v_1) (v_3 + 1)) + 1, max (v_0 + 1) (v_3 + 2)} a_1 x y)
+          (PULift.down.{(max (max v_0 v_1) (v_3 + 1)) + 1, max (v_0 + 1) (v_3 + 2)} a_1 x y →
+            PULift.down.{(max (max v_0 v_1) (v_3 + 1)) + 1, max (v_0 + 1) (v_3 + 2)} a x y))
+opaque Rocq.Corelib.Classes.CRelationClasses.relation_implication_preorder.{v_0, v_1, v_2, v_3} : (A : Type v_0) →
+  Rocq.Corelib.Classes.CRelationClasses.PreOrder.{max (max v_0 v_1) (v_3 + 1), max (max v_0 v_2) v_3}
+    (PULift.{(max (max v_0 v_1) (v_3 + 1)) + 1, max (v_0 + 1) (v_3 + 2)} (A → A → Type v_3)) fun a a_1 =>
+    PULift.{(max (max v_0 v_2) v_3) + 1, max (v_0 + 1) (v_3 + 1)}
+      ((x y : A) →
+        PULift.down.{(max (max v_0 v_1) (v_3 + 1)) + 1, max (v_0 + 1) (v_3 + 2)} a x y →
+          PULift.down.{(max (max v_0 v_1) (v_3 + 1)) + 1, max (v_0 + 1) (v_3 + 2)} a_1 x y)
+def Rocq.Corelib.Classes.CRelationClasses.subrelation.{v_0, v_1, v_2} : (A : Type v_0) →
+  Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A →
+    Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_2} A → Type (max (max v_0 v_1) v_2) :=
+fun A R R' => (x y : A) → R x y → R' x y
+opaque Rocq.Corelib.Classes.CRelationClasses.subrelation_symmetric.{v_0, v_1, v_2} : (A : Type v_0) →
+  (R : A → A → Type v_2) → ((x y : A) → R x y → R y x) → (x y : A) → (fun x y => R y x) x y → R x y
+def Rocq.Corelib.Classes.CRelationClasses.symmetry.{v_0, v_1} : (A : Type v_0) →
+  (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A) →
+    Rocq.Corelib.Classes.CRelationClasses.Symmetric.{v_0, v_1} A R → (x y : A) → R x y → R y x :=
+fun A R Symmetric => Symmetric
+def Rocq.Corelib.Classes.CRelationClasses.transitivity.{v_0, v_1} : (A : Type v_0) →
+  (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A) →
+    Rocq.Corelib.Classes.CRelationClasses.Transitive.{v_0, v_1} A R → (x y z : A) → R x y → R y z → R x z :=
+fun A R Transitive => Transitive

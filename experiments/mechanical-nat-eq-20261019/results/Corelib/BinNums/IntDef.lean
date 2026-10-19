@@ -1,0 +1,43 @@
+import Rocq2Lean
+#rocq2lean_import "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/BinNums/IntDef/source.ndjson" "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/BinNums/IntDef/translation_report.json" "de248bc9d2d9d858bd3d088dbc487723cba1535aa99d7e906df51d7097a4b69a" "5b973d6a-c893-47da-8ee4-edc3304e09ea" "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/BinNums/IntDef/contract.json" "b03c3422a7f00b4ec629a162eef5b54af4729e088fd7b4ea8f4106075effa6f9"
+
+set_option pp.universes true
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«add»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«compare»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«div»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«div2»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«div_eucl»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«double»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«eqb»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«even»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«ge»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«gt»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«land»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«le»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«leb»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«lor»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«lt»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«ltb»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«lxor»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«max»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«min»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«modulo»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«mul»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«of_N»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«of_nat»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«opp»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«pos_div_eucl»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«pos_sub»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«pow»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«pow_pos»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«pred_double»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«quot»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«quotrem»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«rem»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«shiftl»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«shiftr»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«sqrtrem»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«sub»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«succ_double»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«to_nat»
+#print «Rocq».«Corelib».«BinNums».«IntDef».«Z».«to_pos»

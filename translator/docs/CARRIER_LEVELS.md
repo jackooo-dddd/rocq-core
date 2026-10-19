@@ -1,3 +1,5 @@
+> Current Corelib baseline (2026-10-19): source nat/eq are generated inductives; the bootstrap table is empty. Earlier bootstrap examples and dated runs below are historical. See [MECHANICAL_NAT_EQ.md](MECHANICAL_NAT_EQ.md) and the repository RESULTS.md for current coverage and correspondence proofs.
+
 # R-CARRIER: per-operand carrier universe levels (experimental rule)
 
 Status: **experimental**, on branch `rules-carrier`; approved as Option 2 for case B on 2026-10-14. It is

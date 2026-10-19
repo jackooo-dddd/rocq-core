@@ -1,0 +1,170 @@
+[
+  {
+    "certificate": "NativeBridge.natIso",
+    "old_type": "NativeBridge.Iso Nat Nat",
+    "new_type": "NativeBridge.Iso NativeBridge.MN Nat",
+    "present": true
+  },
+  {
+    "certificate": "NativeBridge.boolIso",
+    "old_type": "NativeBridge.Iso NativeBridge.RBool Bool",
+    "new_type": "NativeBridge.Iso NativeBridge.RBool Bool",
+    "present": true
+  },
+  {
+    "certificate": "NativeBridge.comparisonIso",
+    "old_type": "NativeBridge.Iso NativeBridge.RComparison Ordering",
+    "new_type": "NativeBridge.Iso NativeBridge.RComparison Ordering",
+    "present": true
+  },
+  {
+    "certificate": "NativeBridge.listIso",
+    "old_type": "(A : Type u) → NativeBridge.Iso (NativeBridge.RList A) (List A)",
+    "new_type": "(A : Type u) → NativeBridge.Iso (NativeBridge.RList A) (List A)",
+    "present": true
+  },
+  {
+    "certificate": "NativeBridge.optionIso",
+    "old_type": "(A : Type u) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.option A) (Option A)",
+    "new_type": "(A : Type u) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.option A) (Option A)",
+    "present": true
+  },
+  {
+    "certificate": "NativeBridge.prodIso",
+    "old_type": "(A : Type u) → (B : Type v) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.prod A B) (A × B)",
+    "new_type": "(A : Type u) → (B : Type v) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.prod A B) (A × B)",
+    "present": true
+  },
+  {
+    "certificate": "NativeBridge.sumIso",
+    "old_type": "(A : Type u) → (B : Type v) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.sum A B) (A ⊕ B)",
+    "new_type": "(A : Type u) → (B : Type v) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.sum A B) (A ⊕ B)",
+    "present": true
+  },
+  {
+    "certificate": "NativeBridge.resultIso",
+    "old_type": "(A : Type u) → (E : Type v) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.result A E) (Except E A)",
+    "new_type": "(A : Type u) → (E : Type v) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.result A E) (Except E A)",
+    "present": true
+  },
+  {
+    "certificate": "NativeBridge.unitIso",
+    "old_type": "NativeBridge.Iso Rocq.Corelib.Init.Datatypes.unit Unit",
+    "new_type": "NativeBridge.Iso Rocq.Corelib.Init.Datatypes.unit Unit",
+    "present": true
+  },
+  {
+    "certificate": "NativeBridge.emptyIso",
+    "old_type": "NativeBridge.Iso Rocq.Corelib.Init.Datatypes.Empty_set Empty",
+    "new_type": "NativeBridge.Iso Rocq.Corelib.Init.Datatypes.Empty_set Empty",
+    "present": true
+  },
+  {
+    "certificate": "NativeBridge.sigIso",
+    "old_type": "(A : Type u) → (P : A → Prop) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sig A P) (Subtype P)",
+    "new_type": "(A : Type u) → (P : A → Prop) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sig A P) (Subtype P)",
+    "present": true
+  },
+  {
+    "certificate": "NativeBridge.sig2Iso",
+    "old_type": "(A : Type u) → (P Q : A → Prop) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sig2 A P Q) { x // P x ∧ Q x }",
+    "new_type": "(A : Type u) → (P Q : A → Prop) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sig2 A P Q) { x // P x ∧ Q x }",
+    "present": true
+  },
+  {
+    "certificate": "NativeBridge.sigmaIso",
+    "old_type": "(A : Type u) → (P : A → Type v) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sigT A P) (Sigma P)",
+    "new_type": "(A : Type u) → (P : A → Type v) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sigT A P) (Sigma P)",
+    "present": true
+  },
+  {
+    "certificate": "NativeBridge.sigma2Iso",
+    "old_type": "(A : Type u) →\n  (P : A → Type v) → (Q : A → Type w) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sigT2 A P Q) ((x : A) × P x × Q x)",
+    "new_type": "(A : Type u) →\n  (P : A → Type v) → (Q : A → Type w) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sigT2 A P Q) ((x : A) × P x × Q x)",
+    "present": true
+  },
+  {
+    "certificate": "NativeBridge.sumboolIso",
+    "old_type": "(P Q : Prop) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sumbool P Q) (P ⊕' Q)",
+    "new_type": "(P Q : Prop) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sumbool P Q) (P ⊕' Q)",
+    "present": true
+  },
+  {
+    "certificate": "NativeBridge.decidableIso",
+    "old_type": "(P : Prop) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sumbool P ¬P) (Decidable P)",
+    "new_type": "(P : Prop) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sumbool P ¬P) (Decidable P)",
+    "present": true
+  },
+  {
+    "certificate": "NativeBridge.sumorIso",
+    "old_type": "(A : Type u) → (P : Prop) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sumor A P) (A ⊕' P)",
+    "new_type": "(A : Type u) → (P : Prop) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sumor A P) (A ⊕' P)",
+    "present": true
+  },
+  {
+    "certificate": "NativeBridge.positiveIso",
+    "old_type": "NativeBridge.Iso NativeBridge.RPositive { n // 0 < n }",
+    "new_type": "NativeBridge.Iso NativeBridge.RPositive { n // 0 < n }",
+    "present": true
+  },
+  {
+    "certificate": "NativeBridge.binaryNatIso",
+    "old_type": "NativeBridge.Iso NativeBridge.RNatBinary Nat",
+    "new_type": "NativeBridge.Iso NativeBridge.RNatBinary Nat",
+    "present": true
+  },
+  {
+    "certificate": "NativeBridge.binaryIntIso",
+    "old_type": "NativeBridge.Iso NativeBridge.RIntBinary Int",
+    "new_type": "NativeBridge.Iso NativeBridge.RIntBinary Int",
+    "present": true
+  },
+  {
+    "certificate": "NativeBridge.int63Iso",
+    "old_type": "NativeBridge.Iso Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int (BitVec 63)",
+    "new_type": "NativeBridge.Iso Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int (BitVec 63)",
+    "present": true
+  },
+  {
+    "certificate": "NativeBridge.int63WrapperIso",
+    "old_type": "NativeBridge.Iso Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int_wrapper (BitVec 63)",
+    "new_type": "NativeBridge.Iso Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int_wrapper (BitVec 63)",
+    "present": true
+  },
+  {
+    "certificate": "NativeBridge.arrayIso",
+    "old_type": "(A : Type u) → NativeBridge.Iso (Rocq.Corelib.Array.PrimArray.array A) (NativeBridge.NativeArray A)",
+    "new_type": "(A : Type u) → NativeBridge.Iso (Rocq.Corelib.Array.PrimArray.array A) (NativeBridge.NativeArray A)",
+    "present": true
+  },
+  {
+    "certificate": "NativeBridge.byteStringIso",
+    "old_type": "NativeBridge.Iso Rocq.Corelib.Strings.PrimString.string NativeBridge.NativeByteString",
+    "new_type": "NativeBridge.Iso Rocq.Corelib.Strings.PrimString.string NativeBridge.NativeByteString",
+    "present": true
+  },
+  {
+    "certificate": "NativeBridge.byteIso",
+    "old_type": "NativeBridge.Iso Rocq.Corelib.Init.Byte.byte (Fin 256)",
+    "new_type": "NativeBridge.Iso Rocq.Corelib.Init.Byte.byte (Fin 256)",
+    "present": true
+  },
+  {
+    "certificate": "NativeBridge.floatClassIso",
+    "old_type": "NativeBridge.Iso Rocq.Corelib.Floats.FloatClass.float_class (Fin 9)",
+    "new_type": "NativeBridge.Iso Rocq.Corelib.Floats.FloatClass.float_class (Fin 9)",
+    "present": true
+  },
+  {
+    "certificate": "NativeBridge.decimalDigitsIso",
+    "old_type": "NativeBridge.Iso Rocq.Corelib.Init.Decimal.uint (List (Fin 10))",
+    "new_type": "NativeBridge.Iso Rocq.Corelib.Init.Decimal.uint (List (Fin 10))",
+    "present": true
+  },
+  {
+    "certificate": "NativeBridge.hexadecimalDigitsIso",
+    "old_type": "NativeBridge.Iso Rocq.Corelib.Init.Hexadecimal.uint (List (Fin 16))",
+    "new_type": "NativeBridge.Iso Rocq.Corelib.Init.Hexadecimal.uint (List (Fin 16))",
+    "present": true
+  }
+]

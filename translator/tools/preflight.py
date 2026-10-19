@@ -28,7 +28,7 @@ import sys
 
 # Node kinds the current build translates (case/fix only in the shapes checked below).
 SUPPORTED_NODES = {"rel", "sort", "cast", "prod", "lam", "let", "app", "const", "ind", "construct", "case", "fix", "proj"}
-BOOTSTRAP = {"Corelib.Init.Datatypes.nat", "Corelib.Init.Logic.eq"}
+BOOTSTRAP = set()  # All source inductives are translated mechanically.
 
 
 class Found:

@@ -20,9 +20,13 @@ Writes OUT_DIR/roundtrip.json; exits non-zero on any mismatch.
 import hashlib
 import json
 import os
+import re
 import subprocess
 import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import quality_families
 
 
 class Unsupported(Exception):
@@ -139,6 +143,31 @@ class Dec:
             ds = [f"{{| dname := {aname(d['n'])}; dtype := {T(d['ty'])}; dbody := {T(d['body'])}; rarg := {d['rarg']} |}}"
                   for d in t["defs"]]
             return f"({'tFix' if k == 'fix' else 'tCoFix'} {gl_list(ds)} {t['idx']})"
+        if k == "int":
+            value = t.get("v")
+            if not isinstance(value, str) or not value.isascii() or not value.isdecimal() or not (0 <= int(value) < 2**63):
+                raise Unsupported("invalid primitive int63 literal")
+            return f"(tInt ({value}%uint63))"
+        if k == "float":
+            value = t.get("v")
+            if value in ("infinity", "neg_infinity", "nan"):
+                return f"(tFloat PrimFloat.{value})"
+            if not isinstance(value, str) or not re.fullmatch(r"-?0x[0-9a-f]+(?:\.[0-9a-f]+)?p[+-][0-9]+", value):
+                raise Unsupported("invalid primitive float64 literal")
+            return f"(tFloat ({value}%float))"
+        if k == "string":
+            octets = t.get("bytes")
+            if octets is None and isinstance(t.get("v"), str):
+                try: octets = list(t["v"].encode("latin1"))  # legacy byte-string IR
+                except UnicodeEncodeError: raise Unsupported("invalid legacy primitive byte string")
+            if not isinstance(octets, list) or any(type(b) is not int or not 0 <= b < 256 for b in octets):
+                raise Unsupported("invalid primitive byte string")
+            value = "(PrimString.make 0%uint63 0%uint63)"
+            for byte in reversed(octets):
+                value = f"(PrimString.cat (PrimString.make 1%uint63 {byte}%uint63) {value})"
+            return f"(tString {value})"
+        if k == "array":
+            return f"(tArray {level(t['u'])} {gl_list([T(a) for a in t['elems']])} {T(t['default'])} {T(t['ty'])})"
         raise Unsupported(f"primitive {k}")
 
     def ctx(self, c):
@@ -229,8 +258,16 @@ def check_native_meta(decls, out, loadpaths, requires):
         if line.startswith("NATIVE_META "):
             _, key, js = line.split(" ", 2)
             got[key] = json.loads(js)
-    problems = []
+    problems, primitive_results = [], {}
     for d in decls:
+        if (d.get("native") or {}).get("body_kind") == "primitive":
+            g = got.get(d["name"]) or {}
+            sig = g.get("primitive_signature") or {}
+            ok = (g == d["native"] and g.get("body_kind") == "primitive"
+                  and isinstance(sig.get("operator"), str) and bool(sig["operator"])
+                  and d.get("body_state") == "unsupported_primitive" and d.get("body") is None
+                  and all(d.get(k) == sig.get(k) for k in ("type", "universes", "relevance")))
+            primitive_results[d["name"]] = "RT_OK" if ok else "RT_PRIMITIVE_SIGNATURE_MISMATCH"
         if d["name"] not in got:
             problems.append(f"{d['name']}: native metadata not recomputed")
         elif got[d["name"]] != d["native"]:
@@ -238,7 +275,8 @@ def check_native_meta(decls, out, loadpaths, requires):
             problems.append(f"{d['name']}: native metadata differs in {diff}")
     if p.returncode != 0:
         problems.append(f"native metadata process exited with {p.returncode}")
-    return {"status": "OK" if not problems else "MISMATCH", "problems": problems}
+    return {"status": "OK" if not problems else "MISMATCH", "problems": problems,
+            "primitive_results": primitive_results}
 
 
 def check_prepared(decls, out, loadpaths, requires):
@@ -267,7 +305,7 @@ def check_prepared(decls, out, loadpaths, requires):
         g = got.get(d["name"])
         if g is None:
             results[d["name"]] = "RT_PREPARED_NOT_RECOMPUTED"
-        elif g["type"] != d["type"] or g["body"] != d["body"]:
+        elif g["type"] != d["type"] or g["body"] != d["body"] or bool(g.get("quality_dispatch")) != bool(d.get("quality_dispatch")):
             results[d["name"]] = "RT_PREPARED_MISMATCH"
         else:
             results[d["name"]] = "RT_OK"
@@ -325,6 +363,9 @@ def check_statement(decls, out, loadpaths, requires):
         ok = g["type"] == d["type"] and g["body"] == d["body"] and g["state"] == want_state.get(d["body_state"], "kept") \
             and [o["name"] for o in g["obligations"]] == (d.get("obligations") or []) \
             and g.get("termination") == (d.get("termination") or {}).get("state") \
+            and bool(g.get("statement_prepared")) == bool(d.get("statement_prepared")) \
+            and bool(g.get("statement_prop_view")) == bool(d.get("statement_prop_view")) \
+            and bool(g.get("quality_dispatch")) == bool(d.get("quality_dispatch")) \
             and (d["body_state"] != "opaque_data" or ((d.get("native") or {}).get("body_kind") == "opaque" and d["body"] is not None))
         for o in g["obligations"]:
             od = by_name.get(o["name"])
@@ -416,20 +457,27 @@ def main(argv):
         if missing:
             problems.append(f"{d['name']}: dependencies absent from the export: {missing}")
 
-    v = ["From MetaRocq.Utils Require Import utils.",
+    v = ["From Corelib.Numbers.Cyclic.Int63 Require Import PrimInt63.",
+         "From Corelib.Floats Require Import PrimFloat.",
+         "Require Corelib.Strings.PrimString.",
+         "From MetaRocq.Utils Require Import utils.",
          "From MetaRocq.Template Require Import All.",
          "From Rocq2LeanRoundTrip Require Import RtEq.",
          *[f"Require {r}." for r in requires],
          "Import MonadNotation.", "Open Scope bs_scope.", ""]
     # statement mode: declarations rewritten by the statement preparation (proof bodies omitted, proof
     # subterms extracted as obligations) are re-derived natively by check_statement below
-    statement = [d for d in decls if d["kind"] == "constant" and
-                 (d["body_state"] in STATEMENT_STATES or d.get("obligations"))]
+    family_names = {d["name"] for d in decls if (d.get("native") or {}).get("quality_branch")}
+    statement = [d for d in decls if d["name"] not in family_names and d["kind"] == "constant" and
+                 (d["body_state"] in STATEMENT_STATES or d.get("obligations") or d.get("statement_prepared"))]
     prepared = [d for d in decls if d["kind"] == "constant" and d not in statement
-                and any(((d.get("native") or {}).get("prepared") or {}).values())]
+                and (d.get("quality_dispatch") or any(((d.get("native") or {}).get("prepared") or {}).values()))]
+    primitives = [d for d in decls if (d.get("native") or {}).get("body_kind") == "primitive"]
     for i, d in enumerate(decls):
-        if d in prepared or d in statement:
-            continue       # sealed implementation / lowered body: checked by check_prepared below
+        if d in prepared or d in statement or d in primitives or d["name"] in family_names:
+            # Every skipped quotation has a full fresh-native check below; primitive operation
+            # bodies have no Template AST and must retain their native operator identity.
+            continue
         try:
             if d["kind"] == "constant":
                 val = dec.constant(d)
@@ -471,15 +519,19 @@ def main(argv):
     sr = check_statement(statement, out, loadpaths, requires)
     results.update(sr["results"])
     problems += sr["problems"]
+    qr = quality_families.check_native(decls, out / "quality-families", loadpaths, requires)
+    results.update(qr["results"])
+    problems += qr["problems"]
+    meta = check_native_meta([d for d in decls if d["name"] not in family_names and d.get("body_state") != "obligation"], out, loadpaths, requires)
+    results.update(meta["primitive_results"])
+    problems += meta["problems"]
+    results["__native_metadata__"] = meta["status"]
     for d in decls:
         st = results.get(d["name"], "NOT_CHECKED")
         if st != "RT_OK":
             problems.append(f"{d['name']}: {st}")
     if p.returncode != 0:
         problems.append(f"round-trip Rocq process exited with {p.returncode}")
-    meta = check_native_meta([d for d in decls if d.get("body_state") != "obligation"], out, loadpaths, requires)
-    problems += meta["problems"]
-    results["__native_metadata__"] = meta["status"]
     universe = check_universes(lines, out, loadpaths, requires)
     problems += universe["problems"]
     results["__universe_facts__"] = universe["status"]
@@ -488,6 +540,7 @@ def main(argv):
               "statement_request_independence_sample": sr.get("request_independence_sample", []),
               "method": "independent Python decoder -> MetaRocq Gallina; transparent structural equality "
                         "(rocq/roundtrip/RtEq.v: cb_eqb / mib_eqb) against a fresh quotation; native opacity check; "
+                        "primitive signatures (type, universes, relevance, operator identity) rechecked natively; "
                         "recomputed dependency edges; native universe facts re-checked pairwise in a fresh process "
                         "(Rocq2Lean CheckRelation) and MetaRocq's constraints checked to be entailed by them; statement "
                         "preparation re-derived for every rewritten constant in one prepared environment "

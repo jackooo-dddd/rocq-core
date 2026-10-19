@@ -1,0 +1,1712 @@
+[
+  {
+    "type": "∀ {A : Type u} (n : Nat) (xs : NativeBridge.RList A),\n  NativeBridge.listTo (Rocq.Corelib.Lists.ListDef.skipn A n xs) = List.drop n (NativeBridge.listTo xs)",
+    "source_references": [
+      "Rocq.Corelib.Lists.ListDef.skipn"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.skipn_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Lists.ListDef.skipn"
+    ]
+  },
+  {
+    "type": "∀ (a : NativeBridge.RBool), NativeBridge.boolTo (Rocq.Corelib.Init.Datatypes.negb a) = !NativeBridge.boolTo a",
+    "source_references": [
+      "Rocq.Corelib.Init.Datatypes.negb"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.negb_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Datatypes.negb"
+    ]
+  },
+  {
+    "type": "∀ (x y : BitVec 63),\n  NativeBridge.comparisonTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.compares x y) =\n    if x.toInt < y.toInt then Ordering.lt else if y.toInt < x.toInt then Ordering.gt else Ordering.eq",
+    "source_references": [
+      "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.compares"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.int63_compares_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Numbers.Cyclic.Int63.PrimInt63.compares"
+    ]
+  },
+  {
+    "type": "∀ {A : Type u} (a : Rocq.Corelib.Array.PrimArray.array A),\n  Rocq.Corelib.Array.PrimArray.length A a = BitVec.ofNat 63 ↑(NativeBridge.arrayTo a).fst",
+    "source_references": [
+      "Rocq.Corelib.Array.PrimArray.array",
+      "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int",
+      "Rocq.Corelib.Array.PrimArray.length"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.array_length_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext"
+    ],
+    "sources": [
+      "Corelib.Array.PrimArray.length"
+    ]
+  },
+  {
+    "type": "∀ (P : Prop), Rocq.Corelib.Init.Logic.not P ↔ ¬P",
+    "source_references": [
+      "Rocq.Corelib.Init.Logic.not"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.not_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext"
+    ],
+    "sources": [
+      "Corelib.Init.Logic.not"
+    ]
+  },
+  {
+    "type": "∀ (a b : NativeBridge.RBool),\n  NativeBridge.boolTo (Rocq.Corelib.Init.Datatypes.xorb a b) = (NativeBridge.boolTo a ^^ NativeBridge.boolTo b)",
+    "source_references": [
+      "Rocq.Corelib.Init.Datatypes.xorb"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.xorb_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Datatypes.xorb"
+    ]
+  },
+  {
+    "type": "∀ (n m : Nat), NativeBridge.comparisonTo (Rocq.Corelib.Init.Nat.compare n m) = compare n m",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.compare"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_compare_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.Init.Nat.compare"
+    ]
+  },
+  {
+    "type": "∀ {A : Sort u} (P : A → Prop), Rocq.Corelib.Init.Logic.all A P ↔ ∀ (x : A), P x",
+    "source_references": [
+      "Rocq.Corelib.Init.Logic.all"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.all_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Logic.all"
+    ]
+  },
+  {
+    "type": "∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lsr x y = x >>> y.toNat",
+    "source_references": [
+      "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int",
+      "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lsr"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.int63_lsr_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.Numbers.Cyclic.Int63.PrimInt63.lsr"
+    ]
+  },
+  {
+    "type": "∀ (n : Nat), NativeBridge.boolTo (Rocq.Corelib.Init.Nat.even n) = decide (n % 2 = 0)",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.even"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_even_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.Init.Nat.even"
+    ]
+  },
+  {
+    "type": "∀ (P Q : Prop), Rocq.Corelib.Init.Logic.or P Q ↔ P ∨ Q",
+    "source_references": [
+      "Rocq.Corelib.Init.Logic.or"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.or_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Logic.or"
+    ]
+  },
+  {
+    "type": "∀ (n k : Nat), Rocq.Corelib.Init.Nat.shiftl n k = n <<< k",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.shiftl"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_shiftl_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.Init.Nat.shiftl"
+    ]
+  },
+  {
+    "type": "Rocq.Corelib.Init.Logic.True ↔ True",
+    "source_references": [
+      "Rocq.Corelib.Init.Logic.True"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.true_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Logic.True"
+    ]
+  },
+  {
+    "type": "∀ (x y : BitVec 63),\n  NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.ltsb x y) = decide (x.toInt < y.toInt)",
+    "source_references": [
+      "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.ltsb"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.int63_ltsb_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Numbers.Cyclic.Int63.PrimInt63.ltsb"
+    ]
+  },
+  {
+    "type": "∀ (n m : Nat), Rocq.Corelib.Init.Nat.pow n m = n ^ m",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.pow"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_pow_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Nat.pow"
+    ]
+  },
+  {
+    "type": "Rocq.Corelib.Init.Nat.one = 1",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.one"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_one_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Nat.one"
+    ]
+  },
+  {
+    "type": "∀ {A : Sort u} (P : A → Prop), Rocq.Corelib.Init.Logic.ex A P ↔ ∃ x, P x",
+    "source_references": [
+      "Rocq.Corelib.Init.Logic.ex"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.ex_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Logic.ex"
+    ]
+  },
+  {
+    "type": "∀ (p : NativeBridge.RPositive),\n  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.pred_double p) = 2 * NativeBridge.positiveTo p - 1",
+    "source_references": [
+      "Rocq.Corelib.BinNums.PosDef.Pos.pred_double"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.positive_pred_double_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.BinNums.PosDef.Pos.pred_double"
+    ]
+  },
+  {
+    "type": "∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.div x y = x / y",
+    "source_references": [
+      "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int",
+      "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.div"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.int63_div_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext"
+    ],
+    "sources": [
+      "Corelib.Numbers.Cyclic.Int63.PrimInt63.div"
+    ]
+  },
+  {
+    "type": "∀ (n : Nat), NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.of_succ_nat n) = n + 1",
+    "source_references": [
+      "Rocq.Corelib.BinNums.PosDef.Pos.of_succ_nat"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.positive_of_succ_nat_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.BinNums.PosDef.Pos.of_succ_nat"
+    ]
+  },
+  {
+    "type": "∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.sub x y = x - y",
+    "source_references": [
+      "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int",
+      "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.sub"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.int63_sub_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Numbers.Cyclic.Int63.PrimInt63.sub"
+    ]
+  },
+  {
+    "type": "∀ (n : Nat), NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.of_nat n) = ↑n",
+    "source_references": [
+      "Rocq.Corelib.BinNums.IntDef.Z.of_nat"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.int_of_nat_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.BinNums.IntDef.Z.of_nat"
+    ]
+  },
+  {
+    "type": "∀ {A : Type u} (n : BitVec 63) (x : A),\n  ↑(NativeBridge.arrayTo (Rocq.Corelib.Array.PrimArray.make A n x)).fst = min n.toNat 4194303",
+    "source_references": [
+      "Rocq.Corelib.Array.PrimArray.make"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.array_make_length_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.Array.PrimArray.make"
+    ]
+  },
+  {
+    "type": "∀ (x y : Nat), Rocq.Corelib.Init.Nat.modulo x y = x % y",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.modulo"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_modulo_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.Init.Nat.modulo"
+    ]
+  },
+  {
+    "type": "∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lxor x y = x ^^^ y",
+    "source_references": [
+      "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int",
+      "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lxor"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.int63_lxor_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.Numbers.Cyclic.Int63.PrimInt63.lxor"
+    ]
+  },
+  {
+    "type": "∀ {A : Type u} {P : A → Type v} (x : Rocq.Corelib.Init.Specif.sigT A P),\n  Rocq.Corelib.Init.Specif.projT1 A P x = (NativeBridge.sigmaTo x).fst",
+    "source_references": [
+      "Rocq.Corelib.Init.Specif.sigT",
+      "Rocq.Corelib.Init.Specif.projT1"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.projT1_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Specif.projT1"
+    ]
+  },
+  {
+    "type": "∀ (p : NativeBridge.RPositive), Rocq.Corelib.BinNums.PosDef.Pos.to_nat p = NativeBridge.positiveTo p",
+    "source_references": [
+      "Rocq.Corelib.BinNums.PosDef.Pos.to_nat"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.positive_to_nat_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.BinNums.PosDef.Pos.to_nat"
+    ]
+  },
+  {
+    "type": "∀ {A : Type u} (xs ys : NativeBridge.RList A),\n  NativeBridge.listTo (Rocq.Corelib.Init.Datatypes.app A xs ys) = NativeBridge.listTo xs ++ NativeBridge.listTo ys",
+    "source_references": [
+      "Rocq.Corelib.Init.Datatypes.app"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.append_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Datatypes.app"
+    ]
+  },
+  {
+    "type": "∀ (a n : Nat), NativeBridge.boolTo (Rocq.Corelib.Init.Nat.testbit a n) = a.testBit n",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.testbit"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_testbit_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.Init.Nat.testbit"
+    ]
+  },
+  {
+    "type": "∀ (s : Rocq.Corelib.Strings.PrimString.string) (i : BitVec 63),\n  Rocq.Corelib.Strings.PrimString.get s i =\n    BitVec.ofNat 63\n      (if h : i.toNat < ↑(NativeBridge.byteStringTo s).fst then (NativeBridge.byteStringTo s).snd[i.toNat] else 0).toNat",
+    "source_references": [
+      "Rocq.Corelib.Strings.PrimString.string",
+      "Rocq.Corelib.Strings.PrimString.char63",
+      "Rocq.Corelib.Strings.PrimString.get"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.byteString_get_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.Strings.PrimString.get"
+    ]
+  },
+  {
+    "type": "∀ (x y : BitVec 63), NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.eqb x y) = (x.toNat == y.toNat)",
+    "source_references": [
+      "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.eqb"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.int63_eqb_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Numbers.Cyclic.Int63.PrimInt63.eqb"
+    ]
+  },
+  {
+    "type": "∀ {A : Type u} {B : Type v} (f : A → B) (x : Rocq.Corelib.Init.Datatypes.option A),\n  NativeBridge.optionTo (Rocq.Corelib.Init.Datatypes.option_map A B f x) = Option.map f (NativeBridge.optionTo x)",
+    "source_references": [
+      "Rocq.Corelib.Init.Datatypes.option",
+      "Rocq.Corelib.Init.Datatypes.option_map"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.option_map_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Datatypes.option_map"
+    ]
+  },
+  {
+    "type": "∀ (a b : NativeBridge.RBool),\n  NativeBridge.boolTo (Rocq.Corelib.Init.Datatypes.andb a b) = (NativeBridge.boolTo a && NativeBridge.boolTo b)",
+    "source_references": [
+      "Rocq.Corelib.Init.Datatypes.andb"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.andb_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Datatypes.andb"
+    ]
+  },
+  {
+    "type": "∀ {A : Type u} (a : Rocq.Corelib.Array.PrimArray.array A) (i : BitVec 63),\n  Rocq.Corelib.Array.PrimArray.get A a i =\n    if h : i.toNat < ↑(NativeBridge.arrayTo a).fst then (NativeBridge.arrayTo a).snd.fst[i.toNat]\n    else (NativeBridge.arrayTo a).snd.snd",
+    "source_references": [
+      "Rocq.Corelib.Array.PrimArray.array",
+      "Rocq.Corelib.Array.PrimArray.get"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.array_get_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.Array.PrimArray.get"
+    ]
+  },
+  {
+    "type": "∀ {A : Type u} (P : A → Prop) (xs : NativeBridge.RList A),\n  Rocq.Corelib.Lists.ListDef.Forall A P xs ↔ ∀ (x : A), x ∈ NativeBridge.listTo xs → P x",
+    "source_references": [
+      "Rocq.Corelib.Lists.ListDef.Forall"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.forall_list_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Lists.ListDef.Forall"
+    ]
+  },
+  {
+    "type": "∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.land x y = x &&& y",
+    "source_references": [
+      "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int",
+      "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.land"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.int63_land_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.Numbers.Cyclic.Int63.PrimInt63.land"
+    ]
+  },
+  {
+    "type": "∀ {A : Type u} (a : Rocq.Corelib.Array.PrimArray.array A),\n  Rocq.Corelib.Array.PrimArray.default A a = (NativeBridge.arrayTo a).snd.snd",
+    "source_references": [
+      "Rocq.Corelib.Array.PrimArray.array",
+      "Rocq.Corelib.Array.PrimArray.default"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.array_default_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext"
+    ],
+    "sources": [
+      "Corelib.Array.PrimArray.default"
+    ]
+  },
+  {
+    "type": "∀ (z : NativeBridge.RIntBinary), Rocq.Corelib.BinNums.IntDef.Z.to_nat z = (NativeBridge.binaryIntTo z).toNat",
+    "source_references": [
+      "Rocq.Corelib.BinNums.IntDef.Z.to_nat"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.int_to_nat_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.BinNums.IntDef.Z.to_nat"
+    ]
+  },
+  {
+    "type": "∀ (n k : Nat), Rocq.Corelib.Init.Nat.shiftr n k = n >>> k",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.shiftr"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_shiftr_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.Init.Nat.shiftr"
+    ]
+  },
+  {
+    "type": "∀ (n m : Nat), NativeBridge.boolTo (Rocq.Corelib.Init.Nat.leb n m) = decide (n ≤ m)",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.leb"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_leb_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext"
+    ],
+    "sources": [
+      "Corelib.Init.Nat.leb"
+    ]
+  },
+  {
+    "type": "∀ (A : Sort u), Rocq.Corelib.Init.Logic.inhabited A ↔ Nonempty A",
+    "source_references": [
+      "Rocq.Corelib.Init.Logic.inhabited"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.inhabited_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Logic.inhabited"
+    ]
+  },
+  {
+    "type": "∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lsl x y = x <<< y.toNat",
+    "source_references": [
+      "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int",
+      "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lsl"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.int63_lsl_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.Numbers.Cyclic.Int63.PrimInt63.lsl"
+    ]
+  },
+  {
+    "type": "∀ (P Q : Prop), Rocq.Corelib.Init.Logic.iff P Q ↔ (P ↔ Q)",
+    "source_references": [
+      "Rocq.Corelib.Init.Logic.iff"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.iff_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext"
+    ],
+    "sources": [
+      "Corelib.Init.Logic.iff"
+    ]
+  },
+  {
+    "type": "∀ (n m : Nat), Rocq.Corelib.Init.Peano.gt n m ↔ n > m",
+    "source_references": [
+      "Rocq.Corelib.Init.Peano.gt"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.peano_gt_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Peano.gt"
+    ]
+  },
+  {
+    "type": "∀ (n : NativeBridge.RNatBinary),\n  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.of_N n) = ↑(NativeBridge.binaryNatTo n)",
+    "source_references": [
+      "Rocq.Corelib.BinNums.IntDef.Z.of_N"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.int_of_binary_nat_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.BinNums.IntDef.Z.of_N"
+    ]
+  },
+  {
+    "type": "∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lor x y = x ||| y",
+    "source_references": [
+      "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int",
+      "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lor"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.int63_lor_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.Numbers.Cyclic.Int63.PrimInt63.lor"
+    ]
+  },
+  {
+    "type": "∀ (p : NativeBridge.RPositive),\n  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.succ p) = NativeBridge.positiveTo p + 1",
+    "source_references": [
+      "Rocq.Corelib.BinNums.PosDef.Pos.succ"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.positive_succ_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.BinNums.PosDef.Pos.succ"
+    ]
+  },
+  {
+    "type": "∀ (p q : NativeBridge.RPositive),\n  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.mul p q) =\n    NativeBridge.positiveTo p * NativeBridge.positiveTo q",
+    "source_references": [
+      "Rocq.Corelib.BinNums.PosDef.Pos.mul"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.positive_mul_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.BinNums.PosDef.Pos.mul"
+    ]
+  },
+  {
+    "type": "∀ {A : Type u} {B : Type v} (x : Rocq.Corelib.Init.Datatypes.prod A B),\n  Rocq.Corelib.Init.Datatypes.snd A B x = (NativeBridge.prodTo x).snd",
+    "source_references": [
+      "Rocq.Corelib.Init.Datatypes.prod",
+      "Rocq.Corelib.Init.Datatypes.snd"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.snd_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Datatypes.snd"
+    ]
+  },
+  {
+    "type": "∀ {A : Type u} {P : A → Prop} (x : Rocq.Corelib.Init.Specif.sig A P),\n  Rocq.Corelib.Init.Specif.proj1_sig A P x = (NativeBridge.sigTo x).val",
+    "source_references": [
+      "Rocq.Corelib.Init.Specif.sig",
+      "Rocq.Corelib.Init.Specif.proj1_sig"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.proj1_sig_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Specif.proj1_sig"
+    ]
+  },
+  {
+    "type": "∀ (n m : Nat), Rocq.Corelib.Init.Nat.tail_mul n m = n * m",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.tail_mul"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_tail_mul_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.Init.Nat.tail_mul"
+    ]
+  },
+  {
+    "type": "∀ (x y : BitVec 63),\n  NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.ltb x y) = decide (x.toNat < y.toNat)",
+    "source_references": [
+      "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.ltb"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.int63_ltb_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Numbers.Cyclic.Int63.PrimInt63.ltb"
+    ]
+  },
+  {
+    "type": "∀ (a b : NativeBridge.RBool),\n  NativeBridge.boolTo (Rocq.Corelib.Init.Datatypes.implb a b) = (!NativeBridge.boolTo a || NativeBridge.boolTo b)",
+    "source_references": [
+      "Rocq.Corelib.Init.Datatypes.implb"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.implb_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Datatypes.implb"
+    ]
+  },
+  {
+    "type": "∀ (A : Sort u), Rocq.Corelib.Init.Logic.notT A ↔ ∀ (a : A), False",
+    "source_references": [
+      "Rocq.Corelib.Init.Logic.notT"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.notT_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext"
+    ],
+    "sources": [
+      "Corelib.Init.Logic.notT"
+    ]
+  },
+  {
+    "type": "∀ {A : Type u} (a : A) (n : Nat), NativeBridge.listTo (Rocq.Corelib.Lists.ListDef.repeat A a n) = List.replicate n a",
+    "source_references": [
+      "Rocq.Corelib.Lists.ListDef.repeat"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.repeat_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Lists.ListDef.repeat"
+    ]
+  },
+  {
+    "type": "∀ (n m : Nat), NativeBridge.boolTo (Rocq.Corelib.Init.Nat.eqb n m) = (n == m)",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.eqb"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_eqb_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.Init.Nat.eqb"
+    ]
+  },
+  {
+    "type": "∀ (c : NativeBridge.RComparison),\n  NativeBridge.comparisonTo (Rocq.Corelib.Init.Datatypes.CompOpp c) = (NativeBridge.comparisonTo c).swap",
+    "source_references": [
+      "Rocq.Corelib.Init.Datatypes.CompOpp"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.compOpp_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Datatypes.CompOpp"
+    ]
+  },
+  {
+    "type": "∀ (n : Nat), Rocq.Corelib.Init.Nat.div2 n = n / 2",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.div2"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_div2_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.Init.Nat.div2"
+    ]
+  },
+  {
+    "type": "∀ (n m : Nat), Rocq.Corelib.Init.Nat.add n m = n + m",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.add"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_add_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Nat.add"
+    ]
+  },
+  {
+    "type": "∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.mod x y = x % y",
+    "source_references": [
+      "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int",
+      "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.mod"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.int63_mod_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext"
+    ],
+    "sources": [
+      "Corelib.Numbers.Cyclic.Int63.PrimInt63.mod"
+    ]
+  },
+  {
+    "type": "∀ {A : Type u} {P : A → Type v} (x : Rocq.Corelib.Init.Specif.sigT A P),\n  Rocq.Corelib.Init.Specif.projT2 A P x ≍ (NativeBridge.sigmaTo x).snd",
+    "source_references": [
+      "Rocq.Corelib.Init.Specif.sigT",
+      "Rocq.Corelib.Init.Specif.projT1",
+      "Rocq.Corelib.Init.Specif.projT2"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.projT2_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Specif.projT1",
+      "Corelib.Init.Specif.projT2"
+    ]
+  },
+  {
+    "type": "∀ {A : Type u} {B : Type v} (x : Rocq.Corelib.Init.Datatypes.prod A B),\n  Rocq.Corelib.Init.Datatypes.fst A B x = (NativeBridge.prodTo x).fst",
+    "source_references": [
+      "Rocq.Corelib.Init.Datatypes.prod",
+      "Rocq.Corelib.Init.Datatypes.fst"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.fst_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Datatypes.fst"
+    ]
+  },
+  {
+    "type": "∀ (n m : Nat), Rocq.Corelib.Init.Peano.ge n m ↔ n ≥ m",
+    "source_references": [
+      "Rocq.Corelib.Init.Peano.ge"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.peano_ge_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Peano.ge"
+    ]
+  },
+  {
+    "type": "∀ {A : Type u} {B : Type v} (f : A → B) (xs : NativeBridge.RList A),\n  NativeBridge.listTo (Rocq.Corelib.Lists.ListDef.map A B f xs) = List.map f (NativeBridge.listTo xs)",
+    "source_references": [
+      "Rocq.Corelib.Lists.ListDef.map"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.map_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Lists.ListDef.map"
+    ]
+  },
+  {
+    "type": "∀ (n m : Nat), Rocq.Corelib.Init.Nat.max n m = max n m",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.max"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_max_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.Init.Nat.max"
+    ]
+  },
+  {
+    "type": "∀ {A : Type u} (a : Rocq.Corelib.Array.PrimArray.array A) (i : BitVec 63) (x : A),\n  NativeBridge.arrayTo (Rocq.Corelib.Array.PrimArray.set A a i x) =\n    ⟨(NativeBridge.arrayTo a).fst,\n      ((NativeBridge.arrayTo a).snd.fst.setIfInBounds i.toNat x, (NativeBridge.arrayTo a).snd.snd)⟩",
+    "source_references": [
+      "Rocq.Corelib.Array.PrimArray.array",
+      "Rocq.Corelib.Array.PrimArray.set"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.array_set_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.Array.PrimArray.set"
+    ]
+  },
+  {
+    "type": "∀ (a b : Nat), Rocq.Corelib.Init.Nat.land a b = a &&& b",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.land"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_land_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.Init.Nat.land"
+    ]
+  },
+  {
+    "type": "∀ (n m : Nat), Rocq.Corelib.Init.Nat.mul n m = n * m",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.mul"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_mul_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Nat.mul"
+    ]
+  },
+  {
+    "type": "∀ (a : NativeBridge.RBool), Rocq.Corelib.Init.Datatypes.is_true a ↔ NativeBridge.boolTo a = true",
+    "source_references": [
+      "Rocq.Corelib.Init.Datatypes.is_true"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.is_true_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Datatypes.is_true"
+    ]
+  },
+  {
+    "type": "∀ (x y : BitVec 63),\n  NativeBridge.comparisonTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.compare x y) =\n    if x.toNat < y.toNat then Ordering.lt else if y.toNat < x.toNat then Ordering.gt else Ordering.eq",
+    "source_references": [
+      "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.compare"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.int63_compare_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Numbers.Cyclic.Int63.PrimInt63.compare"
+    ]
+  },
+  {
+    "type": "∀ (op : NativeBridge.RBool → NativeBridge.RBool → NativeBridge.RBool) (f : Bool → Bool → Bool),\n  (∀ (x y : NativeBridge.RBool), NativeBridge.boolTo (op x y) = f (NativeBridge.boolTo x) (NativeBridge.boolTo y)) →\n    f false false = false → ∀ (n a b : Nat), Rocq.Corelib.Init.Nat.bitwise op n a b = Nat.bitwise f a b % 2 ^ n",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.bitwise"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_bitwise_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.Init.Nat.bitwise"
+    ]
+  },
+  {
+    "type": "∀ (P Q : Prop), Rocq.Corelib.Init.Logic.and P Q ↔ P ∧ Q",
+    "source_references": [
+      "Rocq.Corelib.Init.Logic.and"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.and_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Logic.and"
+    ]
+  },
+  {
+    "type": "∀ (x y : NativeBridge.RIntBinary),\n  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.mul x y) =\n    NativeBridge.binaryIntTo x * NativeBridge.binaryIntTo y",
+    "source_references": [
+      "Rocq.Corelib.BinNums.IntDef.Z.mul"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.int_mul_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.BinNums.IntDef.Z.mul"
+    ]
+  },
+  {
+    "type": "∀ (p q : NativeBridge.RPositive),\n  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.add p q) =\n    NativeBridge.positiveTo p + NativeBridge.positiveTo q",
+    "source_references": [
+      "Rocq.Corelib.BinNums.PosDef.Pos.add"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.positive_add_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.BinNums.PosDef.Pos.add"
+    ]
+  },
+  {
+    "type": "∀ (x : NativeBridge.RIntBinary),\n  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.opp x) = -NativeBridge.binaryIntTo x",
+    "source_references": [
+      "Rocq.Corelib.BinNums.IntDef.Z.opp"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.int_opp_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext"
+    ],
+    "sources": [
+      "Corelib.BinNums.IntDef.Z.opp"
+    ]
+  },
+  {
+    "type": "∀ (x : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.id_int x = x",
+    "source_references": [
+      "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int",
+      "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.id_int"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.int63_id_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Numbers.Cyclic.Int63.PrimInt63.id_int"
+    ]
+  },
+  {
+    "type": "∀ (x y : BitVec 63),\n  NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.leb x y) = decide (x.toNat ≤ y.toNat)",
+    "source_references": [
+      "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.leb"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.int63_leb_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Numbers.Cyclic.Int63.PrimInt63.leb"
+    ]
+  },
+  {
+    "type": "∀ (r n m : Nat), Rocq.Corelib.Init.Nat.tail_addmul r n m = r + n * m",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.tail_addmul"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_tail_addmul_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.Init.Nat.tail_addmul"
+    ]
+  },
+  {
+    "type": "∀ {A : Type u} (n : Nat) (xs : NativeBridge.RList A) (d : A),\n  Rocq.Corelib.Lists.ListDef.nth A n xs d = (NativeBridge.listTo xs)[n]?.getD d",
+    "source_references": [
+      "Rocq.Corelib.Lists.ListDef.nth"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nth_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext"
+    ],
+    "sources": [
+      "Corelib.Lists.ListDef.nth"
+    ]
+  },
+  {
+    "type": "∀ (x y : Nat), Rocq.Corelib.Init.Nat.div x y = x / y",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.div"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_div_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.Init.Nat.div"
+    ]
+  },
+  {
+    "type": "Rocq.Corelib.Init.Nat.zero = 0",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.zero"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_zero_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Nat.zero"
+    ]
+  },
+  {
+    "type": "∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.mul x y = x * y",
+    "source_references": [
+      "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int",
+      "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.mul"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.int63_mul_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Numbers.Cyclic.Int63.PrimInt63.mul"
+    ]
+  },
+  {
+    "type": "∀ (n m : Nat), Rocq.Corelib.Init.Nat.tail_add n m = n + m",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.tail_add"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_tail_add_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.Init.Nat.tail_add"
+    ]
+  },
+  {
+    "type": "Rocq.Corelib.Init.Nat.two = 2",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.two"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_two_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Nat.two"
+    ]
+  },
+  {
+    "type": "∀ (s : Rocq.Corelib.Strings.PrimString.string),\n  Rocq.Corelib.Strings.PrimString.length s = BitVec.ofNat 63 ↑(NativeBridge.byteStringTo s).fst",
+    "source_references": [
+      "Rocq.Corelib.Strings.PrimString.string",
+      "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int",
+      "Rocq.Corelib.Strings.PrimString.length"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.byteString_length_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext"
+    ],
+    "sources": [
+      "Corelib.Strings.PrimString.length"
+    ]
+  },
+  {
+    "type": "∀ (n : Nat), Rocq.Corelib.Init.Nat.square n = n * n",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.square"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_square_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Nat.square"
+    ]
+  },
+  {
+    "type": "Rocq.Corelib.Init.Logic.False ↔ False",
+    "source_references": [
+      "Rocq.Corelib.Init.Logic.False"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.false_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Logic.False"
+    ]
+  },
+  {
+    "type": "∀ (a b : Nat), Rocq.Corelib.Init.Nat.ldiff a b = Nat.bitwise (fun x y => x && !y) a b",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.ldiff"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_ldiff_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.Init.Nat.ldiff"
+    ]
+  },
+  {
+    "type": "∀ (a b : NativeBridge.RBool),\n  NativeBridge.boolTo (Rocq.Corelib.Init.Datatypes.orb a b) = (NativeBridge.boolTo a || NativeBridge.boolTo b)",
+    "source_references": [
+      "Rocq.Corelib.Init.Datatypes.orb"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.orb_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Datatypes.orb"
+    ]
+  },
+  {
+    "type": "∀ {A : Type u} (n : Nat) (xs : NativeBridge.RList A),\n  NativeBridge.listTo (Rocq.Corelib.Lists.ListDef.firstn A n xs) = List.take n (NativeBridge.listTo xs)",
+    "source_references": [
+      "Rocq.Corelib.Lists.ListDef.firstn"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.firstn_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Lists.ListDef.firstn"
+    ]
+  },
+  {
+    "type": "∀ (n m : Nat), Rocq.Corelib.Init.Nat.sub n m = n - m",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.sub"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_sub_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext"
+    ],
+    "sources": [
+      "Corelib.Init.Nat.sub"
+    ]
+  },
+  {
+    "type": "∀ (n m : Nat), NativeBridge.boolTo (Rocq.Corelib.Init.Nat.ltb n m) = decide (n < m)",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.ltb"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_ltb_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext"
+    ],
+    "sources": [
+      "Corelib.Init.Nat.ltb"
+    ]
+  },
+  {
+    "type": "∀ (p q : NativeBridge.RPositive),\n  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.add_carry p q) =\n    NativeBridge.positiveTo p + NativeBridge.positiveTo q + 1",
+    "source_references": [
+      "Rocq.Corelib.BinNums.PosDef.Pos.add_carry"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.positive_add_carry_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.BinNums.PosDef.Pos.add_carry"
+    ]
+  },
+  {
+    "type": "∀ (a b : Nat), Rocq.Corelib.Init.Nat.lor a b = a ||| b",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.lor"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_lor_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.Init.Nat.lor"
+    ]
+  },
+  {
+    "type": "∀ (n m : Nat), Rocq.Corelib.Init.Peano.le n m ↔ n ≤ m",
+    "source_references": [
+      "Rocq.Corelib.Init.Peano.le"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.peano_le_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Peano.le"
+    ]
+  },
+  {
+    "type": "∀ {A : Type u} (a : Rocq.Corelib.Array.PrimArray.array A),\n  NativeBridge.arrayTo (Rocq.Corelib.Array.PrimArray.copy A a) = NativeBridge.arrayTo a",
+    "source_references": [
+      "Rocq.Corelib.Array.PrimArray.array",
+      "Rocq.Corelib.Array.PrimArray.copy"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.array_copy_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext"
+    ],
+    "sources": [
+      "Corelib.Array.PrimArray.copy"
+    ]
+  },
+  {
+    "type": "∀ (n : Nat), Rocq.Corelib.Init.Nat.pred n = n - 1",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.pred"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_pred_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Nat.pred"
+    ]
+  },
+  {
+    "type": "∀ {A : Sort u} (P Q : A → Prop), Rocq.Corelib.Init.Logic.ex2 A P Q ↔ ∃ x, P x ∧ Q x",
+    "source_references": [
+      "Rocq.Corelib.Init.Logic.ex2"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.ex2_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Logic.ex2"
+    ]
+  },
+  {
+    "type": "∀ (start len : Nat), NativeBridge.listTo (Rocq.Corelib.Lists.ListDef.seq start len) = List.range' start len",
+    "source_references": [
+      "Rocq.Corelib.Lists.ListDef.seq"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.seq_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Lists.ListDef.seq"
+    ]
+  },
+  {
+    "type": "∀ (n : Nat), Rocq.Corelib.Init.Nat.succ n = n + 1",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.succ"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_succ_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Nat.succ"
+    ]
+  },
+  {
+    "type": "∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.add x y = x + y",
+    "source_references": [
+      "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int",
+      "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.add"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.int63_add_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Numbers.Cyclic.Int63.PrimInt63.add"
+    ]
+  },
+  {
+    "type": "∀ {A : Type u} (xs : NativeBridge.RList A), Rocq.Corelib.Init.Datatypes.length A xs = (NativeBridge.listTo xs).length",
+    "source_references": [
+      "Rocq.Corelib.Init.Datatypes.length"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.length_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Datatypes.length"
+    ]
+  },
+  {
+    "type": "∀ {A : Type u} (n : BitVec 63) (x : A),\n  (NativeBridge.arrayTo (Rocq.Corelib.Array.PrimArray.make A n x)).snd.fst =\n    Vector.replicate (↑(NativeBridge.arrayTo (Rocq.Corelib.Array.PrimArray.make A n x)).fst) x",
+    "source_references": [
+      "Rocq.Corelib.Array.PrimArray.make"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.array_make_values_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.Array.PrimArray.make"
+    ]
+  },
+  {
+    "type": "∀ (n : Nat), Rocq.Corelib.Init.Nat.double n = 2 * n",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.double"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_double_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.Init.Nat.double"
+    ]
+  },
+  {
+    "type": "∀ (n : Nat), NativeBridge.boolTo (Rocq.Corelib.Init.Nat.odd n) = decide (n % 2 = 1)",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.odd"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_odd_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.Init.Nat.odd"
+    ]
+  },
+  {
+    "type": "∀ (x y : BitVec 63),\n  NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lesb x y) = decide (x.toInt ≤ y.toInt)",
+    "source_references": [
+      "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lesb"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.int63_lesb_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Numbers.Cyclic.Int63.PrimInt63.lesb"
+    ]
+  },
+  {
+    "type": "∀ (a b : Nat), Rocq.Corelib.Init.Nat.lxor a b = a ^^^ b",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.lxor"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_lxor_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.Init.Nat.lxor"
+    ]
+  },
+  {
+    "type": "∀ (n m : Nat), Rocq.Corelib.Init.Peano.lt n m ↔ n < m",
+    "source_references": [
+      "Rocq.Corelib.Init.Peano.lt"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.peano_lt_agrees",
+    "kind": "theorem",
+    "axioms": [],
+    "sources": [
+      "Corelib.Init.Peano.lt"
+    ]
+  },
+  {
+    "type": "∀ (n m : Nat), Rocq.Corelib.Init.Nat.min n m = min n m",
+    "source_references": [
+      "Rocq.Corelib.Init.Nat.min"
+    ],
+    "remaining_source_symbols": [],
+    "native_body": "",
+    "name": "NativeBridge.nat_min_agrees",
+    "kind": "theorem",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "sources": [
+      "Corelib.Init.Nat.min"
+    ]
+  }
+]

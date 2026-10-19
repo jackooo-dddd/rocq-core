@@ -1,0 +1,17 @@
+2026-10-18, after poly-lift targeted probe:
+159 Classes roots:44 newly checked,0 status regressions. Remaining30 roots:
+15 translation failures,12 kernel failures,1 universe failure,2 dependency failures.
+Several H x failures are applications of a lifted function relation; the head
+needs explicit PULift.down. Casts/let bindings/results need matching up/down.
+Frozen type-lift-global probe validates all three modules but binary_relation
+still fails because its Tlist/arrows reference constraints force source carrier
+and result globals before result transport. Merely wrapping the final result
+does not repair these reference arguments.
+
+New active type-coercions experiment adds a separate type_lift_coercions field
+and preserves Prop-only mode when that field is absent. Argument, let-value,
+final result and function-head transport are explicit. Independent structural
+audit strips only the named PULift.up/down isomorphisms before comparing the
+original source term; the existing fresh Lean consumer checks all payload and
+universe typing. Do not certify before positive and mutation fixtures, protected
+source roundtrip_poly and full regression pass.

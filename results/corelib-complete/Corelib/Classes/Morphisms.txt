@@ -1,0 +1,615 @@
+rocq2lean: 87 root(s) TRANSLATED_AND_CHECKED; summary {"bootstrap_resolved":0,"generated_helpers":0,"not_ok":75,"roots":87,"translated_dependencies":38}
+def Rocq.Corelib.Classes.Morphisms.Normalizes.{u_Corelib_Relations_Relation_Definitions_21} : (A :
+    Type u_Corelib_Relations_Relation_Definitions_21) →
+  Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A →
+    Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A → Prop :=
+fun A m m' =>
+  Rocq.Corelib.Classes.RelationClasses.relation_equivalence.{u_Corelib_Relations_Relation_Definitions_21} A m m'
+def Rocq.Corelib.Classes.Morphisms.PER_morphism.statement.{u_Corelib_Classes_Morphisms_77} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_77) (R : A → A → Prop),
+  Rocq.Corelib.Classes.RelationClasses.PER.{u_Corelib_Classes_Morphisms_77} A R →
+    (fun f g =>
+        ∀ (x y : A),
+          R x y → (fun f g => ∀ (x y : A), R x y → Rocq.Corelib.Init.Logic.and (f x → g y) (g y → f x)) (f x) (g y))
+      R R
+def Rocq.Corelib.Classes.Morphisms.PER_morphism_obligation_1.statement.{u_Corelib_Classes_Morphisms_77} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_77) (R : A → A → Prop),
+  Rocq.Corelib.Classes.RelationClasses.PER.{u_Corelib_Classes_Morphisms_77} A R →
+    ∀ (x y : A),
+      R x y → (fun f g => ∀ (x y : A), R x y → Rocq.Corelib.Init.Logic.and (f x → g y) (g y → f x)) (R x) (R y)
+inductive Rocq.Corelib.Classes.Morphisms.Params.{u_Corelib_Classes_Morphisms_122} : (A :
+    Sort u_Corelib_Classes_Morphisms_122) →
+  A → Rocq.Corelib.Init.Datatypes.nat → Prop
+number of parameters: 3
+constructors:
+Rocq.Corelib.Classes.Morphisms.Params.Build_Params : ∀ (A : Sort u_Corelib_Classes_Morphisms_122) («from» : A)
+  (arity : Rocq.Corelib.Init.Datatypes.nat),
+  Rocq.Corelib.Classes.Morphisms.Params.{u_Corelib_Classes_Morphisms_122} A «from» arity
+inductive Rocq.Corelib.Classes.Morphisms.PartialApplication : Prop
+number of parameters: 0
+constructors:
+Rocq.Corelib.Classes.Morphisms.PartialApplication.Build_PartialApplication : Rocq.Corelib.Classes.Morphisms.PartialApplication
+def Rocq.Corelib.Classes.Morphisms.PartialOrder_StrictOrder.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (eqA : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A)
+  (equ : Rocq.Corelib.Classes.RelationClasses.Equivalence.{u_Corelib_Relations_Relation_Definitions_21} A eqA)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A)
+  (preo : Rocq.Corelib.Classes.RelationClasses.PreOrder.{u_Corelib_Relations_Relation_Definitions_21} A R),
+  Rocq.Corelib.Classes.RelationClasses.PartialOrder.{u_Corelib_Relations_Relation_Definitions_21} A eqA equ R preo →
+    Rocq.Corelib.Classes.RelationClasses.StrictOrder.{u_Corelib_Relations_Relation_Definitions_21} A
+      (Rocq.Corelib.Classes.RelationClasses.relation_conjunction.{u_Corelib_Relations_Relation_Definitions_21} A R
+        (Rocq.Corelib.Classes.RelationClasses.complement.{u_Corelib_Relations_Relation_Definitions_21} A eqA))
+def Rocq.Corelib.Classes.Morphisms.PartialOrder_proper.statement.{u_Corelib_Classes_Morphisms_183} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_183) (eqA : A → A → Prop),
+  Rocq.Corelib.Classes.RelationClasses.Equivalence.{u_Corelib_Classes_Morphisms_183} A eqA →
+    ∀ (R : A → A → Prop),
+      Rocq.Corelib.Classes.RelationClasses.PreOrder.{u_Corelib_Classes_Morphisms_183} A R →
+        (∀ (x x_1 : A), Rocq.Corelib.Init.Logic.iff (eqA x x_1) (Rocq.Corelib.Init.Logic.and (R x x_1) (R x_1 x))) →
+          ∀ (x y : A),
+            eqA x y → ∀ (x_1 y_1 : A), eqA x_1 y_1 → Rocq.Corelib.Init.Logic.and (R x x_1 → R y y_1) (R y y_1 → R x x_1)
+def Rocq.Corelib.Classes.Morphisms.Proper.{u_Corelib_Relations_Relation_Definitions_21} : (A :
+    Type u_Corelib_Relations_Relation_Definitions_21) →
+  Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A → A → Prop :=
+let U := Type u_Corelib_Relations_Relation_Definitions_21;
+fun A R m => R m m
+def Rocq.Corelib.Classes.Morphisms.ProperProxy.{u_Corelib_Relations_Relation_Definitions_21} : (A :
+    Type u_Corelib_Relations_Relation_Definitions_21) →
+  Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A → A → Prop :=
+let U := Type u_Corelib_Relations_Relation_Definitions_21;
+fun A R m => R m m
+def Rocq.Corelib.Classes.Morphisms.ReflexiveProxy.{u_Corelib_Relations_Relation_Definitions_21} : (A :
+    Type u_Corelib_Relations_Relation_Definitions_21) →
+  Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A → Prop :=
+let U := Type u_Corelib_Relations_Relation_Definitions_21;
+fun A R => ∀ (x : A), R x x
+def Rocq.Corelib.Classes.Morphisms.Reflexive_partial_app_morphism.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A B : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A)
+  (R' : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} B)
+  (m : A → B),
+  Rocq.Corelib.Classes.Morphisms.Proper.{u_Corelib_Relations_Relation_Definitions_21} (A → B)
+      (Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Relations_Relation_Definitions_21} A B R R') m →
+    ∀ (x : A),
+      Rocq.Corelib.Classes.Morphisms.ProperProxy.{u_Corelib_Relations_Relation_Definitions_21} A R x →
+        Rocq.Corelib.Classes.Morphisms.Proper.{u_Corelib_Relations_Relation_Definitions_21} B R' (m x)
+def Rocq.Corelib.Classes.Morphisms.StrictOrder_PartialOrder.statement.{u_Corelib_Classes_Morphisms_196} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_196) (eqA : A → A → Prop),
+  Rocq.Corelib.Classes.RelationClasses.Equivalence.{u_Corelib_Classes_Morphisms_196} A eqA →
+    ∀ (R : A → A → Prop),
+      Rocq.Corelib.Classes.RelationClasses.StrictOrder.{u_Corelib_Classes_Morphisms_196} A R →
+        (∀ (x y : A),
+            eqA x y →
+              ∀ (x_1 y_1 : A), eqA x_1 y_1 → Rocq.Corelib.Init.Logic.and (R x x_1 → R y y_1) (R y y_1 → R x x_1)) →
+          ∀ (x x_1 : A),
+            Rocq.Corelib.Init.Logic.iff (eqA x x_1)
+              (Rocq.Corelib.Init.Logic.and (Rocq.Corelib.Init.Logic.or (R x x_1) (eqA x x_1))
+                (Rocq.Corelib.Init.Logic.or (R x_1 x) (eqA x_1 x)))
+def Rocq.Corelib.Classes.Morphisms.StrictOrder_PreOrder.statement.{u_Corelib_Classes_Morphisms_192} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_192) (eqA : A → A → Prop),
+  Rocq.Corelib.Classes.RelationClasses.Equivalence.{u_Corelib_Classes_Morphisms_192} A eqA →
+    ∀ (R : A → A → Prop),
+      Rocq.Corelib.Classes.RelationClasses.StrictOrder.{u_Corelib_Classes_Morphisms_192} A R →
+        (∀ (x y : A),
+            eqA x y →
+              ∀ (x_1 y_1 : A), eqA x_1 y_1 → Rocq.Corelib.Init.Logic.and (R x x_1 → R y y_1) (R y y_1 → R x x_1)) →
+          Rocq.Corelib.Classes.RelationClasses.PreOrder.{u_Corelib_Classes_Morphisms_192} A fun x x_1 =>
+            Rocq.Corelib.Init.Logic.or (R x x_1) (eqA x x_1)
+inductive Rocq.Corelib.Classes.Morphisms.apply_subrelation : Prop
+number of parameters: 0
+constructors:
+Rocq.Corelib.Classes.Morphisms.apply_subrelation.do_subrelation : Rocq.Corelib.Classes.Morphisms.apply_subrelation
+def Rocq.Corelib.Classes.Morphisms.complement_proper.statement.{u_Corelib_Classes_Morphisms_77} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_77) (RA R : A → A → Prop),
+  (fun f g =>
+        ∀ (x y : A),
+          RA x y → (fun f g => ∀ (x y : A), RA x y → Rocq.Corelib.Init.Logic.and (f x → g y) (g y → f x)) (f x) (g y))
+      R R →
+    (fun f g =>
+        ∀ (x y : A),
+          RA x y → (fun f g => ∀ (x y : A), RA x y → Rocq.Corelib.Init.Logic.and (f x → g y) (g y → f x)) (f x) (g y))
+      (fun x y => R x y → Rocq.Corelib.Init.Logic.False) fun x y => R x y → Rocq.Corelib.Init.Logic.False
+def Rocq.Corelib.Classes.Morphisms.complement_proper_obligation_1.statement.{u_Corelib_Classes_Morphisms_77} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_77) (RA R : A → A → Prop),
+  (fun f g =>
+        ∀ (x y : A),
+          RA x y → (fun f g => ∀ (x y : A), RA x y → Rocq.Corelib.Init.Logic.and (f x → g y) (g y → f x)) (f x) (g y))
+      R R →
+    (fun f g =>
+        ∀ (x y : A),
+          RA x y → (fun f g => ∀ (x y : A), RA x y → Rocq.Corelib.Init.Logic.and (f x → g y) (g y → f x)) (f x) (g y))
+      (fun x y => R x y → Rocq.Corelib.Init.Logic.False) fun x y => R x y → Rocq.Corelib.Init.Logic.False
+def Rocq.Corelib.Classes.Morphisms.compose_proper.statement.{u_Corelib_Classes_Morphisms_77} : Prop :=
+∀ (A B C : Type u_Corelib_Classes_Morphisms_77)
+  (RA : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Classes_Morphisms_77} A)
+  (RB : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Classes_Morphisms_77} B)
+  (RC : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Classes_Morphisms_77} C),
+  Rocq.Corelib.Classes.Morphisms.Proper.{u_Corelib_Classes_Morphisms_77} ((B → C) → (A → B) → A → C)
+    (Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Classes_Morphisms_77} (B → C) ((A → B) → A → C)
+      (Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Classes_Morphisms_77} B C RB RC)
+      (Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Classes_Morphisms_77} (A → B) (A → C)
+        (Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Classes_Morphisms_77} A B RA RB)
+        (Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Classes_Morphisms_77} A C RA RC)))
+    (Rocq.Corelib.Program.Basics.compose.{u_Corelib_Classes_Morphisms_77 + 1, u_Corelib_Classes_Morphisms_77 + 1,
+        u_Corelib_Classes_Morphisms_77 + 1}
+      A B C)
+def Rocq.Corelib.Classes.Morphisms.compose_proper_obligation_1.statement.{u_Corelib_Classes_Morphisms_77} : Prop :=
+∀ (A B C : Type u_Corelib_Classes_Morphisms_77)
+  (RA : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Classes_Morphisms_77} A)
+  (RB : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Classes_Morphisms_77} B)
+  (RC : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Classes_Morphisms_77} C),
+  Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Classes_Morphisms_77} (B → C) ((A → B) → A → C)
+    (Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Classes_Morphisms_77} B C RB RC)
+    (Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Classes_Morphisms_77} (A → B) (A → C)
+      (Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Classes_Morphisms_77} A B RA RB)
+      (Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Classes_Morphisms_77} A C RA RC))
+    (Rocq.Corelib.Program.Basics.compose.{u_Corelib_Classes_Morphisms_77 + 1, u_Corelib_Classes_Morphisms_77 + 1,
+        u_Corelib_Classes_Morphisms_77 + 1}
+      A B C)
+    (Rocq.Corelib.Program.Basics.compose.{u_Corelib_Classes_Morphisms_77 + 1, u_Corelib_Classes_Morphisms_77 + 1,
+        u_Corelib_Classes_Morphisms_77 + 1}
+      A B C)
+def Rocq.Corelib.Classes.Morphisms.eq_pars.statement.{u_Corelib_Init_Logic_19} : Prop :=
+Rocq.Corelib.Classes.Morphisms.Params.{u_Corelib_Init_Logic_19 + 1} ((A : Sort u_Corelib_Init_Logic_19) → A → A → Prop)
+  Rocq.Corelib.Init.Logic.eq.{u_Corelib_Init_Logic_19} Rocq.Corelib.Init.Datatypes.nat.O.S
+def Rocq.Corelib.Classes.Morphisms.eq_proper_proxy.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (x : A),
+  Rocq.Corelib.Classes.Morphisms.ProperProxy.{u_Corelib_Relations_Relation_Definitions_21} A
+    (Rocq.Corelib.Init.Logic.eq.{u_Corelib_Relations_Relation_Definitions_21 + 1} A) x
+def Rocq.Corelib.Classes.Morphisms.eq_rewrite_relation.statement.{u_Corelib_Classes_RelationClasses_21} : Prop :=
+∀ (A : Type u_Corelib_Classes_RelationClasses_21),
+  Rocq.Corelib.Classes.RelationClasses.RewriteRelation.{u_Corelib_Classes_RelationClasses_21} A
+    (Rocq.Corelib.Init.Logic.eq.{u_Corelib_Classes_RelationClasses_21 + 1} A)
+def Rocq.Corelib.Classes.Morphisms.eq_subrelation.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Classes.RelationClasses.Reflexive.{u_Corelib_Relations_Relation_Definitions_21} A R →
+    Rocq.Corelib.Classes.RelationClasses.subrelation.{u_Corelib_Relations_Relation_Definitions_21} A
+      (Rocq.Corelib.Init.Logic.eq.{u_Corelib_Relations_Relation_Definitions_21 + 1} A) R
+def Rocq.Corelib.Classes.Morphisms.flip1.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R' R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Classes.RelationClasses.subrelation.{u_Corelib_Relations_Relation_Definitions_21} A R' R →
+    Rocq.Corelib.Classes.RelationClasses.subrelation.{u_Corelib_Relations_Relation_Definitions_21} A
+      (Rocq.Corelib.Program.Basics.flip.{u_Corelib_Relations_Relation_Definitions_21 + 1,
+          u_Corelib_Relations_Relation_Definitions_21 + 1, 1}
+        A A Prop
+        (Rocq.Corelib.Program.Basics.flip.{u_Corelib_Relations_Relation_Definitions_21 + 1,
+            u_Corelib_Relations_Relation_Definitions_21 + 1, 1}
+          A A Prop R'))
+      R
+def Rocq.Corelib.Classes.Morphisms.flip2.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R R' : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Classes.RelationClasses.subrelation.{u_Corelib_Relations_Relation_Definitions_21} A R R' →
+    Rocq.Corelib.Classes.RelationClasses.subrelation.{u_Corelib_Relations_Relation_Definitions_21} A R
+      (Rocq.Corelib.Program.Basics.flip.{u_Corelib_Relations_Relation_Definitions_21 + 1,
+          u_Corelib_Relations_Relation_Definitions_21 + 1, 1}
+        A A Prop
+        (Rocq.Corelib.Program.Basics.flip.{u_Corelib_Relations_Relation_Definitions_21 + 1,
+            u_Corelib_Relations_Relation_Definitions_21 + 1, 1}
+          A A Prop R'))
+def Rocq.Corelib.Classes.Morphisms.flip_arrow.statement.{u_Corelib_Classes_Morphisms_138, u_Corelib_Classes_Morphisms_139} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_138) (B : Type u_Corelib_Classes_Morphisms_139) (R R''' : A → A → Prop),
+  (∀ (x x_1 : A), Rocq.Corelib.Init.Logic.iff (R x x_1) (R''' x_1 x)) →
+    ∀ (R' R'' : B → B → Prop),
+      (∀ (x x_1 : B), Rocq.Corelib.Init.Logic.iff (R' x x_1) (R'' x_1 x)) →
+        ∀ (x x_1 : A → B),
+          Rocq.Corelib.Init.Logic.iff (∀ (x_2 y : A), R x_2 y → R' (x x_2) (x_1 y))
+            (∀ (x_2 y : A), R''' x_2 y → R'' (x_1 x_2) (x y))
+def Rocq.Corelib.Classes.Morphisms.flip_atom.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Classes.Morphisms.Normalizes.{u_Corelib_Relations_Relation_Definitions_21} A R
+    (Rocq.Corelib.Program.Basics.flip.{u_Corelib_Relations_Relation_Definitions_21 + 1,
+        u_Corelib_Relations_Relation_Definitions_21 + 1, 1}
+      A A Prop
+      (Rocq.Corelib.Program.Basics.flip.{u_Corelib_Relations_Relation_Definitions_21 + 1,
+          u_Corelib_Relations_Relation_Definitions_21 + 1, 1}
+        A A Prop R))
+def Rocq.Corelib.Classes.Morphisms.flip_forall.statement.{u_Corelib_Classes_Morphisms_144, u_Corelib_Classes_Morphisms_145} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_144) (B : A → Type u_Corelib_Classes_Morphisms_145)
+  (R R' : (a : A) → B a → B a → Prop),
+  (∀ (a : A) (x x_1 : B a), Rocq.Corelib.Init.Logic.iff (R a x x_1) (R' a x_1 x)) →
+    ∀ (x x_1 : (a : A) → B a),
+      Rocq.Corelib.Init.Logic.iff (∀ (a : A), R a (x a) (x_1 a)) (∀ (a : A), R' a (x_1 a) (x a))
+def Rocq.Corelib.Classes.Morphisms.flip_pars.statement.{u_Corelib_Program_Basics_36, u_Corelib_Program_Basics_37, u_Corelib_Program_Basics_38} : Prop :=
+Rocq.Corelib.Classes.Morphisms.Params.{imax (u_Corelib_Program_Basics_36 + 1) (u_Corelib_Program_Basics_37 + 1)
+      (u_Corelib_Program_Basics_38 + 1)
+      (imax u_Corelib_Program_Basics_36 u_Corelib_Program_Basics_37 u_Corelib_Program_Basics_38)
+      u_Corelib_Program_Basics_37 u_Corelib_Program_Basics_36 u_Corelib_Program_Basics_38}
+  ((A : Sort u_Corelib_Program_Basics_36) →
+    (B : Sort u_Corelib_Program_Basics_37) → (C : Sort u_Corelib_Program_Basics_38) → (A → B → C) → B → A → C)
+  Rocq.Corelib.Program.Basics.flip.{u_Corelib_Program_Basics_36, u_Corelib_Program_Basics_37,
+    u_Corelib_Program_Basics_38}
+  Rocq.Corelib.Init.Datatypes.nat.O.S.S.S.S
+def Rocq.Corelib.Classes.Morphisms.flip_proper.statement.{u_Corelib_Classes_Morphisms_77} : Prop :=
+∀ (A B C : Type u_Corelib_Classes_Morphisms_77)
+  (RA : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Classes_Morphisms_77} A)
+  (RB : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Classes_Morphisms_77} B)
+  (RC : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Classes_Morphisms_77} C) (f : A → B → C),
+  Rocq.Corelib.Classes.Morphisms.Proper.{u_Corelib_Classes_Morphisms_77} (A → B → C)
+      (Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Classes_Morphisms_77} A (B → C) RA
+        (Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Classes_Morphisms_77} B C RB RC))
+      f →
+    Rocq.Corelib.Classes.Morphisms.Proper.{u_Corelib_Classes_Morphisms_77} (B → A → C)
+      (Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Classes_Morphisms_77} B (A → C) RB
+        (Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Classes_Morphisms_77} A C RA RC))
+      (Rocq.Corelib.Program.Basics.flip.{u_Corelib_Classes_Morphisms_77 + 1, u_Corelib_Classes_Morphisms_77 + 1,
+          u_Corelib_Classes_Morphisms_77 + 1}
+        A B C f)
+def Rocq.Corelib.Classes.Morphisms.flip_proper_obligation_1.statement.{u_Corelib_Classes_Morphisms_77} : Prop :=
+∀ (A B C : Type u_Corelib_Classes_Morphisms_77)
+  (RA : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Classes_Morphisms_77} A)
+  (RB : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Classes_Morphisms_77} B)
+  (RC : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Classes_Morphisms_77} C) (f : A → B → C),
+  Rocq.Corelib.Classes.Morphisms.Proper.{u_Corelib_Classes_Morphisms_77} (A → B → C)
+      (Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Classes_Morphisms_77} A (B → C) RA
+        (Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Classes_Morphisms_77} B C RB RC))
+      f →
+    Rocq.Corelib.Classes.Morphisms.Proper.{u_Corelib_Classes_Morphisms_77} (B → A → C)
+      (Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Classes_Morphisms_77} B (A → C) RB
+        (Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Classes_Morphisms_77} A C RA RC))
+      (Rocq.Corelib.Program.Basics.flip.{u_Corelib_Classes_Morphisms_77 + 1, u_Corelib_Classes_Morphisms_77 + 1,
+          u_Corelib_Classes_Morphisms_77 + 1}
+        A B C f)
+def Rocq.Corelib.Classes.Morphisms.flip_respectful.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A B : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A)
+  (R' : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} B),
+  Rocq.Corelib.Classes.RelationClasses.relation_equivalence.{u_Corelib_Relations_Relation_Definitions_21} (A → B)
+    (Rocq.Corelib.Program.Basics.flip.{u_Corelib_Relations_Relation_Definitions_21 + 1,
+        u_Corelib_Relations_Relation_Definitions_21 + 1, 1}
+      (A → B) (A → B) Prop
+      (Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Relations_Relation_Definitions_21} A B R R'))
+    (Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Relations_Relation_Definitions_21} A B
+      (Rocq.Corelib.Program.Basics.flip.{u_Corelib_Relations_Relation_Definitions_21 + 1,
+          u_Corelib_Relations_Relation_Definitions_21 + 1, 1}
+        A A Prop R)
+      (Rocq.Corelib.Program.Basics.flip.{u_Corelib_Relations_Relation_Definitions_21 + 1,
+          u_Corelib_Relations_Relation_Definitions_21 + 1, 1}
+        B B Prop R'))
+def Rocq.Corelib.Classes.Morphisms.forall_def.{u_Corelib_Classes_Morphisms_58} : (A :
+    Type u_Corelib_Classes_Morphisms_58) →
+  (A → Type u_Corelib_Classes_Morphisms_58) → Type u_Corelib_Classes_Morphisms_58 :=
+let U := Type u_Corelib_Classes_Morphisms_58;
+fun A P => (x : A) → P x
+def Rocq.Corelib.Classes.Morphisms.forall_relation.{u_Corelib_Relations_Relation_Definitions_21} : (A :
+    Type u_Corelib_Relations_Relation_Definitions_21) →
+  (P : A → Type u_Corelib_Relations_Relation_Definitions_21) →
+    ((a : A) →
+        Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} (P a)) →
+      Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21}
+        ((x : A) → P x) :=
+let U := Type u_Corelib_Relations_Relation_Definitions_21;
+fun A P sig f g => ∀ (a : A), sig a (f a) (g a)
+def Rocq.Corelib.Classes.Morphisms.forall_subrelation.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (P : A → Type u_Corelib_Relations_Relation_Definitions_21)
+  (R S :
+    (x : A) → Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} (P x)),
+  (∀ (a : A),
+      Rocq.Corelib.Classes.RelationClasses.subrelation.{u_Corelib_Relations_Relation_Definitions_21} (P a) (R a)
+        (S a)) →
+    Rocq.Corelib.Classes.RelationClasses.subrelation.{u_Corelib_Relations_Relation_Definitions_21} ((x : A) → P x)
+      (Rocq.Corelib.Classes.Morphisms.forall_relation.{u_Corelib_Relations_Relation_Definitions_21} A P R)
+      (Rocq.Corelib.Classes.Morphisms.forall_relation.{u_Corelib_Relations_Relation_Definitions_21} A P S)
+def Rocq.Corelib.Classes.Morphisms.iff_flip_impl_subrelation.statement : Prop :=
+Rocq.Corelib.Classes.RelationClasses.subrelation.{0} Prop Rocq.Corelib.Init.Logic.iff
+  (Rocq.Corelib.Program.Basics.flip.{1, 1, 1} Prop Prop Prop Rocq.Corelib.Program.Basics.impl)
+def Rocq.Corelib.Classes.Morphisms.iff_impl_subrelation.statement : Prop :=
+Rocq.Corelib.Classes.RelationClasses.subrelation.{0} Prop Rocq.Corelib.Init.Logic.iff Rocq.Corelib.Program.Basics.impl
+def Rocq.Corelib.Classes.Morphisms.iff_pars.statement : Prop :=
+Rocq.Corelib.Classes.Morphisms.Params.{1} (Prop → Prop → Prop) Rocq.Corelib.Init.Logic.iff
+  Rocq.Corelib.Init.Datatypes.nat.O
+def Rocq.Corelib.Classes.Morphisms.impl_pars.statement : Prop :=
+Rocq.Corelib.Classes.Morphisms.Params.{1} (Prop → Prop → Prop) Rocq.Corelib.Program.Basics.impl
+  Rocq.Corelib.Init.Datatypes.nat.O
+inductive Rocq.Corelib.Classes.Morphisms.normalization_done : Prop
+number of parameters: 0
+constructors:
+Rocq.Corelib.Classes.Morphisms.normalization_done.did_normalization : Rocq.Corelib.Classes.Morphisms.normalization_done
+def Rocq.Corelib.Classes.Morphisms.normalizes.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (m m' : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Classes.Morphisms.Normalizes.{u_Corelib_Relations_Relation_Definitions_21} A m m' →
+    Rocq.Corelib.Classes.RelationClasses.relation_equivalence.{u_Corelib_Relations_Relation_Definitions_21} A m m'
+def Rocq.Corelib.Classes.Morphisms.per_partial_app_morphism.statement.{u_Corelib_Classes_Morphisms_77} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_77) (R : A → A → Prop),
+  Rocq.Corelib.Classes.RelationClasses.PER.{u_Corelib_Classes_Morphisms_77} A R →
+    ∀ (x : A), (fun f g => ∀ (x y : A), R x y → Rocq.Corelib.Init.Logic.and (f x → g y) (g y → f x)) (R x) (R x)
+def Rocq.Corelib.Classes.Morphisms.per_partial_app_morphism_obligation_1.statement.{u_Corelib_Classes_Morphisms_77} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_77) (R : A → A → Prop),
+  Rocq.Corelib.Classes.RelationClasses.PER.{u_Corelib_Classes_Morphisms_77} A R →
+    ∀ (x x_1 y : A), R x_1 y → Rocq.Corelib.Init.Logic.and (R x x_1 → R x y) (R x y → R x x_1)
+def Rocq.Corelib.Classes.Morphisms.pointwise_pointwise.statement.{u_Corelib_Classes_Morphisms_57} : Prop :=
+∀ (A B : Type u_Corelib_Classes_Morphisms_57)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Classes_Morphisms_57} B),
+  Rocq.Corelib.Classes.RelationClasses.relation_equivalence.{u_Corelib_Classes_Morphisms_57} (A → B)
+    (Rocq.Corelib.Classes.Morphisms.pointwise_relation.{u_Corelib_Classes_Morphisms_57, u_Corelib_Classes_Morphisms_57}
+      A B R)
+    (Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Classes_Morphisms_57} A B
+      (Rocq.Corelib.Init.Logic.eq.{u_Corelib_Classes_Morphisms_57 + 1} A) R)
+def Rocq.Corelib.Classes.Morphisms.pointwise_relation.{u_Corelib_Classes_Morphisms_38, u_Corelib_Classes_Morphisms_39} : (A :
+    Type u_Corelib_Classes_Morphisms_39) →
+  (B : Type u_Corelib_Classes_Morphisms_38) →
+    Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Classes_Morphisms_38} B →
+      Rocq.Corelib.Relations.Relation_Definitions.relation.{max u_Corelib_Classes_Morphisms_38
+            u_Corelib_Classes_Morphisms_39}
+        (A → B) :=
+fun A B R f g => ∀ (a : A), R (f a) (g a)
+def Rocq.Corelib.Classes.Morphisms.pointwise_subrelation.statement.{u_Corelib_Classes_Morphisms_57} : Prop :=
+∀ (A B : Type u_Corelib_Classes_Morphisms_57)
+  (R R' : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Classes_Morphisms_57} B),
+  Rocq.Corelib.Classes.RelationClasses.subrelation.{u_Corelib_Classes_Morphisms_57} B R R' →
+    Rocq.Corelib.Classes.RelationClasses.subrelation.{u_Corelib_Classes_Morphisms_57} (A → B)
+      (Rocq.Corelib.Classes.Morphisms.pointwise_relation.{u_Corelib_Classes_Morphisms_57,
+          u_Corelib_Classes_Morphisms_57}
+        A B R)
+      (Rocq.Corelib.Classes.Morphisms.pointwise_relation.{u_Corelib_Classes_Morphisms_57,
+          u_Corelib_Classes_Morphisms_57}
+        A B R')
+def Rocq.Corelib.Classes.Morphisms.proper_eq.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (x : A),
+  Rocq.Corelib.Classes.Morphisms.Proper.{u_Corelib_Relations_Relation_Definitions_21} A
+    (Rocq.Corelib.Init.Logic.eq.{u_Corelib_Relations_Relation_Definitions_21 + 1} A) x
+def Rocq.Corelib.Classes.Morphisms.proper_flip_proper.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A) (m : A),
+  Rocq.Corelib.Classes.Morphisms.Proper.{u_Corelib_Relations_Relation_Definitions_21} A R m →
+    Rocq.Corelib.Classes.Morphisms.Proper.{u_Corelib_Relations_Relation_Definitions_21} A
+      (Rocq.Corelib.Program.Basics.flip.{u_Corelib_Relations_Relation_Definitions_21 + 1,
+          u_Corelib_Relations_Relation_Definitions_21 + 1, 1}
+        A A Prop R)
+      m
+def Rocq.Corelib.Classes.Morphisms.proper_normalizes_proper.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R0 R1 : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Classes.Morphisms.Normalizes.{u_Corelib_Relations_Relation_Definitions_21} A R0 R1 →
+    ∀ (m : A),
+      Rocq.Corelib.Classes.Morphisms.Proper.{u_Corelib_Relations_Relation_Definitions_21} A R1 m →
+        Rocq.Corelib.Classes.Morphisms.Proper.{u_Corelib_Relations_Relation_Definitions_21} A R0 m
+def Rocq.Corelib.Classes.Morphisms.proper_prf.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A) (m : A),
+  Rocq.Corelib.Classes.Morphisms.Proper.{u_Corelib_Relations_Relation_Definitions_21} A R m → R m m
+def Rocq.Corelib.Classes.Morphisms.proper_proper.statement.{u_Corelib_Classes_Morphisms_131} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_131) (x y : A → A → Prop),
+  (∀ (x_1 x_2 : A), Rocq.Corelib.Init.Logic.iff (x x_1 x_2) (y x_1 x_2)) →
+    ∀ (x_1 y_1 : A),
+      Rocq.Corelib.Init.Logic.eq.{u_Corelib_Classes_Morphisms_131 + 1} A x_1 y_1 →
+        Rocq.Corelib.Init.Logic.and (x x_1 x_1 → y y_1 y_1) (y y_1 y_1 → x x_1 x_1)
+def Rocq.Corelib.Classes.Morphisms.proper_proper_proxy.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (x : A)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Classes.Morphisms.Proper.{u_Corelib_Relations_Relation_Definitions_21} A R x →
+    Rocq.Corelib.Classes.Morphisms.ProperProxy.{u_Corelib_Relations_Relation_Definitions_21} A R x
+def Rocq.Corelib.Classes.Morphisms.proper_proxy.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A) (m : A),
+  Rocq.Corelib.Classes.Morphisms.ProperProxy.{u_Corelib_Relations_Relation_Definitions_21} A R m → R m m
+def Rocq.Corelib.Classes.Morphisms.proper_subrelation_proper.statement.{u_Corelib_Classes_Morphisms_57} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_57),
+  (fun f g =>
+      ∀ (x y : A → A → Prop),
+        (fun R R' => ∀ (x y : A), R x y → R' x y) x y →
+          (fun f g => ∀ (x y : A), Rocq.Corelib.Init.Logic.eq.{u_Corelib_Classes_Morphisms_57 + 1} A x y → f x → g y)
+            (f x) (g y))
+    (fun R m => R m m) fun R m => R m m
+def Rocq.Corelib.Classes.Morphisms.proper_sym_flip.statement.{u_Corelib_Classes_Morphisms_152, u_Corelib_Classes_Morphisms_156} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_152) (R1 : A → A → Prop),
+  (∀ (x y : A), R1 x y → R1 y x) →
+    ∀ (B : Type u_Corelib_Classes_Morphisms_156) (R2 : B → B → Prop) (f : A → B),
+      (fun f g => ∀ (x y : A), R1 x y → R2 (f x) (g y)) f f →
+        (fun f g => ∀ (x y : A), R1 x y → (fun x y => R2 y x) (f x) (g y)) f f
+def Rocq.Corelib.Classes.Morphisms.proper_sym_flip_2.statement.{u_Corelib_Classes_Morphisms_159, u_Corelib_Classes_Morphisms_162, u_Corelib_Classes_Morphisms_166} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_159) (R1 : A → A → Prop),
+  (∀ (x y : A), R1 x y → R1 y x) →
+    ∀ (B : Type u_Corelib_Classes_Morphisms_162) (R2 : B → B → Prop),
+      (∀ (x y : B), R2 x y → R2 y x) →
+        ∀ (C : Type u_Corelib_Classes_Morphisms_166) (R3 : C → C → Prop) (f : A → B → C),
+          (fun f g => ∀ (x y : A), R1 x y → (fun f g => ∀ (x y : B), R2 x y → R3 (f x) (g y)) (f x) (g y)) f f →
+            (fun f g =>
+                ∀ (x y : A), R1 x y → (fun f g => ∀ (x y : B), R2 x y → (fun x y => R3 y x) (f x) (g y)) (f x) (g y))
+              f f
+def Rocq.Corelib.Classes.Morphisms.proper_sym_impl_iff.statement.{u_Corelib_Classes_Morphisms_169} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_169) (R : A → A → Prop),
+  (∀ (x y : A), R x y → R y x) →
+    ∀ (f : A → Prop),
+      (fun f g => ∀ (x y : A), R x y → f x → g y) f f →
+        (fun f g => ∀ (x y : A), R x y → Rocq.Corelib.Init.Logic.and (f x → g y) (g y → f x)) f f
+def Rocq.Corelib.Classes.Morphisms.proper_sym_impl_iff_2.statement.{u_Corelib_Classes_Morphisms_173, u_Corelib_Classes_Morphisms_176} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_173) (R : A → A → Prop),
+  (∀ (x y : A), R x y → R y x) →
+    ∀ (B : Type u_Corelib_Classes_Morphisms_176) (R' : B → B → Prop),
+      (∀ (x y : B), R' x y → R' y x) →
+        ∀ (f : A → B → Prop),
+          (fun f g => ∀ (x y : A), R x y → (fun f g => ∀ (x y : B), R' x y → f x → g y) (f x) (g y)) f f →
+            (fun f g =>
+                ∀ (x y : A),
+                  R x y →
+                    (fun f g => ∀ (x y : B), R' x y → Rocq.Corelib.Init.Logic.and (f x → g y) (g y → f x)) (f x) (g y))
+              f f
+def Rocq.Corelib.Classes.Morphisms.reflexive_eq_dom_reflexive.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A B : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R' : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} B),
+  Rocq.Corelib.Classes.RelationClasses.Reflexive.{u_Corelib_Relations_Relation_Definitions_21} B R' →
+    Rocq.Corelib.Classes.RelationClasses.Reflexive.{u_Corelib_Relations_Relation_Definitions_21} (A → B)
+      (Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Relations_Relation_Definitions_21} A B
+        (Rocq.Corelib.Init.Logic.eq.{u_Corelib_Relations_Relation_Definitions_21 + 1} A) R')
+def Rocq.Corelib.Classes.Morphisms.reflexive_proper.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Classes.Morphisms.ReflexiveProxy.{u_Corelib_Relations_Relation_Definitions_21} A R →
+    ∀ (x : A), Rocq.Corelib.Classes.Morphisms.Proper.{u_Corelib_Relations_Relation_Definitions_21} A R x
+def Rocq.Corelib.Classes.Morphisms.reflexive_proper_proxy.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Classes.Morphisms.ReflexiveProxy.{u_Corelib_Relations_Relation_Definitions_21} A R →
+    ∀ (x : A), Rocq.Corelib.Classes.Morphisms.ProperProxy.{u_Corelib_Relations_Relation_Definitions_21} A R x
+def Rocq.Corelib.Classes.Morphisms.reflexive_proxy.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Classes.Morphisms.ReflexiveProxy.{u_Corelib_Relations_Relation_Definitions_21} A R → ∀ (x : A), R x x
+def Rocq.Corelib.Classes.Morphisms.reflexive_reflexive_proxy.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Classes.RelationClasses.Reflexive.{u_Corelib_Relations_Relation_Definitions_21} A R →
+    Rocq.Corelib.Classes.Morphisms.ReflexiveProxy.{u_Corelib_Relations_Relation_Definitions_21} A R
+def Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Relations_Relation_Definitions_21} : (A B :
+    Type u_Corelib_Relations_Relation_Definitions_21) →
+  Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A →
+    Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} B →
+      Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} (A → B) :=
+let U := Type u_Corelib_Relations_Relation_Definitions_21;
+fun A B R R' f g => ∀ (x y : A), R x y → R' (f x) (g y)
+def Rocq.Corelib.Classes.Morphisms.respectful_hetero.{u_Corelib_Classes_Morphisms_30, u_Corelib_Classes_Morphisms_31, u_Corelib_Classes_Morphisms_32, u_Corelib_Classes_Morphisms_33} : (A :
+    Sort u_Corelib_Classes_Morphisms_30) →
+  (B : Sort u_Corelib_Classes_Morphisms_31) →
+    (C : A → Sort u_Corelib_Classes_Morphisms_32) →
+      (D : B → Sort u_Corelib_Classes_Morphisms_33) →
+        (A → B → Prop) → ((x : A) → (y : B) → C x → D y → Prop) → ((x : A) → C x) → ((x : B) → D x) → Prop :=
+fun A B C D R R' f g => ∀ (x : A) (y : B), R x y → R' x y (f x) (g y)
+def Rocq.Corelib.Classes.Morphisms.respectful_morphism.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A B : Type u_Corelib_Relations_Relation_Definitions_21),
+  Rocq.Corelib.Classes.Morphisms.Proper.{u_Corelib_Relations_Relation_Definitions_21}
+    (Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A →
+      Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} B →
+        Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} (A → B))
+    (Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Relations_Relation_Definitions_21}
+      (Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A)
+      (Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} B →
+        Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} (A → B))
+      (Rocq.Corelib.Classes.RelationClasses.relation_equivalence.{u_Corelib_Relations_Relation_Definitions_21} A)
+      (Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Relations_Relation_Definitions_21}
+        (Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} B)
+        (Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} (A → B))
+        (Rocq.Corelib.Classes.RelationClasses.relation_equivalence.{u_Corelib_Relations_Relation_Definitions_21} B)
+        (Rocq.Corelib.Classes.RelationClasses.relation_equivalence.{u_Corelib_Relations_Relation_Definitions_21}
+          (A → B))))
+    (Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Relations_Relation_Definitions_21} A B)
+def Rocq.Corelib.Classes.Morphisms.respectful_per.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A B : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Classes.RelationClasses.PER.{u_Corelib_Relations_Relation_Definitions_21} A R →
+    ∀ (R' : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} B),
+      Rocq.Corelib.Classes.RelationClasses.PER.{u_Corelib_Relations_Relation_Definitions_21} B R' →
+        Rocq.Corelib.Classes.RelationClasses.PER.{u_Corelib_Relations_Relation_Definitions_21} (A → B)
+          (Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Relations_Relation_Definitions_21} A B R R')
+def Rocq.Corelib.Classes.Morphisms.respectful_per_obligation_1.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A B : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Classes.RelationClasses.PER.{u_Corelib_Relations_Relation_Definitions_21} A R →
+    ∀ (R' : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} B),
+      Rocq.Corelib.Classes.RelationClasses.PER.{u_Corelib_Relations_Relation_Definitions_21} B R' →
+        Rocq.Corelib.Classes.RelationClasses.Symmetric.{u_Corelib_Relations_Relation_Definitions_21} (A → B)
+          (Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Relations_Relation_Definitions_21} A B R R')
+def Rocq.Corelib.Classes.Morphisms.respectful_per_obligation_2.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A B : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Classes.RelationClasses.PER.{u_Corelib_Relations_Relation_Definitions_21} A R →
+    ∀ (R' : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} B),
+      Rocq.Corelib.Classes.RelationClasses.PER.{u_Corelib_Relations_Relation_Definitions_21} B R' →
+        Rocq.Corelib.Classes.RelationClasses.Transitive.{u_Corelib_Relations_Relation_Definitions_21} (A → B)
+          (Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Relations_Relation_Definitions_21} A B R R')
+def Rocq.Corelib.Classes.Morphisms.rewrite_relation_eq_dom.statement.{u_Corelib_Classes_Morphisms_49, u_Corelib_Classes_Morphisms_50} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_50) (B : Type u_Corelib_Classes_Morphisms_49) (R : B → B → Prop),
+  Rocq.Corelib.Classes.RelationClasses.RewriteRelation.{u_Corelib_Classes_Morphisms_49} B R →
+    Rocq.Corelib.Classes.RelationClasses.RewriteRelation.{max u_Corelib_Classes_Morphisms_49
+          u_Corelib_Classes_Morphisms_50}
+      (A → B) fun f g =>
+      ∀ (x y : A), Rocq.Corelib.Init.Logic.eq.{u_Corelib_Classes_Morphisms_50 + 1} A x y → R (f x) (g y)
+def Rocq.Corelib.Classes.Morphisms.rewrite_relation_pointwise.statement.{u_Corelib_Classes_Morphisms_38, u_Corelib_Classes_Morphisms_39} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_39) (B : Type u_Corelib_Classes_Morphisms_38)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Classes_Morphisms_38} B),
+  Rocq.Corelib.Classes.RelationClasses.RewriteRelation.{u_Corelib_Classes_Morphisms_38} B R →
+    Rocq.Corelib.Classes.RelationClasses.RewriteRelation.{max u_Corelib_Classes_Morphisms_38
+          u_Corelib_Classes_Morphisms_39}
+      (A → B)
+      (Rocq.Corelib.Classes.Morphisms.pointwise_relation.{u_Corelib_Classes_Morphisms_38,
+          u_Corelib_Classes_Morphisms_39}
+        A B R)
+def Rocq.Corelib.Classes.Morphisms.subrelation_id_proper.statement.{u_Corelib_Classes_Morphisms_57} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_57) (RA RA' : A → A → Prop),
+  (∀ (x y : A), RA x y → RA' x y) → (fun f g => ∀ (x y : A), RA x y → RA' (f x) (g y)) (fun x => x) fun x => x
+def Rocq.Corelib.Classes.Morphisms.subrelation_proper.statement.{u_Corelib_Classes_Morphisms_57} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_57) (R' : A → A → Prop) (m : A),
+  R' m m → ∀ (R : A → A → Prop) (unc : Rocq.Corelib.Init.Datatypes.unit), (∀ (x y : A), R' x y → R x y) → R m m
+def Rocq.Corelib.Classes.Morphisms.subrelation_refl.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Classes.RelationClasses.subrelation.{u_Corelib_Relations_Relation_Definitions_21} A R R
+def Rocq.Corelib.Classes.Morphisms.subrelation_respectful.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A B : Type u_Corelib_Relations_Relation_Definitions_21)
+  (RA' RA : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Classes.RelationClasses.subrelation.{u_Corelib_Relations_Relation_Definitions_21} A RA' RA →
+    ∀ (RB RB' : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} B),
+      Rocq.Corelib.Classes.RelationClasses.subrelation.{u_Corelib_Relations_Relation_Definitions_21} B RB RB' →
+        Rocq.Corelib.Classes.RelationClasses.subrelation.{u_Corelib_Relations_Relation_Definitions_21} (A → B)
+          (Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Relations_Relation_Definitions_21} A B RA RB)
+          (Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Relations_Relation_Definitions_21} A B RA' RB')
+def Rocq.Corelib.Classes.Morphisms.symmetric_equiv_flip.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Classes.RelationClasses.Symmetric.{u_Corelib_Relations_Relation_Definitions_21} A R →
+    Rocq.Corelib.Classes.RelationClasses.relation_equivalence.{u_Corelib_Relations_Relation_Definitions_21} A R
+      (Rocq.Corelib.Program.Basics.flip.{u_Corelib_Relations_Relation_Definitions_21 + 1,
+          u_Corelib_Relations_Relation_Definitions_21 + 1, 1}
+        A A Prop R)
+def Rocq.Corelib.Classes.Morphisms.trans_co_eq_inv_impl_morphism.statement.{u_Corelib_Classes_Morphisms_77} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_77) (R : A → A → Prop),
+  (∀ (x y z : A), R x y → R y z → R x z) →
+    (fun f g =>
+        ∀ (x y : A),
+          R x y →
+            (fun f g =>
+                ∀ (x y : A),
+                  Rocq.Corelib.Init.Logic.eq.{u_Corelib_Classes_Morphisms_77 + 1} A x y →
+                    (fun x y => y → x) (f x) (g y))
+              (f x) (g y))
+      R R
+def Rocq.Corelib.Classes.Morphisms.trans_co_eq_inv_impl_morphism_obligation_1.statement.{u_Corelib_Classes_Morphisms_77} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_77) (R : A → A → Prop),
+  (∀ (x y z : A), R x y → R y z → R x z) →
+    ∀ (x y : A),
+      R x y →
+        (fun f g =>
+            ∀ (x y : A),
+              Rocq.Corelib.Init.Logic.eq.{u_Corelib_Classes_Morphisms_77 + 1} A x y → (fun x y => y → x) (f x) (g y))
+          (R x) (R y)
+def Rocq.Corelib.Classes.Morphisms.trans_co_impl_morphism.statement.{u_Corelib_Classes_Morphisms_77} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_77) (R : A → A → Prop),
+  (∀ (x y z : A), R x y → R y z → R x z) → ∀ (x : A), (fun f g => ∀ (x y : A), R x y → f x → g y) (R x) (R x)
+def Rocq.Corelib.Classes.Morphisms.trans_co_impl_morphism_obligation_1.statement.{u_Corelib_Classes_Morphisms_77} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_77) (R : A → A → Prop),
+  (∀ (x y z : A), R x y → R y z → R x z) → ∀ (x x_1 y : A), R x_1 y → R x x_1 → R x y
+def Rocq.Corelib.Classes.Morphisms.trans_contra_co_morphism.statement.{u_Corelib_Classes_Morphisms_77} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_77) (R : A → A → Prop),
+  (∀ (x y z : A), R x y → R y z → R x z) →
+    (fun f g => ∀ (x y : A), (fun x y => R y x) x y → (fun f g => ∀ (x y : A), R x y → f x → g y) (f x) (g y)) R R
+def Rocq.Corelib.Classes.Morphisms.trans_contra_co_morphism_obligation_1.statement.{u_Corelib_Classes_Morphisms_77} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_77) (R : A → A → Prop),
+  (∀ (x y z : A), R x y → R y z → R x z) →
+    ∀ (x y : A), (fun x y => R y x) x y → (fun f g => ∀ (x y : A), R x y → f x → g y) (R x) (R y)
+def Rocq.Corelib.Classes.Morphisms.trans_contra_inv_impl_morphism.statement.{u_Corelib_Classes_Morphisms_77} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_77) (R : A → A → Prop),
+  (∀ (x y z : A), R x y → R y z → R x z) →
+    ∀ (x : A), (fun f g => ∀ (x y : A), (fun x y => R y x) x y → (fun x y => y → x) (f x) (g y)) (R x) (R x)
+def Rocq.Corelib.Classes.Morphisms.trans_contra_inv_impl_morphism_obligation_1.statement.{u_Corelib_Classes_Morphisms_77} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_77) (R : A → A → Prop),
+  (∀ (x y z : A), R x y → R y z → R x z) →
+    ∀ (x x_1 y : A), (fun x y => R y x) x_1 y → (fun x y => y → x) (R x x_1) (R x y)
+def Rocq.Corelib.Classes.Morphisms.trans_sym_co_inv_impl_morphism.statement.{u_Corelib_Classes_Morphisms_77} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_77) (R : A → A → Prop),
+  Rocq.Corelib.Classes.RelationClasses.PER.{u_Corelib_Classes_Morphisms_77} A R →
+    ∀ (x : A), (fun f g => ∀ (x y : A), R x y → (fun x y => y → x) (f x) (g y)) (R x) (R x)
+def Rocq.Corelib.Classes.Morphisms.trans_sym_co_inv_impl_morphism_obligation_1.statement.{u_Corelib_Classes_Morphisms_77} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_77) (R : A → A → Prop),
+  Rocq.Corelib.Classes.RelationClasses.PER.{u_Corelib_Classes_Morphisms_77} A R →
+    ∀ (x x_1 y : A), R x_1 y → (fun x y => y → x) (R x x_1) (R x y)
+def Rocq.Corelib.Classes.Morphisms.trans_sym_contra_impl_morphism.statement.{u_Corelib_Classes_Morphisms_77} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_77) (R : A → A → Prop),
+  Rocq.Corelib.Classes.RelationClasses.PER.{u_Corelib_Classes_Morphisms_77} A R →
+    ∀ (x : A), (fun f g => ∀ (x y : A), (fun x y => R y x) x y → f x → g y) (R x) (R x)
+def Rocq.Corelib.Classes.Morphisms.trans_sym_contra_impl_morphism_obligation_1.statement.{u_Corelib_Classes_Morphisms_77} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_77) (R : A → A → Prop),
+  Rocq.Corelib.Classes.RelationClasses.PER.{u_Corelib_Classes_Morphisms_77} A R →
+    ∀ (x x_1 y : A), (fun x y => R y x) x_1 y → R x x_1 → R x y

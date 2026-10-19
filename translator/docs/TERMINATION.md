@@ -1,3 +1,5 @@
+> Current Corelib baseline (2026-10-19): source nat/eq are generated inductives; the bootstrap table is empty. Earlier bootstrap examples and dated runs below are historical. See [MECHANICAL_NAT_EQ.md](MECHANICAL_NAT_EQ.md) and the repository RESULTS.md for current coverage and correspondence proofs.
+
 # Termination lowering with explicit obligations (Task B)
 
 Decision (2026-10-13, Q3(b)): recursion that the existing structural lowerings cannot express is

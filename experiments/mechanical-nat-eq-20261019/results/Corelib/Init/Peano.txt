@@ -1,0 +1,145 @@
+rocq2lean: 36 root(s) TRANSLATED_AND_CHECKED; summary {"bootstrap_resolved":0,"generated_helpers":0,"not_ok":31,"roots":36,"translated_dependencies":11}
+def Rocq.Corelib.Init.Peano.IsSucc : Rocq.Corelib.Init.Datatypes.nat → Prop :=
+fun n =>
+  Rocq.Corelib.Init.Datatypes.nat.rec.{1} Rocq.Corelib.Init.Logic.False (fun a _ih => Rocq.Corelib.Init.Logic.True) n
+def Rocq.Corelib.Init.Peano.O_S.statement : Prop :=
+∀ (n : Rocq.Corelib.Init.Datatypes.nat),
+  Rocq.Corelib.Init.Logic.not
+    (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.nat Rocq.Corelib.Init.Datatypes.nat.O n.S)
+def Rocq.Corelib.Init.Peano.eq_S.statement : Prop :=
+∀ (x y : Rocq.Corelib.Init.Datatypes.nat),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.nat x y →
+    Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.nat x.S y.S
+def Rocq.Corelib.Init.Peano.eq_add_S.statement : Prop :=
+∀ (n m : Rocq.Corelib.Init.Datatypes.nat),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.nat n.S m.S →
+    Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.nat n m
+def Rocq.Corelib.Init.Peano.f_equal2_mult.statement : Prop :=
+∀ (x1 y1 x2 y2 : Rocq.Corelib.Init.Datatypes.nat),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.nat x1 y1 →
+    Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.nat x2 y2 →
+      Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.nat (Rocq.Corelib.Init.Nat.mul x1 x2)
+        (Rocq.Corelib.Init.Nat.mul y1 y2)
+def Rocq.Corelib.Init.Peano.f_equal2_nat.statement.{u_Corelib_Init_Logic_109} : Prop :=
+∀ (B : Sort u_Corelib_Init_Logic_109) (f : Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat → B)
+  (x1 y1 x2 y2 : Rocq.Corelib.Init.Datatypes.nat),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.nat x1 y1 →
+    Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.nat x2 y2 →
+      Rocq.Corelib.Init.Logic.eq.{u_Corelib_Init_Logic_109} B (f x1 x2) (f y1 y2)
+def Rocq.Corelib.Init.Peano.f_equal2_plus.statement : Prop :=
+∀ (x1 y1 x2 y2 : Rocq.Corelib.Init.Datatypes.nat),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.nat x1 y1 →
+    Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.nat x2 y2 →
+      Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.nat (Rocq.Corelib.Init.Nat.add x1 x2)
+        (Rocq.Corelib.Init.Nat.add y1 y2)
+def Rocq.Corelib.Init.Peano.f_equal_nat.statement.{u_Corelib_Init_Logic_46} : Prop :=
+∀ (B : Sort u_Corelib_Init_Logic_46) (f : Rocq.Corelib.Init.Datatypes.nat → B) (x y : Rocq.Corelib.Init.Datatypes.nat),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.nat x y →
+    Rocq.Corelib.Init.Logic.eq.{u_Corelib_Init_Logic_46} B (f x) (f y)
+def Rocq.Corelib.Init.Peano.f_equal_pred.statement : Prop :=
+∀ (x y : Rocq.Corelib.Init.Datatypes.nat),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.nat x y →
+    Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.nat (Rocq.Corelib.Init.Nat.pred x)
+      (Rocq.Corelib.Init.Nat.pred y)
+def Rocq.Corelib.Init.Peano.ge : Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat → Prop :=
+fun n m => Rocq.Corelib.Init.Peano.le m n
+def Rocq.Corelib.Init.Peano.gt : Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat → Prop :=
+fun n m => Rocq.Corelib.Init.Peano.lt m n
+inductive Rocq.Corelib.Init.Peano.le : Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat → Prop
+number of parameters: 1
+constructors:
+Rocq.Corelib.Init.Peano.le.le_n : ∀ (n : Rocq.Corelib.Init.Datatypes.nat), Rocq.Corelib.Init.Peano.le n n
+Rocq.Corelib.Init.Peano.le.le_S : ∀ (n m : Rocq.Corelib.Init.Datatypes.nat),
+  Rocq.Corelib.Init.Peano.le n m → Rocq.Corelib.Init.Peano.le n m.S
+def Rocq.Corelib.Init.Peano.le_0_n.statement : Prop :=
+∀ (n : Rocq.Corelib.Init.Datatypes.nat), Rocq.Corelib.Init.Peano.le Rocq.Corelib.Init.Datatypes.nat.O n
+def Rocq.Corelib.Init.Peano.le_S_n.statement : Prop :=
+∀ (n m : Rocq.Corelib.Init.Datatypes.nat), Rocq.Corelib.Init.Peano.le n.S m.S → Rocq.Corelib.Init.Peano.le n m
+def Rocq.Corelib.Init.Peano.le_ind.statement : Prop :=
+∀ (n : Rocq.Corelib.Init.Datatypes.nat) (P : Rocq.Corelib.Init.Datatypes.nat → Prop),
+  P n →
+    (∀ (m : Rocq.Corelib.Init.Datatypes.nat), Rocq.Corelib.Init.Peano.le n m → P m → P m.S) →
+      ∀ (n0 : Rocq.Corelib.Init.Datatypes.nat), Rocq.Corelib.Init.Peano.le n n0 → P n0
+def Rocq.Corelib.Init.Peano.le_n_S.statement : Prop :=
+∀ (n m : Rocq.Corelib.Init.Datatypes.nat), Rocq.Corelib.Init.Peano.le n m → Rocq.Corelib.Init.Peano.le n.S m.S
+def Rocq.Corelib.Init.Peano.le_pred.statement : Prop :=
+∀ (n m : Rocq.Corelib.Init.Datatypes.nat),
+  Rocq.Corelib.Init.Peano.le n m →
+    Rocq.Corelib.Init.Peano.le (Rocq.Corelib.Init.Nat.pred n) (Rocq.Corelib.Init.Nat.pred m)
+def Rocq.Corelib.Init.Peano.le_sind.statement : Prop :=
+∀ (n : Rocq.Corelib.Init.Datatypes.nat) (P : Rocq.Corelib.Init.Datatypes.nat → Prop),
+  P n →
+    (∀ (m : Rocq.Corelib.Init.Datatypes.nat), Rocq.Corelib.Init.Peano.le n m → P m → P m.S) →
+      ∀ (n0 : Rocq.Corelib.Init.Datatypes.nat), Rocq.Corelib.Init.Peano.le n n0 → P n0
+def Rocq.Corelib.Init.Peano.lt : Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat → Prop :=
+fun n m => Rocq.Corelib.Init.Peano.le n.S m
+def Rocq.Corelib.Init.Peano.max_l.statement : Prop :=
+∀ (n m : Rocq.Corelib.Init.Datatypes.nat),
+  Rocq.Corelib.Init.Peano.le m n →
+    Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.nat (Rocq.Corelib.Init.Nat.max n m) n
+def Rocq.Corelib.Init.Peano.max_r.statement : Prop :=
+∀ (n m : Rocq.Corelib.Init.Datatypes.nat),
+  Rocq.Corelib.Init.Peano.le n m →
+    Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.nat (Rocq.Corelib.Init.Nat.max n m) m
+def Rocq.Corelib.Init.Peano.min_l.statement : Prop :=
+∀ (n m : Rocq.Corelib.Init.Datatypes.nat),
+  Rocq.Corelib.Init.Peano.le n m →
+    Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.nat (Rocq.Corelib.Init.Nat.min n m) n
+def Rocq.Corelib.Init.Peano.min_r.statement : Prop :=
+∀ (n m : Rocq.Corelib.Init.Datatypes.nat),
+  Rocq.Corelib.Init.Peano.le m n →
+    Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.nat (Rocq.Corelib.Init.Nat.min n m) m
+def Rocq.Corelib.Init.Peano.mult_n_O.statement : Prop :=
+∀ (n : Rocq.Corelib.Init.Datatypes.nat),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.nat Rocq.Corelib.Init.Datatypes.nat.O
+    (Rocq.Corelib.Init.Nat.mul n Rocq.Corelib.Init.Datatypes.nat.O)
+def Rocq.Corelib.Init.Peano.mult_n_Sm.statement : Prop :=
+∀ (n m : Rocq.Corelib.Init.Datatypes.nat),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.nat
+    (Rocq.Corelib.Init.Nat.add (Rocq.Corelib.Init.Nat.mul n m) n) (Rocq.Corelib.Init.Nat.mul n m.S)
+def Rocq.Corelib.Init.Peano.n_Sn.statement : Prop :=
+∀ (n : Rocq.Corelib.Init.Datatypes.nat),
+  Rocq.Corelib.Init.Logic.not (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.nat n n.S)
+def Rocq.Corelib.Init.Peano.nat_case.statement : Prop :=
+∀ (n : Rocq.Corelib.Init.Datatypes.nat) (P : Rocq.Corelib.Init.Datatypes.nat → Prop),
+  P Rocq.Corelib.Init.Datatypes.nat.O → (∀ (m : Rocq.Corelib.Init.Datatypes.nat), P m.S) → P n
+def Rocq.Corelib.Init.Peano.nat_double_ind.statement : Prop :=
+∀ (R : Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat → Prop),
+  (∀ (n : Rocq.Corelib.Init.Datatypes.nat), R Rocq.Corelib.Init.Datatypes.nat.O n) →
+    (∀ (n : Rocq.Corelib.Init.Datatypes.nat), R n.S Rocq.Corelib.Init.Datatypes.nat.O) →
+      (∀ (n m : Rocq.Corelib.Init.Datatypes.nat), R n m → R n.S m.S) → ∀ (n m : Rocq.Corelib.Init.Datatypes.nat), R n m
+def Rocq.Corelib.Init.Peano.nat_rect_plus.statement.{u_Corelib_Init_Peano_98} : Prop :=
+∀ (n m : Rocq.Corelib.Init.Datatypes.nat) (A : Sort u_Corelib_Init_Peano_98) (f : A → A) (x : A),
+  Rocq.Corelib.Init.Logic.eq.{u_Corelib_Init_Peano_98} A
+    (Rocq.Corelib.Init.Datatypes.nat_rect.{u_Corelib_Init_Peano_98} (fun n => A) x (fun n => f)
+      (Rocq.Corelib.Init.Nat.add n m))
+    (Rocq.Corelib.Init.Datatypes.nat_rect.{u_Corelib_Init_Peano_98} (fun n => A)
+      (Rocq.Corelib.Init.Datatypes.nat_rect.{u_Corelib_Init_Peano_98} (fun n => A) x (fun n => f) m) (fun n => f) n)
+def Rocq.Corelib.Init.Peano.nat_rect_succ_r.statement.{u_Corelib_Init_Peano_92} : Prop :=
+∀ (A : Sort u_Corelib_Init_Peano_92) (f : A → A) (x : A) (n : Rocq.Corelib.Init.Datatypes.nat),
+  Rocq.Corelib.Init.Logic.eq.{u_Corelib_Init_Peano_92} A
+    (Rocq.Corelib.Init.Datatypes.nat_rect.{u_Corelib_Init_Peano_92} (fun n => A) x (fun n => f) n.S)
+    (Rocq.Corelib.Init.Datatypes.nat_rect.{u_Corelib_Init_Peano_92} (fun n => A) (f x) (fun n => f) n)
+def Rocq.Corelib.Init.Peano.not_eq_S.statement : Prop :=
+∀ (n m : Rocq.Corelib.Init.Datatypes.nat),
+  Rocq.Corelib.Init.Logic.not (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.nat n m) →
+    Rocq.Corelib.Init.Logic.not (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.nat n.S m.S)
+def Rocq.Corelib.Init.Peano.plus_O_n.statement : Prop :=
+∀ (n : Rocq.Corelib.Init.Datatypes.nat),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.nat
+    (Rocq.Corelib.Init.Nat.add Rocq.Corelib.Init.Datatypes.nat.O n) n
+def Rocq.Corelib.Init.Peano.plus_Sn_m.statement : Prop :=
+∀ (n m : Rocq.Corelib.Init.Datatypes.nat),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.nat (Rocq.Corelib.Init.Nat.add n.S m)
+    (Rocq.Corelib.Init.Nat.add n m).S
+def Rocq.Corelib.Init.Peano.plus_n_O.statement : Prop :=
+∀ (n : Rocq.Corelib.Init.Datatypes.nat),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.nat n
+    (Rocq.Corelib.Init.Nat.add n Rocq.Corelib.Init.Datatypes.nat.O)
+def Rocq.Corelib.Init.Peano.plus_n_Sm.statement : Prop :=
+∀ (n m : Rocq.Corelib.Init.Datatypes.nat),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.nat (Rocq.Corelib.Init.Nat.add n m).S
+    (Rocq.Corelib.Init.Nat.add n m.S)
+def Rocq.Corelib.Init.Peano.pred_Sn.statement : Prop :=
+∀ (n : Rocq.Corelib.Init.Datatypes.nat),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.nat n (Rocq.Corelib.Init.Nat.pred n.S)

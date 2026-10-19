@@ -1,0 +1,2214 @@
+{"summary":
+ {"translated_dependencies": 0,
+  "roots": 15,
+  "not_ok": 6,
+  "generated_helpers": 0,
+  "bootstrap_resolved": 0},
+ "status": "OK",
+ "source_header":
+ {"rocq_version": "9.3.0",
+  "ocaml_version": "4.14.2",
+  "mode":
+  {"termination_deferred": [],
+   "proof_only": 6,
+   "obligations": 0,
+   "name": "statement",
+   "extraction_refused": {}},
+  "kind": "header",
+  "ir": "rocq2lean-ir/0.2",
+  "global_typing_flags":
+  {"sprop_allowed": true,
+   "indices_matter": false,
+   "impredicative_set": false,
+   "check_universes": true,
+   "check_positive": true,
+   "check_guarded": true,
+   "check_eliminations": true,
+   "allow_uip": false},
+  "frontend":
+  {"quoter": "Ast_quoter.quote_term_rec ~bypass:true",
+   "opaque_access": "vernac STATE opaque_access",
+   "name": "metarocq-template",
+   "metarocq_commit": "c18395ad772a40d59b6d04a5fcd1a4e0e5073d81"},
+  "conventions":
+  {"dirpaths": "outer-first",
+   "ctor_index": "0-based",
+   "contexts": "arrays innermost-first (MetaRocq snoc order)",
+   "case": "MetaRocq compact case: pcontext/bcontext carry names only",
+   "bvar": "MetaRocq tRel n = IR rel n, 0 = innermost binder"}},
+ "source":
+ "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Numbers/BinNums/source.ndjson",
+ "run_id": "86f9dd42-f496-45b8-b6b1-21e10303fe94",
+ "roots":
+ [{"status": "TRANSLATED_AND_CHECKED",
+   "requested": "Corelib.Numbers.BinNums.N",
+   "name": "Corelib.Numbers.BinNums.N"},
+  {"status": "STATEMENT_KERNEL_CHECKED",
+   "requested": "Corelib.Numbers.BinNums.N_ind",
+   "name": "Corelib.Numbers.BinNums.N_ind"},
+  {"status": "TRANSLATED_AND_CHECKED",
+   "requested": "Corelib.Numbers.BinNums.N_rec",
+   "name": "Corelib.Numbers.BinNums.N_rec"},
+  {"status": "TRANSLATED_AND_CHECKED",
+   "requested": "Corelib.Numbers.BinNums.N_rect",
+   "name": "Corelib.Numbers.BinNums.N_rect"},
+  {"status": "STATEMENT_KERNEL_CHECKED",
+   "requested": "Corelib.Numbers.BinNums.N_sind",
+   "name": "Corelib.Numbers.BinNums.N_sind"},
+  {"status": "TRANSLATED_AND_CHECKED",
+   "requested": "Corelib.Numbers.BinNums.Z",
+   "name": "Corelib.Numbers.BinNums.Z"},
+  {"status": "STATEMENT_KERNEL_CHECKED",
+   "requested": "Corelib.Numbers.BinNums.Z_ind",
+   "name": "Corelib.Numbers.BinNums.Z_ind"},
+  {"status": "TRANSLATED_AND_CHECKED",
+   "requested": "Corelib.Numbers.BinNums.Z_rec",
+   "name": "Corelib.Numbers.BinNums.Z_rec"},
+  {"status": "TRANSLATED_AND_CHECKED",
+   "requested": "Corelib.Numbers.BinNums.Z_rect",
+   "name": "Corelib.Numbers.BinNums.Z_rect"},
+  {"status": "STATEMENT_KERNEL_CHECKED",
+   "requested": "Corelib.Numbers.BinNums.Z_sind",
+   "name": "Corelib.Numbers.BinNums.Z_sind"},
+  {"status": "TRANSLATED_AND_CHECKED",
+   "requested": "Corelib.Numbers.BinNums.positive",
+   "name": "Corelib.Numbers.BinNums.positive"},
+  {"status": "STATEMENT_KERNEL_CHECKED",
+   "requested": "Corelib.Numbers.BinNums.positive_ind",
+   "name": "Corelib.Numbers.BinNums.positive_ind"},
+  {"status": "TRANSLATED_AND_CHECKED",
+   "requested": "Corelib.Numbers.BinNums.positive_rec",
+   "name": "Corelib.Numbers.BinNums.positive_rec"},
+  {"status": "TRANSLATED_AND_CHECKED",
+   "requested": "Corelib.Numbers.BinNums.positive_rect",
+   "name": "Corelib.Numbers.BinNums.positive_rect"},
+  {"status": "STATEMENT_KERNEL_CHECKED",
+   "requested": "Corelib.Numbers.BinNums.positive_sind",
+   "name": "Corelib.Numbers.BinNums.positive_sind"}],
+ "results":
+ [{"universe_residuals": null,
+   "universe_poly_params": 0,
+   "universe_minimal_levels": 0,
+   "universe_lowered": false,
+   "universe_level_defaults": 0,
+   "universe_diagnostics": [],
+   "universe_cumulativity": false,
+   "universe_checks": 0,
+   "type_lift_coercions": 0,
+   "type_lift": null,
+   "template_sort": false,
+   "template_params": [],
+   "template": false,
+   "target_value": null,
+   "target_type": {"l": {"l": {"k": "zero"}, "k": "succ"}, "k": "sort"},
+   "target_kind": "inductive",
+   "target_ctors":
+   [{"type":
+     {"t":
+      {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+      "n": "[anonymous]",
+      "k": "forall",
+      "b":
+      {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"}},
+     "name": "Rocq.Corelib.Numbers.BinNums.positive.xI"},
+    {"type":
+     {"t":
+      {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+      "n": "[anonymous]",
+      "k": "forall",
+      "b":
+      {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"}},
+     "name": "Rocq.Corelib.Numbers.BinNums.positive.xO"},
+    {"type":
+     {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+     "name": "Rocq.Corelib.Numbers.BinNums.positive.xH"}],
+   "target": "Rocq.Corelib.Numbers.BinNums.positive",
+   "status": "TRANSLATED_AND_CHECKED",
+   "source_computed": [],
+   "source": "Corelib.Numbers.BinNums.positive",
+   "sort_lowered_levels": [],
+   "sort_interp": false,
+   "sort_fact_reduced": false,
+   "solved_levels": [],
+   "rule": "inductive/generated",
+   "result_sort_inherited": false,
+   "result_sort_implicit_levels": [],
+   "r2bp_levels": [],
+   "quality_prop": null,
+   "protected": true,
+   "prop_lift_unfold": [],
+   "prop_lift_coercions": 0,
+   "prop_lift": null,
+   "primitive_record": false,
+   "poly_level_interp": [],
+   "plain_levels": true,
+   "phantom_lowered": [],
+   "pending_hypotheses": [],
+   "path": [],
+   "num_params": 0,
+   "message": "",
+   "level_split": [],
+   "level_params": [],
+   "level_interp": [],
+   "level_copies": [],
+   "kind": "inductive",
+   "implicit_levels": [],
+   "delta_inlined": [],
+   "coinductive_as_inductive": false,
+   "blocked_by": [],
+   "admitting_levels": []},
+  {"universe_residuals": null,
+   "universe_poly_params": 0,
+   "universe_minimal_levels": 0,
+   "universe_lowered": false,
+   "universe_level_defaults": 0,
+   "universe_diagnostics": [],
+   "universe_cumulativity": false,
+   "universe_checks": 0,
+   "type_lift_coercions": 0,
+   "type_lift": null,
+   "template_sort": false,
+   "template_params": [],
+   "template": false,
+   "target_value": null,
+   "target_type": {"l": {"l": {"k": "zero"}, "k": "succ"}, "k": "sort"},
+   "target_kind": "inductive",
+   "target_ctors":
+   [{"type": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.N", "k": "const"},
+     "name": "Rocq.Corelib.Numbers.BinNums.N.N0"},
+    {"type":
+     {"t":
+      {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+      "n": "[anonymous]",
+      "k": "forall",
+      "b": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.N", "k": "const"}},
+     "name": "Rocq.Corelib.Numbers.BinNums.N.Npos"}],
+   "target": "Rocq.Corelib.Numbers.BinNums.N",
+   "status": "TRANSLATED_AND_CHECKED",
+   "source_computed": [],
+   "source": "Corelib.Numbers.BinNums.N",
+   "sort_lowered_levels": [],
+   "sort_interp": false,
+   "sort_fact_reduced": false,
+   "solved_levels": [],
+   "rule": "inductive/generated",
+   "result_sort_inherited": false,
+   "result_sort_implicit_levels": [],
+   "r2bp_levels": [],
+   "quality_prop": null,
+   "protected": true,
+   "prop_lift_unfold": [],
+   "prop_lift_coercions": 0,
+   "prop_lift": null,
+   "primitive_record": false,
+   "poly_level_interp": [],
+   "plain_levels": true,
+   "phantom_lowered": [],
+   "pending_hypotheses": [],
+   "path": [],
+   "num_params": 0,
+   "message": "",
+   "level_split": [],
+   "level_params": [],
+   "level_interp": [],
+   "level_copies": [],
+   "kind": "inductive",
+   "implicit_levels": [],
+   "delta_inlined": [],
+   "coinductive_as_inductive": false,
+   "blocked_by": [],
+   "admitting_levels": []},
+  {"universe_residuals": null,
+   "universe_poly_params": 0,
+   "universe_minimal_levels": 0,
+   "universe_lowered": false,
+   "universe_level_defaults": 0,
+   "universe_diagnostics": [],
+   "universe_cumulativity": false,
+   "universe_checks": 0,
+   "type_lift_coercions": 0,
+   "type_lift": null,
+   "template_sort": false,
+   "template_params": [],
+   "template": false,
+   "target_value":
+   {"t":
+    {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.N", "k": "const"},
+     "n": "n",
+     "k": "forall",
+     "b": {"l": {"k": "zero"}, "k": "sort"}},
+    "n": "P",
+    "k": "forall",
+    "b":
+    {"t":
+     {"k": "app",
+      "f": {"k": "bvar", "i": 0},
+      "a": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.N.N0", "k": "const"}},
+     "n": "N0",
+     "k": "forall",
+     "b":
+     {"t":
+      {"t":
+       {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+       "n": "p",
+       "k": "forall",
+       "b":
+       {"k": "app",
+        "f": {"k": "bvar", "i": 2},
+        "a":
+        {"k": "app",
+         "f":
+         {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.N.Npos", "k": "const"},
+         "a": {"k": "bvar", "i": 0}}}},
+      "n": "Npos",
+      "k": "forall",
+      "b":
+      {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.N", "k": "const"},
+       "n": "n",
+       "k": "forall",
+       "b":
+       {"k": "app", "f": {"k": "bvar", "i": 3}, "a": {"k": "bvar", "i": 0}}}}}},
+   "target_type": {"l": {"k": "zero"}, "k": "sort"},
+   "target_kind": "statement",
+   "target_ctors": [],
+   "target": "Rocq.Corelib.Numbers.BinNums.N_ind.statement",
+   "status": "STATEMENT_KERNEL_CHECKED",
+   "source_computed": [],
+   "source": "Corelib.Numbers.BinNums.N_ind",
+   "sort_lowered_levels": [],
+   "sort_interp": false,
+   "sort_fact_reduced": false,
+   "solved_levels": [],
+   "rule": "constant/transparent",
+   "result_sort_inherited": false,
+   "result_sort_implicit_levels": [],
+   "r2bp_levels": [],
+   "quality_prop": null,
+   "protected": true,
+   "prop_lift_unfold": [],
+   "prop_lift_coercions": 0,
+   "prop_lift": null,
+   "primitive_record": false,
+   "poly_level_interp": [],
+   "plain_levels": false,
+   "phantom_lowered": [],
+   "pending_hypotheses": [],
+   "path": [],
+   "num_params": 0,
+   "message": "",
+   "level_split": [],
+   "level_params": [],
+   "level_interp": [],
+   "level_copies": [],
+   "kind": "constant",
+   "implicit_levels": [],
+   "delta_inlined": [],
+   "coinductive_as_inductive": false,
+   "blocked_by": [],
+   "admitting_levels": []},
+  {"universe_residuals": null,
+   "universe_poly_params": 0,
+   "universe_minimal_levels": 0,
+   "universe_lowered": false,
+   "universe_level_defaults": 0,
+   "universe_diagnostics": [],
+   "universe_cumulativity": false,
+   "universe_checks": 0,
+   "type_lift_coercions": 0,
+   "type_lift": null,
+   "template_sort": false,
+   "template_params": [],
+   "template": false,
+   "target_value":
+   {"t":
+    {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.N", "k": "const"},
+     "n": "n",
+     "k": "forall",
+     "b": {"l": {"l": {"k": "zero"}, "k": "succ"}, "k": "sort"}},
+    "n": "P",
+    "k": "lam",
+    "b":
+    {"t":
+     {"k": "app",
+      "f": {"k": "bvar", "i": 0},
+      "a": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.N.N0", "k": "const"}},
+     "n": "N0",
+     "k": "lam",
+     "b":
+     {"t":
+      {"t":
+       {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+       "n": "p",
+       "k": "forall",
+       "b":
+       {"k": "app",
+        "f": {"k": "bvar", "i": 2},
+        "a":
+        {"k": "app",
+         "f":
+         {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.N.Npos", "k": "const"},
+         "a": {"k": "bvar", "i": 0}}}},
+      "n": "Npos",
+      "k": "lam",
+      "b":
+      {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.N", "k": "const"},
+       "n": "n",
+       "k": "lam",
+       "b":
+       {"k": "app",
+        "f":
+        {"k": "app",
+         "f":
+         {"k": "app",
+          "f":
+          {"k": "app",
+           "f":
+           {"u": [{"l": {"k": "zero"}, "k": "succ"}],
+            "n": "Rocq.Corelib.Numbers.BinNums.N.rec",
+            "k": "const"},
+           "a":
+           {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.N", "k": "const"},
+            "n": "t",
+            "k": "lam",
+            "b":
+            {"k": "app",
+             "f": {"k": "bvar", "i": 4},
+             "a": {"k": "bvar", "i": 0}}}},
+          "a": {"k": "bvar", "i": 2}},
+         "a":
+         {"t":
+          {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+          "n": "[anonymous]",
+          "k": "lam",
+          "b":
+          {"k": "app",
+           "f": {"k": "bvar", "i": 2},
+           "a": {"k": "bvar", "i": 0}}}},
+        "a": {"k": "bvar", "i": 0}}}}}},
+   "target_type":
+   {"t":
+    {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.N", "k": "const"},
+     "n": "n",
+     "k": "forall",
+     "b": {"l": {"l": {"k": "zero"}, "k": "succ"}, "k": "sort"}},
+    "n": "P",
+    "k": "forall",
+    "b":
+    {"t":
+     {"k": "app",
+      "f": {"k": "bvar", "i": 0},
+      "a": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.N.N0", "k": "const"}},
+     "n": "N0",
+     "k": "forall",
+     "b":
+     {"t":
+      {"t":
+       {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+       "n": "p",
+       "k": "forall",
+       "b":
+       {"k": "app",
+        "f": {"k": "bvar", "i": 2},
+        "a":
+        {"k": "app",
+         "f":
+         {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.N.Npos", "k": "const"},
+         "a": {"k": "bvar", "i": 0}}}},
+      "n": "Npos",
+      "k": "forall",
+      "b":
+      {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.N", "k": "const"},
+       "n": "n",
+       "k": "forall",
+       "b":
+       {"k": "app", "f": {"k": "bvar", "i": 3}, "a": {"k": "bvar", "i": 0}}}}}},
+   "target_kind": "def",
+   "target_ctors": [],
+   "target": "Rocq.Corelib.Numbers.BinNums.N_rec",
+   "status": "TRANSLATED_AND_CHECKED",
+   "source_computed": [],
+   "source": "Corelib.Numbers.BinNums.N_rec",
+   "sort_lowered_levels": [],
+   "sort_interp": false,
+   "sort_fact_reduced": false,
+   "solved_levels": [],
+   "rule": "constant/transparent",
+   "result_sort_inherited": false,
+   "result_sort_implicit_levels": [],
+   "r2bp_levels": [],
+   "quality_prop": null,
+   "protected": true,
+   "prop_lift_unfold": [],
+   "prop_lift_coercions": 0,
+   "prop_lift": null,
+   "primitive_record": false,
+   "poly_level_interp": [],
+   "plain_levels": false,
+   "phantom_lowered": [],
+   "pending_hypotheses": [],
+   "path": [],
+   "num_params": 0,
+   "message": "",
+   "level_split": [],
+   "level_params": [],
+   "level_interp": [],
+   "level_copies": [],
+   "kind": "constant",
+   "implicit_levels": [],
+   "delta_inlined": [],
+   "coinductive_as_inductive": false,
+   "blocked_by": [],
+   "admitting_levels": []},
+  {"universe_residuals": null,
+   "universe_poly_params": 0,
+   "universe_minimal_levels": 0,
+   "universe_lowered": false,
+   "universe_level_defaults": 0,
+   "universe_diagnostics": [],
+   "universe_cumulativity": false,
+   "universe_checks": 0,
+   "type_lift_coercions": 0,
+   "type_lift": null,
+   "template_sort": false,
+   "template_params": [],
+   "template": false,
+   "target_value":
+   {"t":
+    {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.N", "k": "const"},
+     "n": "n",
+     "k": "forall",
+     "b":
+     {"l": {"n": "u_Corelib_Numbers_BinNums_22", "k": "param"}, "k": "sort"}},
+    "n": "P",
+    "k": "lam",
+    "b":
+    {"t":
+     {"k": "app",
+      "f": {"k": "bvar", "i": 0},
+      "a": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.N.N0", "k": "const"}},
+     "n": "N0",
+     "k": "lam",
+     "b":
+     {"t":
+      {"t":
+       {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+       "n": "p",
+       "k": "forall",
+       "b":
+       {"k": "app",
+        "f": {"k": "bvar", "i": 2},
+        "a":
+        {"k": "app",
+         "f":
+         {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.N.Npos", "k": "const"},
+         "a": {"k": "bvar", "i": 0}}}},
+      "n": "Npos",
+      "k": "lam",
+      "b":
+      {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.N", "k": "const"},
+       "n": "n",
+       "k": "lam",
+       "b":
+       {"k": "app",
+        "f":
+        {"k": "app",
+         "f":
+         {"k": "app",
+          "f":
+          {"k": "app",
+           "f":
+           {"u": [{"n": "u_Corelib_Numbers_BinNums_22", "k": "param"}],
+            "n": "Rocq.Corelib.Numbers.BinNums.N.rec",
+            "k": "const"},
+           "a":
+           {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.N", "k": "const"},
+            "n": "t",
+            "k": "lam",
+            "b":
+            {"k": "app",
+             "f": {"k": "bvar", "i": 4},
+             "a": {"k": "bvar", "i": 0}}}},
+          "a": {"k": "bvar", "i": 2}},
+         "a":
+         {"t":
+          {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+          "n": "[anonymous]",
+          "k": "lam",
+          "b":
+          {"k": "app",
+           "f": {"k": "bvar", "i": 2},
+           "a": {"k": "bvar", "i": 0}}}},
+        "a": {"k": "bvar", "i": 0}}}}}},
+   "target_type":
+   {"t":
+    {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.N", "k": "const"},
+     "n": "n",
+     "k": "forall",
+     "b":
+     {"l": {"n": "u_Corelib_Numbers_BinNums_22", "k": "param"}, "k": "sort"}},
+    "n": "P",
+    "k": "forall",
+    "b":
+    {"t":
+     {"k": "app",
+      "f": {"k": "bvar", "i": 0},
+      "a": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.N.N0", "k": "const"}},
+     "n": "N0",
+     "k": "forall",
+     "b":
+     {"t":
+      {"t":
+       {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+       "n": "p",
+       "k": "forall",
+       "b":
+       {"k": "app",
+        "f": {"k": "bvar", "i": 2},
+        "a":
+        {"k": "app",
+         "f":
+         {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.N.Npos", "k": "const"},
+         "a": {"k": "bvar", "i": 0}}}},
+      "n": "Npos",
+      "k": "forall",
+      "b":
+      {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.N", "k": "const"},
+       "n": "n",
+       "k": "forall",
+       "b":
+       {"k": "app", "f": {"k": "bvar", "i": 3}, "a": {"k": "bvar", "i": 0}}}}}},
+   "target_kind": "def",
+   "target_ctors": [],
+   "target": "Rocq.Corelib.Numbers.BinNums.N_rect",
+   "status": "TRANSLATED_AND_CHECKED",
+   "source_computed": [],
+   "source": "Corelib.Numbers.BinNums.N_rect",
+   "sort_lowered_levels": [],
+   "sort_interp": false,
+   "sort_fact_reduced": false,
+   "solved_levels": [],
+   "rule": "constant/transparent",
+   "result_sort_inherited": false,
+   "result_sort_implicit_levels": [],
+   "r2bp_levels": [],
+   "quality_prop": null,
+   "protected": true,
+   "prop_lift_unfold": [],
+   "prop_lift_coercions": 0,
+   "prop_lift": null,
+   "primitive_record": false,
+   "poly_level_interp": [],
+   "plain_levels": false,
+   "phantom_lowered": [],
+   "pending_hypotheses": [],
+   "path": [],
+   "num_params": 0,
+   "message": "",
+   "level_split": [],
+   "level_params": ["u_Corelib_Numbers_BinNums_22"],
+   "level_interp": [],
+   "level_copies": [],
+   "kind": "constant",
+   "implicit_levels": [],
+   "delta_inlined": [],
+   "coinductive_as_inductive": false,
+   "blocked_by": [],
+   "admitting_levels": ["Corelib.Numbers.BinNums.22"]},
+  {"universe_residuals": null,
+   "universe_poly_params": 0,
+   "universe_minimal_levels": 0,
+   "universe_lowered": false,
+   "universe_level_defaults": 0,
+   "universe_diagnostics": [],
+   "universe_cumulativity": false,
+   "universe_checks": 0,
+   "type_lift_coercions": 0,
+   "type_lift": null,
+   "template_sort": false,
+   "template_params": [],
+   "template": false,
+   "target_value":
+   {"t":
+    {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.N", "k": "const"},
+     "n": "n",
+     "k": "forall",
+     "b": {"l": {"k": "zero"}, "k": "sort"}},
+    "n": "P",
+    "k": "forall",
+    "b":
+    {"t":
+     {"k": "app",
+      "f": {"k": "bvar", "i": 0},
+      "a": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.N.N0", "k": "const"}},
+     "n": "N0",
+     "k": "forall",
+     "b":
+     {"t":
+      {"t":
+       {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+       "n": "p",
+       "k": "forall",
+       "b":
+       {"k": "app",
+        "f": {"k": "bvar", "i": 2},
+        "a":
+        {"k": "app",
+         "f":
+         {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.N.Npos", "k": "const"},
+         "a": {"k": "bvar", "i": 0}}}},
+      "n": "Npos",
+      "k": "forall",
+      "b":
+      {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.N", "k": "const"},
+       "n": "n",
+       "k": "forall",
+       "b":
+       {"k": "app", "f": {"k": "bvar", "i": 3}, "a": {"k": "bvar", "i": 0}}}}}},
+   "target_type": {"l": {"k": "zero"}, "k": "sort"},
+   "target_kind": "statement",
+   "target_ctors": [],
+   "target": "Rocq.Corelib.Numbers.BinNums.N_sind.statement",
+   "status": "STATEMENT_KERNEL_CHECKED",
+   "source_computed": [],
+   "source": "Corelib.Numbers.BinNums.N_sind",
+   "sort_lowered_levels": [],
+   "sort_interp": false,
+   "sort_fact_reduced": false,
+   "solved_levels": [],
+   "rule": "constant/transparent",
+   "result_sort_inherited": false,
+   "result_sort_implicit_levels": [],
+   "r2bp_levels": [],
+   "quality_prop": null,
+   "protected": true,
+   "prop_lift_unfold": [],
+   "prop_lift_coercions": 0,
+   "prop_lift": null,
+   "primitive_record": false,
+   "poly_level_interp": [],
+   "plain_levels": false,
+   "phantom_lowered": [],
+   "pending_hypotheses": [],
+   "path": [],
+   "num_params": 0,
+   "message": "",
+   "level_split": [],
+   "level_params": [],
+   "level_interp": [],
+   "level_copies": [],
+   "kind": "constant",
+   "implicit_levels": [],
+   "delta_inlined": [],
+   "coinductive_as_inductive": false,
+   "blocked_by": [],
+   "admitting_levels": []},
+  {"universe_residuals": null,
+   "universe_poly_params": 0,
+   "universe_minimal_levels": 0,
+   "universe_lowered": false,
+   "universe_level_defaults": 0,
+   "universe_diagnostics": [],
+   "universe_cumulativity": false,
+   "universe_checks": 0,
+   "type_lift_coercions": 0,
+   "type_lift": null,
+   "template_sort": false,
+   "template_params": [],
+   "template": false,
+   "target_value": null,
+   "target_type": {"l": {"l": {"k": "zero"}, "k": "succ"}, "k": "sort"},
+   "target_kind": "inductive",
+   "target_ctors":
+   [{"type": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z", "k": "const"},
+     "name": "Rocq.Corelib.Numbers.BinNums.Z.Z0"},
+    {"type":
+     {"t":
+      {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+      "n": "[anonymous]",
+      "k": "forall",
+      "b": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z", "k": "const"}},
+     "name": "Rocq.Corelib.Numbers.BinNums.Z.Zpos"},
+    {"type":
+     {"t":
+      {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+      "n": "[anonymous]",
+      "k": "forall",
+      "b": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z", "k": "const"}},
+     "name": "Rocq.Corelib.Numbers.BinNums.Z.Zneg"}],
+   "target": "Rocq.Corelib.Numbers.BinNums.Z",
+   "status": "TRANSLATED_AND_CHECKED",
+   "source_computed": [],
+   "source": "Corelib.Numbers.BinNums.Z",
+   "sort_lowered_levels": [],
+   "sort_interp": false,
+   "sort_fact_reduced": false,
+   "solved_levels": [],
+   "rule": "inductive/generated",
+   "result_sort_inherited": false,
+   "result_sort_implicit_levels": [],
+   "r2bp_levels": [],
+   "quality_prop": null,
+   "protected": true,
+   "prop_lift_unfold": [],
+   "prop_lift_coercions": 0,
+   "prop_lift": null,
+   "primitive_record": false,
+   "poly_level_interp": [],
+   "plain_levels": true,
+   "phantom_lowered": [],
+   "pending_hypotheses": [],
+   "path": [],
+   "num_params": 0,
+   "message": "",
+   "level_split": [],
+   "level_params": [],
+   "level_interp": [],
+   "level_copies": [],
+   "kind": "inductive",
+   "implicit_levels": [],
+   "delta_inlined": [],
+   "coinductive_as_inductive": false,
+   "blocked_by": [],
+   "admitting_levels": []},
+  {"universe_residuals": null,
+   "universe_poly_params": 0,
+   "universe_minimal_levels": 0,
+   "universe_lowered": false,
+   "universe_level_defaults": 0,
+   "universe_diagnostics": [],
+   "universe_cumulativity": false,
+   "universe_checks": 0,
+   "type_lift_coercions": 0,
+   "type_lift": null,
+   "template_sort": false,
+   "template_params": [],
+   "template": false,
+   "target_value":
+   {"t":
+    {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z", "k": "const"},
+     "n": "z",
+     "k": "forall",
+     "b": {"l": {"k": "zero"}, "k": "sort"}},
+    "n": "P",
+    "k": "forall",
+    "b":
+    {"t":
+     {"k": "app",
+      "f": {"k": "bvar", "i": 0},
+      "a": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z.Z0", "k": "const"}},
+     "n": "Z0",
+     "k": "forall",
+     "b":
+     {"t":
+      {"t":
+       {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+       "n": "p",
+       "k": "forall",
+       "b":
+       {"k": "app",
+        "f": {"k": "bvar", "i": 2},
+        "a":
+        {"k": "app",
+         "f":
+         {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z.Zpos", "k": "const"},
+         "a": {"k": "bvar", "i": 0}}}},
+      "n": "Zpos",
+      "k": "forall",
+      "b":
+      {"t":
+       {"t":
+        {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+        "n": "p",
+        "k": "forall",
+        "b":
+        {"k": "app",
+         "f": {"k": "bvar", "i": 3},
+         "a":
+         {"k": "app",
+          "f":
+          {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z.Zneg", "k": "const"},
+          "a": {"k": "bvar", "i": 0}}}},
+       "n": "Zneg",
+       "k": "forall",
+       "b":
+       {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z", "k": "const"},
+        "n": "z",
+        "k": "forall",
+        "b":
+        {"k": "app",
+         "f": {"k": "bvar", "i": 4},
+         "a": {"k": "bvar", "i": 0}}}}}}},
+   "target_type": {"l": {"k": "zero"}, "k": "sort"},
+   "target_kind": "statement",
+   "target_ctors": [],
+   "target": "Rocq.Corelib.Numbers.BinNums.Z_ind.statement",
+   "status": "STATEMENT_KERNEL_CHECKED",
+   "source_computed": [],
+   "source": "Corelib.Numbers.BinNums.Z_ind",
+   "sort_lowered_levels": [],
+   "sort_interp": false,
+   "sort_fact_reduced": false,
+   "solved_levels": [],
+   "rule": "constant/transparent",
+   "result_sort_inherited": false,
+   "result_sort_implicit_levels": [],
+   "r2bp_levels": [],
+   "quality_prop": null,
+   "protected": true,
+   "prop_lift_unfold": [],
+   "prop_lift_coercions": 0,
+   "prop_lift": null,
+   "primitive_record": false,
+   "poly_level_interp": [],
+   "plain_levels": false,
+   "phantom_lowered": [],
+   "pending_hypotheses": [],
+   "path": [],
+   "num_params": 0,
+   "message": "",
+   "level_split": [],
+   "level_params": [],
+   "level_interp": [],
+   "level_copies": [],
+   "kind": "constant",
+   "implicit_levels": [],
+   "delta_inlined": [],
+   "coinductive_as_inductive": false,
+   "blocked_by": [],
+   "admitting_levels": []},
+  {"universe_residuals": null,
+   "universe_poly_params": 0,
+   "universe_minimal_levels": 0,
+   "universe_lowered": false,
+   "universe_level_defaults": 0,
+   "universe_diagnostics": [],
+   "universe_cumulativity": false,
+   "universe_checks": 0,
+   "type_lift_coercions": 0,
+   "type_lift": null,
+   "template_sort": false,
+   "template_params": [],
+   "template": false,
+   "target_value":
+   {"t":
+    {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z", "k": "const"},
+     "n": "z",
+     "k": "forall",
+     "b": {"l": {"l": {"k": "zero"}, "k": "succ"}, "k": "sort"}},
+    "n": "P",
+    "k": "lam",
+    "b":
+    {"t":
+     {"k": "app",
+      "f": {"k": "bvar", "i": 0},
+      "a": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z.Z0", "k": "const"}},
+     "n": "Z0",
+     "k": "lam",
+     "b":
+     {"t":
+      {"t":
+       {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+       "n": "p",
+       "k": "forall",
+       "b":
+       {"k": "app",
+        "f": {"k": "bvar", "i": 2},
+        "a":
+        {"k": "app",
+         "f":
+         {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z.Zpos", "k": "const"},
+         "a": {"k": "bvar", "i": 0}}}},
+      "n": "Zpos",
+      "k": "lam",
+      "b":
+      {"t":
+       {"t":
+        {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+        "n": "p",
+        "k": "forall",
+        "b":
+        {"k": "app",
+         "f": {"k": "bvar", "i": 3},
+         "a":
+         {"k": "app",
+          "f":
+          {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z.Zneg", "k": "const"},
+          "a": {"k": "bvar", "i": 0}}}},
+       "n": "Zneg",
+       "k": "lam",
+       "b":
+       {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z", "k": "const"},
+        "n": "z",
+        "k": "lam",
+        "b":
+        {"k": "app",
+         "f":
+         {"k": "app",
+          "f":
+          {"k": "app",
+           "f":
+           {"k": "app",
+            "f":
+            {"k": "app",
+             "f":
+             {"u": [{"l": {"k": "zero"}, "k": "succ"}],
+              "n": "Rocq.Corelib.Numbers.BinNums.Z.rec",
+              "k": "const"},
+             "a":
+             {"t":
+              {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z", "k": "const"},
+              "n": "t",
+              "k": "lam",
+              "b":
+              {"k": "app",
+               "f": {"k": "bvar", "i": 5},
+               "a": {"k": "bvar", "i": 0}}}},
+            "a": {"k": "bvar", "i": 3}},
+           "a":
+           {"t":
+            {"u": [],
+             "n": "Rocq.Corelib.Numbers.BinNums.positive",
+             "k": "const"},
+            "n": "[anonymous]",
+            "k": "lam",
+            "b":
+            {"k": "app",
+             "f": {"k": "bvar", "i": 3},
+             "a": {"k": "bvar", "i": 0}}}},
+          "a":
+          {"t":
+           {"u": [],
+            "n": "Rocq.Corelib.Numbers.BinNums.positive",
+            "k": "const"},
+           "n": "[anonymous]",
+           "k": "lam",
+           "b":
+           {"k": "app",
+            "f": {"k": "bvar", "i": 2},
+            "a": {"k": "bvar", "i": 0}}}},
+         "a": {"k": "bvar", "i": 0}}}}}}},
+   "target_type":
+   {"t":
+    {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z", "k": "const"},
+     "n": "z",
+     "k": "forall",
+     "b": {"l": {"l": {"k": "zero"}, "k": "succ"}, "k": "sort"}},
+    "n": "P",
+    "k": "forall",
+    "b":
+    {"t":
+     {"k": "app",
+      "f": {"k": "bvar", "i": 0},
+      "a": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z.Z0", "k": "const"}},
+     "n": "Z0",
+     "k": "forall",
+     "b":
+     {"t":
+      {"t":
+       {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+       "n": "p",
+       "k": "forall",
+       "b":
+       {"k": "app",
+        "f": {"k": "bvar", "i": 2},
+        "a":
+        {"k": "app",
+         "f":
+         {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z.Zpos", "k": "const"},
+         "a": {"k": "bvar", "i": 0}}}},
+      "n": "Zpos",
+      "k": "forall",
+      "b":
+      {"t":
+       {"t":
+        {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+        "n": "p",
+        "k": "forall",
+        "b":
+        {"k": "app",
+         "f": {"k": "bvar", "i": 3},
+         "a":
+         {"k": "app",
+          "f":
+          {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z.Zneg", "k": "const"},
+          "a": {"k": "bvar", "i": 0}}}},
+       "n": "Zneg",
+       "k": "forall",
+       "b":
+       {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z", "k": "const"},
+        "n": "z",
+        "k": "forall",
+        "b":
+        {"k": "app",
+         "f": {"k": "bvar", "i": 4},
+         "a": {"k": "bvar", "i": 0}}}}}}},
+   "target_kind": "def",
+   "target_ctors": [],
+   "target": "Rocq.Corelib.Numbers.BinNums.Z_rec",
+   "status": "TRANSLATED_AND_CHECKED",
+   "source_computed": [],
+   "source": "Corelib.Numbers.BinNums.Z_rec",
+   "sort_lowered_levels": [],
+   "sort_interp": false,
+   "sort_fact_reduced": false,
+   "solved_levels": [],
+   "rule": "constant/transparent",
+   "result_sort_inherited": false,
+   "result_sort_implicit_levels": [],
+   "r2bp_levels": [],
+   "quality_prop": null,
+   "protected": true,
+   "prop_lift_unfold": [],
+   "prop_lift_coercions": 0,
+   "prop_lift": null,
+   "primitive_record": false,
+   "poly_level_interp": [],
+   "plain_levels": false,
+   "phantom_lowered": [],
+   "pending_hypotheses": [],
+   "path": [],
+   "num_params": 0,
+   "message": "",
+   "level_split": [],
+   "level_params": [],
+   "level_interp": [],
+   "level_copies": [],
+   "kind": "constant",
+   "implicit_levels": [],
+   "delta_inlined": [],
+   "coinductive_as_inductive": false,
+   "blocked_by": [],
+   "admitting_levels": []},
+  {"universe_residuals": null,
+   "universe_poly_params": 0,
+   "universe_minimal_levels": 0,
+   "universe_lowered": false,
+   "universe_level_defaults": 0,
+   "universe_diagnostics": [],
+   "universe_cumulativity": false,
+   "universe_checks": 0,
+   "type_lift_coercions": 0,
+   "type_lift": null,
+   "template_sort": false,
+   "template_params": [],
+   "template": false,
+   "target_value":
+   {"t":
+    {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z", "k": "const"},
+     "n": "z",
+     "k": "forall",
+     "b":
+     {"l": {"n": "u_Corelib_Numbers_BinNums_23", "k": "param"}, "k": "sort"}},
+    "n": "P",
+    "k": "lam",
+    "b":
+    {"t":
+     {"k": "app",
+      "f": {"k": "bvar", "i": 0},
+      "a": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z.Z0", "k": "const"}},
+     "n": "Z0",
+     "k": "lam",
+     "b":
+     {"t":
+      {"t":
+       {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+       "n": "p",
+       "k": "forall",
+       "b":
+       {"k": "app",
+        "f": {"k": "bvar", "i": 2},
+        "a":
+        {"k": "app",
+         "f":
+         {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z.Zpos", "k": "const"},
+         "a": {"k": "bvar", "i": 0}}}},
+      "n": "Zpos",
+      "k": "lam",
+      "b":
+      {"t":
+       {"t":
+        {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+        "n": "p",
+        "k": "forall",
+        "b":
+        {"k": "app",
+         "f": {"k": "bvar", "i": 3},
+         "a":
+         {"k": "app",
+          "f":
+          {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z.Zneg", "k": "const"},
+          "a": {"k": "bvar", "i": 0}}}},
+       "n": "Zneg",
+       "k": "lam",
+       "b":
+       {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z", "k": "const"},
+        "n": "z",
+        "k": "lam",
+        "b":
+        {"k": "app",
+         "f":
+         {"k": "app",
+          "f":
+          {"k": "app",
+           "f":
+           {"k": "app",
+            "f":
+            {"k": "app",
+             "f":
+             {"u": [{"n": "u_Corelib_Numbers_BinNums_23", "k": "param"}],
+              "n": "Rocq.Corelib.Numbers.BinNums.Z.rec",
+              "k": "const"},
+             "a":
+             {"t":
+              {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z", "k": "const"},
+              "n": "t",
+              "k": "lam",
+              "b":
+              {"k": "app",
+               "f": {"k": "bvar", "i": 5},
+               "a": {"k": "bvar", "i": 0}}}},
+            "a": {"k": "bvar", "i": 3}},
+           "a":
+           {"t":
+            {"u": [],
+             "n": "Rocq.Corelib.Numbers.BinNums.positive",
+             "k": "const"},
+            "n": "[anonymous]",
+            "k": "lam",
+            "b":
+            {"k": "app",
+             "f": {"k": "bvar", "i": 3},
+             "a": {"k": "bvar", "i": 0}}}},
+          "a":
+          {"t":
+           {"u": [],
+            "n": "Rocq.Corelib.Numbers.BinNums.positive",
+            "k": "const"},
+           "n": "[anonymous]",
+           "k": "lam",
+           "b":
+           {"k": "app",
+            "f": {"k": "bvar", "i": 2},
+            "a": {"k": "bvar", "i": 0}}}},
+         "a": {"k": "bvar", "i": 0}}}}}}},
+   "target_type":
+   {"t":
+    {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z", "k": "const"},
+     "n": "z",
+     "k": "forall",
+     "b":
+     {"l": {"n": "u_Corelib_Numbers_BinNums_23", "k": "param"}, "k": "sort"}},
+    "n": "P",
+    "k": "forall",
+    "b":
+    {"t":
+     {"k": "app",
+      "f": {"k": "bvar", "i": 0},
+      "a": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z.Z0", "k": "const"}},
+     "n": "Z0",
+     "k": "forall",
+     "b":
+     {"t":
+      {"t":
+       {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+       "n": "p",
+       "k": "forall",
+       "b":
+       {"k": "app",
+        "f": {"k": "bvar", "i": 2},
+        "a":
+        {"k": "app",
+         "f":
+         {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z.Zpos", "k": "const"},
+         "a": {"k": "bvar", "i": 0}}}},
+      "n": "Zpos",
+      "k": "forall",
+      "b":
+      {"t":
+       {"t":
+        {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+        "n": "p",
+        "k": "forall",
+        "b":
+        {"k": "app",
+         "f": {"k": "bvar", "i": 3},
+         "a":
+         {"k": "app",
+          "f":
+          {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z.Zneg", "k": "const"},
+          "a": {"k": "bvar", "i": 0}}}},
+       "n": "Zneg",
+       "k": "forall",
+       "b":
+       {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z", "k": "const"},
+        "n": "z",
+        "k": "forall",
+        "b":
+        {"k": "app",
+         "f": {"k": "bvar", "i": 4},
+         "a": {"k": "bvar", "i": 0}}}}}}},
+   "target_kind": "def",
+   "target_ctors": [],
+   "target": "Rocq.Corelib.Numbers.BinNums.Z_rect",
+   "status": "TRANSLATED_AND_CHECKED",
+   "source_computed": [],
+   "source": "Corelib.Numbers.BinNums.Z_rect",
+   "sort_lowered_levels": [],
+   "sort_interp": false,
+   "sort_fact_reduced": false,
+   "solved_levels": [],
+   "rule": "constant/transparent",
+   "result_sort_inherited": false,
+   "result_sort_implicit_levels": [],
+   "r2bp_levels": [],
+   "quality_prop": null,
+   "protected": true,
+   "prop_lift_unfold": [],
+   "prop_lift_coercions": 0,
+   "prop_lift": null,
+   "primitive_record": false,
+   "poly_level_interp": [],
+   "plain_levels": false,
+   "phantom_lowered": [],
+   "pending_hypotheses": [],
+   "path": [],
+   "num_params": 0,
+   "message": "",
+   "level_split": [],
+   "level_params": ["u_Corelib_Numbers_BinNums_23"],
+   "level_interp": [],
+   "level_copies": [],
+   "kind": "constant",
+   "implicit_levels": [],
+   "delta_inlined": [],
+   "coinductive_as_inductive": false,
+   "blocked_by": [],
+   "admitting_levels": ["Corelib.Numbers.BinNums.23"]},
+  {"universe_residuals": null,
+   "universe_poly_params": 0,
+   "universe_minimal_levels": 0,
+   "universe_lowered": false,
+   "universe_level_defaults": 0,
+   "universe_diagnostics": [],
+   "universe_cumulativity": false,
+   "universe_checks": 0,
+   "type_lift_coercions": 0,
+   "type_lift": null,
+   "template_sort": false,
+   "template_params": [],
+   "template": false,
+   "target_value":
+   {"t":
+    {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z", "k": "const"},
+     "n": "z",
+     "k": "forall",
+     "b": {"l": {"k": "zero"}, "k": "sort"}},
+    "n": "P",
+    "k": "forall",
+    "b":
+    {"t":
+     {"k": "app",
+      "f": {"k": "bvar", "i": 0},
+      "a": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z.Z0", "k": "const"}},
+     "n": "Z0",
+     "k": "forall",
+     "b":
+     {"t":
+      {"t":
+       {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+       "n": "p",
+       "k": "forall",
+       "b":
+       {"k": "app",
+        "f": {"k": "bvar", "i": 2},
+        "a":
+        {"k": "app",
+         "f":
+         {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z.Zpos", "k": "const"},
+         "a": {"k": "bvar", "i": 0}}}},
+      "n": "Zpos",
+      "k": "forall",
+      "b":
+      {"t":
+       {"t":
+        {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+        "n": "p",
+        "k": "forall",
+        "b":
+        {"k": "app",
+         "f": {"k": "bvar", "i": 3},
+         "a":
+         {"k": "app",
+          "f":
+          {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z.Zneg", "k": "const"},
+          "a": {"k": "bvar", "i": 0}}}},
+       "n": "Zneg",
+       "k": "forall",
+       "b":
+       {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.Z", "k": "const"},
+        "n": "z",
+        "k": "forall",
+        "b":
+        {"k": "app",
+         "f": {"k": "bvar", "i": 4},
+         "a": {"k": "bvar", "i": 0}}}}}}},
+   "target_type": {"l": {"k": "zero"}, "k": "sort"},
+   "target_kind": "statement",
+   "target_ctors": [],
+   "target": "Rocq.Corelib.Numbers.BinNums.Z_sind.statement",
+   "status": "STATEMENT_KERNEL_CHECKED",
+   "source_computed": [],
+   "source": "Corelib.Numbers.BinNums.Z_sind",
+   "sort_lowered_levels": [],
+   "sort_interp": false,
+   "sort_fact_reduced": false,
+   "solved_levels": [],
+   "rule": "constant/transparent",
+   "result_sort_inherited": false,
+   "result_sort_implicit_levels": [],
+   "r2bp_levels": [],
+   "quality_prop": null,
+   "protected": true,
+   "prop_lift_unfold": [],
+   "prop_lift_coercions": 0,
+   "prop_lift": null,
+   "primitive_record": false,
+   "poly_level_interp": [],
+   "plain_levels": false,
+   "phantom_lowered": [],
+   "pending_hypotheses": [],
+   "path": [],
+   "num_params": 0,
+   "message": "",
+   "level_split": [],
+   "level_params": [],
+   "level_interp": [],
+   "level_copies": [],
+   "kind": "constant",
+   "implicit_levels": [],
+   "delta_inlined": [],
+   "coinductive_as_inductive": false,
+   "blocked_by": [],
+   "admitting_levels": []},
+  {"universe_residuals": null,
+   "universe_poly_params": 0,
+   "universe_minimal_levels": 0,
+   "universe_lowered": false,
+   "universe_level_defaults": 0,
+   "universe_diagnostics": [],
+   "universe_cumulativity": false,
+   "universe_checks": 0,
+   "type_lift_coercions": 0,
+   "type_lift": null,
+   "template_sort": false,
+   "template_params": [],
+   "template": false,
+   "target_value":
+   {"t":
+    {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+     "n": "p",
+     "k": "forall",
+     "b": {"l": {"k": "zero"}, "k": "sort"}},
+    "n": "P",
+    "k": "forall",
+    "b":
+    {"t":
+     {"t":
+      {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+      "n": "p",
+      "k": "forall",
+      "b":
+      {"t":
+       {"k": "app", "f": {"k": "bvar", "i": 1}, "a": {"k": "bvar", "i": 0}},
+       "n": "[anonymous]",
+       "k": "forall",
+       "b":
+       {"k": "app",
+        "f": {"k": "bvar", "i": 2},
+        "a":
+        {"k": "app",
+         "f":
+         {"u": [],
+          "n": "Rocq.Corelib.Numbers.BinNums.positive.xI",
+          "k": "const"},
+         "a": {"k": "bvar", "i": 1}}}}},
+     "n": "xI",
+     "k": "forall",
+     "b":
+     {"t":
+      {"t":
+       {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+       "n": "p",
+       "k": "forall",
+       "b":
+       {"t":
+        {"k": "app", "f": {"k": "bvar", "i": 2}, "a": {"k": "bvar", "i": 0}},
+        "n": "[anonymous]",
+        "k": "forall",
+        "b":
+        {"k": "app",
+         "f": {"k": "bvar", "i": 3},
+         "a":
+         {"k": "app",
+          "f":
+          {"u": [],
+           "n": "Rocq.Corelib.Numbers.BinNums.positive.xO",
+           "k": "const"},
+          "a": {"k": "bvar", "i": 1}}}}},
+      "n": "xO",
+      "k": "forall",
+      "b":
+      {"t":
+       {"k": "app",
+        "f": {"k": "bvar", "i": 2},
+        "a":
+        {"u": [],
+         "n": "Rocq.Corelib.Numbers.BinNums.positive.xH",
+         "k": "const"}},
+       "n": "xH",
+       "k": "forall",
+       "b":
+       {"t":
+        {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+        "n": "p",
+        "k": "forall",
+        "b":
+        {"k": "app",
+         "f": {"k": "bvar", "i": 4},
+         "a": {"k": "bvar", "i": 0}}}}}}},
+   "target_type": {"l": {"k": "zero"}, "k": "sort"},
+   "target_kind": "statement",
+   "target_ctors": [],
+   "target": "Rocq.Corelib.Numbers.BinNums.positive_ind.statement",
+   "status": "STATEMENT_KERNEL_CHECKED",
+   "source_computed": [],
+   "source": "Corelib.Numbers.BinNums.positive_ind",
+   "sort_lowered_levels": [],
+   "sort_interp": false,
+   "sort_fact_reduced": false,
+   "solved_levels": [],
+   "rule": "constant/transparent",
+   "result_sort_inherited": false,
+   "result_sort_implicit_levels": [],
+   "r2bp_levels": [],
+   "quality_prop": null,
+   "protected": true,
+   "prop_lift_unfold": [],
+   "prop_lift_coercions": 0,
+   "prop_lift": null,
+   "primitive_record": false,
+   "poly_level_interp": [],
+   "plain_levels": false,
+   "phantom_lowered": [],
+   "pending_hypotheses": [],
+   "path": [],
+   "num_params": 0,
+   "message": "",
+   "level_split": [],
+   "level_params": [],
+   "level_interp": [],
+   "level_copies": [],
+   "kind": "constant",
+   "implicit_levels": [],
+   "delta_inlined": [],
+   "coinductive_as_inductive": false,
+   "blocked_by": [],
+   "admitting_levels": []},
+  {"universe_residuals": null,
+   "universe_poly_params": 0,
+   "universe_minimal_levels": 0,
+   "universe_lowered": false,
+   "universe_level_defaults": 0,
+   "universe_diagnostics": [],
+   "universe_cumulativity": false,
+   "universe_checks": 0,
+   "type_lift_coercions": 0,
+   "type_lift": null,
+   "template_sort": false,
+   "template_params": [],
+   "template": false,
+   "target_value":
+   {"t":
+    {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+     "n": "p",
+     "k": "forall",
+     "b": {"l": {"l": {"k": "zero"}, "k": "succ"}, "k": "sort"}},
+    "n": "P",
+    "k": "lam",
+    "b":
+    {"t":
+     {"t":
+      {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+      "n": "p",
+      "k": "forall",
+      "b":
+      {"t":
+       {"k": "app", "f": {"k": "bvar", "i": 1}, "a": {"k": "bvar", "i": 0}},
+       "n": "[anonymous]",
+       "k": "forall",
+       "b":
+       {"k": "app",
+        "f": {"k": "bvar", "i": 2},
+        "a":
+        {"k": "app",
+         "f":
+         {"u": [],
+          "n": "Rocq.Corelib.Numbers.BinNums.positive.xI",
+          "k": "const"},
+         "a": {"k": "bvar", "i": 1}}}}},
+     "n": "xI",
+     "k": "lam",
+     "b":
+     {"t":
+      {"t":
+       {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+       "n": "p",
+       "k": "forall",
+       "b":
+       {"t":
+        {"k": "app", "f": {"k": "bvar", "i": 2}, "a": {"k": "bvar", "i": 0}},
+        "n": "[anonymous]",
+        "k": "forall",
+        "b":
+        {"k": "app",
+         "f": {"k": "bvar", "i": 3},
+         "a":
+         {"k": "app",
+          "f":
+          {"u": [],
+           "n": "Rocq.Corelib.Numbers.BinNums.positive.xO",
+           "k": "const"},
+          "a": {"k": "bvar", "i": 1}}}}},
+      "n": "xO",
+      "k": "lam",
+      "b":
+      {"t":
+       {"k": "app",
+        "f": {"k": "bvar", "i": 2},
+        "a":
+        {"u": [],
+         "n": "Rocq.Corelib.Numbers.BinNums.positive.xH",
+         "k": "const"}},
+       "n": "xH",
+       "k": "lam",
+       "b":
+       {"t":
+        {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+        "n": "p",
+        "k": "lam",
+        "b":
+        {"k": "app",
+         "f":
+         {"k": "app",
+          "f":
+          {"k": "app",
+           "f":
+           {"k": "app",
+            "f":
+            {"k": "app",
+             "f":
+             {"u": [{"l": {"k": "zero"}, "k": "succ"}],
+              "n": "Rocq.Corelib.Numbers.BinNums.positive.rec",
+              "k": "const"},
+             "a":
+             {"t":
+              {"u": [],
+               "n": "Rocq.Corelib.Numbers.BinNums.positive",
+               "k": "const"},
+              "n": "p",
+              "k": "lam",
+              "b":
+              {"k": "app",
+               "f": {"k": "bvar", "i": 5},
+               "a": {"k": "bvar", "i": 0}}}},
+            "a":
+            {"t":
+             {"u": [],
+              "n": "Rocq.Corelib.Numbers.BinNums.positive",
+              "k": "const"},
+             "n": "[anonymous]",
+             "k": "lam",
+             "b":
+             {"t":
+              {"k": "app",
+               "f":
+               {"t":
+                {"u": [],
+                 "n": "Rocq.Corelib.Numbers.BinNums.positive",
+                 "k": "const"},
+                "n": "p",
+                "k": "lam",
+                "b":
+                {"k": "app",
+                 "f": {"k": "bvar", "i": 6},
+                 "a": {"k": "bvar", "i": 0}}},
+               "a": {"k": "bvar", "i": 0}},
+              "n": "_ih",
+              "k": "lam",
+              "b":
+              {"k": "app",
+               "f":
+               {"k": "app",
+                "f": {"k": "bvar", "i": 5},
+                "a": {"k": "bvar", "i": 1}},
+               "a": {"k": "bvar", "i": 0}}}}},
+           "a":
+           {"t":
+            {"u": [],
+             "n": "Rocq.Corelib.Numbers.BinNums.positive",
+             "k": "const"},
+            "n": "[anonymous]",
+            "k": "lam",
+            "b":
+            {"t":
+             {"k": "app",
+              "f":
+              {"t":
+               {"u": [],
+                "n": "Rocq.Corelib.Numbers.BinNums.positive",
+                "k": "const"},
+               "n": "p",
+               "k": "lam",
+               "b":
+               {"k": "app",
+                "f": {"k": "bvar", "i": 6},
+                "a": {"k": "bvar", "i": 0}}},
+              "a": {"k": "bvar", "i": 0}},
+             "n": "_ih",
+             "k": "lam",
+             "b":
+             {"k": "app",
+              "f":
+              {"k": "app",
+               "f": {"k": "bvar", "i": 4},
+               "a": {"k": "bvar", "i": 1}},
+              "a": {"k": "bvar", "i": 0}}}}},
+          "a": {"k": "bvar", "i": 1}},
+         "a": {"k": "bvar", "i": 0}}}}}}},
+   "target_type":
+   {"t":
+    {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+     "n": "p",
+     "k": "forall",
+     "b": {"l": {"l": {"k": "zero"}, "k": "succ"}, "k": "sort"}},
+    "n": "P",
+    "k": "forall",
+    "b":
+    {"t":
+     {"t":
+      {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+      "n": "p",
+      "k": "forall",
+      "b":
+      {"t":
+       {"k": "app", "f": {"k": "bvar", "i": 1}, "a": {"k": "bvar", "i": 0}},
+       "n": "[anonymous]",
+       "k": "forall",
+       "b":
+       {"k": "app",
+        "f": {"k": "bvar", "i": 2},
+        "a":
+        {"k": "app",
+         "f":
+         {"u": [],
+          "n": "Rocq.Corelib.Numbers.BinNums.positive.xI",
+          "k": "const"},
+         "a": {"k": "bvar", "i": 1}}}}},
+     "n": "xI",
+     "k": "forall",
+     "b":
+     {"t":
+      {"t":
+       {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+       "n": "p",
+       "k": "forall",
+       "b":
+       {"t":
+        {"k": "app", "f": {"k": "bvar", "i": 2}, "a": {"k": "bvar", "i": 0}},
+        "n": "[anonymous]",
+        "k": "forall",
+        "b":
+        {"k": "app",
+         "f": {"k": "bvar", "i": 3},
+         "a":
+         {"k": "app",
+          "f":
+          {"u": [],
+           "n": "Rocq.Corelib.Numbers.BinNums.positive.xO",
+           "k": "const"},
+          "a": {"k": "bvar", "i": 1}}}}},
+      "n": "xO",
+      "k": "forall",
+      "b":
+      {"t":
+       {"k": "app",
+        "f": {"k": "bvar", "i": 2},
+        "a":
+        {"u": [],
+         "n": "Rocq.Corelib.Numbers.BinNums.positive.xH",
+         "k": "const"}},
+       "n": "xH",
+       "k": "forall",
+       "b":
+       {"t":
+        {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+        "n": "p",
+        "k": "forall",
+        "b":
+        {"k": "app",
+         "f": {"k": "bvar", "i": 4},
+         "a": {"k": "bvar", "i": 0}}}}}}},
+   "target_kind": "def",
+   "target_ctors": [],
+   "target": "Rocq.Corelib.Numbers.BinNums.positive_rec",
+   "status": "TRANSLATED_AND_CHECKED",
+   "source_computed": [],
+   "source": "Corelib.Numbers.BinNums.positive_rec",
+   "sort_lowered_levels": [],
+   "sort_interp": false,
+   "sort_fact_reduced": false,
+   "solved_levels": [],
+   "rule": "constant/transparent",
+   "result_sort_inherited": false,
+   "result_sort_implicit_levels": [],
+   "r2bp_levels": [],
+   "quality_prop": null,
+   "protected": true,
+   "prop_lift_unfold": [],
+   "prop_lift_coercions": 0,
+   "prop_lift": null,
+   "primitive_record": false,
+   "poly_level_interp": [],
+   "plain_levels": false,
+   "phantom_lowered": [],
+   "pending_hypotheses": [],
+   "path": [],
+   "num_params": 0,
+   "message": "",
+   "level_split": [],
+   "level_params": [],
+   "level_interp": [],
+   "level_copies": [],
+   "kind": "constant",
+   "implicit_levels": [],
+   "delta_inlined": [],
+   "coinductive_as_inductive": false,
+   "blocked_by": [],
+   "admitting_levels": []},
+  {"universe_residuals": null,
+   "universe_poly_params": 0,
+   "universe_minimal_levels": 0,
+   "universe_lowered": false,
+   "universe_level_defaults": 0,
+   "universe_diagnostics": [],
+   "universe_cumulativity": false,
+   "universe_checks": 0,
+   "type_lift_coercions": 0,
+   "type_lift": null,
+   "template_sort": false,
+   "template_params": [],
+   "template": false,
+   "target_value":
+   {"t":
+    {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+     "n": "p",
+     "k": "forall",
+     "b":
+     {"l": {"n": "u_Corelib_Numbers_BinNums_21", "k": "param"}, "k": "sort"}},
+    "n": "P",
+    "k": "lam",
+    "b":
+    {"t":
+     {"t":
+      {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+      "n": "p",
+      "k": "forall",
+      "b":
+      {"t":
+       {"k": "app", "f": {"k": "bvar", "i": 1}, "a": {"k": "bvar", "i": 0}},
+       "n": "[anonymous]",
+       "k": "forall",
+       "b":
+       {"k": "app",
+        "f": {"k": "bvar", "i": 2},
+        "a":
+        {"k": "app",
+         "f":
+         {"u": [],
+          "n": "Rocq.Corelib.Numbers.BinNums.positive.xI",
+          "k": "const"},
+         "a": {"k": "bvar", "i": 1}}}}},
+     "n": "xI",
+     "k": "lam",
+     "b":
+     {"t":
+      {"t":
+       {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+       "n": "p",
+       "k": "forall",
+       "b":
+       {"t":
+        {"k": "app", "f": {"k": "bvar", "i": 2}, "a": {"k": "bvar", "i": 0}},
+        "n": "[anonymous]",
+        "k": "forall",
+        "b":
+        {"k": "app",
+         "f": {"k": "bvar", "i": 3},
+         "a":
+         {"k": "app",
+          "f":
+          {"u": [],
+           "n": "Rocq.Corelib.Numbers.BinNums.positive.xO",
+           "k": "const"},
+          "a": {"k": "bvar", "i": 1}}}}},
+      "n": "xO",
+      "k": "lam",
+      "b":
+      {"t":
+       {"k": "app",
+        "f": {"k": "bvar", "i": 2},
+        "a":
+        {"u": [],
+         "n": "Rocq.Corelib.Numbers.BinNums.positive.xH",
+         "k": "const"}},
+       "n": "xH",
+       "k": "lam",
+       "b":
+       {"t":
+        {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+        "n": "p",
+        "k": "lam",
+        "b":
+        {"k": "app",
+         "f":
+         {"k": "app",
+          "f":
+          {"k": "app",
+           "f":
+           {"k": "app",
+            "f":
+            {"k": "app",
+             "f":
+             {"u": [{"n": "u_Corelib_Numbers_BinNums_21", "k": "param"}],
+              "n": "Rocq.Corelib.Numbers.BinNums.positive.rec",
+              "k": "const"},
+             "a":
+             {"t":
+              {"u": [],
+               "n": "Rocq.Corelib.Numbers.BinNums.positive",
+               "k": "const"},
+              "n": "p",
+              "k": "lam",
+              "b":
+              {"k": "app",
+               "f": {"k": "bvar", "i": 5},
+               "a": {"k": "bvar", "i": 0}}}},
+            "a":
+            {"t":
+             {"u": [],
+              "n": "Rocq.Corelib.Numbers.BinNums.positive",
+              "k": "const"},
+             "n": "[anonymous]",
+             "k": "lam",
+             "b":
+             {"t":
+              {"k": "app",
+               "f":
+               {"t":
+                {"u": [],
+                 "n": "Rocq.Corelib.Numbers.BinNums.positive",
+                 "k": "const"},
+                "n": "p",
+                "k": "lam",
+                "b":
+                {"k": "app",
+                 "f": {"k": "bvar", "i": 6},
+                 "a": {"k": "bvar", "i": 0}}},
+               "a": {"k": "bvar", "i": 0}},
+              "n": "_ih",
+              "k": "lam",
+              "b":
+              {"k": "app",
+               "f":
+               {"k": "app",
+                "f": {"k": "bvar", "i": 5},
+                "a": {"k": "bvar", "i": 1}},
+               "a": {"k": "bvar", "i": 0}}}}},
+           "a":
+           {"t":
+            {"u": [],
+             "n": "Rocq.Corelib.Numbers.BinNums.positive",
+             "k": "const"},
+            "n": "[anonymous]",
+            "k": "lam",
+            "b":
+            {"t":
+             {"k": "app",
+              "f":
+              {"t":
+               {"u": [],
+                "n": "Rocq.Corelib.Numbers.BinNums.positive",
+                "k": "const"},
+               "n": "p",
+               "k": "lam",
+               "b":
+               {"k": "app",
+                "f": {"k": "bvar", "i": 6},
+                "a": {"k": "bvar", "i": 0}}},
+              "a": {"k": "bvar", "i": 0}},
+             "n": "_ih",
+             "k": "lam",
+             "b":
+             {"k": "app",
+              "f":
+              {"k": "app",
+               "f": {"k": "bvar", "i": 4},
+               "a": {"k": "bvar", "i": 1}},
+              "a": {"k": "bvar", "i": 0}}}}},
+          "a": {"k": "bvar", "i": 1}},
+         "a": {"k": "bvar", "i": 0}}}}}}},
+   "target_type":
+   {"t":
+    {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+     "n": "p",
+     "k": "forall",
+     "b":
+     {"l": {"n": "u_Corelib_Numbers_BinNums_21", "k": "param"}, "k": "sort"}},
+    "n": "P",
+    "k": "forall",
+    "b":
+    {"t":
+     {"t":
+      {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+      "n": "p",
+      "k": "forall",
+      "b":
+      {"t":
+       {"k": "app", "f": {"k": "bvar", "i": 1}, "a": {"k": "bvar", "i": 0}},
+       "n": "[anonymous]",
+       "k": "forall",
+       "b":
+       {"k": "app",
+        "f": {"k": "bvar", "i": 2},
+        "a":
+        {"k": "app",
+         "f":
+         {"u": [],
+          "n": "Rocq.Corelib.Numbers.BinNums.positive.xI",
+          "k": "const"},
+         "a": {"k": "bvar", "i": 1}}}}},
+     "n": "xI",
+     "k": "forall",
+     "b":
+     {"t":
+      {"t":
+       {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+       "n": "p",
+       "k": "forall",
+       "b":
+       {"t":
+        {"k": "app", "f": {"k": "bvar", "i": 2}, "a": {"k": "bvar", "i": 0}},
+        "n": "[anonymous]",
+        "k": "forall",
+        "b":
+        {"k": "app",
+         "f": {"k": "bvar", "i": 3},
+         "a":
+         {"k": "app",
+          "f":
+          {"u": [],
+           "n": "Rocq.Corelib.Numbers.BinNums.positive.xO",
+           "k": "const"},
+          "a": {"k": "bvar", "i": 1}}}}},
+      "n": "xO",
+      "k": "forall",
+      "b":
+      {"t":
+       {"k": "app",
+        "f": {"k": "bvar", "i": 2},
+        "a":
+        {"u": [],
+         "n": "Rocq.Corelib.Numbers.BinNums.positive.xH",
+         "k": "const"}},
+       "n": "xH",
+       "k": "forall",
+       "b":
+       {"t":
+        {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+        "n": "p",
+        "k": "forall",
+        "b":
+        {"k": "app",
+         "f": {"k": "bvar", "i": 4},
+         "a": {"k": "bvar", "i": 0}}}}}}},
+   "target_kind": "def",
+   "target_ctors": [],
+   "target": "Rocq.Corelib.Numbers.BinNums.positive_rect",
+   "status": "TRANSLATED_AND_CHECKED",
+   "source_computed": [],
+   "source": "Corelib.Numbers.BinNums.positive_rect",
+   "sort_lowered_levels": [],
+   "sort_interp": false,
+   "sort_fact_reduced": false,
+   "solved_levels": [],
+   "rule": "constant/transparent",
+   "result_sort_inherited": false,
+   "result_sort_implicit_levels": [],
+   "r2bp_levels": [],
+   "quality_prop": null,
+   "protected": true,
+   "prop_lift_unfold": [],
+   "prop_lift_coercions": 0,
+   "prop_lift": null,
+   "primitive_record": false,
+   "poly_level_interp": [],
+   "plain_levels": false,
+   "phantom_lowered": [],
+   "pending_hypotheses": [],
+   "path": [],
+   "num_params": 0,
+   "message": "",
+   "level_split": [],
+   "level_params": ["u_Corelib_Numbers_BinNums_21"],
+   "level_interp": [],
+   "level_copies": [],
+   "kind": "constant",
+   "implicit_levels": [],
+   "delta_inlined": [],
+   "coinductive_as_inductive": false,
+   "blocked_by": [],
+   "admitting_levels": ["Corelib.Numbers.BinNums.21"]},
+  {"universe_residuals": null,
+   "universe_poly_params": 0,
+   "universe_minimal_levels": 0,
+   "universe_lowered": false,
+   "universe_level_defaults": 0,
+   "universe_diagnostics": [],
+   "universe_cumulativity": false,
+   "universe_checks": 0,
+   "type_lift_coercions": 0,
+   "type_lift": null,
+   "template_sort": false,
+   "template_params": [],
+   "template": false,
+   "target_value":
+   {"t":
+    {"t": {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+     "n": "p",
+     "k": "forall",
+     "b": {"l": {"k": "zero"}, "k": "sort"}},
+    "n": "P",
+    "k": "forall",
+    "b":
+    {"t":
+     {"t":
+      {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+      "n": "p",
+      "k": "forall",
+      "b":
+      {"t":
+       {"k": "app", "f": {"k": "bvar", "i": 1}, "a": {"k": "bvar", "i": 0}},
+       "n": "[anonymous]",
+       "k": "forall",
+       "b":
+       {"k": "app",
+        "f": {"k": "bvar", "i": 2},
+        "a":
+        {"k": "app",
+         "f":
+         {"u": [],
+          "n": "Rocq.Corelib.Numbers.BinNums.positive.xI",
+          "k": "const"},
+         "a": {"k": "bvar", "i": 1}}}}},
+     "n": "xI",
+     "k": "forall",
+     "b":
+     {"t":
+      {"t":
+       {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+       "n": "p",
+       "k": "forall",
+       "b":
+       {"t":
+        {"k": "app", "f": {"k": "bvar", "i": 2}, "a": {"k": "bvar", "i": 0}},
+        "n": "[anonymous]",
+        "k": "forall",
+        "b":
+        {"k": "app",
+         "f": {"k": "bvar", "i": 3},
+         "a":
+         {"k": "app",
+          "f":
+          {"u": [],
+           "n": "Rocq.Corelib.Numbers.BinNums.positive.xO",
+           "k": "const"},
+          "a": {"k": "bvar", "i": 1}}}}},
+      "n": "xO",
+      "k": "forall",
+      "b":
+      {"t":
+       {"k": "app",
+        "f": {"k": "bvar", "i": 2},
+        "a":
+        {"u": [],
+         "n": "Rocq.Corelib.Numbers.BinNums.positive.xH",
+         "k": "const"}},
+       "n": "xH",
+       "k": "forall",
+       "b":
+       {"t":
+        {"u": [], "n": "Rocq.Corelib.Numbers.BinNums.positive", "k": "const"},
+        "n": "p",
+        "k": "forall",
+        "b":
+        {"k": "app",
+         "f": {"k": "bvar", "i": 4},
+         "a": {"k": "bvar", "i": 0}}}}}}},
+   "target_type": {"l": {"k": "zero"}, "k": "sort"},
+   "target_kind": "statement",
+   "target_ctors": [],
+   "target": "Rocq.Corelib.Numbers.BinNums.positive_sind.statement",
+   "status": "STATEMENT_KERNEL_CHECKED",
+   "source_computed": [],
+   "source": "Corelib.Numbers.BinNums.positive_sind",
+   "sort_lowered_levels": [],
+   "sort_interp": false,
+   "sort_fact_reduced": false,
+   "solved_levels": [],
+   "rule": "constant/transparent",
+   "result_sort_inherited": false,
+   "result_sort_implicit_levels": [],
+   "r2bp_levels": [],
+   "quality_prop": null,
+   "protected": true,
+   "prop_lift_unfold": [],
+   "prop_lift_coercions": 0,
+   "prop_lift": null,
+   "primitive_record": false,
+   "poly_level_interp": [],
+   "plain_levels": false,
+   "phantom_lowered": [],
+   "pending_hypotheses": [],
+   "path": [],
+   "num_params": 0,
+   "message": "",
+   "level_split": [],
+   "level_params": [],
+   "level_interp": [],
+   "level_copies": [],
+   "kind": "constant",
+   "implicit_levels": [],
+   "delta_inlined": [],
+   "coinductive_as_inductive": false,
+   "blocked_by": [],
+   "admitting_levels": []}],
+ "report": "rocq2lean-translation/0.3",
+ "protection":
+ {"protected_in_export": 15,
+  "manifest_sha256":
+  "5189bdc7b210c37d6e468571e1921d0e3b54d11d1d123c2c74efdbfe0a5f193f",
+  "contract_sha256":
+  "5a38b2995cbecbd349329235ae22c54d6c5222b711edeccf589c54c4b91841b9"},
+ "lean_version": "4.33.1",
+ "input_sha256":
+ "89e0e639ecde58fa213c72c4930d4d36573ff4b3efc80d64eecfb1439adead41"}

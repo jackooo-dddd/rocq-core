@@ -1,6 +1,8 @@
 (* Transparent structural equality on MetaRocq Template ASTs, for the export round trip.
    MetaRocq's own eqb_*_body go through ReflectEq_EqDec_obligation_1, which is opaque, so they
    do not compute; these functions compare every field and reduce fully under cbv. *)
+From Corelib.Numbers.Cyclic.Int63 Require Import PrimInt63.
+Require Corelib.Floats.PrimFloat Corelib.Strings.PrimString.
 From MetaRocq.Utils Require Import utils.
 From MetaRocq.Template Require Import All.
 Import ListNotations.
@@ -85,7 +87,12 @@ Fixpoint term_eqb (t t' : term) {struct t} : bool :=
   | tFix m i, tFix m' i' | tCoFix m i, tCoFix m' i' =>
       Nat.eqb i i' && list_eqb (fun d d' => aname_eqb d.(dname) d'.(dname) && term_eqb d.(dtype) d'.(dtype)
                                   && term_eqb d.(dbody) d'.(dbody) && Nat.eqb d.(rarg) d'.(rarg)) m m'
-  | _, _ => false (* primitives are rejected by the decoder *)
+  | tInt i, tInt j => PrimInt63.eqb i j
+  | tFloat f, tFloat g => PrimFloat.Leibniz.eqb f g
+  | tString s, tString s' => PrimString.eqb s s'
+  | tArray u a d ty, tArray u' a' d' ty' =>
+      level_eqb u u' && list_eqb term_eqb a a' && term_eqb d d' && term_eqb ty ty'
+  | _, _ => false
   end.
 
 Definition decl_eqb (d d' : context_decl) : bool :=

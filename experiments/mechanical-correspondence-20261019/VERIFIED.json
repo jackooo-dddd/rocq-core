@@ -1,0 +1,168 @@
+{
+  "status": "PASS",
+  "scope": "new nat/eq correspondences and migration audit of previous correspondence certificates",
+  "mechanical_translation": "../mechanical-nat-eq-20261019",
+  "legacy": "../native-correspondence-main75-20261018",
+  "proof_files_passed": 101,
+  "final_commands": [
+    {
+      "command": [
+        "prepare_auto.py"
+      ],
+      "exit": 0,
+      "seconds": 0.331
+    },
+    {
+      "command": [
+        "prepare_interfaces.py"
+      ],
+      "exit": 0,
+      "seconds": 0.466
+    },
+    {
+      "command": [
+        "build_all.py"
+      ],
+      "exit": 0,
+      "seconds": 15.372
+    },
+    {
+      "command": [
+        "run_auto.py"
+      ],
+      "exit": 0,
+      "seconds": 28.709
+    },
+    {
+      "command": [
+        "run_interfaces.py"
+      ],
+      "exit": 0,
+      "seconds": 45.666
+    },
+    {
+      "command": [
+        "build_unified.py"
+      ],
+      "exit": 0,
+      "seconds": 18.341
+    },
+    {
+      "command": [
+        "build_interfaces_unified.py"
+      ],
+      "exit": 0,
+      "seconds": 1.964
+    },
+    {
+      "command": [
+        "run.py",
+        "UseNative",
+        "unified"
+      ],
+      "exit": 0,
+      "seconds": 1.432
+    },
+    {
+      "command": [
+        "run.py",
+        "IdentityCheck",
+        "Init/Datatypes"
+      ],
+      "exit": 0,
+      "seconds": 0.75
+    }
+  ],
+  "disallowed_axioms": [],
+  "summary": {
+    "root_declarations": 2180,
+    "source_files": 67,
+    "files_with_roots": 51,
+    "coverage_status": {
+      "STATEMENT_PARTIAL": 702,
+      "TYPE_ISO": 29,
+      "OPERATION_CORRESPONDENCE": 114,
+      "TRANSPORT_INTERFACE_ONLY": 375,
+      "NOT_YET_BRIDGED": 485,
+      "EXPLICIT_PROOF_PARAMETERS": 331,
+      "STATEMENT_FULL_NATIVE": 143,
+      "TYPE_VALUED_STATEMENT": 1
+    },
+    "type_iso_certificates": 30,
+    "distinct_type_roots": 29,
+    "operation_certificates": 119,
+    "distinct_operation_roots": 114,
+    "statement_iff_certificates": 845,
+    "fully_native_statement_iffs": 143,
+    "native_interface_roundtrips": 478,
+    "interface_type_universe_specializations": 37,
+    "interface_candidates": 839,
+    "unified_native_interfaces": 108,
+    "unified_export_roots": 141,
+    "passing_manual_profiles": 20,
+    "passing_statement_profiles": 36,
+    "passing_interface_profiles": 45,
+    "unified_public_declarations": 251,
+    "allowed_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "completion": "partial: all roots inventoried; correspondence coverage is not complete"
+  },
+  "regression": {
+    "legacy_profiles": {
+      "tested": 98,
+      "unchanged_pass": 86,
+      "failed": 12,
+      "failing_profiles": [
+        "Datatypes",
+        "Nat",
+        "Lists",
+        "Pos",
+        "Peano",
+        "Integer",
+        "Auto_BinNums_PosDef",
+        "Auto_Init_Peano",
+        "Auto_Strings_PrimStringAxioms",
+        "Interface_Init_Datatypes",
+        "Interface_Strings_PrimStringAxioms",
+        "Interface_ssr_ssrbool"
+      ]
+    },
+    "old_type_certificates": {
+      "total": 28,
+      "revalidated": 28
+    },
+    "old_operation_certificates": {
+      "total": 109,
+      "revalidated_or_replaced_by_explicit_iso": 109
+    },
+    "old_statement_certificates": {
+      "total": 845,
+      "revalidated": 845,
+      "lost_full_native": []
+    },
+    "old_automatic_interfaces": {
+      "total": 480,
+      "retained": 475,
+      "not_automatically_regenerated": [
+        "Corelib.Init.Datatypes.nat_rec",
+        "Corelib.Init.Datatypes.nat_rect",
+        "Corelib.Init.Logic.eq_rew_dep",
+        "Corelib.Init.Logic.eq_rew_fwd_dep",
+        "Corelib.Init.Logic.eq_rew_fwd_r_dep"
+      ],
+      "newly_generated": [
+        "Corelib.Classes.Morphisms.forall_relation",
+        "Corelib.Init.Specif.Choice2",
+        "Corelib.ssr.ssrfun.all_pair"
+      ]
+    },
+    "pending_proof_conditions_unchanged": 331
+  },
+  "unified_interfaces_lost": [
+    "NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.nat_rect.roundtrip"
+  ],
+  "unified_interfaces_added": []
+}

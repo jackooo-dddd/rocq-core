@@ -1,0 +1,3 @@
+From Rocq2LeanExport Require Import Loader.
+Require Corelib.Numbers.Cyclic.Int63.Sint63Axioms.
+Rocq2Lean ExportStatements "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Numbers/Cyclic/Int63/Sint63Axioms/source.ndjson" Corelib.Numbers.Cyclic.Int63.Sint63Axioms.asr_spec Corelib.Numbers.Cyclic.Int63.Sint63Axioms.compare_spec Corelib.Numbers.Cyclic.Int63.Sint63Axioms.div_spec Corelib.Numbers.Cyclic.Int63.Sint63Axioms.leb_spec Corelib.Numbers.Cyclic.Int63.Sint63Axioms.ltb_spec Corelib.Numbers.Cyclic.Int63.Sint63Axioms.min_int Corelib.Numbers.Cyclic.Int63.Sint63Axioms.mod_spec Corelib.Numbers.Cyclic.Int63.Sint63Axioms.to_Z.

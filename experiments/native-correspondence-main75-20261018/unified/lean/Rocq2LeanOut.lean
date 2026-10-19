@@ -1,0 +1,2 @@
+import Rocq2Lean
+#rocq2lean_import "/home/shunqwang4/research/rocq-core/experiments/native-correspondence-main75-20261018/unified/source.ndjson" "/home/shunqwang4/research/rocq-core/experiments/native-correspondence-main75-20261018/unified/translation_report.json" "050d960ca939219b5d31e78180299a15ec6436c092ae962fc7267271d1863657" "a1d85888-3e52-4d25-8329-27ed980e6d17" "/home/shunqwang4/research/rocq-core/experiments/native-correspondence-main75-20261018/unified/contract.json" "f11993ed24a4549f14ccf8124862149a5e9de676461e1a1de4c40d306a235542"

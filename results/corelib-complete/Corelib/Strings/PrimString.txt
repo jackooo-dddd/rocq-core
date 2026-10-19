@@ -1,0 +1,69 @@
+rocq2lean: 17 root(s) TRANSLATED_AND_CHECKED; summary {"bootstrap_resolved":0,"generated_helpers":0,"not_ok":0,"roots":17,"translated_dependencies":6}
+def Rocq.Corelib.Strings.PrimString.Char63Notations.parse : Rocq.Corelib.Strings.PrimString.string →
+  Rocq.Corelib.Init.Datatypes.option.{1} Rocq.Corelib.Strings.PrimString.char63_wrapper :=
+fun s =>
+  Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+    (Rocq.Corelib.Init.Datatypes.option.Some.{1} Rocq.Corelib.Strings.PrimString.char63_wrapper
+      (Rocq.Corelib.Strings.PrimString.char63_wrapper.wrap_char63 (Rocq.Corelib.Strings.PrimString.get s 0#63)))
+    (Rocq.Corelib.Init.Datatypes.option.None.{1} Rocq.Corelib.Strings.PrimString.char63_wrapper)
+    (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.eqb (Rocq.Corelib.Strings.PrimString.length s) 1#63)
+def Rocq.Corelib.Strings.PrimString.Char63Notations.print : Rocq.Corelib.Strings.PrimString.char63_wrapper →
+  Rocq.Corelib.Init.Datatypes.option.{1} Rocq.Corelib.Strings.PrimString.string :=
+fun i =>
+  Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+    (Rocq.Corelib.Init.Datatypes.option.Some.{1} Rocq.Corelib.Strings.PrimString.string
+      (Rocq.Corelib.Strings.PrimString.make (1#63) (Rocq.Corelib.Strings.PrimString.char63_wrap i)))
+    (Rocq.Corelib.Init.Datatypes.option.None.{1} Rocq.Corelib.Strings.PrimString.string)
+    (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.ltb (Rocq.Corelib.Strings.PrimString.char63_wrap i) 256#63)
+def Rocq.Corelib.Strings.PrimString.PStringNotations.id_string : Rocq.Corelib.Strings.PrimString.string →
+  Rocq.Corelib.Strings.PrimString.string :=
+fun s => s
+def Rocq.Corelib.Strings.PrimString.PStringNotations.string_wrap : Rocq.Corelib.Strings.PrimString.PStringNotations.string_wrapper →
+  Rocq.Corelib.Strings.PrimString.string :=
+fun s => Rocq.Corelib.Strings.PrimString.PStringNotations.string_wrapper.rec.{1} (fun string_wrap => string_wrap) s
+inductive Rocq.Corelib.Strings.PrimString.PStringNotations.string_wrapper : Type
+number of parameters: 0
+constructors:
+Rocq.Corelib.Strings.PrimString.PStringNotations.string_wrapper.wrap_string : Rocq.Corelib.Strings.PrimString.string →
+  Rocq.Corelib.Strings.PrimString.PStringNotations.string_wrapper
+def Rocq.Corelib.Strings.PrimString.cat : Rocq.Corelib.Strings.PrimString.string →
+  Rocq.Corelib.Strings.PrimString.string → Rocq.Corelib.Strings.PrimString.string :=
+Rocq2Lean.PrimString.cat
+def Rocq.Corelib.Strings.PrimString.char63 : Type :=
+Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int
+def Rocq.Corelib.Strings.PrimString.char63_wrap : Rocq.Corelib.Strings.PrimString.char63_wrapper →
+  Rocq.Corelib.Strings.PrimString.char63 :=
+fun c => Rocq.Corelib.Strings.PrimString.char63_wrapper.rec.{1} (fun char63_wrap => char63_wrap) c
+inductive Rocq.Corelib.Strings.PrimString.char63_wrapper : Type
+number of parameters: 0
+constructors:
+Rocq.Corelib.Strings.PrimString.char63_wrapper.wrap_char63 : Rocq.Corelib.Strings.PrimString.char63 →
+  Rocq.Corelib.Strings.PrimString.char63_wrapper
+def Rocq.Corelib.Strings.PrimString.compare : Rocq.Corelib.Strings.PrimString.string →
+  Rocq.Corelib.Strings.PrimString.string → Rocq.Corelib.Init.Datatypes.comparison :=
+fun x y =>
+  Ordering.rec.{1} Rocq.Corelib.Init.Datatypes.comparison.Lt Rocq.Corelib.Init.Datatypes.comparison.Eq
+    Rocq.Corelib.Init.Datatypes.comparison.Gt (Rocq2Lean.PrimString.compare x y)
+def Rocq.Corelib.Strings.PrimString.eqb : Rocq.Corelib.Strings.PrimString.string →
+  Rocq.Corelib.Strings.PrimString.string → Rocq.Corelib.Init.Datatypes.bool :=
+fun s1 s2 =>
+  Rocq.Corelib.Init.Datatypes.comparison.rec.{1} Rocq.Corelib.Init.Datatypes.bool.true
+    Rocq.Corelib.Init.Datatypes.bool.false Rocq.Corelib.Init.Datatypes.bool.false
+    (Rocq.Corelib.Strings.PrimString.compare s1 s2)
+def Rocq.Corelib.Strings.PrimString.get : Rocq.Corelib.Strings.PrimString.string →
+  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int → Rocq.Corelib.Strings.PrimString.char63 :=
+Rocq2Lean.PrimString.get
+def Rocq.Corelib.Strings.PrimString.length : Rocq.Corelib.Strings.PrimString.string →
+  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int :=
+Rocq2Lean.PrimString.length
+def Rocq.Corelib.Strings.PrimString.make : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int →
+  Rocq.Corelib.Strings.PrimString.char63 → Rocq.Corelib.Strings.PrimString.string :=
+Rocq2Lean.PrimString.make
+def Rocq.Corelib.Strings.PrimString.max_length : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int :=
+16777211#63
+def Rocq.Corelib.Strings.PrimString.string : Type :=
+Rocq2Lean.PrimString.Rep
+def Rocq.Corelib.Strings.PrimString.sub : Rocq.Corelib.Strings.PrimString.string →
+  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int →
+    Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int → Rocq.Corelib.Strings.PrimString.string :=
+Rocq2Lean.PrimString.sub

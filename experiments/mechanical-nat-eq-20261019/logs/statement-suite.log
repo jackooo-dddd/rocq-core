@@ -1,0 +1,31 @@
+PASS FinishTime statement pipeline validated ([0, 0, 0])
+PASS every FinishTime root is translated and audited (possibly pending)
+PASS FinishTime roots wait exactly for proof tasks (eqnP's, iffP's and finish_time's obligations, two lemmas) and the value of opaque find_ex_minn (kept as an interface: its body recurses on a proof)
+PASS A′: eqnP's body is exported; find_ex_minn's is refused (termination deferred), with the reason
+PASS fixture A statement pipeline validated ([0, 0, 0])
+PASS a lemma is translated as its statement only (Rocq.<name>.statement : Prop)
+PASS the proof inside half_sig is an extracted obligation; half_sig is pending on it
+PASS no proof body is exported for a statement or an obligation
+PASS verify refuses a statement-mode run
+PASS statement mutation swap-hyps on finished_at_finish_time: kernel-accepted, rejected by the structural audit
+PASS statement mutation negate on completes_at_finish_time: kernel-accepted, rejected by the structural audit
+PASS statement mutation fx-negate on SF.Stmt.double_succ: kernel-accepted, rejected by the structural audit
+PASS statement mutation fx-drop-hyp on SF.Stmt.le_trans_alt: kernel-accepted, rejected by the structural audit
+PASS statement mutation fx-swap-args on SF.Stmt.le_trans_alt: kernel-accepted, rejected by the structural audit
+PASS statement mutation fx-exists on SF.Stmt.double_even: kernel-accepted, rejected by the structural audit
+PASS fixture B (other proofs) validated ([0, 0, 0])
+PASS statement closure unchanged by the proof change
+PASS exported declaration records byte-identical (15 records; differing: [])
+PASS generated propositions and definitions byte-identical (differing: [])
+PASS translation is deterministic (same export, same targets)
+PASS one proof task per proof-task statement (5)
+PASS task ids are stable
+PASS task kinds: theorem statements and extracted obligations
+PASS every task is PROOF_PENDING with its template name (Rocq.<name> reserved for assembly)
+PASS check-proof rejects a submission: sorry
+PASS check-proof rejects a submission: wrong-statement
+PASS check-proof rejects a submission: custom-axiom
+PASS check-proof rejects a submission: declared-axiom
+PASS check-proof rejects a submission: missing
+PASS check-proof rejects a submission: not-compiling
+test-statement: OK

@@ -1,0 +1,14 @@
+Vector.{u} (α : Type u) (n : Nat) : Type u
+Vector.ofFn.{u_1} {n : Nat} {α : Type u_1} (f : Fin n → α) : Vector α n
+Vector.get.{u_1} {α : Type u_1} {n : Nat} (xs : Vector α n) (i : Fin n) : α
+Vector.getElem_ofFn.{u_1} {i : Nat} {α : Type u_1} {n : Nat} {f : Fin n → α} (h : i < n) : (Vector.ofFn f)[i] = f ⟨i, h⟩
+Vector.ext.{u_1} {α : Type u_1} {n : Nat} {xs ys : Vector α n} (h : ∀ (i : Nat) (x : i < n), xs[i] = ys[i]) : xs = ys
+/home/shunqwang4/research/rocq-core/experiments/native-correspondence-main75-20261018/Probe.lean:8:7: error(lean.unknownIdentifier): Unknown constant `Vector.ofFn_get`
+Array.ofFn.{u} {α : Type u} {n : Nat} (f : Fin n → α) : Array α
+Array.getElem_ofFn.{u_1} {n : Nat} {α : Type u_1} {f : Fin n → α} {i : Nat} (h : i < (Array.ofFn f).size) :
+  (Array.ofFn f)[i] = f ⟨i, ⋯⟩
+/home/shunqwang4/research/rocq-core/experiments/native-correspondence-main75-20261018/Probe.lean:11:7: error(lean.unknownIdentifier): Unknown constant `Nat.iterate`
+Nat.repeat.{u} {α : Type u} (f : α → α) (n : Nat) (a : α) : α
+BitVec.udiv {n : Nat} (x y : BitVec n) : BitVec n
+BitVec.ofNat_toNat {n : Nat} (m : Nat) (x : BitVec n) : BitVec.ofNat m x.toNat = BitVec.setWidth m x
+BitVec.eq_of_toNat_eq {n : Nat} {x y : BitVec n} : x.toNat = y.toNat → x = y

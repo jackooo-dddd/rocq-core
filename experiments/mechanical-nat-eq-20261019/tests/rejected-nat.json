@@ -1,0 +1,918 @@
+{
+  "schema": "rocq2lean-audit-statement/1",
+  "mode": "statement",
+  "assembly": null,
+  "status": "AUDIT_REJECTED",
+  "universe_arguments_checked": 22,
+  "interface_checked": 116,
+  "prop_lift_protected": [],
+  "phantom_lowered_protected": [],
+  "level_split_checked": 0,
+  "result_sort_implicit_checked": 0,
+  "level_copies_checked": 0,
+  "instance_levels": {
+    "checked": 330,
+    "deferred_to_consumer": 4
+  },
+  "definition_type_specialization_candidates": {
+    "note": "non-protected definitions only (protected ones are rejected): a binder-domain level of the type that no applied argument determines and that is not its parameter (it may be fixed by the definition's value); diagnostic, not a rejection",
+    "count": 0,
+    "rows": []
+  },
+  "coverage": {
+    "requested_roots": 110,
+    "required_closure": 119,
+    "claimed": 119,
+    "accepted": 117,
+    "pending": 2,
+    "not_accepted": 0,
+    "by_status_and_verdict": {
+      "BOOTSTRAP_RESOLVED/MISMATCH": 1,
+      "PENDING_KERNEL_CHECKED/MATCH": 2,
+      "STATEMENT_KERNEL_CHECKED/MATCH": 43,
+      "STATEMENT_KERNEL_CHECKED/MISMATCH": 2,
+      "TRANSLATED_AND_CHECKED/MATCH": 68,
+      "TRANSLATED_AND_CHECKED/MISMATCH": 3
+    }
+  },
+  "problems": [
+    {
+      "detector": "prerequisites",
+      "message": "Corelib.Init.Datatypes.nat: status BOOTSTRAP_RESOLVED, the source and the prerequisites give TRANSLATED_AND_CHECKED"
+    },
+    {
+      "detector": "structure",
+      "message": "Corelib.Init.Datatypes.length: inductive Corelib.Init.Datatypes.nat has no audited realisation"
+    },
+    {
+      "detector": "structure",
+      "message": "Corelib.Init.Datatypes.nat: bootstrap resolution not in the audited table"
+    },
+    {
+      "detector": "structure",
+      "message": "Corelib.Init.Datatypes.nat_ind: inductive Corelib.Init.Datatypes.nat has no audited realisation"
+    },
+    {
+      "detector": "structure",
+      "message": "Corelib.Init.Datatypes.nat_rec: inductive Corelib.Init.Datatypes.nat has no audited realisation"
+    },
+    {
+      "detector": "structure",
+      "message": "Corelib.Init.Datatypes.nat_rect: inductive Corelib.Init.Datatypes.nat has no audited realisation"
+    },
+    {
+      "detector": "structure",
+      "message": "Corelib.Init.Datatypes.nat_sind: inductive Corelib.Init.Datatypes.nat has no audited realisation"
+    }
+  ],
+  "verdicts": [
+    {
+      "source": "Corelib.Init.Datatypes.BoolSpec",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.BoolSpec_ind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.BoolSpec_sind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.CompOpp",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.CompOpp_iff",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.CompOpp_inj",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.CompOpp_involutive",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.CompSpec",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.CompSpec2Type",
+      "status": "PENDING_KERNEL_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.CompSpecT",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.CompareSpec",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.CompareSpec2Type",
+      "status": "PENDING_KERNEL_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.CompareSpec2Type__rocq2lean_obligation_1",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.CompareSpec2Type__rocq2lean_obligation_2",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.CompareSpec2Type__rocq2lean_obligation_3",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.CompareSpecT",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.CompareSpecT_ind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.CompareSpecT_rec",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.CompareSpecT_rect",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.CompareSpecT_sind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.CompareSpec_ind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.CompareSpec_sind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.Empty_set",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.Empty_set_ind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.Empty_set_rec",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.Empty_set_rect",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.Empty_set_sind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.ID",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.IDProp",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.andb",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.andb_prop",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.andb_true_intro",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.app",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.bool",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.bool_ind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.bool_rec",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.bool_rect",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.bool_sind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.comparison",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.comparison_eq_stable",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.comparison_ind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.comparison_rec",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.comparison_rect",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.comparison_sind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.curry",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.eq_true",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.eq_true_ind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.eq_true_ind_r",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.eq_true_rec",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.eq_true_rec_r",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.eq_true_rect",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.eq_true_rect_r",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.eq_true_rew",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.eq_true_rew_dep",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.eq_true_rew_fwd_dep",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.eq_true_rew_r",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.eq_true_sind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.fst",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.id",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.idProp",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.implb",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.injective_projections",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.is_true",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.length",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MISMATCH",
+      "reason": "inductive Corelib.Init.Datatypes.nat has no audited realisation"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.list",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.list_ind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.list_rec",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.list_rect",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.list_sind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.nat",
+      "status": "BOOTSTRAP_RESOLVED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MISMATCH",
+      "reason": "bootstrap resolution not in the audited table"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.nat_ind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MISMATCH",
+      "reason": "inductive Corelib.Init.Datatypes.nat has no audited realisation"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.nat_rec",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MISMATCH",
+      "reason": "inductive Corelib.Init.Datatypes.nat has no audited realisation"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.nat_rect",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MISMATCH",
+      "reason": "inductive Corelib.Init.Datatypes.nat has no audited realisation"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.nat_sind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MISMATCH",
+      "reason": "inductive Corelib.Init.Datatypes.nat has no audited realisation"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.negb",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.option",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.option_ind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.option_map",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.option_rec",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.option_rect",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.option_sind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.orb",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.pair_equal_spec",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.prod",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.prod_ind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.prod_rec",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.prod_rect",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.prod_sind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.reflect",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.reflect_ind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.reflect_rec",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.reflect_rect",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.reflect_sind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.result",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.result_ind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.result_rec",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.result_rect",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.result_sind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.rew_pair",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.snd",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.sum",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.sum_ind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.sum_rec",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.sum_rect",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.sum_sind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.surjective_pairing",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.uncurry",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.unit",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.unit_ind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.unit_rec",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.unit_rect",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.unit_sind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.xorb",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Logic.False",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Logic.and",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Logic.eq",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Logic.eq_rect",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Logic.iff",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Logic.not",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "required",
+      "verdict": "MATCH"
+    }
+  ],
+  "quality_representations": [
+    {
+      "source": "Corelib.Init.Datatypes.prod.qualityProp",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "representation",
+      "verdict": "MATCH"
+    }
+  ]
+}

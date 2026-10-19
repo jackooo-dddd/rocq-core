@@ -1,0 +1,20 @@
+PASS: source nat/eq are fresh inductives with their own constructors and recursors
+inductive Rocq.Corelib.Init.Logic.eq.{u_Corelib_Init_Logic_19} : (A : Sort u_Corelib_Init_Logic_19) → A → A → Prop
+number of parameters: 2
+constructors:
+Rocq.Corelib.Init.Logic.eq.eq_refl : ∀ (A : Sort u_Corelib_Init_Logic_19) (x : A), Rocq.Corelib.Init.Logic.eq A x x
+Rocq.Corelib.Init.Logic.eq.rec.{u, u_Corelib_Init_Logic_19} {A : Sort u_Corelib_Init_Logic_19} {x : A}
+  {motive : (a : A) → Rocq.Corelib.Init.Logic.eq A x a → Sort u} (eq_refl : motive x ⋯) {[anonymous] : A}
+  (t : Rocq.Corelib.Init.Logic.eq✝ A x [anonymous]) : motive [anonymous] t
+inductive Rocq.Corelib.Init.Datatypes.nat : Type
+number of parameters: 0
+constructors:
+Rocq.Corelib.Init.Datatypes.nat.O : Rocq.Corelib.Init.Datatypes.nat
+Rocq.Corelib.Init.Datatypes.nat.S : Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat
+Rocq.Corelib.Init.Datatypes.nat.rec.{u} {motive : Rocq.Corelib.Init.Datatypes.nat → Sort u}
+  (O : motive Rocq.Corelib.Init.Datatypes.nat.O) (S : (a : Rocq.Corelib.Init.Datatypes.nat) → motive a → motive a.S)
+  (t : Rocq.Corelib.Init.Datatypes.nat) : motive t
+'mechanicalTransport_refl' does not depend on any axioms
+
+
+MECHANICAL_TESTS [{'test': 'MechanicalIdentity', 'module': 'Datatypes', 'exit': 0}, {'test': 'NatCompute', 'module': 'Nat', 'exit': 0}]

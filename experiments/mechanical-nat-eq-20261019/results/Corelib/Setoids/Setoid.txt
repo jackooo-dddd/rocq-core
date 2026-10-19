@@ -1,0 +1,28 @@
+rocq2lean: 6 root(s) TRANSLATED_AND_CHECKED; summary {"bootstrap_resolved":0,"generated_helpers":0,"not_ok":5,"roots":6,"translated_dependencies":6}
+def Rocq.Corelib.Setoids.Setoid.Build_Setoid_Theory.statement.{u_Corelib_Classes_RelationClasses_21} : Prop :=
+∀ (A : Type u_Corelib_Classes_RelationClasses_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Classes_RelationClasses_21} A),
+  Rocq.Corelib.Classes.RelationClasses.Reflexive.{u_Corelib_Classes_RelationClasses_21} A R →
+    Rocq.Corelib.Classes.RelationClasses.Symmetric.{u_Corelib_Classes_RelationClasses_21} A R →
+      Rocq.Corelib.Classes.RelationClasses.Transitive.{u_Corelib_Classes_RelationClasses_21} A R →
+        Rocq.Corelib.Classes.RelationClasses.Equivalence.{u_Corelib_Classes_RelationClasses_21} A R
+def Rocq.Corelib.Setoids.Setoid.Seq_refl.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (Aeq : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Setoids.Setoid.Setoid_Theory.{u_Corelib_Relations_Relation_Definitions_21} A Aeq → ∀ (x : A), Aeq x x
+def Rocq.Corelib.Setoids.Setoid.Seq_sym.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (Aeq : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Setoids.Setoid.Setoid_Theory.{u_Corelib_Relations_Relation_Definitions_21} A Aeq →
+    ∀ (x y : A), Aeq x y → Aeq y x
+def Rocq.Corelib.Setoids.Setoid.Seq_trans.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (Aeq : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Setoids.Setoid.Setoid_Theory.{u_Corelib_Relations_Relation_Definitions_21} A Aeq →
+    ∀ (x y z : A), Aeq x y → Aeq y z → Aeq x z
+def Rocq.Corelib.Setoids.Setoid.Setoid_Theory.{u_Corelib_Classes_RelationClasses_21} : (A :
+    Type u_Corelib_Classes_RelationClasses_21) →
+  Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Classes_RelationClasses_21} A → Prop :=
+Rocq.Corelib.Classes.RelationClasses.Equivalence.{u_Corelib_Classes_RelationClasses_21}
+def Rocq.Corelib.Setoids.Setoid.gen_st.statement : Prop :=
+∀ (A : Type), Rocq.Corelib.Setoids.Setoid.Setoid_Theory.{0} A (Rocq.Corelib.Init.Logic.eq.{1} A)

@@ -1,0 +1,257 @@
+certificate,old_type,new_type,same_literal_statement,present,classification
+NativeBridge.skipn_agrees,"∀ {A : Type u} (n : Nat) (xs : NativeBridge.RList A),
+  NativeBridge.listTo (Rocq.Corelib.Lists.ListDef.skipn A n xs) = List.drop n (NativeBridge.listTo xs)","∀ {A : Type u} (n : NativeBridge.MN) (xs : NativeBridge.RList A),
+  NativeBridge.listTo (Rocq.Corelib.Lists.ListDef.skipn A n xs) =
+    List.drop (NativeBridge.natTo n) (NativeBridge.listTo xs)",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.negb_agrees,"∀ (a : NativeBridge.RBool), NativeBridge.boolTo (Rocq.Corelib.Init.Datatypes.negb a) = !NativeBridge.boolTo a","∀ (a : NativeBridge.RBool), NativeBridge.boolTo (Rocq.Corelib.Init.Datatypes.negb a) = !NativeBridge.boolTo a",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.int63_compares_agrees,"∀ (x y : BitVec 63),
+  NativeBridge.comparisonTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.compares x y) =
+    if x.toInt < y.toInt then Ordering.lt else if y.toInt < x.toInt then Ordering.gt else Ordering.eq","∀ (x y : BitVec 63),
+  NativeBridge.comparisonTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.compares x y) =
+    if x.toInt < y.toInt then Ordering.lt else if y.toInt < x.toInt then Ordering.gt else Ordering.eq",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.array_length_agrees,"∀ {A : Type u} (a : Rocq.Corelib.Array.PrimArray.array A),
+  Rocq.Corelib.Array.PrimArray.length A a = BitVec.ofNat 63 ↑(NativeBridge.arrayTo a).fst","∀ {A : Type u} (a : Rocq.Corelib.Array.PrimArray.array A),
+  Rocq.Corelib.Array.PrimArray.length A a = BitVec.ofNat 63 ↑(NativeBridge.arrayTo a).fst",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.not_agrees,"∀ (P : Prop), Rocq.Corelib.Init.Logic.not P ↔ ¬P","∀ (P : Prop), Rocq.Corelib.Init.Logic.not P ↔ ¬P",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.xorb_agrees,"∀ (a b : NativeBridge.RBool),
+  NativeBridge.boolTo (Rocq.Corelib.Init.Datatypes.xorb a b) = (NativeBridge.boolTo a ^^ NativeBridge.boolTo b)","∀ (a b : NativeBridge.RBool),
+  NativeBridge.boolTo (Rocq.Corelib.Init.Datatypes.xorb a b) = (NativeBridge.boolTo a ^^ NativeBridge.boolTo b)",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_compare_agrees,"∀ (n m : Nat), NativeBridge.comparisonTo (Rocq.Corelib.Init.Nat.compare n m) = compare n m","∀ (n m : NativeBridge.MN),
+  NativeBridge.comparisonTo (Rocq.Corelib.Init.Nat.compare n m) = compare (NativeBridge.natTo n) (NativeBridge.natTo m)",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.all_agrees,"∀ {A : Sort u} (P : A → Prop), Rocq.Corelib.Init.Logic.all A P ↔ ∀ (x : A), P x","∀ {A : Sort u} (P : A → Prop), Rocq.Corelib.Init.Logic.all A P ↔ ∀ (x : A), P x",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.int63_lsr_agrees,"∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lsr x y = x >>> y.toNat","∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lsr x y = x >>> y.toNat",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_even_agrees,"∀ (n : Nat), NativeBridge.boolTo (Rocq.Corelib.Init.Nat.even n) = decide (n % 2 = 0)","∀ (n : NativeBridge.MN), NativeBridge.boolTo (Rocq.Corelib.Init.Nat.even n) = decide (NativeBridge.natTo n % 2 = 0)",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.or_agrees,"∀ (P Q : Prop), Rocq.Corelib.Init.Logic.or P Q ↔ P ∨ Q","∀ (P Q : Prop), Rocq.Corelib.Init.Logic.or P Q ↔ P ∨ Q",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_shiftl_agrees,"∀ (n k : Nat), Rocq.Corelib.Init.Nat.shiftl n k = n <<< k","∀ (n k : NativeBridge.MN),
+  NativeBridge.natTo (Rocq.Corelib.Init.Nat.shiftl n k) = NativeBridge.natTo n <<< NativeBridge.natTo k",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.true_agrees,Rocq.Corelib.Init.Logic.True ↔ True,Rocq.Corelib.Init.Logic.True ↔ True,True,True,OPERATION_CORRESPONDENCE
+NativeBridge.int63_ltsb_agrees,"∀ (x y : BitVec 63),
+  NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.ltsb x y) = decide (x.toInt < y.toInt)","∀ (x y : BitVec 63),
+  NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.ltsb x y) = decide (x.toInt < y.toInt)",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_pow_agrees,"∀ (n m : Nat), Rocq.Corelib.Init.Nat.pow n m = n ^ m","∀ (n m : NativeBridge.MN),
+  NativeBridge.natTo (Rocq.Corelib.Init.Nat.pow n m) = NativeBridge.natTo n ^ NativeBridge.natTo m",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_one_agrees,Rocq.Corelib.Init.Nat.one = 1,NativeBridge.natTo Rocq.Corelib.Init.Nat.one = 1,False,True,OPERATION_CORRESPONDENCE
+NativeBridge.ex_agrees,"∀ {A : Sort u} (P : A → Prop), Rocq.Corelib.Init.Logic.ex A P ↔ ∃ x, P x","∀ {A : Sort u} (P : A → Prop), Rocq.Corelib.Init.Logic.ex A P ↔ ∃ x, P x",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.positive_pred_double_agrees,"∀ (p : NativeBridge.RPositive),
+  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.pred_double p) = 2 * NativeBridge.positiveTo p - 1","∀ (p : NativeBridge.RPositive),
+  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.pred_double p) = 2 * NativeBridge.positiveTo p - 1",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.int63_div_agrees,"∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.div x y = x / y","∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.div x y = x / y",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.positive_of_succ_nat_agrees,"∀ (n : Nat), NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.of_succ_nat n) = n + 1","∀ (n : NativeBridge.MN),
+  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.of_succ_nat n) = NativeBridge.natTo n + 1",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.int63_sub_agrees,"∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.sub x y = x - y","∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.sub x y = x - y",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.int_of_nat_agrees,"∀ (n : Nat), NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.of_nat n) = ↑n","∀ (n : NativeBridge.MN), NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.of_nat n) = ↑(NativeBridge.natTo n)",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.array_make_length_agrees,"∀ {A : Type u} (n : BitVec 63) (x : A),
+  ↑(NativeBridge.arrayTo (Rocq.Corelib.Array.PrimArray.make A n x)).fst = min n.toNat 4194303","∀ {A : Type u} (n : BitVec 63) (x : A),
+  ↑(NativeBridge.arrayTo (Rocq.Corelib.Array.PrimArray.make A n x)).fst = min n.toNat 4194303",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_modulo_agrees,"∀ (x y : Nat), Rocq.Corelib.Init.Nat.modulo x y = x % y","∀ (x y : NativeBridge.MN),
+  NativeBridge.natTo (Rocq.Corelib.Init.Nat.modulo x y) = NativeBridge.natTo x % NativeBridge.natTo y",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.int63_lxor_agrees,"∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lxor x y = x ^^^ y","∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lxor x y = x ^^^ y",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.projT1_agrees,"∀ {A : Type u} {P : A → Type v} (x : Rocq.Corelib.Init.Specif.sigT A P),
+  Rocq.Corelib.Init.Specif.projT1 A P x = (NativeBridge.sigmaTo x).fst","∀ {A : Type u} {P : A → Type v} (x : Rocq.Corelib.Init.Specif.sigT A P),
+  Rocq.Corelib.Init.Specif.projT1 A P x = (NativeBridge.sigmaTo x).fst",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.positive_to_nat_agrees,"∀ (p : NativeBridge.RPositive), Rocq.Corelib.BinNums.PosDef.Pos.to_nat p = NativeBridge.positiveTo p","∀ (p : NativeBridge.RPositive),
+  NativeBridge.natTo (Rocq.Corelib.BinNums.PosDef.Pos.to_nat p) = NativeBridge.positiveTo p",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.append_agrees,"∀ {A : Type u} (xs ys : NativeBridge.RList A),
+  NativeBridge.listTo (Rocq.Corelib.Init.Datatypes.app A xs ys) = NativeBridge.listTo xs ++ NativeBridge.listTo ys","∀ {A : Type u} (xs ys : NativeBridge.RList A),
+  NativeBridge.listTo (Rocq.Corelib.Init.Datatypes.app A xs ys) = NativeBridge.listTo xs ++ NativeBridge.listTo ys",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_testbit_agrees,"∀ (a n : Nat), NativeBridge.boolTo (Rocq.Corelib.Init.Nat.testbit a n) = a.testBit n","∀ (a n : NativeBridge.MN),
+  NativeBridge.boolTo (Rocq.Corelib.Init.Nat.testbit a n) = (NativeBridge.natTo a).testBit (NativeBridge.natTo n)",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.byteString_get_agrees,"∀ (s : Rocq.Corelib.Strings.PrimString.string) (i : BitVec 63),
+  Rocq.Corelib.Strings.PrimString.get s i =
+    BitVec.ofNat 63
+      (if h : i.toNat < ↑(NativeBridge.byteStringTo s).fst then (NativeBridge.byteStringTo s).snd[i.toNat] else 0).toNat","∀ (s : Rocq.Corelib.Strings.PrimString.string) (i : BitVec 63),
+  Rocq.Corelib.Strings.PrimString.get s i =
+    BitVec.ofNat 63
+      (if h : i.toNat < ↑(NativeBridge.byteStringTo s).fst then (NativeBridge.byteStringTo s).snd[i.toNat] else 0).toNat",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.int63_eqb_agrees,"∀ (x y : BitVec 63), NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.eqb x y) = (x.toNat == y.toNat)","∀ (x y : BitVec 63), NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.eqb x y) = (x.toNat == y.toNat)",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.option_map_agrees,"∀ {A : Type u} {B : Type v} (f : A → B) (x : Rocq.Corelib.Init.Datatypes.option A),
+  NativeBridge.optionTo (Rocq.Corelib.Init.Datatypes.option_map A B f x) = Option.map f (NativeBridge.optionTo x)","∀ {A : Type u} {B : Type v} (f : A → B) (x : Rocq.Corelib.Init.Datatypes.option A),
+  NativeBridge.optionTo (Rocq.Corelib.Init.Datatypes.option_map A B f x) = Option.map f (NativeBridge.optionTo x)",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.andb_agrees,"∀ (a b : NativeBridge.RBool),
+  NativeBridge.boolTo (Rocq.Corelib.Init.Datatypes.andb a b) = (NativeBridge.boolTo a && NativeBridge.boolTo b)","∀ (a b : NativeBridge.RBool),
+  NativeBridge.boolTo (Rocq.Corelib.Init.Datatypes.andb a b) = (NativeBridge.boolTo a && NativeBridge.boolTo b)",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.array_get_agrees,"∀ {A : Type u} (a : Rocq.Corelib.Array.PrimArray.array A) (i : BitVec 63),
+  Rocq.Corelib.Array.PrimArray.get A a i =
+    if h : i.toNat < ↑(NativeBridge.arrayTo a).fst then (NativeBridge.arrayTo a).snd.fst[i.toNat]
+    else (NativeBridge.arrayTo a).snd.snd","∀ {A : Type u} (a : Rocq.Corelib.Array.PrimArray.array A) (i : BitVec 63),
+  Rocq.Corelib.Array.PrimArray.get A a i =
+    if h : i.toNat < ↑(NativeBridge.arrayTo a).fst then (NativeBridge.arrayTo a).snd.fst[i.toNat]
+    else (NativeBridge.arrayTo a).snd.snd",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.forall_list_agrees,"∀ {A : Type u} (P : A → Prop) (xs : NativeBridge.RList A),
+  Rocq.Corelib.Lists.ListDef.Forall A P xs ↔ ∀ (x : A), x ∈ NativeBridge.listTo xs → P x","∀ {A : Type u} (P : A → Prop) (xs : NativeBridge.RList A),
+  Rocq.Corelib.Lists.ListDef.Forall A P xs ↔ ∀ (x : A), x ∈ NativeBridge.listTo xs → P x",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.int63_land_agrees,"∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.land x y = x &&& y","∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.land x y = x &&& y",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.array_default_agrees,"∀ {A : Type u} (a : Rocq.Corelib.Array.PrimArray.array A),
+  Rocq.Corelib.Array.PrimArray.default A a = (NativeBridge.arrayTo a).snd.snd","∀ {A : Type u} (a : Rocq.Corelib.Array.PrimArray.array A),
+  Rocq.Corelib.Array.PrimArray.default A a = (NativeBridge.arrayTo a).snd.snd",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.int_to_nat_agrees,"∀ (z : NativeBridge.RIntBinary), Rocq.Corelib.BinNums.IntDef.Z.to_nat z = (NativeBridge.binaryIntTo z).toNat","∀ (z : NativeBridge.RIntBinary),
+  NativeBridge.natTo (Rocq.Corelib.BinNums.IntDef.Z.to_nat z) = (NativeBridge.binaryIntTo z).toNat",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_shiftr_agrees,"∀ (n k : Nat), Rocq.Corelib.Init.Nat.shiftr n k = n >>> k","∀ (n k : NativeBridge.MN),
+  NativeBridge.natTo (Rocq.Corelib.Init.Nat.shiftr n k) = NativeBridge.natTo n >>> NativeBridge.natTo k",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_leb_agrees,"∀ (n m : Nat), NativeBridge.boolTo (Rocq.Corelib.Init.Nat.leb n m) = decide (n ≤ m)","∀ (n m : NativeBridge.MN),
+  NativeBridge.boolTo (Rocq.Corelib.Init.Nat.leb n m) = decide (NativeBridge.natTo n ≤ NativeBridge.natTo m)",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.inhabited_agrees,"∀ (A : Sort u), Rocq.Corelib.Init.Logic.inhabited A ↔ Nonempty A","∀ (A : Sort u), Rocq.Corelib.Init.Logic.inhabited A ↔ Nonempty A",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.int63_lsl_agrees,"∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lsl x y = x <<< y.toNat","∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lsl x y = x <<< y.toNat",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.iff_agrees,"∀ (P Q : Prop), Rocq.Corelib.Init.Logic.iff P Q ↔ (P ↔ Q)","∀ (P Q : Prop), Rocq.Corelib.Init.Logic.iff P Q ↔ (P ↔ Q)",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.peano_gt_agrees,"∀ (n m : Nat), Rocq.Corelib.Init.Peano.gt n m ↔ n > m","∀ (n m : NativeBridge.MN), Rocq.Corelib.Init.Peano.gt n m ↔ NativeBridge.natTo n > NativeBridge.natTo m",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.int_of_binary_nat_agrees,"∀ (n : NativeBridge.RNatBinary),
+  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.of_N n) = ↑(NativeBridge.binaryNatTo n)","∀ (n : NativeBridge.RNatBinary),
+  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.of_N n) = ↑(NativeBridge.binaryNatTo n)",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.int63_lor_agrees,"∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lor x y = x ||| y","∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lor x y = x ||| y",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.positive_succ_agrees,"∀ (p : NativeBridge.RPositive),
+  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.succ p) = NativeBridge.positiveTo p + 1","∀ (p : NativeBridge.RPositive),
+  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.succ p) = NativeBridge.positiveTo p + 1",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.positive_mul_agrees,"∀ (p q : NativeBridge.RPositive),
+  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.mul p q) =
+    NativeBridge.positiveTo p * NativeBridge.positiveTo q","∀ (p q : NativeBridge.RPositive),
+  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.mul p q) =
+    NativeBridge.positiveTo p * NativeBridge.positiveTo q",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.snd_agrees,"∀ {A : Type u} {B : Type v} (x : Rocq.Corelib.Init.Datatypes.prod A B),
+  Rocq.Corelib.Init.Datatypes.snd A B x = (NativeBridge.prodTo x).snd","∀ {A : Type u} {B : Type v} (x : Rocq.Corelib.Init.Datatypes.prod A B),
+  Rocq.Corelib.Init.Datatypes.snd A B x = (NativeBridge.prodTo x).snd",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.proj1_sig_agrees,"∀ {A : Type u} {P : A → Prop} (x : Rocq.Corelib.Init.Specif.sig A P),
+  Rocq.Corelib.Init.Specif.proj1_sig A P x = (NativeBridge.sigTo x).val","∀ {A : Type u} {P : A → Prop} (x : Rocq.Corelib.Init.Specif.sig A P),
+  Rocq.Corelib.Init.Specif.proj1_sig A P x = (NativeBridge.sigTo x).val",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_tail_mul_agrees,"∀ (n m : Nat), Rocq.Corelib.Init.Nat.tail_mul n m = n * m","∀ (n m : NativeBridge.MN),
+  NativeBridge.natTo (Rocq.Corelib.Init.Nat.tail_mul n m) = NativeBridge.natTo n * NativeBridge.natTo m",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.int63_ltb_agrees,"∀ (x y : BitVec 63),
+  NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.ltb x y) = decide (x.toNat < y.toNat)","∀ (x y : BitVec 63),
+  NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.ltb x y) = decide (x.toNat < y.toNat)",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.implb_agrees,"∀ (a b : NativeBridge.RBool),
+  NativeBridge.boolTo (Rocq.Corelib.Init.Datatypes.implb a b) = (!NativeBridge.boolTo a || NativeBridge.boolTo b)","∀ (a b : NativeBridge.RBool),
+  NativeBridge.boolTo (Rocq.Corelib.Init.Datatypes.implb a b) = (!NativeBridge.boolTo a || NativeBridge.boolTo b)",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.notT_agrees,"∀ (A : Sort u), Rocq.Corelib.Init.Logic.notT A ↔ ∀ (a : A), False","∀ (A : Sort u), Rocq.Corelib.Init.Logic.notT A ↔ ∀ (a : A), False",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.repeat_agrees,"∀ {A : Type u} (a : A) (n : Nat), NativeBridge.listTo (Rocq.Corelib.Lists.ListDef.repeat A a n) = List.replicate n a","∀ {A : Type u} (a : A) (n : NativeBridge.MN),
+  NativeBridge.listTo (Rocq.Corelib.Lists.ListDef.repeat A a n) = List.replicate (NativeBridge.natTo n) a",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_eqb_agrees,"∀ (n m : Nat), NativeBridge.boolTo (Rocq.Corelib.Init.Nat.eqb n m) = (n == m)","∀ (n m : NativeBridge.MN),
+  NativeBridge.boolTo (Rocq.Corelib.Init.Nat.eqb n m) = (NativeBridge.natTo n == NativeBridge.natTo m)",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.compOpp_agrees,"∀ (c : NativeBridge.RComparison),
+  NativeBridge.comparisonTo (Rocq.Corelib.Init.Datatypes.CompOpp c) = (NativeBridge.comparisonTo c).swap","∀ (c : NativeBridge.RComparison),
+  NativeBridge.comparisonTo (Rocq.Corelib.Init.Datatypes.CompOpp c) = (NativeBridge.comparisonTo c).swap",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_div2_agrees,"∀ (n : Nat), Rocq.Corelib.Init.Nat.div2 n = n / 2","∀ (n : NativeBridge.MN), NativeBridge.natTo (Rocq.Corelib.Init.Nat.div2 n) = NativeBridge.natTo n / 2",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_add_agrees,"∀ (n m : Nat), Rocq.Corelib.Init.Nat.add n m = n + m","∀ (n m : NativeBridge.MN),
+  NativeBridge.natTo (Rocq.Corelib.Init.Nat.add n m) = NativeBridge.natTo n + NativeBridge.natTo m",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.int63_mod_agrees,"∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.mod x y = x % y","∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.mod x y = x % y",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.projT2_agrees,"∀ {A : Type u} {P : A → Type v} (x : Rocq.Corelib.Init.Specif.sigT A P),
+  Rocq.Corelib.Init.Specif.projT2 A P x ≍ (NativeBridge.sigmaTo x).snd","∀ {A : Type u} {P : A → Type v} (x : Rocq.Corelib.Init.Specif.sigT A P),
+  Rocq.Corelib.Init.Specif.projT2 A P x ≍ (NativeBridge.sigmaTo x).snd",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.fst_agrees,"∀ {A : Type u} {B : Type v} (x : Rocq.Corelib.Init.Datatypes.prod A B),
+  Rocq.Corelib.Init.Datatypes.fst A B x = (NativeBridge.prodTo x).fst","∀ {A : Type u} {B : Type v} (x : Rocq.Corelib.Init.Datatypes.prod A B),
+  Rocq.Corelib.Init.Datatypes.fst A B x = (NativeBridge.prodTo x).fst",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.peano_ge_agrees,"∀ (n m : Nat), Rocq.Corelib.Init.Peano.ge n m ↔ n ≥ m","∀ (n m : NativeBridge.MN), Rocq.Corelib.Init.Peano.ge n m ↔ NativeBridge.natTo n ≥ NativeBridge.natTo m",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.map_agrees,"∀ {A : Type u} {B : Type v} (f : A → B) (xs : NativeBridge.RList A),
+  NativeBridge.listTo (Rocq.Corelib.Lists.ListDef.map A B f xs) = List.map f (NativeBridge.listTo xs)","∀ {A : Type u} {B : Type v} (f : A → B) (xs : NativeBridge.RList A),
+  NativeBridge.listTo (Rocq.Corelib.Lists.ListDef.map A B f xs) = List.map f (NativeBridge.listTo xs)",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_max_agrees,"∀ (n m : Nat), Rocq.Corelib.Init.Nat.max n m = max n m","∀ (n m : NativeBridge.MN),
+  NativeBridge.natTo (Rocq.Corelib.Init.Nat.max n m) = max (NativeBridge.natTo n) (NativeBridge.natTo m)",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.array_set_agrees,"∀ {A : Type u} (a : Rocq.Corelib.Array.PrimArray.array A) (i : BitVec 63) (x : A),
+  NativeBridge.arrayTo (Rocq.Corelib.Array.PrimArray.set A a i x) =
+    ⟨(NativeBridge.arrayTo a).fst,
+      ((NativeBridge.arrayTo a).snd.fst.setIfInBounds i.toNat x, (NativeBridge.arrayTo a).snd.snd)⟩","∀ {A : Type u} (a : Rocq.Corelib.Array.PrimArray.array A) (i : BitVec 63) (x : A),
+  NativeBridge.arrayTo (Rocq.Corelib.Array.PrimArray.set A a i x) =
+    ⟨(NativeBridge.arrayTo a).fst,
+      ((NativeBridge.arrayTo a).snd.fst.setIfInBounds i.toNat x, (NativeBridge.arrayTo a).snd.snd)⟩",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_land_agrees,"∀ (a b : Nat), Rocq.Corelib.Init.Nat.land a b = a &&& b","∀ (a b : NativeBridge.MN),
+  NativeBridge.natTo (Rocq.Corelib.Init.Nat.land a b) = NativeBridge.natTo a &&& NativeBridge.natTo b",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_mul_agrees,"∀ (n m : Nat), Rocq.Corelib.Init.Nat.mul n m = n * m","∀ (n m : NativeBridge.MN),
+  NativeBridge.natTo (Rocq.Corelib.Init.Nat.mul n m) = NativeBridge.natTo n * NativeBridge.natTo m",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.is_true_agrees,"∀ (a : NativeBridge.RBool), Rocq.Corelib.Init.Datatypes.is_true a ↔ NativeBridge.boolTo a = true","∀ (a : NativeBridge.RBool), Rocq.Corelib.Init.Datatypes.is_true a ↔ NativeBridge.boolTo a = true",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.int63_compare_agrees,"∀ (x y : BitVec 63),
+  NativeBridge.comparisonTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.compare x y) =
+    if x.toNat < y.toNat then Ordering.lt else if y.toNat < x.toNat then Ordering.gt else Ordering.eq","∀ (x y : BitVec 63),
+  NativeBridge.comparisonTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.compare x y) =
+    if x.toNat < y.toNat then Ordering.lt else if y.toNat < x.toNat then Ordering.gt else Ordering.eq",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_bitwise_agrees,"∀ (op : NativeBridge.RBool → NativeBridge.RBool → NativeBridge.RBool) (f : Bool → Bool → Bool),
+  (∀ (x y : NativeBridge.RBool), NativeBridge.boolTo (op x y) = f (NativeBridge.boolTo x) (NativeBridge.boolTo y)) →
+    f false false = false → ∀ (n a b : Nat), Rocq.Corelib.Init.Nat.bitwise op n a b = Nat.bitwise f a b % 2 ^ n","∀ (op : NativeBridge.RBool → NativeBridge.RBool → NativeBridge.RBool) (f : Bool → Bool → Bool),
+  (∀ (x y : NativeBridge.RBool), NativeBridge.boolTo (op x y) = f (NativeBridge.boolTo x) (NativeBridge.boolTo y)) →
+    f false false = false →
+      ∀ (n a b : NativeBridge.MN),
+        NativeBridge.natTo (Rocq.Corelib.Init.Nat.bitwise op n a b) =
+          Nat.bitwise f (NativeBridge.natTo a) (NativeBridge.natTo b) % 2 ^ NativeBridge.natTo n",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.and_agrees,"∀ (P Q : Prop), Rocq.Corelib.Init.Logic.and P Q ↔ P ∧ Q","∀ (P Q : Prop), Rocq.Corelib.Init.Logic.and P Q ↔ P ∧ Q",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.int_mul_agrees,"∀ (x y : NativeBridge.RIntBinary),
+  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.mul x y) =
+    NativeBridge.binaryIntTo x * NativeBridge.binaryIntTo y","∀ (x y : NativeBridge.RIntBinary),
+  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.mul x y) =
+    NativeBridge.binaryIntTo x * NativeBridge.binaryIntTo y",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.positive_add_agrees,"∀ (p q : NativeBridge.RPositive),
+  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.add p q) =
+    NativeBridge.positiveTo p + NativeBridge.positiveTo q","∀ (p q : NativeBridge.RPositive),
+  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.add p q) =
+    NativeBridge.positiveTo p + NativeBridge.positiveTo q",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.int_opp_agrees,"∀ (x : NativeBridge.RIntBinary),
+  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.opp x) = -NativeBridge.binaryIntTo x","∀ (x : NativeBridge.RIntBinary),
+  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.opp x) = -NativeBridge.binaryIntTo x",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.int63_id_agrees,"∀ (x : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.id_int x = x","∀ (x : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.id_int x = x",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.int63_leb_agrees,"∀ (x y : BitVec 63),
+  NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.leb x y) = decide (x.toNat ≤ y.toNat)","∀ (x y : BitVec 63),
+  NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.leb x y) = decide (x.toNat ≤ y.toNat)",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_tail_addmul_agrees,"∀ (r n m : Nat), Rocq.Corelib.Init.Nat.tail_addmul r n m = r + n * m","∀ (r n m : NativeBridge.MN),
+  NativeBridge.natTo (Rocq.Corelib.Init.Nat.tail_addmul r n m) =
+    NativeBridge.natTo r + NativeBridge.natTo n * NativeBridge.natTo m",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.nth_agrees,"∀ {A : Type u} (n : Nat) (xs : NativeBridge.RList A) (d : A),
+  Rocq.Corelib.Lists.ListDef.nth A n xs d = (NativeBridge.listTo xs)[n]?.getD d","∀ {A : Type u} (n : NativeBridge.MN) (xs : NativeBridge.RList A) (d : A),
+  Rocq.Corelib.Lists.ListDef.nth A n xs d = (NativeBridge.listTo xs)[NativeBridge.natTo n]?.getD d",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_div_agrees,"∀ (x y : Nat), Rocq.Corelib.Init.Nat.div x y = x / y","∀ (x y : NativeBridge.MN),
+  NativeBridge.natTo (Rocq.Corelib.Init.Nat.div x y) = NativeBridge.natTo x / NativeBridge.natTo y",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_zero_agrees,Rocq.Corelib.Init.Nat.zero = 0,NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0,False,True,OPERATION_CORRESPONDENCE
+NativeBridge.int63_mul_agrees,"∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.mul x y = x * y","∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.mul x y = x * y",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_tail_add_agrees,"∀ (n m : Nat), Rocq.Corelib.Init.Nat.tail_add n m = n + m","∀ (n m : NativeBridge.MN),
+  NativeBridge.natTo (Rocq.Corelib.Init.Nat.tail_add n m) = NativeBridge.natTo n + NativeBridge.natTo m",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_two_agrees,Rocq.Corelib.Init.Nat.two = 2,NativeBridge.natTo Rocq.Corelib.Init.Nat.two = 2,False,True,OPERATION_CORRESPONDENCE
+NativeBridge.byteString_length_agrees,"∀ (s : Rocq.Corelib.Strings.PrimString.string),
+  Rocq.Corelib.Strings.PrimString.length s = BitVec.ofNat 63 ↑(NativeBridge.byteStringTo s).fst","∀ (s : Rocq.Corelib.Strings.PrimString.string),
+  Rocq.Corelib.Strings.PrimString.length s = BitVec.ofNat 63 ↑(NativeBridge.byteStringTo s).fst",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_square_agrees,"∀ (n : Nat), Rocq.Corelib.Init.Nat.square n = n * n","∀ (n : NativeBridge.MN),
+  NativeBridge.natTo (Rocq.Corelib.Init.Nat.square n) = NativeBridge.natTo n * NativeBridge.natTo n",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.false_agrees,Rocq.Corelib.Init.Logic.False ↔ False,Rocq.Corelib.Init.Logic.False ↔ False,True,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_ldiff_agrees,"∀ (a b : Nat), Rocq.Corelib.Init.Nat.ldiff a b = Nat.bitwise (fun x y => x && !y) a b","∀ (a b : NativeBridge.MN),
+  NativeBridge.natTo (Rocq.Corelib.Init.Nat.ldiff a b) =
+    Nat.bitwise (fun x y => x && !y) (NativeBridge.natTo a) (NativeBridge.natTo b)",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.orb_agrees,"∀ (a b : NativeBridge.RBool),
+  NativeBridge.boolTo (Rocq.Corelib.Init.Datatypes.orb a b) = (NativeBridge.boolTo a || NativeBridge.boolTo b)","∀ (a b : NativeBridge.RBool),
+  NativeBridge.boolTo (Rocq.Corelib.Init.Datatypes.orb a b) = (NativeBridge.boolTo a || NativeBridge.boolTo b)",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.firstn_agrees,"∀ {A : Type u} (n : Nat) (xs : NativeBridge.RList A),
+  NativeBridge.listTo (Rocq.Corelib.Lists.ListDef.firstn A n xs) = List.take n (NativeBridge.listTo xs)","∀ {A : Type u} (n : NativeBridge.MN) (xs : NativeBridge.RList A),
+  NativeBridge.listTo (Rocq.Corelib.Lists.ListDef.firstn A n xs) =
+    List.take (NativeBridge.natTo n) (NativeBridge.listTo xs)",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_sub_agrees,"∀ (n m : Nat), Rocq.Corelib.Init.Nat.sub n m = n - m","∀ (n m : NativeBridge.MN),
+  NativeBridge.natTo (Rocq.Corelib.Init.Nat.sub n m) = NativeBridge.natTo n - NativeBridge.natTo m",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_ltb_agrees,"∀ (n m : Nat), NativeBridge.boolTo (Rocq.Corelib.Init.Nat.ltb n m) = decide (n < m)","∀ (n m : NativeBridge.MN),
+  NativeBridge.boolTo (Rocq.Corelib.Init.Nat.ltb n m) = decide (NativeBridge.natTo n < NativeBridge.natTo m)",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.positive_add_carry_agrees,"∀ (p q : NativeBridge.RPositive),
+  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.add_carry p q) =
+    NativeBridge.positiveTo p + NativeBridge.positiveTo q + 1","∀ (p q : NativeBridge.RPositive),
+  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.add_carry p q) =
+    NativeBridge.positiveTo p + NativeBridge.positiveTo q + 1",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_lor_agrees,"∀ (a b : Nat), Rocq.Corelib.Init.Nat.lor a b = a ||| b","∀ (a b : NativeBridge.MN),
+  NativeBridge.natTo (Rocq.Corelib.Init.Nat.lor a b) = NativeBridge.natTo a ||| NativeBridge.natTo b",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.peano_le_agrees,"∀ (n m : Nat), Rocq.Corelib.Init.Peano.le n m ↔ n ≤ m","∀ (n m : NativeBridge.MN), Rocq.Corelib.Init.Peano.le n m ↔ NativeBridge.natTo n ≤ NativeBridge.natTo m",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.array_copy_agrees,"∀ {A : Type u} (a : Rocq.Corelib.Array.PrimArray.array A),
+  NativeBridge.arrayTo (Rocq.Corelib.Array.PrimArray.copy A a) = NativeBridge.arrayTo a","∀ {A : Type u} (a : Rocq.Corelib.Array.PrimArray.array A),
+  NativeBridge.arrayTo (Rocq.Corelib.Array.PrimArray.copy A a) = NativeBridge.arrayTo a",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_pred_agrees,"∀ (n : Nat), Rocq.Corelib.Init.Nat.pred n = n - 1","∀ (n : NativeBridge.MN), NativeBridge.natTo (Rocq.Corelib.Init.Nat.pred n) = NativeBridge.natTo n - 1",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.ex2_agrees,"∀ {A : Sort u} (P Q : A → Prop), Rocq.Corelib.Init.Logic.ex2 A P Q ↔ ∃ x, P x ∧ Q x","∀ {A : Sort u} (P Q : A → Prop), Rocq.Corelib.Init.Logic.ex2 A P Q ↔ ∃ x, P x ∧ Q x",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.seq_agrees,"∀ (start len : Nat), NativeBridge.listTo (Rocq.Corelib.Lists.ListDef.seq start len) = List.range' start len","∀ (start len : NativeBridge.MN),
+  List.map NativeBridge.natTo (NativeBridge.listTo (Rocq.Corelib.Lists.ListDef.seq start len)) =
+    List.range' (NativeBridge.natTo start) (NativeBridge.natTo len)",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_succ_agrees,"∀ (n : Nat), Rocq.Corelib.Init.Nat.succ n = n + 1","∀ (n : NativeBridge.MN), NativeBridge.natTo (Rocq.Corelib.Init.Nat.succ n) = NativeBridge.natTo n + 1",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.int63_add_agrees,"∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.add x y = x + y","∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.add x y = x + y",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.length_agrees,"∀ {A : Type u} (xs : NativeBridge.RList A), Rocq.Corelib.Init.Datatypes.length A xs = (NativeBridge.listTo xs).length","∀ {A : Type u} (xs : NativeBridge.RList A),
+  NativeBridge.natTo (Rocq.Corelib.Init.Datatypes.length A xs) = (NativeBridge.listTo xs).length",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.array_make_values_agrees,"∀ {A : Type u} (n : BitVec 63) (x : A),
+  (NativeBridge.arrayTo (Rocq.Corelib.Array.PrimArray.make A n x)).snd.fst =
+    Vector.replicate (↑(NativeBridge.arrayTo (Rocq.Corelib.Array.PrimArray.make A n x)).fst) x","∀ {A : Type u} (n : BitVec 63) (x : A),
+  (NativeBridge.arrayTo (Rocq.Corelib.Array.PrimArray.make A n x)).snd.fst =
+    Vector.replicate (↑(NativeBridge.arrayTo (Rocq.Corelib.Array.PrimArray.make A n x)).fst) x",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_double_agrees,"∀ (n : Nat), Rocq.Corelib.Init.Nat.double n = 2 * n","∀ (n : NativeBridge.MN), NativeBridge.natTo (Rocq.Corelib.Init.Nat.double n) = 2 * NativeBridge.natTo n",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_odd_agrees,"∀ (n : Nat), NativeBridge.boolTo (Rocq.Corelib.Init.Nat.odd n) = decide (n % 2 = 1)","∀ (n : NativeBridge.MN), NativeBridge.boolTo (Rocq.Corelib.Init.Nat.odd n) = decide (NativeBridge.natTo n % 2 = 1)",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.int63_lesb_agrees,"∀ (x y : BitVec 63),
+  NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lesb x y) = decide (x.toInt ≤ y.toInt)","∀ (x y : BitVec 63),
+  NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lesb x y) = decide (x.toInt ≤ y.toInt)",True,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_lxor_agrees,"∀ (a b : Nat), Rocq.Corelib.Init.Nat.lxor a b = a ^^^ b","∀ (a b : NativeBridge.MN),
+  NativeBridge.natTo (Rocq.Corelib.Init.Nat.lxor a b) = NativeBridge.natTo a ^^^ NativeBridge.natTo b",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.peano_lt_agrees,"∀ (n m : Nat), Rocq.Corelib.Init.Peano.lt n m ↔ n < m","∀ (n m : NativeBridge.MN), Rocq.Corelib.Init.Peano.lt n m ↔ NativeBridge.natTo n < NativeBridge.natTo m",False,True,OPERATION_CORRESPONDENCE
+NativeBridge.nat_min_agrees,"∀ (n m : Nat), Rocq.Corelib.Init.Nat.min n m = min n m","∀ (n m : NativeBridge.MN),
+  NativeBridge.natTo (Rocq.Corelib.Init.Nat.min n m) = min (NativeBridge.natTo n) (NativeBridge.natTo m)",False,True,OPERATION_CORRESPONDENCE

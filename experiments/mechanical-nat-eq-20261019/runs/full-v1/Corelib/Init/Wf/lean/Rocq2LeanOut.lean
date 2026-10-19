@@ -1,0 +1,2 @@
+import Rocq2Lean
+#rocq2lean_import "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Init/Wf/source.ndjson" "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Init/Wf/translation_report.json" "cd3fe5572a30663ced547147104555a56d95ebc712d071106b44be67de2025d0" "27fdecac-22cc-4660-9987-34aa521ca6f1" "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Init/Wf/contract.json" "740f3034fc7afcaef02e3037692815f37f2ac255abd05efe9ad717a19d01e069"

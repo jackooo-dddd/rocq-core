@@ -10,3 +10,7 @@ import Rocq2Lean.Eval
 import Rocq2Lean.Replay
 import Rocq2Lean.Tasks
 import Rocq2Lean.Assemble
+
+import Rocq2Lean.Quality
+
+import Rocq2Lean.QualitySource

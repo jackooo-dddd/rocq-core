@@ -1,0 +1,874 @@
+[
+  {
+    "certificate": "NativeBridge.skipn_agrees",
+    "old_type": "∀ {A : Type u} (n : Nat) (xs : NativeBridge.RList A),\n  NativeBridge.listTo (Rocq.Corelib.Lists.ListDef.skipn A n xs) = List.drop n (NativeBridge.listTo xs)",
+    "new_type": "∀ {A : Type u} (n : NativeBridge.MN) (xs : NativeBridge.RList A),\n  NativeBridge.listTo (Rocq.Corelib.Lists.ListDef.skipn A n xs) =\n    List.drop (NativeBridge.natTo n) (NativeBridge.listTo xs)",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.negb_agrees",
+    "old_type": "∀ (a : NativeBridge.RBool), NativeBridge.boolTo (Rocq.Corelib.Init.Datatypes.negb a) = !NativeBridge.boolTo a",
+    "new_type": "∀ (a : NativeBridge.RBool), NativeBridge.boolTo (Rocq.Corelib.Init.Datatypes.negb a) = !NativeBridge.boolTo a",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.int63_compares_agrees",
+    "old_type": "∀ (x y : BitVec 63),\n  NativeBridge.comparisonTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.compares x y) =\n    if x.toInt < y.toInt then Ordering.lt else if y.toInt < x.toInt then Ordering.gt else Ordering.eq",
+    "new_type": "∀ (x y : BitVec 63),\n  NativeBridge.comparisonTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.compares x y) =\n    if x.toInt < y.toInt then Ordering.lt else if y.toInt < x.toInt then Ordering.gt else Ordering.eq",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.array_length_agrees",
+    "old_type": "∀ {A : Type u} (a : Rocq.Corelib.Array.PrimArray.array A),\n  Rocq.Corelib.Array.PrimArray.length A a = BitVec.ofNat 63 ↑(NativeBridge.arrayTo a).fst",
+    "new_type": "∀ {A : Type u} (a : Rocq.Corelib.Array.PrimArray.array A),\n  Rocq.Corelib.Array.PrimArray.length A a = BitVec.ofNat 63 ↑(NativeBridge.arrayTo a).fst",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.not_agrees",
+    "old_type": "∀ (P : Prop), Rocq.Corelib.Init.Logic.not P ↔ ¬P",
+    "new_type": "∀ (P : Prop), Rocq.Corelib.Init.Logic.not P ↔ ¬P",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.xorb_agrees",
+    "old_type": "∀ (a b : NativeBridge.RBool),\n  NativeBridge.boolTo (Rocq.Corelib.Init.Datatypes.xorb a b) = (NativeBridge.boolTo a ^^ NativeBridge.boolTo b)",
+    "new_type": "∀ (a b : NativeBridge.RBool),\n  NativeBridge.boolTo (Rocq.Corelib.Init.Datatypes.xorb a b) = (NativeBridge.boolTo a ^^ NativeBridge.boolTo b)",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_compare_agrees",
+    "old_type": "∀ (n m : Nat), NativeBridge.comparisonTo (Rocq.Corelib.Init.Nat.compare n m) = compare n m",
+    "new_type": "∀ (n m : NativeBridge.MN),\n  NativeBridge.comparisonTo (Rocq.Corelib.Init.Nat.compare n m) = compare (NativeBridge.natTo n) (NativeBridge.natTo m)",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.all_agrees",
+    "old_type": "∀ {A : Sort u} (P : A → Prop), Rocq.Corelib.Init.Logic.all A P ↔ ∀ (x : A), P x",
+    "new_type": "∀ {A : Sort u} (P : A → Prop), Rocq.Corelib.Init.Logic.all A P ↔ ∀ (x : A), P x",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.int63_lsr_agrees",
+    "old_type": "∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lsr x y = x >>> y.toNat",
+    "new_type": "∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lsr x y = x >>> y.toNat",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_even_agrees",
+    "old_type": "∀ (n : Nat), NativeBridge.boolTo (Rocq.Corelib.Init.Nat.even n) = decide (n % 2 = 0)",
+    "new_type": "∀ (n : NativeBridge.MN), NativeBridge.boolTo (Rocq.Corelib.Init.Nat.even n) = decide (NativeBridge.natTo n % 2 = 0)",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.or_agrees",
+    "old_type": "∀ (P Q : Prop), Rocq.Corelib.Init.Logic.or P Q ↔ P ∨ Q",
+    "new_type": "∀ (P Q : Prop), Rocq.Corelib.Init.Logic.or P Q ↔ P ∨ Q",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_shiftl_agrees",
+    "old_type": "∀ (n k : Nat), Rocq.Corelib.Init.Nat.shiftl n k = n <<< k",
+    "new_type": "∀ (n k : NativeBridge.MN),\n  NativeBridge.natTo (Rocq.Corelib.Init.Nat.shiftl n k) = NativeBridge.natTo n <<< NativeBridge.natTo k",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.true_agrees",
+    "old_type": "Rocq.Corelib.Init.Logic.True ↔ True",
+    "new_type": "Rocq.Corelib.Init.Logic.True ↔ True",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.int63_ltsb_agrees",
+    "old_type": "∀ (x y : BitVec 63),\n  NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.ltsb x y) = decide (x.toInt < y.toInt)",
+    "new_type": "∀ (x y : BitVec 63),\n  NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.ltsb x y) = decide (x.toInt < y.toInt)",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_pow_agrees",
+    "old_type": "∀ (n m : Nat), Rocq.Corelib.Init.Nat.pow n m = n ^ m",
+    "new_type": "∀ (n m : NativeBridge.MN),\n  NativeBridge.natTo (Rocq.Corelib.Init.Nat.pow n m) = NativeBridge.natTo n ^ NativeBridge.natTo m",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_one_agrees",
+    "old_type": "Rocq.Corelib.Init.Nat.one = 1",
+    "new_type": "NativeBridge.natTo Rocq.Corelib.Init.Nat.one = 1",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.ex_agrees",
+    "old_type": "∀ {A : Sort u} (P : A → Prop), Rocq.Corelib.Init.Logic.ex A P ↔ ∃ x, P x",
+    "new_type": "∀ {A : Sort u} (P : A → Prop), Rocq.Corelib.Init.Logic.ex A P ↔ ∃ x, P x",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.positive_pred_double_agrees",
+    "old_type": "∀ (p : NativeBridge.RPositive),\n  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.pred_double p) = 2 * NativeBridge.positiveTo p - 1",
+    "new_type": "∀ (p : NativeBridge.RPositive),\n  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.pred_double p) = 2 * NativeBridge.positiveTo p - 1",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.int63_div_agrees",
+    "old_type": "∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.div x y = x / y",
+    "new_type": "∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.div x y = x / y",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.positive_of_succ_nat_agrees",
+    "old_type": "∀ (n : Nat), NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.of_succ_nat n) = n + 1",
+    "new_type": "∀ (n : NativeBridge.MN),\n  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.of_succ_nat n) = NativeBridge.natTo n + 1",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.int63_sub_agrees",
+    "old_type": "∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.sub x y = x - y",
+    "new_type": "∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.sub x y = x - y",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.int_of_nat_agrees",
+    "old_type": "∀ (n : Nat), NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.of_nat n) = ↑n",
+    "new_type": "∀ (n : NativeBridge.MN), NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.of_nat n) = ↑(NativeBridge.natTo n)",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.array_make_length_agrees",
+    "old_type": "∀ {A : Type u} (n : BitVec 63) (x : A),\n  ↑(NativeBridge.arrayTo (Rocq.Corelib.Array.PrimArray.make A n x)).fst = min n.toNat 4194303",
+    "new_type": "∀ {A : Type u} (n : BitVec 63) (x : A),\n  ↑(NativeBridge.arrayTo (Rocq.Corelib.Array.PrimArray.make A n x)).fst = min n.toNat 4194303",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_modulo_agrees",
+    "old_type": "∀ (x y : Nat), Rocq.Corelib.Init.Nat.modulo x y = x % y",
+    "new_type": "∀ (x y : NativeBridge.MN),\n  NativeBridge.natTo (Rocq.Corelib.Init.Nat.modulo x y) = NativeBridge.natTo x % NativeBridge.natTo y",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.int63_lxor_agrees",
+    "old_type": "∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lxor x y = x ^^^ y",
+    "new_type": "∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lxor x y = x ^^^ y",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.projT1_agrees",
+    "old_type": "∀ {A : Type u} {P : A → Type v} (x : Rocq.Corelib.Init.Specif.sigT A P),\n  Rocq.Corelib.Init.Specif.projT1 A P x = (NativeBridge.sigmaTo x).fst",
+    "new_type": "∀ {A : Type u} {P : A → Type v} (x : Rocq.Corelib.Init.Specif.sigT A P),\n  Rocq.Corelib.Init.Specif.projT1 A P x = (NativeBridge.sigmaTo x).fst",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.positive_to_nat_agrees",
+    "old_type": "∀ (p : NativeBridge.RPositive), Rocq.Corelib.BinNums.PosDef.Pos.to_nat p = NativeBridge.positiveTo p",
+    "new_type": "∀ (p : NativeBridge.RPositive),\n  NativeBridge.natTo (Rocq.Corelib.BinNums.PosDef.Pos.to_nat p) = NativeBridge.positiveTo p",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.append_agrees",
+    "old_type": "∀ {A : Type u} (xs ys : NativeBridge.RList A),\n  NativeBridge.listTo (Rocq.Corelib.Init.Datatypes.app A xs ys) = NativeBridge.listTo xs ++ NativeBridge.listTo ys",
+    "new_type": "∀ {A : Type u} (xs ys : NativeBridge.RList A),\n  NativeBridge.listTo (Rocq.Corelib.Init.Datatypes.app A xs ys) = NativeBridge.listTo xs ++ NativeBridge.listTo ys",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_testbit_agrees",
+    "old_type": "∀ (a n : Nat), NativeBridge.boolTo (Rocq.Corelib.Init.Nat.testbit a n) = a.testBit n",
+    "new_type": "∀ (a n : NativeBridge.MN),\n  NativeBridge.boolTo (Rocq.Corelib.Init.Nat.testbit a n) = (NativeBridge.natTo a).testBit (NativeBridge.natTo n)",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.byteString_get_agrees",
+    "old_type": "∀ (s : Rocq.Corelib.Strings.PrimString.string) (i : BitVec 63),\n  Rocq.Corelib.Strings.PrimString.get s i =\n    BitVec.ofNat 63\n      (if h : i.toNat < ↑(NativeBridge.byteStringTo s).fst then (NativeBridge.byteStringTo s).snd[i.toNat] else 0).toNat",
+    "new_type": "∀ (s : Rocq.Corelib.Strings.PrimString.string) (i : BitVec 63),\n  Rocq.Corelib.Strings.PrimString.get s i =\n    BitVec.ofNat 63\n      (if h : i.toNat < ↑(NativeBridge.byteStringTo s).fst then (NativeBridge.byteStringTo s).snd[i.toNat] else 0).toNat",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.int63_eqb_agrees",
+    "old_type": "∀ (x y : BitVec 63), NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.eqb x y) = (x.toNat == y.toNat)",
+    "new_type": "∀ (x y : BitVec 63), NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.eqb x y) = (x.toNat == y.toNat)",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.option_map_agrees",
+    "old_type": "∀ {A : Type u} {B : Type v} (f : A → B) (x : Rocq.Corelib.Init.Datatypes.option A),\n  NativeBridge.optionTo (Rocq.Corelib.Init.Datatypes.option_map A B f x) = Option.map f (NativeBridge.optionTo x)",
+    "new_type": "∀ {A : Type u} {B : Type v} (f : A → B) (x : Rocq.Corelib.Init.Datatypes.option A),\n  NativeBridge.optionTo (Rocq.Corelib.Init.Datatypes.option_map A B f x) = Option.map f (NativeBridge.optionTo x)",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.andb_agrees",
+    "old_type": "∀ (a b : NativeBridge.RBool),\n  NativeBridge.boolTo (Rocq.Corelib.Init.Datatypes.andb a b) = (NativeBridge.boolTo a && NativeBridge.boolTo b)",
+    "new_type": "∀ (a b : NativeBridge.RBool),\n  NativeBridge.boolTo (Rocq.Corelib.Init.Datatypes.andb a b) = (NativeBridge.boolTo a && NativeBridge.boolTo b)",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.array_get_agrees",
+    "old_type": "∀ {A : Type u} (a : Rocq.Corelib.Array.PrimArray.array A) (i : BitVec 63),\n  Rocq.Corelib.Array.PrimArray.get A a i =\n    if h : i.toNat < ↑(NativeBridge.arrayTo a).fst then (NativeBridge.arrayTo a).snd.fst[i.toNat]\n    else (NativeBridge.arrayTo a).snd.snd",
+    "new_type": "∀ {A : Type u} (a : Rocq.Corelib.Array.PrimArray.array A) (i : BitVec 63),\n  Rocq.Corelib.Array.PrimArray.get A a i =\n    if h : i.toNat < ↑(NativeBridge.arrayTo a).fst then (NativeBridge.arrayTo a).snd.fst[i.toNat]\n    else (NativeBridge.arrayTo a).snd.snd",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.forall_list_agrees",
+    "old_type": "∀ {A : Type u} (P : A → Prop) (xs : NativeBridge.RList A),\n  Rocq.Corelib.Lists.ListDef.Forall A P xs ↔ ∀ (x : A), x ∈ NativeBridge.listTo xs → P x",
+    "new_type": "∀ {A : Type u} (P : A → Prop) (xs : NativeBridge.RList A),\n  Rocq.Corelib.Lists.ListDef.Forall A P xs ↔ ∀ (x : A), x ∈ NativeBridge.listTo xs → P x",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.int63_land_agrees",
+    "old_type": "∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.land x y = x &&& y",
+    "new_type": "∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.land x y = x &&& y",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.array_default_agrees",
+    "old_type": "∀ {A : Type u} (a : Rocq.Corelib.Array.PrimArray.array A),\n  Rocq.Corelib.Array.PrimArray.default A a = (NativeBridge.arrayTo a).snd.snd",
+    "new_type": "∀ {A : Type u} (a : Rocq.Corelib.Array.PrimArray.array A),\n  Rocq.Corelib.Array.PrimArray.default A a = (NativeBridge.arrayTo a).snd.snd",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.int_to_nat_agrees",
+    "old_type": "∀ (z : NativeBridge.RIntBinary), Rocq.Corelib.BinNums.IntDef.Z.to_nat z = (NativeBridge.binaryIntTo z).toNat",
+    "new_type": "∀ (z : NativeBridge.RIntBinary),\n  NativeBridge.natTo (Rocq.Corelib.BinNums.IntDef.Z.to_nat z) = (NativeBridge.binaryIntTo z).toNat",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_shiftr_agrees",
+    "old_type": "∀ (n k : Nat), Rocq.Corelib.Init.Nat.shiftr n k = n >>> k",
+    "new_type": "∀ (n k : NativeBridge.MN),\n  NativeBridge.natTo (Rocq.Corelib.Init.Nat.shiftr n k) = NativeBridge.natTo n >>> NativeBridge.natTo k",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_leb_agrees",
+    "old_type": "∀ (n m : Nat), NativeBridge.boolTo (Rocq.Corelib.Init.Nat.leb n m) = decide (n ≤ m)",
+    "new_type": "∀ (n m : NativeBridge.MN),\n  NativeBridge.boolTo (Rocq.Corelib.Init.Nat.leb n m) = decide (NativeBridge.natTo n ≤ NativeBridge.natTo m)",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.inhabited_agrees",
+    "old_type": "∀ (A : Sort u), Rocq.Corelib.Init.Logic.inhabited A ↔ Nonempty A",
+    "new_type": "∀ (A : Sort u), Rocq.Corelib.Init.Logic.inhabited A ↔ Nonempty A",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.int63_lsl_agrees",
+    "old_type": "∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lsl x y = x <<< y.toNat",
+    "new_type": "∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lsl x y = x <<< y.toNat",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.iff_agrees",
+    "old_type": "∀ (P Q : Prop), Rocq.Corelib.Init.Logic.iff P Q ↔ (P ↔ Q)",
+    "new_type": "∀ (P Q : Prop), Rocq.Corelib.Init.Logic.iff P Q ↔ (P ↔ Q)",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.peano_gt_agrees",
+    "old_type": "∀ (n m : Nat), Rocq.Corelib.Init.Peano.gt n m ↔ n > m",
+    "new_type": "∀ (n m : NativeBridge.MN), Rocq.Corelib.Init.Peano.gt n m ↔ NativeBridge.natTo n > NativeBridge.natTo m",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.int_of_binary_nat_agrees",
+    "old_type": "∀ (n : NativeBridge.RNatBinary),\n  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.of_N n) = ↑(NativeBridge.binaryNatTo n)",
+    "new_type": "∀ (n : NativeBridge.RNatBinary),\n  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.of_N n) = ↑(NativeBridge.binaryNatTo n)",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.int63_lor_agrees",
+    "old_type": "∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lor x y = x ||| y",
+    "new_type": "∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lor x y = x ||| y",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.positive_succ_agrees",
+    "old_type": "∀ (p : NativeBridge.RPositive),\n  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.succ p) = NativeBridge.positiveTo p + 1",
+    "new_type": "∀ (p : NativeBridge.RPositive),\n  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.succ p) = NativeBridge.positiveTo p + 1",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.positive_mul_agrees",
+    "old_type": "∀ (p q : NativeBridge.RPositive),\n  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.mul p q) =\n    NativeBridge.positiveTo p * NativeBridge.positiveTo q",
+    "new_type": "∀ (p q : NativeBridge.RPositive),\n  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.mul p q) =\n    NativeBridge.positiveTo p * NativeBridge.positiveTo q",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.snd_agrees",
+    "old_type": "∀ {A : Type u} {B : Type v} (x : Rocq.Corelib.Init.Datatypes.prod A B),\n  Rocq.Corelib.Init.Datatypes.snd A B x = (NativeBridge.prodTo x).snd",
+    "new_type": "∀ {A : Type u} {B : Type v} (x : Rocq.Corelib.Init.Datatypes.prod A B),\n  Rocq.Corelib.Init.Datatypes.snd A B x = (NativeBridge.prodTo x).snd",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.proj1_sig_agrees",
+    "old_type": "∀ {A : Type u} {P : A → Prop} (x : Rocq.Corelib.Init.Specif.sig A P),\n  Rocq.Corelib.Init.Specif.proj1_sig A P x = (NativeBridge.sigTo x).val",
+    "new_type": "∀ {A : Type u} {P : A → Prop} (x : Rocq.Corelib.Init.Specif.sig A P),\n  Rocq.Corelib.Init.Specif.proj1_sig A P x = (NativeBridge.sigTo x).val",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_tail_mul_agrees",
+    "old_type": "∀ (n m : Nat), Rocq.Corelib.Init.Nat.tail_mul n m = n * m",
+    "new_type": "∀ (n m : NativeBridge.MN),\n  NativeBridge.natTo (Rocq.Corelib.Init.Nat.tail_mul n m) = NativeBridge.natTo n * NativeBridge.natTo m",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.int63_ltb_agrees",
+    "old_type": "∀ (x y : BitVec 63),\n  NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.ltb x y) = decide (x.toNat < y.toNat)",
+    "new_type": "∀ (x y : BitVec 63),\n  NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.ltb x y) = decide (x.toNat < y.toNat)",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.implb_agrees",
+    "old_type": "∀ (a b : NativeBridge.RBool),\n  NativeBridge.boolTo (Rocq.Corelib.Init.Datatypes.implb a b) = (!NativeBridge.boolTo a || NativeBridge.boolTo b)",
+    "new_type": "∀ (a b : NativeBridge.RBool),\n  NativeBridge.boolTo (Rocq.Corelib.Init.Datatypes.implb a b) = (!NativeBridge.boolTo a || NativeBridge.boolTo b)",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.notT_agrees",
+    "old_type": "∀ (A : Sort u), Rocq.Corelib.Init.Logic.notT A ↔ ∀ (a : A), False",
+    "new_type": "∀ (A : Sort u), Rocq.Corelib.Init.Logic.notT A ↔ ∀ (a : A), False",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.repeat_agrees",
+    "old_type": "∀ {A : Type u} (a : A) (n : Nat), NativeBridge.listTo (Rocq.Corelib.Lists.ListDef.repeat A a n) = List.replicate n a",
+    "new_type": "∀ {A : Type u} (a : A) (n : NativeBridge.MN),\n  NativeBridge.listTo (Rocq.Corelib.Lists.ListDef.repeat A a n) = List.replicate (NativeBridge.natTo n) a",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_eqb_agrees",
+    "old_type": "∀ (n m : Nat), NativeBridge.boolTo (Rocq.Corelib.Init.Nat.eqb n m) = (n == m)",
+    "new_type": "∀ (n m : NativeBridge.MN),\n  NativeBridge.boolTo (Rocq.Corelib.Init.Nat.eqb n m) = (NativeBridge.natTo n == NativeBridge.natTo m)",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.compOpp_agrees",
+    "old_type": "∀ (c : NativeBridge.RComparison),\n  NativeBridge.comparisonTo (Rocq.Corelib.Init.Datatypes.CompOpp c) = (NativeBridge.comparisonTo c).swap",
+    "new_type": "∀ (c : NativeBridge.RComparison),\n  NativeBridge.comparisonTo (Rocq.Corelib.Init.Datatypes.CompOpp c) = (NativeBridge.comparisonTo c).swap",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_div2_agrees",
+    "old_type": "∀ (n : Nat), Rocq.Corelib.Init.Nat.div2 n = n / 2",
+    "new_type": "∀ (n : NativeBridge.MN), NativeBridge.natTo (Rocq.Corelib.Init.Nat.div2 n) = NativeBridge.natTo n / 2",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_add_agrees",
+    "old_type": "∀ (n m : Nat), Rocq.Corelib.Init.Nat.add n m = n + m",
+    "new_type": "∀ (n m : NativeBridge.MN),\n  NativeBridge.natTo (Rocq.Corelib.Init.Nat.add n m) = NativeBridge.natTo n + NativeBridge.natTo m",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.int63_mod_agrees",
+    "old_type": "∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.mod x y = x % y",
+    "new_type": "∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.mod x y = x % y",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.projT2_agrees",
+    "old_type": "∀ {A : Type u} {P : A → Type v} (x : Rocq.Corelib.Init.Specif.sigT A P),\n  Rocq.Corelib.Init.Specif.projT2 A P x ≍ (NativeBridge.sigmaTo x).snd",
+    "new_type": "∀ {A : Type u} {P : A → Type v} (x : Rocq.Corelib.Init.Specif.sigT A P),\n  Rocq.Corelib.Init.Specif.projT2 A P x ≍ (NativeBridge.sigmaTo x).snd",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.fst_agrees",
+    "old_type": "∀ {A : Type u} {B : Type v} (x : Rocq.Corelib.Init.Datatypes.prod A B),\n  Rocq.Corelib.Init.Datatypes.fst A B x = (NativeBridge.prodTo x).fst",
+    "new_type": "∀ {A : Type u} {B : Type v} (x : Rocq.Corelib.Init.Datatypes.prod A B),\n  Rocq.Corelib.Init.Datatypes.fst A B x = (NativeBridge.prodTo x).fst",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.peano_ge_agrees",
+    "old_type": "∀ (n m : Nat), Rocq.Corelib.Init.Peano.ge n m ↔ n ≥ m",
+    "new_type": "∀ (n m : NativeBridge.MN), Rocq.Corelib.Init.Peano.ge n m ↔ NativeBridge.natTo n ≥ NativeBridge.natTo m",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.map_agrees",
+    "old_type": "∀ {A : Type u} {B : Type v} (f : A → B) (xs : NativeBridge.RList A),\n  NativeBridge.listTo (Rocq.Corelib.Lists.ListDef.map A B f xs) = List.map f (NativeBridge.listTo xs)",
+    "new_type": "∀ {A : Type u} {B : Type v} (f : A → B) (xs : NativeBridge.RList A),\n  NativeBridge.listTo (Rocq.Corelib.Lists.ListDef.map A B f xs) = List.map f (NativeBridge.listTo xs)",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_max_agrees",
+    "old_type": "∀ (n m : Nat), Rocq.Corelib.Init.Nat.max n m = max n m",
+    "new_type": "∀ (n m : NativeBridge.MN),\n  NativeBridge.natTo (Rocq.Corelib.Init.Nat.max n m) = max (NativeBridge.natTo n) (NativeBridge.natTo m)",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.array_set_agrees",
+    "old_type": "∀ {A : Type u} (a : Rocq.Corelib.Array.PrimArray.array A) (i : BitVec 63) (x : A),\n  NativeBridge.arrayTo (Rocq.Corelib.Array.PrimArray.set A a i x) =\n    ⟨(NativeBridge.arrayTo a).fst,\n      ((NativeBridge.arrayTo a).snd.fst.setIfInBounds i.toNat x, (NativeBridge.arrayTo a).snd.snd)⟩",
+    "new_type": "∀ {A : Type u} (a : Rocq.Corelib.Array.PrimArray.array A) (i : BitVec 63) (x : A),\n  NativeBridge.arrayTo (Rocq.Corelib.Array.PrimArray.set A a i x) =\n    ⟨(NativeBridge.arrayTo a).fst,\n      ((NativeBridge.arrayTo a).snd.fst.setIfInBounds i.toNat x, (NativeBridge.arrayTo a).snd.snd)⟩",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_land_agrees",
+    "old_type": "∀ (a b : Nat), Rocq.Corelib.Init.Nat.land a b = a &&& b",
+    "new_type": "∀ (a b : NativeBridge.MN),\n  NativeBridge.natTo (Rocq.Corelib.Init.Nat.land a b) = NativeBridge.natTo a &&& NativeBridge.natTo b",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_mul_agrees",
+    "old_type": "∀ (n m : Nat), Rocq.Corelib.Init.Nat.mul n m = n * m",
+    "new_type": "∀ (n m : NativeBridge.MN),\n  NativeBridge.natTo (Rocq.Corelib.Init.Nat.mul n m) = NativeBridge.natTo n * NativeBridge.natTo m",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.is_true_agrees",
+    "old_type": "∀ (a : NativeBridge.RBool), Rocq.Corelib.Init.Datatypes.is_true a ↔ NativeBridge.boolTo a = true",
+    "new_type": "∀ (a : NativeBridge.RBool), Rocq.Corelib.Init.Datatypes.is_true a ↔ NativeBridge.boolTo a = true",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.int63_compare_agrees",
+    "old_type": "∀ (x y : BitVec 63),\n  NativeBridge.comparisonTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.compare x y) =\n    if x.toNat < y.toNat then Ordering.lt else if y.toNat < x.toNat then Ordering.gt else Ordering.eq",
+    "new_type": "∀ (x y : BitVec 63),\n  NativeBridge.comparisonTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.compare x y) =\n    if x.toNat < y.toNat then Ordering.lt else if y.toNat < x.toNat then Ordering.gt else Ordering.eq",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_bitwise_agrees",
+    "old_type": "∀ (op : NativeBridge.RBool → NativeBridge.RBool → NativeBridge.RBool) (f : Bool → Bool → Bool),\n  (∀ (x y : NativeBridge.RBool), NativeBridge.boolTo (op x y) = f (NativeBridge.boolTo x) (NativeBridge.boolTo y)) →\n    f false false = false → ∀ (n a b : Nat), Rocq.Corelib.Init.Nat.bitwise op n a b = Nat.bitwise f a b % 2 ^ n",
+    "new_type": "∀ (op : NativeBridge.RBool → NativeBridge.RBool → NativeBridge.RBool) (f : Bool → Bool → Bool),\n  (∀ (x y : NativeBridge.RBool), NativeBridge.boolTo (op x y) = f (NativeBridge.boolTo x) (NativeBridge.boolTo y)) →\n    f false false = false →\n      ∀ (n a b : NativeBridge.MN),\n        NativeBridge.natTo (Rocq.Corelib.Init.Nat.bitwise op n a b) =\n          Nat.bitwise f (NativeBridge.natTo a) (NativeBridge.natTo b) % 2 ^ NativeBridge.natTo n",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.and_agrees",
+    "old_type": "∀ (P Q : Prop), Rocq.Corelib.Init.Logic.and P Q ↔ P ∧ Q",
+    "new_type": "∀ (P Q : Prop), Rocq.Corelib.Init.Logic.and P Q ↔ P ∧ Q",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.int_mul_agrees",
+    "old_type": "∀ (x y : NativeBridge.RIntBinary),\n  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.mul x y) =\n    NativeBridge.binaryIntTo x * NativeBridge.binaryIntTo y",
+    "new_type": "∀ (x y : NativeBridge.RIntBinary),\n  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.mul x y) =\n    NativeBridge.binaryIntTo x * NativeBridge.binaryIntTo y",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.positive_add_agrees",
+    "old_type": "∀ (p q : NativeBridge.RPositive),\n  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.add p q) =\n    NativeBridge.positiveTo p + NativeBridge.positiveTo q",
+    "new_type": "∀ (p q : NativeBridge.RPositive),\n  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.add p q) =\n    NativeBridge.positiveTo p + NativeBridge.positiveTo q",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.int_opp_agrees",
+    "old_type": "∀ (x : NativeBridge.RIntBinary),\n  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.opp x) = -NativeBridge.binaryIntTo x",
+    "new_type": "∀ (x : NativeBridge.RIntBinary),\n  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.opp x) = -NativeBridge.binaryIntTo x",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.int63_id_agrees",
+    "old_type": "∀ (x : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.id_int x = x",
+    "new_type": "∀ (x : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.id_int x = x",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.int63_leb_agrees",
+    "old_type": "∀ (x y : BitVec 63),\n  NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.leb x y) = decide (x.toNat ≤ y.toNat)",
+    "new_type": "∀ (x y : BitVec 63),\n  NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.leb x y) = decide (x.toNat ≤ y.toNat)",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_tail_addmul_agrees",
+    "old_type": "∀ (r n m : Nat), Rocq.Corelib.Init.Nat.tail_addmul r n m = r + n * m",
+    "new_type": "∀ (r n m : NativeBridge.MN),\n  NativeBridge.natTo (Rocq.Corelib.Init.Nat.tail_addmul r n m) =\n    NativeBridge.natTo r + NativeBridge.natTo n * NativeBridge.natTo m",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nth_agrees",
+    "old_type": "∀ {A : Type u} (n : Nat) (xs : NativeBridge.RList A) (d : A),\n  Rocq.Corelib.Lists.ListDef.nth A n xs d = (NativeBridge.listTo xs)[n]?.getD d",
+    "new_type": "∀ {A : Type u} (n : NativeBridge.MN) (xs : NativeBridge.RList A) (d : A),\n  Rocq.Corelib.Lists.ListDef.nth A n xs d = (NativeBridge.listTo xs)[NativeBridge.natTo n]?.getD d",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_div_agrees",
+    "old_type": "∀ (x y : Nat), Rocq.Corelib.Init.Nat.div x y = x / y",
+    "new_type": "∀ (x y : NativeBridge.MN),\n  NativeBridge.natTo (Rocq.Corelib.Init.Nat.div x y) = NativeBridge.natTo x / NativeBridge.natTo y",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_zero_agrees",
+    "old_type": "Rocq.Corelib.Init.Nat.zero = 0",
+    "new_type": "NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.int63_mul_agrees",
+    "old_type": "∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.mul x y = x * y",
+    "new_type": "∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.mul x y = x * y",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_tail_add_agrees",
+    "old_type": "∀ (n m : Nat), Rocq.Corelib.Init.Nat.tail_add n m = n + m",
+    "new_type": "∀ (n m : NativeBridge.MN),\n  NativeBridge.natTo (Rocq.Corelib.Init.Nat.tail_add n m) = NativeBridge.natTo n + NativeBridge.natTo m",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_two_agrees",
+    "old_type": "Rocq.Corelib.Init.Nat.two = 2",
+    "new_type": "NativeBridge.natTo Rocq.Corelib.Init.Nat.two = 2",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.byteString_length_agrees",
+    "old_type": "∀ (s : Rocq.Corelib.Strings.PrimString.string),\n  Rocq.Corelib.Strings.PrimString.length s = BitVec.ofNat 63 ↑(NativeBridge.byteStringTo s).fst",
+    "new_type": "∀ (s : Rocq.Corelib.Strings.PrimString.string),\n  Rocq.Corelib.Strings.PrimString.length s = BitVec.ofNat 63 ↑(NativeBridge.byteStringTo s).fst",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_square_agrees",
+    "old_type": "∀ (n : Nat), Rocq.Corelib.Init.Nat.square n = n * n",
+    "new_type": "∀ (n : NativeBridge.MN),\n  NativeBridge.natTo (Rocq.Corelib.Init.Nat.square n) = NativeBridge.natTo n * NativeBridge.natTo n",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.false_agrees",
+    "old_type": "Rocq.Corelib.Init.Logic.False ↔ False",
+    "new_type": "Rocq.Corelib.Init.Logic.False ↔ False",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_ldiff_agrees",
+    "old_type": "∀ (a b : Nat), Rocq.Corelib.Init.Nat.ldiff a b = Nat.bitwise (fun x y => x && !y) a b",
+    "new_type": "∀ (a b : NativeBridge.MN),\n  NativeBridge.natTo (Rocq.Corelib.Init.Nat.ldiff a b) =\n    Nat.bitwise (fun x y => x && !y) (NativeBridge.natTo a) (NativeBridge.natTo b)",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.orb_agrees",
+    "old_type": "∀ (a b : NativeBridge.RBool),\n  NativeBridge.boolTo (Rocq.Corelib.Init.Datatypes.orb a b) = (NativeBridge.boolTo a || NativeBridge.boolTo b)",
+    "new_type": "∀ (a b : NativeBridge.RBool),\n  NativeBridge.boolTo (Rocq.Corelib.Init.Datatypes.orb a b) = (NativeBridge.boolTo a || NativeBridge.boolTo b)",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.firstn_agrees",
+    "old_type": "∀ {A : Type u} (n : Nat) (xs : NativeBridge.RList A),\n  NativeBridge.listTo (Rocq.Corelib.Lists.ListDef.firstn A n xs) = List.take n (NativeBridge.listTo xs)",
+    "new_type": "∀ {A : Type u} (n : NativeBridge.MN) (xs : NativeBridge.RList A),\n  NativeBridge.listTo (Rocq.Corelib.Lists.ListDef.firstn A n xs) =\n    List.take (NativeBridge.natTo n) (NativeBridge.listTo xs)",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_sub_agrees",
+    "old_type": "∀ (n m : Nat), Rocq.Corelib.Init.Nat.sub n m = n - m",
+    "new_type": "∀ (n m : NativeBridge.MN),\n  NativeBridge.natTo (Rocq.Corelib.Init.Nat.sub n m) = NativeBridge.natTo n - NativeBridge.natTo m",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_ltb_agrees",
+    "old_type": "∀ (n m : Nat), NativeBridge.boolTo (Rocq.Corelib.Init.Nat.ltb n m) = decide (n < m)",
+    "new_type": "∀ (n m : NativeBridge.MN),\n  NativeBridge.boolTo (Rocq.Corelib.Init.Nat.ltb n m) = decide (NativeBridge.natTo n < NativeBridge.natTo m)",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.positive_add_carry_agrees",
+    "old_type": "∀ (p q : NativeBridge.RPositive),\n  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.add_carry p q) =\n    NativeBridge.positiveTo p + NativeBridge.positiveTo q + 1",
+    "new_type": "∀ (p q : NativeBridge.RPositive),\n  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.add_carry p q) =\n    NativeBridge.positiveTo p + NativeBridge.positiveTo q + 1",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_lor_agrees",
+    "old_type": "∀ (a b : Nat), Rocq.Corelib.Init.Nat.lor a b = a ||| b",
+    "new_type": "∀ (a b : NativeBridge.MN),\n  NativeBridge.natTo (Rocq.Corelib.Init.Nat.lor a b) = NativeBridge.natTo a ||| NativeBridge.natTo b",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.peano_le_agrees",
+    "old_type": "∀ (n m : Nat), Rocq.Corelib.Init.Peano.le n m ↔ n ≤ m",
+    "new_type": "∀ (n m : NativeBridge.MN), Rocq.Corelib.Init.Peano.le n m ↔ NativeBridge.natTo n ≤ NativeBridge.natTo m",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.array_copy_agrees",
+    "old_type": "∀ {A : Type u} (a : Rocq.Corelib.Array.PrimArray.array A),\n  NativeBridge.arrayTo (Rocq.Corelib.Array.PrimArray.copy A a) = NativeBridge.arrayTo a",
+    "new_type": "∀ {A : Type u} (a : Rocq.Corelib.Array.PrimArray.array A),\n  NativeBridge.arrayTo (Rocq.Corelib.Array.PrimArray.copy A a) = NativeBridge.arrayTo a",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_pred_agrees",
+    "old_type": "∀ (n : Nat), Rocq.Corelib.Init.Nat.pred n = n - 1",
+    "new_type": "∀ (n : NativeBridge.MN), NativeBridge.natTo (Rocq.Corelib.Init.Nat.pred n) = NativeBridge.natTo n - 1",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.ex2_agrees",
+    "old_type": "∀ {A : Sort u} (P Q : A → Prop), Rocq.Corelib.Init.Logic.ex2 A P Q ↔ ∃ x, P x ∧ Q x",
+    "new_type": "∀ {A : Sort u} (P Q : A → Prop), Rocq.Corelib.Init.Logic.ex2 A P Q ↔ ∃ x, P x ∧ Q x",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.seq_agrees",
+    "old_type": "∀ (start len : Nat), NativeBridge.listTo (Rocq.Corelib.Lists.ListDef.seq start len) = List.range' start len",
+    "new_type": "∀ (start len : NativeBridge.MN),\n  List.map NativeBridge.natTo (NativeBridge.listTo (Rocq.Corelib.Lists.ListDef.seq start len)) =\n    List.range' (NativeBridge.natTo start) (NativeBridge.natTo len)",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_succ_agrees",
+    "old_type": "∀ (n : Nat), Rocq.Corelib.Init.Nat.succ n = n + 1",
+    "new_type": "∀ (n : NativeBridge.MN), NativeBridge.natTo (Rocq.Corelib.Init.Nat.succ n) = NativeBridge.natTo n + 1",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.int63_add_agrees",
+    "old_type": "∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.add x y = x + y",
+    "new_type": "∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.add x y = x + y",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.length_agrees",
+    "old_type": "∀ {A : Type u} (xs : NativeBridge.RList A), Rocq.Corelib.Init.Datatypes.length A xs = (NativeBridge.listTo xs).length",
+    "new_type": "∀ {A : Type u} (xs : NativeBridge.RList A),\n  NativeBridge.natTo (Rocq.Corelib.Init.Datatypes.length A xs) = (NativeBridge.listTo xs).length",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.array_make_values_agrees",
+    "old_type": "∀ {A : Type u} (n : BitVec 63) (x : A),\n  (NativeBridge.arrayTo (Rocq.Corelib.Array.PrimArray.make A n x)).snd.fst =\n    Vector.replicate (↑(NativeBridge.arrayTo (Rocq.Corelib.Array.PrimArray.make A n x)).fst) x",
+    "new_type": "∀ {A : Type u} (n : BitVec 63) (x : A),\n  (NativeBridge.arrayTo (Rocq.Corelib.Array.PrimArray.make A n x)).snd.fst =\n    Vector.replicate (↑(NativeBridge.arrayTo (Rocq.Corelib.Array.PrimArray.make A n x)).fst) x",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_double_agrees",
+    "old_type": "∀ (n : Nat), Rocq.Corelib.Init.Nat.double n = 2 * n",
+    "new_type": "∀ (n : NativeBridge.MN), NativeBridge.natTo (Rocq.Corelib.Init.Nat.double n) = 2 * NativeBridge.natTo n",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_odd_agrees",
+    "old_type": "∀ (n : Nat), NativeBridge.boolTo (Rocq.Corelib.Init.Nat.odd n) = decide (n % 2 = 1)",
+    "new_type": "∀ (n : NativeBridge.MN), NativeBridge.boolTo (Rocq.Corelib.Init.Nat.odd n) = decide (NativeBridge.natTo n % 2 = 1)",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.int63_lesb_agrees",
+    "old_type": "∀ (x y : BitVec 63),\n  NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lesb x y) = decide (x.toInt ≤ y.toInt)",
+    "new_type": "∀ (x y : BitVec 63),\n  NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lesb x y) = decide (x.toInt ≤ y.toInt)",
+    "same_literal_statement": true,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_lxor_agrees",
+    "old_type": "∀ (a b : Nat), Rocq.Corelib.Init.Nat.lxor a b = a ^^^ b",
+    "new_type": "∀ (a b : NativeBridge.MN),\n  NativeBridge.natTo (Rocq.Corelib.Init.Nat.lxor a b) = NativeBridge.natTo a ^^^ NativeBridge.natTo b",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.peano_lt_agrees",
+    "old_type": "∀ (n m : Nat), Rocq.Corelib.Init.Peano.lt n m ↔ n < m",
+    "new_type": "∀ (n m : NativeBridge.MN), Rocq.Corelib.Init.Peano.lt n m ↔ NativeBridge.natTo n < NativeBridge.natTo m",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  },
+  {
+    "certificate": "NativeBridge.nat_min_agrees",
+    "old_type": "∀ (n m : Nat), Rocq.Corelib.Init.Nat.min n m = min n m",
+    "new_type": "∀ (n m : NativeBridge.MN),\n  NativeBridge.natTo (Rocq.Corelib.Init.Nat.min n m) = min (NativeBridge.natTo n) (NativeBridge.natTo m)",
+    "same_literal_statement": false,
+    "present": true,
+    "classification": "OPERATION_CORRESPONDENCE"
+  }
+]

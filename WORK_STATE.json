@@ -1,0 +1,775 @@
+{
+  "goal": "complete; all2180 original Corelib roots have checked artifacts, no blockers; duplicate Type transport paths merged and full regression/structural equality passed",
+  "latest_completed_full_run": "experiments/mechanical-nat-eq-20261019/runs/full-v1",
+  "certified_snapshot": "experiments/mechanical-nat-eq-20261019/translator",
+  "certified_delta": "experiments/mechanical-nat-eq-20261019/baseline-delta.json",
+  "counts": {
+    "original_scope_total": 839,
+    "original_scope_blocked": 0,
+    "full_scope_total": 2180,
+    "full_scope_blocked_status": 0,
+    "full_scope_good_checked": 2180,
+    "full_scope_good_validation_incomplete": 0,
+    "validation_failing_modules": 0,
+    "verified_unblocked_since_baseline": 654,
+    "bootstrap_resolved": 0,
+    "translated_and_checked": 1003
+  },
+  "active_source": "translator: mechanical nat/eq, bootstrap table empty",
+  "experiments": {
+    "poly_prereq": {
+      "snapshot": "work/snapshots/poly-prereq/translator",
+      "full_run": "work/runs/poly-prereq-full",
+      "fixture": "work/tests/poly-prereq/result.json",
+      "statement_suite": "work/logs/poly-prereq-statement-suite.log",
+      "status": "Full 2180-root regression complete; zero success/block or validation regressions; no additional unblocked roots; fixture and statement suite pass."
+    },
+    "int_roundtrip": {
+      "snapshot": "work/snapshots/int-roundtrip2/translator",
+      "fixture": "work/tests/int-literals-checked3/result.json",
+      "full_primitive_module": "Historical tmQuoteConstant blocker resolved by primitive_roundtrip; int63 type/literals and 8 operators now have checked target translations."
+    },
+    "primitive_roundtrip": {
+      "status": "Full 67-module, 2180-root regression passed without status/validation regressions. 15 previously unvalidated good roots now checked. 572 blocked roots unchanged.",
+      "snapshot": "work/snapshots/primitive-roundtrip/translator",
+      "fixture": "work/tests/primitive-roundtrip-signed-zero/result.json",
+      "full_run": "work/runs/primitive-roundtrip-full"
+    },
+    "int63_model": {
+      "status": "PASS: full 2180-root regression, 384 source/target kernel computation cases, type/literal/native-registration and structural operator negative controls, and full statement suite. 26 verified newly unblocked; no regressions.",
+      "snapshot": "work/snapshots/int63-pure/translator",
+      "full_run": "work/runs/int63-pure-full",
+      "fixture": "work/tests/int63-pure-model-checked/result.json",
+      "native_operations": "work/tests/int63-pure/result.json",
+      "audit_negatives": "work/tests/int63-pure-audit/result.json",
+      "statement_suite": "work/logs/int63-pure-statement-suite2.log"
+    },
+    "poly_global_r3": {
+      "status": "PASS: local direct/transitive/strict/signed/equality constraints and negative controls; end-to-end fixture; full 2180-root regression +5 verified unblocked, no regressions; statement suite passes.",
+      "snapshot": "work/snapshots/poly-global/translator",
+      "full_run": "work/runs/poly-global-full",
+      "fixture": "work/tests/poly-global/result.json",
+      "prereq_regression": "work/tests/poly-global-prereq/result.json",
+      "statement_suite": "work/logs/poly-global-statement-suite.log"
+    },
+    "int63_signed": {
+      "status": "PASS: 312 kernel cases, negative audit controls, full 2180-root regression and statement suite; 9 newly unblocked, no regressions.",
+      "snapshot": "work/snapshots/int63-signed/translator",
+      "fixture": "work/tests/int63-signed/result.json",
+      "campaign": "work/logs/int63-signed-campaign.log",
+      "full_run": "work/runs/int63-signed-full"
+    },
+    "int63_bool": {
+      "status": "PASS: 240 kernel cases, source/target negative controls, full regression and statement suite; 38 newly unblocked, no regressions.",
+      "snapshot": "work/snapshots/int63-bool/translator",
+      "campaign": "work/logs/int63-bool-campaign.log",
+      "full_run": "work/runs/int63-bool-full"
+    },
+    "native_array": {
+      "status": "PASS: 118 source/target kernel cases; polymorphic client; source bound and target semantic mutation rejection; full 2180-root regression +18 checked, no regressions; statement suite passes.",
+      "bound": 4194303,
+      "snapshot": "work/snapshots/native-array2/translator",
+      "fixture": "work/tests/native-array2/result.json",
+      "full_run": "work/runs/native-array-full"
+    },
+    "array_literals": {
+      "status": "PASS: literal and operation fixtures, full 2180-root regression with unchanged476 blockers and no regressions, full statement suite.",
+      "snapshot": "work/snapshots/array-literal/translator",
+      "fixture": "work/tests/array-literal/result.json",
+      "full_run": "work/runs/array-literal-full"
+    },
+    "native_string": {
+      "status": "PASS: 212 kernel differential cases, 6 byte-literal uses, source/target negatives, full 2180-root regression +28 checked and no regressions, statement suite.",
+      "snapshot": "work/snapshots/native-string/translator",
+      "fixture": "work/tests/native-string/result.json",
+      "full_run": "work/runs/native-string-full"
+    },
+    "int63_counts": {
+      "status": "PASS: 302 kernel differential cases, target semantic mutation tests, full 2180-root regression +6 checked and no regressions, statement suite.",
+      "campaign": "work/logs/int63-counts2-campaign.log",
+      "snapshot": "work/snapshots/int63-counts2/translator",
+      "full_run": "work/runs/int63-counts-full",
+      "fixture": "work/tests/int63-counts2/result.json"
+    },
+    "int63_structured": {
+      "status": "PASS: 363 computation cases, source/target mutations, full 2180-root regression +14 newly checked, no regressions, full statement suite.",
+      "snapshot": "work/snapshots/int63-structured/translator",
+      "fixture": "work/tests/int63-structured/result.json",
+      "campaign": "work/logs/int63-structured-campaign.log",
+      "full_run": "work/runs/int63-structured-full"
+    },
+    "general_universe_lift": {
+      "status": "Investigation only: inverse laws axiom-free. Protected six-root baseline accepts four global cases through existing R2B-V result-sort inheritance, blocks two explicit-polymorphic cases. No general lift rule implemented.",
+      "design": "work/notes/general-universe-lift-design.txt",
+      "prototype": "work/tests/universe-lift-design/Correspondence.lean",
+      "baseline": "work/tests/universe-lift-before-protected/result.json"
+    },
+    "native_float": {
+      "status": "PASS: 2199 source/target kernel cases, source/target mutation controls, full 2180-root regression +65 checked, zero status/validation regressions, full statement suite.",
+      "snapshot": "work/snapshots/native-float2/translator",
+      "campaign": "work/logs/native-float2-campaign.log",
+      "full_run": "work/runs/native-float-full",
+      "fixture": "work/tests/native-float2/result.json",
+      "statement_suite": "work/logs/native-float-statement-suite.log"
+    },
+    "poly_abbrev": {
+      "status": "PASS: protected fixture, mutation controls, inverse laws, full2180-root regression +9checked, no regressions, full statement suite.",
+      "snapshot": "work/snapshots/poly-abbrev/translator",
+      "fixture": "work/tests/poly-abbrev/result.json",
+      "campaign": "work/logs/poly-abbrev-full-campaign.log",
+      "targeted_delta": "work/poly-abbrev-targeted-delta.json",
+      "full_run": "work/runs/poly-abbrev-full",
+      "statement_suite": "work/logs/poly-abbrev-statement-suite.log"
+    },
+    "template_sort": {
+      "status": "Fixture PASS: arbitrary-Sort constructors, explicit recursor, three mutation controls and non-Prop eligibility guard. Full scope +35 checked but 3 SetoidTactics regressions: NOT CERTIFIED. Regressions fixed in mono-abbrev targeted run; combined full run running.",
+      "snapshot": "work/snapshots/template-sort2/translator",
+      "targeted_run": "work/runs/template-sort-targeted",
+      "targeted_delta": "work/template-sort-targeted-delta.json",
+      "fixture": "work/tests/template-sort3/result.json",
+      "full_run": "work/runs/template-sort-full",
+      "delta": "work/template-sort-delta.json"
+    },
+    "prop_cast": {
+      "status": "Protected Asymmetric passes source/target checks, four negative controls and two axiom-free inverse laws. Full run +1 over template-sort but inherits its three regressions; NOT CERTIFIED independently.",
+      "snapshot": "work/snapshots/prop-cast/translator",
+      "fixture": "work/tests/prop-cast/result.json",
+      "campaign": "work/logs/prop-cast-full-campaign.log",
+      "full_run": "work/runs/prop-cast-full"
+    },
+    "proof_constructors": {
+      "status": "Fallback only after original source preparation fails: retain constructor-shaped proof terms, recursively extract their arguments, recheck with identical source kernel requirements. Three Init modules +5 checked; 20 computation cases and three arbitrary-universe beta laws PASS under combined snapshot. Existing successful preparations unchanged.",
+      "snapshot": "work/snapshots/proof-constructors/translator",
+      "targeted_run": "work/runs/proof-constructors-targeted",
+      "targeted_delta": "work/proof-constructors-targeted-delta.json",
+      "fixture": "work/tests/mono-abbrev-proof-constructors/result.json"
+    },
+    "mono_abbrev": {
+      "status": "PASS: four fixture suites plus monomorphic alias/Lean Eq client; full2180 regression +48 checked vs certified poly-abbrev, zero status/validation regressions; statement suite PASS. Certifies combined template-sort, prop-cast, constructor retry and mono aliases.",
+      "snapshot": "work/snapshots/mono-abbrev/translator",
+      "campaign": "work/logs/mono-abbrev-full-campaign.log",
+      "full_run": "work/runs/mono-abbrev-full",
+      "targeted_run": "work/runs/mono-abbrev-targeted",
+      "client": "work/tests/mono-abbrev-mono/result.json"
+    },
+    "proof_references": {
+      "status": "PASS: three protected roots, native Lean Eq client and beta law axiom-free, prerequisite/ref mutation controls, full 2180-root regression +19 checked and zero status/validation regressions, complete statement suite.",
+      "snapshot": "work/snapshots/proof-references/translator",
+      "fixture": "work/tests/proof-references2/result.json",
+      "full_run": "work/runs/proof-references-full",
+      "campaign": "work/logs/proof-references-full-campaign.log",
+      "delta": "work/proof-references-delta.json",
+      "report": "work/reports/proof-reference-results.md"
+    },
+    "carrier_sort": {
+      "status": "First four-module probe PASS checks, six newly unblocked in Logic, no status regressions. eq_rect generalized to arbitrary Sort; eq_rect_r still constrained by statement prerequisite. Follow-up statement-interface generalization building.",
+      "campaign": "work/logs/carrier-sort-probe-campaign.log"
+    },
+    "carrier_sort_statements": {
+      "status": "NOT CERTIFIED: first statement generalization regresses prerequisites because their Sort-level interpretation was not registered for references. Negative result retained. Follow-up registers R8 metadata for every accepted artifact.",
+      "campaign": "work/logs/carrier-sort-statements-probe-campaign.log",
+      "snapshot": "work/snapshots/carrier-sort-statements/translator"
+    },
+    "carrier_sort_statements2": {
+      "status": "NOT CERTIFIED: condition used attempt-level accepted predicate, which excludes statements after their final status rename. Dedicated fixture still rejects eq_rect_r; v3 explicitly includes both checked statement statuses.",
+      "snapshot": "work/snapshots/carrier-sort-statements2/translator",
+      "campaign": "work/logs/carrier-sort-statements2-probe-campaign.log",
+      "fixture_log": "work/logs/carrier-sort-statements2-tests.log",
+      "targeted_run": "work/runs/carrier-sort-statements2-targeted"
+    },
+    "carrier_sort_statements3": {
+      "status": "NOT CERTIFIED: dedicated fixture and548-root probe +34/no regressions, but full run aborts on two modules (stack overflow);59 good roots NOT_MEASURED. Source one-declaration reproducer and cyclic residual-default diagnosis obtained. Baseline remains287.",
+      "snapshot": "work/snapshots/carrier-sort-statements3/translator",
+      "campaign": "work/logs/carrier-sort-statements3-probe-campaign.log",
+      "fixture": "work/tests/carrier-sort-statements3-checked/result.json",
+      "full_campaign": "work/logs/carrier-sort-full-campaign.log"
+    },
+    "template_floor": {
+      "status": "NOT CERTIFIED: +1 previously unsupported classic_pick, but two wrapper inductives fail and cause142 regressions in ssrbool. Source/Lean/audit checks themselves PASS. Preserve evidence.",
+      "snapshot": "work/snapshots/template-floor/translator",
+      "delta": "work/template-floor-targeted-delta.json"
+    },
+    "template_type": {
+      "status": "Fixture PASS: sum/list/implies arbitrary Sort parameters; six Prop/Nat cases, two axiom-free beta laws, three negative controls. Broader probe retains wrapper regressions; requires original-interpretation fallback.",
+      "snapshot": "work/snapshots/template-type/translator",
+      "fixture": "work/tests/template-type2/result.json"
+    },
+    "template_type_fallback": {
+      "status": "Four-module probe +21 checked vs proof-references (includes10 carrier-sort gains), no status/validation regressions; fixturePASS. Shared carrier-sort stack issue must be fixed before full certification.",
+      "campaign": "work/logs/template-type-fallback-probe-campaign.log"
+    },
+    "universe_default": {
+      "status": "NOT CERTIFIED: full2180 run has241 blocked statuses and46 newly unblocked roots, zero status regressions, but85 good artifacts lack complete validation. Four carry primitives fail exact universe reconstruction in two Int63 modules; statement suite not reached.",
+      "campaign": "work/logs/universe-default-full-campaign.log",
+      "snapshot": "work/snapshots/universe-default2/translator",
+      "diagnosis": "work/notes/residual-universe-cycle.txt",
+      "full_run": "work/runs/universe-default-full",
+      "targeted_delta": "work/universe-default2-targeted-delta.json"
+    },
+    "template_quality_diagnostics": {
+      "status": "Native exportPASS. prod/sig/sigT/sigT2 share one q0 between relevant parameter sorts and conclusion; defaultType. Optional diagnostics only, no change to IR or translation decisions.",
+      "snapshot": "work/snapshots/template-quality-diagnostics/translator",
+      "evidence": "work/tests/template-quality-diagnostics/native-qualities.ndjson",
+      "design": "work/notes/template-quality-native-evidence.txt"
+    },
+    "native_template_audit": {
+      "status": "PASS: all five fixtures, full2180 regression +46 checked, no status/validation regressions, no good-unvalidated roots, complete statement suite. Certified.",
+      "snapshot": "work/snapshots/native-template/translator",
+      "campaign": "work/logs/native-template-campaign.log",
+      "full_run": "work/runs/native-template-full"
+    },
+    "poly_lift": {
+      "status": "PASS: protected fixture, negative controls, arbitrary-universe inverse laws and constraint checks; full2180 regression +44 over native-template241 (+90 over proof-references287),zero status/validation regressions,0 good-unvalidated; full statement suite PASS. Certified.",
+      "snapshot": "work/snapshots/poly-lift/translator",
+      "campaign": "work/logs/poly-lift-full-campaign.log",
+      "full_run": "work/runs/poly-lift-full",
+      "fixture": "work/tests/poly-lift-checked/result.json",
+      "targeted_delta": "work/poly-lift-targeted-delta.json"
+    },
+    "type_lift_global": {
+      "status": "Three-module probe source/Lean/audit PASS but binary_relation still blocked by input/result global universe constraints. No new certification; investigate reference argument lifting before claiming this frontier solved.",
+      "snapshot": "work/snapshots/type-lift-global/translator",
+      "run": "work/runs/type-lift-global-targeted"
+    },
+    "type_coercions": {
+      "status": "Frozen type-coercions three-module262-root probe +3 checked,0 status/validation regressions; 3 protected core clients axiom-free and9 structural negative controls PASS. Synthetic six-root lift fixture exposes older raise_type result-sort audit mismatch; roundtrip_poly follows legal alias expansion and is not evidence for term coercions.",
+      "campaign": "work/logs/type-coercions-probe-campaign.log",
+      "snapshot": "work/snapshots/type-coercions/translator",
+      "fixture": "work/tests/type-coercions-core/result.json"
+    },
+    "type_coercions2": {
+      "status": "PASS:262-root probe +3; protected core clients/9 negatives,poly-lift,Prop-cast,poly-abbrev fixtures PASS; full2180 regression +3,no status/validation regressions,0 good-unvalidated; complete statement suite PASS. Certified.",
+      "snapshot": "work/snapshots/type-coercions2/translator",
+      "campaign": "work/logs/type-coercions2-full-campaign.log",
+      "full_run": "work/runs/type-coercions2-full",
+      "fixture": "work/tests/type-coercions2-core/result.json",
+      "targeted_delta": "work/type-coercions2-targeted-delta.json",
+      "campaign_pid": 2669323
+    },
+    "source_compute": {
+      "status": "PASS: dedicated reduction fixture, four prerequisite suites, all2180 roots and complete statement suite. +2 checked,0 regressions,0 good-unvalidated.",
+      "snapshot": "work/snapshots/source-compute/translator",
+      "run": "work/runs/source-compute-targeted",
+      "delta": "work/source-compute-targeted-delta.json",
+      "source_evidence": "work/tests/source-compute-design/source-kernel.log",
+      "full_run": "work/runs/source-compute-full",
+      "fixture": "work/tests/source-compute-checked/result.json"
+    },
+    "cast_retry": {
+      "status": "PASS:4 protected core definitions,12 negative controls,full2180 regression+4 checked,0 status/validation regressions,0 good-unvalidated,complete statement suite.",
+      "snapshot": "work/snapshots/cast-retry/translator",
+      "run": "work/runs/cast-retry-targeted",
+      "fixture": "work/tests/cast-retry2/result.json",
+      "campaign": "work/logs/cast-retry-full-campaign.log",
+      "campaign_pid": 2684651,
+      "full_run": "work/runs/cast-retry-full"
+    },
+    "function_casts": {
+      "status": "262-root probe no additional gains/no regressions; retained experimental snapshot. Further nested transport diagnostics next.",
+      "snapshot": "work/snapshots/function-casts/translator",
+      "run": "work/runs/function-casts-targeted"
+    },
+    "nested_casts": {
+      "status": "262-root probe source/Lean/audit PASS,no additional gains/no regressions. Traces identify unexpanded aliases and mismatched product instances; retained experimental snapshot.",
+      "snapshot": "work/snapshots/nested-casts/translator",
+      "run": "work/runs/nested-casts-targeted"
+    },
+    "template_quality_metadata": {
+      "status": "PASS:8 native records freshly recomputed;5 missing/changed/shared-binding mutations rejected. Representation/translation decisions unchanged; prerequisite for mixed-quality rules.",
+      "snapshot": "work/snapshots/template-quality-metadata/translator",
+      "fixture": "work/tests/template-quality-metadata/result.json"
+    },
+    "template_quality_branches": {
+      "status": "PASS:8 source/target quality combinations,2 source beta equalities,2 arbitrary-Sort target beta laws with empty axiom closures. Representation design only; not integrated and no coverage claim.",
+      "fixture": "work/tests/template-quality-branches/result.json"
+    },
+    "alias_closure": {
+      "status": "BuildPASS;262-root probe running. Recognize transparent type aliases after expanding previously eligible aliases; auditor independently derives least closure.",
+      "snapshot": "work/snapshots/alias-closure/translator",
+      "campaign": "work/logs/alias-closure-probe-campaign.log",
+      "campaign_pid": 2691579
+    },
+    "alias_closure2": {
+      "status": "PASS:6 protected roots(5 implementations,1 statement),12 report negatives,4 eligibility controls; full2180 +6,no status/validation regressions,0 good-unvalidated,complete statement suite. Extra nested/function cast experiments removed; original certified transport retained.",
+      "snapshot": "work/snapshots/alias-closure2/translator",
+      "targeted_run": "work/runs/alias-closure2-targeted",
+      "fixture": "work/tests/alias-closure2/result.json",
+      "full_run": "work/runs/alias-closure2-full",
+      "campaign": "work/logs/alias-closure2-full-resume-campaign.log",
+      "campaign_pid": 2694074,
+      "historical_coercions_fixture": "work/tests/alias-closure2-historical-coercions/result.json"
+    },
+    "native_quality_context": {
+      "status": "PASS:4 empty explicit template reference instances; native contextual retyping distinguishes Prop/Type for4 full applications. Diagnostic only (cases/fixpoints skipped). Two intermediate OCaml API errors retained in prior snapshots.",
+      "snapshot": "work/snapshots/native-quality-context3/translator",
+      "fixture": "work/tests/native-quality-context3/result.json",
+      "design": "work/notes/template-quality-dispatch-evidence.txt"
+    },
+    "template_quality_conversion": {
+      "status": "PASS:2 source annotation-narrowing refusals and2 definitional alias equalities. Declared result-sort preservation and delta conversion must be handled separately.",
+      "fixture": "work/tests/template-quality-conversion/result.json"
+    },
+    "quality_family_plans": {
+      "status": "Prototype PASS: five source inductives, ten kernel-checked and independently audited Prop/Type branch signatures, five source binding negative controls and twenty target mutations. Production dispatch not integrated; certified coverage unchanged.",
+      "snapshot": "work/snapshots/quality-plan3/translator",
+      "fixture": "work/tests/quality-plan4/result.json"
+    },
+    "quality_family_clients": {
+      "status": "PASS: fresh import of ten generated branches; ten dependent recursor constructor beta laws at arbitrary motive Sort, all axiom-free. Production dispatch not integrated, no additional certified roots.",
+      "fixture": "work/tests/quality-family-clients/result.json",
+      "script": "scripts/test_quality_family_clients.py"
+    },
+    "quality_source_analysis": {
+      "status": "PASS:54 source definitions,45 template applications agree between native Rocq,Lean analysis and independent Python replay; unknown contexts/arguments/budgets and SProp refused; declared annotations preserved.",
+      "fixture": "work/tests/quality-source-checked/result.json",
+      "snapshot": "work/snapshots/quality-dispatch3/translator",
+      "source": "work/fixtures/quality-source4"
+    },
+    "quality_dispatch_hooks": {
+      "status": "CERTIFIED nonregression with default hook inactive:2180 roots,1998 checked,182 blocked,no status or validation regressions,complete statement suite. Experimental supplied-hook tests translate source-directed inductive,constructor and case references.",
+      "snapshot": "work/snapshots/quality-dispatch4/translator",
+      "full_run": "work/runs/quality-dispatch-hooks-full",
+      "campaign": "work/logs/quality-dispatch-hooks-campaign.log",
+      "delta": "work/quality-dispatch-hooks-delta.json"
+    },
+    "quality_family_audit": {
+      "status": "PASS:10 source-derived branch signatures,51 function types/bodies and own-level/transport checks,30 mutations rejected including10 kernel-valid wrong-data implementations. Independent source views plus existing structural auditor. Production report/consumer integration outstanding.",
+      "fixture": "work/tests/quality-family-audit2/result.json",
+      "frozen_audit_helper": "work/tests/quality-family-audit2/quality_source.py"
+    },
+    "result_transport": {
+      "status": "CERTIFIED:full2180 unchanged1998checked/182blocked,zero regressions,complete statement suite; six protected universe-lift fixture roots validated;four axiom-free arbitrary-universe laws;six negative controls(two kernel-valid wrong-payload/narrowed-result mutations).",
+      "snapshot": "work/snapshots/result-transport6/translator",
+      "fixture": "work/tests/result-transport-checked2/result.json",
+      "quality_fixture": "work/tests/quality-dispatch-kernel3/result.json",
+      "full_run": "work/runs/result-transport6-full",
+      "campaign": "work/logs/result-transport6-campaign.log",
+      "campaign_pid": 2745823,
+      "delta": "work/result-transport6-delta.json",
+      "statement_suite": "work/logs/result-transport6-statement-suite.log"
+    },
+    "quality_dispatch_context": {
+      "status": "PASS:source Type binder still selects Type branch when target binder is Prop;source Prop selects Prop;stale same-sized source scope refused;closed application independent of missing binder information.",
+      "fixture": "work/tests/quality-dispatch-context/result.json"
+    },
+    "quality_sprop_boundary": {
+      "status": "PASS:13 expected native source rejections of SProp arguments to the five template families. Existing general SP mapping remains unchanged; these applications are not admissible source instances.",
+      "fixture": "work/tests/quality-sprop-rejections/result.json"
+    },
+    "quality_main_integration": {
+      "status": "CERTIFIED main10: 2180 roots / 67 modules, 2030 checked / 150 blocked; 32 newly unblocked, no status or validation regressions, no good-unvalidated roots; both 54-root fixture modes, 49 negative controls, assembly, native float and full statement suite PASS.",
+      "snapshot": "work/snapshots/quality-main10/translator",
+      "fixture": "work/tests/quality-main10",
+      "targeted_run": "work/runs/quality-main7-targeted",
+      "campaign": "work/logs/quality-main10-full-campaign.log",
+      "campaign_pid": null,
+      "full_run": "work/runs/quality-main10-full",
+      "negative_controls": "work/tests/quality-main10-negatives",
+      "earlier_negative_controls": "work/tests/quality-main7-negatives/result.json",
+      "changes": [
+        "atomic Type primary plus Prop auxiliary family registration",
+        "original source scopes in binders and reconstructed match telescopes",
+        "fresh consumer and independent source-derived audit views, separate auxiliary counts",
+        "local Prop-to-Type let transport through existing P rule",
+        "shared source alias normalization in proof and statement audits"
+      ],
+      "intermediate_failures": [
+        "main1 Emit result shape; fixed",
+        "main2 audit helper unavailable under Python -I; fixed via explicit sibling loading",
+        "main3/main4 four missing match source scopes cause 43 regressions; all eliminated in main7",
+        "main5/main6 Lean record indentation; fixed",
+        "main7 proof audit lacked existing alias normalization; main8 proof fixture now VERIFIED"
+      ]
+    },
+    "quality_main8_regression": {
+      "status": "Historical diagnostic, not certified: 212 blocked, 32 gains and 62 regressions; recursive source scopes and native primitive Type0 classification repaired in main10.",
+      "delta": "work/quality-main8-delta.json"
+    },
+    "quality_main11_wf": {
+      "status": "Build and 33-root Wf probe complete; 19 blocked unchanged. Additional Acc/Wf source contexts do not yet restore proof-projection computation.",
+      "snapshot": "work/snapshots/quality-main11/translator"
+    },
+    "wf_projection": {
+      "status": "CERTIFIED: full2180/67,2047 checked/133 blocked;17 gains (Init.Wf7,Program.Wf10),zero status/validation regressions,zero good-unvalidated. Full statement suite,54-root quality both modes and49 controls PASS;projection positive/boundary/fidelity controls PASS.",
+      "snapshot": "work/snapshots/quality-main15/translator",
+      "targeted_run": "work/runs/quality-main15-wf",
+      "negative_controls": "work/tests/wf-projection-negatives/result.json",
+      "campaign": "work/logs/quality-main15-full-campaign.log",
+      "campaign_pid": null,
+      "full_run": "work/runs/quality-main15-full",
+      "statement_suite": "work/logs/quality-main15-statement-suite.log",
+      "delta": "work/quality-main15-delta.json"
+    },
+    "wf_pair_index_design": {
+      "status": "Target-only prototype PASS: arbitrary universe beta law and empty axiom closure. Source uncurrying NOT definitionally equal. No production coverage claim.",
+      "fixture": "work/tests/wf-pair-target/result.json",
+      "design": "work/notes/wf-pair-index-design.txt"
+    },
+    "tlist_frontier_diagnostic": {
+      "status": "TERMINAL: minimal fixture exports/translates/validates all roots; does NOT yet reproduce Corelib failure. Compare source universe graph, root protection and operation aliases before changing rules.",
+      "campaign_pid": null,
+      "campaign": "work/logs/tlist-frontier-campaign.log",
+      "fixture": "work/tests/tlist-frontier",
+      "design": "work/notes/tlist-arrows-frontier.txt"
+    },
+    "wf_constructor_indices": {
+      "status": "CERTIFIED main18: full2180/67,2049checked/131blocked,+2,no status/validation regressions,0good-unvalidated; complete statement suite and quality/projection regression controls PASS. Init.Wf and Program.Wf all33 requested declarations checked.",
+      "snapshot": "work/snapshots/quality-main18/translator",
+      "targeted_run": "work/runs/quality-main17-wf",
+      "fixture": "work/tests/wf-index-patterns2",
+      "controls": "work/tests/wf-index-patterns-negatives2/result.json",
+      "campaign": "work/logs/quality-main18-full-campaign.log",
+      "campaign_pid": null,
+      "full_run": "work/runs/quality-main18-full",
+      "statement_suite": "work/logs/quality-main18-statement-suite.log",
+      "delta": "work/quality-main18-delta.json"
+    },
+    "tlist_branch_transport": {
+      "status": "CERTIFIED main26: full2180/67,2055checked/125blocked,+6,no status or validation regressions,0good-unvalidated. Four arbitrary-universe beta laws,ten empty axiom closures,four negative controls,quality/projection controls and full statement suite PASS.",
+      "snapshot": "work/snapshots/quality-main26/translator",
+      "campaign": "work/logs/quality-main26-full-campaign.log",
+      "campaign_pid": null,
+      "fixture": "work/tests/tlist-branch-lift3",
+      "design": "work/tests/tlist-lift-design/result.json",
+      "test_overlay": "work/snapshots/tlist-branch-lift2/test-protection-overlay.json",
+      "controls": "work/tests/tlist-arguments26/result.json",
+      "full_run": "work/runs/quality-main26-full",
+      "delta": "work/quality-main26-delta.json"
+    },
+    "tlist_type_positions": {
+      "status": "main27 actual3-module probe adds3 overmain26,no regressions; four beta laws,seven empty axiom closures,two kernel-valid negative controls PASS. main28 enables exact same transports in statements and adds7 more; main29 four-module probe adds21 overmain18 total,all module validations pass. No full certification beyondmain26.",
+      "snapshot": "work/snapshots/quality-main29/translator",
+      "controls": "work/tests/tlist-type-position-controls27/result.json",
+      "targeted_run": "work/runs/quality-main29-classes"
+    },
+    "higher_order_transport": {
+      "status": "main31 full2180 ended:63 blocked-status,2090checked and27good-unvalidated; no status regressions, but Morphisms_Prop audit regressed, so NOT certified and statement suite not run. Eight records had both expanded applications and bare higher-order aliases; main34 independently records actually expanded names and still checks every remaining bare reference. main31 evidence retained.",
+      "snapshot": "work/snapshots/quality-main31/translator",
+      "campaign": "work/logs/quality-main31-full-campaign2.log",
+      "campaign_pid": null,
+      "targeted_delta": "work/quality-main31-targeted-delta.json",
+      "full_run": "work/runs/quality-main31-full",
+      "higher_order_controls": "work/tests/tlist-higher-order-controls31/result.json"
+    },
+    "higher_order_eq": {
+      "status": "Actual eq_pars STATEMENT_KERNEL_CHECKED in main31. Explicit-instance5-root fixture VERIFIED with original proof term; arbitrary-universe native Lean Eq clients and2 kernel-valid mutation controls PASS. Original inferred-instance fixture retained and still exposes separate local/global universe-bound limitation.",
+      "fixture": "work/tests/eq-higher-order29/result.json",
+      "explicit_fixture": "work/fixtures/eq-higher-order-explicit",
+      "explicit_controls": "work/tests/eq-higher-order-controls31/result.json",
+      "explicit_probe": "work/tests/eq-higher-order-explicit31"
+    },
+    "cumulative_function_result": {
+      "status": "main33 four-module probe adds4 overmain31; all module validations pass. Exact callee-domain/result audit and source local-bound closure now apply to statements. Three kernel-valid negative controls,arbitrary-universe shape law and a native Lean proof of the complement statement PASS.",
+      "snapshot": "work/snapshots/quality-main33/translator",
+      "campaign": "work/logs/quality-main32-campaign.log",
+      "campaign_pid": null,
+      "controls": "work/tests/cumulative-function-result-controls33/result.json"
+    },
+    "partial_alias_applications": {
+      "status": "CERTIFIED as main34: full2180/67,2121checked/59blocked,66 verified gains overmain26,zero status/validation regressions,zero good-unvalidated. All representation/alias/quality/projection controls and complete statement suite PASS.",
+      "snapshot": "work/snapshots/quality-main34/translator",
+      "targeted_run": "work/runs/quality-main34-classes",
+      "targeted_delta": "work/quality-main34-targeted-delta.json",
+      "source_evidence": "work/tests/partial-alias-inline-evidence/result.json",
+      "campaign": "work/logs/quality-main34-full-campaign2.log",
+      "campaign_pid": null,
+      "full_run": "work/runs/quality-main34-full",
+      "controls": "work/tests/partial-alias-inline-controls34b/result.json"
+    },
+    "crelation_statement_sort": {
+      "status": "Diagnostic only: StrictOrder_Asymmetric source alias expansion ends in a Prop payload explicitly cast at Type(v1). Current PULift retains that annotation and yields Type where statement artifact expectsProp. Do NOT erase the annotation to force success; investigate a source-directed Prop view/native quality evidence.",
+      "fixture": "work/tests/crelation-statement-sort/expanded-type.json"
+    },
+    "bounded_parameter_transport": {
+      "status": "CERTIFIED main38:2126checked/54blocked,5 verified gains overmain34; all2180/67,zero status/validation regressions,zero good-unvalidated. Full representation/higher-order/alias/Eq/quality/projection and new parameter controls PASS; complete statement suite PASS.",
+      "snapshot": "work/snapshots/quality-main38/translator",
+      "build_pid": 2856422,
+      "campaign": "work/logs/quality-main38-full-campaign.log",
+      "campaign_pid": null,
+      "controls": "work/tests/parameter-transport-controls38/result.json",
+      "full_run": "work/runs/quality-main38-full"
+    },
+    "statement_prop_view": {
+      "status": "CERTIFIED main39:2129checked/51blocked,3 gains overcertifiedmain38 (8overmain34); all2180/67,zero status/validation regressions,zero good-unvalidated. All representation/Eq/quality/projection controls, native view mutation controls and complete statement suite PASS. Three arbitrary-universe native Lean proofs axiom-free.",
+      "snapshot": "work/snapshots/quality-main39/translator",
+      "campaign": "work/logs/quality-main39-full-campaign.log",
+      "campaign_pid": null,
+      "controls": "work/tests/statement-prop-view-controls39/result.json",
+      "targeted_run": "work/runs/quality-main39-classes",
+      "full_run": "work/runs/quality-main39-full"
+    },
+    "sort_quality_family_probe": {
+      "status": "DIAGNOSTIC COMPLETE, NOT original-root coverage: all23 families/all603 quality assignments natively retyped at original declared types and quoted; all603 then translate, pass fresh Lean consumer and independent structural audit, no constant references remain after native normalization. main41 preserves original opacity metadata for ssr_have_upoly. Untyped wrapper experiment and typed-Ltac failure retained, not used as evidence. Missing production family IR/root aggregation, source roundtrip rederivation, exhaustive family/opacity negative controls and reference dispatch; original23 remain EXPORT_BLOCKED.",
+      "fixture": "work/fixtures/sort-quality-family-probe",
+      "native_inventory": "work/tests/sort-polymorphic-core-inventory/inventory.json",
+      "snapshot": "work/snapshots/quality-main41/translator",
+      "native_probe": "work/tests/native-quality-families41",
+      "native_summary": "work/tests/native-quality-families41/summary.json",
+      "target_probe": "work/tests/native-quality-case-translation41/result.json",
+      "target_probe_pid": null
+    },
+    "quality_main57_certified": {
+      "status": "PASS: all 2180 roots, no status/validation regressions, full campaign and joint-source sidecar controls pass.",
+      "campaign": "work/logs/quality-main57-full-campaign.log",
+      "extra_controls": "work/tests/joint-source-full-controls57/result.json"
+    },
+    "quality_main61": {
+      "status": "PASS: full2180/67,2174 checked/6 blocked, no regressions, full controls and statement suite pass.",
+      "pid": 2944367,
+      "snapshot": "work/snapshots/quality-main61/translator",
+      "campaign": "work/logs/quality-main61-campaign.log",
+      "full_pid": 2948392
+    },
+    "quality_main59_certified": {
+      "status": "PASS: full campaign including bool-rec, joint-source and statement suites; 2171 checked /9 blocked, no regressions."
+    },
+    "quality_main62": {
+      "status": "PASS: full2180/67,2175 checked/5 blocked; all full controls and statement suite passed, no regressions."
+    },
+    "quality_main63": {
+      "status": "RUNNING: solve metavariables after each transported application; transactional higher-order cast repair.",
+      "pid": 2950723
+    },
+    "quality_main68": {
+      "status": "Targeted750/7:1 translation-blocked, but2 modules fail independent audit. NOT certified. Fix structural comparison of field-preserving record representation conversions.",
+      "run": "work/runs/quality-main68-transport"
+    },
+    "quality_main69": {
+      "status": "Target750/7:1 blocked/0 failing modules; full regression running. Independent record fixture found missing local-function signatures in auditor; active audit fixes this using source-checked, scope-shifted binder types. Not yet certified."
+    },
+    "quality_main71": {
+      "status": "CERTIFIED: full2180/67,2179 checked/1 blocked; all controls and statement suite PASS.",
+      "full_pid": 2980386,
+      "campaign": "work/logs/quality-main71-full-campaign.log",
+      "controls": "work/tests/record-transports-controls71/result.json"
+    },
+    "quality_main74": {
+      "status": "CERTIFIED: full2180/67,0blocked/0validation failures; all supplemental controls and complete statement suite PASS.",
+      "full_pid": 2988065,
+      "campaign": "work/logs/quality-main74-full-campaign.log",
+      "targeted": "work/runs/quality-main74-transport"
+    },
+    "quality_main75": {
+      "status": "COMPLETE:full2180/67 zero blockers,all checks;4314 identical emitted records;67 per-file result packages and user-facing wrappers validated.",
+      "pid": null,
+      "campaign": "work/logs/quality-main75-campaign.log",
+      "full_pid": null,
+      "full_campaign": "work/logs/quality-main75-full-campaign.log",
+      "artifact_controller_pid": null,
+      "artifact_log": "work/logs/quality-main75-final-artifacts-resume.log",
+      "interop": "work/tests/basic-interop75/result.json",
+      "artifact_note": "Initial packaging rejected unknown display option pp.width; removed display option only, translator unchanged. Original failed package retained in work/tests/package-main75-initial."
+    }
+  },
+  "next": [],
+  "publication": "No commit or push in this phase; original Rocq2Lean project untouched",
+  "additional_regression_delta": "work/proof-references-delta.json",
+  "completed_families": {
+    "Int63": {
+      "total": 94,
+      "blocked": 0,
+      "good_checked": 94
+    },
+    "Strings": {
+      "total": 29,
+      "blocked": 0,
+      "good_checked": 29
+    },
+    "Array": {
+      "total": 19,
+      "blocked": 0,
+      "good_checked": 19
+    },
+    "Floats": {
+      "total": 134,
+      "blocked": 0,
+      "good_checked": 134
+    }
+  },
+  "active_source_note": "Final frozen main75:2180 checked/0blocked/0validation failures; all supplemental and statement checks PASS. All4314 emitted declaration occurrences structurally identical to zero-block main74. Per-file final artifacts validated.",
+  "sort_quality_family_integration": {
+    "status": "CERTIFIED main46:2152 checked/28 blocked,23 gains vs main39,full2180/67,zero status/validation regressions,zero good-unvalidated. Complete statement suite and all representation/quality/projection/family controls PASS. Actual23 family roots both modes and50-root dispatch fixture both modes PASS;23 adversarial controls PASS.",
+    "snapshot": "work/snapshots/quality-main46/translator",
+    "campaign": "work/logs/quality-main46-full-campaign.log",
+    "campaign_pid": null,
+    "full_run": "work/runs/quality-main46-full",
+    "family_controls": "work/tests/native-quality-family-controls45/result.json",
+    "dispatch_probe": "work/tests/native-quality-dispatch46b/result.json",
+    "dispatch_controls": "work/tests/native-quality-dispatch-controls46e/result.json",
+    "dispatch_control_status": "PASS:3 arbitrary-universe Lean clients,3 empty axiom closures,opaque unfolding refused,3 source dispatch mutations and3 kernel-valid target dispatch mutations refused.",
+    "full_result": "CERTIFIED fullmain46 2180/67:2152checked/28blocked; all controls and statement suite PASS.",
+    "all_roots_both_modes": "work/tests/native-quality-roots46/result.json",
+    "frontiers": "work/quality-main46-frontiers.json"
+  },
+  "admitting_reference_shift_probe": {
+    "status": "TERMINAL main47/48:536-root targeted checks complete,zero coverage gains; Sumbool failure moved to universe gate. Candidate changes removed from active worktree; frozen experiments retained.",
+    "campaign": "work/logs/quality-main47-campaign.log",
+    "campaign_pid": null,
+    "snapshot": "work/snapshots/quality-main47/translator",
+    "run": "work/runs/quality-main47-admitting",
+    "second_campaign": "work/logs/quality-main48-campaign.log"
+  },
+  "opaque_quality_client": {
+    "status": "CERTIFIED main49: full2180/67 2152checked/28blocked,zero regressions/zero good-unvalidated; all family/dispatch/opaque/representation/Eq/quality/projection controls and complete statement suite PASS. Legacy ssr_have_upoly rest/step special case removed.",
+    "snapshot": "work/snapshots/quality-main49/translator",
+    "campaign": "work/logs/quality-main49-full-campaign.log",
+    "campaign_pid": null,
+    "client_campaign": "work/logs/native-quality-opaque49.log",
+    "client_pid": null,
+    "full_run": "work/runs/quality-main49-full",
+    "controls": "work/tests/native-quality-opaque-controls49/result.json",
+    "full_result": "CERTIFIED fullmain49 2180/67:2152checked/28blocked; all controls and statement suite PASS."
+  },
+  "implicit_reference_levels_probe": {
+    "status": "CERTIFIED main50: full2180/67 2154checked/26blocked,zero status/validation regressions,zero good-unvalidated; all specialized controls and complete statement suite PASS.",
+    "campaign": "work/logs/quality-main50-full-campaign.log",
+    "campaign_pid": null,
+    "snapshot": "work/snapshots/quality-main50/translator",
+    "run": "work/runs/quality-main50-implicit",
+    "full_run": "work/runs/quality-main50-full",
+    "controls": "work/tests/tlist-predicate-constants-controls50/result.json"
+  },
+  "transport_gate_probe": {
+    "status": "TERMINAL main51:750 roots/7 modules,no gains or validation regressions. Diagnostic: Type-transport attempts rejected before term translation by local universe interpreter on global constraints.",
+    "snapshot": "work/snapshots/quality-main51/translator",
+    "campaign": "work/logs/quality-main51-campaign.log",
+    "campaign_pid": null,
+    "run": "work/runs/quality-main51-transport"
+  },
+  "poly_transport_independence_probe": {
+    "status": "CERTIFIED main52: full2180/67 2156checked/24blocked,zero regressions/good-unvalidated; complete statement suite and all controls PASS.",
+    "snapshot": "work/snapshots/quality-main52/translator",
+    "campaign": "work/logs/quality-main52-campaign.log",
+    "campaign_pid": null,
+    "run": "work/runs/quality-main52-transport",
+    "full_run": "work/runs/quality-main52-full",
+    "full_campaign": "work/logs/quality-main52-full-campaign.log",
+    "full_campaign_pid": null,
+    "native_lean_client": "work/tests/poly-transport-native-client52/result.json",
+    "native_lean_client_status": "PASS: three pending eq_equivalence obligations supplied by native Lean Eq proofs; translated symmetry used to prove native Eq symmetry at arbitrary universe; three empty axiom closures.",
+    "controls": "work/tests/poly-transport-independence-controls52/result.json",
+    "controls_status": "PASS:2 arbitrary-universe clients,5 prerequisites explicitly proved,6 empty axiom closures,7 kernel-valid wrong metadata/interface mutations rejected.",
+    "full_controls": "work/tests/poly-transport-independence-full-controls52/result.json",
+    "full_result": "CERTIFIED all gates PASS,including7 dedicated kernel-valid negative controls and2 native Lean clients."
+  },
+  "cast_transport_probe": {
+    "status": "TERMINAL main53:750 roots/7 modules,zero gains/validation failures; removed from active source. Snapshot retained.",
+    "snapshot": "work/snapshots/quality-main53/translator",
+    "campaign": "work/logs/quality-main53-campaign.log"
+  },
+  "binder_combinator_probe": {
+    "status": "main55 targeted750/7 complete:23blocked,one additional checked statement subrelation_id_proper; zero module validation failures. Arbitrary-universe Lean proof has no axioms. main56 tests zeta normalization of alias let/lambda prefix.",
+    "snapshot": "work/snapshots/quality-main55/translator",
+    "campaign": "work/logs/quality-main55-campaign.log",
+    "campaign_pid": null,
+    "run": "work/runs/quality-main55-transport"
+  },
+  "alias_prefix_probe": {
+    "status": "CERTIFIED main56:2165checked/15blocked,full2180/67,zero status/validation regressions,zero good-unvalidated; all controls and statement suite PASS. Original campaign stopped at obsolete contextual bare-iff test expectation; corrected test preserves bare-reference and semantic mutation checks, resume completed all remaining gates.",
+    "snapshot": "work/snapshots/quality-main56/translator",
+    "campaign": "work/logs/quality-main56-campaign.log",
+    "campaign_pid": null,
+    "run": "work/runs/quality-main56-transport",
+    "full_campaign": "work/logs/quality-main56-full-campaign.log",
+    "full_campaign_pid": null,
+    "full_run": "work/runs/quality-main56-full",
+    "controls": "work/tests/alias-prefix-controls56/result.json",
+    "full_controls": "work/tests/alias-prefix-full-controls56/result.json",
+    "full_controls_pid": null,
+    "resume_campaign": "work/logs/quality-main56-resume-campaign.log",
+    "resume_campaign_pid": null
+  },
+  "joint_source_conversion_probe": {
+    "status": "main57 targeted750/7 COMPLETE:10blocked,5 further gains,all module validations OK. Five arbitrary-universe root proofs/six empty axiom closures/six kernel-valid negative controls PASS. Full regression RUNNING.",
+    "snapshot": "work/snapshots/quality-main57/translator",
+    "campaign": "work/logs/quality-main57-campaign.log",
+    "campaign_pid": null,
+    "run": "work/runs/quality-main57-transport",
+    "full_campaign": "work/logs/quality-main57-full-campaign.log",
+    "full_campaign_pid": 2924172,
+    "full_run": "work/runs/quality-main57-full",
+    "controls": "work/tests/joint-source-controls57/result.json",
+    "full_controls": "work/tests/joint-source-full-controls57/result.json"
+  },
+  "recursor_transport_probe": {
+    "status": "main59 targeted750/7 COMPLETE:9blocked,all module validations OK. bool_eq_rec now conditional checked. main58 kernel/consumer passed but structural audit lacked function-returning recursor signature; main59 reuses kernel recursor metadata already checked against source cases. Dedicated branch/negative controls pending; not full certified.",
+    "snapshot": "work/snapshots/quality-main59/translator",
+    "campaign": "work/logs/quality-main59-campaign.log",
+    "campaign_pid": null,
+    "run": "work/runs/quality-main59-transport",
+    "controls": "work/tests/bool-rec-transport-controls59/result.json",
+    "control_status": "PASS:two original Set-family beta laws,two prerequisites proved,four empty axiom closures,four kernel-valid provenance/native-bound/semantic mutations rejected.",
+    "full_campaign": "work/logs/quality-main59-full-campaign.log",
+    "full_campaign_pid": 2933919,
+    "full_run": "work/runs/quality-main59-full"
+  },
+  "general_source_evaluation_probe": {
+    "status": "RUNNING main60: transparent constant-headed aliases without lambdas; exact constructor-driven single-fix computation including operations specialized to types. Deferred termination and opaque bodies remain excluded.",
+    "snapshot": "work/snapshots/quality-main60/translator",
+    "campaign": "work/logs/quality-main60-campaign.log",
+    "campaign_pid": 2935006,
+    "run": "work/runs/quality-main60-transport"
+  },
+  "completion": {
+    "result_index": "RESULTS.md",
+    "results": "results/corelib-complete",
+    "artifact_validation": "results/corelib-complete/artifact-validation.json",
+    "universe_review": "results/corelib-complete/UNIVERSES.md",
+    "run": "work/runs/quality-main75-full",
+    "snapshot": "work/snapshots/quality-main75/translator",
+    "campaign": "work/logs/quality-main75-full-campaign.log",
+    "simplification_comparison": "work/quality-main75-artifacts.json",
+    "scope_roots": 2180,
+    "scope_modules": 67,
+    "blocked": 0,
+    "status_counts": {
+      "STATEMENT_KERNEL_CHECKED": 846,
+      "TRANSLATED_AND_CHECKED": 1001,
+      "PENDING_KERNEL_CHECKED": 148,
+      "STATEMENT_PENDING_KERNEL_CHECKED": 183,
+      "BOOTSTRAP_RESOLVED": 2
+    },
+    "note": "Statement-only and explicit conditional artifacts remain as designed. No all-theorem-proofs or native-code-generation claim."
+  },
+  "historical_experiments_note": "Earlier experiment entries retain historical checkpoint text. Current completion status and evidence are given by completion and top-level counts.",
+  "correspondence": {
+    "directory": "experiments/mechanical-correspondence-20261019",
+    "summary": {
+      "root_declarations": 2180,
+      "source_files": 67,
+      "files_with_roots": 51,
+      "coverage_status": {
+        "STATEMENT_PARTIAL": 702,
+        "TYPE_ISO": 29,
+        "OPERATION_CORRESPONDENCE": 114,
+        "TRANSPORT_INTERFACE_ONLY": 375,
+        "NOT_YET_BRIDGED": 485,
+        "EXPLICIT_PROOF_PARAMETERS": 331,
+        "STATEMENT_FULL_NATIVE": 143,
+        "TYPE_VALUED_STATEMENT": 1
+      },
+      "type_iso_certificates": 30,
+      "distinct_type_roots": 29,
+      "operation_certificates": 119,
+      "distinct_operation_roots": 114,
+      "statement_iff_certificates": 845,
+      "fully_native_statement_iffs": 143,
+      "native_interface_roundtrips": 478,
+      "interface_type_universe_specializations": 37,
+      "interface_candidates": 839,
+      "unified_native_interfaces": 108,
+      "unified_export_roots": 141,
+      "passing_manual_profiles": 20,
+      "passing_statement_profiles": 36,
+      "passing_interface_profiles": 45,
+      "unified_public_declarations": 251,
+      "allowed_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "completion": "partial: all roots inventoried; correspondence coverage is not complete"
+    },
+    "pending_conditions": 331
+  }
+}

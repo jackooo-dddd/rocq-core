@@ -1,0 +1,2231 @@
+{
+  "module": "Corelib.Setoids.Setoid",
+  "roots": {
+    "Corelib.Setoids.Setoid.Build_Setoid_Theory": {
+      "source": "Corelib.Setoids.Setoid.Build_Setoid_Theory",
+      "canonical": "Corelib.Setoids.Setoid.Build_Setoid_Theory",
+      "result": {
+        "canonical": "Corelib.Setoids.Setoid.Build_Setoid_Theory",
+        "status": "STATEMENT_KERNEL_CHECKED",
+        "message": "",
+        "target": "Rocq.Corelib.Setoids.Setoid.Build_Setoid_Theory.statement",
+        "blocked_by": []
+      },
+      "meaning": "定理／公理陈述，无待证参数；不是已证明定理",
+      "source_ir": {
+        "kind": "constant",
+        "name": "Corelib.Setoids.Setoid.Build_Setoid_Theory",
+        "mp": {
+          "file": [
+            "Corelib",
+            "Setoids",
+            "Setoid"
+          ]
+        },
+        "id": "Build_Setoid_Theory",
+        "type": {
+          "k": "prod",
+          "n": {
+            "n": "A",
+            "r": "R"
+          },
+          "ty": {
+            "k": "sort",
+            "s": {
+              "k": "type",
+              "u": [
+                {
+                  "l": {
+                    "k": "global",
+                    "n": "Corelib.Classes.RelationClasses.21"
+                  },
+                  "n": 0
+                }
+              ]
+            }
+          },
+          "b": {
+            "k": "prod",
+            "n": {
+              "n": "R",
+              "r": "R"
+            },
+            "ty": {
+              "k": "app",
+              "f": {
+                "k": "const",
+                "c": "Corelib.Relations.Relation_Definitions.relation",
+                "u": []
+              },
+              "args": [
+                {
+                  "k": "rel",
+                  "i": 0
+                }
+              ]
+            },
+            "b": {
+              "k": "prod",
+              "n": {
+                "n": "Equivalence_Reflexive",
+                "r": "R"
+              },
+              "ty": {
+                "k": "app",
+                "f": {
+                  "k": "const",
+                  "c": "Corelib.Classes.RelationClasses.Reflexive",
+                  "u": []
+                },
+                "args": [
+                  {
+                    "k": "rel",
+                    "i": 1
+                  },
+                  {
+                    "k": "rel",
+                    "i": 0
+                  }
+                ]
+              },
+              "b": {
+                "k": "prod",
+                "n": {
+                  "n": "Equivalence_Symmetric",
+                  "r": "R"
+                },
+                "ty": {
+                  "k": "app",
+                  "f": {
+                    "k": "const",
+                    "c": "Corelib.Classes.RelationClasses.Symmetric",
+                    "u": []
+                  },
+                  "args": [
+                    {
+                      "k": "rel",
+                      "i": 2
+                    },
+                    {
+                      "k": "rel",
+                      "i": 1
+                    }
+                  ]
+                },
+                "b": {
+                  "k": "prod",
+                  "n": {
+                    "n": "Equivalence_Transitive",
+                    "r": "R"
+                  },
+                  "ty": {
+                    "k": "app",
+                    "f": {
+                      "k": "const",
+                      "c": "Corelib.Classes.RelationClasses.Transitive",
+                      "u": []
+                    },
+                    "args": [
+                      {
+                        "k": "rel",
+                        "i": 3
+                      },
+                      {
+                        "k": "rel",
+                        "i": 2
+                      }
+                    ]
+                  },
+                  "b": {
+                    "k": "app",
+                    "f": {
+                      "k": "ind",
+                      "ind": {
+                        "mind": "Corelib.Classes.RelationClasses.Equivalence",
+                        "i": 0
+                      },
+                      "u": []
+                    },
+                    "args": [
+                      {
+                        "k": "rel",
+                        "i": 4
+                      },
+                      {
+                        "k": "rel",
+                        "i": 3
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "body": null,
+        "body_state": "statement_only",
+        "universes": {
+          "k": "monomorphic"
+        },
+        "relevance": "R",
+        "deps": {
+          "type": [
+            "Corelib.Classes.RelationClasses.Equivalence",
+            "Corelib.Classes.RelationClasses.Reflexive",
+            "Corelib.Classes.RelationClasses.Symmetric",
+            "Corelib.Classes.RelationClasses.Transitive",
+            "Corelib.Relations.Relation_Definitions.relation"
+          ],
+          "body": []
+        },
+        "native": {
+          "body_kind": "transparent",
+          "prepared": {
+            "sealed_implementation": false,
+            "lowered_ssr_have_upoly": false
+          },
+          "polymorphic": false,
+          "private_universes": "none",
+          "typing_flags": {
+            "check_guarded": true,
+            "check_positive": true,
+            "check_universes": true,
+            "check_eliminations": true,
+            "indices_matter": false,
+            "impredicative_set": false,
+            "sprop_allowed": true,
+            "allow_uip": false
+          }
+        },
+        "statement_prepared": true
+      },
+      "target_report": {
+        "universe_residuals": null,
+        "universe_poly_params": 0,
+        "universe_minimal_levels": 0,
+        "universe_lowered": false,
+        "universe_level_defaults": 0,
+        "universe_diagnostics": [],
+        "universe_cumulativity": false,
+        "universe_checks": 5,
+        "type_lift_coercions": 0,
+        "type_lift": null,
+        "template_sort": false,
+        "template_params": [],
+        "template": false,
+        "target_value": {
+          "t": {
+            "l": {
+              "l": {
+                "n": "u_Corelib_Classes_RelationClasses_21",
+                "k": "param"
+              },
+              "k": "succ"
+            },
+            "k": "sort"
+          },
+          "n": "A",
+          "k": "forall",
+          "b": {
+            "t": {
+              "k": "app",
+              "f": {
+                "u": [
+                  {
+                    "n": "u_Corelib_Classes_RelationClasses_21",
+                    "k": "param"
+                  }
+                ],
+                "n": "Rocq.Corelib.Relations.Relation_Definitions.relation",
+                "k": "const"
+              },
+              "a": {
+                "k": "bvar",
+                "i": 0
+              }
+            },
+            "n": "R",
+            "k": "forall",
+            "b": {
+              "t": {
+                "k": "app",
+                "f": {
+                  "k": "app",
+                  "f": {
+                    "u": [
+                      {
+                        "n": "u_Corelib_Classes_RelationClasses_21",
+                        "k": "param"
+                      }
+                    ],
+                    "n": "Rocq.Corelib.Classes.RelationClasses.Reflexive",
+                    "k": "const"
+                  },
+                  "a": {
+                    "k": "bvar",
+                    "i": 1
+                  }
+                },
+                "a": {
+                  "k": "bvar",
+                  "i": 0
+                }
+              },
+              "n": "Equivalence_Reflexive",
+              "k": "forall",
+              "b": {
+                "t": {
+                  "k": "app",
+                  "f": {
+                    "k": "app",
+                    "f": {
+                      "u": [
+                        {
+                          "n": "u_Corelib_Classes_RelationClasses_21",
+                          "k": "param"
+                        }
+                      ],
+                      "n": "Rocq.Corelib.Classes.RelationClasses.Symmetric",
+                      "k": "const"
+                    },
+                    "a": {
+                      "k": "bvar",
+                      "i": 2
+                    }
+                  },
+                  "a": {
+                    "k": "bvar",
+                    "i": 1
+                  }
+                },
+                "n": "Equivalence_Symmetric",
+                "k": "forall",
+                "b": {
+                  "t": {
+                    "k": "app",
+                    "f": {
+                      "k": "app",
+                      "f": {
+                        "u": [
+                          {
+                            "n": "u_Corelib_Classes_RelationClasses_21",
+                            "k": "param"
+                          }
+                        ],
+                        "n": "Rocq.Corelib.Classes.RelationClasses.Transitive",
+                        "k": "const"
+                      },
+                      "a": {
+                        "k": "bvar",
+                        "i": 3
+                      }
+                    },
+                    "a": {
+                      "k": "bvar",
+                      "i": 2
+                    }
+                  },
+                  "n": "Equivalence_Transitive",
+                  "k": "forall",
+                  "b": {
+                    "k": "app",
+                    "f": {
+                      "k": "app",
+                      "f": {
+                        "u": [
+                          {
+                            "n": "u_Corelib_Classes_RelationClasses_21",
+                            "k": "param"
+                          }
+                        ],
+                        "n": "Rocq.Corelib.Classes.RelationClasses.Equivalence",
+                        "k": "const"
+                      },
+                      "a": {
+                        "k": "bvar",
+                        "i": 4
+                      }
+                    },
+                    "a": {
+                      "k": "bvar",
+                      "i": 3
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "target_type": {
+          "l": {
+            "k": "zero"
+          },
+          "k": "sort"
+        },
+        "target_kind": "statement",
+        "target_ctors": [],
+        "target": "Rocq.Corelib.Setoids.Setoid.Build_Setoid_Theory.statement",
+        "status": "STATEMENT_KERNEL_CHECKED",
+        "source_computed": [],
+        "source": "Corelib.Setoids.Setoid.Build_Setoid_Theory",
+        "sort_lowered_levels": [],
+        "sort_interp": false,
+        "sort_fact_reduced": false,
+        "solved_levels": [],
+        "rule": "constant/transparent",
+        "result_sort_inherited": false,
+        "result_sort_implicit_levels": [],
+        "r2bp_levels": [],
+        "quality_prop": null,
+        "protected": true,
+        "prop_lift_unfold": [],
+        "prop_lift_coercions": 0,
+        "prop_lift": null,
+        "primitive_record": false,
+        "poly_level_interp": [],
+        "plain_levels": false,
+        "phantom_lowered": [],
+        "pending_hypotheses": [],
+        "path": [],
+        "num_params": 0,
+        "message": "",
+        "level_split": [],
+        "level_params": [
+          "u_Corelib_Classes_RelationClasses_21"
+        ],
+        "level_interp": [],
+        "level_copies": [],
+        "kind": "constant",
+        "implicit_levels": [],
+        "delta_inlined": [],
+        "coinductive_as_inductive": false,
+        "blocked_by": [],
+        "admitting_levels": []
+      },
+      "quality_variants": [],
+      "prerequisite_declarations": [],
+      "attempts": {
+        "source": "Corelib.Setoids.Setoid.Build_Setoid_Theory",
+        "status": "STATEMENT_KERNEL_CHECKED",
+        "tier_times": [
+          [
+            "c[ad] eo1",
+            0,
+            "UNIVERSE_REJECTED | reference to Rocq.Corelib.Classes.RelationClasses.Equivalence: coherence: source level Corelib.Classes.RelationClasses.21 is a motive level of the referring declaration but not of the referenced one"
+          ],
+          [
+            "c[] eo1",
+            1,
+            "TRANSLATED_AND_CHECKED"
+          ]
+        ],
+        "time_ms": 1
+      },
+      "baseline": {
+        "result": {
+          "canonical": "Corelib.Setoids.Setoid.Build_Setoid_Theory",
+          "status": "STATEMENT_KERNEL_CHECKED",
+          "message": "",
+          "target": "Rocq.Corelib.Setoids.Setoid.Build_Setoid_Theory.statement",
+          "blocked_by": []
+        },
+        "stage": "基线已有结果",
+        "path": [],
+        "message": "",
+        "native_diagnostics": []
+      },
+      "module_validation": {
+        "roundtrip_exit": 0,
+        "roundtrip": "OK",
+        "translate_exit": 0,
+        "consumer_exit": 0,
+        "audit_exit": 0,
+        "consumer": "OK",
+        "audit": "OK"
+      },
+      "evidence_directory": "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Setoids/Setoid"
+    },
+    "Corelib.Setoids.Setoid.Seq_refl": {
+      "source": "Corelib.Setoids.Setoid.Seq_refl",
+      "canonical": "Corelib.Setoids.Setoid.Seq_refl",
+      "result": {
+        "canonical": "Corelib.Setoids.Setoid.Seq_refl",
+        "status": "STATEMENT_KERNEL_CHECKED",
+        "message": "",
+        "target": "Rocq.Corelib.Setoids.Setoid.Seq_refl.statement",
+        "blocked_by": []
+      },
+      "meaning": "定理／公理陈述，无待证参数；不是已证明定理",
+      "source_ir": {
+        "kind": "constant",
+        "name": "Corelib.Setoids.Setoid.Seq_refl",
+        "mp": {
+          "file": [
+            "Corelib",
+            "Setoids",
+            "Setoid"
+          ]
+        },
+        "id": "Seq_refl",
+        "type": {
+          "k": "prod",
+          "n": {
+            "n": "A",
+            "r": "R"
+          },
+          "ty": {
+            "k": "sort",
+            "s": {
+              "k": "type",
+              "u": [
+                {
+                  "l": {
+                    "k": "global",
+                    "n": "Corelib.Setoids.Setoid.23"
+                  },
+                  "n": 0
+                }
+              ]
+            }
+          },
+          "b": {
+            "k": "prod",
+            "n": {
+              "n": "Aeq",
+              "r": "R"
+            },
+            "ty": {
+              "k": "app",
+              "f": {
+                "k": "const",
+                "c": "Corelib.Relations.Relation_Definitions.relation",
+                "u": []
+              },
+              "args": [
+                {
+                  "k": "rel",
+                  "i": 0
+                }
+              ]
+            },
+            "b": {
+              "k": "prod",
+              "n": {
+                "n": "s",
+                "r": "R"
+              },
+              "ty": {
+                "k": "app",
+                "f": {
+                  "k": "const",
+                  "c": "Corelib.Setoids.Setoid.Setoid_Theory",
+                  "u": []
+                },
+                "args": [
+                  {
+                    "k": "rel",
+                    "i": 1
+                  },
+                  {
+                    "k": "rel",
+                    "i": 0
+                  }
+                ]
+              },
+              "b": {
+                "k": "prod",
+                "n": {
+                  "n": "x",
+                  "r": "R"
+                },
+                "ty": {
+                  "k": "rel",
+                  "i": 2
+                },
+                "b": {
+                  "k": "app",
+                  "f": {
+                    "k": "rel",
+                    "i": 2
+                  },
+                  "args": [
+                    {
+                      "k": "rel",
+                      "i": 0
+                    },
+                    {
+                      "k": "rel",
+                      "i": 0
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "body": null,
+        "body_state": "statement_only",
+        "universes": {
+          "k": "monomorphic"
+        },
+        "relevance": "R",
+        "deps": {
+          "type": [
+            "Corelib.Relations.Relation_Definitions.relation",
+            "Corelib.Setoids.Setoid.Setoid_Theory"
+          ],
+          "body": []
+        },
+        "native": {
+          "body_kind": "transparent",
+          "prepared": {
+            "sealed_implementation": false,
+            "lowered_ssr_have_upoly": false
+          },
+          "polymorphic": false,
+          "private_universes": "none",
+          "typing_flags": {
+            "check_guarded": true,
+            "check_positive": true,
+            "check_universes": true,
+            "check_eliminations": true,
+            "indices_matter": false,
+            "impredicative_set": false,
+            "sprop_allowed": true,
+            "allow_uip": false
+          }
+        },
+        "statement_prepared": true
+      },
+      "target_report": {
+        "universe_residuals": null,
+        "universe_poly_params": 0,
+        "universe_minimal_levels": 0,
+        "universe_lowered": false,
+        "universe_level_defaults": 0,
+        "universe_diagnostics": [],
+        "universe_cumulativity": false,
+        "universe_checks": 2,
+        "type_lift_coercions": 0,
+        "type_lift": null,
+        "template_sort": false,
+        "template_params": [],
+        "template": false,
+        "target_value": {
+          "t": {
+            "l": {
+              "l": {
+                "n": "u_Corelib_Relations_Relation_Definitions_21",
+                "k": "param"
+              },
+              "k": "succ"
+            },
+            "k": "sort"
+          },
+          "n": "A",
+          "k": "forall",
+          "b": {
+            "t": {
+              "k": "app",
+              "f": {
+                "u": [
+                  {
+                    "n": "u_Corelib_Relations_Relation_Definitions_21",
+                    "k": "param"
+                  }
+                ],
+                "n": "Rocq.Corelib.Relations.Relation_Definitions.relation",
+                "k": "const"
+              },
+              "a": {
+                "k": "bvar",
+                "i": 0
+              }
+            },
+            "n": "Aeq",
+            "k": "forall",
+            "b": {
+              "t": {
+                "k": "app",
+                "f": {
+                  "k": "app",
+                  "f": {
+                    "u": [
+                      {
+                        "n": "u_Corelib_Relations_Relation_Definitions_21",
+                        "k": "param"
+                      }
+                    ],
+                    "n": "Rocq.Corelib.Setoids.Setoid.Setoid_Theory",
+                    "k": "const"
+                  },
+                  "a": {
+                    "k": "bvar",
+                    "i": 1
+                  }
+                },
+                "a": {
+                  "k": "bvar",
+                  "i": 0
+                }
+              },
+              "n": "s",
+              "k": "forall",
+              "b": {
+                "t": {
+                  "k": "bvar",
+                  "i": 2
+                },
+                "n": "x",
+                "k": "forall",
+                "b": {
+                  "k": "app",
+                  "f": {
+                    "k": "app",
+                    "f": {
+                      "k": "bvar",
+                      "i": 2
+                    },
+                    "a": {
+                      "k": "bvar",
+                      "i": 0
+                    }
+                  },
+                  "a": {
+                    "k": "bvar",
+                    "i": 0
+                  }
+                }
+              }
+            }
+          }
+        },
+        "target_type": {
+          "l": {
+            "k": "zero"
+          },
+          "k": "sort"
+        },
+        "target_kind": "statement",
+        "target_ctors": [],
+        "target": "Rocq.Corelib.Setoids.Setoid.Seq_refl.statement",
+        "status": "STATEMENT_KERNEL_CHECKED",
+        "source_computed": [],
+        "source": "Corelib.Setoids.Setoid.Seq_refl",
+        "sort_lowered_levels": [],
+        "sort_interp": false,
+        "sort_fact_reduced": false,
+        "solved_levels": [
+          {
+            "sigma": {
+              "l": {
+                "n": "u_Corelib_Relations_Relation_Definitions_21",
+                "k": "param"
+              },
+              "k": "succ"
+            },
+            "level": "Corelib.Setoids.Setoid.23"
+          }
+        ],
+        "rule": "constant/transparent",
+        "result_sort_inherited": false,
+        "result_sort_implicit_levels": [],
+        "r2bp_levels": [],
+        "quality_prop": null,
+        "protected": true,
+        "prop_lift_unfold": [],
+        "prop_lift_coercions": 0,
+        "prop_lift": null,
+        "primitive_record": false,
+        "poly_level_interp": [],
+        "plain_levels": false,
+        "phantom_lowered": [],
+        "pending_hypotheses": [],
+        "path": [],
+        "num_params": 0,
+        "message": "",
+        "level_split": [],
+        "level_params": [
+          "u_Corelib_Relations_Relation_Definitions_21"
+        ],
+        "level_interp": [],
+        "level_copies": [],
+        "kind": "constant",
+        "implicit_levels": [
+          "Corelib.Relations.Relation_Definitions.21"
+        ],
+        "delta_inlined": [],
+        "coinductive_as_inductive": false,
+        "blocked_by": [],
+        "admitting_levels": [
+          "Corelib.Setoids.Setoid.23"
+        ]
+      },
+      "quality_variants": [],
+      "prerequisite_declarations": [],
+      "attempts": {
+        "source": "Corelib.Setoids.Setoid.Seq_refl",
+        "status": "STATEMENT_KERNEL_CHECKED",
+        "tier_times": [
+          [
+            "c[ad] eo1",
+            0,
+            "TRANSLATED_AND_CHECKED"
+          ]
+        ],
+        "time_ms": 0
+      },
+      "baseline": {
+        "result": {
+          "canonical": "Corelib.Setoids.Setoid.Seq_refl",
+          "status": "STATEMENT_KERNEL_CHECKED",
+          "message": "",
+          "target": "Rocq.Corelib.Setoids.Setoid.Seq_refl.statement",
+          "blocked_by": []
+        },
+        "stage": "基线已有结果",
+        "path": [],
+        "message": "",
+        "native_diagnostics": []
+      },
+      "module_validation": {
+        "roundtrip_exit": 0,
+        "roundtrip": "OK",
+        "translate_exit": 0,
+        "consumer_exit": 0,
+        "audit_exit": 0,
+        "consumer": "OK",
+        "audit": "OK"
+      },
+      "evidence_directory": "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Setoids/Setoid"
+    },
+    "Corelib.Setoids.Setoid.Seq_sym": {
+      "source": "Corelib.Setoids.Setoid.Seq_sym",
+      "canonical": "Corelib.Setoids.Setoid.Seq_sym",
+      "result": {
+        "canonical": "Corelib.Setoids.Setoid.Seq_sym",
+        "status": "STATEMENT_KERNEL_CHECKED",
+        "message": "",
+        "target": "Rocq.Corelib.Setoids.Setoid.Seq_sym.statement",
+        "blocked_by": []
+      },
+      "meaning": "定理／公理陈述，无待证参数；不是已证明定理",
+      "source_ir": {
+        "kind": "constant",
+        "name": "Corelib.Setoids.Setoid.Seq_sym",
+        "mp": {
+          "file": [
+            "Corelib",
+            "Setoids",
+            "Setoid"
+          ]
+        },
+        "id": "Seq_sym",
+        "type": {
+          "k": "prod",
+          "n": {
+            "n": "A",
+            "r": "R"
+          },
+          "ty": {
+            "k": "sort",
+            "s": {
+              "k": "type",
+              "u": [
+                {
+                  "l": {
+                    "k": "global",
+                    "n": "Corelib.Setoids.Setoid.26"
+                  },
+                  "n": 0
+                }
+              ]
+            }
+          },
+          "b": {
+            "k": "prod",
+            "n": {
+              "n": "Aeq",
+              "r": "R"
+            },
+            "ty": {
+              "k": "app",
+              "f": {
+                "k": "const",
+                "c": "Corelib.Relations.Relation_Definitions.relation",
+                "u": []
+              },
+              "args": [
+                {
+                  "k": "rel",
+                  "i": 0
+                }
+              ]
+            },
+            "b": {
+              "k": "prod",
+              "n": {
+                "n": "s",
+                "r": "R"
+              },
+              "ty": {
+                "k": "app",
+                "f": {
+                  "k": "const",
+                  "c": "Corelib.Setoids.Setoid.Setoid_Theory",
+                  "u": []
+                },
+                "args": [
+                  {
+                    "k": "rel",
+                    "i": 1
+                  },
+                  {
+                    "k": "rel",
+                    "i": 0
+                  }
+                ]
+              },
+              "b": {
+                "k": "prod",
+                "n": {
+                  "n": "x",
+                  "r": "R"
+                },
+                "ty": {
+                  "k": "rel",
+                  "i": 2
+                },
+                "b": {
+                  "k": "prod",
+                  "n": {
+                    "n": "y",
+                    "r": "R"
+                  },
+                  "ty": {
+                    "k": "rel",
+                    "i": 3
+                  },
+                  "b": {
+                    "k": "prod",
+                    "n": {
+                      "n": null,
+                      "r": "R"
+                    },
+                    "ty": {
+                      "k": "app",
+                      "f": {
+                        "k": "rel",
+                        "i": 3
+                      },
+                      "args": [
+                        {
+                          "k": "rel",
+                          "i": 1
+                        },
+                        {
+                          "k": "rel",
+                          "i": 0
+                        }
+                      ]
+                    },
+                    "b": {
+                      "k": "app",
+                      "f": {
+                        "k": "rel",
+                        "i": 4
+                      },
+                      "args": [
+                        {
+                          "k": "rel",
+                          "i": 1
+                        },
+                        {
+                          "k": "rel",
+                          "i": 2
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "body": null,
+        "body_state": "statement_only",
+        "universes": {
+          "k": "monomorphic"
+        },
+        "relevance": "R",
+        "deps": {
+          "type": [
+            "Corelib.Relations.Relation_Definitions.relation",
+            "Corelib.Setoids.Setoid.Setoid_Theory"
+          ],
+          "body": []
+        },
+        "native": {
+          "body_kind": "transparent",
+          "prepared": {
+            "sealed_implementation": false,
+            "lowered_ssr_have_upoly": false
+          },
+          "polymorphic": false,
+          "private_universes": "none",
+          "typing_flags": {
+            "check_guarded": true,
+            "check_positive": true,
+            "check_universes": true,
+            "check_eliminations": true,
+            "indices_matter": false,
+            "impredicative_set": false,
+            "sprop_allowed": true,
+            "allow_uip": false
+          }
+        },
+        "statement_prepared": true
+      },
+      "target_report": {
+        "universe_residuals": null,
+        "universe_poly_params": 0,
+        "universe_minimal_levels": 0,
+        "universe_lowered": false,
+        "universe_level_defaults": 0,
+        "universe_diagnostics": [],
+        "universe_cumulativity": false,
+        "universe_checks": 2,
+        "type_lift_coercions": 0,
+        "type_lift": null,
+        "template_sort": false,
+        "template_params": [],
+        "template": false,
+        "target_value": {
+          "t": {
+            "l": {
+              "l": {
+                "n": "u_Corelib_Relations_Relation_Definitions_21",
+                "k": "param"
+              },
+              "k": "succ"
+            },
+            "k": "sort"
+          },
+          "n": "A",
+          "k": "forall",
+          "b": {
+            "t": {
+              "k": "app",
+              "f": {
+                "u": [
+                  {
+                    "n": "u_Corelib_Relations_Relation_Definitions_21",
+                    "k": "param"
+                  }
+                ],
+                "n": "Rocq.Corelib.Relations.Relation_Definitions.relation",
+                "k": "const"
+              },
+              "a": {
+                "k": "bvar",
+                "i": 0
+              }
+            },
+            "n": "Aeq",
+            "k": "forall",
+            "b": {
+              "t": {
+                "k": "app",
+                "f": {
+                  "k": "app",
+                  "f": {
+                    "u": [
+                      {
+                        "n": "u_Corelib_Relations_Relation_Definitions_21",
+                        "k": "param"
+                      }
+                    ],
+                    "n": "Rocq.Corelib.Setoids.Setoid.Setoid_Theory",
+                    "k": "const"
+                  },
+                  "a": {
+                    "k": "bvar",
+                    "i": 1
+                  }
+                },
+                "a": {
+                  "k": "bvar",
+                  "i": 0
+                }
+              },
+              "n": "s",
+              "k": "forall",
+              "b": {
+                "t": {
+                  "k": "bvar",
+                  "i": 2
+                },
+                "n": "x",
+                "k": "forall",
+                "b": {
+                  "t": {
+                    "k": "bvar",
+                    "i": 3
+                  },
+                  "n": "y",
+                  "k": "forall",
+                  "b": {
+                    "t": {
+                      "k": "app",
+                      "f": {
+                        "k": "app",
+                        "f": {
+                          "k": "bvar",
+                          "i": 3
+                        },
+                        "a": {
+                          "k": "bvar",
+                          "i": 1
+                        }
+                      },
+                      "a": {
+                        "k": "bvar",
+                        "i": 0
+                      }
+                    },
+                    "n": "[anonymous]",
+                    "k": "forall",
+                    "b": {
+                      "k": "app",
+                      "f": {
+                        "k": "app",
+                        "f": {
+                          "k": "bvar",
+                          "i": 4
+                        },
+                        "a": {
+                          "k": "bvar",
+                          "i": 1
+                        }
+                      },
+                      "a": {
+                        "k": "bvar",
+                        "i": 2
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "target_type": {
+          "l": {
+            "k": "zero"
+          },
+          "k": "sort"
+        },
+        "target_kind": "statement",
+        "target_ctors": [],
+        "target": "Rocq.Corelib.Setoids.Setoid.Seq_sym.statement",
+        "status": "STATEMENT_KERNEL_CHECKED",
+        "source_computed": [],
+        "source": "Corelib.Setoids.Setoid.Seq_sym",
+        "sort_lowered_levels": [],
+        "sort_interp": false,
+        "sort_fact_reduced": false,
+        "solved_levels": [
+          {
+            "sigma": {
+              "l": {
+                "n": "u_Corelib_Relations_Relation_Definitions_21",
+                "k": "param"
+              },
+              "k": "succ"
+            },
+            "level": "Corelib.Setoids.Setoid.26"
+          }
+        ],
+        "rule": "constant/transparent",
+        "result_sort_inherited": false,
+        "result_sort_implicit_levels": [],
+        "r2bp_levels": [],
+        "quality_prop": null,
+        "protected": true,
+        "prop_lift_unfold": [],
+        "prop_lift_coercions": 0,
+        "prop_lift": null,
+        "primitive_record": false,
+        "poly_level_interp": [],
+        "plain_levels": false,
+        "phantom_lowered": [],
+        "pending_hypotheses": [],
+        "path": [],
+        "num_params": 0,
+        "message": "",
+        "level_split": [],
+        "level_params": [
+          "u_Corelib_Relations_Relation_Definitions_21"
+        ],
+        "level_interp": [],
+        "level_copies": [],
+        "kind": "constant",
+        "implicit_levels": [
+          "Corelib.Relations.Relation_Definitions.21"
+        ],
+        "delta_inlined": [],
+        "coinductive_as_inductive": false,
+        "blocked_by": [],
+        "admitting_levels": [
+          "Corelib.Setoids.Setoid.26"
+        ]
+      },
+      "quality_variants": [],
+      "prerequisite_declarations": [],
+      "attempts": {
+        "source": "Corelib.Setoids.Setoid.Seq_sym",
+        "status": "STATEMENT_KERNEL_CHECKED",
+        "tier_times": [
+          [
+            "c[ad] eo1",
+            0,
+            "TRANSLATED_AND_CHECKED"
+          ]
+        ],
+        "time_ms": 0
+      },
+      "baseline": {
+        "result": {
+          "canonical": "Corelib.Setoids.Setoid.Seq_sym",
+          "status": "STATEMENT_KERNEL_CHECKED",
+          "message": "",
+          "target": "Rocq.Corelib.Setoids.Setoid.Seq_sym.statement",
+          "blocked_by": []
+        },
+        "stage": "基线已有结果",
+        "path": [],
+        "message": "",
+        "native_diagnostics": []
+      },
+      "module_validation": {
+        "roundtrip_exit": 0,
+        "roundtrip": "OK",
+        "translate_exit": 0,
+        "consumer_exit": 0,
+        "audit_exit": 0,
+        "consumer": "OK",
+        "audit": "OK"
+      },
+      "evidence_directory": "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Setoids/Setoid"
+    },
+    "Corelib.Setoids.Setoid.Seq_trans": {
+      "source": "Corelib.Setoids.Setoid.Seq_trans",
+      "canonical": "Corelib.Setoids.Setoid.Seq_trans",
+      "result": {
+        "canonical": "Corelib.Setoids.Setoid.Seq_trans",
+        "status": "STATEMENT_KERNEL_CHECKED",
+        "message": "",
+        "target": "Rocq.Corelib.Setoids.Setoid.Seq_trans.statement",
+        "blocked_by": []
+      },
+      "meaning": "定理／公理陈述，无待证参数；不是已证明定理",
+      "source_ir": {
+        "kind": "constant",
+        "name": "Corelib.Setoids.Setoid.Seq_trans",
+        "mp": {
+          "file": [
+            "Corelib",
+            "Setoids",
+            "Setoid"
+          ]
+        },
+        "id": "Seq_trans",
+        "type": {
+          "k": "prod",
+          "n": {
+            "n": "A",
+            "r": "R"
+          },
+          "ty": {
+            "k": "sort",
+            "s": {
+              "k": "type",
+              "u": [
+                {
+                  "l": {
+                    "k": "global",
+                    "n": "Corelib.Setoids.Setoid.29"
+                  },
+                  "n": 0
+                }
+              ]
+            }
+          },
+          "b": {
+            "k": "prod",
+            "n": {
+              "n": "Aeq",
+              "r": "R"
+            },
+            "ty": {
+              "k": "app",
+              "f": {
+                "k": "const",
+                "c": "Corelib.Relations.Relation_Definitions.relation",
+                "u": []
+              },
+              "args": [
+                {
+                  "k": "rel",
+                  "i": 0
+                }
+              ]
+            },
+            "b": {
+              "k": "prod",
+              "n": {
+                "n": "s",
+                "r": "R"
+              },
+              "ty": {
+                "k": "app",
+                "f": {
+                  "k": "const",
+                  "c": "Corelib.Setoids.Setoid.Setoid_Theory",
+                  "u": []
+                },
+                "args": [
+                  {
+                    "k": "rel",
+                    "i": 1
+                  },
+                  {
+                    "k": "rel",
+                    "i": 0
+                  }
+                ]
+              },
+              "b": {
+                "k": "prod",
+                "n": {
+                  "n": "x",
+                  "r": "R"
+                },
+                "ty": {
+                  "k": "rel",
+                  "i": 2
+                },
+                "b": {
+                  "k": "prod",
+                  "n": {
+                    "n": "y",
+                    "r": "R"
+                  },
+                  "ty": {
+                    "k": "rel",
+                    "i": 3
+                  },
+                  "b": {
+                    "k": "prod",
+                    "n": {
+                      "n": "z",
+                      "r": "R"
+                    },
+                    "ty": {
+                      "k": "rel",
+                      "i": 4
+                    },
+                    "b": {
+                      "k": "prod",
+                      "n": {
+                        "n": null,
+                        "r": "R"
+                      },
+                      "ty": {
+                        "k": "app",
+                        "f": {
+                          "k": "rel",
+                          "i": 4
+                        },
+                        "args": [
+                          {
+                            "k": "rel",
+                            "i": 2
+                          },
+                          {
+                            "k": "rel",
+                            "i": 1
+                          }
+                        ]
+                      },
+                      "b": {
+                        "k": "prod",
+                        "n": {
+                          "n": null,
+                          "r": "R"
+                        },
+                        "ty": {
+                          "k": "app",
+                          "f": {
+                            "k": "rel",
+                            "i": 5
+                          },
+                          "args": [
+                            {
+                              "k": "rel",
+                              "i": 2
+                            },
+                            {
+                              "k": "rel",
+                              "i": 1
+                            }
+                          ]
+                        },
+                        "b": {
+                          "k": "app",
+                          "f": {
+                            "k": "rel",
+                            "i": 6
+                          },
+                          "args": [
+                            {
+                              "k": "rel",
+                              "i": 4
+                            },
+                            {
+                              "k": "rel",
+                              "i": 2
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "body": null,
+        "body_state": "statement_only",
+        "universes": {
+          "k": "monomorphic"
+        },
+        "relevance": "R",
+        "deps": {
+          "type": [
+            "Corelib.Relations.Relation_Definitions.relation",
+            "Corelib.Setoids.Setoid.Setoid_Theory"
+          ],
+          "body": []
+        },
+        "native": {
+          "body_kind": "transparent",
+          "prepared": {
+            "sealed_implementation": false,
+            "lowered_ssr_have_upoly": false
+          },
+          "polymorphic": false,
+          "private_universes": "none",
+          "typing_flags": {
+            "check_guarded": true,
+            "check_positive": true,
+            "check_universes": true,
+            "check_eliminations": true,
+            "indices_matter": false,
+            "impredicative_set": false,
+            "sprop_allowed": true,
+            "allow_uip": false
+          }
+        },
+        "statement_prepared": true
+      },
+      "target_report": {
+        "universe_residuals": null,
+        "universe_poly_params": 0,
+        "universe_minimal_levels": 0,
+        "universe_lowered": false,
+        "universe_level_defaults": 0,
+        "universe_diagnostics": [],
+        "universe_cumulativity": false,
+        "universe_checks": 2,
+        "type_lift_coercions": 0,
+        "type_lift": null,
+        "template_sort": false,
+        "template_params": [],
+        "template": false,
+        "target_value": {
+          "t": {
+            "l": {
+              "l": {
+                "n": "u_Corelib_Relations_Relation_Definitions_21",
+                "k": "param"
+              },
+              "k": "succ"
+            },
+            "k": "sort"
+          },
+          "n": "A",
+          "k": "forall",
+          "b": {
+            "t": {
+              "k": "app",
+              "f": {
+                "u": [
+                  {
+                    "n": "u_Corelib_Relations_Relation_Definitions_21",
+                    "k": "param"
+                  }
+                ],
+                "n": "Rocq.Corelib.Relations.Relation_Definitions.relation",
+                "k": "const"
+              },
+              "a": {
+                "k": "bvar",
+                "i": 0
+              }
+            },
+            "n": "Aeq",
+            "k": "forall",
+            "b": {
+              "t": {
+                "k": "app",
+                "f": {
+                  "k": "app",
+                  "f": {
+                    "u": [
+                      {
+                        "n": "u_Corelib_Relations_Relation_Definitions_21",
+                        "k": "param"
+                      }
+                    ],
+                    "n": "Rocq.Corelib.Setoids.Setoid.Setoid_Theory",
+                    "k": "const"
+                  },
+                  "a": {
+                    "k": "bvar",
+                    "i": 1
+                  }
+                },
+                "a": {
+                  "k": "bvar",
+                  "i": 0
+                }
+              },
+              "n": "s",
+              "k": "forall",
+              "b": {
+                "t": {
+                  "k": "bvar",
+                  "i": 2
+                },
+                "n": "x",
+                "k": "forall",
+                "b": {
+                  "t": {
+                    "k": "bvar",
+                    "i": 3
+                  },
+                  "n": "y",
+                  "k": "forall",
+                  "b": {
+                    "t": {
+                      "k": "bvar",
+                      "i": 4
+                    },
+                    "n": "z",
+                    "k": "forall",
+                    "b": {
+                      "t": {
+                        "k": "app",
+                        "f": {
+                          "k": "app",
+                          "f": {
+                            "k": "bvar",
+                            "i": 4
+                          },
+                          "a": {
+                            "k": "bvar",
+                            "i": 2
+                          }
+                        },
+                        "a": {
+                          "k": "bvar",
+                          "i": 1
+                        }
+                      },
+                      "n": "[anonymous]",
+                      "k": "forall",
+                      "b": {
+                        "t": {
+                          "k": "app",
+                          "f": {
+                            "k": "app",
+                            "f": {
+                              "k": "bvar",
+                              "i": 5
+                            },
+                            "a": {
+                              "k": "bvar",
+                              "i": 2
+                            }
+                          },
+                          "a": {
+                            "k": "bvar",
+                            "i": 1
+                          }
+                        },
+                        "n": "[anonymous]",
+                        "k": "forall",
+                        "b": {
+                          "k": "app",
+                          "f": {
+                            "k": "app",
+                            "f": {
+                              "k": "bvar",
+                              "i": 6
+                            },
+                            "a": {
+                              "k": "bvar",
+                              "i": 4
+                            }
+                          },
+                          "a": {
+                            "k": "bvar",
+                            "i": 2
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "target_type": {
+          "l": {
+            "k": "zero"
+          },
+          "k": "sort"
+        },
+        "target_kind": "statement",
+        "target_ctors": [],
+        "target": "Rocq.Corelib.Setoids.Setoid.Seq_trans.statement",
+        "status": "STATEMENT_KERNEL_CHECKED",
+        "source_computed": [],
+        "source": "Corelib.Setoids.Setoid.Seq_trans",
+        "sort_lowered_levels": [],
+        "sort_interp": false,
+        "sort_fact_reduced": false,
+        "solved_levels": [
+          {
+            "sigma": {
+              "l": {
+                "n": "u_Corelib_Relations_Relation_Definitions_21",
+                "k": "param"
+              },
+              "k": "succ"
+            },
+            "level": "Corelib.Setoids.Setoid.29"
+          }
+        ],
+        "rule": "constant/transparent",
+        "result_sort_inherited": false,
+        "result_sort_implicit_levels": [],
+        "r2bp_levels": [],
+        "quality_prop": null,
+        "protected": true,
+        "prop_lift_unfold": [],
+        "prop_lift_coercions": 0,
+        "prop_lift": null,
+        "primitive_record": false,
+        "poly_level_interp": [],
+        "plain_levels": false,
+        "phantom_lowered": [],
+        "pending_hypotheses": [],
+        "path": [],
+        "num_params": 0,
+        "message": "",
+        "level_split": [],
+        "level_params": [
+          "u_Corelib_Relations_Relation_Definitions_21"
+        ],
+        "level_interp": [],
+        "level_copies": [],
+        "kind": "constant",
+        "implicit_levels": [
+          "Corelib.Relations.Relation_Definitions.21"
+        ],
+        "delta_inlined": [],
+        "coinductive_as_inductive": false,
+        "blocked_by": [],
+        "admitting_levels": [
+          "Corelib.Setoids.Setoid.29"
+        ]
+      },
+      "quality_variants": [],
+      "prerequisite_declarations": [],
+      "attempts": {
+        "source": "Corelib.Setoids.Setoid.Seq_trans",
+        "status": "STATEMENT_KERNEL_CHECKED",
+        "tier_times": [
+          [
+            "c[ad] eo1",
+            0,
+            "TRANSLATED_AND_CHECKED"
+          ]
+        ],
+        "time_ms": 0
+      },
+      "baseline": {
+        "result": {
+          "canonical": "Corelib.Setoids.Setoid.Seq_trans",
+          "status": "STATEMENT_KERNEL_CHECKED",
+          "message": "",
+          "target": "Rocq.Corelib.Setoids.Setoid.Seq_trans.statement",
+          "blocked_by": []
+        },
+        "stage": "基线已有结果",
+        "path": [],
+        "message": "",
+        "native_diagnostics": []
+      },
+      "module_validation": {
+        "roundtrip_exit": 0,
+        "roundtrip": "OK",
+        "translate_exit": 0,
+        "consumer_exit": 0,
+        "audit_exit": 0,
+        "consumer": "OK",
+        "audit": "OK"
+      },
+      "evidence_directory": "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Setoids/Setoid"
+    },
+    "Corelib.Setoids.Setoid.Setoid_Theory": {
+      "source": "Corelib.Setoids.Setoid.Setoid_Theory",
+      "canonical": "Corelib.Setoids.Setoid.Setoid_Theory",
+      "result": {
+        "canonical": "Corelib.Setoids.Setoid.Setoid_Theory",
+        "status": "TRANSLATED_AND_CHECKED",
+        "message": "",
+        "target": "Rocq.Corelib.Setoids.Setoid.Setoid_Theory",
+        "blocked_by": []
+      },
+      "meaning": "完整定义／数据类型，无待证参数",
+      "source_ir": {
+        "kind": "constant",
+        "name": "Corelib.Setoids.Setoid.Setoid_Theory",
+        "mp": {
+          "file": [
+            "Corelib",
+            "Setoids",
+            "Setoid"
+          ]
+        },
+        "id": "Setoid_Theory",
+        "type": {
+          "k": "prod",
+          "n": {
+            "n": "A",
+            "r": "R"
+          },
+          "ty": {
+            "k": "sort",
+            "s": {
+              "k": "type",
+              "u": [
+                {
+                  "l": {
+                    "k": "global",
+                    "n": "Corelib.Classes.RelationClasses.21"
+                  },
+                  "n": 0
+                }
+              ]
+            }
+          },
+          "b": {
+            "k": "prod",
+            "n": {
+              "n": "R",
+              "r": "R"
+            },
+            "ty": {
+              "k": "app",
+              "f": {
+                "k": "const",
+                "c": "Corelib.Relations.Relation_Definitions.relation",
+                "u": []
+              },
+              "args": [
+                {
+                  "k": "rel",
+                  "i": 0
+                }
+              ]
+            },
+            "b": {
+              "k": "sort",
+              "s": {
+                "k": "prop"
+              }
+            }
+          }
+        },
+        "body": {
+          "k": "ind",
+          "ind": {
+            "mind": "Corelib.Classes.RelationClasses.Equivalence",
+            "i": 0
+          },
+          "u": []
+        },
+        "body_state": "transparent",
+        "universes": {
+          "k": "monomorphic"
+        },
+        "relevance": "R",
+        "deps": {
+          "type": [
+            "Corelib.Relations.Relation_Definitions.relation"
+          ],
+          "body": [
+            "Corelib.Classes.RelationClasses.Equivalence"
+          ]
+        },
+        "native": {
+          "body_kind": "transparent",
+          "prepared": {
+            "sealed_implementation": false,
+            "lowered_ssr_have_upoly": false
+          },
+          "polymorphic": false,
+          "private_universes": "none",
+          "typing_flags": {
+            "check_guarded": true,
+            "check_positive": true,
+            "check_universes": true,
+            "check_eliminations": true,
+            "indices_matter": false,
+            "impredicative_set": false,
+            "sprop_allowed": true,
+            "allow_uip": false
+          }
+        }
+      },
+      "target_report": {
+        "universe_residuals": null,
+        "universe_poly_params": 0,
+        "universe_minimal_levels": 0,
+        "universe_lowered": false,
+        "universe_level_defaults": 0,
+        "universe_diagnostics": [],
+        "universe_cumulativity": false,
+        "universe_checks": 2,
+        "type_lift_coercions": 0,
+        "type_lift": null,
+        "template_sort": false,
+        "template_params": [],
+        "template": false,
+        "target_value": {
+          "u": [
+            {
+              "n": "u_Corelib_Classes_RelationClasses_21",
+              "k": "param"
+            }
+          ],
+          "n": "Rocq.Corelib.Classes.RelationClasses.Equivalence",
+          "k": "const"
+        },
+        "target_type": {
+          "t": {
+            "l": {
+              "l": {
+                "n": "u_Corelib_Classes_RelationClasses_21",
+                "k": "param"
+              },
+              "k": "succ"
+            },
+            "k": "sort"
+          },
+          "n": "A",
+          "k": "forall",
+          "b": {
+            "t": {
+              "k": "app",
+              "f": {
+                "u": [
+                  {
+                    "n": "u_Corelib_Classes_RelationClasses_21",
+                    "k": "param"
+                  }
+                ],
+                "n": "Rocq.Corelib.Relations.Relation_Definitions.relation",
+                "k": "const"
+              },
+              "a": {
+                "k": "bvar",
+                "i": 0
+              }
+            },
+            "n": "R",
+            "k": "forall",
+            "b": {
+              "l": {
+                "k": "zero"
+              },
+              "k": "sort"
+            }
+          }
+        },
+        "target_kind": "def",
+        "target_ctors": [],
+        "target": "Rocq.Corelib.Setoids.Setoid.Setoid_Theory",
+        "status": "TRANSLATED_AND_CHECKED",
+        "source_computed": [],
+        "source": "Corelib.Setoids.Setoid.Setoid_Theory",
+        "sort_lowered_levels": [],
+        "sort_interp": false,
+        "sort_fact_reduced": false,
+        "solved_levels": [],
+        "rule": "constant/transparent",
+        "result_sort_inherited": false,
+        "result_sort_implicit_levels": [],
+        "r2bp_levels": [],
+        "quality_prop": null,
+        "protected": true,
+        "prop_lift_unfold": [],
+        "prop_lift_coercions": 0,
+        "prop_lift": null,
+        "primitive_record": false,
+        "poly_level_interp": [],
+        "plain_levels": false,
+        "phantom_lowered": [],
+        "pending_hypotheses": [],
+        "path": [],
+        "num_params": 0,
+        "message": "",
+        "level_split": [],
+        "level_params": [
+          "u_Corelib_Classes_RelationClasses_21"
+        ],
+        "level_interp": [],
+        "level_copies": [],
+        "kind": "constant",
+        "implicit_levels": [],
+        "delta_inlined": [],
+        "coinductive_as_inductive": false,
+        "blocked_by": [],
+        "admitting_levels": []
+      },
+      "quality_variants": [],
+      "prerequisite_declarations": [],
+      "attempts": {
+        "source": "Corelib.Setoids.Setoid.Setoid_Theory",
+        "status": "TRANSLATED_AND_CHECKED",
+        "tier_times": [
+          [
+            "c[ad]",
+            0,
+            "UNIVERSE_REJECTED | reference to Rocq.Corelib.Classes.RelationClasses.Equivalence: coherence: source level Corelib.Classes.RelationClasses.21 is a motive level of the referring declaration but not of the referenced one"
+          ],
+          [
+            "c[]",
+            0,
+            "TRANSLATED_AND_CHECKED"
+          ]
+        ],
+        "time_ms": 0
+      },
+      "baseline": {
+        "result": {
+          "canonical": "Corelib.Setoids.Setoid.Setoid_Theory",
+          "status": "TRANSLATED_AND_CHECKED",
+          "message": "",
+          "target": "Rocq.Corelib.Setoids.Setoid.Setoid_Theory",
+          "blocked_by": []
+        },
+        "stage": "基线已有结果",
+        "path": [],
+        "message": "",
+        "native_diagnostics": []
+      },
+      "module_validation": {
+        "roundtrip_exit": 0,
+        "roundtrip": "OK",
+        "translate_exit": 0,
+        "consumer_exit": 0,
+        "audit_exit": 0,
+        "consumer": "OK",
+        "audit": "OK"
+      },
+      "evidence_directory": "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Setoids/Setoid"
+    },
+    "Corelib.Setoids.Setoid.gen_st": {
+      "source": "Corelib.Setoids.Setoid.gen_st",
+      "canonical": "Corelib.Setoids.Setoid.gen_st",
+      "result": {
+        "canonical": "Corelib.Setoids.Setoid.gen_st",
+        "status": "STATEMENT_KERNEL_CHECKED",
+        "message": "",
+        "target": "Rocq.Corelib.Setoids.Setoid.gen_st.statement",
+        "blocked_by": []
+      },
+      "meaning": "定理／公理陈述，无待证参数；不是已证明定理",
+      "source_ir": {
+        "kind": "constant",
+        "name": "Corelib.Setoids.Setoid.gen_st",
+        "mp": {
+          "file": [
+            "Corelib",
+            "Setoids",
+            "Setoid"
+          ]
+        },
+        "id": "gen_st",
+        "type": {
+          "k": "prod",
+          "n": {
+            "n": "A",
+            "r": "R"
+          },
+          "ty": {
+            "k": "sort",
+            "s": {
+              "k": "type",
+              "u": [
+                {
+                  "l": {
+                    "k": "set"
+                  },
+                  "n": 0
+                }
+              ]
+            }
+          },
+          "b": {
+            "k": "app",
+            "f": {
+              "k": "const",
+              "c": "Corelib.Setoids.Setoid.Setoid_Theory",
+              "u": []
+            },
+            "args": [
+              {
+                "k": "rel",
+                "i": 0
+              },
+              {
+                "k": "app",
+                "f": {
+                  "k": "ind",
+                  "ind": {
+                    "mind": "Corelib.Init.Logic.eq",
+                    "i": 0
+                  },
+                  "u": []
+                },
+                "args": [
+                  {
+                    "k": "rel",
+                    "i": 0
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "body": null,
+        "body_state": "statement_only",
+        "universes": {
+          "k": "monomorphic"
+        },
+        "relevance": "R",
+        "deps": {
+          "type": [
+            "Corelib.Init.Logic.eq",
+            "Corelib.Setoids.Setoid.Setoid_Theory"
+          ],
+          "body": []
+        },
+        "native": {
+          "body_kind": "opaque",
+          "prepared": {
+            "sealed_implementation": false,
+            "lowered_ssr_have_upoly": false
+          },
+          "polymorphic": false,
+          "private_universes": "none",
+          "typing_flags": {
+            "check_guarded": true,
+            "check_positive": true,
+            "check_universes": true,
+            "check_eliminations": true,
+            "indices_matter": false,
+            "impredicative_set": false,
+            "sprop_allowed": true,
+            "allow_uip": false
+          }
+        }
+      },
+      "target_report": {
+        "universe_residuals": null,
+        "universe_poly_params": 0,
+        "universe_minimal_levels": 0,
+        "universe_lowered": false,
+        "universe_level_defaults": 0,
+        "universe_diagnostics": [],
+        "universe_cumulativity": false,
+        "universe_checks": 1,
+        "type_lift_coercions": 0,
+        "type_lift": null,
+        "template_sort": false,
+        "template_params": [],
+        "template": false,
+        "target_value": {
+          "t": {
+            "l": {
+              "l": {
+                "k": "zero"
+              },
+              "k": "succ"
+            },
+            "k": "sort"
+          },
+          "n": "A",
+          "k": "forall",
+          "b": {
+            "k": "app",
+            "f": {
+              "k": "app",
+              "f": {
+                "u": [
+                  {
+                    "k": "zero"
+                  }
+                ],
+                "n": "Rocq.Corelib.Setoids.Setoid.Setoid_Theory",
+                "k": "const"
+              },
+              "a": {
+                "k": "bvar",
+                "i": 0
+              }
+            },
+            "a": {
+              "k": "app",
+              "f": {
+                "u": [
+                  {
+                    "l": {
+                      "k": "zero"
+                    },
+                    "k": "succ"
+                  }
+                ],
+                "n": "Rocq.Corelib.Init.Logic.eq",
+                "k": "const"
+              },
+              "a": {
+                "k": "bvar",
+                "i": 0
+              }
+            }
+          }
+        },
+        "target_type": {
+          "l": {
+            "k": "zero"
+          },
+          "k": "sort"
+        },
+        "target_kind": "statement",
+        "target_ctors": [],
+        "target": "Rocq.Corelib.Setoids.Setoid.gen_st.statement",
+        "status": "STATEMENT_KERNEL_CHECKED",
+        "source_computed": [],
+        "source": "Corelib.Setoids.Setoid.gen_st",
+        "sort_lowered_levels": [],
+        "sort_interp": false,
+        "sort_fact_reduced": false,
+        "solved_levels": [],
+        "rule": "constant/transparent",
+        "result_sort_inherited": false,
+        "result_sort_implicit_levels": [],
+        "r2bp_levels": [],
+        "quality_prop": null,
+        "protected": true,
+        "prop_lift_unfold": [],
+        "prop_lift_coercions": 0,
+        "prop_lift": null,
+        "primitive_record": false,
+        "poly_level_interp": [],
+        "plain_levels": false,
+        "phantom_lowered": [],
+        "pending_hypotheses": [],
+        "path": [],
+        "num_params": 0,
+        "message": "",
+        "level_split": [],
+        "level_params": [],
+        "level_interp": [],
+        "level_copies": [],
+        "kind": "constant",
+        "implicit_levels": [],
+        "delta_inlined": [],
+        "coinductive_as_inductive": false,
+        "blocked_by": [],
+        "admitting_levels": []
+      },
+      "quality_variants": [],
+      "prerequisite_declarations": [],
+      "attempts": {
+        "source": "Corelib.Setoids.Setoid.gen_st",
+        "status": "STATEMENT_KERNEL_CHECKED",
+        "tier_times": [
+          [
+            "c[]",
+            1,
+            "TRANSLATED_AND_CHECKED"
+          ]
+        ],
+        "time_ms": 1
+      },
+      "baseline": {
+        "result": {
+          "canonical": "Corelib.Setoids.Setoid.gen_st",
+          "status": "STATEMENT_KERNEL_CHECKED",
+          "message": "",
+          "target": "Rocq.Corelib.Setoids.Setoid.gen_st.statement",
+          "blocked_by": []
+        },
+        "stage": "基线已有结果",
+        "path": [],
+        "message": "",
+        "native_diagnostics": []
+      },
+      "module_validation": {
+        "roundtrip_exit": 0,
+        "roundtrip": "OK",
+        "translate_exit": 0,
+        "consumer_exit": 0,
+        "audit_exit": 0,
+        "consumer": "OK",
+        "audit": "OK"
+      },
+      "evidence_directory": "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Setoids/Setoid"
+    }
+  },
+  "validation": {
+    "roundtrip_exit": 0,
+    "roundtrip": "OK",
+    "translate_exit": 0,
+    "consumer_exit": 0,
+    "audit_exit": 0,
+    "consumer": "OK",
+    "audit": "OK"
+  },
+  "state": "MEASURED",
+  "evidence_directory": "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Setoids/Setoid"
+}

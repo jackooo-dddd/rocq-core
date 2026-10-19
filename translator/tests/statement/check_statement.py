@@ -212,10 +212,11 @@ check(all(r["validation"] in ("DEFINITION_AUDITED_PENDING", "STATEMENT_AUDITED_P
 # A′: eqnP, iffP and idP are opaque data translated with their bodies (opaque constants), so the roots
 # wait for proof tasks only -- their bodies' obligations, the lemmas idP's body uses and finish_time's
 # obligation -- plus the value of find_ex_minn, whose body recurses on a proof (guard deferred) and
-# keeps the interface (local hypotheses are never extracted as obligations)
+# keeps the interface. Local hypotheses and their applications are not extracted;
+# iffP now needs only the constructed negative-branch proof, not its positive hypothesis application.
 FT_PRE = {"Corelib.ssr.ssrbool.is_true_true", "Corelib.ssr.ssrbool.not_false_is_true",
           "mathcomp.boot.ssrnat.eqnP__rocq2lean_obligation_1", "mathcomp.boot.ssrnat.eqnP__rocq2lean_obligation_2",
-          "Corelib.ssr.ssrbool.iffP__rocq2lean_obligation_1", "Corelib.ssr.ssrbool.iffP__rocq2lean_obligation_2",
+          "Corelib.ssr.ssrbool.iffP__rocq2lean_obligation_1",
           "prosa.analysis.definitions.finish_time.finish_time__rocq2lean_obligation_1", "mathcomp.boot.ssrnat.find_ex_minn"}
 check(all(set(r["pending_prerequisites"]) == FT_PRE for r in v.get("roots", [])),
       "FinishTime roots wait exactly for proof tasks (eqnP's, iffP's and finish_time's obligations, two lemmas) "

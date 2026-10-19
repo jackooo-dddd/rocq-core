@@ -1,0 +1,42 @@
+Template quality dispatch: checked evidence and implementation boundary
+=====================================================================
+1. Native template bindings (template-quality-metadata fixture):
+   prod/sig/sig2/sigT/sigT2 share one q0 between quality-sensitive arguments
+   and conclusion. Exact fields are now part of fresh NativeMeta checks.
+   Eight records pass and five metadata mutations fail.
+
+2. Two representation families (template-quality-branches fixture):
+   all-Prop product/dependent sum can be Prop inductives.
+   Type family permits Sort fields, with a non-Prop result floor.
+   Eight source and target combinations and beta laws pass, no target axioms.
+   This prototype is not connected to translator dispatch.
+
+3. Annotation versus conversion (template-quality-conversion fixture):
+   direct prod True True and sigT True (fun _ => True) are Prop.
+   A transparent wrapper with declared Type result cannot itself be assigned
+   a Prop annotation; Rocq rejects those two attempted declarations.
+   Nevertheless each wrapper application is definitionally equal (eq_refl)
+   to its delta/beta-expanded direct expression. Therefore do NOT infer that
+   there is a permanently fixed explicit quality argument at every occurrence.
+   Preserve the declaration's advertised result sort and implement any required
+   cumulative transport while permitting checked source conversion.
+
+4. Native occurrence evidence (native-quality-context3 fixture):
+   All four template references have EMPTY explicit quality and level instances.
+   Re-typing the full applications in their SOURCE binder environments gives:
+     direct_prod_pp: Prop
+     through_type_prod body under A:Type,B:Type: Type
+     direct_sigma_pp: Prop
+     through_type_sigma body under A:Type,B:A->Type: Type
+   The diagnostic visits lambda/product/let contexts, and deliberately skips
+   cases/fixpoints. It is optional diagnostic output, not acceptance metadata,
+   not a general retyper, and not a new success rule.
+
+Next implementation requirement:
+   independently checked source-context quality determination, coherent target
+   family dispatch for inductive/constructor/case/projection references, and
+   explicit correspondence through source cumulative conversions.
+   Do not guess quality solely from target argument sorts after generalization,
+   and do not claim the native explicit instance contains information it lacks.
+   All source-admissible branches must be represented; a Type-only acceptance
+   is not complete coverage of a quality-polymorphic declaration.

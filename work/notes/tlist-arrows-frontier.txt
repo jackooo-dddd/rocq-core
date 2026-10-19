@@ -1,0 +1,26 @@
+Observed certified main10 bottleneck (not a new rule yet):
+Tlist translates at independent u72. arrows has input T : Type u74 and result Type u75, plus implicit reference level u72. Its accepted mapping unifies all three as max(u72,u74,u75). Consequently consumers specializing T to Prop force Tlist's free universe to 0; protected-interface checks correctly refuse this. pointwise_lifting reaches 35 blocked roots, predicate_intersection 11 (closures overlap).
+Likely cause to verify: the Tnil branch returns T at a cumulatively larger source result sort. Lean equates these sorts without an explicit type representation lift. Tcons adds the field-domain universe. Existing cast/result transport rules may need to cover declared case-result sorts, while consumers need the corresponding transports.
+Do not remove the free-level/interface check or specialize Tlist. Investigate branch-local Type-as-value lifting at the declared motive sort; preserve independent domain/codomain universes, exact source annotations, computation transport and independent audit. This diagnosis is based on recorded arrows level_interp and source type; not yet a tested fix.
+
+Minimal fixture work/tests/tlist-frontier passes all roots under main15, so it is NOT a reproducer yet. Must compare universe graph/protection and actual binary_operation aliases before attributing the core failure solely to case branches. Preserve passing fixture as a control.
+
+Comparison resolved the passing minimal control: its unprotected arrows fixes
+Tlist's universe to zero. Corelib Tlist/arrows are protected and forbid this.
+Test-only tlist-protected-diagnostic snapshot adds five fixture names to the
+existing protected set; it removes none, preserves policy and leaves the
+production pin untouched. Fresh minimal export/translate/validate underway.
+
+tlist-branch-lift1 (test-only protection superset): build/export pass.
+arrows target passes with u22 carrier unchanged, u24 input unchanged, u25 result
+mapped to max(u22,u24,u25). predicate also target-passes. Existing audit correctly
+rejects unaudited branch PULift; extension target fails because nil branch op must
+transport lifted arguments/results.
+Active candidate2: transportBranchResult uses exact declared Sort lift for
+type-valued branches, existing liftCoerceValue for data/function branch results.
+Independent check_fix audit permits a PULift type branch only with TYPE_COERCE,
+a source Type result annotation, and exact matching upper universe; checks entire
+payload against source. Candidate2 still requires positive/negative verification.
+No claim of Corelib coverage from this test-only overlay.
+
+Native universe evidence after main20: RelationClasses.72/.74/.75 entail <= in BOTH directions. R2F merging is required by actual source, unlike the original minimal fixture. main21 first shares native equality classes, then experiments with explicit concrete-sort application-argument lifts before unification. Independent audit for argument lifts remains required; no coverage promotion.

@@ -1,0 +1,706 @@
+rocq2lean: 78 root(s) TRANSLATED_AND_CHECKED; summary {"bootstrap_resolved":0,"generated_helpers":0,"not_ok":19,"roots":78,"translated_dependencies":48}
+def Rocq.Corelib.Classes.CMorphisms.Normalizes.{v_0, v_1, v_2, v_3} : (A : Type v_0) →
+  (A → A → Type v_3) → (A → A → Type v_3) → Type (max (max v_0 v_2) v_3) :=
+fun A m m' =>
+  PULift.{max (max (v_0 + 1) (v_2 + 1)) (v_3 + 1), max (v_0 + 1) (v_3 + 1)}
+    ((x y : A) → Rocq.Corelib.Init.Datatypes.prod.{v_3 + 1, v_3 + 1} (m x y → m' x y) (m' x y → m x y))
+def Rocq.Corelib.Classes.CMorphisms.PER_type_morphism.{v_0, v_1, v_2, v_3, v_4} : (A : Type v_0) →
+  (R : A → A → Type v_4) →
+    Rocq.Corelib.Classes.CRelationClasses.PER.{v_0, v_4} A R →
+      (fun f g =>
+          (x y : A) →
+            R x y →
+              (fun f g =>
+                  (x y : A) → R x y → Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1} (f x → g y) (g y → f x))
+                (f x) (g y))
+        R R :=
+fun A R H => Rocq.Corelib.Classes.CMorphisms.PER_type_morphism_obligation_1.{v_0, v_1, v_2, v_3, v_4} A R H
+opaque Rocq.Corelib.Classes.CMorphisms.PER_type_morphism_obligation_1.{v_0, v_1, v_2, v_3, v_4} : (A : Type v_0) →
+  (R : A → A → Type v_4) →
+    Rocq.Corelib.Classes.CRelationClasses.PER.{v_0, v_4} A R →
+      (x y : A) →
+        R x y →
+          (fun f g => (x y : A) → R x y → Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1} (f x → g y) (g y → f x))
+            (R x) (R y)
+inductive Rocq.Corelib.Classes.CMorphisms.Params.{v_0} : (A : Type v_0) → A → Rocq.Corelib.Init.Datatypes.nat → Prop
+number of parameters: 3
+constructors:
+Rocq.Corelib.Classes.CMorphisms.Params.Build_Params : ∀ (A : Type v_0) («from» : A)
+  (arity : Rocq.Corelib.Init.Datatypes.nat), Rocq.Corelib.Classes.CMorphisms.Params.{v_0} A «from» arity
+inductive Rocq.Corelib.Classes.CMorphisms.PartialApplication : Prop
+number of parameters: 0
+constructors:
+Rocq.Corelib.Classes.CMorphisms.PartialApplication.Build_PartialApplication : Rocq.Corelib.Classes.CMorphisms.PartialApplication
+opaque RocqPending.Corelib.Classes.CMorphisms.PartialOrder_StrictOrder.{v_0, v_1, v_2, v_3, v_4, v_5} : {h_Corelib_Classes_CMorphisms_PartialOrder_StrictOrder__rocq2lean_obligation_1 :
+    Rocq.Corelib.Classes.CMorphisms.PartialOrder_StrictOrder__rocq2lean_obligation_1.statement.{max v_0 v_5,
+      max (max v_1 v_4) (v_5 + 1), max (max v_2 v_4) v_5, max v_3 (v_5 + 1), v_4, v_5}} →
+  {h_Corelib_Classes_CMorphisms_PartialOrder_StrictOrder__rocq2lean_obligation_2 :
+      Rocq.Corelib.Classes.CMorphisms.PartialOrder_StrictOrder__rocq2lean_obligation_2.statement.{max v_0 v_5,
+        max (max v_1 v_4) (v_5 + 1), max (max v_2 v_4) v_5, max v_3 (v_5 + 1), v_4, v_5}} →
+    (A : Type v_4) →
+      (eqA : A → A → Type v_5) →
+        Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_4, v_5} A eqA →
+          (R : A → A → Type v_5) →
+            Rocq.Corelib.Classes.CRelationClasses.PreOrder.{v_4, v_5} A R →
+              ((x y : A) →
+                  Rocq.Corelib.Init.Datatypes.prod.{v_5 + 1, v_5 + 1}
+                    (eqA x y →
+                      (fun x y => Rocq.Corelib.Init.Datatypes.prod.{v_5 + 1, v_5 + 1} (R x y) ((fun x y => R y x) x y))
+                        x y)
+                    ((fun x y => Rocq.Corelib.Init.Datatypes.prod.{v_5 + 1, v_5 + 1} (R x y) ((fun x y => R y x) x y)) x
+                        y →
+                      eqA x y)) →
+                Rocq.Corelib.Classes.CRelationClasses.StrictOrder.{v_4, max v_0 v_5} A fun a a_1 =>
+                  PULift.{(max v_0 v_5) + 1, v_5 + 1}
+                    (Rocq.Corelib.Init.Datatypes.prod.{v_5 + 1, 0} (R a a_1)
+                      ((fun x y => ∀ (a : eqA x y), Rocq.Corelib.Init.Logic.False) a a_1))
+def Rocq.Corelib.Classes.CMorphisms.PartialOrder_StrictOrder__rocq2lean_obligation_1.statement.{v_0, v_1, v_2, v_3, v_4, v_5} : Prop :=
+∀ (A : Type v_4) (eqA : A → A → Type v_5) (equ : Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_4, v_5} A eqA)
+  (R : A → A → Type v_5) (preo : Rocq.Corelib.Classes.CRelationClasses.PreOrder.{v_4, v_5} A R)
+  (H :
+    (x y : A) →
+      Rocq.Corelib.Init.Datatypes.prod.{v_5 + 1, v_5 + 1}
+        (eqA x y →
+          (fun x y => Rocq.Corelib.Init.Datatypes.prod.{v_5 + 1, v_5 + 1} (R x y) ((fun x y => R y x) x y)) x y)
+        ((fun x y => Rocq.Corelib.Init.Datatypes.prod.{v_5 + 1, v_5 + 1} (R x y) ((fun x y => R y x) x y)) x y →
+          eqA x y))
+  (x : A),
+  (fun x y =>
+      ∀
+        (a :
+          (fun x y =>
+              Rocq.Corelib.Init.Datatypes.prod.{v_5 + 1, 0} (R x y)
+                ((fun x y => ∀ (a : eqA x y), Rocq.Corelib.Init.Logic.False) x y))
+            x y),
+        Rocq.Corelib.Init.Logic.False)
+    x x
+def Rocq.Corelib.Classes.CMorphisms.PartialOrder_StrictOrder__rocq2lean_obligation_2.statement.{v_0, v_1, v_2, v_3, v_4, v_5} : Prop :=
+∀ (A : Type v_4) (eqA : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_4, v_5} A)
+  (equ : Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_4, v_5} A eqA)
+  (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_4, v_5} A)
+  (preo : Rocq.Corelib.Classes.CRelationClasses.PreOrder.{v_4, v_5} A R)
+  (H : Rocq.Corelib.Classes.CRelationClasses.PartialOrder.{v_4, v_1, v_2, v_5, v_3} A eqA equ R preo) (x y z : A)
+  (X : Rocq.Corelib.Init.Datatypes.prod.{v_5 + 1, 0} (R x y) (∀ (a : eqA x y), Rocq.Corelib.Init.Logic.False))
+  (r : R x y),
+  (∀ (a : eqA x y), Rocq.Corelib.Init.Logic.False) →
+    ∀ (Hxy : R x y),
+      (∀ (a : eqA x y), Rocq.Corelib.Init.Logic.False) →
+        ∀ (X : Rocq.Corelib.Init.Datatypes.prod.{v_5 + 1, 0} (R y z) (∀ (a : eqA y z), Rocq.Corelib.Init.Logic.False))
+          (r : R y z),
+          (∀ (a : eqA y z), Rocq.Corelib.Init.Logic.False) →
+            ∀ (Hyz : R y z),
+              (∀ (a : eqA y z), Rocq.Corelib.Init.Logic.False) → ∀ (a : eqA x z), Rocq.Corelib.Init.Logic.False
+opaque Rocq.Corelib.Classes.CMorphisms.PartialOrder_proper_type.{v_0, v_1, v_2, v_3, v_4, v_5} : (A : Type v_1) →
+  (eqA : A → A → Type v_4) →
+    Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_1, v_4} A eqA →
+      (R : A → A → Type v_4) →
+        Rocq.Corelib.Classes.CRelationClasses.PreOrder.{v_1, v_4} A R →
+          ((x y : A) →
+              Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1}
+                (eqA x y →
+                  (fun x y => Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1} (R x y) ((fun x y => R y x) x y)) x y)
+                ((fun x y => Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1} (R x y) ((fun x y => R y x) x y)) x y →
+                  eqA x y)) →
+            (fun f g =>
+                (x y : A) →
+                  eqA x y →
+                    (fun f g =>
+                        (x y : A) →
+                          eqA x y → Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1} (f x → g y) (g y → f x))
+                      (f x) (g y))
+              R R
+def Rocq.Corelib.Classes.CMorphisms.Proper.{v_0, v_1} : (A : Type v_0) →
+  Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A → A → Type v_1 :=
+fun A R m => R m m
+def Rocq.Corelib.Classes.CMorphisms.ProperProxy.{v_0, v_1} : (A : Type v_0) →
+  Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A → A → Type v_1 :=
+fun A R m => R m m
+opaque Rocq.Corelib.Classes.CMorphisms.Reflexive_partial_app_morphism.{v_0, v_1, v_2, v_3, v_4, v_5} : (A : Type v_0) →
+  (B : Type v_1) →
+    (R : A → A → Type v_4) →
+      (R' : B → B → Type v_5) →
+        (m : A → B) → (fun f g => (x y : A) → R x y → R' (f x) (g y)) m m → (x : A) → R x x → R' (m x) (m x)
+opaque RocqPending.Corelib.Classes.CMorphisms.StrictOrder_PartialOrder.{v_0, v_1, v_2, v_3, v_4, v_5, v_6, v_7} : {h_Corelib_Classes_CMorphisms_StrictOrder_PartialOrder__rocq2lean_obligation_1 :
+    Rocq.Corelib.Classes.CMorphisms.StrictOrder_PartialOrder__rocq2lean_obligation_1.statement.{v_0, v_1, v_2, v_3, v_4,
+      v_5, v_6, v_7}} →
+  (A : Type v_6) →
+    (eqA : A → A → Type v_7) →
+      Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_6, v_7} A eqA →
+        (R : A → A → Type v_5) →
+          Rocq.Corelib.Classes.CRelationClasses.StrictOrder.{v_6, v_5} A R →
+            (fun f g =>
+                  (x y : A) →
+                    eqA x y →
+                      (fun f g =>
+                          (x y : A) →
+                            eqA x y → Rocq.Corelib.Init.Datatypes.prod.{v_5 + 1, v_5 + 1} (f x → g y) (g y → f x))
+                        (f x) (g y))
+                R R →
+              (x y : A) →
+                Rocq.Corelib.Init.Datatypes.prod.{max (v_5 + 1) (v_7 + 1), max (v_5 + 1) (v_7 + 1)}
+                  (eqA x y →
+                    (fun x y =>
+                        Rocq.Corelib.Init.Datatypes.prod.{max (v_5 + 1) (v_7 + 1), max (v_5 + 1) (v_7 + 1)}
+                          ((fun x y => Rocq.Corelib.Init.Datatypes.sum.{v_5 + 1, v_7 + 1} (R x y) (eqA x y)) x y)
+                          ((fun x y =>
+                              (fun x y => Rocq.Corelib.Init.Datatypes.sum.{v_5 + 1, v_7 + 1} (R x y) (eqA x y)) y x)
+                            x y))
+                      x y)
+                  ((fun x y =>
+                        Rocq.Corelib.Init.Datatypes.prod.{max (v_5 + 1) (v_7 + 1), max (v_5 + 1) (v_7 + 1)}
+                          ((fun x y => Rocq.Corelib.Init.Datatypes.sum.{v_5 + 1, v_7 + 1} (R x y) (eqA x y)) x y)
+                          ((fun x y =>
+                              (fun x y => Rocq.Corelib.Init.Datatypes.sum.{v_5 + 1, v_7 + 1} (R x y) (eqA x y)) y x)
+                            x y))
+                      x y →
+                    eqA x y)
+def Rocq.Corelib.Classes.CMorphisms.StrictOrder_PartialOrder__rocq2lean_obligation_1.statement.{v_0, v_1, v_2, v_3, v_4, v_5, v_6, v_7} : Prop :=
+∀ (A : Type v_6) (eqA : A → A → Type v_7) (H : Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_6, v_7} A eqA)
+  (R : A → A → Type v_5) (H0 : Rocq.Corelib.Classes.CRelationClasses.StrictOrder.{v_6, v_5} A R)
+  (H1 :
+    (fun f g =>
+        (x y : A) →
+          eqA x y →
+            (fun f g =>
+                (x y : A) → eqA x y → Rocq.Corelib.Init.Datatypes.prod.{v_5 + 1, v_5 + 1} (f x → g y) (g y → f x))
+              (f x) (g y))
+      R R)
+  (x y : A)
+  (X :
+    Rocq.Corelib.Init.Datatypes.prod.{max (v_5 + 1) (v_7 + 1), max (v_5 + 1) (v_7 + 1)}
+      (Rocq.Corelib.Init.Datatypes.sum.{v_5 + 1, v_7 + 1} (R x y) (eqA x y))
+      (Rocq.Corelib.Init.Datatypes.sum.{v_5 + 1, v_7 + 1} (R y x) (eqA y x)))
+  (a : Rocq.Corelib.Init.Datatypes.sum.{v_5 + 1, v_7 + 1} (R x y) (eqA x y))
+  (b : Rocq.Corelib.Init.Datatypes.sum.{v_5 + 1, v_7 + 1} (R y x) (eqA y x)) (a0 : R x y) (a : R y x),
+  Rocq.Corelib.Init.Logic.False
+opaque Rocq.Corelib.Classes.CMorphisms.StrictOrder_PreOrder.{v_0, v_1, v_2, v_3, v_4, v_5, v_6} : (A : Type v_5) →
+  (eqA : A → A → Type v_6) →
+    Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_5, v_6} A eqA →
+      (R : A → A → Type v_4) →
+        Rocq.Corelib.Classes.CRelationClasses.StrictOrder.{v_5, v_4} A R →
+          (fun f g =>
+                (x y : A) →
+                  eqA x y →
+                    (fun f g =>
+                        (x y : A) →
+                          eqA x y → Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1} (f x → g y) (g y → f x))
+                      (f x) (g y))
+              R R →
+            Rocq.Corelib.Classes.CRelationClasses.PreOrder.{v_5, max (max v_3 v_4) v_6} A fun a a_1 =>
+              PULift.{(max (max v_3 v_4) v_6) + 1, max (v_4 + 1) (v_6 + 1)}
+                (Rocq.Corelib.Init.Datatypes.sum.{v_4 + 1, v_6 + 1} (R a a_1) (eqA a a_1))
+inductive Rocq.Corelib.Classes.CMorphisms.apply_subrelation : Prop
+number of parameters: 0
+constructors:
+Rocq.Corelib.Classes.CMorphisms.apply_subrelation.do_subrelation : Rocq.Corelib.Classes.CMorphisms.apply_subrelation
+def Rocq.Corelib.Classes.CMorphisms.compose_proper.{v_0, v_1, v_2, v_3, v_4, v_5, v_6, v_7, v_8, v_9, v_10, v_11, v_12, v_13, v_14, v_15} : (A :
+    Type v_0) →
+  (B : Type v_1) →
+    (C : Type v_2) →
+      (RA : A → A → Type v_14) →
+        (RB : B → B → Type v_13) →
+          (RC : C → C → Type v_15) →
+            (fun f g =>
+                (x y : B → C) →
+                  (fun f g => (x y : B) → RB x y → RC (f x) (g y)) x y →
+                    (fun f g =>
+                        (x y : A → B) →
+                          (fun f g => (x y : A) → RA x y → RB (f x) (g y)) x y →
+                            (fun f g => (x y : A) → RA x y → RC (f x) (g y)) (f x) (g y))
+                      (f x) (g y))
+              (fun g f x => g (f x)) fun g f x => g (f x) :=
+fun A B C RA RB RC =>
+  Rocq.Corelib.Classes.CMorphisms.compose_proper_obligation_1.{v_0, v_1, v_2, v_3, v_4, v_5, v_6, v_7, v_8, v_9, v_10,
+      v_11, v_12, v_13, v_14, v_15}
+    A B C RA RB RC
+opaque Rocq.Corelib.Classes.CMorphisms.compose_proper_obligation_1.{v_0, v_1, v_2, v_3, v_4, v_5, v_6, v_7, v_8, v_9, v_10, v_11, v_12, v_13, v_14, v_15} : (A :
+    Type v_0) →
+  (B : Type v_1) →
+    (C : Type v_2) →
+      (RA : A → A → Type v_14) →
+        (RB : B → B → Type v_13) →
+          (RC : C → C → Type v_15) →
+            (x y : B → C) →
+              (fun f g => (x y : B) → RB x y → RC (f x) (g y)) x y →
+                (fun f g =>
+                    (x y : A → B) →
+                      (fun f g => (x y : A) → RA x y → RB (f x) (g y)) x y →
+                        (fun f g => (x y : A) → RA x y → RC (f x) (g y)) (f x) (g y))
+                  ((fun g f x => g (f x)) x) ((fun g f x => g (f x)) y)
+def Rocq.Corelib.Classes.CMorphisms.eq_proper_proxy.statement.{v_0} : Prop :=
+∀ (A : Type v_0) (x : A), Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A x x
+opaque RocqPending.Corelib.Classes.CMorphisms.eq_subrelation.{v_0, v_1} : {h_Corelib_Init_Logic_eq_rect_r__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement.{v_0 + 1, v_1 + 1}} →
+  (A : Type v_0) →
+    (R : A → A → Type v_1) → ((x : A) → R x x) → (x y : A) → Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A x y → R x y
+def Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement.{u_Corelib_Init_Logic_65, u_Corelib_Init_Logic_66} : Prop :=
+∀ (A : Sort u_Corelib_Init_Logic_65) (x : A) (P : A → Sort u_Corelib_Init_Logic_66) (H : P x) (y : A),
+  Rocq.Corelib.Init.Logic.eq.{u_Corelib_Init_Logic_65} A y x →
+    Rocq.Corelib.Init.Logic.eq.{u_Corelib_Init_Logic_65} A x y
+opaque Rocq.Corelib.Classes.CMorphisms.flip1.{v_0, v_1, v_2, v_3} : (A : Type v_0) →
+  (R' : A → A → Type v_1) →
+    (R : A → A → Type v_2) → ((x y : A) → R' x y → R x y) → (x y : A) → (fun x y => (fun x y => R' y x) y x) x y → R x y
+opaque Rocq.Corelib.Classes.CMorphisms.flip2.{v_0, v_1, v_2, v_3} : (A : Type v_0) →
+  (R : A → A → Type v_2) →
+    (R' : A → A → Type v_1) →
+      ((x y : A) → R x y → R' x y) → (x y : A) → R x y → (fun x y => (fun x y => R' y x) y x) x y
+def Rocq.Corelib.Classes.CMorphisms.flip_arrow.type.{v_0, v_1, v_2, v_3, v_4, v_5, v_6, v_7, v_8, v_9, v_10, v_11, v_12, v_13, v_14} : Type
+  (max (max (max (v_1 + 1) (v_2 + 1)) (v_3 + 1)) (v_4 + 1)) :=
+(A : Type v_1) →
+  (R R''' : A → A → Type v_2) →
+    ((x y : A) →
+        Rocq.Corelib.Init.Datatypes.prod.{v_2 + 1, v_2 + 1} (R x y → (fun x y => R''' y x) x y)
+          ((fun x y => R''' y x) x y → R x y)) →
+      (B : Type v_3) →
+        (R' R'' : B → B → Type v_4) →
+          ((x y : B) →
+              Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1} (R' x y → (fun x y => R'' y x) x y)
+                ((fun x y => R'' y x) x y → R' x y)) →
+            (x y : A → B) →
+              Rocq.Corelib.Init.Datatypes.prod.{max (max (v_1 + 1) (v_2 + 1)) (v_4 + 1),
+                  max (max (v_1 + 1) (v_2 + 1)) (v_4 + 1)}
+                ((fun f g => (x y : A) → R x y → R' (f x) (g y)) x y →
+                  (fun x y => (fun f g => (x y : A) → R''' x y → R'' (f x) (g y)) y x) x y)
+                ((fun x y => (fun f g => (x y : A) → R''' x y → R'' (f x) (g y)) y x) x y →
+                  (fun f g => (x y : A) → R x y → R' (f x) (g y)) x y)
+opaque Rocq.Corelib.Classes.CMorphisms.flip_atom.{v_0, v_1, v_2, v_3, v_4} : (A : Type v_0) →
+  (R : A → A → Type v_3) →
+    (x y : A) →
+      Rocq.Corelib.Init.Datatypes.prod.{v_3 + 1, v_3 + 1} (R x y → (fun x y => (fun x y => R y x) y x) x y)
+        ((fun x y => (fun x y => R y x) y x) x y → R x y)
+def Rocq.Corelib.Classes.CMorphisms.flip_proper.{v_0, v_1, v_2, v_3, v_4, v_5, v_6, v_7, v_8, v_9, v_10, v_11, v_12, v_13} : (A :
+    Type v_0) →
+  (B : Type v_1) →
+    (C : Type v_2) →
+      (RA : A → A → Type v_12) →
+        (RB : B → B → Type v_9) →
+          (RC : C → C → Type v_13) →
+            (f : A → B → C) →
+              (fun f g => (x y : A) → RA x y → (fun f g => (x y : B) → RB x y → RC (f x) (g y)) (f x) (g y)) f f →
+                (fun f g => (x y : B) → RB x y → (fun f g => (x y : A) → RA x y → RC (f x) (g y)) (f x) (g y))
+                  (fun x y => f y x) fun x y => f y x :=
+fun A B C RA RB RC f mor =>
+  Rocq.Corelib.Classes.CMorphisms.flip_proper_obligation_1.{v_0, v_1, v_2, v_3, v_4, v_5, v_6, v_7, v_8, v_9, v_10,
+      v_11, v_12, v_13}
+    A B C RA RB RC f mor
+opaque Rocq.Corelib.Classes.CMorphisms.flip_proper_obligation_1.{v_0, v_1, v_2, v_3, v_4, v_5, v_6, v_7, v_8, v_9, v_10, v_11, v_12, v_13} : (A :
+    Type v_0) →
+  (B : Type v_1) →
+    (C : Type v_2) →
+      (RA : A → A → Type v_12) →
+        (RB : B → B → Type v_9) →
+          (RC : C → C → Type v_13) →
+            (f : A → B → C) →
+              (fun f g => (x y : A) → RA x y → (fun f g => (x y : B) → RB x y → RC (f x) (g y)) (f x) (g y)) f f →
+                (fun f g => (x y : B) → RB x y → (fun f g => (x y : A) → RA x y → RC (f x) (g y)) (f x) (g y))
+                  (fun x y => f y x) fun x y => f y x
+opaque Rocq.Corelib.Classes.CMorphisms.flip_respectful.{v_0, v_1, v_2, v_3, v_4, v_5, v_6, v_7, v_8, v_9, v_10} : (A :
+    Type v_0) →
+  (B : Type v_1) →
+    (R : A → A → Type v_6) →
+      (R' : B → B → Type v_7) →
+        (x y : A → B) →
+          Rocq.Corelib.Init.Datatypes.prod.{max (max (v_0 + 1) (v_6 + 1)) (v_7 + 1),
+              max (max (v_0 + 1) (v_6 + 1)) (v_7 + 1)}
+            ((fun x y => (fun f g => (x y : A) → R x y → R' (f x) (g y)) y x) x y →
+              (fun f g => (x y : A) → (fun x y => R y x) x y → (fun x y => R' y x) (f x) (g y)) x y)
+            ((fun f g => (x y : A) → (fun x y => R y x) x y → (fun x y => R' y x) (f x) (g y)) x y →
+              (fun x y => (fun f g => (x y : A) → R x y → R' (f x) (g y)) y x) x y)
+def Rocq.Corelib.Classes.CMorphisms.forall_def.{v_0, v_1, v_2} : (A : Type v_0) →
+  (A → Type v_1) → Type (max (max v_0 v_1) v_2) :=
+fun A P => PULift.{max (max (v_0 + 1) (v_1 + 1)) (v_2 + 1), max (v_0 + 1) (v_1 + 1)} ((x : A) → P x)
+def Rocq.Corelib.Classes.CMorphisms.forall_relation.{v_0, v_1, v_2, v_3, v_4} : (A : Type v_0) →
+  (P : A → Type v_1) →
+    ((a : A) → P a → P a → Type v_2) → ((x : A) → P x) → ((x : A) → P x) → Type (max (max v_0 v_2) v_4) :=
+fun A P sig a a_1 =>
+  PULift.{max (max (v_0 + 1) (v_2 + 1)) (v_4 + 1), max (v_0 + 1) (v_2 + 1)} ((a_2 : A) → sig a_2 (a a_2) (a_1 a_2))
+opaque Rocq.Corelib.Classes.CMorphisms.forall_subrelation.{v_0, v_1, v_2, v_3, v_4, v_5, v_6} : (A : Type v_0) →
+  (P : A → Type v_1) →
+    (R : (x : A) → P x → P x → Type v_5) →
+      (S : (x : A) → P x → P x → Type v_6) →
+        ((a : A) → (x y : P a) → R a x y → S a x y) →
+          (x y : (x : A) → P x) →
+            (fun f g => (a : A) → R a (f a) (g a)) x y → (fun f g => (a : A) → S a (f a) (g a)) x y
+opaque Rocq.Corelib.Classes.CMorphisms.iffT_arrow_subrelation.{v_0, v_1} : (x y : Type v_1) →
+  Rocq.Corelib.Init.Datatypes.prod.{v_1 + 1, v_1 + 1} (x → y) (y → x) → x → y
+opaque Rocq.Corelib.Classes.CMorphisms.iffT_flip_arrow_subrelation.{v_0, v_1, v_2, v_3} : (x y : Type v_1) →
+  Rocq.Corelib.Init.Datatypes.prod.{v_1 + 1, v_1 + 1} (x → y) (y → x) → (fun x y => y → x) x y
+def Rocq.Corelib.Classes.CMorphisms.iff_flip_impl_subrelation.statement.{v_0} : Prop :=
+∀ (x y : Prop), Rocq.Corelib.Init.Logic.and (x → y) (y → x) → y → x
+def Rocq.Corelib.Classes.CMorphisms.iff_impl_subrelation.statement.{v_0} : Prop :=
+∀ (x y : Prop), Rocq.Corelib.Init.Logic.iff x y → Rocq.Corelib.Program.Basics.impl x y
+inductive Rocq.Corelib.Classes.CMorphisms.normalization_done : Prop
+number of parameters: 0
+constructors:
+Rocq.Corelib.Classes.CMorphisms.normalization_done.did_normalization : Rocq.Corelib.Classes.CMorphisms.normalization_done
+def Rocq.Corelib.Classes.CMorphisms.normalizes.{v_0, v_1, v_2, v_3} : (A : Type v_0) →
+  (m m' : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_3} A) →
+    Rocq.Corelib.Classes.CMorphisms.Normalizes.{v_0, v_1, v_2, v_3} A m m' →
+      Rocq.Corelib.Classes.CRelationClasses.relation_equivalence.{v_0, v_1, v_2, v_3} A m m' :=
+fun A m m' Normalizes => Normalizes
+def Rocq.Corelib.Classes.CMorphisms.per_partial_app_type_morphism.{v_0, v_1, v_2, v_3, v_4} : (A : Type v_0) →
+  (R : A → A → Type v_4) →
+    Rocq.Corelib.Classes.CRelationClasses.PER.{v_0, v_4} A R →
+      (x : A) →
+        (fun f g => (x y : A) → R x y → Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1} (f x → g y) (g y → f x))
+          (R x) (R x) :=
+fun A R H x =>
+  Rocq.Corelib.Classes.CMorphisms.per_partial_app_type_morphism_obligation_1.{v_0, v_1, v_2, v_3, v_4} A R H x
+opaque Rocq.Corelib.Classes.CMorphisms.per_partial_app_type_morphism_obligation_1.{v_0, v_1, v_2, v_3, v_4} : (A :
+    Type v_0) →
+  (R : A → A → Type v_4) →
+    Rocq.Corelib.Classes.CRelationClasses.PER.{v_0, v_4} A R →
+      (x x_1 y : A) → R x_1 y → Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1} (R x x_1 → R x y) (R x y → R x x_1)
+opaque RocqPending.Corelib.Classes.CMorphisms.pointwise_pointwise.{v_0, v_1, v_2, v_3, v_4, v_5, v_6} : {h_Corelib_Init_Logic_eq_rect_r__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement.{v_0 + 1, v_6 + 1}} →
+  {h_Corelib_Classes_CMorphisms_pointwise_pointwise__rocq2lean_obligation_1 :
+      Rocq.Corelib.Classes.CMorphisms.pointwise_pointwise__rocq2lean_obligation_1.statement.{v_0, v_1, v_2, v_3, v_4,
+        v_5, v_6}} →
+    (A : Type v_0) →
+      (B : Type v_5) →
+        (R : B → B → Type v_6) →
+          (x y : A → B) →
+            Rocq.Corelib.Init.Datatypes.prod.{max (v_0 + 1) (v_6 + 1), max (v_0 + 1) (v_6 + 1)}
+              ((fun f g => (a : A) → R (f a) (g a)) x y →
+                (fun f g => (x y : A) → Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A x y → R (f x) (g y)) x y)
+              ((fun f g => (x y : A) → Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A x y → R (f x) (g y)) x y →
+                (fun f g => (a : A) → R (f a) (g a)) x y)
+def Rocq.Corelib.Classes.CMorphisms.pointwise_pointwise__rocq2lean_obligation_1.statement.{v_0, v_1, v_2, v_3, v_4, v_5, v_6} : Prop :=
+∀ (A : Type v_0) (B : Type v_5) (R : B → B → Type v_6) (x y : A → B)
+  (X : (x_1 y_1 : A) → Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A x_1 y_1 → R (x x_1) (y y_1)) (a : A)
+  (X0 : (y_1 : A) → Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A a y_1 → R (x a) (y y_1))
+  (X1 : Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A a a → R (x a) (y a)), Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A a a
+def Rocq.Corelib.Classes.CMorphisms.pointwise_relation.{v_0, v_1, v_2, v_3, v_4} : (A : Type v_0) →
+  (B : Type v_1) → (B → B → Type v_2) → (A → B) → (A → B) → Type (max (max v_0 v_2) v_4) :=
+fun A B R a a_1 =>
+  PULift.{max (max (v_0 + 1) (v_2 + 1)) (v_4 + 1), max (v_0 + 1) (v_2 + 1)} ((a_2 : A) → R (a a_2) (a_1 a_2))
+opaque Rocq.Corelib.Classes.CMorphisms.pointwise_subrelation.{v_0, v_1, v_2, v_3, v_4, v_5, v_6} : (A : Type v_0) →
+  (B : Type v_5) →
+    (R : B → B → Type v_4) →
+      (R' : B → B → Type v_6) →
+        ((x y : B) → R x y → R' x y) →
+          (x y : A → B) → (fun f g => (a : A) → R (f a) (g a)) x y → (fun f g => (a : A) → R' (f a) (g a)) x y
+def Rocq.Corelib.Classes.CMorphisms.proper_eq.statement.{v_0} : Prop :=
+∀ (A : Type v_0) (x : A), Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A x x
+def Rocq.Corelib.Classes.CMorphisms.proper_flip_proper.{v_0, v_1, v_2} : (A : Type v_0) →
+  (R : A → A → Type v_1) → (m : A) → R m m → (fun x y => R y x) m m :=
+fun A R m mor => mor
+opaque Rocq.Corelib.Classes.CMorphisms.proper_normalizes_proper.{v_0, v_1, v_2, v_3} : (A : Type v_0) →
+  (R0 R1 : A → A → Type v_3) →
+    ((x y : A) → Rocq.Corelib.Init.Datatypes.prod.{v_3 + 1, v_3 + 1} (R0 x y → R1 x y) (R1 x y → R0 x y)) →
+      (m : A) → R1 m m → R0 m m
+def Rocq.Corelib.Classes.CMorphisms.proper_prf.{v_0, v_1} : (A : Type v_0) →
+  (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A) →
+    (m : A) → Rocq.Corelib.Classes.CMorphisms.Proper.{v_0, v_1} A R m → R m m :=
+fun A R m Proper => Proper
+opaque Rocq.Corelib.Classes.CMorphisms.proper_proper.{v_0, v_1, v_2, v_3, v_4, v_5, v_6, v_7, v_8} : (A : Type v_6) →
+  (fun f g =>
+      (x y : A → A → Type v_7) →
+        (fun R R' => (x y : A) → Rocq.Corelib.Init.Datatypes.prod.{v_7 + 1, v_7 + 1} (R x y → R' x y) (R' x y → R x y))
+            x y →
+          (fun f g =>
+              (x y : A) →
+                Rocq.Corelib.Init.Logic.eq.{v_6 + 1} A x y →
+                  Rocq.Corelib.Init.Datatypes.prod.{v_7 + 1, v_7 + 1} (f x → g y) (g y → f x))
+            (f x) (g y))
+    (fun R m => R m m) fun R m => R m m
+opaque Rocq.Corelib.Classes.CMorphisms.proper_proper_proxy.{v_0, v_1} : (A : Type v_0) →
+  (x : A) →
+    (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A) →
+      Rocq.Corelib.Classes.CMorphisms.Proper.{v_0, v_1} A R x →
+        Rocq.Corelib.Classes.CMorphisms.ProperProxy.{v_0, v_1} A R x
+def Rocq.Corelib.Classes.CMorphisms.proper_proxy.{v_0, v_1} : (A : Type v_0) →
+  (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A) →
+    (m : A) → Rocq.Corelib.Classes.CMorphisms.ProperProxy.{v_0, v_1} A R m → R m m :=
+fun A R m ProperProxy => ProperProxy
+opaque RocqPending.Corelib.Classes.CMorphisms.proper_subrelation_proper_arrow.{v_0, v_1, v_2, v_3, v_4, v_5, v_6, v_7, v_8} : {h_Corelib_Init_Logic_eq_rect_r__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement.{v_0 + 1, v_7 + 1}} →
+  (A : Type v_0) →
+    (fun f g =>
+        (x y : A → A → Type v_7) →
+          (fun R R' => (x y : A) → R x y → R' x y) x y →
+            (fun f g => (x y : A) → Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A x y → f x → g y) (f x) (g y))
+      (fun R m => R m m) fun R m => R m m
+opaque Rocq.Corelib.Classes.CMorphisms.proper_sym_arrow_iffT.{v_0, v_1, v_2, v_3, v_4, v_5} : (A : Type v_4) →
+  (R : A → A → Type v_5) →
+    ((x y : A) → R x y → R y x) →
+      (f : A → Type v_3) →
+        (fun f g => (x y : A) → R x y → f x → g y) f f →
+          (fun f g => (x y : A) → R x y → Rocq.Corelib.Init.Datatypes.prod.{v_3 + 1, v_3 + 1} (f x → g y) (g y → f x)) f
+            f
+opaque Rocq.Corelib.Classes.CMorphisms.proper_sym_arrow_iffT_2.{v_0, v_1, v_2, v_3, v_4, v_5, v_6, v_7, v_8, v_9} : (A :
+    Type v_6) →
+  (R : A → A → Type v_7) →
+    ((x y : A) → R x y → R y x) →
+      (B : Type v_8) →
+        (R' : B → B → Type v_9) →
+          ((x y : B) → R' x y → R' y x) →
+            (f : A → B → Type v_5) →
+              (fun f g => (x y : A) → R x y → (fun f g => (x y : B) → R' x y → f x → g y) (f x) (g y)) f f →
+                (fun f g =>
+                    (x y : A) →
+                      R x y →
+                        (fun f g =>
+                            (x y : B) →
+                              R' x y → Rocq.Corelib.Init.Datatypes.prod.{v_5 + 1, v_5 + 1} (f x → g y) (g y → f x))
+                          (f x) (g y))
+                  f f
+opaque Rocq.Corelib.Classes.CMorphisms.proper_sym_flip.{v_0, v_1, v_2, v_3, v_4, v_5, v_6} : (A : Type v_4) →
+  (R1 : A → A → Type v_5) →
+    ((x y : A) → R1 x y → R1 y x) →
+      (B : Type v_2) →
+        (R2 : B → B → Type v_3) →
+          (f : A → B) →
+            (fun f g => (x y : A) → R1 x y → R2 (f x) (g y)) f f →
+              (fun f g => (x y : A) → R1 x y → (fun x y => R2 y x) (f x) (g y)) f f
+opaque Rocq.Corelib.Classes.CMorphisms.proper_sym_flip_2.{v_0, v_1, v_2, v_3, v_4, v_5, v_6, v_7, v_8, v_9, v_10} : (A :
+    Type v_6) →
+  (R1 : A → A → Type v_7) →
+    ((x y : A) → R1 x y → R1 y x) →
+      (B : Type v_8) →
+        (R2 : B → B → Type v_9) →
+          ((x y : B) → R2 x y → R2 y x) →
+            (C : Type v_2) →
+              (R3 : C → C → Type v_5) →
+                (f : A → B → C) →
+                  (fun f g => (x y : A) → R1 x y → (fun f g => (x y : B) → R2 x y → R3 (f x) (g y)) (f x) (g y)) f f →
+                    (fun f g =>
+                        (x y : A) →
+                          R1 x y → (fun f g => (x y : B) → R2 x y → (fun x y => R3 y x) (f x) (g y)) (f x) (g y))
+                      f f
+def Rocq.Corelib.Classes.CMorphisms.proper_sym_impl_iff.statement.{v_0, v_1, v_2, v_3, v_4} : Prop :=
+∀ (A : Type v_3) (R : A → A → Type v_4) (H : (x y : A) → R x y → R y x) (f : A → Prop),
+  (fun f g => ∀ (x y : A) (a : R x y), f x → g y) f f →
+    ∀ (x y : A) (a : R x y), Rocq.Corelib.Init.Logic.and (f x → f y) (f y → f x)
+def Rocq.Corelib.Classes.CMorphisms.proper_sym_impl_iff_2.statement.{v_0, v_1, v_2, v_3, v_4, v_5, v_6, v_7, v_8} : Prop :=
+∀ (A : Type v_5) (R : A → A → Type v_6) (H : (x y : A) → R x y → R y x) (B : Type v_7) (R' : B → B → Type v_8)
+  (H0 : (x y : B) → R' x y → R' y x) (f : A → B → Prop),
+  (fun f g => ∀ (x y : A) (a : R x y), (fun f g => ∀ (x y : B) (a : R' x y), f x → g y) (f x) (g y)) f f →
+    ∀ (x y : A) (a : R x y) (x_1 y_1 : B) (a : R' x_1 y_1),
+      Rocq.Corelib.Init.Logic.and (f x x_1 → f y y_1) (f y y_1 → f x x_1)
+opaque RocqPending.Corelib.Classes.CMorphisms.reflexive_eq_dom_reflexive.{v_0, v_1, v_2, v_3, v_4} : {h_Corelib_Init_Logic_eq_rect_r__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement.{v_1 + 1, v_4 + 1}} →
+  (B : Type v_0) →
+    (R' : B → B → Type v_4) →
+      ((x : B) → R' x x) →
+        (A : Type v_1) →
+          (x : A → B) → (fun f g => (x y : A) → Rocq.Corelib.Init.Logic.eq.{v_1 + 1} A x y → R' (f x) (g y)) x x
+opaque Rocq.Corelib.Classes.CMorphisms.reflexive_proper.{v_0, v_1} : (A : Type v_0) →
+  (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A) →
+    Rocq.Corelib.Classes.CRelationClasses.Reflexive.{v_0, v_1} A R →
+      (x : A) → Rocq.Corelib.Classes.CMorphisms.Proper.{v_0, v_1} A R x
+opaque Rocq.Corelib.Classes.CMorphisms.reflexive_proper_proxy.{v_0, v_1} : (A : Type v_0) →
+  (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A) →
+    Rocq.Corelib.Classes.CRelationClasses.Reflexive.{v_0, v_1} A R →
+      (x : A) → Rocq.Corelib.Classes.CMorphisms.ProperProxy.{v_0, v_1} A R x
+def Rocq.Corelib.Classes.CMorphisms.respectful.{v_0, v_1, v_2, v_3, v_4, v_5} : (A : Type v_0) →
+  (B : Type v_2) →
+    (A → A → Type v_1) → (B → B → Type v_3) → (A → B) → (A → B) → Type (max (max (max v_0 v_1) v_3) v_5) :=
+fun A B R R' a a_1 =>
+  PULift.{max (max (max (v_0 + 1) (v_1 + 1)) (v_3 + 1)) (v_5 + 1), max (max (v_0 + 1) (v_1 + 1)) (v_3 + 1)}
+    ((x y : A) → R x y → R' (a x) (a_1 y))
+def Rocq.Corelib.Classes.CMorphisms.respectful_hetero.{v_0, v_1, v_2, v_3, v_4, v_5, v_6, v_7} : (A : Type v_1) →
+  (B : Type v_2) →
+    (C : A → Type v_3) →
+      (D : B → Type v_4) →
+        (A → B → Type v_5) →
+          ((x : A) → (y : B) → C x → D y → Type v_6) →
+            ((x : A) → C x) → ((x : B) → D x) → Type (max (max (max (max v_1 v_2) v_5) v_6) v_7) :=
+fun A B C D R R' a a_1 =>
+  PULift.{max (max (max (max (v_1 + 1) (v_2 + 1)) (v_5 + 1)) (v_6 + 1)) (v_7 + 1),
+      max (max (max (v_1 + 1) (v_2 + 1)) (v_5 + 1)) (v_6 + 1)}
+    ((x : A) → (y : B) → R x y → R' x y (a x) (a_1 y))
+opaque Rocq.Corelib.Classes.CMorphisms.respectful_morphism.{v_0, v_1, v_2, v_3, v_4, v_5, v_6, v_7, v_8, v_9, v_10, v_11, v_12, v_13, v_14, v_15} : (A :
+    Type v_0) →
+  (B : Type v_1) →
+    (fun f g =>
+        (x y : A → A → Type v_8) →
+          (fun R R' =>
+                (x y : A) → Rocq.Corelib.Init.Datatypes.prod.{v_8 + 1, v_8 + 1} (R x y → R' x y) (R' x y → R x y))
+              x y →
+            (fun f g =>
+                (x y : B → B → Type v_13) →
+                  (fun R R' =>
+                        (x y : B) →
+                          Rocq.Corelib.Init.Datatypes.prod.{v_13 + 1, v_13 + 1} (R x y → R' x y) (R' x y → R x y))
+                      x y →
+                    (fun R R' =>
+                        (x y : A → B) →
+                          Rocq.Corelib.Init.Datatypes.prod.{max (max (max (v_0 + 1) (v_13 + 1)) (v_15 + 1)) (v_8 + 1),
+                              max (max (max (v_0 + 1) (v_13 + 1)) (v_15 + 1)) (v_8 + 1)}
+                            (R x y → R' x y) (R' x y → R x y))
+                      (f x) (g y))
+              (f x) (g y))
+      (fun x a a_1 a_2 =>
+        PULift.{max (max (max (v_0 + 1) (v_13 + 1)) (v_15 + 1)) (v_8 + 1), max (max (v_0 + 1) (v_13 + 1)) (v_8 + 1)}
+          ((x_1 y : A) → x x_1 y → a (a_1 x_1) (a_2 y)))
+      fun x a a_1 a_2 =>
+      PULift.{max (max (max (v_0 + 1) (v_13 + 1)) (v_15 + 1)) (v_8 + 1), max (max (v_0 + 1) (v_13 + 1)) (v_8 + 1)}
+        ((x_1 y : A) → x x_1 y → a (a_1 x_1) (a_2 y))
+def Rocq.Corelib.Classes.CMorphisms.respectful_per.{v_0, v_1, v_2, v_3, v_4, v_5} : (A : Type v_0) →
+  (R : A → A → Type v_4) →
+    Rocq.Corelib.Classes.CRelationClasses.PER.{v_0, v_4} A R →
+      (B : Type v_1) →
+        (R' : B → B → Type v_5) →
+          Rocq.Corelib.Classes.CRelationClasses.PER.{v_1, v_5} B R' →
+            Rocq.Corelib.Classes.CRelationClasses.PER.{max (max v_0 v_1) v_2, max (max (max v_0 v_3) v_4) v_5}
+              (PULift.{(max (max v_0 v_1) v_2) + 1, max (v_0 + 1) (v_1 + 1)} (A → B)) fun a a_1 =>
+              PULift.{(max (max (max v_0 v_3) v_4) v_5) + 1, max (max (v_0 + 1) (v_4 + 1)) (v_5 + 1)}
+                ((x y : A) →
+                  R x y →
+                    R' (PULift.down.{(max (max v_0 v_1) v_2) + 1, max (v_0 + 1) (v_1 + 1)} a x)
+                      (PULift.down.{(max (max v_0 v_1) v_2) + 1, max (v_0 + 1) (v_1 + 1)} a_1 y)) :=
+fun A R H B R' H0 =>
+  Rocq.Corelib.Classes.CRelationClasses.PER.Build_PER.{max (max v_0 v_1) v_2, max (max (max v_0 v_3) v_4) v_5}
+    (PULift.{(max (max v_0 v_1) v_2) + 1, max (v_0 + 1) (v_1 + 1)} (A → B))
+    (fun a a_1 =>
+      PULift.{(max (max (max v_0 v_3) v_4) v_5) + 1, max (max (v_0 + 1) (v_4 + 1)) (v_5 + 1)}
+        ((x y : A) →
+          R x y →
+            R' (PULift.down.{(max (max v_0 v_1) v_2) + 1, max (v_0 + 1) (v_1 + 1)} a x)
+              (PULift.down.{(max (max v_0 v_1) v_2) + 1, max (v_0 + 1) (v_1 + 1)} a_1 y)))
+    (fun x y a =>
+      PULift.up.{(max (max (max v_0 v_3) v_4) v_5) + 1, max (max (v_0 + 1) (v_4 + 1)) (v_5 + 1)}
+        (Rocq.Corelib.Classes.CMorphisms.respectful_per_obligation_1.{v_0, v_1, max (max v_0 v_1) v_2,
+            max (max (max v_0 v_3) v_4) v_5, v_4, v_5}
+          A R H B R' H0 (PULift.down.{(max (max v_0 v_1) v_2) + 1, max (v_0 + 1) (v_1 + 1)} x)
+          (PULift.down.{(max (max v_0 v_1) v_2) + 1, max (v_0 + 1) (v_1 + 1)} y)
+          (PULift.down.{(max (max (max v_0 v_3) v_4) v_5) + 1, max (max (v_0 + 1) (v_4 + 1)) (v_5 + 1)} a)))
+    fun x y z a a_1 =>
+    PULift.up.{(max (max (max v_0 v_3) v_4) v_5) + 1, max (max (v_0 + 1) (v_4 + 1)) (v_5 + 1)}
+      (Rocq.Corelib.Classes.CMorphisms.respectful_per_obligation_2.{v_0, v_1, max (max v_0 v_1) v_2,
+          max (max (max v_0 v_3) v_4) v_5, v_4, v_5}
+        A R H B R' H0 (PULift.down.{(max (max v_0 v_1) v_2) + 1, max (v_0 + 1) (v_1 + 1)} x)
+        (PULift.down.{(max (max v_0 v_1) v_2) + 1, max (v_0 + 1) (v_1 + 1)} y)
+        (PULift.down.{(max (max v_0 v_1) v_2) + 1, max (v_0 + 1) (v_1 + 1)} z)
+        (PULift.down.{(max (max (max v_0 v_3) v_4) v_5) + 1, max (max (v_0 + 1) (v_4 + 1)) (v_5 + 1)} a)
+        (PULift.down.{(max (max (max v_0 v_3) v_4) v_5) + 1, max (max (v_0 + 1) (v_4 + 1)) (v_5 + 1)} a_1))
+def Rocq.Corelib.Classes.CMorphisms.respectful_per_obligation_1.{v_0, v_1, v_2, v_3, v_4, v_5} : (A : Type v_0) →
+  (R : A → A → Type v_4) →
+    Rocq.Corelib.Classes.CRelationClasses.PER.{v_0, v_4} A R →
+      (B : Type v_1) →
+        (R' : B → B → Type v_5) →
+          Rocq.Corelib.Classes.CRelationClasses.PER.{v_1, v_5} B R' →
+            (x y : A → B) →
+              (fun f g => (x y : A) → R x y → R' (f x) (g y)) x y →
+                (fun f g => (x y : A) → R x y → R' (f x) (g y)) y x :=
+fun A R H B R' H0 x y a x_1 y_1 a_1 =>
+  Rocq.Corelib.Classes.CRelationClasses.PER.rec.{v_5 + 1, v_0, v_4}
+    (fun PER_Symmetric PER_Transitive =>
+      Rocq.Corelib.Classes.CRelationClasses.PER.rec.{v_5 + 1, v_1, v_5}
+        (fun PER_Symmetric_1 PER_Transitive => PER_Symmetric_1 (x y_1) (y x_1) (a y_1 x_1 (PER_Symmetric x_1 y_1 a_1)))
+        H0)
+    H
+opaque Rocq.Corelib.Classes.CMorphisms.respectful_per_obligation_2.{v_0, v_1, v_2, v_3, v_4, v_5} : (A : Type v_0) →
+  (R : A → A → Type v_4) →
+    Rocq.Corelib.Classes.CRelationClasses.PER.{v_0, v_4} A R →
+      (B : Type v_1) →
+        (R' : B → B → Type v_5) →
+          Rocq.Corelib.Classes.CRelationClasses.PER.{v_1, v_5} B R' →
+            (x y z : A → B) →
+              (fun f g => (x y : A) → R x y → R' (f x) (g y)) x y →
+                (fun f g => (x y : A) → R x y → R' (f x) (g y)) y z →
+                  (fun f g => (x y : A) → R x y → R' (f x) (g y)) x z
+opaque Rocq.Corelib.Classes.CMorphisms.subrelation_id_proper.{v_0, v_1, v_2, v_3} : (A : Type v_0) →
+  (RA : A → A → Type v_2) →
+    (RA' : A → A → Type v_3) →
+      ((x y : A) → RA x y → RA' x y) → (fun f g => (x y : A) → RA x y → RA' (f x) (g y)) (fun x => x) fun x => x
+opaque Rocq.Corelib.Classes.CMorphisms.subrelation_proper.{v_0, v_1, v_2} : (A : Type v_0) →
+  (R' : A → A → Type v_2) →
+    (m : A) → R' m m → (R : A → A → Type v_2) → Rocq.Corelib.Init.Datatypes.unit → ((x y : A) → R' x y → R x y) → R m m
+opaque Rocq.Corelib.Classes.CMorphisms.subrelation_refl.{v_0, v_1} : (A : Type v_0) →
+  (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A) →
+    Rocq.Corelib.Classes.CRelationClasses.subrelation.{v_0, v_1, v_1} A R R
+opaque Rocq.Corelib.Classes.CMorphisms.subrelation_respectful.{v_0, v_1, v_2, v_3, v_4, v_5, v_6, v_7, v_8} : (A :
+    Type v_0) →
+  (RA' : A → A → Type v_6) →
+    (RA : A → A → Type v_4) →
+      ((x y : A) → RA' x y → RA x y) →
+        (B : Type v_7) →
+          (RB : B → B → Type v_5) →
+            (RB' : B → B → Type v_8) →
+              ((x y : B) → RB x y → RB' x y) →
+                (x y : A → B) →
+                  (fun f g => (x y : A) → RA x y → RB (f x) (g y)) x y →
+                    (fun f g => (x y : A) → RA' x y → RB' (f x) (g y)) x y
+opaque Rocq.Corelib.Classes.CMorphisms.symmetric_equiv_flip.{v_0, v_1, v_2, v_3, v_4} : (A : Type v_0) →
+  (R : A → A → Type v_3) →
+    ((x y : A) → R x y → R y x) →
+      (x y : A) →
+        Rocq.Corelib.Init.Datatypes.prod.{v_3 + 1, v_3 + 1} (R x y → (fun x y => R y x) x y)
+          ((fun x y => R y x) x y → R x y)
+def Rocq.Corelib.Classes.CMorphisms.trans_co_eq_inv_arrow_morphism.{v_0, v_1, v_2, v_3, v_4, v_5, v_6} : (A :
+    Type v_0) →
+  (R : A → A → Type v_6) →
+    ((x y z : A) → R x y → R y z → R x z) →
+      (fun f g =>
+          (x y : A) →
+            R x y →
+              (fun f g => (x y : A) → Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A x y → (fun x y => y → x) (f x) (g y)) (f x)
+                (g y))
+        R R :=
+fun A R H =>
+  Rocq.Corelib.Classes.CMorphisms.trans_co_eq_inv_arrow_morphism_obligation_1.{v_0, v_1, v_2, v_3, v_4, v_5, v_6} A R H
+opaque Rocq.Corelib.Classes.CMorphisms.trans_co_eq_inv_arrow_morphism_obligation_1.{v_0, v_1, v_2, v_3, v_4, v_5, v_6} : (A :
+    Type v_0) →
+  (R : A → A → Type v_6) →
+    ((x y z : A) → R x y → R y z → R x z) →
+      (x y : A) →
+        R x y →
+          (fun f g => (x y : A) → Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A x y → (fun x y => y → x) (f x) (g y)) (R x)
+            (R y)
+def Rocq.Corelib.Classes.CMorphisms.trans_co_impl_type_morphism.{v_0, v_1, v_2, v_3, v_4} : (A : Type v_0) →
+  (R : A → A → Type v_4) →
+    ((x y z : A) → R x y → R y z → R x z) → (x : A) → (fun f g => (x y : A) → R x y → f x → g y) (R x) (R x) :=
+fun A R H x =>
+  Rocq.Corelib.Classes.CMorphisms.trans_co_impl_type_morphism_obligation_1.{v_0, v_1, v_2, v_3, v_4} A R H x
+opaque Rocq.Corelib.Classes.CMorphisms.trans_co_impl_type_morphism_obligation_1.{v_0, v_1, v_2, v_3, v_4} : (A :
+    Type v_0) →
+  (R : A → A → Type v_4) → ((x y z : A) → R x y → R y z → R x z) → (x x_1 y : A) → R x_1 y → R x x_1 → R x y
+def Rocq.Corelib.Classes.CMorphisms.trans_contra_co_type_morphism.{v_0, v_1, v_2, v_3, v_4} : (A : Type v_0) →
+  (R : A → A → Type v_4) →
+    ((x y z : A) → R x y → R y z → R x z) →
+      (fun f g => (x y : A) → (fun x y => R y x) x y → (fun f g => (x y : A) → R x y → f x → g y) (f x) (g y)) R R :=
+fun A R H => Rocq.Corelib.Classes.CMorphisms.trans_contra_co_type_morphism_obligation_1.{v_0, v_1, v_2, v_3, v_4} A R H
+opaque Rocq.Corelib.Classes.CMorphisms.trans_contra_co_type_morphism_obligation_1.{v_0, v_1, v_2, v_3, v_4} : (A :
+    Type v_0) →
+  (R : A → A → Type v_4) →
+    ((x y z : A) → R x y → R y z → R x z) →
+      (x y : A) → (fun x y => R y x) x y → (fun f g => (x y : A) → R x y → f x → g y) (R x) (R y)
+def Rocq.Corelib.Classes.CMorphisms.trans_contra_inv_impl_type_morphism.{v_0, v_1, v_2, v_3, v_4, v_5, v_6} : (A :
+    Type v_0) →
+  (R : A → A → Type v_6) →
+    ((x y z : A) → R x y → R y z → R x z) →
+      (x : A) → (fun f g => (x y : A) → (fun x y => R y x) x y → (fun x y => y → x) (f x) (g y)) (R x) (R x) :=
+fun A R H x =>
+  Rocq.Corelib.Classes.CMorphisms.trans_contra_inv_impl_type_morphism_obligation_1.{v_0, v_1, v_2, v_3, v_4, v_5, v_6} A
+    R H x
+opaque Rocq.Corelib.Classes.CMorphisms.trans_contra_inv_impl_type_morphism_obligation_1.{v_0, v_1, v_2, v_3, v_4, v_5, v_6} : (A :
+    Type v_0) →
+  (R : A → A → Type v_6) →
+    ((x y z : A) → R x y → R y z → R x z) →
+      (x x_1 y : A) → (fun x y => R y x) x_1 y → (fun x y => y → x) (R x x_1) (R x y)
+def Rocq.Corelib.Classes.CMorphisms.trans_sym_co_inv_impl_type_morphism.{v_0, v_1, v_2, v_3, v_4, v_5, v_6} : (A :
+    Type v_0) →
+  (R : A → A → Type v_6) →
+    Rocq.Corelib.Classes.CRelationClasses.PER.{v_0, v_6} A R →
+      (x : A) → (fun f g => (x y : A) → R x y → (fun x y => y → x) (f x) (g y)) (R x) (R x) :=
+fun A R H x =>
+  Rocq.Corelib.Classes.CMorphisms.trans_sym_co_inv_impl_type_morphism_obligation_1.{v_0, v_1, v_2, v_3, v_4, v_5, v_6} A
+    R H x
+opaque Rocq.Corelib.Classes.CMorphisms.trans_sym_co_inv_impl_type_morphism_obligation_1.{v_0, v_1, v_2, v_3, v_4, v_5, v_6} : (A :
+    Type v_0) →
+  (R : A → A → Type v_6) →
+    Rocq.Corelib.Classes.CRelationClasses.PER.{v_0, v_6} A R →
+      (x x_1 y : A) → R x_1 y → (fun x y => y → x) (R x x_1) (R x y)
+def Rocq.Corelib.Classes.CMorphisms.trans_sym_contra_arrow_morphism.{v_0, v_1, v_2, v_3, v_4} : (A : Type v_0) →
+  (R : A → A → Type v_4) →
+    Rocq.Corelib.Classes.CRelationClasses.PER.{v_0, v_4} A R →
+      (x : A) → (fun f g => (x y : A) → (fun x y => R y x) x y → f x → g y) (R x) (R x) :=
+fun A R H x =>
+  Rocq.Corelib.Classes.CMorphisms.trans_sym_contra_arrow_morphism_obligation_1.{v_0, v_1, v_2, v_3, v_4} A R H x
+opaque Rocq.Corelib.Classes.CMorphisms.trans_sym_contra_arrow_morphism_obligation_1.{v_0, v_1, v_2, v_3, v_4} : (A :
+    Type v_0) →
+  (R : A → A → Type v_4) →
+    Rocq.Corelib.Classes.CRelationClasses.PER.{v_0, v_4} A R →
+      (x x_1 y : A) → (fun x y => R y x) x_1 y → R x x_1 → R x y

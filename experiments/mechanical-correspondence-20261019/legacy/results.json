@@ -1,0 +1,688 @@
+[
+  {
+    "profile": "Datatypes",
+    "module": "Init/Datatypes",
+    "exit": 1,
+    "seconds": 1.227,
+    "errors": "/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Datatypes.lean:207:32: error: Tactic `rfl` failed: Expected the goal to be a binary relation\n\nHint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`\n\ncase true.mpr\nh : boolTo Rocq.Corelib.Init.Datatypes.bool.true = true\n\u22a2 Rocq.Corelib.Init.Datatypes.is_true Rocq.Corelib.Init.Datatypes.bool.true\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Datatypes.lean:210:28: error: Application type mismatch: The argument\n  h\nhas type\n  Rocq.Corelib.Init.Datatypes.is_true Rocq.Corelib.Init.Datatypes.bool.false\nbut is expected to have type\n  ?m.44 = ?m.45\nin the application\n  congrArg boolTo h\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Datatypes.lean:221:44: error: Type mismatch\n  (listTo xs).length\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Datatypes.lean:220:2: error: Cannot add `simp` attribute to `length_agrees`: It is not a proposition nor a definition (to unfold)\n\nNote: The `[simp]` attribute can be added to lemmas that should be automatically used by the simplifier and to definitions that the simplifier should automatically unfold\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Datatypes.lean:222:95: error: Type mismatch\n  (listTo xs).length\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Datatypes.lean:223:43: error: Application type mismatch: The argument\n  Rocq.Corelib.Init.Datatypes.length A xs\nhas type\n  Rocq.Corelib.Init.Datatypes.nat\nbut is expected to have type\n  Nat\nin the application\n  Nat.succ (Rocq.Corelib.Init.Datatypes.length A xs)\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Datatypes.lean:323:0: error: Unapproved axiom in NativeBridge.is_true_agrees: sorryAx\n"
+  },
+  {
+    "profile": "Nat",
+    "module": "Init/Nat",
+    "exit": 1,
+    "seconds": 0.965,
+    "errors": "/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Nat.lean:138:0: error: Not a definitional equality: the left-hand side\n  RN\nis not definitionally equal to the right-hand side\n  Nat\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Nat.lean:138:38: error: Type mismatch\n  rfl\nhas type\n  ?m.3 = ?m.3\nbut is expected to have type\n  RN = Nat\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Nat.lean:139:63: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  OfNat Rocq.Corelib.Init.Datatypes.nat 0\nnumerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is\n  Rocq.Corelib.Init.Datatypes.nat\ndue to the absence of the instance above\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Nat.lean:139:68: error: Type mismatch\n  rfl\nhas type\n  ?m.5 = ?m.5\nbut is expected to have type\n  Rocq.Corelib.Init.Nat.zero = 0\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Nat.lean:140:61: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  OfNat Rocq.Corelib.Init.Datatypes.nat 1\nnumerals are polymorphic in Lean, but the numeral `1` cannot be used in a context where the expected type is\n  Rocq.Corelib.Init.Datatypes.nat\ndue to the absence of the instance above\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Nat.lean:140:66: error: Type mismatch\n  rfl\nhas type\n  ?m.5 = ?m.5\nbut is expected to have type\n  Rocq.Corelib.Init.Nat.one = 1\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Nat.lean:141:61: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  OfNat Rocq.Corelib.Init.Datatypes.nat 2\nnumerals are polymorphic in Lean, but the numeral `2` cannot be used in a context where the expected type is\n  Rocq.Corelib.Init.Datatypes.nat\ndue to the absence of the instance above\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/home/shunqwang4/research/rocq-core/ex"
+  },
+  {
+    "profile": "Logic",
+    "module": "Init/Logic",
+    "exit": 0,
+    "seconds": 1.438,
+    "errors": ""
+  },
+  {
+    "profile": "Lists",
+    "module": "Lists/ListDef",
+    "exit": 1,
+    "seconds": 0.971,
+    "errors": "/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Lists.lean:142:48: error: Application type mismatch: The argument\n  n\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\nin the application\n  Rocq.Corelib.Lists.ListDef.repeat A a n\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Lists.lean:145:75: error: Application type mismatch: The argument\n  n\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\nin the application\n  Rocq.Corelib.Lists.ListDef.repeat A a n\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Lists.lean:147:46: error: Application type mismatch: The argument\n  n\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\nin the application\n  Rocq.Corelib.Lists.ListDef.firstn A n\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Lists.lean:153:75: error: Application type mismatch: The argument\n  n\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\nin the application\n  Rocq.Corelib.Lists.ListDef.firstn A n\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Lists.lean:155:45: error: Application type mismatch: The argument\n  n\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\nin the application\n  Rocq.Corelib.Lists.ListDef.skipn A n\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Lists.lean:163:35: error: Application type mismatch: The argument\n  n\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\nin the application\n  Rocq.Corelib.Lists.ListDef.nth A n\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Lists.lean:171:41: error: Application type mismatch: The argument\n  start\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\nin the application\n  Rocq.Corelib.Lists.ListDef.seq start\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Lists.lean:171:54: error: Type mismatch\n  List.range' start len\nhas type\n  List Nat\nbut is expected to have type\n  List Rocq.Corelib.Init.Datatypes.nat\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Lists.lean:170:2: error: Cannot add `simp` attribute to `seq_agrees`: It is not a prop"
+  },
+  {
+    "profile": "Specif",
+    "module": "Init/Specif",
+    "exit": 0,
+    "seconds": 1.468,
+    "errors": ""
+  },
+  {
+    "profile": "Binary",
+    "module": "Numbers/BinNums",
+    "exit": 0,
+    "seconds": 1.289,
+    "errors": ""
+  },
+  {
+    "profile": "Pos",
+    "module": "BinNums/PosDef",
+    "exit": 1,
+    "seconds": 1.156,
+    "errors": "/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Pos.lean:209:107: warning: This simp argument is unused:\n  h.1\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [pos_add_xI_xI, pos_add_carry_xI_xI, positiveTo_xO, positiveTo_xI, h.2]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Pos.lean:215:112: warning: This simp argument is unused:\n  h.2\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [pos_add_xO_xO, pos_add_carry_xO_xO, positiveTo_xO, positiveTo_xI, h.1]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Pos.lean:243:71: error: Application type mismatch: The argument\n  n\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\nin the application\n  Rocq.Corelib.Init.Nat.add n\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Pos.lean:243:77: error: Type mismatch\n  n + m\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Pos.lean:243:2: error: Cannot add `simp` attribute to `nat_add_agrees`: It is not a proposition nor a definition (to unfold)\n\nNote: The `[simp]` attribute can be added to lemmas that should be automatically used by the simplifier and to definitions that the simplifier should automatically unfold\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Pos.lean:247:47: error: Application type mismatch: The argument\n  n\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\nin the application\n  Rocq.Corelib.Init.Nat.add n\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Pos.lean:251:46: error: Application type mismatch: The argument\n  Rocq.Corelib.Init.Nat.add\nhas type\n  Rocq.Corelib.Init.Datatypes.nat \u2192 Rocq.Corelib.Init.Datatypes.nat \u2192 Rocq.Corelib.Init.Datatypes.nat\nbut is expected to have type\n  Nat \u2192 Nat \u2192 Nat\nin the application\n  Rocq.Corelib.BinNums.PosDef.Pos.iter_op Nat Rocq.Corelib.Init.Nat.add\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Pos.lean:254:37: error: Application type mismatch: The argument\n  n\n"
+  },
+  {
+    "profile": "Int63",
+    "module": "Numbers/Cyclic/Int63/PrimInt63",
+    "exit": 0,
+    "seconds": 1.261,
+    "errors": ""
+  },
+  {
+    "profile": "Array",
+    "module": "Array/PrimArray",
+    "exit": 0,
+    "seconds": 1.21,
+    "errors": ""
+  },
+  {
+    "profile": "ByteString",
+    "module": "Strings/PrimString",
+    "exit": 0,
+    "seconds": 1.151,
+    "errors": ""
+  },
+  {
+    "profile": "Peano",
+    "module": "Init/Peano",
+    "exit": 1,
+    "seconds": 1.068,
+    "errors": "/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Peano.lean:118:71: error: Application type mismatch: The argument\n  n\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\nin the application\n  Rocq.Corelib.Init.Nat.pred n\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Peano.lean:118:75: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HSub Nat Nat Rocq.Corelib.Init.Datatypes.nat\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Peano.lean:120:71: error: Application type mismatch: The argument\n  n\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\nin the application\n  Rocq.Corelib.Init.Nat.add n\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Peano.lean:120:77: error: Type mismatch\n  n + m\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Peano.lean:120:2: error: Cannot add `simp` attribute to `nat_add_agrees`: It is not a proposition nor a definition (to unfold)\n\nNote: The `[simp]` attribute can be added to lemmas that should be automatically used by the simplifier and to definitions that the simplifier should automatically unfold\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Peano.lean:124:47: error: Application type mismatch: The argument\n  n\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\nin the application\n  Rocq.Corelib.Init.Nat.add n\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Peano.lean:127:71: error: Application type mismatch: The argument\n  n\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\nin the application\n  Rocq.Corelib.Init.Nat.mul n\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Peano.lean:127:77: error: Type mismatch\n  n * m\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Peano.lean:127:2: error: Cannot add `simp` attribute to `nat_mul_agrees`: It is no"
+  },
+  {
+    "profile": "Byte",
+    "module": "Init/Byte",
+    "exit": 0,
+    "seconds": 8.536,
+    "errors": ""
+  },
+  {
+    "profile": "FloatClass",
+    "module": "Floats/FloatClass",
+    "exit": 0,
+    "seconds": 1.185,
+    "errors": ""
+  },
+  {
+    "profile": "DecimalDigits",
+    "module": "Init/Decimal",
+    "exit": 0,
+    "seconds": 1.19,
+    "errors": ""
+  },
+  {
+    "profile": "HexadecimalDigits",
+    "module": "Init/Hexadecimal",
+    "exit": 0,
+    "seconds": 1.224,
+    "errors": ""
+  },
+  {
+    "profile": "Integer",
+    "module": "BinNums/IntDef",
+    "exit": 1,
+    "seconds": 1.306,
+    "errors": "/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Integer.lean:277:107: warning: This simp argument is unused:\n  h.1\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [pos_add_xI_xI, pos_add_carry_xI_xI, positiveTo_xO, positiveTo_xI, h.2]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Integer.lean:283:112: warning: This simp argument is unused:\n  h.2\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [pos_add_xO_xO, pos_add_carry_xO_xO, positiveTo_xO, positiveTo_xI, h.1]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Integer.lean:311:71: error: Application type mismatch: The argument\n  n\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\nin the application\n  Rocq.Corelib.Init.Nat.add n\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Integer.lean:311:77: error: Type mismatch\n  n + m\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Integer.lean:311:2: error: Cannot add `simp` attribute to `nat_add_agrees`: It is not a proposition nor a definition (to unfold)\n\nNote: The `[simp]` attribute can be added to lemmas that should be automatically used by the simplifier and to definitions that the simplifier should automatically unfold\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Integer.lean:315:47: error: Application type mismatch: The argument\n  n\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\nin the application\n  Rocq.Corelib.Init.Nat.add n\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Integer.lean:319:46: error: Application type mismatch: The argument\n  Rocq.Corelib.Init.Nat.add\nhas type\n  Rocq.Corelib.Init.Datatypes.nat \u2192 Rocq.Corelib.Init.Datatypes.nat \u2192 Rocq.Corelib.Init.Datatypes.nat\nbut is expected to have type\n  Nat \u2192 Nat \u2192 Nat\nin the application\n  Rocq.Corelib.BinNums.PosDef.Pos.iter_op Nat Rocq.Corelib.Init.Nat.add\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Integer.lean:322:37: error: Application "
+  },
+  {
+    "profile": "Boundaries",
+    "module": "Init/Nat",
+    "exit": 0,
+    "seconds": 1.239,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_Array_ArrayAxioms",
+    "module": "Array/ArrayAxioms",
+    "exit": 0,
+    "seconds": 1.28,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_BinNums_PosDef",
+    "module": "BinNums/PosDef",
+    "exit": 1,
+    "seconds": 1.319,
+    "errors": "/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Auto_BinNums_PosDef.lean:117:71: error: Application type mismatch: The argument\n  n\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\nin the application\n  Rocq.Corelib.Init.Nat.add n\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Auto_BinNums_PosDef.lean:117:77: error: Type mismatch\n  n + m\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Auto_BinNums_PosDef.lean:117:2: error: Cannot add `simp` attribute to `nat_add_agrees`: It is not a proposition nor a definition (to unfold)\n\nNote: The `[simp]` attribute can be added to lemmas that should be automatically used by the simplifier and to definitions that the simplifier should automatically unfold\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Auto_BinNums_PosDef.lean:121:47: error: Application type mismatch: The argument\n  n\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\nin the application\n  Rocq.Corelib.Init.Nat.add n\n"
+  },
+  {
+    "profile": "Auto_Classes_CMorphisms",
+    "module": "Classes/CMorphisms",
+    "exit": 0,
+    "seconds": 1.304,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_Classes_CRelationClasses",
+    "module": "Classes/CRelationClasses",
+    "exit": 0,
+    "seconds": 1.476,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_Classes_Equivalence",
+    "module": "Classes/Equivalence",
+    "exit": 0,
+    "seconds": 1.55,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_Classes_Morphisms",
+    "module": "Classes/Morphisms",
+    "exit": 0,
+    "seconds": 1.719,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_Classes_Morphisms_Prop",
+    "module": "Classes/Morphisms_Prop",
+    "exit": 0,
+    "seconds": 1.345,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_Classes_RelationClasses",
+    "module": "Classes/RelationClasses",
+    "exit": 0,
+    "seconds": 1.431,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_Classes_SetoidTactics",
+    "module": "Classes/SetoidTactics",
+    "exit": 0,
+    "seconds": 1.228,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_Floats_FloatAxioms",
+    "module": "Floats/FloatAxioms",
+    "exit": 0,
+    "seconds": 1.324,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_Floats_SpecFloat",
+    "module": "Floats/SpecFloat",
+    "exit": 0,
+    "seconds": 1.218,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_Init_Byte",
+    "module": "Init/Byte",
+    "exit": 0,
+    "seconds": 1.266,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_Init_Datatypes",
+    "module": "Init/Datatypes",
+    "exit": 0,
+    "seconds": 1.345,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_Init_Decimal",
+    "module": "Init/Decimal",
+    "exit": 0,
+    "seconds": 1.245,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_Init_Hexadecimal",
+    "module": "Init/Hexadecimal",
+    "exit": 0,
+    "seconds": 1.259,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_Init_Logic",
+    "module": "Init/Logic",
+    "exit": 0,
+    "seconds": 1.44,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_Init_Number",
+    "module": "Init/Number",
+    "exit": 0,
+    "seconds": 1.262,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_Init_Peano",
+    "module": "Init/Peano",
+    "exit": 1,
+    "seconds": 1.104,
+    "errors": "/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Auto_Init_Peano.lean:129:71: error: Application type mismatch: The argument\n  n\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\nin the application\n  Rocq.Corelib.Init.Nat.pred n\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Auto_Init_Peano.lean:129:75: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HSub Nat Nat Rocq.Corelib.Init.Datatypes.nat\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Auto_Init_Peano.lean:132:71: error: Application type mismatch: The argument\n  n\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\nin the application\n  Rocq.Corelib.Init.Nat.add n\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Auto_Init_Peano.lean:132:77: error: Type mismatch\n  n + m\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Auto_Init_Peano.lean:132:2: error: Cannot add `simp` attribute to `nat_add_agrees`: It is not a proposition nor a definition (to unfold)\n\nNote: The `[simp]` attribute can be added to lemmas that should be automatically used by the simplifier and to definitions that the simplifier should automatically unfold\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Auto_Init_Peano.lean:136:47: error: Application type mismatch: The argument\n  n\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\nin the application\n  Rocq.Corelib.Init.Nat.add n\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Auto_Init_Peano.lean:140:71: error: Application type mismatch: The argument\n  n\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\nin the application\n  Rocq.Corelib.Init.Nat.mul n\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Auto_Init_Peano.lean:140:77: error: Type mismatch\n  n * m\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Au"
+  },
+  {
+    "profile": "Auto_Init_Specif",
+    "module": "Init/Specif",
+    "exit": 0,
+    "seconds": 1.443,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_Init_Sumbool",
+    "module": "Init/Sumbool",
+    "exit": 0,
+    "seconds": 1.208,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_Init_Tactics",
+    "module": "Init/Tactics",
+    "exit": 0,
+    "seconds": 1.187,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_Init_Wf",
+    "module": "Init/Wf",
+    "exit": 0,
+    "seconds": 1.24,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_Lists_ListDef",
+    "module": "Lists/ListDef",
+    "exit": 0,
+    "seconds": 1.182,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_Numbers_BinNums",
+    "module": "Numbers/BinNums",
+    "exit": 0,
+    "seconds": 1.187,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_Numbers_Cyclic_Int63_Sint63Axioms",
+    "module": "Numbers/Cyclic/Int63/Sint63Axioms",
+    "exit": 0,
+    "seconds": 1.259,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_Numbers_Cyclic_Int63_Uint63Axioms",
+    "module": "Numbers/Cyclic/Int63/Uint63Axioms",
+    "exit": 0,
+    "seconds": 1.322,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_Program_Wf",
+    "module": "Program/Wf",
+    "exit": 0,
+    "seconds": 1.179,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_Relations_Relation_Definitions",
+    "module": "Relations/Relation_Definitions",
+    "exit": 0,
+    "seconds": 1.225,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_Setoids_Setoid",
+    "module": "Setoids/Setoid",
+    "exit": 0,
+    "seconds": 1.212,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_Strings_PrimStringAxioms",
+    "module": "Strings/PrimStringAxioms",
+    "exit": 1,
+    "seconds": 1.129,
+    "errors": "/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Auto_Strings_PrimStringAxioms.lean:117:71: error: Application type mismatch: The argument\n  n\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\nin the application\n  Rocq.Corelib.Init.Nat.add n\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Auto_Strings_PrimStringAxioms.lean:117:77: error: Type mismatch\n  n + m\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Auto_Strings_PrimStringAxioms.lean:117:2: error: Cannot add `simp` attribute to `nat_add_agrees`: It is not a proposition nor a definition (to unfold)\n\nNote: The `[simp]` attribute can be added to lemmas that should be automatically used by the simplifier and to definitions that the simplifier should automatically unfold\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Auto_Strings_PrimStringAxioms.lean:121:47: error: Application type mismatch: The argument\n  n\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\nin the application\n  Rocq.Corelib.Init.Nat.add n\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Auto_Strings_PrimStringAxioms.lean:125:71: error: Application type mismatch: The argument\n  n\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\nin the application\n  Rocq.Corelib.Init.Nat.min n\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Auto_Strings_PrimStringAxioms.lean:125:77: error: Type mismatch\n  min n m\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Auto_Strings_PrimStringAxioms.lean:125:2: error: Cannot add `simp` attribute to `nat_min_agrees`: It is not a proposition nor a definition (to unfold)\n\nNote: The `[simp]` attribute can be added to lemmas that should be automatically used by the simplifier and to definitions that the simplifier should automatically unfold\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Auto_Strings_PrimStringAxioms.lean:127:24: error: Tactic `rfl` failed: The left-hand side\n  true\nis not definitionally equal to the right-hand side\n  Function.const Lean"
+  },
+  {
+    "profile": "Auto_ssr_ssrbool",
+    "module": "ssr/ssrbool",
+    "exit": 0,
+    "seconds": 1.837,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_ssr_ssrclasses",
+    "module": "ssr/ssrclasses",
+    "exit": 0,
+    "seconds": 1.2,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_ssr_ssreflect_rw",
+    "module": "ssr/ssreflect_rw",
+    "exit": 0,
+    "seconds": 1.264,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_ssr_ssrfun",
+    "module": "ssr/ssrfun",
+    "exit": 0,
+    "seconds": 1.366,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_ssr_ssrsetoid",
+    "module": "ssr/ssrsetoid",
+    "exit": 0,
+    "seconds": 1.207,
+    "errors": ""
+  },
+  {
+    "profile": "Auto_ssr_ssrunder",
+    "module": "ssr/ssrunder",
+    "exit": 0,
+    "seconds": 1.237,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Array_PrimArray",
+    "module": "Array/PrimArray",
+    "exit": 0,
+    "seconds": 1.451,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_BinNums_IntDef",
+    "module": "BinNums/IntDef",
+    "exit": 0,
+    "seconds": 1.841,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_BinNums_NatDef",
+    "module": "BinNums/NatDef",
+    "exit": 0,
+    "seconds": 1.503,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_BinNums_PosDef",
+    "module": "BinNums/PosDef",
+    "exit": 0,
+    "seconds": 1.624,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Classes_CMorphisms",
+    "module": "Classes/CMorphisms",
+    "exit": 0,
+    "seconds": 1.471,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Classes_CRelationClasses",
+    "module": "Classes/CRelationClasses",
+    "exit": 0,
+    "seconds": 1.51,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Classes_Equivalence",
+    "module": "Classes/Equivalence",
+    "exit": 0,
+    "seconds": 1.382,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Classes_Init",
+    "module": "Classes/Init",
+    "exit": 0,
+    "seconds": 1.391,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Classes_Morphisms",
+    "module": "Classes/Morphisms",
+    "exit": 0,
+    "seconds": 1.423,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Classes_RelationClasses",
+    "module": "Classes/RelationClasses",
+    "exit": 0,
+    "seconds": 1.42,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Classes_SetoidTactics",
+    "module": "Classes/SetoidTactics",
+    "exit": 0,
+    "seconds": 1.377,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Floats_FloatAxioms",
+    "module": "Floats/FloatAxioms",
+    "exit": 0,
+    "seconds": 1.579,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Floats_FloatOps",
+    "module": "Floats/FloatOps",
+    "exit": 0,
+    "seconds": 1.529,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Floats_PrimFloat",
+    "module": "Floats/PrimFloat",
+    "exit": 0,
+    "seconds": 1.49,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Floats_SpecFloat",
+    "module": "Floats/SpecFloat",
+    "exit": 0,
+    "seconds": 1.711,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Init_Byte",
+    "module": "Init/Byte",
+    "exit": 0,
+    "seconds": 9.484,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Init_Datatypes",
+    "module": "Init/Datatypes",
+    "exit": 1,
+    "seconds": 1.484,
+    "errors": "/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Interface_Init_Datatypes.lean:234:32: error: Tactic `rfl` failed: Expected the goal to be a binary relation\n\nHint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`\n\ncase true.mpr\nh : boolTo Rocq.Corelib.Init.Datatypes.bool.true = true\n\u22a2 Rocq.Corelib.Init.Datatypes.is_true Rocq.Corelib.Init.Datatypes.bool.true\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Interface_Init_Datatypes.lean:237:28: error: Application type mismatch: The argument\n  h\nhas type\n  Rocq.Corelib.Init.Datatypes.is_true Rocq.Corelib.Init.Datatypes.bool.false\nbut is expected to have type\n  ?m.44 = ?m.45\nin the application\n  congrArg boolTo h\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Interface_Init_Datatypes.lean:253:44: error: Type mismatch\n  (listTo xs).length\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Interface_Init_Datatypes.lean:252:2: error: Cannot add `simp` attribute to `length_agrees`: It is not a proposition nor a definition (to unfold)\n\nNote: The `[simp]` attribute can be added to lemmas that should be automatically used by the simplifier and to definitions that the simplifier should automatically unfold\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Interface_Init_Datatypes.lean:254:95: error: Type mismatch\n  (listTo xs).length\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Interface_Init_Datatypes.lean:255:43: error: Application type mismatch: The argument\n  Rocq.Corelib.Init.Datatypes.length A xs\nhas type\n  Rocq.Corelib.Init.Datatypes.nat\nbut is expected to have type\n  Nat\nin the application\n  Nat.succ (Rocq.Corelib.Init.Datatypes.length A xs)\nINTERFACE_OK Rocq.Corelib.Init.Datatypes.CompOpp type_universe_specialization=false\nINTERFACE_OK Rocq.Corelib.Init.Datatypes.CompSpec type_universe_specialization=false\nINTERFACE_OK Rocq.Corelib.Init.Datatypes.CompSpecT type_universe_specialization=false\nINTERFACE_SKIP Rocq.Corelib.Init.Datatypes.CompareSpecT_rec: No registered type bijection for (P :\n    (c : Rocq.Corelib.Init.Datatypes.comparison) \u2192 Rocq.Corelib.Init.Datatypes.CompareSpecT Peq Pl"
+  },
+  {
+    "profile": "Interface_Init_Decimal",
+    "module": "Init/Decimal",
+    "exit": 0,
+    "seconds": 1.551,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Init_Equality",
+    "module": "Init/Equality",
+    "exit": 0,
+    "seconds": 1.496,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Init_Hexadecimal",
+    "module": "Init/Hexadecimal",
+    "exit": 0,
+    "seconds": 1.677,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Init_Logic",
+    "module": "Init/Logic",
+    "exit": 0,
+    "seconds": 1.556,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Init_Nat",
+    "module": "Init/Nat",
+    "exit": 0,
+    "seconds": 1.751,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Init_Number",
+    "module": "Init/Number",
+    "exit": 0,
+    "seconds": 1.703,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Init_Peano",
+    "module": "Init/Peano",
+    "exit": 0,
+    "seconds": 1.653,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Init_Prelude",
+    "module": "Init/Prelude",
+    "exit": 0,
+    "seconds": 1.695,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Init_Specif",
+    "module": "Init/Specif",
+    "exit": 0,
+    "seconds": 1.781,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Init_Sumbool",
+    "module": "Init/Sumbool",
+    "exit": 0,
+    "seconds": 1.622,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Init_Wf",
+    "module": "Init/Wf",
+    "exit": 0,
+    "seconds": 1.48,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Lists_ListDef",
+    "module": "Lists/ListDef",
+    "exit": 0,
+    "seconds": 1.512,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Numbers_BinNums",
+    "module": "Numbers/BinNums",
+    "exit": 0,
+    "seconds": 1.606,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Numbers_Cyclic_Int63_PrimInt63",
+    "module": "Numbers/Cyclic/Int63/PrimInt63",
+    "exit": 0,
+    "seconds": 1.744,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Numbers_Cyclic_Int63_Sint63Axioms",
+    "module": "Numbers/Cyclic/Int63/Sint63Axioms",
+    "exit": 0,
+    "seconds": 1.718,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Numbers_Cyclic_Int63_Uint63Axioms",
+    "module": "Numbers/Cyclic/Int63/Uint63Axioms",
+    "exit": 0,
+    "seconds": 1.735,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Program_Basics",
+    "module": "Program/Basics",
+    "exit": 0,
+    "seconds": 1.48,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Program_Tactics",
+    "module": "Program/Tactics",
+    "exit": 0,
+    "seconds": 1.474,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Program_Wf",
+    "module": "Program/Wf",
+    "exit": 0,
+    "seconds": 1.493,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Relations_Relation_Definitions",
+    "module": "Relations/Relation_Definitions",
+    "exit": 0,
+    "seconds": 1.52,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Setoids_Setoid",
+    "module": "Setoids/Setoid",
+    "exit": 0,
+    "seconds": 1.511,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Strings_PrimString",
+    "module": "Strings/PrimString",
+    "exit": 0,
+    "seconds": 1.638,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_Strings_PrimStringAxioms",
+    "module": "Strings/PrimStringAxioms",
+    "exit": 1,
+    "seconds": 1.736,
+    "errors": "/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Interface_Strings_PrimStringAxioms.lean:157:44: error: Type mismatch\n  (listTo xs).length\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Interface_Strings_PrimStringAxioms.lean:156:2: error: Cannot add `simp` attribute to `length_agrees`: It is not a proposition nor a definition (to unfold)\n\nNote: The `[simp]` attribute can be added to lemmas that should be automatically used by the simplifier and to definitions that the simplifier should automatically unfold\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Interface_Strings_PrimStringAxioms.lean:158:95: error: Type mismatch\n  (listTo xs).length\nhas type\n  Nat\nbut is expected to have type\n  Rocq.Corelib.Init.Datatypes.nat\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Interface_Strings_PrimStringAxioms.lean:159:43: error: Application type mismatch: The argument\n  Rocq.Corelib.Init.Datatypes.length A xs\nhas type\n  Rocq.Corelib.Init.Datatypes.nat\nbut is expected to have type\n  Nat\nin the application\n  Nat.succ (Rocq.Corelib.Init.Datatypes.length A xs)\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Interface_Strings_PrimStringAxioms.lean:254:73: warning: This simp argument is unused:\n  Vector.get\n\nHint: Omit it from the simp argument list.\n  [apply] simp\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Interface_Strings_PrimStringAxioms.lean:260:92: warning: This simp argument is unused:\n  Vector.get\n\nHint: Omit it from the simp argument list.\n  [apply] simp\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nINTERFACE_OK Rocq.Corelib.Strings.PrimStringAxioms.to_list type_universe_specialization=false\nINTERFACE_OK Rocq.Corelib.Strings.PrimStringAxioms.char63_valid type_universe_specialization=false\nINTERFACE_OK Rocq.Corelib.Strings.PrimStringAxioms.of_list type_universe_specialization=false\n"
+  },
+  {
+    "profile": "Interface_ssr_ssrbool",
+    "module": "ssr/ssrbool",
+    "exit": 1,
+    "seconds": 1.587,
+    "errors": "/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Interface_ssr_ssrbool.lean:182:32: error: Tactic `rfl` failed: Expected the goal to be a binary relation\n\nHint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`\n\ncase true.mpr\nh : boolTo Rocq.Corelib.Init.Datatypes.bool.true = true\n\u22a2 Rocq.Corelib.Init.Datatypes.is_true Rocq.Corelib.Init.Datatypes.bool.true\n/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/Interface_ssr_ssrbool.lean:185:28: error: Application type mismatch: The argument\n  h\nhas type\n  Rocq.Corelib.Init.Datatypes.is_true Rocq.Corelib.Init.Datatypes.bool.false\nbut is expected to have type\n  ?m.44 = ?m.45\nin the application\n  congrArg boolTo h\nINTERFACE_OK Rocq.Corelib.ssr.ssrbool.pred type_universe_specialization=false\nINTERFACE_SKIP Rocq.Corelib.ssr.ssrbool.pred_sort: No registered type bijection for Rocq.Corelib.ssr.ssrbool.predType T\nINTERFACE_SKIP Rocq.Corelib.ssr.ssrbool.predPredType: No registered type bijection for Rocq.Corelib.ssr.ssrbool.predType T\nINTERFACE_SKIP Rocq.Corelib.ssr.ssrbool.pred_of_mem: No registered type bijection for Rocq.Corelib.ssr.ssrbool.mem_pred T\nINTERFACE_SKIP Rocq.Corelib.ssr.ssrbool.in_mem: No registered type bijection for Rocq.Corelib.ssr.ssrbool.mem_pred T\nINTERFACE_SKIP Rocq.Corelib.ssr.ssrbool.eq_mem: No registered type bijection for Rocq.Corelib.ssr.ssrbool.mem_pred T\nINTERFACE_SKIP Rocq.Corelib.ssr.ssrbool.mem: No registered type bijection for (pT : Rocq.Corelib.ssr.ssrbool.predType T) \u2192\n  Rocq.Corelib.ssr.ssrbool.pred_sort T pT \u2192 Rocq.Corelib.ssr.ssrbool.mem_pred T\nINTERFACE_SKIP Rocq.Corelib.ssr.ssrbool.has_quality: No registered type bijection for (n : Rocq.Corelib.Init.Datatypes.nat) \u2192\n  (T : Type u_Corelib_ssr_ssrbool_1121) \u2192\n    Rocq.Corelib.ssr.ssrbool.qualifier n T \u2192\n      Rocq.Corelib.ssr.ssrbool.pred_sort T (Rocq.Corelib.ssr.ssrbool.predPredType T)\nINTERFACE_OK Rocq.Corelib.ssr.ssrbool.simpl_pred type_universe_specialization=false\nINTERFACE_SKIP Rocq.Corelib.ssr.ssrbool.PredOfSimpl.coerce: No registered type bijection for Rocq.Corelib.ssr.ssrfun.simpl_fun T Rocq.Corelib.Init.Datatypes.bool\nINTERFACE_SKIP Rocq.Corelib.ssr.ssrbool.SimplPred: No registered type bijection for Rocq.Corelib.ssr.ssrfun.simpl_fun T Rocq.Corelib.Init.Datatypes.bool\nINTERFACE_OK Rocq.Corelib.ssr.ssrbool.rel type_universe_specialization=false\nINTERFACE_OK Rocq.Corelib.ssr.ssrbool.simpl_rel type_universe_specializati"
+  },
+  {
+    "profile": "Interface_ssr_ssrclasses",
+    "module": "ssr/ssrclasses",
+    "exit": 0,
+    "seconds": 1.47,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_ssr_ssreflect_rw",
+    "module": "ssr/ssreflect_rw",
+    "exit": 0,
+    "seconds": 1.508,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_ssr_ssrfun",
+    "module": "ssr/ssrfun",
+    "exit": 0,
+    "seconds": 1.789,
+    "errors": ""
+  },
+  {
+    "profile": "Interface_ssr_ssrunder",
+    "module": "ssr/ssrunder",
+    "exit": 0,
+    "seconds": 1.442,
+    "errors": ""
+  }
+]

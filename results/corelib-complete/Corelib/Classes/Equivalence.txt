@@ -1,0 +1,212 @@
+rocq2lean: 17 root(s) TRANSLATED_AND_CHECKED; summary {"bootstrap_resolved":0,"generated_helpers":0,"not_ok":14,"roots":17,"translated_dependencies":10}
+def Rocq.Corelib.Classes.Equivalence.equiv.{u_Corelib_Relations_Relation_Definitions_21} : (A :
+    Type u_Corelib_Relations_Relation_Definitions_21) →
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A) →
+    Rocq.Corelib.Classes.RelationClasses.Equivalence.{u_Corelib_Relations_Relation_Definitions_21} A R →
+      Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A :=
+fun A R H => R
+def Rocq.Corelib.Classes.Equivalence.equiv_reflexive.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A)
+  (sa : Rocq.Corelib.Classes.RelationClasses.Equivalence.{u_Corelib_Relations_Relation_Definitions_21} A R),
+  Rocq.Corelib.Classes.RelationClasses.Reflexive.{u_Corelib_Relations_Relation_Definitions_21} A
+    (Rocq.Corelib.Classes.Equivalence.equiv.{u_Corelib_Relations_Relation_Definitions_21} A R sa)
+def Rocq.Corelib.Classes.Equivalence.equiv_reflexive_obligation_1.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A)
+  (sa : Rocq.Corelib.Classes.RelationClasses.Equivalence.{u_Corelib_Relations_Relation_Definitions_21} A R) (x : A),
+  Rocq.Corelib.Classes.Equivalence.equiv.{u_Corelib_Relations_Relation_Definitions_21} A R sa x x
+def Rocq.Corelib.Classes.Equivalence.equiv_symmetric.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A)
+  (sa : Rocq.Corelib.Classes.RelationClasses.Equivalence.{u_Corelib_Relations_Relation_Definitions_21} A R),
+  Rocq.Corelib.Classes.RelationClasses.Symmetric.{u_Corelib_Relations_Relation_Definitions_21} A
+    (Rocq.Corelib.Classes.Equivalence.equiv.{u_Corelib_Relations_Relation_Definitions_21} A R sa)
+def Rocq.Corelib.Classes.Equivalence.equiv_symmetric_obligation_1.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A)
+  (sa : Rocq.Corelib.Classes.RelationClasses.Equivalence.{u_Corelib_Relations_Relation_Definitions_21} A R) (x y : A),
+  Rocq.Corelib.Classes.Equivalence.equiv.{u_Corelib_Relations_Relation_Definitions_21} A R sa x y →
+    Rocq.Corelib.Classes.Equivalence.equiv.{u_Corelib_Relations_Relation_Definitions_21} A R sa y x
+def Rocq.Corelib.Classes.Equivalence.equiv_transitive.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A)
+  (sa : Rocq.Corelib.Classes.RelationClasses.Equivalence.{u_Corelib_Relations_Relation_Definitions_21} A R),
+  Rocq.Corelib.Classes.RelationClasses.Transitive.{u_Corelib_Relations_Relation_Definitions_21} A
+    (Rocq.Corelib.Classes.Equivalence.equiv.{u_Corelib_Relations_Relation_Definitions_21} A R sa)
+def Rocq.Corelib.Classes.Equivalence.equiv_transitive_obligation_1.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A)
+  (sa : Rocq.Corelib.Classes.RelationClasses.Equivalence.{u_Corelib_Relations_Relation_Definitions_21} A R) (x y z : A),
+  Rocq.Corelib.Classes.Equivalence.equiv.{u_Corelib_Relations_Relation_Definitions_21} A R sa x y →
+    Rocq.Corelib.Classes.Equivalence.equiv.{u_Corelib_Relations_Relation_Definitions_21} A R sa y z →
+      Rocq.Corelib.Classes.Equivalence.equiv.{u_Corelib_Relations_Relation_Definitions_21} A R sa x z
+def Rocq.Corelib.Classes.Equivalence.pequiv.{u_Corelib_Relations_Relation_Definitions_21} : (A :
+    Type u_Corelib_Relations_Relation_Definitions_21) →
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A) →
+    Rocq.Corelib.Classes.RelationClasses.PER.{u_Corelib_Relations_Relation_Definitions_21} A R →
+      Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A :=
+fun A R H => R
+def Rocq.Corelib.Classes.Equivalence.pointwise_equivalence.statement.{u_Corelib_Classes_Morphisms_38, u_Corelib_Classes_Morphisms_39} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_39) (B : Type u_Corelib_Classes_Morphisms_38)
+  (eqB : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Classes_Morphisms_38} B),
+  Rocq.Corelib.Classes.RelationClasses.Equivalence.{u_Corelib_Classes_Morphisms_38} B eqB →
+    Rocq.Corelib.Classes.RelationClasses.Equivalence.{max u_Corelib_Classes_Morphisms_38 u_Corelib_Classes_Morphisms_39}
+      (A → B)
+      (Rocq.Corelib.Classes.Morphisms.pointwise_relation.{u_Corelib_Classes_Morphisms_38,
+          u_Corelib_Classes_Morphisms_39}
+        A B eqB)
+def Rocq.Corelib.Classes.Equivalence.pointwise_reflexive.statement.{u_Corelib_Classes_Morphisms_38, u_Corelib_Classes_Morphisms_39} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_39) (B : Type u_Corelib_Classes_Morphisms_38)
+  (eqB : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Classes_Morphisms_38} B),
+  Rocq.Corelib.Classes.RelationClasses.Reflexive.{u_Corelib_Classes_Morphisms_38} B eqB →
+    Rocq.Corelib.Classes.RelationClasses.Reflexive.{max u_Corelib_Classes_Morphisms_38 u_Corelib_Classes_Morphisms_39}
+      (A → B)
+      (Rocq.Corelib.Classes.Morphisms.pointwise_relation.{u_Corelib_Classes_Morphisms_38,
+          u_Corelib_Classes_Morphisms_39}
+        A B eqB)
+def Rocq.Corelib.Classes.Equivalence.pointwise_symmetric.statement.{u_Corelib_Classes_Morphisms_38, u_Corelib_Classes_Morphisms_39} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_39) (B : Type u_Corelib_Classes_Morphisms_38)
+  (eqB : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Classes_Morphisms_38} B),
+  Rocq.Corelib.Classes.RelationClasses.Symmetric.{u_Corelib_Classes_Morphisms_38} B eqB →
+    Rocq.Corelib.Classes.RelationClasses.Symmetric.{max u_Corelib_Classes_Morphisms_38 u_Corelib_Classes_Morphisms_39}
+      (A → B)
+      (Rocq.Corelib.Classes.Morphisms.pointwise_relation.{u_Corelib_Classes_Morphisms_38,
+          u_Corelib_Classes_Morphisms_39}
+        A B eqB)
+def Rocq.Corelib.Classes.Equivalence.pointwise_transitive.statement.{u_Corelib_Classes_Morphisms_38, u_Corelib_Classes_Morphisms_39} : Prop :=
+∀ (A : Type u_Corelib_Classes_Morphisms_39) (B : Type u_Corelib_Classes_Morphisms_38)
+  (eqB : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Classes_Morphisms_38} B),
+  Rocq.Corelib.Classes.RelationClasses.Transitive.{u_Corelib_Classes_Morphisms_38} B eqB →
+    Rocq.Corelib.Classes.RelationClasses.Transitive.{max u_Corelib_Classes_Morphisms_38 u_Corelib_Classes_Morphisms_39}
+      (A → B)
+      (Rocq.Corelib.Classes.Morphisms.pointwise_relation.{u_Corelib_Classes_Morphisms_38,
+          u_Corelib_Classes_Morphisms_39}
+        A B eqB)
+def Rocq.Corelib.Classes.Equivalence.respecting.{u_Corelib_Classes_Equivalence_42} : (A :
+    Type u_Corelib_Classes_Equivalence_42) →
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Classes_Equivalence_42} A) →
+    Rocq.Corelib.Classes.RelationClasses.Equivalence.{u_Corelib_Classes_Equivalence_42} A R →
+      (B : Type u_Corelib_Classes_Equivalence_42) →
+        (R' : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Classes_Equivalence_42} B) →
+          Rocq.Corelib.Classes.RelationClasses.Equivalence.{u_Corelib_Classes_Equivalence_42} B R' →
+            Type u_Corelib_Classes_Equivalence_42 :=
+fun A R eqa B R' eqb =>
+  Rocq.Corelib.Init.Specif.sig.{u_Corelib_Classes_Equivalence_42 + 1} (A → B) fun morph =>
+    Rocq.Corelib.Classes.Morphisms.respectful.{u_Corelib_Classes_Equivalence_42} A B R R' morph morph
+def Rocq.Corelib.Classes.Equivalence.respecting_equiv.statement.{u_Corelib_Classes_Equivalence_46, u_Corelib_Classes_Equivalence_49} : Prop :=
+∀ (A : Type u_Corelib_Classes_Equivalence_46) (R : A → A → Prop),
+  Rocq.Corelib.Classes.RelationClasses.Equivalence.{u_Corelib_Classes_Equivalence_46} A R →
+    ∀ (B : Type u_Corelib_Classes_Equivalence_49) (R' : B → B → Prop),
+      Rocq.Corelib.Classes.RelationClasses.Equivalence.{u_Corelib_Classes_Equivalence_49} B R' →
+        Rocq.Corelib.Classes.RelationClasses.Equivalence.{max u_Corelib_Classes_Equivalence_46
+              u_Corelib_Classes_Equivalence_49}
+          (Rocq.Corelib.Init.Specif.sig.{max (u_Corelib_Classes_Equivalence_46 + 1)
+                (u_Corelib_Classes_Equivalence_49 + 1)}
+            (A → B) fun morph => ∀ (x y : A), R x y → R' (morph x) (morph y))
+          fun f g =>
+          ∀ (x y : A),
+            R x y →
+              R'
+                (Rocq.Corelib.Init.Specif.proj1_sig.{max (u_Corelib_Classes_Equivalence_46 + 1)
+                      (u_Corelib_Classes_Equivalence_49 + 1)}
+                  (A → B) (fun morph => ∀ (x y : A), R x y → R' (morph x) (morph y)) f x)
+                (Rocq.Corelib.Init.Specif.proj1_sig.{max (u_Corelib_Classes_Equivalence_46 + 1)
+                      (u_Corelib_Classes_Equivalence_49 + 1)}
+                  (A → B) (fun morph => ∀ (x y : A), R x y → R' (morph x) (morph y)) g y)
+def Rocq.Corelib.Classes.Equivalence.respecting_equiv_obligation_1.statement.{u_Corelib_Classes_Equivalence_46, u_Corelib_Classes_Equivalence_49} : Prop :=
+∀ (A : Type u_Corelib_Classes_Equivalence_46) (R : A → A → Prop),
+  Rocq.Corelib.Classes.RelationClasses.Equivalence.{u_Corelib_Classes_Equivalence_46} A R →
+    ∀ (B : Type u_Corelib_Classes_Equivalence_49) (R' : B → B → Prop),
+      Rocq.Corelib.Classes.RelationClasses.Equivalence.{u_Corelib_Classes_Equivalence_49} B R' →
+        ∀
+          (x :
+            Rocq.Corelib.Init.Specif.sig.{max (u_Corelib_Classes_Equivalence_46 + 1)
+                  (u_Corelib_Classes_Equivalence_49 + 1)}
+              (A → B) fun morph => ∀ (x y : A), R x y → R' (morph x) (morph y)),
+          (fun f g =>
+              ∀ (x y : A),
+                R x y →
+                  R'
+                    (Rocq.Corelib.Init.Specif.proj1_sig.{max (u_Corelib_Classes_Equivalence_46 + 1)
+                          (u_Corelib_Classes_Equivalence_49 + 1)}
+                      (A → B) (fun morph => ∀ (x y : A), R x y → R' (morph x) (morph y)) f x)
+                    (Rocq.Corelib.Init.Specif.proj1_sig.{max (u_Corelib_Classes_Equivalence_46 + 1)
+                          (u_Corelib_Classes_Equivalence_49 + 1)}
+                      (A → B) (fun morph => ∀ (x y : A), R x y → R' (morph x) (morph y)) g y))
+            x x
+def Rocq.Corelib.Classes.Equivalence.respecting_equiv_obligation_2.statement.{u_Corelib_Classes_Equivalence_46, u_Corelib_Classes_Equivalence_49} : Prop :=
+∀ (A : Type u_Corelib_Classes_Equivalence_46) (R : A → A → Prop),
+  Rocq.Corelib.Classes.RelationClasses.Equivalence.{u_Corelib_Classes_Equivalence_46} A R →
+    ∀ (B : Type u_Corelib_Classes_Equivalence_49) (R' : B → B → Prop),
+      Rocq.Corelib.Classes.RelationClasses.Equivalence.{u_Corelib_Classes_Equivalence_49} B R' →
+        ∀
+          (x y :
+            Rocq.Corelib.Init.Specif.sig.{max (u_Corelib_Classes_Equivalence_46 + 1)
+                  (u_Corelib_Classes_Equivalence_49 + 1)}
+              (A → B) fun morph => ∀ (x y : A), R x y → R' (morph x) (morph y)),
+          (fun f g =>
+                ∀ (x y : A),
+                  R x y →
+                    R'
+                      (Rocq.Corelib.Init.Specif.proj1_sig.{max (u_Corelib_Classes_Equivalence_46 + 1)
+                            (u_Corelib_Classes_Equivalence_49 + 1)}
+                        (A → B) (fun morph => ∀ (x y : A), R x y → R' (morph x) (morph y)) f x)
+                      (Rocq.Corelib.Init.Specif.proj1_sig.{max (u_Corelib_Classes_Equivalence_46 + 1)
+                            (u_Corelib_Classes_Equivalence_49 + 1)}
+                        (A → B) (fun morph => ∀ (x y : A), R x y → R' (morph x) (morph y)) g y))
+              x y →
+            (fun f g =>
+                ∀ (x y : A),
+                  R x y →
+                    R'
+                      (Rocq.Corelib.Init.Specif.proj1_sig.{max (u_Corelib_Classes_Equivalence_46 + 1)
+                            (u_Corelib_Classes_Equivalence_49 + 1)}
+                        (A → B) (fun morph => ∀ (x y : A), R x y → R' (morph x) (morph y)) f x)
+                      (Rocq.Corelib.Init.Specif.proj1_sig.{max (u_Corelib_Classes_Equivalence_46 + 1)
+                            (u_Corelib_Classes_Equivalence_49 + 1)}
+                        (A → B) (fun morph => ∀ (x y : A), R x y → R' (morph x) (morph y)) g y))
+              y x
+def Rocq.Corelib.Classes.Equivalence.respecting_equiv_obligation_3.statement.{u_Corelib_Classes_Equivalence_46, u_Corelib_Classes_Equivalence_49} : Prop :=
+∀ (A : Type u_Corelib_Classes_Equivalence_46) (R : A → A → Prop),
+  Rocq.Corelib.Classes.RelationClasses.Equivalence.{u_Corelib_Classes_Equivalence_46} A R →
+    ∀ (B : Type u_Corelib_Classes_Equivalence_49) (R' : B → B → Prop),
+      Rocq.Corelib.Classes.RelationClasses.Equivalence.{u_Corelib_Classes_Equivalence_49} B R' →
+        ∀
+          (x y z :
+            Rocq.Corelib.Init.Specif.sig.{max (u_Corelib_Classes_Equivalence_46 + 1)
+                  (u_Corelib_Classes_Equivalence_49 + 1)}
+              (A → B) fun morph => ∀ (x y : A), R x y → R' (morph x) (morph y)),
+          (fun f g =>
+                ∀ (x y : A),
+                  R x y →
+                    R'
+                      (Rocq.Corelib.Init.Specif.proj1_sig.{max (u_Corelib_Classes_Equivalence_46 + 1)
+                            (u_Corelib_Classes_Equivalence_49 + 1)}
+                        (A → B) (fun morph => ∀ (x y : A), R x y → R' (morph x) (morph y)) f x)
+                      (Rocq.Corelib.Init.Specif.proj1_sig.{max (u_Corelib_Classes_Equivalence_46 + 1)
+                            (u_Corelib_Classes_Equivalence_49 + 1)}
+                        (A → B) (fun morph => ∀ (x y : A), R x y → R' (morph x) (morph y)) g y))
+              x y →
+            (fun f g =>
+                  ∀ (x y : A),
+                    R x y →
+                      R'
+                        (Rocq.Corelib.Init.Specif.proj1_sig.{max (u_Corelib_Classes_Equivalence_46 + 1)
+                              (u_Corelib_Classes_Equivalence_49 + 1)}
+                          (A → B) (fun morph => ∀ (x y : A), R x y → R' (morph x) (morph y)) f x)
+                        (Rocq.Corelib.Init.Specif.proj1_sig.{max (u_Corelib_Classes_Equivalence_46 + 1)
+                              (u_Corelib_Classes_Equivalence_49 + 1)}
+                          (A → B) (fun morph => ∀ (x y : A), R x y → R' (morph x) (morph y)) g y))
+                y z →
+              (fun f g =>
+                  ∀ (x y : A),
+                    R x y →
+                      R'
+                        (Rocq.Corelib.Init.Specif.proj1_sig.{max (u_Corelib_Classes_Equivalence_46 + 1)
+                              (u_Corelib_Classes_Equivalence_49 + 1)}
+                          (A → B) (fun morph => ∀ (x y : A), R x y → R' (morph x) (morph y)) f x)
+                        (Rocq.Corelib.Init.Specif.proj1_sig.{max (u_Corelib_Classes_Equivalence_46 + 1)
+                              (u_Corelib_Classes_Equivalence_49 + 1)}
+                          (A → B) (fun morph => ∀ (x y : A), R x y → R' (morph x) (morph y)) g y))
+                x z

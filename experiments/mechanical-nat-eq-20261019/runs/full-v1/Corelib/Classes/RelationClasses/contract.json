@@ -1,0 +1,995 @@
+{
+  "schema": "rocq2lean-contract/1",
+  "run_id": "c3865c6f-e446-4712-b60a-730462d91e4d",
+  "ir_sha256": "0c39494f592cbcf0675a49ec2f5b8c119e95dd40fbd8b9808603c9b0a1b59aef",
+  "request": [
+    "Corelib.Classes.RelationClasses.Antisymmetric",
+    "Corelib.Classes.RelationClasses.Asymmetric",
+    "Corelib.Classes.RelationClasses.Equivalence",
+    "Corelib.Classes.RelationClasses.Equivalence_PER",
+    "Corelib.Classes.RelationClasses.Equivalence_PreOrder",
+    "Corelib.Classes.RelationClasses.Equivalence_Reflexive",
+    "Corelib.Classes.RelationClasses.Equivalence_Symmetric",
+    "Corelib.Classes.RelationClasses.Equivalence_Transitive",
+    "Corelib.Classes.RelationClasses.Irreflexive",
+    "Corelib.Classes.RelationClasses.PER",
+    "Corelib.Classes.RelationClasses.PER_Symmetric",
+    "Corelib.Classes.RelationClasses.PER_Transitive",
+    "Corelib.Classes.RelationClasses.PartialOrder",
+    "Corelib.Classes.RelationClasses.PartialOrder_inverse",
+    "Corelib.Classes.RelationClasses.PreOrder",
+    "Corelib.Classes.RelationClasses.PreOrder_Reflexive",
+    "Corelib.Classes.RelationClasses.PreOrder_Transitive",
+    "Corelib.Classes.RelationClasses.Reflexive",
+    "Corelib.Classes.RelationClasses.RewriteRelation",
+    "Corelib.Classes.RelationClasses.StrictOrder",
+    "Corelib.Classes.RelationClasses.StrictOrder_Asymmetric",
+    "Corelib.Classes.RelationClasses.StrictOrder_Irreflexive",
+    "Corelib.Classes.RelationClasses.StrictOrder_Transitive",
+    "Corelib.Classes.RelationClasses.Symmetric",
+    "Corelib.Classes.RelationClasses.Tlist",
+    "Corelib.Classes.RelationClasses.Tlist_ind",
+    "Corelib.Classes.RelationClasses.Tlist_rec",
+    "Corelib.Classes.RelationClasses.Tlist_rect",
+    "Corelib.Classes.RelationClasses.Tlist_sind",
+    "Corelib.Classes.RelationClasses.Transitive",
+    "Corelib.Classes.RelationClasses.antisymmetry",
+    "Corelib.Classes.RelationClasses.arrows",
+    "Corelib.Classes.RelationClasses.asymmetry",
+    "Corelib.Classes.RelationClasses.binary_operation",
+    "Corelib.Classes.RelationClasses.binary_relation",
+    "Corelib.Classes.RelationClasses.complement",
+    "Corelib.Classes.RelationClasses.complement_Irreflexive",
+    "Corelib.Classes.RelationClasses.complement_Symmetric",
+    "Corelib.Classes.RelationClasses.complement_inverse",
+    "Corelib.Classes.RelationClasses.eq_Reflexive",
+    "Corelib.Classes.RelationClasses.eq_Symmetric",
+    "Corelib.Classes.RelationClasses.eq_Transitive",
+    "Corelib.Classes.RelationClasses.eq_equivalence",
+    "Corelib.Classes.RelationClasses.equivalence_rewrite_relation",
+    "Corelib.Classes.RelationClasses.false_predicate",
+    "Corelib.Classes.RelationClasses.flip_Antisymmetric",
+    "Corelib.Classes.RelationClasses.flip_Asymmetric",
+    "Corelib.Classes.RelationClasses.flip_Equivalence",
+    "Corelib.Classes.RelationClasses.flip_Irreflexive",
+    "Corelib.Classes.RelationClasses.flip_PER",
+    "Corelib.Classes.RelationClasses.flip_PreOrder",
+    "Corelib.Classes.RelationClasses.flip_Reflexive",
+    "Corelib.Classes.RelationClasses.flip_StrictOrder",
+    "Corelib.Classes.RelationClasses.flip_Symmetric",
+    "Corelib.Classes.RelationClasses.flip_Transitive",
+    "Corelib.Classes.RelationClasses.iff_Reflexive",
+    "Corelib.Classes.RelationClasses.iff_Symmetric",
+    "Corelib.Classes.RelationClasses.iff_Transitive",
+    "Corelib.Classes.RelationClasses.iff_equivalence",
+    "Corelib.Classes.RelationClasses.iff_rewrite_relation",
+    "Corelib.Classes.RelationClasses.impl_Reflexive",
+    "Corelib.Classes.RelationClasses.impl_Reflexive_obligation_1",
+    "Corelib.Classes.RelationClasses.impl_Transitive",
+    "Corelib.Classes.RelationClasses.impl_Transitive_obligation_1",
+    "Corelib.Classes.RelationClasses.impl_rewrite_relation",
+    "Corelib.Classes.RelationClasses.inverse_impl_rewrite_relation",
+    "Corelib.Classes.RelationClasses.irreflexivity",
+    "Corelib.Classes.RelationClasses.is_subrelation",
+    "Corelib.Classes.RelationClasses.neq_Symmetric",
+    "Corelib.Classes.RelationClasses.partial_order_antisym",
+    "Corelib.Classes.RelationClasses.partial_order_equivalence",
+    "Corelib.Classes.RelationClasses.pointwise_extension",
+    "Corelib.Classes.RelationClasses.pointwise_lifting",
+    "Corelib.Classes.RelationClasses.predicate_all",
+    "Corelib.Classes.RelationClasses.predicate_equivalence",
+    "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence",
+    "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_1",
+    "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_2",
+    "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_3",
+    "Corelib.Classes.RelationClasses.predicate_exists",
+    "Corelib.Classes.RelationClasses.predicate_implication",
+    "Corelib.Classes.RelationClasses.predicate_implication_preorder",
+    "Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_1",
+    "Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_2",
+    "Corelib.Classes.RelationClasses.predicate_intersection",
+    "Corelib.Classes.RelationClasses.predicate_union",
+    "Corelib.Classes.RelationClasses.reflexivity",
+    "Corelib.Classes.RelationClasses.relation_conjunction",
+    "Corelib.Classes.RelationClasses.relation_disjunction",
+    "Corelib.Classes.RelationClasses.relation_equivalence",
+    "Corelib.Classes.RelationClasses.relation_equivalence_equivalence",
+    "Corelib.Classes.RelationClasses.relation_equivalence_rewrite_relation",
+    "Corelib.Classes.RelationClasses.relation_implication_preorder",
+    "Corelib.Classes.RelationClasses.subrelation",
+    "Corelib.Classes.RelationClasses.subrelation_partial_order",
+    "Corelib.Classes.RelationClasses.subrelation_partial_order_obligation_1",
+    "Corelib.Classes.RelationClasses.subrelation_symmetric",
+    "Corelib.Classes.RelationClasses.symmetry",
+    "Corelib.Classes.RelationClasses.ternary_operation",
+    "Corelib.Classes.RelationClasses.transitivity",
+    "Corelib.Classes.RelationClasses.true_predicate",
+    "Corelib.Classes.RelationClasses.unary_operation",
+    "Corelib.Classes.RelationClasses.unary_predicate"
+  ],
+  "roots": [
+    {
+      "requested": "Corelib.Classes.RelationClasses.Antisymmetric",
+      "canonical": "Corelib.Classes.RelationClasses.Antisymmetric",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.Asymmetric",
+      "canonical": "Corelib.Classes.RelationClasses.Asymmetric",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.Equivalence",
+      "canonical": "Corelib.Classes.RelationClasses.Equivalence",
+      "kind": "inductive"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.Equivalence_PER",
+      "canonical": "Corelib.Classes.RelationClasses.Equivalence_PER",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.Equivalence_PreOrder",
+      "canonical": "Corelib.Classes.RelationClasses.Equivalence_PreOrder",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.Equivalence_Reflexive",
+      "canonical": "Corelib.Classes.RelationClasses.Equivalence_Reflexive",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.Equivalence_Symmetric",
+      "canonical": "Corelib.Classes.RelationClasses.Equivalence_Symmetric",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.Equivalence_Transitive",
+      "canonical": "Corelib.Classes.RelationClasses.Equivalence_Transitive",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.Irreflexive",
+      "canonical": "Corelib.Classes.RelationClasses.Irreflexive",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.PER",
+      "canonical": "Corelib.Classes.RelationClasses.PER",
+      "kind": "inductive"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.PER_Symmetric",
+      "canonical": "Corelib.Classes.RelationClasses.PER_Symmetric",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.PER_Transitive",
+      "canonical": "Corelib.Classes.RelationClasses.PER_Transitive",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.PartialOrder",
+      "canonical": "Corelib.Classes.RelationClasses.PartialOrder",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.PartialOrder_inverse",
+      "canonical": "Corelib.Classes.RelationClasses.PartialOrder_inverse",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.PreOrder",
+      "canonical": "Corelib.Classes.RelationClasses.PreOrder",
+      "kind": "inductive"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.PreOrder_Reflexive",
+      "canonical": "Corelib.Classes.RelationClasses.PreOrder_Reflexive",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.PreOrder_Transitive",
+      "canonical": "Corelib.Classes.RelationClasses.PreOrder_Transitive",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.Reflexive",
+      "canonical": "Corelib.Classes.RelationClasses.Reflexive",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.RewriteRelation",
+      "canonical": "Corelib.Classes.RelationClasses.RewriteRelation",
+      "kind": "inductive"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.StrictOrder",
+      "canonical": "Corelib.Classes.RelationClasses.StrictOrder",
+      "kind": "inductive"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.StrictOrder_Asymmetric",
+      "canonical": "Corelib.Classes.RelationClasses.StrictOrder_Asymmetric",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.StrictOrder_Irreflexive",
+      "canonical": "Corelib.Classes.RelationClasses.StrictOrder_Irreflexive",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.StrictOrder_Transitive",
+      "canonical": "Corelib.Classes.RelationClasses.StrictOrder_Transitive",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.Symmetric",
+      "canonical": "Corelib.Classes.RelationClasses.Symmetric",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.Tlist",
+      "canonical": "Corelib.Classes.RelationClasses.Tlist",
+      "kind": "inductive"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.Tlist_ind",
+      "canonical": "Corelib.Classes.RelationClasses.Tlist_ind",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.Tlist_rec",
+      "canonical": "Corelib.Classes.RelationClasses.Tlist_rec",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.Tlist_rect",
+      "canonical": "Corelib.Classes.RelationClasses.Tlist_rect",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.Tlist_sind",
+      "canonical": "Corelib.Classes.RelationClasses.Tlist_sind",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.Transitive",
+      "canonical": "Corelib.Classes.RelationClasses.Transitive",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.antisymmetry",
+      "canonical": "Corelib.Classes.RelationClasses.antisymmetry",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.arrows",
+      "canonical": "Corelib.Classes.RelationClasses.arrows",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.asymmetry",
+      "canonical": "Corelib.Classes.RelationClasses.asymmetry",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.binary_operation",
+      "canonical": "Corelib.Classes.RelationClasses.binary_operation",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.binary_relation",
+      "canonical": "Corelib.Classes.RelationClasses.binary_relation",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.complement",
+      "canonical": "Corelib.Classes.RelationClasses.complement",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.complement_Irreflexive",
+      "canonical": "Corelib.Classes.RelationClasses.complement_Irreflexive",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.complement_Symmetric",
+      "canonical": "Corelib.Classes.RelationClasses.complement_Symmetric",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.complement_inverse",
+      "canonical": "Corelib.Classes.RelationClasses.complement_inverse",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.eq_Reflexive",
+      "canonical": "Corelib.Classes.RelationClasses.eq_Reflexive",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.eq_Symmetric",
+      "canonical": "Corelib.Classes.RelationClasses.eq_Symmetric",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.eq_Transitive",
+      "canonical": "Corelib.Classes.RelationClasses.eq_Transitive",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.eq_equivalence",
+      "canonical": "Corelib.Classes.RelationClasses.eq_equivalence",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.equivalence_rewrite_relation",
+      "canonical": "Corelib.Classes.RelationClasses.equivalence_rewrite_relation",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.false_predicate",
+      "canonical": "Corelib.Classes.RelationClasses.false_predicate",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.flip_Antisymmetric",
+      "canonical": "Corelib.Classes.RelationClasses.flip_Antisymmetric",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.flip_Asymmetric",
+      "canonical": "Corelib.Classes.RelationClasses.flip_Asymmetric",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.flip_Equivalence",
+      "canonical": "Corelib.Classes.RelationClasses.flip_Equivalence",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.flip_Irreflexive",
+      "canonical": "Corelib.Classes.RelationClasses.flip_Irreflexive",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.flip_PER",
+      "canonical": "Corelib.Classes.RelationClasses.flip_PER",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.flip_PreOrder",
+      "canonical": "Corelib.Classes.RelationClasses.flip_PreOrder",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.flip_Reflexive",
+      "canonical": "Corelib.Classes.RelationClasses.flip_Reflexive",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.flip_StrictOrder",
+      "canonical": "Corelib.Classes.RelationClasses.flip_StrictOrder",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.flip_Symmetric",
+      "canonical": "Corelib.Classes.RelationClasses.flip_Symmetric",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.flip_Transitive",
+      "canonical": "Corelib.Classes.RelationClasses.flip_Transitive",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.iff_Reflexive",
+      "canonical": "Corelib.Classes.RelationClasses.iff_Reflexive",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.iff_Symmetric",
+      "canonical": "Corelib.Classes.RelationClasses.iff_Symmetric",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.iff_Transitive",
+      "canonical": "Corelib.Classes.RelationClasses.iff_Transitive",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.iff_equivalence",
+      "canonical": "Corelib.Classes.RelationClasses.iff_equivalence",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.iff_rewrite_relation",
+      "canonical": "Corelib.Classes.RelationClasses.iff_rewrite_relation",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.impl_Reflexive",
+      "canonical": "Corelib.Classes.RelationClasses.impl_Reflexive",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.impl_Reflexive_obligation_1",
+      "canonical": "Corelib.Classes.RelationClasses.impl_Reflexive_obligation_1",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.impl_Transitive",
+      "canonical": "Corelib.Classes.RelationClasses.impl_Transitive",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.impl_Transitive_obligation_1",
+      "canonical": "Corelib.Classes.RelationClasses.impl_Transitive_obligation_1",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.impl_rewrite_relation",
+      "canonical": "Corelib.Classes.RelationClasses.impl_rewrite_relation",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.inverse_impl_rewrite_relation",
+      "canonical": "Corelib.Classes.RelationClasses.inverse_impl_rewrite_relation",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.irreflexivity",
+      "canonical": "Corelib.Classes.RelationClasses.irreflexivity",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.is_subrelation",
+      "canonical": "Corelib.Classes.RelationClasses.is_subrelation",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.neq_Symmetric",
+      "canonical": "Corelib.Classes.RelationClasses.neq_Symmetric",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.partial_order_antisym",
+      "canonical": "Corelib.Classes.RelationClasses.partial_order_antisym",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.partial_order_equivalence",
+      "canonical": "Corelib.Classes.RelationClasses.partial_order_equivalence",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.pointwise_extension",
+      "canonical": "Corelib.Classes.RelationClasses.pointwise_extension",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.pointwise_lifting",
+      "canonical": "Corelib.Classes.RelationClasses.pointwise_lifting",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.predicate_all",
+      "canonical": "Corelib.Classes.RelationClasses.predicate_all",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.predicate_equivalence",
+      "canonical": "Corelib.Classes.RelationClasses.predicate_equivalence",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence",
+      "canonical": "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_1",
+      "canonical": "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_1",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_2",
+      "canonical": "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_2",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_3",
+      "canonical": "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_3",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.predicate_exists",
+      "canonical": "Corelib.Classes.RelationClasses.predicate_exists",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.predicate_implication",
+      "canonical": "Corelib.Classes.RelationClasses.predicate_implication",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.predicate_implication_preorder",
+      "canonical": "Corelib.Classes.RelationClasses.predicate_implication_preorder",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_1",
+      "canonical": "Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_1",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_2",
+      "canonical": "Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_2",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.predicate_intersection",
+      "canonical": "Corelib.Classes.RelationClasses.predicate_intersection",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.predicate_union",
+      "canonical": "Corelib.Classes.RelationClasses.predicate_union",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.reflexivity",
+      "canonical": "Corelib.Classes.RelationClasses.reflexivity",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.relation_conjunction",
+      "canonical": "Corelib.Classes.RelationClasses.relation_conjunction",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.relation_disjunction",
+      "canonical": "Corelib.Classes.RelationClasses.relation_disjunction",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.relation_equivalence",
+      "canonical": "Corelib.Classes.RelationClasses.relation_equivalence",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.relation_equivalence_equivalence",
+      "canonical": "Corelib.Classes.RelationClasses.relation_equivalence_equivalence",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.relation_equivalence_rewrite_relation",
+      "canonical": "Corelib.Classes.RelationClasses.relation_equivalence_rewrite_relation",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.relation_implication_preorder",
+      "canonical": "Corelib.Classes.RelationClasses.relation_implication_preorder",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.subrelation",
+      "canonical": "Corelib.Classes.RelationClasses.subrelation",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.subrelation_partial_order",
+      "canonical": "Corelib.Classes.RelationClasses.subrelation_partial_order",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.subrelation_partial_order_obligation_1",
+      "canonical": "Corelib.Classes.RelationClasses.subrelation_partial_order_obligation_1",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.subrelation_symmetric",
+      "canonical": "Corelib.Classes.RelationClasses.subrelation_symmetric",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.symmetry",
+      "canonical": "Corelib.Classes.RelationClasses.symmetry",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.ternary_operation",
+      "canonical": "Corelib.Classes.RelationClasses.ternary_operation",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.transitivity",
+      "canonical": "Corelib.Classes.RelationClasses.transitivity",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.true_predicate",
+      "canonical": "Corelib.Classes.RelationClasses.true_predicate",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.unary_operation",
+      "canonical": "Corelib.Classes.RelationClasses.unary_operation",
+      "kind": "constant"
+    },
+    {
+      "requested": "Corelib.Classes.RelationClasses.unary_predicate",
+      "canonical": "Corelib.Classes.RelationClasses.unary_predicate",
+      "kind": "constant"
+    }
+  ],
+  "exported": [
+    "Corelib.Classes.RelationClasses.Antisymmetric",
+    "Corelib.Classes.RelationClasses.Asymmetric",
+    "Corelib.Classes.RelationClasses.Equivalence",
+    "Corelib.Classes.RelationClasses.Equivalence_PER",
+    "Corelib.Classes.RelationClasses.Equivalence_PreOrder",
+    "Corelib.Classes.RelationClasses.Equivalence_Reflexive",
+    "Corelib.Classes.RelationClasses.Equivalence_Symmetric",
+    "Corelib.Classes.RelationClasses.Equivalence_Transitive",
+    "Corelib.Classes.RelationClasses.Irreflexive",
+    "Corelib.Classes.RelationClasses.PER",
+    "Corelib.Classes.RelationClasses.PER_Symmetric",
+    "Corelib.Classes.RelationClasses.PER_Transitive",
+    "Corelib.Classes.RelationClasses.PartialOrder",
+    "Corelib.Classes.RelationClasses.PartialOrder_inverse",
+    "Corelib.Classes.RelationClasses.PartialOrder_inverse__rocq2lean_obligation_1",
+    "Corelib.Classes.RelationClasses.PreOrder",
+    "Corelib.Classes.RelationClasses.PreOrder_Reflexive",
+    "Corelib.Classes.RelationClasses.PreOrder_Transitive",
+    "Corelib.Classes.RelationClasses.Reflexive",
+    "Corelib.Classes.RelationClasses.RewriteRelation",
+    "Corelib.Classes.RelationClasses.StrictOrder",
+    "Corelib.Classes.RelationClasses.StrictOrder_Asymmetric",
+    "Corelib.Classes.RelationClasses.StrictOrder_Irreflexive",
+    "Corelib.Classes.RelationClasses.StrictOrder_Transitive",
+    "Corelib.Classes.RelationClasses.Symmetric",
+    "Corelib.Classes.RelationClasses.Tlist",
+    "Corelib.Classes.RelationClasses.Tlist_ind",
+    "Corelib.Classes.RelationClasses.Tlist_rec",
+    "Corelib.Classes.RelationClasses.Tlist_rect",
+    "Corelib.Classes.RelationClasses.Tlist_sind",
+    "Corelib.Classes.RelationClasses.Transitive",
+    "Corelib.Classes.RelationClasses.antisymmetry",
+    "Corelib.Classes.RelationClasses.arrows",
+    "Corelib.Classes.RelationClasses.asymmetry",
+    "Corelib.Classes.RelationClasses.binary_operation",
+    "Corelib.Classes.RelationClasses.binary_relation",
+    "Corelib.Classes.RelationClasses.complement",
+    "Corelib.Classes.RelationClasses.complement_Irreflexive",
+    "Corelib.Classes.RelationClasses.complement_Symmetric",
+    "Corelib.Classes.RelationClasses.complement_inverse",
+    "Corelib.Classes.RelationClasses.eq_Reflexive",
+    "Corelib.Classes.RelationClasses.eq_Symmetric",
+    "Corelib.Classes.RelationClasses.eq_Transitive",
+    "Corelib.Classes.RelationClasses.eq_equivalence",
+    "Corelib.Classes.RelationClasses.equivalence_rewrite_relation",
+    "Corelib.Classes.RelationClasses.false_predicate",
+    "Corelib.Classes.RelationClasses.flip_Antisymmetric",
+    "Corelib.Classes.RelationClasses.flip_Asymmetric",
+    "Corelib.Classes.RelationClasses.flip_Equivalence",
+    "Corelib.Classes.RelationClasses.flip_Irreflexive",
+    "Corelib.Classes.RelationClasses.flip_PER",
+    "Corelib.Classes.RelationClasses.flip_PreOrder",
+    "Corelib.Classes.RelationClasses.flip_Reflexive",
+    "Corelib.Classes.RelationClasses.flip_StrictOrder",
+    "Corelib.Classes.RelationClasses.flip_Symmetric",
+    "Corelib.Classes.RelationClasses.flip_Transitive",
+    "Corelib.Classes.RelationClasses.iff_Reflexive",
+    "Corelib.Classes.RelationClasses.iff_Symmetric",
+    "Corelib.Classes.RelationClasses.iff_Transitive",
+    "Corelib.Classes.RelationClasses.iff_equivalence",
+    "Corelib.Classes.RelationClasses.iff_rewrite_relation",
+    "Corelib.Classes.RelationClasses.impl_Reflexive",
+    "Corelib.Classes.RelationClasses.impl_Reflexive_obligation_1",
+    "Corelib.Classes.RelationClasses.impl_Transitive",
+    "Corelib.Classes.RelationClasses.impl_Transitive_obligation_1",
+    "Corelib.Classes.RelationClasses.impl_rewrite_relation",
+    "Corelib.Classes.RelationClasses.inverse_impl_rewrite_relation",
+    "Corelib.Classes.RelationClasses.irreflexivity",
+    "Corelib.Classes.RelationClasses.is_subrelation",
+    "Corelib.Classes.RelationClasses.neq_Symmetric",
+    "Corelib.Classes.RelationClasses.partial_order_antisym",
+    "Corelib.Classes.RelationClasses.partial_order_equivalence",
+    "Corelib.Classes.RelationClasses.pointwise_extension",
+    "Corelib.Classes.RelationClasses.pointwise_lifting",
+    "Corelib.Classes.RelationClasses.predicate_all",
+    "Corelib.Classes.RelationClasses.predicate_equivalence",
+    "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence",
+    "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_1",
+    "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_2",
+    "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_3",
+    "Corelib.Classes.RelationClasses.predicate_exists",
+    "Corelib.Classes.RelationClasses.predicate_implication",
+    "Corelib.Classes.RelationClasses.predicate_implication_preorder",
+    "Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_1",
+    "Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_2",
+    "Corelib.Classes.RelationClasses.predicate_intersection",
+    "Corelib.Classes.RelationClasses.predicate_union",
+    "Corelib.Classes.RelationClasses.reflexivity",
+    "Corelib.Classes.RelationClasses.relation_conjunction",
+    "Corelib.Classes.RelationClasses.relation_disjunction",
+    "Corelib.Classes.RelationClasses.relation_equivalence",
+    "Corelib.Classes.RelationClasses.relation_equivalence_equivalence",
+    "Corelib.Classes.RelationClasses.relation_equivalence_rewrite_relation",
+    "Corelib.Classes.RelationClasses.relation_implication_preorder",
+    "Corelib.Classes.RelationClasses.subrelation",
+    "Corelib.Classes.RelationClasses.subrelation_partial_order",
+    "Corelib.Classes.RelationClasses.subrelation_partial_order__rocq2lean_obligation_1",
+    "Corelib.Classes.RelationClasses.subrelation_partial_order__rocq2lean_obligation_2",
+    "Corelib.Classes.RelationClasses.subrelation_partial_order_obligation_1",
+    "Corelib.Classes.RelationClasses.subrelation_symmetric",
+    "Corelib.Classes.RelationClasses.symmetry",
+    "Corelib.Classes.RelationClasses.ternary_operation",
+    "Corelib.Classes.RelationClasses.transitivity",
+    "Corelib.Classes.RelationClasses.true_predicate",
+    "Corelib.Classes.RelationClasses.unary_operation",
+    "Corelib.Classes.RelationClasses.unary_predicate",
+    "Corelib.Init.Logic.False",
+    "Corelib.Init.Logic.True",
+    "Corelib.Init.Logic.and",
+    "Corelib.Init.Logic.eq",
+    "Corelib.Init.Logic.ex",
+    "Corelib.Init.Logic.iff",
+    "Corelib.Init.Logic.not",
+    "Corelib.Init.Logic.or",
+    "Corelib.Program.Basics.flip",
+    "Corelib.Program.Basics.impl",
+    "Corelib.Relations.Relation_Definitions.relation"
+  ],
+  "required_closure": [
+    "Corelib.Classes.RelationClasses.Antisymmetric",
+    "Corelib.Classes.RelationClasses.Asymmetric",
+    "Corelib.Classes.RelationClasses.Equivalence",
+    "Corelib.Classes.RelationClasses.Equivalence_PER",
+    "Corelib.Classes.RelationClasses.Equivalence_PreOrder",
+    "Corelib.Classes.RelationClasses.Equivalence_Reflexive",
+    "Corelib.Classes.RelationClasses.Equivalence_Symmetric",
+    "Corelib.Classes.RelationClasses.Equivalence_Transitive",
+    "Corelib.Classes.RelationClasses.Irreflexive",
+    "Corelib.Classes.RelationClasses.PER",
+    "Corelib.Classes.RelationClasses.PER_Symmetric",
+    "Corelib.Classes.RelationClasses.PER_Transitive",
+    "Corelib.Classes.RelationClasses.PartialOrder",
+    "Corelib.Classes.RelationClasses.PartialOrder_inverse",
+    "Corelib.Classes.RelationClasses.PartialOrder_inverse__rocq2lean_obligation_1",
+    "Corelib.Classes.RelationClasses.PreOrder",
+    "Corelib.Classes.RelationClasses.PreOrder_Reflexive",
+    "Corelib.Classes.RelationClasses.PreOrder_Transitive",
+    "Corelib.Classes.RelationClasses.Reflexive",
+    "Corelib.Classes.RelationClasses.RewriteRelation",
+    "Corelib.Classes.RelationClasses.StrictOrder",
+    "Corelib.Classes.RelationClasses.StrictOrder_Asymmetric",
+    "Corelib.Classes.RelationClasses.StrictOrder_Irreflexive",
+    "Corelib.Classes.RelationClasses.StrictOrder_Transitive",
+    "Corelib.Classes.RelationClasses.Symmetric",
+    "Corelib.Classes.RelationClasses.Tlist",
+    "Corelib.Classes.RelationClasses.Tlist_ind",
+    "Corelib.Classes.RelationClasses.Tlist_rec",
+    "Corelib.Classes.RelationClasses.Tlist_rect",
+    "Corelib.Classes.RelationClasses.Tlist_sind",
+    "Corelib.Classes.RelationClasses.Transitive",
+    "Corelib.Classes.RelationClasses.antisymmetry",
+    "Corelib.Classes.RelationClasses.arrows",
+    "Corelib.Classes.RelationClasses.asymmetry",
+    "Corelib.Classes.RelationClasses.binary_operation",
+    "Corelib.Classes.RelationClasses.binary_relation",
+    "Corelib.Classes.RelationClasses.complement",
+    "Corelib.Classes.RelationClasses.complement_Irreflexive",
+    "Corelib.Classes.RelationClasses.complement_Symmetric",
+    "Corelib.Classes.RelationClasses.complement_inverse",
+    "Corelib.Classes.RelationClasses.eq_Reflexive",
+    "Corelib.Classes.RelationClasses.eq_Symmetric",
+    "Corelib.Classes.RelationClasses.eq_Transitive",
+    "Corelib.Classes.RelationClasses.eq_equivalence",
+    "Corelib.Classes.RelationClasses.equivalence_rewrite_relation",
+    "Corelib.Classes.RelationClasses.false_predicate",
+    "Corelib.Classes.RelationClasses.flip_Antisymmetric",
+    "Corelib.Classes.RelationClasses.flip_Asymmetric",
+    "Corelib.Classes.RelationClasses.flip_Equivalence",
+    "Corelib.Classes.RelationClasses.flip_Irreflexive",
+    "Corelib.Classes.RelationClasses.flip_PER",
+    "Corelib.Classes.RelationClasses.flip_PreOrder",
+    "Corelib.Classes.RelationClasses.flip_Reflexive",
+    "Corelib.Classes.RelationClasses.flip_StrictOrder",
+    "Corelib.Classes.RelationClasses.flip_Symmetric",
+    "Corelib.Classes.RelationClasses.flip_Transitive",
+    "Corelib.Classes.RelationClasses.iff_Reflexive",
+    "Corelib.Classes.RelationClasses.iff_Symmetric",
+    "Corelib.Classes.RelationClasses.iff_Transitive",
+    "Corelib.Classes.RelationClasses.iff_equivalence",
+    "Corelib.Classes.RelationClasses.iff_rewrite_relation",
+    "Corelib.Classes.RelationClasses.impl_Reflexive",
+    "Corelib.Classes.RelationClasses.impl_Reflexive_obligation_1",
+    "Corelib.Classes.RelationClasses.impl_Transitive",
+    "Corelib.Classes.RelationClasses.impl_Transitive_obligation_1",
+    "Corelib.Classes.RelationClasses.impl_rewrite_relation",
+    "Corelib.Classes.RelationClasses.inverse_impl_rewrite_relation",
+    "Corelib.Classes.RelationClasses.irreflexivity",
+    "Corelib.Classes.RelationClasses.is_subrelation",
+    "Corelib.Classes.RelationClasses.neq_Symmetric",
+    "Corelib.Classes.RelationClasses.partial_order_antisym",
+    "Corelib.Classes.RelationClasses.partial_order_equivalence",
+    "Corelib.Classes.RelationClasses.pointwise_extension",
+    "Corelib.Classes.RelationClasses.pointwise_lifting",
+    "Corelib.Classes.RelationClasses.predicate_all",
+    "Corelib.Classes.RelationClasses.predicate_equivalence",
+    "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence",
+    "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_1",
+    "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_2",
+    "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_3",
+    "Corelib.Classes.RelationClasses.predicate_exists",
+    "Corelib.Classes.RelationClasses.predicate_implication",
+    "Corelib.Classes.RelationClasses.predicate_implication_preorder",
+    "Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_1",
+    "Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_2",
+    "Corelib.Classes.RelationClasses.predicate_intersection",
+    "Corelib.Classes.RelationClasses.predicate_union",
+    "Corelib.Classes.RelationClasses.reflexivity",
+    "Corelib.Classes.RelationClasses.relation_conjunction",
+    "Corelib.Classes.RelationClasses.relation_disjunction",
+    "Corelib.Classes.RelationClasses.relation_equivalence",
+    "Corelib.Classes.RelationClasses.relation_equivalence_equivalence",
+    "Corelib.Classes.RelationClasses.relation_equivalence_rewrite_relation",
+    "Corelib.Classes.RelationClasses.relation_implication_preorder",
+    "Corelib.Classes.RelationClasses.subrelation",
+    "Corelib.Classes.RelationClasses.subrelation_partial_order",
+    "Corelib.Classes.RelationClasses.subrelation_partial_order__rocq2lean_obligation_1",
+    "Corelib.Classes.RelationClasses.subrelation_partial_order__rocq2lean_obligation_2",
+    "Corelib.Classes.RelationClasses.subrelation_partial_order_obligation_1",
+    "Corelib.Classes.RelationClasses.subrelation_symmetric",
+    "Corelib.Classes.RelationClasses.symmetry",
+    "Corelib.Classes.RelationClasses.ternary_operation",
+    "Corelib.Classes.RelationClasses.transitivity",
+    "Corelib.Classes.RelationClasses.true_predicate",
+    "Corelib.Classes.RelationClasses.unary_operation",
+    "Corelib.Classes.RelationClasses.unary_predicate",
+    "Corelib.Init.Logic.False",
+    "Corelib.Init.Logic.True",
+    "Corelib.Init.Logic.and",
+    "Corelib.Init.Logic.eq",
+    "Corelib.Init.Logic.ex",
+    "Corelib.Init.Logic.iff",
+    "Corelib.Init.Logic.not",
+    "Corelib.Init.Logic.or",
+    "Corelib.Program.Basics.flip",
+    "Corelib.Program.Basics.impl",
+    "Corelib.Relations.Relation_Definitions.relation"
+  ],
+  "extra_exported": [],
+  "protection": {
+    "schema": "rocq2lean-protected-interface/1",
+    "manifest_sha256": "5189bdc7b210c37d6e468571e1921d0e3b54d11d1d123c2c74efdbfe0a5f193f",
+    "policy": {
+      "refuse": [
+        "R2B-S result-sort lowering",
+        "R2B-P specialization of a statement level"
+      ],
+      "applies_to": "every protected declaration, requested root or dependency",
+      "unprotected_dependencies": "existing checked policy (R2B-P instances re-checked by Rocq at verify)"
+    },
+    "protected": [
+      "Corelib.Classes.RelationClasses.Antisymmetric",
+      "Corelib.Classes.RelationClasses.Asymmetric",
+      "Corelib.Classes.RelationClasses.Equivalence",
+      "Corelib.Classes.RelationClasses.Equivalence_PER",
+      "Corelib.Classes.RelationClasses.Equivalence_PreOrder",
+      "Corelib.Classes.RelationClasses.Equivalence_Reflexive",
+      "Corelib.Classes.RelationClasses.Equivalence_Symmetric",
+      "Corelib.Classes.RelationClasses.Equivalence_Transitive",
+      "Corelib.Classes.RelationClasses.Irreflexive",
+      "Corelib.Classes.RelationClasses.PER",
+      "Corelib.Classes.RelationClasses.PER_Symmetric",
+      "Corelib.Classes.RelationClasses.PER_Transitive",
+      "Corelib.Classes.RelationClasses.PartialOrder",
+      "Corelib.Classes.RelationClasses.PartialOrder_inverse",
+      "Corelib.Classes.RelationClasses.PreOrder",
+      "Corelib.Classes.RelationClasses.PreOrder_Reflexive",
+      "Corelib.Classes.RelationClasses.PreOrder_Transitive",
+      "Corelib.Classes.RelationClasses.Reflexive",
+      "Corelib.Classes.RelationClasses.RewriteRelation",
+      "Corelib.Classes.RelationClasses.StrictOrder",
+      "Corelib.Classes.RelationClasses.StrictOrder_Asymmetric",
+      "Corelib.Classes.RelationClasses.StrictOrder_Irreflexive",
+      "Corelib.Classes.RelationClasses.StrictOrder_Transitive",
+      "Corelib.Classes.RelationClasses.Symmetric",
+      "Corelib.Classes.RelationClasses.Tlist",
+      "Corelib.Classes.RelationClasses.Tlist_ind",
+      "Corelib.Classes.RelationClasses.Tlist_rec",
+      "Corelib.Classes.RelationClasses.Tlist_rect",
+      "Corelib.Classes.RelationClasses.Tlist_sind",
+      "Corelib.Classes.RelationClasses.Transitive",
+      "Corelib.Classes.RelationClasses.antisymmetry",
+      "Corelib.Classes.RelationClasses.arrows",
+      "Corelib.Classes.RelationClasses.asymmetry",
+      "Corelib.Classes.RelationClasses.binary_operation",
+      "Corelib.Classes.RelationClasses.binary_relation",
+      "Corelib.Classes.RelationClasses.complement",
+      "Corelib.Classes.RelationClasses.complement_Irreflexive",
+      "Corelib.Classes.RelationClasses.complement_Symmetric",
+      "Corelib.Classes.RelationClasses.complement_inverse",
+      "Corelib.Classes.RelationClasses.eq_Reflexive",
+      "Corelib.Classes.RelationClasses.eq_Symmetric",
+      "Corelib.Classes.RelationClasses.eq_Transitive",
+      "Corelib.Classes.RelationClasses.eq_equivalence",
+      "Corelib.Classes.RelationClasses.equivalence_rewrite_relation",
+      "Corelib.Classes.RelationClasses.false_predicate",
+      "Corelib.Classes.RelationClasses.flip_Antisymmetric",
+      "Corelib.Classes.RelationClasses.flip_Asymmetric",
+      "Corelib.Classes.RelationClasses.flip_Equivalence",
+      "Corelib.Classes.RelationClasses.flip_Irreflexive",
+      "Corelib.Classes.RelationClasses.flip_PER",
+      "Corelib.Classes.RelationClasses.flip_PreOrder",
+      "Corelib.Classes.RelationClasses.flip_Reflexive",
+      "Corelib.Classes.RelationClasses.flip_StrictOrder",
+      "Corelib.Classes.RelationClasses.flip_Symmetric",
+      "Corelib.Classes.RelationClasses.flip_Transitive",
+      "Corelib.Classes.RelationClasses.iff_Reflexive",
+      "Corelib.Classes.RelationClasses.iff_Symmetric",
+      "Corelib.Classes.RelationClasses.iff_Transitive",
+      "Corelib.Classes.RelationClasses.iff_equivalence",
+      "Corelib.Classes.RelationClasses.iff_rewrite_relation",
+      "Corelib.Classes.RelationClasses.impl_Reflexive",
+      "Corelib.Classes.RelationClasses.impl_Reflexive_obligation_1",
+      "Corelib.Classes.RelationClasses.impl_Transitive",
+      "Corelib.Classes.RelationClasses.impl_Transitive_obligation_1",
+      "Corelib.Classes.RelationClasses.impl_rewrite_relation",
+      "Corelib.Classes.RelationClasses.inverse_impl_rewrite_relation",
+      "Corelib.Classes.RelationClasses.irreflexivity",
+      "Corelib.Classes.RelationClasses.is_subrelation",
+      "Corelib.Classes.RelationClasses.neq_Symmetric",
+      "Corelib.Classes.RelationClasses.partial_order_antisym",
+      "Corelib.Classes.RelationClasses.partial_order_equivalence",
+      "Corelib.Classes.RelationClasses.pointwise_extension",
+      "Corelib.Classes.RelationClasses.pointwise_lifting",
+      "Corelib.Classes.RelationClasses.predicate_all",
+      "Corelib.Classes.RelationClasses.predicate_equivalence",
+      "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence",
+      "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_1",
+      "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_2",
+      "Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_3",
+      "Corelib.Classes.RelationClasses.predicate_exists",
+      "Corelib.Classes.RelationClasses.predicate_implication",
+      "Corelib.Classes.RelationClasses.predicate_implication_preorder",
+      "Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_1",
+      "Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_2",
+      "Corelib.Classes.RelationClasses.predicate_intersection",
+      "Corelib.Classes.RelationClasses.predicate_union",
+      "Corelib.Classes.RelationClasses.reflexivity",
+      "Corelib.Classes.RelationClasses.relation_conjunction",
+      "Corelib.Classes.RelationClasses.relation_disjunction",
+      "Corelib.Classes.RelationClasses.relation_equivalence",
+      "Corelib.Classes.RelationClasses.relation_equivalence_equivalence",
+      "Corelib.Classes.RelationClasses.relation_equivalence_rewrite_relation",
+      "Corelib.Classes.RelationClasses.relation_implication_preorder",
+      "Corelib.Classes.RelationClasses.subrelation",
+      "Corelib.Classes.RelationClasses.subrelation_partial_order",
+      "Corelib.Classes.RelationClasses.subrelation_partial_order_obligation_1",
+      "Corelib.Classes.RelationClasses.subrelation_symmetric",
+      "Corelib.Classes.RelationClasses.symmetry",
+      "Corelib.Classes.RelationClasses.ternary_operation",
+      "Corelib.Classes.RelationClasses.transitivity",
+      "Corelib.Classes.RelationClasses.true_predicate",
+      "Corelib.Classes.RelationClasses.unary_operation",
+      "Corelib.Classes.RelationClasses.unary_predicate",
+      "Corelib.Init.Logic.False",
+      "Corelib.Init.Logic.True",
+      "Corelib.Init.Logic.and",
+      "Corelib.Init.Logic.eq",
+      "Corelib.Init.Logic.ex",
+      "Corelib.Init.Logic.iff",
+      "Corelib.Init.Logic.not",
+      "Corelib.Init.Logic.or",
+      "Corelib.Program.Basics.flip",
+      "Corelib.Program.Basics.impl",
+      "Corelib.Relations.Relation_Definitions.relation"
+    ]
+  },
+  "mode": "statement"
+}

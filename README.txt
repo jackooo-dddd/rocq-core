@@ -1,3 +1,5 @@
+CURRENT UPDATE 2026-10-19: This file below describes a historical 839-root/early baseline. Current 2180-root mechanical nat/eq results and correspondence proofs are indexed in README.md, RESULTS.md and results/corelib-complete/ALL_RULES.md.
+
 范围：此前基础模块的 24 个 Corelib 文件、839 项声明，不是所有已安装 Corelib 文件。
 统计单位是导出的全局常量或互归纳块；构造子列在归纳块内部，不单独增加根声明数。自动生成的消去器计为常量；模块、记号和策略命令不是这一统计中的声明。
 原项目源码未修改，未提交或推送。

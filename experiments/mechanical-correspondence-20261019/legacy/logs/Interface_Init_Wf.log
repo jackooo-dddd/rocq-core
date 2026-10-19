@@ -1,0 +1,36 @@
+INTERFACE_OK Rocq.Corelib.Init.Wf.well_founded type_universe_specialization=false
+INTERFACE_SKIP Rocq.Corelib.Init.Wf.Acc_rec: No registered type bijection for (x : A) →
+  (∀ (y : A), R y x → Rocq.Corelib.Init.Wf.Acc A R y) → ((y : A) → R y x → P y) → P x
+INTERFACE_SKIP Rocq.Corelib.Init.Wf.Acc_rect: No registered type bijection for (x : A) →
+  (∀ (y : A), R y x → Rocq.Corelib.Init.Wf.Acc A R y) → ((y : A) → R y x → P y) → P x
+INTERFACE_SKIP Rocq.Corelib.Init.Wf.Fix_F: No registered type bijection for (x : A) → Rocq.Corelib.Init.Wf.Acc A R x → P x
+INTERFACE_SKIP Rocq.Corelib.Init.Wf.Fix: No registered type bijection for ∀ (a : A), Rocq.Corelib.Init.Wf.Acc A R a
+INTERFACE_SKIP Rocq.Corelib.Init.Wf.Fix_F_2: No registered type bijection for (R :
+    Rocq.Corelib.Init.Datatypes.prod A B → Rocq.Corelib.Init.Datatypes.prod A B → Prop) →
+  (P : A → B → Type u_Corelib_Init_Wf_31) →
+    ((x : A) →
+        (x' : B) →
+          ((y : A) →
+              (y' : B) →
+                R (Rocq.Corelib.Init.Datatypes.prod.pair A B y y') (Rocq.Corelib.Init.Datatypes.prod.pair A B x x') →
+                  P y y') →
+            P x x') →
+      (x : A) →
+        (x' : B) →
+          Rocq.Corelib.Init.Wf.Acc (Rocq.Corelib.Init.Datatypes.prod A B) R
+              (Rocq.Corelib.Init.Datatypes.prod.pair A B x x') →
+            P x x'
+INTERFACE_SKIP Rocq.Corelib.Init.Wf.well_founded_induction_type: No registered type bijection for ∀ (a : A), Rocq.Corelib.Init.Wf.Acc A R a
+INTERFACE_SKIP Rocq.Corelib.Init.Wf.well_founded_induction: No registered type bijection for ∀ (a : A), Rocq.Corelib.Init.Wf.Acc A R a
+INTERFACE_SKIP Rocq.Corelib.Init.Wf.well_founded_induction_type_2: No registered type bijection for (R :
+    Rocq.Corelib.Init.Datatypes.prod A B → Rocq.Corelib.Init.Datatypes.prod A B → Prop) →
+  (P : A → B → Type u_Corelib_Init_Wf_31) →
+    Rocq.Corelib.Init.Wf.well_founded (Rocq.Corelib.Init.Datatypes.prod A B) R →
+      ((x : A) →
+          (x' : B) →
+            ((y : A) →
+                (y' : B) →
+                  R (Rocq.Corelib.Init.Datatypes.prod.pair A B y y') (Rocq.Corelib.Init.Datatypes.prod.pair A B x x') →
+                    P y y') →
+              P x x') →
+        (a : A) → (b : B) → P a b

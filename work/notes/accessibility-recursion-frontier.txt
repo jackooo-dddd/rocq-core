@@ -1,0 +1,22 @@
+Accessibility-recursion frontier after proof-reference retry
+==========================================================
+Evidence: mono-abbrev-full/Corelib/{Init,Program}/Wf/source.ndjson.
+Fix_F and Fix_F_sub are source-kernel checked with explicit guard deferral:
+proof extraction replaced recursive accessibility-subproof arguments by
+obligation applications, so they are no longer syntactic structural subterms.
+The new global-reference retry currently runs only after failed source typing,
+not guard-only deferral; these roots therefore remain unchanged.
+
+transFixAcc currently only applies when the source proof inductive has NO large
+target recursor and the result is data. Acc has a large recursor, so this path
+rejects before call-relation construction. transFix1 requires a match-headed
+body; both Fix_F bodies instead apply their functional argument.
+
+Possible independent next directions:
+- Generalize recursion lowering for this match-free, large-eliminable proof
+  case with an explicitly supplied, independently checked termination premise.
+- Prefer preserving the source structural subproof during preparation where
+  it can be represented and checked without importing theorem implementations.
+Retaining Acc_inv merely as a statement prerequisite does NOT by itself
+prove recursive descent. Never erase the termination requirement or identify
+arbitrary proof hypotheses merely because their propositions coincide.

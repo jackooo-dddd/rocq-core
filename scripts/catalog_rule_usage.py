@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Reproduce rule coverage from compact main75 evidence; --extract refreshes from full reports."""
-import argparse,csv,json,re
+"""Reproduce rule coverage from compact current-baseline evidence; --extract refreshes from full reports."""
+import argparse,csv,json,re,gzip
 from pathlib import Path
 from collections import Counter
 def walk(x):
@@ -21,8 +21,9 @@ def main():
  ap.add_argument('--results',type=Path,default=Path(__file__).resolve().parents[1]/'results/corelib-complete');a=ap.parse_args();o=a.results
  if a.extract:
   xs=[]
-  for p in sorted((o/'Corelib').rglob('*.json')):
-   doc=json.loads(p.read_text())
+  paths=sorted(set((o/'Corelib').rglob('*.json')) | {p for p in (o/'Corelib').rglob('*.json.gz') if not p.with_suffix('').exists()})
+  for p in paths:
+   doc=json.loads(gzip.decompress(p.read_bytes()).decode() if p.suffix=='.gz' else p.read_text())
    for name,x in sorted(doc.get('roots',{}).items()):
     s=x['source_ir'];n=s.get('native',{});t=x['target_report']
     vs=x.get('quality_variants',[])+([t['quality_prop']] if t.get('quality_prop') else [])
@@ -71,7 +72,7 @@ def main():
  put('T03',lambda x,t:bool(t['consts']),'最终 AST 含常量引用，含辅助引用。','覆盖')
  relate('T04',lambda x:bool(x['source']['ast'].get('cast')),'源 IR 含 cast，不等于使用 cast 修复。')
  relate('T05',lambda x:bool(x['source']['sorts'].get('sprop')),'主源 IR 含 SProp；未记录全部动态转换。')
- put('T06',lambda x,t:t.get('rule','').startswith('bootstrap/'),'nat、eq 的原生根映射；下游引用不重复计数。')
+ put('T06',lambda x,t:t.get('rule','').startswith('bootstrap/'),'已停用的 nat/eq bootstrap；当前应为零，源 nat/eq 由普通归纳生成。')
  put('T07',lambda x,t:t.get('target_kind')=='inductive','最终生成归纳块的覆盖。','覆盖')
  field('T08','primitive_record')
  source('T09',lambda s:s['kind']=='inductive' and s['npars']>s['nparams_rec'],'原生 npars>nparams_rec 的非均匀块。')
@@ -92,7 +93,7 @@ def main():
              ('L02','prop_lift_coercions'),('L10','prop_lift_unfold'),('Q02','template_sort'),('Q03','quality_prop'),('V05','universe_checks')]:field(k,f)
  rs['U04']['basis']+=' 公开与正文局部求解未独立拆分。'
  rs['U09']['basis']+=' 统计模板块本身，下游实例化另属引用。'
- put('U08',lambda x,t:'Eq' in t['consts'],'最终 AST 直接含 Lean Eq。','覆盖')
+ put('U08',lambda x,t:'Eq' in t['consts'],'最终 AST 直接含原生 Lean Eq（包括内部辅助证明）；不是源 eq 原生映射次数。','覆盖')
  for k,kind in [('U10','constant'),('U11','inductive')]:
   put(k,lambda x,t,kind=kind:t.get('kind')==kind and t.get('universe_poly_params',0)>0,'对应声明有显式多态宇宙参数。')
  put('U28',lambda x,t:bool(t.get('universe_lowered') or t.get('universe_cumulativity')),'lowered 或 cumulativity 标志；策略标志不能拆成实际抬升次数。')
@@ -192,7 +193,7 @@ def main():
   text=re.sub(pattern,lambda m,line=line:line,text,flags=re.M)
  text=text.replace('| 原生映射根数 | 目标直接引用根数 |\n|---|---|\n','| 原生映射根数 | 目标直接引用根数 |\n|---|---|---:|---:|\n')
  (o/'ALL_RULES.md').write_text(text)
- md=['main75 逐规则使用统计','','[完整清单](ALL_RULES.md)。2180原始根去重；左数为主表示，右数含该根 quality 分支。','',
+ md=['机械 nat／eq 基线逐规则使用统计','','[完整清单](ALL_RULES.md)。2180原始根去重；左数为主表示，右数含该根 quality 分支。','',
      '118项统计精度：'+str(counts)+'。未单独记录不等于零，覆盖不等于内部调用次数。',
      '','| 编号 | 规则 | 主项 / 含分支根数 | 依据 |','|---|---|---|---|']
  for v in rs.values():md.append(f"| {v['id']} | {v['name']} | {display(v)} | {v['basis']} |")

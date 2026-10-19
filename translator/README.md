@@ -1,3 +1,5 @@
+> 2026-10-19: the current Corelib baseline has 2180 checked roots, zero blockers and no nat/eq bootstrap. Mechanical types are connected to native Nat/Eq by separate checked correspondence proofs. See repository RESULTS.md and docs/MECHANICAL_NAT_EQ.md. Earlier dated results below retain their original scope.
+
 # rocq2lean-pilot
 
 A mechanical, deterministic translator from elaborated Rocq declarations to Lean 4 kernel

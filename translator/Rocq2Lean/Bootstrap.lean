@@ -6,8 +6,8 @@ import Rocq2Lean.Translate
 /-!
 # Bootstrap registry
 
-The only source declarations that are *not* translated: a few core inductives realised by
-existing Lean inductives. Each entry records the exact canonical source signature
+No source declaration is mapped to an existing Lean inductive in this experiment.
+The registry API is retained for independent verification, but its table is empty. Each entry records the exact canonical source signature
 (`Rocq2Lean.canonicalSignature`), the Lean target, the universe rule and a rule id.
 `verifyBootstrap` re-checks every entry on every run:
 
@@ -34,18 +34,10 @@ structure BootstrapRule where
   numLevels : Nat
   deriving Inhabited
 
-def bootstrapRules : Array BootstrapRule := #[
-  { id := "bootstrap/nat-to-Nat", source := "Corelib.Init.Datatypes.nat",
-    signature := "{\"bodies\":[{\"ctors\":[{\"args\":[],\"arity\":0,\"indices\":[],\"name\":\"O\",\"type\":{\"i\":0,\"k\":\"rel\"}},{\"args\":[{\"body\":null,\"n\":{\"n\":null,\"r\":\"R\"},\"ty\":{\"i\":0,\"k\":\"rel\"}}],\"arity\":1,\"indices\":[],\"name\":\"S\",\"type\":{\"b\":{\"i\":1,\"k\":\"rel\"},\"k\":\"prod\",\"n\":{\"n\":null,\"r\":\"R\"},\"ty\":{\"i\":0,\"k\":\"rel\"}}}],\"indices\":[],\"kelim\":\"IntoAny\",\"name\":\"nat\",\"projs\":[],\"r\":\"R\",\"sort\":{\"k\":\"type\",\"u\":[{\"l\":{\"k\":\"set\"},\"n\":0}]},\"type\":{\"k\":\"sort\",\"s\":{\"k\":\"type\",\"u\":[{\"l\":{\"k\":\"set\"},\"n\":0}]}}}],\"finite\":\"Finite\",\"kind\":\"inductive\",\"name\":\"Corelib.Init.Datatypes.nat\",\"npars\":0,\"params\":[],\"polymorphic\":false,\"private\":null,\"template\":false,\"universes\":{\"k\":\"monomorphic\"},\"variance\":null}",
-    target := { types := #[``Nat], ctors := #[#[``Nat.zero, ``Nat.succ]], univ := .mono,
-                rule := "bootstrap/nat-to-Nat" },
-    numParams := 0, numIndices := 0, numLevels := 0 },
-  { id := "bootstrap/eq-to-Eq", source := "Corelib.Init.Logic.eq",
-    signature := "{\"bodies\":[{\"ctors\":[{\"args\":[],\"arity\":0,\"indices\":[{\"i\":0,\"k\":\"rel\"}],\"name\":\"eq_refl\",\"type\":{\"b\":{\"b\":{\"args\":[{\"i\":1,\"k\":\"rel\"},{\"i\":0,\"k\":\"rel\"},{\"i\":0,\"k\":\"rel\"}],\"f\":{\"i\":2,\"k\":\"rel\"},\"k\":\"app\"},\"k\":\"prod\",\"n\":{\"n\":\"x\",\"r\":\"R\"},\"ty\":{\"i\":0,\"k\":\"rel\"}},\"k\":\"prod\",\"n\":{\"n\":\"A\",\"r\":\"R\"},\"ty\":{\"k\":\"sort\",\"s\":{\"k\":\"type\",\"u\":[{\"l\":{\"k\":\"global\",\"n\":\"*\"},\"n\":0}]}}}}],\"indices\":[{\"body\":null,\"n\":{\"n\":null,\"r\":\"R\"},\"ty\":{\"i\":1,\"k\":\"rel\"}}],\"kelim\":\"IntoAny\",\"name\":\"eq\",\"projs\":[],\"r\":\"R\",\"sort\":{\"k\":\"prop\"},\"type\":{\"b\":{\"b\":{\"b\":{\"k\":\"sort\",\"s\":{\"k\":\"prop\"}},\"k\":\"prod\",\"n\":{\"n\":null,\"r\":\"R\"},\"ty\":{\"i\":1,\"k\":\"rel\"}},\"k\":\"prod\",\"n\":{\"n\":\"x\",\"r\":\"R\"},\"ty\":{\"i\":0,\"k\":\"rel\"}},\"k\":\"prod\",\"n\":{\"n\":\"A\",\"r\":\"R\"},\"ty\":{\"k\":\"sort\",\"s\":{\"k\":\"type\",\"u\":[{\"l\":{\"k\":\"global\",\"n\":\"*\"},\"n\":0}]}}}}],\"finite\":\"Finite\",\"kind\":\"inductive\",\"name\":\"Corelib.Init.Logic.eq\",\"npars\":2,\"params\":[{\"body\":null,\"n\":{\"n\":\"x\",\"r\":\"R\"},\"ty\":{\"i\":0,\"k\":\"rel\"}},{\"body\":null,\"n\":{\"n\":\"A\",\"r\":\"R\"},\"ty\":{\"k\":\"sort\",\"s\":{\"k\":\"type\",\"u\":[{\"l\":{\"k\":\"global\",\"n\":\"*\"},\"n\":0}]}}}],\"polymorphic\":false,\"private\":null,\"template\":true,\"universes\":{\"k\":\"monomorphic\"},\"variance\":null}",
-    target := { types := #[``Eq], ctors := #[#[``Eq.refl]], univ := .templateFromArg 0,
-                rule := "bootstrap/eq-to-Eq" },
-    numParams := 2, numIndices := 1, numLevels := 1 }
-]
+/-- All source inductives, including nat and eq, go through ordinary generation.
+Native Lean Nat/Eq remain available only for translator-internal bookkeeping/proofs. -/
+def bootstrapRules : Array BootstrapRule := #[]
+
 
 def findBootstrap? (source : String) : Option BootstrapRule :=
   bootstrapRules.find? (·.source == source)

@@ -1,0 +1,29 @@
+Remaining native float frontier affects61 blocked roots after native-string.
+Pinned runtime: ~/.opam/rocq930-mc/lib/rocq-runtime/kernel/float64_common.ml,
+float64.ml (includes Float64_common), source Floats/PrimFloat.v and SpecFloat.v.
+
+Source Float64.equal distinguishes +0/-0 and identifies every NaN; eq is IEEE
+equality (+0=-0, NaN unequal to itself). Literal printing canonicalizes NaN.
+A raw BitVec64 model admits distinct NaN representations where source Leibniz
+equality collapses them. Prefer a canonical finite field representation plus
+signed infinities and a single NaN:
+finite(sign:Bool, exponent:Fin2047, fraction:BitVec52), infinity(sign), nan.
+Exponent0 covers zero/subnormal; exponent1..2046 normal. Do not collapse signed0.
+
+Useful existing source specification: Floats/SpecFloat.v imports only BinNums,
+PosDef,IntDef,FloatClass. Its53 definitions and2 statements already translate.
+spec_float has signed zero/infinity, oneNaN, and finite positive mantissa with Z
+exponent. SFadd/SFmul/SFdiv/SFsqrt, nearest-even rounding, SFcompare, SFclassify,
+SFfrexp/SFldexp etc are pure source algorithms. Could reuse their algorithmic
+structure or checked translated definitions for the native model. However raw
+spec_float includes invalid/noncanonical finite values; it is NOT by itself a
+faithful primitivefloat representation. Need bounded canonical representation
+and exact conversion, no valid_binary axiom or unproved preservation assumption.
+
+Other pinned details: frshiftexp uses eshift2101 and zero exponent on zero/inf/NaN.
+ldshiftexp clamps unsigned e to4202 then subtracts2101. normfr_mantissa uses abs,
+returns significand only within[0.5,1), otherwise0. Runtime next_up/down are C
+primitives; inspect their implementation and test boundaries before modeling.
+Need independent source/target kernel computation cases, especially signedzero,
+NaN, subnormal/normal boundaries, half-way rounding, overflow/underflow.
+No float translation rule has been added.

@@ -1,0 +1,29 @@
+Native quality evidence and next representation frontier
+=======================================================
+Rocq9.3 native template records, exported independently in
+work/tests/template-quality-diagnostics/native-qualities.ndjson, show:
+- prod, sigT and sigT2 each have ONE quality parameter q0 shared by all
+  quality-sensitive arguments and the conclusion.
+- sig also has q0 on its carrier and conclusion.
+- default q0 is Type.
+Thus assuming one independent quality parameter per universe is incorrect.
+Native universe-level maxima alone do not reconstruct quality bindings.
+
+The current IR template_info records only quality_sort and universes; it drops
+the quality-variable identity. Before a quality-dependent translation rule,
+export this binding as checked native metadata and include it in fresh source
+verification. The current diagnostic is optional and leaves the IR unchanged.
+
+Candidate representation:
+  * fixed-Type templates: generalized Sort parameters, result at least Type0
+    (implemented and under full regression).
+  * quality-polymorphic templates: separate checked quality instances, e.g.
+    Prop instance and Type instance, with source-certified dispatch.
+Lean cannot declare an ordinary inductive with data fields at Sort(max u v)
+when this result may be Prop. Simply adding a Type0 floor changes the
+all-Prop instance, so it is NOT a solution for prod/sig/sigT.
+If constants over arbitrary carrier sorts require splitting too, every
+source-admissible quality branch must be present in the public artifact family.
+A successful Type branch cannot silently stand in for missing Prop branches.
+Need determine explicit template instance behavior under substitution using
+source-kernel diagnostics; do not infer it solely from target argument sorts.

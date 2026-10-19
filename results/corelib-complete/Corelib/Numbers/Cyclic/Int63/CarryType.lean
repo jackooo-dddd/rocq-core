@@ -1,0 +1,5 @@
+import Rocq2Lean
+#rocq2lean_import "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Numbers/Cyclic/Int63/CarryType/source.ndjson" "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Numbers/Cyclic/Int63/CarryType/translation_report.json" "638771ed84cbd93dff6127c01df29d15c64d60b51535b892d5a92e3bb08f140f" "c36667dd-251e-4cd0-9ca4-f63188b43d1f" "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Numbers/Cyclic/Int63/CarryType/contract.json" "f7ba7e1c88570cfb574ef1ac31a31f36fc907a2d21dfc0a9f30adaa57923ca45"
+
+set_option pp.universes true
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«CarryType».«carry»

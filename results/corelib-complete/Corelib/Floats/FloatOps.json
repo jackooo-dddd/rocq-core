@@ -1,0 +1,5089 @@
+{
+  "module": "Corelib.Floats.FloatOps",
+  "roots": {
+    "Corelib.Floats.FloatOps.Prim2SF": {
+      "source": "Corelib.Floats.FloatOps.Prim2SF",
+      "canonical": "Corelib.Floats.FloatOps.Prim2SF",
+      "result": {
+        "canonical": "Corelib.Floats.FloatOps.Prim2SF",
+        "status": "TRANSLATED_AND_CHECKED",
+        "message": "",
+        "target": "Rocq.Corelib.Floats.FloatOps.Prim2SF",
+        "blocked_by": []
+      },
+      "meaning": "完整定义／数据类型，无待证参数",
+      "source_ir": {
+        "kind": "constant",
+        "name": "Corelib.Floats.FloatOps.Prim2SF",
+        "mp": {
+          "file": [
+            "Corelib",
+            "Floats",
+            "FloatOps"
+          ]
+        },
+        "id": "Prim2SF",
+        "type": {
+          "k": "prod",
+          "n": {
+            "n": "f",
+            "r": "R"
+          },
+          "ty": {
+            "k": "const",
+            "c": "Corelib.Floats.PrimFloat.float",
+            "u": []
+          },
+          "b": {
+            "k": "ind",
+            "ind": {
+              "mind": "Corelib.Floats.SpecFloat.spec_float",
+              "i": 0
+            },
+            "u": []
+          }
+        },
+        "body": {
+          "k": "lam",
+          "n": {
+            "n": "f",
+            "r": "R"
+          },
+          "ty": {
+            "k": "const",
+            "c": "Corelib.Floats.PrimFloat.float",
+            "u": []
+          },
+          "b": {
+            "k": "case",
+            "ci": {
+              "ind": {
+                "mind": "Corelib.Init.Datatypes.bool",
+                "i": 0
+              },
+              "npar": 0,
+              "r": "R"
+            },
+            "p": {
+              "u": [],
+              "params": [],
+              "ctx": [
+                {
+                  "n": null,
+                  "r": "R"
+                }
+              ],
+              "ret": {
+                "k": "ind",
+                "ind": {
+                  "mind": "Corelib.Floats.SpecFloat.spec_float",
+                  "i": 0
+                },
+                "u": []
+              }
+            },
+            "c": {
+              "k": "app",
+              "f": {
+                "k": "const",
+                "c": "Corelib.Floats.PrimFloat.is_nan",
+                "u": []
+              },
+              "args": [
+                {
+                  "k": "rel",
+                  "i": 0
+                }
+              ]
+            },
+            "brs": [
+              {
+                "ctx": [],
+                "body": {
+                  "k": "construct",
+                  "ind": {
+                    "mind": "Corelib.Floats.SpecFloat.spec_float",
+                    "i": 0
+                  },
+                  "c": 2,
+                  "u": []
+                }
+              },
+              {
+                "ctx": [],
+                "body": {
+                  "k": "case",
+                  "ci": {
+                    "ind": {
+                      "mind": "Corelib.Init.Datatypes.bool",
+                      "i": 0
+                    },
+                    "npar": 0,
+                    "r": "R"
+                  },
+                  "p": {
+                    "u": [],
+                    "params": [],
+                    "ctx": [
+                      {
+                        "n": null,
+                        "r": "R"
+                      }
+                    ],
+                    "ret": {
+                      "k": "ind",
+                      "ind": {
+                        "mind": "Corelib.Floats.SpecFloat.spec_float",
+                        "i": 0
+                      },
+                      "u": []
+                    }
+                  },
+                  "c": {
+                    "k": "app",
+                    "f": {
+                      "k": "const",
+                      "c": "Corelib.Floats.PrimFloat.is_zero",
+                      "u": []
+                    },
+                    "args": [
+                      {
+                        "k": "rel",
+                        "i": 0
+                      }
+                    ]
+                  },
+                  "brs": [
+                    {
+                      "ctx": [],
+                      "body": {
+                        "k": "app",
+                        "f": {
+                          "k": "construct",
+                          "ind": {
+                            "mind": "Corelib.Floats.SpecFloat.spec_float",
+                            "i": 0
+                          },
+                          "c": 0,
+                          "u": []
+                        },
+                        "args": [
+                          {
+                            "k": "app",
+                            "f": {
+                              "k": "const",
+                              "c": "Corelib.Floats.PrimFloat.get_sign",
+                              "u": []
+                            },
+                            "args": [
+                              {
+                                "k": "rel",
+                                "i": 0
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "ctx": [],
+                      "body": {
+                        "k": "case",
+                        "ci": {
+                          "ind": {
+                            "mind": "Corelib.Init.Datatypes.bool",
+                            "i": 0
+                          },
+                          "npar": 0,
+                          "r": "R"
+                        },
+                        "p": {
+                          "u": [],
+                          "params": [],
+                          "ctx": [
+                            {
+                              "n": null,
+                              "r": "R"
+                            }
+                          ],
+                          "ret": {
+                            "k": "ind",
+                            "ind": {
+                              "mind": "Corelib.Floats.SpecFloat.spec_float",
+                              "i": 0
+                            },
+                            "u": []
+                          }
+                        },
+                        "c": {
+                          "k": "app",
+                          "f": {
+                            "k": "const",
+                            "c": "Corelib.Floats.PrimFloat.is_infinity",
+                            "u": []
+                          },
+                          "args": [
+                            {
+                              "k": "rel",
+                              "i": 0
+                            }
+                          ]
+                        },
+                        "brs": [
+                          {
+                            "ctx": [],
+                            "body": {
+                              "k": "app",
+                              "f": {
+                                "k": "construct",
+                                "ind": {
+                                  "mind": "Corelib.Floats.SpecFloat.spec_float",
+                                  "i": 0
+                                },
+                                "c": 1,
+                                "u": []
+                              },
+                              "args": [
+                                {
+                                  "k": "app",
+                                  "f": {
+                                    "k": "const",
+                                    "c": "Corelib.Floats.PrimFloat.get_sign",
+                                    "u": []
+                                  },
+                                  "args": [
+                                    {
+                                      "k": "rel",
+                                      "i": 0
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "ctx": [],
+                            "body": {
+                              "k": "case",
+                              "ci": {
+                                "ind": {
+                                  "mind": "Corelib.Init.Datatypes.prod",
+                                  "i": 0
+                                },
+                                "npar": 2,
+                                "r": "R"
+                              },
+                              "p": {
+                                "u": [],
+                                "params": [
+                                  {
+                                    "k": "const",
+                                    "c": "Corelib.Floats.PrimFloat.float",
+                                    "u": []
+                                  },
+                                  {
+                                    "k": "ind",
+                                    "ind": {
+                                      "mind": "Corelib.Numbers.BinNums.Z",
+                                      "i": 0
+                                    },
+                                    "u": []
+                                  }
+                                ],
+                                "ctx": [
+                                  {
+                                    "n": "p",
+                                    "r": "R"
+                                  }
+                                ],
+                                "ret": {
+                                  "k": "ind",
+                                  "ind": {
+                                    "mind": "Corelib.Floats.SpecFloat.spec_float",
+                                    "i": 0
+                                  },
+                                  "u": []
+                                }
+                              },
+                              "c": {
+                                "k": "app",
+                                "f": {
+                                  "k": "const",
+                                  "c": "Corelib.Floats.FloatOps/Z.frexp",
+                                  "u": []
+                                },
+                                "args": [
+                                  {
+                                    "k": "rel",
+                                    "i": 0
+                                  }
+                                ]
+                              },
+                              "brs": [
+                                {
+                                  "ctx": [
+                                    {
+                                      "n": "exp",
+                                      "r": "R"
+                                    },
+                                    {
+                                      "n": "r",
+                                      "r": "R"
+                                    }
+                                  ],
+                                  "body": {
+                                    "k": "let",
+                                    "n": {
+                                      "n": "e",
+                                      "r": "R"
+                                    },
+                                    "v": {
+                                      "k": "app",
+                                      "f": {
+                                        "k": "const",
+                                        "c": "Corelib.BinNums.IntDef/Z.sub",
+                                        "u": []
+                                      },
+                                      "args": [
+                                        {
+                                          "k": "rel",
+                                          "i": 0
+                                        },
+                                        {
+                                          "k": "const",
+                                          "c": "Corelib.Floats.FloatOps.prec",
+                                          "u": []
+                                        }
+                                      ]
+                                    },
+                                    "ty": {
+                                      "k": "ind",
+                                      "ind": {
+                                        "mind": "Corelib.Numbers.BinNums.Z",
+                                        "i": 0
+                                      },
+                                      "u": []
+                                    },
+                                    "b": {
+                                      "k": "case",
+                                      "ci": {
+                                        "ind": {
+                                          "mind": "Corelib.Init.Datatypes.prod",
+                                          "i": 0
+                                        },
+                                        "npar": 2,
+                                        "r": "R"
+                                      },
+                                      "p": {
+                                        "u": [],
+                                        "params": [
+                                          {
+                                            "k": "ind",
+                                            "ind": {
+                                              "mind": "Corelib.Floats.SpecFloat.shr_record",
+                                              "i": 0
+                                            },
+                                            "u": []
+                                          },
+                                          {
+                                            "k": "ind",
+                                            "ind": {
+                                              "mind": "Corelib.Numbers.BinNums.Z",
+                                              "i": 0
+                                            },
+                                            "u": []
+                                          }
+                                        ],
+                                        "ctx": [
+                                          {
+                                            "n": "p",
+                                            "r": "R"
+                                          }
+                                        ],
+                                        "ret": {
+                                          "k": "ind",
+                                          "ind": {
+                                            "mind": "Corelib.Floats.SpecFloat.spec_float",
+                                            "i": 0
+                                          },
+                                          "u": []
+                                        }
+                                      },
+                                      "c": {
+                                        "k": "app",
+                                        "f": {
+                                          "k": "const",
+                                          "c": "Corelib.Floats.SpecFloat.shr_fexp",
+                                          "u": []
+                                        },
+                                        "args": [
+                                          {
+                                            "k": "const",
+                                            "c": "Corelib.Floats.FloatOps.prec",
+                                            "u": []
+                                          },
+                                          {
+                                            "k": "const",
+                                            "c": "Corelib.Floats.FloatOps.emax",
+                                            "u": []
+                                          },
+                                          {
+                                            "k": "app",
+                                            "f": {
+                                              "k": "const",
+                                              "c": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z",
+                                              "u": []
+                                            },
+                                            "args": [
+                                              {
+                                                "k": "app",
+                                                "f": {
+                                                  "k": "const",
+                                                  "c": "Corelib.Floats.PrimFloat.normfr_mantissa",
+                                                  "u": []
+                                                },
+                                                "args": [
+                                                  {
+                                                    "k": "rel",
+                                                    "i": 2
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "k": "rel",
+                                            "i": 0
+                                          },
+                                          {
+                                            "k": "construct",
+                                            "ind": {
+                                              "mind": "Corelib.Floats.SpecFloat.location",
+                                              "i": 0
+                                            },
+                                            "c": 0,
+                                            "u": []
+                                          }
+                                        ]
+                                      },
+                                      "brs": [
+                                        {
+                                          "ctx": [
+                                            {
+                                              "n": "e'",
+                                              "r": "R"
+                                            },
+                                            {
+                                              "n": "shr",
+                                              "r": "R"
+                                            }
+                                          ],
+                                          "body": {
+                                            "k": "case",
+                                            "ci": {
+                                              "ind": {
+                                                "mind": "Corelib.Numbers.BinNums.Z",
+                                                "i": 0
+                                              },
+                                              "npar": 0,
+                                              "r": "R"
+                                            },
+                                            "p": {
+                                              "u": [],
+                                              "params": [],
+                                              "ctx": [
+                                                {
+                                                  "n": "x",
+                                                  "r": "R"
+                                                }
+                                              ],
+                                              "ret": {
+                                                "k": "ind",
+                                                "ind": {
+                                                  "mind": "Corelib.Floats.SpecFloat.spec_float",
+                                                  "i": 0
+                                                },
+                                                "u": []
+                                              }
+                                            },
+                                            "c": {
+                                              "k": "app",
+                                              "f": {
+                                                "k": "const",
+                                                "c": "Corelib.Floats.SpecFloat.shr_m",
+                                                "u": []
+                                              },
+                                              "args": [
+                                                {
+                                                  "k": "rel",
+                                                  "i": 1
+                                                }
+                                              ]
+                                            },
+                                            "brs": [
+                                              {
+                                                "ctx": [],
+                                                "body": {
+                                                  "k": "app",
+                                                  "f": {
+                                                    "k": "construct",
+                                                    "ind": {
+                                                      "mind": "Corelib.Floats.SpecFloat.spec_float",
+                                                      "i": 0
+                                                    },
+                                                    "c": 0,
+                                                    "u": []
+                                                  },
+                                                  "args": [
+                                                    {
+                                                      "k": "construct",
+                                                      "ind": {
+                                                        "mind": "Corelib.Init.Datatypes.bool",
+                                                        "i": 0
+                                                      },
+                                                      "c": 1,
+                                                      "u": []
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              {
+                                                "ctx": [
+                                                  {
+                                                    "n": "p",
+                                                    "r": "R"
+                                                  }
+                                                ],
+                                                "body": {
+                                                  "k": "app",
+                                                  "f": {
+                                                    "k": "construct",
+                                                    "ind": {
+                                                      "mind": "Corelib.Floats.SpecFloat.spec_float",
+                                                      "i": 0
+                                                    },
+                                                    "c": 3,
+                                                    "u": []
+                                                  },
+                                                  "args": [
+                                                    {
+                                                      "k": "app",
+                                                      "f": {
+                                                        "k": "const",
+                                                        "c": "Corelib.Floats.PrimFloat.get_sign",
+                                                        "u": []
+                                                      },
+                                                      "args": [
+                                                        {
+                                                          "k": "rel",
+                                                          "i": 6
+                                                        }
+                                                      ]
+                                                    },
+                                                    {
+                                                      "k": "rel",
+                                                      "i": 0
+                                                    },
+                                                    {
+                                                      "k": "rel",
+                                                      "i": 1
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              {
+                                                "ctx": [
+                                                  {
+                                                    "n": "p",
+                                                    "r": "R"
+                                                  }
+                                                ],
+                                                "body": {
+                                                  "k": "app",
+                                                  "f": {
+                                                    "k": "construct",
+                                                    "ind": {
+                                                      "mind": "Corelib.Floats.SpecFloat.spec_float",
+                                                      "i": 0
+                                                    },
+                                                    "c": 0,
+                                                    "u": []
+                                                  },
+                                                  "args": [
+                                                    {
+                                                      "k": "construct",
+                                                      "ind": {
+                                                        "mind": "Corelib.Init.Datatypes.bool",
+                                                        "i": 0
+                                                      },
+                                                      "c": 1,
+                                                      "u": []
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        "body_state": "transparent",
+        "universes": {
+          "k": "monomorphic"
+        },
+        "relevance": "R",
+        "deps": {
+          "type": [
+            "Corelib.Floats.PrimFloat.float",
+            "Corelib.Floats.SpecFloat.spec_float"
+          ],
+          "body": [
+            "Corelib.BinNums.IntDef/Z.sub",
+            "Corelib.Floats.FloatOps.emax",
+            "Corelib.Floats.FloatOps.prec",
+            "Corelib.Floats.FloatOps/Z.frexp",
+            "Corelib.Floats.PrimFloat.float",
+            "Corelib.Floats.PrimFloat.get_sign",
+            "Corelib.Floats.PrimFloat.is_infinity",
+            "Corelib.Floats.PrimFloat.is_nan",
+            "Corelib.Floats.PrimFloat.is_zero",
+            "Corelib.Floats.PrimFloat.normfr_mantissa",
+            "Corelib.Floats.SpecFloat.location",
+            "Corelib.Floats.SpecFloat.shr_fexp",
+            "Corelib.Floats.SpecFloat.shr_m",
+            "Corelib.Floats.SpecFloat.shr_record",
+            "Corelib.Floats.SpecFloat.spec_float",
+            "Corelib.Init.Datatypes.bool",
+            "Corelib.Init.Datatypes.prod",
+            "Corelib.Numbers.BinNums.Z",
+            "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z"
+          ]
+        },
+        "native": {
+          "body_kind": "transparent",
+          "prepared": {
+            "sealed_implementation": false,
+            "lowered_ssr_have_upoly": false
+          },
+          "polymorphic": false,
+          "private_universes": "none",
+          "typing_flags": {
+            "check_guarded": true,
+            "check_positive": true,
+            "check_universes": true,
+            "check_eliminations": true,
+            "indices_matter": false,
+            "impredicative_set": false,
+            "sprop_allowed": true,
+            "allow_uip": false
+          }
+        }
+      },
+      "target_report": {
+        "universe_residuals": null,
+        "universe_poly_params": 0,
+        "universe_minimal_levels": 0,
+        "universe_lowered": false,
+        "universe_level_defaults": 0,
+        "universe_diagnostics": [],
+        "universe_cumulativity": false,
+        "universe_checks": 0,
+        "type_lift_coercions": 0,
+        "type_lift": null,
+        "template_sort": false,
+        "template_params": [],
+        "template": false,
+        "target_value": {
+          "t": {
+            "u": [],
+            "n": "Rocq.Corelib.Floats.PrimFloat.float",
+            "k": "const"
+          },
+          "n": "f",
+          "k": "lam",
+          "b": {
+            "k": "app",
+            "f": {
+              "k": "app",
+              "f": {
+                "k": "app",
+                "f": {
+                  "k": "app",
+                  "f": {
+                    "u": [
+                      {
+                        "l": {
+                          "k": "zero"
+                        },
+                        "k": "succ"
+                      }
+                    ],
+                    "n": "Rocq.Corelib.Init.Datatypes.bool.rec",
+                    "k": "const"
+                  },
+                  "a": {
+                    "t": {
+                      "u": [],
+                      "n": "Rocq.Corelib.Init.Datatypes.bool",
+                      "k": "const"
+                    },
+                    "n": "t",
+                    "k": "lam",
+                    "b": {
+                      "u": [],
+                      "n": "Rocq.Corelib.Floats.SpecFloat.spec_float",
+                      "k": "const"
+                    }
+                  }
+                },
+                "a": {
+                  "u": [],
+                  "n": "Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan",
+                  "k": "const"
+                }
+              },
+              "a": {
+                "k": "app",
+                "f": {
+                  "k": "app",
+                  "f": {
+                    "k": "app",
+                    "f": {
+                      "k": "app",
+                      "f": {
+                        "u": [
+                          {
+                            "l": {
+                              "k": "zero"
+                            },
+                            "k": "succ"
+                          }
+                        ],
+                        "n": "Rocq.Corelib.Init.Datatypes.bool.rec",
+                        "k": "const"
+                      },
+                      "a": {
+                        "t": {
+                          "u": [],
+                          "n": "Rocq.Corelib.Init.Datatypes.bool",
+                          "k": "const"
+                        },
+                        "n": "t",
+                        "k": "lam",
+                        "b": {
+                          "u": [],
+                          "n": "Rocq.Corelib.Floats.SpecFloat.spec_float",
+                          "k": "const"
+                        }
+                      }
+                    },
+                    "a": {
+                      "k": "app",
+                      "f": {
+                        "u": [],
+                        "n": "Rocq.Corelib.Floats.SpecFloat.spec_float.S754_zero",
+                        "k": "const"
+                      },
+                      "a": {
+                        "k": "app",
+                        "f": {
+                          "u": [],
+                          "n": "Rocq.Corelib.Floats.PrimFloat.get_sign",
+                          "k": "const"
+                        },
+                        "a": {
+                          "k": "bvar",
+                          "i": 0
+                        }
+                      }
+                    }
+                  },
+                  "a": {
+                    "k": "app",
+                    "f": {
+                      "k": "app",
+                      "f": {
+                        "k": "app",
+                        "f": {
+                          "k": "app",
+                          "f": {
+                            "u": [
+                              {
+                                "l": {
+                                  "k": "zero"
+                                },
+                                "k": "succ"
+                              }
+                            ],
+                            "n": "Rocq.Corelib.Init.Datatypes.bool.rec",
+                            "k": "const"
+                          },
+                          "a": {
+                            "t": {
+                              "u": [],
+                              "n": "Rocq.Corelib.Init.Datatypes.bool",
+                              "k": "const"
+                            },
+                            "n": "t",
+                            "k": "lam",
+                            "b": {
+                              "u": [],
+                              "n": "Rocq.Corelib.Floats.SpecFloat.spec_float",
+                              "k": "const"
+                            }
+                          }
+                        },
+                        "a": {
+                          "k": "app",
+                          "f": {
+                            "u": [],
+                            "n": "Rocq.Corelib.Floats.SpecFloat.spec_float.S754_infinity",
+                            "k": "const"
+                          },
+                          "a": {
+                            "k": "app",
+                            "f": {
+                              "u": [],
+                              "n": "Rocq.Corelib.Floats.PrimFloat.get_sign",
+                              "k": "const"
+                            },
+                            "a": {
+                              "k": "bvar",
+                              "i": 0
+                            }
+                          }
+                        }
+                      },
+                      "a": {
+                        "k": "app",
+                        "f": {
+                          "k": "app",
+                          "f": {
+                            "k": "app",
+                            "f": {
+                              "k": "app",
+                              "f": {
+                                "k": "app",
+                                "f": {
+                                  "u": [
+                                    {
+                                      "l": {
+                                        "k": "zero"
+                                      },
+                                      "k": "succ"
+                                    },
+                                    {
+                                      "l": {
+                                        "k": "zero"
+                                      },
+                                      "k": "succ"
+                                    },
+                                    {
+                                      "l": {
+                                        "k": "zero"
+                                      },
+                                      "k": "succ"
+                                    }
+                                  ],
+                                  "n": "Rocq.Corelib.Init.Datatypes.prod.rec",
+                                  "k": "const"
+                                },
+                                "a": {
+                                  "u": [],
+                                  "n": "Rocq.Corelib.Floats.PrimFloat.float",
+                                  "k": "const"
+                                }
+                              },
+                              "a": {
+                                "u": [],
+                                "n": "Rocq.Corelib.Numbers.BinNums.Z",
+                                "k": "const"
+                              }
+                            },
+                            "a": {
+                              "t": {
+                                "k": "app",
+                                "f": {
+                                  "k": "app",
+                                  "f": {
+                                    "u": [
+                                      {
+                                        "l": {
+                                          "k": "zero"
+                                        },
+                                        "k": "succ"
+                                      },
+                                      {
+                                        "l": {
+                                          "k": "zero"
+                                        },
+                                        "k": "succ"
+                                      }
+                                    ],
+                                    "n": "Rocq.Corelib.Init.Datatypes.prod",
+                                    "k": "const"
+                                  },
+                                  "a": {
+                                    "u": [],
+                                    "n": "Rocq.Corelib.Floats.PrimFloat.float",
+                                    "k": "const"
+                                  }
+                                },
+                                "a": {
+                                  "u": [],
+                                  "n": "Rocq.Corelib.Numbers.BinNums.Z",
+                                  "k": "const"
+                                }
+                              },
+                              "n": "t",
+                              "k": "lam",
+                              "b": {
+                                "u": [],
+                                "n": "Rocq.Corelib.Floats.SpecFloat.spec_float",
+                                "k": "const"
+                              }
+                            }
+                          },
+                          "a": {
+                            "t": {
+                              "u": [],
+                              "n": "Rocq.Corelib.Floats.PrimFloat.float",
+                              "k": "const"
+                            },
+                            "n": "[anonymous]",
+                            "k": "lam",
+                            "b": {
+                              "t": {
+                                "u": [],
+                                "n": "Rocq.Corelib.Numbers.BinNums.Z",
+                                "k": "const"
+                              },
+                              "n": "[anonymous]",
+                              "k": "lam",
+                              "b": {
+                                "v": {
+                                  "k": "app",
+                                  "f": {
+                                    "k": "app",
+                                    "f": {
+                                      "u": [],
+                                      "n": "Rocq.Corelib.BinNums.IntDef.Z.sub",
+                                      "k": "const"
+                                    },
+                                    "a": {
+                                      "k": "bvar",
+                                      "i": 0
+                                    }
+                                  },
+                                  "a": {
+                                    "u": [],
+                                    "n": "Rocq.Corelib.Floats.FloatOps.prec",
+                                    "k": "const"
+                                  }
+                                },
+                                "t": {
+                                  "u": [],
+                                  "n": "Rocq.Corelib.Numbers.BinNums.Z",
+                                  "k": "const"
+                                },
+                                "n": "e",
+                                "k": "let",
+                                "b": {
+                                  "k": "app",
+                                  "f": {
+                                    "k": "app",
+                                    "f": {
+                                      "k": "app",
+                                      "f": {
+                                        "k": "app",
+                                        "f": {
+                                          "k": "app",
+                                          "f": {
+                                            "u": [
+                                              {
+                                                "l": {
+                                                  "k": "zero"
+                                                },
+                                                "k": "succ"
+                                              },
+                                              {
+                                                "l": {
+                                                  "k": "zero"
+                                                },
+                                                "k": "succ"
+                                              },
+                                              {
+                                                "l": {
+                                                  "k": "zero"
+                                                },
+                                                "k": "succ"
+                                              }
+                                            ],
+                                            "n": "Rocq.Corelib.Init.Datatypes.prod.rec",
+                                            "k": "const"
+                                          },
+                                          "a": {
+                                            "u": [],
+                                            "n": "Rocq.Corelib.Floats.SpecFloat.shr_record",
+                                            "k": "const"
+                                          }
+                                        },
+                                        "a": {
+                                          "u": [],
+                                          "n": "Rocq.Corelib.Numbers.BinNums.Z",
+                                          "k": "const"
+                                        }
+                                      },
+                                      "a": {
+                                        "t": {
+                                          "k": "app",
+                                          "f": {
+                                            "k": "app",
+                                            "f": {
+                                              "u": [
+                                                {
+                                                  "l": {
+                                                    "k": "zero"
+                                                  },
+                                                  "k": "succ"
+                                                },
+                                                {
+                                                  "l": {
+                                                    "k": "zero"
+                                                  },
+                                                  "k": "succ"
+                                                }
+                                              ],
+                                              "n": "Rocq.Corelib.Init.Datatypes.prod",
+                                              "k": "const"
+                                            },
+                                            "a": {
+                                              "u": [],
+                                              "n": "Rocq.Corelib.Floats.SpecFloat.shr_record",
+                                              "k": "const"
+                                            }
+                                          },
+                                          "a": {
+                                            "u": [],
+                                            "n": "Rocq.Corelib.Numbers.BinNums.Z",
+                                            "k": "const"
+                                          }
+                                        },
+                                        "n": "t",
+                                        "k": "lam",
+                                        "b": {
+                                          "u": [],
+                                          "n": "Rocq.Corelib.Floats.SpecFloat.spec_float",
+                                          "k": "const"
+                                        }
+                                      }
+                                    },
+                                    "a": {
+                                      "t": {
+                                        "u": [],
+                                        "n": "Rocq.Corelib.Floats.SpecFloat.shr_record",
+                                        "k": "const"
+                                      },
+                                      "n": "[anonymous]",
+                                      "k": "lam",
+                                      "b": {
+                                        "t": {
+                                          "u": [],
+                                          "n": "Rocq.Corelib.Numbers.BinNums.Z",
+                                          "k": "const"
+                                        },
+                                        "n": "[anonymous]",
+                                        "k": "lam",
+                                        "b": {
+                                          "k": "app",
+                                          "f": {
+                                            "k": "app",
+                                            "f": {
+                                              "k": "app",
+                                              "f": {
+                                                "k": "app",
+                                                "f": {
+                                                  "k": "app",
+                                                  "f": {
+                                                    "u": [
+                                                      {
+                                                        "l": {
+                                                          "k": "zero"
+                                                        },
+                                                        "k": "succ"
+                                                      }
+                                                    ],
+                                                    "n": "Rocq.Corelib.Numbers.BinNums.Z.rec",
+                                                    "k": "const"
+                                                  },
+                                                  "a": {
+                                                    "t": {
+                                                      "u": [],
+                                                      "n": "Rocq.Corelib.Numbers.BinNums.Z",
+                                                      "k": "const"
+                                                    },
+                                                    "n": "t",
+                                                    "k": "lam",
+                                                    "b": {
+                                                      "u": [],
+                                                      "n": "Rocq.Corelib.Floats.SpecFloat.spec_float",
+                                                      "k": "const"
+                                                    }
+                                                  }
+                                                },
+                                                "a": {
+                                                  "k": "app",
+                                                  "f": {
+                                                    "u": [],
+                                                    "n": "Rocq.Corelib.Floats.SpecFloat.spec_float.S754_zero",
+                                                    "k": "const"
+                                                  },
+                                                  "a": {
+                                                    "u": [],
+                                                    "n": "Rocq.Corelib.Init.Datatypes.bool.false",
+                                                    "k": "const"
+                                                  }
+                                                }
+                                              },
+                                              "a": {
+                                                "t": {
+                                                  "u": [],
+                                                  "n": "Rocq.Corelib.Numbers.BinNums.positive",
+                                                  "k": "const"
+                                                },
+                                                "n": "[anonymous]",
+                                                "k": "lam",
+                                                "b": {
+                                                  "k": "app",
+                                                  "f": {
+                                                    "k": "app",
+                                                    "f": {
+                                                      "k": "app",
+                                                      "f": {
+                                                        "u": [],
+                                                        "n": "Rocq.Corelib.Floats.SpecFloat.spec_float.S754_finite",
+                                                        "k": "const"
+                                                      },
+                                                      "a": {
+                                                        "k": "app",
+                                                        "f": {
+                                                          "u": [],
+                                                          "n": "Rocq.Corelib.Floats.PrimFloat.get_sign",
+                                                          "k": "const"
+                                                        },
+                                                        "a": {
+                                                          "k": "bvar",
+                                                          "i": 6
+                                                        }
+                                                      }
+                                                    },
+                                                    "a": {
+                                                      "k": "bvar",
+                                                      "i": 0
+                                                    }
+                                                  },
+                                                  "a": {
+                                                    "k": "bvar",
+                                                    "i": 1
+                                                  }
+                                                }
+                                              }
+                                            },
+                                            "a": {
+                                              "t": {
+                                                "u": [],
+                                                "n": "Rocq.Corelib.Numbers.BinNums.positive",
+                                                "k": "const"
+                                              },
+                                              "n": "[anonymous]",
+                                              "k": "lam",
+                                              "b": {
+                                                "k": "app",
+                                                "f": {
+                                                  "u": [],
+                                                  "n": "Rocq.Corelib.Floats.SpecFloat.spec_float.S754_zero",
+                                                  "k": "const"
+                                                },
+                                                "a": {
+                                                  "u": [],
+                                                  "n": "Rocq.Corelib.Init.Datatypes.bool.false",
+                                                  "k": "const"
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "a": {
+                                            "k": "app",
+                                            "f": {
+                                              "u": [],
+                                              "n": "Rocq.Corelib.Floats.SpecFloat.shr_m",
+                                              "k": "const"
+                                            },
+                                            "a": {
+                                              "k": "bvar",
+                                              "i": 1
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "a": {
+                                    "k": "app",
+                                    "f": {
+                                      "k": "app",
+                                      "f": {
+                                        "k": "app",
+                                        "f": {
+                                          "k": "app",
+                                          "f": {
+                                            "k": "app",
+                                            "f": {
+                                              "u": [],
+                                              "n": "Rocq.Corelib.Floats.SpecFloat.shr_fexp",
+                                              "k": "const"
+                                            },
+                                            "a": {
+                                              "u": [],
+                                              "n": "Rocq.Corelib.Floats.FloatOps.prec",
+                                              "k": "const"
+                                            }
+                                          },
+                                          "a": {
+                                            "u": [],
+                                            "n": "Rocq.Corelib.Floats.FloatOps.emax",
+                                            "k": "const"
+                                          }
+                                        },
+                                        "a": {
+                                          "k": "app",
+                                          "f": {
+                                            "u": [],
+                                            "n": "Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z",
+                                            "k": "const"
+                                          },
+                                          "a": {
+                                            "k": "app",
+                                            "f": {
+                                              "u": [],
+                                              "n": "Rocq.Corelib.Floats.PrimFloat.normfr_mantissa",
+                                              "k": "const"
+                                            },
+                                            "a": {
+                                              "k": "bvar",
+                                              "i": 2
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "a": {
+                                        "k": "bvar",
+                                        "i": 0
+                                      }
+                                    },
+                                    "a": {
+                                      "u": [],
+                                      "n": "Rocq.Corelib.Floats.SpecFloat.location.loc_Exact",
+                                      "k": "const"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "a": {
+                          "k": "app",
+                          "f": {
+                            "u": [],
+                            "n": "Rocq.Corelib.Floats.FloatOps.Z.frexp",
+                            "k": "const"
+                          },
+                          "a": {
+                            "k": "bvar",
+                            "i": 0
+                          }
+                        }
+                      }
+                    },
+                    "a": {
+                      "k": "app",
+                      "f": {
+                        "u": [],
+                        "n": "Rocq.Corelib.Floats.PrimFloat.is_infinity",
+                        "k": "const"
+                      },
+                      "a": {
+                        "k": "bvar",
+                        "i": 0
+                      }
+                    }
+                  }
+                },
+                "a": {
+                  "k": "app",
+                  "f": {
+                    "u": [],
+                    "n": "Rocq.Corelib.Floats.PrimFloat.is_zero",
+                    "k": "const"
+                  },
+                  "a": {
+                    "k": "bvar",
+                    "i": 0
+                  }
+                }
+              }
+            },
+            "a": {
+              "k": "app",
+              "f": {
+                "u": [],
+                "n": "Rocq.Corelib.Floats.PrimFloat.is_nan",
+                "k": "const"
+              },
+              "a": {
+                "k": "bvar",
+                "i": 0
+              }
+            }
+          }
+        },
+        "target_type": {
+          "t": {
+            "u": [],
+            "n": "Rocq.Corelib.Floats.PrimFloat.float",
+            "k": "const"
+          },
+          "n": "f",
+          "k": "forall",
+          "b": {
+            "u": [],
+            "n": "Rocq.Corelib.Floats.SpecFloat.spec_float",
+            "k": "const"
+          }
+        },
+        "target_kind": "def",
+        "target_ctors": [],
+        "target": "Rocq.Corelib.Floats.FloatOps.Prim2SF",
+        "status": "TRANSLATED_AND_CHECKED",
+        "source_computed": [],
+        "source": "Corelib.Floats.FloatOps.Prim2SF",
+        "sort_lowered_levels": [],
+        "sort_interp": false,
+        "sort_fact_reduced": false,
+        "solved_levels": [],
+        "rule": "constant/transparent",
+        "result_sort_inherited": false,
+        "result_sort_implicit_levels": [],
+        "r2bp_levels": [],
+        "quality_prop": null,
+        "protected": true,
+        "prop_lift_unfold": [],
+        "prop_lift_coercions": 0,
+        "prop_lift": null,
+        "primitive_record": false,
+        "poly_level_interp": [],
+        "plain_levels": false,
+        "phantom_lowered": [],
+        "pending_hypotheses": [],
+        "path": [],
+        "num_params": 0,
+        "message": "",
+        "level_split": [],
+        "level_params": [],
+        "level_interp": [],
+        "level_copies": [],
+        "kind": "constant",
+        "implicit_levels": [],
+        "delta_inlined": [],
+        "coinductive_as_inductive": false,
+        "blocked_by": [],
+        "admitting_levels": []
+      },
+      "quality_variants": [],
+      "prerequisite_declarations": [],
+      "attempts": {
+        "source": "Corelib.Floats.FloatOps.Prim2SF",
+        "status": "TRANSLATED_AND_CHECKED",
+        "tier_times": [
+          [
+            "c[]",
+            0,
+            "TRANSLATED_AND_CHECKED"
+          ]
+        ],
+        "time_ms": 0
+      },
+      "baseline": {
+        "result": {
+          "canonical": "Corelib.Floats.FloatOps.Prim2SF",
+          "status": "TRANSLATED_AND_CHECKED",
+          "message": "",
+          "target": "Rocq.Corelib.Floats.FloatOps.Prim2SF",
+          "blocked_by": []
+        },
+        "stage": "基线已有结果",
+        "path": [],
+        "message": "",
+        "native_diagnostics": []
+      },
+      "module_validation": {
+        "roundtrip_exit": 0,
+        "roundtrip": "OK",
+        "translate_exit": 0,
+        "consumer_exit": 0,
+        "audit_exit": 0,
+        "consumer": "OK",
+        "audit": "OK"
+      },
+      "evidence_directory": "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Floats/FloatOps"
+    },
+    "Corelib.Floats.FloatOps.SF2Prim": {
+      "source": "Corelib.Floats.FloatOps.SF2Prim",
+      "canonical": "Corelib.Floats.FloatOps.SF2Prim",
+      "result": {
+        "canonical": "Corelib.Floats.FloatOps.SF2Prim",
+        "status": "TRANSLATED_AND_CHECKED",
+        "message": "",
+        "target": "Rocq.Corelib.Floats.FloatOps.SF2Prim",
+        "blocked_by": []
+      },
+      "meaning": "完整定义／数据类型，无待证参数",
+      "source_ir": {
+        "kind": "constant",
+        "name": "Corelib.Floats.FloatOps.SF2Prim",
+        "mp": {
+          "file": [
+            "Corelib",
+            "Floats",
+            "FloatOps"
+          ]
+        },
+        "id": "SF2Prim",
+        "type": {
+          "k": "prod",
+          "n": {
+            "n": "ef",
+            "r": "R"
+          },
+          "ty": {
+            "k": "ind",
+            "ind": {
+              "mind": "Corelib.Floats.SpecFloat.spec_float",
+              "i": 0
+            },
+            "u": []
+          },
+          "b": {
+            "k": "const",
+            "c": "Corelib.Floats.PrimFloat.float",
+            "u": []
+          }
+        },
+        "body": {
+          "k": "lam",
+          "n": {
+            "n": "ef",
+            "r": "R"
+          },
+          "ty": {
+            "k": "ind",
+            "ind": {
+              "mind": "Corelib.Floats.SpecFloat.spec_float",
+              "i": 0
+            },
+            "u": []
+          },
+          "b": {
+            "k": "case",
+            "ci": {
+              "ind": {
+                "mind": "Corelib.Floats.SpecFloat.spec_float",
+                "i": 0
+              },
+              "npar": 0,
+              "r": "R"
+            },
+            "p": {
+              "u": [],
+              "params": [],
+              "ctx": [
+                {
+                  "n": "ef",
+                  "r": "R"
+                }
+              ],
+              "ret": {
+                "k": "const",
+                "c": "Corelib.Floats.PrimFloat.float",
+                "u": []
+              }
+            },
+            "c": {
+              "k": "rel",
+              "i": 0
+            },
+            "brs": [
+              {
+                "ctx": [
+                  {
+                    "n": "s",
+                    "r": "R"
+                  }
+                ],
+                "body": {
+                  "k": "case",
+                  "ci": {
+                    "ind": {
+                      "mind": "Corelib.Init.Datatypes.bool",
+                      "i": 0
+                    },
+                    "npar": 0,
+                    "r": "R"
+                  },
+                  "p": {
+                    "u": [],
+                    "params": [],
+                    "ctx": [
+                      {
+                        "n": "s",
+                        "r": "R"
+                      }
+                    ],
+                    "ret": {
+                      "k": "const",
+                      "c": "Corelib.Floats.PrimFloat.float",
+                      "u": []
+                    }
+                  },
+                  "c": {
+                    "k": "rel",
+                    "i": 0
+                  },
+                  "brs": [
+                    {
+                      "ctx": [],
+                      "body": {
+                        "k": "const",
+                        "c": "Corelib.Floats.PrimFloat.neg_zero",
+                        "u": []
+                      }
+                    },
+                    {
+                      "ctx": [],
+                      "body": {
+                        "k": "const",
+                        "c": "Corelib.Floats.PrimFloat.zero",
+                        "u": []
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "ctx": [
+                  {
+                    "n": "s",
+                    "r": "R"
+                  }
+                ],
+                "body": {
+                  "k": "case",
+                  "ci": {
+                    "ind": {
+                      "mind": "Corelib.Init.Datatypes.bool",
+                      "i": 0
+                    },
+                    "npar": 0,
+                    "r": "R"
+                  },
+                  "p": {
+                    "u": [],
+                    "params": [],
+                    "ctx": [
+                      {
+                        "n": "s",
+                        "r": "R"
+                      }
+                    ],
+                    "ret": {
+                      "k": "const",
+                      "c": "Corelib.Floats.PrimFloat.float",
+                      "u": []
+                    }
+                  },
+                  "c": {
+                    "k": "rel",
+                    "i": 0
+                  },
+                  "brs": [
+                    {
+                      "ctx": [],
+                      "body": {
+                        "k": "const",
+                        "c": "Corelib.Floats.PrimFloat.neg_infinity",
+                        "u": []
+                      }
+                    },
+                    {
+                      "ctx": [],
+                      "body": {
+                        "k": "const",
+                        "c": "Corelib.Floats.PrimFloat.infinity",
+                        "u": []
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "ctx": [],
+                "body": {
+                  "k": "const",
+                  "c": "Corelib.Floats.PrimFloat.nan",
+                  "u": []
+                }
+              },
+              {
+                "ctx": [
+                  {
+                    "n": "e",
+                    "r": "R"
+                  },
+                  {
+                    "n": "m",
+                    "r": "R"
+                  },
+                  {
+                    "n": "s",
+                    "r": "R"
+                  }
+                ],
+                "body": {
+                  "k": "let",
+                  "n": {
+                    "n": "pm",
+                    "r": "R"
+                  },
+                  "v": {
+                    "k": "app",
+                    "f": {
+                      "k": "const",
+                      "c": "Corelib.Floats.PrimFloat.of_uint63",
+                      "u": []
+                    },
+                    "args": [
+                      {
+                        "k": "app",
+                        "f": {
+                          "k": "const",
+                          "c": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.of_Z",
+                          "u": []
+                        },
+                        "args": [
+                          {
+                            "k": "app",
+                            "f": {
+                              "k": "construct",
+                              "ind": {
+                                "mind": "Corelib.Numbers.BinNums.Z",
+                                "i": 0
+                              },
+                              "c": 1,
+                              "u": []
+                            },
+                            "args": [
+                              {
+                                "k": "rel",
+                                "i": 1
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "ty": {
+                    "k": "const",
+                    "c": "Corelib.Floats.PrimFloat.float",
+                    "u": []
+                  },
+                  "b": {
+                    "k": "let",
+                    "n": {
+                      "n": "f",
+                      "r": "R"
+                    },
+                    "v": {
+                      "k": "app",
+                      "f": {
+                        "k": "const",
+                        "c": "Corelib.Floats.FloatOps/Z.ldexp",
+                        "u": []
+                      },
+                      "args": [
+                        {
+                          "k": "rel",
+                          "i": 0
+                        },
+                        {
+                          "k": "rel",
+                          "i": 1
+                        }
+                      ]
+                    },
+                    "ty": {
+                      "k": "const",
+                      "c": "Corelib.Floats.PrimFloat.float",
+                      "u": []
+                    },
+                    "b": {
+                      "k": "case",
+                      "ci": {
+                        "ind": {
+                          "mind": "Corelib.Init.Datatypes.bool",
+                          "i": 0
+                        },
+                        "npar": 0,
+                        "r": "R"
+                      },
+                      "p": {
+                        "u": [],
+                        "params": [],
+                        "ctx": [
+                          {
+                            "n": "s",
+                            "r": "R"
+                          }
+                        ],
+                        "ret": {
+                          "k": "const",
+                          "c": "Corelib.Floats.PrimFloat.float",
+                          "u": []
+                        }
+                      },
+                      "c": {
+                        "k": "rel",
+                        "i": 4
+                      },
+                      "brs": [
+                        {
+                          "ctx": [],
+                          "body": {
+                            "k": "app",
+                            "f": {
+                              "k": "const",
+                              "c": "Corelib.Floats.PrimFloat.opp",
+                              "u": []
+                            },
+                            "args": [
+                              {
+                                "k": "rel",
+                                "i": 0
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "ctx": [],
+                          "body": {
+                            "k": "rel",
+                            "i": 0
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "body_state": "transparent",
+        "universes": {
+          "k": "monomorphic"
+        },
+        "relevance": "R",
+        "deps": {
+          "type": [
+            "Corelib.Floats.PrimFloat.float",
+            "Corelib.Floats.SpecFloat.spec_float"
+          ],
+          "body": [
+            "Corelib.Floats.FloatOps/Z.ldexp",
+            "Corelib.Floats.PrimFloat.float",
+            "Corelib.Floats.PrimFloat.infinity",
+            "Corelib.Floats.PrimFloat.nan",
+            "Corelib.Floats.PrimFloat.neg_infinity",
+            "Corelib.Floats.PrimFloat.neg_zero",
+            "Corelib.Floats.PrimFloat.of_uint63",
+            "Corelib.Floats.PrimFloat.opp",
+            "Corelib.Floats.PrimFloat.zero",
+            "Corelib.Floats.SpecFloat.spec_float",
+            "Corelib.Init.Datatypes.bool",
+            "Corelib.Numbers.BinNums.Z",
+            "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.of_Z"
+          ]
+        },
+        "native": {
+          "body_kind": "transparent",
+          "prepared": {
+            "sealed_implementation": false,
+            "lowered_ssr_have_upoly": false
+          },
+          "polymorphic": false,
+          "private_universes": "none",
+          "typing_flags": {
+            "check_guarded": true,
+            "check_positive": true,
+            "check_universes": true,
+            "check_eliminations": true,
+            "indices_matter": false,
+            "impredicative_set": false,
+            "sprop_allowed": true,
+            "allow_uip": false
+          }
+        }
+      },
+      "target_report": {
+        "universe_residuals": null,
+        "universe_poly_params": 0,
+        "universe_minimal_levels": 0,
+        "universe_lowered": false,
+        "universe_level_defaults": 0,
+        "universe_diagnostics": [],
+        "universe_cumulativity": false,
+        "universe_checks": 0,
+        "type_lift_coercions": 0,
+        "type_lift": null,
+        "template_sort": false,
+        "template_params": [],
+        "template": false,
+        "target_value": {
+          "t": {
+            "u": [],
+            "n": "Rocq.Corelib.Floats.SpecFloat.spec_float",
+            "k": "const"
+          },
+          "n": "ef",
+          "k": "lam",
+          "b": {
+            "k": "app",
+            "f": {
+              "k": "app",
+              "f": {
+                "k": "app",
+                "f": {
+                  "k": "app",
+                  "f": {
+                    "k": "app",
+                    "f": {
+                      "k": "app",
+                      "f": {
+                        "u": [
+                          {
+                            "l": {
+                              "k": "zero"
+                            },
+                            "k": "succ"
+                          }
+                        ],
+                        "n": "Rocq.Corelib.Floats.SpecFloat.spec_float.rec",
+                        "k": "const"
+                      },
+                      "a": {
+                        "t": {
+                          "u": [],
+                          "n": "Rocq.Corelib.Floats.SpecFloat.spec_float",
+                          "k": "const"
+                        },
+                        "n": "t",
+                        "k": "lam",
+                        "b": {
+                          "u": [],
+                          "n": "Rocq.Corelib.Floats.PrimFloat.float",
+                          "k": "const"
+                        }
+                      }
+                    },
+                    "a": {
+                      "t": {
+                        "u": [],
+                        "n": "Rocq.Corelib.Init.Datatypes.bool",
+                        "k": "const"
+                      },
+                      "n": "s",
+                      "k": "lam",
+                      "b": {
+                        "k": "app",
+                        "f": {
+                          "k": "app",
+                          "f": {
+                            "k": "app",
+                            "f": {
+                              "k": "app",
+                              "f": {
+                                "u": [
+                                  {
+                                    "l": {
+                                      "k": "zero"
+                                    },
+                                    "k": "succ"
+                                  }
+                                ],
+                                "n": "Rocq.Corelib.Init.Datatypes.bool.rec",
+                                "k": "const"
+                              },
+                              "a": {
+                                "t": {
+                                  "u": [],
+                                  "n": "Rocq.Corelib.Init.Datatypes.bool",
+                                  "k": "const"
+                                },
+                                "n": "t",
+                                "k": "lam",
+                                "b": {
+                                  "u": [],
+                                  "n": "Rocq.Corelib.Floats.PrimFloat.float",
+                                  "k": "const"
+                                }
+                              }
+                            },
+                            "a": {
+                              "u": [],
+                              "n": "Rocq.Corelib.Floats.PrimFloat.neg_zero",
+                              "k": "const"
+                            }
+                          },
+                          "a": {
+                            "u": [],
+                            "n": "Rocq.Corelib.Floats.PrimFloat.zero",
+                            "k": "const"
+                          }
+                        },
+                        "a": {
+                          "k": "bvar",
+                          "i": 0
+                        }
+                      }
+                    }
+                  },
+                  "a": {
+                    "t": {
+                      "u": [],
+                      "n": "Rocq.Corelib.Init.Datatypes.bool",
+                      "k": "const"
+                    },
+                    "n": "s",
+                    "k": "lam",
+                    "b": {
+                      "k": "app",
+                      "f": {
+                        "k": "app",
+                        "f": {
+                          "k": "app",
+                          "f": {
+                            "k": "app",
+                            "f": {
+                              "u": [
+                                {
+                                  "l": {
+                                    "k": "zero"
+                                  },
+                                  "k": "succ"
+                                }
+                              ],
+                              "n": "Rocq.Corelib.Init.Datatypes.bool.rec",
+                              "k": "const"
+                            },
+                            "a": {
+                              "t": {
+                                "u": [],
+                                "n": "Rocq.Corelib.Init.Datatypes.bool",
+                                "k": "const"
+                              },
+                              "n": "t",
+                              "k": "lam",
+                              "b": {
+                                "u": [],
+                                "n": "Rocq.Corelib.Floats.PrimFloat.float",
+                                "k": "const"
+                              }
+                            }
+                          },
+                          "a": {
+                            "u": [],
+                            "n": "Rocq.Corelib.Floats.PrimFloat.neg_infinity",
+                            "k": "const"
+                          }
+                        },
+                        "a": {
+                          "u": [],
+                          "n": "Rocq.Corelib.Floats.PrimFloat.infinity",
+                          "k": "const"
+                        }
+                      },
+                      "a": {
+                        "k": "bvar",
+                        "i": 0
+                      }
+                    }
+                  }
+                },
+                "a": {
+                  "u": [],
+                  "n": "Rocq.Corelib.Floats.PrimFloat.nan",
+                  "k": "const"
+                }
+              },
+              "a": {
+                "t": {
+                  "u": [],
+                  "n": "Rocq.Corelib.Init.Datatypes.bool",
+                  "k": "const"
+                },
+                "n": "s",
+                "k": "lam",
+                "b": {
+                  "t": {
+                    "u": [],
+                    "n": "Rocq.Corelib.Numbers.BinNums.positive",
+                    "k": "const"
+                  },
+                  "n": "m",
+                  "k": "lam",
+                  "b": {
+                    "t": {
+                      "u": [],
+                      "n": "Rocq.Corelib.Numbers.BinNums.Z",
+                      "k": "const"
+                    },
+                    "n": "e",
+                    "k": "lam",
+                    "b": {
+                      "v": {
+                        "k": "app",
+                        "f": {
+                          "u": [],
+                          "n": "Rocq.Corelib.Floats.PrimFloat.of_uint63",
+                          "k": "const"
+                        },
+                        "a": {
+                          "k": "app",
+                          "f": {
+                            "u": [],
+                            "n": "Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.of_Z",
+                            "k": "const"
+                          },
+                          "a": {
+                            "k": "app",
+                            "f": {
+                              "u": [],
+                              "n": "Rocq.Corelib.Numbers.BinNums.Z.Zpos",
+                              "k": "const"
+                            },
+                            "a": {
+                              "k": "bvar",
+                              "i": 1
+                            }
+                          }
+                        }
+                      },
+                      "t": {
+                        "u": [],
+                        "n": "Rocq.Corelib.Floats.PrimFloat.float",
+                        "k": "const"
+                      },
+                      "n": "pm",
+                      "k": "let",
+                      "b": {
+                        "v": {
+                          "k": "app",
+                          "f": {
+                            "k": "app",
+                            "f": {
+                              "u": [],
+                              "n": "Rocq.Corelib.Floats.FloatOps.Z.ldexp",
+                              "k": "const"
+                            },
+                            "a": {
+                              "k": "bvar",
+                              "i": 0
+                            }
+                          },
+                          "a": {
+                            "k": "bvar",
+                            "i": 1
+                          }
+                        },
+                        "t": {
+                          "u": [],
+                          "n": "Rocq.Corelib.Floats.PrimFloat.float",
+                          "k": "const"
+                        },
+                        "n": "f",
+                        "k": "let",
+                        "b": {
+                          "k": "app",
+                          "f": {
+                            "k": "app",
+                            "f": {
+                              "k": "app",
+                              "f": {
+                                "k": "app",
+                                "f": {
+                                  "u": [
+                                    {
+                                      "l": {
+                                        "k": "zero"
+                                      },
+                                      "k": "succ"
+                                    }
+                                  ],
+                                  "n": "Rocq.Corelib.Init.Datatypes.bool.rec",
+                                  "k": "const"
+                                },
+                                "a": {
+                                  "t": {
+                                    "u": [],
+                                    "n": "Rocq.Corelib.Init.Datatypes.bool",
+                                    "k": "const"
+                                  },
+                                  "n": "t",
+                                  "k": "lam",
+                                  "b": {
+                                    "u": [],
+                                    "n": "Rocq.Corelib.Floats.PrimFloat.float",
+                                    "k": "const"
+                                  }
+                                }
+                              },
+                              "a": {
+                                "k": "app",
+                                "f": {
+                                  "u": [],
+                                  "n": "Rocq.Corelib.Floats.PrimFloat.opp",
+                                  "k": "const"
+                                },
+                                "a": {
+                                  "k": "bvar",
+                                  "i": 0
+                                }
+                              }
+                            },
+                            "a": {
+                              "k": "bvar",
+                              "i": 0
+                            }
+                          },
+                          "a": {
+                            "k": "bvar",
+                            "i": 4
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "a": {
+              "k": "bvar",
+              "i": 0
+            }
+          }
+        },
+        "target_type": {
+          "t": {
+            "u": [],
+            "n": "Rocq.Corelib.Floats.SpecFloat.spec_float",
+            "k": "const"
+          },
+          "n": "ef",
+          "k": "forall",
+          "b": {
+            "u": [],
+            "n": "Rocq.Corelib.Floats.PrimFloat.float",
+            "k": "const"
+          }
+        },
+        "target_kind": "def",
+        "target_ctors": [],
+        "target": "Rocq.Corelib.Floats.FloatOps.SF2Prim",
+        "status": "TRANSLATED_AND_CHECKED",
+        "source_computed": [],
+        "source": "Corelib.Floats.FloatOps.SF2Prim",
+        "sort_lowered_levels": [],
+        "sort_interp": false,
+        "sort_fact_reduced": false,
+        "solved_levels": [],
+        "rule": "constant/transparent",
+        "result_sort_inherited": false,
+        "result_sort_implicit_levels": [],
+        "r2bp_levels": [],
+        "quality_prop": null,
+        "protected": true,
+        "prop_lift_unfold": [],
+        "prop_lift_coercions": 0,
+        "prop_lift": null,
+        "primitive_record": false,
+        "poly_level_interp": [],
+        "plain_levels": false,
+        "phantom_lowered": [],
+        "pending_hypotheses": [],
+        "path": [],
+        "num_params": 0,
+        "message": "",
+        "level_split": [],
+        "level_params": [],
+        "level_interp": [],
+        "level_copies": [],
+        "kind": "constant",
+        "implicit_levels": [],
+        "delta_inlined": [],
+        "coinductive_as_inductive": false,
+        "blocked_by": [],
+        "admitting_levels": []
+      },
+      "quality_variants": [],
+      "prerequisite_declarations": [],
+      "attempts": {
+        "source": "Corelib.Floats.FloatOps.SF2Prim",
+        "status": "TRANSLATED_AND_CHECKED",
+        "tier_times": [
+          [
+            "c[]",
+            0,
+            "TRANSLATED_AND_CHECKED"
+          ]
+        ],
+        "time_ms": 0
+      },
+      "baseline": {
+        "result": {
+          "canonical": "Corelib.Floats.FloatOps.SF2Prim",
+          "status": "TRANSLATED_AND_CHECKED",
+          "message": "",
+          "target": "Rocq.Corelib.Floats.FloatOps.SF2Prim",
+          "blocked_by": []
+        },
+        "stage": "基线已有结果",
+        "path": [],
+        "message": "",
+        "native_diagnostics": []
+      },
+      "module_validation": {
+        "roundtrip_exit": 0,
+        "roundtrip": "OK",
+        "translate_exit": 0,
+        "consumer_exit": 0,
+        "audit_exit": 0,
+        "consumer": "OK",
+        "audit": "OK"
+      },
+      "evidence_directory": "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Floats/FloatOps"
+    },
+    "Corelib.Floats.FloatOps.Z.frexp": {
+      "source": "Corelib.Floats.FloatOps.Z.frexp",
+      "canonical": "Corelib.Floats.FloatOps/Z.frexp",
+      "result": {
+        "canonical": "Corelib.Floats.FloatOps/Z.frexp",
+        "status": "TRANSLATED_AND_CHECKED",
+        "message": "",
+        "target": "Rocq.Corelib.Floats.FloatOps.Z.frexp",
+        "blocked_by": []
+      },
+      "meaning": "完整定义／数据类型，无待证参数",
+      "source_ir": {
+        "kind": "constant",
+        "name": "Corelib.Floats.FloatOps/Z.frexp",
+        "mp": {
+          "dot": [
+            {
+              "file": [
+                "Corelib",
+                "Floats",
+                "FloatOps"
+              ]
+            },
+            "Z"
+          ]
+        },
+        "id": "frexp",
+        "type": {
+          "k": "prod",
+          "n": {
+            "n": "f",
+            "r": "R"
+          },
+          "ty": {
+            "k": "const",
+            "c": "Corelib.Floats.PrimFloat.float",
+            "u": []
+          },
+          "b": {
+            "k": "app",
+            "f": {
+              "k": "ind",
+              "ind": {
+                "mind": "Corelib.Init.Datatypes.prod",
+                "i": 0
+              },
+              "u": []
+            },
+            "args": [
+              {
+                "k": "const",
+                "c": "Corelib.Floats.PrimFloat.float",
+                "u": []
+              },
+              {
+                "k": "ind",
+                "ind": {
+                  "mind": "Corelib.Numbers.BinNums.Z",
+                  "i": 0
+                },
+                "u": []
+              }
+            ]
+          }
+        },
+        "body": {
+          "k": "lam",
+          "n": {
+            "n": "f",
+            "r": "R"
+          },
+          "ty": {
+            "k": "const",
+            "c": "Corelib.Floats.PrimFloat.float",
+            "u": []
+          },
+          "b": {
+            "k": "case",
+            "ci": {
+              "ind": {
+                "mind": "Corelib.Init.Datatypes.prod",
+                "i": 0
+              },
+              "npar": 2,
+              "r": "R"
+            },
+            "p": {
+              "u": [],
+              "params": [
+                {
+                  "k": "const",
+                  "c": "Corelib.Floats.PrimFloat.float",
+                  "u": []
+                },
+                {
+                  "k": "const",
+                  "c": "Corelib.Numbers.Cyclic.Int63.PrimInt63.int",
+                  "u": []
+                }
+              ],
+              "ctx": [
+                {
+                  "n": "p",
+                  "r": "R"
+                }
+              ],
+              "ret": {
+                "k": "app",
+                "f": {
+                  "k": "ind",
+                  "ind": {
+                    "mind": "Corelib.Init.Datatypes.prod",
+                    "i": 0
+                  },
+                  "u": []
+                },
+                "args": [
+                  {
+                    "k": "const",
+                    "c": "Corelib.Floats.PrimFloat.float",
+                    "u": []
+                  },
+                  {
+                    "k": "ind",
+                    "ind": {
+                      "mind": "Corelib.Numbers.BinNums.Z",
+                      "i": 0
+                    },
+                    "u": []
+                  }
+                ]
+              }
+            },
+            "c": {
+              "k": "app",
+              "f": {
+                "k": "const",
+                "c": "Corelib.Floats.PrimFloat.frshiftexp",
+                "u": []
+              },
+              "args": [
+                {
+                  "k": "rel",
+                  "i": 0
+                }
+              ]
+            },
+            "brs": [
+              {
+                "ctx": [
+                  {
+                    "n": "se",
+                    "r": "R"
+                  },
+                  {
+                    "n": "m",
+                    "r": "R"
+                  }
+                ],
+                "body": {
+                  "k": "app",
+                  "f": {
+                    "k": "construct",
+                    "ind": {
+                      "mind": "Corelib.Init.Datatypes.prod",
+                      "i": 0
+                    },
+                    "c": 0,
+                    "u": []
+                  },
+                  "args": [
+                    {
+                      "k": "const",
+                      "c": "Corelib.Floats.PrimFloat.float",
+                      "u": []
+                    },
+                    {
+                      "k": "ind",
+                      "ind": {
+                        "mind": "Corelib.Numbers.BinNums.Z",
+                        "i": 0
+                      },
+                      "u": []
+                    },
+                    {
+                      "k": "rel",
+                      "i": 1
+                    },
+                    {
+                      "k": "app",
+                      "f": {
+                        "k": "const",
+                        "c": "Corelib.BinNums.IntDef/Z.sub",
+                        "u": []
+                      },
+                      "args": [
+                        {
+                          "k": "app",
+                          "f": {
+                            "k": "const",
+                            "c": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z",
+                            "u": []
+                          },
+                          "args": [
+                            {
+                              "k": "rel",
+                              "i": 0
+                            }
+                          ]
+                        },
+                        {
+                          "k": "const",
+                          "c": "Corelib.Floats.FloatOps.shift",
+                          "u": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        "body_state": "transparent",
+        "universes": {
+          "k": "monomorphic"
+        },
+        "relevance": "R",
+        "deps": {
+          "type": [
+            "Corelib.Floats.PrimFloat.float",
+            "Corelib.Init.Datatypes.prod",
+            "Corelib.Numbers.BinNums.Z"
+          ],
+          "body": [
+            "Corelib.BinNums.IntDef/Z.sub",
+            "Corelib.Floats.FloatOps.shift",
+            "Corelib.Floats.PrimFloat.float",
+            "Corelib.Floats.PrimFloat.frshiftexp",
+            "Corelib.Init.Datatypes.prod",
+            "Corelib.Numbers.BinNums.Z",
+            "Corelib.Numbers.Cyclic.Int63.PrimInt63.int",
+            "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z"
+          ]
+        },
+        "native": {
+          "body_kind": "transparent",
+          "prepared": {
+            "sealed_implementation": false,
+            "lowered_ssr_have_upoly": false
+          },
+          "polymorphic": false,
+          "private_universes": "none",
+          "typing_flags": {
+            "check_guarded": true,
+            "check_positive": true,
+            "check_universes": true,
+            "check_eliminations": true,
+            "indices_matter": false,
+            "impredicative_set": false,
+            "sprop_allowed": true,
+            "allow_uip": false
+          }
+        }
+      },
+      "target_report": {
+        "universe_residuals": null,
+        "universe_poly_params": 0,
+        "universe_minimal_levels": 0,
+        "universe_lowered": false,
+        "universe_level_defaults": 0,
+        "universe_diagnostics": [],
+        "universe_cumulativity": false,
+        "universe_checks": 0,
+        "type_lift_coercions": 0,
+        "type_lift": null,
+        "template_sort": false,
+        "template_params": [],
+        "template": false,
+        "target_value": {
+          "t": {
+            "u": [],
+            "n": "Rocq.Corelib.Floats.PrimFloat.float",
+            "k": "const"
+          },
+          "n": "f",
+          "k": "lam",
+          "b": {
+            "k": "app",
+            "f": {
+              "k": "app",
+              "f": {
+                "k": "app",
+                "f": {
+                  "k": "app",
+                  "f": {
+                    "k": "app",
+                    "f": {
+                      "u": [
+                        {
+                          "l": {
+                            "k": "zero"
+                          },
+                          "k": "succ"
+                        },
+                        {
+                          "l": {
+                            "k": "zero"
+                          },
+                          "k": "succ"
+                        },
+                        {
+                          "l": {
+                            "k": "zero"
+                          },
+                          "k": "succ"
+                        }
+                      ],
+                      "n": "Rocq.Corelib.Init.Datatypes.prod.rec",
+                      "k": "const"
+                    },
+                    "a": {
+                      "u": [],
+                      "n": "Rocq.Corelib.Floats.PrimFloat.float",
+                      "k": "const"
+                    }
+                  },
+                  "a": {
+                    "u": [],
+                    "n": "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int",
+                    "k": "const"
+                  }
+                },
+                "a": {
+                  "t": {
+                    "k": "app",
+                    "f": {
+                      "k": "app",
+                      "f": {
+                        "u": [
+                          {
+                            "l": {
+                              "k": "zero"
+                            },
+                            "k": "succ"
+                          },
+                          {
+                            "l": {
+                              "k": "zero"
+                            },
+                            "k": "succ"
+                          }
+                        ],
+                        "n": "Rocq.Corelib.Init.Datatypes.prod",
+                        "k": "const"
+                      },
+                      "a": {
+                        "u": [],
+                        "n": "Rocq.Corelib.Floats.PrimFloat.float",
+                        "k": "const"
+                      }
+                    },
+                    "a": {
+                      "u": [],
+                      "n": "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int",
+                      "k": "const"
+                    }
+                  },
+                  "n": "t",
+                  "k": "lam",
+                  "b": {
+                    "k": "app",
+                    "f": {
+                      "k": "app",
+                      "f": {
+                        "u": [
+                          {
+                            "l": {
+                              "k": "zero"
+                            },
+                            "k": "succ"
+                          },
+                          {
+                            "l": {
+                              "k": "zero"
+                            },
+                            "k": "succ"
+                          }
+                        ],
+                        "n": "Rocq.Corelib.Init.Datatypes.prod",
+                        "k": "const"
+                      },
+                      "a": {
+                        "u": [],
+                        "n": "Rocq.Corelib.Floats.PrimFloat.float",
+                        "k": "const"
+                      }
+                    },
+                    "a": {
+                      "u": [],
+                      "n": "Rocq.Corelib.Numbers.BinNums.Z",
+                      "k": "const"
+                    }
+                  }
+                }
+              },
+              "a": {
+                "t": {
+                  "u": [],
+                  "n": "Rocq.Corelib.Floats.PrimFloat.float",
+                  "k": "const"
+                },
+                "n": "[anonymous]",
+                "k": "lam",
+                "b": {
+                  "t": {
+                    "u": [],
+                    "n": "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int",
+                    "k": "const"
+                  },
+                  "n": "[anonymous]",
+                  "k": "lam",
+                  "b": {
+                    "k": "app",
+                    "f": {
+                      "k": "app",
+                      "f": {
+                        "k": "app",
+                        "f": {
+                          "k": "app",
+                          "f": {
+                            "u": [
+                              {
+                                "l": {
+                                  "k": "zero"
+                                },
+                                "k": "succ"
+                              },
+                              {
+                                "l": {
+                                  "k": "zero"
+                                },
+                                "k": "succ"
+                              }
+                            ],
+                            "n": "Rocq.Corelib.Init.Datatypes.prod.pair",
+                            "k": "const"
+                          },
+                          "a": {
+                            "u": [],
+                            "n": "Rocq.Corelib.Floats.PrimFloat.float",
+                            "k": "const"
+                          }
+                        },
+                        "a": {
+                          "u": [],
+                          "n": "Rocq.Corelib.Numbers.BinNums.Z",
+                          "k": "const"
+                        }
+                      },
+                      "a": {
+                        "k": "bvar",
+                        "i": 1
+                      }
+                    },
+                    "a": {
+                      "k": "app",
+                      "f": {
+                        "k": "app",
+                        "f": {
+                          "u": [],
+                          "n": "Rocq.Corelib.BinNums.IntDef.Z.sub",
+                          "k": "const"
+                        },
+                        "a": {
+                          "k": "app",
+                          "f": {
+                            "u": [],
+                            "n": "Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z",
+                            "k": "const"
+                          },
+                          "a": {
+                            "k": "bvar",
+                            "i": 0
+                          }
+                        }
+                      },
+                      "a": {
+                        "u": [],
+                        "n": "Rocq.Corelib.Floats.FloatOps.shift",
+                        "k": "const"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "a": {
+              "k": "app",
+              "f": {
+                "u": [],
+                "n": "Rocq.Corelib.Floats.PrimFloat.frshiftexp",
+                "k": "const"
+              },
+              "a": {
+                "k": "bvar",
+                "i": 0
+              }
+            }
+          }
+        },
+        "target_type": {
+          "t": {
+            "u": [],
+            "n": "Rocq.Corelib.Floats.PrimFloat.float",
+            "k": "const"
+          },
+          "n": "f",
+          "k": "forall",
+          "b": {
+            "k": "app",
+            "f": {
+              "k": "app",
+              "f": {
+                "u": [
+                  {
+                    "l": {
+                      "k": "zero"
+                    },
+                    "k": "succ"
+                  },
+                  {
+                    "l": {
+                      "k": "zero"
+                    },
+                    "k": "succ"
+                  }
+                ],
+                "n": "Rocq.Corelib.Init.Datatypes.prod",
+                "k": "const"
+              },
+              "a": {
+                "u": [],
+                "n": "Rocq.Corelib.Floats.PrimFloat.float",
+                "k": "const"
+              }
+            },
+            "a": {
+              "u": [],
+              "n": "Rocq.Corelib.Numbers.BinNums.Z",
+              "k": "const"
+            }
+          }
+        },
+        "target_kind": "def",
+        "target_ctors": [],
+        "target": "Rocq.Corelib.Floats.FloatOps.Z.frexp",
+        "status": "TRANSLATED_AND_CHECKED",
+        "source_computed": [],
+        "source": "Corelib.Floats.FloatOps/Z.frexp",
+        "sort_lowered_levels": [],
+        "sort_interp": false,
+        "sort_fact_reduced": false,
+        "solved_levels": [],
+        "rule": "constant/transparent",
+        "result_sort_inherited": false,
+        "result_sort_implicit_levels": [],
+        "r2bp_levels": [],
+        "quality_prop": null,
+        "protected": false,
+        "prop_lift_unfold": [],
+        "prop_lift_coercions": 0,
+        "prop_lift": null,
+        "primitive_record": false,
+        "poly_level_interp": [],
+        "plain_levels": false,
+        "phantom_lowered": [],
+        "pending_hypotheses": [],
+        "path": [],
+        "num_params": 0,
+        "message": "",
+        "level_split": [],
+        "level_params": [],
+        "level_interp": [],
+        "level_copies": [],
+        "kind": "constant",
+        "implicit_levels": [],
+        "delta_inlined": [],
+        "coinductive_as_inductive": false,
+        "blocked_by": [],
+        "admitting_levels": []
+      },
+      "quality_variants": [],
+      "prerequisite_declarations": [],
+      "attempts": {
+        "source": "Corelib.Floats.FloatOps/Z.frexp",
+        "status": "TRANSLATED_AND_CHECKED",
+        "tier_times": [
+          [
+            "c[]",
+            0,
+            "TRANSLATED_AND_CHECKED"
+          ]
+        ],
+        "time_ms": 0
+      },
+      "baseline": {
+        "result": {
+          "canonical": "Corelib.Floats.FloatOps/Z.frexp",
+          "status": "TRANSLATED_AND_CHECKED",
+          "message": "",
+          "target": "Rocq.Corelib.Floats.FloatOps.Z.frexp",
+          "blocked_by": []
+        },
+        "stage": "基线已有结果",
+        "path": [],
+        "message": "",
+        "native_diagnostics": []
+      },
+      "module_validation": {
+        "roundtrip_exit": 0,
+        "roundtrip": "OK",
+        "translate_exit": 0,
+        "consumer_exit": 0,
+        "audit_exit": 0,
+        "consumer": "OK",
+        "audit": "OK"
+      },
+      "evidence_directory": "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Floats/FloatOps"
+    },
+    "Corelib.Floats.FloatOps.Z.ldexp": {
+      "source": "Corelib.Floats.FloatOps.Z.ldexp",
+      "canonical": "Corelib.Floats.FloatOps/Z.ldexp",
+      "result": {
+        "canonical": "Corelib.Floats.FloatOps/Z.ldexp",
+        "status": "TRANSLATED_AND_CHECKED",
+        "message": "",
+        "target": "Rocq.Corelib.Floats.FloatOps.Z.ldexp",
+        "blocked_by": []
+      },
+      "meaning": "完整定义／数据类型，无待证参数",
+      "source_ir": {
+        "kind": "constant",
+        "name": "Corelib.Floats.FloatOps/Z.ldexp",
+        "mp": {
+          "dot": [
+            {
+              "file": [
+                "Corelib",
+                "Floats",
+                "FloatOps"
+              ]
+            },
+            "Z"
+          ]
+        },
+        "id": "ldexp",
+        "type": {
+          "k": "prod",
+          "n": {
+            "n": "f",
+            "r": "R"
+          },
+          "ty": {
+            "k": "const",
+            "c": "Corelib.Floats.PrimFloat.float",
+            "u": []
+          },
+          "b": {
+            "k": "prod",
+            "n": {
+              "n": "e",
+              "r": "R"
+            },
+            "ty": {
+              "k": "ind",
+              "ind": {
+                "mind": "Corelib.Numbers.BinNums.Z",
+                "i": 0
+              },
+              "u": []
+            },
+            "b": {
+              "k": "const",
+              "c": "Corelib.Floats.PrimFloat.float",
+              "u": []
+            }
+          }
+        },
+        "body": {
+          "k": "lam",
+          "n": {
+            "n": "f",
+            "r": "R"
+          },
+          "ty": {
+            "k": "const",
+            "c": "Corelib.Floats.PrimFloat.float",
+            "u": []
+          },
+          "b": {
+            "k": "lam",
+            "n": {
+              "n": "e",
+              "r": "R"
+            },
+            "ty": {
+              "k": "ind",
+              "ind": {
+                "mind": "Corelib.Numbers.BinNums.Z",
+                "i": 0
+              },
+              "u": []
+            },
+            "b": {
+              "k": "let",
+              "n": {
+                "n": "e'",
+                "r": "R"
+              },
+              "v": {
+                "k": "app",
+                "f": {
+                  "k": "const",
+                  "c": "Corelib.BinNums.IntDef/Z.max",
+                  "u": []
+                },
+                "args": [
+                  {
+                    "k": "app",
+                    "f": {
+                      "k": "const",
+                      "c": "Corelib.BinNums.IntDef/Z.min",
+                      "u": []
+                    },
+                    "args": [
+                      {
+                        "k": "rel",
+                        "i": 0
+                      },
+                      {
+                        "k": "app",
+                        "f": {
+                          "k": "const",
+                          "c": "Corelib.BinNums.IntDef/Z.sub",
+                          "u": []
+                        },
+                        "args": [
+                          {
+                            "k": "const",
+                            "c": "Corelib.Floats.FloatOps.emax",
+                            "u": []
+                          },
+                          {
+                            "k": "app",
+                            "f": {
+                              "k": "const",
+                              "c": "Corelib.Floats.SpecFloat.emin",
+                              "u": []
+                            },
+                            "args": [
+                              {
+                                "k": "const",
+                                "c": "Corelib.Floats.FloatOps.prec",
+                                "u": []
+                              },
+                              {
+                                "k": "const",
+                                "c": "Corelib.Floats.FloatOps.emax",
+                                "u": []
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "k": "app",
+                    "f": {
+                      "k": "const",
+                      "c": "Corelib.BinNums.IntDef/Z.sub",
+                      "u": []
+                    },
+                    "args": [
+                      {
+                        "k": "app",
+                        "f": {
+                          "k": "const",
+                          "c": "Corelib.BinNums.IntDef/Z.sub",
+                          "u": []
+                        },
+                        "args": [
+                          {
+                            "k": "app",
+                            "f": {
+                              "k": "const",
+                              "c": "Corelib.Floats.SpecFloat.emin",
+                              "u": []
+                            },
+                            "args": [
+                              {
+                                "k": "const",
+                                "c": "Corelib.Floats.FloatOps.prec",
+                                "u": []
+                              },
+                              {
+                                "k": "const",
+                                "c": "Corelib.Floats.FloatOps.emax",
+                                "u": []
+                              }
+                            ]
+                          },
+                          {
+                            "k": "const",
+                            "c": "Corelib.Floats.FloatOps.emax",
+                            "u": []
+                          }
+                        ]
+                      },
+                      {
+                        "k": "app",
+                        "f": {
+                          "k": "construct",
+                          "ind": {
+                            "mind": "Corelib.Numbers.BinNums.Z",
+                            "i": 0
+                          },
+                          "c": 1,
+                          "u": []
+                        },
+                        "args": [
+                          {
+                            "k": "construct",
+                            "ind": {
+                              "mind": "Corelib.Numbers.BinNums.positive",
+                              "i": 0
+                            },
+                            "c": 2,
+                            "u": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "ty": {
+                "k": "ind",
+                "ind": {
+                  "mind": "Corelib.Numbers.BinNums.Z",
+                  "i": 0
+                },
+                "u": []
+              },
+              "b": {
+                "k": "app",
+                "f": {
+                  "k": "const",
+                  "c": "Corelib.Floats.PrimFloat.ldshiftexp",
+                  "u": []
+                },
+                "args": [
+                  {
+                    "k": "rel",
+                    "i": 2
+                  },
+                  {
+                    "k": "app",
+                    "f": {
+                      "k": "const",
+                      "c": "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.of_Z",
+                      "u": []
+                    },
+                    "args": [
+                      {
+                        "k": "app",
+                        "f": {
+                          "k": "const",
+                          "c": "Corelib.BinNums.IntDef/Z.add",
+                          "u": []
+                        },
+                        "args": [
+                          {
+                            "k": "rel",
+                            "i": 0
+                          },
+                          {
+                            "k": "const",
+                            "c": "Corelib.Floats.FloatOps.shift",
+                            "u": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "body_state": "transparent",
+        "universes": {
+          "k": "monomorphic"
+        },
+        "relevance": "R",
+        "deps": {
+          "type": [
+            "Corelib.Floats.PrimFloat.float",
+            "Corelib.Numbers.BinNums.Z"
+          ],
+          "body": [
+            "Corelib.BinNums.IntDef/Z.add",
+            "Corelib.BinNums.IntDef/Z.max",
+            "Corelib.BinNums.IntDef/Z.min",
+            "Corelib.BinNums.IntDef/Z.sub",
+            "Corelib.Floats.FloatOps.emax",
+            "Corelib.Floats.FloatOps.prec",
+            "Corelib.Floats.FloatOps.shift",
+            "Corelib.Floats.PrimFloat.float",
+            "Corelib.Floats.PrimFloat.ldshiftexp",
+            "Corelib.Floats.SpecFloat.emin",
+            "Corelib.Numbers.BinNums.Z",
+            "Corelib.Numbers.BinNums.positive",
+            "Corelib.Numbers.Cyclic.Int63.Uint63Axioms.of_Z"
+          ]
+        },
+        "native": {
+          "body_kind": "transparent",
+          "prepared": {
+            "sealed_implementation": false,
+            "lowered_ssr_have_upoly": false
+          },
+          "polymorphic": false,
+          "private_universes": "none",
+          "typing_flags": {
+            "check_guarded": true,
+            "check_positive": true,
+            "check_universes": true,
+            "check_eliminations": true,
+            "indices_matter": false,
+            "impredicative_set": false,
+            "sprop_allowed": true,
+            "allow_uip": false
+          }
+        }
+      },
+      "target_report": {
+        "universe_residuals": null,
+        "universe_poly_params": 0,
+        "universe_minimal_levels": 0,
+        "universe_lowered": false,
+        "universe_level_defaults": 0,
+        "universe_diagnostics": [],
+        "universe_cumulativity": false,
+        "universe_checks": 0,
+        "type_lift_coercions": 0,
+        "type_lift": null,
+        "template_sort": false,
+        "template_params": [],
+        "template": false,
+        "target_value": {
+          "t": {
+            "u": [],
+            "n": "Rocq.Corelib.Floats.PrimFloat.float",
+            "k": "const"
+          },
+          "n": "f",
+          "k": "lam",
+          "b": {
+            "t": {
+              "u": [],
+              "n": "Rocq.Corelib.Numbers.BinNums.Z",
+              "k": "const"
+            },
+            "n": "e",
+            "k": "lam",
+            "b": {
+              "v": {
+                "k": "app",
+                "f": {
+                  "k": "app",
+                  "f": {
+                    "u": [],
+                    "n": "Rocq.Corelib.BinNums.IntDef.Z.max",
+                    "k": "const"
+                  },
+                  "a": {
+                    "k": "app",
+                    "f": {
+                      "k": "app",
+                      "f": {
+                        "u": [],
+                        "n": "Rocq.Corelib.BinNums.IntDef.Z.min",
+                        "k": "const"
+                      },
+                      "a": {
+                        "k": "bvar",
+                        "i": 0
+                      }
+                    },
+                    "a": {
+                      "k": "app",
+                      "f": {
+                        "k": "app",
+                        "f": {
+                          "u": [],
+                          "n": "Rocq.Corelib.BinNums.IntDef.Z.sub",
+                          "k": "const"
+                        },
+                        "a": {
+                          "u": [],
+                          "n": "Rocq.Corelib.Floats.FloatOps.emax",
+                          "k": "const"
+                        }
+                      },
+                      "a": {
+                        "k": "app",
+                        "f": {
+                          "k": "app",
+                          "f": {
+                            "u": [],
+                            "n": "Rocq.Corelib.Floats.SpecFloat.emin",
+                            "k": "const"
+                          },
+                          "a": {
+                            "u": [],
+                            "n": "Rocq.Corelib.Floats.FloatOps.prec",
+                            "k": "const"
+                          }
+                        },
+                        "a": {
+                          "u": [],
+                          "n": "Rocq.Corelib.Floats.FloatOps.emax",
+                          "k": "const"
+                        }
+                      }
+                    }
+                  }
+                },
+                "a": {
+                  "k": "app",
+                  "f": {
+                    "k": "app",
+                    "f": {
+                      "u": [],
+                      "n": "Rocq.Corelib.BinNums.IntDef.Z.sub",
+                      "k": "const"
+                    },
+                    "a": {
+                      "k": "app",
+                      "f": {
+                        "k": "app",
+                        "f": {
+                          "u": [],
+                          "n": "Rocq.Corelib.BinNums.IntDef.Z.sub",
+                          "k": "const"
+                        },
+                        "a": {
+                          "k": "app",
+                          "f": {
+                            "k": "app",
+                            "f": {
+                              "u": [],
+                              "n": "Rocq.Corelib.Floats.SpecFloat.emin",
+                              "k": "const"
+                            },
+                            "a": {
+                              "u": [],
+                              "n": "Rocq.Corelib.Floats.FloatOps.prec",
+                              "k": "const"
+                            }
+                          },
+                          "a": {
+                            "u": [],
+                            "n": "Rocq.Corelib.Floats.FloatOps.emax",
+                            "k": "const"
+                          }
+                        }
+                      },
+                      "a": {
+                        "u": [],
+                        "n": "Rocq.Corelib.Floats.FloatOps.emax",
+                        "k": "const"
+                      }
+                    }
+                  },
+                  "a": {
+                    "k": "app",
+                    "f": {
+                      "u": [],
+                      "n": "Rocq.Corelib.Numbers.BinNums.Z.Zpos",
+                      "k": "const"
+                    },
+                    "a": {
+                      "u": [],
+                      "n": "Rocq.Corelib.Numbers.BinNums.positive.xH",
+                      "k": "const"
+                    }
+                  }
+                }
+              },
+              "t": {
+                "u": [],
+                "n": "Rocq.Corelib.Numbers.BinNums.Z",
+                "k": "const"
+              },
+              "n": "e'",
+              "k": "let",
+              "b": {
+                "k": "app",
+                "f": {
+                  "k": "app",
+                  "f": {
+                    "u": [],
+                    "n": "Rocq.Corelib.Floats.PrimFloat.ldshiftexp",
+                    "k": "const"
+                  },
+                  "a": {
+                    "k": "bvar",
+                    "i": 2
+                  }
+                },
+                "a": {
+                  "k": "app",
+                  "f": {
+                    "u": [],
+                    "n": "Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.of_Z",
+                    "k": "const"
+                  },
+                  "a": {
+                    "k": "app",
+                    "f": {
+                      "k": "app",
+                      "f": {
+                        "u": [],
+                        "n": "Rocq.Corelib.BinNums.IntDef.Z.add",
+                        "k": "const"
+                      },
+                      "a": {
+                        "k": "bvar",
+                        "i": 0
+                      }
+                    },
+                    "a": {
+                      "u": [],
+                      "n": "Rocq.Corelib.Floats.FloatOps.shift",
+                      "k": "const"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "target_type": {
+          "t": {
+            "u": [],
+            "n": "Rocq.Corelib.Floats.PrimFloat.float",
+            "k": "const"
+          },
+          "n": "f",
+          "k": "forall",
+          "b": {
+            "t": {
+              "u": [],
+              "n": "Rocq.Corelib.Numbers.BinNums.Z",
+              "k": "const"
+            },
+            "n": "e",
+            "k": "forall",
+            "b": {
+              "u": [],
+              "n": "Rocq.Corelib.Floats.PrimFloat.float",
+              "k": "const"
+            }
+          }
+        },
+        "target_kind": "def",
+        "target_ctors": [],
+        "target": "Rocq.Corelib.Floats.FloatOps.Z.ldexp",
+        "status": "TRANSLATED_AND_CHECKED",
+        "source_computed": [],
+        "source": "Corelib.Floats.FloatOps/Z.ldexp",
+        "sort_lowered_levels": [],
+        "sort_interp": false,
+        "sort_fact_reduced": false,
+        "solved_levels": [],
+        "rule": "constant/transparent",
+        "result_sort_inherited": false,
+        "result_sort_implicit_levels": [],
+        "r2bp_levels": [],
+        "quality_prop": null,
+        "protected": false,
+        "prop_lift_unfold": [],
+        "prop_lift_coercions": 0,
+        "prop_lift": null,
+        "primitive_record": false,
+        "poly_level_interp": [],
+        "plain_levels": false,
+        "phantom_lowered": [],
+        "pending_hypotheses": [],
+        "path": [],
+        "num_params": 0,
+        "message": "",
+        "level_split": [],
+        "level_params": [],
+        "level_interp": [],
+        "level_copies": [],
+        "kind": "constant",
+        "implicit_levels": [],
+        "delta_inlined": [],
+        "coinductive_as_inductive": false,
+        "blocked_by": [],
+        "admitting_levels": []
+      },
+      "quality_variants": [],
+      "prerequisite_declarations": [],
+      "attempts": {
+        "source": "Corelib.Floats.FloatOps/Z.ldexp",
+        "status": "TRANSLATED_AND_CHECKED",
+        "tier_times": [
+          [
+            "c[]",
+            0,
+            "TRANSLATED_AND_CHECKED"
+          ]
+        ],
+        "time_ms": 0
+      },
+      "baseline": {
+        "result": {
+          "canonical": "Corelib.Floats.FloatOps/Z.ldexp",
+          "status": "TRANSLATED_AND_CHECKED",
+          "message": "",
+          "target": "Rocq.Corelib.Floats.FloatOps.Z.ldexp",
+          "blocked_by": []
+        },
+        "stage": "基线已有结果",
+        "path": [],
+        "message": "",
+        "native_diagnostics": []
+      },
+      "module_validation": {
+        "roundtrip_exit": 0,
+        "roundtrip": "OK",
+        "translate_exit": 0,
+        "consumer_exit": 0,
+        "audit_exit": 0,
+        "consumer": "OK",
+        "audit": "OK"
+      },
+      "evidence_directory": "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Floats/FloatOps"
+    },
+    "Corelib.Floats.FloatOps.emax": {
+      "source": "Corelib.Floats.FloatOps.emax",
+      "canonical": "Corelib.Floats.FloatOps.emax",
+      "result": {
+        "canonical": "Corelib.Floats.FloatOps.emax",
+        "status": "TRANSLATED_AND_CHECKED",
+        "message": "",
+        "target": "Rocq.Corelib.Floats.FloatOps.emax",
+        "blocked_by": []
+      },
+      "meaning": "完整定义／数据类型，无待证参数",
+      "source_ir": {
+        "kind": "constant",
+        "name": "Corelib.Floats.FloatOps.emax",
+        "mp": {
+          "file": [
+            "Corelib",
+            "Floats",
+            "FloatOps"
+          ]
+        },
+        "id": "emax",
+        "type": {
+          "k": "ind",
+          "ind": {
+            "mind": "Corelib.Numbers.BinNums.Z",
+            "i": 0
+          },
+          "u": []
+        },
+        "body": {
+          "k": "app",
+          "f": {
+            "k": "construct",
+            "ind": {
+              "mind": "Corelib.Numbers.BinNums.Z",
+              "i": 0
+            },
+            "c": 1,
+            "u": []
+          },
+          "args": [
+            {
+              "k": "app",
+              "f": {
+                "k": "construct",
+                "ind": {
+                  "mind": "Corelib.Numbers.BinNums.positive",
+                  "i": 0
+                },
+                "c": 1,
+                "u": []
+              },
+              "args": [
+                {
+                  "k": "app",
+                  "f": {
+                    "k": "construct",
+                    "ind": {
+                      "mind": "Corelib.Numbers.BinNums.positive",
+                      "i": 0
+                    },
+                    "c": 1,
+                    "u": []
+                  },
+                  "args": [
+                    {
+                      "k": "app",
+                      "f": {
+                        "k": "construct",
+                        "ind": {
+                          "mind": "Corelib.Numbers.BinNums.positive",
+                          "i": 0
+                        },
+                        "c": 1,
+                        "u": []
+                      },
+                      "args": [
+                        {
+                          "k": "app",
+                          "f": {
+                            "k": "construct",
+                            "ind": {
+                              "mind": "Corelib.Numbers.BinNums.positive",
+                              "i": 0
+                            },
+                            "c": 1,
+                            "u": []
+                          },
+                          "args": [
+                            {
+                              "k": "app",
+                              "f": {
+                                "k": "construct",
+                                "ind": {
+                                  "mind": "Corelib.Numbers.BinNums.positive",
+                                  "i": 0
+                                },
+                                "c": 1,
+                                "u": []
+                              },
+                              "args": [
+                                {
+                                  "k": "app",
+                                  "f": {
+                                    "k": "construct",
+                                    "ind": {
+                                      "mind": "Corelib.Numbers.BinNums.positive",
+                                      "i": 0
+                                    },
+                                    "c": 1,
+                                    "u": []
+                                  },
+                                  "args": [
+                                    {
+                                      "k": "app",
+                                      "f": {
+                                        "k": "construct",
+                                        "ind": {
+                                          "mind": "Corelib.Numbers.BinNums.positive",
+                                          "i": 0
+                                        },
+                                        "c": 1,
+                                        "u": []
+                                      },
+                                      "args": [
+                                        {
+                                          "k": "app",
+                                          "f": {
+                                            "k": "construct",
+                                            "ind": {
+                                              "mind": "Corelib.Numbers.BinNums.positive",
+                                              "i": 0
+                                            },
+                                            "c": 1,
+                                            "u": []
+                                          },
+                                          "args": [
+                                            {
+                                              "k": "app",
+                                              "f": {
+                                                "k": "construct",
+                                                "ind": {
+                                                  "mind": "Corelib.Numbers.BinNums.positive",
+                                                  "i": 0
+                                                },
+                                                "c": 1,
+                                                "u": []
+                                              },
+                                              "args": [
+                                                {
+                                                  "k": "app",
+                                                  "f": {
+                                                    "k": "construct",
+                                                    "ind": {
+                                                      "mind": "Corelib.Numbers.BinNums.positive",
+                                                      "i": 0
+                                                    },
+                                                    "c": 1,
+                                                    "u": []
+                                                  },
+                                                  "args": [
+                                                    {
+                                                      "k": "construct",
+                                                      "ind": {
+                                                        "mind": "Corelib.Numbers.BinNums.positive",
+                                                        "i": 0
+                                                      },
+                                                      "c": 2,
+                                                      "u": []
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "body_state": "transparent",
+        "universes": {
+          "k": "monomorphic"
+        },
+        "relevance": "R",
+        "deps": {
+          "type": [
+            "Corelib.Numbers.BinNums.Z"
+          ],
+          "body": [
+            "Corelib.Numbers.BinNums.Z",
+            "Corelib.Numbers.BinNums.positive"
+          ]
+        },
+        "native": {
+          "body_kind": "transparent",
+          "prepared": {
+            "sealed_implementation": false,
+            "lowered_ssr_have_upoly": false
+          },
+          "polymorphic": false,
+          "private_universes": "none",
+          "typing_flags": {
+            "check_guarded": true,
+            "check_positive": true,
+            "check_universes": true,
+            "check_eliminations": true,
+            "indices_matter": false,
+            "impredicative_set": false,
+            "sprop_allowed": true,
+            "allow_uip": false
+          }
+        }
+      },
+      "target_report": {
+        "universe_residuals": null,
+        "universe_poly_params": 0,
+        "universe_minimal_levels": 0,
+        "universe_lowered": false,
+        "universe_level_defaults": 0,
+        "universe_diagnostics": [],
+        "universe_cumulativity": false,
+        "universe_checks": 0,
+        "type_lift_coercions": 0,
+        "type_lift": null,
+        "template_sort": false,
+        "template_params": [],
+        "template": false,
+        "target_value": {
+          "k": "app",
+          "f": {
+            "u": [],
+            "n": "Rocq.Corelib.Numbers.BinNums.Z.Zpos",
+            "k": "const"
+          },
+          "a": {
+            "k": "app",
+            "f": {
+              "u": [],
+              "n": "Rocq.Corelib.Numbers.BinNums.positive.xO",
+              "k": "const"
+            },
+            "a": {
+              "k": "app",
+              "f": {
+                "u": [],
+                "n": "Rocq.Corelib.Numbers.BinNums.positive.xO",
+                "k": "const"
+              },
+              "a": {
+                "k": "app",
+                "f": {
+                  "u": [],
+                  "n": "Rocq.Corelib.Numbers.BinNums.positive.xO",
+                  "k": "const"
+                },
+                "a": {
+                  "k": "app",
+                  "f": {
+                    "u": [],
+                    "n": "Rocq.Corelib.Numbers.BinNums.positive.xO",
+                    "k": "const"
+                  },
+                  "a": {
+                    "k": "app",
+                    "f": {
+                      "u": [],
+                      "n": "Rocq.Corelib.Numbers.BinNums.positive.xO",
+                      "k": "const"
+                    },
+                    "a": {
+                      "k": "app",
+                      "f": {
+                        "u": [],
+                        "n": "Rocq.Corelib.Numbers.BinNums.positive.xO",
+                        "k": "const"
+                      },
+                      "a": {
+                        "k": "app",
+                        "f": {
+                          "u": [],
+                          "n": "Rocq.Corelib.Numbers.BinNums.positive.xO",
+                          "k": "const"
+                        },
+                        "a": {
+                          "k": "app",
+                          "f": {
+                            "u": [],
+                            "n": "Rocq.Corelib.Numbers.BinNums.positive.xO",
+                            "k": "const"
+                          },
+                          "a": {
+                            "k": "app",
+                            "f": {
+                              "u": [],
+                              "n": "Rocq.Corelib.Numbers.BinNums.positive.xO",
+                              "k": "const"
+                            },
+                            "a": {
+                              "k": "app",
+                              "f": {
+                                "u": [],
+                                "n": "Rocq.Corelib.Numbers.BinNums.positive.xO",
+                                "k": "const"
+                              },
+                              "a": {
+                                "u": [],
+                                "n": "Rocq.Corelib.Numbers.BinNums.positive.xH",
+                                "k": "const"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "target_type": {
+          "u": [],
+          "n": "Rocq.Corelib.Numbers.BinNums.Z",
+          "k": "const"
+        },
+        "target_kind": "def",
+        "target_ctors": [],
+        "target": "Rocq.Corelib.Floats.FloatOps.emax",
+        "status": "TRANSLATED_AND_CHECKED",
+        "source_computed": [],
+        "source": "Corelib.Floats.FloatOps.emax",
+        "sort_lowered_levels": [],
+        "sort_interp": false,
+        "sort_fact_reduced": false,
+        "solved_levels": [],
+        "rule": "constant/transparent",
+        "result_sort_inherited": false,
+        "result_sort_implicit_levels": [],
+        "r2bp_levels": [],
+        "quality_prop": null,
+        "protected": true,
+        "prop_lift_unfold": [],
+        "prop_lift_coercions": 0,
+        "prop_lift": null,
+        "primitive_record": false,
+        "poly_level_interp": [],
+        "plain_levels": false,
+        "phantom_lowered": [],
+        "pending_hypotheses": [],
+        "path": [],
+        "num_params": 0,
+        "message": "",
+        "level_split": [],
+        "level_params": [],
+        "level_interp": [],
+        "level_copies": [],
+        "kind": "constant",
+        "implicit_levels": [],
+        "delta_inlined": [],
+        "coinductive_as_inductive": false,
+        "blocked_by": [],
+        "admitting_levels": []
+      },
+      "quality_variants": [],
+      "prerequisite_declarations": [],
+      "attempts": {
+        "source": "Corelib.Floats.FloatOps.emax",
+        "status": "TRANSLATED_AND_CHECKED",
+        "tier_times": [
+          [
+            "c[]",
+            0,
+            "TRANSLATED_AND_CHECKED"
+          ]
+        ],
+        "time_ms": 0
+      },
+      "baseline": {
+        "result": {
+          "canonical": "Corelib.Floats.FloatOps.emax",
+          "status": "TRANSLATED_AND_CHECKED",
+          "message": "",
+          "target": "Rocq.Corelib.Floats.FloatOps.emax",
+          "blocked_by": []
+        },
+        "stage": "基线已有结果",
+        "path": [],
+        "message": "",
+        "native_diagnostics": []
+      },
+      "module_validation": {
+        "roundtrip_exit": 0,
+        "roundtrip": "OK",
+        "translate_exit": 0,
+        "consumer_exit": 0,
+        "audit_exit": 0,
+        "consumer": "OK",
+        "audit": "OK"
+      },
+      "evidence_directory": "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Floats/FloatOps"
+    },
+    "Corelib.Floats.FloatOps.prec": {
+      "source": "Corelib.Floats.FloatOps.prec",
+      "canonical": "Corelib.Floats.FloatOps.prec",
+      "result": {
+        "canonical": "Corelib.Floats.FloatOps.prec",
+        "status": "TRANSLATED_AND_CHECKED",
+        "message": "",
+        "target": "Rocq.Corelib.Floats.FloatOps.prec",
+        "blocked_by": []
+      },
+      "meaning": "完整定义／数据类型，无待证参数",
+      "source_ir": {
+        "kind": "constant",
+        "name": "Corelib.Floats.FloatOps.prec",
+        "mp": {
+          "file": [
+            "Corelib",
+            "Floats",
+            "FloatOps"
+          ]
+        },
+        "id": "prec",
+        "type": {
+          "k": "ind",
+          "ind": {
+            "mind": "Corelib.Numbers.BinNums.Z",
+            "i": 0
+          },
+          "u": []
+        },
+        "body": {
+          "k": "app",
+          "f": {
+            "k": "construct",
+            "ind": {
+              "mind": "Corelib.Numbers.BinNums.Z",
+              "i": 0
+            },
+            "c": 1,
+            "u": []
+          },
+          "args": [
+            {
+              "k": "app",
+              "f": {
+                "k": "construct",
+                "ind": {
+                  "mind": "Corelib.Numbers.BinNums.positive",
+                  "i": 0
+                },
+                "c": 0,
+                "u": []
+              },
+              "args": [
+                {
+                  "k": "app",
+                  "f": {
+                    "k": "construct",
+                    "ind": {
+                      "mind": "Corelib.Numbers.BinNums.positive",
+                      "i": 0
+                    },
+                    "c": 1,
+                    "u": []
+                  },
+                  "args": [
+                    {
+                      "k": "app",
+                      "f": {
+                        "k": "construct",
+                        "ind": {
+                          "mind": "Corelib.Numbers.BinNums.positive",
+                          "i": 0
+                        },
+                        "c": 0,
+                        "u": []
+                      },
+                      "args": [
+                        {
+                          "k": "app",
+                          "f": {
+                            "k": "construct",
+                            "ind": {
+                              "mind": "Corelib.Numbers.BinNums.positive",
+                              "i": 0
+                            },
+                            "c": 1,
+                            "u": []
+                          },
+                          "args": [
+                            {
+                              "k": "app",
+                              "f": {
+                                "k": "construct",
+                                "ind": {
+                                  "mind": "Corelib.Numbers.BinNums.positive",
+                                  "i": 0
+                                },
+                                "c": 0,
+                                "u": []
+                              },
+                              "args": [
+                                {
+                                  "k": "construct",
+                                  "ind": {
+                                    "mind": "Corelib.Numbers.BinNums.positive",
+                                    "i": 0
+                                  },
+                                  "c": 2,
+                                  "u": []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "body_state": "transparent",
+        "universes": {
+          "k": "monomorphic"
+        },
+        "relevance": "R",
+        "deps": {
+          "type": [
+            "Corelib.Numbers.BinNums.Z"
+          ],
+          "body": [
+            "Corelib.Numbers.BinNums.Z",
+            "Corelib.Numbers.BinNums.positive"
+          ]
+        },
+        "native": {
+          "body_kind": "transparent",
+          "prepared": {
+            "sealed_implementation": false,
+            "lowered_ssr_have_upoly": false
+          },
+          "polymorphic": false,
+          "private_universes": "none",
+          "typing_flags": {
+            "check_guarded": true,
+            "check_positive": true,
+            "check_universes": true,
+            "check_eliminations": true,
+            "indices_matter": false,
+            "impredicative_set": false,
+            "sprop_allowed": true,
+            "allow_uip": false
+          }
+        }
+      },
+      "target_report": {
+        "universe_residuals": null,
+        "universe_poly_params": 0,
+        "universe_minimal_levels": 0,
+        "universe_lowered": false,
+        "universe_level_defaults": 0,
+        "universe_diagnostics": [],
+        "universe_cumulativity": false,
+        "universe_checks": 0,
+        "type_lift_coercions": 0,
+        "type_lift": null,
+        "template_sort": false,
+        "template_params": [],
+        "template": false,
+        "target_value": {
+          "k": "app",
+          "f": {
+            "u": [],
+            "n": "Rocq.Corelib.Numbers.BinNums.Z.Zpos",
+            "k": "const"
+          },
+          "a": {
+            "k": "app",
+            "f": {
+              "u": [],
+              "n": "Rocq.Corelib.Numbers.BinNums.positive.xI",
+              "k": "const"
+            },
+            "a": {
+              "k": "app",
+              "f": {
+                "u": [],
+                "n": "Rocq.Corelib.Numbers.BinNums.positive.xO",
+                "k": "const"
+              },
+              "a": {
+                "k": "app",
+                "f": {
+                  "u": [],
+                  "n": "Rocq.Corelib.Numbers.BinNums.positive.xI",
+                  "k": "const"
+                },
+                "a": {
+                  "k": "app",
+                  "f": {
+                    "u": [],
+                    "n": "Rocq.Corelib.Numbers.BinNums.positive.xO",
+                    "k": "const"
+                  },
+                  "a": {
+                    "k": "app",
+                    "f": {
+                      "u": [],
+                      "n": "Rocq.Corelib.Numbers.BinNums.positive.xI",
+                      "k": "const"
+                    },
+                    "a": {
+                      "u": [],
+                      "n": "Rocq.Corelib.Numbers.BinNums.positive.xH",
+                      "k": "const"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "target_type": {
+          "u": [],
+          "n": "Rocq.Corelib.Numbers.BinNums.Z",
+          "k": "const"
+        },
+        "target_kind": "def",
+        "target_ctors": [],
+        "target": "Rocq.Corelib.Floats.FloatOps.prec",
+        "status": "TRANSLATED_AND_CHECKED",
+        "source_computed": [],
+        "source": "Corelib.Floats.FloatOps.prec",
+        "sort_lowered_levels": [],
+        "sort_interp": false,
+        "sort_fact_reduced": false,
+        "solved_levels": [],
+        "rule": "constant/transparent",
+        "result_sort_inherited": false,
+        "result_sort_implicit_levels": [],
+        "r2bp_levels": [],
+        "quality_prop": null,
+        "protected": true,
+        "prop_lift_unfold": [],
+        "prop_lift_coercions": 0,
+        "prop_lift": null,
+        "primitive_record": false,
+        "poly_level_interp": [],
+        "plain_levels": false,
+        "phantom_lowered": [],
+        "pending_hypotheses": [],
+        "path": [],
+        "num_params": 0,
+        "message": "",
+        "level_split": [],
+        "level_params": [],
+        "level_interp": [],
+        "level_copies": [],
+        "kind": "constant",
+        "implicit_levels": [],
+        "delta_inlined": [],
+        "coinductive_as_inductive": false,
+        "blocked_by": [],
+        "admitting_levels": []
+      },
+      "quality_variants": [],
+      "prerequisite_declarations": [],
+      "attempts": {
+        "source": "Corelib.Floats.FloatOps.prec",
+        "status": "TRANSLATED_AND_CHECKED",
+        "tier_times": [
+          [
+            "c[]",
+            0,
+            "TRANSLATED_AND_CHECKED"
+          ]
+        ],
+        "time_ms": 0
+      },
+      "baseline": {
+        "result": {
+          "canonical": "Corelib.Floats.FloatOps.prec",
+          "status": "TRANSLATED_AND_CHECKED",
+          "message": "",
+          "target": "Rocq.Corelib.Floats.FloatOps.prec",
+          "blocked_by": []
+        },
+        "stage": "基线已有结果",
+        "path": [],
+        "message": "",
+        "native_diagnostics": []
+      },
+      "module_validation": {
+        "roundtrip_exit": 0,
+        "roundtrip": "OK",
+        "translate_exit": 0,
+        "consumer_exit": 0,
+        "audit_exit": 0,
+        "consumer": "OK",
+        "audit": "OK"
+      },
+      "evidence_directory": "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Floats/FloatOps"
+    },
+    "Corelib.Floats.FloatOps.shift": {
+      "source": "Corelib.Floats.FloatOps.shift",
+      "canonical": "Corelib.Floats.FloatOps.shift",
+      "result": {
+        "canonical": "Corelib.Floats.FloatOps.shift",
+        "status": "TRANSLATED_AND_CHECKED",
+        "message": "",
+        "target": "Rocq.Corelib.Floats.FloatOps.shift",
+        "blocked_by": []
+      },
+      "meaning": "完整定义／数据类型，无待证参数",
+      "source_ir": {
+        "kind": "constant",
+        "name": "Corelib.Floats.FloatOps.shift",
+        "mp": {
+          "file": [
+            "Corelib",
+            "Floats",
+            "FloatOps"
+          ]
+        },
+        "id": "shift",
+        "type": {
+          "k": "ind",
+          "ind": {
+            "mind": "Corelib.Numbers.BinNums.Z",
+            "i": 0
+          },
+          "u": []
+        },
+        "body": {
+          "k": "app",
+          "f": {
+            "k": "construct",
+            "ind": {
+              "mind": "Corelib.Numbers.BinNums.Z",
+              "i": 0
+            },
+            "c": 1,
+            "u": []
+          },
+          "args": [
+            {
+              "k": "app",
+              "f": {
+                "k": "construct",
+                "ind": {
+                  "mind": "Corelib.Numbers.BinNums.positive",
+                  "i": 0
+                },
+                "c": 0,
+                "u": []
+              },
+              "args": [
+                {
+                  "k": "app",
+                  "f": {
+                    "k": "construct",
+                    "ind": {
+                      "mind": "Corelib.Numbers.BinNums.positive",
+                      "i": 0
+                    },
+                    "c": 1,
+                    "u": []
+                  },
+                  "args": [
+                    {
+                      "k": "app",
+                      "f": {
+                        "k": "construct",
+                        "ind": {
+                          "mind": "Corelib.Numbers.BinNums.positive",
+                          "i": 0
+                        },
+                        "c": 0,
+                        "u": []
+                      },
+                      "args": [
+                        {
+                          "k": "app",
+                          "f": {
+                            "k": "construct",
+                            "ind": {
+                              "mind": "Corelib.Numbers.BinNums.positive",
+                              "i": 0
+                            },
+                            "c": 1,
+                            "u": []
+                          },
+                          "args": [
+                            {
+                              "k": "app",
+                              "f": {
+                                "k": "construct",
+                                "ind": {
+                                  "mind": "Corelib.Numbers.BinNums.positive",
+                                  "i": 0
+                                },
+                                "c": 0,
+                                "u": []
+                              },
+                              "args": [
+                                {
+                                  "k": "app",
+                                  "f": {
+                                    "k": "construct",
+                                    "ind": {
+                                      "mind": "Corelib.Numbers.BinNums.positive",
+                                      "i": 0
+                                    },
+                                    "c": 0,
+                                    "u": []
+                                  },
+                                  "args": [
+                                    {
+                                      "k": "app",
+                                      "f": {
+                                        "k": "construct",
+                                        "ind": {
+                                          "mind": "Corelib.Numbers.BinNums.positive",
+                                          "i": 0
+                                        },
+                                        "c": 1,
+                                        "u": []
+                                      },
+                                      "args": [
+                                        {
+                                          "k": "app",
+                                          "f": {
+                                            "k": "construct",
+                                            "ind": {
+                                              "mind": "Corelib.Numbers.BinNums.positive",
+                                              "i": 0
+                                            },
+                                            "c": 1,
+                                            "u": []
+                                          },
+                                          "args": [
+                                            {
+                                              "k": "app",
+                                              "f": {
+                                                "k": "construct",
+                                                "ind": {
+                                                  "mind": "Corelib.Numbers.BinNums.positive",
+                                                  "i": 0
+                                                },
+                                                "c": 1,
+                                                "u": []
+                                              },
+                                              "args": [
+                                                {
+                                                  "k": "app",
+                                                  "f": {
+                                                    "k": "construct",
+                                                    "ind": {
+                                                      "mind": "Corelib.Numbers.BinNums.positive",
+                                                      "i": 0
+                                                    },
+                                                    "c": 1,
+                                                    "u": []
+                                                  },
+                                                  "args": [
+                                                    {
+                                                      "k": "app",
+                                                      "f": {
+                                                        "k": "construct",
+                                                        "ind": {
+                                                          "mind": "Corelib.Numbers.BinNums.positive",
+                                                          "i": 0
+                                                        },
+                                                        "c": 1,
+                                                        "u": []
+                                                      },
+                                                      "args": [
+                                                        {
+                                                          "k": "construct",
+                                                          "ind": {
+                                                            "mind": "Corelib.Numbers.BinNums.positive",
+                                                            "i": 0
+                                                          },
+                                                          "c": 2,
+                                                          "u": []
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "body_state": "transparent",
+        "universes": {
+          "k": "monomorphic"
+        },
+        "relevance": "R",
+        "deps": {
+          "type": [
+            "Corelib.Numbers.BinNums.Z"
+          ],
+          "body": [
+            "Corelib.Numbers.BinNums.Z",
+            "Corelib.Numbers.BinNums.positive"
+          ]
+        },
+        "native": {
+          "body_kind": "transparent",
+          "prepared": {
+            "sealed_implementation": false,
+            "lowered_ssr_have_upoly": false
+          },
+          "polymorphic": false,
+          "private_universes": "none",
+          "typing_flags": {
+            "check_guarded": true,
+            "check_positive": true,
+            "check_universes": true,
+            "check_eliminations": true,
+            "indices_matter": false,
+            "impredicative_set": false,
+            "sprop_allowed": true,
+            "allow_uip": false
+          }
+        }
+      },
+      "target_report": {
+        "universe_residuals": null,
+        "universe_poly_params": 0,
+        "universe_minimal_levels": 0,
+        "universe_lowered": false,
+        "universe_level_defaults": 0,
+        "universe_diagnostics": [],
+        "universe_cumulativity": false,
+        "universe_checks": 0,
+        "type_lift_coercions": 0,
+        "type_lift": null,
+        "template_sort": false,
+        "template_params": [],
+        "template": false,
+        "target_value": {
+          "k": "app",
+          "f": {
+            "u": [],
+            "n": "Rocq.Corelib.Numbers.BinNums.Z.Zpos",
+            "k": "const"
+          },
+          "a": {
+            "k": "app",
+            "f": {
+              "u": [],
+              "n": "Rocq.Corelib.Numbers.BinNums.positive.xI",
+              "k": "const"
+            },
+            "a": {
+              "k": "app",
+              "f": {
+                "u": [],
+                "n": "Rocq.Corelib.Numbers.BinNums.positive.xO",
+                "k": "const"
+              },
+              "a": {
+                "k": "app",
+                "f": {
+                  "u": [],
+                  "n": "Rocq.Corelib.Numbers.BinNums.positive.xI",
+                  "k": "const"
+                },
+                "a": {
+                  "k": "app",
+                  "f": {
+                    "u": [],
+                    "n": "Rocq.Corelib.Numbers.BinNums.positive.xO",
+                    "k": "const"
+                  },
+                  "a": {
+                    "k": "app",
+                    "f": {
+                      "u": [],
+                      "n": "Rocq.Corelib.Numbers.BinNums.positive.xI",
+                      "k": "const"
+                    },
+                    "a": {
+                      "k": "app",
+                      "f": {
+                        "u": [],
+                        "n": "Rocq.Corelib.Numbers.BinNums.positive.xI",
+                        "k": "const"
+                      },
+                      "a": {
+                        "k": "app",
+                        "f": {
+                          "u": [],
+                          "n": "Rocq.Corelib.Numbers.BinNums.positive.xO",
+                          "k": "const"
+                        },
+                        "a": {
+                          "k": "app",
+                          "f": {
+                            "u": [],
+                            "n": "Rocq.Corelib.Numbers.BinNums.positive.xO",
+                            "k": "const"
+                          },
+                          "a": {
+                            "k": "app",
+                            "f": {
+                              "u": [],
+                              "n": "Rocq.Corelib.Numbers.BinNums.positive.xO",
+                              "k": "const"
+                            },
+                            "a": {
+                              "k": "app",
+                              "f": {
+                                "u": [],
+                                "n": "Rocq.Corelib.Numbers.BinNums.positive.xO",
+                                "k": "const"
+                              },
+                              "a": {
+                                "k": "app",
+                                "f": {
+                                  "u": [],
+                                  "n": "Rocq.Corelib.Numbers.BinNums.positive.xO",
+                                  "k": "const"
+                                },
+                                "a": {
+                                  "u": [],
+                                  "n": "Rocq.Corelib.Numbers.BinNums.positive.xH",
+                                  "k": "const"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "target_type": {
+          "u": [],
+          "n": "Rocq.Corelib.Numbers.BinNums.Z",
+          "k": "const"
+        },
+        "target_kind": "def",
+        "target_ctors": [],
+        "target": "Rocq.Corelib.Floats.FloatOps.shift",
+        "status": "TRANSLATED_AND_CHECKED",
+        "source_computed": [],
+        "source": "Corelib.Floats.FloatOps.shift",
+        "sort_lowered_levels": [],
+        "sort_interp": false,
+        "sort_fact_reduced": false,
+        "solved_levels": [],
+        "rule": "constant/transparent",
+        "result_sort_inherited": false,
+        "result_sort_implicit_levels": [],
+        "r2bp_levels": [],
+        "quality_prop": null,
+        "protected": true,
+        "prop_lift_unfold": [],
+        "prop_lift_coercions": 0,
+        "prop_lift": null,
+        "primitive_record": false,
+        "poly_level_interp": [],
+        "plain_levels": false,
+        "phantom_lowered": [],
+        "pending_hypotheses": [],
+        "path": [],
+        "num_params": 0,
+        "message": "",
+        "level_split": [],
+        "level_params": [],
+        "level_interp": [],
+        "level_copies": [],
+        "kind": "constant",
+        "implicit_levels": [],
+        "delta_inlined": [],
+        "coinductive_as_inductive": false,
+        "blocked_by": [],
+        "admitting_levels": []
+      },
+      "quality_variants": [],
+      "prerequisite_declarations": [],
+      "attempts": {
+        "source": "Corelib.Floats.FloatOps.shift",
+        "status": "TRANSLATED_AND_CHECKED",
+        "tier_times": [
+          [
+            "c[]",
+            1,
+            "TRANSLATED_AND_CHECKED"
+          ]
+        ],
+        "time_ms": 1
+      },
+      "baseline": {
+        "result": {
+          "canonical": "Corelib.Floats.FloatOps.shift",
+          "status": "TRANSLATED_AND_CHECKED",
+          "message": "",
+          "target": "Rocq.Corelib.Floats.FloatOps.shift",
+          "blocked_by": []
+        },
+        "stage": "基线已有结果",
+        "path": [],
+        "message": "",
+        "native_diagnostics": []
+      },
+      "module_validation": {
+        "roundtrip_exit": 0,
+        "roundtrip": "OK",
+        "translate_exit": 0,
+        "consumer_exit": 0,
+        "audit_exit": 0,
+        "consumer": "OK",
+        "audit": "OK"
+      },
+      "evidence_directory": "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Floats/FloatOps"
+    },
+    "Corelib.Floats.FloatOps.ulp": {
+      "source": "Corelib.Floats.FloatOps.ulp",
+      "canonical": "Corelib.Floats.FloatOps.ulp",
+      "result": {
+        "canonical": "Corelib.Floats.FloatOps.ulp",
+        "status": "TRANSLATED_AND_CHECKED",
+        "message": "",
+        "target": "Rocq.Corelib.Floats.FloatOps.ulp",
+        "blocked_by": []
+      },
+      "meaning": "完整定义／数据类型，无待证参数",
+      "source_ir": {
+        "kind": "constant",
+        "name": "Corelib.Floats.FloatOps.ulp",
+        "mp": {
+          "file": [
+            "Corelib",
+            "Floats",
+            "FloatOps"
+          ]
+        },
+        "id": "ulp",
+        "type": {
+          "k": "prod",
+          "n": {
+            "n": "f",
+            "r": "R"
+          },
+          "ty": {
+            "k": "const",
+            "c": "Corelib.Floats.PrimFloat.float",
+            "u": []
+          },
+          "b": {
+            "k": "const",
+            "c": "Corelib.Floats.PrimFloat.float",
+            "u": []
+          }
+        },
+        "body": {
+          "k": "lam",
+          "n": {
+            "n": "f",
+            "r": "R"
+          },
+          "ty": {
+            "k": "const",
+            "c": "Corelib.Floats.PrimFloat.float",
+            "u": []
+          },
+          "b": {
+            "k": "app",
+            "f": {
+              "k": "const",
+              "c": "Corelib.Floats.FloatOps/Z.ldexp",
+              "u": []
+            },
+            "args": [
+              {
+                "k": "const",
+                "c": "Corelib.Floats.PrimFloat.one",
+                "u": []
+              },
+              {
+                "k": "app",
+                "f": {
+                  "k": "const",
+                  "c": "Corelib.Floats.SpecFloat.fexp",
+                  "u": []
+                },
+                "args": [
+                  {
+                    "k": "const",
+                    "c": "Corelib.Floats.FloatOps.prec",
+                    "u": []
+                  },
+                  {
+                    "k": "const",
+                    "c": "Corelib.Floats.FloatOps.emax",
+                    "u": []
+                  },
+                  {
+                    "k": "app",
+                    "f": {
+                      "k": "const",
+                      "c": "Corelib.Init.Datatypes.snd",
+                      "u": []
+                    },
+                    "args": [
+                      {
+                        "k": "const",
+                        "c": "Corelib.Floats.PrimFloat.float",
+                        "u": []
+                      },
+                      {
+                        "k": "ind",
+                        "ind": {
+                          "mind": "Corelib.Numbers.BinNums.Z",
+                          "i": 0
+                        },
+                        "u": []
+                      },
+                      {
+                        "k": "app",
+                        "f": {
+                          "k": "const",
+                          "c": "Corelib.Floats.FloatOps/Z.frexp",
+                          "u": []
+                        },
+                        "args": [
+                          {
+                            "k": "rel",
+                            "i": 0
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "body_state": "transparent",
+        "universes": {
+          "k": "monomorphic"
+        },
+        "relevance": "R",
+        "deps": {
+          "type": [
+            "Corelib.Floats.PrimFloat.float"
+          ],
+          "body": [
+            "Corelib.Floats.FloatOps.emax",
+            "Corelib.Floats.FloatOps.prec",
+            "Corelib.Floats.FloatOps/Z.frexp",
+            "Corelib.Floats.FloatOps/Z.ldexp",
+            "Corelib.Floats.PrimFloat.float",
+            "Corelib.Floats.PrimFloat.one",
+            "Corelib.Floats.SpecFloat.fexp",
+            "Corelib.Init.Datatypes.snd",
+            "Corelib.Numbers.BinNums.Z"
+          ]
+        },
+        "native": {
+          "body_kind": "transparent",
+          "prepared": {
+            "sealed_implementation": false,
+            "lowered_ssr_have_upoly": false
+          },
+          "polymorphic": false,
+          "private_universes": "none",
+          "typing_flags": {
+            "check_guarded": true,
+            "check_positive": true,
+            "check_universes": true,
+            "check_eliminations": true,
+            "indices_matter": false,
+            "impredicative_set": false,
+            "sprop_allowed": true,
+            "allow_uip": false
+          }
+        }
+      },
+      "target_report": {
+        "universe_residuals": null,
+        "universe_poly_params": 0,
+        "universe_minimal_levels": 0,
+        "universe_lowered": false,
+        "universe_level_defaults": 0,
+        "universe_diagnostics": [],
+        "universe_cumulativity": false,
+        "universe_checks": 2,
+        "type_lift_coercions": 0,
+        "type_lift": null,
+        "template_sort": false,
+        "template_params": [],
+        "template": false,
+        "target_value": {
+          "t": {
+            "u": [],
+            "n": "Rocq.Corelib.Floats.PrimFloat.float",
+            "k": "const"
+          },
+          "n": "f",
+          "k": "lam",
+          "b": {
+            "k": "app",
+            "f": {
+              "k": "app",
+              "f": {
+                "u": [],
+                "n": "Rocq.Corelib.Floats.FloatOps.Z.ldexp",
+                "k": "const"
+              },
+              "a": {
+                "u": [],
+                "n": "Rocq.Corelib.Floats.PrimFloat.one",
+                "k": "const"
+              }
+            },
+            "a": {
+              "k": "app",
+              "f": {
+                "k": "app",
+                "f": {
+                  "k": "app",
+                  "f": {
+                    "u": [],
+                    "n": "Rocq.Corelib.Floats.SpecFloat.fexp",
+                    "k": "const"
+                  },
+                  "a": {
+                    "u": [],
+                    "n": "Rocq.Corelib.Floats.FloatOps.prec",
+                    "k": "const"
+                  }
+                },
+                "a": {
+                  "u": [],
+                  "n": "Rocq.Corelib.Floats.FloatOps.emax",
+                  "k": "const"
+                }
+              },
+              "a": {
+                "k": "app",
+                "f": {
+                  "k": "app",
+                  "f": {
+                    "k": "app",
+                    "f": {
+                      "u": [
+                        {
+                          "l": {
+                            "k": "zero"
+                          },
+                          "k": "succ"
+                        },
+                        {
+                          "l": {
+                            "k": "zero"
+                          },
+                          "k": "succ"
+                        }
+                      ],
+                      "n": "Rocq.Corelib.Init.Datatypes.snd",
+                      "k": "const"
+                    },
+                    "a": {
+                      "u": [],
+                      "n": "Rocq.Corelib.Floats.PrimFloat.float",
+                      "k": "const"
+                    }
+                  },
+                  "a": {
+                    "u": [],
+                    "n": "Rocq.Corelib.Numbers.BinNums.Z",
+                    "k": "const"
+                  }
+                },
+                "a": {
+                  "k": "app",
+                  "f": {
+                    "u": [],
+                    "n": "Rocq.Corelib.Floats.FloatOps.Z.frexp",
+                    "k": "const"
+                  },
+                  "a": {
+                    "k": "bvar",
+                    "i": 0
+                  }
+                }
+              }
+            }
+          }
+        },
+        "target_type": {
+          "t": {
+            "u": [],
+            "n": "Rocq.Corelib.Floats.PrimFloat.float",
+            "k": "const"
+          },
+          "n": "f",
+          "k": "forall",
+          "b": {
+            "u": [],
+            "n": "Rocq.Corelib.Floats.PrimFloat.float",
+            "k": "const"
+          }
+        },
+        "target_kind": "def",
+        "target_ctors": [],
+        "target": "Rocq.Corelib.Floats.FloatOps.ulp",
+        "status": "TRANSLATED_AND_CHECKED",
+        "source_computed": [],
+        "source": "Corelib.Floats.FloatOps.ulp",
+        "sort_lowered_levels": [],
+        "sort_interp": false,
+        "sort_fact_reduced": false,
+        "solved_levels": [],
+        "rule": "constant/transparent",
+        "result_sort_inherited": false,
+        "result_sort_implicit_levels": [],
+        "r2bp_levels": [],
+        "quality_prop": null,
+        "protected": true,
+        "prop_lift_unfold": [],
+        "prop_lift_coercions": 0,
+        "prop_lift": null,
+        "primitive_record": false,
+        "poly_level_interp": [],
+        "plain_levels": false,
+        "phantom_lowered": [],
+        "pending_hypotheses": [],
+        "path": [],
+        "num_params": 0,
+        "message": "",
+        "level_split": [],
+        "level_params": [],
+        "level_interp": [],
+        "level_copies": [],
+        "kind": "constant",
+        "implicit_levels": [],
+        "delta_inlined": [],
+        "coinductive_as_inductive": false,
+        "blocked_by": [],
+        "admitting_levels": []
+      },
+      "quality_variants": [],
+      "prerequisite_declarations": [],
+      "attempts": {
+        "source": "Corelib.Floats.FloatOps.ulp",
+        "status": "TRANSLATED_AND_CHECKED",
+        "tier_times": [
+          [
+            "c[]",
+            0,
+            "TRANSLATED_AND_CHECKED"
+          ]
+        ],
+        "time_ms": 0
+      },
+      "baseline": {
+        "result": {
+          "canonical": "Corelib.Floats.FloatOps.ulp",
+          "status": "TRANSLATED_AND_CHECKED",
+          "message": "",
+          "target": "Rocq.Corelib.Floats.FloatOps.ulp",
+          "blocked_by": []
+        },
+        "stage": "基线已有结果",
+        "path": [],
+        "message": "",
+        "native_diagnostics": []
+      },
+      "module_validation": {
+        "roundtrip_exit": 0,
+        "roundtrip": "OK",
+        "translate_exit": 0,
+        "consumer_exit": 0,
+        "audit_exit": 0,
+        "consumer": "OK",
+        "audit": "OK"
+      },
+      "evidence_directory": "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Floats/FloatOps"
+    }
+  },
+  "validation": {
+    "roundtrip_exit": 0,
+    "roundtrip": "OK",
+    "translate_exit": 0,
+    "consumer_exit": 0,
+    "audit_exit": 0,
+    "consumer": "OK",
+    "audit": "OK"
+  },
+  "state": "MEASURED",
+  "evidence_directory": "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Floats/FloatOps"
+}

@@ -1,0 +1,149 @@
+rocq2lean: 23 root(s) TRANSLATED_AND_CHECKED; summary {"bootstrap_resolved":0,"generated_helpers":0,"not_ok":10,"roots":23,"translated_dependencies":3}
+inductive Rocq.Corelib.Relations.Relation_Definitions.PER.{u_Corelib_Relations_Relation_Definitions_21} : (A :
+    Type u_Corelib_Relations_Relation_Definitions_21) →
+  Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A → Prop
+number of parameters: 2
+constructors:
+Rocq.Corelib.Relations.Relation_Definitions.PER.Build_PER : ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Relations.Relation_Definitions.symmetric.{u_Corelib_Relations_Relation_Definitions_21} A R →
+    Rocq.Corelib.Relations.Relation_Definitions.transitive.{u_Corelib_Relations_Relation_Definitions_21} A R →
+      Rocq.Corelib.Relations.Relation_Definitions.PER.{u_Corelib_Relations_Relation_Definitions_21} A R
+def Rocq.Corelib.Relations.Relation_Definitions.antisymmetric.{u_Corelib_Relations_Relation_Definitions_21} : (A :
+    Type u_Corelib_Relations_Relation_Definitions_21) →
+  Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A → Prop :=
+fun A R =>
+  ∀ (x y : A), R x y → R y x → Rocq.Corelib.Init.Logic.eq.{u_Corelib_Relations_Relation_Definitions_21 + 1} A x y
+def Rocq.Corelib.Relations.Relation_Definitions.commut.{u_Corelib_Relations_Relation_Definitions_21} : (A :
+    Type u_Corelib_Relations_Relation_Definitions_21) →
+  Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A →
+    Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A → Prop :=
+fun A R1 R2 =>
+  ∀ (x y : A),
+    R1 y x →
+      ∀ (z : A),
+        R2 z y →
+          Rocq.Corelib.Init.Logic.ex2.{u_Corelib_Relations_Relation_Definitions_21 + 1} A (fun y' => R2 y' x) fun y' =>
+            R1 z y'
+def Rocq.Corelib.Relations.Relation_Definitions.equiv.{u_Corelib_Relations_Relation_Definitions_21} : (A :
+    Type u_Corelib_Relations_Relation_Definitions_21) →
+  Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A → Prop :=
+fun A R =>
+  Rocq.Corelib.Init.Logic.and
+    (Rocq.Corelib.Relations.Relation_Definitions.reflexive.{u_Corelib_Relations_Relation_Definitions_21} A R)
+    (Rocq.Corelib.Init.Logic.and
+      (Rocq.Corelib.Relations.Relation_Definitions.transitive.{u_Corelib_Relations_Relation_Definitions_21} A R)
+      (Rocq.Corelib.Relations.Relation_Definitions.symmetric.{u_Corelib_Relations_Relation_Definitions_21} A R))
+def Rocq.Corelib.Relations.Relation_Definitions.equiv_refl.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Relations.Relation_Definitions.equivalence.{u_Corelib_Relations_Relation_Definitions_21} A R →
+    Rocq.Corelib.Relations.Relation_Definitions.reflexive.{u_Corelib_Relations_Relation_Definitions_21} A R
+def Rocq.Corelib.Relations.Relation_Definitions.equiv_sym.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Relations.Relation_Definitions.equivalence.{u_Corelib_Relations_Relation_Definitions_21} A R →
+    Rocq.Corelib.Relations.Relation_Definitions.symmetric.{u_Corelib_Relations_Relation_Definitions_21} A R
+def Rocq.Corelib.Relations.Relation_Definitions.equiv_trans.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Relations.Relation_Definitions.equivalence.{u_Corelib_Relations_Relation_Definitions_21} A R →
+    Rocq.Corelib.Relations.Relation_Definitions.transitive.{u_Corelib_Relations_Relation_Definitions_21} A R
+inductive Rocq.Corelib.Relations.Relation_Definitions.equivalence.{u_Corelib_Relations_Relation_Definitions_21} : (A :
+    Type u_Corelib_Relations_Relation_Definitions_21) →
+  Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A → Prop
+number of parameters: 2
+constructors:
+Rocq.Corelib.Relations.Relation_Definitions.equivalence.Build_equivalence : ∀
+  (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Relations.Relation_Definitions.reflexive.{u_Corelib_Relations_Relation_Definitions_21} A R →
+    Rocq.Corelib.Relations.Relation_Definitions.transitive.{u_Corelib_Relations_Relation_Definitions_21} A R →
+      Rocq.Corelib.Relations.Relation_Definitions.symmetric.{u_Corelib_Relations_Relation_Definitions_21} A R →
+        Rocq.Corelib.Relations.Relation_Definitions.equivalence.{u_Corelib_Relations_Relation_Definitions_21} A R
+def Rocq.Corelib.Relations.Relation_Definitions.inclusion.{u_Corelib_Relations_Relation_Definitions_21} : (A :
+    Type u_Corelib_Relations_Relation_Definitions_21) →
+  Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A →
+    Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A → Prop :=
+fun A R1 R2 => ∀ (x y : A), R1 x y → R2 x y
+def Rocq.Corelib.Relations.Relation_Definitions.ord_antisym.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Relations.Relation_Definitions.order.{u_Corelib_Relations_Relation_Definitions_21} A R →
+    Rocq.Corelib.Relations.Relation_Definitions.antisymmetric.{u_Corelib_Relations_Relation_Definitions_21} A R
+def Rocq.Corelib.Relations.Relation_Definitions.ord_refl.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Relations.Relation_Definitions.order.{u_Corelib_Relations_Relation_Definitions_21} A R →
+    Rocq.Corelib.Relations.Relation_Definitions.reflexive.{u_Corelib_Relations_Relation_Definitions_21} A R
+def Rocq.Corelib.Relations.Relation_Definitions.ord_trans.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Relations.Relation_Definitions.order.{u_Corelib_Relations_Relation_Definitions_21} A R →
+    Rocq.Corelib.Relations.Relation_Definitions.transitive.{u_Corelib_Relations_Relation_Definitions_21} A R
+inductive Rocq.Corelib.Relations.Relation_Definitions.order.{u_Corelib_Relations_Relation_Definitions_21} : (A :
+    Type u_Corelib_Relations_Relation_Definitions_21) →
+  Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A → Prop
+number of parameters: 2
+constructors:
+Rocq.Corelib.Relations.Relation_Definitions.order.Build_order : ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Relations.Relation_Definitions.reflexive.{u_Corelib_Relations_Relation_Definitions_21} A R →
+    Rocq.Corelib.Relations.Relation_Definitions.transitive.{u_Corelib_Relations_Relation_Definitions_21} A R →
+      Rocq.Corelib.Relations.Relation_Definitions.antisymmetric.{u_Corelib_Relations_Relation_Definitions_21} A R →
+        Rocq.Corelib.Relations.Relation_Definitions.order.{u_Corelib_Relations_Relation_Definitions_21} A R
+def Rocq.Corelib.Relations.Relation_Definitions.per_sym.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Relations.Relation_Definitions.PER.{u_Corelib_Relations_Relation_Definitions_21} A R →
+    Rocq.Corelib.Relations.Relation_Definitions.symmetric.{u_Corelib_Relations_Relation_Definitions_21} A R
+def Rocq.Corelib.Relations.Relation_Definitions.per_trans.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Relations.Relation_Definitions.PER.{u_Corelib_Relations_Relation_Definitions_21} A R →
+    Rocq.Corelib.Relations.Relation_Definitions.transitive.{u_Corelib_Relations_Relation_Definitions_21} A R
+def Rocq.Corelib.Relations.Relation_Definitions.preord_refl.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Relations.Relation_Definitions.preorder.{u_Corelib_Relations_Relation_Definitions_21} A R →
+    Rocq.Corelib.Relations.Relation_Definitions.reflexive.{u_Corelib_Relations_Relation_Definitions_21} A R
+def Rocq.Corelib.Relations.Relation_Definitions.preord_trans.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Relations.Relation_Definitions.preorder.{u_Corelib_Relations_Relation_Definitions_21} A R →
+    Rocq.Corelib.Relations.Relation_Definitions.transitive.{u_Corelib_Relations_Relation_Definitions_21} A R
+inductive Rocq.Corelib.Relations.Relation_Definitions.preorder.{u_Corelib_Relations_Relation_Definitions_21} : (A :
+    Type u_Corelib_Relations_Relation_Definitions_21) →
+  Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A → Prop
+number of parameters: 2
+constructors:
+Rocq.Corelib.Relations.Relation_Definitions.preorder.Build_preorder : ∀
+  (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Relations.Relation_Definitions.reflexive.{u_Corelib_Relations_Relation_Definitions_21} A R →
+    Rocq.Corelib.Relations.Relation_Definitions.transitive.{u_Corelib_Relations_Relation_Definitions_21} A R →
+      Rocq.Corelib.Relations.Relation_Definitions.preorder.{u_Corelib_Relations_Relation_Definitions_21} A R
+def Rocq.Corelib.Relations.Relation_Definitions.reflexive.{u_Corelib_Relations_Relation_Definitions_21} : (A :
+    Type u_Corelib_Relations_Relation_Definitions_21) →
+  Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A → Prop :=
+fun A R => ∀ (x : A), R x x
+def Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} : Type
+    u_Corelib_Relations_Relation_Definitions_21 →
+  Type u_Corelib_Relations_Relation_Definitions_21 :=
+fun A => A → A → Prop
+def Rocq.Corelib.Relations.Relation_Definitions.same_relation.{u_Corelib_Relations_Relation_Definitions_21} : (A :
+    Type u_Corelib_Relations_Relation_Definitions_21) →
+  Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A →
+    Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A → Prop :=
+fun A R1 R2 =>
+  Rocq.Corelib.Init.Logic.and
+    (Rocq.Corelib.Relations.Relation_Definitions.inclusion.{u_Corelib_Relations_Relation_Definitions_21} A R1 R2)
+    (Rocq.Corelib.Relations.Relation_Definitions.inclusion.{u_Corelib_Relations_Relation_Definitions_21} A R2 R1)
+def Rocq.Corelib.Relations.Relation_Definitions.symmetric.{u_Corelib_Relations_Relation_Definitions_21} : (A :
+    Type u_Corelib_Relations_Relation_Definitions_21) →
+  Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A → Prop :=
+fun A R => ∀ (x y : A), R x y → R y x
+def Rocq.Corelib.Relations.Relation_Definitions.transitive.{u_Corelib_Relations_Relation_Definitions_21} : (A :
+    Type u_Corelib_Relations_Relation_Definitions_21) →
+  Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A → Prop :=
+fun A R => ∀ (x y z : A), R x y → R y z → R x z

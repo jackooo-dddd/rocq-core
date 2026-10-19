@@ -1,0 +1,356 @@
+rocq2lean: 48 root(s) TRANSLATED_AND_CHECKED; summary {"bootstrap_resolved":0,"generated_helpers":0,"not_ok":26,"roots":48,"translated_dependencies":73}
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.add_spec.statement : Prop :=
+∀ (x y : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Numbers.BinNums.Z
+    (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.add x y))
+    (Rocq.Corelib.BinNums.IntDef.Z.modulo
+      (Rocq.Corelib.BinNums.IntDef.Z.add (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z x)
+        (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z y))
+      Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.wB)
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addc_def : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int →
+  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int →
+    Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry.{1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int :=
+fun x y =>
+  let r := Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.add x y;
+  Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+    (Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry.C1.{1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int r)
+    (Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry.C0.{1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int r)
+    (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.ltb r x)
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addc_def_spec.statement : Prop :=
+∀ (x y : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.Init.Logic.eq.{1}
+    (Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry.{1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int)
+    (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.addc x y) (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addc_def x y)
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addcarry : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int →
+  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int → Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int :=
+fun i j => Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.add (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.add i j) 1#63
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addcarryc_def : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int →
+  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int →
+    Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry.{1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int :=
+fun x y =>
+  let r := Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addcarry x y;
+  Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+    (Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry.C1.{1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int r)
+    (Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry.C0.{1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int r)
+    (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.leb r x)
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addcarryc_def_spec.statement : Prop :=
+∀ (x y : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.Init.Logic.eq.{1}
+    (Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry.{1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int)
+    (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.addcarryc x y)
+    (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addcarryc_def x y)
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addmuldiv_def : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int →
+  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int →
+    Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int → Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int :=
+fun p x y =>
+  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lor (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lsl x p)
+    (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lsr y
+      (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.sub Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.digits p))
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addmuldiv_def_spec.statement : Prop :=
+∀ (p x y : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int
+    (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.addmuldiv p x y)
+    (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addmuldiv_def p x y)
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.bit : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int →
+  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int → Rocq.Corelib.Init.Datatypes.bool :=
+fun i n =>
+  Rocq.Corelib.Init.Datatypes.negb
+    (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.is_zero
+      (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lsl (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lsr i n)
+        (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.sub Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.digits 1#63)))
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.compare_def : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int →
+  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int → Rocq.Corelib.Init.Datatypes.comparison :=
+fun x y =>
+  Rocq.Corelib.Init.Datatypes.bool.rec.{1} Rocq.Corelib.Init.Datatypes.comparison.Lt
+    (Rocq.Corelib.Init.Datatypes.bool.rec.{1} Rocq.Corelib.Init.Datatypes.comparison.Eq
+      Rocq.Corelib.Init.Datatypes.comparison.Gt (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.eqb x y))
+    (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.ltb x y)
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.compare_def_spec.statement : Prop :=
+∀ (x y : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.comparison
+    (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.compare x y)
+    (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.compare_def x y)
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.digits : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int :=
+63#63
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.div_spec.statement : Prop :=
+∀ (x y : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Numbers.BinNums.Z
+    (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.div x y))
+    (Rocq.Corelib.BinNums.IntDef.Z.div (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z x)
+      (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z y))
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.diveucl_21_spec.statement : Prop :=
+∀ (a1 a2 b : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.Init.Datatypes.prod.rec.{1, 1, 1}
+    (fun a a_1 =>
+      Rocq.Corelib.Init.Datatypes.prod.rec.{1, 1, 1}
+        (fun a_2 a_3 =>
+          Rocq.Corelib.BinNums.IntDef.Z.lt (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z a1)
+              (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z b) →
+            Rocq.Corelib.Init.Logic.and
+              (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Numbers.BinNums.Z
+                (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z a) a_2)
+              (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Numbers.BinNums.Z
+                (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z a_1) a_3))
+        (Rocq.Corelib.BinNums.IntDef.Z.div_eucl
+          (Rocq.Corelib.BinNums.IntDef.Z.add
+            (Rocq.Corelib.BinNums.IntDef.Z.mul (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z a1)
+              Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.wB)
+            (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z a2))
+          (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z b)))
+    (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.diveucl_21 a1 a2 b)
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.diveucl_def : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int →
+  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int →
+    Rocq.Corelib.Init.Datatypes.prod.{1, 1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int
+      Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int :=
+fun x y =>
+  Rocq.Corelib.Init.Datatypes.prod.pair.{1, 1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int
+    Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.div x y)
+    (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.mod x y)
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.diveucl_def_spec.statement : Prop :=
+∀ (x y : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.Init.Logic.eq.{1}
+    (Rocq.Corelib.Init.Datatypes.prod.{1, 1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int
+      Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int)
+    (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.diveucl x y)
+    (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.diveucl_def x y)
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.eqb_correct.statement : Prop :=
+∀ (i j : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.eqb i j)
+      Rocq.Corelib.Init.Datatypes.bool.true →
+    Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int i j
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.eqb_refl.statement : Prop :=
+∀ (x : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.eqb x x)
+    Rocq.Corelib.Init.Datatypes.bool.true
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.get_digit : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int →
+  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int → Rocq.Corelib.Init.Datatypes.bool :=
+fun x p =>
+  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.ltb (0#63)
+    (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.land x (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lsl (1#63) p))
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.head0_spec.statement : Prop :=
+∀ (x : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.BinNums.IntDef.Z.lt Rocq.Corelib.Numbers.BinNums.Z.Z0
+      (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z x) →
+    Rocq.Corelib.Init.Logic.and
+      (Rocq.Corelib.BinNums.IntDef.Z.le
+        (Rocq.Corelib.BinNums.IntDef.Z.div Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.wB
+          (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH.xO))
+        (Rocq.Corelib.BinNums.IntDef.Z.mul
+          (Rocq.Corelib.BinNums.IntDef.Z.pow
+            (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH.xO)
+            (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.head0 x)))
+          (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z x)))
+      (Rocq.Corelib.BinNums.IntDef.Z.lt
+        (Rocq.Corelib.BinNums.IntDef.Z.mul
+          (Rocq.Corelib.BinNums.IntDef.Z.pow
+            (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH.xO)
+            (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.head0 x)))
+          (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z x))
+        Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.wB)
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.is_even : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int →
+  Rocq.Corelib.Init.Datatypes.bool :=
+fun i =>
+  Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.is_zero (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.land i 1#63)
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.is_zero : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int →
+  Rocq.Corelib.Init.Datatypes.bool :=
+fun i => Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.eqb i 0#63
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.land_spec.statement : Prop :=
+∀ (x y i : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool
+    (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.bit (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.land x y) i)
+    (Rocq.Corelib.Init.Datatypes.andb (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.bit x i)
+      (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.bit y i))
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.leb_spec.statement : Prop :=
+∀ (x y : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.Init.Logic.iff
+    (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool
+      (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.leb x y) Rocq.Corelib.Init.Datatypes.bool.true)
+    (Rocq.Corelib.BinNums.IntDef.Z.le (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z x)
+      (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z y))
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.lor_spec.statement : Prop :=
+∀ (x y i : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool
+    (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.bit (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lor x y) i)
+    (Rocq.Corelib.Init.Datatypes.orb (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.bit x i)
+      (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.bit y i))
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.lsl_spec.statement : Prop :=
+∀ (x p : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Numbers.BinNums.Z
+    (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lsl x p))
+    (Rocq.Corelib.BinNums.IntDef.Z.modulo
+      (Rocq.Corelib.BinNums.IntDef.Z.mul (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z x)
+        (Rocq.Corelib.BinNums.IntDef.Z.pow
+          (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH.xO)
+          (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z p)))
+      Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.wB)
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.lsr_spec.statement : Prop :=
+∀ (x p : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Numbers.BinNums.Z
+    (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lsr x p))
+    (Rocq.Corelib.BinNums.IntDef.Z.div (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z x)
+      (Rocq.Corelib.BinNums.IntDef.Z.pow
+        (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH.xO)
+        (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z p)))
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.ltb_spec.statement : Prop :=
+∀ (x y : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.Init.Logic.iff
+    (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool
+      (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.ltb x y) Rocq.Corelib.Init.Datatypes.bool.true)
+    (Rocq.Corelib.BinNums.IntDef.Z.lt (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z x)
+      (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z y))
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.lxor_spec.statement : Prop :=
+∀ (x y i : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool
+    (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.bit (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lxor x y) i)
+    (Rocq.Corelib.Init.Datatypes.xorb (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.bit x i)
+      (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.bit y i))
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.max_int : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int :=
+9223372036854775807#63
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.mod_spec.statement : Prop :=
+∀ (x y : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Numbers.BinNums.Z
+    (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.mod x y))
+    (Rocq.Corelib.BinNums.IntDef.Z.modulo (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z x)
+      (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z y))
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.mul_spec.statement : Prop :=
+∀ (x y : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Numbers.BinNums.Z
+    (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.mul x y))
+    (Rocq.Corelib.BinNums.IntDef.Z.modulo
+      (Rocq.Corelib.BinNums.IntDef.Z.mul (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z x)
+        (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z y))
+      Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.wB)
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.mulc_spec.statement : Prop :=
+∀ (x y : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Numbers.BinNums.Z
+    (Rocq.Corelib.BinNums.IntDef.Z.mul (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z x)
+      (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z y))
+    (Rocq.Corelib.BinNums.IntDef.Z.add
+      (Rocq.Corelib.BinNums.IntDef.Z.mul
+        (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z
+          (Rocq.Corelib.Init.Datatypes.fst.{1, 1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int
+            Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.mulc x y)))
+        Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.wB)
+      (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z
+        (Rocq.Corelib.Init.Datatypes.snd.{1, 1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int
+          Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.mulc x y))))
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.of_Z : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int :=
+fun z =>
+  Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (0#63) (fun a => Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.of_pos a)
+    (fun a =>
+      Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.sub (0#63) (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.of_pos a))
+    z
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.of_pos : Rocq.Corelib.Numbers.BinNums.positive →
+  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int :=
+Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.of_pos_rec Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.size
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.of_pos_rec : Rocq.Corelib.Init.Datatypes.nat →
+  Rocq.Corelib.Numbers.BinNums.positive → Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int :=
+fun n p =>
+  Rocq.Corelib.Numbers.BinNums.positive.rec.{1} (motive := fun p =>
+    Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int)
+    (fun a _ih n =>
+      Rocq.Corelib.Init.Datatypes.nat.rec.{1} (0#63)
+        (fun a _ih_1 =>
+          Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lor (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lsl (_ih a) 1#63)
+            1#63)
+        n)
+    (fun a _ih n =>
+      Rocq.Corelib.Init.Datatypes.nat.rec.{1} (0#63)
+        (fun a _ih_1 => Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lsl (_ih a) 1#63) n)
+    (fun n => Rocq.Corelib.Init.Datatypes.nat.rec.{1} (0#63) (fun a _ih => 1#63) n) p n
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.of_to_Z.statement : Prop :=
+∀ (x : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int
+    (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.of_Z (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z x)) x
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.set_digit : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int →
+  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int →
+    Rocq.Corelib.Init.Datatypes.bool → Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int :=
+fun x p b =>
+  Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+    (Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+      (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lor x (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lsl (1#63) p))
+      (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.land x
+        (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lxor Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.max_int
+          (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lsl (1#63) p)))
+      b)
+    x
+    (Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+      (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.ltb p Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.digits)
+      Rocq.Corelib.Init.Datatypes.bool.false (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.leb (0#63) p))
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.size : Rocq.Corelib.Init.Datatypes.nat :=
+⋯.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.sub_spec.statement : Prop :=
+∀ (x y : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Numbers.BinNums.Z
+    (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.sub x y))
+    (Rocq.Corelib.BinNums.IntDef.Z.modulo
+      (Rocq.Corelib.BinNums.IntDef.Z.sub (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z x)
+        (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z y))
+      Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.wB)
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.subc_def : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int →
+  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int →
+    Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry.{1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int :=
+fun x y =>
+  Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+    (Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry.C0.{1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int
+      (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.sub x y))
+    (Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry.C1.{1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int
+      (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.sub x y))
+    (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.leb y x)
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.subc_def_spec.statement : Prop :=
+∀ (x y : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.Init.Logic.eq.{1}
+    (Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry.{1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int)
+    (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.subc x y) (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.subc_def x y)
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.subcarryc_def : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int →
+  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int →
+    Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry.{1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int :=
+fun x y =>
+  Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+    (Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry.C0.{1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int
+      (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.sub (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.sub x y) 1#63))
+    (Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry.C1.{1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int
+      (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.sub (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.sub x y) 1#63))
+    (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.ltb y x)
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.subcarryc_def_spec.statement : Prop :=
+∀ (x y : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.Init.Logic.eq.{1}
+    (Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry.{1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int)
+    (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.subcarryc x y)
+    (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.subcarryc_def x y)
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.tail0_spec.statement : Prop :=
+∀ (x : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.BinNums.IntDef.Z.lt Rocq.Corelib.Numbers.BinNums.Z.Z0
+      (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z x) →
+    Rocq.Corelib.Init.Logic.ex.{1} Rocq.Corelib.Numbers.BinNums.Z fun y =>
+      Rocq.Corelib.Init.Logic.and (Rocq.Corelib.BinNums.IntDef.Z.le Rocq.Corelib.Numbers.BinNums.Z.Z0 y)
+        (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Numbers.BinNums.Z
+          (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z x)
+          (Rocq.Corelib.BinNums.IntDef.Z.mul
+            (Rocq.Corelib.BinNums.IntDef.Z.add
+              (Rocq.Corelib.BinNums.IntDef.Z.mul
+                (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH.xO) y)
+              (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH))
+            (Rocq.Corelib.BinNums.IntDef.Z.pow
+              (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH.xO)
+              (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z
+                (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.tail0 x)))))
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int →
+  Rocq.Corelib.Numbers.BinNums.Z :=
+Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z_rec Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.size
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z_rec : Rocq.Corelib.Init.Datatypes.nat →
+  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int → Rocq.Corelib.Numbers.BinNums.Z :=
+fun n i =>
+  Rocq.Corelib.Init.Datatypes.nat.rec.{1} (motive := fun n =>
+    Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int → Rocq.Corelib.Numbers.BinNums.Z)
+    (fun i => Rocq.Corelib.Numbers.BinNums.Z.Z0)
+    (fun a _ih i =>
+      Rocq.Corelib.Init.Datatypes.bool.rec.{1} (motive := fun t =>
+        Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z) Rocq.Corelib.BinNums.IntDef.Z.double
+        Rocq.Corelib.BinNums.IntDef.Z.succ_double (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.is_even i)
+        (_ih (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lsr i 1#63)))
+    n i
+def Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.wB : Rocq.Corelib.Numbers.BinNums.Z :=
+Rocq.Corelib.BinNums.IntDef.Z.pow (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH.xO)
+  (Rocq.Corelib.BinNums.IntDef.Z.of_nat Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.size)

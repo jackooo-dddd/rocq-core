@@ -1,0 +1,71 @@
+--- main74/Translate.lean
++++ main75/Translate.lean
+@@ -1949,6 +1949,17 @@
+     fty := b.instantiate1 a'
+   return out
+ 
++/-- A speculative representation conversion commits only on success. Restore
++both elaboration assignments and the evidence counter on rejection. -/
++def tryLiftConversion (cnt : IO.Ref Nat) (attempt : MetaM (Option Expr)) : MetaM (Option Expr) := do
++  let saved ← saveState
++  let before ← cnt.get
++  let result ← try attempt catch _ => pure none
++  if result.isSome then return result
++  saved.restore
++  cnt.set before
++  return none
++
+ /-- Rule P, term level: `b` used at `cod`. Directly (`liftCoerce`), or, for a function at a function type
+ whose domains or codomain differ by lifts, η-expanded with its arguments and result coerced
+ (`fun xs => PULift.up (o (PULift.down x) …)`); unchanged when nothing needs a coercion. -/
+@@ -1974,15 +1985,16 @@
+           cnt.modify (· + 1)
+           return mkApp (mkConst (Name.mkSimple "PULift") [upper, lower]) b
+   if ← isDefEq bt cod then return b
+-  if let some c ← liftCoerce b bt cod allowTypes then
+-    cnt.modify (· + 1); return c
++  -- Type transports use the recursive up/down cases below, including the
++  -- direct case. Keep the restricted Prop-only path for the earlier P tier.
++  if !allowTypes then
++    if let some c ← liftCoerce b bt cod then
++      cnt.modify (· + 1); return c
+   let cod' ← whnf cod
+   if allowTypes then
+     -- Compose an outer lift with an inner function/record conversion. The
+     -- payload is still fully checked; a lift alone need not make it convertible.
+-    let saved ← saveState
+-    let before ← cnt.get
+-    let attempt : Unit → MetaM (Option Expr) := fun _ => do
++    let attempt : MetaM (Option Expr) := do
+       if cod'.isAppOfArity (Name.mkSimple "PULift") 1 then
+         let [r,u] := cod'.getAppFn.constLevels! | return none
+         let value ← liftCoerceValue b cod'.appArg! cnt lifted true
+@@ -1998,14 +2010,10 @@
+         unless ← isDefEq (← inferType value) cod do return none
+         return some value
+       return none
+-    let mapped? ← try attempt () catch _ => pure none
+-    if let some mapped := mapped? then return mapped
+-    saved.restore
+-    cnt.set before
++    if let some mapped ← tryLiftConversion cnt attempt then return mapped
+   if allowTypes then
+-    let saved ← saveState
+     let before ← cnt.get
+-    let attempt : Unit → MetaM (Option Expr) := fun _ => do
++    let attempt : MetaM (Option Expr) := do
+       let actual ← whnf bt
+       let .const iname fromLvls := actual.getAppFn | pure none
+       let .const targetName toLvls := cod'.getAppFn | pure none
+@@ -2041,10 +2049,7 @@
+         Meta.check out
+         unless (← cnt.get) > before && (← isDefEq (← inferType out) cod) do return none
+         return some out
+-    let mapped? ← try attempt () catch _ => pure none
+-    if let some mapped := mapped? then return mapped
+-    saved.restore
+-    cnt.set before
++    if let some mapped ← tryLiftConversion cnt attempt then return mapped
+   unless cod'.isForall do return b
+   let n0 ← cnt.get
+   let r ← forallTelescope cod' fun ys cod2 => do

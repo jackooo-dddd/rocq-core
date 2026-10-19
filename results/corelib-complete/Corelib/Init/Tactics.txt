@@ -1,0 +1,13 @@
+rocq2lean: 2 root(s) TRANSLATED_AND_CHECKED; summary {"bootstrap_resolved":0,"generated_helpers":0,"not_ok":2,"roots":2,"translated_dependencies":3}
+def Rocq.Corelib.Init.Tactics.decide_left.statement : Prop :=
+∀ (C : Prop) (decide : Rocq.Corelib.Init.Specif.sumbool C (Rocq.Corelib.Init.Logic.not C)),
+  C →
+    ∀ (P : Rocq.Corelib.Init.Specif.sumbool C (Rocq.Corelib.Init.Logic.not C) → Prop),
+      (∀ (H : C), P (Rocq.Corelib.Init.Specif.sumbool.left C (Rocq.Corelib.Init.Logic.not C) H)) → P decide
+def Rocq.Corelib.Init.Tactics.decide_right.statement : Prop :=
+∀ (C : Prop) (decide : Rocq.Corelib.Init.Specif.sumbool C (Rocq.Corelib.Init.Logic.not C)),
+  Rocq.Corelib.Init.Logic.not C →
+    ∀ (P : Rocq.Corelib.Init.Specif.sumbool C (Rocq.Corelib.Init.Logic.not C) → Prop),
+      (∀ (H : Rocq.Corelib.Init.Logic.not C),
+          P (Rocq.Corelib.Init.Specif.sumbool.right C (Rocq.Corelib.Init.Logic.not C) H)) →
+        P decide

@@ -1,0 +1,152 @@
+Int63 translation progress (full installed Corelib scope unchanged)
+Frozen translator: work/snapshots/int63-pure/translator
+Full run: work/runs/int63-pure-full
+Original 839 declarations: 145 blocked, 694 checked (unchanged).
+Full 2180 declarations: 546 blocked, 1634 checked, 0 good-status validation-incomplete.
+26 newly unblocked declarations; no status/validation regressions.
+384 native-source-kernel vs Lean-kernel computations passed.
+Source axioms are not admitted; each accepted definition has empty Lean axiom closure.
+Statement suite: PASS (work/logs/int63-pure-statement-suite2.log); existing Prosa fixture dependency restored.
+
+Newly unblocked:
+
+Corelib.Array.PrimArray.max_length
+  -> Rocq.Corelib.Array.PrimArray.max_length
+  status: TRANSLATED_AND_CHECKED
+  target kind: def
+
+Corelib.Numbers.Cyclic.Int63.PrimInt63.add
+  -> Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.add
+  status: TRANSLATED_AND_CHECKED
+  target kind: def
+  exact checked target expression: {"k": "app", "f": {"u": [], "n": "BitVec.add", "k": "const"}, "a": {"v": 63, "k": "natlit"}}
+
+Corelib.Numbers.Cyclic.Int63.PrimInt63.div
+  -> Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.div
+  status: TRANSLATED_AND_CHECKED
+  target kind: def
+  exact checked target expression: {"k": "app", "f": {"u": [], "n": "Rocq2Lean.PrimInt63.udiv", "k": "const"}, "a": {"v": 63, "k": "natlit"}}
+
+Corelib.Numbers.Cyclic.Int63.PrimInt63.id_int
+  -> Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.id_int
+  status: TRANSLATED_AND_CHECKED
+  target kind: def
+
+Corelib.Numbers.Cyclic.Int63.PrimInt63.int
+  -> Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int
+  status: TRANSLATED_AND_CHECKED
+  target kind: def
+  exact checked target expression: {"k": "app", "f": {"u": [], "n": "BitVec", "k": "const"}, "a": {"v": 63, "k": "natlit"}}
+
+Corelib.Numbers.Cyclic.Int63.PrimInt63.int_wrap
+  -> Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int_wrap
+  status: TRANSLATED_AND_CHECKED
+  target kind: def
+
+Corelib.Numbers.Cyclic.Int63.PrimInt63.int_wrapper
+  -> Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int_wrapper
+  status: TRANSLATED_AND_CHECKED
+  target kind: inductive
+
+Corelib.Numbers.Cyclic.Int63.PrimInt63.land
+  -> Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.land
+  status: TRANSLATED_AND_CHECKED
+  target kind: def
+  exact checked target expression: {"k": "app", "f": {"u": [], "n": "Rocq2Lean.PrimInt63.land", "k": "const"}, "a": {"v": 63, "k": "natlit"}}
+
+Corelib.Numbers.Cyclic.Int63.PrimInt63.lor
+  -> Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lor
+  status: TRANSLATED_AND_CHECKED
+  target kind: def
+  exact checked target expression: {"k": "app", "f": {"u": [], "n": "Rocq2Lean.PrimInt63.lor", "k": "const"}, "a": {"v": 63, "k": "natlit"}}
+
+Corelib.Numbers.Cyclic.Int63.PrimInt63.lxor
+  -> Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lxor
+  status: TRANSLATED_AND_CHECKED
+  target kind: def
+  exact checked target expression: {"k": "app", "f": {"u": [], "n": "Rocq2Lean.PrimInt63.lxor", "k": "const"}, "a": {"v": 63, "k": "natlit"}}
+
+Corelib.Numbers.Cyclic.Int63.PrimInt63.mod
+  -> Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.mod
+  status: TRANSLATED_AND_CHECKED
+  target kind: def
+  exact checked target expression: {"k": "app", "f": {"u": [], "n": "Rocq2Lean.PrimInt63.umod", "k": "const"}, "a": {"v": 63, "k": "natlit"}}
+
+Corelib.Numbers.Cyclic.Int63.PrimInt63.mul
+  -> Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.mul
+  status: TRANSLATED_AND_CHECKED
+  target kind: def
+  exact checked target expression: {"k": "app", "f": {"u": [], "n": "BitVec.mul", "k": "const"}, "a": {"v": 63, "k": "natlit"}}
+
+Corelib.Numbers.Cyclic.Int63.PrimInt63.parser
+  -> Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.parser
+  status: TRANSLATED_AND_CHECKED
+  target kind: def
+
+Corelib.Numbers.Cyclic.Int63.PrimInt63.pos_neg_int63
+  -> Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.pos_neg_int63
+  status: TRANSLATED_AND_CHECKED
+  target kind: inductive
+
+Corelib.Numbers.Cyclic.Int63.PrimInt63.printer
+  -> Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.printer
+  status: TRANSLATED_AND_CHECKED
+  target kind: def
+
+Corelib.Numbers.Cyclic.Int63.PrimInt63.sub
+  -> Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.sub
+  status: TRANSLATED_AND_CHECKED
+  target kind: def
+  exact checked target expression: {"k": "app", "f": {"u": [], "n": "BitVec.sub", "k": "const"}, "a": {"v": 63, "k": "natlit"}}
+
+Corelib.Numbers.Cyclic.Int63.Sint63Axioms.min_int
+  -> Rocq.Corelib.Numbers.Cyclic.Int63.Sint63Axioms.min_int
+  status: TRANSLATED_AND_CHECKED
+  target kind: def
+
+Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addcarry
+  -> Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addcarry
+  status: TRANSLATED_AND_CHECKED
+  target kind: def
+
+Corelib.Numbers.Cyclic.Int63.Uint63Axioms.digits
+  -> Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.digits
+  status: TRANSLATED_AND_CHECKED
+  target kind: def
+
+Corelib.Numbers.Cyclic.Int63.Uint63Axioms.diveucl_def
+  -> Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.diveucl_def
+  status: TRANSLATED_AND_CHECKED
+  target kind: def
+
+Corelib.Numbers.Cyclic.Int63.Uint63Axioms.max_int
+  -> Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.max_int
+  status: TRANSLATED_AND_CHECKED
+  target kind: def
+
+Corelib.Strings.PrimString.char63
+  -> Rocq.Corelib.Strings.PrimString.char63
+  status: TRANSLATED_AND_CHECKED
+  target kind: def
+
+Corelib.Strings.PrimString.char63_wrap
+  -> Rocq.Corelib.Strings.PrimString.char63_wrap
+  status: TRANSLATED_AND_CHECKED
+  target kind: def
+
+Corelib.Strings.PrimString.char63_wrapper
+  -> Rocq.Corelib.Strings.PrimString.char63_wrapper
+  status: TRANSLATED_AND_CHECKED
+  target kind: inductive
+
+Corelib.Strings.PrimString.max_length
+  -> Rocq.Corelib.Strings.PrimString.max_length
+  status: TRANSLATED_AND_CHECKED
+  target kind: def
+
+Corelib.Strings.PrimStringAxioms.char63_valid
+  -> Rocq.Corelib.Strings.PrimStringAxioms.char63_valid
+  status: TRANSLATED_AND_CHECKED
+  target kind: def
+
+Remaining work includes native comparisons, carries, shifts, signed operations, float/string/array semantics, polymorphic universe constraints, dependent proof extraction, template Prop cases and sort polymorphism. No final rule minimization claimed.

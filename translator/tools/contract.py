@@ -20,6 +20,9 @@ import hashlib
 import json
 import sys
 import uuid
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import quality_families
 
 
 class ContractError(Exception):
@@ -51,6 +54,7 @@ def decl_refs(d):
         term_refs([d["type"], d["body"]], acc)
     else:
         term_refs([d["params"], d["bodies"]], acc)
+    acc.update(quality_families.members(d))
     acc.discard(d["name"])
     return acc
 
@@ -64,6 +68,10 @@ def build(ir_path, request, protection=None):
     raw = open(ir_path, "rb").read()
     lines = [json.loads(l) for l in raw.decode().splitlines() if l]
     decls = {d["name"]: d for d in lines if d["kind"] in ("constant", "inductive")}
+    try:
+        families = quality_families.contract_families(decls)
+    except (ValueError, KeyError, TypeError) as e:
+        raise ContractError(str(e)) from e
     ir_roots = lines[1]["roots"]
     if [r["requested"] for r in ir_roots] != list(request):
         raise ContractError("exported root records do not match the request (order, spelling or count)")
@@ -100,6 +108,8 @@ def build(ir_path, request, protection=None):
         "extra_exported": sorted(set(decls) - closure),
         "protection": protection,
     }
+    if families:
+        out["quality_families"] = families
     # statement mode (docs/STATEMENT_ONLY_DESIGN.md): the mode is bound in the contract (proof-mode
     # contracts are unchanged); the closure above is already the statement closure, since the exporter
     # dropped the bodies of proofs

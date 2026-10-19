@@ -1,0 +1,19 @@
+import Rocq2Lean
+#rocq2lean_import "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Numbers/BinNums/source.ndjson" "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Numbers/BinNums/translation_report.json" "89e0e639ecde58fa213c72c4930d4d36573ff4b3efc80d64eecfb1439adead41" "86f9dd42-f496-45b8-b6b1-21e10303fe94" "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Numbers/BinNums/contract.json" "5a38b2995cbecbd349329235ae22c54d6c5222b711edeccf589c54c4b91841b9"
+
+set_option pp.universes true
+#print «Rocq».«Corelib».«Numbers».«BinNums».«N»
+#print «Rocq».«Corelib».«Numbers».«BinNums».«N_ind».«statement»
+#print «Rocq».«Corelib».«Numbers».«BinNums».«N_rec»
+#print «Rocq».«Corelib».«Numbers».«BinNums».«N_rect»
+#print «Rocq».«Corelib».«Numbers».«BinNums».«N_sind».«statement»
+#print «Rocq».«Corelib».«Numbers».«BinNums».«Z»
+#print «Rocq».«Corelib».«Numbers».«BinNums».«Z_ind».«statement»
+#print «Rocq».«Corelib».«Numbers».«BinNums».«Z_rec»
+#print «Rocq».«Corelib».«Numbers».«BinNums».«Z_rect»
+#print «Rocq».«Corelib».«Numbers».«BinNums».«Z_sind».«statement»
+#print «Rocq».«Corelib».«Numbers».«BinNums».«positive»
+#print «Rocq».«Corelib».«Numbers».«BinNums».«positive_ind».«statement»
+#print «Rocq».«Corelib».«Numbers».«BinNums».«positive_rec»
+#print «Rocq».«Corelib».«Numbers».«BinNums».«positive_rect»
+#print «Rocq».«Corelib».«Numbers».«BinNums».«positive_sind».«statement»

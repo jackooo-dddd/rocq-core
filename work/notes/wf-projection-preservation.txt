@@ -1,0 +1,7 @@
+Experimental frontier after certified quality-main10 (2030 checked / 150 blocked).
+main12: preserve one-branch neutral proof projection during extraction. Fresh source export succeeds; projected_fix body retains its case and has no extracted proof obligation. Target fails at non-uniform recursive lowering.
+main13: extend existing iota-generalized recursive lowering to non-uniform parameters, passing only source constructor fields to iota. Independent audit derives non-uniform index/constructor environments as for direct-match recursion. Target advances to non-direct recursive-field failure.
+Diagnosis: transCase dispatched non-uniform cases to transCaseNU before consulting the iota environment; therefore recursive calls still contained a recursor/convoy instead of their direct functional field.
+main14: add iota reduction after non-uniform case shape/scrutinee checks. Expand transparent global applications only if their source weak-head reduct satisfies the neutral one-branch projection predicate. Never unfold opaque proofs or retain arbitrary proof matches.
+Required evidence: fresh Rocq source recheck, explicit projection/Fix_F definitional equality, target consumer + independent structural audit, projection eligibility exclusions and kernel-valid wrong-computation mutations, complete fixed-scope regression and statement suite.
+No coverage promotion from experimental probes.

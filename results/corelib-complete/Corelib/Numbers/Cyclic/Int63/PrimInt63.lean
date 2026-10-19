@@ -1,0 +1,41 @@
+import Rocq2Lean
+#rocq2lean_import "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Numbers/Cyclic/Int63/PrimInt63/source.ndjson" "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Numbers/Cyclic/Int63/PrimInt63/translation_report.json" "3b0d908edabc57302f9e6b98e5a838e41f2754c99f0e8a73b470d85b32742d2b" "75c5d176-1bd8-44ba-98a0-e05ef30ca2f5" "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Numbers/Cyclic/Int63/PrimInt63/contract.json" "7956c221200129a0f9d3bbb9057403cd4114198c67c0d5e03527f383d6eb8bfb"
+
+set_option pp.universes true
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«add»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«addc»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«addcarryc»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«addmuldiv»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«asr»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«compare»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«compares»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«div»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«diveucl»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«diveucl_21»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«divs»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«eqb»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«head0»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«id_int»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«int»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«int_wrap»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«int_wrapper»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«land»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«leb»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«lesb»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«lor»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«lsl»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«lsr»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«ltb»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«ltsb»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«lxor»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«mod»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«mods»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«mul»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«mulc»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«parser»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«pos_neg_int63»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«printer»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«sub»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«subc»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«subcarryc»
+#print «Rocq».«Corelib».«Numbers».«Cyclic».«Int63».«PrimInt63».«tail0»

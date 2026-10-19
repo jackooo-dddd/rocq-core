@@ -1,5 +1,9 @@
 import Lean
 import Rocq2Lean.IR
+import Rocq2Lean.PrimInt63
+import Rocq2Lean.PrimArray
+import Rocq2Lean.PrimString
+import Rocq2Lean.PrimFloat
 
 /-!
 # Expression translation
@@ -18,6 +22,177 @@ namespace Rocq2Lean
 
 open Lean Meta
 open IR (SortIR LevelExpr AName IndRef Relevance)
+
+/-- R6-I: retain every local polymorphic parameter while interpreting upper
+bounds as maxima. At every model of the source constraints, the interpretation
+is the identity. This fragment supports nonnegative local bounds and equality. -/
+def polyUniverseInterpretation (names : Array (Option String)) (constraints : Json)
+    (allowUpperGlobals : Bool := false) :
+    Except String (Array Lean.Level) := do
+  let n := names.size
+  let node (j : Json) : Except String Nat := do
+    match ← j.getObjValAs? String "k" with
+    | "set" => return n
+    | "var" =>
+      let i ← j.getObjValAs? Nat "i"
+      if i < n then return i else throw "polymorphic constraint variable out of range"
+    | _ => throw "polymorphic interpretation needs local variables or Set"
+  let mut edges : Array (Nat × Nat × Nat) := #[]
+  let mut guards : Array (Nat × String × Nat) := #[]
+  for c in ← constraints.getArr? do
+    let a ← node (← c.getObjVal? "l")
+    let rhs ← c.getObjVal? "r"
+    let rel ← c.getObjVal? "rel"
+    if (← rhs.getObjValAs? String "k") == "global" then
+      unless allowUpperGlobals && (← rel.getObjValAs? String "k") == "le" do
+        throw "unsupported global polymorphic bound"
+      let k ← (← rel.getObjVal? "offset").getInt?
+      if k < 0 then throw "negative global polymorphic bound"
+      guards := guards.push (a, ← rhs.getObjValAs? String "n", k.toNat)
+      continue
+    let b ← node rhs
+    match ← rel.getObjValAs? String "k" with
+    | "eq" => edges := edges.push (a,b,0) |>.push (b,a,0)
+    | "le" =>
+      let k ← (← rel.getObjVal? "offset").getInt?
+      if k < 0 then throw "negative polymorphic bound needs a separate interpretation"
+      edges := edges.push (a,b,k.toNat)
+    | _ => throw "unknown polymorphic universe relation"
+  let size := n + 1
+  let mut reach : Array (Option Nat) := Array.replicate (size * size) none
+  for i in [:size] do
+    reach := reach.set! (i * size + i) (some 0)
+    reach := reach.set! (n * size + i) (some 0)
+  for (a,b,k) in edges do
+    let old := reach[a * size + b]!
+    reach := reach.set! (a * size + b) (some (max k (old.getD 0)))
+  for k in [:size] do
+    for a in [:size] do
+      for b in [:size] do
+        if let some x := reach[a * size + k]! then
+          if let some y := reach[k * size + b]! then
+            let old := reach[a * size + b]!
+            reach := reach.set! (a * size + b) (some (max (x+y) (old.getD 0)))
+  for i in [:size] do
+    if (reach[i * size + i]!).getD 0 > 0 then
+      throw "inconsistent positive cycle in polymorphic universe constraints"
+  -- Check every summand of each substituted upper guard against the FULL
+  -- source graph. Globals are sinks in this fragment, so every path is a
+  -- local closure path followed by one of the retained outward edges.
+  for (i,g,k) in guards do
+    for j in [:size] do
+      if let some d := reach[j * size + i]! then
+        unless guards.any (fun (a,h,w) =>
+          h == g && ((reach[j * size + a]!).any (fun v => d + k ≤ v + w))) do
+          throw "polymorphic interpretation does not preserve a global upper guard"
+  let mut out := #[]
+  for i in [:n] do
+    if (reach[i * size + n]!).isSome then
+      out := out.push .zero
+    else
+      let mut value : Lean.Level := .zero
+      for j in [:size] do
+        if let some k := reach[j * size + i]! then
+          let base := if j == n || (reach[j * size + n]!).isSome then Lean.Level.zero
+            else Lean.Level.param (Name.mkSimple s!"v_{j}")
+          value := mkLevelMax value (base.addOffset k)
+      out := out.push value.normalize
+  if !guards.isEmpty && (List.range n).all (fun i =>
+      out[i]! == Lean.Level.param (Name.mkSimple s!"v_{i}")) then
+    throw "identity global fragment uses exact R6 parameters"
+  return out
+
+/-- Operations with the same unsigned 63-bit semantics in the source kernel and Lean.
+Division by zero is zero; remainder by zero is the dividend on both sides. -/
+def int63OpTarget? : String → Option Name
+  | "add" => some ``BitVec.add
+  | "sub" => some ``BitVec.sub
+  | "mul" => some ``BitVec.mul
+  | "div" => some ``PrimInt63.udiv
+  | "rem" => some ``PrimInt63.umod
+  | "l_and" => some ``PrimInt63.land
+  | "l_or" => some ``PrimInt63.lor
+  | "l_xor" => some ``PrimInt63.lxor
+  | "divs" => some ``PrimInt63.sdiv
+  | "rems" => some ``PrimInt63.smod
+  | "l_sl" => some ``PrimInt63.lsl
+  | "l_sr" => some ``PrimInt63.lsr
+  | "a_sr" => some ``PrimInt63.asr
+  | "head0" => some ``PrimInt63.head0
+  | "tail0" => some ``PrimInt63.tail0
+  | "addMulDiv" => some ``PrimInt63.addmuldiv
+  | _ => none
+
+/-- Native predicates return the source kernel's registered Boolean constructors. -/
+def int63BoolOpTarget? : String → Option Name
+  | "eq" => some ``PrimInt63.eqb
+  | "lt" => some ``PrimInt63.ltb
+  | "le" => some ``PrimInt63.leb
+  | "lts" => some ``PrimInt63.ltsb
+  | "les" => some ``PrimInt63.lesb
+  | _ => none
+
+/-- Polymorphic persistent array operations with the source runtime length bound. -/
+def arrayOpTarget? : String → Option Name
+  | "arraymake" => some ``PrimArray.make
+  | "arrayget" => some ``PrimArray.get
+  | "arrayset" => some ``PrimArray.set
+  | "arraylength" => some ``PrimArray.length
+  | "arraydefault" => some ``PrimArray.default
+  | "arraycopy" => some ``PrimArray.copy
+  | _ => none
+
+def stringOpTarget? : String → Option Name
+  | "string_make" => some ``PrimString.make
+  | "string_length" => some ``PrimString.length
+  | "string_get" => some ``PrimString.get
+  | "string_sub" => some ``PrimString.sub
+  | "string_cat" => some ``PrimString.cat
+  | _ => none
+
+def comparisonOpTarget? : String → Option Name
+  | "string_compare" => some ``PrimString.compare
+  | "compare" => some ``PrimInt63.compare
+  | "compares" => some ``PrimInt63.compares
+  | _ => none
+
+def structuredIntOpTarget? : String → Option (Name × Bool)
+  | "addc" => some (``PrimInt63.addc, true)
+  | "addCarryC" => some (``PrimInt63.addcarryc, true)
+  | "subc" => some (``PrimInt63.subc, true)
+  | "subCarryC" => some (``PrimInt63.subcarryc, true)
+  | "mulc" => some (``PrimInt63.mulc, false)
+  | "diveucl" => some (``PrimInt63.diveucl, false)
+  | "div21" => some (``PrimInt63.div21, false)
+  | _ => none
+
+def floatOpTarget? : String → Option Name
+  | "fabs" => some ``PrimFloat.abs
+  | "fopp" => some ``PrimFloat.opp
+  | "fadd" => some ``PrimFloat.add
+  | "fsub" => some ``PrimFloat.sub
+  | "fmul" => some ``PrimFloat.mul
+  | "fdiv" => some ``PrimFloat.div
+  | "fsqrt" => some ``PrimFloat.sqrt
+  | "float_of_int" => some ``PrimFloat.ofUint63
+  | "normfr_mantissa" => some ``PrimFloat.normfrMantissa
+  | "ldshiftexp" => some ``PrimFloat.ldshiftexp
+  | "next_up" => some ``PrimFloat.nextUp
+  | "next_down" => some ``PrimFloat.nextDown
+  | _ => none
+
+def floatBoolOpTarget? : String → Option Name
+  | "feq" => some ``PrimFloat.eqb
+  | "fequal" => some ``PrimFloat.equal
+  | "flt" => some ``PrimFloat.ltb
+  | "fle" => some ``PrimFloat.leb
+  | _ => none
+
+def floatCtorOpTarget? : String → Option (Name × String × Array String)
+  | "fcompare" => some (``PrimFloat.compare, "float_comparison_constructors", #["eq","lt","gt","nc"])
+  | "fclassify" => some (``PrimFloat.classify, "float_class_constructors", #["pn","nn","ps","ns","pz","nz","pi","ni","nan"])
+  | "frshiftexp" => some (``PrimFloat.frshiftexp, "pair_constructor", #[])
+  | _ => none
 
 structure TransError where
   status : String
@@ -48,6 +223,8 @@ structure IndTarget where
   rule : String
   /-- Template inductives: positions (regular order) of the parameters binding template levels. -/
   templateParamPos : Array Nat := #[]
+  /-- A fixed-Prop template block uses Sort parameters, including Prop instances. -/
+  templateSort : Bool := false
   /-- A primitive record translated to a structure-like inductive (projections allowed). -/
   isStructure : Bool := false
   /-- Indices of the universe parameters that are template levels (R5: instantiated from the
@@ -56,12 +233,21 @@ structure IndTarget where
   /-- M6: number of non-uniform source parameters (after the uniform ones); in Lean they are the
   first indices of the inductive (Rocq's case binds them as parameters: convoy lowering). -/
   nonUniform : Nat := 0
+  /-- R6-I: explicit source universe variables preceding generalized global levels. -/
+  polyParams : Nat := 0
   /-- Statement mode: a pending validation artifact (`RocqPending.*`) whose first parameters are
   hypotheses for these unproved leaves (in order). -/
   pendingHyps : Array String := #[]
   deriving Inhabited, Repr
 
 structure GEnv where
+  qualityTargets : Std.HashMap String (IndTarget × IndTarget) := {}
+  /-- Source-only motive/branch scopes for a match; unavailable scopes stay unknown. -/
+  sourceCaseScopes : Option (IndRef → Array IR.Level → Array IR.Term →
+    Array (Option IR.CtxDecl) → Option (Array IR.CtxDecl × Array (Array IR.CtxDecl))) := none
+  /-- Optional source-context dispatch for complete generated quality families.
+  This hook is inactive unless both branches and a source analysis are supplied. -/
+  qualitySelect : Option (String → Array (Option IR.CtxDecl) → Array IR.Term → Except String (Option IndTarget)) := none
   consts : Std.HashMap String Name := {}
   /-- Number of universe parameters of each accepted constant (generalized global levels). -/
   constLevels : Std.HashMap String Nat := {}
@@ -106,6 +292,7 @@ structure GEnv where
   setMotive : Std.HashSet String := {}
   /-- Entry 14: erasing polymorphic definitions (`erasingPolyBody?`) and their bodies. -/
   erasingPoly : Std.HashMap String IR.Term := {}
+  computingTypes : Std.HashMap String IR.Term := {}
   /-- Rule Q-a (docs/PHANTOM_SORT.md): phantom definitions (`phantomDefPairs?`) and their
   (sort parameter, value parameter) index pairs. -/
   phantomDefs : Std.HashMap String (Array (Nat × Nat)) := {}
@@ -220,6 +407,10 @@ structure TCtx where
   /-- `locals[k]` is the Lean value of the `k`-th enclosing source binder, outermost first;
   source `rel i` denotes `locals[locals.size - 1 - i]`. -/
   locals : Array Expr := #[]
+  /-- Raw source binder annotations, tied to the exact target local scope.
+  Synthetic recursor/fixpoint scopes invalidate this association until rebuilt. -/
+  sourceScope : Array Expr := #[]
+  sourceContext : Array (Option IR.CtxDecl) := #[]
   path : List String := []
   /-- Statement mode, pending validation: the hypothesis metavariables created for unproved
   prerequisites (synthetic opaque, never assigned by unification), with the leaf key each stands for;
@@ -233,6 +424,7 @@ structure TCtx where
   /-- Rule P, term level (docs/PROP_LIFT.md §3): where a cast or an application argument mismatches
   only by a lift, `PULift.up` / `PULift.down` is inserted (counted here; `none` outside rule P's tier). -/
   propCoerce : Option (IO.Ref Nat) := none
+  typeCoerce : Bool := false
   /-- Rule Q-a: at an application of a phantom definition, a sort argument at a sort-parameter position
   is the type of the paired value argument (per occurrence). -/
   phantomLower : Bool := false
@@ -245,8 +437,24 @@ def failT {α} (status msg : String) : TransM α := do
 def withPath {α} (seg : String) (x : TransM α) : TransM α :=
   withReader (fun c => { c with path := seg :: c.path }) x
 
+def sourceContextFor (c : TCtx) : Array (Option IR.CtxDecl) :=
+  if c.sourceScope == c.locals && c.sourceContext.size == c.locals.size then c.sourceContext
+  else Array.replicate c.locals.size none
+
+def withSourceLocal {α} (x : Expr) (decl : Option IR.CtxDecl) (k : TransM α) : TransM α :=
+  withReader (fun c => { c with locals := c.locals.push x, sourceScope := c.locals.push x, sourceContext := (sourceContextFor c).push decl }) k
+
+/-- Extend the target and source scopes together, without deriving source sorts
+from target binder types. Missing/misaligned source telescopes remain unknown. -/
+def withSourceLocals {α} (xs : Array Expr) (ds : Option (Array IR.CtxDecl)) (k : TransM α) : TransM α :=
+  withReader (fun c =>
+    let ext := match ds with
+      | some ds => if ds.size == xs.size then ds.map some else Array.replicate xs.size none
+      | none => Array.replicate xs.size none
+    { c with locals := c.locals ++ xs, sourceScope := c.locals ++ xs, sourceContext := sourceContextFor c ++ ext }) k
+
 def withLocal {α} (x : Expr) (k : TransM α) : TransM α :=
-  withReader (fun c => { c with locals := c.locals.push x }) k
+  withSourceLocal x none k
 
 def liftMeta {α} (x : MetaM α) : TransM α := fun _ => ExceptT.lift x
 
@@ -361,11 +569,15 @@ def transInstLevel : IR.Level → TransM Level
 
 def transSort : SortIR → TransM Expr
   | .prop => pure (.sort .zero)
-  | .sprop => failT "UNSUPPORTED_FEATURE" "SProp"
+  | .sprop => pure (.sort .zero)  -- SP: strict propositions use Lean definitional proof irrelevance
   | .type u => return .sort (← transTypeLevel u)
 
-def checkRelevant (n : AName) : TransM Unit := do
-  if n.rel == .irrelevant then failT "UNSUPPORTED_FEATURE" "SProp-irrelevant binder"
+/-- SP: a source irrelevant binder must still range over proofs in the target.
+Do not erase the binder or accept data as irrelevant. The source roundtrip separately
+checks Rocq's stricter relevance and elimination restrictions. -/
+def checkRelevant (n : AName) (ty : Expr) : TransM Unit := do
+  if n.rel == .irrelevant && !(← liftMeta (isProp ty)) then
+    failT "EXPORT_VALIDATION_FAILED" "irrelevant source binder has a non-propositional target domain"
 
 /-! ## Global references -/
 
@@ -377,12 +589,23 @@ def lookupInd (i : IndRef) : TransM IndTarget := do
     return t
   | none => failT "TRANSLATION_FAILED" s!"reference to inductive {i.mind}, which has no accepted translation"
 
+/-- Choose from source annotations before inspecting target universe solutions. -/
+def lookupSourceInd (i : IndRef) (args : Array IR.Term) : TransM IndTarget := do
+  let c ← read
+  if let some select := c.genv.qualitySelect then
+    match select i.mind (sourceContextFor c) args with
+    | .ok (some target) => return target
+    | .ok none => pure ()
+    | .error message => failT "UNSUPPORTED_FEATURE" s!"{i.mind}: {message}"
+  lookupInd i
+
+
 /-- Universe arguments at a reference to a declaration whose parameters stand for the source global
 levels `globals` (in parameter order): a level that is also one of the referring declaration's own
 levels is *the same level* in monomorphic Rocq, so the reference uses the referring declaration's
 own variable for it (coherence by construction, R3/R2S); any other level gets a fresh metavariable,
 solved from the arguments and checked by R3 (no raising). -/
-def sharedOrFreshLevels (globals : Array String) : TransM (List Level) := do
+def sharedOrFreshLevels (globals : Array String) (target : Name := .anonymous) : TransM (List Level) := do
   let own := (← read).globalLevels
   -- (coherence by unification first, also on the R3↓ tier: the occurrences are recorded and rebound)
   if let some ref := (← read).sharedFresh then
@@ -393,15 +616,20 @@ def sharedOrFreshLevels (globals : Array String) : TransM (List Level) := do
       if let .mvar m := v then ref.modify (·.push (m, l))
       pure v
   if (← read).lowerShared then return ← liftMeta do globals.toList.mapM fun _ => mkFreshLevelMVar
+  let calleeAdmit := (← read).genv.admitting[target]?.getD #[]
+  let callerAdmit := (← read).admitLevels
   globals.toList.mapM fun l => match own[l]? with
-    | some v => pure v
+    | some v =>
+      -- R8's Sort parameter is one above the ordinary Type parameter for
+      -- the same source level. R3 independently checks this convention.
+      pure (if calleeAdmit.contains l && !callerAdmit.contains l then v.succ else v)
     | none => liftMeta mkFreshLevelMVar
 
 /-- Universe arguments of a reference to an accepted or pending target `n` (its source levels shared
 with the referring declaration, otherwise fresh). -/
 def levelsOf (n : Name) : TransM (List Level) := do
   match (← read).genv.constGlobals[n]? with
-  | some gs => sharedOrFreshLevels gs
+  | some gs => sharedOrFreshLevels gs n
   | none => pure []
 
 /-- Pending validation: the hypothesis standing for leaf `l` in the declaration being translated —
@@ -468,36 +696,42 @@ def pendingIndArgs (t : IndTarget) (e : Expr) : TransM Expr := do
 
 def univArgs (mind : String) (t : IndTarget) (u : Array IR.Level) (args : Array Expr) (target : Name := .anonymous) :
     TransM (List Level) := do
-  unless u.isEmpty do
-    failT "UNSUPPORTED_FEATURE" s!"non-empty universe instance on {mind} (pilot supports monomorphic references only)"
-  match t.univ with
-  | .mono => pure []
-  | .params n false =>
-    match (← read).genv.constGlobals[target]? with
-    | some gs => if gs.size == n then sharedOrFreshLevels gs else liftMeta do (List.range n).mapM fun _ => mkFreshLevelMVar
-    | none => liftMeta do (List.range n).mapM fun _ => mkFreshLevelMVar
-  | .params n true =>
-    -- template levels: fresh (R5, from the arguments); other levels: shared or fresh (R3)
-    let gs := (← read).genv.constGlobals[target]?.getD #[]
-    let own := (← read).globalLevels
-    (List.range n).mapM fun k => do
-      if t.templateLevelIdx.contains k || gs.size != n then liftMeta mkFreshLevelMVar
-      else match own[gs[k]!]? with
-        | some v => pure v
-        | none => liftMeta mkFreshLevelMVar
-  | .templateFromArg k =>
-    if h : k < args.size then
-      -- The level may still contain metavariables (proof-local levels, R2B; references to
-      -- generalized constants): they are solved with the rest of the declaration (`solveLevels`),
-      -- and any left unassigned must be justified (R3′).
-      let l ← liftMeta (do instantiateLevelMVars (← getLevel args[k]))
-      pure [l.normalize]
-    else
-      failT "UNSUPPORTED_FEATURE" s!"{mind} used with fewer than {k + 1} arguments: its universe is undetermined"
+  unless u.size == t.polyParams do
+    failT "EXPORT_VALIDATION_FAILED" s!"universe instance on {mind} has {u.size} levels; expected {t.polyParams}"
+  let explicitLevels ← u.toList.mapM transInstLevel
+  let globals ← match t.univ with
+    | .mono => pure []
+    | .params n false =>
+      match (← read).genv.constGlobals[target]? with
+      | some gs => if gs.size == n then sharedOrFreshLevels gs target else liftMeta do (List.range n).mapM fun _ => mkFreshLevelMVar
+      | none => liftMeta do (List.range n).mapM fun _ => mkFreshLevelMVar
+    | .params n true =>
+      -- template levels: fresh (R5, from the arguments); other levels: shared or fresh (R3)
+      let gs := (← read).genv.constGlobals[target]?.getD #[]
+      let own := (← read).globalLevels
+      (List.range n).mapM fun k => do
+        if t.templateLevelIdx.contains k || gs.size != n then liftMeta mkFreshLevelMVar
+        else match own[gs[k]!]? with
+          | some v => pure v
+          | none => liftMeta mkFreshLevelMVar
+    | .templateFromArg k =>
+      if h : k < args.size then
+        -- The level may still contain metavariables (proof-local levels, R2B; references to
+        -- generalized constants): they are solved with the rest of the declaration (`solveLevels`),
+        -- and any left unassigned must be justified (R3′).
+        let l ← liftMeta (do instantiateLevelMVars (← getLevel args[k]))
+        pure [l.normalize]
+      else
+        -- Higher-order use: the surrounding source-annotated function domain
+        -- determines the template level before declaration/kernel checks.
+        -- Retain an unsolved metavariable here instead of rejecting prematurely.
+        pure [← liftMeta mkFreshLevelMVar]
+  return explicitLevels ++ globals
 
 /-- R5: a template inductive is translated at the template defaults' quality Type; an argument for a
 template parameter that is a proposition (a Prop-quality instance in Rocq) is rejected explicitly. -/
 def checkTemplateArgs (mind : String) (t : IndTarget) (args : Array Expr) : TransM Unit := do
+  if t.templateSort then return
   for k in t.templateParamPos do
     if h : k < args.size then
       -- the codomain sort of the argument's type (the argument itself for `Type@{l}`, the result
@@ -793,18 +1027,58 @@ partial def termHasUnivVar : IR.Term → Bool
   | .fix defs _ | .cofix defs _ => defs.any fun (_, t, b, _) => termHasUnivVar t || termHasUnivVar b
   | _ => false
 
-/-- δ-inlining of erasing polymorphic definitions (entry 14): a transparent universe-polymorphic
-constant whose body, after its leading λs, mentions no universe variable (`reverse_coercion x' x := x'`).
-Applied, its δβ-reduct is definitionally equal and carries none of the instance's levels. -/
+/-- Zeta-reduce the let/lambda prefix of an eligible transparent alias.
+The substitution retains the exact source value and binder annotations. -/
+partial def aliasPrefixView : IR.Term → IR.Term
+  | .letIn _ v _ b => aliasPrefixView (b.subst0 v)
+  | .lam n ty b => .lam n ty (aliasPrefixView b)
+  | t => t
+
+/-- A pure application tree over bound variables only. -/
+partial def binderOnlyCombinator : IR.Term → Bool
+  | .rel _ => true
+  | .app f args => binderOnlyCombinator f && args.all binderOnlyCombinator
+  | _ => false
+
+/-- Delta/beta expansion of transparent type abbreviations (mono or polymorphic),
+and the existing universe-erasing polymorphic definitions. -/
 def erasingPolyBody? (c : IR.ConstantDecl) : Option IR.Term := do
   unless c.bodyState == "transparent" do none
-  unless (c.universes matches .polymorphic ..) do none
   let some b := c.body | none
+  let b := aliasPrefixView b
+  -- A transparent reference/partial application is a definitional alias even
+  -- without an explicit lambda prefix. Its callee is not unfolded by this rule.
+  if (match b with | .const .. | .app (.const ..) _ => true | _ => false) then return b
   let rec peel : IR.Term → Nat → IR.Term × Nat
     | .lam _ _ t, n => peel t (n + 1)
     | t, n => (t, n)
   let (t, n) := peel b 0
-  if n == 0 || termHasUnivVar t then none
+  if n == 0 then none
+  let rec endsInSort : IR.Term → Bool
+    | .prod _ _ cod => endsInSort cod
+    | .sort _ => true
+    | _ => false
+  -- A binder-only combinator introduces no constants, sorts, recursion or
+  -- eliminations after its lambda prefix. Delta/beta expansion preserves its
+  -- exact source body for mono and polymorphic declarations alike.
+  if binderOnlyCombinator t then return b
+  -- A transparent type abbreviation may retain universe variables. Its instance
+  -- must be substituted before beta reduction (below), including family codomains.
+  unless (c.universes matches .polymorphic ..) || endsInSort c.type do none
+  if termHasUnivVar t && !endsInSort c.type then none
+  some b
+
+/-- Transparent single-fix definitions eligible for checked source reduction.
+Reduction still requires a constructor at the structural argument. This includes
+operations specialized to type/proposition values, not only literal sort results. -/
+def computingTypeBody? (c : IR.ConstantDecl) : Option IR.Term := do
+  unless c.bodyState == "transparent" do none
+  let some b := c.body | none
+  let rec head : IR.Term → IR.Term
+    | .lam _ _ t => head t
+    | t => t
+  let .fix ds 0 := head b | none
+  unless ds.size == 1 do none
   some b
 
 /-- Rule T (docs/COINDUCTIVE.md): one body, and no constructor argument or index mentions the block.
@@ -911,6 +1185,146 @@ partial def erasePhantomSorts (pd : Std.HashMap String (Array (Nat × Nat))) (t 
     (.fix ds' idx, u)
   | _ => (t, false)
 
+/-- Substitute only universe indices, never term de Bruijn indices. Missing
+instance entries fail rather than leaving a callee variable in the caller. -/
+def instantiateSourceLevel (us : Array IR.Level) : IR.Level → Option IR.Level
+  | .var i => us[i]?
+  | l => some l
+
+def sourceLevelJson : IR.Level → Json
+  | .set => Json.mkObj [("k", Json.str "set")]
+  | .global n => Json.mkObj [("k", Json.str "global"), ("n", Json.str n)]
+  | .var i => Json.mkObj [("k", Json.str "var"), ("i", toJson i)]
+
+partial def instantiatePrimitiveLevels (us : Array IR.Level) (j : Json) : Option Json := do
+  match j with
+  | .arr xs => return .arr (← xs.mapM (instantiatePrimitiveLevels us))
+  | .obj kvs =>
+    if (j.getObjValAs? String "k").toOption == some "var" then
+      if let some i := (j.getObjValAs? Nat "i").toOption then
+        return sourceLevelJson (← us[i]?)
+    return Json.mkObj (← kvs.toList.mapM fun (k,v) => do pure (k, ← instantiatePrimitiveLevels us v))
+  | _ => pure j
+
+partial def instantiateSourceUniverses (us : Array IR.Level) (t : IR.Term) : Option IR.Term := do
+  let go := instantiateSourceUniverses us
+  let levels (xs : Array IR.Level) := xs.mapM (instantiateSourceLevel us)
+  match t with
+  | .sort (.type xs) =>
+    return .sort (.type (← xs.mapM fun x => do pure { x with level := ← instantiateSourceLevel us x.level }))
+  | .const c xs => return .const c (← levels xs)
+  | .ind i xs => return .ind i (← levels xs)
+  | .construct i c xs => return .construct i c (← levels xs)
+  | .evar e xs => return .evar e (← xs.mapM go)
+  | .cast a k b => return .cast (← go a) k (← go b)
+  | .prod n a b => return .prod n (← go a) (← go b)
+  | .lam n a b => return .lam n (← go a) (← go b)
+  | .letIn n v a b => return .letIn n (← go v) (← go a) (← go b)
+  | .app f xs => return .app (← go f) (← xs.mapM go)
+  | .case i np r xs ps ctx ret c brs =>
+    return .case i np r (← levels xs) (← ps.mapM go) ctx (← go ret) (← go c)
+      (← brs.mapM fun (bc,b) => do pure (bc, ← go b))
+  | .proj i np a b => return .proj i np a (← go b)
+  | .fix ds i => return .fix (← ds.mapM fun (n,a,b,r) => do pure (n, ← go a, ← go b, r)) i
+  | .cofix ds i => return .cofix (← ds.mapM fun (n,a,b,r) => do pure (n, ← go a, ← go b, r)) i
+  | .prim k j => return .prim k (← instantiatePrimitiveLevels us j)
+  | _ => pure t
+
+/-- Constructor-headed structural fix calls reduce by source conversion only. -/
+def sourceFixReady : IR.Term → Bool
+  | .app (.fix ds idx) args =>
+    if ds.size != 1 || idx != 0 then false else
+    let (_,_,_,r) := ds[0]!
+    if r >= args.size then false else
+    match args[r]! with
+    | .construct .. | .app (.construct ..) _ => true
+    | _ => false
+  | _ => false
+
+/-- Bounded source beta/iota/zeta and singleton structural fix computation.
+Only listed transparent type-valued definitions may be delta-unfolded, and only
+when their decreasing argument is already a constructor. Every step is replayed
+by the independent auditor before it compares any target term. -/
+partial def computeSourceTypes (bodies : Std.HashMap String IR.Term) (t : IR.Term)
+    (fuel : Nat := 128) : IR.Term × Std.HashSet String :=
+  if fuel == 0 then (t,{}) else
+  let go (u : IR.Term) := computeSourceTypes bodies u fuel
+  let next (u : IR.Term) := computeSourceTypes bodies u (fuel-1)
+  let goA (xs : Array IR.Term) := xs.foldl (fun (out, used) x =>
+    let (y, u) := go x; (out.push y, used.insertMany u)) (#[], ({} : Std.HashSet String))
+  match t with
+  | .app f args =>
+    let (f, uf) := go f
+    let (args, ua) := goA args
+    let used := uf.insertMany ua
+    let app := (IR.betaApp f args).flattenApps
+    let reduce (term : IR.Term) :=
+      let (v, u) := next term; (v, used.insertMany u)
+    match f with
+    | .lam .. => reduce app
+    | .app .. => reduce app
+    | .const c us =>
+      match bodies[c]? with
+      | some b =>
+        match instantiateSourceUniverses us b with
+        | some b =>
+          let expanded := (IR.betaApp b args).flattenApps
+          if sourceFixReady expanded then
+            let (v, u) := next expanded
+            (v, (used.insertMany u).insert c)
+          else (app,used)
+        | none => (app,used)
+      | none => (app,used)
+    | .fix ds idx =>
+      if sourceFixReady app then
+        let (_,_,b,_) := ds[idx]!
+        reduce (IR.betaApp (b.subst0 f) args).flattenApps
+      else (app,used)
+    | _ => (app,used)
+  | .case i np rel pu ps ctx ret scrut brs =>
+    let (scrut, us) := go scrut
+    let head := match scrut with | .app f _ => f | f => f
+    let args := match scrut with | .app _ xs => xs | _ => #[]
+    match head with
+    | .construct ci k _ =>
+      if ci.mind == i.mind && ci.idx == i.idx && k < brs.size && np <= args.size then
+        let (bc,b) := brs[k]!
+        let fields := args.extract np args.size
+        if bc.size == fields.size then
+          let reduced := b.mapRels fun j depth =>
+            if j-depth < fields.size then fields[fields.size-1-(j-depth)]!.liftRels depth
+            else .rel (j-fields.size)
+          let (v,u) := next reduced
+          (v,us.insertMany u)
+        else (t,{})
+      else (t,{})
+    | _ =>
+      let (ps,up) := goA ps
+      let (ret,ur) := go ret
+      let (brs,ub) := brs.foldl (fun (out,used) (bc,b) =>
+        let (b,u) := go b; (out.push (bc,b),used.insertMany u)) (#[], ({} : Std.HashSet String))
+      (.case i np rel pu ps ctx ret scrut brs,((us.insertMany up).insertMany ur).insertMany ub)
+  | .lam n a b =>
+    let (a,ua) := go a; let (b,ub) := go b
+    (.lam n a b,ua.insertMany ub)
+  | .prod n a b =>
+    let (a,ua) := go a; let (b,ub) := go b
+    (.prod n a b,ua.insertMany ub)
+  | .letIn _ v _ b =>
+    let (v,uv) := go v; let (b,ub) := next (b.subst0 v)
+    (b,uv.insertMany ub)
+  | .cast v k ty =>
+    let (v,uv) := go v; let (ty,ut) := go ty
+    (.cast v k ty,uv.insertMany ut)
+  | .fix ds idx =>
+    let (ds,u) := ds.foldl (fun (out,used) (n,a,b,r) =>
+      let (a,ua) := go a; let (b,ub) := go b
+      (out.push (n,a,b,r),(used.insertMany ua).insertMany ub)) (#[], ({} : Std.HashSet String))
+    (.fix ds idx,u)
+  | .proj i np arg v =>
+    let (v,u) := go v; (.proj i np arg v,u)
+  | _ => (t,{})
+
 /-- M6 δ-inlining of `Set`-motive constants (a last tier): every application of a constant of
 `names` is replaced by its source body β-reduced with the arguments (definitional). Returns the
 term and the names actually inlined. -/
@@ -924,8 +1338,11 @@ partial def inlineConsts (bodies : Std.HashMap String IR.Term) (names : Std.Hash
     let (args', used) := goA args
     match bodies[c]? with
     | some body => if fuel > 0 && names.contains c then
-        let (r, u2) := inlineConsts bodies names (IR.betaApp body args').flattenApps (fuel - 1)
-        (r, (used.insertMany u2).insert c)
+        match instantiateSourceUniverses u body with
+        | none => (.app (.const c u) args', used)
+        | some body =>
+          let (r, u2) := inlineConsts bodies names (IR.betaApp body args').flattenApps (fuel - 1)
+          (r, (used.insertMany u2).insert c)
       else (.app (.const c u) args', used)
     | none => (.app (.const c u) args', used)
   | .app f args => let (f', u1) := go f; let (as, u2) := goA args; (.app f' as, u1.insertMany u2)
@@ -1287,6 +1704,65 @@ def mkPProdVal (cs vs : Array Expr) : MetaM Expr := do
     accT ← mkAppM ``PProd #[cs[j]!, accT]
   return accV
 
+abbrev StructuralIndexPath := Nat × Array (Name × Nat)
+
+def projectStructuralIndex (e : Expr) (path : Array (Name × Nat)) : Expr :=
+  path.foldl (fun v (n, i) => Expr.proj n i v) e
+
+/-- Reduce only literal constructor projections; recursive-call bodies still
+contain bound variables, so general meta-level unification is not applicable here. -/
+def reduceStructuralIndex (e : Expr) (path : Array (Name × Nat)) : MetaM Expr := do
+  let mut value := e
+  for (sn, field) in path do
+    let .const cn _ := value.getAppFn
+      | value := .proj sn field value; continue
+    let some (.ctorInfo cv) := (← getEnv).find? cn
+      | value := .proj sn field value; continue
+    let args := value.getAppArgs
+    if cv.induct == sn && field < cv.numFields && args.size == cv.numParams + cv.numFields then
+      value := args[cv.numParams + field]!
+    else value := .proj sn field value
+  return value
+
+/-- Unique leading-variable leaves in a nonrecursive constructor index. -/
+partial def structuralIndexPaths (P idx : Array Expr) :
+    TransM (Array (Option StructuralIndexPath)) := do
+  let rec walk (e : Expr) (j : Nat) (path : Array (Name × Nat))
+      (out : Array (Option StructuralIndexPath)) (fuel : Nat) :
+      TransM (Array (Option StructuralIndexPath)) := do
+    if fuel == 0 then failT "UNSUPPORTED_FEATURE" "structural index pattern exceeds depth budget"
+    if let some i := P.findIdx? (· == e) then
+      if out[i]!.isSome then failT "UNSUPPORTED_FEATURE" "repeated variable in structural index pattern"
+      return out.set! i (some (j, path))
+    let .const cn _ := e.getAppFn
+      | failT "UNSUPPORTED_FEATURE" "structural index is not a variable or a constructor pattern"
+    let some (.ctorInfo cv) := (← getEnv).find? cn
+      | failT "UNSUPPORTED_FEATURE" "structural index is not a constructor pattern"
+    let some (.inductInfo iv) := (← getEnv).find? cv.induct
+      | failT "EXPORT_VALIDATION_FAILED" "index constructor has no inductive"
+    unless iv.numIndices == 0 && iv.ctors.length == 1 && !iv.isRec do
+      failT "UNSUPPORTED_FEATURE" "structural index pattern requires a nonrecursive record"
+    let args := e.getAppArgs
+    unless args.size == iv.numParams + cv.numFields && cv.numFields > 0 do
+      failT "UNSUPPORTED_FEATURE" "structural index constructor is not fully applied"
+    if (args.extract 0 iv.numParams).any (fun a => P.any (a.containsFVar ·.fvarId!)) then
+      failT "UNSUPPORTED_FEATURE" "structural index record parameters depend on leading variables"
+    let mut out := out
+    for i in [0:cv.numFields] do
+      out ← walk args[iv.numParams + i]! j (path.push (cv.induct, i)) out (fuel - 1)
+    return out
+  let mut out := Array.replicate P.size none
+  for j in [0:idx.size] do out ← walk idx[j]! j #[] out 32
+  return out
+
+partial def withStructuralIndices (idx : Array Expr) (i : Nat) (zs : Array Expr)
+    (k : Array Expr → TransM Expr) : TransM Expr := do
+  if i < idx.size then
+    let ty ← liftMeta (inferType idx[i]!)
+    withLocalDecl (Name.mkSimple s!"index{i}") .default ty fun z =>
+      withStructuralIndices idx (i + 1) (zs.push z) k
+  else k zs
+
 /-- The recursive result for a recursive call whose decreasing argument is `y`: `ih_y` for a direct
 recursive field `y`, or `ih_g zs` for an application `g zs` of a functional recursive field `g`
 (M6). Also returns the indices of `y`'s type. -/
@@ -1435,22 +1911,22 @@ def restoreTrans (s : TransSaved) : TransM Unit := do
 /-- Rule P, term level: `e : act` used at `exp`, where the two differ only by a lift of a proposition.
 `exp ≡ PULift.{r,0} P` with `act ≡ P` gives `PULift.up e`; `act ≡ PULift.{r,0} P` with `exp ≡ P` (a
 proposition) gives `PULift.down e`. Only `PULift.{_, 0}`: the lifted type is a proposition. -/
-def liftCoerce (e act exp : Expr) : MetaM (Option Expr) := do
+def liftCoerce (e act exp : Expr) (allowTypes : Bool := false) : MetaM (Option Expr) := do
   let exp' ← whnf exp
   if exp'.isAppOfArity ``PULift 1 then
     if let [r, u] := exp'.getAppFn.constLevels! then
-      if u.isZero && (← isDefEq act exp'.appArg!) then
-        return some (mkApp2 (mkConst ``PULift.up [r, .zero]) exp'.appArg! e)
+      if (allowTypes || u.isZero) && (← isDefEq act exp'.appArg!) then
+        return some (mkApp2 (mkConst ``PULift.up [r, u]) exp'.appArg! e)
   let act' ← whnf act
   if act'.isAppOfArity ``PULift 1 then
     if let [r, u] := act'.getAppFn.constLevels! then
-      if u.isZero && (← isProp exp) && (← isDefEq act'.appArg! exp) then
-        return some (mkApp2 (mkConst ``PULift.down [r, .zero]) act'.appArg! e)
+      if (allowTypes || u.isZero && (← isProp exp)) && (← isDefEq act'.appArg! exp) then
+        return some (mkApp2 (mkConst ``PULift.down [r, u]) act'.appArg! e)
   return none
 
 /-- Rule P, term level: the arguments of `f a₁ … aₙ`, each coerced by `liftCoerce` where its type is not
 the function's domain at it (counted in `cnt`). -/
-def coerceArgs (f : Expr) (args : Array Expr) (cnt : IO.Ref Nat) (lifted : Std.HashSet Name) : MetaM (Array Expr) := do
+def coerceArgs (f : Expr) (args : Array Expr) (cnt : IO.Ref Nat) (lifted : Std.HashSet Name) (allowTypes : Bool := false) : MetaM (Array Expr) := do
   -- (speed, exact: a lift can only appear by unfolding a constant of `lifted`, or a let-bound local)
   let mayLift (e : Expr) : MetaM Bool := do
     let e ← instantiateMVars e
@@ -1464,33 +1940,184 @@ def coerceArgs (f : Expr) (args : Array Expr) (cnt : IO.Ref Nat) (lifted : Std.H
     let .forallE _ d b _ := fty | return out ++ args.extract out.size args.size
     let a' ← do
       let aty ← inferType a
-      if !(← mayLift d) && !(← mayLift aty) then pure a else
+      if !allowTypes && !(← mayLift d) && !(← mayLift aty) then pure a else
       if ← isDefEq aty d then pure a else
-        match ← liftCoerce a aty d with
+        match ← liftCoerce a aty d allowTypes with
         | some c => cnt.modify (· + 1); pure c
         | none => pure a
     out := out.push a'
     fty := b.instantiate1 a'
   return out
 
+/-- A speculative representation conversion commits only on success. Restore
+both elaboration assignments and the evidence counter on rejection. -/
+def tryLiftConversion (cnt : IO.Ref Nat) (attempt : MetaM (Option Expr)) : MetaM (Option Expr) := do
+  let saved ← saveState
+  let before ← cnt.get
+  let result ← try attempt catch _ => pure none
+  if result.isSome then return result
+  saved.restore
+  cnt.set before
+  return none
+
 /-- Rule P, term level: `b` used at `cod`. Directly (`liftCoerce`), or, for a function at a function type
 whose domains or codomain differ by lifts, η-expanded with its arguments and result coerced
 (`fun xs => PULift.up (o (PULift.down x) …)`); unchanged when nothing needs a coercion. -/
-partial def liftCoerceValue (b cod : Expr) (cnt : IO.Ref Nat) (lifted : Std.HashSet Name) : MetaM Expr := do
+partial def liftCoerceValue (b cod : Expr) (cnt : IO.Ref Nat) (lifted : Std.HashSet Name) (allowTypes : Bool := false) : MetaM Expr := do
   let bt ← inferType b
+  if allowTypes then
+    let expected ← whnf cod
+    let actual ← whnf bt
+    if let .sort upper := expected then
+      if let .sort lower := actual then
+        let upper ← instantiateLevelMVars upper
+        let lower ← instantiateLevelMVars lower
+        -- Parameterized transports are permitted only when the upper universe
+        -- already contains the lower one. This test assigns no metavariables and
+        -- cannot impose an additional constraint on public parameters.
+        let knownBound := !upper.hasMVar && !lower.hasMVar &&
+          (mkLevelMax upper lower).normalize == upper.normalize
+        -- An unconstrained template Sort is allowed to be Prop. Let ordinary
+        -- unification determine it; do not introduce a fresh PULift universe
+        -- before a higher sort is actually required.
+        if (!upper.hasMVar || upper.isNeverZero) && !lower.hasMVar &&
+            (!lower.hasParam || knownBound) && upper.normalize != lower.normalize && !upper.isZero then
+          cnt.modify (· + 1)
+          return mkApp (mkConst (Name.mkSimple "PULift") [upper, lower]) b
   if ← isDefEq bt cod then return b
-  if let some c ← liftCoerce b bt cod then
-    cnt.modify (· + 1); return c
+  -- Type transports use the recursive up/down cases below, including the
+  -- direct case. Keep the restricted Prop-only path for the earlier P tier.
+  if !allowTypes then
+    if let some c ← liftCoerce b bt cod then
+      cnt.modify (· + 1); return c
   let cod' ← whnf cod
+  if allowTypes then
+    -- Compose an outer lift with an inner function/record conversion. The
+    -- payload is still fully checked; a lift alone need not make it convertible.
+    let attempt : MetaM (Option Expr) := do
+      if cod'.isAppOfArity (Name.mkSimple "PULift") 1 then
+        let [r,u] := cod'.getAppFn.constLevels! | return none
+        let value ← liftCoerceValue b cod'.appArg! cnt lifted true
+        unless ← isDefEq (← inferType value) cod'.appArg! do return none
+        cnt.modify (· + 1)
+        return some (mkApp2 (mkConst (Name.str (Name.mkSimple "PULift") "up") [r,u]) cod'.appArg! value)
+      let actual ← whnf bt
+      if actual.isAppOfArity (Name.mkSimple "PULift") 1 then
+        let [r,u] := actual.getAppFn.constLevels! | return none
+        let value := mkApp2 (mkConst (Name.str (Name.mkSimple "PULift") "down") [r,u]) actual.appArg! b
+        cnt.modify (· + 1)
+        let value ← liftCoerceValue value cod cnt lifted true
+        unless ← isDefEq (← inferType value) cod do return none
+        return some value
+      return none
+    if let some mapped ← tryLiftConversion cnt attempt then return mapped
+  if allowTypes then
+    let before ← cnt.get
+    let attempt : MetaM (Option Expr) := do
+      let actual ← whnf bt
+      let .const iname fromLvls := actual.getAppFn | pure none
+      let .const targetName toLvls := cod'.getAppFn | pure none
+      if targetName != iname then pure none else do
+        let some (.inductInfo iv) := (← getEnv).find? iname | pure none
+        unless iv.numIndices == 0 && !iv.isNested && !iv.isRec &&
+            iv.all.length == 1 && iv.ctors.length == 1 do return none
+        let some (.recInfo rv) := (← getEnv).find? (iname.str "rec") | pure none
+        unless rv.numMinors == 1 && rv.numMotives == 1 do return none
+        let fromParams := actual.getAppArgs
+        let toParams := cod'.getAppArgs
+        unless fromParams.size == iv.numParams && toParams.size == iv.numParams do return none
+        let motive ← withLocalDecl (Name.mkSimple "record") .default actual fun x =>
+          mkLambdaFVars #[x] cod
+        let large := rv.levelParams.length == fromLvls.length + 1
+        let targetLevel ← getLevel cod
+        let recC := mkConst rv.name (if large then targetLevel :: fromLvls else fromLvls)
+        let recTy ← instantiateForall (← inferType recC) (fromParams.push motive)
+        let .forallE _ minorTy _ _ ← whnf recTy | pure none
+        let nf := rv.rules[0]!.nfields
+        let minor? ← forallBoundedTelescope minorTy (some nf) fun fields _ => do
+          unless fields.size == nf do return none
+          let mut out := mkAppN (mkConst iv.ctors[0]! toLvls) toParams
+          for field in fields do
+            let .forallE _ domain _ _ ← whnf (← inferType out) | return none
+            let value ← liftCoerceValue field domain cnt lifted true
+            unless ← isDefEq (← inferType value) domain do return none
+            out := mkApp out value
+          Meta.check out
+          return some (← mkLambdaFVars fields out)
+        let some minor := minor? | pure none
+        let out := mkAppN recC (fromParams ++ #[motive, minor, b])
+        Meta.check out
+        unless (← cnt.get) > before && (← isDefEq (← inferType out) cod) do return none
+        return some out
+    if let some mapped ← tryLiftConversion cnt attempt then return mapped
   unless cod'.isForall do return b
   let n0 ← cnt.get
   let r ← forallTelescope cod' fun ys cod2 => do
-    let args ← coerceArgs b ys cnt lifted
+    let args : Array Expr ← if !allowTypes then coerceArgs b ys cnt lifted allowTypes else do
+      -- Higher-order arguments may themselves be functions whose domains or
+      -- results use a lifted representation. Adapt them recursively.
+      let mut fty ← inferType b
+      let mut args := #[]
+      for y in ys do
+        let .forallE _ domain rest _ ← whnf fty | break
+        let a ← liftCoerceValue y domain cnt lifted allowTypes
+        args := args.push a
+        fty := rest.instantiate1 a
+      pure args
     unless args.size == ys.size do return none
-    let b2 ← liftCoerceValue (mkAppN b args) cod2 cnt lifted
+    let b2 ← liftCoerceValue (b.beta args) cod2 cnt lifted allowTypes
     if (← cnt.get) == n0 then return none
     return some (← mkLambdaFVars ys b2)
   return r.getD b
+
+/-- Apply through explicit cumulative transports, with no source term discarded. -/
+def applyTypeCoercions (f : Expr) (args : Array Expr) (cnt : IO.Ref Nat)
+    (lifted : Std.HashSet Name) : MetaM Expr := do
+  let mut out := f
+  for a in args do
+    let mut fty ← whnf (← inferType out)
+    -- Each step removes one syntactic PULift. The finite bound fails closed
+    -- by leaving the term ill-typed if an unexpectedly deep representation occurs.
+    for _ in [:32] do
+      unless fty.isAppOfArity ``PULift 1 do break
+      let [r,u] := fty.getAppFn.constLevels! | break
+      out := mkApp2 (mkConst ``PULift.down [r,u]) fty.appArg! out
+      cnt.modify (· + 1)
+      fty ← whnf (← inferType out)
+    let .forallE _ domain _ _ := fty | throwError "type transport: expected a function after unwrapping"
+    let a' ← liftCoerceValue a domain cnt lifted true
+    out := mkApp out a'
+  return out
+
+/-- Explicit representation of a type-valued branch at its declared result
+sort. Do not first unify the branch's smaller sort with the declared upper sort. -/
+def transportBranchResult (value expected : Expr) : TransM Expr := do
+  unless (← read).typeCoerce do return value
+  let some cnt := (← read).propCoerce | return value
+  let target ← liftMeta (whnf expected)
+  let .sort upper := target
+    | liftMeta (liftCoerceValue value expected cnt (← read).genv.liftTargets true)
+  let actual ← liftMeta do whnf (← inferType value)
+  let .sort lower := actual | return value
+  let upper ← liftMeta (instantiateLevelMVars upper)
+  let lower ← liftMeta (instantiateLevelMVars lower)
+  if upper.normalize == lower.normalize || upper.isZero then return value
+  cnt.modify (· + 1)
+  return mkApp (mkConst (Name.mkSimple "PULift") [upper, lower]) value
+
+/-- A source type computed as a value can be represented inside PULift.
+At a type position, recover that exact payload before building a binder. -/
+def transportTypePosition (value : Expr) : TransM Expr := do
+  unless (← read).typeCoerce do return value
+  let some cnt := (← read).propCoerce | return value
+  let mut out := value
+  for _ in [:32] do
+    let actual ← liftMeta do whnf (← inferType out)
+    unless actual.isAppOfArity (Name.mkSimple "PULift") 1 do break
+    let [upper, lower] := actual.getAppFn.constLevels! | break
+    out := mkApp2 (mkConst (Name.str (Name.mkSimple "PULift") "down") [upper, lower]) actual.appArg! out
+    cnt.modify (· + 1)
+  return out
 
 mutual
 
@@ -1512,27 +2139,61 @@ partial def trans (t : IR.Term) : TransM Expr := do
     if ← liftMeta (isProp ty') then
       if let some r ← liftMeta (castRepair c' (← inferType c') ty' 3) then return r
     if let some cnt := (← read).propCoerce then
-      if let some r ← liftMeta (liftCoerce c' (← inferType c') ty') then
+      if let some r ← liftMeta (liftCoerce c' (← inferType c') ty' (← read).typeCoerce) then
         cnt.modify (· + 1); return r
+      -- A source cast may use a proposition itself at a Type sort (Prop <= Type).
+      -- Preserve the annotation's exact universe through the same PULift model.
+      if let .sort sl ← liftMeta (whnf ty') then
+        if sl.isNeverZero && (← liftMeta (isProp c')) then
+          cnt.modify (· + 1)
+          return mkApp (mkConst ``PULift [sl, .zero]) c'
+    if (← read).typeCoerce then
+      if let some cnt := (← read).propCoerce then
+        let saved ← liftMeta saveState
+        let before ← cnt.get
+        let repaired ← liftMeta (liftCoerceValue c' ty' cnt (← read).genv.liftTargets true)
+        if (← cnt.get) > before && (← liftMeta (isDefEq (← inferType repaired) ty')) then
+          return repaired
+        liftMeta saved.restore
+        cnt.set before
+    if (← IO.getEnv "ROCQ2LEAN_TRACE_CASTS").isSome then
+      let actual ← liftMeta do ppExpr (← inferType c')
+      let expected ← liftMeta (ppExpr ty')
+      IO.eprintln s!"CAST {(← read).declKey}\nACTUAL {actual}\nEXPECTED {expected}"
     failT "TRANSLATION_FAILED" s!"{kind} cast annotation is not convertible in Lean"
   | .prod n ty b => withPath "prod" do
-    checkRelevant n
-    let ty' ← withPath "ty" (trans ty)
+    let ty' ← withPath "ty" (trans ty >>= transportTypePosition)
+    checkRelevant n ty'
     withLocalDecl (binderName n) .default ty' fun x => do
-      let b' ← withPath "b" (withLocal x (trans b))
+      let b' ← withPath "b" (withSourceLocal x (some {name := n, body := none, type := ty}) (trans b))
+      let b' ← transportTypePosition b'
       bindFVars false #[x] b'
   | .lam n ty b => withPath "lam" do
-    checkRelevant n
-    let ty' ← withPath "ty" (trans ty)
+    let ty' ← withPath "ty" (trans ty >>= transportTypePosition)
+    checkRelevant n ty'
     withLocalDecl (binderName n) .default ty' fun x => do
-      let b' ← withPath "b" (withLocal x (trans b))
+      let b' ← withPath "b" (withSourceLocal x (some {name := n, body := none, type := ty}) (trans b))
       bindFVars true #[x] b'
   | .letIn n v ty b => withPath "let" do
-    checkRelevant n
-    let ty' ← withPath "ty" (trans ty)
+    let ty' ← withPath "ty" (trans ty >>= transportTypePosition)
+    checkRelevant n ty'
     let v' ← withPath "v" (trans v)
+    let v' ←
+      match (← read).propCoerce with
+      | some cnt => do
+        -- Rocq permits a proposition at a declared Type-valued local let.
+        -- Keep the declaration's sort before unification can specialize it;
+        -- the source context below still records the ORIGINAL annotation.
+        let expected ← liftMeta (whnf ty')
+        if let .sort sl := expected then
+          if sl.isNeverZero && (← liftMeta (isProp v')) then
+            cnt.modify (· + 1)
+            pure (mkApp (mkConst ``PULift [sl, .zero]) v')
+          else liftMeta (liftCoerceValue v' ty' cnt (← read).genv.liftTargets (← read).typeCoerce)
+        else liftMeta (liftCoerceValue v' ty' cnt (← read).genv.liftTargets (← read).typeCoerce)
+      | none => pure v'
     withLetDecl (binderName n) ty' v' fun x => do
-      let b' ← withPath "b" (withLocal x (trans b))
+      let b' ← withPath "b" (withSourceLocal x (some {name := n, body := some v, type := ty}) (trans b))
       bindFVars true #[x] b'
   | .app f args => withPath "app" do
     let args' ← args.mapIdxM fun k a => withPath s!"arg{k}" (trans a)
@@ -1555,7 +2216,10 @@ partial def trans (t : IR.Term) : TransM Expr := do
           pure a
         | none => pure args'
       | _ => pure args'
-    let f' ← withPath "f" (transHead f args')
+    let f' ← withPath "f" (transHead f args' args)
+    if (← read).typeCoerce then
+      if let some cnt := (← read).propCoerce then
+        return ← liftMeta (instLevelMVars (← applyTypeCoercions f' args' cnt (← read).genv.liftTargets))
     let args' ← match (← read).propCoerce with
       | some cnt => do liftMeta (coerceArgs f' args' cnt (← read).genv.liftTargets)
       | none => pure args'
@@ -1582,6 +2246,210 @@ partial def trans (t : IR.Term) : TransM Expr := do
     return .proj tgt.types[ind.idx]! arg (← trans t)
   | .fix defs idx => withPath "fix" (transFix defs idx)
   | .cofix .. => failT "UNSUPPORTED_FEATURE" "cofixpoint"
+  | .prim "array_type" j | .prim "array_op" j =>
+    unless (j.getObjValAs? String "array_max_length").toOption == some "4194303" do
+      failT "UNSUPPORTED_FEATURE" "native array runtime length bound differs from the checked model"
+    let levels := (← read).polyLevels
+    unless levels.size == 1 do
+      failT "UNSUPPORTED_FEATURE" "native array requires exactly one preserved universe parameter"
+    let name ← match (j.getObjValAs? String "operator").toOption with
+      | none => pure ``PrimArray.Rep
+      | some op => match arrayOpTarget? op with
+        | some n => pure n
+        | none => failT "UNSUPPORTED_FEATURE" s!"native array operator {op}"
+    return mkConst name [levels[0]!]
+  | .prim "string_type" j | .prim "string_op" j =>
+    unless (j.getObjValAs? String "string_max_length").toOption == some "16777211" do
+      failT "UNSUPPORTED_FEATURE" "native string runtime length bound differs from the checked model"
+    let name ← match (j.getObjValAs? String "operator").toOption with
+      | none => pure ``PrimString.Rep
+      | some op => match stringOpTarget? op with
+        | some n => pure n
+        | none => failT "UNSUPPORTED_FEATURE" s!"native string operator {op}"
+    return mkConst name
+  | .prim "comparison_op" j =>
+    let some op := (j.getObjValAs? String "operator").toOption
+      | failT "EXPORT_VALIDATION_FAILED" "missing native comparison operator"
+    let some name := comparisonOpTarget? op
+      | failT "UNSUPPORTED_FEATURE" s!"native comparison operator {op}"
+    if op == "string_compare" then
+      unless (j.getObjValAs? String "string_max_length").toOption == some "16777211" do
+        failT "UNSUPPORTED_FEATURE" "native string runtime length bound differs from the checked model"
+    let some roles := (j.getObjVal? "comparison_constructors").toOption
+      | failT "EXPORT_VALIDATION_FAILED" "missing kernel-registered comparison constructors"
+    let getCtor (role : String) : TransM Expr := do
+      let some raw := (roles.getObjVal? role).toOption
+        | failT "EXPORT_VALIDATION_FAILED" s!"missing native comparison role {role}"
+      let some t := (IR.parseTerm raw).toOption
+        | failT "EXPORT_VALIDATION_FAILED" "invalid native comparison constructor"
+      match t with
+      | .construct _ _ us =>
+        unless us.isEmpty do failT "UNSUPPORTED_FEATURE" "polymorphic native comparison result"
+        trans t
+      | _ => failT "EXPORT_VALIDATION_FAILED" "native comparison role is not a constructor"
+    let ce ← getCtor "eq"
+    let cl ← getCtor "lt"
+    let cg ← getCtor "gt"
+    let resultType ← liftMeta (inferType ce)
+    let width := mkRawNatLit 63
+    let domain := if op == "string_compare" then mkConst ``PrimString.Rep else mkApp (mkConst ``BitVec) width
+    let helper := if op == "string_compare" then mkConst name else mkApp (mkConst name) width
+    let value := mkAppN helper #[.bvar 1, .bvar 0]
+    let motive := mkLambda `o .default (mkConst ``Ordering) resultType
+    let result := mkAppN (mkConst ``Ordering.rec [.succ .zero]) #[motive, cl, ce, cg, value]
+    return mkLambda `x .default domain (mkLambda `y .default domain result)
+  | .prim "int63_structured_op" j =>
+    let some op := (j.getObjValAs? String "operator").toOption
+      | failT "EXPORT_VALIDATION_FAILED" "missing native structured integer operator"
+    let some (name, carry) := structuredIntOpTarget? op
+      | failT "UNSUPPORTED_FEATURE" s!"native structured integer operator {op}"
+    let count := if carry then 1 else 2
+    let applyCtor (raw : Json) : TransM Expr := do
+      let some t := (IR.parseTerm raw).toOption
+        | failT "EXPORT_VALIDATION_FAILED" "invalid registered structured-result constructor"
+      match t with
+      | .construct _ _ us =>
+        unless us.isEmpty do failT "UNSUPPORTED_FEATURE" "explicitly polymorphic native structured result"
+        trans (.app t (Array.replicate count (.prim "int63_type" Json.null)))
+      | _ => failT "EXPORT_VALIDATION_FAILED" "registered result role is not a constructor"
+    let ctors ← if carry then do
+      let some roles := (j.getObjVal? "carry_constructors").toOption
+        | failT "EXPORT_VALIDATION_FAILED" "missing kernel-registered carry constructors"
+      #["C0", "C1"].mapM fun role => do
+        let some raw := (roles.getObjVal? role).toOption
+          | failT "EXPORT_VALIDATION_FAILED" s!"missing carry role {role}"
+        applyCtor raw
+      else do
+        let some raw := (j.getObjVal? "pair_constructor").toOption
+          | failT "EXPORT_VALIDATION_FAILED" "missing kernel-registered pair constructor"
+        pure #[← applyCtor raw]
+    let width := mkRawNatLit 63
+    let zero := mkAppN (mkConst ``BitVec.ofNat) #[width, mkRawNatLit 0]
+    let resultType ← liftMeta (inferType (mkAppN ctors[0]! (Array.replicate count zero)))
+    return mkAppN (mkConst name [.zero]) (#[width, resultType] ++ ctors)
+  | .prim "float64_type" _ => return mkConst ``PrimFloat.Rep
+  | .prim "float64_op" j =>
+    let some op := (j.getObjValAs? String "operator").toOption
+      | failT "EXPORT_VALIDATION_FAILED" "missing native float operator"
+    let some name := floatOpTarget? op
+      | failT "UNSUPPORTED_FEATURE" s!"native float operator {op}"
+    return mkConst name
+  | .prim "float64_ctor_op" j =>
+    let some op := (j.getObjValAs? String "operator").toOption
+      | failT "EXPORT_VALIDATION_FAILED" "missing native float result operator"
+    let some (name, roleKey, roleNames) := floatCtorOpTarget? op
+      | failT "UNSUPPORTED_FEATURE" s!"native float result operator {op}"
+    let some roles := (j.getObjVal? roleKey).toOption
+      | failT "EXPORT_VALIDATION_FAILED" "missing registered float result constructors"
+    let parseCtor (raw : Json) : TransM IR.Term := do
+      let some t := (IR.parseTerm raw).toOption
+        | failT "EXPORT_VALIDATION_FAILED" "invalid native float result constructor"
+      match t with
+      | .construct _ _ us =>
+        unless us.isEmpty do failT "UNSUPPORTED_FEATURE" "explicitly polymorphic native float result"
+        pure t
+      | _ => failT "EXPORT_VALIDATION_FAILED" "native float result role is not a constructor"
+    let ctors ← if roleNames.isEmpty then do
+      let t ← parseCtor roles
+      pure #[← trans (.app t #[.prim "float64_type" Json.null, .prim "int63_type" Json.null])]
+      else roleNames.mapM fun key => do
+        let some raw := (roles.getObjVal? key).toOption
+          | failT "EXPORT_VALIDATION_FAILED" s!"missing float result role {key}"
+        trans (← parseCtor raw)
+    let sample := if roleNames.isEmpty then mkAppN ctors[0]! #[
+        mkConst ``PrimFloat.Rep.nan,
+        mkAppN (mkConst ``BitVec.ofNat) #[mkRawNatLit 63, mkRawNatLit 0]]
+      else ctors[0]!
+    let resultType ← liftMeta (inferType sample)
+    return mkAppN (mkConst name [.zero]) (#[resultType] ++ ctors)
+  | .prim "float" j =>
+    let some value := (j.getObjValAs? String "v").toOption
+      | failT "EXPORT_VALIDATION_FAILED" "float literal lacks hexadecimal value"
+    let some value := PrimFloat.parseLiteral value
+      | failT "EXPORT_VALIDATION_FAILED" "invalid hexadecimal float literal"
+    let bits := (PrimFloat.toBits value).toNat
+    return mkApp (mkConst ``PrimFloat.fromBits)
+      (mkAppN (mkConst ``BitVec.ofNat) #[mkRawNatLit 64, mkRawNatLit bits])
+  | .prim "int63_type" _ => return mkApp (mkConst ``BitVec) (mkRawNatLit 63)
+  | .prim "int63_op" j =>
+    let some op := (j.getObjValAs? String "operator").toOption
+      | failT "EXPORT_VALIDATION_FAILED" "missing native int63 operator"
+    let some name := int63OpTarget? op
+      | failT "UNSUPPORTED_FEATURE" s!"native int63 operator {op}"
+    return mkApp (mkConst name) (mkRawNatLit 63)
+  | .prim "int63_bool_op" j | .prim "float64_bool_op" j =>
+    let some op := (j.getObjValAs? String "operator").toOption
+      | failT "EXPORT_VALIDATION_FAILED" "missing native Boolean operator"
+    let floatOp := (floatBoolOpTarget? op).isSome
+    let some name := if floatOp then floatBoolOpTarget? op else int63BoolOpTarget? op
+      | failT "UNSUPPORTED_FEATURE" s!"native Boolean operator {op}"
+    let some roles := (j.getObjVal? "bool_constructors").toOption
+      | failT "EXPORT_VALIDATION_FAILED" "missing kernel-registered Boolean constructors"
+    let getCtor (role : String) : TransM Expr := do
+      let some raw := (roles.getObjVal? role).toOption
+        | failT "EXPORT_VALIDATION_FAILED" s!"missing native Boolean role {role}"
+      let some t := (IR.parseTerm raw).toOption
+        | failT "EXPORT_VALIDATION_FAILED" "invalid native Boolean constructor"
+      match t with
+      | .construct _ _ us =>
+        unless us.isEmpty do failT "UNSUPPORTED_FEATURE" "polymorphic native Boolean result"
+        trans t
+      | _ => failT "EXPORT_VALIDATION_FAILED" "native Boolean role is not a constructor"
+    let ct ← getCtor "true"
+    let cf ← getCtor "false"
+    let resultType ← liftMeta (inferType ct)
+    let width := mkRawNatLit 63
+    let word := if floatOp then mkConst ``PrimFloat.Rep else mkApp (mkConst ``BitVec) width
+    let helper := if floatOp then mkConst name else mkApp (mkConst name) width
+    let predicate := mkAppN helper #[.bvar 1, .bvar 0]
+    let motive := mkLambda `b .default (mkConst ``Bool) resultType
+    let result := mkAppN (mkConst ``Bool.rec [.succ .zero]) #[motive, cf, ct, predicate]
+    return mkLambda `x .default word (mkLambda `y .default word result)
+  | .prim "array" j =>
+    let parseField (key : String) : TransM IR.Term := do
+      let some raw := (j.getObjVal? key).toOption
+        | failT "EXPORT_VALIDATION_FAILED" s!"array literal lacks {key}"
+      let some term := (IR.parseTerm raw).toOption
+        | failT "EXPORT_VALIDATION_FAILED" s!"invalid array literal {key}"
+      pure term
+    let some rawLevel := (j.getObjVal? "u").toOption
+      | failT "EXPORT_VALIDATION_FAILED" "array literal lacks universe"
+    let some sourceLevel := (IR.parseLevel rawLevel).toOption
+      | failT "EXPORT_VALIDATION_FAILED" "invalid array literal universe"
+    let level ← transInstLevel sourceLevel
+    let some elems := (j.getObjValAs? (Array Json) "elems").toOption
+      | failT "EXPORT_VALIDATION_FAILED" "array literal lacks elements"
+    unless elems.size ≤ 4194303 do
+      failT "UNSUPPORTED_FEATURE" "array literal exceeds runtime maximum length"
+    let ty ← trans (← parseField "ty")
+    let fallback ← trans (← parseField "default")
+    let mut xs := mkApp (mkConst ``List.nil [level]) ty
+    for raw in elems.reverse do
+      let some elem := (IR.parseTerm raw).toOption
+        | failT "EXPORT_VALIDATION_FAILED" "invalid array literal element"
+      xs := mkAppN (mkConst ``List.cons [level]) #[ty, ← trans elem, xs]
+    return mkAppN (mkConst ``PrimArray.ofList [level]) #[ty, xs, fallback]
+  | .prim "string" j =>
+    let some bytes := (j.getObjValAs? (Array Nat) "bytes").toOption
+      | failT "EXPORT_VALIDATION_FAILED" "string literal must contain byte values"
+    unless bytes.size ≤ 16777211 && bytes.all (· < 256) do
+      failT "EXPORT_VALIDATION_FAILED" "string literal exceeds its byte or length bounds"
+    let ty := mkApp (mkConst ``BitVec) (mkRawNatLit 8)
+    let mut xs := mkApp (mkConst ``List.nil [.zero]) ty
+    for b in bytes.reverse do
+      let elem := mkAppN (mkConst ``BitVec.ofNat) #[mkRawNatLit 8, mkRawNatLit b]
+      xs := mkAppN (mkConst ``List.cons [.zero]) #[ty, elem, xs]
+    return mkApp (mkConst ``PrimString.ofBytes) xs
+  | .prim "int" j =>
+    let some s := (j.getObjValAs? String "v").toOption
+      | failT "EXPORT_VALIDATION_FAILED" "int63 literal is not a decimal string"
+    unless !s.isEmpty && s.toList.all (fun c => '0' ≤ c && c ≤ '9') do
+      failT "EXPORT_VALIDATION_FAILED" "int63 literal is not an ASCII decimal"
+    let some n := s.toNat?
+      | failT "EXPORT_VALIDATION_FAILED" "invalid int63 literal"
+    unless n < 2^63 do
+      failT "EXPORT_VALIDATION_FAILED" "int63 literal is outside [0, 2^63)"
+    return mkApp2 (mkConst ``BitVec.ofNat) (mkRawNatLit 63) (mkRawNatLit n)
   | .prim k _ => failT "UNSUPPORTED_FEATURE" s!"primitive {k}"
 
 /-- M3b: lower a source `match` to the kernel-generated recursor `I.rec`.
@@ -1597,7 +2465,10 @@ partial def trans (t : IR.Term) : TransM Expr := do
 partial def transCase (ind : IndRef) (npar : Nat) (puinst : Array IR.Level) (pparams : Array IR.Term)
     (pctx : Array AName) (pret : IR.Term) (scrut : IR.Term) (brs : Array (Array AName × IR.Term)) :
     TransM Expr := do
-  let tgt ← lookupInd ind
+  let tgt ← lookupSourceInd ind pparams
+  let tc ← read
+  let sourceScopes := tc.genv.sourceCaseScopes.bind fun build =>
+    build ind puinst pparams (sourceContextFor tc)
   if tgt.nonUniform > 0 then
     unless tgt.pendingHyps.isEmpty do failT "UNSUPPORTED_FEATURE" "non-uniform match on a pending inductive (pending validation)"
     return ← transCaseNU tgt ind npar puinst pparams pctx pret scrut brs
@@ -1640,7 +2511,7 @@ partial def transCase (ind : IndRef) (npar : Nat) (puinst : Array IR.Level) (ppa
     let some (bctx, bbody) := brs[k]? | failT "EXPORT_VALIDATION_FAILED" "ι-reduction: no such branch"
     unless bctx.size == fields.size do
       failT "UNSUPPORTED_FEATURE" s!"ι-reduction: branch {k} binds {bctx.size} names for {fields.size} fields"
-    return ← withPath s!"iota{k}" (withReader (fun c => { c with locals := c.locals ++ fields }) (trans bbody))
+    return ← withPath s!"iota{k}" (withSourceLocals fields (sourceScopes.bind fun sc => sc.2[k]?) (trans bbody))
   -- M6 course-of-values: a match on a subterm with a known result carries it into the branches
   if let some cs := (← read).cov then
     if let some (_, rz) := cs.results.find? (·.1 == scrut') then
@@ -1681,7 +2552,7 @@ partial def transCase (ind : IndRef) (npar : Nat) (puinst : Array IR.Level) (ppa
   let .forallE _ motiveTy _ _ := ty0 | failT "TRANSLATION_FAILED" s!"unexpected type of {iname}.rec"
   let (motive, u) ← forallTelescopeReducing motiveTy fun xs _ => do
     unless xs.size == pctx.size do failT "TRANSLATION_FAILED" "motive arity differs from the case context"
-    let ret ← withPath "return" (withReader (fun c => { c with locals := c.locals ++ xs }) (trans pret))
+    let ret ← withPath "return" (withSourceLocals xs (sourceScopes.map (·.1)) (trans pret))
     let u ← liftMeta do instantiateLevelMVars (← getLevel ret)
     let ret := if convoy then mkForall `h .default (mkApp3 (mkConst ``Eq [eqLvl]) sty scrut' xs.back!) ret else ret
     return (← bindFVars true xs ret, u.normalize)
@@ -1704,10 +2575,10 @@ partial def transCase (ind : IndRef) (npar : Nat) (puinst : Array IR.Level) (ppa
           if let some r := ac.hidden then r.modify (· ++ ihs.map (·.fvarId!))
         let .forallE hn hty _ _ ← liftMeta (whnf res) | failT "TRANSLATION_FAILED" "convoy: minor premise without its equation"
         withLocalDecl hn .default hty fun h => do
-          let body ← withPath s!"branch{k}" (withReader (fun c => { c with locals := c.locals ++ fields }) (trans bbody))
+          let body ← withPath s!"branch{k}" (withSourceLocals fields (sourceScopes.bind fun sc => sc.2[k]?) (trans bbody))
           bindFVars true (fields ++ ihs ++ #[h]) body
       else
-      let body ← withPath s!"branch{k}" (withReader (fun c => { c with locals := c.locals ++ fields }) (trans bbody))
+      let body ← withPath s!"branch{k}" (withSourceLocals fields (sourceScopes.bind fun sc => sc.2[k]?) (trans bbody))
       bindFVars true (fields ++ ihs) body
     minors := minors.push minor
     ty := rest.instantiate1 minor
@@ -1759,6 +2630,15 @@ partial def transCaseNU (tgt : IndTarget) (ind : IndRef) (npar : Nat) (puinst : 
   let sty ← liftMeta do whnf (← instLevelMVars (← inferType scrut'))
   unless sty.getAppFn.isConstOf iname && sty.getAppNumArgs == nu + k + nridx do
     failT "TRANSLATION_FAILED" s!"scrutinee type is not an application of {iname}"
+  -- A recursive minor already supplies a constructor at its own non-uniform
+  -- parameter. Reduce the source match there before introducing the Eq convoy.
+  if let some (_, ci, fields) := (← read).iota.find? (·.1 == scrut') then
+    let some (bctx, bbody) := brs[ci]? | failT "EXPORT_VALIDATION_FAILED" "ι-reduction: no such branch"
+    unless bctx.size == fields.size do
+      failT "UNSUPPORTED_FEATURE" s!"ι-reduction: branch {ci} binds {bctx.size} names for {fields.size} fields"
+    let tc ← read
+    let scopes := tc.genv.sourceCaseScopes.bind fun build => build ind puinst pparams (sourceContextFor tc)
+    return ← withPath s!"iota{ci}" (withSourceLocals fields (scopes.bind fun sc => sc.2[ci]?) (trans bbody))
   let indLvls := sty.getAppFn.constLevels!
   let sargs := sty.getAppArgs
   let idx := sargs.extract (nu + k) sargs.size
@@ -1842,8 +2722,8 @@ parameters, except index variables of the decreasing argument, which must be the
 corresponding index of `y`'s type. Any other occurrence of `f` is rejected. -/
 partial def replaceRecCalls (f : FVarId) (P : Array Expr) (idxPos : Array (Option Nat))
     (fieldIH : Array (Expr × Expr × Array Expr)) (gpos : Array Nat) (nparams : Nat) (e : Expr)
-    (lenient : Bool := false) : TransM Expr := do
-  let go (x : Expr) := replaceRecCalls f P idxPos fieldIH gpos nparams x lenient
+    (lenient : Bool := false) (indexPaths : Array (Option StructuralIndexPath) := #[]) : TransM Expr := do
+  let go (x : Expr) := replaceRecCalls f P idxPos fieldIH gpos nparams x lenient indexPaths
   match e with
   | .app .. =>
     let fn := e.getAppFn
@@ -1858,6 +2738,10 @@ partial def replaceRecCalls (f : FVarId) (P : Array Expr) (idxPos : Array (Optio
       let (ih, yIdx) ← recResultOf fieldIH nparams y (← y.getAppArgs.mapM go)
       for i in [0:r] do
         if gpos.contains i then continue          -- generalized: passed to the recursive result
+        if let some (some (j, path)) := indexPaths[i]? then
+          unless args[i]! == (← liftMeta (reduceStructuralIndex yIdx[j]! path)) do
+            failT "UNSUPPORTED_FEATURE" s!"recursive call passes index-pattern argument {i} different from the field's index"
+          continue
         match idxPos[i]! with
         | none =>
           unless args[i]! == P[i]! do
@@ -1880,11 +2764,14 @@ partial def replaceRecCalls (f : FVarId) (P : Array Expr) (idxPos : Array (Optio
 
 /-- Open the leading source lambdas of a fixpoint body with their translated source types. -/
 partial def withSourceLams (lams : Array (AName × IR.Term)) (base : Array Expr) (i : Nat) (acc : Array Expr)
-    (k : Array Expr → TransM Expr) : TransM Expr := do
+    (k : Array Expr → TransM Expr) (sourceBase : Option (Array (Option IR.CtxDecl)) := none) : TransM Expr := do
   if h : i < lams.size then
     let (n, t) := lams[i]
-    let t' ← withPath s!"lam{i}" (withReader (fun c => { c with locals := base ++ acc }) (trans t))
-    withLocalDecl (binderName n) .default t' fun a => withSourceLams lams base (i + 1) (acc.push a) k
+    let tc ← read
+    let before := sourceBase.getD (if tc.locals == base then sourceContextFor tc else Array.replicate base.size none)
+    let source := before ++ (lams.extract 0 i).map (fun (n,ty) => some {name := n, type := ty, body := none})
+    let t' ← withPath s!"lam{i}" (withReader (fun c => { c with locals := base ++ acc, sourceScope := base ++ acc, sourceContext := source }) (trans t))
+    withLocalDecl (binderName n) .default t' fun a => withSourceLams lams base (i + 1) (acc.push a) k sourceBase
   else k acc
 
 /-- M3c: lower a single structurally recursive `fix` to the decreasing argument's recursor.
@@ -1938,8 +2825,14 @@ partial def transFix1 (defs : Array (AName × IR.Term × IR.Term × Nat)) (cov :
     | .case cind cnpar _ _ _ _ _ (.rel sj) brs => if sj == lams.size - 1 - rarg then some (cind, cnpar, brs) else none
     | _ => none
   let outer := (← read).locals
+  let sourceBase := (sourceContextFor (← read)).push (some {name := fname, type := fty, body := none})
+  let sourceBody := sourceBase ++ lams.map (fun (n,ty) => some {name := n, type := ty, body := none})
+  let tc ← read
+  let sourceScopes := match b with
+    | .case i _ _ us ps _ _ _ _ => tc.genv.sourceCaseScopes.bind fun build => build i us ps sourceBody
+    | _ => none
   withLocalDecl (binderName fname) .default fty' fun fv => do
-  withSourceLams lams (outer.push fv) 0 #[] fun as => do
+  withSourceLams (sourceBase := some sourceBase) lams (outer.push fv) 0 #[] fun as => do
     let P := as.extract 0 rarg
     let x := as[rarg]!
     let Q := as.extract (rarg + 1) as.size
@@ -1962,17 +2855,19 @@ partial def transFix1 (defs : Array (AName × IR.Term × IR.Term × Nat)) (cov :
     if let some (_, cnpar, brs) := outerCase then
       unless rv.numParams + nu == cnpar && brs.size == nmain do
         failT "EXPORT_VALIDATION_FAILED" "match metadata disagrees with the recursor"
-    if outerCase.isNone && tgt.nonUniform > 0 then
-      return ← transFixAcc defs      -- (accessibility lowering, or its rejection)
     let xargs := xty.getAppArgs
     let params := xargs.extract 0 rv.numParams
     let idx := xargs.extract rv.numParams xargs.size
-    unless idx.all (P.contains ·) && idx.toList.eraseDups.length == idx.size do
-      failT "UNSUPPORTED_FEATURE" "indices of the decreasing argument are not distinct earlier parameters"
+    let indexPaths ← structuralIndexPaths P idx
+    let hasPattern := indexPaths.any fun p => p.any fun (_, path) => !path.isEmpty
+    if hasPattern then
+      for t in params ++ (← idx.mapM fun z => liftMeta (inferType z)) do
+        if P.any (t.containsFVar ·.fvarId!) then
+          failT "UNSUPPORTED_FEATURE" "dependent constructor-shaped structural index"
     let idxPos : Array (Option Nat) := P.map fun p => idx.findIdx? (· == p)
     -- Leading arguments that recursive calls change (other than indices of the decreasing
     -- argument) are generalized in the motive: λ P x Q, I.rec params (λ idx x, ∀ G Q, T) … idx x G Q.
-    let gpos := (changedParams fbody lams.size rarg 0).toArray.qsort (· < ·) |>.filter (idxPos[·]!.isNone)
+    let gpos := (changedParams fbody lams.size rarg 0).toArray.qsort (· < ·) |>.filter (indexPaths[·]!.isNone)
     let G := gpos.map (P[·]!)
     for i in [0:rarg] do
       unless gpos.contains i do
@@ -1984,7 +2879,15 @@ partial def transFix1 (defs : Array (AName × IR.Term × IR.Term × Nat)) (cov :
     let indLvls := xty.getAppFn.constLevels!
     let QT ← bindFVars false (G ++ Q) T
     let u := (← liftMeta do instantiateLevelMVars (← getLevel QT)).normalize
-    let motiveM ← bindFVars true (idx.push x) QT
+    let motiveM ← if !hasPattern then bindFVars true (idx.push x) QT else
+      withStructuralIndices idx 0 #[] fun zs => do
+        let Pm := P.mapIdx fun i p => match indexPaths[i]! with
+          | some (j, path) => projectStructuralIndex zs[j]! path
+          | none => p
+        let majorTy := mkAppN (mkConst iname indLvls) (params ++ zs)
+        withLocalDecl (Name.mkSimple "major") .default majorTy fun major => do
+          bindFVars true (zs.push major) (QT.replaceFVars (P.push x) (Pm.push major))
+
     let large := rv.levelParams.length == indLvls.length + 1
     if cov && (idx.size > 0 || nu > 0 || !large) then
       failT "UNSUPPORTED_FEATURE" "recursive call on a non-direct subterm (course-of-values) of an indexed, non-uniform or Prop-only inductive"
@@ -2015,7 +2918,7 @@ partial def transFix1 (defs : Array (AName × IR.Term × IR.Term × Nat)) (cov :
           return (y, if cov then .proj ``PProd 0 ih else ih, yt.getAppArgs.extract rv.numParams yt.getAppArgs.size)
         let xk0 := mkAppN (mkConst tgt.ctors[tidx]![k]! indLvls) (params ++ fields)
         let res ← if cov then pure (motiveM.beta #[xk0]) else liftMeta (whnf res)
-        let comp ← forallBoundedTelescope res (some (G.size + Q.size)) fun gqs _ => do
+        let comp ← forallBoundedTelescope res (some (G.size + Q.size)) fun gqs branchResult => do
           unless gqs.size == G.size + Q.size do failT "TRANSLATION_FAILED" "minor result has fewer binders than the motive"
           let gs := gqs.extract 0 G.size
           let qs := gqs.extract G.size gqs.size
@@ -2034,7 +2937,7 @@ partial def transFix1 (defs : Array (AName × IR.Term × IR.Term × Nat)) (cov :
             let mut P' := P
             for i in gpos, g in gs do P' := P'.set! i g
             for i in [0:P.size] do
-              if let some j := idxPos[i]! then P' := P'.set! i xkIdx[j]!
+              if let some (j, path) := indexPaths[i]! then P' := P'.set! i (projectStructuralIndex xkIdx[j]! path)
             return P'
           let cs : Option CovSite := if cov then
               some { f := fv.fvarId!, iname, params, motive, results := recFields.zip ihs, P := P', idxPos, gpos,
@@ -2043,12 +2946,16 @@ partial def transFix1 (defs : Array (AName × IR.Term × IR.Term × Nat)) (cov :
           let body ← match outerCase with
             | some (_, _, brs) =>
               let locals := outer ++ #[fv] ++ P' ++ #[xk] ++ qs ++ fields.extract nu fields.size
-              withPath s!"branch{k}" (withReader (fun c => { c with locals := locals, cov := cs }) (trans brs[k]!.2))
+              let fieldsSource := match sourceScopes.bind (fun sc => sc.2[k]?) with
+                | some ds => if ds.size == fields.size - nu then ds.map some else Array.replicate (fields.size - nu) none
+                | none => Array.replicate (fields.size - nu) none
+              withPath s!"branch{k}" (withReader (fun c => { c with locals := locals, cov := cs, sourceScope := locals, sourceContext := sourceBody ++ fieldsSource }) (trans brs[k]!.2))
             | none =>
               -- ι-generalized: the whole body, every match on the decreasing argument ι-reduced
               let locals := outer ++ #[fv] ++ P' ++ #[xk] ++ qs
-              withPath s!"minor{k}" (withReader (fun c => { c with locals := locals, iota := c.iota.push (xk, k, fields), cov := cs }) (trans b))
-          let body ← replaceRecCalls fv.fvarId! P' idxPos fieldIH gpos rv.numParams body
+              withPath s!"minor{k}" (withReader (fun c => { c with locals := locals, iota := c.iota.push (xk, k, fields.extract nu fields.size), cov := cs, sourceScope := locals, sourceContext := sourceBody }) (trans b))
+          let body ← replaceRecCalls fv.fvarId! P' idxPos fieldIH gpos rv.numParams body (indexPaths := indexPaths)
+          let body ← transportBranchResult body branchResult
           bindFVars true (if cov then gs ++ qs else fields ++ ihs ++ gs ++ qs) body
         if !cov then return comp
         -- course-of-values: ⟨branch, ⟨r_{f₁}, … , PUnit.unit⟩⟩ (the chain is `Below (C_k fields)`)
@@ -2086,8 +2993,10 @@ partial def transFixAcc (defs : Array (AName × IR.Term × IR.Term × Nat)) : Tr
   let (lams, b) := peelLams fbody
   unless rarg < lams.size do return ← notMatch
   let outer := (← read).locals
+  let sourceBase := (sourceContextFor (← read)).push (some {name := fname, type := fty, body := none})
+  let sourceBody := sourceBase ++ lams.map (fun (n,ty) => some {name := n, type := ty, body := none})
   withLocalDecl (binderName fname) .default fty' fun fv => do
-  withSourceLams lams (outer.push fv) 0 #[] fun as => do
+  withSourceLams (sourceBase := some sourceBase) lams (outer.push fv) 0 #[] fun as => do
     let P := as.extract 0 rarg
     let x := as[rarg]!
     let Q := as.extract (rarg + 1) as.size
@@ -2150,7 +3059,7 @@ partial def transFixAcc (defs : Array (AName × IR.Term × IR.Term × Nat)) : Tr
           let site : AccSite := { f := fv.fvarId!, s, ih, R, nP := rarg, idxPos, gpos, expected := vals,
                                   hasIdx, nparams := iv.numParams, idxTy, idxLvl, fam, base := baseF,
                                   collect, dsRef, ds, counter }
-          let body ← withPath "body" (withReader (fun c => { c with locals := outer ++ #[fv] ++ vals, accSite := some site }) (trans b))
+          let body ← withPath "body" (withReader (fun c => { c with locals := outer ++ #[fv] ++ vals, accSite := some site, sourceScope := outer ++ #[fv] ++ vals, sourceContext := sourceBody }) (trans b))
           bindFVars true #[s, h, ih] (← bindFVars true fresh body)
     let _ ← minorWith Rv true #[]
     let ds ← dsRef.get
@@ -2195,8 +3104,10 @@ partial def transFixWf (defs : Array (AName × IR.Term × IR.Term × Nat)) : Tra
   let (lams, b) := peelLams fbody
   unless rarg < lams.size do return ← unsup s!"decreasing argument {rarg} is not bound by the leading lambdas"
   let outer := (← read).locals
+  let sourceBase := (sourceContextFor (← read)).push (some {name := fname, type := fty, body := none})
+  let sourceBody := sourceBase ++ lams.map (fun (n,ty) => some {name := n, type := ty, body := none})
   withLocalDecl (binderName fname) .default fty' fun fv => do
-  withSourceLams lams (outer.push fv) 0 #[] fun as => do
+  withSourceLams (sourceBase := some sourceBase) lams (outer.push fv) 0 #[] fun as => do
     let P := as.extract 0 rarg
     let x := as[rarg]!
     let Q := as.extract (rarg + 1) as.size
@@ -2240,7 +3151,7 @@ partial def transFixWf (defs : Array (AName × IR.Term × IR.Term × Nat)) : Tra
                                   hasIdx := false, nparams := iv.numParams, idxTy := mkSort .zero, idxLvl := .zero,
                                   fam := C, base := baseF, collect, dsRef, ds, counter, convoy := true,
                                   hidden := some (← IO.mkRef #[]) }
-          let body ← withPath "body" (withReader (fun c => { c with locals := outer ++ #[fv] ++ vals, accSite := some site }) (trans b))
+          let body ← withPath "body" (withReader (fun c => { c with locals := outer ++ #[fv] ++ vals, accSite := some site, sourceScope := outer ++ #[fv] ++ vals, sourceContext := sourceBody }) (trans b))
           bindFVars true #[s, h, ih] (← bindFVars true fresh body)
     let _ ← minorWith Rv true #[]
     let ds ← dsRef.get
@@ -2472,7 +3383,7 @@ partial def transFixMutual (defs : Array (AName × IR.Term × IR.Term × Nat)) (
 
 /-- Translate an application head. `args` are the already-translated arguments, needed when
 the target's universe is computed from them. -/
-partial def transHead (f : IR.Term) (args : Array Expr) : TransM Expr := do
+partial def transHead (f : IR.Term) (args : Array Expr) (sourceArgs : Array IR.Term := #[]) : TransM Expr := do
   match f with
   | .const c u =>
     let genv := (← read).genv
@@ -2489,7 +3400,7 @@ partial def transHead (f : IR.Term) (args : Array Expr) : TransM Expr := do
       -- a shared source level, otherwise a fresh metavariable solved by Lean's unifier (`solveLevels`).
       let k := genv.constLevels[c]?.getD 0 - kp
       let lvls ← match genv.constGlobals[n]? with
-        | some gs => if gs.size == k then sharedOrFreshLevels gs else liftMeta do (List.range k).mapM fun _ => mkFreshLevelMVar
+        | some gs => if gs.size == k then sharedOrFreshLevels gs n else liftMeta do (List.range k).mapM fun _ => mkFreshLevelMVar
         | none => liftMeta do (List.range k).mapM fun _ => mkFreshLevelMVar
       pure (mkConst n (poly ++ lvls))
     | none =>
@@ -2497,20 +3408,18 @@ partial def transHead (f : IR.Term) (args : Array Expr) : TransM Expr := do
       -- a pending definition its artifact applied to fresh hypotheses
       match (← read).hyps, genv.leafStmt[c]?, genv.pendingDefs[c]? with
       | some ref, some (sname, sh), _ =>
-        unless kp == 0 do failT "UNSUPPORTED_FEATURE" s!"universe-polymorphic proof task {c} referenced in a pending declaration"
-        let stmtE ← applyHyps ref (mkConst sname (← levelsOf sname)) sh
+        let stmtE ← applyHyps ref (mkConst sname (poly ++ (← levelsOf sname))) sh
         hypFor ref c stmtE
       | some ref, none, some (pname, ph) =>
-        unless kp == 0 do failT "UNSUPPORTED_FEATURE" s!"universe-polymorphic pending definition {c}"
-        applyHyps ref (mkConst pname (← levelsOf pname)) ph
+        applyHyps ref (mkConst pname (poly ++ (← levelsOf pname))) ph
       | _, _, _ => failT "TRANSLATION_FAILED" s!"reference to constant {c}, which has no accepted translation"
   | .ind i u =>
-    let t ← lookupInd i
+    let t ← lookupSourceInd i sourceArgs
     checkTemplateArgs i.mind t args
     let e := mkConst t.types[i.idx]! (← univArgs i.mind t u args t.types[i.idx]!)
     pendingIndArgs t e
   | .construct i c u =>
-    let t ← lookupInd i
+    let t ← lookupSourceInd i sourceArgs
     let cs := t.ctors[i.idx]!
     unless c < cs.size do
       failT "EXPORT_VALIDATION_FAILED" s!"constructor index {c} out of range for {i.mind}"
@@ -2568,9 +3477,9 @@ def runTrans {α} (genv : GEnv) (x : TransM α) (globalLevels : Std.HashMap Stri
     (lowerShared : Bool := false) (hyps : Option (IO.Ref (Array (MVarId × String))) := none)
     (declKey : String := "") (hypExact : Bool := false)
     (sharedFresh : Option (IO.Ref (Array (LMVarId × String))) := none)
-    (propCoerce : Option (IO.Ref Nat) := none) (phantomLower : Bool := false) :
+    (propCoerce : Option (IO.Ref Nat) := none) (phantomLower : Bool := false) (typeCoerce : Bool := false) :
     MetaM (Except TransError α) :=
-  (x { genv, globalLevels, polyLevels, factReduce, admitLevels, lowerShared, hyps, declKey, hypExact, sharedFresh, propCoerce, phantomLower }).run
+  (x { genv, globalLevels, polyLevels, factReduce, admitLevels, lowerShared, hyps, declKey, hypExact, sharedFresh, propCoerce, phantomLower, typeCoerce }).run
 
 /-- Pending validation: the hypothesis metavariables (in creation order) become binders of the
 declaration, `∀ hs, e` (`lam := false`) or `fun hs => e` (Lean's binding abstraction handles their
@@ -2613,14 +3522,14 @@ partial def onlyInResultSort (ty : IR.Term) (l : String) : Bool :=
   | _ => !(globalsOf ty).contains l
 
 /-- R8: levels that occur in a source type only as the codomain sort `Type@{l}` (one summand,
-offset 0) of a binder type with at least one argument — motive-like binders `K : X → Type@{l}`,
-which Rocq instantiates with Prop-valued families by cumulativity. Any other occurrence (another
+offset 0) of a binder type — a carrier `A : Type@{l}` or motive `K : X → Type@{l}`,
+which Rocq instantiates with propositions or Prop-valued families by cumulativity. Any other occurrence (another
 sort, an instance) disqualifies the level. -/
 partial def motiveLevels (ty : IR.Term) : Array String := Id.run do
   let rec codomain (t : IR.Term) (n : Nat) : Option (Nat × String) :=
     match t with
     | .prod _ _ b => codomain b (n + 1)
-    | .sort (.type #[{ level := .global l, offset := 0 }]) => if n ≥ 1 then some (n, l) else none
+    | .sort (.type #[{ level := .global l, offset := 0 }]) => some (n, l)
     | _ => none
   -- (motive occurrences, other occurrences)
   let rec go (t : IR.Term) (acc : Std.HashSet String × Std.HashSet String) : Std.HashSet String × Std.HashSet String :=
@@ -2735,11 +3644,63 @@ def equalAtModels (f : IR.UniverseFacts) (own : Array String) (σ τ : Level) : 
   | some a, some b => leq a b && leq b a
   | _, _ => false
 
+/-- Entailment in one declaration's source-checked abstract universe context.
+Edges encode a + offset ≤ b; signed offsets are retained. Native global facts
+are combined with local variable constraints, without changing the shared GEnv.
+A positive cycle or malformed context fails closed. -/
+def polyContextEntails (f : IR.UniverseFacts) (u : IR.UDecl)
+    (a b : IR.Level) (offset : Int) : Bool := Id.run do
+  let .polymorphic names cs := u | return false
+  let some cs := cs.getArr?.toOption | return false
+  let nativeKey (s : String) := if s == "Set" then "S" else "G:" ++ s
+  let key : IR.Level → Option String
+    | .set => some "S"
+    | .global s => some (nativeKey s)
+    | .var i => if i < names.size then some s!"V:{i}" else none
+  let some ak := key a | return false
+  let some bk := key b | return false
+  let mut edges : Array (String × Int × String) := #[]
+  let mut nodes := ({} : Std.HashSet String).insert "S" |>.insert ak |>.insert bk
+  for (x, r, y) in f.relations do
+    if r == "le" || r == "lt" then
+      let x := nativeKey x
+      let y := nativeKey y
+      nodes := nodes.insert x |>.insert y
+      edges := edges.push (x, if r == "lt" then 1 else 0, y)
+  for i in [:names.size] do nodes := nodes.insert s!"V:{i}"
+  for c in cs do
+    let some lj := (c.getObjVal? "l").toOption | return false
+    let some rj := (c.getObjVal? "r").toOption | return false
+    let some rel := (c.getObjVal? "rel").toOption | return false
+    let some l := (IR.parseLevel lj).toOption >>= key | return false
+    let some r := (IR.parseLevel rj).toOption >>= key | return false
+    let some k := (rel.getObjValAs? String "k").toOption | return false
+    nodes := nodes.insert l |>.insert r
+    if k == "eq" then edges := edges.push (l, 0, r) |>.push (r, 0, l)
+    else if k == "le" then
+      let some n := (rel.getObjValAs? Int "offset").toOption | return false
+      edges := edges.push (l, n, r)
+    else return false
+  -- Every Rocq Type universe is at least Set, including abstract variables.
+  for n in nodes do edges := edges.push ("S", 0, n)
+  let mut dist := ({} : Std.HashMap String Int).insert ak 0
+  for _ in [:nodes.size] do
+    let mut changed := false
+    for (x, k, y) in edges do
+      if let some dx := dist[x]? then
+        let dy := dx + k
+        if (dist[y]?).all (· < dy) then
+          dist := dist.insert y dy
+          changed := true
+    if !changed then return (dist[bk]?).any (offset ≤ ·)
+  return false
+
 /-- Universe obligation (docs/UNIVERSE_TRANSLATION.md, rule R3) for one reference: the target
 universe argument `σ` for the referenced constant's parameter standing for source level `l`. -/
 def checkInstantiation (f : IR.UniverseFacts) (own : Array String) (l : String) (σ : Level)
     (body : Std.HashMap String Level := {}) (cAdmit : Bool := false) (ownAdmit : Array String := #[])
-    (allowLift : Bool := false) (allowLower : Bool := false) (copyArg : Bool := false) : Except String Unit := do
+    (allowLift : Bool := false) (allowLower : Bool := false) (copyArg : Bool := false)
+    (polyContext : IR.UDecl := .monomorphic) : Except String Unit := do
   -- R8: a motive-level parameter stands for (image of the source level) + 1; `shift` converts the
   -- referring declaration's level for `l` into the referenced parameter's convention
   let dAdmit := ownAdmit.contains l
@@ -2772,11 +3733,21 @@ def checkInstantiation (f : IR.UniverseFacts) (own : Array String) (l : String) 
       throw s!"coherence: source level {l} is shared with the referring declaration, so its argument must be u_{l}, not {σ}"
   let some (c, ps) := levelNF σ.normalize | throw s!"argument {σ} for {l} is outside the supported level fragment"
   -- R8: for a motive-level parameter the argument 0 is Prop (always admissible), c ≥ 1 is Set + (c-1)
-  unless (cAdmit && c == 0) || entails f "Set" l (if cAdmit then c - 1 else c) do
+  unless (cAdmit && c == 0) || entails f "Set" l (if cAdmit then c - 1 else c) ||
+      polyContextEntails f polyContext .set (.global l) (if cAdmit then c - 1 else c) do
     throw s!"argument {σ}: Set + {c} ≤ {l} is not entailed by the source universe graph"
   for (p, k) in ps do
-    let some m := own.find? (fun g => levelParamName g == p)
-      | throw s!"argument {σ} mentions {p}, which is not a parameter of the referring declaration"
+    let m? := own.find? (fun g => levelParamName g == p)
+    if m?.isNone then
+      let count := match polyContext with | .polymorphic ns _ => ns.size | _ => 0
+      let some i := (List.range count).find? (polyParamName · == p)
+        | throw s!"argument {σ} mentions {p}, which is not a parameter of the referring declaration"
+      let e : Int := k - (if cAdmit then 1 else 0)
+      unless polyContextEntails f polyContext (.var i) (.global l) e.toNat ||
+          (allowLift && e == 0 && polyContextEntails f polyContext (.global l) (.var i) 0) do
+        throw s!"argument {σ}: local polymorphic constraint v_{i} + {e.toNat} ≤ {l} is not entailed"
+      continue
+    let m := m?.getD ""
     -- effective offset between the referring level m and the referenced level l (R8 conventions)
     let e : Int := k + (if ownAdmit.contains m then 1 else 0) - (if cAdmit then 1 else 0)
     -- no raising (m + e ≤ l); in the cumulativity tier only (R3↑, reported per declaration), also the
@@ -2881,7 +3852,7 @@ partial def constOccurrences (e : Expr) (acc : Array (Name × List Level) := #[]
 returns the number of checked arguments. -/
 def checkUniverseObligations (genv : GEnv) (own : Array String) (e : Expr)
     (body : Std.HashMap String Level := {}) (ownAdmit : Array String := #[]) (allowLift : Bool := false)
-    (allowLower : Bool := false) :
+    (allowLower : Bool := false) (polyContext : IR.UDecl := .monomorphic) :
     Except String Nat := do
   let mut n := 0
   for (c, ls) in constOccurrences e do
@@ -2898,7 +3869,7 @@ def checkUniverseObligations (genv : GEnv) (own : Array String) (e : Expr)
         -- generated prerequisite hypothesis) is instantiated where the prerequisite is used; its argument
         -- for a shared level may lie below it (R3↓: no raising, checked below), on every tier
         let hypArg := genv.leafStmtTargets.contains c
-        match checkInstantiation genv.facts own l σ body cAdmit ownAdmit allowLift (allowLower || hypArg) (copyPos.getD k false) with
+        match checkInstantiation genv.facts own l σ body cAdmit ownAdmit allowLift (allowLower || hypArg) (copyPos.getD k false) polyContext with
         | .ok () => n := n + 1
         | .error msg => throw s!"reference to {c}: {msg}"
   return n
@@ -2964,6 +3935,26 @@ def solvePostponedLevels : MetaM (Array String × Array String) := do
         left := left.push s!"{if unsat then "unsatisfiable" else "solver limitation"}: {lhs} = {rhs}"
   return (log, left)
 
+/-- Close residual defaults before assigning any metavariable. A default derived
+from a solved public level can refer back to itself (e.g. ?u := ?u + 1).
+Such a cycle is a rejected universe interpretation, never an assignment. -/
+def closeUniverseDefaults (ids : Array LMVarId) (defaults : Array Level) : Except String (Array Level) := do
+  if ids.size != defaults.size then throw "residual universe default arity mismatch"
+  let rec close (fuel : Nat) (active : Array LMVarId) (l : Level) : Except String Level := do
+    match l with
+    | .mvar id =>
+      if active.contains id then throw "cyclic residual universe default"
+      let some i := ids.findIdx? (· == id) | throw "unbound residual universe default"
+      match fuel with
+      | 0 => throw "residual universe default dependency depth exceeded"
+      | n + 1 => close n (active.push id) defaults[i]!
+    | .succ a => return .succ (← close fuel active a)
+    | .max a b => return mkLevelMax (← close fuel active a) (← close fuel active b)
+    | .imax a b => return mkLevelIMax (← close fuel active a) (← close fuel active b)
+    | x => return x
+  termination_by (fuel, sizeOf l)
+  defaults.mapM (close (ids.size + 1) #[])
+
 /-- Solve the universe metavariables introduced at references to generalized constants:
 type-check with Lean's checker (which unifies universe levels; terms are not changed) and
 unify the value's type with the declared type; any level left unconstrained is set to `0`.
@@ -2998,7 +3989,10 @@ def solveLevels (ty val : Expr) (dflt : LMVarId → MetaM Level := fun _ => pure
     | _ => none
   let gty := ty.replaceLevel sub
   let gval := val.replaceLevel sub
-  let ds ← ms.toList.mapM dflt
+  let rawDefaults ← ms.mapM dflt
+  let ds ← match closeUniverseDefaults ms rawDefaults with
+    | .ok ds => pure ds.toList
+    | .error msg => throwError msg
   for m in ms, d in ds do assignLevelMVar m d
   return (← instLevelMVars ty, ← instLevelMVars val, diags, ps, gty, gval, ds)
 

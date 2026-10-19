@@ -1,0 +1,197 @@
+rocq2lean: 7 root(s) TRANSLATED_AND_CHECKED; summary {"bootstrap_resolved":0,"generated_helpers":0,"not_ok":17,"roots":7,"translated_dependencies":7}
+def Rocq.Corelib.Init.Sumbool.bool_eq_ind.statement : Prop :=
+∀ (b : Rocq.Corelib.Init.Datatypes.bool) (P : Rocq.Corelib.Init.Datatypes.bool → Prop),
+  (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool b Rocq.Corelib.Init.Datatypes.bool.true →
+      P Rocq.Corelib.Init.Datatypes.bool.true) →
+    (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool b Rocq.Corelib.Init.Datatypes.bool.false →
+        P Rocq.Corelib.Init.Datatypes.bool.false) →
+      P b
+def RocqPending.Corelib.Init.Sumbool.bool_eq_rec : {h_Corelib_Init_Sumbool_bool_eq_rec__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Sumbool.bool_eq_rec__rocq2lean_obligation_1.statement.{2}} →
+  {h_Corelib_Init_Sumbool_bool_eq_rec__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Sumbool.bool_eq_rec__rocq2lean_obligation_2.statement.{2}} →
+    (b : Rocq.Corelib.Init.Datatypes.bool) →
+      (P : Rocq.Corelib.Init.Datatypes.bool → Type) →
+        (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool b Rocq.Corelib.Init.Datatypes.bool.true →
+            P Rocq.Corelib.Init.Datatypes.bool.true) →
+          (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool b Rocq.Corelib.Init.Datatypes.bool.false →
+              P Rocq.Corelib.Init.Datatypes.bool.false) →
+            P b :=
+fun {h_Corelib_Init_Sumbool_bool_eq_rec__rocq2lean_obligation_1}
+    {h_Corelib_Init_Sumbool_bool_eq_rec__rocq2lean_obligation_2} b P a a_1 =>
+  PULift.down.{2, 1}
+    (Rocq.Corelib.Init.Datatypes.bool.rec.{3} (motive := fun t =>
+      (P : Rocq.Corelib.Init.Datatypes.bool → Type 1) →
+        (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool t Rocq.Corelib.Init.Datatypes.bool.true →
+            P Rocq.Corelib.Init.Datatypes.bool.true) →
+          (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool t Rocq.Corelib.Init.Datatypes.bool.false →
+              P Rocq.Corelib.Init.Datatypes.bool.false) →
+            P t)
+      (fun P_1 H a => H ⋯) (fun P_1 a H => H ⋯) b (fun x => PULift.{2, 1} (P x)) (fun a_2 => PULift.up.{2, 1} (a a_2))
+      fun a => PULift.up.{2, 1} (a_1 a))
+def Rocq.Corelib.Init.Sumbool.bool_eq_rec__rocq2lean_obligation_1.statement.{u_Corelib_Init_Sumbool_32} : Prop :=
+∀ (b : Rocq.Corelib.Init.Datatypes.bool) (P : Rocq.Corelib.Init.Datatypes.bool → Type)
+  (P : Rocq.Corelib.Init.Datatypes.bool → Sort u_Corelib_Init_Sumbool_32)
+  (H :
+    Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+        Rocq.Corelib.Init.Datatypes.bool.true →
+      P Rocq.Corelib.Init.Datatypes.bool.true)
+  (a :
+    Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+        Rocq.Corelib.Init.Datatypes.bool.false →
+      P Rocq.Corelib.Init.Datatypes.bool.false),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+    Rocq.Corelib.Init.Datatypes.bool.true
+def Rocq.Corelib.Init.Sumbool.bool_eq_rec__rocq2lean_obligation_2.statement.{u_Corelib_Init_Sumbool_32} : Prop :=
+∀ (b : Rocq.Corelib.Init.Datatypes.bool) (P : Rocq.Corelib.Init.Datatypes.bool → Type)
+  (P : Rocq.Corelib.Init.Datatypes.bool → Sort u_Corelib_Init_Sumbool_32)
+  (a :
+    Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+        Rocq.Corelib.Init.Datatypes.bool.true →
+      P Rocq.Corelib.Init.Datatypes.bool.true)
+  (H :
+    Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+        Rocq.Corelib.Init.Datatypes.bool.false →
+      P Rocq.Corelib.Init.Datatypes.bool.false),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+    Rocq.Corelib.Init.Datatypes.bool.false
+def Rocq.Corelib.Init.Sumbool.bool_of_sumbool : (A B : Prop) →
+  Rocq.Corelib.Init.Specif.sumbool A B →
+    Rocq.Corelib.Init.Specif.sig.{1} Rocq.Corelib.Init.Datatypes.bool fun b =>
+      Rocq.Corelib.Init.Datatypes.bool.rec.{1} A B b :=
+fun A B =>
+  Rocq.Corelib.Init.Specif.sumbool_rec
+    ((fun x => Rocq.Corelib.Init.Datatypes.bool.rec.{1} A B x) Rocq.Corelib.Init.Datatypes.bool.true)
+    ((fun x => Rocq.Corelib.Init.Datatypes.bool.rec.{1} A B x) Rocq.Corelib.Init.Datatypes.bool.false)
+    (fun s =>
+      Rocq.Corelib.Init.Specif.sig.{1} Rocq.Corelib.Init.Datatypes.bool fun b =>
+        Rocq.Corelib.Init.Datatypes.bool.rec.{1} A B b)
+    (Rocq.Corelib.Init.Specif.sig.exist.{1} Rocq.Corelib.Init.Datatypes.bool
+      (fun x => Rocq.Corelib.Init.Datatypes.bool.rec.{1} A B x) Rocq.Corelib.Init.Datatypes.bool.true)
+    (Rocq.Corelib.Init.Specif.sig.exist.{1} Rocq.Corelib.Init.Datatypes.bool
+      (fun x => Rocq.Corelib.Init.Datatypes.bool.rec.{1} A B x) Rocq.Corelib.Init.Datatypes.bool.false)
+def RocqPending.Corelib.Init.Sumbool.sumbool_and : {h_Corelib_Init_Sumbool_sumbool_and__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_1.statement} →
+  {h_Corelib_Init_Sumbool_sumbool_and__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_2.statement} →
+    {h_Corelib_Init_Sumbool_sumbool_and__rocq2lean_obligation_3 :
+        Rocq.Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_3.statement} →
+      {h_Corelib_Init_Sumbool_sumbool_and__rocq2lean_obligation_4 :
+          Rocq.Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_4.statement} →
+        (A B C D : Prop) →
+          Rocq.Corelib.Init.Specif.sumbool A B →
+            Rocq.Corelib.Init.Specif.sumbool C D →
+              Rocq.Corelib.Init.Specif.sumbool (Rocq.Corelib.Init.Logic.and A C) (Rocq.Corelib.Init.Logic.or B D) :=
+fun {h_Corelib_Init_Sumbool_sumbool_and__rocq2lean_obligation_1}
+    {h_Corelib_Init_Sumbool_sumbool_and__rocq2lean_obligation_2}
+    {h_Corelib_Init_Sumbool_sumbool_and__rocq2lean_obligation_3}
+    {h_Corelib_Init_Sumbool_sumbool_and__rocq2lean_obligation_4} A B C D H1 H2 =>
+  Rocq.Corelib.Init.Specif.sumbool.rec.{1}
+    (fun a =>
+      Rocq.Corelib.Init.Specif.sumbool.rec.{1}
+        (fun a_1 =>
+          Rocq.Corelib.Init.Specif.sumbool.left (Rocq.Corelib.Init.Logic.and A C) (Rocq.Corelib.Init.Logic.or B D) ⋯)
+        (fun a_1 =>
+          Rocq.Corelib.Init.Specif.sumbool.right (Rocq.Corelib.Init.Logic.and A C) (Rocq.Corelib.Init.Logic.or B D) ⋯)
+        H2)
+    (fun a =>
+      Rocq.Corelib.Init.Specif.sumbool.rec.{1}
+        (fun a_1 =>
+          Rocq.Corelib.Init.Specif.sumbool.right (Rocq.Corelib.Init.Logic.and A C) (Rocq.Corelib.Init.Logic.or B D) ⋯)
+        (fun a_1 =>
+          Rocq.Corelib.Init.Specif.sumbool.right (Rocq.Corelib.Init.Logic.and A C) (Rocq.Corelib.Init.Logic.or B D) ⋯)
+        H2)
+    H1
+def Rocq.Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_1.statement : Prop :=
+∀ (A B C D : Prop) (H1 : Rocq.Corelib.Init.Specif.sumbool A B) (H2 : Rocq.Corelib.Init.Specif.sumbool C D),
+  A → C → Rocq.Corelib.Init.Logic.and A C
+def Rocq.Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_2.statement : Prop :=
+∀ (A B C D : Prop) (H1 : Rocq.Corelib.Init.Specif.sumbool A B) (H2 : Rocq.Corelib.Init.Specif.sumbool C D),
+  A → D → Rocq.Corelib.Init.Logic.or B D
+def Rocq.Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_3.statement : Prop :=
+∀ (A B C D : Prop) (H1 : Rocq.Corelib.Init.Specif.sumbool A B) (H2 : Rocq.Corelib.Init.Specif.sumbool C D),
+  B → C → Rocq.Corelib.Init.Logic.or B D
+def Rocq.Corelib.Init.Sumbool.sumbool_and__rocq2lean_obligation_4.statement : Prop :=
+∀ (A B C D : Prop) (H1 : Rocq.Corelib.Init.Specif.sumbool A B) (H2 : Rocq.Corelib.Init.Specif.sumbool C D),
+  B → D → Rocq.Corelib.Init.Logic.or B D
+def Rocq.Corelib.Init.Sumbool.sumbool_not : (A B : Prop) →
+  Rocq.Corelib.Init.Specif.sumbool A B → Rocq.Corelib.Init.Specif.sumbool B A :=
+fun A B H1 =>
+  Rocq.Corelib.Init.Specif.sumbool.rec.{1} (fun a => Rocq.Corelib.Init.Specif.sumbool.right B A a)
+    (fun a => Rocq.Corelib.Init.Specif.sumbool.left B A a) H1
+def RocqPending.Corelib.Init.Sumbool.sumbool_of_bool : {h_Corelib_Init_Sumbool_sumbool_of_bool__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Sumbool.sumbool_of_bool__rocq2lean_obligation_1.statement} →
+  {h_Corelib_Init_Sumbool_sumbool_of_bool__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Sumbool.sumbool_of_bool__rocq2lean_obligation_2.statement} →
+    (b : Rocq.Corelib.Init.Datatypes.bool) →
+      Rocq.Corelib.Init.Specif.sumbool
+        (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool b Rocq.Corelib.Init.Datatypes.bool.true)
+        (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool b Rocq.Corelib.Init.Datatypes.bool.false) :=
+fun {h_Corelib_Init_Sumbool_sumbool_of_bool__rocq2lean_obligation_1}
+    {h_Corelib_Init_Sumbool_sumbool_of_bool__rocq2lean_obligation_2} b =>
+  Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+    (Rocq.Corelib.Init.Specif.sumbool.left
+      (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+        Rocq.Corelib.Init.Datatypes.bool.true)
+      (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+        Rocq.Corelib.Init.Datatypes.bool.false)
+      ⋯)
+    (Rocq.Corelib.Init.Specif.sumbool.right
+      (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+        Rocq.Corelib.Init.Datatypes.bool.true)
+      (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+        Rocq.Corelib.Init.Datatypes.bool.false)
+      ⋯)
+    b
+def Rocq.Corelib.Init.Sumbool.sumbool_of_bool__rocq2lean_obligation_1.statement : Prop :=
+∀ (b : Rocq.Corelib.Init.Datatypes.bool),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+    Rocq.Corelib.Init.Datatypes.bool.true
+def Rocq.Corelib.Init.Sumbool.sumbool_of_bool__rocq2lean_obligation_2.statement : Prop :=
+∀ (b : Rocq.Corelib.Init.Datatypes.bool),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+    Rocq.Corelib.Init.Datatypes.bool.false
+def RocqPending.Corelib.Init.Sumbool.sumbool_or : {h_Corelib_Init_Sumbool_sumbool_or__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_1.statement} →
+  {h_Corelib_Init_Sumbool_sumbool_or__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_2.statement} →
+    {h_Corelib_Init_Sumbool_sumbool_or__rocq2lean_obligation_3 :
+        Rocq.Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_3.statement} →
+      {h_Corelib_Init_Sumbool_sumbool_or__rocq2lean_obligation_4 :
+          Rocq.Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_4.statement} →
+        (A B C D : Prop) →
+          Rocq.Corelib.Init.Specif.sumbool A B →
+            Rocq.Corelib.Init.Specif.sumbool C D →
+              Rocq.Corelib.Init.Specif.sumbool (Rocq.Corelib.Init.Logic.or A C) (Rocq.Corelib.Init.Logic.and B D) :=
+fun {h_Corelib_Init_Sumbool_sumbool_or__rocq2lean_obligation_1}
+    {h_Corelib_Init_Sumbool_sumbool_or__rocq2lean_obligation_2}
+    {h_Corelib_Init_Sumbool_sumbool_or__rocq2lean_obligation_3}
+    {h_Corelib_Init_Sumbool_sumbool_or__rocq2lean_obligation_4} A B C D H1 H2 =>
+  Rocq.Corelib.Init.Specif.sumbool.rec.{1}
+    (fun a =>
+      Rocq.Corelib.Init.Specif.sumbool.rec.{1}
+        (fun a_1 =>
+          Rocq.Corelib.Init.Specif.sumbool.left (Rocq.Corelib.Init.Logic.or A C) (Rocq.Corelib.Init.Logic.and B D) ⋯)
+        (fun a_1 =>
+          Rocq.Corelib.Init.Specif.sumbool.left (Rocq.Corelib.Init.Logic.or A C) (Rocq.Corelib.Init.Logic.and B D) ⋯)
+        H2)
+    (fun a =>
+      Rocq.Corelib.Init.Specif.sumbool.rec.{1}
+        (fun a_1 =>
+          Rocq.Corelib.Init.Specif.sumbool.left (Rocq.Corelib.Init.Logic.or A C) (Rocq.Corelib.Init.Logic.and B D) ⋯)
+        (fun a_1 =>
+          Rocq.Corelib.Init.Specif.sumbool.right (Rocq.Corelib.Init.Logic.or A C) (Rocq.Corelib.Init.Logic.and B D) ⋯)
+        H2)
+    H1
+def Rocq.Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_1.statement : Prop :=
+∀ (A B C D : Prop) (H1 : Rocq.Corelib.Init.Specif.sumbool A B) (H2 : Rocq.Corelib.Init.Specif.sumbool C D),
+  A → C → Rocq.Corelib.Init.Logic.or A C
+def Rocq.Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_2.statement : Prop :=
+∀ (A B C D : Prop) (H1 : Rocq.Corelib.Init.Specif.sumbool A B) (H2 : Rocq.Corelib.Init.Specif.sumbool C D),
+  A → D → Rocq.Corelib.Init.Logic.or A C
+def Rocq.Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_3.statement : Prop :=
+∀ (A B C D : Prop) (H1 : Rocq.Corelib.Init.Specif.sumbool A B) (H2 : Rocq.Corelib.Init.Specif.sumbool C D),
+  B → C → Rocq.Corelib.Init.Logic.or A C
+def Rocq.Corelib.Init.Sumbool.sumbool_or__rocq2lean_obligation_4.statement : Prop :=
+∀ (A B C D : Prop) (H1 : Rocq.Corelib.Init.Specif.sumbool A B) (H2 : Rocq.Corelib.Init.Specif.sumbool C D),
+  B → D → Rocq.Corelib.Init.Logic.and B D

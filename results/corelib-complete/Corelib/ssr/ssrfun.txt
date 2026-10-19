@@ -1,0 +1,911 @@
+rocq2lean: 128 root(s) TRANSLATED_AND_CHECKED; summary {"bootstrap_resolved":0,"generated_helpers":0,"not_ok":68,"roots":128,"translated_dependencies":29}
+def Rocq.Corelib.ssr.ssrfun.Option.apply.{u_Corelib_ssr_ssrfun_41, u_Corelib_ssr_ssrfun_42} : (aT :
+    Sort u_Corelib_ssr_ssrfun_41) →
+  (rT : Sort u_Corelib_ssr_ssrfun_42) →
+    (aT → rT) → rT → Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_41} aT → rT :=
+fun aT rT f x u =>
+  Rocq.Corelib.Init.Datatypes.option.rec.{u_Corelib_ssr_ssrfun_42, u_Corelib_ssr_ssrfun_41} (fun a => f a) x u
+def Rocq.Corelib.ssr.ssrfun.Option.bind.{u_Corelib_ssr_ssrfun_52, u_Corelib_ssr_ssrfun_53} : (aT :
+    Sort u_Corelib_ssr_ssrfun_52) →
+  (rT : Sort u_Corelib_ssr_ssrfun_53) →
+    (aT → Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_53} rT) →
+      Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_52} aT →
+        Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_53} rT :=
+fun aT rT f =>
+  Rocq.Corelib.ssr.ssrfun.Option.apply.{u_Corelib_ssr_ssrfun_52, max 1 u_Corelib_ssr_ssrfun_53} aT
+    (Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_53} rT) f
+    (Rocq.Corelib.Init.Datatypes.option.None.{u_Corelib_ssr_ssrfun_53} rT)
+def Rocq.Corelib.ssr.ssrfun.Option.default.{u_Corelib_ssr_ssrfun_49} : (T : Sort u_Corelib_ssr_ssrfun_49) →
+  T → Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_49} T → T :=
+fun T => Rocq.Corelib.ssr.ssrfun.Option.apply.{u_Corelib_ssr_ssrfun_49, u_Corelib_ssr_ssrfun_49} T T fun x => x
+def Rocq.Corelib.ssr.ssrfun.Option.lift.{u_Corelib_ssr_ssrfun_62, u_Corelib_ssr_ssrfun_63} : (aT :
+    Sort u_Corelib_ssr_ssrfun_62) →
+  (rT : Sort u_Corelib_ssr_ssrfun_63) →
+    (aT → rT) → aT → Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_63} rT :=
+fun aT rT f x => Rocq.Corelib.Init.Datatypes.option.Some.{u_Corelib_ssr_ssrfun_63} rT (f x)
+def Rocq.Corelib.ssr.ssrfun.Option.map.{u_Corelib_ssr_ssrfun_57, u_Corelib_ssr_ssrfun_58} : (aT :
+    Sort u_Corelib_ssr_ssrfun_57) →
+  (rT : Sort u_Corelib_ssr_ssrfun_58) →
+    (aT → rT) →
+      Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_57} aT →
+        Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_58} rT :=
+fun aT rT f =>
+  Rocq.Corelib.ssr.ssrfun.Option.bind.{u_Corelib_ssr_ssrfun_57, u_Corelib_ssr_ssrfun_58} aT rT fun x =>
+    Rocq.Corelib.Init.Datatypes.option.Some.{u_Corelib_ssr_ssrfun_58} rT (f x)
+def Rocq.Corelib.ssr.ssrfun.SimplFunDelta.{u_Corelib_ssr_ssrfun_91, u_Corelib_ssr_ssrfun_92} : (aT :
+    Sort u_Corelib_ssr_ssrfun_91) →
+  (rT : Sort u_Corelib_ssr_ssrfun_92) →
+    (aT → aT → rT) → Rocq.Corelib.ssr.ssrfun.simpl_fun.{u_Corelib_ssr_ssrfun_91, u_Corelib_ssr_ssrfun_92} aT rT :=
+fun aT rT f =>
+  Rocq.Corelib.ssr.ssrfun.simpl_fun.SimplFun.{u_Corelib_ssr_ssrfun_91, u_Corelib_ssr_ssrfun_92} aT rT fun z => f z z
+def Rocq.Corelib.ssr.ssrfun.Some_inj.statement.{u_Corelib_ssr_ssreflect_rw_178} : Prop :=
+∀ (T : Rocq.Corelib.ssr.ssreflect_rw.NonPropType.type.{u_Corelib_ssr_ssreflect_rw_178}),
+  Rocq.Corelib.ssr.ssrfun.injective.{u_Corelib_ssr_ssreflect_rw_178 + 1, u_Corelib_ssr_ssreflect_rw_178 + 1}
+    (Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssreflect_rw_178 + 1}
+      (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.callee.{u_Corelib_ssr_ssreflect_rw_178}
+        (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.condition
+          (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.result.{u_Corelib_ssr_ssreflect_rw_178} T)
+          (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.test.{u_Corelib_ssr_ssreflect_rw_178} T))
+        (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.result.{u_Corelib_ssr_ssreflect_rw_178} T)
+        (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.frame.{u_Corelib_ssr_ssreflect_rw_178} T)))
+    (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.callee.{u_Corelib_ssr_ssreflect_rw_178}
+      (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.condition
+        (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.result.{u_Corelib_ssr_ssreflect_rw_178} T)
+        (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.test.{u_Corelib_ssr_ssreflect_rw_178} T))
+      (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.result.{u_Corelib_ssr_ssreflect_rw_178} T)
+      (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.frame.{u_Corelib_ssr_ssreflect_rw_178} T))
+    (Rocq.Corelib.Init.Datatypes.option.Some.{u_Corelib_ssr_ssreflect_rw_178 + 1}
+      (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.callee.{u_Corelib_ssr_ssreflect_rw_178}
+        (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.condition
+          (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.result.{u_Corelib_ssr_ssreflect_rw_178} T)
+          (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.test.{u_Corelib_ssr_ssreflect_rw_178} T))
+        (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.result.{u_Corelib_ssr_ssreflect_rw_178} T)
+        (Rocq.Corelib.ssr.ssreflect_rw.NonPropType.frame.{u_Corelib_ssr_ssreflect_rw_178} T)))
+def Rocq.Corelib.ssr.ssrfun.Tagged.{u_Corelib_ssr_ssrfun_189, u_Corelib_ssr_ssrfun_190} : (I :
+    Sort u_Corelib_ssr_ssrfun_189) →
+  (i : I) →
+    (T_ : I → Sort u_Corelib_ssr_ssrfun_190) →
+      T_ i → Rocq.Corelib.Init.Specif.sigT.{u_Corelib_ssr_ssrfun_189, u_Corelib_ssr_ssrfun_190} I fun x => T_ x :=
+fun I i T_ x =>
+  Rocq.Corelib.Init.Specif.sigT.existT.{u_Corelib_ssr_ssrfun_189, u_Corelib_ssr_ssrfun_190} I (fun x => T_ x) i x
+def Rocq.Corelib.ssr.ssrfun.Tagged2.{u_Corelib_ssr_ssrfun_189, u_Corelib_ssr_ssrfun_190, u_Corelib_ssr_ssrfun_191} : (I :
+    Sort u_Corelib_ssr_ssrfun_189) →
+  (i : I) →
+    (T_ : I → Sort u_Corelib_ssr_ssrfun_190) →
+      (U_ : I → Sort u_Corelib_ssr_ssrfun_191) →
+        T_ i →
+          U_ i →
+            Rocq.Corelib.Init.Specif.sigT2.{u_Corelib_ssr_ssrfun_189, u_Corelib_ssr_ssrfun_190,
+                u_Corelib_ssr_ssrfun_191}
+              I (fun x => T_ x) fun x => U_ x :=
+fun I i T_ U_ x y =>
+  Rocq.Corelib.Init.Specif.sigT2.existT2.{u_Corelib_ssr_ssrfun_189, u_Corelib_ssr_ssrfun_190, u_Corelib_ssr_ssrfun_191}
+    I (fun x => T_ x) (fun x => U_ x) i x y
+def Rocq.Corelib.ssr.ssrfun.all_equal_to.{u_Corelib_ssr_ssrfun_67} : (T : Sort u_Corelib_ssr_ssrfun_67) → T → Prop :=
+fun T x0 =>
+  ∀ (x : T),
+    Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_67} T
+      (let flex := x;
+      flex)
+      x0
+def Rocq.Corelib.ssr.ssrfun.all_pair.{u_Corelib_ssr_ssrfun_28, u_Corelib_ssr_ssrfun_29, u_Corelib_ssr_ssrfun_32} : (I :
+    Sort u_Corelib_ssr_ssrfun_28) →
+  (T : I → Sort u_Corelib_ssr_ssrfun_29) →
+    (U : I → Sort u_Corelib_ssr_ssrfun_32) →
+      ((i : I) → Rocq.Corelib.Init.Datatypes.prod.{u_Corelib_ssr_ssrfun_29, u_Corelib_ssr_ssrfun_32} (T i) (U i)) →
+        Rocq.Corelib.Init.Datatypes.prod.{imax u_Corelib_ssr_ssrfun_28 u_Corelib_ssr_ssrfun_29,
+            imax u_Corelib_ssr_ssrfun_28 u_Corelib_ssr_ssrfun_32}
+          ((i : I) → T i) ((i : I) → U i) :=
+fun I T U w =>
+  Rocq.Corelib.Init.Datatypes.prod.pair.{imax u_Corelib_ssr_ssrfun_28 u_Corelib_ssr_ssrfun_29,
+      imax u_Corelib_ssr_ssrfun_28 u_Corelib_ssr_ssrfun_32}
+    ((i : I) → T i) ((i : I) → U i)
+    (fun i => Rocq.Corelib.Init.Datatypes.fst.{u_Corelib_ssr_ssrfun_29, u_Corelib_ssr_ssrfun_32} (T i) (U i) (w i))
+    fun i => Rocq.Corelib.Init.Datatypes.snd.{u_Corelib_ssr_ssrfun_29, u_Corelib_ssr_ssrfun_32} (T i) (U i) (w i)
+opaque RocqPending.Corelib.ssr.ssrfun.all_sig.{u_Corelib_ssr_ssrfun_301, u_Corelib_ssr_ssrfun_302} : {h_Corelib_ssr_ssrfun_tag_of_sig__rocq2lean_obligation_1 :
+    Rocq.Corelib.ssr.ssrfun.tag_of_sig__rocq2lean_obligation_1.statement.{u_Corelib_ssr_ssrfun_302}} →
+  (I : Sort u_Corelib_ssr_ssrfun_301) →
+    (T : I → Sort u_Corelib_ssr_ssrfun_302) →
+      (P : (x : I) → T x → Prop) →
+        ((x : I) → Rocq.Corelib.Init.Specif.sig.{u_Corelib_ssr_ssrfun_302} (T x) fun y => P x y) →
+          Rocq.Corelib.Init.Specif.sig.{imax u_Corelib_ssr_ssrfun_301 u_Corelib_ssr_ssrfun_302} ((x : I) → T x) fun f =>
+            ∀ (x : I), P x (f x)
+def Rocq.Corelib.ssr.ssrfun.tag_of_sig__rocq2lean_obligation_1.statement.{u_Corelib_ssr_ssrfun_292} : Prop :=
+∀ (I : Sort u_Corelib_ssr_ssrfun_292) (P : I → Prop) (u : Rocq.Corelib.Init.Specif.sig.{u_Corelib_ssr_ssrfun_292} I P),
+  P (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_ssr_ssrfun_292} I P u)
+opaque RocqPending.Corelib.ssr.ssrfun.all_sig2.{u_Corelib_ssr_ssrfun_322, u_Corelib_ssr_ssrfun_323} : {h_Corelib_ssr_ssrfun_all_sig2__rocq2lean_obligation_2 :
+    Rocq.Corelib.ssr.ssrfun.all_sig2__rocq2lean_obligation_2.statement.{u_Corelib_ssr_ssrfun_322,
+      u_Corelib_ssr_ssrfun_323}} →
+  {h_Corelib_ssr_ssrfun_all_sig2__rocq2lean_obligation_1 :
+      Rocq.Corelib.ssr.ssrfun.all_sig2__rocq2lean_obligation_1.statement.{u_Corelib_ssr_ssrfun_322,
+        u_Corelib_ssr_ssrfun_323}} →
+    {h_Corelib_ssr_ssrfun_sig_of_sig2__rocq2lean_obligation_1 :
+        Rocq.Corelib.ssr.ssrfun.sig_of_sig2__rocq2lean_obligation_1.statement.{u_Corelib_ssr_ssrfun_323}} →
+      {h_Corelib_ssr_ssrfun_tag_of_sig__rocq2lean_obligation_1 :
+          Rocq.Corelib.ssr.ssrfun.tag_of_sig__rocq2lean_obligation_1.statement.{u_Corelib_ssr_ssrfun_323}} →
+        (I : Sort u_Corelib_ssr_ssrfun_322) →
+          (T : I → Sort u_Corelib_ssr_ssrfun_323) →
+            (P Q : (x : I) → T x → Prop) →
+              ((x : I) →
+                  Rocq.Corelib.Init.Specif.sig2.{u_Corelib_ssr_ssrfun_323} (T x) (fun y => P x y) fun y => Q x y) →
+                Rocq.Corelib.Init.Specif.sig2.{imax u_Corelib_ssr_ssrfun_322 u_Corelib_ssr_ssrfun_323} ((x : I) → T x)
+                  (fun f => ∀ (x : I), P x (f x)) fun f => ∀ (x : I), Q x (f x)
+def Rocq.Corelib.ssr.ssrfun.all_sig2__rocq2lean_obligation_2.statement.{u_Corelib_ssr_ssrfun_322, u_Corelib_ssr_ssrfun_323} : Prop :=
+∀ (I : Sort u_Corelib_ssr_ssrfun_322) (T : I → Sort u_Corelib_ssr_ssrfun_323) (P Q : (x : I) → T x → Prop)
+  («‗top_assumption‗» :
+    (x : I) → Rocq.Corelib.Init.Specif.sig2.{u_Corelib_ssr_ssrfun_323} (T x) (fun y => P x y) fun y => Q x y)
+  (f : (x : I) → T x),
+  (∀ (x : I), Rocq.Corelib.Init.Logic.and (P x (f x)) (Q x (f x))) →
+    Rocq.Corelib.Init.Datatypes.prod.qualityProp (∀ (i : I), P i (f i)) (∀ (i : I), Q i (f i))
+def Rocq.Corelib.ssr.ssrfun.all_sig2__rocq2lean_obligation_1.statement.{u_Corelib_ssr_ssrfun_322, u_Corelib_ssr_ssrfun_323} : Prop :=
+∀ (I : Sort u_Corelib_ssr_ssrfun_322) (T : I → Sort u_Corelib_ssr_ssrfun_323) (P Q : (x : I) → T x → Prop)
+  («‗top_assumption‗» :
+    (x : I) → Rocq.Corelib.Init.Specif.sig2.{u_Corelib_ssr_ssrfun_323} (T x) (fun y => P x y) fun y => Q x y)
+  (f : (x : I) → T x),
+  (∀ (x : I), Rocq.Corelib.Init.Logic.and (P x (f x)) (Q x (f x))) →
+    Rocq.Corelib.Init.Datatypes.prod.qualityProp (∀ (i : I), P i (f i)) (∀ (i : I), Q i (f i)) →
+      (∀ (i : I), P i (f i)) →
+        (∀ (i : I), Q i (f i)) →
+          Rocq.Corelib.Init.Datatypes.prod.qualityProp (∀ (i : I), P i (f i)) (∀ (i : I), Q i (f i))
+def Rocq.Corelib.ssr.ssrfun.sig_of_sig2__rocq2lean_obligation_1.statement.{u_Corelib_ssr_ssrfun_296} : Prop :=
+∀ (I : Sort u_Corelib_ssr_ssrfun_296) (P Q : I → Prop)
+  (u : Rocq.Corelib.Init.Specif.sig2.{u_Corelib_ssr_ssrfun_296} I P Q),
+  Rocq.Corelib.Init.Logic.and (P (Rocq.Corelib.ssr.ssrfun.s2val.{u_Corelib_ssr_ssrfun_296} I P Q u))
+    (Q (Rocq.Corelib.ssr.ssrfun.s2val.{u_Corelib_ssr_ssrfun_296} I P Q u))
+opaque Rocq.Corelib.ssr.ssrfun.all_tag.{u_Corelib_ssr_ssrfun_225, u_Corelib_ssr_ssrfun_226, u_Corelib_ssr_ssrfun_229} : (I :
+    Sort u_Corelib_ssr_ssrfun_225) →
+  (T : I → Sort u_Corelib_ssr_ssrfun_226) →
+    (U : (x : I) → T x → Sort u_Corelib_ssr_ssrfun_229) →
+      ((x : I) →
+          Rocq.Corelib.Init.Specif.sigT.{u_Corelib_ssr_ssrfun_226, u_Corelib_ssr_ssrfun_229} (T x) fun y => U x y) →
+        Rocq.Corelib.Init.Specif.sigT.{imax u_Corelib_ssr_ssrfun_225 u_Corelib_ssr_ssrfun_226,
+            imax u_Corelib_ssr_ssrfun_225 u_Corelib_ssr_ssrfun_229}
+          ((x : I) → T x) fun f => (x : I) → U x (f x)
+opaque Rocq.Corelib.ssr.ssrfun.all_tag2.{u_Corelib_ssr_ssrfun_247, u_Corelib_ssr_ssrfun_248, u_Corelib_ssr_ssrfun_251, u_Corelib_ssr_ssrfun_256} : (I :
+    Sort u_Corelib_ssr_ssrfun_247) →
+  (T : I → Sort u_Corelib_ssr_ssrfun_248) →
+    (U : (x : I) → T x → Sort u_Corelib_ssr_ssrfun_251) →
+      (V : (x : I) → T x → Sort u_Corelib_ssr_ssrfun_256) →
+        ((i : I) →
+            Rocq.Corelib.Init.Specif.sigT2.{u_Corelib_ssr_ssrfun_248, u_Corelib_ssr_ssrfun_251,
+                u_Corelib_ssr_ssrfun_256}
+              (T i) (fun y => U i y) fun y => V i y) →
+          Rocq.Corelib.Init.Specif.sigT2.{imax u_Corelib_ssr_ssrfun_247 u_Corelib_ssr_ssrfun_248,
+              imax u_Corelib_ssr_ssrfun_247 u_Corelib_ssr_ssrfun_251,
+              imax u_Corelib_ssr_ssrfun_247 u_Corelib_ssr_ssrfun_256}
+            ((i : I) → T i) (fun f => (i : I) → U i (f i)) fun f => (i : I) → V i (f i)
+def Rocq.Corelib.ssr.ssrfun.associative.{u_Corelib_ssr_ssrfun_588} : (S : Sort u_Corelib_ssr_ssrfun_588) →
+  (S → S → S) → Prop :=
+fun S op => ∀ (x y z : S), Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_588} S (op x (op y z)) (op (op x y) z)
+def Rocq.Corelib.ssr.ssrfun.bij_can_bij.statement.{u_Corelib_ssr_ssrfun_582, u_Corelib_ssr_ssrfun_583} : Prop :=
+∀ (A : Type u_Corelib_ssr_ssrfun_582) (B : Type u_Corelib_ssr_ssrfun_583) (f : B → A),
+  Rocq.Corelib.ssr.ssrfun.bijective.{u_Corelib_ssr_ssrfun_582, u_Corelib_ssr_ssrfun_583} A B f →
+    ∀ (f' : A → B),
+      Rocq.Corelib.ssr.ssrfun.cancel.{u_Corelib_ssr_ssrfun_582 + 1, u_Corelib_ssr_ssrfun_583 + 1} A B f f' →
+        Rocq.Corelib.ssr.ssrfun.bijective.{u_Corelib_ssr_ssrfun_583, u_Corelib_ssr_ssrfun_582} B A f'
+def Rocq.Corelib.ssr.ssrfun.bij_can_eq.statement.{u_Corelib_ssr_ssrfun_571, u_Corelib_ssr_ssrfun_572} : Prop :=
+∀ (A : Type u_Corelib_ssr_ssrfun_571) (B : Type u_Corelib_ssr_ssrfun_572) (f : B → A),
+  Rocq.Corelib.ssr.ssrfun.bijective.{u_Corelib_ssr_ssrfun_571, u_Corelib_ssr_ssrfun_572} A B f →
+    ∀ (f' f'' : A → B),
+      Rocq.Corelib.ssr.ssrfun.cancel.{u_Corelib_ssr_ssrfun_571 + 1, u_Corelib_ssr_ssrfun_572 + 1} A B f f' →
+        Rocq.Corelib.ssr.ssrfun.cancel.{u_Corelib_ssr_ssrfun_571 + 1, u_Corelib_ssr_ssrfun_572 + 1} A B f f'' →
+          Rocq.Corelib.ssr.ssrfun.eqfun.{u_Corelib_ssr_ssrfun_572 + 1, u_Corelib_ssr_ssrfun_571 + 1} B A f' f''
+def Rocq.Corelib.ssr.ssrfun.bij_can_sym.statement.{u_Corelib_ssr_ssrfun_571, u_Corelib_ssr_ssrfun_572} : Prop :=
+∀ (A : Type u_Corelib_ssr_ssrfun_571) (B : Type u_Corelib_ssr_ssrfun_572) (f : B → A),
+  Rocq.Corelib.ssr.ssrfun.bijective.{u_Corelib_ssr_ssrfun_571, u_Corelib_ssr_ssrfun_572} A B f →
+    ∀ (f' : A → B),
+      Rocq.Corelib.Init.Logic.iff
+        (Rocq.Corelib.ssr.ssrfun.cancel.{u_Corelib_ssr_ssrfun_572 + 1, u_Corelib_ssr_ssrfun_571 + 1} B A f' f)
+        (Rocq.Corelib.ssr.ssrfun.cancel.{u_Corelib_ssr_ssrfun_571 + 1, u_Corelib_ssr_ssrfun_572 + 1} A B f f')
+def Rocq.Corelib.ssr.ssrfun.bij_comp.statement.{u_Corelib_ssr_ssrfun_582, u_Corelib_ssr_ssrfun_583, u_Corelib_ssr_ssrfun_584} : Prop :=
+∀ (A : Type u_Corelib_ssr_ssrfun_582) (B : Type u_Corelib_ssr_ssrfun_583) (C : Type u_Corelib_ssr_ssrfun_584)
+  (f : B → A) (h : C → B),
+  Rocq.Corelib.ssr.ssrfun.bijective.{u_Corelib_ssr_ssrfun_582, u_Corelib_ssr_ssrfun_583} A B f →
+    Rocq.Corelib.ssr.ssrfun.bijective.{u_Corelib_ssr_ssrfun_583, u_Corelib_ssr_ssrfun_584} B C h →
+      Rocq.Corelib.ssr.ssrfun.bijective.{u_Corelib_ssr_ssrfun_582, u_Corelib_ssr_ssrfun_584} A C
+        (Rocq.Corelib.ssr.ssrfun.comp.{u_Corelib_ssr_ssrfun_582 + 1, u_Corelib_ssr_ssrfun_583 + 1,
+            u_Corelib_ssr_ssrfun_584 + 1}
+          A B C f h)
+def Rocq.Corelib.ssr.ssrfun.bij_inj.statement.{u_Corelib_ssr_ssrfun_571, u_Corelib_ssr_ssrfun_572} : Prop :=
+∀ (A : Type u_Corelib_ssr_ssrfun_571) (B : Type u_Corelib_ssr_ssrfun_572) (f : B → A),
+  Rocq.Corelib.ssr.ssrfun.bijective.{u_Corelib_ssr_ssrfun_571, u_Corelib_ssr_ssrfun_572} A B f →
+    Rocq.Corelib.ssr.ssrfun.injective.{u_Corelib_ssr_ssrfun_571 + 1, u_Corelib_ssr_ssrfun_572 + 1} A B f
+inductive Rocq.Corelib.ssr.ssrfun.bijective.{u_Corelib_ssr_ssrfun_571, u_Corelib_ssr_ssrfun_572} : (A :
+    Type u_Corelib_ssr_ssrfun_571) →
+  (B : Type u_Corelib_ssr_ssrfun_572) → (B → A) → Prop
+number of parameters: 3
+constructors:
+Rocq.Corelib.ssr.ssrfun.bijective.Bijective : ∀ (A : Type u_Corelib_ssr_ssrfun_571) (B : Type u_Corelib_ssr_ssrfun_572)
+  (f : B → A) (g : A → B),
+  Rocq.Corelib.ssr.ssrfun.cancel.{u_Corelib_ssr_ssrfun_571 + 1, u_Corelib_ssr_ssrfun_572 + 1} A B f g →
+    Rocq.Corelib.ssr.ssrfun.cancel.{u_Corelib_ssr_ssrfun_572 + 1, u_Corelib_ssr_ssrfun_571 + 1} B A g f →
+      Rocq.Corelib.ssr.ssrfun.bijective.{u_Corelib_ssr_ssrfun_571, u_Corelib_ssr_ssrfun_572} A B f
+def Rocq.Corelib.ssr.ssrfun.canLR.statement.{u_Corelib_ssr_ssrfun_398, u_Corelib_ssr_ssrfun_399} : Prop :=
+∀ (rT : Sort u_Corelib_ssr_ssrfun_398) (aT : Sort u_Corelib_ssr_ssrfun_399) (f : aT → rT) (g : rT → aT) (x : rT)
+  (y : aT),
+  Rocq.Corelib.ssr.ssrfun.cancel.{u_Corelib_ssr_ssrfun_398, u_Corelib_ssr_ssrfun_399} rT aT f g →
+    Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_398} rT x (f y) →
+      Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_399} aT (g x) y
+def Rocq.Corelib.ssr.ssrfun.canRL.statement.{u_Corelib_ssr_ssrfun_398, u_Corelib_ssr_ssrfun_399} : Prop :=
+∀ (rT : Sort u_Corelib_ssr_ssrfun_398) (aT : Sort u_Corelib_ssr_ssrfun_399) (f : aT → rT) (g : rT → aT) (x : aT)
+  (y : rT),
+  Rocq.Corelib.ssr.ssrfun.cancel.{u_Corelib_ssr_ssrfun_398, u_Corelib_ssr_ssrfun_399} rT aT f g →
+    Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_398} rT (f x) y →
+      Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_399} aT x (g y)
+def Rocq.Corelib.ssr.ssrfun.can_comp.statement.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_513, u_Corelib_ssr_ssrfun_514} : Prop :=
+∀ (A : Sort u_Corelib_ssr_ssrfun_512) (B : Sort u_Corelib_ssr_ssrfun_513) (C : Sort u_Corelib_ssr_ssrfun_514)
+  (f : B → A) (h : C → B) (f' : A → B) (h' : B → C),
+  Rocq.Corelib.ssr.ssrfun.cancel.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_513} A B f f' →
+    Rocq.Corelib.ssr.ssrfun.cancel.{u_Corelib_ssr_ssrfun_513, u_Corelib_ssr_ssrfun_514} B C h h' →
+      Rocq.Corelib.ssr.ssrfun.cancel.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_514} A C
+        (Rocq.Corelib.ssr.ssrfun.comp.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_513, u_Corelib_ssr_ssrfun_514} A B
+          C f h)
+        (Rocq.Corelib.ssr.ssrfun.comp.{u_Corelib_ssr_ssrfun_514, u_Corelib_ssr_ssrfun_513, u_Corelib_ssr_ssrfun_512} C B
+          A h' f')
+def Rocq.Corelib.ssr.ssrfun.can_inj.statement.{u_Corelib_ssr_ssrfun_398, u_Corelib_ssr_ssrfun_399} : Prop :=
+∀ (rT : Sort u_Corelib_ssr_ssrfun_398) (aT : Sort u_Corelib_ssr_ssrfun_399) (f : aT → rT) (g : rT → aT),
+  Rocq.Corelib.ssr.ssrfun.cancel.{u_Corelib_ssr_ssrfun_398, u_Corelib_ssr_ssrfun_399} rT aT f g →
+    Rocq.Corelib.ssr.ssrfun.injective.{u_Corelib_ssr_ssrfun_398, u_Corelib_ssr_ssrfun_399} rT aT f
+def Rocq.Corelib.ssr.ssrfun.can_pcan.statement.{u_Corelib_ssr_ssrfun_398, u_Corelib_ssr_ssrfun_399} : Prop :=
+∀ (rT : Sort u_Corelib_ssr_ssrfun_398) (aT : Sort u_Corelib_ssr_ssrfun_399) (f : aT → rT) (g : rT → aT),
+  Rocq.Corelib.ssr.ssrfun.cancel.{u_Corelib_ssr_ssrfun_398, u_Corelib_ssr_ssrfun_399} rT aT f g →
+    Rocq.Corelib.ssr.ssrfun.pcancel.{u_Corelib_ssr_ssrfun_398, u_Corelib_ssr_ssrfun_399} rT aT f fun y =>
+      Rocq.Corelib.Init.Datatypes.option.Some.{u_Corelib_ssr_ssrfun_399} aT (g y)
+def Rocq.Corelib.ssr.ssrfun.cancel.{u_Corelib_ssr_ssrfun_398, u_Corelib_ssr_ssrfun_399} : (rT :
+    Sort u_Corelib_ssr_ssrfun_398) →
+  (aT : Sort u_Corelib_ssr_ssrfun_399) → (aT → rT) → (rT → aT) → Prop :=
+fun rT aT f g => ∀ (x : aT), Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_399} aT (g (f x)) x
+def Rocq.Corelib.ssr.ssrfun.catcomp.{u_Corelib_ssr_ssrfun_114, u_Corelib_ssr_ssrfun_115, u_Corelib_ssr_ssrfun_116} : (A :
+    Sort u_Corelib_ssr_ssrfun_114) →
+  (B : Sort u_Corelib_ssr_ssrfun_115) → (C : Sort u_Corelib_ssr_ssrfun_116) → (C → B) → (B → A) → C → A :=
+fun A B C g f =>
+  Rocq.Corelib.ssr.ssrfun.comp.{u_Corelib_ssr_ssrfun_114, u_Corelib_ssr_ssrfun_115, u_Corelib_ssr_ssrfun_116} A B C f g
+def Rocq.Corelib.ssr.ssrfun.commutative.{u_Corelib_ssr_ssrfun_588, u_Corelib_ssr_ssrfun_589} : (S :
+    Sort u_Corelib_ssr_ssrfun_588) →
+  (T : Sort u_Corelib_ssr_ssrfun_589) → (S → S → T) → Prop :=
+fun S T op => ∀ (x y : S), Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_589} T (op x y) (op y x)
+def Rocq.Corelib.ssr.ssrfun.comp.{u_Corelib_ssr_ssrfun_114, u_Corelib_ssr_ssrfun_115, u_Corelib_ssr_ssrfun_116} : (A :
+    Sort u_Corelib_ssr_ssrfun_114) →
+  (B : Sort u_Corelib_ssr_ssrfun_115) → (C : Sort u_Corelib_ssr_ssrfun_116) → (B → A) → (C → B) → C → A :=
+fun A B C f g x => f (g x)
+def Rocq.Corelib.ssr.ssrfun.compA.statement.{u_Corelib_ssr_ssrfun_128, u_Corelib_ssr_ssrfun_129, u_Corelib_ssr_ssrfun_130, u_Corelib_ssr_ssrfun_131} : Prop :=
+∀ (A : Sort u_Corelib_ssr_ssrfun_128) (B : Sort u_Corelib_ssr_ssrfun_129) (C : Sort u_Corelib_ssr_ssrfun_130)
+  (D : Sort u_Corelib_ssr_ssrfun_131) (f : B → A) (g : C → B) (h : D → C),
+  Rocq.Corelib.Init.Logic.eq.{imax u_Corelib_ssr_ssrfun_131 u_Corelib_ssr_ssrfun_128} (D → A)
+    (Rocq.Corelib.ssr.ssrfun.comp.{u_Corelib_ssr_ssrfun_128, u_Corelib_ssr_ssrfun_129, u_Corelib_ssr_ssrfun_131} A B D f
+      (Rocq.Corelib.ssr.ssrfun.comp.{u_Corelib_ssr_ssrfun_129, u_Corelib_ssr_ssrfun_130, u_Corelib_ssr_ssrfun_131} B C D
+        g h))
+    (Rocq.Corelib.ssr.ssrfun.comp.{u_Corelib_ssr_ssrfun_128, u_Corelib_ssr_ssrfun_130, u_Corelib_ssr_ssrfun_131} A C D
+      (Rocq.Corelib.ssr.ssrfun.comp.{u_Corelib_ssr_ssrfun_128, u_Corelib_ssr_ssrfun_129, u_Corelib_ssr_ssrfun_130} A B C
+        f g)
+      h)
+def Rocq.Corelib.ssr.ssrfun.congr1.statement.{u_Corelib_Init_Logic_45, u_Corelib_Init_Logic_46} : Prop :=
+∀ (A : Sort u_Corelib_Init_Logic_45) (B : Sort u_Corelib_Init_Logic_46) (f : A → B) (x y : A),
+  Rocq.Corelib.Init.Logic.eq.{u_Corelib_Init_Logic_45} A x y →
+    Rocq.Corelib.Init.Logic.eq.{u_Corelib_Init_Logic_46} B (f x) (f y)
+def Rocq.Corelib.ssr.ssrfun.congr2.statement.{u_Corelib_Init_Logic_107, u_Corelib_Init_Logic_108, u_Corelib_Init_Logic_109} : Prop :=
+∀ (A1 : Sort u_Corelib_Init_Logic_107) (A2 : Sort u_Corelib_Init_Logic_108) (B : Sort u_Corelib_Init_Logic_109)
+  (f : A1 → A2 → B) (x1 y1 : A1) (x2 y2 : A2),
+  Rocq.Corelib.Init.Logic.eq.{u_Corelib_Init_Logic_107} A1 x1 y1 →
+    Rocq.Corelib.Init.Logic.eq.{u_Corelib_Init_Logic_108} A2 x2 y2 →
+      Rocq.Corelib.Init.Logic.eq.{u_Corelib_Init_Logic_109} B (f x1 x2) (f y1 y2)
+def Rocq.Corelib.ssr.ssrfun.eq_bij.statement.{u_Corelib_ssr_ssrfun_582, u_Corelib_ssr_ssrfun_583} : Prop :=
+∀ (A : Type u_Corelib_ssr_ssrfun_582) (B : Type u_Corelib_ssr_ssrfun_583) (f : B → A),
+  Rocq.Corelib.ssr.ssrfun.bijective.{u_Corelib_ssr_ssrfun_582, u_Corelib_ssr_ssrfun_583} A B f →
+    ∀ (g : B → A),
+      Rocq.Corelib.ssr.ssrfun.eqfun.{u_Corelib_ssr_ssrfun_582 + 1, u_Corelib_ssr_ssrfun_583 + 1} A B f g →
+        Rocq.Corelib.ssr.ssrfun.bijective.{u_Corelib_ssr_ssrfun_582, u_Corelib_ssr_ssrfun_583} A B g
+def Rocq.Corelib.ssr.ssrfun.eq_can.statement.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_513} : Prop :=
+∀ (A : Sort u_Corelib_ssr_ssrfun_512) (B : Sort u_Corelib_ssr_ssrfun_513) (f g : B → A) (f' g' : A → B),
+  Rocq.Corelib.ssr.ssrfun.cancel.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_513} A B f f' →
+    Rocq.Corelib.ssr.ssrfun.eqfun.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_513} A B f g →
+      Rocq.Corelib.ssr.ssrfun.eqfun.{u_Corelib_ssr_ssrfun_513, u_Corelib_ssr_ssrfun_512} B A f' g' →
+        Rocq.Corelib.ssr.ssrfun.cancel.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_513} A B g g'
+def Rocq.Corelib.ssr.ssrfun.eq_comp.statement.{u_Corelib_ssr_ssrfun_114, u_Corelib_ssr_ssrfun_115, u_Corelib_ssr_ssrfun_116} : Prop :=
+∀ (A : Sort u_Corelib_ssr_ssrfun_114) (B : Sort u_Corelib_ssr_ssrfun_115) (C : Sort u_Corelib_ssr_ssrfun_116)
+  (f f' : B → A) (g g' : C → B),
+  Rocq.Corelib.ssr.ssrfun.eqfun.{u_Corelib_ssr_ssrfun_114, u_Corelib_ssr_ssrfun_115} A B f f' →
+    Rocq.Corelib.ssr.ssrfun.eqfun.{u_Corelib_ssr_ssrfun_115, u_Corelib_ssr_ssrfun_116} B C g g' →
+      Rocq.Corelib.ssr.ssrfun.eqfun.{u_Corelib_ssr_ssrfun_114, u_Corelib_ssr_ssrfun_116} A C
+        (Rocq.Corelib.ssr.ssrfun.comp.{u_Corelib_ssr_ssrfun_114, u_Corelib_ssr_ssrfun_115, u_Corelib_ssr_ssrfun_116} A B
+          C f g)
+        (Rocq.Corelib.ssr.ssrfun.comp.{u_Corelib_ssr_ssrfun_114, u_Corelib_ssr_ssrfun_115, u_Corelib_ssr_ssrfun_116} A B
+          C f' g')
+def Rocq.Corelib.ssr.ssrfun.eq_inj.statement.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_513} : Prop :=
+∀ (A : Sort u_Corelib_ssr_ssrfun_512) (B : Sort u_Corelib_ssr_ssrfun_513) (f g : B → A),
+  Rocq.Corelib.ssr.ssrfun.injective.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_513} A B f →
+    Rocq.Corelib.ssr.ssrfun.eqfun.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_513} A B f g →
+      Rocq.Corelib.ssr.ssrfun.injective.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_513} A B g
+def Rocq.Corelib.ssr.ssrfun.eq_omap.statement.{u_Corelib_ssr_ssrfun_143, u_Corelib_ssr_ssrfun_144} : Prop :=
+∀ (aT : Sort u_Corelib_ssr_ssrfun_143) (rT : Sort u_Corelib_ssr_ssrfun_144) (f h : aT → rT),
+  Rocq.Corelib.ssr.ssrfun.eqfun.{u_Corelib_ssr_ssrfun_144, u_Corelib_ssr_ssrfun_143} rT aT f h →
+    Rocq.Corelib.ssr.ssrfun.eqfun.{max 1 u_Corelib_ssr_ssrfun_144, max 1 u_Corelib_ssr_ssrfun_143}
+      (Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_144} rT)
+      (Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_143} aT)
+      (Rocq.Corelib.ssr.ssrfun.Option.map.{u_Corelib_ssr_ssrfun_143, u_Corelib_ssr_ssrfun_144} aT rT f)
+      (Rocq.Corelib.ssr.ssrfun.Option.map.{u_Corelib_ssr_ssrfun_143, u_Corelib_ssr_ssrfun_144} aT rT h)
+def Rocq.Corelib.ssr.ssrfun.eqfun.{u_Corelib_ssr_ssrfun_95, u_Corelib_ssr_ssrfun_96} : (A :
+    Sort u_Corelib_ssr_ssrfun_95) →
+  (B : Sort u_Corelib_ssr_ssrfun_96) → (B → A) → (B → A) → Prop :=
+fun A B f g => ∀ (x : B), Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_95} A (f x) (g x)
+def Rocq.Corelib.ssr.ssrfun.eqrel.{u_Corelib_ssr_ssrfun_95, u_Corelib_ssr_ssrfun_96, u_Corelib_ssr_ssrfun_97} : (A :
+    Sort u_Corelib_ssr_ssrfun_95) →
+  (B : Sort u_Corelib_ssr_ssrfun_96) → (C : Sort u_Corelib_ssr_ssrfun_97) → (C → B → A) → (C → B → A) → Prop :=
+fun A B C r s => ∀ (x : C) (y : B), Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_95} A (r x y) (s x y)
+def Rocq.Corelib.ssr.ssrfun.esym.statement.{u_Corelib_Init_Logic_31} : Prop :=
+∀ (A : Sort u_Corelib_Init_Logic_31) (x y : A),
+  Rocq.Corelib.Init.Logic.eq.{u_Corelib_Init_Logic_31} A x y →
+    Rocq.Corelib.Init.Logic.eq.{u_Corelib_Init_Logic_31} A y x
+def RocqPending.Corelib.ssr.ssrfun.esymK.statement.{u_Corelib_ssr_ssrfun_501} : {h_Corelib_ssr_ssrfun_esymK__rocq2lean_obligation_1 :
+    Rocq.Corelib.ssr.ssrfun.esymK__rocq2lean_obligation_1.statement.{u_Corelib_ssr_ssrfun_501}} →
+  {h_Corelib_ssr_ssrfun_esymK__rocq2lean_obligation_2 :
+      Rocq.Corelib.ssr.ssrfun.esymK__rocq2lean_obligation_2.statement.{u_Corelib_ssr_ssrfun_501}} →
+    Prop :=
+fun {h_Corelib_ssr_ssrfun_esymK__rocq2lean_obligation_1} {h_Corelib_ssr_ssrfun_esymK__rocq2lean_obligation_2} =>
+  ∀ (T : Sort u_Corelib_ssr_ssrfun_501) (x y : T),
+    Rocq.Corelib.ssr.ssrfun.cancel.{0, 0} (Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_501} T y x)
+      (Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_501} T x y) ⋯ ⋯
+def Rocq.Corelib.ssr.ssrfun.esymK__rocq2lean_obligation_1.statement.{u_Corelib_ssr_ssrfun_501} : Prop :=
+∀ (T : Sort u_Corelib_ssr_ssrfun_501) (x y : T),
+  Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_501} T x y →
+    Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_501} T y x
+def Rocq.Corelib.ssr.ssrfun.esymK__rocq2lean_obligation_2.statement.{u_Corelib_ssr_ssrfun_501} : Prop :=
+∀ (T : Sort u_Corelib_ssr_ssrfun_501) (x y : T),
+  Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_501} T y x →
+    Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_501} T x y
+def Rocq.Corelib.ssr.ssrfun.etrans.statement.{u_Corelib_Init_Logic_45} : Prop :=
+∀ (A : Sort u_Corelib_Init_Logic_45) (x y z : A),
+  Rocq.Corelib.Init.Logic.eq.{u_Corelib_Init_Logic_45} A x y →
+    Rocq.Corelib.Init.Logic.eq.{u_Corelib_Init_Logic_45} A y z →
+      Rocq.Corelib.Init.Logic.eq.{u_Corelib_Init_Logic_45} A x z
+def RocqPending.Corelib.ssr.ssrfun.etrans_id.statement.{u_Corelib_ssr_ssrfun_507} : {h_Corelib_ssr_ssrfun_etrans_id__rocq2lean_obligation_1 :
+    Rocq.Corelib.ssr.ssrfun.etrans_id__rocq2lean_obligation_1.statement.{u_Corelib_ssr_ssrfun_507}} →
+  Prop :=
+fun {h_Corelib_ssr_ssrfun_etrans_id__rocq2lean_obligation_1} =>
+  ∀ (T : Sort u_Corelib_ssr_ssrfun_507) (x y : T) (eqxy : Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_507} T x y),
+    Rocq.Corelib.Init.Logic.eq.{0} (Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_507} T x y) ⋯ eqxy
+def Rocq.Corelib.ssr.ssrfun.etrans_id__rocq2lean_obligation_1.statement.{u_Corelib_ssr_ssrfun_507} : Prop :=
+∀ (T : Sort u_Corelib_ssr_ssrfun_507) (x y : T),
+  Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_507} T x y →
+    Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_507} T x y
+def Rocq.Corelib.ssr.ssrfun.frefl.statement.{u_Corelib_ssr_ssrfun_95, u_Corelib_ssr_ssrfun_96} : Prop :=
+∀ (A : Sort u_Corelib_ssr_ssrfun_95) (B : Sort u_Corelib_ssr_ssrfun_96) (f : B → A),
+  Rocq.Corelib.ssr.ssrfun.eqfun.{u_Corelib_ssr_ssrfun_95, u_Corelib_ssr_ssrfun_96} A B f f
+def Rocq.Corelib.ssr.ssrfun.fsym.statement.{u_Corelib_ssr_ssrfun_95, u_Corelib_ssr_ssrfun_96} : Prop :=
+∀ (A : Sort u_Corelib_ssr_ssrfun_95) (B : Sort u_Corelib_ssr_ssrfun_96) (f g : B → A),
+  Rocq.Corelib.ssr.ssrfun.eqfun.{u_Corelib_ssr_ssrfun_95, u_Corelib_ssr_ssrfun_96} A B f g →
+    Rocq.Corelib.ssr.ssrfun.eqfun.{u_Corelib_ssr_ssrfun_95, u_Corelib_ssr_ssrfun_96} A B g f
+def Rocq.Corelib.ssr.ssrfun.ftrans.statement.{u_Corelib_ssr_ssrfun_95, u_Corelib_ssr_ssrfun_96} : Prop :=
+∀ (A : Sort u_Corelib_ssr_ssrfun_95) (B : Sort u_Corelib_ssr_ssrfun_96) (f g h : B → A),
+  Rocq.Corelib.ssr.ssrfun.eqfun.{u_Corelib_ssr_ssrfun_95, u_Corelib_ssr_ssrfun_96} A B f g →
+    Rocq.Corelib.ssr.ssrfun.eqfun.{u_Corelib_ssr_ssrfun_95, u_Corelib_ssr_ssrfun_96} A B g h →
+      Rocq.Corelib.ssr.ssrfun.eqfun.{u_Corelib_ssr_ssrfun_95, u_Corelib_ssr_ssrfun_96} A B f h
+def Rocq.Corelib.ssr.ssrfun.fun_of_simpl.{u_Corelib_ssr_ssrfun_82, u_Corelib_ssr_ssrfun_83} : (aT :
+    Sort u_Corelib_ssr_ssrfun_82) →
+  (rT : Sort u_Corelib_ssr_ssrfun_83) →
+    Rocq.Corelib.ssr.ssrfun.simpl_fun.{u_Corelib_ssr_ssrfun_82, u_Corelib_ssr_ssrfun_83} aT rT → aT → rT :=
+fun aT rT f x =>
+  Rocq.Corelib.ssr.ssrfun.simpl_fun.rec.{u_Corelib_ssr_ssrfun_83, u_Corelib_ssr_ssrfun_82, u_Corelib_ssr_ssrfun_83}
+    (fun a => a x) f
+def Rocq.Corelib.ssr.ssrfun.homomorphism_1.{u_Corelib_ssr_ssrfun_348, u_Corelib_ssr_ssrfun_349} : (aT :
+    Sort u_Corelib_ssr_ssrfun_348) →
+  (rT : Sort u_Corelib_ssr_ssrfun_349) → (aT → rT) → (aT → Prop) → (rT → Prop) → Prop :=
+fun aT rT f aP rP => ∀ (x : aT), aP x → rP (f x)
+def Rocq.Corelib.ssr.ssrfun.homomorphism_2.{u_Corelib_ssr_ssrfun_348, u_Corelib_ssr_ssrfun_349} : (aT :
+    Sort u_Corelib_ssr_ssrfun_348) →
+  (rT : Sort u_Corelib_ssr_ssrfun_349) → (aT → rT) → (aT → aT → Prop) → (rT → rT → Prop) → Prop :=
+fun aT rT f aR rR => ∀ (x y : aT), aR x y → rR (f x) (f y)
+def Rocq.Corelib.ssr.ssrfun.idempotent_fun.{u_Corelib_ssr_ssrfun_683} : (U : Sort u_Corelib_ssr_ssrfun_683) →
+  (U → U) → Prop :=
+fun U f =>
+  Rocq.Corelib.ssr.ssrfun.eqfun.{u_Corelib_ssr_ssrfun_683, u_Corelib_ssr_ssrfun_683} U U
+    (Rocq.Corelib.ssr.ssrfun.comp.{u_Corelib_ssr_ssrfun_683, u_Corelib_ssr_ssrfun_683, u_Corelib_ssr_ssrfun_683} U U U f
+      f)
+    f
+def Rocq.Corelib.ssr.ssrfun.idempotent_op.{u_Corelib_ssr_ssrfun_588} : (S : Sort u_Corelib_ssr_ssrfun_588) →
+  (S → S → S) → Prop :=
+fun S op => ∀ (x : S), Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_588} S (op x x) x
+def Rocq.Corelib.ssr.ssrfun.idfun.{u_Corelib_ssr_ssrfun_136} : (T : Sort u_Corelib_ssr_ssrfun_136) → T → T :=
+fun T x => x
+def Rocq.Corelib.ssr.ssrfun.inj_can_eq.statement.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_513} : Prop :=
+∀ (A : Sort u_Corelib_ssr_ssrfun_512) (B : Sort u_Corelib_ssr_ssrfun_513) (f g : B → A) (f' : A → B),
+  Rocq.Corelib.ssr.ssrfun.cancel.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_513} A B f f' →
+    Rocq.Corelib.ssr.ssrfun.injective.{u_Corelib_ssr_ssrfun_513, u_Corelib_ssr_ssrfun_512} B A f' →
+      Rocq.Corelib.ssr.ssrfun.cancel.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_513} A B g f' →
+        Rocq.Corelib.ssr.ssrfun.eqfun.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_513} A B f g
+def Rocq.Corelib.ssr.ssrfun.inj_can_sym.statement.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_513} : Prop :=
+∀ (A : Sort u_Corelib_ssr_ssrfun_512) (B : Sort u_Corelib_ssr_ssrfun_513) (f : B → A) (f' : A → B),
+  Rocq.Corelib.ssr.ssrfun.cancel.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_513} A B f f' →
+    Rocq.Corelib.ssr.ssrfun.injective.{u_Corelib_ssr_ssrfun_513, u_Corelib_ssr_ssrfun_512} B A f' →
+      Rocq.Corelib.ssr.ssrfun.cancel.{u_Corelib_ssr_ssrfun_513, u_Corelib_ssr_ssrfun_512} B A f' f
+def Rocq.Corelib.ssr.ssrfun.inj_comp.statement.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_513, u_Corelib_ssr_ssrfun_514} : Prop :=
+∀ (A : Sort u_Corelib_ssr_ssrfun_512) (B : Sort u_Corelib_ssr_ssrfun_513) (C : Sort u_Corelib_ssr_ssrfun_514)
+  (f : B → A) (h : C → B),
+  Rocq.Corelib.ssr.ssrfun.injective.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_513} A B f →
+    Rocq.Corelib.ssr.ssrfun.injective.{u_Corelib_ssr_ssrfun_513, u_Corelib_ssr_ssrfun_514} B C h →
+      Rocq.Corelib.ssr.ssrfun.injective.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_514} A C
+        (Rocq.Corelib.ssr.ssrfun.comp.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_513, u_Corelib_ssr_ssrfun_514} A B
+          C f h)
+def Rocq.Corelib.ssr.ssrfun.inj_compr.statement.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_513, u_Corelib_ssr_ssrfun_514} : Prop :=
+∀ (A : Sort u_Corelib_ssr_ssrfun_512) (B : Sort u_Corelib_ssr_ssrfun_513) (C : Sort u_Corelib_ssr_ssrfun_514)
+  (f : B → A) (h : C → B),
+  Rocq.Corelib.ssr.ssrfun.injective.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_514} A C
+      (Rocq.Corelib.ssr.ssrfun.comp.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_513, u_Corelib_ssr_ssrfun_514} A B C
+        f h) →
+    Rocq.Corelib.ssr.ssrfun.injective.{u_Corelib_ssr_ssrfun_513, u_Corelib_ssr_ssrfun_514} B C h
+def Rocq.Corelib.ssr.ssrfun.inj_id.statement.{u_Corelib_ssr_ssrfun_512} : Prop :=
+∀ (A : Sort u_Corelib_ssr_ssrfun_512),
+  Rocq.Corelib.ssr.ssrfun.injective.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_512} A A fun x => x
+def Rocq.Corelib.ssr.ssrfun.inj_omap.statement.{u_Corelib_ssr_ssrfun_463, u_Corelib_ssr_ssrfun_464} : Prop :=
+∀ (aT : Sort u_Corelib_ssr_ssrfun_463) (rT : Sort u_Corelib_ssr_ssrfun_464) (f : aT → rT),
+  Rocq.Corelib.ssr.ssrfun.injective.{u_Corelib_ssr_ssrfun_464, u_Corelib_ssr_ssrfun_463} rT aT f →
+    Rocq.Corelib.ssr.ssrfun.injective.{max 1 u_Corelib_ssr_ssrfun_464, max 1 u_Corelib_ssr_ssrfun_463}
+      (Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_464} rT)
+      (Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_463} aT)
+      (Rocq.Corelib.ssr.ssrfun.Option.map.{u_Corelib_ssr_ssrfun_463, u_Corelib_ssr_ssrfun_464} aT rT f)
+def Rocq.Corelib.ssr.ssrfun.injective.{u_Corelib_ssr_ssrfun_398, u_Corelib_ssr_ssrfun_399} : (rT :
+    Sort u_Corelib_ssr_ssrfun_398) →
+  (aT : Sort u_Corelib_ssr_ssrfun_399) → (aT → rT) → Prop :=
+fun rT aT f =>
+  ∀ (x1 x2 : aT),
+    Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_398} rT (f x1) (f x2) →
+      Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_399} aT x1 x2
+def Rocq.Corelib.ssr.ssrfun.injective2.{u_Corelib_ssr_ssrfun_454, u_Corelib_ssr_ssrfun_455, u_Corelib_ssr_ssrfun_456} : (rT :
+    Sort u_Corelib_ssr_ssrfun_454) →
+  (aT1 : Sort u_Corelib_ssr_ssrfun_455) → (aT2 : Sort u_Corelib_ssr_ssrfun_456) → (aT1 → aT2 → rT) → Prop :=
+fun rT aT1 aT2 f =>
+  ∀ (x1 x2 : aT1) (y1 y2 : aT2),
+    Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_454} rT (f x1 y1) (f x2 y2) →
+      Rocq.Corelib.Init.Datatypes.prod.qualityProp (Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_455} aT1 x1 x2)
+        (Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_456} aT2 y1 y2)
+def Rocq.Corelib.ssr.ssrfun.inl_inj.statement.{u_Corelib_ssr_ssrfun_690, u_Corelib_ssr_ssrfun_691} : Prop :=
+∀ (A : Sort u_Corelib_ssr_ssrfun_690) (B : Sort u_Corelib_ssr_ssrfun_691),
+  Rocq.Corelib.ssr.ssrfun.injective.{max (max 1 u_Corelib_ssr_ssrfun_690) u_Corelib_ssr_ssrfun_691,
+      u_Corelib_ssr_ssrfun_690}
+    (Rocq.Corelib.Init.Datatypes.sum.{u_Corelib_ssr_ssrfun_690, u_Corelib_ssr_ssrfun_691} A B) A
+    (Rocq.Corelib.Init.Datatypes.sum.inl.{u_Corelib_ssr_ssrfun_690, u_Corelib_ssr_ssrfun_691} A B)
+def Rocq.Corelib.ssr.ssrfun.inr_inj.statement.{u_Corelib_ssr_ssrfun_686, u_Corelib_ssr_ssrfun_687} : Prop :=
+∀ (A : Sort u_Corelib_ssr_ssrfun_686) (B : Sort u_Corelib_ssr_ssrfun_687),
+  Rocq.Corelib.ssr.ssrfun.injective.{max (max 1 u_Corelib_ssr_ssrfun_686) u_Corelib_ssr_ssrfun_687,
+      u_Corelib_ssr_ssrfun_687}
+    (Rocq.Corelib.Init.Datatypes.sum.{u_Corelib_ssr_ssrfun_686, u_Corelib_ssr_ssrfun_687} A B) B
+    (Rocq.Corelib.Init.Datatypes.sum.inr.{u_Corelib_ssr_ssrfun_686, u_Corelib_ssr_ssrfun_687} A B)
+def Rocq.Corelib.ssr.ssrfun.interchange.{u_Corelib_ssr_ssrfun_588} : (S : Sort u_Corelib_ssr_ssrfun_588) →
+  (S → S → S) → (S → S → S) → Prop :=
+fun S op1 op2 =>
+  ∀ (x y z t : S),
+    Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_588} S (op1 (op2 x y) (op2 z t)) (op2 (op1 x z) (op1 y t))
+def Rocq.Corelib.ssr.ssrfun.inv_bij.statement.{u_Corelib_ssr_ssrfun_587} : Prop :=
+∀ (A : Type u_Corelib_ssr_ssrfun_587) (f : A → A),
+  Rocq.Corelib.ssr.ssrfun.involutive.{u_Corelib_ssr_ssrfun_587 + 1} A f →
+    Rocq.Corelib.ssr.ssrfun.bijective.{u_Corelib_ssr_ssrfun_587, u_Corelib_ssr_ssrfun_587} A A f
+def Rocq.Corelib.ssr.ssrfun.inv_inj.statement.{u_Corelib_ssr_ssrfun_587} : Prop :=
+∀ (A : Sort u_Corelib_ssr_ssrfun_587) (f : A → A),
+  Rocq.Corelib.ssr.ssrfun.involutive.{u_Corelib_ssr_ssrfun_587} A f →
+    Rocq.Corelib.ssr.ssrfun.injective.{u_Corelib_ssr_ssrfun_587, u_Corelib_ssr_ssrfun_587} A A f
+def Rocq.Corelib.ssr.ssrfun.involutive.{u_Corelib_ssr_ssrfun_587} : (A : Sort u_Corelib_ssr_ssrfun_587) →
+  (A → A) → Prop :=
+fun A f => Rocq.Corelib.ssr.ssrfun.cancel.{u_Corelib_ssr_ssrfun_587, u_Corelib_ssr_ssrfun_587} A A f f
+def Rocq.Corelib.ssr.ssrfun.left_commutative.{u_Corelib_ssr_ssrfun_588, u_Corelib_ssr_ssrfun_589} : (S :
+    Sort u_Corelib_ssr_ssrfun_588) →
+  (T : Sort u_Corelib_ssr_ssrfun_589) → (S → T → T) → Prop :=
+fun S T op =>
+  ∀ (x y : S) (z : T), Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_589} T (op x (op y z)) (op y (op x z))
+def Rocq.Corelib.ssr.ssrfun.left_distributive.{u_Corelib_ssr_ssrfun_588, u_Corelib_ssr_ssrfun_589} : (S :
+    Sort u_Corelib_ssr_ssrfun_588) →
+  (T : Sort u_Corelib_ssr_ssrfun_589) → (S → T → S) → (S → S → S) → Prop :=
+fun S T op add =>
+  ∀ (x y : S) (z : T), Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_588} S (op (add x y) z) (add (op x z) (op y z))
+def Rocq.Corelib.ssr.ssrfun.left_id.{u_Corelib_ssr_ssrfun_588, u_Corelib_ssr_ssrfun_589} : (S :
+    Sort u_Corelib_ssr_ssrfun_588) →
+  (T : Sort u_Corelib_ssr_ssrfun_589) → S → (S → T → T) → Prop :=
+fun S T e op => ∀ (x : T), Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_589} T (op e x) x
+def Rocq.Corelib.ssr.ssrfun.left_injective.{u_Corelib_ssr_ssrfun_588, u_Corelib_ssr_ssrfun_589, u_Corelib_ssr_ssrfun_590} : (S :
+    Sort u_Corelib_ssr_ssrfun_588) →
+  (T : Sort u_Corelib_ssr_ssrfun_589) → (R : Sort u_Corelib_ssr_ssrfun_590) → (S → T → R) → Prop :=
+fun S T R op =>
+  ∀ (x : T),
+    Rocq.Corelib.ssr.ssrfun.injective.{u_Corelib_ssr_ssrfun_590, u_Corelib_ssr_ssrfun_588} R S fun x0 => op x0 x
+def Rocq.Corelib.ssr.ssrfun.left_inverse.{u_Corelib_ssr_ssrfun_588, u_Corelib_ssr_ssrfun_589, u_Corelib_ssr_ssrfun_590} : (S :
+    Sort u_Corelib_ssr_ssrfun_588) →
+  (T : Sort u_Corelib_ssr_ssrfun_589) → (R : Sort u_Corelib_ssr_ssrfun_590) → R → (T → S) → (S → T → R) → Prop :=
+fun S T R e inv op => ∀ (x : T), Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_590} R (op (inv x) x) e
+def Rocq.Corelib.ssr.ssrfun.left_loop.{u_Corelib_ssr_ssrfun_588, u_Corelib_ssr_ssrfun_589} : (S :
+    Sort u_Corelib_ssr_ssrfun_588) →
+  (T : Sort u_Corelib_ssr_ssrfun_589) → (S → S) → (S → T → T) → Prop :=
+fun S T inv op =>
+  ∀ (x : S), Rocq.Corelib.ssr.ssrfun.cancel.{u_Corelib_ssr_ssrfun_589, u_Corelib_ssr_ssrfun_589} T T (op x) (op (inv x))
+def Rocq.Corelib.ssr.ssrfun.left_zero.{u_Corelib_ssr_ssrfun_588, u_Corelib_ssr_ssrfun_589} : (S :
+    Sort u_Corelib_ssr_ssrfun_588) →
+  (T : Sort u_Corelib_ssr_ssrfun_589) → S → (S → T → S) → Prop :=
+fun S T z op => ∀ (x : T), Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_588} S (op z x) z
+def Rocq.Corelib.ssr.ssrfun.monomorphism_1.{u_Corelib_ssr_ssrfun_348, u_Corelib_ssr_ssrfun_349, u_Corelib_ssr_ssrfun_350} : (aT :
+    Sort u_Corelib_ssr_ssrfun_348) →
+  (rT : Sort u_Corelib_ssr_ssrfun_349) →
+    (sT : Sort u_Corelib_ssr_ssrfun_350) → (aT → rT) → (aT → sT) → (rT → sT) → Prop :=
+fun aT rT sT f aP rP => ∀ (x : aT), Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_350} sT (rP (f x)) (aP x)
+def Rocq.Corelib.ssr.ssrfun.monomorphism_2.{u_Corelib_ssr_ssrfun_348, u_Corelib_ssr_ssrfun_349, u_Corelib_ssr_ssrfun_350} : (aT :
+    Sort u_Corelib_ssr_ssrfun_348) →
+  (rT : Sort u_Corelib_ssr_ssrfun_349) →
+    (sT : Sort u_Corelib_ssr_ssrfun_350) → (aT → rT) → (aT → aT → sT) → (rT → rT → sT) → Prop :=
+fun aT rT sT f aR rR => ∀ (x y : aT), Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_350} sT (rR (f x) (f y)) (aR x y)
+def Rocq.Corelib.ssr.ssrfun.morphism_1.{u_Corelib_ssr_ssrfun_348, u_Corelib_ssr_ssrfun_349} : (aT :
+    Sort u_Corelib_ssr_ssrfun_348) →
+  (rT : Sort u_Corelib_ssr_ssrfun_349) → (aT → rT) → (aT → aT) → (rT → rT) → Prop :=
+fun aT rT f aF rF => ∀ (x : aT), Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_349} rT (f (aF x)) (rF (f x))
+def Rocq.Corelib.ssr.ssrfun.morphism_2.{u_Corelib_ssr_ssrfun_348, u_Corelib_ssr_ssrfun_349} : (aT :
+    Sort u_Corelib_ssr_ssrfun_348) →
+  (rT : Sort u_Corelib_ssr_ssrfun_349) → (aT → rT) → (aT → aT → aT) → (rT → rT → rT) → Prop :=
+fun aT rT f aOp rOp =>
+  ∀ (x y : aT), Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_349} rT (f (aOp x y)) (rOp (f x) (f y))
+def Rocq.Corelib.ssr.ssrfun.nesym.statement.{u_Corelib_Init_Logic_45} : Prop :=
+∀ (A : Sort u_Corelib_Init_Logic_45) (x y : A),
+  Rocq.Corelib.Init.Logic.not (Rocq.Corelib.Init.Logic.eq.{u_Corelib_Init_Logic_45} A x y) →
+    Rocq.Corelib.Init.Logic.not (Rocq.Corelib.Init.Logic.eq.{u_Corelib_Init_Logic_45} A y x)
+def Rocq.Corelib.ssr.ssrfun.oappEmap.statement.{u_Corelib_ssr_ssrfun_143, u_Corelib_ssr_ssrfun_144} : Prop :=
+∀ (aT : Sort u_Corelib_ssr_ssrfun_143) (rT : Sort u_Corelib_ssr_ssrfun_144) (f : aT → rT) (y0 : rT)
+  (x : Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_143} aT),
+  Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_144} rT
+    (Rocq.Corelib.ssr.ssrfun.Option.apply.{u_Corelib_ssr_ssrfun_143, u_Corelib_ssr_ssrfun_144} aT rT f y0 x)
+    (Rocq.Corelib.ssr.ssrfun.Option.default.{u_Corelib_ssr_ssrfun_144} rT y0
+      (Rocq.Corelib.ssr.ssrfun.Option.map.{u_Corelib_ssr_ssrfun_143, u_Corelib_ssr_ssrfun_144} aT rT f x))
+def Rocq.Corelib.ssr.ssrfun.oapp_comp.statement.{u_Corelib_ssr_ssrfun_143, u_Corelib_ssr_ssrfun_144, u_Corelib_ssr_ssrfun_145} : Prop :=
+∀ (aT : Sort u_Corelib_ssr_ssrfun_143) (rT : Sort u_Corelib_ssr_ssrfun_144) (sT : Sort u_Corelib_ssr_ssrfun_145)
+  (f : aT → rT) (g : rT → sT) (x : sT),
+  Rocq.Corelib.ssr.ssrfun.eqfun.{u_Corelib_ssr_ssrfun_145, max 1 u_Corelib_ssr_ssrfun_143} sT
+    (Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_143} aT)
+    (Rocq.Corelib.ssr.ssrfun.Option.apply.{u_Corelib_ssr_ssrfun_143, u_Corelib_ssr_ssrfun_145} aT sT
+      (Rocq.Corelib.ssr.ssrfun.comp.{u_Corelib_ssr_ssrfun_145, u_Corelib_ssr_ssrfun_144, u_Corelib_ssr_ssrfun_143} sT rT
+        aT g f)
+      x)
+    (Rocq.Corelib.ssr.ssrfun.comp.{u_Corelib_ssr_ssrfun_145, max 1 u_Corelib_ssr_ssrfun_144,
+        max 1 u_Corelib_ssr_ssrfun_143}
+      sT (Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_144} rT)
+      (Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_143} aT)
+      ((fun x0 => Rocq.Corelib.ssr.ssrfun.Option.apply.{u_Corelib_ssr_ssrfun_144, u_Corelib_ssr_ssrfun_145} rT sT x0 x)
+        g)
+      (Rocq.Corelib.ssr.ssrfun.Option.map.{u_Corelib_ssr_ssrfun_143, u_Corelib_ssr_ssrfun_144} aT rT f))
+def Rocq.Corelib.ssr.ssrfun.oapp_comp_f.statement.{u_Corelib_ssr_ssrfun_143, u_Corelib_ssr_ssrfun_144, u_Corelib_ssr_ssrfun_145} : Prop :=
+∀ (aT : Sort u_Corelib_ssr_ssrfun_143) (rT : Sort u_Corelib_ssr_ssrfun_144) (sT : Sort u_Corelib_ssr_ssrfun_145)
+  (f : aT → rT) (g : rT → sT) (x : rT),
+  Rocq.Corelib.ssr.ssrfun.eqfun.{u_Corelib_ssr_ssrfun_145, max 1 u_Corelib_ssr_ssrfun_143} sT
+    (Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_143} aT)
+    (Rocq.Corelib.ssr.ssrfun.Option.apply.{u_Corelib_ssr_ssrfun_143, u_Corelib_ssr_ssrfun_145} aT sT
+      (Rocq.Corelib.ssr.ssrfun.comp.{u_Corelib_ssr_ssrfun_145, u_Corelib_ssr_ssrfun_144, u_Corelib_ssr_ssrfun_143} sT rT
+        aT g f)
+      (g x))
+    (Rocq.Corelib.ssr.ssrfun.comp.{u_Corelib_ssr_ssrfun_145, u_Corelib_ssr_ssrfun_144, max 1 u_Corelib_ssr_ssrfun_143}
+      sT rT (Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_143} aT) g
+      (Rocq.Corelib.ssr.ssrfun.Option.apply.{u_Corelib_ssr_ssrfun_143, u_Corelib_ssr_ssrfun_144} aT rT f x))
+def Rocq.Corelib.ssr.ssrfun.obindEapp.statement.{u_Corelib_ssr_ssrfun_143, u_Corelib_ssr_ssrfun_144} : Prop :=
+∀ (aT : Sort u_Corelib_ssr_ssrfun_143) (rT : Sort u_Corelib_ssr_ssrfun_144)
+  (fo : aT → Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_144} rT),
+  Rocq.Corelib.Init.Logic.eq.{max (max 1 u_Corelib_ssr_ssrfun_143) u_Corelib_ssr_ssrfun_144}
+    (Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_143} aT →
+      Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_144} rT)
+    (Rocq.Corelib.ssr.ssrfun.Option.bind.{u_Corelib_ssr_ssrfun_143, u_Corelib_ssr_ssrfun_144} aT rT fo)
+    (Rocq.Corelib.ssr.ssrfun.Option.apply.{u_Corelib_ssr_ssrfun_143, max 1 u_Corelib_ssr_ssrfun_144} aT
+      (Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_144} rT) fo
+      (Rocq.Corelib.Init.Datatypes.option.None.{u_Corelib_ssr_ssrfun_144} rT))
+def Rocq.Corelib.ssr.ssrfun.ocan_comp.statement.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_513, u_Corelib_ssr_ssrfun_514} : Prop :=
+∀ (A : Sort u_Corelib_ssr_ssrfun_512) (B : Sort u_Corelib_ssr_ssrfun_513) (C : Sort u_Corelib_ssr_ssrfun_514)
+  (fo : B → Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_512} A)
+  (ho : C → Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_513} B) (f' : A → B) (h' : B → C),
+  Rocq.Corelib.ssr.ssrfun.ocancel.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_513} A B fo f' →
+    Rocq.Corelib.ssr.ssrfun.ocancel.{u_Corelib_ssr_ssrfun_513, u_Corelib_ssr_ssrfun_514} B C ho h' →
+      Rocq.Corelib.ssr.ssrfun.ocancel.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_514} A C
+        (Rocq.Corelib.ssr.ssrfun.comp.{max 1 u_Corelib_ssr_ssrfun_512, max 1 u_Corelib_ssr_ssrfun_513,
+            u_Corelib_ssr_ssrfun_514}
+          (Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_512} A)
+          (Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_513} B) C
+          (Rocq.Corelib.ssr.ssrfun.Option.bind.{u_Corelib_ssr_ssrfun_513, u_Corelib_ssr_ssrfun_512} B A fo) ho)
+        (Rocq.Corelib.ssr.ssrfun.comp.{u_Corelib_ssr_ssrfun_514, u_Corelib_ssr_ssrfun_513, u_Corelib_ssr_ssrfun_512} C B
+          A h' f')
+def Rocq.Corelib.ssr.ssrfun.ocancel.{u_Corelib_ssr_ssrfun_398, u_Corelib_ssr_ssrfun_399} : (rT :
+    Sort u_Corelib_ssr_ssrfun_398) →
+  (aT : Sort u_Corelib_ssr_ssrfun_399) →
+    (aT → Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_398} rT) → (rT → aT) → Prop :=
+fun rT aT g h =>
+  ∀ (x : aT),
+    Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_399} aT
+      (Rocq.Corelib.ssr.ssrfun.Option.apply.{u_Corelib_ssr_ssrfun_398, u_Corelib_ssr_ssrfun_399} rT aT h x (g x)) x
+def Rocq.Corelib.ssr.ssrfun.of_void.{u_Corelib_ssr_ssrfun_187} : (T : Sort u_Corelib_ssr_ssrfun_187) →
+  Rocq.Corelib.Init.Datatypes.Empty_set → T :=
+fun T x => Rocq.Corelib.Init.Datatypes.Empty_set.rec.{u_Corelib_ssr_ssrfun_187} (fun t => T) x
+def Rocq.Corelib.ssr.ssrfun.of_voidK.statement.{u_Corelib_ssr_ssrfun_493} : Prop :=
+∀ (T : Sort u_Corelib_ssr_ssrfun_493),
+  Rocq.Corelib.ssr.ssrfun.pcancel.{u_Corelib_ssr_ssrfun_493, 1} T Rocq.Corelib.Init.Datatypes.Empty_set
+    (Rocq.Corelib.ssr.ssrfun.of_void.{u_Corelib_ssr_ssrfun_493} T)
+    (Rocq.Corelib.ssr.ssrfun.fun_of_simpl.{u_Corelib_ssr_ssrfun_493, 1} T
+      (Rocq.Corelib.Init.Datatypes.option.{1} Rocq.Corelib.Init.Datatypes.Empty_set)
+      (Rocq.Corelib.ssr.ssrfun.simpl_fun.SimplFun.{u_Corelib_ssr_ssrfun_493, 1} T
+        (Rocq.Corelib.Init.Datatypes.option.{1} Rocq.Corelib.Init.Datatypes.Empty_set) fun a =>
+        Rocq.Corelib.Init.Datatypes.option.None.{1} Rocq.Corelib.Init.Datatypes.Empty_set))
+def Rocq.Corelib.ssr.ssrfun.olift_comp.statement.{u_Corelib_ssr_ssrfun_143, u_Corelib_ssr_ssrfun_144, u_Corelib_ssr_ssrfun_145} : Prop :=
+∀ (aT : Sort u_Corelib_ssr_ssrfun_143) (rT : Sort u_Corelib_ssr_ssrfun_144) (sT : Sort u_Corelib_ssr_ssrfun_145)
+  (f : aT → rT) (g : rT → sT),
+  Rocq.Corelib.Init.Logic.eq.{max (max 1 u_Corelib_ssr_ssrfun_143) u_Corelib_ssr_ssrfun_145}
+    (aT → Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_145} sT)
+    (Rocq.Corelib.ssr.ssrfun.Option.lift.{u_Corelib_ssr_ssrfun_143, u_Corelib_ssr_ssrfun_145} aT sT
+      (Rocq.Corelib.ssr.ssrfun.comp.{u_Corelib_ssr_ssrfun_145, u_Corelib_ssr_ssrfun_144, u_Corelib_ssr_ssrfun_143} sT rT
+        aT g f))
+    (Rocq.Corelib.ssr.ssrfun.comp.{max 1 u_Corelib_ssr_ssrfun_145, u_Corelib_ssr_ssrfun_144, u_Corelib_ssr_ssrfun_143}
+      (Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_145} sT) rT aT
+      (Rocq.Corelib.ssr.ssrfun.Option.lift.{u_Corelib_ssr_ssrfun_144, u_Corelib_ssr_ssrfun_145} rT sT g) f)
+def Rocq.Corelib.ssr.ssrfun.omapEapp.statement.{u_Corelib_ssr_ssrfun_143, u_Corelib_ssr_ssrfun_144} : Prop :=
+∀ (aT : Sort u_Corelib_ssr_ssrfun_143) (rT : Sort u_Corelib_ssr_ssrfun_144) (f : aT → rT),
+  Rocq.Corelib.Init.Logic.eq.{max (max 1 u_Corelib_ssr_ssrfun_143) u_Corelib_ssr_ssrfun_144}
+    (Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_143} aT →
+      Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_144} rT)
+    (Rocq.Corelib.ssr.ssrfun.Option.map.{u_Corelib_ssr_ssrfun_143, u_Corelib_ssr_ssrfun_144} aT rT f)
+    (Rocq.Corelib.ssr.ssrfun.Option.apply.{u_Corelib_ssr_ssrfun_143, max 1 u_Corelib_ssr_ssrfun_144} aT
+      (Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_144} rT)
+      (Rocq.Corelib.ssr.ssrfun.Option.lift.{u_Corelib_ssr_ssrfun_143, u_Corelib_ssr_ssrfun_144} aT rT f)
+      (Rocq.Corelib.Init.Datatypes.option.None.{u_Corelib_ssr_ssrfun_144} rT))
+def Rocq.Corelib.ssr.ssrfun.omapEbind.statement.{u_Corelib_ssr_ssrfun_143, u_Corelib_ssr_ssrfun_144} : Prop :=
+∀ (aT : Sort u_Corelib_ssr_ssrfun_143) (rT : Sort u_Corelib_ssr_ssrfun_144) (f : aT → rT),
+  Rocq.Corelib.Init.Logic.eq.{max (max 1 u_Corelib_ssr_ssrfun_143) u_Corelib_ssr_ssrfun_144}
+    (Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_143} aT →
+      Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_144} rT)
+    (Rocq.Corelib.ssr.ssrfun.Option.map.{u_Corelib_ssr_ssrfun_143, u_Corelib_ssr_ssrfun_144} aT rT f)
+    (Rocq.Corelib.ssr.ssrfun.Option.bind.{u_Corelib_ssr_ssrfun_143, u_Corelib_ssr_ssrfun_144} aT rT
+      (Rocq.Corelib.ssr.ssrfun.Option.lift.{u_Corelib_ssr_ssrfun_143, u_Corelib_ssr_ssrfun_144} aT rT f))
+def Rocq.Corelib.ssr.ssrfun.omapK.statement.{u_Corelib_ssr_ssrfun_483, u_Corelib_ssr_ssrfun_484} : Prop :=
+∀ (aT : Sort u_Corelib_ssr_ssrfun_483) (rT : Sort u_Corelib_ssr_ssrfun_484) (f : aT → rT) (g : rT → aT),
+  Rocq.Corelib.ssr.ssrfun.cancel.{u_Corelib_ssr_ssrfun_484, u_Corelib_ssr_ssrfun_483} rT aT f g →
+    Rocq.Corelib.ssr.ssrfun.cancel.{max 1 u_Corelib_ssr_ssrfun_484, max 1 u_Corelib_ssr_ssrfun_483}
+      (Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_484} rT)
+      (Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_483} aT)
+      (Rocq.Corelib.ssr.ssrfun.Option.map.{u_Corelib_ssr_ssrfun_483, u_Corelib_ssr_ssrfun_484} aT rT f)
+      (Rocq.Corelib.ssr.ssrfun.Option.map.{u_Corelib_ssr_ssrfun_484, u_Corelib_ssr_ssrfun_483} rT aT g)
+def Rocq.Corelib.ssr.ssrfun.omap_comp.statement.{u_Corelib_ssr_ssrfun_143, u_Corelib_ssr_ssrfun_144, u_Corelib_ssr_ssrfun_145} : Prop :=
+∀ (aT : Sort u_Corelib_ssr_ssrfun_143) (rT : Sort u_Corelib_ssr_ssrfun_144) (sT : Sort u_Corelib_ssr_ssrfun_145)
+  (f : aT → rT) (g : rT → sT),
+  Rocq.Corelib.ssr.ssrfun.eqfun.{max 1 u_Corelib_ssr_ssrfun_145, max 1 u_Corelib_ssr_ssrfun_143}
+    (Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_145} sT)
+    (Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_143} aT)
+    (Rocq.Corelib.ssr.ssrfun.Option.map.{u_Corelib_ssr_ssrfun_143, u_Corelib_ssr_ssrfun_145} aT sT
+      (Rocq.Corelib.ssr.ssrfun.comp.{u_Corelib_ssr_ssrfun_145, u_Corelib_ssr_ssrfun_144, u_Corelib_ssr_ssrfun_143} sT rT
+        aT g f))
+    (Rocq.Corelib.ssr.ssrfun.comp.{max 1 u_Corelib_ssr_ssrfun_145, max 1 u_Corelib_ssr_ssrfun_144,
+        max 1 u_Corelib_ssr_ssrfun_143}
+      (Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_145} sT)
+      (Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_144} rT)
+      (Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_143} aT)
+      (Rocq.Corelib.ssr.ssrfun.Option.map.{u_Corelib_ssr_ssrfun_144, u_Corelib_ssr_ssrfun_145} rT sT g)
+      (Rocq.Corelib.ssr.ssrfun.Option.map.{u_Corelib_ssr_ssrfun_143, u_Corelib_ssr_ssrfun_144} aT rT f))
+def Rocq.Corelib.ssr.ssrfun.omap_id.statement.{u_Corelib_ssr_ssrfun_144} : Prop :=
+∀ (rT : Sort u_Corelib_ssr_ssrfun_144) (x : Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_144} rT),
+  Rocq.Corelib.Init.Logic.eq.{max 1 u_Corelib_ssr_ssrfun_144}
+    (Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_144} rT)
+    (Rocq.Corelib.ssr.ssrfun.Option.map.{u_Corelib_ssr_ssrfun_144, u_Corelib_ssr_ssrfun_144} rT rT (fun x => x) x) x
+def Rocq.Corelib.ssr.ssrfun.pair_of_and.statement : Prop :=
+∀ (P Q : Prop), Rocq.Corelib.Init.Logic.and P Q → Rocq.Corelib.Init.Datatypes.prod.qualityProp P Q
+def Rocq.Corelib.ssr.ssrfun.pcan_inj.statement.{u_Corelib_ssr_ssrfun_398, u_Corelib_ssr_ssrfun_399} : Prop :=
+∀ (rT : Sort u_Corelib_ssr_ssrfun_398) (aT : Sort u_Corelib_ssr_ssrfun_399) (f : aT → rT)
+  (g : rT → Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_399} aT),
+  Rocq.Corelib.ssr.ssrfun.pcancel.{u_Corelib_ssr_ssrfun_398, u_Corelib_ssr_ssrfun_399} rT aT f g →
+    Rocq.Corelib.ssr.ssrfun.injective.{u_Corelib_ssr_ssrfun_398, u_Corelib_ssr_ssrfun_399} rT aT f
+def Rocq.Corelib.ssr.ssrfun.pcan_pcomp.statement.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_513, u_Corelib_ssr_ssrfun_514} : Prop :=
+∀ (A : Sort u_Corelib_ssr_ssrfun_512) (B : Sort u_Corelib_ssr_ssrfun_513) (C : Sort u_Corelib_ssr_ssrfun_514)
+  (f : B → A) (h : C → B) (f' : A → Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_513} B)
+  (h' : B → Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_514} C),
+  Rocq.Corelib.ssr.ssrfun.pcancel.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_513} A B f f' →
+    Rocq.Corelib.ssr.ssrfun.pcancel.{u_Corelib_ssr_ssrfun_513, u_Corelib_ssr_ssrfun_514} B C h h' →
+      Rocq.Corelib.ssr.ssrfun.pcancel.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_514} A C
+        (Rocq.Corelib.ssr.ssrfun.comp.{u_Corelib_ssr_ssrfun_512, u_Corelib_ssr_ssrfun_513, u_Corelib_ssr_ssrfun_514} A B
+          C f h)
+        (Rocq.Corelib.ssr.ssrfun.pcomp.{u_Corelib_ssr_ssrfun_514, u_Corelib_ssr_ssrfun_513, u_Corelib_ssr_ssrfun_512} C
+          B A h' f')
+def Rocq.Corelib.ssr.ssrfun.pcancel.{u_Corelib_ssr_ssrfun_398, u_Corelib_ssr_ssrfun_399} : (rT :
+    Sort u_Corelib_ssr_ssrfun_398) →
+  (aT : Sort u_Corelib_ssr_ssrfun_399) →
+    (aT → rT) → (rT → Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_399} aT) → Prop :=
+fun rT aT f g =>
+  ∀ (x : aT),
+    Rocq.Corelib.Init.Logic.eq.{max 1 u_Corelib_ssr_ssrfun_399}
+      (Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_399} aT) (g (f x))
+      (Rocq.Corelib.Init.Datatypes.option.Some.{u_Corelib_ssr_ssrfun_399} aT x)
+def Rocq.Corelib.ssr.ssrfun.pcomp.{u_Corelib_ssr_ssrfun_114, u_Corelib_ssr_ssrfun_115, u_Corelib_ssr_ssrfun_116} : (A :
+    Sort u_Corelib_ssr_ssrfun_114) →
+  (B : Sort u_Corelib_ssr_ssrfun_115) →
+    (C : Sort u_Corelib_ssr_ssrfun_116) →
+      (B → Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_114} A) →
+        (C → Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_115} B) →
+          C → Rocq.Corelib.Init.Datatypes.option.{u_Corelib_ssr_ssrfun_114} A :=
+fun A B C f g x => Rocq.Corelib.ssr.ssrfun.Option.bind.{u_Corelib_ssr_ssrfun_115, u_Corelib_ssr_ssrfun_114} B A f (g x)
+def Rocq.Corelib.ssr.ssrfun.phant_id.{u_Corelib_ssr_ssrfun_141, u_Corelib_ssr_ssrfun_142} : (T1 :
+    Sort u_Corelib_ssr_ssrfun_141) →
+  (T2 : Sort u_Corelib_ssr_ssrfun_142) → T1 → T2 → Prop :=
+fun T1 T2 v1 v2 =>
+  Rocq.Corelib.ssr.ssreflect_rw.phantom.{u_Corelib_ssr_ssrfun_141} T1 v1 →
+    Rocq.Corelib.ssr.ssreflect_rw.phantom.{u_Corelib_ssr_ssrfun_142} T2 v2
+def Rocq.Corelib.ssr.ssrfun.rev_left_loop.{u_Corelib_ssr_ssrfun_588, u_Corelib_ssr_ssrfun_589} : (S :
+    Sort u_Corelib_ssr_ssrfun_588) →
+  (T : Sort u_Corelib_ssr_ssrfun_589) → (S → S) → (S → T → T) → Prop :=
+fun S T inv op =>
+  ∀ (x : S), Rocq.Corelib.ssr.ssrfun.cancel.{u_Corelib_ssr_ssrfun_589, u_Corelib_ssr_ssrfun_589} T T (op (inv x)) (op x)
+def Rocq.Corelib.ssr.ssrfun.rev_right_loop.{u_Corelib_ssr_ssrfun_588, u_Corelib_ssr_ssrfun_589} : (S :
+    Sort u_Corelib_ssr_ssrfun_588) →
+  (T : Sort u_Corelib_ssr_ssrfun_589) → (T → T) → (S → T → S) → Prop :=
+fun S T inv op =>
+  ∀ (y : T),
+    Rocq.Corelib.ssr.ssrfun.cancel.{u_Corelib_ssr_ssrfun_588, u_Corelib_ssr_ssrfun_588} S S (fun x => op x (inv y))
+      fun x => op x y
+def Rocq.Corelib.ssr.ssrfun.right_commutative.{u_Corelib_ssr_ssrfun_588, u_Corelib_ssr_ssrfun_589} : (S :
+    Sort u_Corelib_ssr_ssrfun_588) →
+  (T : Sort u_Corelib_ssr_ssrfun_589) → (S → T → S) → Prop :=
+fun S T op =>
+  ∀ (x : S) (y z : T), Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_588} S (op (op x y) z) (op (op x z) y)
+def Rocq.Corelib.ssr.ssrfun.right_distributive.{u_Corelib_ssr_ssrfun_588, u_Corelib_ssr_ssrfun_589} : (S :
+    Sort u_Corelib_ssr_ssrfun_588) →
+  (T : Sort u_Corelib_ssr_ssrfun_589) → (S → T → T) → (T → T → T) → Prop :=
+fun S T op add =>
+  ∀ (x : S) (y z : T), Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_589} T (op x (add y z)) (add (op x y) (op x z))
+def Rocq.Corelib.ssr.ssrfun.right_id.{u_Corelib_ssr_ssrfun_588, u_Corelib_ssr_ssrfun_589} : (S :
+    Sort u_Corelib_ssr_ssrfun_588) →
+  (T : Sort u_Corelib_ssr_ssrfun_589) → T → (S → T → S) → Prop :=
+fun S T e op => ∀ (x : S), Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_588} S (op x e) x
+def Rocq.Corelib.ssr.ssrfun.right_injective.{u_Corelib_ssr_ssrfun_588, u_Corelib_ssr_ssrfun_589, u_Corelib_ssr_ssrfun_590} : (S :
+    Sort u_Corelib_ssr_ssrfun_588) →
+  (T : Sort u_Corelib_ssr_ssrfun_589) → (R : Sort u_Corelib_ssr_ssrfun_590) → (S → T → R) → Prop :=
+fun S T R op =>
+  ∀ (y : S), Rocq.Corelib.ssr.ssrfun.injective.{u_Corelib_ssr_ssrfun_590, u_Corelib_ssr_ssrfun_589} R T (op y)
+def Rocq.Corelib.ssr.ssrfun.right_inverse.{u_Corelib_ssr_ssrfun_588, u_Corelib_ssr_ssrfun_589, u_Corelib_ssr_ssrfun_590} : (S :
+    Sort u_Corelib_ssr_ssrfun_588) →
+  (T : Sort u_Corelib_ssr_ssrfun_589) → (R : Sort u_Corelib_ssr_ssrfun_590) → R → (S → T) → (S → T → R) → Prop :=
+fun S T R e inv op => ∀ (x : S), Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_590} R (op x (inv x)) e
+def Rocq.Corelib.ssr.ssrfun.right_loop.{u_Corelib_ssr_ssrfun_588, u_Corelib_ssr_ssrfun_589} : (S :
+    Sort u_Corelib_ssr_ssrfun_588) →
+  (T : Sort u_Corelib_ssr_ssrfun_589) → (T → T) → (S → T → S) → Prop :=
+fun S T inv op =>
+  ∀ (y : T),
+    Rocq.Corelib.ssr.ssrfun.cancel.{u_Corelib_ssr_ssrfun_588, u_Corelib_ssr_ssrfun_588} S S (fun x => op x y) fun x =>
+      op x (inv y)
+def Rocq.Corelib.ssr.ssrfun.right_zero.{u_Corelib_ssr_ssrfun_588, u_Corelib_ssr_ssrfun_589} : (S :
+    Sort u_Corelib_ssr_ssrfun_588) →
+  (T : Sort u_Corelib_ssr_ssrfun_589) → T → (S → T → T) → Prop :=
+fun S T z op => ∀ (x : S), Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_589} T (op x z) z
+def Rocq.Corelib.ssr.ssrfun.rrefl.statement.{u_Corelib_ssr_ssrfun_95, u_Corelib_ssr_ssrfun_96, u_Corelib_ssr_ssrfun_97} : Prop :=
+∀ (A : Sort u_Corelib_ssr_ssrfun_95) (B : Sort u_Corelib_ssr_ssrfun_96) (C : Sort u_Corelib_ssr_ssrfun_97)
+  (r : C → B → A),
+  Rocq.Corelib.ssr.ssrfun.eqrel.{u_Corelib_ssr_ssrfun_95, u_Corelib_ssr_ssrfun_96, u_Corelib_ssr_ssrfun_97} A B C r r
+def Rocq.Corelib.ssr.ssrfun.s2val.{u_Corelib_ssr_ssrfun_280} : (T : Sort u_Corelib_ssr_ssrfun_280) →
+  (P Q : T → Prop) → Rocq.Corelib.Init.Specif.sig2.{u_Corelib_ssr_ssrfun_280} T P Q → T :=
+fun T P Q u =>
+  Rocq.Corelib.Init.Specif.sig2.rec.{u_Corelib_ssr_ssrfun_280, u_Corelib_ssr_ssrfun_280} (fun x a a_1 => x) u
+def Rocq.Corelib.ssr.ssrfun.s2valP.statement.{u_Corelib_ssr_ssrfun_280} : Prop :=
+∀ (T : Sort u_Corelib_ssr_ssrfun_280) (P Q : T → Prop)
+  (u : Rocq.Corelib.Init.Specif.sig2.{u_Corelib_ssr_ssrfun_280} T P Q),
+  P (Rocq.Corelib.ssr.ssrfun.s2val.{u_Corelib_ssr_ssrfun_280} T P Q u)
+def Rocq.Corelib.ssr.ssrfun.s2valP'.statement.{u_Corelib_ssr_ssrfun_280} : Prop :=
+∀ (T : Sort u_Corelib_ssr_ssrfun_280) (P Q : T → Prop)
+  (u : Rocq.Corelib.Init.Specif.sig2.{u_Corelib_ssr_ssrfun_280} T P Q),
+  Q (Rocq.Corelib.ssr.ssrfun.s2val.{u_Corelib_ssr_ssrfun_280} T P Q u)
+def Rocq.Corelib.ssr.ssrfun.self_inverse.{u_Corelib_ssr_ssrfun_588, u_Corelib_ssr_ssrfun_589} : (S :
+    Sort u_Corelib_ssr_ssrfun_588) →
+  (T : Sort u_Corelib_ssr_ssrfun_589) → T → (S → S → T) → Prop :=
+fun S T e op => ∀ (x : S), Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrfun_589} T (op x x) e
+def RocqPending.Corelib.ssr.ssrfun.sig_of_sig2.{u_Corelib_ssr_ssrfun_296} : {h_Corelib_ssr_ssrfun_sig_of_sig2__rocq2lean_obligation_1 :
+    Rocq.Corelib.ssr.ssrfun.sig_of_sig2__rocq2lean_obligation_1.statement.{u_Corelib_ssr_ssrfun_296}} →
+  (I : Sort u_Corelib_ssr_ssrfun_296) →
+    (P Q : I → Prop) →
+      Rocq.Corelib.Init.Specif.sig2.{u_Corelib_ssr_ssrfun_296} I P Q →
+        Rocq.Corelib.Init.Specif.sig.{u_Corelib_ssr_ssrfun_296} I fun i => Rocq.Corelib.Init.Logic.and (P i) (Q i) :=
+fun {h_Corelib_ssr_ssrfun_sig_of_sig2__rocq2lean_obligation_1} I P Q u =>
+  Rocq.Corelib.Init.Specif.sig.exist.{u_Corelib_ssr_ssrfun_296} I (fun i => Rocq.Corelib.Init.Logic.and (P i) (Q i))
+    (Rocq.Corelib.ssr.ssrfun.s2val.{u_Corelib_ssr_ssrfun_296} I P Q u) ⋯
+inductive Rocq.Corelib.ssr.ssrfun.simpl_fun.{u_Corelib_ssr_ssrfun_78, u_Corelib_ssr_ssrfun_79} : Sort
+    u_Corelib_ssr_ssrfun_78 →
+  Sort u_Corelib_ssr_ssrfun_79 → Sort (max (max 1 u_Corelib_ssr_ssrfun_78) u_Corelib_ssr_ssrfun_79)
+number of parameters: 2
+constructors:
+Rocq.Corelib.ssr.ssrfun.simpl_fun.SimplFun : (aT : Sort u_Corelib_ssr_ssrfun_78) →
+  (rT : Sort u_Corelib_ssr_ssrfun_79) →
+    (aT → rT) → Rocq.Corelib.ssr.ssrfun.simpl_fun.{u_Corelib_ssr_ssrfun_78, u_Corelib_ssr_ssrfun_79} aT rT
+def Rocq.Corelib.ssr.ssrfun.svalP.statement.{u_Corelib_ssr_ssrfun_280} : Prop :=
+∀ (T : Sort u_Corelib_ssr_ssrfun_280) (P : T → Prop) (u : Rocq.Corelib.Init.Specif.sig.{u_Corelib_ssr_ssrfun_280} T P),
+  P (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_ssr_ssrfun_280} T P u)
+def Rocq.Corelib.ssr.ssrfun.tag.{u_Corelib_Init_Specif_66, u_Corelib_Init_Specif_67} : (A :
+    Sort u_Corelib_Init_Specif_66) →
+  (P : A → Sort u_Corelib_Init_Specif_67) →
+    Rocq.Corelib.Init.Specif.sigT.{u_Corelib_Init_Specif_66, u_Corelib_Init_Specif_67} A P → A :=
+Rocq.Corelib.Init.Specif.projT1.{u_Corelib_Init_Specif_66, u_Corelib_Init_Specif_67}
+def Rocq.Corelib.ssr.ssrfun.tag2.{u_Corelib_ssr_ssrfun_189, u_Corelib_ssr_ssrfun_190, u_Corelib_ssr_ssrfun_191} : (I :
+    Sort u_Corelib_ssr_ssrfun_189) →
+  (T_ : I → Sort u_Corelib_ssr_ssrfun_190) →
+    (U_ : I → Sort u_Corelib_ssr_ssrfun_191) →
+      Rocq.Corelib.Init.Specif.sigT2.{u_Corelib_ssr_ssrfun_189, u_Corelib_ssr_ssrfun_190, u_Corelib_ssr_ssrfun_191} I T_
+          U_ →
+        I :=
+fun I T_ U_ w =>
+  Rocq.Corelib.Init.Specif.sigT2.rec.{u_Corelib_ssr_ssrfun_189, u_Corelib_ssr_ssrfun_189, u_Corelib_ssr_ssrfun_190,
+      u_Corelib_ssr_ssrfun_191}
+    (fun x a a_1 => x) w
+def RocqPending.Corelib.ssr.ssrfun.tag_of_sig.{u_Corelib_ssr_ssrfun_292} : {h_Corelib_ssr_ssrfun_tag_of_sig__rocq2lean_obligation_1 :
+    Rocq.Corelib.ssr.ssrfun.tag_of_sig__rocq2lean_obligation_1.statement.{u_Corelib_ssr_ssrfun_292}} →
+  (I : Sort u_Corelib_ssr_ssrfun_292) →
+    (P : I → Prop) →
+      Rocq.Corelib.Init.Specif.sig.{u_Corelib_ssr_ssrfun_292} I P →
+        Rocq.Corelib.Init.Specif.sigT.{u_Corelib_ssr_ssrfun_292, 0} I fun x => P x :=
+fun {h_Corelib_ssr_ssrfun_tag_of_sig__rocq2lean_obligation_1} I P u =>
+  Rocq.Corelib.ssr.ssrfun.Tagged.{u_Corelib_ssr_ssrfun_292, 0} I
+    (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_ssr_ssrfun_292} I P u) P ⋯
+def Rocq.Corelib.ssr.ssrfun.tag_of_tag2.{u_Corelib_ssr_ssrfun_215, u_Corelib_ssr_ssrfun_216, u_Corelib_ssr_ssrfun_217} : (I :
+    Sort u_Corelib_ssr_ssrfun_215) →
+  (T_ : I → Sort u_Corelib_ssr_ssrfun_216) →
+    (U_ : I → Sort u_Corelib_ssr_ssrfun_217) →
+      Rocq.Corelib.Init.Specif.sigT2.{u_Corelib_ssr_ssrfun_215, u_Corelib_ssr_ssrfun_216, u_Corelib_ssr_ssrfun_217} I T_
+          U_ →
+        Rocq.Corelib.Init.Specif.sigT.{u_Corelib_ssr_ssrfun_215,
+            max (max 1 u_Corelib_ssr_ssrfun_216) u_Corelib_ssr_ssrfun_217}
+          I fun x =>
+          (fun i => Rocq.Corelib.Init.Datatypes.prod.{u_Corelib_ssr_ssrfun_216, u_Corelib_ssr_ssrfun_217} (T_ i) (U_ i))
+            x :=
+fun I T_ U_ w =>
+  Rocq.Corelib.ssr.ssrfun.Tagged.{u_Corelib_ssr_ssrfun_215,
+      max (max 1 u_Corelib_ssr_ssrfun_216) u_Corelib_ssr_ssrfun_217}
+    I
+    (Rocq.Corelib.ssr.ssrfun.tag2.{u_Corelib_ssr_ssrfun_215, u_Corelib_ssr_ssrfun_216, u_Corelib_ssr_ssrfun_217} I T_ U_
+      w)
+    (fun i => Rocq.Corelib.Init.Datatypes.prod.{u_Corelib_ssr_ssrfun_216, u_Corelib_ssr_ssrfun_217} (T_ i) (U_ i))
+    (Rocq.Corelib.Init.Datatypes.prod.pair.{u_Corelib_ssr_ssrfun_216, u_Corelib_ssr_ssrfun_217}
+      (T_
+        (Rocq.Corelib.ssr.ssrfun.tag2.{u_Corelib_ssr_ssrfun_215, u_Corelib_ssr_ssrfun_216, u_Corelib_ssr_ssrfun_217} I
+          T_ U_ w))
+      (U_
+        (Rocq.Corelib.ssr.ssrfun.tag2.{u_Corelib_ssr_ssrfun_215, u_Corelib_ssr_ssrfun_216, u_Corelib_ssr_ssrfun_217} I
+          T_ U_ w))
+      (Rocq.Corelib.ssr.ssrfun.tagged2.{u_Corelib_ssr_ssrfun_215, u_Corelib_ssr_ssrfun_216, u_Corelib_ssr_ssrfun_217} I
+        T_ U_ w)
+      (Rocq.Corelib.ssr.ssrfun.tagged2'.{u_Corelib_ssr_ssrfun_215, u_Corelib_ssr_ssrfun_216, u_Corelib_ssr_ssrfun_217} I
+        T_ U_ w))
+def Rocq.Corelib.ssr.ssrfun.tagged.{u_Corelib_ssr_ssrfun_189, u_Corelib_ssr_ssrfun_190} : (I :
+    Sort u_Corelib_ssr_ssrfun_189) →
+  (T_ : I → Sort u_Corelib_ssr_ssrfun_190) →
+    (w : Rocq.Corelib.Init.Specif.sigT.{u_Corelib_ssr_ssrfun_189, u_Corelib_ssr_ssrfun_190} I fun x => T_ x) →
+      T_ (Rocq.Corelib.ssr.ssrfun.tag.{u_Corelib_ssr_ssrfun_189, u_Corelib_ssr_ssrfun_190} I (fun x => T_ x) w) :=
+fun I T_ => Rocq.Corelib.Init.Specif.projT2.{u_Corelib_ssr_ssrfun_189, u_Corelib_ssr_ssrfun_190} I fun x => T_ x
+def Rocq.Corelib.ssr.ssrfun.tagged2.{u_Corelib_ssr_ssrfun_189, u_Corelib_ssr_ssrfun_190, u_Corelib_ssr_ssrfun_191} : (I :
+    Sort u_Corelib_ssr_ssrfun_189) →
+  (T_ : I → Sort u_Corelib_ssr_ssrfun_190) →
+    (U_ : I → Sort u_Corelib_ssr_ssrfun_191) →
+      (w :
+          Rocq.Corelib.Init.Specif.sigT2.{u_Corelib_ssr_ssrfun_189, u_Corelib_ssr_ssrfun_190, u_Corelib_ssr_ssrfun_191}
+            I T_ U_) →
+        T_
+          (Rocq.Corelib.ssr.ssrfun.tag2.{u_Corelib_ssr_ssrfun_189, u_Corelib_ssr_ssrfun_190, u_Corelib_ssr_ssrfun_191} I
+            T_ U_ w) :=
+fun I T_ U_ w =>
+  Rocq.Corelib.Init.Specif.sigT2.rec.{u_Corelib_ssr_ssrfun_190, u_Corelib_ssr_ssrfun_189, u_Corelib_ssr_ssrfun_190,
+      u_Corelib_ssr_ssrfun_191}
+    (fun x a a_1 => a) w
+def Rocq.Corelib.ssr.ssrfun.tagged2'.{u_Corelib_ssr_ssrfun_189, u_Corelib_ssr_ssrfun_190, u_Corelib_ssr_ssrfun_191} : (I :
+    Sort u_Corelib_ssr_ssrfun_189) →
+  (T_ : I → Sort u_Corelib_ssr_ssrfun_190) →
+    (U_ : I → Sort u_Corelib_ssr_ssrfun_191) →
+      (w :
+          Rocq.Corelib.Init.Specif.sigT2.{u_Corelib_ssr_ssrfun_189, u_Corelib_ssr_ssrfun_190, u_Corelib_ssr_ssrfun_191}
+            I T_ U_) →
+        U_
+          (Rocq.Corelib.ssr.ssrfun.tag2.{u_Corelib_ssr_ssrfun_189, u_Corelib_ssr_ssrfun_190, u_Corelib_ssr_ssrfun_191} I
+            T_ U_ w) :=
+fun I T_ U_ w =>
+  Rocq.Corelib.Init.Specif.sigT2.rec.{u_Corelib_ssr_ssrfun_191, u_Corelib_ssr_ssrfun_189, u_Corelib_ssr_ssrfun_190,
+      u_Corelib_ssr_ssrfun_191}
+    (fun x a a_1 => a_1) w
+def Rocq.Corelib.ssr.ssrfun.unitE.statement : Prop :=
+Rocq.Corelib.ssr.ssrfun.all_equal_to.{1} Rocq.Corelib.Init.Datatypes.unit Rocq.Corelib.Init.Datatypes.unit.tt
+def Rocq.Corelib.ssr.ssrfun.unwrap.{u_Corelib_ssr_ssrfun_74} : (T : Type u_Corelib_ssr_ssrfun_74) →
+  Rocq.Corelib.ssr.ssrfun.wrapped.{u_Corelib_ssr_ssrfun_74} T → T :=
+fun T w =>
+  Rocq.Corelib.ssr.ssrfun.wrapped.rec.{u_Corelib_ssr_ssrfun_74 + 1, u_Corelib_ssr_ssrfun_74} (fun unwrap => unwrap) w
+def Rocq.Corelib.ssr.ssrfun.wrap.{u_Corelib_ssr_ssrfun_77} : (T : Type u_Corelib_ssr_ssrfun_77) →
+  T → Rocq.Corelib.ssr.ssrfun.wrapped.{u_Corelib_ssr_ssrfun_77} T :=
+fun T x => Rocq.Corelib.ssr.ssrfun.wrapped.Wrap.{u_Corelib_ssr_ssrfun_77} T x
+inductive Rocq.Corelib.ssr.ssrfun.wrapped.{u_Corelib_ssr_ssrfun_74} : Type u_Corelib_ssr_ssrfun_74 →
+  Type u_Corelib_ssr_ssrfun_74
+number of parameters: 1
+constructors:
+Rocq.Corelib.ssr.ssrfun.wrapped.Wrap : (T : Type u_Corelib_ssr_ssrfun_74) →
+  T → Rocq.Corelib.ssr.ssrfun.wrapped.{u_Corelib_ssr_ssrfun_74} T

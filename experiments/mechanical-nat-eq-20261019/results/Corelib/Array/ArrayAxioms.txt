@@ -1,0 +1,74 @@
+rocq2lean: 11 root(s) TRANSLATED_AND_CHECKED; summary {"bootstrap_resolved":0,"generated_helpers":0,"not_ok":11,"roots":11,"translated_dependencies":15}
+def Rocq.Corelib.Array.ArrayAxioms.array_ext.statement.{v_0} : Prop :=
+∀ (A : Type v_0) (t1 t2 : Rocq.Corelib.Array.PrimArray.array.{v_0} A),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int
+      (Rocq.Corelib.Array.PrimArray.length.{v_0} A t1) (Rocq.Corelib.Array.PrimArray.length.{v_0} A t2) →
+    (∀ (i : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+        Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool
+            (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.ltb i (Rocq.Corelib.Array.PrimArray.length.{v_0} A t1))
+            Rocq.Corelib.Init.Datatypes.bool.true →
+          Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A (Rocq.Corelib.Array.PrimArray.get.{v_0} A t1 i)
+            (Rocq.Corelib.Array.PrimArray.get.{v_0} A t2 i)) →
+      Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A (Rocq.Corelib.Array.PrimArray.default.{v_0} A t1)
+          (Rocq.Corelib.Array.PrimArray.default.{v_0} A t2) →
+        Rocq.Corelib.Init.Logic.eq.{v_0 + 1} (Rocq.Corelib.Array.PrimArray.array.{v_0} A) t1 t2
+def Rocq.Corelib.Array.ArrayAxioms.default_set.statement.{v_0} : Prop :=
+∀ (A : Type v_0) (t : Rocq.Corelib.Array.PrimArray.array.{v_0} A) (i : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int)
+  (a : A),
+  Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A
+    (Rocq.Corelib.Array.PrimArray.default.{v_0} A (Rocq.Corelib.Array.PrimArray.set.{v_0} A t i a))
+    (Rocq.Corelib.Array.PrimArray.default.{v_0} A t)
+def Rocq.Corelib.Array.ArrayAxioms.get_copy.statement.{v_0} : Prop :=
+∀ (A : Type v_0) (t : Rocq.Corelib.Array.PrimArray.array.{v_0} A) (i : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A
+    (Rocq.Corelib.Array.PrimArray.get.{v_0} A (Rocq.Corelib.Array.PrimArray.copy.{v_0} A t) i)
+    (Rocq.Corelib.Array.PrimArray.get.{v_0} A t i)
+def Rocq.Corelib.Array.ArrayAxioms.get_make.statement.{v_0} : Prop :=
+∀ (A : Type v_0) (a : A) (size i : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A
+    (Rocq.Corelib.Array.PrimArray.get.{v_0} A (Rocq.Corelib.Array.PrimArray.make.{v_0} A size a) i) a
+def Rocq.Corelib.Array.ArrayAxioms.get_out_of_bounds.statement.{v_0} : Prop :=
+∀ (A : Type v_0) (t : Rocq.Corelib.Array.PrimArray.array.{v_0} A) (i : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool
+      (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.ltb i (Rocq.Corelib.Array.PrimArray.length.{v_0} A t))
+      Rocq.Corelib.Init.Datatypes.bool.false →
+    Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A (Rocq.Corelib.Array.PrimArray.get.{v_0} A t i)
+      (Rocq.Corelib.Array.PrimArray.default.{v_0} A t)
+def Rocq.Corelib.Array.ArrayAxioms.get_set_other.statement.{v_0} : Prop :=
+∀ (A : Type v_0) (t : Rocq.Corelib.Array.PrimArray.array.{v_0} A)
+  (i j : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int) (a : A),
+  Rocq.Corelib.Init.Logic.not (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int i j) →
+    Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A
+      (Rocq.Corelib.Array.PrimArray.get.{v_0} A (Rocq.Corelib.Array.PrimArray.set.{v_0} A t i a) j)
+      (Rocq.Corelib.Array.PrimArray.get.{v_0} A t j)
+def Rocq.Corelib.Array.ArrayAxioms.get_set_same.statement.{v_0} : Prop :=
+∀ (A : Type v_0) (t : Rocq.Corelib.Array.PrimArray.array.{v_0} A) (i : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int)
+  (a : A),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool
+      (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.ltb i (Rocq.Corelib.Array.PrimArray.length.{v_0} A t))
+      Rocq.Corelib.Init.Datatypes.bool.true →
+    Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A
+      (Rocq.Corelib.Array.PrimArray.get.{v_0} A (Rocq.Corelib.Array.PrimArray.set.{v_0} A t i a) i) a
+def Rocq.Corelib.Array.ArrayAxioms.leb_length.statement.{v_0} : Prop :=
+∀ (A : Type v_0) (t : Rocq.Corelib.Array.PrimArray.array.{v_0} A),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool
+    (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.leb (Rocq.Corelib.Array.PrimArray.length.{v_0} A t)
+      Rocq.Corelib.Array.PrimArray.max_length)
+    Rocq.Corelib.Init.Datatypes.bool.true
+def Rocq.Corelib.Array.ArrayAxioms.length_copy.statement.{v_0} : Prop :=
+∀ (A : Type v_0) (t : Rocq.Corelib.Array.PrimArray.array.{v_0} A),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int
+    (Rocq.Corelib.Array.PrimArray.length.{v_0} A (Rocq.Corelib.Array.PrimArray.copy.{v_0} A t))
+    (Rocq.Corelib.Array.PrimArray.length.{v_0} A t)
+def Rocq.Corelib.Array.ArrayAxioms.length_make.statement.{v_0} : Prop :=
+∀ (A : Type v_0) (size : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int) (a : A),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int
+    (Rocq.Corelib.Array.PrimArray.length.{v_0} A (Rocq.Corelib.Array.PrimArray.make.{v_0} A size a))
+    (Rocq.Corelib.Init.Datatypes.bool.rec.{1} size Rocq.Corelib.Array.PrimArray.max_length
+      (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.leb size Rocq.Corelib.Array.PrimArray.max_length))
+def Rocq.Corelib.Array.ArrayAxioms.length_set.statement.{v_0} : Prop :=
+∀ (A : Type v_0) (t : Rocq.Corelib.Array.PrimArray.array.{v_0} A) (i : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int)
+  (a : A),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int
+    (Rocq.Corelib.Array.PrimArray.length.{v_0} A (Rocq.Corelib.Array.PrimArray.set.{v_0} A t i a))
+    (Rocq.Corelib.Array.PrimArray.length.{v_0} A t)

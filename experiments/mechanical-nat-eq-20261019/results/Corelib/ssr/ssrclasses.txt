@@ -1,0 +1,13 @@
+rocq2lean: 4 root(s) TRANSLATED_AND_CHECKED; summary {"bootstrap_resolved":0,"generated_helpers":0,"not_ok":3,"roots":4,"translated_dependencies":3}
+def Rocq.Corelib.ssr.ssrclasses.Reflexive.{u_Corelib_ssr_ssrclasses_21} : (A : Sort u_Corelib_ssr_ssrclasses_21) →
+  (A → A → Prop) → Prop :=
+fun A R => ∀ (x : A), R x x
+def Rocq.Corelib.ssr.ssrclasses.eq_Reflexive.statement.{u_Corelib_ssr_ssrclasses_23} : Prop :=
+∀ (A : Sort u_Corelib_ssr_ssrclasses_23),
+  Rocq.Corelib.ssr.ssrclasses.Reflexive.{u_Corelib_ssr_ssrclasses_23} A
+    (Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrclasses_23} A)
+def Rocq.Corelib.ssr.ssrclasses.iff_Reflexive.statement : Prop :=
+Rocq.Corelib.ssr.ssrclasses.Reflexive.{1} Prop Rocq.Corelib.Init.Logic.iff
+def Rocq.Corelib.ssr.ssrclasses.reflexivity.statement.{u_Corelib_ssr_ssrclasses_21} : Prop :=
+∀ (A : Sort u_Corelib_ssr_ssrclasses_21) (R : A → A → Prop),
+  Rocq.Corelib.ssr.ssrclasses.Reflexive.{u_Corelib_ssr_ssrclasses_21} A R → ∀ (x : A), R x x

@@ -1,0 +1,615 @@
+{
+  "schema": "rocq2lean-audit-statement/1",
+  "mode": "statement",
+  "assembly": null,
+  "status": "OK",
+  "universe_arguments_checked": 90,
+  "interface_checked": 51,
+  "prop_lift_protected": [],
+  "phantom_lowered_protected": [],
+  "level_split_checked": 0,
+  "result_sort_implicit_checked": 0,
+  "level_copies_checked": 0,
+  "instance_levels": {
+    "checked": 66,
+    "deferred_to_consumer": 2
+  },
+  "definition_type_specialization_candidates": {
+    "note": "non-protected definitions only (protected ones are rejected): a binder-domain level of the type that no applied argument determines and that is not its parameter (it may be fixed by the definition's value); diagnostic, not a rejection",
+    "count": 0,
+    "rows": []
+  },
+  "coverage": {
+    "requested_roots": 55,
+    "required_closure": 81,
+    "claimed": 81,
+    "accepted": 75,
+    "pending": 6,
+    "not_accepted": 0,
+    "by_status_and_verdict": {
+      "PENDING_KERNEL_CHECKED/MATCH": 5,
+      "STATEMENT_KERNEL_CHECKED/MATCH": 18,
+      "STATEMENT_PENDING_KERNEL_CHECKED/MATCH": 1,
+      "TRANSLATED_AND_CHECKED/MATCH": 57
+    }
+  },
+  "problems": [],
+  "verdicts": [
+    {
+      "source": "Corelib.Init.Datatypes.bool",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.nat",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.prod",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Datatypes.unit",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Logic.False",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Logic.True",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Logic.and",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Logic.eq",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Logic.eq_rect",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Logic.eq_rect_r",
+      "status": "PENDING_KERNEL_CHECKED",
+      "leaf": false,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Logic.iff",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.Init.Logic.not",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.UnderE",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.abstract",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.abstract_context",
+      "status": "PENDING_KERNEL_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.abstract_context__rocq2lean_obligation_1",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.abstract_key",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.abstract_lock",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.argumentType",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.dependentReturnType",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.external_view",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.external_view_ind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.external_view_rec",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.external_view_rect",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.external_view_sind",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.iffLR",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.iffLRn",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.iffRL",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.iffRLn",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.lock",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.locked",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.locked_with",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.locked_withE",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.locked_with_unlockable",
+      "status": "PENDING_KERNEL_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.locked_with_unlockable__rocq2lean_obligation_1",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.master_key",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.nary_congruence",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.nary_congruence_statement",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.over",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.phant",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.phantom",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.protect_term",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.returnType",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.ssr_congr_arrow",
+      "status": "PENDING_KERNEL_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.ssr_converse",
+      "status": "PENDING_KERNEL_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.ssr_converse__rocq2lean_obligation_1",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.ssr_have",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.ssr_have_upoly",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.ssr_have_upoly__rocq2lean_quality_PP",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.ssr_have_upoly__rocq2lean_quality_PS",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.ssr_have_upoly__rocq2lean_quality_PT",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.ssr_have_upoly__rocq2lean_quality_SP",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.ssr_have_upoly__rocq2lean_quality_SS",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.ssr_have_upoly__rocq2lean_quality_ST",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.ssr_have_upoly__rocq2lean_quality_TP",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.ssr_have_upoly__rocq2lean_quality_TS",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.unlock",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.unlock_with",
+      "status": "STATEMENT_PENDING_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.unlockable",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.unlocked",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.vm_compute",
+      "status": "STATEMENT_KERNEL_CHECKED",
+      "leaf": true,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw.vm_compute_eq",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw/NonPropType.call",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw/NonPropType.call_of",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw/NonPropType.callee",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw/NonPropType.check",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw/NonPropType.condition",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw/NonPropType.frame",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw/NonPropType.maybeProp",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw/NonPropType.result",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw/NonPropType.test",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw/NonPropType.test_Prop",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw/NonPropType.test_negative",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw/NonPropType.test_of",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw/NonPropType.type",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw/TheCanonical.get",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw/TheCanonical.get_by",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssreflect_rw/TheCanonical.put",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "root",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssrunder/Under_rel.Over_rel",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "required",
+      "verdict": "MATCH"
+    },
+    {
+      "source": "Corelib.ssr.ssrunder/Under_rel.Under_rel",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "required",
+      "verdict": "MATCH"
+    }
+  ],
+  "quality_representations": [
+    {
+      "source": "Corelib.Init.Datatypes.prod.qualityProp",
+      "status": "TRANSLATED_AND_CHECKED",
+      "leaf": false,
+      "role": "representation",
+      "verdict": "MATCH"
+    }
+  ]
+}

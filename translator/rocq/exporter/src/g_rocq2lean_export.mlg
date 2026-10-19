@@ -78,3 +78,10 @@ VERNAC COMMAND EXTEND Rocq2LeanCheckConversionDeps CLASSIFIED AS QUERY STATE opa
     fun ~opaque_access -> R2l_export.check_conversion_deps ~opaque_access lowered inp outp
   }
 END
+
+(* Diagnostic only: preserve every quality assignment and its declared type. *)
+VERNAC COMMAND EXTEND Rocq2LeanNativeQualityFamily CLASSIFIED AS QUERY STATE opaque_access
+| [ "Rocq2Lean" "NativeQualityFamily" string(key) string(file) ] -> {
+    fun ~opaque_access -> R2l_export.native_quality_family ~opaque_access key file
+  }
+END

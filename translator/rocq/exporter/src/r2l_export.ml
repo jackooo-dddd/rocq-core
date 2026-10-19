@@ -147,7 +147,9 @@ let rec term_json (t : A.term) : J.t =
   | A.Coq_tCoFix (mfix, idx) -> k "cofix" [ ("defs", mfix_json mfix); ("idx", J.Int (nat idx)) ]
   | A.Coq_tInt i -> k "int" [ ("v", J.Str (Uint63.to_string i)) ]
   | A.Coq_tFloat f -> k "float" [ ("v", J.Str (Float64.to_hex_string f)) ]
-  | A.Coq_tString s -> k "string" [ ("v", J.Str (Pstring.to_string s)) ]
+  | A.Coq_tString s ->
+    let s = Pstring.to_string s in
+    k "string" [ ("bytes", J.Arr (List.init (String.length s) (fun i -> J.Int (Char.code s.[i])))) ]
   | A.Coq_tArray (u, arr, def, ty) ->
     k "array" [ ("u", level_json u); ("elems", terms arr); ("default", term_json def); ("ty", term_json ty) ]
 
@@ -228,26 +230,10 @@ let flags_json (f : Declarations.typing_flags) =
       ("allow_uip", J.Bool f.allow_uip) ]
 
 (* ---------- prepared environment (M5) ----------
-   Two documented, kernel-validated preparations of the native environment before quotation:
-   1. Sealed-module implementations: a parameter of a module sealed by a signature
-      (`Module M : T. ... End M`, e.g. MathComp's HB.lock) has no body in the environment; its
-      implementation's body is read from the module's structure.
-   2. Lowering of `Corelib.ssr.ssreflect_rw.ssr_have_upoly` (sort-polymorphic, cannot be quoted by
-      MetaRocq c18395ad): a fully applied `ssr_have_upoly P G step rest args` is replaced by its
-      delta-beta reduct `rest step args`. Nothing else is changed.
-   Every prepared body is re-checked by Rocq's kernel against the declared type. *)
-let ssr_have_upoly = "Corelib.ssr.ssreflect_rw.ssr_have_upoly"
-
-let rec lower c =
-  match Constr.kind c with
-  | Constr.App (f, args)
-    when Array.length args >= 4
-         && (match Constr.kind f with
-             | Constr.Const (cst, _) -> Names.KerName.to_string (Names.Constant.user cst) = ssr_have_upoly
-             | _ -> false) ->
-    let n = Array.length args in
-    Constr.mkApp (lower args.(3), Array.append [| lower args.(2) |] (Array.map lower (Array.sub args 4 (n - 4))))
-  | _ -> Constr.map lower c
+   Sealed-module implementations are read from the module's structure and
+   rechecked by the kernel. Sort-polymorphic ssr_have_upoly references are now
+   preserved and handled by complete native quality families below. The former
+   name-specific rest/step rewrite is no longer needed and must not unfold Qed. *)
 
 let sealed_impl env c =
   let cb = Environ.lookup_constant c env in
@@ -271,14 +257,76 @@ let prepared_body ~opaque_access env c =
   match Global.body_of_constant_body opaque_access src with
   | None -> None
   | Some (b, _, _) ->
-    let b' = lower b in
-    Some (b', sealed, not (Constr.equal b b'))
+    Some (b, sealed, false)
+
+(* Diagnostic only: preserve the native reference quality instance before
+   MetaRocq quotation or transparent-alias expansion can erase its identity. *)
+let trace_native_reference_qualities ~opaque_access env owner cb =
+  match Sys.getenv_opt "ROCQ2LEAN_REFERENCE_QUALITY_TRACE" with
+  | None -> ()
+  | Some file ->
+    let quality = function
+      | Sorts.Quality.QConstant Sorts.Quality.QProp -> J.Str "Prop"
+      | Sorts.Quality.QConstant Sorts.Quality.QSProp -> J.Str "SProp"
+      | Sorts.Quality.QConstant Sorts.Quality.QType -> J.Str "Type"
+      | Sorts.Quality.QGlobal q -> J.Str (Sorts.QGlobal.to_string q)
+      | Sorts.Quality.QVar q -> J.Str (Sorts.QVar.to_string q)
+    in
+    let oc = open_out_gen [Open_creat; Open_append; Open_text] 0o600 file in
+    let rec visit env phase path t =
+      let found = match Constr.kind t with
+        | Constr.Const (c,u) -> Some ("constant",Names.KerName.to_string (Names.Constant.user c),u)
+        | Constr.Ind ((m,i),u) -> Some ("inductive",Names.KerName.to_string (Names.MutInd.user m) ^ ":" ^ string_of_int i,u)
+        | Constr.Construct (((m,i),j),u) -> Some ("constructor",Names.KerName.to_string (Names.MutInd.user m) ^ ":" ^ string_of_int i ^ ":" ^ string_of_int j,u)
+        | _ -> None
+      in
+      (match found with
+       | None -> ()
+       | Some (kind,name,u) ->
+         let qs,ls = UVars.Instance.to_array u in
+         let record = J.Obj [("owner",J.Str owner);("phase",J.Str phase);
+           ("path",J.Arr(List.map(fun i->J.Int i)path));("kind",J.Str kind);("reference",J.Str name);
+           ("qualities",J.Arr(Array.to_list(Array.map quality qs)));
+           ("levels",J.Arr(Array.to_list(Array.map(fun l->J.Str(Univ.Level.to_string l))ls)))] in
+         output_string oc (J.to_string record);output_char oc '\n');
+      (match Constr.kind t with
+       | Constr.App (f,_) ->
+         (match Constr.kind f with
+          | Constr.Ind ((m,i),_) when Option.has_some (Environ.lookup_mind m env).Declarations.mind_template ->
+            let result =
+              try let sigma = Evd.from_env env in
+                quality (Sorts.quality (EConstr.ESorts.kind sigma (Retyping.get_sort_of env sigma (EConstr.of_constr t))))
+              with e -> J.Obj [("error",J.Str(Printexc.to_string e))]
+            in
+            output_string oc (J.to_string (J.Obj [("owner",J.Str owner);("phase",J.Str phase);
+              ("path",J.Arr(List.map(fun i->J.Int i)path));("kind",J.Str "template_application");
+              ("reference",J.Str(Names.KerName.to_string(Names.MutInd.user m)^":"^string_of_int i));
+              ("result_quality",result)]));output_char oc '\n'
+          | _ -> ())
+       | _ -> ());
+      match Constr.kind t with
+      | Constr.Lambda (n,ty,b) | Constr.Prod (n,ty,b) ->
+        visit env phase (path @ [0]) ty;
+        visit (Environ.push_rel (Context.Rel.Declaration.LocalAssum(n,ty)) env) phase (path @ [1]) b
+      | Constr.LetIn (n,v,ty,b) ->
+        visit env phase (path @ [0]) v;visit env phase (path @ [1]) ty;
+        visit (Environ.push_rel (Context.Rel.Declaration.LocalDef(n,v,ty)) env) phase (path @ [2]) b
+      | Constr.Case _ | Constr.Fix _ | Constr.CoFix _ -> ()
+      | _ ->
+        let index = ref 0 in
+        Constr.iter (fun child -> let i = !index in incr index;visit env phase (path @ [i]) child) t
+    in
+    visit env "type" [] cb.Declarations.const_type;
+    (match Global.body_of_constant_body opaque_access cb with
+     | Some (b,_,_) -> visit env "body" [] b | None -> ());
+    close_out oc
 
 let rec native_constant ~opaque_access env kn = native_constant_kn ~opaque_access env (to_rocq_kn kn)
 
 and native_constant_kn ~opaque_access env rkn =
   match Environ.lookup_constant (Names.Constant.make1 rkn) env with
   | cb ->
+    trace_native_reference_qualities ~opaque_access env (Names.KerName.to_string rkn) cb;
     let private_univs =
       match Global.body_of_constant_body opaque_access cb with
       | Some (_, Opaqueproof.PrivateMonomorphic (), _) -> "none"
@@ -298,13 +346,73 @@ and native_constant_kn ~opaque_access env rkn =
       | Declarations.Primitive _ -> "primitive"
       | Declarations.Symbol _ -> "symbol"
     in
+    let primitive =
+      match cb.Declarations.const_body with
+      | Declarations.Primitive op ->
+        let sigma = Evd.from_env env in
+        let bool_result =
+          match (Environ.retroknowledge env).Retroknowledge.retro_bool with
+          | None -> []
+          | Some (ct, cf) ->
+            let quote c = term_json (Ast_quoter.quote_term env sigma (Constr.mkConstruct c)) in
+            [("bool_constructors", J.Obj [("true", quote ct); ("false", quote cf)])]
+        in
+        let comparison_result =
+          match (Environ.retroknowledge env).Retroknowledge.retro_cmp with
+          | None -> []
+          | Some (ce, cl, cg) ->
+            let quote c = term_json (Ast_quoter.quote_term env sigma (Constr.mkConstruct c)) in
+            [("comparison_constructors", J.Obj [("eq", quote ce); ("lt", quote cl); ("gt", quote cg)])]
+        in
+        let structured_result =
+          let retro = Environ.retroknowledge env in
+          let quote c = term_json (Ast_quoter.quote_term env sigma (Constr.mkConstruct c)) in
+          let carry = match retro.Retroknowledge.retro_carry with
+            | None -> []
+            | Some (c0, c1) -> [("carry_constructors", J.Obj [("C0", quote c0); ("C1", quote c1)])]
+          in
+          let pair = match retro.Retroknowledge.retro_pair with
+            | None -> []
+            | Some cp -> [("pair_constructor", quote cp)]
+          in carry @ pair
+        in
+        let float_result =
+          let retro = Environ.retroknowledge env in
+          let quote c = term_json (Ast_quoter.quote_term env sigma (Constr.mkConstruct c)) in
+          let cmp = match retro.Retroknowledge.retro_f_cmp with
+            | None -> []
+            | Some (ce,cl,cg,cn) -> [("float_comparison_constructors", J.Obj
+                [("eq",quote ce);("lt",quote cl);("gt",quote cg);("nc",quote cn)])]
+          in
+          let cls = match retro.Retroknowledge.retro_f_class with
+            | None -> []
+            | Some (pn,nn,ps,ns,pz,nz,pi,ni,nan) -> [("float_class_constructors", J.Obj
+                [("pn",quote pn);("nn",quote nn);("ps",quote ps);("ns",quote ns);
+                 ("pz",quote pz);("nz",quote nz);("pi",quote pi);("ni",quote ni);("nan",quote nan)])]
+          in cmp @ cls
+        in
+        [ ("primitive_signature", J.Obj
+            ([ ("operator", J.Str (CPrimitives.to_string op));
+              ("type", term_json (Ast_quoter.quote_term env sigma cb.Declarations.const_type));
+              ("universes", udecl_json (Ast_quoter.quote_universes_decl cb.Declarations.const_universes None));
+              ("relevance", rel_json (Ast_quoter.quote_relevance cb.Declarations.const_relevance)) ] @ bool_result @ comparison_result @ structured_result @ float_result @ [("array_max_length", J.Str (Uint63.to_string Parray.max_length));
+                ("string_max_length", J.Str (Uint63.to_string Pstring.max_length))])) ]
+      | _ -> []
+    in
+    let primitive_type =
+      if Environ.is_int63_type env c then [("primitive_type", J.Str "int63")]
+      else if Environ.is_float64_type env c then [("primitive_type", J.Str "float64")]
+      else if Environ.is_string_type env c then [("primitive_type", J.Str "string"); ("string_max_length", J.Str (Uint63.to_string Pstring.max_length))]
+      else if Environ.is_array_type env c then [("primitive_type", J.Str "array"); ("array_max_length", J.Str (Uint63.to_string Parray.max_length))]
+      else []
+    in
     ( Some kind,
       J.Obj
-        [ ("body_kind", J.Str kind);
+        ([ ("body_kind", J.Str kind);
           ("prepared", J.Obj [ ("sealed_implementation", J.Bool sealed); ("lowered_ssr_have_upoly", J.Bool lowered) ]);
           ("polymorphic", J.Bool (Declareops.constant_is_polymorphic cb));
           ("private_universes", J.Str private_univs);
-          ("typing_flags", flags_json cb.Declarations.const_typing_flags) ] )
+          ("typing_flags", flags_json cb.Declarations.const_typing_flags) ] @ primitive @ primitive_type) )
   | exception Not_found -> (None, J.Obj [ ("error", J.Str "not found in native environment") ])
 
 let rec native_inductive env kn = native_inductive_kn env (to_rocq_kn kn)
@@ -335,11 +443,37 @@ and template_info_json (t : Declarations.template_universes) =
     | Sorts.Type u -> J.Obj [ ("k", J.Str "type"); ("u", univ_json u) ]
     | Sorts.GSort (_, u) | Sorts.VSort (_, u) -> J.Obj [ ("k", J.Str "quality_sort"); ("u", univ_json u) ]
   in
+  (* Preserve quality-variable bindings alongside level-variable bindings.
+     NativeMeta recomputes this complete record in a fresh Rocq process. *)
+  let quality_json = function
+    | Sorts.Quality.QConstant Sorts.Quality.QProp -> J.Obj [("k", J.Str "prop")]
+    | Sorts.Quality.QConstant Sorts.Quality.QSProp -> J.Obj [("k", J.Str "sprop")]
+    | Sorts.Quality.QConstant Sorts.Quality.QType -> J.Obj [("k", J.Str "type")]
+    | Sorts.Quality.QGlobal q -> J.Obj [("k", J.Str "global"); ("name", J.Str (Sorts.QGlobal.to_string q))]
+    | Sorts.Quality.QVar q ->
+      (match Sorts.QVar.var_index q with
+       | Some i -> J.Obj [("k", J.Str "var"); ("i", J.Int i)]
+       | None -> J.Obj [("k", J.Str "unbound"); ("name", J.Str (Sorts.QVar.to_string q))])
+  in
+  (match Sys.getenv_opt "ROCQ2LEAN_TEMPLATE_TRACE" with
+   | None -> ()
+   | Some path ->
+     let qs = fst (UVars.Instance.to_array t.template_defaults) in
+     let record = J.Obj [
+       ("defaults", J.Arr (Array.to_list (Array.map (fun l -> J.Str (level_name l)) defaults)));
+       ("default_qualities", J.Arr (Array.to_list (Array.map quality_json qs)));
+       ("parameter_qualities", J.Arr (List.map (function None -> J.Null | Some s -> quality_json (Sorts.quality s)) t.template_param_arguments));
+       ("conclusion_quality", quality_json (Sorts.quality t.template_concl)) ] in
+     let oc = open_out_gen [Open_creat; Open_append; Open_text] 0o600 path in
+     output_string oc (J.to_string record); output_char oc '\n'; close_out oc);
   J.Obj
     [ ("defaults", J.Arr (Array.to_list (Array.map (fun l -> J.Str (level_name l)) defaults)));
       ( "param_arguments",
         J.Arr (List.map (function None -> J.Null | Some s -> sort_json s) t.template_param_arguments) );
-      ("concl", sort_json t.template_concl) ]
+      ("concl", sort_json t.template_concl);
+      ("default_qualities", J.Arr (Array.to_list (Array.map quality_json (fst (UVars.Instance.to_array t.template_defaults)))));
+      ("parameter_qualities", J.Arr (List.map (function None -> J.Null | Some s -> quality_json (Sorts.quality s)) t.template_param_arguments));
+      ("conclusion_quality", quality_json (Sorts.quality t.template_concl)) ]
 
 and native_inductive_kn env rkn =
   match Environ.lookup_mind (Names.MutInd.make1 rkn) env with
@@ -387,6 +521,8 @@ type stmt_info = {
   opaque_body_refused : (string, string) Hashtbl.t;
   obligation_of : (string, string * int) Hashtbl.t;
   def_obligations : (string, string list) Hashtbl.t;
+  prepared_statement : (string, unit) Hashtbl.t;
+  statement_prop_view : (string, unit) Hashtbl.t;
   failed : (string, string) Hashtbl.t;
   (* rewritten definitions accepted by Rocq's kernel only without the guard check: a recursive call
      whose structural argument was a proof subterm, now an obligation (termination is deferred) *)
@@ -396,6 +532,7 @@ type stmt_info = {
 let new_stmt_info () =
   { proof_only = Hashtbl.create 97; opaque_data = Hashtbl.create 17; opaque_body = Hashtbl.create 17;
     opaque_body_refused = Hashtbl.create 7; obligation_of = Hashtbl.create 97; def_obligations = Hashtbl.create 97;
+    prepared_statement = Hashtbl.create 97; statement_prop_view = Hashtbl.create 17;
     failed = Hashtbl.create 17; deferred_guard = Hashtbl.create 7 }
 
 (* The IR key of a native kernel name (same scheme as [kn_key]). *)
@@ -411,18 +548,30 @@ let const_key c = native_kn_key (Names.Constant.user c)
 
 let level_name l = if Univ.Level.is_set l then "Set" else Univ.Level.to_string l
 
+(* A polymorphic context can mention global bounds absent from its terms.
+   Those levels also occur in the exported declaration and require native facts. *)
+let native_context_levels univs acc =
+  match univs with
+  | Declarations.Monomorphic -> acc
+  | Declarations.Polymorphic ctx ->
+    let cs = UVars.UContext.univ_constraints (UVars.AbstractContext.repr ctx) in
+    Univ.UnivConstraints.fold
+      (fun (a, _, b) acc -> Univ.Level.Set.add a (Univ.Level.Set.add b acc)) cs acc
+
 (* Universe levels occurring in the native kernel terms of an exported declaration. *)
 let native_decl_levels ~opaque_access env (((kn : K.kername), (d : E.global_decl))) acc =
   try
     match d with
     | E.ConstantDecl _ ->
       let cb = Environ.lookup_constant (Names.Constant.make1 (to_rocq_kn kn)) env in
+      let acc = native_context_levels cb.Declarations.const_universes acc in
       let acc = Vars.universes_of_constr ~init:acc cb.Declarations.const_type in
       (match Global.body_of_constant_body opaque_access cb with
        | Some (c, _, _) -> Vars.universes_of_constr ~init:acc c
        | None -> acc)
     | E.InductiveDecl _ ->
       let mib = Environ.lookup_mind (Names.MutInd.make1 (to_rocq_kn kn)) env in
+      let acc = native_context_levels mib.Declarations.mind_universes acc in
       (* Template inductives: MetaRocq quotes them at their default instance (template_defaults),
          so those default levels are part of the export. *)
       let acc =
@@ -592,6 +741,18 @@ let decl_json ?stmt ~opaque_access env ((kn : K.kername), (d : E.global_decl)) =
         [ ("obligations", J.Arr (List.map (fun o -> J.Str o) (Hashtbl.find st.def_obligations key))) ]
       | Some st when Hashtbl.mem st.failed key -> [ ("extraction_refused", J.Str (Hashtbl.find st.failed key)) ]
       | _ -> []
+    in
+    let stmt_fields =
+      match stmt with
+      | Some st when Hashtbl.mem st.prepared_statement key ->
+        stmt_fields @ [ ("statement_prepared", J.Bool true) ]
+      | _ -> stmt_fields
+    in
+    let stmt_fields =
+      match stmt with
+      | Some st when Hashtbl.mem st.statement_prop_view key ->
+        stmt_fields @ [ ("statement_prop_view", J.Bool true) ]
+      | _ -> stmt_fields
     in
     let stmt_fields =
       match stmt with
@@ -819,10 +980,39 @@ let prepare_env ~opaque_access env0 roots =
      obligations being parameters; otherwise the definition is exported without a body and the
      refusal is recorded (never silently kept). *)
 
-let is_proof_type env sigma ty =
-  match Retyping.get_sort_quality_of env sigma ty with
-  | Sorts.Quality.QConstant (Sorts.Quality.QProp | Sorts.Quality.QSProp) -> true
-  | _ -> false
+let rec is_proof_type env sigma ty =
+  (* The declared sort of a transparent type alias may be a cumulative upper
+     bound (Type) even when its instantiated body is a proposition. Inspect
+     the reduced codomain, including under dependent products, before deciding
+     whether a constant has a proof implementation that must not be exported. *)
+  let ty = Reductionops.whd_all env sigma ty in
+  match EConstr.kind sigma ty with
+  | Constr.Prod (na, dom, cod) ->
+    is_proof_type
+      (EConstr.push_rel (Context.Rel.Declaration.LocalAssum (na, dom)) env) sigma cod
+  | _ ->
+    match Retyping.get_sort_quality_of env sigma ty with
+    | Sorts.Quality.QConstant (Sorts.Quality.QProp | Sorts.Quality.QSProp) -> true
+    | _ -> false
+
+(* Expose the proposition behind a cumulative transparent alias only for a
+   proof statement. Keep every binder domain; reduce just the codomain spine.
+   The caller checks native conversion against the ORIGINAL declared type under
+   its complete universe context. Definitions retain their original annotations. *)
+let rec statement_prop_view env sigma ty =
+  let already_prop =
+    match Retyping.get_sort_quality_of env sigma ty with
+    | Sorts.Quality.QConstant (Sorts.Quality.QProp | Sorts.Quality.QSProp) -> true
+    | _ -> false
+  in
+  if already_prop then ty
+  else
+    let reduced = Reductionops.whd_all env sigma ty in
+    match EConstr.kind sigma reduced with
+    | Constr.Prod (na, dom, cod) ->
+      let env' = EConstr.push_rel (Context.Rel.Declaration.LocalAssum (na, dom)) env in
+      EConstr.mkProd (na, dom, statement_prop_view env' sigma cod)
+    | _ -> reduced
 
 let proof_valued env c =
   let cb = Environ.lookup_constant c env in
@@ -867,7 +1057,7 @@ let refusal_reason e =
    was written (a convertible variant, e.g. a beta-redex left by a tactic), the expected type only on
    the surrounding definition. Statements are beta-normalized. Elsewhere (no expected type at hand)
    the inferred type is used. *)
-let extract_proofs env0 sigma mk t =
+let extract_proofs ?(keep_constructors = false) env0 sigma mk t =
   let canon env ty = Reductionops.nf_beta env sigma ty in
   let is_proof env t = try is_proof_type env sigma (Retyping.get_type_of env sigma t) with _ -> false in
   let extract env ty t =
@@ -884,10 +1074,77 @@ let extract_proofs env0 sigma mk t =
     | Constr.Rel _ | Constr.Var _ | Constr.Sort _ | Constr.Meta _ | Constr.Evar _ -> true
     | _ -> false
   in
+  (* Applying a local hypothesis transports no source proof implementation. Keep
+     this neutral spine and recursively prepare its arguments. In the dependent
+     fallback, global reference spines are retained too: proof-valued constants
+     still lose their bodies and become separate prerequisite statements. Keeping
+     their applications preserves sharing between a dependent type and its value. *)
+  let local_application t =
+    match EConstr.kind sigma t with
+    | Constr.App (f, _) ->
+      (match EConstr.kind sigma f with
+       | Constr.Rel _ | Constr.Var _ -> true
+       | Constr.Const _ -> keep_constructors
+       | _ -> false)
+    | _ -> false
+  in
+  (* On a failed dependent conversion, constructor-shaped proof terms retain
+     their computational indices. Their arguments are still recursively prepared;
+     arbitrary proof lambdas, matches, fixpoints and theorem bodies are not retained. *)
+  let constructor_application t =
+    match EConstr.kind sigma t with
+    | Constr.Construct _ -> true
+    | Constr.App (f, _) ->
+      (match EConstr.kind sigma f with Constr.Construct _ -> true | _ -> false)
+    | _ -> false
+  in
+  (* A proof projection is computational syntax, not a proof implementation:
+     one constructor branch selects one of its own fields, optionally applied
+     to neutral variables. Retain this spine so structural recursion can still
+     see the selected subterm. Rocq rechecks the complete rewritten declaration.
+     Arbitrary proof matches/lambdas remain obligations. *)
+  let rec proof_projection env t =
+    match EConstr.kind sigma t with
+    | Constr.App (f, _) -> proof_projection env f
+    | Constr.Case (_, _, _, _, _, scrut, branches)
+      when Array.length branches = 1 && atomic scrut && is_proof env scrut ->
+      let names, body = branches.(0) in
+      let rec field_head t =
+        match EConstr.kind sigma t with
+        | Constr.Rel k -> k > 0 && k <= Array.length names
+        | Constr.App (f, args) ->
+          Array.for_all atomic args && field_head f
+        | _ -> false
+      in field_head body
+    | _ -> false
+  in
+  (* Expand a transparent reference only when its weak-head reduct is exactly
+     the neutral proof projection above. This preserves a definitional piece of
+     computation (e.g. a predecessor proof) without importing arbitrary theorem
+     implementations. Reduction uses the fixed original source environment. *)
+  let expand_projection env t =
+    let head = match EConstr.kind sigma t with Constr.App (f, _) -> f | _ -> t in
+    match EConstr.kind sigma head with
+    | Constr.Const (c, _) ->
+      (match (Environ.lookup_constant c env).Declarations.const_body with
+       | Declarations.Def _ when is_proof env t ->
+         (try
+            let reduced = Reductionops.nf_beta env sigma (Reductionops.whd_all env sigma t) in
+            if proof_projection env reduced then reduced else t
+          with _ -> t)
+       | _ -> t)
+    | _ -> t
+  in
+  let needs_extraction env t =
+    let t = expand_projection env t in
+    (not (atomic t)) && (not (local_application t))
+    && (not (proof_projection env t))
+    && (not (keep_constructors && constructor_application t)) && is_proof env t in
   let rec go env t =
+    let t = expand_projection env t in
     match EConstr.kind sigma t with
     | _ when atomic t -> t
-    | _ when is_proof env t -> extract env (Retyping.get_type_of env sigma t) t
+    | _ when needs_extraction env t -> extract env (Retyping.get_type_of env sigma t) t
     | Constr.App (f, args) ->
       let f' = go env f in
       let fty = ref (try Some (Retyping.get_type_of env sigma f') with _ -> None) in
@@ -903,7 +1160,7 @@ let extract_proofs env0 sigma mk t =
             in
             let a' =
               match dom_cod with
-              | Some (d, _) when (not (atomic a)) && is_proof env a -> extract env d a
+              | Some (d, _) when needs_extraction env a -> extract env d a
               | _ -> go env a
             in
             fty := (match dom_cod with Some (_, b) -> Some (EConstr.Vars.subst1 a' b) | None -> None);
@@ -921,11 +1178,23 @@ let extract_proofs env0 sigma mk t =
       EConstr.mkLambda (na, ty', go (EConstr.push_rel (Context.Rel.Declaration.LocalAssum (na, ty')) env) b)
     | Constr.LetIn (na, v, ty, b) ->
       let ty' = go env ty in
-      let v' = if (not (atomic v)) && is_proof env v then extract env ty' v else go env v in
+      let v' = if needs_extraction env v then extract env ty' v else go env v in
       EConstr.mkLetIn (na, v', ty', go (EConstr.push_rel (Context.Rel.Declaration.LocalDef (na, v', ty')) env) b)
     | _ -> Termops.map_constr_with_full_binders env sigma EConstr.push_rel go env t
   in
   go env0 t
+
+(* An extracted proof keeps the relevance determined by its own statement.
+   In particular SProp obligations are irrelevant: marking them Relevant destroys
+   the source kernel's proof-irrelevant conversion in dependent types. *)
+let add_proof_obligation env cb (o, stmt) =
+  let sigma = Evd.from_env env in
+  let relevance = EConstr.ERelevance.kind sigma
+      (Retyping.relevance_of_type env sigma (EConstr.of_constr stmt)) in
+  Environ.add_constant o
+    { cb with Declarations.const_body = Declarations.Undef None; const_type = stmt;
+              const_relevance = relevance; const_hyps = [] }
+    env
 
 (* The statement environment for [roots], recording what was done in [st]. *)
 let statement_env ?(follow = true) ~opaque_access st env0 roots =
@@ -948,93 +1217,130 @@ let statement_env ?(follow = true) ~opaque_access st env0 roots =
            if poly then EConstr.EInstance.make (UVars.make_abstract_instance (Declareops.constant_polymorphic_context cb))
            else EConstr.EInstance.empty
          in
-         let obls = ref [] and n = ref 0 in
-         let mk stmt =
-           incr n;
-           let lbl = Names.Label.to_string (Names.Constant.label c) ^ "__rocq2lean_obligation_" ^ string_of_int !n in
-           let o = Names.Constant.make1 (Names.KerName.make (Names.Constant.modpath c) (Names.Label.make lbl)) in
-           obls := (o, EConstr.to_constr sigma stmt) :: !obls;
-           EConstr.mkConstU (o, inst)
-         in
-         let is_proof = proof_valued env0 c in
-         (* opacity as declared in Rocq (the native environment): the preparation may have replaced
-            an opaque body by its lowered form, which does not make it transparent *)
-         let is_opaque_data =
-           (not is_proof)
-           && (match (Environ.lookup_constant c (Global.env ())).Declarations.const_body with
-               | Declarations.OpaqueDef _ -> true
-               | _ -> false
-               | exception Not_found -> false)
-         in
-         let ty' = EConstr.to_constr sigma (extract_proofs env0 sigma mk (EConstr.of_constr cb.Declarations.const_type)) in
-         let obls_ty = List.rev !obls in
-         let body' =
-           if is_proof then None
-           else
-             match Global.body_of_constant_body opaque_access cb with
+         let prepare keep_constructors =
+           let obls = ref [] and n = ref 0 in
+           let mk stmt =
+             incr n;
+             let lbl = Names.Label.to_string (Names.Constant.label c) ^ "__rocq2lean_obligation_" ^ string_of_int !n in
+             let o = Names.Constant.make1 (Names.KerName.make (Names.Constant.modpath c) (Names.Label.make lbl)) in
+             obls := (o, EConstr.to_constr sigma stmt) :: !obls;
+             EConstr.mkConstU (o, inst)
+           in
+           let is_proof = proof_valued env0 c in
+           (* opacity as declared in Rocq (the native environment): the preparation may have replaced
+              an opaque body by its lowered form, which does not make it transparent *)
+           let is_opaque_data =
+             (not is_proof)
+             && (match (Environ.lookup_constant c (Global.env ())).Declarations.const_body with
+                 | Declarations.OpaqueDef _ -> true
+                 | _ -> false
+                 | exception Not_found -> false)
+           in
+           let original_ty = EConstr.of_constr cb.Declarations.const_type in
+           let view_ty = if is_proof then statement_prop_view env0 sigma original_ty else original_ty in
+           let view_changed = not (Constr.equal cb.Declarations.const_type (EConstr.to_constr sigma view_ty)) in
+           let ty' = EConstr.to_constr sigma (extract_proofs ~keep_constructors env0 sigma mk view_ty) in
+           let obls_ty = List.rev !obls in
+           let body' =
+             if is_proof then None
+             else
+               match Global.body_of_constant_body opaque_access cb with
+               | None -> None
+               | Some (b, _, _) -> Some (EConstr.to_constr sigma (extract_proofs ~keep_constructors env0 sigma mk (EConstr.of_constr b)))
+           in
+           let obls = List.rev !obls in
+           (* the obligations, as parameters, then Rocq's kernel re-check of the rewritten declaration *)
+           let add_obls e =
+             List.fold_left (fun e o -> add_proof_obligation e cb o) e obls
+           in
+           (* a polymorphic constant is re-checked under its abstract universe context (De Bruijn
+              universe variables), as Rocq's checker does *)
+           let env' =
+             if poly then Environ.push_context ~strict:false (UVars.AbstractContext.repr (Declareops.constant_polymorphic_context cb)) (add_obls env0)
+             else add_obls env0
+           in
+           (* the constant's own typing flags, as when Rocq checked it *)
+           let flags = cb.Declarations.const_typing_flags in
+           let env' = Environ.set_typing_flags flags env' in
+           let check ?(body' = body') env' =
+             let stage = ref "rewritten type" in
+             try
+               if view_changed then begin
+                 stage := "proof statement view conversion";
+                 if Conversion.conv env' cb.Declarations.const_type (EConstr.to_constr sigma view_ty) <> Ok () then
+                   failwith "proof statement view is not convertible to the original declared type";
+                 Hashtbl.replace st.statement_prop_view key ()
+               end;
+               stage := "rewritten type";
+               let _ = Typeops.infer_type env' ty' in
+               List.iter (fun (o, stmt) ->
+                 stage := "obligation " ^ const_key o;
+                 ignore (Typeops.infer_type env' stmt)) obls;
+               (match body' with
+                | Some b ->
+                  stage := "rewritten body inference";
+                  let j = Typeops.infer env' b in
+                  stage := "rewritten body/type conversion";
+                  if Conversion.conv_leq env' j.Environ.uj_type ty' <> Ok () then
+                    let pp t = Pp.string_of_ppcmds (Printer.safe_pr_constr_env env' (Evd.from_env env') t) in
+                    failwith ("rewritten body does not have the rewritten type\nInferred: " ^ pp j.Environ.uj_type ^ "\nExpected: " ^ pp ty')
+                | None -> ());
+               None
+             with e ->
+               let detail = match e with
+                 | Type_errors.TypeError (err_env, err) ->
+                   (try "\n" ^ Pp.string_of_ppcmds
+                     (Himsg.explain_type_error err_env (Evd.from_env err_env) (Pretype_errors.of_type_error err))
+                    with _ -> "")
+                 | _ -> ""
+               in
+               Some (e, refusal_reason e ^ " [stage: " ^ !stage ^ "]" ^ detail)
+           in
+           let checked =
+             match check env' with
              | None -> None
-             | Some (b, _, _) -> Some (EConstr.to_constr sigma (extract_proofs env0 sigma mk (EConstr.of_constr b)))
+             | Some (Type_errors.TypeError (_, Type_errors.IllFormedRecBody (Type_errors.FixGuardError (Type_errors.RecursionOnIllegalTerm _), _, _, _, _)), why)
+               when flags.Declarations.check_guarded && not is_proof ->
+               (* Rocq accepted the original under the guard check; the rewritten body differs only in
+                  proof subterms, one of which was a recursive call's structural argument. Re-check
+                  everything but the guard; termination becomes an explicit obligation of the
+                  translation (never assumed). *)
+               (match check (Environ.set_typing_flags { flags with Declarations.check_guarded = false } env') with
+                | None -> Hashtbl.replace st.deferred_guard key why; None
+                | Some (_, why') -> Some why')
+             | Some (_, why) -> Some why
+           in
+           (* Optional diagnostics only: preserve both failed attempts and their
+              typed obligation contexts, without affecting export decisions. *)
+           (match Sys.getenv_opt "ROCQ2LEAN_EXTRACT_TRACE", checked with
+            | Some dir, Some why ->
+              let pp t = try Pp.string_of_ppcmds (Printer.safe_pr_constr_env env' (Evd.from_env env') t)
+                with _ -> "<printing failed>" in
+              let name = String.map (fun c -> if c = '/' then '_' else c) key in
+              let file = Filename.concat dir (name ^ (if keep_constructors then ".constructors.json" else ".original.json")) in
+              let oc = open_out file in
+              output_string oc (J.to_string (J.Obj [
+                ("source", J.Str key); ("keep_constructors", J.Bool keep_constructors);
+                ("reason", J.Str why); ("type", J.Str (pp ty'));
+                ("body", (match body' with Some b -> J.Str (pp b) | None -> J.Null));
+                ("obligations", J.Arr (List.map (fun (o, t) ->
+                  J.Obj [("name", J.Str (const_key o)); ("type", J.Str (pp t))]) obls)) ]));
+              close_out oc
+            | _ -> ());
+           (ty', obls_ty, body', obls, env', check, checked, is_proof, is_opaque_data)
          in
-         let obls = List.rev !obls in
-         (* the obligations, as parameters, then Rocq's kernel re-check of the rewritten declaration *)
-         let add_obls e =
-           List.fold_left
-             (fun e (o, stmt) ->
-               Environ.add_constant o
-                 { cb with Declarations.const_body = Declarations.Undef None; const_type = stmt;
-                           const_relevance = Sorts.Relevant; const_hyps = [] }
-                 e)
-             e obls
-         in
-         (* a polymorphic constant is re-checked under its abstract universe context (De Bruijn
-            universe variables), as Rocq's checker does *)
-         let env' =
-           if poly then Environ.push_context ~strict:false (UVars.AbstractContext.repr (Declareops.constant_polymorphic_context cb)) (add_obls env0)
-           else add_obls env0
-         in
-         (* the constant's own typing flags, as when Rocq checked it *)
-         let flags = cb.Declarations.const_typing_flags in
-         let env' = Environ.set_typing_flags flags env' in
-         let check ?(body' = body') env' =
-           let stage = ref "rewritten type" in
-           try
-             let _ = Typeops.infer_type env' ty' in
-             List.iter (fun (o, stmt) ->
-               stage := "obligation " ^ const_key o;
-               ignore (Typeops.infer_type env' stmt)) obls;
-             (match body' with
-              | Some b ->
-                stage := "rewritten body inference";
-                let j = Typeops.infer env' b in
-                stage := "rewritten body/type conversion";
-                if Conversion.conv_leq env' j.Environ.uj_type ty' <> Ok () then
-                  let pp t = Pp.string_of_ppcmds (Printer.safe_pr_constr_env env' (Evd.from_env env') t) in
-                  failwith ("rewritten body does not have the rewritten type\nInferred: " ^ pp j.Environ.uj_type ^ "\nExpected: " ^ pp ty')
-              | None -> ());
-             None
-           with e ->
-             let detail = match e with
-               | Type_errors.TypeError (err_env, err) ->
-                 (try "\n" ^ Pp.string_of_ppcmds
-                   (Himsg.explain_type_error err_env (Evd.from_env err_env) (Pretype_errors.of_type_error err))
-                  with _ -> "")
-               | _ -> ""
-             in
-             Some (e, refusal_reason e ^ " [stage: " ^ !stage ^ "]" ^ detail)
-         in
-         let checked =
-           match check env' with
-           | None -> None
-           | Some (Type_errors.TypeError (_, Type_errors.IllFormedRecBody (Type_errors.FixGuardError (Type_errors.RecursionOnIllegalTerm _), _, _, _, _)), why)
-             when flags.Declarations.check_guarded && not is_proof ->
-             (* Rocq accepted the original under the guard check; the rewritten body differs only in
-                proof subterms, one of which was a recursive call's structural argument. Re-check
-                everything but the guard; termination becomes an explicit obligation of the
-                translation (never assumed). *)
-             (match check (Environ.set_typing_flags { flags with Declarations.check_guarded = false } env') with
-              | None -> Hashtbl.replace st.deferred_guard key why; None
-              | Some (_, why') -> Some why')
-           | Some (_, why) -> Some why
+         let first = prepare false in
+         let (ty', obls_ty, body', obls, env', check, checked, is_proof, is_opaque_data) =
+           match first with
+           | (_, _, _, _, _, _, None, _, _) -> first
+           | _ ->
+             (* Keep the existing artifact when it already checks. Only a failed
+                preparation retries with constructor terms visible to conversion.
+                Both attempts must pass the same source kernel checks. *)
+             let second = prepare true in
+             match second with
+             | (_, _, _, _, _, _, None, _, _) -> second
+             | _ -> first
          in
          (* A′: an opaque data body that cannot be prepared falls back to the interface (type only,
             as before A′), with the reason; the type's own obligations are kept *)
@@ -1057,13 +1363,7 @@ let statement_env ?(follow = true) ~opaque_access st env0 roots =
          (* (an interface fallback keeps only the obligations of the type) *)
          let obls = if Hashtbl.mem st.opaque_body_refused key then obls_ty else obls in
          let add_obls e =
-           List.fold_left
-             (fun e (o, stmt) ->
-               Environ.add_constant o
-                 { cb with Declarations.const_body = Declarations.Undef None; const_type = stmt;
-                           const_relevance = Sorts.Relevant; const_hyps = [] }
-                 e)
-             e obls
+           List.fold_left (fun e o -> add_proof_obligation e cb o) e obls
          in
          (match checked with
           | Some why when not is_proof ->
@@ -1078,6 +1378,14 @@ let statement_env ?(follow = true) ~opaque_access st env0 roots =
             env := add_obls !env;
             List.iteri (fun i (o, _) -> Hashtbl.replace st.obligation_of (const_key o) (key, i + 1)) obls;
             if obls <> [] then Hashtbl.replace st.def_obligations key (List.map (fun (o, _) -> const_key o) obls);
+            let changed_body = match cb.Declarations.const_body, body' with
+              | Declarations.Def old, Some b -> not (Constr.equal old b)
+              | Declarations.Def _, None -> true
+              | _, Some _ -> true
+              | _ -> false
+            in
+            if changed_body || not (Constr.equal cb.Declarations.const_type ty') then
+              Hashtbl.replace st.prepared_statement key ();
             if is_proof then Hashtbl.replace st.proof_only key ();
             if is_opaque_data && body' <> None then Hashtbl.replace st.opaque_body key ()
             else if is_opaque_data then
@@ -1095,15 +1403,294 @@ let statement_env ?(follow = true) ~opaque_access st env0 roots =
 let statement_env_one ~opaque_access st env c =
   statement_env ~follow:false ~opaque_access st env [ Names.GlobRef.ConstRef c ]
 
+(* Diagnostic native quality-family quotation. This is not an accepted root
+   translation: family coverage/dispatch and the independent consumer remain
+   separate gates. Every case keeps the original instantiated DECLARED type. *)
+let native_quality_family_data ?(on_case = fun _ _ _ _ _ -> ()) ~opaque_access key =
+  let env0 = Global.env () in
+  let c = Names.Constant.make1 (kername_of_key key) in
+  let cb = Environ.lookup_constant c env0 in
+  let ctx = match cb.Declarations.const_universes with
+    | Declarations.Polymorphic ctx -> ctx
+    | _ -> CErrors.user_err Pp.(str "native quality family requires a polymorphic constant")
+  in
+  let nq, nu = UVars.AbstractContext.size ctx in
+  if nq = 0 then CErrors.user_err Pp.(str "native quality family requires quality parameters");
+  let body, body_kind = match cb.Declarations.const_body with
+    | Declarations.Def b -> b, "transparent"
+    | Declarations.OpaqueDef _ ->
+      (match Global.body_of_constant_body opaque_access cb with
+       | Some (b, _, body_ctx) when UVars.AbstractContext.size body_ctx = (nq, nu) -> b, "opaque"
+       | _ -> CErrors.user_err Pp.(str "native quality family needs explicit private-universe support"))
+    | _ -> CErrors.user_err Pp.(str "native quality family diagnostic requires an available body")
+  in
+  if proof_valued env0 c then
+    CErrors.user_err Pp.(str "uniform quality family requires a source implementation, not a fixed proof statement");
+  if not (Sorts.ElimConstraints.is_empty (UVars.UContext.elim_constraints (UVars.AbstractContext.repr ctx))) then
+    CErrors.user_err Pp.(str "quality-family elimination constraints need an explicit admissible-case policy");
+  let names = UVars.AbstractContext.names ctx in
+  let rec tuples n =
+    if n = 0 then [ [] ] else
+    List.concat_map (fun q -> List.map (fun qs -> q :: qs) (tuples (n - 1)))
+      [ Sorts.Quality.QConstant Sorts.Quality.QSProp;
+        Sorts.Quality.QConstant Sorts.Quality.QProp;
+        Sorts.Quality.QConstant Sorts.Quality.QType ]
+  in
+  let qname = function
+    | Sorts.Quality.QConstant Sorts.Quality.QSProp -> "SProp"
+    | Sorts.Quality.QConstant Sorts.Quality.QProp -> "Prop"
+    | Sorts.Quality.QConstant Sorts.Quality.QType -> "Type"
+    | _ -> assert false
+  in
+  let cases = List.map (fun qs ->
+    let inst = UVars.Instance.of_array (Array.of_list qs, Array.init nu Univ.Level.var) in
+    let constraints = UVars.AbstractContext.instantiate inst ctx in
+    let branch_ctx = UVars.AbstractContext.make { names with UVars.quals = [||] } constraints in
+    let env = Environ.push_context ~strict:false (UVars.AbstractContext.repr branch_ctx) env0 in
+    let env = Environ.set_typing_flags cb.Declarations.const_typing_flags env in
+    let sigma = Evd.from_env env in
+    let original_type = Vars.subst_instance_constr inst cb.Declarations.const_type in
+    let original_body = Vars.subst_instance_constr inst body in
+    let norm t = EConstr.to_constr sigma (Reductionops.nf_all env sigma (EConstr.of_constr t)) in
+    let ty = norm original_type and value = norm original_body in
+    let original_ref = Constr.mkConstU (c, inst) in
+    let native_type = (Typeops.infer env original_ref).Environ.uj_type in
+    if Conversion.conv env native_type original_type <> Ok ()
+       || Conversion.conv env original_type ty <> Ok ()
+       || Conversion.conv env original_body value <> Ok ()
+       || (body_kind = "transparent" && Conversion.conv env original_ref value <> Ok ()) then
+      CErrors.user_err Pp.(str ("quality-family native conversion failed: " ^ key));
+    ignore (Typeops.infer_type env ty);
+    let checked = Typeops.infer env value in
+    if Conversion.conv_leq env checked.Environ.uj_type ty <> Ok () then
+      CErrors.user_err Pp.(str ("quality-family declared type check failed: " ^ key));
+    let quote t =
+      let ast = Ast_quoter.quote_term env sigma t in
+      if not (SS.is_empty (deps SS.empty ast)) then
+        CErrors.user_err Pp.(str "native quality-family normal form has unresolved global references");
+      let levels = Vars.universes_of_constr ~init:Univ.Level.Set.empty t in
+      if Univ.Level.Set.exists (fun l -> not (Univ.Level.is_set l) && Univ.Level.var_index l = None) levels then
+        CErrors.user_err Pp.(str "native quality family needs explicit global-bound export");
+      term_json ast
+    in
+    on_case qs inst branch_ctx ty value;
+    J.Obj [
+      ("qualities", J.Arr (List.map (fun q -> J.Str (qname q)) qs));
+      ("universes", udecl_json (Ast_quoter.quote_universes_decl (Declarations.Polymorphic branch_ctx) None));
+      ("type", quote ty); ("body", quote value);
+      ("proof_valued", J.Bool (is_proof_type env sigma (EConstr.of_constr ty)));
+      ("native_declared_type_conversion", J.Bool true);
+      ("native_value_conversion", J.Bool true);
+      ("native_kernel_check", J.Bool true)
+    ]) (tuples nq)
+  in
+  J.Obj [
+    ("schema", J.Str "rocq2lean-native-quality-family/1");
+    ("source", J.Str key); ("body_kind", J.Str body_kind); ("quality_parameters", J.Int nq);
+    ("level_parameters", J.Int nu); ("typing_flags", flags_json cb.Declarations.const_typing_flags);
+    ("implementation_policy", J.Str "uniform_source_implementation");
+    ("source_proof_valued", J.Bool false); ("quality_constraints", J.Arr []);
+    ("cases", J.Arr cases)
+  ]
+
+let quality_field key = function J.Obj fields -> List.assoc key fields | _ -> assert false
+let quality_cases family = match quality_field "cases" family with J.Arr xs -> xs | _ -> assert false
+let quality_string = function J.Str s -> s | _ -> assert false
+let quality_branch_name key qs =
+  let names = match qs with J.Arr xs -> List.map quality_string xs | _ -> assert false in
+  if List.for_all ((=) "Type") names then key else
+  key ^ "__rocq2lean_quality_" ^
+  String.concat "" (List.map (function "SProp" -> "S" | "Prop" -> "P" | "Type" -> "T" | _ -> assert false) names)
+
+let native_quality_family ~opaque_access key file =
+  let family = native_quality_family_data ~opaque_access key in
+  let oc = open_out_bin file in
+  output_string oc (J.to_string family); output_char oc '\n'; close_out oc;
+  Feedback.msg_info Pp.(str "NATIVE_QUALITY_FAMILY " ++ str key ++ str " " ++ int (List.length (quality_cases family)))
+
+let quality_family_descriptor family =
+  let key = quality_string (quality_field "source" family) in
+  let members = List.map (fun c ->
+    let qs = quality_field "qualities" c in
+    J.Obj [("qualities", qs); ("name", J.Str (quality_branch_name key qs));
+      ("proof_valued", quality_field "proof_valued" c)]) (quality_cases family) in
+  J.Obj (List.map (fun k -> k, quality_field k family)
+    ["source"; "body_kind"; "quality_parameters"; "level_parameters"; "implementation_policy"; "source_proof_valued"; "quality_constraints"]
+    @ [("members", J.Arr members)])
+
+let quality_family_declarations family =
+  let key = quality_string (quality_field "source" family) in
+  let c = Names.Constant.make1 (kername_of_key key) in
+  let dp = match Names.Constant.modpath c with
+    | Names.ModPath.MPfile dp -> List.rev_map Names.Id.to_string (Names.DirPath.repr dp)
+    | _ -> CErrors.user_err Pp.(str "quality-family module path needs explicit support")
+  in
+  let label = Names.Id.to_string (Names.Constant.label c) in
+  let body_kind = quality_string (quality_field "body_kind" family) in
+  let make case =
+    let qs = quality_field "qualities" case in
+    let name = quality_branch_name key qs in
+    let id = if name = key then label else label ^ String.sub name (String.length key) (String.length name - String.length key) in
+    let provenance = J.Obj [("source", J.Str key); ("qualities", qs);
+      ("proof_valued", quality_field "proof_valued" case);
+      ("implementation_policy", J.Str "uniform_source_implementation")] in
+    let native = [
+      ("body_kind", J.Str body_kind); ("polymorphic", J.Bool true);
+      ("typing_flags", quality_field "typing_flags" family);
+      ("quality_branch", provenance)
+    ] @ if name = key then [("quality_family", quality_family_descriptor family)] else [] in
+    J.Obj [
+      ("kind", J.Str "constant"); ("name", J.Str name);
+      ("mp", J.Obj [("file", J.Arr (List.map (fun s -> J.Str s) dp))]); ("id", J.Str id);
+      ("type", quality_field "type" case); ("body", quality_field "body" case);
+      ("body_state", J.Str (if body_kind = "opaque" then "opaque_present" else "transparent"));
+      ("universes", quality_field "universes" case);
+      ("deps", J.Obj [("type", J.Arr []); ("body", J.Arr [])]);
+      ("native", J.Obj native)
+    ]
+  in
+  let cases = quality_cases family in
+  let other, default = List.partition (fun c -> quality_branch_name key (quality_field "qualities" c) <> key) cases in
+  List.map make (other @ default)
+
+
+(* Closed-quality references are renamed from their SOURCE instance. Opaque
+   branches are assumptions only in this temporary quotation environment, so
+   retyping cannot gain an unfolding forbidden by the original source. Their
+   checked implementations and original opacity are emitted by the family IR. *)
+let quality_dispatch_env ~opaque_access env0 roots =
+  let env = ref env0 and families = Hashtbl.create 17 and branches = Hashtbl.create 97 in
+  let changed = Hashtbl.create 17 and seen = Hashtbl.create 97 and queue = Queue.create () in
+  let source_env = Global.env () in
+  let quality_json qs = J.Arr (List.map (function
+    | Sorts.Quality.QConstant Sorts.Quality.QSProp -> J.Str "SProp"
+    | Sorts.Quality.QConstant Sorts.Quality.QProp -> J.Str "Prop"
+    | Sorts.Quality.QConstant Sorts.Quality.QType -> J.Str "Type"
+    | _ -> CErrors.user_err Pp.(str "quality dispatch requires a closed source quality instance")) qs) in
+  let ensure c =
+    let key = const_key c in
+    if not (Hashtbl.mem families key) then begin
+      let cb = Environ.lookup_constant c source_env in
+      let on_case qs inst ctx ty value =
+        let name = quality_branch_name key (quality_json qs) in
+        let bc = Names.Constant.make1 (kername_of_key name) in
+        if name <> key && Environ.mem_constant bc env0 then
+          CErrors.user_err Pp.(str ("quality branch name collides with source constant: " ^ name));
+        let body = match cb.Declarations.const_body with
+          | Declarations.Def _ -> Declarations.Def value
+          | Declarations.OpaqueDef _ -> Declarations.Undef None
+          | _ -> assert false in
+        let bcb = { cb with Declarations.const_type = ty; const_body = body;
+          const_universes = Declarations.Polymorphic ctx;
+          const_relevance = UVars.subst_instance_relevance inst cb.Declarations.const_relevance } in
+        env := Environ.add_constant bc bcb !env;
+        Hashtbl.add branches name ()
+      in
+      let family = native_quality_family_data ~on_case ~opaque_access key in
+      Hashtbl.add families key family
+    end
+  in
+  let is_family c =
+    Environ.mem_constant c source_env &&
+    match sort_qualities source_env (Names.GlobRef.ConstRef c) with Some n -> n > 0 | _ -> false
+  in
+  let rec rewrite t =
+    match Constr.kind t with
+    | Constr.Const (c, inst) when is_family c ->
+      ensure c;
+      let qs, us = UVars.Instance.to_array inst in
+      let key = const_key c in
+      let f = Hashtbl.find families key in
+      let nq = match quality_field "quality_parameters" f with J.Int n -> n | _ -> assert false in
+      let nu = match quality_field "level_parameters" f with J.Int n -> n | _ -> assert false in
+      if Array.length qs <> nq || Array.length us <> nu then
+        CErrors.user_err Pp.(str ("quality reference instance arity differs from source: " ^ key));
+      let name = quality_branch_name key (quality_json (Array.to_list qs)) in
+      Constr.mkConstU (Names.Constant.make1 (kername_of_key name), UVars.Instance.of_array ([||], us))
+    | _ -> Constr.map rewrite t
+  in
+  List.iter (fun g -> Queue.add g queue) roots;
+  let checks = ref [] and opaque_originals = ref [] in
+  while not (Queue.is_empty queue) do
+    let g = Queue.pop queue in
+    let key = gref_key g in
+    if not (Hashtbl.mem seen key) then begin
+      Hashtbl.add seen key ();
+      match g with
+      | Names.GlobRef.ConstRef c when is_family c -> ensure c
+      | Names.GlobRef.ConstRef c ->
+        (* Read ordinary declarations from the prepared environment, never from
+           the accumulating branch environment. *)
+        let cb = Environ.lookup_constant c env0 in
+        (if Environ.mem_constant c source_env then
+          match (Environ.lookup_constant c source_env).Declarations.const_body with
+          | Declarations.OpaqueDef _ -> opaque_originals := c :: !opaque_originals
+          | _ -> ());
+        let ty = rewrite cb.Declarations.const_type in
+        let body = match cb.Declarations.const_body with
+          | Declarations.Def b -> Declarations.Def (rewrite b)
+          | Declarations.OpaqueDef _ ->
+            (match Global.body_of_constant_body opaque_access cb with
+             | Some (b, _, body_ctx) ->
+               let b' = rewrite b in
+               if Constr.equal b b' then cb.Declarations.const_body else begin
+                 let declared_ctx = Declareops.constant_polymorphic_context cb in
+                 if UVars.AbstractContext.size body_ctx <> UVars.AbstractContext.size declared_ctx then
+                   CErrors.user_err Pp.(str ("quality dispatch requires explicit opaque private-universe support: " ^ const_key c));
+                 Declarations.Def b'
+               end
+             | None -> cb.Declarations.const_body)
+          | other -> other in
+        if not (Constr.equal ty cb.Declarations.const_type) || body <> cb.Declarations.const_body then begin
+          Hashtbl.replace changed (const_key c) ();
+          let cb' = { cb with Declarations.const_type = ty; const_body = body } in
+          env := Environ.add_constant c cb' !env;
+          checks := (c, cb') :: !checks
+        end;
+        List.iter (fun d -> Queue.add d queue) (decl_refs ~opaque_access env0 g)
+      | _ ->
+        (* Non-constant declarations retain the existing quoter and failure gate.
+           No inductive interface is silently altered. *)
+        List.iter (fun d -> Queue.add d queue) (decl_refs ~opaque_access env0 g)
+    end
+  done;
+  (* Opaque implementations are materialized only for quotation. During
+     native retyping every original opaque reference remains non-unfoldable. *)
+  let check_env = List.fold_left (fun e c ->
+    let cb = Environ.lookup_constant c e in
+    Environ.add_constant c { cb with Declarations.const_body = Declarations.Undef None } e)
+    !env !opaque_originals in
+  List.iter (fun (c, cb) ->
+    let e = match cb.Declarations.const_universes with
+      | Declarations.Polymorphic ctx -> Environ.push_context ~strict:false (UVars.AbstractContext.repr ctx) check_env
+      | _ -> check_env in
+    let e = Environ.set_typing_flags cb.Declarations.const_typing_flags e in
+    ignore (Typeops.infer_type e cb.Declarations.const_type);
+    match cb.Declarations.const_body with
+    | Declarations.Def b ->
+      let inferred = (Typeops.infer e b).Environ.uj_type in
+      if Conversion.conv_leq e inferred cb.Declarations.const_type <> Ok () then
+        CErrors.user_err Pp.(str ("quality dispatch does not preserve source typing: " ^ const_key c))
+    | _ -> ()) !checks;
+  !env, (List.sort compare (Hashtbl.fold (fun key f acc -> (key, f) :: acc) families [])), branches, changed
+
 let export_in ?stmt ~opaque_access env file (roots : Libnames.qualid list) =
+  let source_env = env in
+  let _family_roots, ordinary_roots = List.partition (fun qid ->
+    match Nametab.global qid with
+    | Names.GlobRef.ConstRef _ as gr -> (match sort_qualities env gr with Some n -> n > 0 | _ -> false)
+    | _ -> false) roots in
+  let env, families, family_branches, quality_changed =
+    quality_dispatch_env ~opaque_access source_env (List.map Nametab.global roots) in
   let sigma = Evd.from_env env in
+  let family_decls = List.concat_map (fun (_, f) -> quality_family_declarations f) families in
   let blocked =
     List.filter_map
       (fun qid ->
         match scan_root ~opaque_access env (Nametab.global qid) with
         | Some p -> Some (qid, p)
         | None -> None)
-      roots
+      ordinary_roots
   in
   if blocked <> [] then begin
     let oc = open_out (file ^ ".blockers.json") in
@@ -1134,7 +1721,7 @@ let export_in ?stmt ~opaque_access env file (roots : Libnames.qualid list) =
           Ast_quoter.quote_term_rec ~bypass:true ~opaque_access env sigma (root_constr env gr)
         in
         (qid, genv, t))
-      roots
+      ordinary_roots
   in
   (* Merge the per-root environments; each MetaRocq environment is newest-first, so reversing
      yields dependencies before dependents. *)
@@ -1151,7 +1738,7 @@ let export_in ?stmt ~opaque_access env file (roots : Libnames.qualid list) =
           end)
         (List.rev genv.E.declarations))
     quoted;
-  let decls = List.rev !order in
+  let decls = List.filter (fun (kn, _) -> not (Hashtbl.mem family_branches (kn_key kn))) (List.rev !order) in
   let levels = Hashtbl.create 17 and constraints = Hashtbl.create 17 in
   let add tbl j = let s = J.to_string j in if not (Hashtbl.mem tbl s) then Hashtbl.add tbl s j in
   List.iter
@@ -1163,7 +1750,12 @@ let export_in ?stmt ~opaque_access env file (roots : Libnames.qualid list) =
   let sorted tbl = List.sort compare (Hashtbl.fold (fun s _ acc -> s :: acc) tbl []) |> List.map (Hashtbl.find tbl) in
   let libs =
     List.sort_uniq compare
-      (List.filter_map (fun ((mp, _), _) -> Option.map (fun dp -> List.map bs dp) (mp_file mp)) decls)
+      (List.filter_map (fun ((mp, _), _) -> Option.map (fun dp -> List.map bs dp) (mp_file mp)) decls
+       @ List.map (fun (_, f) ->
+           let c = Names.Constant.make1 (kername_of_key (quality_string (quality_field "source" f))) in
+           match Names.Constant.modpath c with
+           | Names.ModPath.MPfile dp -> List.map Names.Id.to_string (Names.DirPath.repr dp)
+           | _ -> assert false) families)
   in
   let lib_json dp =
     let rdp = Names.DirPath.make (List.map Names.Id.of_string dp) in
@@ -1204,20 +1796,24 @@ let export_in ?stmt ~opaque_access env file (roots : Libnames.qualid list) =
               ("case", J.Str "MetaRocq compact case: pcontext/bcontext carry names only") ] ) ]
   in
   let roots_json =
-    J.Obj
-      [ ("kind", J.Str "roots");
-        ( "roots",
-          J.Arr
-            (List.map
-               (fun (qid, _, t) ->
-                 let name =
-                   match t with
-                   | A.Coq_tConst (c, _) -> J.Str (kn_key c)
-                   | A.Coq_tInd (i, _) | A.Coq_tConstruct (i, _, _) -> J.Str (kn_key i.K.inductive_mind)
-                   | _ -> J.Null
-                 in
-                 J.Obj [ ("requested", J.Str (Libnames.string_of_qualid qid)); ("name", name); ("term", term_json t) ])
-               quoted) ) ]
+    J.Obj [("kind", J.Str "roots"); ("roots", J.Arr (List.map (fun qid ->
+      let requested = Libnames.string_of_qualid qid in
+      match List.assoc_opt (gref_name (Nametab.global qid)) families with
+      | Some f ->
+        let key = quality_string (quality_field "source" f) in
+        let nu = match quality_field "level_parameters" f with J.Int n -> n | _ -> assert false in
+        let nq = match quality_field "quality_parameters" f with J.Int n -> n | _ -> assert false in
+        let vars n = J.Arr (List.init n (fun i -> J.Obj [("k", J.Str "var"); ("i", J.Int i)])) in
+        J.Obj [("requested", J.Str requested); ("name", J.Str key);
+          ("term", J.Obj [("k", J.Str "const"); ("c", J.Str key); ("u", vars nu); ("q", vars nq)])]
+      | None ->
+        let _, _, t = List.find (fun (q, _, _) -> Libnames.string_of_qualid q = requested) quoted in
+        let name = match t with
+          | A.Coq_tConst (c, _) -> J.Str (kn_key c)
+          | A.Coq_tInd (i, _) | A.Coq_tConstruct (i, _, _) -> J.Str (kn_key i.K.inductive_mind)
+          | _ -> J.Null in
+        J.Obj [("requested", J.Str requested); ("name", name); ("term", term_json t)]
+    ) roots))]
   in
   let oc = open_out_bin file in
   let line j = output_string oc (J.to_string j); output_char oc '\n' in
@@ -1226,11 +1822,17 @@ let export_in ?stmt ~opaque_access env file (roots : Libnames.qualid list) =
   line (J.Obj [ ("kind", J.Str "libraries"); ("libraries", J.Arr (List.map lib_json libs)) ]);
   line (J.Obj [ ("kind", J.Str "universes"); ("levels", J.Arr (sorted levels)); ("constraints", J.Arr (sorted constraints)) ]);
   line (universe_facts_json ~opaque_access env decls);
-  List.iter (fun d -> line (decl_json ?stmt ~opaque_access env d)) decls;
-  line (J.Obj [ ("kind", J.Str "footer"); ("declarations", J.Int (List.length decls)) ]);
+  List.iter line family_decls;
+  List.iter (fun ((kn, _) as d) ->
+    let j = decl_json ?stmt ~opaque_access env d in
+    let j = if Hashtbl.mem quality_changed (kn_key kn) then
+      match j with J.Obj xs -> J.Obj (xs @ [("quality_dispatch", J.Bool true)]) | _ -> assert false
+      else j in
+    line j) decls;
+  line (J.Obj [ ("kind", J.Str "footer"); ("declarations", J.Int (List.length family_decls + List.length decls)) ]);
   close_out oc;
   Feedback.msg_info
-    Pp.(str "Rocq2Lean Export: wrote " ++ int (List.length decls) ++ str " declarations for "
+    Pp.(str "Rocq2Lean Export: wrote " ++ int (List.length family_decls + List.length decls) ++ str " declarations for "
         ++ int (List.length roots) ++ str " root(s) to " ++ str file)
 
 let export ~opaque_access file (roots : Libnames.qualid list) =
@@ -1253,6 +1855,7 @@ let check_statement_prepared ?env ~opaque_access key =
   let st = new_stmt_info () in
   (* only this constant: stop the closure walk after it *)
   let env' = statement_env_one ~opaque_access st env c in
+  let env', _, _, quality_changed = quality_dispatch_env ~opaque_access env' [Names.GlobRef.ConstRef c] in
   let sigma = Evd.from_env env' in
   (* (the term alone: quote_term_rec would also quote the term's whole environment closure, the
      dominant cost of a batched re-derivation; the term part is the same quotation) *)
@@ -1276,6 +1879,9 @@ let check_statement_prepared ?env ~opaque_access key =
   Feedback.msg_info
     Pp.(str ("STATEMENT " ^ key ^ " " ^ J.to_string (J.Obj [ ("type", q cb.Declarations.const_type); ("body", body);
                                                                 ("state", J.Str state); ("obligations", J.Arr obls);
+                                                                ("statement_prepared", J.Bool (Hashtbl.mem st.prepared_statement key));
+                                                                ("statement_prop_view", J.Bool (Hashtbl.mem st.statement_prop_view key));
+                                                                ("quality_dispatch", J.Bool (Hashtbl.mem quality_changed key));
                                                                 ("termination", if Hashtbl.mem st.deferred_guard key then J.Str "deferred" else J.Null) ])))
 
 (* Batched: the statement preparation of every constant listed in [file] (one key per line), the
@@ -1304,12 +1910,13 @@ let check_prepared ~opaque_access key =
   let rkn = kername_of_key key in
   let c = Names.Constant.make1 rkn in
   let env = prepare_env ~opaque_access (Global.env ()) [ Names.GlobRef.ConstRef c ] in
+  let env, _, _, quality_changed = quality_dispatch_env ~opaque_access env [Names.GlobRef.ConstRef c] in
   let sigma = Evd.from_env env in
   let cb = Environ.lookup_constant c env in
   let q t = snd (Ast_quoter.quote_term_rec ~bypass:true ~opaque_access env sigma t) in
   let body = match cb.Declarations.const_body with Declarations.Def b -> term_json (q b) | _ -> J.Null in
   Feedback.msg_info
-    Pp.(str ("PREPARED " ^ key ^ " " ^ J.to_string (J.Obj [ ("type", term_json (q cb.Declarations.const_type)); ("body", body) ])))
+    Pp.(str ("PREPARED " ^ key ^ " " ^ J.to_string (J.Obj [ ("type", term_json (q cb.Declarations.const_type)); ("body", body); ("quality_dispatch", J.Bool (Hashtbl.mem quality_changed key)) ])))
 
 (* Rocq2Lean CheckInstance "key" "l1=r1;l2=r2": re-check a constant with Rocq's own kernel after
    substituting the given global levels (by Set or by other global levels) in its type and in its
@@ -1420,3 +2027,4 @@ let check_conversion_deps ~opaque_access lowered_s inp outp =
     deps;
   close_out oc;
   Feedback.msg_info Pp.(str ("CONV_DONE " ^ string_of_int !n))
+

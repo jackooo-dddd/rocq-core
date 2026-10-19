@@ -1,0 +1,40 @@
+import Rocq2Lean
+#rocq2lean_import "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Init/Peano/source.ndjson" "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Init/Peano/translation_report.json" "2b687c9bdb4d5c34817c29fbfcd0e188852bd684c11d3a7f407d6887ede8c3f4" "4f31c42f-134c-4466-912f-c884f36028a8" "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Init/Peano/contract.json" "65dec6bc864a5ca6b6a5b38949b03b78f11d6cc1476d4318745cbb7993b430a6"
+
+set_option pp.universes true
+#print «Rocq».«Corelib».«Init».«Peano».«IsSucc»
+#print «Rocq».«Corelib».«Init».«Peano».«O_S».«statement»
+#print «Rocq».«Corelib».«Init».«Peano».«eq_S».«statement»
+#print «Rocq».«Corelib».«Init».«Peano».«eq_add_S».«statement»
+#print «Rocq».«Corelib».«Init».«Peano».«f_equal2_mult».«statement»
+#print «Rocq».«Corelib».«Init».«Peano».«f_equal2_nat».«statement»
+#print «Rocq».«Corelib».«Init».«Peano».«f_equal2_plus».«statement»
+#print «Rocq».«Corelib».«Init».«Peano».«f_equal_nat».«statement»
+#print «Rocq».«Corelib».«Init».«Peano».«f_equal_pred».«statement»
+#print «Rocq».«Corelib».«Init».«Peano».«ge»
+#print «Rocq».«Corelib».«Init».«Peano».«gt»
+#print «Rocq».«Corelib».«Init».«Peano».«le»
+#print «Rocq».«Corelib».«Init».«Peano».«le_0_n».«statement»
+#print «Rocq».«Corelib».«Init».«Peano».«le_S_n».«statement»
+#print «Rocq».«Corelib».«Init».«Peano».«le_ind».«statement»
+#print «Rocq».«Corelib».«Init».«Peano».«le_n_S».«statement»
+#print «Rocq».«Corelib».«Init».«Peano».«le_pred».«statement»
+#print «Rocq».«Corelib».«Init».«Peano».«le_sind».«statement»
+#print «Rocq».«Corelib».«Init».«Peano».«lt»
+#print «Rocq».«Corelib».«Init».«Peano».«max_l».«statement»
+#print «Rocq».«Corelib».«Init».«Peano».«max_r».«statement»
+#print «Rocq».«Corelib».«Init».«Peano».«min_l».«statement»
+#print «Rocq».«Corelib».«Init».«Peano».«min_r».«statement»
+#print «Rocq».«Corelib».«Init».«Peano».«mult_n_O».«statement»
+#print «Rocq».«Corelib».«Init».«Peano».«mult_n_Sm».«statement»
+#print «Rocq».«Corelib».«Init».«Peano».«n_Sn».«statement»
+#print «Rocq».«Corelib».«Init».«Peano».«nat_case».«statement»
+#print «Rocq».«Corelib».«Init».«Peano».«nat_double_ind».«statement»
+#print «Rocq».«Corelib».«Init».«Peano».«nat_rect_plus».«statement»
+#print «Rocq».«Corelib».«Init».«Peano».«nat_rect_succ_r».«statement»
+#print «Rocq».«Corelib».«Init».«Peano».«not_eq_S».«statement»
+#print «Rocq».«Corelib».«Init».«Peano».«plus_O_n».«statement»
+#print «Rocq».«Corelib».«Init».«Peano».«plus_Sn_m».«statement»
+#print «Rocq».«Corelib».«Init».«Peano».«plus_n_O».«statement»
+#print «Rocq».«Corelib».«Init».«Peano».«plus_n_Sm».«statement»
+#print «Rocq».«Corelib».«Init».«Peano».«pred_Sn».«statement»

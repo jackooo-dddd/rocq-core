@@ -1,0 +1,21 @@
+rocq2lean: 3 root(s) TRANSLATED_AND_CHECKED; summary {"bootstrap_resolved":0,"generated_helpers":0,"not_ok":1,"roots":3,"translated_dependencies":5}
+inductive Rocq.Corelib.Classes.SetoidTactics.DefaultRelation.{u_Corelib_Classes_SetoidTactics_22} : (A :
+    Type u_Corelib_Classes_SetoidTactics_22) →
+  Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Classes_SetoidTactics_22} A → Prop
+number of parameters: 2
+constructors:
+Rocq.Corelib.Classes.SetoidTactics.DefaultRelation.Build_DefaultRelation : ∀
+  (A : Type u_Corelib_Classes_SetoidTactics_22)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Classes_SetoidTactics_22} A),
+  Rocq.Corelib.Classes.SetoidTactics.DefaultRelation.{u_Corelib_Classes_SetoidTactics_22} A R
+def Rocq.Corelib.Classes.SetoidTactics.default_relation.{u_Corelib_Relations_Relation_Definitions_21} : (A :
+    Type u_Corelib_Relations_Relation_Definitions_21) →
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A) →
+    Rocq.Corelib.Classes.SetoidTactics.DefaultRelation.{u_Corelib_Relations_Relation_Definitions_21} A R →
+      Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A :=
+fun A R H => R
+def Rocq.Corelib.Classes.SetoidTactics.equivalence_default.statement.{u_Corelib_Relations_Relation_Definitions_21} : Prop :=
+∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)
+  (R : Rocq.Corelib.Relations.Relation_Definitions.relation.{u_Corelib_Relations_Relation_Definitions_21} A),
+  Rocq.Corelib.Classes.RelationClasses.Equivalence.{u_Corelib_Relations_Relation_Definitions_21} A R →
+    Rocq.Corelib.Classes.SetoidTactics.DefaultRelation.{u_Corelib_Relations_Relation_Definitions_21} A R

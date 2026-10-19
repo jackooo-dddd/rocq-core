@@ -1,0 +1,27 @@
+rocq2lean: 7 root(s) TRANSLATED_AND_CHECKED; summary {"bootstrap_resolved":0,"generated_helpers":0,"not_ok":5,"roots":7,"translated_dependencies":2}
+def Rocq.Corelib.ssr.ssrunder.Under_rel.Over_rel.{u_Corelib_ssr_ssrunder_25} : (A : Type u_Corelib_ssr_ssrunder_25) →
+  (A → A → Prop) → A → A → Prop :=
+Rocq.Corelib.ssr.ssrunder.Under_rel.Under_rel.{u_Corelib_ssr_ssrunder_25}
+def Rocq.Corelib.ssr.ssrunder.Under_rel.Under_rel.{u_Corelib_ssr_ssrunder_21} : (A : Type u_Corelib_ssr_ssrunder_21) →
+  (A → A → Prop) → A → A → Prop :=
+fun A eqA => eqA
+def Rocq.Corelib.ssr.ssrunder.Under_rel.Under_relE.statement.{u_Corelib_ssr_ssrunder_21} : Prop :=
+∀ (A : Type u_Corelib_ssr_ssrunder_21) (eqA : A → A → Prop),
+  Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssrunder_21 + 1} (A → A → Prop)
+    (Rocq.Corelib.ssr.ssrunder.Under_rel.Under_rel.{u_Corelib_ssr_ssrunder_21} A eqA) eqA
+def Rocq.Corelib.ssr.ssrunder.Under_rel.Under_rel_from_rel.statement.{u_Corelib_ssr_ssrunder_21} : Prop :=
+∀ (A : Type u_Corelib_ssr_ssrunder_21) (eqA : A → A → Prop) (x y : A),
+  Rocq.Corelib.ssr.ssrunder.Under_rel.Under_rel.{u_Corelib_ssr_ssrunder_21} A eqA x y → eqA x y
+def Rocq.Corelib.ssr.ssrunder.Under_rel.over_rel.statement.{u_Corelib_ssr_ssrunder_21} : Prop :=
+∀ (A : Type u_Corelib_ssr_ssrunder_21) (eqA : A → A → Prop) (x y : A),
+  Rocq.Corelib.Init.Logic.eq.{1} Prop
+    (Rocq.Corelib.ssr.ssrunder.Under_rel.Under_rel.{u_Corelib_ssr_ssrunder_21} A eqA x y)
+    (Rocq.Corelib.ssr.ssrunder.Under_rel.Over_rel.{u_Corelib_ssr_ssrunder_21} A eqA x y)
+def Rocq.Corelib.ssr.ssrunder.Under_rel.over_rel_done.statement.{u_Corelib_ssr_ssrunder_28} : Prop :=
+∀ (A : Type u_Corelib_ssr_ssrunder_28) (eqA : A → A → Prop),
+  Rocq.Corelib.ssr.ssrclasses.Reflexive.{u_Corelib_ssr_ssrunder_28 + 1} A eqA →
+    ∀ (x : A), Rocq.Corelib.ssr.ssrunder.Under_rel.Over_rel.{u_Corelib_ssr_ssrunder_28} A eqA x x
+def Rocq.Corelib.ssr.ssrunder.Under_rel.under_rel_done.statement.{u_Corelib_ssr_ssrunder_29} : Prop :=
+∀ (A : Type u_Corelib_ssr_ssrunder_29) (eqA : A → A → Prop),
+  Rocq.Corelib.ssr.ssrclasses.Reflexive.{u_Corelib_ssr_ssrunder_29 + 1} A eqA →
+    ∀ (x : A), Rocq.Corelib.ssr.ssrunder.Under_rel.Under_rel.{u_Corelib_ssr_ssrunder_29} A eqA x x

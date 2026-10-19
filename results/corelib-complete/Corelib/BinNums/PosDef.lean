@@ -1,0 +1,40 @@
+import Rocq2Lean
+#rocq2lean_import "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/BinNums/PosDef/source.ndjson" "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/BinNums/PosDef/translation_report.json" "a6ac7a897379998a4f68e51cfed12876f5d96d9518050a18382293fdd9e5a18f" "593bb50b-b07b-443f-ab75-e8d232d4796f" "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/BinNums/PosDef/contract.json" "f269341b46f2c84b139cb468f67f59d3b8774f6909ca3560b2a869bf015f569b"
+
+set_option pp.universes true
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«Ndouble»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«Nsucc_double»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«add»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«add_carry»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«compare»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«compare_cont»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«div2»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«div2_up»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«double_mask»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«double_pred_mask»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«eqb»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«iter»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«iter_op»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«land»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«ldiff»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«leb»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«lor»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«lxor»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«mask»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«mask_ind».«statement»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«mask_rec»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«mask_rect»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«mask_sind».«statement»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«mul»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«of_succ_nat»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«pred_N»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«pred_double»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«sqrt»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«sqrtrem»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«sqrtrem_step»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«sub»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«sub_mask»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«sub_mask_carry»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«succ»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«succ_double_mask»
+#print «Rocq».«Corelib».«BinNums».«PosDef».«Pos».«to_nat»

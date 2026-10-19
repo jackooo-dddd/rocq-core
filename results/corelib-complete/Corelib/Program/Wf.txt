@@ -1,0 +1,371 @@
+rocq2lean: 12 root(s) TRANSLATED_AND_CHECKED; summary {"bootstrap_resolved":0,"generated_helpers":0,"not_ok":17,"roots":12,"translated_dependencies":8}
+def RocqPending.Corelib.Program.Wf.F_unfold.statement.{u_Corelib_Program_Wf_45, u_Corelib_Program_Wf_46} : {h_Corelib_Init_Specif_proj2_sig :
+    Rocq.Corelib.Init.Specif.proj2_sig.statement.{u_Corelib_Program_Wf_45 + 1}} →
+  {h_Corelib_Program_Wf_F_unfold__rocq2lean_obligation_1 :
+      Rocq.Corelib.Program.Wf.F_unfold__rocq2lean_obligation_1.statement.{u_Corelib_Program_Wf_45,
+        u_Corelib_Program_Wf_46}} →
+    Prop :=
+fun {h_Corelib_Init_Specif_proj2_sig} {h_Corelib_Program_Wf_F_unfold__rocq2lean_obligation_1} =>
+  ∀ (A : Type u_Corelib_Program_Wf_45) (P : A → Type u_Corelib_Program_Wf_46) (R : A → A → Prop)
+    (f :
+      (x : A) →
+        ((y : Rocq.Corelib.Init.Specif.sig.{u_Corelib_Program_Wf_45 + 1} A fun y => R y x) →
+            P (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_45 + 1} A (fun y => R y x) y)) →
+          P x)
+    (x : A) (r : Rocq.Corelib.Init.Wf.Acc.{u_Corelib_Program_Wf_45} A R x),
+    Rocq.Corelib.Init.Logic.eq.{u_Corelib_Program_Wf_46 + 1} (P x)
+      (RocqPending.Corelib.Program.Wf.Fix_F_sub.{u_Corelib_Program_Wf_45, u_Corelib_Program_Wf_46} A R P f x r)
+      (f x fun y =>
+        RocqPending.Corelib.Program.Wf.Fix_F_sub.{u_Corelib_Program_Wf_45, u_Corelib_Program_Wf_46} A R P f
+          (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_45 + 1} A (fun y => R y x) y) ⋯)
+def Rocq.Corelib.Init.Specif.proj2_sig.statement.{u_Corelib_Init_Specif_54} : Prop :=
+∀ (A : Sort u_Corelib_Init_Specif_54) (P : A → Prop) (e : Rocq.Corelib.Init.Specif.sig.{u_Corelib_Init_Specif_54} A P),
+  P (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Init_Specif_54} A P e)
+def Rocq.Corelib.Program.Wf.F_unfold__rocq2lean_obligation_1.statement.{u_Corelib_Program_Wf_45, u_Corelib_Program_Wf_46} : Prop :=
+∀ (A : Type u_Corelib_Program_Wf_45) (P : A → Type u_Corelib_Program_Wf_46) (R : A → A → Prop)
+  (f :
+    (x : A) →
+      ((y : Rocq.Corelib.Init.Specif.sig.{u_Corelib_Program_Wf_45 + 1} A fun y => R y x) →
+          P (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_45 + 1} A (fun y => R y x) y)) →
+        P x)
+  (x : A),
+  Rocq.Corelib.Init.Wf.Acc.{u_Corelib_Program_Wf_45} A R x →
+    ∀ (y : Rocq.Corelib.Init.Specif.sig.{u_Corelib_Program_Wf_45 + 1} A fun y => R y x),
+      R (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_45 + 1} A (fun y => R y x) y) x
+def RocqPending.Corelib.Program.Wf.Fix_F_eq.statement.{u_Corelib_Program_Wf_21, u_Corelib_Program_Wf_22} : {h_Corelib_Program_Wf_Fix_F_eq__rocq2lean_obligation_1 :
+    Rocq.Corelib.Program.Wf.Fix_F_eq__rocq2lean_obligation_1.statement.{u_Corelib_Program_Wf_21,
+      u_Corelib_Program_Wf_22}} →
+  {h_Corelib_Init_Specif_proj2_sig : Rocq.Corelib.Init.Specif.proj2_sig.statement.{u_Corelib_Program_Wf_21 + 1}} →
+    Prop :=
+fun {h_Corelib_Program_Wf_Fix_F_eq__rocq2lean_obligation_1} {h_Corelib_Init_Specif_proj2_sig} =>
+  ∀ (A : Type u_Corelib_Program_Wf_21) (R : A → A → Prop) (P : A → Type u_Corelib_Program_Wf_22)
+    (F_sub :
+      (x : A) →
+        ((y : Rocq.Corelib.Init.Specif.sig.{u_Corelib_Program_Wf_21 + 1} A fun y => R y x) →
+            P (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x) y)) →
+          P x)
+    (x : A) (r : Rocq.Corelib.Init.Wf.Acc.{u_Corelib_Program_Wf_21} A R x),
+    Rocq.Corelib.Init.Logic.eq.{u_Corelib_Program_Wf_22 + 1} (P x)
+      (F_sub x fun y =>
+        RocqPending.Corelib.Program.Wf.Fix_F_sub.{u_Corelib_Program_Wf_21, u_Corelib_Program_Wf_22} A R P F_sub
+          (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x) y) ⋯)
+      (RocqPending.Corelib.Program.Wf.Fix_F_sub.{u_Corelib_Program_Wf_21, u_Corelib_Program_Wf_22} A R P F_sub x r)
+def Rocq.Corelib.Program.Wf.Fix_F_eq__rocq2lean_obligation_1.statement.{u_Corelib_Program_Wf_21, u_Corelib_Program_Wf_22} : Prop :=
+∀ (A : Type u_Corelib_Program_Wf_21) (R : A → A → Prop) (P : A → Type u_Corelib_Program_Wf_22)
+  (F_sub :
+    (x : A) →
+      ((y : Rocq.Corelib.Init.Specif.sig.{u_Corelib_Program_Wf_21 + 1} A fun y => R y x) →
+          P (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x) y)) →
+        P x)
+  (x : A),
+  Rocq.Corelib.Init.Wf.Acc.{u_Corelib_Program_Wf_21} A R x →
+    ∀ (y : Rocq.Corelib.Init.Specif.sig.{u_Corelib_Program_Wf_21 + 1} A fun y => R y x),
+      R (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x) y) x
+def RocqPending.Corelib.Program.Wf.Fix_F_inv.statement.{u_Corelib_Program_Wf_21, u_Corelib_Program_Wf_22} : {h_Corelib_Init_Specif_proj2_sig :
+    Rocq.Corelib.Init.Specif.proj2_sig.statement.{u_Corelib_Program_Wf_21 + 1}} →
+  Prop :=
+fun {h_Corelib_Init_Specif_proj2_sig} =>
+  ∀ (A : Type u_Corelib_Program_Wf_21) (R : A → A → Prop),
+    Rocq.Corelib.Init.Wf.well_founded.{u_Corelib_Program_Wf_21} A R →
+      ∀ (P : A → Type u_Corelib_Program_Wf_22)
+        (F_sub :
+          (x : A) →
+            ((y : Rocq.Corelib.Init.Specif.sig.{u_Corelib_Program_Wf_21 + 1} A fun y => R y x) →
+                P (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x) y)) →
+              P x),
+        (∀ (x : A)
+            (f g :
+              (y : Rocq.Corelib.Init.Specif.sig.{u_Corelib_Program_Wf_21 + 1} A fun y => R y x) →
+                P (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x) y)),
+            (∀ (y : Rocq.Corelib.Init.Specif.sig.{u_Corelib_Program_Wf_21 + 1} A fun y => R y x),
+                Rocq.Corelib.Init.Logic.eq.{u_Corelib_Program_Wf_22 + 1}
+                  (P (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x) y)) (f y)
+                  (g y)) →
+              Rocq.Corelib.Init.Logic.eq.{u_Corelib_Program_Wf_22 + 1} (P x) (F_sub x f) (F_sub x g)) →
+          ∀ (x : A) (r s : Rocq.Corelib.Init.Wf.Acc.{u_Corelib_Program_Wf_21} A R x),
+            Rocq.Corelib.Init.Logic.eq.{u_Corelib_Program_Wf_22 + 1} (P x)
+              (RocqPending.Corelib.Program.Wf.Fix_F_sub.{u_Corelib_Program_Wf_21, u_Corelib_Program_Wf_22} A R P F_sub x
+                r)
+              (RocqPending.Corelib.Program.Wf.Fix_F_sub.{u_Corelib_Program_Wf_21, u_Corelib_Program_Wf_22} A R P F_sub x
+                s)
+def RocqPending.Corelib.Program.Wf.Fix_F_sub.{u_Corelib_Program_Wf_21, u_Corelib_Program_Wf_22} : {h_Corelib_Init_Specif_proj2_sig :
+    Rocq.Corelib.Init.Specif.proj2_sig.statement.{u_Corelib_Program_Wf_21 + 1}} →
+  (A : Type u_Corelib_Program_Wf_21) →
+    (R : A → A → Prop) →
+      (P : A → Type u_Corelib_Program_Wf_22) →
+        ((x : A) →
+            ((y : Rocq.Corelib.Init.Specif.sig.{u_Corelib_Program_Wf_21 + 1} A fun y => R y x) →
+                P (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x) y)) →
+              P x) →
+          (x : A) → Rocq.Corelib.Init.Wf.Acc.{u_Corelib_Program_Wf_21} A R x → P x :=
+fun {h_Corelib_Init_Specif_proj2_sig} A R P F_sub x r =>
+  Rocq.Corelib.Init.Wf.Acc.rec.{u_Corelib_Program_Wf_22 + 1, u_Corelib_Program_Wf_21}
+    (fun x a _ih =>
+      F_sub x fun y => _ih (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x) y) ⋯)
+    r
+opaque RocqPending.Corelib.Program.Wf.Fix_F_sub_rect.{u_Corelib_Program_Wf_45, u_Corelib_Program_Wf_46, u_Corelib_Program_Wf_53} : {h_Corelib_Init_Specif_proj2_sig :
+    Rocq.Corelib.Init.Specif.proj2_sig.statement.{u_Corelib_Program_Wf_45 + 1}} →
+  {h_Corelib_Program_Wf_F_unfold__rocq2lean_obligation_1 :
+      Rocq.Corelib.Program.Wf.F_unfold__rocq2lean_obligation_1.statement.{u_Corelib_Program_Wf_45,
+        u_Corelib_Program_Wf_46}} →
+    {h_Corelib_Program_Wf_F_unfold :
+        RocqPending.Corelib.Program.Wf.F_unfold.statement.{u_Corelib_Program_Wf_45, u_Corelib_Program_Wf_46}} →
+      {h_Corelib_Init_Logic_eq_rect_r__rocq2lean_obligation_1 :
+          Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement.{u_Corelib_Program_Wf_46 + 1,
+            u_Corelib_Program_Wf_53 + 1}} →
+        (A : Type u_Corelib_Program_Wf_45) →
+          (P : A → Type u_Corelib_Program_Wf_46) →
+            (R : A → A → Prop) →
+              Rocq.Corelib.Init.Wf.well_founded.{u_Corelib_Program_Wf_45} A R →
+                (f :
+                    (x : A) →
+                      ((y : Rocq.Corelib.Init.Specif.sig.{u_Corelib_Program_Wf_45 + 1} A fun y => R y x) →
+                          P (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_45 + 1} A (fun y => R y x) y)) →
+                        P x) →
+                  (Q : (x : A) → P x → Type u_Corelib_Program_Wf_53) →
+                    ((x : A) →
+                        ((y : A) →
+                            R y x →
+                              (a : Rocq.Corelib.Init.Wf.Acc.{u_Corelib_Program_Wf_45} A R y) →
+                                Q y
+                                  (RocqPending.Corelib.Program.Wf.Fix_F_sub.{u_Corelib_Program_Wf_45,
+                                      u_Corelib_Program_Wf_46}
+                                    A R P f y a)) →
+                          (a : Rocq.Corelib.Init.Wf.Acc.{u_Corelib_Program_Wf_45} A R x) →
+                            Q x
+                              (f x fun y =>
+                                RocqPending.Corelib.Program.Wf.Fix_F_sub.{u_Corelib_Program_Wf_45,
+                                    u_Corelib_Program_Wf_46}
+                                  A R P f
+                                  (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_45 + 1} A (fun y => R y x)
+                                    y)
+                                  ⋯)) →
+                      (x : A) →
+                        (a : Rocq.Corelib.Init.Wf.Acc.{u_Corelib_Program_Wf_45} A R x) →
+                          Q x
+                            (RocqPending.Corelib.Program.Wf.Fix_F_sub.{u_Corelib_Program_Wf_45, u_Corelib_Program_Wf_46}
+                              A R P f x a)
+def Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement.{u_Corelib_Init_Logic_65, u_Corelib_Init_Logic_66} : Prop :=
+∀ (A : Sort u_Corelib_Init_Logic_65) (x : A) (P : A → Sort u_Corelib_Init_Logic_66) (H : P x) (y : A),
+  Rocq.Corelib.Init.Logic.eq.{u_Corelib_Init_Logic_65} A y x →
+    Rocq.Corelib.Init.Logic.eq.{u_Corelib_Init_Logic_65} A x y
+def RocqPending.Corelib.Program.Wf.Fix_eq.statement.{u_Corelib_Program_Wf_21, u_Corelib_Program_Wf_22} : {h_Corelib_Init_Specif_proj2_sig :
+    Rocq.Corelib.Init.Specif.proj2_sig.statement.{u_Corelib_Program_Wf_21 + 1}} →
+  Prop :=
+fun {h_Corelib_Init_Specif_proj2_sig} =>
+  ∀ (A : Type u_Corelib_Program_Wf_21) (R : A → A → Prop)
+    (Rwf : Rocq.Corelib.Init.Wf.well_founded.{u_Corelib_Program_Wf_21} A R) (P : A → Type u_Corelib_Program_Wf_22)
+    (F_sub :
+      (x : A) →
+        ((y : Rocq.Corelib.Init.Specif.sig.{u_Corelib_Program_Wf_21 + 1} A fun y => R y x) →
+            P (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x) y)) →
+          P x),
+    (∀ (x : A)
+        (f g :
+          (y : Rocq.Corelib.Init.Specif.sig.{u_Corelib_Program_Wf_21 + 1} A fun y => R y x) →
+            P (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x) y)),
+        (∀ (y : Rocq.Corelib.Init.Specif.sig.{u_Corelib_Program_Wf_21 + 1} A fun y => R y x),
+            Rocq.Corelib.Init.Logic.eq.{u_Corelib_Program_Wf_22 + 1}
+              (P (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x) y)) (f y) (g y)) →
+          Rocq.Corelib.Init.Logic.eq.{u_Corelib_Program_Wf_22 + 1} (P x) (F_sub x f) (F_sub x g)) →
+      ∀ (x : A),
+        Rocq.Corelib.Init.Logic.eq.{u_Corelib_Program_Wf_22 + 1} (P x)
+          (RocqPending.Corelib.Program.Wf.Fix_sub.{u_Corelib_Program_Wf_21, u_Corelib_Program_Wf_22} A R Rwf P F_sub x)
+          (F_sub x fun y =>
+            RocqPending.Corelib.Program.Wf.Fix_sub.{u_Corelib_Program_Wf_21, u_Corelib_Program_Wf_22} A R Rwf P F_sub
+              (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x) y))
+def RocqPending.Corelib.Program.Wf.Fix_sub.{u_Corelib_Program_Wf_21, u_Corelib_Program_Wf_22} : {h_Corelib_Init_Specif_proj2_sig :
+    Rocq.Corelib.Init.Specif.proj2_sig.statement.{u_Corelib_Program_Wf_21 + 1}} →
+  (A : Type u_Corelib_Program_Wf_21) →
+    (R : A → A → Prop) →
+      Rocq.Corelib.Init.Wf.well_founded.{u_Corelib_Program_Wf_21} A R →
+        (P : A → Type u_Corelib_Program_Wf_22) →
+          ((x : A) →
+              ((y : Rocq.Corelib.Init.Specif.sig.{u_Corelib_Program_Wf_21 + 1} A fun y => R y x) →
+                  P (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x) y)) →
+                P x) →
+            (x : A) → P x :=
+fun {h_Corelib_Init_Specif_proj2_sig} A R Rwf P F_sub x =>
+  RocqPending.Corelib.Program.Wf.Fix_F_sub.{u_Corelib_Program_Wf_21, u_Corelib_Program_Wf_22} A R P F_sub x ⋯
+opaque RocqPending.Corelib.Program.Wf.Fix_sub_rect.{u_Corelib_Program_Wf_45, u_Corelib_Program_Wf_46, u_Corelib_Program_Wf_72} : {h_Corelib_Init_Specif_proj2_sig :
+    Rocq.Corelib.Init.Specif.proj2_sig.statement.{u_Corelib_Program_Wf_45 + 1}} →
+  {h_Corelib_Program_Wf_Fix_sub_rect__rocq2lean_obligation_1 :
+      RocqPending.Corelib.Program.Wf.Fix_sub_rect__rocq2lean_obligation_1.statement.{u_Corelib_Program_Wf_45,
+        u_Corelib_Program_Wf_46, u_Corelib_Program_Wf_72 + 1}} →
+    {h_Corelib_Program_Wf_F_unfold__rocq2lean_obligation_1 :
+        Rocq.Corelib.Program.Wf.F_unfold__rocq2lean_obligation_1.statement.{u_Corelib_Program_Wf_45,
+          u_Corelib_Program_Wf_46}} →
+      {h_Corelib_Program_Wf_F_unfold :
+          RocqPending.Corelib.Program.Wf.F_unfold.statement.{u_Corelib_Program_Wf_45, u_Corelib_Program_Wf_46}} →
+        {h_Corelib_Init_Logic_eq_rect_r__rocq2lean_obligation_1 :
+            Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement.{u_Corelib_Program_Wf_46 + 1,
+              u_Corelib_Program_Wf_72 + 1}} →
+          (A : Type u_Corelib_Program_Wf_45) →
+            (P : A → Type u_Corelib_Program_Wf_46) →
+              (R : A → A → Prop) →
+                (Rwf : Rocq.Corelib.Init.Wf.well_founded.{u_Corelib_Program_Wf_45} A R) →
+                  (f :
+                      (x : A) →
+                        ((y : Rocq.Corelib.Init.Specif.sig.{u_Corelib_Program_Wf_45 + 1} A fun y => R y x) →
+                            P (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_45 + 1} A (fun y => R y x) y)) →
+                          P x) →
+                    (∀ (x0 : A)
+                        (g h :
+                          (x : Rocq.Corelib.Init.Specif.sig.{u_Corelib_Program_Wf_45 + 1} A fun y => R y x0) →
+                            P (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_45 + 1} A (fun y => R y x0) x)),
+                        (∀ (x : A) (p p' : R x x0),
+                            Rocq.Corelib.Init.Logic.eq.{u_Corelib_Program_Wf_46 + 1}
+                              (P
+                                (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_45 + 1} A (fun y => R y x0)
+                                  (Rocq.Corelib.Init.Specif.sig.exist.{u_Corelib_Program_Wf_45 + 1} A (fun y => R y x0)
+                                    x p)))
+                              (g
+                                (Rocq.Corelib.Init.Specif.sig.exist.{u_Corelib_Program_Wf_45 + 1} A (fun y => R y x0) x
+                                  p))
+                              (h
+                                (Rocq.Corelib.Init.Specif.sig.exist.{u_Corelib_Program_Wf_45 + 1} A (fun y => R y x0) x
+                                  p'))) →
+                          Rocq.Corelib.Init.Logic.eq.{u_Corelib_Program_Wf_46 + 1} (P x0) (f x0 g) (f x0 h)) →
+                      (Q : (x : A) → P x → Type u_Corelib_Program_Wf_72) →
+                        ((x : A) →
+                            ((y : A) →
+                                R y x →
+                                  Q y
+                                    (RocqPending.Corelib.Program.Wf.Fix_sub.{u_Corelib_Program_Wf_45,
+                                        u_Corelib_Program_Wf_46}
+                                      A R Rwf P f y)) →
+                              Rocq.Corelib.Init.Wf.Acc.{u_Corelib_Program_Wf_45} A R x →
+                                Q x
+                                  (f x fun y =>
+                                    RocqPending.Corelib.Program.Wf.Fix_sub.{u_Corelib_Program_Wf_45,
+                                        u_Corelib_Program_Wf_46}
+                                      A R Rwf P f
+                                      (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_45 + 1} A
+                                        (fun y => R y x) y))) →
+                          (x : A) →
+                            Q x
+                              (RocqPending.Corelib.Program.Wf.Fix_sub.{u_Corelib_Program_Wf_45, u_Corelib_Program_Wf_46}
+                                A R Rwf P f x)
+def RocqPending.Corelib.Program.Wf.Fix_sub_rect__rocq2lean_obligation_1.statement.{u_Corelib_Program_Wf_21, u_Corelib_Program_Wf_22, u_Corelib_Program_Wf_72} : {h_Corelib_Init_Specif_proj2_sig :
+    Rocq.Corelib.Init.Specif.proj2_sig.statement.{u_Corelib_Program_Wf_21 + 1}} →
+  Prop :=
+fun {h_Corelib_Init_Specif_proj2_sig} =>
+  ∀ (A : Type u_Corelib_Program_Wf_21) (P : A → Type u_Corelib_Program_Wf_22) (R : A → A → Prop)
+    (Rwf : Rocq.Corelib.Init.Wf.well_founded.{u_Corelib_Program_Wf_21} A R)
+    (f :
+      (x : A) →
+        ((y : Rocq.Corelib.Init.Specif.sig.{u_Corelib_Program_Wf_21 + 1} A fun y => R y x) →
+            P (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x) y)) →
+          P x),
+    (∀ (x0 : A)
+        (g h :
+          (x : Rocq.Corelib.Init.Specif.sig.{u_Corelib_Program_Wf_21 + 1} A fun y => R y x0) →
+            P (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x0) x)),
+        (∀ (x : A) (p p' : R x x0),
+            Rocq.Corelib.Init.Logic.eq.{u_Corelib_Program_Wf_22 + 1}
+              (P
+                (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x0)
+                  (Rocq.Corelib.Init.Specif.sig.exist.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x0) x p)))
+              (g (Rocq.Corelib.Init.Specif.sig.exist.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x0) x p))
+              (h (Rocq.Corelib.Init.Specif.sig.exist.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x0) x p'))) →
+          Rocq.Corelib.Init.Logic.eq.{u_Corelib_Program_Wf_22 + 1} (P x0) (f x0 g) (f x0 h)) →
+      ∀ (Q : (x : A) → P x → Sort u_Corelib_Program_Wf_72)
+        (inv :
+          (x : A) →
+            ((y : A) →
+                R y x →
+                  Q y
+                    (RocqPending.Corelib.Program.Wf.Fix_sub.{u_Corelib_Program_Wf_21, u_Corelib_Program_Wf_22} A R Rwf P
+                      f y)) →
+              Rocq.Corelib.Init.Wf.Acc.{u_Corelib_Program_Wf_21} A R x →
+                Q x
+                  (f x fun y =>
+                    RocqPending.Corelib.Program.Wf.Fix_sub.{u_Corelib_Program_Wf_21, u_Corelib_Program_Wf_22} A R Rwf P
+                      f (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x) y)))
+        (x x0 : A)
+        (H :
+          (y : A) →
+            R y x0 →
+              (a : Rocq.Corelib.Init.Wf.Acc.{u_Corelib_Program_Wf_21} A R y) →
+                Q y
+                  (RocqPending.Corelib.Program.Wf.Fix_F_sub.{u_Corelib_Program_Wf_21, u_Corelib_Program_Wf_22} A R P f y
+                    a))
+        (a : Rocq.Corelib.Init.Wf.Acc.{u_Corelib_Program_Wf_21} A R x0),
+        let X0 := fun y H0 => H y H0 ⋯;
+        let q := inv x0 X0 a;
+        ∀ (x : A) (p p' : R x x0),
+          Rocq.Corelib.Init.Logic.eq.{u_Corelib_Program_Wf_22 + 1}
+            (P
+              (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x0)
+                (Rocq.Corelib.Init.Specif.sig.exist.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x0) x p)))
+            (RocqPending.Corelib.Program.Wf.Fix_F_sub.{u_Corelib_Program_Wf_21, u_Corelib_Program_Wf_22} A R P f
+              (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x0)
+                (Rocq.Corelib.Init.Specif.sig.exist.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x0) x p))
+              ⋯)
+            (RocqPending.Corelib.Program.Wf.Fix_F_sub.{u_Corelib_Program_Wf_21, u_Corelib_Program_Wf_22} A R P f
+              (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x0)
+                (Rocq.Corelib.Init.Specif.sig.exist.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x0) x p'))
+              ⋯)
+def Rocq.Corelib.Program.Wf.MR.{u_Corelib_Program_Wf_38, u_Corelib_Program_Wf_39} : (T : Sort u_Corelib_Program_Wf_38) →
+  (M : Sort u_Corelib_Program_Wf_39) → (M → M → Prop) → (T → M) → T → T → Prop :=
+fun T M R m x y => R (m x) (m y)
+def RocqPending.Corelib.Program.Wf.eq_Fix_F_sub.statement.{u_Corelib_Program_Wf_21, u_Corelib_Program_Wf_22} : {h_Corelib_Init_Specif_proj2_sig :
+    Rocq.Corelib.Init.Specif.proj2_sig.statement.{u_Corelib_Program_Wf_21 + 1}} →
+  Prop :=
+fun {h_Corelib_Init_Specif_proj2_sig} =>
+  ∀ (A : Type u_Corelib_Program_Wf_21) (P : A → Type u_Corelib_Program_Wf_22) (R : A → A → Prop),
+    Rocq.Corelib.Init.Wf.well_founded.{u_Corelib_Program_Wf_21} A R →
+      ∀
+        (f :
+          (x : A) →
+            ((y : Rocq.Corelib.Init.Specif.sig.{u_Corelib_Program_Wf_21 + 1} A fun y => R y x) →
+                P (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x) y)) →
+              P x),
+        (∀ (x0 : A)
+            (g h :
+              (x : Rocq.Corelib.Init.Specif.sig.{u_Corelib_Program_Wf_21 + 1} A fun y => R y x0) →
+                P (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x0) x)),
+            (∀ (x : A) (p p' : R x x0),
+                Rocq.Corelib.Init.Logic.eq.{u_Corelib_Program_Wf_22 + 1}
+                  (P
+                    (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x0)
+                      (Rocq.Corelib.Init.Specif.sig.exist.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x0) x p)))
+                  (g (Rocq.Corelib.Init.Specif.sig.exist.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x0) x p))
+                  (h (Rocq.Corelib.Init.Specif.sig.exist.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x0) x p'))) →
+              Rocq.Corelib.Init.Logic.eq.{u_Corelib_Program_Wf_22 + 1} (P x0) (f x0 g) (f x0 h)) →
+          ∀ (x : A) (a a' : Rocq.Corelib.Init.Wf.Acc.{u_Corelib_Program_Wf_21} A R x),
+            Rocq.Corelib.Init.Logic.eq.{u_Corelib_Program_Wf_22 + 1} (P x)
+              (RocqPending.Corelib.Program.Wf.Fix_F_sub.{u_Corelib_Program_Wf_21, u_Corelib_Program_Wf_22} A R P f x a)
+              (RocqPending.Corelib.Program.Wf.Fix_F_sub.{u_Corelib_Program_Wf_21, u_Corelib_Program_Wf_22} A R P f x a')
+def RocqPending.Corelib.Program.Wf.fix_sub_eq.statement.{u_Corelib_Program_Wf_21, u_Corelib_Program_Wf_22} : {h_Corelib_Init_Specif_proj2_sig :
+    Rocq.Corelib.Init.Specif.proj2_sig.statement.{u_Corelib_Program_Wf_21 + 1}} →
+  Prop :=
+fun {h_Corelib_Init_Specif_proj2_sig} =>
+  ∀ (A : Type u_Corelib_Program_Wf_21) (R : A → A → Prop)
+    (Rwf : Rocq.Corelib.Init.Wf.well_founded.{u_Corelib_Program_Wf_21} A R) (P : A → Type u_Corelib_Program_Wf_22)
+    (F_sub :
+      (x : A) →
+        ((y : Rocq.Corelib.Init.Specif.sig.{u_Corelib_Program_Wf_21 + 1} A fun y => R y x) →
+            P (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x) y)) →
+          P x),
+    (∀ (x : A)
+        (f g :
+          (y : Rocq.Corelib.Init.Specif.sig.{u_Corelib_Program_Wf_21 + 1} A fun y => R y x) →
+            P (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x) y)),
+        (∀ (y : Rocq.Corelib.Init.Specif.sig.{u_Corelib_Program_Wf_21 + 1} A fun y => R y x),
+            Rocq.Corelib.Init.Logic.eq.{u_Corelib_Program_Wf_22 + 1}
+              (P (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x) y)) (f y) (g y)) →
+          Rocq.Corelib.Init.Logic.eq.{u_Corelib_Program_Wf_22 + 1} (P x) (F_sub x f) (F_sub x g)) →
+      ∀ (x : A),
+        Rocq.Corelib.Init.Logic.eq.{u_Corelib_Program_Wf_22 + 1} (P x)
+          (RocqPending.Corelib.Program.Wf.Fix_sub.{u_Corelib_Program_Wf_21, u_Corelib_Program_Wf_22} A R Rwf P F_sub x)
+          (let f_sub := F_sub;
+          f_sub x fun y =>
+            RocqPending.Corelib.Program.Wf.Fix_sub.{u_Corelib_Program_Wf_21, u_Corelib_Program_Wf_22} A R Rwf P F_sub
+              (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_21 + 1} A (fun y => R y x) y))
+def Rocq.Corelib.Program.Wf.measure_wf.statement.{u_Corelib_Program_Wf_38, u_Corelib_Program_Wf_39} : Prop :=
+∀ (T : Type u_Corelib_Program_Wf_38) (M : Type u_Corelib_Program_Wf_39) (R : M → M → Prop),
+  Rocq.Corelib.Init.Wf.well_founded.{u_Corelib_Program_Wf_39} M R →
+    ∀ (m : T → M),
+      Rocq.Corelib.Init.Wf.well_founded.{u_Corelib_Program_Wf_38} T
+        (Rocq.Corelib.Program.Wf.MR.{u_Corelib_Program_Wf_38 + 1, u_Corelib_Program_Wf_39 + 1} T M R m)

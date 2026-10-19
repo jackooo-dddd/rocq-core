@@ -1,0 +1,31 @@
+certificate,old_type,new_type,present
+NativeBridge.natIso,NativeBridge.Iso Nat Nat,NativeBridge.Iso NativeBridge.MN Nat,True
+NativeBridge.boolIso,NativeBridge.Iso NativeBridge.RBool Bool,NativeBridge.Iso NativeBridge.RBool Bool,True
+NativeBridge.comparisonIso,NativeBridge.Iso NativeBridge.RComparison Ordering,NativeBridge.Iso NativeBridge.RComparison Ordering,True
+NativeBridge.listIso,(A : Type u) → NativeBridge.Iso (NativeBridge.RList A) (List A),(A : Type u) → NativeBridge.Iso (NativeBridge.RList A) (List A),True
+NativeBridge.optionIso,(A : Type u) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.option A) (Option A),(A : Type u) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.option A) (Option A),True
+NativeBridge.prodIso,(A : Type u) → (B : Type v) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.prod A B) (A × B),(A : Type u) → (B : Type v) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.prod A B) (A × B),True
+NativeBridge.sumIso,(A : Type u) → (B : Type v) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.sum A B) (A ⊕ B),(A : Type u) → (B : Type v) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.sum A B) (A ⊕ B),True
+NativeBridge.resultIso,(A : Type u) → (E : Type v) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.result A E) (Except E A),(A : Type u) → (E : Type v) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.result A E) (Except E A),True
+NativeBridge.unitIso,NativeBridge.Iso Rocq.Corelib.Init.Datatypes.unit Unit,NativeBridge.Iso Rocq.Corelib.Init.Datatypes.unit Unit,True
+NativeBridge.emptyIso,NativeBridge.Iso Rocq.Corelib.Init.Datatypes.Empty_set Empty,NativeBridge.Iso Rocq.Corelib.Init.Datatypes.Empty_set Empty,True
+NativeBridge.sigIso,(A : Type u) → (P : A → Prop) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sig A P) (Subtype P),(A : Type u) → (P : A → Prop) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sig A P) (Subtype P),True
+NativeBridge.sig2Iso,(A : Type u) → (P Q : A → Prop) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sig2 A P Q) { x // P x ∧ Q x },(A : Type u) → (P Q : A → Prop) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sig2 A P Q) { x // P x ∧ Q x },True
+NativeBridge.sigmaIso,(A : Type u) → (P : A → Type v) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sigT A P) (Sigma P),(A : Type u) → (P : A → Type v) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sigT A P) (Sigma P),True
+NativeBridge.sigma2Iso,"(A : Type u) →
+  (P : A → Type v) → (Q : A → Type w) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sigT2 A P Q) ((x : A) × P x × Q x)","(A : Type u) →
+  (P : A → Type v) → (Q : A → Type w) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sigT2 A P Q) ((x : A) × P x × Q x)",True
+NativeBridge.sumboolIso,(P Q : Prop) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sumbool P Q) (P ⊕' Q),(P Q : Prop) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sumbool P Q) (P ⊕' Q),True
+NativeBridge.decidableIso,(P : Prop) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sumbool P ¬P) (Decidable P),(P : Prop) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sumbool P ¬P) (Decidable P),True
+NativeBridge.sumorIso,(A : Type u) → (P : Prop) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sumor A P) (A ⊕' P),(A : Type u) → (P : Prop) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sumor A P) (A ⊕' P),True
+NativeBridge.positiveIso,NativeBridge.Iso NativeBridge.RPositive { n // 0 < n },NativeBridge.Iso NativeBridge.RPositive { n // 0 < n },True
+NativeBridge.binaryNatIso,NativeBridge.Iso NativeBridge.RNatBinary Nat,NativeBridge.Iso NativeBridge.RNatBinary Nat,True
+NativeBridge.binaryIntIso,NativeBridge.Iso NativeBridge.RIntBinary Int,NativeBridge.Iso NativeBridge.RIntBinary Int,True
+NativeBridge.int63Iso,NativeBridge.Iso Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int (BitVec 63),NativeBridge.Iso Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int (BitVec 63),True
+NativeBridge.int63WrapperIso,NativeBridge.Iso Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int_wrapper (BitVec 63),NativeBridge.Iso Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int_wrapper (BitVec 63),True
+NativeBridge.arrayIso,(A : Type u) → NativeBridge.Iso (Rocq.Corelib.Array.PrimArray.array A) (NativeBridge.NativeArray A),(A : Type u) → NativeBridge.Iso (Rocq.Corelib.Array.PrimArray.array A) (NativeBridge.NativeArray A),True
+NativeBridge.byteStringIso,NativeBridge.Iso Rocq.Corelib.Strings.PrimString.string NativeBridge.NativeByteString,NativeBridge.Iso Rocq.Corelib.Strings.PrimString.string NativeBridge.NativeByteString,True
+NativeBridge.byteIso,NativeBridge.Iso Rocq.Corelib.Init.Byte.byte (Fin 256),NativeBridge.Iso Rocq.Corelib.Init.Byte.byte (Fin 256),True
+NativeBridge.floatClassIso,NativeBridge.Iso Rocq.Corelib.Floats.FloatClass.float_class (Fin 9),NativeBridge.Iso Rocq.Corelib.Floats.FloatClass.float_class (Fin 9),True
+NativeBridge.decimalDigitsIso,NativeBridge.Iso Rocq.Corelib.Init.Decimal.uint (List (Fin 10)),NativeBridge.Iso Rocq.Corelib.Init.Decimal.uint (List (Fin 10)),True
+NativeBridge.hexadecimalDigitsIso,NativeBridge.Iso Rocq.Corelib.Init.Hexadecimal.uint (List (Fin 16)),NativeBridge.Iso Rocq.Corelib.Init.Hexadecimal.uint (List (Fin 16)),True

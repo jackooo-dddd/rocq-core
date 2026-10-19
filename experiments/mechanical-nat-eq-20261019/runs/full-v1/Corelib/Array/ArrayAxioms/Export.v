@@ -1,0 +1,3 @@
+From Rocq2LeanExport Require Import Loader.
+Require Corelib.Array.ArrayAxioms.
+Rocq2Lean ExportStatements "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Array/ArrayAxioms/source.ndjson" Corelib.Array.ArrayAxioms.array_ext Corelib.Array.ArrayAxioms.default_set Corelib.Array.ArrayAxioms.get_copy Corelib.Array.ArrayAxioms.get_make Corelib.Array.ArrayAxioms.get_out_of_bounds Corelib.Array.ArrayAxioms.get_set_other Corelib.Array.ArrayAxioms.get_set_same Corelib.Array.ArrayAxioms.leb_length Corelib.Array.ArrayAxioms.length_copy Corelib.Array.ArrayAxioms.length_make Corelib.Array.ArrayAxioms.length_set.

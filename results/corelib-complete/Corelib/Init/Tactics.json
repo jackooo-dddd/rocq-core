@@ -1,0 +1,1040 @@
+{
+  "module": "Corelib.Init.Tactics",
+  "roots": {
+    "Corelib.Init.Tactics.decide_left": {
+      "source": "Corelib.Init.Tactics.decide_left",
+      "canonical": "Corelib.Init.Tactics.decide_left",
+      "result": {
+        "canonical": "Corelib.Init.Tactics.decide_left",
+        "status": "STATEMENT_KERNEL_CHECKED",
+        "message": "",
+        "target": "Rocq.Corelib.Init.Tactics.decide_left.statement",
+        "blocked_by": []
+      },
+      "meaning": "定理／公理陈述，无待证参数；不是已证明定理",
+      "source_ir": {
+        "kind": "constant",
+        "name": "Corelib.Init.Tactics.decide_left",
+        "mp": {
+          "file": [
+            "Corelib",
+            "Init",
+            "Tactics"
+          ]
+        },
+        "id": "decide_left",
+        "type": {
+          "k": "prod",
+          "n": {
+            "n": "C",
+            "r": "R"
+          },
+          "ty": {
+            "k": "sort",
+            "s": {
+              "k": "prop"
+            }
+          },
+          "b": {
+            "k": "prod",
+            "n": {
+              "n": "decide",
+              "r": "R"
+            },
+            "ty": {
+              "k": "app",
+              "f": {
+                "k": "ind",
+                "ind": {
+                  "mind": "Corelib.Init.Specif.sumbool",
+                  "i": 0
+                },
+                "u": []
+              },
+              "args": [
+                {
+                  "k": "rel",
+                  "i": 0
+                },
+                {
+                  "k": "app",
+                  "f": {
+                    "k": "const",
+                    "c": "Corelib.Init.Logic.not",
+                    "u": []
+                  },
+                  "args": [
+                    {
+                      "k": "rel",
+                      "i": 0
+                    }
+                  ]
+                }
+              ]
+            },
+            "b": {
+              "k": "prod",
+              "n": {
+                "n": null,
+                "r": "R"
+              },
+              "ty": {
+                "k": "rel",
+                "i": 1
+              },
+              "b": {
+                "k": "prod",
+                "n": {
+                  "n": "P",
+                  "r": "R"
+                },
+                "ty": {
+                  "k": "prod",
+                  "n": {
+                    "n": null,
+                    "r": "R"
+                  },
+                  "ty": {
+                    "k": "app",
+                    "f": {
+                      "k": "ind",
+                      "ind": {
+                        "mind": "Corelib.Init.Specif.sumbool",
+                        "i": 0
+                      },
+                      "u": []
+                    },
+                    "args": [
+                      {
+                        "k": "rel",
+                        "i": 2
+                      },
+                      {
+                        "k": "app",
+                        "f": {
+                          "k": "const",
+                          "c": "Corelib.Init.Logic.not",
+                          "u": []
+                        },
+                        "args": [
+                          {
+                            "k": "rel",
+                            "i": 2
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "b": {
+                    "k": "sort",
+                    "s": {
+                      "k": "prop"
+                    }
+                  }
+                },
+                "b": {
+                  "k": "prod",
+                  "n": {
+                    "n": null,
+                    "r": "R"
+                  },
+                  "ty": {
+                    "k": "prod",
+                    "n": {
+                      "n": "H",
+                      "r": "R"
+                    },
+                    "ty": {
+                      "k": "rel",
+                      "i": 3
+                    },
+                    "b": {
+                      "k": "app",
+                      "f": {
+                        "k": "rel",
+                        "i": 1
+                      },
+                      "args": [
+                        {
+                          "k": "app",
+                          "f": {
+                            "k": "construct",
+                            "ind": {
+                              "mind": "Corelib.Init.Specif.sumbool",
+                              "i": 0
+                            },
+                            "c": 0,
+                            "u": []
+                          },
+                          "args": [
+                            {
+                              "k": "rel",
+                              "i": 4
+                            },
+                            {
+                              "k": "app",
+                              "f": {
+                                "k": "const",
+                                "c": "Corelib.Init.Logic.not",
+                                "u": []
+                              },
+                              "args": [
+                                {
+                                  "k": "rel",
+                                  "i": 4
+                                }
+                              ]
+                            },
+                            {
+                              "k": "rel",
+                              "i": 0
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "b": {
+                    "k": "app",
+                    "f": {
+                      "k": "rel",
+                      "i": 1
+                    },
+                    "args": [
+                      {
+                        "k": "rel",
+                        "i": 3
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "body": null,
+        "body_state": "statement_only",
+        "universes": {
+          "k": "monomorphic"
+        },
+        "relevance": "R",
+        "deps": {
+          "type": [
+            "Corelib.Init.Logic.not",
+            "Corelib.Init.Specif.sumbool"
+          ],
+          "body": []
+        },
+        "native": {
+          "body_kind": "opaque",
+          "prepared": {
+            "sealed_implementation": false,
+            "lowered_ssr_have_upoly": false
+          },
+          "polymorphic": false,
+          "private_universes": "none",
+          "typing_flags": {
+            "check_guarded": true,
+            "check_positive": true,
+            "check_universes": true,
+            "check_eliminations": true,
+            "indices_matter": false,
+            "impredicative_set": false,
+            "sprop_allowed": true,
+            "allow_uip": false
+          }
+        }
+      },
+      "target_report": {
+        "universe_residuals": null,
+        "universe_poly_params": 0,
+        "universe_minimal_levels": 0,
+        "universe_lowered": false,
+        "universe_level_defaults": 0,
+        "universe_diagnostics": [],
+        "universe_cumulativity": false,
+        "universe_checks": 0,
+        "type_lift_coercions": 0,
+        "type_lift": null,
+        "template_sort": false,
+        "template_params": [],
+        "template": false,
+        "target_value": {
+          "t": {
+            "l": {
+              "k": "zero"
+            },
+            "k": "sort"
+          },
+          "n": "C",
+          "k": "forall",
+          "b": {
+            "t": {
+              "k": "app",
+              "f": {
+                "k": "app",
+                "f": {
+                  "u": [],
+                  "n": "Rocq.Corelib.Init.Specif.sumbool",
+                  "k": "const"
+                },
+                "a": {
+                  "k": "bvar",
+                  "i": 0
+                }
+              },
+              "a": {
+                "k": "app",
+                "f": {
+                  "u": [],
+                  "n": "Rocq.Corelib.Init.Logic.not",
+                  "k": "const"
+                },
+                "a": {
+                  "k": "bvar",
+                  "i": 0
+                }
+              }
+            },
+            "n": "decide",
+            "k": "forall",
+            "b": {
+              "t": {
+                "k": "bvar",
+                "i": 1
+              },
+              "n": "[anonymous]",
+              "k": "forall",
+              "b": {
+                "t": {
+                  "t": {
+                    "k": "app",
+                    "f": {
+                      "k": "app",
+                      "f": {
+                        "u": [],
+                        "n": "Rocq.Corelib.Init.Specif.sumbool",
+                        "k": "const"
+                      },
+                      "a": {
+                        "k": "bvar",
+                        "i": 2
+                      }
+                    },
+                    "a": {
+                      "k": "app",
+                      "f": {
+                        "u": [],
+                        "n": "Rocq.Corelib.Init.Logic.not",
+                        "k": "const"
+                      },
+                      "a": {
+                        "k": "bvar",
+                        "i": 2
+                      }
+                    }
+                  },
+                  "n": "[anonymous]",
+                  "k": "forall",
+                  "b": {
+                    "l": {
+                      "k": "zero"
+                    },
+                    "k": "sort"
+                  }
+                },
+                "n": "P",
+                "k": "forall",
+                "b": {
+                  "t": {
+                    "t": {
+                      "k": "bvar",
+                      "i": 3
+                    },
+                    "n": "H",
+                    "k": "forall",
+                    "b": {
+                      "k": "app",
+                      "f": {
+                        "k": "bvar",
+                        "i": 1
+                      },
+                      "a": {
+                        "k": "app",
+                        "f": {
+                          "k": "app",
+                          "f": {
+                            "k": "app",
+                            "f": {
+                              "u": [],
+                              "n": "Rocq.Corelib.Init.Specif.sumbool.left",
+                              "k": "const"
+                            },
+                            "a": {
+                              "k": "bvar",
+                              "i": 4
+                            }
+                          },
+                          "a": {
+                            "k": "app",
+                            "f": {
+                              "u": [],
+                              "n": "Rocq.Corelib.Init.Logic.not",
+                              "k": "const"
+                            },
+                            "a": {
+                              "k": "bvar",
+                              "i": 4
+                            }
+                          }
+                        },
+                        "a": {
+                          "k": "bvar",
+                          "i": 0
+                        }
+                      }
+                    }
+                  },
+                  "n": "[anonymous]",
+                  "k": "forall",
+                  "b": {
+                    "k": "app",
+                    "f": {
+                      "k": "bvar",
+                      "i": 1
+                    },
+                    "a": {
+                      "k": "bvar",
+                      "i": 3
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "target_type": {
+          "l": {
+            "k": "zero"
+          },
+          "k": "sort"
+        },
+        "target_kind": "statement",
+        "target_ctors": [],
+        "target": "Rocq.Corelib.Init.Tactics.decide_left.statement",
+        "status": "STATEMENT_KERNEL_CHECKED",
+        "source_computed": [],
+        "source": "Corelib.Init.Tactics.decide_left",
+        "sort_lowered_levels": [],
+        "sort_interp": false,
+        "sort_fact_reduced": false,
+        "solved_levels": [],
+        "rule": "constant/transparent",
+        "result_sort_inherited": false,
+        "result_sort_implicit_levels": [],
+        "r2bp_levels": [],
+        "quality_prop": null,
+        "protected": true,
+        "prop_lift_unfold": [],
+        "prop_lift_coercions": 0,
+        "prop_lift": null,
+        "primitive_record": false,
+        "poly_level_interp": [],
+        "plain_levels": false,
+        "phantom_lowered": [],
+        "pending_hypotheses": [],
+        "path": [],
+        "num_params": 0,
+        "message": "",
+        "level_split": [],
+        "level_params": [],
+        "level_interp": [],
+        "level_copies": [],
+        "kind": "constant",
+        "implicit_levels": [],
+        "delta_inlined": [],
+        "coinductive_as_inductive": false,
+        "blocked_by": [],
+        "admitting_levels": []
+      },
+      "quality_variants": [],
+      "prerequisite_declarations": [],
+      "attempts": {
+        "source": "Corelib.Init.Tactics.decide_left",
+        "status": "STATEMENT_KERNEL_CHECKED",
+        "tier_times": [
+          [
+            "c[]",
+            0,
+            "TRANSLATED_AND_CHECKED"
+          ]
+        ],
+        "time_ms": 0
+      },
+      "baseline": {
+        "result": {
+          "canonical": "Corelib.Init.Tactics.decide_left",
+          "status": "STATEMENT_KERNEL_CHECKED",
+          "message": "",
+          "target": "Rocq.Corelib.Init.Tactics.decide_left.statement",
+          "blocked_by": []
+        },
+        "stage": "基线已有结果",
+        "path": [],
+        "message": "",
+        "native_diagnostics": []
+      },
+      "module_validation": {
+        "roundtrip_exit": 0,
+        "roundtrip": "OK",
+        "translate_exit": 0,
+        "consumer_exit": 0,
+        "audit_exit": 0,
+        "consumer": "OK",
+        "audit": "OK"
+      },
+      "evidence_directory": "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Init/Tactics"
+    },
+    "Corelib.Init.Tactics.decide_right": {
+      "source": "Corelib.Init.Tactics.decide_right",
+      "canonical": "Corelib.Init.Tactics.decide_right",
+      "result": {
+        "canonical": "Corelib.Init.Tactics.decide_right",
+        "status": "STATEMENT_KERNEL_CHECKED",
+        "message": "",
+        "target": "Rocq.Corelib.Init.Tactics.decide_right.statement",
+        "blocked_by": []
+      },
+      "meaning": "定理／公理陈述，无待证参数；不是已证明定理",
+      "source_ir": {
+        "kind": "constant",
+        "name": "Corelib.Init.Tactics.decide_right",
+        "mp": {
+          "file": [
+            "Corelib",
+            "Init",
+            "Tactics"
+          ]
+        },
+        "id": "decide_right",
+        "type": {
+          "k": "prod",
+          "n": {
+            "n": "C",
+            "r": "R"
+          },
+          "ty": {
+            "k": "sort",
+            "s": {
+              "k": "prop"
+            }
+          },
+          "b": {
+            "k": "prod",
+            "n": {
+              "n": "decide",
+              "r": "R"
+            },
+            "ty": {
+              "k": "app",
+              "f": {
+                "k": "ind",
+                "ind": {
+                  "mind": "Corelib.Init.Specif.sumbool",
+                  "i": 0
+                },
+                "u": []
+              },
+              "args": [
+                {
+                  "k": "rel",
+                  "i": 0
+                },
+                {
+                  "k": "app",
+                  "f": {
+                    "k": "const",
+                    "c": "Corelib.Init.Logic.not",
+                    "u": []
+                  },
+                  "args": [
+                    {
+                      "k": "rel",
+                      "i": 0
+                    }
+                  ]
+                }
+              ]
+            },
+            "b": {
+              "k": "prod",
+              "n": {
+                "n": null,
+                "r": "R"
+              },
+              "ty": {
+                "k": "app",
+                "f": {
+                  "k": "const",
+                  "c": "Corelib.Init.Logic.not",
+                  "u": []
+                },
+                "args": [
+                  {
+                    "k": "rel",
+                    "i": 1
+                  }
+                ]
+              },
+              "b": {
+                "k": "prod",
+                "n": {
+                  "n": "P",
+                  "r": "R"
+                },
+                "ty": {
+                  "k": "prod",
+                  "n": {
+                    "n": null,
+                    "r": "R"
+                  },
+                  "ty": {
+                    "k": "app",
+                    "f": {
+                      "k": "ind",
+                      "ind": {
+                        "mind": "Corelib.Init.Specif.sumbool",
+                        "i": 0
+                      },
+                      "u": []
+                    },
+                    "args": [
+                      {
+                        "k": "rel",
+                        "i": 2
+                      },
+                      {
+                        "k": "app",
+                        "f": {
+                          "k": "const",
+                          "c": "Corelib.Init.Logic.not",
+                          "u": []
+                        },
+                        "args": [
+                          {
+                            "k": "rel",
+                            "i": 2
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "b": {
+                    "k": "sort",
+                    "s": {
+                      "k": "prop"
+                    }
+                  }
+                },
+                "b": {
+                  "k": "prod",
+                  "n": {
+                    "n": null,
+                    "r": "R"
+                  },
+                  "ty": {
+                    "k": "prod",
+                    "n": {
+                      "n": "H",
+                      "r": "R"
+                    },
+                    "ty": {
+                      "k": "app",
+                      "f": {
+                        "k": "const",
+                        "c": "Corelib.Init.Logic.not",
+                        "u": []
+                      },
+                      "args": [
+                        {
+                          "k": "rel",
+                          "i": 3
+                        }
+                      ]
+                    },
+                    "b": {
+                      "k": "app",
+                      "f": {
+                        "k": "rel",
+                        "i": 1
+                      },
+                      "args": [
+                        {
+                          "k": "app",
+                          "f": {
+                            "k": "construct",
+                            "ind": {
+                              "mind": "Corelib.Init.Specif.sumbool",
+                              "i": 0
+                            },
+                            "c": 1,
+                            "u": []
+                          },
+                          "args": [
+                            {
+                              "k": "rel",
+                              "i": 4
+                            },
+                            {
+                              "k": "app",
+                              "f": {
+                                "k": "const",
+                                "c": "Corelib.Init.Logic.not",
+                                "u": []
+                              },
+                              "args": [
+                                {
+                                  "k": "rel",
+                                  "i": 4
+                                }
+                              ]
+                            },
+                            {
+                              "k": "rel",
+                              "i": 0
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "b": {
+                    "k": "app",
+                    "f": {
+                      "k": "rel",
+                      "i": 1
+                    },
+                    "args": [
+                      {
+                        "k": "rel",
+                        "i": 3
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "body": null,
+        "body_state": "statement_only",
+        "universes": {
+          "k": "monomorphic"
+        },
+        "relevance": "R",
+        "deps": {
+          "type": [
+            "Corelib.Init.Logic.not",
+            "Corelib.Init.Specif.sumbool"
+          ],
+          "body": []
+        },
+        "native": {
+          "body_kind": "opaque",
+          "prepared": {
+            "sealed_implementation": false,
+            "lowered_ssr_have_upoly": false
+          },
+          "polymorphic": false,
+          "private_universes": "none",
+          "typing_flags": {
+            "check_guarded": true,
+            "check_positive": true,
+            "check_universes": true,
+            "check_eliminations": true,
+            "indices_matter": false,
+            "impredicative_set": false,
+            "sprop_allowed": true,
+            "allow_uip": false
+          }
+        }
+      },
+      "target_report": {
+        "universe_residuals": null,
+        "universe_poly_params": 0,
+        "universe_minimal_levels": 0,
+        "universe_lowered": false,
+        "universe_level_defaults": 0,
+        "universe_diagnostics": [],
+        "universe_cumulativity": false,
+        "universe_checks": 0,
+        "type_lift_coercions": 0,
+        "type_lift": null,
+        "template_sort": false,
+        "template_params": [],
+        "template": false,
+        "target_value": {
+          "t": {
+            "l": {
+              "k": "zero"
+            },
+            "k": "sort"
+          },
+          "n": "C",
+          "k": "forall",
+          "b": {
+            "t": {
+              "k": "app",
+              "f": {
+                "k": "app",
+                "f": {
+                  "u": [],
+                  "n": "Rocq.Corelib.Init.Specif.sumbool",
+                  "k": "const"
+                },
+                "a": {
+                  "k": "bvar",
+                  "i": 0
+                }
+              },
+              "a": {
+                "k": "app",
+                "f": {
+                  "u": [],
+                  "n": "Rocq.Corelib.Init.Logic.not",
+                  "k": "const"
+                },
+                "a": {
+                  "k": "bvar",
+                  "i": 0
+                }
+              }
+            },
+            "n": "decide",
+            "k": "forall",
+            "b": {
+              "t": {
+                "k": "app",
+                "f": {
+                  "u": [],
+                  "n": "Rocq.Corelib.Init.Logic.not",
+                  "k": "const"
+                },
+                "a": {
+                  "k": "bvar",
+                  "i": 1
+                }
+              },
+              "n": "[anonymous]",
+              "k": "forall",
+              "b": {
+                "t": {
+                  "t": {
+                    "k": "app",
+                    "f": {
+                      "k": "app",
+                      "f": {
+                        "u": [],
+                        "n": "Rocq.Corelib.Init.Specif.sumbool",
+                        "k": "const"
+                      },
+                      "a": {
+                        "k": "bvar",
+                        "i": 2
+                      }
+                    },
+                    "a": {
+                      "k": "app",
+                      "f": {
+                        "u": [],
+                        "n": "Rocq.Corelib.Init.Logic.not",
+                        "k": "const"
+                      },
+                      "a": {
+                        "k": "bvar",
+                        "i": 2
+                      }
+                    }
+                  },
+                  "n": "[anonymous]",
+                  "k": "forall",
+                  "b": {
+                    "l": {
+                      "k": "zero"
+                    },
+                    "k": "sort"
+                  }
+                },
+                "n": "P",
+                "k": "forall",
+                "b": {
+                  "t": {
+                    "t": {
+                      "k": "app",
+                      "f": {
+                        "u": [],
+                        "n": "Rocq.Corelib.Init.Logic.not",
+                        "k": "const"
+                      },
+                      "a": {
+                        "k": "bvar",
+                        "i": 3
+                      }
+                    },
+                    "n": "H",
+                    "k": "forall",
+                    "b": {
+                      "k": "app",
+                      "f": {
+                        "k": "bvar",
+                        "i": 1
+                      },
+                      "a": {
+                        "k": "app",
+                        "f": {
+                          "k": "app",
+                          "f": {
+                            "k": "app",
+                            "f": {
+                              "u": [],
+                              "n": "Rocq.Corelib.Init.Specif.sumbool.right",
+                              "k": "const"
+                            },
+                            "a": {
+                              "k": "bvar",
+                              "i": 4
+                            }
+                          },
+                          "a": {
+                            "k": "app",
+                            "f": {
+                              "u": [],
+                              "n": "Rocq.Corelib.Init.Logic.not",
+                              "k": "const"
+                            },
+                            "a": {
+                              "k": "bvar",
+                              "i": 4
+                            }
+                          }
+                        },
+                        "a": {
+                          "k": "bvar",
+                          "i": 0
+                        }
+                      }
+                    }
+                  },
+                  "n": "[anonymous]",
+                  "k": "forall",
+                  "b": {
+                    "k": "app",
+                    "f": {
+                      "k": "bvar",
+                      "i": 1
+                    },
+                    "a": {
+                      "k": "bvar",
+                      "i": 3
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "target_type": {
+          "l": {
+            "k": "zero"
+          },
+          "k": "sort"
+        },
+        "target_kind": "statement",
+        "target_ctors": [],
+        "target": "Rocq.Corelib.Init.Tactics.decide_right.statement",
+        "status": "STATEMENT_KERNEL_CHECKED",
+        "source_computed": [],
+        "source": "Corelib.Init.Tactics.decide_right",
+        "sort_lowered_levels": [],
+        "sort_interp": false,
+        "sort_fact_reduced": false,
+        "solved_levels": [],
+        "rule": "constant/transparent",
+        "result_sort_inherited": false,
+        "result_sort_implicit_levels": [],
+        "r2bp_levels": [],
+        "quality_prop": null,
+        "protected": true,
+        "prop_lift_unfold": [],
+        "prop_lift_coercions": 0,
+        "prop_lift": null,
+        "primitive_record": false,
+        "poly_level_interp": [],
+        "plain_levels": false,
+        "phantom_lowered": [],
+        "pending_hypotheses": [],
+        "path": [],
+        "num_params": 0,
+        "message": "",
+        "level_split": [],
+        "level_params": [],
+        "level_interp": [],
+        "level_copies": [],
+        "kind": "constant",
+        "implicit_levels": [],
+        "delta_inlined": [],
+        "coinductive_as_inductive": false,
+        "blocked_by": [],
+        "admitting_levels": []
+      },
+      "quality_variants": [],
+      "prerequisite_declarations": [],
+      "attempts": {
+        "source": "Corelib.Init.Tactics.decide_right",
+        "status": "STATEMENT_KERNEL_CHECKED",
+        "tier_times": [
+          [
+            "c[]",
+            0,
+            "TRANSLATED_AND_CHECKED"
+          ]
+        ],
+        "time_ms": 0
+      },
+      "baseline": {
+        "result": {
+          "canonical": "Corelib.Init.Tactics.decide_right",
+          "status": "STATEMENT_KERNEL_CHECKED",
+          "message": "",
+          "target": "Rocq.Corelib.Init.Tactics.decide_right.statement",
+          "blocked_by": []
+        },
+        "stage": "基线已有结果",
+        "path": [],
+        "message": "",
+        "native_diagnostics": []
+      },
+      "module_validation": {
+        "roundtrip_exit": 0,
+        "roundtrip": "OK",
+        "translate_exit": 0,
+        "consumer_exit": 0,
+        "audit_exit": 0,
+        "consumer": "OK",
+        "audit": "OK"
+      },
+      "evidence_directory": "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Init/Tactics"
+    }
+  },
+  "validation": {
+    "roundtrip_exit": 0,
+    "roundtrip": "OK",
+    "translate_exit": 0,
+    "consumer_exit": 0,
+    "audit_exit": 0,
+    "consumer": "OK",
+    "audit": "OK"
+  },
+  "state": "MEASURED",
+  "evidence_directory": "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Init/Tactics"
+}

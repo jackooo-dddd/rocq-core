@@ -1,0 +1,24 @@
+Next universe repair: declaration-local polymorphic constraints at R3 checks.
+
+Observed exact blockers in primitive-roundtrip-full:
+CMorphisms.eq_subrelation: v_0 is incorrectly classified as not a referring parameter.
+Its source universes include v_0 <= Corelib.Init.Logic.65 and
+v_1 <= Corelib.Init.Logic.66.
+CMorphisms.iffT_arrow_subrelation / iffT_flip_arrow_subrelation and
+CRelationClasses.iffT_Symmetric / iffT_Transitive:
+v_1+1 at prod_rect is refused before checking the source's bounds.
+The source has v_1 <= Datatypes.77/.78/.79 and v_1+1 <= v_0.
+
+Current checkInstantiation only recognizes levelParamName(global), not polyParamName(i).
+Do NOT accept all v_i or drop the no-raising check.
+Pass the referring declaration's own UDecl (constant or inductive) through
+checkUniverseObligations. Resolve v_i only if i is within its explicit parameter list.
+Entailment must use the independently source-checked local polymorphic constraints,
+plus the global native universe graph, including integer offsets and transitive
+chains. Variables must stay local to that declaration: no facts may leak between
+declarations. Global coherence and motive-level conventions remain mandatory.
+Mirror the entailment independently in Python check_universe_args.
+Use fixtures where a local variable is explicitly bounded by a global level,
+where it is only transitively bounded, and a negative unbounded/too-large instance.
+The existing fixture corelib-poly-prereq tests distinct explicit instances, not this
+polymorphic-to-global R3 obligation. No implementation of this repair yet.

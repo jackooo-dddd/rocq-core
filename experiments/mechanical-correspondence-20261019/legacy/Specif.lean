@@ -1,0 +1,293 @@
+import Rocq2LeanOut
+import Std
+set_option maxRecDepth 4096
+set_option maxHeartbeats 1000000
+-- Supply ordinary Lean eliminator helpers missing from the mechanical artifact.
+run_cmd Lean.Elab.Command.liftTermElabM do
+  let env ← Lean.getEnv
+  for (n, ci) in env.constants.toList do
+    if n.toString.startsWith "Rocq." then
+      if let .inductInfo _ := ci then
+        unless env.contains (.str n "casesOn") do
+          Lean.mkCasesOn n
+noncomputable section
+namespace NativeBridge
+universe u v w
+/-- Explicit equivalence: no classical choice, no new axiom. -/
+structure Iso (A : Sort u) (B : Sort v) where
+  to : A → B
+  of : B → A
+  of_to : ∀ a, of (to a) = a
+  to_of : ∀ b, to (of b) = b
+def identityIso (A : Sort u) : Iso A A := ⟨id,id,fun _ => rfl,fun _ => rfl⟩
+namespace Iso
+theorem injective (e : Iso A B) {a b : A} (h : e.to a = e.to b) : a = b :=
+  (e.of_to a).symm.trans ((congrArg e.of h).trans (e.of_to b))
+theorem eq_iff (e : Iso A B) (a b : A) : e.to a = e.to b ↔ a = b :=
+  ⟨e.injective, fun h => congrArg e.to h⟩
+theorem surjective (e : Iso A B) (b : B) : ∃ a, e.to a = b := ⟨e.of b, e.to_of b⟩
+def symm (e : Iso A B) : Iso B A := ⟨e.of, e.to, e.to_of, e.of_to⟩
+def trans (e : Iso A B) (f : Iso B C) : Iso A C where
+  to a := f.to (e.to a)
+  of c := e.of (f.of c)
+  of_to a := by rw [f.of_to, e.of_to]
+  to_of c := by rw [e.to_of, f.to_of]
+theorem forall_iff (e : Iso A B) (P : A → Prop) (Q : B → Prop)
+    (h : ∀ a, P a ↔ Q (e.to a)) : (∀ a, P a) ↔ (∀ b, Q b) := by
+  constructor
+  · intro hp b
+    have hb := (h (e.of b)).mp (hp (e.of b))
+    simpa only [e.to_of] using hb
+  · intro hq a
+    exact (h a).mpr (hq (e.to a))
+theorem exists_iff (e : Iso A B) (P : A → Prop) (Q : B → Prop)
+    (h : ∀ a, P a ↔ Q (e.to a)) : (∃ a, P a) ↔ (∃ b, Q b) := by
+  constructor
+  · rintro ⟨a, ha⟩; exact ⟨e.to a, (h a).mp ha⟩
+  · rintro ⟨b, hb⟩
+    refine ⟨e.of b, (h (e.of b)).mpr ?_⟩
+    simpa only [e.to_of] using hb
+def functions (a : Iso A B) (b : Iso C D) : Iso (A → C) (B → D) where
+  to f x := b.to (f (a.of x))
+  of f x := b.of (f (a.to x))
+  of_to f := by funext x; simp only [a.of_to, b.of_to]
+  to_of f := by funext x; simp only [a.to_of, b.to_of]
+def call (a : Iso A B) (b : Iso C D) (f : B → D) (x : A) : C :=
+  b.of (f (a.to x))
+@[simp] theorem call_agrees (a : Iso A B) (b : Iso C D) (f : B → D) (x : A) :
+  b.to (a.call b f x) = f (a.to x) := b.to_of _
+def call₂ (a : Iso A B) (b : Iso C D) (c : Iso E F) (f : B → D → F) (x : A) (y : C) : E :=
+  c.of (f (a.to x) (b.to y))
+@[simp] theorem call₂_agrees (a : Iso A B) (b : Iso C D) (c : Iso E F)
+    (f : B → D → F) (x : A) (y : C) :
+  c.to (a.call₂ b c f x y) = f (a.to x) (b.to y) := c.to_of _
+def decidableEq (e : Iso A B) [DecidableEq B] : DecidableEq A :=
+  fun x y => if h : e.to x = e.to y then .isTrue (e.injective h)
+    else .isFalse (fun hxy => h (congrArg e.to hxy))
+def lists {A : Type u} {B : Type v} (e : Iso A B) : Iso (List A) (List B) where
+  to := List.map e.to
+  of := List.map e.of
+  of_to xs := by
+    induction xs with
+    | nil => rfl
+    | cons x xs ih => simp only [List.map_cons, e.of_to, ih]
+  to_of xs := by
+    induction xs with
+    | nil => rfl
+    | cons x xs ih => simp only [List.map_cons, e.to_of, ih]
+def options {A : Type u} {B : Type v} (e : Iso A B) : Iso (Option A) (Option B) where
+  to := Option.map e.to
+  of := Option.map e.of
+  of_to x := by cases x <;> simp only [Option.map_none, Option.map_some, e.of_to]
+  to_of x := by cases x <;> simp only [Option.map_none, Option.map_some, e.to_of]
+
+def products {A : Type u} {B : Type v} {C : Type w} {D : Type _}
+ (a : Iso A B) (b : Iso C D) : Iso (A × C) (B × D) where
+ to x := (a.to x.1, b.to x.2)
+ of x := (a.of x.1, b.of x.2)
+ of_to x := by cases x; simp only [a.of_to, b.of_to]
+ to_of x := by cases x; simp only [a.to_of, b.to_of]
+def sums {A : Type u} {B : Type v} {C : Type w} {D : Type _}
+ (a : Iso A B) (b : Iso C D) : Iso (Sum A C) (Sum B D) where
+ to := Sum.map a.to b.to
+ of := Sum.map a.of b.of
+ of_to x := by cases x <;> simp [Sum.map, a.of_to, b.of_to]
+ to_of x := by cases x <;> simp [Sum.map, a.to_of, b.to_of]
+def propositions {P Q : Prop} (h : P ↔ Q) : Iso P Q :=
+ ⟨h.mp, h.mpr, fun _ => rfl, fun _ => rfl⟩
+def subtypes {A : Type u} {B : Type v} (e : Iso A B) (P : A → Prop) (Q : B → Prop)
+ (h : ∀ a, P a ↔ Q (e.to a)) : Iso {a // P a} {b // Q b} where
+ to a := ⟨e.to a.val, (h a.val).mp a.property⟩
+ of b := ⟨e.of b.val, (h (e.of b.val)).mpr (by simpa only [e.to_of] using b.property)⟩
+ of_to a := Subtype.ext (e.of_to a.val)
+ to_of b := Subtype.ext (e.to_of b.val)
+/-- Native-side presentation of ANY source function on bridged types. -/
+def exportFunction (a : Iso A B) (b : Iso C D) (f : A → C) : B → D :=
+ (a.functions b).to f
+@[simp] theorem exportFunction_agrees (a : Iso A B) (b : Iso C D) (f : A → C) (x : A) :
+ a.exportFunction b f (a.to x) = b.to (f x) := by
+ change b.to (f (a.of (a.to x))) = _
+ rw [a.of_to]
+theorem transfer (P Q : Prop) (h : P ↔ Q) (proof : P) : Q := h.mp proof
+theorem transferBack (P Q : Prop) (h : P ↔ Q) (proof : Q) : P := h.mpr proof
+
+end Iso
+def natIso : Iso Nat Nat := ⟨id, id, fun _ => rfl, fun _ => rfl⟩
+theorem eq_correspondence {A : Sort u} (x y : A) : (x = y) ↔ (x = y) := Iff.rfl
+
+def sigTo {A : Type u} {P : A → Prop} : Rocq.Corelib.Init.Specif.sig A P → Subtype P :=
+  Rocq.Corelib.Init.Specif.sig.rec (fun x h => ⟨x,h⟩)
+def sigOf {A : Type u} {P : A → Prop} (x : Subtype P) : Rocq.Corelib.Init.Specif.sig A P := .exist A P x.val x.property
+@[simp] theorem sig_of_to {A : Type u} {P : A → Prop} (x : Rocq.Corelib.Init.Specif.sig A P) : sigOf (sigTo x) = x := by cases x <;> rfl
+@[simp] theorem sig_to_of {A : Type u} {P : A → Prop} (x : Subtype P) : sigTo (sigOf x) = x := by cases x <;> rfl
+def sigIso (A : Type u) (P : A → Prop) : Iso (Rocq.Corelib.Init.Specif.sig A P) (Subtype P) := ⟨sigTo, sigOf, sig_of_to, sig_to_of⟩
+
+def sig2To {A : Type u} {P Q : A → Prop} : Rocq.Corelib.Init.Specif.sig2 A P Q → {x : A // P x ∧ Q x} :=
+  Rocq.Corelib.Init.Specif.sig2.rec (fun x hp hq => ⟨x,hp,hq⟩)
+def sig2Of {A : Type u} {P Q : A → Prop} (x : {x : A // P x ∧ Q x}) : Rocq.Corelib.Init.Specif.sig2 A P Q :=
+  .exist2 A P Q x.val x.property.1 x.property.2
+@[simp] theorem sig2_of_to {A : Type u} {P Q : A → Prop} (x : Rocq.Corelib.Init.Specif.sig2 A P Q) : sig2Of (sig2To x) = x := by cases x <;> rfl
+@[simp] theorem sig2_to_of {A : Type u} {P Q : A → Prop} (x : {x : A // P x ∧ Q x}) : sig2To (sig2Of x) = x := by cases x <;> rfl
+def sig2Iso (A : Type u) (P Q : A → Prop) : Iso (Rocq.Corelib.Init.Specif.sig2 A P Q) {x : A // P x ∧ Q x} := ⟨sig2To, sig2Of, sig2_of_to, sig2_to_of⟩
+
+def sigmaTo {A : Type u} {P : A → Type v} : Rocq.Corelib.Init.Specif.sigT A P → Sigma P :=
+  Rocq.Corelib.Init.Specif.sigT.rec (fun x y => ⟨x,y⟩)
+def sigmaOf {A : Type u} {P : A → Type v} (x : Sigma P) : Rocq.Corelib.Init.Specif.sigT A P := .existT A P x.1 x.2
+@[simp] theorem sigma_of_to {A : Type u} {P : A → Type v} (x : Rocq.Corelib.Init.Specif.sigT A P) : sigmaOf (sigmaTo x) = x := by cases x <;> rfl
+@[simp] theorem sigma_to_of {A : Type u} {P : A → Type v} (x : Sigma P) : sigmaTo (sigmaOf x) = x := by cases x <;> rfl
+def sigmaIso (A : Type u) (P : A → Type v) : Iso (Rocq.Corelib.Init.Specif.sigT A P) (Sigma P) := ⟨sigmaTo, sigmaOf, sigma_of_to, sigma_to_of⟩
+
+def sigma2To {A : Type u} {P : A → Type v} {Q : A → Type w} : Rocq.Corelib.Init.Specif.sigT2 A P Q → Sigma (fun x => P x × Q x) :=
+  Rocq.Corelib.Init.Specif.sigT2.rec (fun x p q => ⟨x,p,q⟩)
+def sigma2Of {A : Type u} {P : A → Type v} {Q : A → Type w} (x : Sigma (fun x => P x × Q x)) : Rocq.Corelib.Init.Specif.sigT2 A P Q :=
+  .existT2 A P Q x.1 x.2.1 x.2.2
+@[simp] theorem sigma2_of_to {A : Type u} {P : A → Type v} {Q : A → Type w} (x : Rocq.Corelib.Init.Specif.sigT2 A P Q) : sigma2Of (sigma2To x) = x := by cases x <;> rfl
+@[simp] theorem sigma2_to_of {A : Type u} {P : A → Type v} {Q : A → Type w} (x : Sigma (fun x => P x × Q x)) : sigma2To (sigma2Of x) = x := by cases x with | mk x pq => cases pq; rfl
+def sigma2Iso (A : Type u) (P : A → Type v) (Q : A → Type w) : Iso (Rocq.Corelib.Init.Specif.sigT2 A P Q) (Sigma (fun x => P x × Q x)) := ⟨sigma2To, sigma2Of, sigma2_of_to, sigma2_to_of⟩
+
+def sumboolTo {P Q : Prop} : Rocq.Corelib.Init.Specif.sumbool P Q → PSum P Q :=
+  Rocq.Corelib.Init.Specif.sumbool.rec PSum.inl PSum.inr
+def sumboolOf {P Q : Prop} : PSum P Q → Rocq.Corelib.Init.Specif.sumbool P Q
+  | .inl p => .left P Q p
+  | .inr q => .right P Q q
+@[simp] theorem sumbool_of_to {P Q : Prop} (x : Rocq.Corelib.Init.Specif.sumbool P Q) : sumboolOf (sumboolTo x) = x := by cases x <;> rfl
+@[simp] theorem sumbool_to_of {P Q : Prop} (x : PSum P Q) : sumboolTo (sumboolOf x) = x := by cases x <;> rfl
+def sumboolIso (P Q : Prop) : Iso (Rocq.Corelib.Init.Specif.sumbool P Q) (PSum P Q) := ⟨sumboolTo, sumboolOf, sumbool_of_to, sumbool_to_of⟩
+def decidableTo {P : Prop} : Rocq.Corelib.Init.Specif.sumbool P (¬ P) → Decidable P :=
+  Rocq.Corelib.Init.Specif.sumbool.rec Decidable.isTrue Decidable.isFalse
+def decidableOf {P : Prop} : Decidable P → Rocq.Corelib.Init.Specif.sumbool P (¬ P)
+  | .isTrue h => .left P (¬P) h
+  | .isFalse h => .right P (¬P) h
+def decidableIso (P : Prop) : Iso (Rocq.Corelib.Init.Specif.sumbool P (¬ P)) (Decidable P) where
+  to := decidableTo
+  of := decidableOf
+  of_to x := by cases x <;> rfl
+  to_of x := by cases x <;> rfl
+
+def sumorTo {A : Type u} {P : Prop} : Rocq.Corelib.Init.Specif.sumor A P → PSum A P :=
+  Rocq.Corelib.Init.Specif.sumor.rec PSum.inl PSum.inr
+def sumorOf {A : Type u} {P : Prop} : PSum A P → Rocq.Corelib.Init.Specif.sumor A P
+  | .inl a => .inleft A P a
+  | .inr p => .inright A P p
+def sumorIso (A : Type u) (P : Prop) : Iso (Rocq.Corelib.Init.Specif.sumor A P) (PSum A P) where
+  to := sumorTo
+  of := sumorOf
+  of_to x := by cases x <;> rfl
+  to_of x := by cases x <;> rfl
+
+@[simp] theorem proj1_sig_agrees {A : Type u} {P : A → Prop} (x : Rocq.Corelib.Init.Specif.sig A P) :
+  Rocq.Corelib.Init.Specif.proj1_sig A P x = (sigTo x).val := by cases x <;> rfl
+@[simp] theorem projT1_agrees {A : Type u} {P : A → Type v} (x : Rocq.Corelib.Init.Specif.sigT A P) :
+  Rocq.Corelib.Init.Specif.projT1 A P x = (sigmaTo x).1 := by cases x <;> rfl
+theorem projT2_agrees {A : Type u} {P : A → Type v} (x : Rocq.Corelib.Init.Specif.sigT A P) :
+  HEq (Rocq.Corelib.Init.Specif.projT2 A P x) (sigmaTo x).2 := by cases x <;> rfl
+
+end NativeBridge
+open Lean Meta Elab Command
+syntax (name := nativeStatement) "#native_statement " ident : command
+@[command_elab nativeStatement] def elabNativeStatement : CommandElab := fun stx => do
+  let sourceName := stx[1].getId
+  liftTermElabM do
+    let ci ← getConstInfo sourceName
+    let .defnInfo di := ci | throwError "Expected an actual translated statement definition"
+    unless di.type == .sort .zero do throwError "Conditional/type-valued statement needs an explicit bridge"
+    let mut rules : SimpTheorems := {}
+    for rule in ["true_agrees","false_agrees","and_agrees","or_agrees","not_agrees","notT_agrees","iff_agrees","ex_agrees","ex2_agrees","inhabited_agrees","all_agrees",
+      "nat_add_agrees","nat_sub_agrees","nat_mul_agrees","nat_pow_agrees","nat_min_agrees","nat_max_agrees",
+      "peano_le_agrees","peano_lt_agrees","peano_ge_agrees","peano_gt_agrees"] do
+      let rn := ("NativeBridge." ++ rule).toName
+      if (← getEnv).contains rn then rules ← rules.addConst rn
+    let ctx ← Simp.mkContext (config := { maxSteps := 20000 }) (simpTheorems := #[rules])
+    let (r, _) ← Meta.simp di.value ctx
+    let nativeName := ("NativeBridge.Statements." ++ sourceName.toString ++ ".native").toName
+    let certName := ("NativeBridge.Statements." ++ sourceName.toString ++ ".correspondence").toName
+    addDecl (.defnDecl {name:=nativeName,levelParams:=di.levelParams,type:=.sort .zero,value:=r.expr,hints:=.abbrev,safety:=.safe})
+    let ls := di.levelParams.map Level.param
+    let ty := mkApp2 (mkConst "Iff".toName) (mkConst sourceName ls) (mkConst nativeName ls)
+    let proof ← mkAppM "Iff.of_eq".toName #[← r.getProof' di.value]
+    addDecl (.thmDecl {name:=certName,levelParams:=di.levelParams,type:=ty,value:=proof})
+namespace NativeBridge
+
+#native_statement Rocq.Corelib.Init.Specif.eq_existT2_curried.statement
+#native_statement Rocq.Corelib.Init.Specif.eq_existT2_l.statement
+#native_statement Rocq.Corelib.Init.Specif.eq_existT2_r.statement
+#native_statement Rocq.Corelib.Init.Specif.eq_existT2_uncurried.statement
+#native_statement Rocq.Corelib.Init.Specif.eq_existT_curried.statement
+#native_statement Rocq.Corelib.Init.Specif.eq_existT_l.statement
+#native_statement Rocq.Corelib.Init.Specif.eq_existT_r.statement
+#native_statement Rocq.Corelib.Init.Specif.eq_existT_uncurried.statement
+#native_statement Rocq.Corelib.Init.Specif.proj2_sig.statement
+#native_statement Rocq.Corelib.Init.Specif.eq_sigT.statement
+#native_statement Rocq.Corelib.Init.Specif.eq_sigT2.statement
+#native_statement Rocq.Corelib.Init.Specif.eq_sigT2_hprop.statement
+#native_statement Rocq.Corelib.Init.Specif.eq_sigT2_hprop_iff.statement
+#native_statement Rocq.Corelib.Init.Specif.eq_sigT2_nondep.statement
+#native_statement Rocq.Corelib.Init.Specif.projT1_of_sigT2_eq.statement
+#native_statement Rocq.Corelib.Init.Specif.eq_sigT2_uncurried.statement
+#native_statement Rocq.Corelib.Init.Specif.eq_sigT2_uncurried_iff.statement
+#native_statement Rocq.Corelib.Init.Specif.eq_sigT_hprop.statement
+#native_statement Rocq.Corelib.Init.Specif.eq_sigT_hprop_iff.statement
+#native_statement Rocq.Corelib.Init.Specif.eq_sigT_nondep.statement
+#native_statement Rocq.Corelib.Init.Specif.projT1_eq.statement
+#native_statement Rocq.Corelib.Init.Specif.eq_sigT_uncurried.statement
+#native_statement Rocq.Corelib.Init.Specif.eq_sigT_uncurried_iff.statement
+#native_statement Rocq.Corelib.Init.Specif.eq_sig_hprop.statement
+#native_statement Rocq.Corelib.Init.Specif.eq_sig_hprop_iff.statement
+#native_statement Rocq.Corelib.Init.Specif.proj1_sig_eq.statement
+#native_statement Rocq.Corelib.Init.Specif.ex2_of_sig2.statement
+#native_statement Rocq.Corelib.Init.Specif.ex2_of_sigT2.statement
+#native_statement Rocq.Corelib.Init.Specif.ex_of_sig.statement
+#native_statement Rocq.Corelib.Init.Specif.ex_of_sigT.statement
+#native_statement Rocq.Corelib.Init.Specif.exists_to_inhabited_sig.statement
+#native_statement Rocq.Corelib.Init.Specif.inhabited_sig_to_exists.statement
+#native_statement Rocq.Corelib.Init.Specif.prod_sigT_prod.statement
+#native_statement Rocq.Corelib.Init.Specif.sig2_ind.statement
+#native_statement Rocq.Corelib.Init.Specif.sig2_sind.statement
+#native_statement Rocq.Corelib.Init.Specif.sigT2_eta.statement
+#native_statement Rocq.Corelib.Init.Specif.sigT2_ind.statement
+#native_statement Rocq.Corelib.Init.Specif.sigT2_sind.statement
+#native_statement Rocq.Corelib.Init.Specif.sigT_eta.statement
+#native_statement Rocq.Corelib.Init.Specif.sigT_ind.statement
+#native_statement Rocq.Corelib.Init.Specif.sigT_of_sigT2_eq.statement
+#native_statement Rocq.Corelib.Init.Specif.sigT_prod_sigT.statement
+#native_statement Rocq.Corelib.Init.Specif.sigT_sind.statement
+#native_statement Rocq.Corelib.Init.Specif.sig_ind.statement
+#native_statement Rocq.Corelib.Init.Specif.sig_sind.statement
+#native_statement Rocq.Corelib.Init.Specif.sumbool_ind.statement
+#native_statement Rocq.Corelib.Init.Specif.sumbool_sind.statement
+#native_statement Rocq.Corelib.Init.Specif.sumor_ind.statement
+#native_statement Rocq.Corelib.Init.Specif.sumor_sind.statement
+
+end NativeBridge
+run_cmd Lean.Elab.Command.liftTermElabM do
+  let env ← Lean.getEnv
+  let mut rows : Array Lean.Json := #[]
+  for (n, ci) in env.constants.toList do
+    if n.toString.startsWith "NativeBridge." then
+      if ci.isDefinition || ci.isTheorem then
+        let axs ← Lean.collectAxioms n
+        for ax in axs do
+          unless ["propext", "Quot.sound", "Classical.choice"].contains ax.toString do
+            throwError "Unapproved axiom in {n}: {ax}"
+        let ty ← Lean.Meta.ppExpr ci.type
+        let mut bodyRefs : Array Lean.Json := #[]
+        let mut bodyText := ""
+        if n.toString.endsWith ".native" then
+          if let some body := ci.value? then
+            bodyText := (← Lean.Meta.ppExpr body).pretty
+            for r in body.getUsedConstants do
+              if r.toString.startsWith "Rocq." || r.toString.startsWith "RocqPending." || r.toString.startsWith "Rocq2Lean." then
+                bodyRefs := bodyRefs.push (.str r.toString)
+        let mut refs : Array Lean.Json := #[]
+        for r in ci.type.getUsedConstants do
+          if r.toString.startsWith "Rocq." || r.toString.startsWith "RocqPending." || r.toString.startsWith "Rocq2Lean." then
+            refs := refs.push (.str r.toString)
+        rows := rows.push (Lean.Json.mkObj [
+          ("name", .str n.toString),
+          ("kind", .str (if ci.isTheorem then "theorem" else "definition")),
+          ("type", .str ty.pretty),
+          ("source_references", .arr refs),
+          ("native_body", .str bodyText),
+          ("remaining_source_symbols", .arr bodyRefs),
+          ("axioms", .arr (axs.map (fun a => .str a.toString)))])
+  IO.FS.writeFile "/home/shunqwang4/research/rocq-core/experiments/mechanical-correspondence-20261019/legacy/audits/Specif.json" (Lean.Json.pretty (.arr rows))

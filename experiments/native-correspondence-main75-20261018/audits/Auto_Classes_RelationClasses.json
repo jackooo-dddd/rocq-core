@@ -1,0 +1,2024 @@
+[{"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.Asymmetric"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.Asymmetric A R → ∀ (x y : A), R x y → R y x → False",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.asymmetry.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "{A : Sort u} → {B : Sort v} → NativeBridge.Iso A B → B → A",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.of",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Classes.RelationClasses.Tlist",
+   "Rocq.Corelib.Classes.RelationClasses.Tlist.Tnil",
+   "Rocq.Corelib.Classes.RelationClasses.Tlist.Tcons"],
+  "native_body":
+  "∀ (P : Rocq.Corelib.Classes.RelationClasses.Tlist → Prop),\n  P Rocq.Corelib.Classes.RelationClasses.Tlist.Tnil →\n    (∀ (T : Type u_Corelib_Classes_RelationClasses_72) (t : Rocq.Corelib.Classes.RelationClasses.Tlist),\n        P t → P (Rocq.Corelib.Classes.RelationClasses.Tlist.Tcons T t)) →\n      ∀ (t : Rocq.Corelib.Classes.RelationClasses.Tlist), P t",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.Tlist_ind.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.Symmetric",
+   "Rocq.Corelib.Classes.RelationClasses.complement"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.Symmetric A R →\n    Rocq.Corelib.Classes.RelationClasses.Symmetric A (Rocq.Corelib.Classes.RelationClasses.complement A R)",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.complement_Symmetric.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.PreOrder",
+   "Rocq.Corelib.Classes.RelationClasses.Transitive"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.PreOrder A R → Rocq.Corelib.Classes.RelationClasses.Transitive A R",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.PreOrder_Transitive.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "{P Q : Prop} → (P ↔ Q) → NativeBridge.Iso P Q",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.propositions",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u_1} {B : Sort u_2} {C : Sort u_3} {D : Sort u_4} (a : NativeBridge.Iso A B) (b : NativeBridge.Iso C D)\n  (f : A → C) (x : A), a.exportFunction b f (a.to x) = b.to (f x)",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.exportFunction_agrees",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type": "∀ (P : Prop), Rocq.Corelib.Init.Logic.not P ↔ ¬P",
+  "source_references": ["Rocq.Corelib.Init.Logic.not"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.not_agrees",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols": ["Rocq.Corelib.Program.Basics.impl"],
+  "native_body":
+  "∀ (x y z : Prop),\n  Rocq.Corelib.Program.Basics.impl x y → Rocq.Corelib.Program.Basics.impl y z → Rocq.Corelib.Program.Basics.impl x z",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.impl_Transitive_obligation_1.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u_1} {B : Sort u_2} (e : NativeBridge.Iso A B) {a b : A}, e.to a = e.to b → a = b",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.injective",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.Symmetric"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.Symmetric A R → ∀ (x y : A), R x y → R y x",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.symmetry.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.Equivalence",
+   "Rocq.Corelib.Classes.RelationClasses.PreOrder"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.Equivalence A R → Rocq.Corelib.Classes.RelationClasses.PreOrder A R",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_PreOrder.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Classes.RelationClasses.Tlist",
+   "Rocq.Corelib.Classes.RelationClasses.arrows",
+   "Rocq.Corelib.Classes.RelationClasses.pointwise_lifting"],
+  "native_body":
+  "∀ (l : Rocq.Corelib.Classes.RelationClasses.Tlist) (x : Rocq.Corelib.Classes.RelationClasses.arrows l (PULift Prop)),\n  (Rocq.Corelib.Classes.RelationClasses.pointwise_lifting (fun a a_1 => { down := a.down ↔ a_1.down }) l x x).down",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_1.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.Equivalence",
+   "Rocq.Corelib.Classes.RelationClasses.PER"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.Equivalence A R → Rocq.Corelib.Classes.RelationClasses.PER A R",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_PER.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "{A : Type u} →\n  {B : Type v} →\n    (e : NativeBridge.Iso A B) →\n      (P : A → Prop) → (Q : B → Prop) → (∀ (a : A), P a ↔ Q (e.to a)) → NativeBridge.Iso { a // P a } { b // Q b }",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.subtypes",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "{A : Sort u} →\n  {B : Sort v} →\n    {motive : NativeBridge.Iso A B → Sort u_1} →\n      (t : NativeBridge.Iso A B) →\n        ((to : A → B) →\n            (of : B → A) →\n              (of_to : ∀ (a : A), of (to a) = a) →\n                (to_of : ∀ (b : B), to (of b) = b) → motive { to := to, of := of, of_to := of_to, to_of := to_of }) →\n          motive t",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.casesOn",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.complement_inverse.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.complement_inverse.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.complement_inverse.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.complement_inverse.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Classes.RelationClasses.RewriteRelation",
+   "Rocq.Corelib.Program.Basics.impl"],
+  "native_body":
+  "Rocq.Corelib.Classes.RelationClasses.RewriteRelation Prop Rocq.Corelib.Program.Basics.impl",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.impl_rewrite_relation.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u_1} {B : Sort u_2} {C : Sort u_3} {D : Sort u_4} (a : NativeBridge.Iso A B) (b : NativeBridge.Iso C D)\n  (f : B → D) (x : A), b.to (a.call b f x) = f (a.to x)",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.call_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.iff_equivalence.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.iff_equivalence.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.iff_equivalence.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.iff_equivalence.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "∀ (P Q : Prop), Rocq.Corelib.Init.Logic.or P Q ↔ P ∨ Q",
+  "source_references": ["Rocq.Corelib.Init.Logic.or"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.or_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.True ↔ True",
+  "source_references": ["Rocq.Corelib.Init.Logic.True"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.true_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.PER",
+   "Rocq.Corelib.Classes.RelationClasses.Transitive"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.PER A R → Rocq.Corelib.Classes.RelationClasses.Transitive A R",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.PER_Transitive.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.eq_equivalence.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.eq_equivalence.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.eq_equivalence.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.eq_equivalence.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.False = False",
+  "source_references": ["Rocq.Corelib.Init.Logic.False"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.false_agrees._simp_1",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.Equivalence",
+   "Rocq.Corelib.Classes.RelationClasses.Antisymmetric"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (eqA : Rocq.Corelib.Relations.Relation_Definitions.relation A)\n  (equ : Rocq.Corelib.Classes.RelationClasses.Equivalence A eqA)\n  (R : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.Antisymmetric A eqA equ R → ∀ (x y : A), R x y → R y x → eqA x y",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.antisymmetry.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} (P : A → Prop), Rocq.Corelib.Init.Logic.ex A P ↔ ∃ x, P x",
+  "source_references": ["Rocq.Corelib.Init.Logic.ex"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.ex_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.iff_Transitive.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.iff_Transitive.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.iff_Transitive.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.iff_Transitive.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.flip_StrictOrder.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.flip_StrictOrder.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.flip_StrictOrder.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.flip_StrictOrder.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.Equivalence_Transitive.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_Transitive.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.Equivalence_Transitive.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_Transitive.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "{A : Sort u_1} → {B : Sort u_2} → NativeBridge.Iso A B → NativeBridge.Iso B A",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.symm",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.flip_Asymmetric.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Asymmetric.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.flip_Asymmetric.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Asymmetric.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Classes.RelationClasses.Tlist",
+   "Rocq.Corelib.Classes.RelationClasses.PreOrder",
+   "Rocq.Corelib.Classes.RelationClasses.arrows",
+   "Rocq.Corelib.Classes.RelationClasses.pointwise_lifting",
+   "Rocq.Corelib.Program.Basics.impl"],
+  "native_body":
+  "∀ (l : Rocq.Corelib.Classes.RelationClasses.Tlist),\n  Rocq.Corelib.Classes.RelationClasses.PreOrder (Rocq.Corelib.Classes.RelationClasses.arrows l (PULift Prop))\n    fun a a_1 =>\n    (Rocq.Corelib.Classes.RelationClasses.pointwise_lifting\n        (fun a a_2 => { down := Rocq.Corelib.Program.Basics.impl a.down a_2.down }) l a a_1).down",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.predicate_implication_preorder.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Classes.RelationClasses.Symmetric",
+   "Rocq.Corelib.Init.Logic.iff"],
+  "native_body":
+  "Rocq.Corelib.Classes.RelationClasses.Symmetric Prop Rocq.Corelib.Init.Logic.iff",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.iff_Symmetric.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.flip_Antisymmetric.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Antisymmetric.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.flip_Antisymmetric.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Antisymmetric.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Classes.RelationClasses.Symmetric"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21),\n  Rocq.Corelib.Classes.RelationClasses.Symmetric A fun x y => ¬x = y",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.neq_Symmetric.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Classes.RelationClasses.Tlist",
+   "Rocq.Corelib.Classes.RelationClasses.Tlist.Tnil",
+   "Rocq.Corelib.Classes.RelationClasses.Tlist.Tcons"],
+  "native_body":
+  "∀ (P : Rocq.Corelib.Classes.RelationClasses.Tlist → Prop),\n  P Rocq.Corelib.Classes.RelationClasses.Tlist.Tnil →\n    (∀ (T : Type u_Corelib_Classes_RelationClasses_72) (t : Rocq.Corelib.Classes.RelationClasses.Tlist),\n        P t → P (Rocq.Corelib.Classes.RelationClasses.Tlist.Tcons T t)) →\n      ∀ (t : Rocq.Corelib.Classes.RelationClasses.Tlist), P t",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.Tlist_sind.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Type u_1} {B : Type u_2} (e : NativeBridge.Iso A B) (P : A → Prop) (Q : B → Prop),\n  (∀ (a : A), P a ↔ Q (e.to a)) → ∀ (b : { b // Q b }), P (e.of b.val)",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.subtypes._proof_2",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u_1} {B : Sort u_2} (e : NativeBridge.Iso A B) (b : B), ∃ a, e.to a = b",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.surjective",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Type u_1} {B : Type u_2} (e : NativeBridge.Iso A B) (P : A → Prop) (Q : B → Prop)\n  (h : ∀ (a : A), P a ↔ Q (e.to a)) (a : { a // P a }), P (e.of ⟨e.to a.val, ⋯⟩.val)",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.subtypes._proof_3",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.PER_Symmetric.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.PER_Symmetric.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.PER_Symmetric.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.PER_Symmetric.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "{A : Sort u_1} →\n  {B : Sort u_2} →\n    {C : Sort u_3} →\n      {D : Sort u_4} →\n        {E : Sort u_5} →\n          {F : Sort u_6} → NativeBridge.Iso A B → NativeBridge.Iso C D → NativeBridge.Iso E F → (B → D → F) → A → C → E",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.call₂",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "∀ (P Q : Prop), Rocq.Corelib.Init.Logic.iff P Q = (P ↔ Q)",
+  "source_references": ["Rocq.Corelib.Init.Logic.iff"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.iff_agrees._simp_1",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.Equivalence",
+   "Rocq.Corelib.Classes.RelationClasses.Reflexive"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.Equivalence A R → Rocq.Corelib.Classes.RelationClasses.Reflexive A R",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_Reflexive.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "{A : Sort u} → {B : Sort v} → NativeBridge.Iso A B → A → B",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.to",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.partial_order_antisym.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.partial_order_antisym.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.partial_order_antisym.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.partial_order_antisym.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "∀ (P : Prop), Rocq.Corelib.Init.Logic.not P = ¬P",
+  "source_references": ["Rocq.Corelib.Init.Logic.not"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.not_agrees._simp_1",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Classes.RelationClasses.Symmetric"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21), Rocq.Corelib.Classes.RelationClasses.Symmetric A Eq",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.eq_Symmetric.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.StrictOrder_Transitive.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.StrictOrder_Transitive.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.StrictOrder_Transitive.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.StrictOrder_Transitive.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "(A : Sort u) → (B : Sort v) → [SizeOf A] → [SizeOf B] → SizeOf (NativeBridge.Iso A B)",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso._sizeOf_inst",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "{A : Sort u} → {B : Sort v} → NativeBridge.Iso A B → Nat",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.ctorIdx",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.inverse_impl_rewrite_relation.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.inverse_impl_rewrite_relation.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.inverse_impl_rewrite_relation.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.inverse_impl_rewrite_relation.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.Tlist_ind.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.Tlist_ind.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.Tlist_ind.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.Tlist_ind.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.asymmetry.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.asymmetry.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.asymmetry.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.asymmetry.statement.correspondence",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "∀ {A : Type u_2} {B : Type u_1} (e : NativeBridge.Iso A B) (P : A → Prop) (Q : B → Prop)\n  (h : ∀ (a : A), P a ↔ Q (e.to a)) (b : { b // Q b }), ⟨e.to ⟨e.of b.val, ⋯⟩.val, ⋯⟩ = b",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.subtypes._proof_6",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.PreOrder_Transitive.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.PreOrder_Transitive.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.PreOrder_Transitive.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.PreOrder_Transitive.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.complement_Symmetric.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.complement_Symmetric.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.complement_Symmetric.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.complement_Symmetric.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "{A : Type u} →\n  {B : Type v} →\n    {C : Type w} → {D : Type u_1} → NativeBridge.Iso A B → NativeBridge.Iso C D → NativeBridge.Iso (A ⊕ C) (B ⊕ D)",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.sums",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.impl_Transitive_obligation_1.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.impl_Transitive_obligation_1.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.impl_Transitive_obligation_1.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.impl_Transitive_obligation_1.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.StrictOrder_Asymmetric.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.StrictOrder_Asymmetric.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.StrictOrder_Asymmetric.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.StrictOrder_Asymmetric.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.flip_Irreflexive.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Irreflexive.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.flip_Irreflexive.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Irreflexive.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.Equivalence",
+   "Rocq.Corelib.Program.Basics.flip"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.Equivalence A R →\n    Rocq.Corelib.Classes.RelationClasses.Equivalence A (Rocq.Corelib.Program.Basics.flip A A Prop R)",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Equivalence.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Classes.RelationClasses.Reflexive",
+   "Rocq.Corelib.Program.Basics.impl"],
+  "native_body":
+  "Rocq.Corelib.Classes.RelationClasses.Reflexive Prop Rocq.Corelib.Program.Basics.impl",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.impl_Reflexive.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.StrictOrder_Irreflexive.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.StrictOrder_Irreflexive.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.StrictOrder_Irreflexive.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.StrictOrder_Irreflexive.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Classes.RelationClasses.Transitive"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21), Rocq.Corelib.Classes.RelationClasses.Transitive A Eq",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.eq_Transitive.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.Reflexive",
+   "Rocq.Corelib.Program.Basics.flip"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.Reflexive A R →\n    Rocq.Corelib.Classes.RelationClasses.Reflexive A (Rocq.Corelib.Program.Basics.flip A A Prop R)",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Reflexive.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "{A : Sort u_1} →\n  {B : Sort u_2} →\n    {C : Sort u_3} → {D : Sort u_4} → NativeBridge.Iso A B → NativeBridge.Iso C D → NativeBridge.Iso (A → C) (B → D)",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.functions",
+  "kind": "definition",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "∀ {A : Type u_1} {B : Type u_2} (e : NativeBridge.Iso A B) (xs : List A), List.map e.of (List.map e.to xs) = xs",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.lists._proof_1",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "{A : Type u} →\n  {B : Type v} →\n    {C : Type w} → {D : Type u_1} → NativeBridge.Iso A B → NativeBridge.Iso C D → NativeBridge.Iso (A × C) (B × D)",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.products",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ {A : Type u_2} {B : Type u_1} (e : NativeBridge.Iso A B) (x : Option B), Option.map e.to (Option.map e.of x) = x",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.options._proof_2",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type": "∀ (P Q : Prop), Rocq.Corelib.Init.Logic.iff P Q ↔ (P ↔ Q)",
+  "source_references": ["Rocq.Corelib.Init.Logic.iff"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.iff_agrees",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "{A : Sort u} →\n  {B : Sort v} →\n    {P : Sort u_1} →\n      {to : A → B} →\n        {of : B → A} →\n          {of_to : ∀ (a : A), of (to a) = a} →\n            {to_of : ∀ (b : B), to (of b) = b} →\n              {to' : A → B} →\n                {of' : B → A} →\n                  {of_to' : ∀ (a : A), of' (to' a) = a} →\n                    {to_of' : ∀ (b : B), to' (of' b) = b} →\n                      { to := to, of := of, of_to := of_to, to_of := to_of } =\n                          { to := to', of := of', of_to := of_to', to_of := to_of' } →\n                        (to ≍ to' → of ≍ of' → P) → P",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.mk.noConfusion",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.iff_rewrite_relation.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.iff_rewrite_relation.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.iff_rewrite_relation.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.iff_rewrite_relation.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.Equivalence_Symmetric.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_Symmetric.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.Equivalence_Symmetric.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_Symmetric.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.impl_Reflexive_obligation_1.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.impl_Reflexive_obligation_1.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.impl_Reflexive_obligation_1.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.impl_Reflexive_obligation_1.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u_1} {B : Sort u_2} (e : NativeBridge.Iso A B) (x y : A), ¬e.to x = e.to y → x = y → False",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.decidableEq._proof_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "{A : Sort u_1} → {B : Sort u_2} → NativeBridge.Iso A B → [DecidableEq B] → DecidableEq A",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.decidableEq",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.iff_Symmetric.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.iff_Symmetric.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.iff_Symmetric.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.iff_Symmetric.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "∀ {P Q : Prop}, (P ↔ Q) → P → P",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.propositions._proof_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "∀ {P Q : Prop} (h : P ↔ Q) (x : Q), ⋯ = ⋯",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.propositions._proof_4",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.predicate_implication_preorder.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.predicate_implication_preorder.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.predicate_implication_preorder.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.predicate_implication_preorder.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.Asymmetric",
+   "Rocq.Corelib.Program.Basics.flip"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.Asymmetric A R →\n    Rocq.Corelib.Classes.RelationClasses.Asymmetric A (Rocq.Corelib.Program.Basics.flip A A Prop R)",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Asymmetric.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.Equivalence",
+   "Rocq.Corelib.Classes.RelationClasses.Transitive"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.Equivalence A R → Rocq.Corelib.Classes.RelationClasses.Transitive A R",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_Transitive.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u_3} {B : Sort u_2} {C : Sort u_1} (e : NativeBridge.Iso A B) (f : NativeBridge.Iso B C) (c : C),\n  f.to (e.to (e.of (f.of c))) = c",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.trans._proof_2",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.StrictOrder",
+   "Rocq.Corelib.Program.Basics.flip"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.StrictOrder A R →\n    Rocq.Corelib.Classes.RelationClasses.StrictOrder A (Rocq.Corelib.Program.Basics.flip A A Prop R)",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.flip_StrictOrder.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "∀ (P Q : Prop), (P ↔ Q) → P → Q",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.transfer",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.neq_Symmetric.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.neq_Symmetric.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.neq_Symmetric.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.neq_Symmetric.statement.correspondence",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.Tlist_sind.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.Tlist_sind.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.Tlist_sind.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.Tlist_sind.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.Equivalence",
+   "Rocq.Corelib.Classes.RelationClasses.Antisymmetric",
+   "Rocq.Corelib.Program.Basics.flip"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (eqA : Rocq.Corelib.Relations.Relation_Definitions.relation A)\n  (equ : Rocq.Corelib.Classes.RelationClasses.Equivalence A eqA)\n  (R : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.Antisymmetric A eqA equ R →\n    Rocq.Corelib.Classes.RelationClasses.Antisymmetric A eqA equ (Rocq.Corelib.Program.Basics.flip A A Prop R)",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Antisymmetric.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "{A : Sort u_1} →\n  {B : Sort u_2} → {C : Sort u_3} → {D : Sort u_4} → NativeBridge.Iso A B → NativeBridge.Iso C D → (B → D) → A → C",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.call",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} {B : Sort v} (self : NativeBridge.Iso A B) (a : A), self.of (self.to a) = a",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.of_to",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.Equivalence",
+   "Rocq.Corelib.Classes.RelationClasses.PreOrder",
+   "Rocq.Corelib.Classes.RelationClasses.PartialOrder",
+   "Rocq.Corelib.Classes.RelationClasses.Antisymmetric"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Classes_RelationClasses_98) (eqA : Rocq.Corelib.Relations.Relation_Definitions.relation A)\n  (equ : Rocq.Corelib.Classes.RelationClasses.Equivalence A eqA)\n  (R : Rocq.Corelib.Relations.Relation_Definitions.relation A)\n  (preo : Rocq.Corelib.Classes.RelationClasses.PreOrder A R),\n  Rocq.Corelib.Classes.RelationClasses.PartialOrder A eqA equ R preo →\n    Rocq.Corelib.Classes.RelationClasses.Antisymmetric A eqA equ R",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.partial_order_antisym.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "{A : Sort u} →\n  {B : Sort v} →\n    {motive : NativeBridge.Iso A B → Sort u_1} →\n      (t : NativeBridge.Iso A B) →\n        ((to : A → B) →\n            (of : B → A) →\n              (of_to : ∀ (a : A), of (to a) = a) →\n                (to_of : ∀ (b : B), to (of b) = b) → motive { to := to, of := of, of_to := of_to, to_of := to_of }) →\n          motive t",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.recOn",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.Equivalence_Reflexive.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_Reflexive.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.Equivalence_Reflexive.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_Reflexive.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u_1} {B : Sort u_2} (e : NativeBridge.Iso A B) (P : A → Prop) (Q : B → Prop),\n  (∀ (a : A), P a ↔ Q (e.to a)) → ((∃ a, P a) ↔ ∃ b, Q b)",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.exists_iff",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.PER",
+   "Rocq.Corelib.Classes.RelationClasses.Symmetric"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.PER A R → Rocq.Corelib.Classes.RelationClasses.Symmetric A R",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.PER_Symmetric.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u_1} {B : Sort u_2} {C : Sort u_3} {D : Sort u_4} {E : Sort u_5} {F : Sort u_6} (a : NativeBridge.Iso A B)\n  (b : NativeBridge.Iso C D) (c : NativeBridge.Iso E F) (f : B → D → F) (x : A) (y : C),\n  c.to (a.call₂ b c f x y) = f (a.to x) (b.to y)",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.call₂_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_1.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_1.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_1.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_1.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "{A : Sort u_1} →\n  {B : Sort u_2} → {C : Sort u_3} → {D : Sort u_4} → NativeBridge.Iso A B → NativeBridge.Iso C D → (A → C) → B → D",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.exportFunction",
+  "kind": "definition",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.impl_Transitive.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.impl_Transitive.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.impl_Transitive.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.impl_Transitive.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "{A : Type u} → {B : Type v} → NativeBridge.Iso A B → NativeBridge.Iso (List A) (List B)",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.lists",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.subrelation_partial_order_obligation_1.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.subrelation_partial_order_obligation_1.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.subrelation_partial_order_obligation_1.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.subrelation_partial_order_obligation_1.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.partial_order_equivalence.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.partial_order_equivalence.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.partial_order_equivalence.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.partial_order_equivalence.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Classes.RelationClasses.Equivalence",
+   "Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.relation_equivalence"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Classes_RelationClasses_98),\n  Rocq.Corelib.Classes.RelationClasses.Equivalence (Rocq.Corelib.Relations.Relation_Definitions.relation A)\n    (Rocq.Corelib.Classes.RelationClasses.relation_equivalence A)",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.relation_equivalence_equivalence.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Classes.RelationClasses.Tlist",
+   "Rocq.Corelib.Classes.RelationClasses.Equivalence",
+   "Rocq.Corelib.Classes.RelationClasses.arrows",
+   "Rocq.Corelib.Classes.RelationClasses.pointwise_lifting"],
+  "native_body":
+  "∀ (l : Rocq.Corelib.Classes.RelationClasses.Tlist),\n  Rocq.Corelib.Classes.RelationClasses.Equivalence (Rocq.Corelib.Classes.RelationClasses.arrows l (PULift Prop))\n    fun a a_1 =>\n    (Rocq.Corelib.Classes.RelationClasses.pointwise_lifting (fun a a_2 => { down := a.down ↔ a_2.down }) l a a_1).down",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.predicate_equivalence_equivalence.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.complement_Irreflexive.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.complement_Irreflexive.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.complement_Irreflexive.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.complement_Irreflexive.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_3.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_3.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_3.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_3.statement.correspondence",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "∀ {A : Sort u} {B : Sort v} (self : NativeBridge.Iso A B) (b : B), self.to (self.of b) = b",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.to_of",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.irreflexivity.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.irreflexivity.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.irreflexivity.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.irreflexivity.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.flip_PreOrder.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.flip_PreOrder.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.flip_PreOrder.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.flip_PreOrder.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.relation_equivalence_rewrite_relation.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.relation_equivalence_rewrite_relation.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.relation_equivalence_rewrite_relation.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.relation_equivalence_rewrite_relation.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_2.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_2.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_2.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_2.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Classes.RelationClasses.PreOrder",
+   "Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.subrelation"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Classes_RelationClasses_21),\n  Rocq.Corelib.Classes.RelationClasses.PreOrder (Rocq.Corelib.Relations.Relation_Definitions.relation A)\n    (Rocq.Corelib.Classes.RelationClasses.subrelation A)",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.relation_implication_preorder.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.iff_Reflexive.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.iff_Reflexive.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.iff_Reflexive.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.iff_Reflexive.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.transitivity.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.transitivity.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.transitivity.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.transitivity.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.StrictOrder",
+   "Rocq.Corelib.Classes.RelationClasses.Asymmetric"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.StrictOrder A R → Rocq.Corelib.Classes.RelationClasses.Asymmetric A R",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.StrictOrder_Asymmetric.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "∀ (P Q : Prop), Rocq.Corelib.Init.Logic.and P Q ↔ P ∧ Q",
+  "source_references": ["Rocq.Corelib.Init.Logic.and"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.and_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Type u_2} {B : Type u_1} (e : NativeBridge.Iso A B) (xs : List B), List.map e.to (List.map e.of xs) = xs",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.lists._proof_2",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ {A : Sort u} {B : Sort v} (to : A → B) (of : B → A) (of_to : ∀ (a : A), of (to a) = a)\n  (to_of : ∀ (b : B), to (of b) = b) (to_1 : A → B) (of_1 : B → A) (of_to_1 : ∀ (a : A), of_1 (to_1 a) = a)\n  (to_of_1 : ∀ (b : B), to_1 (of_1 b) = b),\n  ({ to := to, of := of, of_to := of_to, to_of := to_of } =\n      { to := to_1, of := of_1, of_to := of_to_1, to_of := to_of_1 }) =\n    (to = to_1 ∧ of = of_1)",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.mk.injEq",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "{A : Type u} → {B : Type v} → NativeBridge.Iso A B → NativeBridge.Iso (Option A) (Option B)",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.options",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.StrictOrder",
+   "Rocq.Corelib.Classes.RelationClasses.Irreflexive"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.StrictOrder A R → Rocq.Corelib.Classes.RelationClasses.Irreflexive A R",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.StrictOrder_Irreflexive.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Type u_1} {B : Type u_2} (e : NativeBridge.Iso A B) (x : Option A), Option.map e.of (Option.map e.to x) = x",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.options._proof_1",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.impl_Reflexive.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.impl_Reflexive.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.impl_Reflexive.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.impl_Reflexive.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.flip_Equivalence.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Equivalence.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.flip_Equivalence.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Equivalence.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.Irreflexive",
+   "Rocq.Corelib.Program.Basics.flip"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.Irreflexive A R →\n    Rocq.Corelib.Classes.RelationClasses.Irreflexive A (Rocq.Corelib.Program.Basics.flip A A Prop R)",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Irreflexive.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "∀ (x : Nat), id (id x) = id (id x)",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.natIso._proof_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.flip_Reflexive.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Reflexive.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.flip_Reflexive.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Reflexive.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u_1} {B : Sort u_2} (e : NativeBridge.Iso A B) (a b : A), e.to a = e.to b ↔ a = b",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.eq_iff",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.eq_Transitive.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.eq_Transitive.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.eq_Transitive.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.eq_Transitive.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols": ["Rocq.Corelib.Program.Basics.impl"],
+  "native_body": "∀ (x : Prop), Rocq.Corelib.Program.Basics.impl x x",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.impl_Reflexive_obligation_1.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.Equivalence",
+   "Rocq.Corelib.Classes.RelationClasses.Symmetric"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.Equivalence A R → Rocq.Corelib.Classes.RelationClasses.Symmetric A R",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_Symmetric.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Classes.RelationClasses.RewriteRelation",
+   "Rocq.Corelib.Init.Logic.iff"],
+  "native_body":
+  "Rocq.Corelib.Classes.RelationClasses.RewriteRelation Prop Rocq.Corelib.Init.Logic.iff",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.iff_rewrite_relation.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "{A : Sort u} → {B : Sort v} → [SizeOf A] → [SizeOf B] → NativeBridge.Iso A B → Nat",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso._sizeOf_1",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Type u_3} {B : Type u_1} {C : Type u_4} {D : Type u_2} (a : NativeBridge.Iso A B) (b : NativeBridge.Iso C D)\n  (x : B ⊕ D), Sum.map a.to b.to (Sum.map a.of b.of x) = x",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.sums._proof_2",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.Reflexive"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.Reflexive A R → ∀ (x : A), R x x",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.reflexivity.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.Symmetric",
+   "Rocq.Corelib.Program.Basics.flip"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.Symmetric A R →\n    Rocq.Corelib.Classes.RelationClasses.Symmetric A (Rocq.Corelib.Program.Basics.flip A A Prop R)",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Symmetric.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u_1} {B : Sort u_2} (e : NativeBridge.Iso A B) (P : A → Prop) (Q : B → Prop),\n  (∀ (a : A), P a ↔ Q (e.to a)) → ((∀ (a : A), P a) ↔ ∀ (b : B), Q b)",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.forall_iff",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Type u_1} {B : Type u_3} {C : Type u_2} {D : Type u_4} (a : NativeBridge.Iso A B) (b : NativeBridge.Iso C D)\n  (x : A ⊕ C), Sum.map a.of b.of (Sum.map a.to b.to x) = x",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.sums._proof_1",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.Transitive",
+   "Rocq.Corelib.Program.Basics.flip"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.Transitive A R →\n    Rocq.Corelib.Classes.RelationClasses.Transitive A (Rocq.Corelib.Program.Basics.flip A A Prop R)",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Transitive.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Classes.RelationClasses.Tlist",
+   "Rocq.Corelib.Classes.RelationClasses.arrows",
+   "Rocq.Corelib.Classes.RelationClasses.pointwise_lifting"],
+  "native_body":
+  "∀ (l : Rocq.Corelib.Classes.RelationClasses.Tlist) (x y : Rocq.Corelib.Classes.RelationClasses.arrows l (PULift Prop)),\n  (Rocq.Corelib.Classes.RelationClasses.pointwise_lifting (fun a a_1 => { down := a.down ↔ a_1.down }) l x y).down →\n    (Rocq.Corelib.Classes.RelationClasses.pointwise_lifting (fun a a_1 => { down := a.down ↔ a_1.down }) l y x).down",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_2.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.PER",
+   "Rocq.Corelib.Program.Basics.flip"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.PER A R →\n    Rocq.Corelib.Classes.RelationClasses.PER A (Rocq.Corelib.Program.Basics.flip A A Prop R)",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.flip_PER.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.equivalence_rewrite_relation.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.equivalence_rewrite_relation.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.equivalence_rewrite_relation.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.equivalence_rewrite_relation.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.is_subrelation.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.is_subrelation.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.is_subrelation.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.is_subrelation.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Classes.RelationClasses.Reflexive"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21), Rocq.Corelib.Classes.RelationClasses.Reflexive A Eq",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.eq_Reflexive.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.False ↔ False",
+  "source_references": ["Rocq.Corelib.Init.Logic.False"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.false_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.subrelation_symmetric.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.subrelation_symmetric.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.subrelation_symmetric.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.subrelation_symmetric.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.PreOrder_Reflexive.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.PreOrder_Reflexive.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.PreOrder_Reflexive.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.PreOrder_Reflexive.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} {B : Sort v} {to : A → B} {of : B → A} {of_to : ∀ (a : A), of (to a) = a}\n  {to_of : ∀ (b : B), to (of b) = b} {to_1 : A → B} {of_1 : B → A} {of_to_1 : ∀ (a : A), of_1 (to_1 a) = a}\n  {to_of_1 : ∀ (b : B), to_1 (of_1 b) = b},\n  { to := to, of := of, of_to := of_to, to_of := to_of } =\n      { to := to_1, of := of_1, of_to := of_to_1, to_of := to_of_1 } →\n    to = to_1 ∧ of = of_1",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.mk.inj",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Classes.RelationClasses.relation_equivalence",
+   "Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.relation_conjunction",
+   "Rocq.Corelib.Classes.RelationClasses.subrelation",
+   "Rocq.Corelib.Program.Basics.flip"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Classes_RelationClasses_98),\n  Rocq.Corelib.Classes.RelationClasses.relation_equivalence (Rocq.Corelib.Relations.Relation_Definitions.relation A)\n    (Rocq.Corelib.Classes.RelationClasses.relation_equivalence A)\n    (Rocq.Corelib.Classes.RelationClasses.relation_conjunction (Rocq.Corelib.Relations.Relation_Definitions.relation A)\n      (Rocq.Corelib.Classes.RelationClasses.subrelation A)\n      (Rocq.Corelib.Program.Basics.flip (Rocq.Corelib.Relations.Relation_Definitions.relation A)\n        (Rocq.Corelib.Relations.Relation_Definitions.relation A) Prop\n        (Rocq.Corelib.Classes.RelationClasses.subrelation A)))",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.subrelation_partial_order_obligation_1.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Classes.RelationClasses.Transitive",
+   "Rocq.Corelib.Program.Basics.impl"],
+  "native_body":
+  "Rocq.Corelib.Classes.RelationClasses.Transitive Prop Rocq.Corelib.Program.Basics.impl",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.impl_Transitive.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "NativeBridge.Iso Nat Nat",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.natIso",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Type u_1} {B : Type u_2} (e : NativeBridge.Iso A B) (P : A → Prop) (Q : B → Prop),\n  (∀ (a : A), P a ↔ Q (e.to a)) → ∀ (a : { a // P a }), Q (e.to a.val)",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.subtypes._proof_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Type u_1} {B : Type u_2} (e : NativeBridge.Iso A B) (P : A → Prop) (Q : B → Prop)\n  (h : ∀ (a : A), P a ↔ Q (e.to a)) (a : { a // P a }), ⟨e.of ⟨e.to a.val, ⋯⟩.val, ⋯⟩ = a",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.subtypes._proof_4",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Classes.RelationClasses.Tlist",
+   "Rocq.Corelib.Classes.RelationClasses.arrows",
+   "Rocq.Corelib.Classes.RelationClasses.pointwise_lifting",
+   "Rocq.Corelib.Program.Basics.impl"],
+  "native_body":
+  "∀ (l : Rocq.Corelib.Classes.RelationClasses.Tlist) (x : Rocq.Corelib.Classes.RelationClasses.arrows l (PULift Prop)),\n  (Rocq.Corelib.Classes.RelationClasses.pointwise_lifting\n      (fun a a_1 => { down := Rocq.Corelib.Program.Basics.impl a.down a_1.down }) l x x).down",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_1.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "∀ (P Q : Prop), Rocq.Corelib.Init.Logic.and P Q = (P ∧ Q)",
+  "source_references": ["Rocq.Corelib.Init.Logic.and"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.and_agrees._simp_1",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type": "∀ (P Q : Prop), (P ↔ Q) → Q → P",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.transferBack",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Classes.RelationClasses.Tlist",
+   "Rocq.Corelib.Classes.RelationClasses.arrows",
+   "Rocq.Corelib.Classes.RelationClasses.pointwise_lifting"],
+  "native_body":
+  "∀ (l : Rocq.Corelib.Classes.RelationClasses.Tlist)\n  (x y z : Rocq.Corelib.Classes.RelationClasses.arrows l (PULift Prop)),\n  (Rocq.Corelib.Classes.RelationClasses.pointwise_lifting (fun a a_1 => { down := a.down ↔ a_1.down }) l x y).down →\n    (Rocq.Corelib.Classes.RelationClasses.pointwise_lifting (fun a a_1 => { down := a.down ↔ a_1.down }) l y z).down →\n      (Rocq.Corelib.Classes.RelationClasses.pointwise_lifting (fun a a_1 => { down := a.down ↔ a_1.down }) l x z).down",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_3.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.predicate_equivalence_equivalence.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.predicate_equivalence_equivalence.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.predicate_equivalence_equivalence.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.predicate_equivalence_equivalence.statement.correspondence",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.Reflexive",
+   "Rocq.Corelib.Classes.RelationClasses.Irreflexive",
+   "Rocq.Corelib.Classes.RelationClasses.complement"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.Reflexive A R →\n    Rocq.Corelib.Classes.RelationClasses.Irreflexive A (Rocq.Corelib.Classes.RelationClasses.complement A R)",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.complement_Irreflexive.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.relation_equivalence_equivalence.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.relation_equivalence_equivalence.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.relation_equivalence_equivalence.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.relation_equivalence_equivalence.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Type u_1} {B : Type u_2} (e : NativeBridge.Iso A B) (P : A → Prop) (Q : B → Prop)\n  (h : ∀ (a : A), P a ↔ Q (e.to a)) (b : { b // Q b }), Q (e.to ⟨e.of b.val, ⋯⟩.val)",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.subtypes._proof_5",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.Equivalence",
+   "Rocq.Corelib.Classes.RelationClasses.PreOrder",
+   "Rocq.Corelib.Classes.RelationClasses.PartialOrder",
+   "Rocq.Corelib.Classes.RelationClasses.relation_equivalence",
+   "Rocq.Corelib.Classes.RelationClasses.relation_conjunction",
+   "Rocq.Corelib.Program.Basics.flip"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Classes_RelationClasses_98) (eqA : Rocq.Corelib.Relations.Relation_Definitions.relation A)\n  (equ : Rocq.Corelib.Classes.RelationClasses.Equivalence A eqA)\n  (R : Rocq.Corelib.Relations.Relation_Definitions.relation A)\n  (preo : Rocq.Corelib.Classes.RelationClasses.PreOrder A R),\n  Rocq.Corelib.Classes.RelationClasses.PartialOrder A eqA equ R preo →\n    Rocq.Corelib.Classes.RelationClasses.relation_equivalence A eqA\n      (Rocq.Corelib.Classes.RelationClasses.relation_conjunction A R (Rocq.Corelib.Program.Basics.flip A A Prop R))",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.partial_order_equivalence.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Classes.RelationClasses.RewriteRelation",
+   "Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.relation_equivalence"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Classes_RelationClasses_98),\n  Rocq.Corelib.Classes.RelationClasses.RewriteRelation (Rocq.Corelib.Relations.Relation_Definitions.relation A)\n    (Rocq.Corelib.Classes.RelationClasses.relation_equivalence A)",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.relation_equivalence_rewrite_relation.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "{P : Sort u_1} →\n  {A : Sort u} →\n    {B : Sort v} →\n      {t : NativeBridge.Iso A B} →\n        {A' : Sort u} →\n          {B' : Sort v} →\n            {t' : NativeBridge.Iso A' B'} → A = A' → B = B' → t ≍ t' → NativeBridge.Iso.noConfusionType P t t'",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.noConfusion",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.PreOrder",
+   "Rocq.Corelib.Program.Basics.flip"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.PreOrder A R →\n    Rocq.Corelib.Classes.RelationClasses.PreOrder A (Rocq.Corelib.Program.Basics.flip A A Prop R)",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.flip_PreOrder.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.Irreflexive",
+   "Rocq.Corelib.Classes.RelationClasses.Reflexive",
+   "Rocq.Corelib.Classes.RelationClasses.complement"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.Irreflexive A R →\n    Rocq.Corelib.Classes.RelationClasses.Reflexive A (Rocq.Corelib.Classes.RelationClasses.complement A R)",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.irreflexivity.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "{A : Sort u} →\n  {B : Sort v} →\n    (to : A → B) → (of : B → A) → (∀ (a : A), of (to a) = a) → (∀ (b : B), to (of b) = b) → NativeBridge.Iso A B",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.mk._flat_ctor",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.Transitive"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.Transitive A R → ∀ (x y z : A), R x y → R y z → R x z",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.transitivity.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Classes.RelationClasses.Reflexive",
+   "Rocq.Corelib.Init.Logic.iff"],
+  "native_body":
+  "Rocq.Corelib.Classes.RelationClasses.Reflexive Prop Rocq.Corelib.Init.Logic.iff",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.iff_Reflexive.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.relation_implication_preorder.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.relation_implication_preorder.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.relation_implication_preorder.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.relation_implication_preorder.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Classes.RelationClasses.Tlist",
+   "Rocq.Corelib.Classes.RelationClasses.arrows",
+   "Rocq.Corelib.Classes.RelationClasses.pointwise_lifting",
+   "Rocq.Corelib.Program.Basics.impl"],
+  "native_body":
+  "∀ (l : Rocq.Corelib.Classes.RelationClasses.Tlist)\n  (x y z : Rocq.Corelib.Classes.RelationClasses.arrows l (PULift Prop)),\n  (Rocq.Corelib.Classes.RelationClasses.pointwise_lifting\n        (fun a a_1 => { down := Rocq.Corelib.Program.Basics.impl a.down a_1.down }) l x y).down →\n    (Rocq.Corelib.Classes.RelationClasses.pointwise_lifting\n          (fun a a_1 => { down := Rocq.Corelib.Program.Basics.impl a.down a_1.down }) l y z).down →\n      (Rocq.Corelib.Classes.RelationClasses.pointwise_lifting\n          (fun a a_1 => { down := Rocq.Corelib.Program.Basics.impl a.down a_1.down }) l x z).down",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.predicate_implication_preorder_obligation_2.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.symmetry.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.symmetry.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.symmetry.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.symmetry.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.Equivalence_PER.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_PER.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.Equivalence_PER.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_PER.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_1.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_1.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_1.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_1.statement.correspondence",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.Equivalence_PreOrder.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_PreOrder.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.Equivalence_PreOrder.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.Equivalence_PreOrder.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.PER_Transitive.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.PER_Transitive.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.PER_Transitive.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.PER_Transitive.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Classes.RelationClasses.Equivalence",
+   "Rocq.Corelib.Init.Logic.iff"],
+  "native_body":
+  "Rocq.Corelib.Classes.RelationClasses.Equivalence Prop Rocq.Corelib.Init.Logic.iff",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.iff_equivalence.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.impl_rewrite_relation.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.impl_rewrite_relation.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.impl_rewrite_relation.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.impl_rewrite_relation.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.complement",
+   "Rocq.Corelib.Program.Basics.flip"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : A → A → Prop),\n  Rocq.Corelib.Classes.RelationClasses.complement A (Rocq.Corelib.Program.Basics.flip A A Prop R) =\n    Rocq.Corelib.Program.Basics.flip A A Prop (Rocq.Corelib.Classes.RelationClasses.complement A R)",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.complement_inverse.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} {B : Sort v} [inst : SizeOf A] [inst_1 : SizeOf B] (to : A → B) (of : B → A)\n  (of_to : ∀ (a : A), of (to a) = a) (to_of : ∀ (b : B), to (of b) = b),\n  sizeOf { to := to, of := of, of_to := of_to, to_of := to_of } = 1",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.mk.sizeOf_spec",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.antisymmetry.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.antisymmetry.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.antisymmetry.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.antisymmetry.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Classes.RelationClasses.Equivalence"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Classes_RelationClasses_21), Rocq.Corelib.Classes.RelationClasses.Equivalence A Eq",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.eq_equivalence.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "∀ {P Q : Prop}, (P ↔ Q) → Q → Q",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.propositions._proof_3",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Classes.RelationClasses.Transitive",
+   "Rocq.Corelib.Init.Logic.iff"],
+  "native_body":
+  "Rocq.Corelib.Classes.RelationClasses.Transitive Prop Rocq.Corelib.Init.Logic.iff",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.iff_Transitive.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "∀ {P Q : Prop} (h : P ↔ Q) (x : P), ⋯ = ⋯",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.propositions._proof_2",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u_1} {B : Sort u_2} {C : Sort u_3} (e : NativeBridge.Iso A B) (f : NativeBridge.Iso B C) (a : A),\n  e.of (f.of (f.to (e.to a))) = a",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.trans._proof_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "{A : Sort u_1} → {B : Sort u_2} → {C : Sort u_3} → NativeBridge.Iso A B → NativeBridge.Iso B C → NativeBridge.Iso A C",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.trans",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "∀ (P Q : Prop), Rocq.Corelib.Init.Logic.or P Q = (P ∨ Q)",
+  "source_references": ["Rocq.Corelib.Init.Logic.or"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.or_agrees._simp_1",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.reflexivity.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.reflexivity.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.reflexivity.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.reflexivity.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.flip_Symmetric.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Symmetric.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.flip_Symmetric.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Symmetric.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_2.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_2.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_2.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.predicate_equivalence_equivalence_obligation_2.statement.correspondence",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.flip_Transitive.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Transitive.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.flip_Transitive.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.flip_Transitive.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Init.Logic.True = True",
+  "source_references": ["Rocq.Corelib.Init.Logic.True"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.true_agrees._simp_1",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.flip_PER.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.flip_PER.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.flip_PER.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.flip_PER.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ {A : Type u_3} {B : Type u_1} {C : Type u_4} {D : Type u_2} (a : NativeBridge.Iso A B) (b : NativeBridge.Iso C D)\n  (x : B × D), (a.to (a.of x.fst, b.of x.snd).fst, b.to (a.of x.fst, b.of x.snd).snd) = x",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.products._proof_2",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.PreOrder",
+   "Rocq.Corelib.Classes.RelationClasses.Reflexive"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.PreOrder A R → Rocq.Corelib.Classes.RelationClasses.Reflexive A R",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.PreOrder_Reflexive.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "Sort u_1 →\n  {A : Sort u} → {B : Sort v} → NativeBridge.Iso A B → {A' : Sort u} → {B' : Sort v} → NativeBridge.Iso A' B' → Sort u_1",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.noConfusionType",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.Symmetric",
+   "Rocq.Corelib.Classes.RelationClasses.subrelation",
+   "Rocq.Corelib.Program.Basics.flip"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.Symmetric A R →\n    Rocq.Corelib.Classes.RelationClasses.subrelation A (Rocq.Corelib.Program.Basics.flip A A Prop R) R",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.subrelation_symmetric.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u_4} {B : Sort u_1} {C : Sort u_3} {D : Sort u_2} (a : NativeBridge.Iso A B) (b : NativeBridge.Iso C D)\n  (f : B → D), (fun x => b.to (b.of (f (a.to (a.of x))))) = f",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.functions._proof_2",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type": "∀ {A : Sort u} (x y : A), x = y ↔ x = y",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.eq_correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.eq_Reflexive.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.eq_Reflexive.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.eq_Reflexive.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.eq_Reflexive.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.subrelation"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21)\n  (R R' : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.subrelation A R R' → ∀ (x y : A), R x y → R' x y",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.is_subrelation.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.Equivalence",
+   "Rocq.Corelib.Classes.RelationClasses.RewriteRelation"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (eqA : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.Equivalence A eqA → Rocq.Corelib.Classes.RelationClasses.RewriteRelation A eqA",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.equivalence_rewrite_relation.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u} (P : A → Prop), Rocq.Corelib.Init.Logic.ex A P = ∃ x, P x",
+  "source_references": ["Rocq.Corelib.Init.Logic.ex"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.ex_agrees._simp_1",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Classes.RelationClasses.RewriteRelation",
+   "Rocq.Corelib.Program.Basics.flip",
+   "Rocq.Corelib.Program.Basics.impl"],
+  "native_body":
+  "Rocq.Corelib.Classes.RelationClasses.RewriteRelation Prop\n  (Rocq.Corelib.Program.Basics.flip Prop Prop Prop Rocq.Corelib.Program.Basics.impl)",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.inverse_impl_rewrite_relation.statement.native",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ {A : Sort u_1} {B : Sort u_4} {C : Sort u_2} {D : Sort u_3} (a : NativeBridge.Iso A B) (b : NativeBridge.Iso C D)\n  (f : A → C), (fun x => b.of (b.to (f (a.of (a.to x))))) = f",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.functions._proof_1",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "∀ {A : Type u_1} {B : Type u_3} {C : Type u_2} {D : Type u_4} (a : NativeBridge.Iso A B) (b : NativeBridge.Iso C D)\n  (x : A × C), (a.of (a.to x.fst, b.to x.snd).fst, b.of (a.to x.fst, b.to x.snd).snd) = x",
+  "source_references": [],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name": "NativeBridge.Iso.products._proof_1",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "Rocq.Corelib.Classes.RelationClasses.eq_Symmetric.statement ↔\n  NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.eq_Symmetric.statement.native",
+  "source_references":
+  ["Rocq.Corelib.Classes.RelationClasses.eq_Symmetric.statement"],
+  "remaining_source_symbols": [],
+  "native_body": "",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.eq_Symmetric.statement.correspondence",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Prop",
+  "source_references": [],
+  "remaining_source_symbols":
+  ["Rocq.Corelib.Relations.Relation_Definitions.relation",
+   "Rocq.Corelib.Classes.RelationClasses.StrictOrder",
+   "Rocq.Corelib.Classes.RelationClasses.Transitive"],
+  "native_body":
+  "∀ (A : Type u_Corelib_Classes_RelationClasses_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A),\n  Rocq.Corelib.Classes.RelationClasses.StrictOrder A R → Rocq.Corelib.Classes.RelationClasses.Transitive A R",
+  "name":
+  "NativeBridge.Statements.Rocq.Corelib.Classes.RelationClasses.StrictOrder_Transitive.statement.native",
+  "kind": "definition",
+  "axioms": []}]

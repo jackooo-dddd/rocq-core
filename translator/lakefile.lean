@@ -2,6 +2,7 @@ import Lake
 open Lake DSL
 
 package rocq2lean_pilot where
+  moreLeanArgs := #["-j", "4"]
   leanOptions := #[⟨`autoImplicit, false⟩]
 
 /-- Translator library: IR reader, translation, kernel insertion, audits. -/

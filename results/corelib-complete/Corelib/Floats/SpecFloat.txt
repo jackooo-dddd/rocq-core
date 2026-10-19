@@ -1,0 +1,805 @@
+rocq2lean: 55 root(s) TRANSLATED_AND_CHECKED; summary {"bootstrap_resolved":0,"generated_helpers":0,"not_ok":2,"roots":55,"translated_dependencies":55}
+def Rocq.Corelib.Floats.SpecFloat.SFabs : Rocq.Corelib.Floats.SpecFloat.spec_float →
+  Rocq.Corelib.Floats.SpecFloat.spec_float :=
+fun x =>
+  Rocq.Corelib.Floats.SpecFloat.spec_float.rec.{1}
+    (fun s => Rocq.Corelib.Floats.SpecFloat.spec_float.S754_zero Rocq.Corelib.Init.Datatypes.bool.false)
+    (fun s => Rocq.Corelib.Floats.SpecFloat.spec_float.S754_infinity Rocq.Corelib.Init.Datatypes.bool.false)
+    Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan
+    (fun s m e => Rocq.Corelib.Floats.SpecFloat.spec_float.S754_finite Rocq.Corelib.Init.Datatypes.bool.false m e) x
+def Rocq.Corelib.Floats.SpecFloat.SFadd : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z →
+    Rocq.Corelib.Floats.SpecFloat.spec_float →
+      Rocq.Corelib.Floats.SpecFloat.spec_float → Rocq.Corelib.Floats.SpecFloat.spec_float :=
+fun prec emax x y =>
+  Rocq.Corelib.Floats.SpecFloat.spec_float.rec.{1}
+    (fun s =>
+      Rocq.Corelib.Floats.SpecFloat.spec_float.rec.{1}
+        (fun s_1 =>
+          Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+            (Rocq.Corelib.Init.Datatypes.bool.rec.{1} x
+              (Rocq.Corelib.Floats.SpecFloat.spec_float.S754_zero Rocq.Corelib.Init.Datatypes.bool.false) s_1)
+            (Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+              (Rocq.Corelib.Floats.SpecFloat.spec_float.S754_zero Rocq.Corelib.Init.Datatypes.bool.false) x s_1)
+            s)
+        (fun s => y) Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan (fun s m e => y) y)
+    (fun s =>
+      Rocq.Corelib.Floats.SpecFloat.spec_float.rec.{1} (fun s => x)
+        (fun s_1 =>
+          Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+            (Rocq.Corelib.Init.Datatypes.bool.rec.{1} x Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan s_1)
+            (Rocq.Corelib.Init.Datatypes.bool.rec.{1} Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan x s_1) s)
+        Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan (fun s m e => x) y)
+    Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan
+    (fun s m e =>
+      Rocq.Corelib.Floats.SpecFloat.spec_float.rec.{1} (fun s => x) (fun s => y)
+        Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan
+        (fun s_1 m_1 e_1 =>
+          let ez := Rocq.Corelib.BinNums.IntDef.Z.min e e_1;
+          Rocq.Corelib.Floats.SpecFloat.binary_normalize prec emax
+            (Rocq.Corelib.BinNums.IntDef.Z.add
+              (Rocq.Corelib.Floats.SpecFloat.cond_Zopp s
+                (Rocq.Corelib.Numbers.BinNums.Z.Zpos
+                  (Rocq.Corelib.Init.Datatypes.fst.{1, 1} Rocq.Corelib.Numbers.BinNums.positive
+                    Rocq.Corelib.Numbers.BinNums.Z (Rocq.Corelib.Floats.SpecFloat.shl_align m e ez))))
+              (Rocq.Corelib.Floats.SpecFloat.cond_Zopp s_1
+                (Rocq.Corelib.Numbers.BinNums.Z.Zpos
+                  (Rocq.Corelib.Init.Datatypes.fst.{1, 1} Rocq.Corelib.Numbers.BinNums.positive
+                    Rocq.Corelib.Numbers.BinNums.Z (Rocq.Corelib.Floats.SpecFloat.shl_align m_1 e_1 ez)))))
+            ez Rocq.Corelib.Init.Datatypes.bool.false)
+        y)
+    x
+def Rocq.Corelib.Floats.SpecFloat.SFclassify : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Floats.SpecFloat.spec_float → Rocq.Corelib.Floats.FloatClass.float_class :=
+fun prec f =>
+  Rocq.Corelib.Floats.SpecFloat.spec_float.rec.{1}
+    (fun s =>
+      Rocq.Corelib.Init.Datatypes.bool.rec.{1} Rocq.Corelib.Floats.FloatClass.float_class.NZero
+        Rocq.Corelib.Floats.FloatClass.float_class.PZero s)
+    (fun s =>
+      Rocq.Corelib.Init.Datatypes.bool.rec.{1} Rocq.Corelib.Floats.FloatClass.float_class.NInf
+        Rocq.Corelib.Floats.FloatClass.float_class.PInf s)
+    Rocq.Corelib.Floats.FloatClass.float_class.NaN
+    (fun s m e =>
+      Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+        (Rocq.Corelib.Init.Datatypes.bool.rec.{1} Rocq.Corelib.Floats.FloatClass.float_class.NNormal
+          Rocq.Corelib.Floats.FloatClass.float_class.NSubn
+          (Rocq.Corelib.BinNums.IntDef.Z.eqb
+            (Rocq.Corelib.Numbers.BinNums.Z.Zpos (Rocq.Corelib.Floats.SpecFloat.digits2_pos m)) prec))
+        (Rocq.Corelib.Init.Datatypes.bool.rec.{1} Rocq.Corelib.Floats.FloatClass.float_class.PNormal
+          Rocq.Corelib.Floats.FloatClass.float_class.PSubn
+          (Rocq.Corelib.BinNums.IntDef.Z.eqb
+            (Rocq.Corelib.Numbers.BinNums.Z.Zpos (Rocq.Corelib.Floats.SpecFloat.digits2_pos m)) prec))
+        s)
+    f
+def Rocq.Corelib.Floats.SpecFloat.SFcompare : Rocq.Corelib.Floats.SpecFloat.spec_float →
+  Rocq.Corelib.Floats.SpecFloat.spec_float →
+    Rocq.Corelib.Init.Datatypes.option.{1} Rocq.Corelib.Init.Datatypes.comparison :=
+fun f1 f2 =>
+  Rocq.Corelib.Floats.SpecFloat.spec_float.rec.{1}
+    (fun s =>
+      Rocq.Corelib.Floats.SpecFloat.spec_float.rec.{1}
+        (fun s =>
+          Rocq.Corelib.Init.Datatypes.option.Some.{1} Rocq.Corelib.Init.Datatypes.comparison
+            Rocq.Corelib.Init.Datatypes.comparison.Eq)
+        (fun s =>
+          Rocq.Corelib.Init.Datatypes.option.Some.{1} Rocq.Corelib.Init.Datatypes.comparison
+            (Rocq.Corelib.Init.Datatypes.bool.rec.{1} Rocq.Corelib.Init.Datatypes.comparison.Gt
+              Rocq.Corelib.Init.Datatypes.comparison.Lt s))
+        (Rocq.Corelib.Init.Datatypes.option.None.{1} Rocq.Corelib.Init.Datatypes.comparison)
+        (fun s m e =>
+          Rocq.Corelib.Init.Datatypes.option.Some.{1} Rocq.Corelib.Init.Datatypes.comparison
+            (Rocq.Corelib.Init.Datatypes.bool.rec.{1} Rocq.Corelib.Init.Datatypes.comparison.Gt
+              Rocq.Corelib.Init.Datatypes.comparison.Lt s))
+        f2)
+    (fun s =>
+      Rocq.Corelib.Floats.SpecFloat.spec_float.rec.{1}
+        (fun s_1 =>
+          Rocq.Corelib.Init.Datatypes.option.Some.{1} Rocq.Corelib.Init.Datatypes.comparison
+            (Rocq.Corelib.Init.Datatypes.bool.rec.{1} Rocq.Corelib.Init.Datatypes.comparison.Lt
+              Rocq.Corelib.Init.Datatypes.comparison.Gt s))
+        (fun s_1 =>
+          Rocq.Corelib.Init.Datatypes.option.Some.{1} Rocq.Corelib.Init.Datatypes.comparison
+            (Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+              (Rocq.Corelib.Init.Datatypes.bool.rec.{1} Rocq.Corelib.Init.Datatypes.comparison.Eq
+                Rocq.Corelib.Init.Datatypes.comparison.Lt s_1)
+              (Rocq.Corelib.Init.Datatypes.bool.rec.{1} Rocq.Corelib.Init.Datatypes.comparison.Gt
+                Rocq.Corelib.Init.Datatypes.comparison.Eq s_1)
+              s))
+        (Rocq.Corelib.Init.Datatypes.option.None.{1} Rocq.Corelib.Init.Datatypes.comparison)
+        (fun s_1 m e =>
+          Rocq.Corelib.Init.Datatypes.option.Some.{1} Rocq.Corelib.Init.Datatypes.comparison
+            (Rocq.Corelib.Init.Datatypes.bool.rec.{1} Rocq.Corelib.Init.Datatypes.comparison.Lt
+              Rocq.Corelib.Init.Datatypes.comparison.Gt s))
+        f2)
+    (Rocq.Corelib.Init.Datatypes.option.None.{1} Rocq.Corelib.Init.Datatypes.comparison)
+    (fun s m e =>
+      Rocq.Corelib.Floats.SpecFloat.spec_float.rec.{1}
+        (fun s_1 =>
+          Rocq.Corelib.Init.Datatypes.option.Some.{1} Rocq.Corelib.Init.Datatypes.comparison
+            (Rocq.Corelib.Init.Datatypes.bool.rec.{1} Rocq.Corelib.Init.Datatypes.comparison.Lt
+              Rocq.Corelib.Init.Datatypes.comparison.Gt s))
+        (fun s =>
+          Rocq.Corelib.Init.Datatypes.option.Some.{1} Rocq.Corelib.Init.Datatypes.comparison
+            (Rocq.Corelib.Init.Datatypes.bool.rec.{1} Rocq.Corelib.Init.Datatypes.comparison.Gt
+              Rocq.Corelib.Init.Datatypes.comparison.Lt s))
+        (Rocq.Corelib.Init.Datatypes.option.None.{1} Rocq.Corelib.Init.Datatypes.comparison)
+        (fun s_1 m_1 e_1 =>
+          Rocq.Corelib.Init.Datatypes.option.Some.{1} Rocq.Corelib.Init.Datatypes.comparison
+            (Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+              (Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+                (Rocq.Corelib.Init.Datatypes.comparison.rec.{1}
+                  (Rocq.Corelib.Init.Datatypes.CompOpp
+                    (Rocq.Corelib.BinNums.PosDef.Pos.compare_cont Rocq.Corelib.Init.Datatypes.comparison.Eq m m_1))
+                  Rocq.Corelib.Init.Datatypes.comparison.Gt Rocq.Corelib.Init.Datatypes.comparison.Lt
+                  (Rocq.Corelib.BinNums.IntDef.Z.compare e e_1))
+                Rocq.Corelib.Init.Datatypes.comparison.Lt s_1)
+              (Rocq.Corelib.Init.Datatypes.bool.rec.{1} Rocq.Corelib.Init.Datatypes.comparison.Gt
+                (Rocq.Corelib.Init.Datatypes.comparison.rec.{1}
+                  (Rocq.Corelib.BinNums.PosDef.Pos.compare_cont Rocq.Corelib.Init.Datatypes.comparison.Eq m m_1)
+                  Rocq.Corelib.Init.Datatypes.comparison.Lt Rocq.Corelib.Init.Datatypes.comparison.Gt
+                  (Rocq.Corelib.BinNums.IntDef.Z.compare e e_1))
+                s_1)
+              s))
+        f2)
+    f1
+def Rocq.Corelib.Floats.SpecFloat.SFdiv : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z →
+    Rocq.Corelib.Floats.SpecFloat.spec_float →
+      Rocq.Corelib.Floats.SpecFloat.spec_float → Rocq.Corelib.Floats.SpecFloat.spec_float :=
+fun prec emax x y =>
+  Rocq.Corelib.Floats.SpecFloat.spec_float.rec.{1}
+    (fun s =>
+      Rocq.Corelib.Floats.SpecFloat.spec_float.rec.{1} (fun s => Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan)
+        (fun s_1 => Rocq.Corelib.Floats.SpecFloat.spec_float.S754_zero (Rocq.Corelib.Init.Datatypes.xorb s s_1))
+        Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan
+        (fun s_1 m e => Rocq.Corelib.Floats.SpecFloat.spec_float.S754_zero (Rocq.Corelib.Init.Datatypes.xorb s s_1)) y)
+    (fun s =>
+      Rocq.Corelib.Floats.SpecFloat.spec_float.rec.{1}
+        (fun s_1 => Rocq.Corelib.Floats.SpecFloat.spec_float.S754_infinity (Rocq.Corelib.Init.Datatypes.xorb s s_1))
+        (fun s => Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan) Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan
+        (fun s_1 m e => Rocq.Corelib.Floats.SpecFloat.spec_float.S754_infinity (Rocq.Corelib.Init.Datatypes.xorb s s_1))
+        y)
+    Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan
+    (fun s m e =>
+      Rocq.Corelib.Floats.SpecFloat.spec_float.rec.{1}
+        (fun s_1 => Rocq.Corelib.Floats.SpecFloat.spec_float.S754_infinity (Rocq.Corelib.Init.Datatypes.xorb s s_1))
+        (fun s_1 => Rocq.Corelib.Floats.SpecFloat.spec_float.S754_zero (Rocq.Corelib.Init.Datatypes.xorb s s_1))
+        Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan
+        (fun s_1 m_1 e_1 =>
+          Rocq.Corelib.Init.Datatypes.prod.rec.{1, 1, 1}
+            (fun a a_1 =>
+              Rocq.Corelib.Init.Datatypes.prod.rec.{1, 1, 1}
+                (fun a a_2 =>
+                  Rocq.Corelib.Floats.SpecFloat.binary_round_aux prec emax (Rocq.Corelib.Init.Datatypes.xorb s s_1) a
+                    a_2 a_1)
+                a)
+            (Rocq.Corelib.Floats.SpecFloat.SFdiv_core_binary prec emax (Rocq.Corelib.Numbers.BinNums.Z.Zpos m) e
+              (Rocq.Corelib.Numbers.BinNums.Z.Zpos m_1) e_1))
+        y)
+    x
+def Rocq.Corelib.Floats.SpecFloat.SFdiv_core_binary : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z →
+    Rocq.Corelib.Numbers.BinNums.Z →
+      Rocq.Corelib.Numbers.BinNums.Z →
+        Rocq.Corelib.Numbers.BinNums.Z →
+          Rocq.Corelib.Numbers.BinNums.Z →
+            Rocq.Corelib.Init.Datatypes.prod.{1, 1}
+              (Rocq.Corelib.Init.Datatypes.prod.{1, 1} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+              Rocq.Corelib.Floats.SpecFloat.location :=
+fun prec emax m1 e1 m2 e2 =>
+  let d1 := Rocq.Corelib.Floats.SpecFloat.Zdigits2 m1;
+  let d2 := Rocq.Corelib.Floats.SpecFloat.Zdigits2 m2;
+  let e' :=
+    Rocq.Corelib.BinNums.IntDef.Z.min
+      (Rocq.Corelib.Floats.SpecFloat.fexp prec emax
+        (Rocq.Corelib.BinNums.IntDef.Z.sub (Rocq.Corelib.BinNums.IntDef.Z.add d1 e1)
+          (Rocq.Corelib.BinNums.IntDef.Z.add d2 e2)))
+      (Rocq.Corelib.BinNums.IntDef.Z.sub e1 e2);
+  let s := Rocq.Corelib.BinNums.IntDef.Z.sub (Rocq.Corelib.BinNums.IntDef.Z.sub e1 e2) e';
+  let m' :=
+    Rocq.Corelib.Numbers.BinNums.Z.rec.{1} m1 (fun a => Rocq.Corelib.BinNums.IntDef.Z.shiftl m1 s)
+      (fun a => Rocq.Corelib.Numbers.BinNums.Z.Z0) s;
+  Rocq.Corelib.Init.Datatypes.prod.rec.{1, 1, 1}
+    (fun a a_1 =>
+      Rocq.Corelib.Init.Datatypes.prod.pair.{1, 1}
+        (Rocq.Corelib.Init.Datatypes.prod.{1, 1} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+        Rocq.Corelib.Floats.SpecFloat.location
+        (Rocq.Corelib.Init.Datatypes.prod.pair.{1, 1} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z a
+          e')
+        (Rocq.Corelib.Floats.SpecFloat.new_location m2 a_1))
+    (Rocq.Corelib.BinNums.IntDef.Z.div_eucl m' m2)
+def Rocq.Corelib.Floats.SpecFloat.SFeqb : Rocq.Corelib.Floats.SpecFloat.spec_float →
+  Rocq.Corelib.Floats.SpecFloat.spec_float → Rocq.Corelib.Init.Datatypes.bool :=
+fun f1 f2 =>
+  Rocq.Corelib.Init.Datatypes.option.rec.{1, 1}
+    (fun a =>
+      Rocq.Corelib.Init.Datatypes.comparison.rec.{1} Rocq.Corelib.Init.Datatypes.bool.true
+        Rocq.Corelib.Init.Datatypes.bool.false Rocq.Corelib.Init.Datatypes.bool.false a)
+    Rocq.Corelib.Init.Datatypes.bool.false (Rocq.Corelib.Floats.SpecFloat.SFcompare f1 f2)
+def Rocq.Corelib.Floats.SpecFloat.SFfrexp : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z →
+    Rocq.Corelib.Floats.SpecFloat.spec_float →
+      Rocq.Corelib.Init.Datatypes.prod.{1, 1} Rocq.Corelib.Floats.SpecFloat.spec_float Rocq.Corelib.Numbers.BinNums.Z :=
+fun prec emax f =>
+  Rocq.Corelib.Floats.SpecFloat.spec_float.rec.{1}
+    (fun s =>
+      Rocq.Corelib.Init.Datatypes.prod.pair.{1, 1} Rocq.Corelib.Floats.SpecFloat.spec_float
+        Rocq.Corelib.Numbers.BinNums.Z f
+        (Rocq.Corelib.BinNums.IntDef.Z.sub
+          (Rocq.Corelib.BinNums.IntDef.Z.mul
+            (Rocq.Corelib.Numbers.BinNums.Z.Zneg Rocq.Corelib.Numbers.BinNums.positive.xH.xO) emax)
+          prec))
+    (fun s =>
+      Rocq.Corelib.Init.Datatypes.prod.pair.{1, 1} Rocq.Corelib.Floats.SpecFloat.spec_float
+        Rocq.Corelib.Numbers.BinNums.Z f
+        (Rocq.Corelib.BinNums.IntDef.Z.sub
+          (Rocq.Corelib.BinNums.IntDef.Z.mul
+            (Rocq.Corelib.Numbers.BinNums.Z.Zneg Rocq.Corelib.Numbers.BinNums.positive.xH.xO) emax)
+          prec))
+    (Rocq.Corelib.Init.Datatypes.prod.pair.{1, 1} Rocq.Corelib.Floats.SpecFloat.spec_float
+      Rocq.Corelib.Numbers.BinNums.Z f
+      (Rocq.Corelib.BinNums.IntDef.Z.sub
+        (Rocq.Corelib.BinNums.IntDef.Z.mul
+          (Rocq.Corelib.Numbers.BinNums.Z.Zneg Rocq.Corelib.Numbers.BinNums.positive.xH.xO) emax)
+        prec))
+    (fun s m e =>
+      Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+        (Rocq.Corelib.Init.Datatypes.prod.pair.{1, 1} Rocq.Corelib.Floats.SpecFloat.spec_float
+          Rocq.Corelib.Numbers.BinNums.Z
+          (Rocq.Corelib.Floats.SpecFloat.spec_float.S754_finite s m (Rocq.Corelib.BinNums.IntDef.Z.opp prec))
+          (Rocq.Corelib.BinNums.IntDef.Z.add e prec))
+        (let d :=
+          Rocq.Corelib.BinNums.IntDef.Z.sub prec
+            (Rocq.Corelib.Numbers.BinNums.Z.Zpos (Rocq.Corelib.Floats.SpecFloat.digits2_pos m));
+        Rocq.Corelib.Init.Datatypes.prod.pair.{1, 1} Rocq.Corelib.Floats.SpecFloat.spec_float
+          Rocq.Corelib.Numbers.BinNums.Z
+          (Rocq.Corelib.Floats.SpecFloat.spec_float.S754_finite s
+            (Rocq.Corelib.BinNums.PosDef.Pos.iter.{1} Rocq.Corelib.Numbers.BinNums.positive
+              Rocq.Corelib.Numbers.BinNums.positive.xO m (Rocq.Corelib.BinNums.IntDef.Z.to_pos d))
+            (Rocq.Corelib.BinNums.IntDef.Z.opp prec))
+          (Rocq.Corelib.BinNums.IntDef.Z.sub (Rocq.Corelib.BinNums.IntDef.Z.add e prec) d))
+        (Rocq.Corelib.BinNums.IntDef.Z.leb prec
+          (Rocq.Corelib.Numbers.BinNums.Z.Zpos (Rocq.Corelib.Floats.SpecFloat.digits2_pos m))))
+    f
+def Rocq.Corelib.Floats.SpecFloat.SFldexp : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z →
+    Rocq.Corelib.Floats.SpecFloat.spec_float →
+      Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Floats.SpecFloat.spec_float :=
+fun prec emax f e =>
+  Rocq.Corelib.Floats.SpecFloat.spec_float.rec.{1} (fun s => f) (fun s => f) f
+    (fun s m e_1 => Rocq.Corelib.Floats.SpecFloat.binary_round prec emax s m (Rocq.Corelib.BinNums.IntDef.Z.add e_1 e))
+    f
+def Rocq.Corelib.Floats.SpecFloat.SFleb : Rocq.Corelib.Floats.SpecFloat.spec_float →
+  Rocq.Corelib.Floats.SpecFloat.spec_float → Rocq.Corelib.Init.Datatypes.bool :=
+fun f1 f2 =>
+  Rocq.Corelib.Init.Datatypes.option.rec.{1, 1}
+    (fun a =>
+      Rocq.Corelib.Init.Datatypes.comparison.rec.{1} Rocq.Corelib.Init.Datatypes.bool.true
+        Rocq.Corelib.Init.Datatypes.bool.true Rocq.Corelib.Init.Datatypes.bool.false a)
+    Rocq.Corelib.Init.Datatypes.bool.false (Rocq.Corelib.Floats.SpecFloat.SFcompare f1 f2)
+def Rocq.Corelib.Floats.SpecFloat.SFltb : Rocq.Corelib.Floats.SpecFloat.spec_float →
+  Rocq.Corelib.Floats.SpecFloat.spec_float → Rocq.Corelib.Init.Datatypes.bool :=
+fun f1 f2 =>
+  Rocq.Corelib.Init.Datatypes.option.rec.{1, 1}
+    (fun a =>
+      Rocq.Corelib.Init.Datatypes.comparison.rec.{1} Rocq.Corelib.Init.Datatypes.bool.false
+        Rocq.Corelib.Init.Datatypes.bool.true Rocq.Corelib.Init.Datatypes.bool.false a)
+    Rocq.Corelib.Init.Datatypes.bool.false (Rocq.Corelib.Floats.SpecFloat.SFcompare f1 f2)
+def Rocq.Corelib.Floats.SpecFloat.SFmax_float : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Floats.SpecFloat.spec_float :=
+fun prec emax =>
+  Rocq.Corelib.Floats.SpecFloat.spec_float.S754_finite Rocq.Corelib.Init.Datatypes.bool.false
+    (Rocq.Corelib.BinNums.PosDef.Pos.sub
+      (Rocq.Corelib.BinNums.PosDef.Pos.iter.{1} Rocq.Corelib.Numbers.BinNums.positive
+        Rocq.Corelib.Numbers.BinNums.positive.xO Rocq.Corelib.Numbers.BinNums.positive.xH
+        (Rocq.Corelib.BinNums.IntDef.Z.to_pos prec))
+      Rocq.Corelib.Numbers.BinNums.positive.xH)
+    (Rocq.Corelib.BinNums.IntDef.Z.sub emax prec)
+def Rocq.Corelib.Floats.SpecFloat.SFmul : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z →
+    Rocq.Corelib.Floats.SpecFloat.spec_float →
+      Rocq.Corelib.Floats.SpecFloat.spec_float → Rocq.Corelib.Floats.SpecFloat.spec_float :=
+fun prec emax x y =>
+  Rocq.Corelib.Floats.SpecFloat.spec_float.rec.{1}
+    (fun s =>
+      Rocq.Corelib.Floats.SpecFloat.spec_float.rec.{1}
+        (fun s_1 => Rocq.Corelib.Floats.SpecFloat.spec_float.S754_zero (Rocq.Corelib.Init.Datatypes.xorb s s_1))
+        (fun s => Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan) Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan
+        (fun s_1 m e => Rocq.Corelib.Floats.SpecFloat.spec_float.S754_zero (Rocq.Corelib.Init.Datatypes.xorb s s_1)) y)
+    (fun s =>
+      Rocq.Corelib.Floats.SpecFloat.spec_float.rec.{1} (fun s => Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan)
+        (fun s_1 => Rocq.Corelib.Floats.SpecFloat.spec_float.S754_infinity (Rocq.Corelib.Init.Datatypes.xorb s s_1))
+        Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan
+        (fun s_1 m e => Rocq.Corelib.Floats.SpecFloat.spec_float.S754_infinity (Rocq.Corelib.Init.Datatypes.xorb s s_1))
+        y)
+    Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan
+    (fun s m e =>
+      Rocq.Corelib.Floats.SpecFloat.spec_float.rec.{1}
+        (fun s_1 => Rocq.Corelib.Floats.SpecFloat.spec_float.S754_zero (Rocq.Corelib.Init.Datatypes.xorb s s_1))
+        (fun s_1 => Rocq.Corelib.Floats.SpecFloat.spec_float.S754_infinity (Rocq.Corelib.Init.Datatypes.xorb s s_1))
+        Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan
+        (fun s_1 m_1 e_1 =>
+          Rocq.Corelib.Floats.SpecFloat.binary_round_aux prec emax (Rocq.Corelib.Init.Datatypes.xorb s s_1)
+            (Rocq.Corelib.Numbers.BinNums.Z.Zpos (Rocq.Corelib.BinNums.PosDef.Pos.mul m m_1))
+            (Rocq.Corelib.BinNums.IntDef.Z.add e e_1) Rocq.Corelib.Floats.SpecFloat.location.loc_Exact)
+        y)
+    x
+def Rocq.Corelib.Floats.SpecFloat.SFnormfr_mantissa : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Floats.SpecFloat.spec_float → Rocq.Corelib.Numbers.BinNums.N :=
+fun prec f =>
+  Rocq.Corelib.Floats.SpecFloat.spec_float.rec.{1} (fun s => Rocq.Corelib.Numbers.BinNums.N.N0)
+    (fun s => Rocq.Corelib.Numbers.BinNums.N.N0) Rocq.Corelib.Numbers.BinNums.N.N0
+    (fun s m e =>
+      Rocq.Corelib.Init.Datatypes.bool.rec.{1} (Rocq.Corelib.Numbers.BinNums.N.Npos m) Rocq.Corelib.Numbers.BinNums.N.N0
+        (Rocq.Corelib.BinNums.IntDef.Z.eqb e (Rocq.Corelib.BinNums.IntDef.Z.opp prec)))
+    f
+def Rocq.Corelib.Floats.SpecFloat.SFone : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Floats.SpecFloat.spec_float :=
+fun prec emax =>
+  Rocq.Corelib.Floats.SpecFloat.binary_round prec emax Rocq.Corelib.Init.Datatypes.bool.false
+    Rocq.Corelib.Numbers.BinNums.positive.xH Rocq.Corelib.Numbers.BinNums.Z.Z0
+def Rocq.Corelib.Floats.SpecFloat.SFopp : Rocq.Corelib.Floats.SpecFloat.spec_float →
+  Rocq.Corelib.Floats.SpecFloat.spec_float :=
+fun x =>
+  Rocq.Corelib.Floats.SpecFloat.spec_float.rec.{1}
+    (fun s => Rocq.Corelib.Floats.SpecFloat.spec_float.S754_zero (Rocq.Corelib.Init.Datatypes.negb s))
+    (fun s => Rocq.Corelib.Floats.SpecFloat.spec_float.S754_infinity (Rocq.Corelib.Init.Datatypes.negb s))
+    Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan
+    (fun s m e => Rocq.Corelib.Floats.SpecFloat.spec_float.S754_finite (Rocq.Corelib.Init.Datatypes.negb s) m e) x
+def Rocq.Corelib.Floats.SpecFloat.SFpred : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z →
+    Rocq.Corelib.Floats.SpecFloat.spec_float → Rocq.Corelib.Floats.SpecFloat.spec_float :=
+fun prec emax f =>
+  Rocq.Corelib.Floats.SpecFloat.SFopp
+    (Rocq.Corelib.Floats.SpecFloat.SFsucc prec emax (Rocq.Corelib.Floats.SpecFloat.SFopp f))
+def Rocq.Corelib.Floats.SpecFloat.SFpred_pos : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z →
+    Rocq.Corelib.Floats.SpecFloat.spec_float → Rocq.Corelib.Floats.SpecFloat.spec_float :=
+fun prec emax x =>
+  Rocq.Corelib.Floats.SpecFloat.spec_float.rec.{1} (fun s => x) (fun s => x) x
+    (fun s m e =>
+      let d :=
+        Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+          (Rocq.Corelib.Floats.SpecFloat.SFldexp prec emax (Rocq.Corelib.Floats.SpecFloat.SFone prec emax)
+            (Rocq.Corelib.Floats.SpecFloat.fexp prec emax
+              (Rocq.Corelib.BinNums.IntDef.Z.sub
+                (Rocq.Corelib.Init.Datatypes.snd.{1, 1} Rocq.Corelib.Floats.SpecFloat.spec_float
+                  Rocq.Corelib.Numbers.BinNums.Z (Rocq.Corelib.Floats.SpecFloat.SFfrexp prec emax x))
+                (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH))))
+          (Rocq.Corelib.Floats.SpecFloat.SFulp prec emax x)
+          (Rocq.Corelib.BinNums.PosDef.Pos.eqb m.xO
+            (Rocq.Corelib.BinNums.PosDef.Pos.iter.{1} Rocq.Corelib.Numbers.BinNums.positive
+              Rocq.Corelib.Numbers.BinNums.positive.xO Rocq.Corelib.Numbers.BinNums.positive.xH
+              (Rocq.Corelib.BinNums.IntDef.Z.to_pos prec)));
+      Rocq.Corelib.Floats.SpecFloat.SFsub prec emax x d)
+    x
+def Rocq.Corelib.Floats.SpecFloat.SFsqrt : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z →
+    Rocq.Corelib.Floats.SpecFloat.spec_float → Rocq.Corelib.Floats.SpecFloat.spec_float :=
+fun prec emax x =>
+  Rocq.Corelib.Floats.SpecFloat.spec_float.rec.{1} (fun s => x)
+    (fun s => Rocq.Corelib.Init.Datatypes.bool.rec.{1} Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan x s)
+    Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan
+    (fun s m e =>
+      Rocq.Corelib.Init.Datatypes.bool.rec.{1} Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan
+        (Rocq.Corelib.Init.Datatypes.prod.rec.{1, 1, 1}
+          (fun a a_1 =>
+            Rocq.Corelib.Init.Datatypes.prod.rec.{1, 1, 1}
+              (fun a a_2 =>
+                Rocq.Corelib.Floats.SpecFloat.binary_round_aux prec emax Rocq.Corelib.Init.Datatypes.bool.false a a_2
+                  a_1)
+              a)
+          (Rocq.Corelib.Floats.SpecFloat.SFsqrt_core_binary prec emax (Rocq.Corelib.Numbers.BinNums.Z.Zpos m) e))
+        s)
+    x
+def Rocq.Corelib.Floats.SpecFloat.SFsqrt_core_binary : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z →
+    Rocq.Corelib.Numbers.BinNums.Z →
+      Rocq.Corelib.Numbers.BinNums.Z →
+        Rocq.Corelib.Init.Datatypes.prod.{1, 1}
+          (Rocq.Corelib.Init.Datatypes.prod.{1, 1} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+          Rocq.Corelib.Floats.SpecFloat.location :=
+fun prec emax m e =>
+  let d := Rocq.Corelib.Floats.SpecFloat.Zdigits2 m;
+  let e' :=
+    Rocq.Corelib.BinNums.IntDef.Z.min
+      (Rocq.Corelib.Floats.SpecFloat.fexp prec emax
+        (Rocq.Corelib.BinNums.IntDef.Z.div2
+          (Rocq.Corelib.BinNums.IntDef.Z.add (Rocq.Corelib.BinNums.IntDef.Z.add d e)
+            (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH))))
+      (Rocq.Corelib.BinNums.IntDef.Z.div2 e);
+  let s :=
+    Rocq.Corelib.BinNums.IntDef.Z.sub e
+      (Rocq.Corelib.BinNums.IntDef.Z.mul
+        (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH.xO) e');
+  let m' :=
+    Rocq.Corelib.Numbers.BinNums.Z.rec.{1} m (fun a => Rocq.Corelib.BinNums.IntDef.Z.shiftl m s)
+      (fun a => Rocq.Corelib.Numbers.BinNums.Z.Z0) s;
+  Rocq.Corelib.Init.Datatypes.prod.rec.{1, 1, 1}
+    (fun a a_1 =>
+      let l :=
+        Rocq.Corelib.Init.Datatypes.bool.rec.{1} Rocq.Corelib.Floats.SpecFloat.location.loc_Exact
+          (Rocq.Corelib.Floats.SpecFloat.location.loc_Inexact
+            (Rocq.Corelib.Init.Datatypes.bool.rec.{1} Rocq.Corelib.Init.Datatypes.comparison.Lt
+              Rocq.Corelib.Init.Datatypes.comparison.Gt (Rocq.Corelib.BinNums.IntDef.Z.leb a_1 a)))
+          (Rocq.Corelib.BinNums.IntDef.Z.eqb a_1 Rocq.Corelib.Numbers.BinNums.Z.Z0);
+      Rocq.Corelib.Init.Datatypes.prod.pair.{1, 1}
+        (Rocq.Corelib.Init.Datatypes.prod.{1, 1} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z)
+        Rocq.Corelib.Floats.SpecFloat.location
+        (Rocq.Corelib.Init.Datatypes.prod.pair.{1, 1} Rocq.Corelib.Numbers.BinNums.Z Rocq.Corelib.Numbers.BinNums.Z a
+          e')
+        l)
+    (Rocq.Corelib.BinNums.IntDef.Z.sqrtrem m')
+def Rocq.Corelib.Floats.SpecFloat.SFsub : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z →
+    Rocq.Corelib.Floats.SpecFloat.spec_float →
+      Rocq.Corelib.Floats.SpecFloat.spec_float → Rocq.Corelib.Floats.SpecFloat.spec_float :=
+fun prec emax x y =>
+  Rocq.Corelib.Floats.SpecFloat.spec_float.rec.{1}
+    (fun s =>
+      Rocq.Corelib.Floats.SpecFloat.spec_float.rec.{1}
+        (fun s_1 =>
+          Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+            (Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+              (Rocq.Corelib.Floats.SpecFloat.spec_float.S754_zero Rocq.Corelib.Init.Datatypes.bool.false) x s_1)
+            (Rocq.Corelib.Init.Datatypes.bool.rec.{1} x
+              (Rocq.Corelib.Floats.SpecFloat.spec_float.S754_zero Rocq.Corelib.Init.Datatypes.bool.false) s_1)
+            s)
+        (fun s => Rocq.Corelib.Floats.SpecFloat.spec_float.S754_infinity (Rocq.Corelib.Init.Datatypes.negb s))
+        Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan
+        (fun s m e => Rocq.Corelib.Floats.SpecFloat.spec_float.S754_finite (Rocq.Corelib.Init.Datatypes.negb s) m e) y)
+    (fun s =>
+      Rocq.Corelib.Floats.SpecFloat.spec_float.rec.{1} (fun s => x)
+        (fun s_1 =>
+          Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+            (Rocq.Corelib.Init.Datatypes.bool.rec.{1} Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan x s_1)
+            (Rocq.Corelib.Init.Datatypes.bool.rec.{1} x Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan s_1) s)
+        Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan (fun s m e => x) y)
+    Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan
+    (fun s m e =>
+      Rocq.Corelib.Floats.SpecFloat.spec_float.rec.{1} (fun s => x)
+        (fun s => Rocq.Corelib.Floats.SpecFloat.spec_float.S754_infinity (Rocq.Corelib.Init.Datatypes.negb s))
+        Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan
+        (fun s_1 m_1 e_1 =>
+          let ez := Rocq.Corelib.BinNums.IntDef.Z.min e e_1;
+          Rocq.Corelib.Floats.SpecFloat.binary_normalize prec emax
+            (Rocq.Corelib.BinNums.IntDef.Z.sub
+              (Rocq.Corelib.Floats.SpecFloat.cond_Zopp s
+                (Rocq.Corelib.Numbers.BinNums.Z.Zpos
+                  (Rocq.Corelib.Init.Datatypes.fst.{1, 1} Rocq.Corelib.Numbers.BinNums.positive
+                    Rocq.Corelib.Numbers.BinNums.Z (Rocq.Corelib.Floats.SpecFloat.shl_align m e ez))))
+              (Rocq.Corelib.Floats.SpecFloat.cond_Zopp s_1
+                (Rocq.Corelib.Numbers.BinNums.Z.Zpos
+                  (Rocq.Corelib.Init.Datatypes.fst.{1, 1} Rocq.Corelib.Numbers.BinNums.positive
+                    Rocq.Corelib.Numbers.BinNums.Z (Rocq.Corelib.Floats.SpecFloat.shl_align m_1 e_1 ez)))))
+            ez Rocq.Corelib.Init.Datatypes.bool.false)
+        y)
+    x
+def Rocq.Corelib.Floats.SpecFloat.SFsucc : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z →
+    Rocq.Corelib.Floats.SpecFloat.spec_float → Rocq.Corelib.Floats.SpecFloat.spec_float :=
+fun prec emax x =>
+  Rocq.Corelib.Floats.SpecFloat.spec_float.rec.{1}
+    (fun s =>
+      Rocq.Corelib.Floats.SpecFloat.SFldexp prec emax (Rocq.Corelib.Floats.SpecFloat.SFone prec emax)
+        (Rocq.Corelib.Floats.SpecFloat.emin prec emax))
+    (fun s =>
+      Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+        (Rocq.Corelib.Floats.SpecFloat.SFopp (Rocq.Corelib.Floats.SpecFloat.SFmax_float prec emax)) x s)
+    x
+    (fun s m e =>
+      Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+        (Rocq.Corelib.Floats.SpecFloat.SFopp
+          (Rocq.Corelib.Floats.SpecFloat.SFpred_pos prec emax (Rocq.Corelib.Floats.SpecFloat.SFopp x)))
+        (Rocq.Corelib.Floats.SpecFloat.SFadd prec emax x (Rocq.Corelib.Floats.SpecFloat.SFulp prec emax x)) s)
+    x
+def Rocq.Corelib.Floats.SpecFloat.SFulp : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z →
+    Rocq.Corelib.Floats.SpecFloat.spec_float → Rocq.Corelib.Floats.SpecFloat.spec_float :=
+fun prec emax x =>
+  Rocq.Corelib.Floats.SpecFloat.SFldexp prec emax (Rocq.Corelib.Floats.SpecFloat.SFone prec emax)
+    (Rocq.Corelib.Floats.SpecFloat.fexp prec emax
+      (Rocq.Corelib.Init.Datatypes.snd.{1, 1} Rocq.Corelib.Floats.SpecFloat.spec_float Rocq.Corelib.Numbers.BinNums.Z
+        (Rocq.Corelib.Floats.SpecFloat.SFfrexp prec emax x)))
+def Rocq.Corelib.Floats.SpecFloat.Zdigits2 : Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun n =>
+  Rocq.Corelib.Numbers.BinNums.Z.rec.{1} n
+    (fun a => Rocq.Corelib.Numbers.BinNums.Z.Zpos (Rocq.Corelib.Floats.SpecFloat.digits2_pos a))
+    (fun a => Rocq.Corelib.Numbers.BinNums.Z.Zpos (Rocq.Corelib.Floats.SpecFloat.digits2_pos a)) n
+def Rocq.Corelib.Floats.SpecFloat.binary_normalize : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z →
+    Rocq.Corelib.Numbers.BinNums.Z →
+      Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Init.Datatypes.bool → Rocq.Corelib.Floats.SpecFloat.spec_float :=
+fun prec emax m e szero =>
+  Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (Rocq.Corelib.Floats.SpecFloat.spec_float.S754_zero szero)
+    (fun a => Rocq.Corelib.Floats.SpecFloat.binary_round prec emax Rocq.Corelib.Init.Datatypes.bool.false a e)
+    (fun a => Rocq.Corelib.Floats.SpecFloat.binary_round prec emax Rocq.Corelib.Init.Datatypes.bool.true a e) m
+def Rocq.Corelib.Floats.SpecFloat.binary_round : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z →
+    Rocq.Corelib.Init.Datatypes.bool →
+      Rocq.Corelib.Numbers.BinNums.positive →
+        Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Floats.SpecFloat.spec_float :=
+fun prec emax sx mx ex =>
+  Rocq.Corelib.Init.Datatypes.prod.rec.{1, 1, 1}
+    (fun a a_1 =>
+      Rocq.Corelib.Floats.SpecFloat.binary_round_aux prec emax sx (Rocq.Corelib.Numbers.BinNums.Z.Zpos a) a_1
+        Rocq.Corelib.Floats.SpecFloat.location.loc_Exact)
+    (Rocq.Corelib.Floats.SpecFloat.shl_align mx ex
+      (Rocq.Corelib.Floats.SpecFloat.fexp prec emax
+        (Rocq.Corelib.BinNums.IntDef.Z.add
+          (Rocq.Corelib.Numbers.BinNums.Z.Zpos (Rocq.Corelib.Floats.SpecFloat.digits2_pos mx)) ex)))
+def Rocq.Corelib.Floats.SpecFloat.binary_round_aux : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z →
+    Rocq.Corelib.Init.Datatypes.bool →
+      Rocq.Corelib.Numbers.BinNums.Z →
+        Rocq.Corelib.Numbers.BinNums.Z →
+          Rocq.Corelib.Floats.SpecFloat.location → Rocq.Corelib.Floats.SpecFloat.spec_float :=
+fun prec emax sx mx ex lx =>
+  Rocq.Corelib.Init.Datatypes.prod.rec.{1, 1, 1}
+    (fun a a_1 =>
+      Rocq.Corelib.Init.Datatypes.prod.rec.{1, 1, 1}
+        (fun a a_2 =>
+          Rocq.Corelib.Numbers.BinNums.Z.rec.{1} (Rocq.Corelib.Floats.SpecFloat.spec_float.S754_zero sx)
+            (fun a =>
+              Rocq.Corelib.Init.Datatypes.bool.rec.{1} (Rocq.Corelib.Floats.SpecFloat.spec_float.S754_finite sx a a_2)
+                (Rocq.Corelib.Floats.SpecFloat.spec_float.S754_infinity sx)
+                (Rocq.Corelib.BinNums.IntDef.Z.leb a_2 (Rocq.Corelib.BinNums.IntDef.Z.sub emax prec)))
+            (fun a => Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan) (Rocq.Corelib.Floats.SpecFloat.shr_m a))
+        (Rocq.Corelib.Floats.SpecFloat.shr_fexp prec emax
+          (Rocq.Corelib.Floats.SpecFloat.round_nearest_even (Rocq.Corelib.Floats.SpecFloat.shr_m a)
+            (Rocq.Corelib.Floats.SpecFloat.loc_of_shr_record a))
+          a_1 Rocq.Corelib.Floats.SpecFloat.location.loc_Exact))
+    (Rocq.Corelib.Floats.SpecFloat.shr_fexp prec emax mx ex lx)
+def Rocq.Corelib.Floats.SpecFloat.bounded : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z →
+    Rocq.Corelib.Numbers.BinNums.positive → Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Init.Datatypes.bool :=
+fun prec emax m e =>
+  Rocq.Corelib.Init.Datatypes.andb (Rocq.Corelib.Floats.SpecFloat.canonical_mantissa prec emax m e)
+    (Rocq.Corelib.BinNums.IntDef.Z.leb e (Rocq.Corelib.BinNums.IntDef.Z.sub emax prec))
+def Rocq.Corelib.Floats.SpecFloat.canonical_mantissa : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z →
+    Rocq.Corelib.Numbers.BinNums.positive → Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Init.Datatypes.bool :=
+fun prec emax m e =>
+  Rocq.Corelib.BinNums.IntDef.Z.eqb
+    (Rocq.Corelib.Floats.SpecFloat.fexp prec emax
+      (Rocq.Corelib.BinNums.IntDef.Z.add
+        (Rocq.Corelib.Numbers.BinNums.Z.Zpos (Rocq.Corelib.Floats.SpecFloat.digits2_pos m)) e))
+    e
+def Rocq.Corelib.Floats.SpecFloat.cond_Zopp : Rocq.Corelib.Init.Datatypes.bool →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun b m => Rocq.Corelib.Init.Datatypes.bool.rec.{1} (Rocq.Corelib.BinNums.IntDef.Z.opp m) m b
+def Rocq.Corelib.Floats.SpecFloat.digits2_pos : Rocq.Corelib.Numbers.BinNums.positive →
+  Rocq.Corelib.Numbers.BinNums.positive :=
+fun n =>
+  Rocq.Corelib.Numbers.BinNums.positive.rec.{1} (fun a _ih => Rocq.Corelib.BinNums.PosDef.Pos.succ _ih)
+    (fun a _ih => Rocq.Corelib.BinNums.PosDef.Pos.succ _ih) Rocq.Corelib.Numbers.BinNums.positive.xH n
+def Rocq.Corelib.Floats.SpecFloat.emin : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun prec emax =>
+  Rocq.Corelib.BinNums.IntDef.Z.sub
+    (Rocq.Corelib.BinNums.IntDef.Z.sub (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH.xI)
+      emax)
+    prec
+def Rocq.Corelib.Floats.SpecFloat.fexp : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Numbers.BinNums.Z :=
+fun prec emax e =>
+  Rocq.Corelib.BinNums.IntDef.Z.max (Rocq.Corelib.BinNums.IntDef.Z.sub e prec)
+    (Rocq.Corelib.Floats.SpecFloat.emin prec emax)
+def Rocq.Corelib.Floats.SpecFloat.iter_pos.{u_Corelib_Floats_SpecFloat_37} : (A : Sort u_Corelib_Floats_SpecFloat_37) →
+  (A → A) → Rocq.Corelib.Numbers.BinNums.positive → A → A :=
+fun A f n x =>
+  Rocq.Corelib.Numbers.BinNums.positive.rec.{u_Corelib_Floats_SpecFloat_37} (motive := fun n => A → A)
+    (fun a _ih x => _ih (_ih (f x))) (fun a _ih x => _ih (_ih x)) (fun x => f x) n x
+def Rocq.Corelib.Floats.SpecFloat.loc_of_shr_record : Rocq.Corelib.Floats.SpecFloat.shr_record →
+  Rocq.Corelib.Floats.SpecFloat.location :=
+fun mrs =>
+  Rocq.Corelib.Floats.SpecFloat.shr_record.rec.{1}
+    (fun shr_m shr_r shr_s =>
+      Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+        (Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+          (Rocq.Corelib.Floats.SpecFloat.location.loc_Inexact Rocq.Corelib.Init.Datatypes.comparison.Gt)
+          (Rocq.Corelib.Floats.SpecFloat.location.loc_Inexact Rocq.Corelib.Init.Datatypes.comparison.Eq) shr_s)
+        (Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+          (Rocq.Corelib.Floats.SpecFloat.location.loc_Inexact Rocq.Corelib.Init.Datatypes.comparison.Lt)
+          Rocq.Corelib.Floats.SpecFloat.location.loc_Exact shr_s)
+        shr_r)
+    mrs
+inductive Rocq.Corelib.Floats.SpecFloat.location : Type
+number of parameters: 0
+constructors:
+Rocq.Corelib.Floats.SpecFloat.location.loc_Exact : Rocq.Corelib.Floats.SpecFloat.location
+Rocq.Corelib.Floats.SpecFloat.location.loc_Inexact : Rocq.Corelib.Init.Datatypes.comparison →
+  Rocq.Corelib.Floats.SpecFloat.location
+def Rocq.Corelib.Floats.SpecFloat.location_ind.statement : Prop :=
+∀ (P : Rocq.Corelib.Floats.SpecFloat.location → Prop),
+  P Rocq.Corelib.Floats.SpecFloat.location.loc_Exact →
+    (∀ (c : Rocq.Corelib.Init.Datatypes.comparison), P (Rocq.Corelib.Floats.SpecFloat.location.loc_Inexact c)) →
+      ∀ (l : Rocq.Corelib.Floats.SpecFloat.location), P l
+def Rocq.Corelib.Floats.SpecFloat.location_rec : (P : Rocq.Corelib.Floats.SpecFloat.location → Type) →
+  P Rocq.Corelib.Floats.SpecFloat.location.loc_Exact →
+    ((c : Rocq.Corelib.Init.Datatypes.comparison) → P (Rocq.Corelib.Floats.SpecFloat.location.loc_Inexact c)) →
+      (l : Rocq.Corelib.Floats.SpecFloat.location) → P l :=
+fun P loc_Exact loc_Inexact l => Rocq.Corelib.Floats.SpecFloat.location.rec.{1} loc_Exact (fun a => loc_Inexact a) l
+def Rocq.Corelib.Floats.SpecFloat.location_rect.{u_Corelib_Floats_SpecFloat_41} : (P :
+    Rocq.Corelib.Floats.SpecFloat.location → Sort u_Corelib_Floats_SpecFloat_41) →
+  P Rocq.Corelib.Floats.SpecFloat.location.loc_Exact →
+    ((c : Rocq.Corelib.Init.Datatypes.comparison) → P (Rocq.Corelib.Floats.SpecFloat.location.loc_Inexact c)) →
+      (l : Rocq.Corelib.Floats.SpecFloat.location) → P l :=
+fun P loc_Exact loc_Inexact l =>
+  Rocq.Corelib.Floats.SpecFloat.location.rec.{u_Corelib_Floats_SpecFloat_41} loc_Exact (fun a => loc_Inexact a) l
+def Rocq.Corelib.Floats.SpecFloat.location_sind.statement : Prop :=
+∀ (P : Rocq.Corelib.Floats.SpecFloat.location → Prop),
+  P Rocq.Corelib.Floats.SpecFloat.location.loc_Exact →
+    (∀ (c : Rocq.Corelib.Init.Datatypes.comparison), P (Rocq.Corelib.Floats.SpecFloat.location.loc_Inexact c)) →
+      ∀ (l : Rocq.Corelib.Floats.SpecFloat.location), P l
+def Rocq.Corelib.Floats.SpecFloat.new_location : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Floats.SpecFloat.location :=
+fun nb_steps =>
+  Rocq.Corelib.Init.Datatypes.bool.rec.{1} (motive := fun t =>
+    Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Floats.SpecFloat.location)
+    (Rocq.Corelib.Floats.SpecFloat.new_location_even nb_steps) (Rocq.Corelib.Floats.SpecFloat.new_location_odd nb_steps)
+    (Rocq.Corelib.BinNums.IntDef.Z.even nb_steps)
+def Rocq.Corelib.Floats.SpecFloat.new_location_even : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Floats.SpecFloat.location :=
+fun nb_steps k =>
+  Rocq.Corelib.Init.Datatypes.bool.rec.{1} Rocq.Corelib.Floats.SpecFloat.location.loc_Exact
+    (Rocq.Corelib.Floats.SpecFloat.location.loc_Inexact
+      (Rocq.Corelib.BinNums.IntDef.Z.compare
+        (Rocq.Corelib.BinNums.IntDef.Z.mul
+          (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH.xO) k)
+        nb_steps))
+    (Rocq.Corelib.BinNums.IntDef.Z.eqb k Rocq.Corelib.Numbers.BinNums.Z.Z0)
+def Rocq.Corelib.Floats.SpecFloat.new_location_odd : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Floats.SpecFloat.location :=
+fun nb_steps k =>
+  Rocq.Corelib.Init.Datatypes.bool.rec.{1} Rocq.Corelib.Floats.SpecFloat.location.loc_Exact
+    (Rocq.Corelib.Floats.SpecFloat.location.loc_Inexact
+      (Rocq.Corelib.Init.Datatypes.comparison.rec.{1} Rocq.Corelib.Init.Datatypes.comparison.Lt
+        Rocq.Corelib.Init.Datatypes.comparison.Lt Rocq.Corelib.Init.Datatypes.comparison.Gt
+        (Rocq.Corelib.BinNums.IntDef.Z.compare
+          (Rocq.Corelib.BinNums.IntDef.Z.add
+            (Rocq.Corelib.BinNums.IntDef.Z.mul
+              (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH.xO) k)
+            (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH))
+          nb_steps)))
+    (Rocq.Corelib.BinNums.IntDef.Z.eqb k Rocq.Corelib.Numbers.BinNums.Z.Z0)
+def Rocq.Corelib.Floats.SpecFloat.round_nearest_even : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Floats.SpecFloat.location → Rocq.Corelib.Numbers.BinNums.Z :=
+fun mx lx =>
+  Rocq.Corelib.Floats.SpecFloat.location.rec.{1} mx
+    (fun a =>
+      Rocq.Corelib.Init.Datatypes.comparison.rec.{1}
+        (Rocq.Corelib.Init.Datatypes.bool.rec.{1} mx
+          (Rocq.Corelib.BinNums.IntDef.Z.add mx
+            (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH))
+          (Rocq.Corelib.BinNums.IntDef.Z.even mx))
+        mx
+        (Rocq.Corelib.BinNums.IntDef.Z.add mx
+          (Rocq.Corelib.Numbers.BinNums.Z.Zpos Rocq.Corelib.Numbers.BinNums.positive.xH))
+        a)
+    lx
+def Rocq.Corelib.Floats.SpecFloat.shl_align : Rocq.Corelib.Numbers.BinNums.positive →
+  Rocq.Corelib.Numbers.BinNums.Z →
+    Rocq.Corelib.Numbers.BinNums.Z →
+      Rocq.Corelib.Init.Datatypes.prod.{1, 1} Rocq.Corelib.Numbers.BinNums.positive Rocq.Corelib.Numbers.BinNums.Z :=
+fun mx ex ex' =>
+  Rocq.Corelib.Numbers.BinNums.Z.rec.{1}
+    (Rocq.Corelib.Init.Datatypes.prod.pair.{1, 1} Rocq.Corelib.Numbers.BinNums.positive Rocq.Corelib.Numbers.BinNums.Z
+      mx ex)
+    (fun a =>
+      Rocq.Corelib.Init.Datatypes.prod.pair.{1, 1} Rocq.Corelib.Numbers.BinNums.positive Rocq.Corelib.Numbers.BinNums.Z
+        mx ex)
+    (fun a =>
+      Rocq.Corelib.Init.Datatypes.prod.pair.{1, 1} Rocq.Corelib.Numbers.BinNums.positive Rocq.Corelib.Numbers.BinNums.Z
+        (Rocq.Corelib.BinNums.PosDef.Pos.iter.{1} Rocq.Corelib.Numbers.BinNums.positive
+          Rocq.Corelib.Numbers.BinNums.positive.xO mx a)
+        ex')
+    (Rocq.Corelib.BinNums.IntDef.Z.sub ex' ex)
+def Rocq.Corelib.Floats.SpecFloat.shr : Rocq.Corelib.Floats.SpecFloat.shr_record →
+  Rocq.Corelib.Numbers.BinNums.Z →
+    Rocq.Corelib.Numbers.BinNums.Z →
+      Rocq.Corelib.Init.Datatypes.prod.{1, 1} Rocq.Corelib.Floats.SpecFloat.shr_record Rocq.Corelib.Numbers.BinNums.Z :=
+fun mrs e n =>
+  Rocq.Corelib.Numbers.BinNums.Z.rec.{1}
+    (Rocq.Corelib.Init.Datatypes.prod.pair.{1, 1} Rocq.Corelib.Floats.SpecFloat.shr_record
+      Rocq.Corelib.Numbers.BinNums.Z mrs e)
+    (fun a =>
+      Rocq.Corelib.Init.Datatypes.prod.pair.{1, 1} Rocq.Corelib.Floats.SpecFloat.shr_record
+        Rocq.Corelib.Numbers.BinNums.Z
+        (Rocq.Corelib.Floats.SpecFloat.iter_pos.{1} Rocq.Corelib.Floats.SpecFloat.shr_record
+          Rocq.Corelib.Floats.SpecFloat.shr_1 a mrs)
+        (Rocq.Corelib.BinNums.IntDef.Z.add e n))
+    (fun a =>
+      Rocq.Corelib.Init.Datatypes.prod.pair.{1, 1} Rocq.Corelib.Floats.SpecFloat.shr_record
+        Rocq.Corelib.Numbers.BinNums.Z mrs e)
+    n
+def Rocq.Corelib.Floats.SpecFloat.shr_1 : Rocq.Corelib.Floats.SpecFloat.shr_record →
+  Rocq.Corelib.Floats.SpecFloat.shr_record :=
+fun mrs =>
+  Rocq.Corelib.Floats.SpecFloat.shr_record.rec.{1}
+    (fun shr_m shr_r shr_s =>
+      let s := Rocq.Corelib.Init.Datatypes.orb shr_r shr_s;
+      Rocq.Corelib.Numbers.BinNums.Z.rec.{1}
+        (Rocq.Corelib.Floats.SpecFloat.shr_record.Build_shr_record Rocq.Corelib.Numbers.BinNums.Z.Z0
+          Rocq.Corelib.Init.Datatypes.bool.false s)
+        (fun a =>
+          Rocq.Corelib.Numbers.BinNums.positive.rec.{1}
+            (fun a _ih =>
+              Rocq.Corelib.Floats.SpecFloat.shr_record.Build_shr_record (Rocq.Corelib.Numbers.BinNums.Z.Zpos a)
+                Rocq.Corelib.Init.Datatypes.bool.true s)
+            (fun a _ih =>
+              Rocq.Corelib.Floats.SpecFloat.shr_record.Build_shr_record (Rocq.Corelib.Numbers.BinNums.Z.Zpos a)
+                Rocq.Corelib.Init.Datatypes.bool.false s)
+            (Rocq.Corelib.Floats.SpecFloat.shr_record.Build_shr_record Rocq.Corelib.Numbers.BinNums.Z.Z0
+              Rocq.Corelib.Init.Datatypes.bool.true s)
+            a)
+        (fun a =>
+          Rocq.Corelib.Numbers.BinNums.positive.rec.{1}
+            (fun a _ih =>
+              Rocq.Corelib.Floats.SpecFloat.shr_record.Build_shr_record (Rocq.Corelib.Numbers.BinNums.Z.Zneg a)
+                Rocq.Corelib.Init.Datatypes.bool.true s)
+            (fun a _ih =>
+              Rocq.Corelib.Floats.SpecFloat.shr_record.Build_shr_record (Rocq.Corelib.Numbers.BinNums.Z.Zneg a)
+                Rocq.Corelib.Init.Datatypes.bool.false s)
+            (Rocq.Corelib.Floats.SpecFloat.shr_record.Build_shr_record Rocq.Corelib.Numbers.BinNums.Z.Z0
+              Rocq.Corelib.Init.Datatypes.bool.true s)
+            a)
+        shr_m)
+    mrs
+def Rocq.Corelib.Floats.SpecFloat.shr_fexp : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z →
+    Rocq.Corelib.Numbers.BinNums.Z →
+      Rocq.Corelib.Numbers.BinNums.Z →
+        Rocq.Corelib.Floats.SpecFloat.location →
+          Rocq.Corelib.Init.Datatypes.prod.{1, 1} Rocq.Corelib.Floats.SpecFloat.shr_record
+            Rocq.Corelib.Numbers.BinNums.Z :=
+fun prec emax m e l =>
+  Rocq.Corelib.Floats.SpecFloat.shr (Rocq.Corelib.Floats.SpecFloat.shr_record_of_loc m l) e
+    (Rocq.Corelib.BinNums.IntDef.Z.sub
+      (Rocq.Corelib.Floats.SpecFloat.fexp prec emax
+        (Rocq.Corelib.BinNums.IntDef.Z.add (Rocq.Corelib.Floats.SpecFloat.Zdigits2 m) e))
+      e)
+def Rocq.Corelib.Floats.SpecFloat.shr_m : Rocq.Corelib.Floats.SpecFloat.shr_record → Rocq.Corelib.Numbers.BinNums.Z :=
+fun s => Rocq.Corelib.Floats.SpecFloat.shr_record.rec.{1} (fun shr_m shr_r shr_s => shr_m) s
+def Rocq.Corelib.Floats.SpecFloat.shr_r : Rocq.Corelib.Floats.SpecFloat.shr_record → Rocq.Corelib.Init.Datatypes.bool :=
+fun s => Rocq.Corelib.Floats.SpecFloat.shr_record.rec.{1} (fun shr_m shr_r shr_s => shr_r) s
+inductive Rocq.Corelib.Floats.SpecFloat.shr_record : Type
+number of parameters: 0
+constructors:
+Rocq.Corelib.Floats.SpecFloat.shr_record.Build_shr_record : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Init.Datatypes.bool → Rocq.Corelib.Init.Datatypes.bool → Rocq.Corelib.Floats.SpecFloat.shr_record
+def Rocq.Corelib.Floats.SpecFloat.shr_record_of_loc : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Floats.SpecFloat.location → Rocq.Corelib.Floats.SpecFloat.shr_record :=
+fun m l =>
+  Rocq.Corelib.Floats.SpecFloat.location.rec.{1}
+    (Rocq.Corelib.Floats.SpecFloat.shr_record.Build_shr_record m Rocq.Corelib.Init.Datatypes.bool.false
+      Rocq.Corelib.Init.Datatypes.bool.false)
+    (fun a =>
+      Rocq.Corelib.Init.Datatypes.comparison.rec.{1}
+        (Rocq.Corelib.Floats.SpecFloat.shr_record.Build_shr_record m Rocq.Corelib.Init.Datatypes.bool.true
+          Rocq.Corelib.Init.Datatypes.bool.false)
+        (Rocq.Corelib.Floats.SpecFloat.shr_record.Build_shr_record m Rocq.Corelib.Init.Datatypes.bool.false
+          Rocq.Corelib.Init.Datatypes.bool.true)
+        (Rocq.Corelib.Floats.SpecFloat.shr_record.Build_shr_record m Rocq.Corelib.Init.Datatypes.bool.true
+          Rocq.Corelib.Init.Datatypes.bool.true)
+        a)
+    l
+def Rocq.Corelib.Floats.SpecFloat.shr_s : Rocq.Corelib.Floats.SpecFloat.shr_record → Rocq.Corelib.Init.Datatypes.bool :=
+fun s => Rocq.Corelib.Floats.SpecFloat.shr_record.rec.{1} (fun shr_m shr_r shr_s => shr_s) s
+inductive Rocq.Corelib.Floats.SpecFloat.spec_float : Type
+number of parameters: 0
+constructors:
+Rocq.Corelib.Floats.SpecFloat.spec_float.S754_zero : Rocq.Corelib.Init.Datatypes.bool →
+  Rocq.Corelib.Floats.SpecFloat.spec_float
+Rocq.Corelib.Floats.SpecFloat.spec_float.S754_infinity : Rocq.Corelib.Init.Datatypes.bool →
+  Rocq.Corelib.Floats.SpecFloat.spec_float
+Rocq.Corelib.Floats.SpecFloat.spec_float.S754_nan : Rocq.Corelib.Floats.SpecFloat.spec_float
+Rocq.Corelib.Floats.SpecFloat.spec_float.S754_finite : Rocq.Corelib.Init.Datatypes.bool →
+  Rocq.Corelib.Numbers.BinNums.positive → Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Floats.SpecFloat.spec_float
+def Rocq.Corelib.Floats.SpecFloat.valid_binary : Rocq.Corelib.Numbers.BinNums.Z →
+  Rocq.Corelib.Numbers.BinNums.Z → Rocq.Corelib.Floats.SpecFloat.spec_float → Rocq.Corelib.Init.Datatypes.bool :=
+fun prec emax x =>
+  Rocq.Corelib.Floats.SpecFloat.spec_float.rec.{1} (fun s => Rocq.Corelib.Init.Datatypes.bool.true)
+    (fun s => Rocq.Corelib.Init.Datatypes.bool.true) Rocq.Corelib.Init.Datatypes.bool.true
+    (fun s m e => Rocq.Corelib.Floats.SpecFloat.bounded prec emax m e) x

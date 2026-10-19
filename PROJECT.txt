@@ -1,0 +1,9 @@
+Independent Corelib translation project
+
+Objective: translate every kernel declaration in the installed pinned Corelib, preserving public source types and checked computational behavior; retain statement-only theorem translation. After eliminating all blockers, simplify rules without coverage loss.
+Scope manifest: work/inventory/modules.json; declarations may not be silently removed. Notation and tactic-only files are explicitly inventoried, not counted as kernel declarations.
+Validation: source roundtrip, Lean consumer, independent audit, and statement/negative tests. Pending proof conditions must remain explicit; never report them as proved theorems. Source axioms may have their statements translated, never be introduced as assumed Lean theorems.
+Work is isolated to this repository; historical result folders are immutable reference artifacts. New runs live in work/runs; frozen source snapshots in work/snapshots. translator/ is the active experimental worktree; only fully validated changes are counted as improvements. Frozen snapshots identify every measured version. No changes to the original Rocq2Lean project.
+Authorized by user 2026-10-18: modify/add/remove translation rules and then minimize them. This includes necessary representation design within the soundness constraints above. No publication/push requested in this phase.
+
+Authorized 2026-10-19: update current docs/results, promote validated mechanical nat/eq, commit/push source and key results, sync Mac. User requests intermediate outputs remain only on remote workstation via .gitignore.

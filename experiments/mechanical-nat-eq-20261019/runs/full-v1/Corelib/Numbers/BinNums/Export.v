@@ -1,0 +1,3 @@
+From Rocq2LeanExport Require Import Loader.
+Require Corelib.Numbers.BinNums.
+Rocq2Lean ExportStatements "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Numbers/BinNums/source.ndjson" Corelib.Numbers.BinNums.N Corelib.Numbers.BinNums.N_ind Corelib.Numbers.BinNums.N_rec Corelib.Numbers.BinNums.N_rect Corelib.Numbers.BinNums.N_sind Corelib.Numbers.BinNums.Z Corelib.Numbers.BinNums.Z_ind Corelib.Numbers.BinNums.Z_rec Corelib.Numbers.BinNums.Z_rect Corelib.Numbers.BinNums.Z_sind Corelib.Numbers.BinNums.positive Corelib.Numbers.BinNums.positive_ind Corelib.Numbers.BinNums.positive_rec Corelib.Numbers.BinNums.positive_rect Corelib.Numbers.BinNums.positive_sind.

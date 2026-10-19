@@ -1,0 +1,83 @@
+rocq2lean: 12 root(s) TRANSLATED_AND_CHECKED; summary {"bootstrap_resolved":0,"generated_helpers":0,"not_ok":9,"roots":12,"translated_dependencies":54}
+def Rocq.Corelib.Strings.PrimStringAxioms.cat_spec.statement : Prop :=
+∀ (s1 s2 : Rocq.Corelib.Strings.PrimString.string),
+  Rocq.Corelib.Init.Logic.eq.{1} (Rocq.Corelib.Init.Datatypes.list.{1} Rocq.Corelib.Strings.PrimString.char63)
+    (Rocq.Corelib.Strings.PrimStringAxioms.to_list (Rocq.Corelib.Strings.PrimString.cat s1 s2))
+    (Rocq.Corelib.Lists.ListDef.firstn.{1} Rocq.Corelib.Strings.PrimString.char63
+      (Rocq.Corelib.BinNums.IntDef.Z.to_nat
+        (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z Rocq.Corelib.Strings.PrimString.max_length))
+      (Rocq.Corelib.Init.Datatypes.app.{1} Rocq.Corelib.Strings.PrimString.char63
+        (Rocq.Corelib.Strings.PrimStringAxioms.to_list s1) (Rocq.Corelib.Strings.PrimStringAxioms.to_list s2)))
+def Rocq.Corelib.Strings.PrimStringAxioms.char63_valid : Rocq.Corelib.Strings.PrimString.char63 → Prop :=
+fun c =>
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int
+    (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.land c 255#63) c
+def Rocq.Corelib.Strings.PrimStringAxioms.compare_spec.statement : Prop :=
+∀ (s1 s2 : Rocq.Corelib.Strings.PrimString.string),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.comparison (Rocq.Corelib.Strings.PrimString.compare s1 s2)
+    (Rocq.Corelib.Lists.ListDef.list_compare.{1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int
+      Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.compare (Rocq.Corelib.Strings.PrimStringAxioms.to_list s1)
+      (Rocq.Corelib.Strings.PrimStringAxioms.to_list s2))
+def Rocq.Corelib.Strings.PrimStringAxioms.get_spec.statement : Prop :=
+∀ (s : Rocq.Corelib.Strings.PrimString.string) (i : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Strings.PrimString.char63 (Rocq.Corelib.Strings.PrimString.get s i)
+    (Rocq.Corelib.Lists.ListDef.nth.{1} Rocq.Corelib.Strings.PrimString.char63
+      (Rocq.Corelib.BinNums.IntDef.Z.to_nat (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z i))
+      (Rocq.Corelib.Strings.PrimStringAxioms.to_list s) 0#63)
+def Rocq.Corelib.Strings.PrimStringAxioms.length_spec.statement : Prop :=
+∀ (s : Rocq.Corelib.Strings.PrimString.string),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.nat
+    (Rocq.Corelib.BinNums.IntDef.Z.to_nat
+      (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z (Rocq.Corelib.Strings.PrimString.length s)))
+    (Rocq.Corelib.Init.Datatypes.length.{1} Rocq.Corelib.Strings.PrimString.char63
+      (Rocq.Corelib.Strings.PrimStringAxioms.to_list s))
+def Rocq.Corelib.Strings.PrimStringAxioms.make_spec.statement : Prop :=
+∀ (i : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int) (c : Rocq.Corelib.Strings.PrimString.char63),
+  Rocq.Corelib.Init.Logic.eq.{1} (Rocq.Corelib.Init.Datatypes.list.{1} Rocq.Corelib.Strings.PrimString.char63)
+    (Rocq.Corelib.Strings.PrimStringAxioms.to_list (Rocq.Corelib.Strings.PrimString.make i c))
+    (Rocq.Corelib.Lists.ListDef.repeat.{1} Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int
+      (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.land c 255#63)
+      (Rocq.Corelib.Init.Nat.min
+        (Rocq.Corelib.BinNums.IntDef.Z.to_nat (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z i))
+        (Rocq.Corelib.BinNums.IntDef.Z.to_nat
+          (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z Rocq.Corelib.Strings.PrimString.max_length))))
+def Rocq.Corelib.Strings.PrimStringAxioms.of_list : Rocq.Corelib.Init.Datatypes.list.{1}
+    Rocq.Corelib.Strings.PrimString.char63 →
+  Rocq.Corelib.Strings.PrimString.string :=
+fun cs =>
+  Rocq.Corelib.Init.Datatypes.list.rec.{1, 1} (Rocq2Lean.PrimString.ofBytes List.nil.{0})
+    (fun a a_1 _ih => Rocq.Corelib.Strings.PrimString.cat (Rocq.Corelib.Strings.PrimString.make (1#63) a) _ih) cs
+def Rocq.Corelib.Strings.PrimStringAxioms.of_to_list.statement : Prop :=
+∀ (s : Rocq.Corelib.Strings.PrimString.string),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Strings.PrimString.string
+    (Rocq.Corelib.Strings.PrimStringAxioms.of_list (Rocq.Corelib.Strings.PrimStringAxioms.to_list s)) s
+def Rocq.Corelib.Strings.PrimStringAxioms.sub_spec.statement : Prop :=
+∀ (s : Rocq.Corelib.Strings.PrimString.string) (off len : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int),
+  Rocq.Corelib.Init.Logic.eq.{1} (Rocq.Corelib.Init.Datatypes.list.{1} Rocq.Corelib.Strings.PrimString.char63)
+    (Rocq.Corelib.Strings.PrimStringAxioms.to_list (Rocq.Corelib.Strings.PrimString.sub s off len))
+    (Rocq.Corelib.Lists.ListDef.firstn.{1} Rocq.Corelib.Strings.PrimString.char63
+      (Rocq.Corelib.BinNums.IntDef.Z.to_nat (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z len))
+      (Rocq.Corelib.Lists.ListDef.skipn.{1} Rocq.Corelib.Strings.PrimString.char63
+        (Rocq.Corelib.BinNums.IntDef.Z.to_nat (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z off))
+        (Rocq.Corelib.Strings.PrimStringAxioms.to_list s)))
+def Rocq.Corelib.Strings.PrimStringAxioms.to_list : Rocq.Corelib.Strings.PrimString.string →
+  Rocq.Corelib.Init.Datatypes.list.{1} Rocq.Corelib.Strings.PrimString.char63 :=
+fun s =>
+  Rocq.Corelib.Lists.ListDef.map.{1, 1} Rocq.Corelib.Init.Datatypes.nat Rocq.Corelib.Strings.PrimString.char63
+    (fun i =>
+      Rocq.Corelib.Strings.PrimString.get s
+        (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.of_Z (Rocq.Corelib.BinNums.IntDef.Z.of_nat i)))
+    (Rocq.Corelib.Lists.ListDef.seq Rocq.Corelib.Init.Datatypes.nat.O
+      (Rocq.Corelib.BinNums.IntDef.Z.to_nat
+        (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z (Rocq.Corelib.Strings.PrimString.length s))))
+def Rocq.Corelib.Strings.PrimStringAxioms.to_list_char63_valid.statement : Prop :=
+∀ (s : Rocq.Corelib.Strings.PrimString.string),
+  Rocq.Corelib.Lists.ListDef.Forall.{0} Rocq.Corelib.Strings.PrimString.char63
+    Rocq.Corelib.Strings.PrimStringAxioms.char63_valid (Rocq.Corelib.Strings.PrimStringAxioms.to_list s)
+def Rocq.Corelib.Strings.PrimStringAxioms.to_list_length.statement : Prop :=
+∀ (s : Rocq.Corelib.Strings.PrimString.string),
+  Rocq.Corelib.Init.Peano.le
+    (Rocq.Corelib.Init.Datatypes.length.{1} Rocq.Corelib.Strings.PrimString.char63
+      (Rocq.Corelib.Strings.PrimStringAxioms.to_list s))
+    (Rocq.Corelib.BinNums.IntDef.Z.to_nat
+      (Rocq.Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z Rocq.Corelib.Strings.PrimString.max_length))

@@ -1,0 +1,125 @@
+rocq2lean: 37 root(s) TRANSLATED_AND_CHECKED; summary {"bootstrap_resolved":0,"generated_helpers":0,"not_ok":0,"roots":37,"translated_dependencies":6}
+def Rocq.Corelib.Floats.PrimFloat.Leibniz.eqb : Rocq.Corelib.Floats.PrimFloat.float →
+  Rocq.Corelib.Floats.PrimFloat.float → Rocq.Corelib.Init.Datatypes.bool :=
+fun x y =>
+  Bool.rec.{1} Rocq.Corelib.Init.Datatypes.bool.false Rocq.Corelib.Init.Datatypes.bool.true
+    (Rocq2Lean.PrimFloat.equal x y)
+def Rocq.Corelib.Floats.PrimFloat.abs : Rocq.Corelib.Floats.PrimFloat.float → Rocq.Corelib.Floats.PrimFloat.float :=
+Rocq2Lean.PrimFloat.abs
+def Rocq.Corelib.Floats.PrimFloat.add : Rocq.Corelib.Floats.PrimFloat.float →
+  Rocq.Corelib.Floats.PrimFloat.float → Rocq.Corelib.Floats.PrimFloat.float :=
+Rocq2Lean.PrimFloat.add
+def Rocq.Corelib.Floats.PrimFloat.classify : Rocq.Corelib.Floats.PrimFloat.float →
+  Rocq.Corelib.Floats.FloatClass.float_class :=
+Rocq2Lean.PrimFloat.classify.{0} Rocq.Corelib.Floats.FloatClass.float_class
+  Rocq.Corelib.Floats.FloatClass.float_class.PNormal Rocq.Corelib.Floats.FloatClass.float_class.NNormal
+  Rocq.Corelib.Floats.FloatClass.float_class.PSubn Rocq.Corelib.Floats.FloatClass.float_class.NSubn
+  Rocq.Corelib.Floats.FloatClass.float_class.PZero Rocq.Corelib.Floats.FloatClass.float_class.NZero
+  Rocq.Corelib.Floats.FloatClass.float_class.PInf Rocq.Corelib.Floats.FloatClass.float_class.NInf
+  Rocq.Corelib.Floats.FloatClass.float_class.NaN
+def Rocq.Corelib.Floats.PrimFloat.compare : Rocq.Corelib.Floats.PrimFloat.float →
+  Rocq.Corelib.Floats.PrimFloat.float → Rocq.Corelib.Floats.PrimFloat.float_comparison :=
+Rocq2Lean.PrimFloat.compare.{0} Rocq.Corelib.Floats.PrimFloat.float_comparison
+  Rocq.Corelib.Floats.PrimFloat.float_comparison.FEq Rocq.Corelib.Floats.PrimFloat.float_comparison.FLt
+  Rocq.Corelib.Floats.PrimFloat.float_comparison.FGt Rocq.Corelib.Floats.PrimFloat.float_comparison.FNotComparable
+def Rocq.Corelib.Floats.PrimFloat.div : Rocq.Corelib.Floats.PrimFloat.float →
+  Rocq.Corelib.Floats.PrimFloat.float → Rocq.Corelib.Floats.PrimFloat.float :=
+Rocq2Lean.PrimFloat.div
+def Rocq.Corelib.Floats.PrimFloat.eqb : Rocq.Corelib.Floats.PrimFloat.float →
+  Rocq.Corelib.Floats.PrimFloat.float → Rocq.Corelib.Init.Datatypes.bool :=
+fun x y =>
+  Bool.rec.{1} Rocq.Corelib.Init.Datatypes.bool.false Rocq.Corelib.Init.Datatypes.bool.true
+    (Rocq2Lean.PrimFloat.eqb x y)
+def Rocq.Corelib.Floats.PrimFloat.float : Type :=
+Rocq2Lean.PrimFloat.Rep
+inductive Rocq.Corelib.Floats.PrimFloat.float_comparison : Type
+number of parameters: 0
+constructors:
+Rocq.Corelib.Floats.PrimFloat.float_comparison.FEq : Rocq.Corelib.Floats.PrimFloat.float_comparison
+Rocq.Corelib.Floats.PrimFloat.float_comparison.FLt : Rocq.Corelib.Floats.PrimFloat.float_comparison
+Rocq.Corelib.Floats.PrimFloat.float_comparison.FGt : Rocq.Corelib.Floats.PrimFloat.float_comparison
+Rocq.Corelib.Floats.PrimFloat.float_comparison.FNotComparable : Rocq.Corelib.Floats.PrimFloat.float_comparison
+def Rocq.Corelib.Floats.PrimFloat.float_wrap : Rocq.Corelib.Floats.PrimFloat.float_wrapper →
+  Rocq.Corelib.Floats.PrimFloat.float :=
+fun f => Rocq.Corelib.Floats.PrimFloat.float_wrapper.rec.{1} (fun float_wrap => float_wrap) f
+inductive Rocq.Corelib.Floats.PrimFloat.float_wrapper : Type
+number of parameters: 0
+constructors:
+Rocq.Corelib.Floats.PrimFloat.float_wrapper.wrap_float : Rocq.Corelib.Floats.PrimFloat.float →
+  Rocq.Corelib.Floats.PrimFloat.float_wrapper
+def Rocq.Corelib.Floats.PrimFloat.frshiftexp : Rocq.Corelib.Floats.PrimFloat.float →
+  Rocq.Corelib.Init.Datatypes.prod.{1, 1} Rocq.Corelib.Floats.PrimFloat.float
+    Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int :=
+Rocq2Lean.PrimFloat.frshiftexp.{0} (Rocq.Corelib.Init.Datatypes.prod.{1, 1} Rocq2Lean.PrimFloat.Rep (BitVec 63))
+  (Rocq.Corelib.Init.Datatypes.prod.pair.{1, 1} Rocq2Lean.PrimFloat.Rep (BitVec 63))
+def Rocq.Corelib.Floats.PrimFloat.get_sign : Rocq.Corelib.Floats.PrimFloat.float → Rocq.Corelib.Init.Datatypes.bool :=
+fun f =>
+  let f :=
+    Rocq.Corelib.Init.Datatypes.bool.rec.{1} (Rocq.Corelib.Floats.PrimFloat.div Rocq.Corelib.Floats.PrimFloat.one f) f
+      (Rocq.Corelib.Floats.PrimFloat.is_zero f);
+  Rocq.Corelib.Floats.PrimFloat.ltb f Rocq.Corelib.Floats.PrimFloat.zero
+def Rocq.Corelib.Floats.PrimFloat.infinity : Rocq.Corelib.Floats.PrimFloat.float :=
+Rocq2Lean.PrimFloat.fromBits 9218868437227405312#64
+def Rocq.Corelib.Floats.PrimFloat.is_finite : Rocq.Corelib.Floats.PrimFloat.float → Rocq.Corelib.Init.Datatypes.bool :=
+fun x =>
+  Rocq.Corelib.Init.Datatypes.negb
+    (Rocq.Corelib.Init.Datatypes.orb (Rocq.Corelib.Floats.PrimFloat.is_nan x)
+      (Rocq.Corelib.Floats.PrimFloat.is_infinity x))
+def Rocq.Corelib.Floats.PrimFloat.is_infinity : Rocq.Corelib.Floats.PrimFloat.float →
+  Rocq.Corelib.Init.Datatypes.bool :=
+fun f => Rocq.Corelib.Floats.PrimFloat.eqb (Rocq.Corelib.Floats.PrimFloat.abs f) Rocq.Corelib.Floats.PrimFloat.infinity
+def Rocq.Corelib.Floats.PrimFloat.is_nan : Rocq.Corelib.Floats.PrimFloat.float → Rocq.Corelib.Init.Datatypes.bool :=
+fun f => Rocq.Corelib.Init.Datatypes.negb (Rocq.Corelib.Floats.PrimFloat.eqb f f)
+def Rocq.Corelib.Floats.PrimFloat.is_zero : Rocq.Corelib.Floats.PrimFloat.float → Rocq.Corelib.Init.Datatypes.bool :=
+fun f => Rocq.Corelib.Floats.PrimFloat.eqb f Rocq.Corelib.Floats.PrimFloat.zero
+def Rocq.Corelib.Floats.PrimFloat.ldshiftexp : Rocq.Corelib.Floats.PrimFloat.float →
+  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int → Rocq.Corelib.Floats.PrimFloat.float :=
+Rocq2Lean.PrimFloat.ldshiftexp
+def Rocq.Corelib.Floats.PrimFloat.leb : Rocq.Corelib.Floats.PrimFloat.float →
+  Rocq.Corelib.Floats.PrimFloat.float → Rocq.Corelib.Init.Datatypes.bool :=
+fun x y =>
+  Bool.rec.{1} Rocq.Corelib.Init.Datatypes.bool.false Rocq.Corelib.Init.Datatypes.bool.true
+    (Rocq2Lean.PrimFloat.leb x y)
+def Rocq.Corelib.Floats.PrimFloat.ltb : Rocq.Corelib.Floats.PrimFloat.float →
+  Rocq.Corelib.Floats.PrimFloat.float → Rocq.Corelib.Init.Datatypes.bool :=
+fun x y =>
+  Bool.rec.{1} Rocq.Corelib.Init.Datatypes.bool.false Rocq.Corelib.Init.Datatypes.bool.true
+    (Rocq2Lean.PrimFloat.ltb x y)
+def Rocq.Corelib.Floats.PrimFloat.mul : Rocq.Corelib.Floats.PrimFloat.float →
+  Rocq.Corelib.Floats.PrimFloat.float → Rocq.Corelib.Floats.PrimFloat.float :=
+Rocq2Lean.PrimFloat.mul
+def Rocq.Corelib.Floats.PrimFloat.nan : Rocq.Corelib.Floats.PrimFloat.float :=
+Rocq2Lean.PrimFloat.fromBits 9221120237041090560#64
+def Rocq.Corelib.Floats.PrimFloat.neg_infinity : Rocq.Corelib.Floats.PrimFloat.float :=
+Rocq2Lean.PrimFloat.fromBits 18442240474082181120#64
+def Rocq.Corelib.Floats.PrimFloat.neg_zero : Rocq.Corelib.Floats.PrimFloat.float :=
+Rocq2Lean.PrimFloat.fromBits 9223372036854775808#64
+def Rocq.Corelib.Floats.PrimFloat.next_down : Rocq.Corelib.Floats.PrimFloat.float →
+  Rocq.Corelib.Floats.PrimFloat.float :=
+Rocq2Lean.PrimFloat.nextDown
+def Rocq.Corelib.Floats.PrimFloat.next_up : Rocq.Corelib.Floats.PrimFloat.float → Rocq.Corelib.Floats.PrimFloat.float :=
+Rocq2Lean.PrimFloat.nextUp
+def Rocq.Corelib.Floats.PrimFloat.normfr_mantissa : Rocq.Corelib.Floats.PrimFloat.float →
+  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int :=
+Rocq2Lean.PrimFloat.normfrMantissa
+def Rocq.Corelib.Floats.PrimFloat.of_uint63 : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int →
+  Rocq.Corelib.Floats.PrimFloat.float :=
+Rocq2Lean.PrimFloat.ofUint63
+def Rocq.Corelib.Floats.PrimFloat.one : Rocq.Corelib.Floats.PrimFloat.float :=
+Rocq2Lean.PrimFloat.fromBits 4607182418800017408#64
+def Rocq.Corelib.Floats.PrimFloat.opp : Rocq.Corelib.Floats.PrimFloat.float → Rocq.Corelib.Floats.PrimFloat.float :=
+Rocq2Lean.PrimFloat.opp
+def Rocq.Corelib.Floats.PrimFloat.parser : Rocq.Corelib.Floats.PrimFloat.float → Rocq.Corelib.Floats.PrimFloat.float :=
+fun x => x
+def Rocq.Corelib.Floats.PrimFloat.printer : Rocq.Corelib.Floats.PrimFloat.float_wrapper →
+  Rocq.Corelib.Floats.PrimFloat.float :=
+fun x => Rocq.Corelib.Floats.PrimFloat.float_wrap x
+def Rocq.Corelib.Floats.PrimFloat.sqrt : Rocq.Corelib.Floats.PrimFloat.float → Rocq.Corelib.Floats.PrimFloat.float :=
+Rocq2Lean.PrimFloat.sqrt
+def Rocq.Corelib.Floats.PrimFloat.sub : Rocq.Corelib.Floats.PrimFloat.float →
+  Rocq.Corelib.Floats.PrimFloat.float → Rocq.Corelib.Floats.PrimFloat.float :=
+Rocq2Lean.PrimFloat.sub
+def Rocq.Corelib.Floats.PrimFloat.two : Rocq.Corelib.Floats.PrimFloat.float :=
+Rocq2Lean.PrimFloat.fromBits 4611686018427387904#64
+def Rocq.Corelib.Floats.PrimFloat.zero : Rocq.Corelib.Floats.PrimFloat.float :=
+Rocq2Lean.PrimFloat.fromBits 0#64

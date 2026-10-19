@@ -1,0 +1,88 @@
+Quality-family integration handoff after certified result-transport6
+=================================================================
+Certified baseline: full2180 roots/67modules,1998 checked good,182 blocked,
+0good-unvalidated. No status/validation regression. Statement suite PASS.
+Source snapshot work/snapshots/result-transport6/translator.
+No campaign live at this checkpoint.
+
+Implemented:
+- Quality.lean derives BOTH nonrecursive/uniform/no-index/no-projection
+  Prop/Type family signatures from exact native shared-q0 bindings.
+- QualitySource.lean: bounded partial source-type/arity analysis retaining
+  declared binder/constant types (not target-solved sort guesses).
+  SourceQualityContext is outermost first; types/bodies scoped before binder.
+  Source terms use existing capture-safe IR substitution.
+- Translate.GEnv.qualitySelect optional callback, inactive by default.
+  lookupSourceInd used by transHead(ind/construct) and transCase.
+  TCtx.sourceScope/sourceContext aligned with exact target locals.
+  withSourceLocal keeps real lambda/product/let annotations; generic withLocal
+  inserts unknown. Synthetic changed local scopes invalidate old annotations.
+- qualityDispatch callback selects supplied complete generated target pairs.
+  Unknown context fails; closed arguments remain decidable.
+- tools/quality_source.py independently selects and specializes source refs
+  to family audit views, reconstructing case/fix binder source contexts.
+  derived_families generates internal signature views, NOT source roots.
+- Emit result transport fix: before constructing type-valued PULift results,
+  skip eager liftCoerceValue/isDefEq that could collapse the upper universe.
+  Existing result transport and independent audit unchanged.
+
+Evidence:
+work/tests/quality-source-checked/result.json:
+  54source definitions,45native template applications; Rocq=Lean=Python.
+work/tests/quality-dispatch-kernel3/result.json:
+  51/54constants kernel-checked,20constructor+case functions across five
+  families and both branches,10fresh-import computation laws,no axioms,
+  64standalone kernel replay records. Three failures explicitly retained.
+work/tests/quality-family-audit2/result.json:
+  10derived signatures,51function types/bodies,own-level/transport checks,
+  30mutations rejected;10wrong-data bodies kernel-valid yet audit-rejected.
+  Fresh recursor metadata in same folder; copied helper is frozen evidence.
+work/tests/quality-dispatch-context/result.json:
+  source Type binder mapped to target Prop still selects Type branch;
+  source Prop selects Prop;stale same-sized scopes rejected;closed refs work.
+work/tests/quality-sprop-rejections/result.json:
+  13Rocq Fail Definition checks; SProp arguments in this five-family probe
+  are not valid source instances. Existing SP mapping already predates this.
+work/tests/result-transport6-fixture/result.json:
+  all6protected lift roots source/target/audit validated,4arbitrary-universe
+  axiom-free laws,6mutations(two kernel-valid wrong payload/narrowed result).
+
+Remaining production integration:
+1. Whole declaration has one source row; auxiliary family representations
+   must not add roots or bypass native source recheck. Both branches mandatory.
+   Consider keeping Type target's ORIGINAL canonical source name and recording
+   Prop target as an auxiliary checked row under the primary row. Type signature
+   is the derived fixed-Type/Sort-parameter view; Prop is derived Prop view.
+   Current experimental harness uses .qualityType/.qualityProp names instead.
+2. Emit must generate/register both atomically, restore Meta state if either
+   fails, install qualityDispatch closure on source env + generated pairs.
+   Preserve every branch's universe/template metadata and protected checks.
+3. Replay/fresh Consumer must submit/check auxiliary declarations, extend
+   allowed names and recursor metadata, and reject missing/extra/wrong variants.
+   Report coverage remains exact original source-root set.
+4. Independent audit first validates original coverage/native bindings.
+   Then derive permitted family signature views from original source metadata;
+   rewrite occurrences via quality_source.specialize using ORIGINAL source
+   contexts, not target names/levels. Audit all types,bodies,universes and
+   independent consumer data. Include primitive native result adaptations.
+5. Source delta/beta/computational rewrites precede quality specialization:
+   use the same independently reconstructed normalized source that Emit used.
+   Do not narrow the enclosing declaration's advertised Type result after
+   expanding a proposition-valued alias; explicit transport remains required.
+6. Synthetic recursion/recursor local contexts currently invalidate source
+   tracking; add source annotations only when reconstructible,never guessed.
+
+Three synthetic54-root fixture failures still present:
+- nested_annotated: through_type_prod has Type-valued formal parameters,
+  but call supplies Prop; source conversion/argument transport needed.
+- let_annotated: local B:Type:=True requires type-valued cumulative transport.
+- recurse_type: internal fixpoint result universe is prematurely specialized.
+These are retained in quality-dispatch-kernel3/result.json, not counted as PASS
+for the full54-root fixture. SProp rejection fixture is source-negative evidence.
+
+Reusable scripts:
+test_quality_source.py [T] [nativeRun] [freshOut]
+test_quality_dispatch_kernel.py [T] [freshOut]
+test_quality_family_audit.py [freshOut] (currently uses frozenT5/kernel3 evidence)
+test_result_transport.py [T] [freshOut] (positive fixture from validated probe)
+run_result_transport6.py completed. Do not rerun into old output directories.

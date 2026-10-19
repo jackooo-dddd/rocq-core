@@ -1,15 +1,11 @@
-main75 规则审阅入口
+# 当前规则审阅入口：机械 nat／eq
 
-[全部规则、适用限制与逐项使用统计](results/corelib-complete/ALL_RULES.md)
-[使用统计与重试次数](results/corelib-complete/RULE_USAGE.md)
-[可筛选 CSV](results/corelib-complete/RULE_USAGE.csv)
-[逐声明命中证据 JSON](results/corelib-complete/RULE_USAGE.json)
+[全部规则与逐项使用统计](results/corelib-complete/ALL_RULES.md) · [重试统计](results/corelib-complete/RULE_USAGE.md) · [CSV](results/corelib-complete/RULE_USAGE.csv) · [命中声明 JSON](results/corelib-complete/RULE_USAGE.json)
 
-范围：2180 个原始 Corelib 根。118 个审阅条目包含翻译、校验及调度机制，并非 118 条新增语义规则；另列 61 个原语映射。
-统计区分主表示与纳入 quality 分支后的根覆盖。46 项有明确报告命中，23 项只能统计覆盖范围，3 项为可确认下界，46 项没有独立事件记录。未记录不等于零；父规则使用次数不能分摊成子规则的使用次数。
+范围：67 模块、2180 个根。118 个审阅编号中 T06 已停用；其余仍包含检查和调度机制，不等于 117 条新增语义规则。61 个原语操作映射另列。
+nat/eq 普通归纳生成，不再 bootstrap；类型对应与运算对应在翻译后证明，见 [CORRESPONDENCE.md](results/corelib-complete/CORRESPONDENCE.md)。
 
-复现：在仓库根目录运行 python3 scripts/catalog_rule_usage.py。
-输入是随本次提交保存的 rule-usage-evidence.json。脚本重建统计并交叉核对已有 11 个汇总字段；不用运行 Lean 或访问远程机器。完整命中名单在 JSON 中。
+统计已从 mechanical-nat-eq-20261019/full-v1 重新提取。报告命中、覆盖、下界、未记录四种口径保持不变；未记录不等于零。
+复现：python3 scripts/catalog_rule_usage.py。它读取已提交的紧凑证据；加 --extract 从完整逐文件结果重提取。
 
-来源：远程 /home/shunqwang4/research/rocq-core/work/snapshots/quality-main75/translator 及 work/runs/quality-main75-full。
-本次提交保存规则审阅材料与紧凑统计证据；完整逐模块 AST、运行目录和此前未提交的翻译器实验改动仍在远程。
+历史 main75 的规则统计保存在 results/corelib-main75-bootstrap，早期工作目录留在远程；当前源码、证明、关键结果随本次提交发布。

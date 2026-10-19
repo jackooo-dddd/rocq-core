@@ -1,0 +1,420 @@
+rocq2lean: 17 root(s) TRANSLATED_AND_CHECKED; summary {"bootstrap_resolved":0,"generated_helpers":0,"not_ok":21,"roots":17,"translated_dependencies":18}
+def Rocq.Corelib.Init.Number.int_of_int : Rocq.Corelib.Init.Number.signed_int → Rocq.Corelib.Init.Number.signed_int :=
+fun i => i
+def Rocq.Corelib.Init.Number.internal_number_dec_bl.statement : Prop :=
+∀ (x y : Rocq.Corelib.Init.Number.number),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Number.number_beq x y)
+      Rocq.Corelib.Init.Datatypes.bool.true →
+    Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Number.number x y
+def Rocq.Corelib.Init.Number.internal_number_dec_lb.statement : Prop :=
+∀ (x y : Rocq.Corelib.Init.Number.number),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Number.number x y →
+    Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Number.number_beq x y)
+      Rocq.Corelib.Init.Datatypes.bool.true
+def Rocq.Corelib.Init.Number.internal_signed_int_dec_bl1.statement : Prop :=
+∀ (x y : Rocq.Corelib.Init.Number.signed_int),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Number.signed_int_beq x y)
+      Rocq.Corelib.Init.Datatypes.bool.true →
+    Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Number.signed_int x y
+def Rocq.Corelib.Init.Number.internal_signed_int_dec_lb1.statement : Prop :=
+∀ (x y : Rocq.Corelib.Init.Number.signed_int),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Number.signed_int x y →
+    Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Number.signed_int_beq x y)
+      Rocq.Corelib.Init.Datatypes.bool.true
+def Rocq.Corelib.Init.Number.internal_uint_dec_bl1.statement : Prop :=
+∀ (x y : Rocq.Corelib.Init.Number.uint),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Number.uint_beq x y)
+      Rocq.Corelib.Init.Datatypes.bool.true →
+    Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Number.uint x y
+def Rocq.Corelib.Init.Number.internal_uint_dec_lb1.statement : Prop :=
+∀ (x y : Rocq.Corelib.Init.Number.uint),
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Number.uint x y →
+    Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Number.uint_beq x y)
+      Rocq.Corelib.Init.Datatypes.bool.true
+inductive Rocq.Corelib.Init.Number.number : Type
+number of parameters: 0
+constructors:
+Rocq.Corelib.Init.Number.number.Decimal : Rocq.Corelib.Init.Decimal.decimal → Rocq.Corelib.Init.Number.number
+Rocq.Corelib.Init.Number.number.Hexadecimal : Rocq.Corelib.Init.Hexadecimal.hexadecimal →
+  Rocq.Corelib.Init.Number.number
+def Rocq.Corelib.Init.Number.number_beq : Rocq.Corelib.Init.Number.number →
+  Rocq.Corelib.Init.Number.number → Rocq.Corelib.Init.Datatypes.bool :=
+fun X Y =>
+  Rocq.Corelib.Init.Number.number.rec.{1}
+    (fun d =>
+      Rocq.Corelib.Init.Number.number.rec.{1} (fun d_1 => Rocq.Corelib.Init.Decimal.decimal_beq d d_1)
+        (fun h => Rocq.Corelib.Init.Datatypes.bool.false) Y)
+    (fun h =>
+      Rocq.Corelib.Init.Number.number.rec.{1} (fun d => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun h_1 => Rocq.Corelib.Init.Hexadecimal.hexadecimal_beq h h_1) Y)
+    X
+def RocqPending.Corelib.Init.Number.number_eq_dec : {h_Corelib_Init_Number_number_eq_dec__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_1.statement} →
+  {h_Corelib_Init_Number_number_eq_dec__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_2.statement} →
+    {h_Corelib_Init_Number_number_eq_dec__rocq2lean_obligation_3 :
+        RocqPending.Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_3.statement} →
+      {h_Corelib_Init_Number_number_eq_dec__rocq2lean_obligation_4 :
+          RocqPending.Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_4.statement} →
+        (x y : Rocq.Corelib.Init.Number.number) →
+          Rocq.Corelib.Init.Specif.sumbool (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Number.number x y)
+            (Rocq.Corelib.Init.Logic.not (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Number.number x y)) :=
+fun {h_Corelib_Init_Number_number_eq_dec__rocq2lean_obligation_1}
+    {h_Corelib_Init_Number_number_eq_dec__rocq2lean_obligation_2}
+    {h_Corelib_Init_Number_number_eq_dec__rocq2lean_obligation_3}
+    {h_Corelib_Init_Number_number_eq_dec__rocq2lean_obligation_4} x y =>
+  let H :=
+    let b := Rocq.Corelib.Init.Number.number_beq x y;
+    Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+      (Rocq.Corelib.Init.Specif.sumbool.left
+        (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+          Rocq.Corelib.Init.Datatypes.bool.true)
+        (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+          Rocq.Corelib.Init.Datatypes.bool.false)
+        ⋯)
+      (Rocq.Corelib.Init.Specif.sumbool.right
+        (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+          Rocq.Corelib.Init.Datatypes.bool.true)
+        (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+          Rocq.Corelib.Init.Datatypes.bool.false)
+        ⋯)
+      b;
+  Rocq.Corelib.Init.Specif.sumbool.rec.{1}
+    (fun a =>
+      (fun e =>
+          Rocq.Corelib.Init.Specif.sumbool.left (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Number.number x y)
+            (Rocq.Corelib.Init.Logic.not (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Number.number x y)) ⋯)
+        a)
+    (fun a =>
+      (fun H0 =>
+          Rocq.Corelib.Init.Specif.sumbool.right (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Number.number x y)
+            (Rocq.Corelib.Init.Logic.not (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Number.number x y)) ⋯)
+        a)
+    H
+def Rocq.Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_1.statement : Prop :=
+∀ (x y : Rocq.Corelib.Init.Number.number),
+  let b := Rocq.Corelib.Init.Number.number_beq x y;
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+    Rocq.Corelib.Init.Datatypes.bool.true
+def Rocq.Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_2.statement : Prop :=
+∀ (x y : Rocq.Corelib.Init.Number.number),
+  let b := Rocq.Corelib.Init.Number.number_beq x y;
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+    Rocq.Corelib.Init.Datatypes.bool.false
+def RocqPending.Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_3.statement : {h_Corelib_Init_Number_number_eq_dec__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_1.statement} →
+  {h_Corelib_Init_Number_number_eq_dec__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_2.statement} →
+    Prop :=
+fun {h_Corelib_Init_Number_number_eq_dec__rocq2lean_obligation_1}
+    {h_Corelib_Init_Number_number_eq_dec__rocq2lean_obligation_2} =>
+  ∀ (x y : Rocq.Corelib.Init.Number.number),
+    let H :=
+      let b := Rocq.Corelib.Init.Number.number_beq x y;
+      Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+        (Rocq.Corelib.Init.Specif.sumbool.left
+          (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+            Rocq.Corelib.Init.Datatypes.bool.true)
+          (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+            Rocq.Corelib.Init.Datatypes.bool.false)
+          ⋯)
+        (Rocq.Corelib.Init.Specif.sumbool.right
+          (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+            Rocq.Corelib.Init.Datatypes.bool.true)
+          (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+            Rocq.Corelib.Init.Datatypes.bool.false)
+          ⋯)
+        b;
+    Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Number.number_beq x y)
+        Rocq.Corelib.Init.Datatypes.bool.true →
+      Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Number.number_beq x y)
+          Rocq.Corelib.Init.Datatypes.bool.true →
+        Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Number.number x y
+def RocqPending.Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_4.statement : {h_Corelib_Init_Number_number_eq_dec__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_1.statement} →
+  {h_Corelib_Init_Number_number_eq_dec__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Number.number_eq_dec__rocq2lean_obligation_2.statement} →
+    Prop :=
+fun {h_Corelib_Init_Number_number_eq_dec__rocq2lean_obligation_1}
+    {h_Corelib_Init_Number_number_eq_dec__rocq2lean_obligation_2} =>
+  ∀ (x y : Rocq.Corelib.Init.Number.number),
+    let H :=
+      let b := Rocq.Corelib.Init.Number.number_beq x y;
+      Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+        (Rocq.Corelib.Init.Specif.sumbool.left
+          (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+            Rocq.Corelib.Init.Datatypes.bool.true)
+          (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+            Rocq.Corelib.Init.Datatypes.bool.false)
+          ⋯)
+        (Rocq.Corelib.Init.Specif.sumbool.right
+          (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+            Rocq.Corelib.Init.Datatypes.bool.true)
+          (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+            Rocq.Corelib.Init.Datatypes.bool.false)
+          ⋯)
+        b;
+    Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Number.number_beq x y)
+        Rocq.Corelib.Init.Datatypes.bool.false →
+      Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Number.number_beq x y)
+          Rocq.Corelib.Init.Datatypes.bool.false →
+        Rocq.Corelib.Init.Logic.not (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Number.number x y)
+inductive Rocq.Corelib.Init.Number.signed_int : Type
+number of parameters: 0
+constructors:
+Rocq.Corelib.Init.Number.signed_int.IntDecimal : Rocq.Corelib.Init.Decimal.signed_int →
+  Rocq.Corelib.Init.Number.signed_int
+Rocq.Corelib.Init.Number.signed_int.IntHexadecimal : Rocq.Corelib.Init.Hexadecimal.signed_int →
+  Rocq.Corelib.Init.Number.signed_int
+def Rocq.Corelib.Init.Number.signed_int_beq : Rocq.Corelib.Init.Number.signed_int →
+  Rocq.Corelib.Init.Number.signed_int → Rocq.Corelib.Init.Datatypes.bool :=
+fun X Y =>
+  Rocq.Corelib.Init.Number.signed_int.rec.{1}
+    (fun i =>
+      Rocq.Corelib.Init.Number.signed_int.rec.{1} (fun i_1 => Rocq.Corelib.Init.Decimal.signed_int_beq i i_1)
+        (fun i => Rocq.Corelib.Init.Datatypes.bool.false) Y)
+    (fun i =>
+      Rocq.Corelib.Init.Number.signed_int.rec.{1} (fun i => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun i_1 => Rocq.Corelib.Init.Hexadecimal.signed_int_beq i i_1) Y)
+    X
+def RocqPending.Corelib.Init.Number.signed_int_eq_dec : {h_Corelib_Init_Number_signed_int_eq_dec__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_1.statement} →
+  {h_Corelib_Init_Number_signed_int_eq_dec__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_2.statement} →
+    {h_Corelib_Init_Number_signed_int_eq_dec__rocq2lean_obligation_3 :
+        RocqPending.Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_3.statement} →
+      {h_Corelib_Init_Number_signed_int_eq_dec__rocq2lean_obligation_4 :
+          RocqPending.Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_4.statement} →
+        (x y : Rocq.Corelib.Init.Number.signed_int) →
+          Rocq.Corelib.Init.Specif.sumbool (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Number.signed_int x y)
+            (Rocq.Corelib.Init.Logic.not (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Number.signed_int x y)) :=
+fun {h_Corelib_Init_Number_signed_int_eq_dec__rocq2lean_obligation_1}
+    {h_Corelib_Init_Number_signed_int_eq_dec__rocq2lean_obligation_2}
+    {h_Corelib_Init_Number_signed_int_eq_dec__rocq2lean_obligation_3}
+    {h_Corelib_Init_Number_signed_int_eq_dec__rocq2lean_obligation_4} x y =>
+  let H :=
+    let b := Rocq.Corelib.Init.Number.signed_int_beq x y;
+    Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+      (Rocq.Corelib.Init.Specif.sumbool.left
+        (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+          Rocq.Corelib.Init.Datatypes.bool.true)
+        (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+          Rocq.Corelib.Init.Datatypes.bool.false)
+        ⋯)
+      (Rocq.Corelib.Init.Specif.sumbool.right
+        (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+          Rocq.Corelib.Init.Datatypes.bool.true)
+        (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+          Rocq.Corelib.Init.Datatypes.bool.false)
+        ⋯)
+      b;
+  Rocq.Corelib.Init.Specif.sumbool.rec.{1}
+    (fun a =>
+      (fun e =>
+          Rocq.Corelib.Init.Specif.sumbool.left (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Number.signed_int x y)
+            (Rocq.Corelib.Init.Logic.not (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Number.signed_int x y)) ⋯)
+        a)
+    (fun a =>
+      (fun H0 =>
+          Rocq.Corelib.Init.Specif.sumbool.right
+            (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Number.signed_int x y)
+            (Rocq.Corelib.Init.Logic.not (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Number.signed_int x y)) ⋯)
+        a)
+    H
+def Rocq.Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_1.statement : Prop :=
+∀ (x y : Rocq.Corelib.Init.Number.signed_int),
+  let b := Rocq.Corelib.Init.Number.signed_int_beq x y;
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+    Rocq.Corelib.Init.Datatypes.bool.true
+def Rocq.Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_2.statement : Prop :=
+∀ (x y : Rocq.Corelib.Init.Number.signed_int),
+  let b := Rocq.Corelib.Init.Number.signed_int_beq x y;
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+    Rocq.Corelib.Init.Datatypes.bool.false
+def RocqPending.Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_3.statement : {h_Corelib_Init_Number_signed_int_eq_dec__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_1.statement} →
+  {h_Corelib_Init_Number_signed_int_eq_dec__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_2.statement} →
+    Prop :=
+fun {h_Corelib_Init_Number_signed_int_eq_dec__rocq2lean_obligation_1}
+    {h_Corelib_Init_Number_signed_int_eq_dec__rocq2lean_obligation_2} =>
+  ∀ (x y : Rocq.Corelib.Init.Number.signed_int),
+    let H :=
+      let b := Rocq.Corelib.Init.Number.signed_int_beq x y;
+      Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+        (Rocq.Corelib.Init.Specif.sumbool.left
+          (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+            Rocq.Corelib.Init.Datatypes.bool.true)
+          (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+            Rocq.Corelib.Init.Datatypes.bool.false)
+          ⋯)
+        (Rocq.Corelib.Init.Specif.sumbool.right
+          (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+            Rocq.Corelib.Init.Datatypes.bool.true)
+          (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+            Rocq.Corelib.Init.Datatypes.bool.false)
+          ⋯)
+        b;
+    Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Number.signed_int_beq x y)
+        Rocq.Corelib.Init.Datatypes.bool.true →
+      Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Number.signed_int_beq x y)
+          Rocq.Corelib.Init.Datatypes.bool.true →
+        Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Number.signed_int x y
+def RocqPending.Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_4.statement : {h_Corelib_Init_Number_signed_int_eq_dec__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_1.statement} →
+  {h_Corelib_Init_Number_signed_int_eq_dec__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Number.signed_int_eq_dec__rocq2lean_obligation_2.statement} →
+    Prop :=
+fun {h_Corelib_Init_Number_signed_int_eq_dec__rocq2lean_obligation_1}
+    {h_Corelib_Init_Number_signed_int_eq_dec__rocq2lean_obligation_2} =>
+  ∀ (x y : Rocq.Corelib.Init.Number.signed_int),
+    let H :=
+      let b := Rocq.Corelib.Init.Number.signed_int_beq x y;
+      Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+        (Rocq.Corelib.Init.Specif.sumbool.left
+          (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+            Rocq.Corelib.Init.Datatypes.bool.true)
+          (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+            Rocq.Corelib.Init.Datatypes.bool.false)
+          ⋯)
+        (Rocq.Corelib.Init.Specif.sumbool.right
+          (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+            Rocq.Corelib.Init.Datatypes.bool.true)
+          (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+            Rocq.Corelib.Init.Datatypes.bool.false)
+          ⋯)
+        b;
+    Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Number.signed_int_beq x y)
+        Rocq.Corelib.Init.Datatypes.bool.false →
+      Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Number.signed_int_beq x y)
+          Rocq.Corelib.Init.Datatypes.bool.false →
+        Rocq.Corelib.Init.Logic.not (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Number.signed_int x y)
+inductive Rocq.Corelib.Init.Number.uint : Type
+number of parameters: 0
+constructors:
+Rocq.Corelib.Init.Number.uint.UIntDecimal : Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Number.uint
+Rocq.Corelib.Init.Number.uint.UIntHexadecimal : Rocq.Corelib.Init.Hexadecimal.uint → Rocq.Corelib.Init.Number.uint
+def Rocq.Corelib.Init.Number.uint_beq : Rocq.Corelib.Init.Number.uint →
+  Rocq.Corelib.Init.Number.uint → Rocq.Corelib.Init.Datatypes.bool :=
+fun X Y =>
+  Rocq.Corelib.Init.Number.uint.rec.{1}
+    (fun u =>
+      Rocq.Corelib.Init.Number.uint.rec.{1} (fun u_1 => Rocq.Corelib.Init.Decimal.uint_beq u u_1)
+        (fun u => Rocq.Corelib.Init.Datatypes.bool.false) Y)
+    (fun u =>
+      Rocq.Corelib.Init.Number.uint.rec.{1} (fun u => Rocq.Corelib.Init.Datatypes.bool.false)
+        (fun u_1 => Rocq.Corelib.Init.Hexadecimal.uint_beq u u_1) Y)
+    X
+def RocqPending.Corelib.Init.Number.uint_eq_dec : {h_Corelib_Init_Number_uint_eq_dec__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_1.statement} →
+  {h_Corelib_Init_Number_uint_eq_dec__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_2.statement} →
+    {h_Corelib_Init_Number_uint_eq_dec__rocq2lean_obligation_3 :
+        RocqPending.Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_3.statement} →
+      {h_Corelib_Init_Number_uint_eq_dec__rocq2lean_obligation_4 :
+          RocqPending.Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_4.statement} →
+        (x y : Rocq.Corelib.Init.Number.uint) →
+          Rocq.Corelib.Init.Specif.sumbool (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Number.uint x y)
+            (Rocq.Corelib.Init.Logic.not (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Number.uint x y)) :=
+fun {h_Corelib_Init_Number_uint_eq_dec__rocq2lean_obligation_1}
+    {h_Corelib_Init_Number_uint_eq_dec__rocq2lean_obligation_2}
+    {h_Corelib_Init_Number_uint_eq_dec__rocq2lean_obligation_3}
+    {h_Corelib_Init_Number_uint_eq_dec__rocq2lean_obligation_4} x y =>
+  let H :=
+    let b := Rocq.Corelib.Init.Number.uint_beq x y;
+    Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+      (Rocq.Corelib.Init.Specif.sumbool.left
+        (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+          Rocq.Corelib.Init.Datatypes.bool.true)
+        (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+          Rocq.Corelib.Init.Datatypes.bool.false)
+        ⋯)
+      (Rocq.Corelib.Init.Specif.sumbool.right
+        (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+          Rocq.Corelib.Init.Datatypes.bool.true)
+        (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+          Rocq.Corelib.Init.Datatypes.bool.false)
+        ⋯)
+      b;
+  Rocq.Corelib.Init.Specif.sumbool.rec.{1}
+    (fun a =>
+      (fun e =>
+          Rocq.Corelib.Init.Specif.sumbool.left (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Number.uint x y)
+            (Rocq.Corelib.Init.Logic.not (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Number.uint x y)) ⋯)
+        a)
+    (fun a =>
+      (fun H0 =>
+          Rocq.Corelib.Init.Specif.sumbool.right (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Number.uint x y)
+            (Rocq.Corelib.Init.Logic.not (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Number.uint x y)) ⋯)
+        a)
+    H
+def Rocq.Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_1.statement : Prop :=
+∀ (x y : Rocq.Corelib.Init.Number.uint),
+  let b := Rocq.Corelib.Init.Number.uint_beq x y;
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+    Rocq.Corelib.Init.Datatypes.bool.true
+def Rocq.Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_2.statement : Prop :=
+∀ (x y : Rocq.Corelib.Init.Number.uint),
+  let b := Rocq.Corelib.Init.Number.uint_beq x y;
+  Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+    Rocq.Corelib.Init.Datatypes.bool.false
+def RocqPending.Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_3.statement : {h_Corelib_Init_Number_uint_eq_dec__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_1.statement} →
+  {h_Corelib_Init_Number_uint_eq_dec__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_2.statement} →
+    Prop :=
+fun {h_Corelib_Init_Number_uint_eq_dec__rocq2lean_obligation_1}
+    {h_Corelib_Init_Number_uint_eq_dec__rocq2lean_obligation_2} =>
+  ∀ (x y : Rocq.Corelib.Init.Number.uint),
+    let H :=
+      let b := Rocq.Corelib.Init.Number.uint_beq x y;
+      Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+        (Rocq.Corelib.Init.Specif.sumbool.left
+          (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+            Rocq.Corelib.Init.Datatypes.bool.true)
+          (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+            Rocq.Corelib.Init.Datatypes.bool.false)
+          ⋯)
+        (Rocq.Corelib.Init.Specif.sumbool.right
+          (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+            Rocq.Corelib.Init.Datatypes.bool.true)
+          (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+            Rocq.Corelib.Init.Datatypes.bool.false)
+          ⋯)
+        b;
+    Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Number.uint_beq x y)
+        Rocq.Corelib.Init.Datatypes.bool.true →
+      Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Number.uint_beq x y)
+          Rocq.Corelib.Init.Datatypes.bool.true →
+        Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Number.uint x y
+def RocqPending.Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_4.statement : {h_Corelib_Init_Number_uint_eq_dec__rocq2lean_obligation_1 :
+    Rocq.Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_1.statement} →
+  {h_Corelib_Init_Number_uint_eq_dec__rocq2lean_obligation_2 :
+      Rocq.Corelib.Init.Number.uint_eq_dec__rocq2lean_obligation_2.statement} →
+    Prop :=
+fun {h_Corelib_Init_Number_uint_eq_dec__rocq2lean_obligation_1}
+    {h_Corelib_Init_Number_uint_eq_dec__rocq2lean_obligation_2} =>
+  ∀ (x y : Rocq.Corelib.Init.Number.uint),
+    let H :=
+      let b := Rocq.Corelib.Init.Number.uint_beq x y;
+      Rocq.Corelib.Init.Datatypes.bool.rec.{1}
+        (Rocq.Corelib.Init.Specif.sumbool.left
+          (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+            Rocq.Corelib.Init.Datatypes.bool.true)
+          (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.true
+            Rocq.Corelib.Init.Datatypes.bool.false)
+          ⋯)
+        (Rocq.Corelib.Init.Specif.sumbool.right
+          (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+            Rocq.Corelib.Init.Datatypes.bool.true)
+          (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool Rocq.Corelib.Init.Datatypes.bool.false
+            Rocq.Corelib.Init.Datatypes.bool.false)
+          ⋯)
+        b;
+    Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Number.uint_beq x y)
+        Rocq.Corelib.Init.Datatypes.bool.false →
+      Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool (Rocq.Corelib.Init.Number.uint_beq x y)
+          Rocq.Corelib.Init.Datatypes.bool.false →
+        Rocq.Corelib.Init.Logic.not (Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Number.uint x y)
+def Rocq.Corelib.Init.Number.uint_of_uint : Rocq.Corelib.Init.Number.uint → Rocq.Corelib.Init.Number.uint :=
+fun i => i

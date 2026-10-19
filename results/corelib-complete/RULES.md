@@ -9,11 +9,11 @@
 5. 显式累积表示：PULift up/down，函数参数和结果的组合转换，以及非递归、单构造器、无索引记录的逐字段转换。保留字段次序、载荷、全部依赖类型及公共条件。
 6. 递归与消去：结构递归、真实内核 recursor、accessibility/well-founded 对应和受检查的 deferred guard 处理；终止性所需条件保持显式。
 7. 原语模型：kernel-registered Int63→BitVec63；有界数组；字节串；保留符号零/无穷/NaN的 binary64 模型。操作身份、大小界限、构造器角色、源端原语与目标载荷分别核查。
-8. 原生对应：nat→Lean Nat，eq→Lean Eq；其他数据类型按报告生成，不能自动声称与 Lean 同名类型可互换。
+8. 机械归纳与后续对应：源 nat、eq 使用普通归纳规则生成独立类型；bootstrap 表为空。与 Lean Nat/Eq 的双向对应在翻译完成后单独证明，见 CORRESPONDENCE.md。
 
 检查配套包括源端 roundtrip、独立 Lean consumer/内核检查、独立结构审计、公共接口/宇宙检查及错误注入测试。定理陈述不是定理证明；待证条件没有被藏成 axiom 或 sorry。
 
-最后一轮精简 main74→main75：
+历史精简 main74→main75（取消 bootstrap 前的对照）：
 - liftCoerceValue 的 Type 路径不再先走独立 direct up/down，再走组合 up/down；统一由递归组合规则处理，直接转换是其基本情况。
 - 两处失败回滚合并为 tryLiftConversion，同时恢复 elaborator 状态与转换计数。
 - 保留 Prop-only 早期路径的限制；不删除独立校验、不改变源范围。
@@ -23,3 +23,5 @@
 这是一轮经验证的重复机制合并，不是“规则数量已达到数学上的全局最小值”的证明。保留未能证明冗余的通用规则，尤其不能仅凭2180个根的命中次数删除其依赖或MathComp可能需要的路径。
 
 规则命中统计见 rule-usage.json；精简补丁见 simplification.patch；全声明比较见 simplification-artifacts.json。早期失败实验留在 work/snapshots 和 work/tests 中，不作为成功证据。
+
+当前机械基线只移除两项 bootstrap，不新增翻译规则；规则覆盖与次数已从新的 full-v1 重算。旧精简补丁及比较是历史证据，不表示新旧目标 AST 完全相同。

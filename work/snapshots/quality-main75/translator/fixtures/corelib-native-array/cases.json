@@ -1,0 +1,592 @@
+[
+  {
+    "name": "expected_0",
+    "source": "length (@make int 0%uint63 7%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.length (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 0) (BitVec.ofNat 63 7)))"
+  },
+  {
+    "name": "expected_1",
+    "source": "get (@make int 0%uint63 7%uint63) 0%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 0) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 0))"
+  },
+  {
+    "name": "expected_2",
+    "source": "get (set (@make int 0%uint63 7%uint63) 0%uint63 42%uint63) 0%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 0) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 0) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 0))"
+  },
+  {
+    "name": "expected_3",
+    "source": "default (set (@make int 0%uint63 7%uint63) 0%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.default (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 0) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 0) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_4",
+    "source": "length (set (@make int 0%uint63 7%uint63) 0%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.length (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 0) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 0) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_5",
+    "source": "get (copy (set (@make int 0%uint63 7%uint63) 0%uint63 42%uint63)) 0%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.copy (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 0) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 0) (BitVec.ofNat 63 42))) (BitVec.ofNat 63 0))"
+  },
+  {
+    "name": "expected_6",
+    "source": "get (@make int 0%uint63 7%uint63) 1%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 0) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 1))"
+  },
+  {
+    "name": "expected_7",
+    "source": "get (set (@make int 0%uint63 7%uint63) 1%uint63 42%uint63) 0%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 0) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 1) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 0))"
+  },
+  {
+    "name": "expected_8",
+    "source": "get (set (@make int 0%uint63 7%uint63) 1%uint63 42%uint63) 1%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 0) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 1) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 1))"
+  },
+  {
+    "name": "expected_9",
+    "source": "default (set (@make int 0%uint63 7%uint63) 1%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.default (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 0) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 1) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_10",
+    "source": "length (set (@make int 0%uint63 7%uint63) 1%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.length (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 0) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 1) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_11",
+    "source": "get (copy (set (@make int 0%uint63 7%uint63) 1%uint63 42%uint63)) 1%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.copy (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 0) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 1) (BitVec.ofNat 63 42))) (BitVec.ofNat 63 1))"
+  },
+  {
+    "name": "expected_12",
+    "source": "get (@make int 0%uint63 7%uint63) 9223372036854775807%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 0) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 9223372036854775807))"
+  },
+  {
+    "name": "expected_13",
+    "source": "get (set (@make int 0%uint63 7%uint63) 9223372036854775807%uint63 42%uint63) 0%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 0) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 9223372036854775807) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 0))"
+  },
+  {
+    "name": "expected_14",
+    "source": "get (set (@make int 0%uint63 7%uint63) 9223372036854775807%uint63 42%uint63) 9223372036854775807%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 0) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 9223372036854775807) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 9223372036854775807))"
+  },
+  {
+    "name": "expected_15",
+    "source": "default (set (@make int 0%uint63 7%uint63) 9223372036854775807%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.default (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 0) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 9223372036854775807) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_16",
+    "source": "length (set (@make int 0%uint63 7%uint63) 9223372036854775807%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.length (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 0) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 9223372036854775807) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_17",
+    "source": "get (copy (set (@make int 0%uint63 7%uint63) 9223372036854775807%uint63 42%uint63)) 9223372036854775807%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.copy (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 0) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 9223372036854775807) (BitVec.ofNat 63 42))) (BitVec.ofNat 63 9223372036854775807))"
+  },
+  {
+    "name": "expected_18",
+    "source": "length (@make int 1%uint63 7%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.length (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 1) (BitVec.ofNat 63 7)))"
+  },
+  {
+    "name": "expected_19",
+    "source": "get (@make int 1%uint63 7%uint63) 0%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 1) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 0))"
+  },
+  {
+    "name": "expected_20",
+    "source": "get (set (@make int 1%uint63 7%uint63) 0%uint63 42%uint63) 0%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 1) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 0) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 0))"
+  },
+  {
+    "name": "expected_21",
+    "source": "get (set (@make int 1%uint63 7%uint63) 0%uint63 42%uint63) 1%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 1) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 0) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 1))"
+  },
+  {
+    "name": "expected_22",
+    "source": "default (set (@make int 1%uint63 7%uint63) 0%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.default (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 1) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 0) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_23",
+    "source": "length (set (@make int 1%uint63 7%uint63) 0%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.length (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 1) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 0) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_24",
+    "source": "get (copy (set (@make int 1%uint63 7%uint63) 0%uint63 42%uint63)) 0%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.copy (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 1) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 0) (BitVec.ofNat 63 42))) (BitVec.ofNat 63 0))"
+  },
+  {
+    "name": "expected_25",
+    "source": "get (@make int 1%uint63 7%uint63) 1%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 1) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 1))"
+  },
+  {
+    "name": "expected_26",
+    "source": "get (set (@make int 1%uint63 7%uint63) 1%uint63 42%uint63) 0%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 1) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 1) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 0))"
+  },
+  {
+    "name": "expected_27",
+    "source": "get (set (@make int 1%uint63 7%uint63) 1%uint63 42%uint63) 1%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 1) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 1) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 1))"
+  },
+  {
+    "name": "expected_28",
+    "source": "default (set (@make int 1%uint63 7%uint63) 1%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.default (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 1) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 1) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_29",
+    "source": "length (set (@make int 1%uint63 7%uint63) 1%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.length (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 1) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 1) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_30",
+    "source": "get (copy (set (@make int 1%uint63 7%uint63) 1%uint63 42%uint63)) 1%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.copy (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 1) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 1) (BitVec.ofNat 63 42))) (BitVec.ofNat 63 1))"
+  },
+  {
+    "name": "expected_31",
+    "source": "get (@make int 1%uint63 7%uint63) 2%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 1) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 2))"
+  },
+  {
+    "name": "expected_32",
+    "source": "get (set (@make int 1%uint63 7%uint63) 2%uint63 42%uint63) 0%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 1) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 2) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 0))"
+  },
+  {
+    "name": "expected_33",
+    "source": "get (set (@make int 1%uint63 7%uint63) 2%uint63 42%uint63) 1%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 1) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 2) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 1))"
+  },
+  {
+    "name": "expected_34",
+    "source": "get (set (@make int 1%uint63 7%uint63) 2%uint63 42%uint63) 2%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 1) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 2) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 2))"
+  },
+  {
+    "name": "expected_35",
+    "source": "default (set (@make int 1%uint63 7%uint63) 2%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.default (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 1) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 2) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_36",
+    "source": "length (set (@make int 1%uint63 7%uint63) 2%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.length (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 1) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 2) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_37",
+    "source": "get (copy (set (@make int 1%uint63 7%uint63) 2%uint63 42%uint63)) 2%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.copy (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 1) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 2) (BitVec.ofNat 63 42))) (BitVec.ofNat 63 2))"
+  },
+  {
+    "name": "expected_38",
+    "source": "get (@make int 1%uint63 7%uint63) 9223372036854775807%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 1) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 9223372036854775807))"
+  },
+  {
+    "name": "expected_39",
+    "source": "get (set (@make int 1%uint63 7%uint63) 9223372036854775807%uint63 42%uint63) 0%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 1) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 9223372036854775807) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 0))"
+  },
+  {
+    "name": "expected_40",
+    "source": "get (set (@make int 1%uint63 7%uint63) 9223372036854775807%uint63 42%uint63) 1%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 1) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 9223372036854775807) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 1))"
+  },
+  {
+    "name": "expected_41",
+    "source": "get (set (@make int 1%uint63 7%uint63) 9223372036854775807%uint63 42%uint63) 9223372036854775807%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 1) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 9223372036854775807) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 9223372036854775807))"
+  },
+  {
+    "name": "expected_42",
+    "source": "default (set (@make int 1%uint63 7%uint63) 9223372036854775807%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.default (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 1) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 9223372036854775807) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_43",
+    "source": "length (set (@make int 1%uint63 7%uint63) 9223372036854775807%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.length (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 1) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 9223372036854775807) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_44",
+    "source": "get (copy (set (@make int 1%uint63 7%uint63) 9223372036854775807%uint63 42%uint63)) 9223372036854775807%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.copy (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 1) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 9223372036854775807) (BitVec.ofNat 63 42))) (BitVec.ofNat 63 9223372036854775807))"
+  },
+  {
+    "name": "expected_45",
+    "source": "length (@make int 4%uint63 7%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.length (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)))"
+  },
+  {
+    "name": "expected_46",
+    "source": "get (@make int 4%uint63 7%uint63) 0%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 0))"
+  },
+  {
+    "name": "expected_47",
+    "source": "get (set (@make int 4%uint63 7%uint63) 0%uint63 42%uint63) 0%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 0) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 0))"
+  },
+  {
+    "name": "expected_48",
+    "source": "get (set (@make int 4%uint63 7%uint63) 0%uint63 42%uint63) 4%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 0) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 4))"
+  },
+  {
+    "name": "expected_49",
+    "source": "default (set (@make int 4%uint63 7%uint63) 0%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.default (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 0) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_50",
+    "source": "length (set (@make int 4%uint63 7%uint63) 0%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.length (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 0) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_51",
+    "source": "get (copy (set (@make int 4%uint63 7%uint63) 0%uint63 42%uint63)) 0%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.copy (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 0) (BitVec.ofNat 63 42))) (BitVec.ofNat 63 0))"
+  },
+  {
+    "name": "expected_52",
+    "source": "get (@make int 4%uint63 7%uint63) 3%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 3))"
+  },
+  {
+    "name": "expected_53",
+    "source": "get (set (@make int 4%uint63 7%uint63) 3%uint63 42%uint63) 0%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 3) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 0))"
+  },
+  {
+    "name": "expected_54",
+    "source": "get (set (@make int 4%uint63 7%uint63) 3%uint63 42%uint63) 3%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 3) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 3))"
+  },
+  {
+    "name": "expected_55",
+    "source": "get (set (@make int 4%uint63 7%uint63) 3%uint63 42%uint63) 4%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 3) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 4))"
+  },
+  {
+    "name": "expected_56",
+    "source": "default (set (@make int 4%uint63 7%uint63) 3%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.default (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 3) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_57",
+    "source": "length (set (@make int 4%uint63 7%uint63) 3%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.length (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 3) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_58",
+    "source": "get (copy (set (@make int 4%uint63 7%uint63) 3%uint63 42%uint63)) 3%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.copy (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 3) (BitVec.ofNat 63 42))) (BitVec.ofNat 63 3))"
+  },
+  {
+    "name": "expected_59",
+    "source": "get (@make int 4%uint63 7%uint63) 4%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 4))"
+  },
+  {
+    "name": "expected_60",
+    "source": "get (set (@make int 4%uint63 7%uint63) 4%uint63 42%uint63) 0%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 4) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 0))"
+  },
+  {
+    "name": "expected_61",
+    "source": "get (set (@make int 4%uint63 7%uint63) 4%uint63 42%uint63) 4%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 4) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 4))"
+  },
+  {
+    "name": "expected_62",
+    "source": "default (set (@make int 4%uint63 7%uint63) 4%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.default (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 4) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_63",
+    "source": "length (set (@make int 4%uint63 7%uint63) 4%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.length (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 4) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_64",
+    "source": "get (copy (set (@make int 4%uint63 7%uint63) 4%uint63 42%uint63)) 4%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.copy (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 4) (BitVec.ofNat 63 42))) (BitVec.ofNat 63 4))"
+  },
+  {
+    "name": "expected_65",
+    "source": "get (@make int 4%uint63 7%uint63) 5%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 5))"
+  },
+  {
+    "name": "expected_66",
+    "source": "get (set (@make int 4%uint63 7%uint63) 5%uint63 42%uint63) 0%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 5) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 0))"
+  },
+  {
+    "name": "expected_67",
+    "source": "get (set (@make int 4%uint63 7%uint63) 5%uint63 42%uint63) 4%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 5) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 4))"
+  },
+  {
+    "name": "expected_68",
+    "source": "get (set (@make int 4%uint63 7%uint63) 5%uint63 42%uint63) 5%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 5) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 5))"
+  },
+  {
+    "name": "expected_69",
+    "source": "default (set (@make int 4%uint63 7%uint63) 5%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.default (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 5) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_70",
+    "source": "length (set (@make int 4%uint63 7%uint63) 5%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.length (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 5) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_71",
+    "source": "get (copy (set (@make int 4%uint63 7%uint63) 5%uint63 42%uint63)) 5%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.copy (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 5) (BitVec.ofNat 63 42))) (BitVec.ofNat 63 5))"
+  },
+  {
+    "name": "expected_72",
+    "source": "get (@make int 4%uint63 7%uint63) 9223372036854775807%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 9223372036854775807))"
+  },
+  {
+    "name": "expected_73",
+    "source": "get (set (@make int 4%uint63 7%uint63) 9223372036854775807%uint63 42%uint63) 0%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 9223372036854775807) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 0))"
+  },
+  {
+    "name": "expected_74",
+    "source": "get (set (@make int 4%uint63 7%uint63) 9223372036854775807%uint63 42%uint63) 4%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 9223372036854775807) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 4))"
+  },
+  {
+    "name": "expected_75",
+    "source": "get (set (@make int 4%uint63 7%uint63) 9223372036854775807%uint63 42%uint63) 9223372036854775807%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 9223372036854775807) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 9223372036854775807))"
+  },
+  {
+    "name": "expected_76",
+    "source": "default (set (@make int 4%uint63 7%uint63) 9223372036854775807%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.default (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 9223372036854775807) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_77",
+    "source": "length (set (@make int 4%uint63 7%uint63) 9223372036854775807%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.length (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 9223372036854775807) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_78",
+    "source": "get (copy (set (@make int 4%uint63 7%uint63) 9223372036854775807%uint63 42%uint63)) 9223372036854775807%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.copy (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 9223372036854775807) (BitVec.ofNat 63 42))) (BitVec.ofNat 63 9223372036854775807))"
+  },
+  {
+    "name": "expected_79",
+    "source": "length (@make int 7%uint63 7%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.length (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)))"
+  },
+  {
+    "name": "expected_80",
+    "source": "get (@make int 7%uint63 7%uint63) 0%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 0))"
+  },
+  {
+    "name": "expected_81",
+    "source": "get (set (@make int 7%uint63 7%uint63) 0%uint63 42%uint63) 0%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 0) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 0))"
+  },
+  {
+    "name": "expected_82",
+    "source": "get (set (@make int 7%uint63 7%uint63) 0%uint63 42%uint63) 7%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 0) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 7))"
+  },
+  {
+    "name": "expected_83",
+    "source": "default (set (@make int 7%uint63 7%uint63) 0%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.default (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 0) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_84",
+    "source": "length (set (@make int 7%uint63 7%uint63) 0%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.length (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 0) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_85",
+    "source": "get (copy (set (@make int 7%uint63 7%uint63) 0%uint63 42%uint63)) 0%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.copy (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 0) (BitVec.ofNat 63 42))) (BitVec.ofNat 63 0))"
+  },
+  {
+    "name": "expected_86",
+    "source": "get (@make int 7%uint63 7%uint63) 6%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 6))"
+  },
+  {
+    "name": "expected_87",
+    "source": "get (set (@make int 7%uint63 7%uint63) 6%uint63 42%uint63) 0%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 6) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 0))"
+  },
+  {
+    "name": "expected_88",
+    "source": "get (set (@make int 7%uint63 7%uint63) 6%uint63 42%uint63) 6%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 6) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 6))"
+  },
+  {
+    "name": "expected_89",
+    "source": "get (set (@make int 7%uint63 7%uint63) 6%uint63 42%uint63) 7%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 6) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 7))"
+  },
+  {
+    "name": "expected_90",
+    "source": "default (set (@make int 7%uint63 7%uint63) 6%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.default (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 6) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_91",
+    "source": "length (set (@make int 7%uint63 7%uint63) 6%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.length (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 6) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_92",
+    "source": "get (copy (set (@make int 7%uint63 7%uint63) 6%uint63 42%uint63)) 6%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.copy (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 6) (BitVec.ofNat 63 42))) (BitVec.ofNat 63 6))"
+  },
+  {
+    "name": "expected_93",
+    "source": "get (@make int 7%uint63 7%uint63) 7%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 7))"
+  },
+  {
+    "name": "expected_94",
+    "source": "get (set (@make int 7%uint63 7%uint63) 7%uint63 42%uint63) 0%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 7) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 0))"
+  },
+  {
+    "name": "expected_95",
+    "source": "get (set (@make int 7%uint63 7%uint63) 7%uint63 42%uint63) 7%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 7) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 7))"
+  },
+  {
+    "name": "expected_96",
+    "source": "default (set (@make int 7%uint63 7%uint63) 7%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.default (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 7) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_97",
+    "source": "length (set (@make int 7%uint63 7%uint63) 7%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.length (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 7) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_98",
+    "source": "get (copy (set (@make int 7%uint63 7%uint63) 7%uint63 42%uint63)) 7%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.copy (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 7) (BitVec.ofNat 63 42))) (BitVec.ofNat 63 7))"
+  },
+  {
+    "name": "expected_99",
+    "source": "get (@make int 7%uint63 7%uint63) 8%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 8))"
+  },
+  {
+    "name": "expected_100",
+    "source": "get (set (@make int 7%uint63 7%uint63) 8%uint63 42%uint63) 0%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 8) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 0))"
+  },
+  {
+    "name": "expected_101",
+    "source": "get (set (@make int 7%uint63 7%uint63) 8%uint63 42%uint63) 7%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 8) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 7))"
+  },
+  {
+    "name": "expected_102",
+    "source": "get (set (@make int 7%uint63 7%uint63) 8%uint63 42%uint63) 8%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 8) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 8))"
+  },
+  {
+    "name": "expected_103",
+    "source": "default (set (@make int 7%uint63 7%uint63) 8%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.default (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 8) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_104",
+    "source": "length (set (@make int 7%uint63 7%uint63) 8%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.length (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 8) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_105",
+    "source": "get (copy (set (@make int 7%uint63 7%uint63) 8%uint63 42%uint63)) 8%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.copy (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 8) (BitVec.ofNat 63 42))) (BitVec.ofNat 63 8))"
+  },
+  {
+    "name": "expected_106",
+    "source": "get (@make int 7%uint63 7%uint63) 9223372036854775807%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 9223372036854775807))"
+  },
+  {
+    "name": "expected_107",
+    "source": "get (set (@make int 7%uint63 7%uint63) 9223372036854775807%uint63 42%uint63) 0%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 9223372036854775807) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 0))"
+  },
+  {
+    "name": "expected_108",
+    "source": "get (set (@make int 7%uint63 7%uint63) 9223372036854775807%uint63 42%uint63) 7%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 9223372036854775807) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 7))"
+  },
+  {
+    "name": "expected_109",
+    "source": "get (set (@make int 7%uint63 7%uint63) 9223372036854775807%uint63 42%uint63) 9223372036854775807%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 9223372036854775807) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 9223372036854775807))"
+  },
+  {
+    "name": "expected_110",
+    "source": "default (set (@make int 7%uint63 7%uint63) 9223372036854775807%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.default (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 9223372036854775807) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_111",
+    "source": "length (set (@make int 7%uint63 7%uint63) 9223372036854775807%uint63 42%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.length (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 9223372036854775807) (BitVec.ofNat 63 42)))"
+  },
+  {
+    "name": "expected_112",
+    "source": "get (copy (set (@make int 7%uint63 7%uint63) 9223372036854775807%uint63 42%uint63)) 9223372036854775807%uint63",
+    "target": "(Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.copy (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 7) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 9223372036854775807) (BitVec.ofNat 63 42))) (BitVec.ofNat 63 9223372036854775807))"
+  },
+  {
+    "name": "expected_113",
+    "source": "length (@make int 4194302%uint63 7%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.length (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4194302) (BitVec.ofNat 63 7)))"
+  },
+  {
+    "name": "expected_114",
+    "source": "length (@make int 4194303%uint63 7%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.length (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4194303) (BitVec.ofNat 63 7)))"
+  },
+  {
+    "name": "expected_115",
+    "source": "length (@make int 4194304%uint63 7%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.length (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 4194304) (BitVec.ofNat 63 7)))"
+  },
+  {
+    "name": "expected_116",
+    "source": "length (@make int 9223372036854775807%uint63 7%uint63)",
+    "target": "(Rocq.Corelib.Array.PrimArray.length (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 9223372036854775807) (BitVec.ofNat 63 7)))"
+  },
+  {
+    "name": "expected_117",
+    "source": "let a := @make int 3%uint63 7%uint63 in let b := set a 1%uint63 42%uint63 in PrimInt63.add (get a 1%uint63) (get b 1%uint63)",
+    "target": "(BitVec.add (Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 3) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 1)) (Rocq.Corelib.Array.PrimArray.get (BitVec 63) (Rocq.Corelib.Array.PrimArray.set (BitVec 63) (Rocq.Corelib.Array.PrimArray.make (BitVec 63) (BitVec.ofNat 63 3) (BitVec.ofNat 63 7)) (BitVec.ofNat 63 1) (BitVec.ofNat 63 42)) (BitVec.ofNat 63 1)))"
+  }
+]

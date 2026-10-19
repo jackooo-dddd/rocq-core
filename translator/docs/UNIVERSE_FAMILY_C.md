@@ -1,3 +1,5 @@
+> Current Corelib baseline (2026-10-19): source nat/eq are generated inductives; the bootstrap table is empty. Earlier bootstrap examples and dated runs below are historical. See [MECHANICAL_NAT_EQ.md](MECHANICAL_NAT_EQ.md) and the repository RESULTS.md for current coverage and correspondence proofs.
+
 # Task C: the `Equality.type` / `JobType` universe family
 
 Scope (plan, 2026-10-13): the protected Prosa declarations blocked by universe rejections at

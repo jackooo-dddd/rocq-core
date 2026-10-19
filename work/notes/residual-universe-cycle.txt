@@ -1,0 +1,23 @@
+Residual universe cycle diagnosis
+=================================
+carrier-sort-full completes65/67 modules. ssreflect_rw and ssrunder abort
+inside Lean with stack overflow, making59 previously-good roots NOT_MEASURED.
+This is a failed full regression, not a certified improvement.
+
+Minimal source: Under_rel.Under_rel, a single sealed implementation with
+public carrier Type@{ssrunder.21}, body carrier Type@{ssrunder.30}.
+The Sort-generalized public level unifies to the successor of the body level.
+Residual defaulting then derives that body's minimum from a public expression
+containing the same body metavariable. Assigning this cyclic level recurses
+indefinitely during instantiation.
+
+Fix under test: close all residual-default expressions as an acyclic graph
+before assigning any metavariable. Detect cycles and unbound variables;
+reject the attempted universe interpretation and allow the existing checked
+translation fallback. Acyclic forward dependencies are resolved exactly.
+No extra axioms, source weakening or successful-root filtering.
+
+Evidence:
+work/tests/carrier-stack-frontier/first-crash.json
+work/runs/carrier-sort-full/Corelib/ssr/{ssreflect_rw,ssrunder}/logs/translate.log
+work/tests/universe-default-design/Defaults.lean
