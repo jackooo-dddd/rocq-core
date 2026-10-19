@@ -13740,6 +13740,301 @@ NativeBridge.Incremental.Sint63Specs.primitiveShift_agrees
 
 公理闭包：propext, Classical.choice, Quot.sound
 
+## Corelib.Array.ArrayAxioms.default_set
+
+NativeBridge.Incremental.ArraySpecs.defaultSet_correspondence
+
+目标：NativeBridge.Incremental.ArraySpecs.defaultSet；范围：Full source Type universe range. Native bounded Vector plus fallback value preserves length cap 4194303 and out-of-range read/write behavior. All eleven source statements independently proved, including extensionality and clipped make length.
+
+```lean
+Rocq.Corelib.Array.ArrayAxioms.default_set.statement ↔ NativeBridge.Incremental.ArraySpecs.defaultSet
+```
+
+公理闭包：propext
+
+## Corelib.Array.ArrayAxioms.length_set
+
+NativeBridge.Incremental.ArraySpecs.lengthSet_correspondence
+
+目标：NativeBridge.Incremental.ArraySpecs.lengthSet；范围：Full source Type universe range. Native bounded Vector plus fallback value preserves length cap 4194303 and out-of-range read/write behavior. All eleven source statements independently proved, including extensionality and clipped make length.
+
+```lean
+Rocq.Corelib.Array.ArrayAxioms.length_set.statement ↔ NativeBridge.Incremental.ArraySpecs.lengthSet
+```
+
+公理闭包：propext
+
+## Corelib.Array.ArrayAxioms.get_copy
+
+NativeBridge.Incremental.ArraySpecs.getCopy_correspondence
+
+目标：NativeBridge.Incremental.ArraySpecs.getCopy；范围：Full source Type universe range. Native bounded Vector plus fallback value preserves length cap 4194303 and out-of-range read/write behavior. All eleven source statements independently proved, including extensionality and clipped make length.
+
+```lean
+Rocq.Corelib.Array.ArrayAxioms.get_copy.statement ↔ NativeBridge.Incremental.ArraySpecs.getCopy
+```
+
+公理闭包：propext
+
+## Corelib.Array.ArrayAxioms.length_copy
+
+NativeBridge.Incremental.ArraySpecs.lengthCopy_correspondence
+
+目标：NativeBridge.Incremental.ArraySpecs.lengthCopy；范围：Full source Type universe range. Native bounded Vector plus fallback value preserves length cap 4194303 and out-of-range read/write behavior. All eleven source statements independently proved, including extensionality and clipped make length.
+
+```lean
+Rocq.Corelib.Array.ArrayAxioms.length_copy.statement ↔ NativeBridge.Incremental.ArraySpecs.lengthCopy
+```
+
+公理闭包：空
+
+## Corelib.Array.ArrayAxioms.get_make
+
+NativeBridge.Incremental.ArraySpecs.getMake_correspondence
+
+目标：NativeBridge.Incremental.ArraySpecs.getMake；范围：Full source Type universe range. Native bounded Vector plus fallback value preserves length cap 4194303 and out-of-range read/write behavior. All eleven source statements independently proved, including extensionality and clipped make length.
+
+```lean
+Rocq.Corelib.Array.ArrayAxioms.get_make.statement ↔ NativeBridge.Incremental.ArraySpecs.getMake
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Array.ArrayAxioms.length_make
+
+NativeBridge.Incremental.ArraySpecs.lengthMake_correspondence
+
+目标：NativeBridge.Incremental.ArraySpecs.lengthMake；范围：Full source Type universe range. Native bounded Vector plus fallback value preserves length cap 4194303 and out-of-range read/write behavior. All eleven source statements independently proved, including extensionality and clipped make length.
+
+```lean
+Rocq.Corelib.Array.ArrayAxioms.length_make.statement ↔ NativeBridge.Incremental.ArraySpecs.lengthMake
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Array.ArrayAxioms.get_out_of_bounds
+
+NativeBridge.Incremental.ArraySpecs.getOutOfBounds_correspondence
+
+目标：NativeBridge.Incremental.ArraySpecs.getOutOfBounds；范围：Full source Type universe range. Native bounded Vector plus fallback value preserves length cap 4194303 and out-of-range read/write behavior. All eleven source statements independently proved, including extensionality and clipped make length.
+
+```lean
+Rocq.Corelib.Array.ArrayAxioms.get_out_of_bounds.statement ↔ NativeBridge.Incremental.ArraySpecs.getOutOfBounds
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Array.ArrayAxioms.get_set_same
+
+NativeBridge.Incremental.ArraySpecs.getSetSame_correspondence
+
+目标：NativeBridge.Incremental.ArraySpecs.getSetSame；范围：Full source Type universe range. Native bounded Vector plus fallback value preserves length cap 4194303 and out-of-range read/write behavior. All eleven source statements independently proved, including extensionality and clipped make length.
+
+```lean
+Rocq.Corelib.Array.ArrayAxioms.get_set_same.statement ↔ NativeBridge.Incremental.ArraySpecs.getSetSame
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Array.ArrayAxioms.get_set_other
+
+NativeBridge.Incremental.ArraySpecs.getSetOther_correspondence
+
+目标：NativeBridge.Incremental.ArraySpecs.getSetOther；范围：Full source Type universe range. Native bounded Vector plus fallback value preserves length cap 4194303 and out-of-range read/write behavior. All eleven source statements independently proved, including extensionality and clipped make length.
+
+```lean
+Rocq.Corelib.Array.ArrayAxioms.get_set_other.statement ↔ NativeBridge.Incremental.ArraySpecs.getSetOther
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Array.ArrayAxioms.leb_length
+
+NativeBridge.Incremental.ArraySpecs.boundedLength_correspondence
+
+目标：NativeBridge.Incremental.ArraySpecs.boundedLength；范围：Full source Type universe range. Native bounded Vector plus fallback value preserves length cap 4194303 and out-of-range read/write behavior. All eleven source statements independently proved, including extensionality and clipped make length.
+
+```lean
+Rocq.Corelib.Array.ArrayAxioms.leb_length.statement ↔ NativeBridge.Incremental.ArraySpecs.boundedLength
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Array.ArrayAxioms.array_ext
+
+NativeBridge.Incremental.ArraySpecs.extensionality_correspondence
+
+目标：NativeBridge.Incremental.ArraySpecs.extensionality；范围：Full source Type universe range. Native bounded Vector plus fallback value preserves length cap 4194303 and out-of-range read/write behavior. All eleven source statements independently proved, including extensionality and clipped make length.
+
+```lean
+Rocq.Corelib.Array.ArrayAxioms.array_ext.statement ↔ NativeBridge.Incremental.ArraySpecs.extensionality
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Strings.PrimStringAxioms.char63_valid
+
+NativeBridge.Incremental.StringOperations.charValid_agrees
+
+目标：NativeBridge.Incremental.StringOperations.validChar；范围：Full byte values and clipped byte-string capacity; native list/vector functions. Source nat/Z/63-bit indexing conversions rechecked in the same closure.
+
+```lean
+∀ (c : NativeBridge.Incremental.StringUnsignedSupport.Word),
+  Rocq.Corelib.Strings.PrimStringAxioms.char63_valid c ↔ NativeBridge.Incremental.StringOperations.validChar c
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Strings.PrimStringAxioms.of_list
+
+NativeBridge.Incremental.StringOperations.ofList_agrees
+
+目标：NativeBridge.Incremental.StringOperations.ofWords；范围：Full byte values and clipped byte-string capacity; native list/vector functions. Source nat/Z/63-bit indexing conversions rechecked in the same closure.
+
+```lean
+∀ (cs : NativeBridge.RList NativeBridge.Incremental.StringUnsignedSupport.Word),
+  NativeBridge.byteStringTo (Rocq.Corelib.Strings.PrimStringAxioms.of_list cs) =
+    NativeBridge.Incremental.StringOperations.ofWords (NativeBridge.listTo cs)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Strings.PrimStringAxioms.to_list
+
+NativeBridge.Incremental.StringOperations.toList_agrees
+
+目标：NativeBridge.Incremental.StringOperations.toWords；范围：Full byte values and clipped byte-string capacity; native list/vector functions. Source nat/Z/63-bit indexing conversions rechecked in the same closure.
+
+```lean
+∀ (s : Rocq.Corelib.Strings.PrimString.string),
+  NativeBridge.listTo (Rocq.Corelib.Strings.PrimStringAxioms.to_list s) =
+    NativeBridge.Incremental.StringOperations.toWords (NativeBridge.byteStringTo s)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Strings.PrimStringAxioms.get_spec
+
+NativeBridge.Incremental.StringSpecs.getSpec_correspondence
+
+目标：NativeBridge.Incremental.StringSpecs.getSpec；范围：All byte strings and 63-bit arguments; exact 16777211 capacity, byte truncation, out-of-bounds zero and clipping. Original mechanical statement independently proved.
+
+```lean
+Rocq.Corelib.Strings.PrimStringAxioms.get_spec.statement ↔ NativeBridge.Incremental.StringSpecs.getSpec
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Strings.PrimStringAxioms.length_spec
+
+NativeBridge.Incremental.StringSpecs.lengthSpec_correspondence
+
+目标：NativeBridge.Incremental.StringSpecs.lengthSpec；范围：All byte strings and 63-bit arguments; exact 16777211 capacity, byte truncation, out-of-bounds zero and clipping. Original mechanical statement independently proved.
+
+```lean
+Rocq.Corelib.Strings.PrimStringAxioms.length_spec.statement ↔ NativeBridge.Incremental.StringSpecs.lengthSpec
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Strings.PrimStringAxioms.make_spec
+
+NativeBridge.Incremental.StringSpecs.makeSpec_correspondence
+
+目标：NativeBridge.Incremental.StringSpecs.makeSpec；范围：All byte strings and 63-bit arguments; exact 16777211 capacity, byte truncation, out-of-bounds zero and clipping. Original mechanical statement independently proved.
+
+```lean
+Rocq.Corelib.Strings.PrimStringAxioms.make_spec.statement ↔ NativeBridge.Incremental.StringSpecs.makeSpec
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Strings.PrimStringAxioms.sub_spec
+
+NativeBridge.Incremental.StringSpecs.subSpec_correspondence
+
+目标：NativeBridge.Incremental.StringSpecs.subSpec；范围：All byte strings and 63-bit arguments; exact 16777211 capacity, byte truncation, out-of-bounds zero and clipping. Original mechanical statement independently proved.
+
+```lean
+Rocq.Corelib.Strings.PrimStringAxioms.sub_spec.statement ↔ NativeBridge.Incremental.StringSpecs.subSpec
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Strings.PrimStringAxioms.to_list_char63_valid
+
+NativeBridge.Incremental.StringSpecs.validSpec_correspondence
+
+目标：NativeBridge.Incremental.StringSpecs.validSpec；范围：All byte strings and 63-bit arguments; exact 16777211 capacity, byte truncation, out-of-bounds zero and clipping. Original mechanical statement independently proved.
+
+```lean
+Rocq.Corelib.Strings.PrimStringAxioms.to_list_char63_valid.statement ↔ NativeBridge.Incremental.StringSpecs.validSpec
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Strings.PrimStringAxioms.to_list_length
+
+NativeBridge.Incremental.StringSpecs.boundSpec_correspondence
+
+目标：NativeBridge.Incremental.StringSpecs.boundSpec；范围：All byte strings and 63-bit arguments; exact 16777211 capacity, byte truncation, out-of-bounds zero and clipping. Original mechanical statement independently proved.
+
+```lean
+Rocq.Corelib.Strings.PrimStringAxioms.to_list_length.statement ↔ NativeBridge.Incremental.StringSpecs.boundSpec
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Strings.PrimStringAxioms.cat_spec
+
+NativeBridge.Incremental.StringRoundtrip.catSpec_correspondence
+
+目标：NativeBridge.Incremental.StringRoundtrip.catSpec；范围：All bounded byte strings, including embedded zero bytes; concatenation clips to 16777211. List roundtrip preserves exact byte sequence and length. Original source statements independently proved.
+
+```lean
+Rocq.Corelib.Strings.PrimStringAxioms.cat_spec.statement ↔ NativeBridge.Incremental.StringRoundtrip.catSpec
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Strings.PrimStringAxioms.of_to_list
+
+NativeBridge.Incremental.StringRoundtrip.roundtripSpec_correspondence
+
+目标：NativeBridge.Incremental.StringRoundtrip.roundtripSpec；范围：All bounded byte strings, including embedded zero bytes; concatenation clips to 16777211. List roundtrip preserves exact byte sequence and length. Original source statements independently proved.
+
+```lean
+Rocq.Corelib.Strings.PrimStringAxioms.of_to_list.statement ↔ NativeBridge.Incremental.StringRoundtrip.roundtripSpec
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Strings.PrimStringAxioms.compare_spec
+
+NativeBridge.Incremental.StringComparison.compareSpec_correspondence
+
+目标：NativeBridge.Incremental.StringComparison.compareSpec；范围：Full lexicographic byte comparison, including prefix and empty cases; native List.compareLex on zero-extended bytes. Source statement independently proved.
+
+```lean
+Rocq.Corelib.Strings.PrimStringAxioms.compare_spec.statement ↔ NativeBridge.Incremental.StringComparison.compareSpec
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Strings.PrimString.compare
+
+NativeBridge.Incremental.StringComparison.primitiveCompare_agrees
+
+目标：NativeBridge.Incremental.StringComparison.nativeCompare；范围：List.compareLex with unsigned 63-bit byte comparator and vector-to-list adapter. Strengthens an already counted primitive root without incrementing coverage.
+
+```lean
+∀ (a b : Rocq.Corelib.Strings.PrimString.string),
+  NativeBridge.comparisonTo (Rocq.Corelib.Strings.PrimString.compare a b) =
+    NativeBridge.Incremental.StringComparison.nativeCompare (NativeBridge.byteStringTo a) (NativeBridge.byteStringTo b)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
 ## Corelib.ssr.ssrbool.canLR_in
 
 NativeBridge.Incremental.SSRBoolClosedStatements.RocqPending.Corelib.ssr.ssrbool.canLR_in.statement.correspondence

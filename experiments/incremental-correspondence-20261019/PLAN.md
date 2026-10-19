@@ -233,3 +233,9 @@ SSR Bool 的 314 个依赖/原陈述目标已有闭合证明，覆盖 271 / 275 
 新增 10 根、13 份证书，1927 / 2180。Uint63Axioms 48/48，Sint63Axioms 8/8；所有原始前提保留，规格均独立证明。128 个 profile 验证，115 个覆盖 profile / 1674 份证书共同导入。见 [结果](BATCH63_65_RESULTS.md)。
 
 下一步：ArrayAxioms 11 项。保留有界长度、默认值和越界读取／更新语义，先证明普通 get/set/make/copy 规格，再证明数组外延性；随后 PrimStringAxioms 12 项。
+
+## 第六十六至七十批：容器规格完成
+
+新增 23 根、24 份证书，1950 / 2180。ArrayAxioms 11/11、PrimStringAxioms 12/12。20 项规格均独立证明源陈述；PrimString.compare 额外对应 List.compareLex。134 个 profile 验证，120 个覆盖 profile / 1698 份证书共同导入。见 [结果](BATCH66_70_RESULTS.md)。
+
+下一步：先闭合 Prelude/Classes.Init 标记、决策辅助和 DefaultRelation；再处理 CMorphisms 可计算数据与可证明陈述。浮点目标必须保留二进制格式、NaN、无穷和舍入；不可将精确表示未经证明称为 Lean Float。不可由 opaque Type 值常量签名猜测其计算结果。

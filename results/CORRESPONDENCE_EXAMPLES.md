@@ -239,3 +239,15 @@ Decimal.decimal 对应“带符号整数数字、小数数字、可选带符号�
 ## 26. 双字除法的商为什么能直接使用
 
 [Uint63WideSpecs.lean](../experiments/incremental-correspondence-20261019/proofs/Uint63WideSpecs.lean) 对 n = hi*2^63+lo，在 hi < divisor 时证明 n/divisor < 2^63，余数也小于 2^63。因此把商／余数装入 BitVec 63 不丢信息，源返回的两个机械 Z 值分别等于原生精确商和余数。
+
+## 27. 数组的默认值参与外延性
+
+[ArraySpecs.lean](../experiments/incremental-correspondence-20261019/proofs/ArraySpecs.lean) 证明有效元素、长度和默认值相同就得到原数组相等。越界读取使用默认值，因此不能只比较 Vector 内容。更新某个有效位置后，其他位置及默认值保持不变。
+
+## 28. 从字节串转换中得到完整往返
+
+[StringRoundtrip.lean](../experiments/incremental-correspondence-20261019/proofs/StringRoundtrip.lean) 证明机械 of_list (to_list s) = s。原生一侧通过 Vector → List → 有界字节串，保留每个字节及长度，包括零字节。make i 256 的每个字节是 0；这项低 8 位行为在 makeSpec 中明确保留。
+
+## 29. 字节串比较对应现成 List.compareLex
+
+[StringComparison.lean](../experiments/incremental-correspondence-20261019/proofs/StringComparison.lean) 的 primitiveCompare_agrees 将机械 compare 直接对应到 List.compareLex，以字节的无符号数值比较。长度不同但前缀相等时，较短串较小。证明对任意有界字节串成立，没有依赖有限样例枚举，也没有把原串解释成 Unicode。

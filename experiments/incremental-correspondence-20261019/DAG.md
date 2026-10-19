@@ -566,7 +566,7 @@ flowchart TD
   DoubleDivisionBounds --> Uint63WideSpecs
 ```
 
-算术、移位、计数 profile 已通过审计。宽运算 profile 仍在进行，未加入覆盖统计。
+算术、移位、计数 profile 已通过审计。该快照时宽运算尚在进行；第六十三批已完成并计入。
 
 ## 第六十三至六十五批及容器规格
 
@@ -584,4 +584,21 @@ flowchart TD
   NativeByteStringRepresentation --> StringAxiomsSpecs
 ```
 
-整数节点已验证；容器规格节点为后续工作。不同源闭包中的同名声明通过重新检查来使用，不直接混合。
+整数节点已验证；容器规格节点于第六十六至七十批完成。不同源闭包中的同名声明通过重新检查来使用，不直接混合。
+
+## 第六十六至七十批：已验证容器依赖
+
+```mermaid
+flowchart TD
+  ArrayIso[有界数组与默认值] --> ArraySpecs
+  VectorGetSet[Vector 读取与更新] --> ArraySpecs
+  StringUnsignedSupport --> StringOperations
+  NatZConversions[本闭包 Nat/Z 转换重检] --> StringOperations
+  StringOperations --> StringSpecs
+  StringSpecs --> StringRoundtrip
+  StringRoundtrip --> StringComparison
+  ListCompareLex[Lean List.compareLex] --> StringComparison
+  StringComparison --> PrimitiveCompare[PrimString.compare 现成 API 证书]
+```
+
+上述节点均已检查并共同导入。StringRoundtrip 先证明列表视图单射，再证明构造与读取往返；StringComparison 按比较剩余长度归纳，处理相等前缀和空串。

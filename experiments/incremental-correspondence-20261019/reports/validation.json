@@ -1632,5 +1632,79 @@
         "olean_sha256": "c63ed511c63006f207c14f06432d4debfa4c4e6461d26a0415f7f07e32096545"
       }
     }
+  },
+  {
+    "profile": "ArraySpecs",
+    "module": "Array/ArrayAxioms",
+    "exit": 0,
+    "seconds": 1.069,
+    "proof_sha256": "15af5c2445773df7f8b05c39e2fc8bc4ca73e368824b418e0e57ffa58ab6fba1",
+    "audit_present": true,
+    "incremental_dependencies": {}
+  },
+  {
+    "profile": "StringUnsignedSupport",
+    "module": "Strings/PrimStringAxioms",
+    "exit": 0,
+    "seconds": 1.068,
+    "proof_sha256": "af28bfd5c807f3ac8de61b9764c3b2abdce16ccf57cfded92b86cc28bd0c5a79",
+    "audit_present": true,
+    "incremental_dependencies": {}
+  },
+  {
+    "profile": "StringOperations",
+    "module": "Strings/PrimStringAxioms",
+    "exit": 0,
+    "seconds": 1.117,
+    "proof_sha256": "3b5e63fdea1378e22ce78b7fbc92de6be3a09dbdc42014f3d6fce593f5c92862",
+    "audit_present": true,
+    "incremental_dependencies": {
+      "StringUnsignedSupport": {
+        "proof_sha256": "af28bfd5c807f3ac8de61b9764c3b2abdce16ccf57cfded92b86cc28bd0c5a79",
+        "olean_sha256": "a4dc11d698bc27f754ee2b25b3cc4d79baff0f80cdfaad75d4e285904b63b431"
+      }
+    }
+  },
+  {
+    "profile": "StringSpecs",
+    "module": "Strings/PrimStringAxioms",
+    "exit": 0,
+    "seconds": 1.118,
+    "proof_sha256": "60234a3ab02bee634c067e824302987fc2bf12545e09985db47dafc4ba81421e",
+    "audit_present": true,
+    "incremental_dependencies": {
+      "StringOperations": {
+        "proof_sha256": "3b5e63fdea1378e22ce78b7fbc92de6be3a09dbdc42014f3d6fce593f5c92862",
+        "olean_sha256": "10ab382f0a8de45e2f125d4db5e02a6da17e6d03ed8de399eb351db27a95b5b7"
+      }
+    }
+  },
+  {
+    "profile": "StringRoundtrip",
+    "module": "Strings/PrimStringAxioms",
+    "exit": 0,
+    "seconds": 1.118,
+    "proof_sha256": "b69eb4fa2f215c1c616583fb4f78065e3e6d2ab10bb4ab3c4436ce9f80f3eb8d",
+    "audit_present": true,
+    "incremental_dependencies": {
+      "StringSpecs": {
+        "proof_sha256": "60234a3ab02bee634c067e824302987fc2bf12545e09985db47dafc4ba81421e",
+        "olean_sha256": "ce399350bfcd10355f416d147e8e63e03497f0dfaf287eb1631e184e2bddbdd9"
+      }
+    }
+  },
+  {
+    "profile": "StringComparison",
+    "module": "Strings/PrimStringAxioms",
+    "exit": 0,
+    "seconds": 1.27,
+    "proof_sha256": "5930e4a96c472d712acc39e1e3d179f94cf47c73f9f0e09f758151a91574836d",
+    "audit_present": true,
+    "incremental_dependencies": {
+      "StringRoundtrip": {
+        "proof_sha256": "b69eb4fa2f215c1c616583fb4f78065e3e6d2ab10bb4ab3c4436ce9f80f3eb8d",
+        "olean_sha256": "3845250a4bdc2d7e7b92dbfab0a648390cc138e8ab9bedbae1c6c8ccd6386345"
+      }
+    }
   }
 ]

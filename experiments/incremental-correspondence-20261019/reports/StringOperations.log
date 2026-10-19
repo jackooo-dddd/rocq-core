@@ -1,0 +1,3 @@
+NATIVE_TARGET {"name":"NativeBridge.Incremental.StringOperations.validChar","native_expression":"fun c => BitVec.toNat c < 256","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.StringOperations.ofWords","native_expression":"fun cs =>\n  List.foldr\n    (fun c rest =>\n      NativeBridge.Incremental.StringOperations.appendBytes (NativeBridge.Incremental.StringOperations.repeatByte 1 c)\n        rest)\n    NativeBridge.Incremental.StringOperations.emptyBytes cs","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.StringOperations.toWords","native_expression":"fun s => List.map (BitVec.setWidth 63) s.snd.toList","remaining_source_symbols":[]}

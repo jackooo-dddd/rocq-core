@@ -16679,6 +16679,419 @@
     ]
   },
   {
+    "source": "Corelib.Array.ArrayAxioms.default_set",
+    "profile": "ArraySpecs",
+    "certificate": "NativeBridge.Incremental.ArraySpecs.defaultSet_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.ArraySpecs.defaultSet",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.ArraySpecs.defaultSet",
+    "scope": "Full source Type universe range. Native bounded Vector plus fallback value preserves length cap 4194303 and out-of-range read/write behavior. All eleven source statements independently proved, including extensionality and clipped make length.",
+    "original_statement_proof": "NativeBridge.Incremental.ArraySpecs.defaultSet_proof",
+    "native_expression": "∀ (A : Type u) (a : NativeBridge.Incremental.ArraySpecs.NativeArray A) (i : NativeBridge.Incremental.ArraySpecs.Word)\n  (x : A), (NativeBridge.Incremental.ArraySpecs.write a i x).snd.snd = a.snd.snd",
+    "type": "Rocq.Corelib.Array.ArrayAxioms.default_set.statement ↔ NativeBridge.Incremental.ArraySpecs.defaultSet",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Array.ArrayAxioms.length_set",
+    "profile": "ArraySpecs",
+    "certificate": "NativeBridge.Incremental.ArraySpecs.lengthSet_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.ArraySpecs.lengthSet",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.ArraySpecs.lengthSet",
+    "scope": "Full source Type universe range. Native bounded Vector plus fallback value preserves length cap 4194303 and out-of-range read/write behavior. All eleven source statements independently proved, including extensionality and clipped make length.",
+    "original_statement_proof": "NativeBridge.Incremental.ArraySpecs.lengthSet_proof",
+    "native_expression": "∀ (A : Type u) (a : NativeBridge.Incremental.ArraySpecs.NativeArray A) (i : NativeBridge.Incremental.ArraySpecs.Word)\n  (x : A), ↑(NativeBridge.Incremental.ArraySpecs.write a i x).fst = ↑a.fst",
+    "type": "Rocq.Corelib.Array.ArrayAxioms.length_set.statement ↔ NativeBridge.Incremental.ArraySpecs.lengthSet",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Array.ArrayAxioms.get_copy",
+    "profile": "ArraySpecs",
+    "certificate": "NativeBridge.Incremental.ArraySpecs.getCopy_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.ArraySpecs.getCopy",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.ArraySpecs.getCopy",
+    "scope": "Full source Type universe range. Native bounded Vector plus fallback value preserves length cap 4194303 and out-of-range read/write behavior. All eleven source statements independently proved, including extensionality and clipped make length.",
+    "original_statement_proof": "NativeBridge.Incremental.ArraySpecs.getCopy_proof",
+    "native_expression": "∀ (A : Type u) (a : NativeBridge.Incremental.ArraySpecs.NativeArray A) (i : NativeBridge.Incremental.ArraySpecs.Word),\n  NativeBridge.Incremental.ArraySpecs.read (id a) i = NativeBridge.Incremental.ArraySpecs.read a i",
+    "type": "Rocq.Corelib.Array.ArrayAxioms.get_copy.statement ↔ NativeBridge.Incremental.ArraySpecs.getCopy",
+    "axioms": [
+      "propext"
+    ]
+  },
+  {
+    "source": "Corelib.Array.ArrayAxioms.length_copy",
+    "profile": "ArraySpecs",
+    "certificate": "NativeBridge.Incremental.ArraySpecs.lengthCopy_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.ArraySpecs.lengthCopy",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.ArraySpecs.lengthCopy",
+    "scope": "Full source Type universe range. Native bounded Vector plus fallback value preserves length cap 4194303 and out-of-range read/write behavior. All eleven source statements independently proved, including extensionality and clipped make length.",
+    "original_statement_proof": "NativeBridge.Incremental.ArraySpecs.lengthCopy_proof",
+    "native_expression": "∀ (A : Type u) (a : NativeBridge.Incremental.ArraySpecs.NativeArray A), ↑(id a).fst = ↑a.fst",
+    "type": "Rocq.Corelib.Array.ArrayAxioms.length_copy.statement ↔ NativeBridge.Incremental.ArraySpecs.lengthCopy",
+    "axioms": []
+  },
+  {
+    "source": "Corelib.Array.ArrayAxioms.get_make",
+    "profile": "ArraySpecs",
+    "certificate": "NativeBridge.Incremental.ArraySpecs.getMake_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.ArraySpecs.getMake",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.ArraySpecs.getMake",
+    "scope": "Full source Type universe range. Native bounded Vector plus fallback value preserves length cap 4194303 and out-of-range read/write behavior. All eleven source statements independently proved, including extensionality and clipped make length.",
+    "original_statement_proof": "NativeBridge.Incremental.ArraySpecs.getMake_proof",
+    "native_expression": "∀ (A : Type u) (x : A) (n i : NativeBridge.Incremental.ArraySpecs.Word),\n  NativeBridge.Incremental.ArraySpecs.read (NativeBridge.Incremental.ArraySpecs.make n x) i = x",
+    "type": "Rocq.Corelib.Array.ArrayAxioms.get_make.statement ↔ NativeBridge.Incremental.ArraySpecs.getMake",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Array.ArrayAxioms.length_make",
+    "profile": "ArraySpecs",
+    "certificate": "NativeBridge.Incremental.ArraySpecs.lengthMake_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.ArraySpecs.lengthMake",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.ArraySpecs.lengthMake",
+    "scope": "Full source Type universe range. Native bounded Vector plus fallback value preserves length cap 4194303 and out-of-range read/write behavior. All eleven source statements independently proved, including extensionality and clipped make length.",
+    "original_statement_proof": "NativeBridge.Incremental.ArraySpecs.lengthMake_proof",
+    "native_expression": "∀ (A : Type u) (n : NativeBridge.Incremental.ArraySpecs.Word) (x : A),\n  ↑(NativeBridge.Incremental.ArraySpecs.make n x).fst = min (BitVec.toNat n) 4194303",
+    "type": "Rocq.Corelib.Array.ArrayAxioms.length_make.statement ↔ NativeBridge.Incremental.ArraySpecs.lengthMake",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Array.ArrayAxioms.get_out_of_bounds",
+    "profile": "ArraySpecs",
+    "certificate": "NativeBridge.Incremental.ArraySpecs.getOutOfBounds_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.ArraySpecs.getOutOfBounds",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.ArraySpecs.getOutOfBounds",
+    "scope": "Full source Type universe range. Native bounded Vector plus fallback value preserves length cap 4194303 and out-of-range read/write behavior. All eleven source statements independently proved, including extensionality and clipped make length.",
+    "original_statement_proof": "NativeBridge.Incremental.ArraySpecs.getOutOfBounds_proof",
+    "native_expression": "∀ (A : Type u) (a : NativeBridge.Incremental.ArraySpecs.NativeArray A) (i : NativeBridge.Incremental.ArraySpecs.Word),\n  ↑a.fst ≤ BitVec.toNat i → NativeBridge.Incremental.ArraySpecs.read a i = a.snd.snd",
+    "type": "Rocq.Corelib.Array.ArrayAxioms.get_out_of_bounds.statement ↔ NativeBridge.Incremental.ArraySpecs.getOutOfBounds",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Array.ArrayAxioms.get_set_same",
+    "profile": "ArraySpecs",
+    "certificate": "NativeBridge.Incremental.ArraySpecs.getSetSame_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.ArraySpecs.getSetSame",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.ArraySpecs.getSetSame",
+    "scope": "Full source Type universe range. Native bounded Vector plus fallback value preserves length cap 4194303 and out-of-range read/write behavior. All eleven source statements independently proved, including extensionality and clipped make length.",
+    "original_statement_proof": "NativeBridge.Incremental.ArraySpecs.getSetSame_proof",
+    "native_expression": "∀ (A : Type u) (a : NativeBridge.Incremental.ArraySpecs.NativeArray A) (i : NativeBridge.Incremental.ArraySpecs.Word)\n  (x : A),\n  BitVec.toNat i < ↑a.fst →\n    NativeBridge.Incremental.ArraySpecs.read (NativeBridge.Incremental.ArraySpecs.write a i x) i = x",
+    "type": "Rocq.Corelib.Array.ArrayAxioms.get_set_same.statement ↔ NativeBridge.Incremental.ArraySpecs.getSetSame",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Array.ArrayAxioms.get_set_other",
+    "profile": "ArraySpecs",
+    "certificate": "NativeBridge.Incremental.ArraySpecs.getSetOther_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.ArraySpecs.getSetOther",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.ArraySpecs.getSetOther",
+    "scope": "Full source Type universe range. Native bounded Vector plus fallback value preserves length cap 4194303 and out-of-range read/write behavior. All eleven source statements independently proved, including extensionality and clipped make length.",
+    "original_statement_proof": "NativeBridge.Incremental.ArraySpecs.getSetOther_proof",
+    "native_expression": "∀ (A : Type u) (a : NativeBridge.Incremental.ArraySpecs.NativeArray A) (i j : NativeBridge.Incremental.ArraySpecs.Word)\n  (x : A),\n  i ≠ j →\n    NativeBridge.Incremental.ArraySpecs.read (NativeBridge.Incremental.ArraySpecs.write a i x) j =\n      NativeBridge.Incremental.ArraySpecs.read a j",
+    "type": "Rocq.Corelib.Array.ArrayAxioms.get_set_other.statement ↔ NativeBridge.Incremental.ArraySpecs.getSetOther",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Array.ArrayAxioms.leb_length",
+    "profile": "ArraySpecs",
+    "certificate": "NativeBridge.Incremental.ArraySpecs.boundedLength_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.ArraySpecs.boundedLength",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.ArraySpecs.boundedLength",
+    "scope": "Full source Type universe range. Native bounded Vector plus fallback value preserves length cap 4194303 and out-of-range read/write behavior. All eleven source statements independently proved, including extensionality and clipped make length.",
+    "original_statement_proof": "NativeBridge.Incremental.ArraySpecs.boundedLength_proof",
+    "native_expression": "∀ (A : Type u) (a : NativeBridge.Incremental.ArraySpecs.NativeArray A), ↑a.fst ≤ 4194303",
+    "type": "Rocq.Corelib.Array.ArrayAxioms.leb_length.statement ↔ NativeBridge.Incremental.ArraySpecs.boundedLength",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Array.ArrayAxioms.array_ext",
+    "profile": "ArraySpecs",
+    "certificate": "NativeBridge.Incremental.ArraySpecs.extensionality_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.ArraySpecs.extensionality",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.ArraySpecs.extensionality",
+    "scope": "Full source Type universe range. Native bounded Vector plus fallback value preserves length cap 4194303 and out-of-range read/write behavior. All eleven source statements independently proved, including extensionality and clipped make length.",
+    "original_statement_proof": "NativeBridge.Incremental.ArraySpecs.extensionality_proof",
+    "native_expression": "∀ (A : Type u) (a b : NativeBridge.Incremental.ArraySpecs.NativeArray A),\n  ↑a.fst = ↑b.fst →\n    (∀ (i : NativeBridge.Incremental.ArraySpecs.Word),\n        BitVec.toNat i < ↑a.fst →\n          NativeBridge.Incremental.ArraySpecs.read a i = NativeBridge.Incremental.ArraySpecs.read b i) →\n      a.snd.snd = b.snd.snd → a = b",
+    "type": "Rocq.Corelib.Array.ArrayAxioms.array_ext.statement ↔ NativeBridge.Incremental.ArraySpecs.extensionality",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Strings.PrimStringAxioms.char63_valid",
+    "profile": "StringOperations",
+    "certificate": "NativeBridge.Incremental.StringOperations.charValid_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.StringOperations.validChar",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.StringOperations.validChar",
+    "scope": "Full byte values and clipped byte-string capacity; native list/vector functions. Source nat/Z/63-bit indexing conversions rechecked in the same closure.",
+    "native_expression": "fun c => BitVec.toNat c < 256",
+    "type": "∀ (c : NativeBridge.Incremental.StringUnsignedSupport.Word),\n  Rocq.Corelib.Strings.PrimStringAxioms.char63_valid c ↔ NativeBridge.Incremental.StringOperations.validChar c",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Strings.PrimStringAxioms.of_list",
+    "profile": "StringOperations",
+    "certificate": "NativeBridge.Incremental.StringOperations.ofList_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.StringOperations.ofWords",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.StringOperations.ofWords",
+    "scope": "Full byte values and clipped byte-string capacity; native list/vector functions. Source nat/Z/63-bit indexing conversions rechecked in the same closure.",
+    "native_expression": "fun cs =>\n  List.foldr\n    (fun c rest =>\n      NativeBridge.Incremental.StringOperations.appendBytes (NativeBridge.Incremental.StringOperations.repeatByte 1 c)\n        rest)\n    NativeBridge.Incremental.StringOperations.emptyBytes cs",
+    "type": "∀ (cs : NativeBridge.RList NativeBridge.Incremental.StringUnsignedSupport.Word),\n  NativeBridge.byteStringTo (Rocq.Corelib.Strings.PrimStringAxioms.of_list cs) =\n    NativeBridge.Incremental.StringOperations.ofWords (NativeBridge.listTo cs)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Strings.PrimStringAxioms.to_list",
+    "profile": "StringOperations",
+    "certificate": "NativeBridge.Incremental.StringOperations.toList_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.StringOperations.toWords",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.StringOperations.toWords",
+    "scope": "Full byte values and clipped byte-string capacity; native list/vector functions. Source nat/Z/63-bit indexing conversions rechecked in the same closure.",
+    "native_expression": "fun s => List.map (BitVec.setWidth 63) s.snd.toList",
+    "type": "∀ (s : Rocq.Corelib.Strings.PrimString.string),\n  NativeBridge.listTo (Rocq.Corelib.Strings.PrimStringAxioms.to_list s) =\n    NativeBridge.Incremental.StringOperations.toWords (NativeBridge.byteStringTo s)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Strings.PrimStringAxioms.get_spec",
+    "profile": "StringSpecs",
+    "certificate": "NativeBridge.Incremental.StringSpecs.getSpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.StringSpecs.getSpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.StringSpecs.getSpec",
+    "scope": "All byte strings and 63-bit arguments; exact 16777211 capacity, byte truncation, out-of-bounds zero and clipping. Original mechanical statement independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.StringSpecs.getSpec_proof",
+    "native_expression": "∀ (s : NativeBridge.Incremental.StringOperations.Bytes) (i : BitVec 63),\n  BitVec.setWidth 63 (NativeBridge.Incremental.StringOperations.readByte s i.toNat) =\n    (NativeBridge.Incremental.StringOperations.toWords s)[i.toNat]?.getD 0",
+    "type": "Rocq.Corelib.Strings.PrimStringAxioms.get_spec.statement ↔ NativeBridge.Incremental.StringSpecs.getSpec",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Strings.PrimStringAxioms.length_spec",
+    "profile": "StringSpecs",
+    "certificate": "NativeBridge.Incremental.StringSpecs.lengthSpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.StringSpecs.lengthSpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.StringSpecs.lengthSpec",
+    "scope": "All byte strings and 63-bit arguments; exact 16777211 capacity, byte truncation, out-of-bounds zero and clipping. Original mechanical statement independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.StringSpecs.lengthSpec_proof",
+    "native_expression": "∀ (s : NativeBridge.Incremental.StringOperations.Bytes),\n  ↑s.fst = (NativeBridge.Incremental.StringOperations.toWords s).length",
+    "type": "Rocq.Corelib.Strings.PrimStringAxioms.length_spec.statement ↔ NativeBridge.Incremental.StringSpecs.lengthSpec",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Strings.PrimStringAxioms.make_spec",
+    "profile": "StringSpecs",
+    "certificate": "NativeBridge.Incremental.StringSpecs.makeSpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.StringSpecs.makeSpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.StringSpecs.makeSpec",
+    "scope": "All byte strings and 63-bit arguments; exact 16777211 capacity, byte truncation, out-of-bounds zero and clipping. Original mechanical statement independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.StringSpecs.makeSpec_proof",
+    "native_expression": "∀ (i c : BitVec 63),\n  NativeBridge.Incremental.StringOperations.toWords (NativeBridge.Incremental.StringOperations.repeatByte i c) =\n    List.replicate (min i.toNat 16777211) (c &&& 255#63)",
+    "type": "Rocq.Corelib.Strings.PrimStringAxioms.make_spec.statement ↔ NativeBridge.Incremental.StringSpecs.makeSpec",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Strings.PrimStringAxioms.sub_spec",
+    "profile": "StringSpecs",
+    "certificate": "NativeBridge.Incremental.StringSpecs.subSpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.StringSpecs.subSpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.StringSpecs.subSpec",
+    "scope": "All byte strings and 63-bit arguments; exact 16777211 capacity, byte truncation, out-of-bounds zero and clipping. Original mechanical statement independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.StringSpecs.subSpec_proof",
+    "native_expression": "∀ (s : NativeBridge.Incremental.StringOperations.Bytes) (off len : BitVec 63),\n  NativeBridge.Incremental.StringOperations.toWords (NativeBridge.Incremental.StringOperations.sliceBytes s off len) =\n    List.take len.toNat (List.drop off.toNat (NativeBridge.Incremental.StringOperations.toWords s))",
+    "type": "Rocq.Corelib.Strings.PrimStringAxioms.sub_spec.statement ↔ NativeBridge.Incremental.StringSpecs.subSpec",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Strings.PrimStringAxioms.to_list_char63_valid",
+    "profile": "StringSpecs",
+    "certificate": "NativeBridge.Incremental.StringSpecs.validSpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.StringSpecs.validSpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.StringSpecs.validSpec",
+    "scope": "All byte strings and 63-bit arguments; exact 16777211 capacity, byte truncation, out-of-bounds zero and clipping. Original mechanical statement independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.StringSpecs.validSpec_proof",
+    "native_expression": "∀ (s : NativeBridge.Incremental.StringOperations.Bytes) (c : NativeBridge.Incremental.StringUnsignedSupport.Word),\n  c ∈ NativeBridge.Incremental.StringOperations.toWords s → NativeBridge.Incremental.StringOperations.validChar c",
+    "type": "Rocq.Corelib.Strings.PrimStringAxioms.to_list_char63_valid.statement ↔ NativeBridge.Incremental.StringSpecs.validSpec",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Strings.PrimStringAxioms.to_list_length",
+    "profile": "StringSpecs",
+    "certificate": "NativeBridge.Incremental.StringSpecs.boundSpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.StringSpecs.boundSpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.StringSpecs.boundSpec",
+    "scope": "All byte strings and 63-bit arguments; exact 16777211 capacity, byte truncation, out-of-bounds zero and clipping. Original mechanical statement independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.StringSpecs.boundSpec_proof",
+    "native_expression": "∀ (s : NativeBridge.Incremental.StringOperations.Bytes),\n  (NativeBridge.Incremental.StringOperations.toWords s).length ≤ 16777211",
+    "type": "Rocq.Corelib.Strings.PrimStringAxioms.to_list_length.statement ↔ NativeBridge.Incremental.StringSpecs.boundSpec",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Strings.PrimStringAxioms.cat_spec",
+    "profile": "StringRoundtrip",
+    "certificate": "NativeBridge.Incremental.StringRoundtrip.catSpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.StringRoundtrip.catSpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.StringRoundtrip.catSpec",
+    "scope": "All bounded byte strings, including embedded zero bytes; concatenation clips to 16777211. List roundtrip preserves exact byte sequence and length. Original source statements independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.StringRoundtrip.catSpec_proof",
+    "native_expression": "∀ (a b : NativeBridge.Incremental.StringOperations.Bytes),\n  NativeBridge.Incremental.StringOperations.toWords (NativeBridge.Incremental.StringOperations.appendBytes a b) =\n    List.take 16777211\n      (NativeBridge.Incremental.StringOperations.toWords a ++ NativeBridge.Incremental.StringOperations.toWords b)",
+    "type": "Rocq.Corelib.Strings.PrimStringAxioms.cat_spec.statement ↔ NativeBridge.Incremental.StringRoundtrip.catSpec",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Strings.PrimStringAxioms.of_to_list",
+    "profile": "StringRoundtrip",
+    "certificate": "NativeBridge.Incremental.StringRoundtrip.roundtripSpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.StringRoundtrip.roundtripSpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.StringRoundtrip.roundtripSpec",
+    "scope": "All bounded byte strings, including embedded zero bytes; concatenation clips to 16777211. List roundtrip preserves exact byte sequence and length. Original source statements independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.StringRoundtrip.roundtripSpec_proof",
+    "native_expression": "∀ (s : NativeBridge.Incremental.StringOperations.Bytes),\n  NativeBridge.Incremental.StringOperations.ofWords (NativeBridge.Incremental.StringOperations.toWords s) = s",
+    "type": "Rocq.Corelib.Strings.PrimStringAxioms.of_to_list.statement ↔ NativeBridge.Incremental.StringRoundtrip.roundtripSpec",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Strings.PrimStringAxioms.compare_spec",
+    "profile": "StringComparison",
+    "certificate": "NativeBridge.Incremental.StringComparison.compareSpec_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.StringComparison.compareSpec",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.StringComparison.compareSpec",
+    "scope": "Full lexicographic byte comparison, including prefix and empty cases; native List.compareLex on zero-extended bytes. Source statement independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.StringComparison.compareSpec_proof",
+    "native_expression": "∀ (a b : NativeBridge.Incremental.StringOperations.Bytes),\n  NativeBridge.Incremental.StringOperations.compareBytes a b =\n    NativeBridge.Incremental.StringComparison.nativeCompare a b",
+    "type": "Rocq.Corelib.Strings.PrimStringAxioms.compare_spec.statement ↔ NativeBridge.Incremental.StringComparison.compareSpec",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.Strings.PrimString.compare",
+    "profile": "StringComparison",
+    "certificate": "NativeBridge.Incremental.StringComparison.primitiveCompare_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.StringComparison.nativeCompare",
+    "target_class": "existing_api",
+    "native_target": "NativeBridge.Incremental.StringComparison.nativeCompare",
+    "scope": "List.compareLex with unsigned 63-bit byte comparator and vector-to-list adapter. Strengthens an already counted primitive root without incrementing coverage.",
+    "native_expression": "fun a b =>\n  List.compareLex NativeBridge.Incremental.StringComparison.wordCompare\n    (NativeBridge.Incremental.StringOperations.toWords a) (NativeBridge.Incremental.StringOperations.toWords b)",
+    "type": "∀ (a b : Rocq.Corelib.Strings.PrimString.string),\n  NativeBridge.comparisonTo (Rocq.Corelib.Strings.PrimString.compare a b) =\n    NativeBridge.Incremental.StringComparison.nativeCompare (NativeBridge.byteStringTo a) (NativeBridge.byteStringTo b)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
     "source": "Corelib.ssr.ssrbool.canLR_in",
     "profile": "SSRBoolClosedStatements",
     "certificate": "NativeBridge.Incremental.SSRBoolClosedStatements.RocqPending.Corelib.ssr.ssrbool.canLR_in.statement.correspondence",
