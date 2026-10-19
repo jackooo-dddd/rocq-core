@@ -251,3 +251,24 @@ flowchart TD
 ```
 
 逐节点依赖来自 reports/specif-witness-dag.json，与冻结报告 pending_hypotheses 核对；不是根据规则名猜测依赖。140 个证明目标不重复计作对应根。
+
+## 第二十二批：SSR 函数、谓词与容器陈述
+
+```mermaid
+flowchart TD
+  A["机械 Eq 对应 + 原生函数应用"] --> B["27 个原生谓词及逐点 iff"]
+  C["bijective 构造器与取消律"] --> D["存在双向逆的命题 Iso"]
+  E["NonPropType 字段"] --> F["Bool × Type u 双向逆"]
+  G["完整 Sort 的 Option / PLift 表示"] --> H["五个原生 Option API 等式"]
+  G --> I["量词与函数相等转换"]
+  H --> J["转换穿过 Option.elim"]
+  B --> K["50 个完整原生陈述"]
+  D --> K
+  F --> K
+  I --> K
+  J --> K
+  L["Subtype / PSum / Unit 转换"] --> K
+  K --> M["共同导入与公理闭包检查"]
+```
+
+本批不增加业务定理的独立证明；只登记对应证书。对应关系被重复用到不重复计源根。

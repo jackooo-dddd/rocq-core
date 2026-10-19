@@ -5642,6 +5642,1206 @@ NativeBridge.Incremental.SpecifEqualityElimination.eq_sigT2_rect_existT2_r_agree
 
 公理闭包：空
 
+## Corelib.ssr.ssrfun.all_equal_to
+
+NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.all_equal_to.correspondence
+
+目标：fun T x0 => ∀ (x : T), x = x0；范围：all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols
+
+```lean
+∀ (T : Sort u_Corelib_ssr_ssrfun_67) (x0 : T),
+  Rocq.Corelib.ssr.ssrfun.all_equal_to T x0 ↔
+    NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.all_equal_to.native T x0
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.homomorphism_1
+
+NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.homomorphism_1.correspondence
+
+目标：fun aT rT f aP rP => ∀ (x : aT), aP x → rP (f x)；范围：all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols
+
+```lean
+∀ (aT : Sort u_Corelib_ssr_ssrfun_348) (rT : Sort u_Corelib_ssr_ssrfun_349) (f : aT → rT) (aP : aT → Prop)
+  (rP : rT → Prop),
+  Rocq.Corelib.ssr.ssrfun.homomorphism_1 aT rT f aP rP ↔
+    NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.homomorphism_1.native aT rT f aP rP
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrfun.homomorphism_2
+
+NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.homomorphism_2.correspondence
+
+目标：fun aT rT f aR rR => ∀ (x y : aT), aR x y → rR (f x) (f y)；范围：all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols
+
+```lean
+∀ (aT : Sort u_Corelib_ssr_ssrfun_348) (rT : Sort u_Corelib_ssr_ssrfun_349) (f : aT → rT) (aR : aT → aT → Prop)
+  (rR : rT → rT → Prop),
+  Rocq.Corelib.ssr.ssrfun.homomorphism_2 aT rT f aR rR ↔
+    NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.homomorphism_2.native aT rT f aR rR
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrfun.idempotent_fun
+
+NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.idempotent_fun.correspondence
+
+目标：fun U f => f ∘ f = f；范围：all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols
+
+```lean
+∀ (U : Sort u_Corelib_ssr_ssrfun_683) (f : U → U),
+  Rocq.Corelib.ssr.ssrfun.idempotent_fun U f ↔
+    NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.idempotent_fun.native U f
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.idempotent_op
+
+NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.idempotent_op.correspondence
+
+目标：fun S op => ∀ (x : S), op x x = x；范围：all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols
+
+```lean
+∀ (S : Sort u_Corelib_ssr_ssrfun_588) (op : S → S → S),
+  Rocq.Corelib.ssr.ssrfun.idempotent_op S op ↔
+    NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.idempotent_op.native S op
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.injective2
+
+NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.injective2.correspondence
+
+目标：fun rT aT1 aT2 f => ∀ (x1 x2 : aT1) (y1 y2 : aT2), f x1 y1 = f x2 y2 → x1 = x2 ∧ y1 = y2；范围：all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols
+
+```lean
+∀ (rT : Sort u_Corelib_ssr_ssrfun_454) (aT1 : Sort u_Corelib_ssr_ssrfun_455) (aT2 : Sort u_Corelib_ssr_ssrfun_456)
+  (f : aT1 → aT2 → rT),
+  Rocq.Corelib.ssr.ssrfun.injective2 rT aT1 aT2 f ↔
+    NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.injective2.native rT aT1 aT2 f
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.interchange
+
+NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.interchange.correspondence
+
+目标：fun S op1 op2 => ∀ (x y z t : S), op1 (op2 x y) (op2 z t) = op2 (op1 x z) (op1 y t)；范围：all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols
+
+```lean
+∀ (S : Sort u_Corelib_ssr_ssrfun_588) (op1 op2 : S → S → S),
+  Rocq.Corelib.ssr.ssrfun.interchange S op1 op2 ↔
+    NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.interchange.native S op1 op2
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.left_commutative
+
+NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.left_commutative.correspondence
+
+目标：fun S T op => ∀ (x y : S) (z : T), op x (op y z) = op y (op x z)；范围：all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols
+
+```lean
+∀ (S : Sort u_Corelib_ssr_ssrfun_588) (T : Sort u_Corelib_ssr_ssrfun_589) (op : S → T → T),
+  Rocq.Corelib.ssr.ssrfun.left_commutative S T op ↔
+    NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.left_commutative.native S T op
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.left_distributive
+
+NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.left_distributive.correspondence
+
+目标：fun S T op add => ∀ (x y : S) (z : T), op (add x y) z = add (op x z) (op y z)；范围：all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols
+
+```lean
+∀ (S : Sort u_Corelib_ssr_ssrfun_588) (T : Sort u_Corelib_ssr_ssrfun_589) (op : S → T → S) (add : S → S → S),
+  Rocq.Corelib.ssr.ssrfun.left_distributive S T op add ↔
+    NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.left_distributive.native S T op add
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.left_injective
+
+NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.left_injective.correspondence
+
+目标：fun S T R op => ∀ (x : T) (x_1 y : S), op x_1 x = op y x → x_1 = y；范围：all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols
+
+```lean
+∀ (S : Sort u_Corelib_ssr_ssrfun_588) (T : Sort u_Corelib_ssr_ssrfun_589) (R : Sort u_Corelib_ssr_ssrfun_590)
+  (op : S → T → R),
+  Rocq.Corelib.ssr.ssrfun.left_injective S T R op ↔
+    NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.left_injective.native S T R op
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.left_inverse
+
+NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.left_inverse.correspondence
+
+目标：fun S T R e inv op => ∀ (x : T), op (inv x) x = e；范围：all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols
+
+```lean
+∀ (S : Sort u_Corelib_ssr_ssrfun_588) (T : Sort u_Corelib_ssr_ssrfun_589) (R : Sort u_Corelib_ssr_ssrfun_590) (e : R)
+  (inv : T → S) (op : S → T → R),
+  Rocq.Corelib.ssr.ssrfun.left_inverse S T R e inv op ↔
+    NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.left_inverse.native S T R e inv op
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.left_loop
+
+NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.left_loop.correspondence
+
+目标：fun S T inv op => ∀ (x : S) (x_1 : T), op (inv x) (op x x_1) = x_1；范围：all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols
+
+```lean
+∀ (S : Sort u_Corelib_ssr_ssrfun_588) (T : Sort u_Corelib_ssr_ssrfun_589) (inv : S → S) (op : S → T → T),
+  Rocq.Corelib.ssr.ssrfun.left_loop S T inv op ↔
+    NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.left_loop.native S T inv op
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.left_zero
+
+NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.left_zero.correspondence
+
+目标：fun S T z op => ∀ (x : T), op z x = z；范围：all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols
+
+```lean
+∀ (S : Sort u_Corelib_ssr_ssrfun_588) (T : Sort u_Corelib_ssr_ssrfun_589) (z : S) (op : S → T → S),
+  Rocq.Corelib.ssr.ssrfun.left_zero S T z op ↔
+    NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.left_zero.native S T z op
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.monomorphism_1
+
+NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.monomorphism_1.correspondence
+
+目标：fun aT rT sT f aP rP => ∀ (x : aT), rP (f x) = aP x；范围：all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols
+
+```lean
+∀ (aT : Sort u_Corelib_ssr_ssrfun_348) (rT : Sort u_Corelib_ssr_ssrfun_349) (sT : Sort u_Corelib_ssr_ssrfun_350)
+  (f : aT → rT) (aP : aT → sT) (rP : rT → sT),
+  Rocq.Corelib.ssr.ssrfun.monomorphism_1 aT rT sT f aP rP ↔
+    NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.monomorphism_1.native aT rT sT f aP rP
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.monomorphism_2
+
+NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.monomorphism_2.correspondence
+
+目标：fun aT rT sT f aR rR => ∀ (x y : aT), rR (f x) (f y) = aR x y；范围：all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols
+
+```lean
+∀ (aT : Sort u_Corelib_ssr_ssrfun_348) (rT : Sort u_Corelib_ssr_ssrfun_349) (sT : Sort u_Corelib_ssr_ssrfun_350)
+  (f : aT → rT) (aR : aT → aT → sT) (rR : rT → rT → sT),
+  Rocq.Corelib.ssr.ssrfun.monomorphism_2 aT rT sT f aR rR ↔
+    NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.monomorphism_2.native aT rT sT f aR rR
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.morphism_1
+
+NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.morphism_1.correspondence
+
+目标：fun aT rT f aF rF => ∀ (x : aT), f (aF x) = rF (f x)；范围：all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols
+
+```lean
+∀ (aT : Sort u_Corelib_ssr_ssrfun_348) (rT : Sort u_Corelib_ssr_ssrfun_349) (f : aT → rT) (aF : aT → aT) (rF : rT → rT),
+  Rocq.Corelib.ssr.ssrfun.morphism_1 aT rT f aF rF ↔
+    NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.morphism_1.native aT rT f aF rF
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.morphism_2
+
+NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.morphism_2.correspondence
+
+目标：fun aT rT f aOp rOp => ∀ (x y : aT), f (aOp x y) = rOp (f x) (f y)；范围：all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols
+
+```lean
+∀ (aT : Sort u_Corelib_ssr_ssrfun_348) (rT : Sort u_Corelib_ssr_ssrfun_349) (f : aT → rT) (aOp : aT → aT → aT)
+  (rOp : rT → rT → rT),
+  Rocq.Corelib.ssr.ssrfun.morphism_2 aT rT f aOp rOp ↔
+    NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.morphism_2.native aT rT f aOp rOp
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.rev_left_loop
+
+NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.rev_left_loop.correspondence
+
+目标：fun S T inv op => ∀ (x : S) (x_1 : T), op x (op (inv x) x_1) = x_1；范围：all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols
+
+```lean
+∀ (S : Sort u_Corelib_ssr_ssrfun_588) (T : Sort u_Corelib_ssr_ssrfun_589) (inv : S → S) (op : S → T → T),
+  Rocq.Corelib.ssr.ssrfun.rev_left_loop S T inv op ↔
+    NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.rev_left_loop.native S T inv op
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.rev_right_loop
+
+NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.rev_right_loop.correspondence
+
+目标：fun S T inv op => ∀ (y : T) (x : S), op (op x (inv y)) y = x；范围：all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols
+
+```lean
+∀ (S : Sort u_Corelib_ssr_ssrfun_588) (T : Sort u_Corelib_ssr_ssrfun_589) (inv : T → T) (op : S → T → S),
+  Rocq.Corelib.ssr.ssrfun.rev_right_loop S T inv op ↔
+    NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.rev_right_loop.native S T inv op
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.right_commutative
+
+NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.right_commutative.correspondence
+
+目标：fun S T op => ∀ (x : S) (y z : T), op (op x y) z = op (op x z) y；范围：all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols
+
+```lean
+∀ (S : Sort u_Corelib_ssr_ssrfun_588) (T : Sort u_Corelib_ssr_ssrfun_589) (op : S → T → S),
+  Rocq.Corelib.ssr.ssrfun.right_commutative S T op ↔
+    NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.right_commutative.native S T op
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.right_distributive
+
+NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.right_distributive.correspondence
+
+目标：fun S T op add => ∀ (x : S) (y z : T), op x (add y z) = add (op x y) (op x z)；范围：all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols
+
+```lean
+∀ (S : Sort u_Corelib_ssr_ssrfun_588) (T : Sort u_Corelib_ssr_ssrfun_589) (op : S → T → T) (add : T → T → T),
+  Rocq.Corelib.ssr.ssrfun.right_distributive S T op add ↔
+    NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.right_distributive.native S T op add
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.right_id
+
+NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.right_id.correspondence
+
+目标：fun S T e op => ∀ (x : S), op x e = x；范围：all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols
+
+```lean
+∀ (S : Sort u_Corelib_ssr_ssrfun_588) (T : Sort u_Corelib_ssr_ssrfun_589) (e : T) (op : S → T → S),
+  Rocq.Corelib.ssr.ssrfun.right_id S T e op ↔
+    NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.right_id.native S T e op
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.right_injective
+
+NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.right_injective.correspondence
+
+目标：fun S T R op => ∀ (y : S) (x y_1 : T), op y x = op y y_1 → x = y_1；范围：all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols
+
+```lean
+∀ (S : Sort u_Corelib_ssr_ssrfun_588) (T : Sort u_Corelib_ssr_ssrfun_589) (R : Sort u_Corelib_ssr_ssrfun_590)
+  (op : S → T → R),
+  Rocq.Corelib.ssr.ssrfun.right_injective S T R op ↔
+    NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.right_injective.native S T R op
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.right_inverse
+
+NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.right_inverse.correspondence
+
+目标：fun S T R e inv op => ∀ (x : S), op x (inv x) = e；范围：all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols
+
+```lean
+∀ (S : Sort u_Corelib_ssr_ssrfun_588) (T : Sort u_Corelib_ssr_ssrfun_589) (R : Sort u_Corelib_ssr_ssrfun_590) (e : R)
+  (inv : S → T) (op : S → T → R),
+  Rocq.Corelib.ssr.ssrfun.right_inverse S T R e inv op ↔
+    NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.right_inverse.native S T R e inv op
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.right_loop
+
+NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.right_loop.correspondence
+
+目标：fun S T inv op => ∀ (y : T) (x : S), op (op x y) (inv y) = x；范围：all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols
+
+```lean
+∀ (S : Sort u_Corelib_ssr_ssrfun_588) (T : Sort u_Corelib_ssr_ssrfun_589) (inv : T → T) (op : S → T → S),
+  Rocq.Corelib.ssr.ssrfun.right_loop S T inv op ↔
+    NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.right_loop.native S T inv op
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.right_zero
+
+NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.right_zero.correspondence
+
+目标：fun S T z op => ∀ (x : S), op x z = z；范围：all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols
+
+```lean
+∀ (S : Sort u_Corelib_ssr_ssrfun_588) (T : Sort u_Corelib_ssr_ssrfun_589) (z : T) (op : S → T → T),
+  Rocq.Corelib.ssr.ssrfun.right_zero S T z op ↔
+    NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.right_zero.native S T z op
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.self_inverse
+
+NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.self_inverse.correspondence
+
+目标：fun S T e op => ∀ (x : S), op x x = e；范围：all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols
+
+```lean
+∀ (S : Sort u_Corelib_ssr_ssrfun_588) (T : Sort u_Corelib_ssr_ssrfun_589) (e : T) (op : S → S → T),
+  Rocq.Corelib.ssr.ssrfun.self_inverse S T e op ↔
+    NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.self_inverse.native S T e op
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.bijective
+
+NativeBridge.Incremental.SSRFunNormalization.bijectiveIso
+
+目标：exists inverse g with both cancellation laws；范围：A,B : Type; proposition isomorphism; inverse existence, not a claim that an arbitrary function is bijective
+
+```lean
+(A : Type u) →
+  (B : Type v) →
+    (f : B → A) →
+      NativeBridge.Iso (Rocq.Corelib.ssr.ssrfun.bijective A B f)
+        (∃ g, (∀ (x : B), g (f x) = x) ∧ ∀ (y : A), f (g y) = y)
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.NonPropType.type
+
+NativeBridge.Incremental.SSRNonProp.iso
+
+目标：Bool × Type u；范围：all exported universe parameters; both inverse laws; boolean metadata retained
+
+```lean
+NativeBridge.Iso Rocq.Corelib.ssr.ssreflect_rw.NonPropType.type (Bool × Type u)
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrfun.Option.apply
+
+NativeBridge.Incremental.SSRFunOption.apply_agrees
+
+目标：Option.elim；范围：supplements existing Type-only certificate with full Sort parameters; Option (PLift A) representation; same source root counted once
+
+```lean
+∀ {A : Sort u} {B : Sort v} (f : A → B) (d : B) (x : Rocq.Corelib.Init.Datatypes.option A),
+  Rocq.Corelib.ssr.ssrfun.Option.apply A B f d x = (NativeBridge.Incremental.SSRFunOption.to x).elim d fun a => f a.down
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrfun.Option.default
+
+NativeBridge.Incremental.SSRFunOption.default_agrees
+
+目标：Option.getD with PLift.down；范围：supplements existing Type-only certificate with full Sort parameters; Option (PLift A) representation; same source root counted once
+
+```lean
+∀ {A : Sort u} (d : A) (x : Rocq.Corelib.Init.Datatypes.option A),
+  Rocq.Corelib.ssr.ssrfun.Option.default A d x = ((NativeBridge.Incremental.SSRFunOption.to x).getD { down := d }).down
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrfun.Option.map
+
+NativeBridge.Incremental.SSRFunOption.map_agrees
+
+目标：Option.map with PLift input/output adapter；范围：supplements existing Type-only certificate with full Sort parameters; Option (PLift A) representation; same source root counted once
+
+```lean
+∀ {A : Sort u} {B : Sort v} (f : A → B) (x : Rocq.Corelib.Init.Datatypes.option A),
+  NativeBridge.Incremental.SSRFunOption.to (Rocq.Corelib.ssr.ssrfun.Option.map A B f x) =
+    Option.map (fun a => { down := f a.down }) (NativeBridge.Incremental.SSRFunOption.to x)
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrfun.Option.bind
+
+NativeBridge.Incremental.SSRFunOption.bind_agrees
+
+目标：Option.bind with PLift input and output conversion；范围：supplements existing Type-only certificate with full Sort parameters; Option (PLift A) representation; same source root counted once
+
+```lean
+∀ {A : Sort u} {B : Sort v} (f : A → Rocq.Corelib.Init.Datatypes.option B) (x : Rocq.Corelib.Init.Datatypes.option A),
+  NativeBridge.Incremental.SSRFunOption.to (Rocq.Corelib.ssr.ssrfun.Option.bind A B f x) =
+    (NativeBridge.Incremental.SSRFunOption.to x).bind fun a => NativeBridge.Incremental.SSRFunOption.to (f a.down)
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrfun.Option.lift
+
+NativeBridge.Incremental.SSRFunOption.lift_agrees
+
+目标：Option.some with PLift output；范围：supplements existing Type-only certificate with full Sort parameters; Option (PLift A) representation; same source root counted once
+
+```lean
+∀ {A : Sort u} {B : Sort v} (f : A → B) (x : A),
+  NativeBridge.Incremental.SSRFunOption.to (Rocq.Corelib.ssr.ssrfun.Option.lift A B f x) = some { down := f x }
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrfun.Some_inj
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.Some_inj.statement.correspondence
+
+目标：native statement: ∀ (x : Bool × Type u_Corelib_ssr_ssreflect_rw_178) (x1 x2 : x.snd), some { down := x1 } = some { down := x2 } → x1 = x2；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.Some_inj.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.Some_inj.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.bij_can_bij
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.bij_can_bij.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_ssr_ssrfun_582) (B : Type u_Corelib_ssr_ssrfun_583) (f : B → A),
+  (∃ g, (∀ (x : B), g (f x) = x) ∧ ∀ (y : A), f (g y) = y) →
+    ∀ (f' : A → B), (∀ (x : B), f' (f x) = x) → ∃ g, (∀ (x : A), g (f' x) = x) ∧ ∀ (y : B), f' (g y) = y；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.bij_can_bij.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.bij_can_bij.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.bij_can_eq
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.bij_can_eq.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_ssr_ssrfun_571) (B : Type u_Corelib_ssr_ssrfun_572) (f : B → A),
+  (∃ g, (∀ (x : B), g (f x) = x) ∧ ∀ (y : A), f (g y) = y) →
+    ∀ (f' f'' : A → B), (∀ (x : B), f' (f x) = x) → (∀ (x : B), f'' (f x) = x) → ∀ (x : A), f' x = f'' x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.bij_can_eq.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.bij_can_eq.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.bij_can_sym
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.bij_can_sym.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_ssr_ssrfun_571) (B : Type u_Corelib_ssr_ssrfun_572) (f : B → A),
+  (∃ g, (∀ (x : B), g (f x) = x) ∧ ∀ (y : A), f (g y) = y) →
+    ∀ (f' : A → B), (∀ (x : A), f (f' x) = x) ↔ ∀ (x : B), f' (f x) = x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.bij_can_sym.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.bij_can_sym.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.bij_comp
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.bij_comp.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_ssr_ssrfun_582) (B : Type u_Corelib_ssr_ssrfun_583) (C : Type u_Corelib_ssr_ssrfun_584)
+  (f : B → A) (h : C → B),
+  (∃ g, (∀ (x : B), g (f x) = x) ∧ ∀ (y : A), f (g y) = y) →
+    (∃ g, (∀ (x : C), g (h x) = x) ∧ ∀ (y : B), h (g y) = y) →
+      ∃ g, (∀ (x : C), g (f (h x)) = x) ∧ ∀ (y : A), f (h (g y)) = y；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.bij_comp.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.bij_comp.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.bij_inj
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.bij_inj.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_ssr_ssrfun_571) (B : Type u_Corelib_ssr_ssrfun_572) (f : B → A),
+  (∃ g, (∀ (x : B), g (f x) = x) ∧ ∀ (y : A), f (g y) = y) → ∀ (x1 x2 : B), f x1 = f x2 → x1 = x2；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.bij_inj.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.bij_inj.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.canLR
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.canLR.statement.correspondence
+
+目标：native statement: ∀ (rT : Sort u_Corelib_ssr_ssrfun_398) (aT : Sort u_Corelib_ssr_ssrfun_399) (f : aT → rT) (g : rT → aT) (x : rT)
+  (y : aT), (∀ (x : aT), g (f x) = x) → x = f y → g x = y；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.canLR.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.canLR.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.canRL
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.canRL.statement.correspondence
+
+目标：native statement: ∀ (rT : Sort u_Corelib_ssr_ssrfun_398) (aT : Sort u_Corelib_ssr_ssrfun_399) (f : aT → rT) (g : rT → aT) (x : aT)
+  (y : rT), (∀ (x : aT), g (f x) = x) → f x = y → x = g y；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.canRL.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.canRL.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.can_comp
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.can_comp.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_ssr_ssrfun_512) (B : Sort u_Corelib_ssr_ssrfun_513) (C : Sort u_Corelib_ssr_ssrfun_514)
+  (f : B → A) (h : C → B) (f' : A → B) (h' : B → C),
+  (∀ (x : B), f' (f x) = x) → (∀ (x : C), h' (h x) = x) → ∀ (x : C), h' (f' (f (h x))) = x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.can_comp.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.can_comp.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.can_inj
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.can_inj.statement.correspondence
+
+目标：native statement: ∀ (rT : Sort u_Corelib_ssr_ssrfun_398) (aT : Sort u_Corelib_ssr_ssrfun_399) (f : aT → rT) (g : rT → aT),
+  (∀ (x : aT), g (f x) = x) → ∀ (x1 x2 : aT), f x1 = f x2 → x1 = x2；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.can_inj.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.can_inj.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.can_pcan
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.can_pcan.statement.correspondence
+
+目标：native statement: ∀ (rT : Sort u_Corelib_ssr_ssrfun_398) (aT : Sort u_Corelib_ssr_ssrfun_399) (f : aT → rT) (g : rT → aT),
+  (∀ (x : aT), g (f x) = x) → ∀ (x : aT), some { down := g (f x) } = some { down := x }；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.can_pcan.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.can_pcan.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.compA
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.compA.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_ssr_ssrfun_128) (B : Sort u_Corelib_ssr_ssrfun_129) (C : Sort u_Corelib_ssr_ssrfun_130)
+  (D : Sort u_Corelib_ssr_ssrfun_131) (f : B → A) (g : C → B) (h : D → C), (fun x => f (g (h x))) = fun x => f (g (h x))；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.compA.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.compA.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.eq_bij
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.eq_bij.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_ssr_ssrfun_582) (B : Type u_Corelib_ssr_ssrfun_583) (f : B → A),
+  (∃ g, (∀ (x : B), g (f x) = x) ∧ ∀ (y : A), f (g y) = y) →
+    ∀ (g : B → A), (∀ (x : B), f x = g x) → ∃ g_1, (∀ (x : B), g_1 (g x) = x) ∧ ∀ (y : A), g (g_1 y) = y；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.eq_bij.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.eq_bij.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.eq_can
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.eq_can.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_ssr_ssrfun_512) (B : Sort u_Corelib_ssr_ssrfun_513) (f g : B → A) (f' g' : A → B),
+  (∀ (x : B), f' (f x) = x) → (∀ (x : B), f x = g x) → (∀ (x : A), f' x = g' x) → ∀ (x : B), g' (g x) = x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.eq_can.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.eq_can.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.eq_comp
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.eq_comp.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_ssr_ssrfun_114) (B : Sort u_Corelib_ssr_ssrfun_115) (C : Sort u_Corelib_ssr_ssrfun_116)
+  (f f' : B → A) (g g' : C → B), (∀ (x : B), f x = f' x) → (∀ (x : C), g x = g' x) → ∀ (x : C), f (g x) = f' (g' x)；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.eq_comp.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.eq_comp.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.eq_inj
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.eq_inj.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_ssr_ssrfun_512) (B : Sort u_Corelib_ssr_ssrfun_513) (f g : B → A),
+  (∀ (x1 x2 : B), f x1 = f x2 → x1 = x2) → (∀ (x : B), f x = g x) → ∀ (x1 x2 : B), g x1 = g x2 → x1 = x2；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.eq_inj.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.eq_inj.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.eq_omap
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.eq_omap.statement.correspondence
+
+目标：native statement: ∀ (aT : Sort u_Corelib_ssr_ssrfun_143) (rT : Sort u_Corelib_ssr_ssrfun_144) (f h : aT → rT),
+  (∀ (x : aT), f x = h x) →
+    ∀ (x : Option (PLift aT)),
+      Option.map (fun a => { down := f a.down }) x = Option.map (fun a => { down := h a.down }) x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.eq_omap.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.eq_omap.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.frefl
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.frefl.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_ssr_ssrfun_95) (B : Sort u_Corelib_ssr_ssrfun_96) (f : B → A) (x : B), f x = f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.frefl.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.frefl.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.fsym
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.fsym.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_ssr_ssrfun_95) (B : Sort u_Corelib_ssr_ssrfun_96) (f g : B → A),
+  (∀ (x : B), f x = g x) → ∀ (x : B), g x = f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.fsym.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.fsym.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.ftrans
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.ftrans.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_ssr_ssrfun_95) (B : Sort u_Corelib_ssr_ssrfun_96) (f g h : B → A),
+  (∀ (x : B), f x = g x) → (∀ (x : B), g x = h x) → ∀ (x : B), f x = h x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.ftrans.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.ftrans.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.inj_can_eq
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.inj_can_eq.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_ssr_ssrfun_512) (B : Sort u_Corelib_ssr_ssrfun_513) (f g : B → A) (f' : A → B),
+  (∀ (x : B), f' (f x) = x) →
+    (∀ (x1 x2 : A), f' x1 = f' x2 → x1 = x2) → (∀ (x : B), f' (g x) = x) → ∀ (x : B), f x = g x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.inj_can_eq.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.inj_can_eq.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.inj_can_sym
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.inj_can_sym.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_ssr_ssrfun_512) (B : Sort u_Corelib_ssr_ssrfun_513) (f : B → A) (f' : A → B),
+  (∀ (x : B), f' (f x) = x) → (∀ (x1 x2 : A), f' x1 = f' x2 → x1 = x2) → ∀ (x : A), f (f' x) = x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.inj_can_sym.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.inj_can_sym.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.inj_comp
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.inj_comp.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_ssr_ssrfun_512) (B : Sort u_Corelib_ssr_ssrfun_513) (C : Sort u_Corelib_ssr_ssrfun_514)
+  (f : B → A) (h : C → B),
+  (∀ (x1 x2 : B), f x1 = f x2 → x1 = x2) →
+    (∀ (x1 x2 : C), h x1 = h x2 → x1 = x2) → ∀ (x1 x2 : C), f (h x1) = f (h x2) → x1 = x2；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.inj_comp.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.inj_comp.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.inj_compr
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.inj_compr.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_ssr_ssrfun_512) (B : Sort u_Corelib_ssr_ssrfun_513) (C : Sort u_Corelib_ssr_ssrfun_514)
+  (f : B → A) (h : C → B), (∀ (x1 x2 : C), f (h x1) = f (h x2) → x1 = x2) → ∀ (x1 x2 : C), h x1 = h x2 → x1 = x2；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.inj_compr.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.inj_compr.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.inj_id
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.inj_id.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_ssr_ssrfun_512) (x1 x2 : A), x1 = x2 → x1 = x2；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.inj_id.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.inj_id.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.inj_omap
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.inj_omap.statement.correspondence
+
+目标：native statement: ∀ (aT : Sort u_Corelib_ssr_ssrfun_463) (rT : Sort u_Corelib_ssr_ssrfun_464) (f : aT → rT),
+  (∀ (x1 x2 : aT), f x1 = f x2 → x1 = x2) →
+    ∀ (x x_1 : Option (PLift aT)),
+      Option.map (fun a => { down := f a.down }) x = Option.map (fun a => { down := f a.down }) x_1 → x = x_1；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.inj_omap.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.inj_omap.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.inl_inj
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.inl_inj.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_ssr_ssrfun_690) (B : Sort u_Corelib_ssr_ssrfun_691) (x1 x2 : A),
+  PSum.inl x1 = PSum.inl x2 → x1 = x2；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.inl_inj.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.inl_inj.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.inr_inj
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.inr_inj.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_ssr_ssrfun_686) (B : Sort u_Corelib_ssr_ssrfun_687) (x1 x2 : B),
+  PSum.inr x1 = PSum.inr x2 → x1 = x2；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.inr_inj.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.inr_inj.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.inv_bij
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.inv_bij.statement.correspondence
+
+目标：native statement: ∀ (A : Type u_Corelib_ssr_ssrfun_587) (f : A → A),
+  (∀ (x : A), f (f x) = x) → ∃ g, (∀ (x : A), g (f x) = x) ∧ ∀ (y : A), f (g y) = y；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.inv_bij.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.inv_bij.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.inv_inj
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.inv_inj.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_ssr_ssrfun_587) (f : A → A), (∀ (x : A), f (f x) = x) → ∀ (x1 x2 : A), f x1 = f x2 → x1 = x2；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.inv_inj.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.inv_inj.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.oappEmap
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.oappEmap.statement.correspondence
+
+目标：native statement: ∀ (aT : Sort u_Corelib_ssr_ssrfun_143) (rT : Sort u_Corelib_ssr_ssrfun_144) (f : aT → rT) (y0 : rT)
+  (x : Option (PLift aT)),
+  (x.elim y0 fun a => f a.down) = ((Option.map (fun a => { down := f a.down }) x).getD { down := y0 }).down；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.oappEmap.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.oappEmap.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.oapp_comp
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.oapp_comp.statement.correspondence
+
+目标：native statement: ∀ (aT : Sort u_Corelib_ssr_ssrfun_143) (rT : Sort u_Corelib_ssr_ssrfun_144) (sT : Sort u_Corelib_ssr_ssrfun_145)
+  (f : aT → rT) (g : rT → sT) (x : sT) (x_1 : Option (PLift aT)),
+  (x_1.elim x fun a => g (f a.down)) = (Option.map (fun a => { down := f a.down }) x_1).elim x fun a => g a.down；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.oapp_comp.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.oapp_comp.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.oapp_comp_f
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.oapp_comp_f.statement.correspondence
+
+目标：native statement: ∀ (aT : Sort u_Corelib_ssr_ssrfun_143) (rT : Sort u_Corelib_ssr_ssrfun_144) (sT : Sort u_Corelib_ssr_ssrfun_145)
+  (f : aT → rT) (g : rT → sT) (x : rT) (x_1 : Option (PLift aT)),
+  (x_1.elim (g x) fun a => g (f a.down)) = g (x_1.elim x fun a => f a.down)；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.oapp_comp_f.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.oapp_comp_f.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.obindEapp
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.obindEapp.statement.correspondence
+
+目标：native statement: ∀ (aT : Sort u_Corelib_ssr_ssrfun_143) (rT : Sort u_Corelib_ssr_ssrfun_144) (f : aT → Option (PLift rT))
+  (x : Option (PLift aT)), (x.bind fun a => f a.down) = x.elim none fun a => f a.down；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.obindEapp.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.obindEapp.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.ocan_comp
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.ocan_comp.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_ssr_ssrfun_512) (B : Sort u_Corelib_ssr_ssrfun_513) (C : Sort u_Corelib_ssr_ssrfun_514)
+  (f : B → Option (PLift A)) (f_1 : C → Option (PLift B)) (f' : A → B) (h' : B → C),
+  (∀ (x : B), ((f x).elim x fun a => f' a.down) = x) →
+    (∀ (x : C), ((f_1 x).elim x fun a => h' a.down) = x) →
+      ∀ (x : C), (((f_1 x).bind fun a => f a.down).elim x fun a => h' (f' a.down)) = x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.ocan_comp.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.ocan_comp.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.of_voidK
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.of_voidK.statement.correspondence
+
+目标：native statement: ∀ (T : Sort u_Corelib_ssr_ssrfun_493), True；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.of_voidK.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.of_voidK.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.olift_comp
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.olift_comp.statement.correspondence
+
+目标：native statement: ∀ (aT : Sort u_Corelib_ssr_ssrfun_143) (rT : Sort u_Corelib_ssr_ssrfun_144) (sT : Sort u_Corelib_ssr_ssrfun_145)
+  (f : aT → rT) (g : rT → sT) (x : aT), some { down := g (f x) } = some { down := g (f x) }；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.olift_comp.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.olift_comp.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.omapEapp
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.omapEapp.statement.correspondence
+
+目标：native statement: ∀ (aT : Sort u_Corelib_ssr_ssrfun_143) (rT : Sort u_Corelib_ssr_ssrfun_144) (f : aT → rT) (x : Option (PLift aT)),
+  Option.map (fun a => { down := f a.down }) x = x.elim none fun a => some { down := f a.down }；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.omapEapp.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.omapEapp.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.omapEbind
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.omapEbind.statement.correspondence
+
+目标：native statement: ∀ (aT : Sort u_Corelib_ssr_ssrfun_143) (rT : Sort u_Corelib_ssr_ssrfun_144) (f : aT → rT) (x : Option (PLift aT)),
+  Option.map (fun a => { down := f a.down }) x = x.bind fun a => some { down := f a.down }；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.omapEbind.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.omapEbind.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.omapK
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.omapK.statement.correspondence
+
+目标：native statement: ∀ (aT : Sort u_Corelib_ssr_ssrfun_483) (rT : Sort u_Corelib_ssr_ssrfun_484) (f : aT → rT) (g : rT → aT),
+  (∀ (x : aT), g (f x) = x) →
+    ∀ (x : Option (PLift aT)),
+      Option.map (fun a => { down := g a.down }) (Option.map (fun a => { down := f a.down }) x) = x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.omapK.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.omapK.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.omap_comp
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.omap_comp.statement.correspondence
+
+目标：native statement: ∀ (aT : Sort u_Corelib_ssr_ssrfun_143) (rT : Sort u_Corelib_ssr_ssrfun_144) (sT : Sort u_Corelib_ssr_ssrfun_145)
+  (f : aT → rT) (g : rT → sT) (x : Option (PLift aT)),
+  Option.map (fun a => { down := g (f a.down) }) x =
+    Option.map (fun a => { down := g a.down }) (Option.map (fun a => { down := f a.down }) x)；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.omap_comp.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.omap_comp.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.omap_id
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.omap_id.statement.correspondence
+
+目标：native statement: ∀ (rT : Sort u_Corelib_ssr_ssrfun_144) (x : Option (PLift rT)), Option.map (fun a => { down := a.down }) x = x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.omap_id.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.omap_id.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.pair_of_and
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.pair_of_and.statement.correspondence
+
+目标：native statement: ∀ (P Q : Prop), P ∧ Q → P ∧ Q；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.pair_of_and.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.pair_of_and.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.pcan_inj
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.pcan_inj.statement.correspondence
+
+目标：native statement: ∀ (rT : Sort u_Corelib_ssr_ssrfun_398) (aT : Sort u_Corelib_ssr_ssrfun_399) (f : aT → rT)
+  (f_1 : rT → Option (PLift aT)), (∀ (x : aT), f_1 (f x) = some { down := x }) → ∀ (x1 x2 : aT), f x1 = f x2 → x1 = x2；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.pcan_inj.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.pcan_inj.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.pcan_pcomp
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.pcan_pcomp.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_ssr_ssrfun_512) (B : Sort u_Corelib_ssr_ssrfun_513) (C : Sort u_Corelib_ssr_ssrfun_514)
+  (f : B → A) (h : C → B) (f_1 : A → Option (PLift B)) (f_2 : B → Option (PLift C)),
+  (∀ (x : B), f_1 (f x) = some { down := x }) →
+    (∀ (x : C), f_2 (h x) = some { down := x }) →
+      ∀ (x : C), ((f_1 (f (h x))).bind fun a => f_2 a.down) = some { down := x }；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.pcan_pcomp.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.pcan_pcomp.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.rrefl
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.rrefl.statement.correspondence
+
+目标：native statement: ∀ (A : Sort u_Corelib_ssr_ssrfun_95) (B : Sort u_Corelib_ssr_ssrfun_96) (C : Sort u_Corelib_ssr_ssrfun_97)
+  (r : C → B → A) (x : C) (y : B), r x y = r x y；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.rrefl.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.rrefl.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.s2valP
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.s2valP.statement.correspondence
+
+目标：native statement: ∀ (T : Sort u_Corelib_ssr_ssrfun_280) (P Q : T → Prop) (x : { a // P a ∧ Q a }), P x.val；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.s2valP.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.s2valP.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.s2valP'
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.s2valP'.statement.correspondence
+
+目标：native statement: ∀ (T : Sort u_Corelib_ssr_ssrfun_280) (P Q : T → Prop) (x : { a // P a ∧ Q a }), Q x.val；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.s2valP'.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.s2valP'.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.svalP
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.svalP.statement.correspondence
+
+目标：native statement: ∀ (T : Sort u_Corelib_ssr_ssrfun_280) (P : T → Prop) (x : Subtype P), P x.val；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.svalP.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.svalP.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrfun.unitE
+
+NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.unitE.statement.correspondence
+
+目标：native statement: ∀ (x : Unit), x = ()；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrfun.unitE.statement ↔
+  NativeBridge.Incremental.Statements.Rocq.Corelib.ssr.ssrfun.unitE.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
 ## Corelib.Init.Specif.eq_exist2_curried
 
 NativeBridge.Incremental.Statements.RocqPending.Corelib.Init.Specif.eq_exist2_curried.statement.correspondence
