@@ -1,0 +1,1509 @@
+{
+  "scope": "Current incomplete frozen-baseline roots; metadata inspection, not proof of non-correspondence. Retained opaque bodies do not provide unfolding equations for the opaque constants.",
+  "ledger_sha256": "62f5d35c2517d4c63d3dcb4588d662c0c038e0ad91a95b4f4de34a33e508e091",
+  "roots": [
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CRelationClasses.PER",
+        "Rocq.Corelib.Classes.CMorphisms.PER_type_morphism_obligation_1"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.PER_type_morphism_obligation_1"
+      ],
+      "is_prop": false,
+      "kind": "def",
+      "target": "Rocq.Corelib.Classes.CMorphisms.PER_type_morphism",
+      "type": "(A : Type v_0) →\n  (R : A → A → Type v_4) →\n    Rocq.Corelib.Classes.CRelationClasses.PER.{v_0, v_4} A R →\n      (fun f g =>\n          (x y : A) →\n            R x y →\n              (fun f g =>\n                  (x y : A) → R x y → Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1} (f x → g y) (g y → f x))\n                (f x) (g y))\n        R R",
+      "source": "Corelib.Classes.CMorphisms.PER_type_morphism",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CRelationClasses.PER",
+        "Rocq.Corelib.Init.Datatypes.prod.pair",
+        "Rocq.Corelib.Classes.CRelationClasses.PER_Transitive",
+        "Rocq.Corelib.Classes.CRelationClasses.PER_Symmetric"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.PER_type_morphism_obligation_1"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.PER_type_morphism_obligation_1",
+      "type": "(A : Type v_0) →\n  (R : A → A → Type v_4) →\n    Rocq.Corelib.Classes.CRelationClasses.PER.{v_0, v_4} A R →\n      (x y : A) →\n        R x y →\n          (fun f g => (x y : A) → R x y → Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1} (f x → g y) (g y → f x))\n            (R x) (R y)",
+      "source": "Corelib.Classes.CMorphisms.PER_type_morphism_obligation_1",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CMorphisms.PartialOrder_StrictOrder__rocq2lean_obligation_1.statement",
+        "Rocq.Corelib.Classes.CMorphisms.PartialOrder_StrictOrder__rocq2lean_obligation_2.statement",
+        "Rocq.Corelib.Classes.CRelationClasses.Equivalence",
+        "Rocq.Corelib.Classes.CRelationClasses.PreOrder",
+        "Rocq.Corelib.Init.Datatypes.prod",
+        "Rocq.Corelib.Classes.CRelationClasses.StrictOrder.Build_StrictOrder",
+        "PULift",
+        "Rocq.Corelib.Init.Logic.False",
+        "PULift.up",
+        "PULift.down",
+        "Rocq.Corelib.Init.Datatypes.prod.rec",
+        "Rocq.Corelib.Init.Datatypes.prod.pair",
+        "Rocq.Corelib.Classes.CRelationClasses.PreOrder_Transitive"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "RocqPending.Corelib.Classes.CMorphisms.PartialOrder_StrictOrder"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "RocqPending.Corelib.Classes.CMorphisms.PartialOrder_StrictOrder",
+      "type": "{h_Corelib_Classes_CMorphisms_PartialOrder_StrictOrder__rocq2lean_obligation_1 :\n    Rocq.Corelib.Classes.CMorphisms.PartialOrder_StrictOrder__rocq2lean_obligation_1.statement.{max v_0 v_5,\n      max (max v_1 v_4) (v_5 + 1), max (max v_2 v_4) v_5, max v_3 (v_5 + 1), v_4, v_5}} →\n  {h_Corelib_Classes_CMorphisms_PartialOrder_StrictOrder__rocq2lean_obligation_2 :\n      Rocq.Corelib.Classes.CMorphisms.PartialOrder_StrictOrder__rocq2lean_obligation_2.statement.{max v_0 v_5,\n        max (max v_1 v_4) (v_5 + 1), max (max v_2 v_4) v_5, max v_3 (v_5 + 1), v_4, v_5}} →\n    (A : Type v_4) →\n      (eqA : A → A → Type v_5) →\n        Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_4, v_5} A eqA →\n          (R : A → A → Type v_5) →\n            Rocq.Corelib.Classes.CRelationClasses.PreOrder.{v_4, v_5} A R →\n              ((x y : A) →\n                  Rocq.Corelib.Init.Datatypes.prod.{v_5 + 1, v_5 + 1}\n                    (eqA x y →\n                      (fun x y => Rocq.Corelib.Init.Datatypes.prod.{v_5 + 1, v_5 + 1} (R x y) ((fun x y => R y x) x y))\n                        x y)\n                    ((fun x y => Rocq.Corelib.Init.Datatypes.prod.{v_5 + 1, v_5 + 1} (R x y) ((fun x y => R y x) x y)) x\n                        y →\n                      eqA x y)) →\n                Rocq.Corelib.Classes.CRelationClasses.StrictOrder.{v_4, max v_0 v_5} A fun a a_1 =>\n                  PULift.{(max v_0 v_5) + 1, v_5 + 1}\n                    (Rocq.Corelib.Init.Datatypes.prod.{v_5 + 1, 0} (R a a_1)\n                      ((fun x y => ∀ (a : eqA x y), Rocq.Corelib.Init.Logic.False) a a_1))",
+      "source": "Corelib.Classes.CMorphisms.PartialOrder_StrictOrder",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "EXPLICIT_PROOF_PARAMETERS"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CRelationClasses.Equivalence",
+        "Rocq.Corelib.Classes.CRelationClasses.PreOrder",
+        "Rocq.Corelib.Init.Datatypes.prod",
+        "Rocq.Corelib.Classes.CMorphisms.proper_sym_arrow_iffT_2",
+        "Rocq.Corelib.Classes.CRelationClasses.Equivalence_Symmetric",
+        "Rocq.Corelib.Classes.CRelationClasses.PreOrder_Transitive",
+        "Rocq.Corelib.Init.Datatypes.prod_rect",
+        "Rocq.Corelib.Init.Datatypes.prod.pair"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.PartialOrder_proper_type"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.PartialOrder_proper_type",
+      "type": "(A : Type v_1) →\n  (eqA : A → A → Type v_4) →\n    Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_1, v_4} A eqA →\n      (R : A → A → Type v_4) →\n        Rocq.Corelib.Classes.CRelationClasses.PreOrder.{v_1, v_4} A R →\n          ((x y : A) →\n              Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1}\n                (eqA x y →\n                  (fun x y => Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1} (R x y) ((fun x y => R y x) x y)) x y)\n                ((fun x y => Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1} (R x y) ((fun x y => R y x) x y)) x y →\n                  eqA x y)) →\n            (fun f g =>\n                (x y : A) →\n                  eqA x y →\n                    (fun f g =>\n                        (x y : A) →\n                          eqA x y → Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1} (f x → g y) (g y → f x))\n                      (f x) (g y))\n              R R",
+      "source": "Corelib.Classes.CMorphisms.PartialOrder_proper_type",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.Reflexive_partial_app_morphism"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.Reflexive_partial_app_morphism",
+      "type": "(A : Type v_0) →\n  (B : Type v_1) →\n    (R : A → A → Type v_4) →\n      (R' : B → B → Type v_5) →\n        (m : A → B) → (fun f g => (x y : A) → R x y → R' (f x) (g y)) m m → (x : A) → R x x → R' (m x) (m x)",
+      "source": "Corelib.Classes.CMorphisms.Reflexive_partial_app_morphism",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CMorphisms.StrictOrder_PartialOrder__rocq2lean_obligation_1.statement",
+        "Rocq.Corelib.Classes.CRelationClasses.Equivalence",
+        "Rocq.Corelib.Classes.CRelationClasses.StrictOrder",
+        "Rocq.Corelib.Init.Datatypes.prod",
+        "Rocq.Corelib.Init.Datatypes.prod.pair",
+        "Rocq.Corelib.Init.Datatypes.sum",
+        "Rocq.Corelib.Init.Datatypes.sum.inr",
+        "Rocq.Corelib.Classes.CRelationClasses.Equivalence_Symmetric",
+        "Rocq.Corelib.Init.Datatypes.prod_rect",
+        "Rocq.Corelib.Init.Datatypes.sum_rect",
+        "Rocq.Corelib.Init.Logic.False_rect"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "RocqPending.Corelib.Classes.CMorphisms.StrictOrder_PartialOrder"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "RocqPending.Corelib.Classes.CMorphisms.StrictOrder_PartialOrder",
+      "type": "{h_Corelib_Classes_CMorphisms_StrictOrder_PartialOrder__rocq2lean_obligation_1 :\n    Rocq.Corelib.Classes.CMorphisms.StrictOrder_PartialOrder__rocq2lean_obligation_1.statement.{v_0, v_1, v_2, v_3, v_4,\n      v_5, v_6, v_7}} →\n  (A : Type v_6) →\n    (eqA : A → A → Type v_7) →\n      Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_6, v_7} A eqA →\n        (R : A → A → Type v_5) →\n          Rocq.Corelib.Classes.CRelationClasses.StrictOrder.{v_6, v_5} A R →\n            (fun f g =>\n                  (x y : A) →\n                    eqA x y →\n                      (fun f g =>\n                          (x y : A) →\n                            eqA x y → Rocq.Corelib.Init.Datatypes.prod.{v_5 + 1, v_5 + 1} (f x → g y) (g y → f x))\n                        (f x) (g y))\n                R R →\n              (x y : A) →\n                Rocq.Corelib.Init.Datatypes.prod.{max (v_5 + 1) (v_7 + 1), max (v_5 + 1) (v_7 + 1)}\n                  (eqA x y →\n                    (fun x y =>\n                        Rocq.Corelib.Init.Datatypes.prod.{max (v_5 + 1) (v_7 + 1), max (v_5 + 1) (v_7 + 1)}\n                          ((fun x y => Rocq.Corelib.Init.Datatypes.sum.{v_5 + 1, v_7 + 1} (R x y) (eqA x y)) x y)\n                          ((fun x y =>\n                              (fun x y => Rocq.Corelib.Init.Datatypes.sum.{v_5 + 1, v_7 + 1} (R x y) (eqA x y)) y x)\n                            x y))\n                      x y)\n                  ((fun x y =>\n                        Rocq.Corelib.Init.Datatypes.prod.{max (v_5 + 1) (v_7 + 1), max (v_5 + 1) (v_7 + 1)}\n                          ((fun x y => Rocq.Corelib.Init.Datatypes.sum.{v_5 + 1, v_7 + 1} (R x y) (eqA x y)) x y)\n                          ((fun x y =>\n                              (fun x y => Rocq.Corelib.Init.Datatypes.sum.{v_5 + 1, v_7 + 1} (R x y) (eqA x y)) y x)\n                            x y))\n                      x y →\n                    eqA x y)",
+      "source": "Corelib.Classes.CMorphisms.StrictOrder_PartialOrder",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "EXPLICIT_PROOF_PARAMETERS"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CRelationClasses.Equivalence",
+        "Rocq.Corelib.Classes.CRelationClasses.StrictOrder",
+        "Rocq.Corelib.Init.Datatypes.prod",
+        "Rocq.Corelib.Classes.CRelationClasses.PreOrder.Build_PreOrder",
+        "PULift",
+        "Rocq.Corelib.Init.Datatypes.sum",
+        "PULift.up",
+        "Rocq.Corelib.Init.Datatypes.sum.inr",
+        "Rocq.Corelib.Classes.CRelationClasses.Equivalence_Reflexive",
+        "Rocq.Corelib.Init.Datatypes.sum.rec",
+        "Rocq.Corelib.Init.Datatypes.sum.inl",
+        "Rocq.Corelib.Classes.CRelationClasses.StrictOrder_Transitive",
+        "Rocq.Corelib.Init.Datatypes.prod.rec",
+        "Rocq.Corelib.Classes.CRelationClasses.Equivalence_Symmetric",
+        "Rocq.Corelib.Classes.CRelationClasses.Equivalence_Transitive",
+        "PULift.down"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.StrictOrder_PreOrder"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.StrictOrder_PreOrder",
+      "type": "(A : Type v_5) →\n  (eqA : A → A → Type v_6) →\n    Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_5, v_6} A eqA →\n      (R : A → A → Type v_4) →\n        Rocq.Corelib.Classes.CRelationClasses.StrictOrder.{v_5, v_4} A R →\n          (fun f g =>\n                (x y : A) →\n                  eqA x y →\n                    (fun f g =>\n                        (x y : A) →\n                          eqA x y → Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1} (f x → g y) (g y → f x))\n                      (f x) (g y))\n              R R →\n            Rocq.Corelib.Classes.CRelationClasses.PreOrder.{v_5, max (max v_3 v_4) v_6} A fun a a_1 =>\n              PULift.{(max (max v_3 v_4) v_6) + 1, max (v_4 + 1) (v_6 + 1)}\n                (Rocq.Corelib.Init.Datatypes.sum.{v_4 + 1, v_6 + 1} (R a a_1) (eqA a a_1))",
+      "source": "Corelib.Classes.CMorphisms.StrictOrder_PreOrder",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CMorphisms.compose_proper_obligation_1"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.compose_proper_obligation_1"
+      ],
+      "is_prop": false,
+      "kind": "def",
+      "target": "Rocq.Corelib.Classes.CMorphisms.compose_proper",
+      "type": "(A : Type v_0) →\n  (B : Type v_1) →\n    (C : Type v_2) →\n      (RA : A → A → Type v_14) →\n        (RB : B → B → Type v_13) →\n          (RC : C → C → Type v_15) →\n            (fun f g =>\n                (x y : B → C) →\n                  (fun f g => (x y : B) → RB x y → RC (f x) (g y)) x y →\n                    (fun f g =>\n                        (x y : A → B) →\n                          (fun f g => (x y : A) → RA x y → RB (f x) (g y)) x y →\n                            (fun f g => (x y : A) → RA x y → RC (f x) (g y)) (f x) (g y))\n                      (f x) (g y))\n              (fun g f x => g (f x)) fun g f x => g (f x)",
+      "source": "Corelib.Classes.CMorphisms.compose_proper",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "TRANSPORT_INTERFACE_ONLY"
+    },
+    {
+      "body_refs": [],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.compose_proper_obligation_1"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.compose_proper_obligation_1",
+      "type": "(A : Type v_0) →\n  (B : Type v_1) →\n    (C : Type v_2) →\n      (RA : A → A → Type v_14) →\n        (RB : B → B → Type v_13) →\n          (RC : C → C → Type v_15) →\n            (x y : B → C) →\n              (fun f g => (x y : B) → RB x y → RC (f x) (g y)) x y →\n                (fun f g =>\n                    (x y : A → B) →\n                      (fun f g => (x y : A) → RA x y → RB (f x) (g y)) x y →\n                        (fun f g => (x y : A) → RA x y → RC (f x) (g y)) (f x) (g y))\n                  ((fun g f x => g (f x)) x) ((fun g f x => g (f x)) y)",
+      "source": "Corelib.Classes.CMorphisms.compose_proper_obligation_1",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement",
+        "Rocq.Corelib.Init.Logic.eq",
+        "RocqPending.Corelib.Init.Logic.eq_rect_r"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "RocqPending.Corelib.Classes.CMorphisms.eq_subrelation"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "RocqPending.Corelib.Classes.CMorphisms.eq_subrelation",
+      "type": "{h_Corelib_Init_Logic_eq_rect_r__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement.{v_0 + 1, v_1 + 1}} →\n  (A : Type v_0) →\n    (R : A → A → Type v_1) → ((x : A) → R x x) → (x y : A) → Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A x y → R x y",
+      "source": "Corelib.Classes.CMorphisms.eq_subrelation",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "EXPLICIT_PROOF_PARAMETERS"
+    },
+    {
+      "body_refs": [],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.flip1"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.flip1",
+      "type": "(A : Type v_0) →\n  (R' : A → A → Type v_1) →\n    (R : A → A → Type v_2) → ((x y : A) → R' x y → R x y) → (x y : A) → (fun x y => (fun x y => R' y x) y x) x y → R x y",
+      "source": "Corelib.Classes.CMorphisms.flip1",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.flip2"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.flip2",
+      "type": "(A : Type v_0) →\n  (R : A → A → Type v_2) →\n    (R' : A → A → Type v_1) →\n      ((x y : A) → R x y → R' x y) → (x y : A) → R x y → (fun x y => (fun x y => R' y x) y x) x y",
+      "source": "Corelib.Classes.CMorphisms.flip2",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Init.Datatypes.prod.pair"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.flip_atom"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.flip_atom",
+      "type": "(A : Type v_0) →\n  (R : A → A → Type v_3) →\n    (x y : A) →\n      Rocq.Corelib.Init.Datatypes.prod.{v_3 + 1, v_3 + 1} (R x y → (fun x y => (fun x y => R y x) y x) x y)\n        ((fun x y => (fun x y => R y x) y x) x y → R x y)",
+      "source": "Corelib.Classes.CMorphisms.flip_atom",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CMorphisms.flip_proper_obligation_1"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.flip_proper_obligation_1"
+      ],
+      "is_prop": false,
+      "kind": "def",
+      "target": "Rocq.Corelib.Classes.CMorphisms.flip_proper",
+      "type": "(A : Type v_0) →\n  (B : Type v_1) →\n    (C : Type v_2) →\n      (RA : A → A → Type v_12) →\n        (RB : B → B → Type v_9) →\n          (RC : C → C → Type v_13) →\n            (f : A → B → C) →\n              (fun f g => (x y : A) → RA x y → (fun f g => (x y : B) → RB x y → RC (f x) (g y)) (f x) (g y)) f f →\n                (fun f g => (x y : B) → RB x y → (fun f g => (x y : A) → RA x y → RC (f x) (g y)) (f x) (g y))\n                  (fun x y => f y x) fun x y => f y x",
+      "source": "Corelib.Classes.CMorphisms.flip_proper",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "TRANSPORT_INTERFACE_ONLY"
+    },
+    {
+      "body_refs": [],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.flip_proper_obligation_1"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.flip_proper_obligation_1",
+      "type": "(A : Type v_0) →\n  (B : Type v_1) →\n    (C : Type v_2) →\n      (RA : A → A → Type v_12) →\n        (RB : B → B → Type v_9) →\n          (RC : C → C → Type v_13) →\n            (f : A → B → C) →\n              (fun f g => (x y : A) → RA x y → (fun f g => (x y : B) → RB x y → RC (f x) (g y)) (f x) (g y)) f f →\n                (fun f g => (x y : B) → RB x y → (fun f g => (x y : A) → RA x y → RC (f x) (g y)) (f x) (g y))\n                  (fun x y => f y x) fun x y => f y x",
+      "source": "Corelib.Classes.CMorphisms.flip_proper_obligation_1",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Init.Datatypes.prod.pair"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.flip_respectful"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.flip_respectful",
+      "type": "(A : Type v_0) →\n  (B : Type v_1) →\n    (R : A → A → Type v_6) →\n      (R' : B → B → Type v_7) →\n        (x y : A → B) →\n          Rocq.Corelib.Init.Datatypes.prod.{max (max (v_0 + 1) (v_6 + 1)) (v_7 + 1),\n              max (max (v_0 + 1) (v_6 + 1)) (v_7 + 1)}\n            ((fun x y => (fun f g => (x y : A) → R x y → R' (f x) (g y)) y x) x y →\n              (fun f g => (x y : A) → (fun x y => R y x) x y → (fun x y => R' y x) (f x) (g y)) x y)\n            ((fun f g => (x y : A) → (fun x y => R y x) x y → (fun x y => R' y x) (f x) (g y)) x y →\n              (fun x y => (fun f g => (x y : A) → R x y → R' (f x) (g y)) y x) x y)",
+      "source": "Corelib.Classes.CMorphisms.flip_respectful",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.forall_subrelation"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.forall_subrelation",
+      "type": "(A : Type v_0) →\n  (P : A → Type v_1) →\n    (R : (x : A) → P x → P x → Type v_5) →\n      (S : (x : A) → P x → P x → Type v_6) →\n        ((a : A) → (x y : P a) → R a x y → S a x y) →\n          (x y : (x : A) → P x) →\n            (fun f g => (a : A) → R a (f a) (g a)) x y → (fun f g => (a : A) → S a (f a) (g a)) x y",
+      "source": "Corelib.Classes.CMorphisms.forall_subrelation",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Init.Datatypes.prod",
+        "Rocq.Corelib.Init.Datatypes.prod_rect"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.iffT_arrow_subrelation"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.iffT_arrow_subrelation",
+      "type": "(x y : Type v_1) → Rocq.Corelib.Init.Datatypes.prod.{v_1 + 1, v_1 + 1} (x → y) (y → x) → x → y",
+      "source": "Corelib.Classes.CMorphisms.iffT_arrow_subrelation",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Init.Datatypes.prod",
+        "Rocq.Corelib.Init.Datatypes.prod_rect"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.iffT_flip_arrow_subrelation"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.iffT_flip_arrow_subrelation",
+      "type": "(x y : Type v_1) → Rocq.Corelib.Init.Datatypes.prod.{v_1 + 1, v_1 + 1} (x → y) (y → x) → (fun x y => y → x) x y",
+      "source": "Corelib.Classes.CMorphisms.iffT_flip_arrow_subrelation",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CRelationClasses.PER",
+        "Rocq.Corelib.Classes.CMorphisms.per_partial_app_type_morphism_obligation_1"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.per_partial_app_type_morphism_obligation_1"
+      ],
+      "is_prop": false,
+      "kind": "def",
+      "target": "Rocq.Corelib.Classes.CMorphisms.per_partial_app_type_morphism",
+      "type": "(A : Type v_0) →\n  (R : A → A → Type v_4) →\n    Rocq.Corelib.Classes.CRelationClasses.PER.{v_0, v_4} A R →\n      (x : A) →\n        (fun f g => (x y : A) → R x y → Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1} (f x → g y) (g y → f x))\n          (R x) (R x)",
+      "source": "Corelib.Classes.CMorphisms.per_partial_app_type_morphism",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CRelationClasses.PER",
+        "Rocq.Corelib.Init.Datatypes.prod.pair",
+        "Rocq.Corelib.Classes.CRelationClasses.PER_Transitive",
+        "Rocq.Corelib.Classes.CRelationClasses.PER_Symmetric"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.per_partial_app_type_morphism_obligation_1"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.per_partial_app_type_morphism_obligation_1",
+      "type": "(A : Type v_0) →\n  (R : A → A → Type v_4) →\n    Rocq.Corelib.Classes.CRelationClasses.PER.{v_0, v_4} A R →\n      (x x_1 y : A) → R x_1 y → Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1} (R x x_1 → R x y) (R x y → R x x_1)",
+      "source": "Corelib.Classes.CMorphisms.per_partial_app_type_morphism_obligation_1",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement",
+        "Rocq.Corelib.Classes.CMorphisms.pointwise_pointwise__rocq2lean_obligation_1.statement",
+        "Rocq.Corelib.Init.Datatypes.prod.pair",
+        "Rocq.Corelib.Init.Logic.eq",
+        "RocqPending.Corelib.Init.Logic.eq_rect_r"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "RocqPending.Corelib.Classes.CMorphisms.pointwise_pointwise"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "RocqPending.Corelib.Classes.CMorphisms.pointwise_pointwise",
+      "type": "{h_Corelib_Init_Logic_eq_rect_r__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement.{v_0 + 1, v_6 + 1}} →\n  {h_Corelib_Classes_CMorphisms_pointwise_pointwise__rocq2lean_obligation_1 :\n      Rocq.Corelib.Classes.CMorphisms.pointwise_pointwise__rocq2lean_obligation_1.statement.{v_0, v_1, v_2, v_3, v_4,\n        v_5, v_6}} →\n    (A : Type v_0) →\n      (B : Type v_5) →\n        (R : B → B → Type v_6) →\n          (x y : A → B) →\n            Rocq.Corelib.Init.Datatypes.prod.{max (v_0 + 1) (v_6 + 1), max (v_0 + 1) (v_6 + 1)}\n              ((fun f g => (a : A) → R (f a) (g a)) x y →\n                (fun f g => (x y : A) → Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A x y → R (f x) (g y)) x y)\n              ((fun f g => (x y : A) → Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A x y → R (f x) (g y)) x y →\n                (fun f g => (a : A) → R (f a) (g a)) x y)",
+      "source": "Corelib.Classes.CMorphisms.pointwise_pointwise",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "EXPLICIT_PROOF_PARAMETERS"
+    },
+    {
+      "body_refs": [],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.pointwise_subrelation"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.pointwise_subrelation",
+      "type": "(A : Type v_0) →\n  (B : Type v_5) →\n    (R : B → B → Type v_4) →\n      (R' : B → B → Type v_6) →\n        ((x y : B) → R x y → R' x y) →\n          (x y : A → B) → (fun f g => (a : A) → R (f a) (g a)) x y → (fun f g => (a : A) → R' (f a) (g a)) x y",
+      "source": "Corelib.Classes.CMorphisms.pointwise_subrelation",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Init.Datatypes.prod",
+        "Rocq.Corelib.Init.Datatypes.prod.rec"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.proper_normalizes_proper"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.proper_normalizes_proper",
+      "type": "(A : Type v_0) →\n  (R0 R1 : A → A → Type v_3) →\n    ((x y : A) → Rocq.Corelib.Init.Datatypes.prod.{v_3 + 1, v_3 + 1} (R0 x y → R1 x y) (R1 x y → R0 x y)) →\n      (m : A) → R1 m m → R0 m m",
+      "source": "Corelib.Classes.CMorphisms.proper_normalizes_proper",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Init.Datatypes.prod",
+        "Rocq.Corelib.Init.Logic.eq",
+        "Rocq.Corelib.Init.Logic.eq_rect",
+        "Rocq.Corelib.Init.Datatypes.prod.pair",
+        "Rocq.Corelib.Init.Datatypes.fst",
+        "Rocq.Corelib.Init.Datatypes.snd"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.proper_proper"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.proper_proper",
+      "type": "(A : Type v_6) →\n  (fun f g =>\n      (x y : A → A → Type v_7) →\n        (fun R R' => (x y : A) → Rocq.Corelib.Init.Datatypes.prod.{v_7 + 1, v_7 + 1} (R x y → R' x y) (R' x y → R x y))\n            x y →\n          (fun f g =>\n              (x y : A) →\n                Rocq.Corelib.Init.Logic.eq.{v_6 + 1} A x y →\n                  Rocq.Corelib.Init.Datatypes.prod.{v_7 + 1, v_7 + 1} (f x → g y) (g y → f x))\n            (f x) (g y))\n    (fun R m => R m m) fun R m => R m m",
+      "source": "Corelib.Classes.CMorphisms.proper_proper",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CRelationClasses.crelation",
+        "Rocq.Corelib.Classes.CMorphisms.Proper"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.proper_proper_proxy"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.proper_proper_proxy",
+      "type": "(A : Type v_0) →\n  (x : A) →\n    (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A) →\n      Rocq.Corelib.Classes.CMorphisms.Proper.{v_0, v_1} A R x →\n        Rocq.Corelib.Classes.CMorphisms.ProperProxy.{v_0, v_1} A R x",
+      "source": "Corelib.Classes.CMorphisms.proper_proper_proxy",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement",
+        "Rocq.Corelib.Init.Logic.eq",
+        "RocqPending.Corelib.Init.Logic.eq_rect_r"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "RocqPending.Corelib.Classes.CMorphisms.proper_subrelation_proper_arrow"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "RocqPending.Corelib.Classes.CMorphisms.proper_subrelation_proper_arrow",
+      "type": "{h_Corelib_Init_Logic_eq_rect_r__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement.{v_0 + 1, v_7 + 1}} →\n  (A : Type v_0) →\n    (fun f g =>\n        (x y : A → A → Type v_7) →\n          (fun R R' => (x y : A) → R x y → R' x y) x y →\n            (fun f g => (x y : A) → Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A x y → f x → g y) (f x) (g y))\n      (fun R m => R m m) fun R m => R m m",
+      "source": "Corelib.Classes.CMorphisms.proper_subrelation_proper_arrow",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "EXPLICIT_PROOF_PARAMETERS"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Init.Datatypes.prod.pair"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.proper_sym_arrow_iffT"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.proper_sym_arrow_iffT",
+      "type": "(A : Type v_4) →\n  (R : A → A → Type v_5) →\n    ((x y : A) → R x y → R y x) →\n      (f : A → Type v_3) →\n        (fun f g => (x y : A) → R x y → f x → g y) f f →\n          (fun f g => (x y : A) → R x y → Rocq.Corelib.Init.Datatypes.prod.{v_3 + 1, v_3 + 1} (f x → g y) (g y → f x)) f\n            f",
+      "source": "Corelib.Classes.CMorphisms.proper_sym_arrow_iffT",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Init.Datatypes.prod.pair"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.proper_sym_arrow_iffT_2"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.proper_sym_arrow_iffT_2",
+      "type": "(A : Type v_6) →\n  (R : A → A → Type v_7) →\n    ((x y : A) → R x y → R y x) →\n      (B : Type v_8) →\n        (R' : B → B → Type v_9) →\n          ((x y : B) → R' x y → R' y x) →\n            (f : A → B → Type v_5) →\n              (fun f g => (x y : A) → R x y → (fun f g => (x y : B) → R' x y → f x → g y) (f x) (g y)) f f →\n                (fun f g =>\n                    (x y : A) →\n                      R x y →\n                        (fun f g =>\n                            (x y : B) →\n                              R' x y → Rocq.Corelib.Init.Datatypes.prod.{v_5 + 1, v_5 + 1} (f x → g y) (g y → f x))\n                          (f x) (g y))\n                  f f",
+      "source": "Corelib.Classes.CMorphisms.proper_sym_arrow_iffT_2",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.proper_sym_flip"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.proper_sym_flip",
+      "type": "(A : Type v_4) →\n  (R1 : A → A → Type v_5) →\n    ((x y : A) → R1 x y → R1 y x) →\n      (B : Type v_2) →\n        (R2 : B → B → Type v_3) →\n          (f : A → B) →\n            (fun f g => (x y : A) → R1 x y → R2 (f x) (g y)) f f →\n              (fun f g => (x y : A) → R1 x y → (fun x y => R2 y x) (f x) (g y)) f f",
+      "source": "Corelib.Classes.CMorphisms.proper_sym_flip",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.proper_sym_flip_2"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.proper_sym_flip_2",
+      "type": "(A : Type v_6) →\n  (R1 : A → A → Type v_7) →\n    ((x y : A) → R1 x y → R1 y x) →\n      (B : Type v_8) →\n        (R2 : B → B → Type v_9) →\n          ((x y : B) → R2 x y → R2 y x) →\n            (C : Type v_2) →\n              (R3 : C → C → Type v_5) →\n                (f : A → B → C) →\n                  (fun f g => (x y : A) → R1 x y → (fun f g => (x y : B) → R2 x y → R3 (f x) (g y)) (f x) (g y)) f f →\n                    (fun f g =>\n                        (x y : A) →\n                          R1 x y → (fun f g => (x y : B) → R2 x y → (fun x y => R3 y x) (f x) (g y)) (f x) (g y))\n                      f f",
+      "source": "Corelib.Classes.CMorphisms.proper_sym_flip_2",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement",
+        "Rocq.Corelib.Init.Logic.eq",
+        "RocqPending.Corelib.Init.Logic.eq_rect_r"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "RocqPending.Corelib.Classes.CMorphisms.reflexive_eq_dom_reflexive"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "RocqPending.Corelib.Classes.CMorphisms.reflexive_eq_dom_reflexive",
+      "type": "{h_Corelib_Init_Logic_eq_rect_r__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement.{v_1 + 1, v_4 + 1}} →\n  (B : Type v_0) →\n    (R' : B → B → Type v_4) →\n      ((x : B) → R' x x) →\n        (A : Type v_1) →\n          (x : A → B) → (fun f g => (x y : A) → Rocq.Corelib.Init.Logic.eq.{v_1 + 1} A x y → R' (f x) (g y)) x x",
+      "source": "Corelib.Classes.CMorphisms.reflexive_eq_dom_reflexive",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "EXPLICIT_PROOF_PARAMETERS"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CRelationClasses.crelation",
+        "Rocq.Corelib.Classes.CRelationClasses.Reflexive"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.reflexive_proper"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.reflexive_proper",
+      "type": "(A : Type v_0) →\n  (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A) →\n    Rocq.Corelib.Classes.CRelationClasses.Reflexive.{v_0, v_1} A R →\n      (x : A) → Rocq.Corelib.Classes.CMorphisms.Proper.{v_0, v_1} A R x",
+      "source": "Corelib.Classes.CMorphisms.reflexive_proper",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CRelationClasses.crelation",
+        "Rocq.Corelib.Classes.CRelationClasses.Reflexive"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.reflexive_proper_proxy"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.reflexive_proper_proxy",
+      "type": "(A : Type v_0) →\n  (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A) →\n    Rocq.Corelib.Classes.CRelationClasses.Reflexive.{v_0, v_1} A R →\n      (x : A) → Rocq.Corelib.Classes.CMorphisms.ProperProxy.{v_0, v_1} A R x",
+      "source": "Corelib.Classes.CMorphisms.reflexive_proper_proxy",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Init.Datatypes.prod",
+        "Rocq.Corelib.Init.Datatypes.prod.rec",
+        "PULift",
+        "Rocq.Corelib.Init.Datatypes.prod.pair",
+        "PULift.up",
+        "PULift.down",
+        "Rocq.Corelib.Init.Datatypes.fst",
+        "Rocq.Corelib.Init.Datatypes.snd"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.respectful_morphism"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.respectful_morphism",
+      "type": "(A : Type v_0) →\n  (B : Type v_1) →\n    (fun f g =>\n        (x y : A → A → Type v_8) →\n          (fun R R' =>\n                (x y : A) → Rocq.Corelib.Init.Datatypes.prod.{v_8 + 1, v_8 + 1} (R x y → R' x y) (R' x y → R x y))\n              x y →\n            (fun f g =>\n                (x y : B → B → Type v_13) →\n                  (fun R R' =>\n                        (x y : B) →\n                          Rocq.Corelib.Init.Datatypes.prod.{v_13 + 1, v_13 + 1} (R x y → R' x y) (R' x y → R x y))\n                      x y →\n                    (fun R R' =>\n                        (x y : A → B) →\n                          Rocq.Corelib.Init.Datatypes.prod.{max (max (max (v_0 + 1) (v_13 + 1)) (v_15 + 1)) (v_8 + 1),\n                              max (max (max (v_0 + 1) (v_13 + 1)) (v_15 + 1)) (v_8 + 1)}\n                            (R x y → R' x y) (R' x y → R x y))\n                      (f x) (g y))\n              (f x) (g y))\n      (fun x a a_1 a_2 =>\n        PULift.{max (max (max (v_0 + 1) (v_13 + 1)) (v_15 + 1)) (v_8 + 1), max (max (v_0 + 1) (v_13 + 1)) (v_8 + 1)}\n          ((x_1 y : A) → x x_1 y → a (a_1 x_1) (a_2 y)))\n      fun x a a_1 a_2 =>\n      PULift.{max (max (max (v_0 + 1) (v_13 + 1)) (v_15 + 1)) (v_8 + 1), max (max (v_0 + 1) (v_13 + 1)) (v_8 + 1)}\n        ((x_1 y : A) → x x_1 y → a (a_1 x_1) (a_2 y))",
+      "source": "Corelib.Classes.CMorphisms.respectful_morphism",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CRelationClasses.PER",
+        "Rocq.Corelib.Classes.CRelationClasses.PER.Build_PER",
+        "PULift",
+        "PULift.down",
+        "PULift.up",
+        "Rocq.Corelib.Classes.CMorphisms.respectful_per_obligation_1",
+        "Rocq.Corelib.Classes.CMorphisms.respectful_per_obligation_2"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.respectful_per_obligation_2"
+      ],
+      "is_prop": false,
+      "kind": "def",
+      "target": "Rocq.Corelib.Classes.CMorphisms.respectful_per",
+      "type": "(A : Type v_0) →\n  (R : A → A → Type v_4) →\n    Rocq.Corelib.Classes.CRelationClasses.PER.{v_0, v_4} A R →\n      (B : Type v_1) →\n        (R' : B → B → Type v_5) →\n          Rocq.Corelib.Classes.CRelationClasses.PER.{v_1, v_5} B R' →\n            Rocq.Corelib.Classes.CRelationClasses.PER.{max (max v_0 v_1) v_2, max (max (max v_0 v_3) v_4) v_5}\n              (PULift.{(max (max v_0 v_1) v_2) + 1, max (v_0 + 1) (v_1 + 1)} (A → B)) fun a a_1 =>\n              PULift.{(max (max (max v_0 v_3) v_4) v_5) + 1, max (max (v_0 + 1) (v_4 + 1)) (v_5 + 1)}\n                ((x y : A) →\n                  R x y →\n                    R' (PULift.down.{(max (max v_0 v_1) v_2) + 1, max (v_0 + 1) (v_1 + 1)} a x)\n                      (PULift.down.{(max (max v_0 v_1) v_2) + 1, max (v_0 + 1) (v_1 + 1)} a_1 y))",
+      "source": "Corelib.Classes.CMorphisms.respectful_per",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CRelationClasses.PER",
+        "Rocq.Corelib.Classes.CRelationClasses.PER_Transitive",
+        "Rocq.Corelib.Classes.CRelationClasses.PER_Symmetric"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.respectful_per_obligation_2"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.respectful_per_obligation_2",
+      "type": "(A : Type v_0) →\n  (R : A → A → Type v_4) →\n    Rocq.Corelib.Classes.CRelationClasses.PER.{v_0, v_4} A R →\n      (B : Type v_1) →\n        (R' : B → B → Type v_5) →\n          Rocq.Corelib.Classes.CRelationClasses.PER.{v_1, v_5} B R' →\n            (x y z : A → B) →\n              (fun f g => (x y : A) → R x y → R' (f x) (g y)) x y →\n                (fun f g => (x y : A) → R x y → R' (f x) (g y)) y z →\n                  (fun f g => (x y : A) → R x y → R' (f x) (g y)) x z",
+      "source": "Corelib.Classes.CMorphisms.respectful_per_obligation_2",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.subrelation_id_proper"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.subrelation_id_proper",
+      "type": "(A : Type v_0) →\n  (RA : A → A → Type v_2) →\n    (RA' : A → A → Type v_3) →\n      ((x y : A) → RA x y → RA' x y) → (fun f g => (x y : A) → RA x y → RA' (f x) (g y)) (fun x => x) fun x => x",
+      "source": "Corelib.Classes.CMorphisms.subrelation_id_proper",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Init.Datatypes.unit"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.subrelation_proper"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.subrelation_proper",
+      "type": "(A : Type v_0) →\n  (R' : A → A → Type v_2) →\n    (m : A) → R' m m → (R : A → A → Type v_2) → Rocq.Corelib.Init.Datatypes.unit → ((x y : A) → R' x y → R x y) → R m m",
+      "source": "Corelib.Classes.CMorphisms.subrelation_proper",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CRelationClasses.crelation"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.subrelation_refl"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.subrelation_refl",
+      "type": "(A : Type v_0) →\n  (R : Rocq.Corelib.Classes.CRelationClasses.crelation.{v_0, v_1} A) →\n    Rocq.Corelib.Classes.CRelationClasses.subrelation.{v_0, v_1, v_1} A R R",
+      "source": "Corelib.Classes.CMorphisms.subrelation_refl",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.subrelation_respectful"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.subrelation_respectful",
+      "type": "(A : Type v_0) →\n  (RA' : A → A → Type v_6) →\n    (RA : A → A → Type v_4) →\n      ((x y : A) → RA' x y → RA x y) →\n        (B : Type v_7) →\n          (RB : B → B → Type v_5) →\n            (RB' : B → B → Type v_8) →\n              ((x y : B) → RB x y → RB' x y) →\n                (x y : A → B) →\n                  (fun f g => (x y : A) → RA x y → RB (f x) (g y)) x y →\n                    (fun f g => (x y : A) → RA' x y → RB' (f x) (g y)) x y",
+      "source": "Corelib.Classes.CMorphisms.subrelation_respectful",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Init.Datatypes.prod.pair"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.symmetric_equiv_flip"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.symmetric_equiv_flip",
+      "type": "(A : Type v_0) →\n  (R : A → A → Type v_3) →\n    ((x y : A) → R x y → R y x) →\n      (x y : A) →\n        Rocq.Corelib.Init.Datatypes.prod.{v_3 + 1, v_3 + 1} (R x y → (fun x y => R y x) x y)\n          ((fun x y => R y x) x y → R x y)",
+      "source": "Corelib.Classes.CMorphisms.symmetric_equiv_flip",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CMorphisms.trans_co_eq_inv_arrow_morphism_obligation_1"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.trans_co_eq_inv_arrow_morphism_obligation_1"
+      ],
+      "is_prop": false,
+      "kind": "def",
+      "target": "Rocq.Corelib.Classes.CMorphisms.trans_co_eq_inv_arrow_morphism",
+      "type": "(A : Type v_0) →\n  (R : A → A → Type v_6) →\n    ((x y z : A) → R x y → R y z → R x z) →\n      (fun f g =>\n          (x y : A) →\n            R x y →\n              (fun f g => (x y : A) → Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A x y → (fun x y => y → x) (f x) (g y)) (f x)\n                (g y))\n        R R",
+      "source": "Corelib.Classes.CMorphisms.trans_co_eq_inv_arrow_morphism",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "TRANSPORT_INTERFACE_ONLY"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Init.Logic.eq",
+        "Rocq.Corelib.Init.Logic.eq.rec"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.trans_co_eq_inv_arrow_morphism_obligation_1"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.trans_co_eq_inv_arrow_morphism_obligation_1",
+      "type": "(A : Type v_0) →\n  (R : A → A → Type v_6) →\n    ((x y z : A) → R x y → R y z → R x z) →\n      (x y : A) →\n        R x y →\n          (fun f g => (x y : A) → Rocq.Corelib.Init.Logic.eq.{v_0 + 1} A x y → (fun x y => y → x) (f x) (g y)) (R x)\n            (R y)",
+      "source": "Corelib.Classes.CMorphisms.trans_co_eq_inv_arrow_morphism_obligation_1",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CMorphisms.trans_co_impl_type_morphism_obligation_1"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.trans_co_impl_type_morphism_obligation_1"
+      ],
+      "is_prop": false,
+      "kind": "def",
+      "target": "Rocq.Corelib.Classes.CMorphisms.trans_co_impl_type_morphism",
+      "type": "(A : Type v_0) →\n  (R : A → A → Type v_4) →\n    ((x y z : A) → R x y → R y z → R x z) → (x : A) → (fun f g => (x y : A) → R x y → f x → g y) (R x) (R x)",
+      "source": "Corelib.Classes.CMorphisms.trans_co_impl_type_morphism",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "TRANSPORT_INTERFACE_ONLY"
+    },
+    {
+      "body_refs": [],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.trans_co_impl_type_morphism_obligation_1"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.trans_co_impl_type_morphism_obligation_1",
+      "type": "(A : Type v_0) →\n  (R : A → A → Type v_4) → ((x y z : A) → R x y → R y z → R x z) → (x x_1 y : A) → R x_1 y → R x x_1 → R x y",
+      "source": "Corelib.Classes.CMorphisms.trans_co_impl_type_morphism_obligation_1",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CMorphisms.trans_contra_co_type_morphism_obligation_1"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.trans_contra_co_type_morphism_obligation_1"
+      ],
+      "is_prop": false,
+      "kind": "def",
+      "target": "Rocq.Corelib.Classes.CMorphisms.trans_contra_co_type_morphism",
+      "type": "(A : Type v_0) →\n  (R : A → A → Type v_4) →\n    ((x y z : A) → R x y → R y z → R x z) →\n      (fun f g => (x y : A) → (fun x y => R y x) x y → (fun f g => (x y : A) → R x y → f x → g y) (f x) (g y)) R R",
+      "source": "Corelib.Classes.CMorphisms.trans_contra_co_type_morphism",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "TRANSPORT_INTERFACE_ONLY"
+    },
+    {
+      "body_refs": [],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.trans_contra_co_type_morphism_obligation_1"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.trans_contra_co_type_morphism_obligation_1",
+      "type": "(A : Type v_0) →\n  (R : A → A → Type v_4) →\n    ((x y z : A) → R x y → R y z → R x z) →\n      (x y : A) → (fun x y => R y x) x y → (fun f g => (x y : A) → R x y → f x → g y) (R x) (R y)",
+      "source": "Corelib.Classes.CMorphisms.trans_contra_co_type_morphism_obligation_1",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CMorphisms.trans_contra_inv_impl_type_morphism_obligation_1"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.trans_contra_inv_impl_type_morphism_obligation_1"
+      ],
+      "is_prop": false,
+      "kind": "def",
+      "target": "Rocq.Corelib.Classes.CMorphisms.trans_contra_inv_impl_type_morphism",
+      "type": "(A : Type v_0) →\n  (R : A → A → Type v_6) →\n    ((x y z : A) → R x y → R y z → R x z) →\n      (x : A) → (fun f g => (x y : A) → (fun x y => R y x) x y → (fun x y => y → x) (f x) (g y)) (R x) (R x)",
+      "source": "Corelib.Classes.CMorphisms.trans_contra_inv_impl_type_morphism",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "TRANSPORT_INTERFACE_ONLY"
+    },
+    {
+      "body_refs": [],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.trans_contra_inv_impl_type_morphism_obligation_1"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.trans_contra_inv_impl_type_morphism_obligation_1",
+      "type": "(A : Type v_0) →\n  (R : A → A → Type v_6) →\n    ((x y z : A) → R x y → R y z → R x z) →\n      (x x_1 y : A) → (fun x y => R y x) x_1 y → (fun x y => y → x) (R x x_1) (R x y)",
+      "source": "Corelib.Classes.CMorphisms.trans_contra_inv_impl_type_morphism_obligation_1",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CRelationClasses.PER",
+        "Rocq.Corelib.Classes.CMorphisms.trans_sym_co_inv_impl_type_morphism_obligation_1"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.trans_sym_co_inv_impl_type_morphism_obligation_1"
+      ],
+      "is_prop": false,
+      "kind": "def",
+      "target": "Rocq.Corelib.Classes.CMorphisms.trans_sym_co_inv_impl_type_morphism",
+      "type": "(A : Type v_0) →\n  (R : A → A → Type v_6) →\n    Rocq.Corelib.Classes.CRelationClasses.PER.{v_0, v_6} A R →\n      (x : A) → (fun f g => (x y : A) → R x y → (fun x y => y → x) (f x) (g y)) (R x) (R x)",
+      "source": "Corelib.Classes.CMorphisms.trans_sym_co_inv_impl_type_morphism",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CRelationClasses.PER",
+        "Rocq.Corelib.Classes.CRelationClasses.PER_Transitive",
+        "Rocq.Corelib.Classes.CRelationClasses.PER_Symmetric"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.trans_sym_co_inv_impl_type_morphism_obligation_1"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.trans_sym_co_inv_impl_type_morphism_obligation_1",
+      "type": "(A : Type v_0) →\n  (R : A → A → Type v_6) →\n    Rocq.Corelib.Classes.CRelationClasses.PER.{v_0, v_6} A R →\n      (x x_1 y : A) → R x_1 y → (fun x y => y → x) (R x x_1) (R x y)",
+      "source": "Corelib.Classes.CMorphisms.trans_sym_co_inv_impl_type_morphism_obligation_1",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CRelationClasses.PER",
+        "Rocq.Corelib.Classes.CMorphisms.trans_sym_contra_arrow_morphism_obligation_1"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.trans_sym_contra_arrow_morphism_obligation_1"
+      ],
+      "is_prop": false,
+      "kind": "def",
+      "target": "Rocq.Corelib.Classes.CMorphisms.trans_sym_contra_arrow_morphism",
+      "type": "(A : Type v_0) →\n  (R : A → A → Type v_4) →\n    Rocq.Corelib.Classes.CRelationClasses.PER.{v_0, v_4} A R →\n      (x : A) → (fun f g => (x y : A) → (fun x y => R y x) x y → f x → g y) (R x) (R x)",
+      "source": "Corelib.Classes.CMorphisms.trans_sym_contra_arrow_morphism",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CRelationClasses.PER",
+        "Rocq.Corelib.Classes.CRelationClasses.PER_Transitive",
+        "Rocq.Corelib.Classes.CRelationClasses.PER_Symmetric"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CMorphisms.trans_sym_contra_arrow_morphism_obligation_1"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CMorphisms.trans_sym_contra_arrow_morphism_obligation_1",
+      "type": "(A : Type v_0) →\n  (R : A → A → Type v_4) →\n    Rocq.Corelib.Classes.CRelationClasses.PER.{v_0, v_4} A R →\n      (x x_1 y : A) → (fun x y => R y x) x_1 y → R x x_1 → R x y",
+      "source": "Corelib.Classes.CMorphisms.trans_sym_contra_arrow_morphism_obligation_1",
+      "module": "Corelib.Classes.CMorphisms",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CRelationClasses.Equivalence",
+        "Rocq.Corelib.Classes.CRelationClasses.PreOrder",
+        "Rocq.Corelib.Init.Datatypes.prod",
+        "Rocq.Corelib.Init.Datatypes.prod.pair",
+        "Rocq.Corelib.Init.Datatypes.prod_rect"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CRelationClasses.PartialOrder_inverse"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CRelationClasses.PartialOrder_inverse",
+      "type": "(A : Type v_0) →\n  (eqA : A → A → Type v_4) →\n    Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_0, v_4} A eqA →\n      (R : A → A → Type v_4) →\n        Rocq.Corelib.Classes.CRelationClasses.PreOrder.{v_0, v_4} A R →\n          ((x y : A) →\n              Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1}\n                (eqA x y →\n                  (fun x y => Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1} (R x y) ((fun x y => R y x) x y)) x y)\n                ((fun x y => Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1} (R x y) ((fun x y => R y x) x y)) x y →\n                  eqA x y)) →\n            (x y : A) →\n              Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1}\n                (eqA x y →\n                  (fun x y =>\n                      Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1} ((fun x y => R y x) x y)\n                        ((fun x y => (fun x y => R y x) y x) x y))\n                    x y)\n                ((fun x y =>\n                      Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1} ((fun x y => R y x) x y)\n                        ((fun x y => (fun x y => R y x) y x) x y))\n                    x y →\n                  eqA x y)",
+      "source": "Corelib.Classes.CRelationClasses.PartialOrder_inverse",
+      "module": "Corelib.Classes.CRelationClasses",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CRelationClasses.Equivalence"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CRelationClasses.flip_Antisymmetric"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CRelationClasses.flip_Antisymmetric",
+      "type": "(A : Type v_0) →\n  (eqA : A → A → Type v_2) →\n    Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_0, v_2} A eqA →\n      (R : A → A → Type v_1) →\n        ((x y : A) → R x y → R y x → eqA x y) → (x y : A) → (fun x y => R y x) x y → (fun x y => R y x) y x → eqA x y",
+      "source": "Corelib.Classes.CRelationClasses.flip_Antisymmetric",
+      "module": "Corelib.Classes.CRelationClasses",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CRelationClasses.Equivalence",
+        "Rocq.Corelib.Classes.CRelationClasses.Equivalence.rec",
+        "Rocq.Corelib.Classes.CRelationClasses.Reflexive",
+        "Rocq.Corelib.Classes.CRelationClasses.Symmetric",
+        "Rocq.Corelib.Classes.CRelationClasses.Transitive",
+        "Rocq.Corelib.Classes.CRelationClasses.Equivalence.Build_Equivalence"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CRelationClasses.flip_Equivalence"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CRelationClasses.flip_Equivalence",
+      "type": "(A : Type v_0) →\n  (R : A → A → Type v_1) →\n    Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_0, v_1} A R →\n      Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_0, v_1} A fun x y => R y x",
+      "source": "Corelib.Classes.CRelationClasses.flip_Equivalence",
+      "module": "Corelib.Classes.CRelationClasses",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CRelationClasses.PER",
+        "Rocq.Corelib.Classes.CRelationClasses.PER.rec",
+        "Rocq.Corelib.Classes.CRelationClasses.Symmetric",
+        "Rocq.Corelib.Classes.CRelationClasses.Transitive",
+        "Rocq.Corelib.Classes.CRelationClasses.PER.Build_PER"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CRelationClasses.flip_PER"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CRelationClasses.flip_PER",
+      "type": "(A : Type v_0) →\n  (R : A → A → Type v_1) →\n    Rocq.Corelib.Classes.CRelationClasses.PER.{v_0, v_1} A R →\n      Rocq.Corelib.Classes.CRelationClasses.PER.{v_0, v_1} A fun x y => R y x",
+      "source": "Corelib.Classes.CRelationClasses.flip_PER",
+      "module": "Corelib.Classes.CRelationClasses",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CRelationClasses.PreOrder",
+        "Rocq.Corelib.Classes.CRelationClasses.PreOrder.rec",
+        "Rocq.Corelib.Classes.CRelationClasses.Reflexive",
+        "Rocq.Corelib.Classes.CRelationClasses.Transitive",
+        "Rocq.Corelib.Classes.CRelationClasses.PreOrder.Build_PreOrder"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CRelationClasses.flip_PreOrder"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CRelationClasses.flip_PreOrder",
+      "type": "(A : Type v_0) →\n  (R : A → A → Type v_1) →\n    Rocq.Corelib.Classes.CRelationClasses.PreOrder.{v_0, v_1} A R →\n      Rocq.Corelib.Classes.CRelationClasses.PreOrder.{v_0, v_1} A fun x y => R y x",
+      "source": "Corelib.Classes.CRelationClasses.flip_PreOrder",
+      "module": "Corelib.Classes.CRelationClasses",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CRelationClasses.flip_Reflexive"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CRelationClasses.flip_Reflexive",
+      "type": "(A : Type v_0) → (R : A → A → Type v_1) → ((x : A) → R x x) → (x : A) → (fun x y => R y x) x x",
+      "source": "Corelib.Classes.CRelationClasses.flip_Reflexive",
+      "module": "Corelib.Classes.CRelationClasses",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CRelationClasses.StrictOrder",
+        "Rocq.Corelib.Classes.CRelationClasses.StrictOrder.rec",
+        "Rocq.Corelib.Classes.CRelationClasses.Irreflexive",
+        "Rocq.Corelib.Classes.CRelationClasses.Transitive",
+        "Rocq.Corelib.Init.Logic.False",
+        "Rocq.Corelib.Classes.CRelationClasses.StrictOrder.Build_StrictOrder",
+        "PULift.up",
+        "PULift.down"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CRelationClasses.flip_StrictOrder"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CRelationClasses.flip_StrictOrder",
+      "type": "(A : Type v_0) →\n  (R : A → A → Type v_1) →\n    Rocq.Corelib.Classes.CRelationClasses.StrictOrder.{v_0, v_1} A R →\n      Rocq.Corelib.Classes.CRelationClasses.StrictOrder.{v_0, v_1} A fun x y => R y x",
+      "source": "Corelib.Classes.CRelationClasses.flip_StrictOrder",
+      "module": "Corelib.Classes.CRelationClasses",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CRelationClasses.Equivalence",
+        "Rocq.Corelib.Classes.CRelationClasses.PreOrder",
+        "Rocq.Corelib.Init.Datatypes.prod",
+        "Rocq.Corelib.Init.Datatypes.prod_rect",
+        "Rocq.Corelib.Init.Datatypes.prod.pair"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CRelationClasses.partial_order_antisym"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CRelationClasses.partial_order_antisym",
+      "type": "(A : Type v_0) →\n  (eqA : A → A → Type v_4) →\n    Rocq.Corelib.Classes.CRelationClasses.Equivalence.{v_0, v_4} A eqA →\n      (R : A → A → Type v_4) →\n        Rocq.Corelib.Classes.CRelationClasses.PreOrder.{v_0, v_4} A R →\n          ((x y : A) →\n              Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1}\n                (eqA x y →\n                  (fun x y => Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1} (R x y) ((fun x y => R y x) x y)) x y)\n                ((fun x y => Rocq.Corelib.Init.Datatypes.prod.{v_4 + 1, v_4 + 1} (R x y) ((fun x y => R y x) x y)) x y →\n                  eqA x y)) →\n            (x y : A) → R x y → R y x → eqA x y",
+      "source": "Corelib.Classes.CRelationClasses.partial_order_antisym",
+      "module": "Corelib.Classes.CRelationClasses",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CRelationClasses.Equivalence.Build_Equivalence",
+        "PULift",
+        "Rocq.Corelib.Init.Datatypes.prod",
+        "PULift.down",
+        "PULift.up",
+        "Rocq.Corelib.Init.Datatypes.prod.pair",
+        "Rocq.Corelib.Init.Datatypes.prod_rect"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CRelationClasses.relation_equivalence_equivalence"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CRelationClasses.relation_equivalence_equivalence",
+      "type": "(A : Type v_0) →\n  Rocq.Corelib.Classes.CRelationClasses.Equivalence.{max (max v_0 v_1) (v_3 + 1), max (max v_0 v_2) v_3}\n    (PULift.{(max (max v_0 v_1) (v_3 + 1)) + 1, max (v_0 + 1) (v_3 + 2)} (A → A → Type v_3)) fun a a_1 =>\n    PULift.{(max (max v_0 v_2) v_3) + 1, max (v_0 + 1) (v_3 + 1)}\n      ((x y : A) →\n        Rocq.Corelib.Init.Datatypes.prod.{v_3 + 1, v_3 + 1}\n          (PULift.down.{(max (max v_0 v_1) (v_3 + 1)) + 1, max (v_0 + 1) (v_3 + 2)} a x y →\n            PULift.down.{(max (max v_0 v_1) (v_3 + 1)) + 1, max (v_0 + 1) (v_3 + 2)} a_1 x y)\n          (PULift.down.{(max (max v_0 v_1) (v_3 + 1)) + 1, max (v_0 + 1) (v_3 + 2)} a_1 x y →\n            PULift.down.{(max (max v_0 v_1) (v_3 + 1)) + 1, max (v_0 + 1) (v_3 + 2)} a x y))",
+      "source": "Corelib.Classes.CRelationClasses.relation_equivalence_equivalence",
+      "module": "Corelib.Classes.CRelationClasses",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Classes.CRelationClasses.PreOrder.Build_PreOrder",
+        "PULift",
+        "PULift.down",
+        "PULift.up"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CRelationClasses.relation_implication_preorder"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CRelationClasses.relation_implication_preorder",
+      "type": "(A : Type v_0) →\n  Rocq.Corelib.Classes.CRelationClasses.PreOrder.{max (max v_0 v_1) (v_3 + 1), max (max v_0 v_2) v_3}\n    (PULift.{(max (max v_0 v_1) (v_3 + 1)) + 1, max (v_0 + 1) (v_3 + 2)} (A → A → Type v_3)) fun a a_1 =>\n    PULift.{(max (max v_0 v_2) v_3) + 1, max (v_0 + 1) (v_3 + 1)}\n      ((x y : A) →\n        PULift.down.{(max (max v_0 v_1) (v_3 + 1)) + 1, max (v_0 + 1) (v_3 + 2)} a x y →\n          PULift.down.{(max (max v_0 v_1) (v_3 + 1)) + 1, max (v_0 + 1) (v_3 + 2)} a_1 x y)",
+      "source": "Corelib.Classes.CRelationClasses.relation_implication_preorder",
+      "module": "Corelib.Classes.CRelationClasses",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.Classes.CRelationClasses.subrelation_symmetric"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.Classes.CRelationClasses.subrelation_symmetric",
+      "type": "(A : Type v_0) → (R : A → A → Type v_2) → ((x y : A) → R x y → R y x) → (x y : A) → (fun x y => R y x) x y → R x y",
+      "source": "Corelib.Classes.CRelationClasses.subrelation_symmetric",
+      "module": "Corelib.Classes.CRelationClasses",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Init.Specif.proj2_sig.statement",
+        "Rocq.Corelib.Program.Wf.F_unfold__rocq2lean_obligation_1.statement",
+        "RocqPending.Corelib.Program.Wf.F_unfold.statement",
+        "Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement",
+        "Rocq.Corelib.Init.Wf.well_founded",
+        "Rocq.Corelib.Init.Specif.sig",
+        "Rocq.Corelib.Init.Specif.proj1_sig",
+        "Rocq.Corelib.Init.Wf.Acc",
+        "RocqPending.Corelib.Program.Wf.Fix_F_sub",
+        "Rocq.Corelib.Init.Wf.Acc.rec",
+        "Eq",
+        "Eq.rec",
+        "Rocq.Corelib.Init.Wf.Acc.Acc_intro",
+        "Eq.refl",
+        "Rocq.Corelib.Init.Wf.well_founded_induction_type",
+        "RocqPending.Corelib.Init.Logic.eq_rect_r"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "RocqPending.Corelib.Program.Wf.Fix_F_sub_rect"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "RocqPending.Corelib.Program.Wf.Fix_F_sub_rect",
+      "type": "{h_Corelib_Init_Specif_proj2_sig : Rocq.Corelib.Init.Specif.proj2_sig.statement.{u_Corelib_Program_Wf_45 + 1}} →\n  {h_Corelib_Program_Wf_F_unfold__rocq2lean_obligation_1 :\n      Rocq.Corelib.Program.Wf.F_unfold__rocq2lean_obligation_1.statement.{u_Corelib_Program_Wf_45,\n        u_Corelib_Program_Wf_46}} →\n    {h_Corelib_Program_Wf_F_unfold :\n        RocqPending.Corelib.Program.Wf.F_unfold.statement.{u_Corelib_Program_Wf_45, u_Corelib_Program_Wf_46}} →\n      {h_Corelib_Init_Logic_eq_rect_r__rocq2lean_obligation_1 :\n          Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement.{u_Corelib_Program_Wf_46 + 1,\n            u_Corelib_Program_Wf_53 + 1}} →\n        (A : Type u_Corelib_Program_Wf_45) →\n          (P : A → Type u_Corelib_Program_Wf_46) →\n            (R : A → A → Prop) →\n              Rocq.Corelib.Init.Wf.well_founded.{u_Corelib_Program_Wf_45} A R →\n                (f :\n                    (x : A) →\n                      ((y : Rocq.Corelib.Init.Specif.sig.{u_Corelib_Program_Wf_45 + 1} A fun y => R y x) →\n                          P (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_45 + 1} A (fun y => R y x) y)) →\n                        P x) →\n                  (Q : (x : A) → P x → Type u_Corelib_Program_Wf_53) →\n                    ((x : A) →\n                        ((y : A) →\n                            R y x →\n                              (a : Rocq.Corelib.Init.Wf.Acc.{u_Corelib_Program_Wf_45} A R y) →\n                                Q y\n                                  (RocqPending.Corelib.Program.Wf.Fix_F_sub.{u_Corelib_Program_Wf_45,\n                                      u_Corelib_Program_Wf_46}\n                                    A R P f y a)) →\n                          (a : Rocq.Corelib.Init.Wf.Acc.{u_Corelib_Program_Wf_45} A R x) →\n                            Q x\n                              (f x fun y =>\n                                RocqPending.Corelib.Program.Wf.Fix_F_sub.{u_Corelib_Program_Wf_45,\n                                    u_Corelib_Program_Wf_46}\n                                  A R P f\n                                  (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_45 + 1} A (fun y => R y x)\n                                    y)\n                                  ⋯)) →\n                      (x : A) →\n                        (a : Rocq.Corelib.Init.Wf.Acc.{u_Corelib_Program_Wf_45} A R x) →\n                          Q x\n                            (RocqPending.Corelib.Program.Wf.Fix_F_sub.{u_Corelib_Program_Wf_45, u_Corelib_Program_Wf_46}\n                              A R P f x a)",
+      "source": "Corelib.Program.Wf.Fix_F_sub_rect",
+      "module": "Corelib.Program.Wf",
+      "bridge_status": "EXPLICIT_PROOF_PARAMETERS"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Init.Specif.proj2_sig.statement",
+        "RocqPending.Corelib.Program.Wf.Fix_sub_rect__rocq2lean_obligation_1.statement",
+        "Rocq.Corelib.Program.Wf.F_unfold__rocq2lean_obligation_1.statement",
+        "RocqPending.Corelib.Program.Wf.F_unfold.statement",
+        "Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement",
+        "Rocq.Corelib.Init.Wf.well_founded",
+        "Rocq.Corelib.Init.Specif.sig",
+        "Rocq.Corelib.Init.Specif.proj1_sig",
+        "Rocq.Corelib.Init.Logic.eq",
+        "Rocq.Corelib.Init.Specif.sig.exist",
+        "RocqPending.Corelib.Program.Wf.Fix_sub",
+        "Rocq.Corelib.Init.Wf.Acc",
+        "RocqPending.Corelib.Program.Wf.Fix_F_sub_rect",
+        "RocqPending.Corelib.Program.Wf.Fix_F_sub",
+        "Rocq.Corelib.Init.Logic.eq_rect",
+        "Rocq.Corelib.Init.Wf.Acc.rec",
+        "Eq",
+        "Eq.rec",
+        "Rocq.Corelib.Init.Wf.Acc.Acc_intro",
+        "Eq.refl"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "RocqPending.Corelib.Program.Wf.Fix_sub_rect"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "RocqPending.Corelib.Program.Wf.Fix_sub_rect",
+      "type": "{h_Corelib_Init_Specif_proj2_sig : Rocq.Corelib.Init.Specif.proj2_sig.statement.{u_Corelib_Program_Wf_45 + 1}} →\n  {h_Corelib_Program_Wf_Fix_sub_rect__rocq2lean_obligation_1 :\n      RocqPending.Corelib.Program.Wf.Fix_sub_rect__rocq2lean_obligation_1.statement.{u_Corelib_Program_Wf_45,\n        u_Corelib_Program_Wf_46, u_Corelib_Program_Wf_72 + 1}} →\n    {h_Corelib_Program_Wf_F_unfold__rocq2lean_obligation_1 :\n        Rocq.Corelib.Program.Wf.F_unfold__rocq2lean_obligation_1.statement.{u_Corelib_Program_Wf_45,\n          u_Corelib_Program_Wf_46}} →\n      {h_Corelib_Program_Wf_F_unfold :\n          RocqPending.Corelib.Program.Wf.F_unfold.statement.{u_Corelib_Program_Wf_45, u_Corelib_Program_Wf_46}} →\n        {h_Corelib_Init_Logic_eq_rect_r__rocq2lean_obligation_1 :\n            Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement.{u_Corelib_Program_Wf_46 + 1,\n              u_Corelib_Program_Wf_72 + 1}} →\n          (A : Type u_Corelib_Program_Wf_45) →\n            (P : A → Type u_Corelib_Program_Wf_46) →\n              (R : A → A → Prop) →\n                (Rwf : Rocq.Corelib.Init.Wf.well_founded.{u_Corelib_Program_Wf_45} A R) →\n                  (f :\n                      (x : A) →\n                        ((y : Rocq.Corelib.Init.Specif.sig.{u_Corelib_Program_Wf_45 + 1} A fun y => R y x) →\n                            P (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_45 + 1} A (fun y => R y x) y)) →\n                          P x) →\n                    (∀ (x0 : A)\n                        (g h :\n                          (x : Rocq.Corelib.Init.Specif.sig.{u_Corelib_Program_Wf_45 + 1} A fun y => R y x0) →\n                            P (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_45 + 1} A (fun y => R y x0) x)),\n                        (∀ (x : A) (p p' : R x x0),\n                            Rocq.Corelib.Init.Logic.eq.{u_Corelib_Program_Wf_46 + 1}\n                              (P\n                                (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_45 + 1} A (fun y => R y x0)\n                                  (Rocq.Corelib.Init.Specif.sig.exist.{u_Corelib_Program_Wf_45 + 1} A (fun y => R y x0)\n                                    x p)))\n                              (g\n                                (Rocq.Corelib.Init.Specif.sig.exist.{u_Corelib_Program_Wf_45 + 1} A (fun y => R y x0) x\n                                  p))\n                              (h\n                                (Rocq.Corelib.Init.Specif.sig.exist.{u_Corelib_Program_Wf_45 + 1} A (fun y => R y x0) x\n                                  p'))) →\n                          Rocq.Corelib.Init.Logic.eq.{u_Corelib_Program_Wf_46 + 1} (P x0) (f x0 g) (f x0 h)) →\n                      (Q : (x : A) → P x → Type u_Corelib_Program_Wf_72) →\n                        ((x : A) →\n                            ((y : A) →\n                                R y x →\n                                  Q y\n                                    (RocqPending.Corelib.Program.Wf.Fix_sub.{u_Corelib_Program_Wf_45,\n                                        u_Corelib_Program_Wf_46}\n                                      A R Rwf P f y)) →\n                              Rocq.Corelib.Init.Wf.Acc.{u_Corelib_Program_Wf_45} A R x →\n                                Q x\n                                  (f x fun y =>\n                                    RocqPending.Corelib.Program.Wf.Fix_sub.{u_Corelib_Program_Wf_45,\n                                        u_Corelib_Program_Wf_46}\n                                      A R Rwf P f\n                                      (Rocq.Corelib.Init.Specif.proj1_sig.{u_Corelib_Program_Wf_45 + 1} A\n                                        (fun y => R y x) y))) →\n                          (x : A) →\n                            Q x\n                              (RocqPending.Corelib.Program.Wf.Fix_sub.{u_Corelib_Program_Wf_45, u_Corelib_Program_Wf_46}\n                                A R Rwf P f x)",
+      "source": "Corelib.Program.Wf.Fix_sub_rect",
+      "module": "Corelib.Program.Wf",
+      "bridge_status": "EXPLICIT_PROOF_PARAMETERS"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.ssr.ssrfun.tag_of_sig__rocq2lean_obligation_1.statement",
+        "Rocq.Corelib.ssr.ssrbool.all_tag_cond_dep__rocq2lean_obligation_1.statement",
+        "Rocq.Corelib.ssr.ssrbool.all_tag_cond_dep__rocq2lean_obligation_2.statement",
+        "Rocq.Corelib.ssr.ssrfun.sig_of_sig2__rocq2lean_obligation_1.statement",
+        "Rocq.Corelib.ssr.ssrbool.all_sig2_cond__rocq2lean_obligation_1.statement",
+        "Rocq.Corelib.ssr.ssrbool.all_sig2_cond__rocq2lean_obligation_2.statement",
+        "Rocq.Corelib.ssr.ssrbool.pred",
+        "Rocq.Corelib.Init.Datatypes.is_true",
+        "Rocq.Corelib.Init.Specif.sig",
+        "Rocq.Corelib.Init.Specif.sig2",
+        "Rocq.Corelib.Init.Logic.and",
+        "Rocq.Corelib.Init.Specif.sig.exist",
+        "Rocq.Corelib.Init.Specif.sig.rec",
+        "Rocq.Corelib.Init.Specif.sig2.exist2",
+        "RocqPending.Corelib.ssr.ssrfun.sig_of_sig2",
+        "RocqPending.Corelib.ssr.ssrbool.all_sig_cond"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "RocqPending.Corelib.ssr.ssrbool.all_sig2_cond"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "RocqPending.Corelib.ssr.ssrbool.all_sig2_cond",
+      "type": "{h_Corelib_ssr_ssrfun_tag_of_sig__rocq2lean_obligation_1 :\n    Rocq.Corelib.ssr.ssrfun.tag_of_sig__rocq2lean_obligation_1.statement.{u_Corelib_ssr_ssrbool_1452 + 1}} →\n  {h_Corelib_ssr_ssrbool_all_tag_cond_dep__rocq2lean_obligation_1 :\n      Rocq.Corelib.ssr.ssrbool.all_tag_cond_dep__rocq2lean_obligation_1.statement.{u_Corelib_ssr_ssrbool_1449,\n        u_Corelib_ssr_ssrbool_1452 + 1, 1}} →\n    {h_Corelib_ssr_ssrbool_all_tag_cond_dep__rocq2lean_obligation_2 :\n        Rocq.Corelib.ssr.ssrbool.all_tag_cond_dep__rocq2lean_obligation_2.statement.{u_Corelib_ssr_ssrbool_1449,\n          u_Corelib_ssr_ssrbool_1452 + 1, 1}} →\n      {h_Corelib_ssr_ssrfun_sig_of_sig2__rocq2lean_obligation_1 :\n          Rocq.Corelib.ssr.ssrfun.sig_of_sig2__rocq2lean_obligation_1.statement.{u_Corelib_ssr_ssrbool_1452 + 1}} →\n        {h_Corelib_ssr_ssrbool_all_sig2_cond__rocq2lean_obligation_1 :\n            Rocq.Corelib.ssr.ssrbool.all_sig2_cond__rocq2lean_obligation_1.statement.{u_Corelib_ssr_ssrbool_1449,\n              u_Corelib_ssr_ssrbool_1449, u_Corelib_ssr_ssrbool_1452}} →\n          {h_Corelib_ssr_ssrbool_all_sig2_cond__rocq2lean_obligation_2 :\n              Rocq.Corelib.ssr.ssrbool.all_sig2_cond__rocq2lean_obligation_2.statement.{u_Corelib_ssr_ssrbool_1449,\n                u_Corelib_ssr_ssrbool_1449, u_Corelib_ssr_ssrbool_1452}} →\n            (I : Type u_Corelib_ssr_ssrbool_1449) →\n              (T : Type u_Corelib_ssr_ssrbool_1452) →\n                (C : Rocq.Corelib.ssr.ssrbool.pred.{u_Corelib_ssr_ssrbool_1449} I) →\n                  (P Q : I → T → Prop) →\n                    T →\n                      ((x : I) →\n                          Rocq.Corelib.Init.Datatypes.is_true (C x) →\n                            Rocq.Corelib.Init.Specif.sig2.{u_Corelib_ssr_ssrbool_1452 + 1} T (fun y => P x y) fun y =>\n                              Q x y) →\n                        Rocq.Corelib.Init.Specif.sig2.{max (u_Corelib_ssr_ssrbool_1449 + 1)\n                              (u_Corelib_ssr_ssrbool_1452 + 1)}\n                          (I → T) (fun f => ∀ (x : I), Rocq.Corelib.Init.Datatypes.is_true (C x) → P x (f x)) fun f =>\n                          ∀ (x : I), Rocq.Corelib.Init.Datatypes.is_true (C x) → Q x (f x)",
+      "source": "Corelib.ssr.ssrbool.all_sig2_cond",
+      "module": "Corelib.ssr.ssrbool",
+      "bridge_status": "EXPLICIT_PROOF_PARAMETERS"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.ssr.ssrfun.tag_of_sig__rocq2lean_obligation_1.statement",
+        "Rocq.Corelib.ssr.ssrbool.all_tag_cond_dep__rocq2lean_obligation_1.statement",
+        "Rocq.Corelib.ssr.ssrbool.all_tag_cond_dep__rocq2lean_obligation_2.statement",
+        "Rocq.Corelib.ssr.ssrbool.pred",
+        "RocqPending.Corelib.ssr.ssrbool.all_sig_cond_dep"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "RocqPending.Corelib.ssr.ssrbool.all_sig_cond"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "RocqPending.Corelib.ssr.ssrbool.all_sig_cond",
+      "type": "{h_Corelib_ssr_ssrfun_tag_of_sig__rocq2lean_obligation_1 :\n    Rocq.Corelib.ssr.ssrfun.tag_of_sig__rocq2lean_obligation_1.statement.{u_Corelib_ssr_ssrbool_1438 + 1}} →\n  {h_Corelib_ssr_ssrbool_all_tag_cond_dep__rocq2lean_obligation_1 :\n      Rocq.Corelib.ssr.ssrbool.all_tag_cond_dep__rocq2lean_obligation_1.statement.{u_Corelib_ssr_ssrbool_1436,\n        u_Corelib_ssr_ssrbool_1438 + 1, 1}} →\n    {h_Corelib_ssr_ssrbool_all_tag_cond_dep__rocq2lean_obligation_2 :\n        Rocq.Corelib.ssr.ssrbool.all_tag_cond_dep__rocq2lean_obligation_2.statement.{u_Corelib_ssr_ssrbool_1436,\n          u_Corelib_ssr_ssrbool_1438 + 1, 1}} →\n      (I : Type u_Corelib_ssr_ssrbool_1436) →\n        (T : Type u_Corelib_ssr_ssrbool_1438) →\n          (C : Rocq.Corelib.ssr.ssrbool.pred.{u_Corelib_ssr_ssrbool_1436} I) →\n            (P : I → T → Prop) →\n              T →\n                ((x : I) →\n                    Rocq.Corelib.Init.Datatypes.is_true (C x) →\n                      Rocq.Corelib.Init.Specif.sig.{u_Corelib_ssr_ssrbool_1438 + 1} T fun y => P x y) →\n                  Rocq.Corelib.Init.Specif.sig.{max (u_Corelib_ssr_ssrbool_1436 + 1) (u_Corelib_ssr_ssrbool_1438 + 1)}\n                    (I → T) fun f => ∀ (x : I), Rocq.Corelib.Init.Datatypes.is_true (C x) → P x (f x)",
+      "source": "Corelib.ssr.ssrbool.all_sig_cond",
+      "module": "Corelib.ssr.ssrbool",
+      "bridge_status": "EXPLICIT_PROOF_PARAMETERS"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.ssr.ssrfun.tag_of_sig__rocq2lean_obligation_1.statement",
+        "Rocq.Corelib.ssr.ssrbool.all_tag_cond_dep__rocq2lean_obligation_1.statement",
+        "Rocq.Corelib.ssr.ssrbool.all_tag_cond_dep__rocq2lean_obligation_2.statement",
+        "Rocq.Corelib.Init.Datatypes.bool",
+        "Rocq.Corelib.Init.Logic.eq",
+        "Rocq.Corelib.Init.Datatypes.bool.true",
+        "Rocq.Corelib.Init.Specif.sig",
+        "Rocq.Corelib.Init.Specif.sigT",
+        "Rocq.Corelib.Init.Specif.sigT.existT",
+        "Rocq.Corelib.Init.Specif.sigT.rec",
+        "Rocq.Corelib.Init.Specif.sig.exist",
+        "Rocq.Corelib.Init.Datatypes.is_true",
+        "PULift",
+        "PULift.down",
+        "RocqPending.Corelib.ssr.ssrbool.all_tag_cond_dep",
+        "PULift.up",
+        "RocqPending.Corelib.ssr.ssrfun.tag_of_sig"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "RocqPending.Corelib.ssr.ssrbool.all_sig_cond_dep"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "RocqPending.Corelib.ssr.ssrbool.all_sig_cond_dep",
+      "type": "{h_Corelib_ssr_ssrfun_tag_of_sig__rocq2lean_obligation_1 :\n    Rocq.Corelib.ssr.ssrfun.tag_of_sig__rocq2lean_obligation_1.statement.{u_Corelib_ssr_ssrbool_1418 + 1}} →\n  {h_Corelib_ssr_ssrbool_all_tag_cond_dep__rocq2lean_obligation_1 :\n      Rocq.Corelib.ssr.ssrbool.all_tag_cond_dep__rocq2lean_obligation_1.statement.{u_Corelib_ssr_ssrbool_1412,\n        u_Corelib_ssr_ssrbool_1418 + 1, 1}} →\n    {h_Corelib_ssr_ssrbool_all_tag_cond_dep__rocq2lean_obligation_2 :\n        Rocq.Corelib.ssr.ssrbool.all_tag_cond_dep__rocq2lean_obligation_2.statement.{u_Corelib_ssr_ssrbool_1412,\n          u_Corelib_ssr_ssrbool_1418 + 1, 1}} →\n      (I : Type u_Corelib_ssr_ssrbool_1412) →\n        (T : I → Type u_Corelib_ssr_ssrbool_1418) →\n          (C : I → Rocq.Corelib.Init.Datatypes.bool) →\n            (P : (x : I) → T x → Prop) →\n              ((x : I) → T x) →\n                ((x : I) →\n                    Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool (C x)\n                        Rocq.Corelib.Init.Datatypes.bool.true →\n                      Rocq.Corelib.Init.Specif.sig.{u_Corelib_ssr_ssrbool_1418 + 1} (T x) fun y => P x y) →\n                  Rocq.Corelib.Init.Specif.sig.{max (u_Corelib_ssr_ssrbool_1412 + 1) (u_Corelib_ssr_ssrbool_1418 + 1)}\n                    ((x : I) → T x) fun f =>\n                    ∀ (x : I),\n                      Rocq.Corelib.Init.Logic.eq.{1} Rocq.Corelib.Init.Datatypes.bool (C x)\n                          Rocq.Corelib.Init.Datatypes.bool.true →\n                        P x (f x)",
+      "source": "Corelib.ssr.ssrbool.all_sig_cond_dep",
+      "module": "Corelib.ssr.ssrbool",
+      "bridge_status": "EXPLICIT_PROOF_PARAMETERS"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.ssr.ssrbool.all_tag_cond_dep__rocq2lean_obligation_1.statement",
+        "Rocq.Corelib.ssr.ssrbool.all_tag_cond_dep__rocq2lean_obligation_2.statement",
+        "Rocq.Corelib.ssr.ssrbool.pred",
+        "RocqPending.Corelib.ssr.ssrbool.all_tag_cond_dep"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "RocqPending.Corelib.ssr.ssrbool.all_tag_cond"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "RocqPending.Corelib.ssr.ssrbool.all_tag_cond",
+      "type": "{h_Corelib_ssr_ssrbool_all_tag_cond_dep__rocq2lean_obligation_1 :\n    Rocq.Corelib.ssr.ssrbool.all_tag_cond_dep__rocq2lean_obligation_1.statement.{u_Corelib_ssr_ssrbool_1397,\n      u_Corelib_ssr_ssrbool_1399 + 1, u_Corelib_ssr_ssrbool_1402 + 1}} →\n  {h_Corelib_ssr_ssrbool_all_tag_cond_dep__rocq2lean_obligation_2 :\n      Rocq.Corelib.ssr.ssrbool.all_tag_cond_dep__rocq2lean_obligation_2.statement.{u_Corelib_ssr_ssrbool_1397,\n        u_Corelib_ssr_ssrbool_1399 + 1, u_Corelib_ssr_ssrbool_1402 + 1}} →\n    (I : Type u_Corelib_ssr_ssrbool_1397) →\n      (T : Type u_Corelib_ssr_ssrbool_1399) →\n        (C : Rocq.Corelib.ssr.ssrbool.pred.{u_Corelib_ssr_ssrbool_1397} I) →\n          (U : I → T → Type u_Corelib_ssr_ssrbool_1402) →\n            T →\n              ((x : I) →\n                  Rocq.Corelib.Init.Datatypes.is_true (C x) →\n                    Rocq.Corelib.Init.Specif.sigT.{u_Corelib_ssr_ssrbool_1399 + 1, u_Corelib_ssr_ssrbool_1402 + 1} T\n                      fun y => U x y) →\n                Rocq.Corelib.Init.Specif.sigT.{max (u_Corelib_ssr_ssrbool_1397 + 1) (u_Corelib_ssr_ssrbool_1399 + 1),\n                    max (u_Corelib_ssr_ssrbool_1397 + 1) (u_Corelib_ssr_ssrbool_1402 + 1)}\n                  (I → T) fun f => (x : I) → Rocq.Corelib.Init.Datatypes.is_true (C x) → U x (f x)",
+      "source": "Corelib.ssr.ssrbool.all_tag_cond",
+      "module": "Corelib.ssr.ssrbool",
+      "bridge_status": "EXPLICIT_PROOF_PARAMETERS"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.ssr.ssrbool.all_tag_cond_dep__rocq2lean_obligation_1.statement",
+        "Rocq.Corelib.ssr.ssrbool.all_tag_cond_dep__rocq2lean_obligation_2.statement",
+        "Rocq.Corelib.ssr.ssrbool.pred",
+        "Rocq.Corelib.Init.Datatypes.is_true",
+        "Rocq.Corelib.Init.Specif.sigT",
+        "Rocq.Corelib.ssr.ssrfun.all_tag",
+        "Rocq.Corelib.Init.Datatypes.bool",
+        "Rocq.Corelib.ssr.ssreflect_rw.protect_term",
+        "Rocq.Corelib.Init.Logic.eq",
+        "Rocq.Corelib.Init.Datatypes.bool.true",
+        "Rocq.Corelib.Init.Datatypes.bool.false",
+        "Rocq.Corelib.Init.Datatypes.bool.rec",
+        "Rocq.Corelib.Init.Specif.sigT.existT",
+        "Rocq.Corelib.Init.Specif.sigT.rec",
+        "Rocq.Corelib.Init.Logic.False",
+        "Rocq.Corelib.Init.Logic.False_rect"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "RocqPending.Corelib.ssr.ssrbool.all_tag_cond_dep"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "RocqPending.Corelib.ssr.ssrbool.all_tag_cond_dep",
+      "type": "{h_Corelib_ssr_ssrbool_all_tag_cond_dep__rocq2lean_obligation_1 :\n    Rocq.Corelib.ssr.ssrbool.all_tag_cond_dep__rocq2lean_obligation_1.statement.{u_Corelib_ssr_ssrbool_1365,\n      u_Corelib_ssr_ssrbool_1371 + 1, u_Corelib_ssr_ssrbool_1374 + 1}} →\n  {h_Corelib_ssr_ssrbool_all_tag_cond_dep__rocq2lean_obligation_2 :\n      Rocq.Corelib.ssr.ssrbool.all_tag_cond_dep__rocq2lean_obligation_2.statement.{u_Corelib_ssr_ssrbool_1365,\n        u_Corelib_ssr_ssrbool_1371 + 1, u_Corelib_ssr_ssrbool_1374 + 1}} →\n    (I : Type u_Corelib_ssr_ssrbool_1365) →\n      (T : I → Type u_Corelib_ssr_ssrbool_1371) →\n        (C : Rocq.Corelib.ssr.ssrbool.pred.{u_Corelib_ssr_ssrbool_1365} I) →\n          (U : (x : I) → T x → Type u_Corelib_ssr_ssrbool_1374) →\n            ((x : I) → T x) →\n              ((x : I) →\n                  Rocq.Corelib.Init.Datatypes.is_true (C x) →\n                    Rocq.Corelib.Init.Specif.sigT.{u_Corelib_ssr_ssrbool_1371 + 1, u_Corelib_ssr_ssrbool_1374 + 1} (T x)\n                      fun y => U x y) →\n                Rocq.Corelib.Init.Specif.sigT.{max (u_Corelib_ssr_ssrbool_1365 + 1) (u_Corelib_ssr_ssrbool_1371 + 1),\n                    max (u_Corelib_ssr_ssrbool_1365 + 1) (u_Corelib_ssr_ssrbool_1374 + 1)}\n                  ((x : I) → T x) fun f => (x : I) → Rocq.Corelib.Init.Datatypes.is_true (C x) → U x (f x)",
+      "source": "Corelib.ssr.ssrbool.all_tag_cond_dep",
+      "module": "Corelib.ssr.ssrbool",
+      "bridge_status": "EXPLICIT_PROOF_PARAMETERS"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.ssr.ssrbool.implies",
+        "Rocq.Corelib.ssr.ssrbool.implies.Implies",
+        "Rocq.Corelib.ssr.ssrbool.implies.rec"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.ssr.ssrbool.impliesP"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.ssr.ssrbool.impliesP",
+      "type": "(P : Sort u_Corelib_ssr_ssrbool_342) →\n  (Q : Sort u_Corelib_ssr_ssrbool_343) →\n    Rocq.Corelib.ssr.ssrbool.implies.{u_Corelib_ssr_ssrbool_342, u_Corelib_ssr_ssrbool_343} P Q → P → Q",
+      "source": "Corelib.ssr.ssrbool.impliesP",
+      "module": "Corelib.ssr.ssrbool",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.ssr.ssreflect_rw.abstract_context__rocq2lean_obligation_1.statement",
+        "Rocq.Corelib.Init.Logic.eq"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "RocqPending.Corelib.ssr.ssreflect_rw.abstract_context"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "RocqPending.Corelib.ssr.ssreflect_rw.abstract_context",
+      "type": "{h_Corelib_ssr_ssreflect_rw_abstract_context__rocq2lean_obligation_1 :\n    Rocq.Corelib.ssr.ssreflect_rw.abstract_context__rocq2lean_obligation_1.statement.{u_Corelib_ssr_ssreflect_rw_170,\n      u_Corelib_ssr_ssreflect_rw_171}} →\n  (T : Sort u_Corelib_ssr_ssreflect_rw_170) →\n    (P : T → Type u_Corelib_ssr_ssreflect_rw_171) →\n      (x : T) →\n        ((Q : T → Type u_Corelib_ssr_ssreflect_rw_171) →\n            Rocq.Corelib.Init.Logic.eq.{max u_Corelib_ssr_ssreflect_rw_170 (u_Corelib_ssr_ssreflect_rw_171 + 2)}\n                (T → Type u_Corelib_ssr_ssreflect_rw_171) Q P →\n              Q x) →\n          P x",
+      "source": "Corelib.ssr.ssreflect_rw.abstract_context",
+      "module": "Corelib.ssr.ssreflect_rw",
+      "bridge_status": "EXPLICIT_PROOF_PARAMETERS"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement",
+        "Rocq.Corelib.Init.Logic.eq",
+        "RocqPending.Corelib.Init.Logic.eq_rect_r"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "RocqPending.Corelib.ssr.ssreflect_rw.ssr_congr_arrow"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "RocqPending.Corelib.ssr.ssreflect_rw.ssr_congr_arrow",
+      "type": "{h_Corelib_Init_Logic_eq_rect_r__rocq2lean_obligation_1 :\n    Rocq.Corelib.Init.Logic.eq_rect_r__rocq2lean_obligation_1.statement.{u_Corelib_ssr_ssreflect_rw_167 + 2,\n      u_Corelib_ssr_ssreflect_rw_167 + 1}} →\n  (Plemma Pgoal : Type u_Corelib_ssr_ssreflect_rw_167) →\n    Rocq.Corelib.Init.Logic.eq.{u_Corelib_ssr_ssreflect_rw_167 + 2} (Type u_Corelib_ssr_ssreflect_rw_167) Plemma Pgoal →\n      Plemma → Pgoal",
+      "source": "Corelib.ssr.ssreflect_rw.ssr_congr_arrow",
+      "module": "Corelib.ssr.ssreflect_rw",
+      "bridge_status": "EXPLICIT_PROOF_PARAMETERS"
+    },
+    {
+      "body_refs": [],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.ssr.ssreflect_rw.ssr_have_upoly"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.ssr.ssreflect_rw.ssr_have_upoly",
+      "type": "(Plemma : Type v_0) → (Pgoal : Type v_1) → Plemma → (Plemma → Pgoal) → Pgoal",
+      "source": "Corelib.ssr.ssreflect_rw.ssr_have_upoly",
+      "module": "Corelib.ssr.ssreflect_rw",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.ssr.ssrfun.tag_of_sig__rocq2lean_obligation_1.statement",
+        "Rocq.Corelib.Init.Specif.sig",
+        "Rocq.Corelib.Init.Specif.sigT",
+        "Rocq.Corelib.Init.Specif.sigT.existT",
+        "Rocq.Corelib.Init.Specif.sigT.rec",
+        "Rocq.Corelib.ssr.ssrfun.all_tag",
+        "RocqPending.Corelib.ssr.ssrfun.tag_of_sig",
+        "Rocq.Corelib.Init.Specif.sig.exist"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "RocqPending.Corelib.ssr.ssrfun.all_sig"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "RocqPending.Corelib.ssr.ssrfun.all_sig",
+      "type": "{h_Corelib_ssr_ssrfun_tag_of_sig__rocq2lean_obligation_1 :\n    Rocq.Corelib.ssr.ssrfun.tag_of_sig__rocq2lean_obligation_1.statement.{u_Corelib_ssr_ssrfun_302}} →\n  (I : Sort u_Corelib_ssr_ssrfun_301) →\n    (T : I → Sort u_Corelib_ssr_ssrfun_302) →\n      (P : (x : I) → T x → Prop) →\n        ((x : I) → Rocq.Corelib.Init.Specif.sig.{u_Corelib_ssr_ssrfun_302} (T x) fun y => P x y) →\n          Rocq.Corelib.Init.Specif.sig.{imax u_Corelib_ssr_ssrfun_301 u_Corelib_ssr_ssrfun_302} ((x : I) → T x) fun f =>\n            ∀ (x : I), P x (f x)",
+      "source": "Corelib.ssr.ssrfun.all_sig",
+      "module": "Corelib.ssr.ssrfun",
+      "bridge_status": "EXPLICIT_PROOF_PARAMETERS"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.ssr.ssrfun.all_sig2__rocq2lean_obligation_2.statement",
+        "Rocq.Corelib.ssr.ssrfun.all_sig2__rocq2lean_obligation_1.statement",
+        "Rocq.Corelib.ssr.ssrfun.sig_of_sig2__rocq2lean_obligation_1.statement",
+        "Rocq.Corelib.ssr.ssrfun.tag_of_sig__rocq2lean_obligation_1.statement",
+        "Rocq.Corelib.Init.Specif.sig2",
+        "Rocq.Corelib.Init.Logic.and",
+        "Rocq.Corelib.Init.Specif.sig",
+        "Rocq.Corelib.Init.Specif.sig.exist",
+        "Rocq.Corelib.Init.Specif.sig.rec",
+        "RocqPending.Corelib.ssr.ssrfun.all_sig",
+        "RocqPending.Corelib.ssr.ssrfun.sig_of_sig2",
+        "Rocq.Corelib.Init.Datatypes.prod.qualityProp",
+        "Rocq.Corelib.Init.Datatypes.prod.qualityProp.rec",
+        "Rocq.Corelib.Init.Specif.sig2.exist2"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "RocqPending.Corelib.ssr.ssrfun.all_sig2"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "RocqPending.Corelib.ssr.ssrfun.all_sig2",
+      "type": "{h_Corelib_ssr_ssrfun_all_sig2__rocq2lean_obligation_2 :\n    Rocq.Corelib.ssr.ssrfun.all_sig2__rocq2lean_obligation_2.statement.{u_Corelib_ssr_ssrfun_322,\n      u_Corelib_ssr_ssrfun_323}} →\n  {h_Corelib_ssr_ssrfun_all_sig2__rocq2lean_obligation_1 :\n      Rocq.Corelib.ssr.ssrfun.all_sig2__rocq2lean_obligation_1.statement.{u_Corelib_ssr_ssrfun_322,\n        u_Corelib_ssr_ssrfun_323}} →\n    {h_Corelib_ssr_ssrfun_sig_of_sig2__rocq2lean_obligation_1 :\n        Rocq.Corelib.ssr.ssrfun.sig_of_sig2__rocq2lean_obligation_1.statement.{u_Corelib_ssr_ssrfun_323}} →\n      {h_Corelib_ssr_ssrfun_tag_of_sig__rocq2lean_obligation_1 :\n          Rocq.Corelib.ssr.ssrfun.tag_of_sig__rocq2lean_obligation_1.statement.{u_Corelib_ssr_ssrfun_323}} →\n        (I : Sort u_Corelib_ssr_ssrfun_322) →\n          (T : I → Sort u_Corelib_ssr_ssrfun_323) →\n            (P Q : (x : I) → T x → Prop) →\n              ((x : I) →\n                  Rocq.Corelib.Init.Specif.sig2.{u_Corelib_ssr_ssrfun_323} (T x) (fun y => P x y) fun y => Q x y) →\n                Rocq.Corelib.Init.Specif.sig2.{imax u_Corelib_ssr_ssrfun_322 u_Corelib_ssr_ssrfun_323} ((x : I) → T x)\n                  (fun f => ∀ (x : I), P x (f x)) fun f => ∀ (x : I), Q x (f x)",
+      "source": "Corelib.ssr.ssrfun.all_sig2",
+      "module": "Corelib.ssr.ssrfun",
+      "bridge_status": "EXPLICIT_PROOF_PARAMETERS"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Init.Specif.sigT",
+        "Rocq.Corelib.Init.Specif.sigT.existT",
+        "Rocq.Corelib.ssr.ssrfun.tag",
+        "Rocq.Corelib.Init.Specif.sigT.rec"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.ssr.ssrfun.all_tag"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.ssr.ssrfun.all_tag",
+      "type": "(I : Sort u_Corelib_ssr_ssrfun_225) →\n  (T : I → Sort u_Corelib_ssr_ssrfun_226) →\n    (U : (x : I) → T x → Sort u_Corelib_ssr_ssrfun_229) →\n      ((x : I) →\n          Rocq.Corelib.Init.Specif.sigT.{u_Corelib_ssr_ssrfun_226, u_Corelib_ssr_ssrfun_229} (T x) fun y => U x y) →\n        Rocq.Corelib.Init.Specif.sigT.{imax u_Corelib_ssr_ssrfun_225 u_Corelib_ssr_ssrfun_226,\n            imax u_Corelib_ssr_ssrfun_225 u_Corelib_ssr_ssrfun_229}\n          ((x : I) → T x) fun f => (x : I) → U x (f x)",
+      "source": "Corelib.ssr.ssrfun.all_tag",
+      "module": "Corelib.ssr.ssrfun",
+      "bridge_status": "NOT_YET_BRIDGED"
+    },
+    {
+      "body_refs": [
+        "Rocq.Corelib.Init.Specif.sigT2",
+        "Rocq.Corelib.Init.Datatypes.prod",
+        "Rocq.Corelib.Init.Specif.sigT",
+        "Rocq.Corelib.Init.Specif.sigT.existT",
+        "Rocq.Corelib.Init.Specif.sigT.rec",
+        "Rocq.Corelib.ssr.ssrfun.all_tag",
+        "Rocq.Corelib.ssr.ssrfun.tag_of_tag2",
+        "Rocq.Corelib.Init.Datatypes.prod.pair",
+        "Rocq.Corelib.Init.Datatypes.prod.rec",
+        "Rocq.Corelib.Init.Specif.sigT2.existT2",
+        "Rocq.Corelib.ssr.ssrfun.all_pair"
+      ],
+      "body_retained": true,
+      "first_opaque": [
+        "Rocq.Corelib.ssr.ssrfun.all_tag2"
+      ],
+      "is_prop": false,
+      "kind": "opaque",
+      "target": "Rocq.Corelib.ssr.ssrfun.all_tag2",
+      "type": "(I : Sort u_Corelib_ssr_ssrfun_247) →\n  (T : I → Sort u_Corelib_ssr_ssrfun_248) →\n    (U : (x : I) → T x → Sort u_Corelib_ssr_ssrfun_251) →\n      (V : (x : I) → T x → Sort u_Corelib_ssr_ssrfun_256) →\n        ((i : I) →\n            Rocq.Corelib.Init.Specif.sigT2.{u_Corelib_ssr_ssrfun_248, u_Corelib_ssr_ssrfun_251,\n                u_Corelib_ssr_ssrfun_256}\n              (T i) (fun y => U i y) fun y => V i y) →\n          Rocq.Corelib.Init.Specif.sigT2.{imax u_Corelib_ssr_ssrfun_247 u_Corelib_ssr_ssrfun_248,\n              imax u_Corelib_ssr_ssrfun_247 u_Corelib_ssr_ssrfun_251,\n              imax u_Corelib_ssr_ssrfun_247 u_Corelib_ssr_ssrfun_256}\n            ((i : I) → T i) (fun f => (i : I) → U i (f i)) fun f => (i : I) → V i (f i)",
+      "source": "Corelib.ssr.ssrfun.all_tag2",
+      "module": "Corelib.ssr.ssrfun",
+      "bridge_status": "NOT_YET_BRIDGED"
+    }
+  ]
+}

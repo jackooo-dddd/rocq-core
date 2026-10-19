@@ -16078,6 +16078,88 @@ NativeBridge.Incremental.FloatUlp.ulp_agrees
 
 公理闭包：propext, Classical.choice, Quot.sound
 
+## Corelib.ssr.ssrbool.boolfunPredType
+
+NativeBridge.Incremental.SSRPredicatePackages.boolfun_agrees
+
+目标：NativeBridge.Incremental.SSRPredicatePackages.predicates；范围：Predicate package equality after an explicit bijective transport of its carrier and predicate field; clone retains all source parameters and universes. Does not assert equality of untransported carrier types.
+
+```lean
+∀ (A : Type u),
+  NativeBridge.Incremental.SSRPredicatePackages.rebase
+      (NativeBridge.Incremental.SSRBoolData.predTypeTo A (Rocq.Corelib.ssr.ssrbool.boolfunPredType A)) (A → Bool)
+      (NativeBridge.Incremental.SSRPredicatePackages.predicateIso A) =
+    NativeBridge.Incremental.SSRPredicatePackages.predicates A
+```
+
+公理闭包：Quot.sound
+
+## Corelib.ssr.ssrbool.predPredType
+
+NativeBridge.Incremental.SSRPredicatePackages.pred_agrees
+
+目标：NativeBridge.Incremental.SSRPredicatePackages.predicates；范围：Predicate package equality after an explicit bijective transport of its carrier and predicate field; clone retains all source parameters and universes. Does not assert equality of untransported carrier types.
+
+```lean
+∀ (A : Type u),
+  NativeBridge.Incremental.SSRPredicatePackages.rebase
+      (NativeBridge.Incremental.SSRBoolData.predTypeTo A (Rocq.Corelib.ssr.ssrbool.predPredType A)) (A → Bool)
+      (NativeBridge.Incremental.SSRPredicatePackages.predicateIso A) =
+    NativeBridge.Incremental.SSRPredicatePackages.predicates A
+```
+
+公理闭包：Quot.sound
+
+## Corelib.ssr.ssrbool.memPredType
+
+NativeBridge.Incremental.SSRPredicatePackages.mem_agrees
+
+目标：NativeBridge.Incremental.SSRPredicatePackages.predicates；范围：Predicate package equality after an explicit bijective transport of its carrier and predicate field; clone retains all source parameters and universes. Does not assert equality of untransported carrier types.
+
+```lean
+∀ (A : Type u),
+  NativeBridge.Incremental.SSRPredicatePackages.rebase
+      (NativeBridge.Incremental.SSRBoolData.predTypeTo A (Rocq.Corelib.ssr.ssrbool.memPredType A)) (A → Bool)
+      (NativeBridge.Incremental.SSRBoolData.memIso A) =
+    NativeBridge.Incremental.SSRPredicatePackages.predicates A
+```
+
+公理闭包：Quot.sound
+
+## Corelib.ssr.ssrbool.simplPredType
+
+NativeBridge.Incremental.SSRPredicatePackages.simpl_agrees
+
+目标：NativeBridge.Incremental.SSRPredicatePackages.predicates；范围：Predicate package equality after an explicit bijective transport of its carrier and predicate field; clone retains all source parameters and universes. Does not assert equality of untransported carrier types.
+
+```lean
+∀ (A : Type u),
+  NativeBridge.Incremental.SSRPredicatePackages.rebase
+      (NativeBridge.Incremental.SSRBoolData.predTypeTo A (Rocq.Corelib.ssr.ssrbool.simplPredType A)) (A → Bool)
+      (NativeBridge.Incremental.SSRBoolData.simplPredIso A) =
+    NativeBridge.Incremental.SSRPredicatePackages.predicates A
+```
+
+公理闭包：Quot.sound
+
+## Corelib.ssr.ssrbool.clone_pred
+
+NativeBridge.Incremental.SSRPredicatePackages.clone_agrees
+
+目标：NativeBridge.Incremental.SSRPredicatePackages.clone；范围：Predicate package equality after an explicit bijective transport of its carrier and predicate field; clone retains all source parameters and universes. Does not assert equality of untransported carrier types.
+
+```lean
+∀ (A : Type v) (U : Type w) (pT : Rocq.Corelib.ssr.ssrbool.predType A) (a : Rocq.Corelib.ssr.ssrbool.pred_sort A pT → U)
+  (toP : U → Rocq.Corelib.ssr.ssrbool.pred A)
+  (h :
+    Rocq.Corelib.ssr.ssrfun.phant_id (Rocq.Corelib.ssr.ssrbool.predType A) (Rocq.Corelib.ssr.ssrbool.predType A)
+      (Rocq.Corelib.ssr.ssrbool.predType.PredType A U toP) pT),
+  NativeBridge.Incremental.SSRBoolData.predTypeTo A (Rocq.Corelib.ssr.ssrbool.clone_pred A U pT a toP h) =
+    NativeBridge.Incremental.SSRPredicatePackages.clone A U fun x => NativeBridge.Incremental.SSRBoolData.predTo (toP x)
+```
+
+公理闭包：空
+
 ## Corelib.ssr.ssrbool.canLR_in
 
 NativeBridge.Incremental.SSRBoolClosedStatements.RocqPending.Corelib.ssr.ssrbool.canLR_in.statement.correspondence

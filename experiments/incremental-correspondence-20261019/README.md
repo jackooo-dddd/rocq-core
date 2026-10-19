@@ -1,17 +1,17 @@
 # 增量 correspondence 工作区
 
-当前完成 **2095 / 2180 个去重源根**，经过八十九批增量工作。计划：[PLAN.md](PLAN.md)；依赖图：[DAG.md](DAG.md)；[具体例子](../../results/CORRESPONDENCE_EXAMPLES.md)。
+当前完成 **2100 / 2180 个去重源根**，经过九十批增量工作。计划：[PLAN.md](PLAN.md)；依赖图：[DAG.md](DAG.md)；[具体例子](../../results/CORRESPONDENCE_EXAMPLES.md)。
 
 “完成”表示已经证明明示范围内的类型双向逆、指定原生运算对应或原生陈述 iff。只有接口、部分原生陈述或尚未闭合的对应不计入。
 
 | 主分类 | 冻结基线 | 当前 |
 |---|---:|---:|
 | 类型对应 | 29 | 164 |
-| 运算／谓词对应 | 114 | 903 |
+| 运算／谓词对应 | 114 | 908 |
 | 完全原生陈述 | 143 | 1028 |
 | 只有接口 | 375 | 6 |
 | 部分原生陈述 | 702 | 0 |
-| 尚无证书 | 485 | 62 |
+| 尚无证书 | 485 | 57 |
 | 条件根尚未完成对应 | 331 | 17 |
 | 非 Prop 特殊陈述尚未处理 | 1 | 0 |
 
@@ -21,13 +21,15 @@
 
 ## 本轮新增
 
-[第八十六至八十九批](BATCH86_89_RESULTS.md) 新增 **41 个去重根**：FloatOps **8/8**、FloatAxioms **33/33**。此前 SpecFloat **55/55**、PrimFloat **37/37** 均完成明示范围内对应。24 项浮点规格现在是完整原生陈述 iff；未据此宣称规格本身已独立证明。
+[第九十批](BATCH90_RESULTS.md) 完成 5 个透明 SSR predicate package。boolfunPredType、predPredType、memPredType、simplPredType 经明确的承载类型双向转换后，谓词字段与原生 (A → Bool, id) 相等；clone_pred 对应原生 Sigma 包装。没有要求不同承载类型直接相等。
 
-当前 **2095 / 2180**，剩余 85 根。部分原生陈述类别已清零；继续处理 SSR 包装值及 Type 值计算，区分承载类型的双向对应、值等式和缺失的 opaque 计算信息。运行时 Float API 等价仍未证明。
+当前 **2100 / 2180**，剩余 80 根。逐根检查发现 69 个 opaque 根及 11 个依赖 opaque 的透明包装，均为非 Prop 值；实际计算正文仍保留在 Lean 环境。见 [正文审查](reports/REMAINING_BODY_AUDIT.json)。这本身不是这些常量不能对应的证明，但提供了下一步具体方向。
+
+[独立计算透明实验](transparent-data/PLAN.md) 将保留的机械正文在新命名空间导出为可展开定义，再证明对应。其结果单独统计，不改写旧 opaque 常量，不混入原基线覆盖。
 
 ## 验证范围
 
-165 个增量 Lean profile 有与当前源码和依赖产物匹配的成功验证记录。1843 份增量覆盖证书已共同导入检查，见 [共同导入记录](reports/interop/all/import-all-validation.json)。
+166 个增量 Lean profile 有与当前源码和依赖产物匹配的成功验证记录。1848 份增量覆盖证书已共同导入检查，见 [共同导入记录](reports/interop/all/import-all-validation.json)。
 
 新证明检查公理闭包。指定原生目标递归检查类型、正文及 NativeBridge 辅助定义，不允许隐藏源符号。限制范围或函数对应假设在证书 scope 和完整类型中保留。
 

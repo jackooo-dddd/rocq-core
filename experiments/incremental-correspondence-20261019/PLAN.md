@@ -255,3 +255,9 @@ SSR Bool 的 314 个依赖/原陈述目标已有闭合证明，覆盖 271 / 275 
 ## 第八十六至八十九批：浮点转换和规格陈述完成
 
 新增 41 根，2095 / 2180。FloatOps 8/8，FloatAxioms 33/33；其中 24 项为陈述 iff，原陈述独立证明仍为 318。165 个验证 profile，144 个覆盖 profile / 1843 份证书共同导入。见 [结果](BATCH86_89_RESULTS.md)。下一步审查 SSR predicate package 的承载类型双向对应及谓词字段，继而处理剩余 Type 值数据。
+
+## 第九十批：predicate package 及 opacity 审查
+
+5 个 package 的完整对应通过，冻结基线 2100/2180。166 个 profile / 1848 份证书通过验证和共同导入。剩余 80 根经逐模块环境检查，69 个直接 opaque、11 个透明包装，均为非 Prop 值。
+
+下一步在 [transparent-data](transparent-data/PLAN.md) 建立保留正文的计算透明实验。原环境不修改；新命名空间的可展开机械定义与原生操作对应单独统计。原 opaque 常量 ↔ 新定义的值等式仍需独立证据，不能从同一正文或同一签名推出。先处理 CRelationClasses，再处理 CMorphisms、SSR、Program.Wf。

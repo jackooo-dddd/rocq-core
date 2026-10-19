@@ -669,3 +669,18 @@ flowchart TD
 ```
 
 所有节点已通过。FloatStatements 的边表示组合陈述等价所需的运算对应，不表示这些规格已经独立证明为真。
+
+## 第九十批及计算透明分支
+
+~~~mermaid
+flowchart TD
+ SSRBoolPackaging --> SSRPredicatePackages
+ SSRPredicatePackages --> Frozen2100[原基线 2100/2180]
+ Retained[原基线保留的 opaque 正文] --> TransparentPack
+ TransparentPack --> CRelationVariant[CRelation 11 个对应]
+ TransparentPack --> CMorphismVariant[CMorphism 已证明 26 个对应]
+ CRelationVariant --> VariantAudit[变体独立审计与共同导入]
+ CMorphismVariant --> VariantAudit
+~~~
+
+透明分支不回写原声明，也不计入 Frozen2100。详见 [变体结果](transparent-data/README.md)。

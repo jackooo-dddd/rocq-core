@@ -283,3 +283,14 @@ Decimal.decimal 对应“带符号整数数字、小数数字、可选带符号�
 ∀ x : nativeSpec, valid x = true → toSpec (fromSpec x) = x
 ```
 这里证明的是源陈述与此命题等价，保留了 valid 前提；尚未由这个证书独立证明该往返命题为真。primitiveRoundtrip、加法/除法/开方规格等也严格作同样区分。
+
+## 35. SSR predicate package：对应包括承载类型
+
+memPredType A 的载体是机械 mem_pred；原生载体是 A → Bool。先用 memIso 建立载体双向逆，再将 package 的谓词字段沿该 Iso 运输，得到：
+
+~~~lean
+rebase (predTypeTo A (Rocq.Corelib.ssr.ssrbool.memPredType A))
+  (A → Bool) (memIso A) = predicates A
+~~~
+
+predicates A = ⟨A → Bool, id⟩。这证明了转换后 package 的值等式；没有把两个不同 carrier 的原 package 直接视为相等。见 [完整证明](../experiments/incremental-correspondence-20261019/proofs/SSRPredicatePackages.lean)。

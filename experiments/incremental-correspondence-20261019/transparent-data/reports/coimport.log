@@ -1,0 +1,200 @@
+NativeBridge.ComputationalCorrespondence.CRelation.flipReflexive_agrees.{u, v, w} (A : Type u) (R : A → A → Type v)
+  (h : Computational.CRelation.NativeBridge.Incremental.CRelationData.reflexiveNative A R) :
+  Computational.CRelation.Rocq.Corelib.Classes.CRelationClasses.flip_Reflexive A R h =
+    NativeBridge.ComputationalCorrespondence.CRelation.flipReflexive A R h
+NativeBridge.ComputationalCorrespondence.CRelation.flipAntisymmetric_agrees.{u, v, w, t} (A : Type u)
+  (E : A → A → Type v) (equ : Computational.CRelation.NativeBridge.Incremental.CRelationData.equivalenceNative A E)
+  (R : A → A → Type w) (h : Computational.CRelation.NativeBridge.Incremental.CRelationData.antisymmetricNative A E R) :
+  Computational.CRelation.Rocq.Corelib.Classes.CRelationClasses.flip_Antisymmetric A E
+      ((Computational.CRelation.NativeBridge.Incremental.CRelationData.EquivalenceIso A E).of equ) R h =
+    NativeBridge.ComputationalCorrespondence.CRelation.flipAntisymmetric A E R h
+NativeBridge.ComputationalCorrespondence.CRelation.flipPreOrder_agrees.{u, v, w} (A : Type u) (R : A → A → Type v)
+  (h : Computational.CRelation.NativeBridge.Incremental.CRelationData.preorderNative A R) :
+  (Computational.CRelation.NativeBridge.Incremental.CRelationData.PreOrderIso A fun x y => R y x).to
+      (Computational.CRelation.Rocq.Corelib.Classes.CRelationClasses.flip_PreOrder A R
+        ((Computational.CRelation.NativeBridge.Incremental.CRelationData.PreOrderIso A R).of h)) =
+    NativeBridge.ComputationalCorrespondence.CRelation.flipPreOrder A R h
+NativeBridge.ComputationalCorrespondence.CRelation.flipPER_agrees.{u, v, w} (A : Type u) (R : A → A → Type v)
+  (h : Computational.CRelation.NativeBridge.Incremental.CRelationData.perNative A R) :
+  (Computational.CRelation.NativeBridge.Incremental.CRelationData.PERIso A fun x y => R y x).to
+      (Computational.CRelation.Rocq.Corelib.Classes.CRelationClasses.flip_PER A R
+        ((Computational.CRelation.NativeBridge.Incremental.CRelationData.PERIso A R).of h)) =
+    NativeBridge.ComputationalCorrespondence.CRelation.flipPER A R h
+NativeBridge.ComputationalCorrespondence.CRelation.flipEquivalence_agrees.{u, v, w} (A : Type u) (R : A → A → Type v)
+  (h : Computational.CRelation.NativeBridge.Incremental.CRelationData.equivalenceNative A R) :
+  (Computational.CRelation.NativeBridge.Incremental.CRelationData.EquivalenceIso A fun x y => R y x).to
+      (Computational.CRelation.Rocq.Corelib.Classes.CRelationClasses.flip_Equivalence A R
+        ((Computational.CRelation.NativeBridge.Incremental.CRelationData.EquivalenceIso A R).of h)) =
+    NativeBridge.ComputationalCorrespondence.CRelation.flipEquivalence A R h
+NativeBridge.ComputationalCorrespondence.CRelation.flipStrictOrder_agrees.{u, v, w} (A : Type u) (R : A → A → Type v)
+  (h : Computational.CRelation.NativeBridge.Incremental.CRelationStatements.strictOrderNative A R) :
+  (Computational.CRelation.NativeBridge.Incremental.CRelationStatements.strictOrderIso A fun x y => R y x).to
+      (Computational.CRelation.Rocq.Corelib.Classes.CRelationClasses.flip_StrictOrder A R
+        ((Computational.CRelation.NativeBridge.Incremental.CRelationStatements.strictOrderIso A R).of h)) =
+    NativeBridge.ComputationalCorrespondence.CRelation.flipStrictOrder A R h
+NativeBridge.ComputationalCorrespondence.CRelation.inversePartialOrder_agrees.{u, v, w, t, z} (A : Type u)
+  (E R : A → A → Type v) (equ : Computational.CRelation.NativeBridge.Incremental.CRelationData.equivalenceNative A E)
+  (pre : Computational.CRelation.NativeBridge.Incremental.CRelationData.preorderNative A R)
+  (h : Computational.CRelation.NativeBridge.Incremental.CRelationOrder.partialOrderNative A E R) :
+  Computational.CRelation.NativeBridge.Incremental.CRelationOrder.partialTo A E (fun x y => R y x)
+      (Computational.CRelation.Rocq.Corelib.Classes.CRelationClasses.PartialOrder_inverse A E
+        ((Computational.CRelation.NativeBridge.Incremental.CRelationData.EquivalenceIso A E).of equ) R
+        ((Computational.CRelation.NativeBridge.Incremental.CRelationData.PreOrderIso A R).of pre)
+        (Computational.CRelation.NativeBridge.Incremental.CRelationOrder.partialOf A E R h)) =
+    NativeBridge.ComputationalCorrespondence.CRelation.inversePartialOrder A E R h
+NativeBridge.ComputationalCorrespondence.CRelation.partialAntisymmetry_agrees.{u, v, w, t, z} (A : Type u)
+  (E R : A → A → Type v) (equ : Computational.CRelation.NativeBridge.Incremental.CRelationData.equivalenceNative A E)
+  (pre : Computational.CRelation.NativeBridge.Incremental.CRelationData.preorderNative A R)
+  (h : Computational.CRelation.NativeBridge.Incremental.CRelationOrder.partialOrderNative A E R) :
+  Computational.CRelation.Rocq.Corelib.Classes.CRelationClasses.partial_order_antisym A E
+      ((Computational.CRelation.NativeBridge.Incremental.CRelationData.EquivalenceIso A E).of equ) R
+      ((Computational.CRelation.NativeBridge.Incremental.CRelationData.PreOrderIso A R).of pre)
+      (Computational.CRelation.NativeBridge.Incremental.CRelationOrder.partialOf A E R h) =
+    NativeBridge.ComputationalCorrespondence.CRelation.partialAntisymmetry A E R h
+NativeBridge.ComputationalCorrespondence.CRelation.symmetricSubrelation_agrees.{u, v, w} (A : Type u)
+  (R : A → A → Type v) (h : Computational.CRelation.NativeBridge.Incremental.CRelationData.symmetricNative A R) :
+  Computational.CRelation.Rocq.Corelib.Classes.CRelationClasses.subrelation_symmetric A R h =
+    NativeBridge.ComputationalCorrespondence.CRelation.symmetricSubrelation A R h
+NativeBridge.ComputationalCorrespondence.CRelation.implicationPreorder_agrees.{u, v, w, t} (A : Type u) :
+  (NativeBridge.ComputationalCorrespondence.CRelation.implicationPreorderIso A).to
+      (Computational.CRelation.Rocq.Corelib.Classes.CRelationClasses.relation_implication_preorder A) =
+    NativeBridge.ComputationalCorrespondence.CRelation.implicationPreorder A
+NativeBridge.ComputationalCorrespondence.CRelation.relationEquivalenceRecord_agrees.{u, v, w, t} (A : Type u) :
+  (NativeBridge.ComputationalCorrespondence.CRelation.relationEquivalenceRecordIso A).to
+      (Computational.CRelation.Rocq.Corelib.Classes.CRelationClasses.relation_equivalence_equivalence A) =
+    NativeBridge.ComputationalCorrespondence.CRelation.relationEquivalenceRecord A
+NativeBridge.ComputationalCorrespondence.CMorphism.flip1_agrees.{u0, u1, u2, u3} (A : Type u0) (R : A → A → Type u1)
+  (S : A → A → Type u2) (h : (x y : A) → R x y → S x y) :
+  Computational.CMorphism.Rocq.Corelib.Classes.CMorphisms.flip1 A R S h =
+    NativeBridge.ComputationalCorrespondence.CMorphism.identitySubrelation A R S h
+NativeBridge.ComputationalCorrespondence.CMorphism.flip2_agrees.{u0, u1, u2, u3} (A : Type u0) (R : A → A → Type u2)
+  (S : A → A → Type u1) (h : (x y : A) → R x y → S x y) :
+  Computational.CMorphism.Rocq.Corelib.Classes.CMorphisms.flip2 A R S h =
+    NativeBridge.ComputationalCorrespondence.CMorphism.identitySubrelation A R S h
+NativeBridge.ComputationalCorrespondence.CMorphism.flipAtom_agrees.{u0, u1, u2, u3, u4} (A : Type u0)
+  (R : A → A → Type u3) (x y : A) :
+  (Computational.CMorphism.NativeBridge.Incremental.CMorphismData.pairIso
+          (R x y → (fun x y => (fun x y => R y x) y x) x y) ((fun x y => (fun x y => R y x) y x) x y → R x y)).to
+      (Computational.CMorphism.Rocq.Corelib.Classes.CMorphisms.flip_atom A R x y) =
+    NativeBridge.ComputationalCorrespondence.CMorphism.identityPair A R x y
+NativeBridge.ComputationalCorrespondence.CMorphism.forward_agrees.{u0, u1} (A B : Type u1) (p : (A → B) × (B → A)) :
+  Computational.CMorphism.Rocq.Corelib.Classes.CMorphisms.iffT_arrow_subrelation A B
+      ((Computational.CMorphism.NativeBridge.Incremental.CMorphismData.pairIso (A → B) (B → A)).of p) =
+    NativeBridge.ComputationalCorrespondence.CMorphism.forward A B p
+NativeBridge.ComputationalCorrespondence.CMorphism.backward_agrees.{u0, u1, u2, u3} (A B : Type u1)
+  (p : (A → B) × (B → A)) :
+  Computational.CMorphism.Rocq.Corelib.Classes.CMorphisms.iffT_flip_arrow_subrelation A B
+      ((Computational.CMorphism.NativeBridge.Incremental.CMorphismData.pairIso (A → B) (B → A)).of p) =
+    NativeBridge.ComputationalCorrespondence.CMorphism.backward A B p
+NativeBridge.ComputationalCorrespondence.CMorphism.reflexiveProper_agrees.{u0, u1} (A : Type u0) (R : A → A → Type u1)
+  (h : (x : A) → R x x) (x : A) :
+  Computational.CMorphism.Rocq.Corelib.Classes.CMorphisms.reflexive_proper A R h x =
+    NativeBridge.ComputationalCorrespondence.CMorphism.reflexiveAt A R h x
+NativeBridge.ComputationalCorrespondence.CMorphism.reflexiveProxy_agrees.{u0, u1} (A : Type u0) (R : A → A → Type u1)
+  (h : (x : A) → R x x) (x : A) :
+  Computational.CMorphism.Rocq.Corelib.Classes.CMorphisms.reflexive_proper_proxy A R h x =
+    NativeBridge.ComputationalCorrespondence.CMorphism.reflexiveAt A R h x
+NativeBridge.ComputationalCorrespondence.CMorphism.reflexiveSubrelation_agrees.{u0, u1} (A : Type u0)
+  (R : A → A → Type u1) :
+  Computational.CMorphism.Rocq.Corelib.Classes.CMorphisms.subrelation_refl A R =
+    NativeBridge.ComputationalCorrespondence.CMorphism.reflexiveSubrelation A R
+NativeBridge.ComputationalCorrespondence.CMorphism.forallSubrelation_agrees.{u0, u1, u2, u3, u4, u5, u6} (A : Type u0)
+  (P : A → Type u1) (R : (a : A) → P a → P a → Type u5) (S : (a : A) → P a → P a → Type u6)
+  (h : (a : A) → (x y : P a) → R a x y → S a x y) :
+  Computational.CMorphism.Rocq.Corelib.Classes.CMorphisms.forall_subrelation A P R S h =
+    NativeBridge.ComputationalCorrespondence.CMorphism.forallSubrelation A P R S h
+NativeBridge.ComputationalCorrespondence.CMorphism.pointwiseSubrelation_agrees.{u0, u1, u2, u3, u4, u5, u6}
+  (A : Type u0) (B : Type u5) (R : B → B → Type u4) (S : B → B → Type u6) (h : (x y : B) → R x y → S x y) :
+  Computational.CMorphism.Rocq.Corelib.Classes.CMorphisms.pointwise_subrelation A B R S h =
+    NativeBridge.ComputationalCorrespondence.CMorphism.pointwiseSubrelation A B R S h
+NativeBridge.ComputationalCorrespondence.CMorphism.normalizesProper_agrees.{u0, u1, u2, u3} (A : Type u0)
+  (R S : A → A → Type u3) (h : Computational.CMorphism.NativeBridge.Incremental.CMorphismData.relationPairNative A R S)
+  (x : A) (p : S x x) :
+  Computational.CMorphism.Rocq.Corelib.Classes.CMorphisms.proper_normalizes_proper A R S
+      ((Computational.CMorphism.NativeBridge.Incremental.CMorphismData.relationPairIso A R S).of h) x p =
+    NativeBridge.ComputationalCorrespondence.CMorphism.normalizesProper A R S h x p
+NativeBridge.ComputationalCorrespondence.CMorphism.symmetricFlip_agrees.{u0, u1, u2, u3, u4, u5, u6} (A : Type u4)
+  (R : A → A → Type u5) (sy : (x y : A) → R x y → R y x) (B : Type u2) (S : B → B → Type u3) (f : A → B)
+  (h : Computational.CMorphism.NativeBridge.Incremental.CMorphismData.respectfulNative A B R S f f) :
+  Computational.CMorphism.Rocq.Corelib.Classes.CMorphisms.proper_sym_flip A R sy B S f h =
+    NativeBridge.ComputationalCorrespondence.CMorphism.symmetricFlip A R sy B S f h
+NativeBridge.ComputationalCorrespondence.CMorphism.symmetricFlip2_agrees.{u0, u1, u2, u3, u4, u5, u6, u7, u8, u9, u10}
+  (A : Type u6) (R : A → A → Type u7) (sy : (x y : A) → R x y → R y x) (B : Type u8) (S : B → B → Type u9)
+  (sy2 : (x y : B) → S x y → S y x) (C : Type u2) (T : C → C → Type u5) (f : A → B → C)
+  (h : (x y : A) → R x y → (a b : B) → S a b → T (f x a) (f y b)) :
+  Computational.CMorphism.Rocq.Corelib.Classes.CMorphisms.proper_sym_flip_2 A R sy B S sy2 C T f h =
+    NativeBridge.ComputationalCorrespondence.CMorphism.symmetricFlip2 A R sy B S sy2 C T f h
+NativeBridge.ComputationalCorrespondence.CMorphism.properProxy_agrees.{u0, u1} (A : Type u0) (R : A → A → Type u1)
+  (x : A) (h : R x x) :
+  Computational.CMorphism.Rocq.Corelib.Classes.CMorphisms.proper_proper_proxy A x R h =
+    NativeBridge.ComputationalCorrespondence.CMorphism.properProxy A R x h
+NativeBridge.ComputationalCorrespondence.CMorphism.subrelationIdentity_agrees.{u0, u1, u2, u3} (A : Type u0)
+  (R : A → A → Type u2) (S : A → A → Type u3) (h : (x y : A) → R x y → S x y) :
+  Computational.CMorphism.Rocq.Corelib.Classes.CMorphisms.subrelation_id_proper A R S h =
+    NativeBridge.ComputationalCorrespondence.CMorphism.identitySubrelation A R S h
+NativeBridge.ComputationalCorrespondence.CMorphism.partialApplication_agrees.{u0, u1, u2, u3, u4, u5} (A : Type u0)
+  (B : Type u1) (R : A → A → Type u4) (S : B → B → Type u5) (f : A → B)
+  (h : Computational.CMorphism.NativeBridge.Incremental.CMorphismData.respectfulNative A B R S f f) (x : A)
+  (r : R x x) :
+  Computational.CMorphism.Rocq.Corelib.Classes.CMorphisms.Reflexive_partial_app_morphism A B R S f h x r =
+    NativeBridge.ComputationalCorrespondence.CMorphism.partialApplication A B R S f h x r
+NativeBridge.ComputationalCorrespondence.CMorphism.composeProper_agrees.{u0, u1, u2, u3, u4, u5, u6, u7, u8, u9, u10,
+    u11, u12, u13, u14, u15}
+  (A : Type u0) (B : Type u1) (C : Type u2) (R : A → A → Type u14) (S : B → B → Type u13) (T : C → C → Type u15) :
+  Computational.CMorphism.Rocq.Corelib.Classes.CMorphisms.compose_proper A B C R S T =
+    NativeBridge.ComputationalCorrespondence.CMorphism.composeProper A B C R S T
+NativeBridge.ComputationalCorrespondence.CMorphism.composeObligation_agrees.{u0, u1, u2, u3, u4, u5, u6, u7, u8, u9,
+    u10, u11, u12, u13, u14, u15}
+  (A : Type u0) (B : Type u1) (C : Type u2) (R : A → A → Type u14) (S : B → B → Type u13) (T : C → C → Type u15) :
+  Computational.CMorphism.Rocq.Corelib.Classes.CMorphisms.compose_proper_obligation_1 A B C R S T =
+    NativeBridge.ComputationalCorrespondence.CMorphism.composeProper A B C R S T
+NativeBridge.ComputationalCorrespondence.CMorphism.flipProper_agrees.{u0, u1, u2, u3, u4, u5, u6, u7, u8, u9, u10, u11,
+    u12, u13}
+  (A : Type u0) (B : Type u1) (C : Type u2) (R : A → A → Type u12) (S : B → B → Type u9) (T : C → C → Type u13)
+  (f : A → B → C) (h : (x y : A) → R x y → (a b : B) → S a b → T (f x a) (f y b)) :
+  Computational.CMorphism.Rocq.Corelib.Classes.CMorphisms.flip_proper A B C R S T f h =
+    NativeBridge.ComputationalCorrespondence.CMorphism.flipProper A B C R S T f h
+NativeBridge.ComputationalCorrespondence.CMorphism.flipObligation_agrees.{u0, u1, u2, u3, u4, u5, u6, u7, u8, u9, u10,
+    u11, u12, u13}
+  (A : Type u0) (B : Type u1) (C : Type u2) (R : A → A → Type u12) (S : B → B → Type u9) (T : C → C → Type u13)
+  (f : A → B → C) (h : (x y : A) → R x y → (a b : B) → S a b → T (f x a) (f y b)) :
+  Computational.CMorphism.Rocq.Corelib.Classes.CMorphisms.flip_proper_obligation_1 A B C R S T f h =
+    NativeBridge.ComputationalCorrespondence.CMorphism.flipProper A B C R S T f h
+NativeBridge.ComputationalCorrespondence.CMorphism.flipRespectful_agrees.{u0, u1, u2, u3, u4, u5, u6, u7, u8, u9, u10}
+  (A : Type u0) (B : Type u1) (R : A → A → Type u6) (S : B → B → Type u7) (f g : A → B) :
+  (Computational.CMorphism.NativeBridge.Incremental.CMorphismData.pairIso
+          ((fun x y => (fun f g => (x y : A) → R x y → S (f x) (g y)) y x) f g →
+            (fun f g => (x y : A) → (fun x y => R y x) x y → (fun x y => S y x) (f x) (g y)) f g)
+          ((fun f g => (x y : A) → (fun x y => R y x) x y → (fun x y => S y x) (f x) (g y)) f g →
+            (fun x y => (fun f g => (x y : A) → R x y → S (f x) (g y)) y x) f g)).to
+      (Computational.CMorphism.Rocq.Corelib.Classes.CMorphisms.flip_respectful A B R S f g) =
+    NativeBridge.ComputationalCorrespondence.CMorphism.flipRespectful A B R S f g
+NativeBridge.ComputationalCorrespondence.CMorphism.subrelationProper_agrees.{u0, u1, u2} (A : Type u0)
+  (R S : A → A → Type u2) (x : A) (h : R x x) (tag : Computational.CMorphism.Rocq.Corelib.Init.Datatypes.unit)
+  (sub : (x y : A) → R x y → S x y) :
+  Computational.CMorphism.Rocq.Corelib.Classes.CMorphisms.subrelation_proper A R x h S tag sub =
+    NativeBridge.ComputationalCorrespondence.CMorphism.subrelationProper A R S x h sub
+NativeBridge.ComputationalCorrespondence.CMorphism.subrelationRespectful_agrees.{u0, u1, u2, u3, u4, u5, u6, u7, u8}
+  (A : Type u0) (R' : A → A → Type u6) (R : A → A → Type u4) (lo : (x y : A) → R' x y → R x y) (B : Type u7)
+  (S : B → B → Type u5) (S' : B → B → Type u8) (hi : (x y : B) → S x y → S' x y) :
+  Computational.CMorphism.Rocq.Corelib.Classes.CMorphisms.subrelation_respectful A R' R lo B S S' hi =
+    NativeBridge.ComputationalCorrespondence.CMorphism.subrelationRespectful A R' R lo B S S' hi
+NativeBridge.ComputationalCorrespondence.CMorphism.symmetricEquivalence_agrees.{u0, u1, u2, u3, u4} (A : Type u0)
+  (R : A → A → Type u3) (h : (x y : A) → R x y → R y x) (x y : A) :
+  (Computational.CMorphism.NativeBridge.Incremental.CMorphismData.pairIso (R x y → (fun x y => R y x) x y)
+          ((fun x y => R y x) x y → R x y)).to
+      (Computational.CMorphism.Rocq.Corelib.Classes.CMorphisms.symmetric_equiv_flip A R h x y) =
+    NativeBridge.ComputationalCorrespondence.CMorphism.symmetricEquivalence A R h x y
+NativeBridge.ComputationalCorrespondence.CMorphism.symmetricArrow_agrees.{u0, u1, u2, u3, u4, u5} (A : Type u4)
+  (R : A → A → Type u5) (sy : (x y : A) → R x y → R y x) (f : A → Type u3) (h : (x y : A) → R x y → f x → f y) (x y : A)
+  (r : R x y) :
+  (Computational.CMorphism.NativeBridge.Incremental.CMorphismData.pairIso (f x → f y) (f y → f x)).to
+      (Computational.CMorphism.Rocq.Corelib.Classes.CMorphisms.proper_sym_arrow_iffT A R sy f h x y r) =
+    NativeBridge.ComputationalCorrespondence.CMorphism.symmetricArrow A R sy f h x y r
+NativeBridge.ComputationalCorrespondence.CMorphism.symmetricArrow2_agrees.{u0, u1, u2, u3, u4, u5, u6, u7, u8, u9}
+  (A : Type u6) (R : A → A → Type u7) (sy : (x y : A) → R x y → R y x) (B : Type u8) (S : B → B → Type u9)
+  (sy2 : (x y : B) → S x y → S y x) (f : A → B → Type u5) (h : (x y : A) → R x y → (a b : B) → S a b → f x a → f y b)
+  (x y : A) (r : R x y) (a b : B) (s : S a b) :
+  (Computational.CMorphism.NativeBridge.Incremental.CMorphismData.pairIso (f x a → f y b) (f y b → f x a)).to
+      (Computational.CMorphism.Rocq.Corelib.Classes.CMorphisms.proper_sym_arrow_iffT_2 A R sy B S sy2 f h x y r a b s) =
+    NativeBridge.ComputationalCorrespondence.CMorphism.symmetricArrow2 A R sy B S sy2 f h x y r a b s

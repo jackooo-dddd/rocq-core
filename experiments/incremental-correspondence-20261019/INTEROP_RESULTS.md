@@ -94,3 +94,5 @@ opaque 支持的独立验证见 interop/check_opaque.py 与 reports/interop/opaq
 第八十二至八十五批：PrimFloatRepresentation、PrimFloatArithmetic、PrimFloatExponent、PrimFloatSqrt；140 个覆盖 profile、1802 份证书共同导入，2426 个入口、23746 个副本。新增类型目标由现成 Option/Sum/Fin/BitVec 组成；开方保留 Nat.sqrt 原生身份。
 
 第八十六至八十九批：FloatOperations、Float64Operations、FloatStatements、FloatUlp；144 个覆盖 profile、1843 份证书共同导入，2467 个入口、26442 个副本。不同浮点闭包的证明通过重新检查及独立封装共存；24 项规格仅注册陈述 iff，没有原定理证明计数增长。
+
+第九十批：SSRPredicatePackages；145 个覆盖 profile、1848 份证书共同导入通过，2472 个入口、26507 个副本。计算透明变体另行做共同导入检查，见 [独立结果](transparent-data/README.md)，不混入本基线。
