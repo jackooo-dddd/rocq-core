@@ -2,7 +2,9 @@ Current release: mechanical nat/eq + correspondence audit, 2026-10-19.
 
 Published: translator source and fixtures; the validated mechanical translator snapshot; correspondence Lean sources, scripts and audited certificates; current per-module results and compact rule evidence; the prior source baseline and compact historical summaries.
 Remote-only via .gitignore: intermediate and historical work/runs, work/tests, work/logs, most old snapshots, probe-v1, scratch directories, compiler caches, binary build products and generated mutation reports. These are retained on the CityU workstation, not deleted.
-Large final JSON evidence is included losslessly as .json.gz; ARTIFACTS.json lists exact original paths. Run python3 scripts/restore_artifacts.py after checkout to restore the plain files. The original plain files remain locally on the workstation and Mac.
+Large final JSON evidence is included losslessly as .json.gz; ARTIFACTS.json lists exact original paths. Run python3 scripts/restore_artifacts.py after checkout to restore the plain files. The original plain files remain on the workstation; Mac keeps the compressed evidence until restoration is requested.
 Rebuild binaries and imported output modules with the pinned toolchains before running Lean proofs. Historical output paths in logs are evidence of where checks ran, not portable paths. See the experiment READMEs and reproduction scripts.
 Current indexes: README.md, RESULTS.md, RULES_REVIEW.md, results/corelib-complete/ALL_RULES.md and CORRESPONDENCE.md.
 Historical raw reports do not replace current validation. No pending proof is assumed away, and statement correspondence is not a business-theorem proof.
+
+2026-10-19 cleanup: detailed early Corelib/, improved/Corelib/ and seven trial directories are remote-only. See docs/STORAGE.md and docs/STORAGE_CLEANUP.json.
