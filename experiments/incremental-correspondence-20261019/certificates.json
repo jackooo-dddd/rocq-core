@@ -116,7 +116,7 @@
     "profile": "SSR",
     "certificate": "NativeBridge.Incremental.simplFunIso",
     "kind": "TYPE_ISO",
-    "target": "Lean function type A \u2192 B",
+    "target": "Lean function type A → B",
     "scope": "Sort parameters; both inverse laws"
   },
   {
@@ -212,7 +212,7 @@
     "profile": "SSRBool",
     "certificate": "NativeBridge.Incremental.ssrPredIso",
     "kind": "TYPE_ISO",
-    "target": "B \u2192 Bool",
+    "target": "B → Bool",
     "scope": "Type carriers with explicit Iso A B"
   },
   {
@@ -220,7 +220,7 @@
     "profile": "SSRBool",
     "certificate": "NativeBridge.Incremental.ssrRelIso",
     "kind": "TYPE_ISO",
-    "target": "B \u2192 B \u2192 Bool",
+    "target": "B → B → Bool",
     "scope": "Type carriers with explicit Iso A B"
   },
   {
@@ -228,7 +228,7 @@
     "profile": "SSRBool",
     "certificate": "NativeBridge.Incremental.reflectIso",
     "kind": "TYPE_ISO",
-    "target": "P \u2194 boolTo b = true",
+    "target": "P ↔ boolTo b = true",
     "scope": "P : Prop; fixed mechanical Bool index; both inverses; reflectedDecision also gives Decidable P"
   },
   {
@@ -332,7 +332,7 @@
     "profile": "DecimalOperations",
     "certificate": "NativeBridge.Incremental.Decimal.signedIso",
     "kind": "TYPE_ISO",
-    "target": "Bool \u00d7 List (Fin 10)",
+    "target": "Bool × List (Fin 10)",
     "scope": "all signs and digit strings, including negative zero and leading zeros",
     "target_class": "native_representation"
   },
@@ -431,7 +431,7 @@
     "profile": "DecimalOperations",
     "certificate": "NativeBridge.Incremental.Decimal.signed_int_beq_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "BEq on Bool \u00d7 List (Fin 10)",
+    "target": "BEq on Bool × List (Fin 10)",
     "scope": "all inputs; no source proof obligations",
     "target_class": "existing_api"
   },
@@ -449,7 +449,7 @@
     "profile": "HexadecimalOperations",
     "certificate": "NativeBridge.Incremental.Hexadecimal.signedIso",
     "kind": "TYPE_ISO",
-    "target": "Bool \u00d7 List (Fin 16)",
+    "target": "Bool × List (Fin 16)",
     "scope": "all signs and digit strings, including negative zero and leading zeros",
     "target_class": "native_representation"
   },
@@ -548,7 +548,7 @@
     "profile": "HexadecimalOperations",
     "certificate": "NativeBridge.Incremental.Hexadecimal.signed_int_beq_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "BEq on Bool \u00d7 List (Fin 16)",
+    "target": "BEq on Bool × List (Fin 16)",
     "scope": "all inputs; no source proof obligations",
     "target_class": "existing_api"
   },
@@ -639,7 +639,7 @@
     "certificate": "NativeBridge.Incremental.fixF_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
     "target": "WellFounded.fixF",
-    "scope": "A : Type u; P : A \u2192 Type v; arbitrary recursive step; accessibility converted",
+    "scope": "A : Type u; P : A → Type v; arbitrary recursive step; accessibility converted",
     "target_class": "existing_api"
   },
   {
@@ -648,7 +648,7 @@
     "certificate": "NativeBridge.Incremental.fix_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
     "target": "WellFounded.fix",
-    "scope": "A : Type u; P : A \u2192 Type v; arbitrary recursive step; well-foundedness converted",
+    "scope": "A : Type u; P : A → Type v; arbitrary recursive step; well-foundedness converted",
     "target_class": "existing_api"
   },
   {
@@ -657,7 +657,7 @@
     "certificate": "NativeBridge.Incremental.acc_rect_native_callback",
     "kind": "OPERATION_CORRESPONDENCE",
     "target": "Acc.rec",
-    "scope": "A : Type u; P : A \u2192 Type v; native callback transported across Acc conversion",
+    "scope": "A : Type u; P : A → Type v; native callback transported across Acc conversion",
     "target_class": "existing_api"
   },
   {
@@ -666,7 +666,7 @@
     "certificate": "NativeBridge.Incremental.acc_rec_native_callback",
     "kind": "OPERATION_CORRESPONDENCE",
     "target": "Acc.rec",
-    "scope": "A : Type u; P : A \u2192 Type; native callback transported across Acc conversion",
+    "scope": "A : Type u; P : A → Type; native callback transported across Acc conversion",
     "target_class": "existing_api"
   },
   {
@@ -675,7 +675,7 @@
     "certificate": "NativeBridge.Incremental.well_founded_induction_type_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
     "target": "WellFounded.fix",
-    "scope": "A : Type u; P : A \u2192 Type v; arbitrary recursive step",
+    "scope": "A : Type u; P : A → Type v; arbitrary recursive step",
     "target_class": "existing_api"
   },
   {
@@ -684,7 +684,7 @@
     "certificate": "NativeBridge.Incremental.well_founded_induction_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
     "target": "WellFounded.fix",
-    "scope": "A : Type u; P : A \u2192 Type; arbitrary recursive step",
+    "scope": "A : Type u; P : A → Type; arbitrary recursive step",
     "target_class": "existing_api"
   },
   {
@@ -692,8 +692,8 @@
     "profile": "DecimalOperations",
     "certificate": "NativeBridge.Incremental.Decimal.uint_dec_bl_native",
     "kind": "STATEMENT_FULL_NATIVE",
-    "target": "\u2200 (x y : List (Fin 10)), (x == y) = true \u2192 x = y",
-    "native_expression": "\u2200 (x y : List (Fin 10)), (x == y) = true \u2192 x = y",
+    "target": "∀ (x y : List (Fin 10)), (x == y) = true → x = y",
+    "native_expression": "∀ (x y : List (Fin 10)), (x == y) = true → x = y",
     "original_statement_proof": "NativeBridge.Incremental.Decimal.uint_dec_bl_proved",
     "scope": "all representations, including empty, leading-zero and signed-zero cases; native target uses only Bool/List/Fin/Prod/BEq/Eq",
     "target_class": "native_statement"
@@ -703,8 +703,8 @@
     "profile": "DecimalOperations",
     "certificate": "NativeBridge.Incremental.Decimal.uint_dec_lb_native",
     "kind": "STATEMENT_FULL_NATIVE",
-    "target": "\u2200 (x y : List (Fin 10)), x = y \u2192 (x == y) = true",
-    "native_expression": "\u2200 (x y : List (Fin 10)), x = y \u2192 (x == y) = true",
+    "target": "∀ (x y : List (Fin 10)), x = y → (x == y) = true",
+    "native_expression": "∀ (x y : List (Fin 10)), x = y → (x == y) = true",
     "original_statement_proof": "NativeBridge.Incremental.Decimal.uint_dec_lb_proved",
     "scope": "all representations, including empty, leading-zero and signed-zero cases; native target uses only Bool/List/Fin/Prod/BEq/Eq",
     "target_class": "native_statement"
@@ -714,8 +714,8 @@
     "profile": "DecimalOperations",
     "certificate": "NativeBridge.Incremental.Decimal.signed_int_dec_bl_native",
     "kind": "STATEMENT_FULL_NATIVE",
-    "target": "\u2200 (x y : Bool \u00d7 List (Fin 10)), (x == y) = true \u2192 x = y",
-    "native_expression": "\u2200 (x y : Bool \u00d7 List (Fin 10)), (x == y) = true \u2192 x = y",
+    "target": "∀ (x y : Bool × List (Fin 10)), (x == y) = true → x = y",
+    "native_expression": "∀ (x y : Bool × List (Fin 10)), (x == y) = true → x = y",
     "original_statement_proof": "NativeBridge.Incremental.Decimal.signed_int_dec_bl_proved",
     "scope": "all representations, including empty, leading-zero and signed-zero cases; native target uses only Bool/List/Fin/Prod/BEq/Eq",
     "target_class": "native_statement"
@@ -725,8 +725,8 @@
     "profile": "DecimalOperations",
     "certificate": "NativeBridge.Incremental.Decimal.signed_int_dec_lb_native",
     "kind": "STATEMENT_FULL_NATIVE",
-    "target": "\u2200 (x y : Bool \u00d7 List (Fin 10)), x = y \u2192 (x == y) = true",
-    "native_expression": "\u2200 (x y : Bool \u00d7 List (Fin 10)), x = y \u2192 (x == y) = true",
+    "target": "∀ (x y : Bool × List (Fin 10)), x = y → (x == y) = true",
+    "native_expression": "∀ (x y : Bool × List (Fin 10)), x = y → (x == y) = true",
     "original_statement_proof": "NativeBridge.Incremental.Decimal.signed_int_dec_lb_proved",
     "scope": "all representations, including empty, leading-zero and signed-zero cases; native target uses only Bool/List/Fin/Prod/BEq/Eq",
     "target_class": "native_statement"
@@ -736,8 +736,8 @@
     "profile": "HexadecimalOperations",
     "certificate": "NativeBridge.Incremental.Hexadecimal.uint_dec_bl_native",
     "kind": "STATEMENT_FULL_NATIVE",
-    "target": "\u2200 (x y : List (Fin 16)), (x == y) = true \u2192 x = y",
-    "native_expression": "\u2200 (x y : List (Fin 16)), (x == y) = true \u2192 x = y",
+    "target": "∀ (x y : List (Fin 16)), (x == y) = true → x = y",
+    "native_expression": "∀ (x y : List (Fin 16)), (x == y) = true → x = y",
     "original_statement_proof": "NativeBridge.Incremental.Hexadecimal.uint_dec_bl_proved",
     "scope": "all representations, including empty, leading-zero and signed-zero cases; native target uses only Bool/List/Fin/Prod/BEq/Eq",
     "target_class": "native_statement"
@@ -747,8 +747,8 @@
     "profile": "HexadecimalOperations",
     "certificate": "NativeBridge.Incremental.Hexadecimal.uint_dec_lb_native",
     "kind": "STATEMENT_FULL_NATIVE",
-    "target": "\u2200 (x y : List (Fin 16)), x = y \u2192 (x == y) = true",
-    "native_expression": "\u2200 (x y : List (Fin 16)), x = y \u2192 (x == y) = true",
+    "target": "∀ (x y : List (Fin 16)), x = y → (x == y) = true",
+    "native_expression": "∀ (x y : List (Fin 16)), x = y → (x == y) = true",
     "original_statement_proof": "NativeBridge.Incremental.Hexadecimal.uint_dec_lb_proved",
     "scope": "all representations, including empty, leading-zero and signed-zero cases; native target uses only Bool/List/Fin/Prod/BEq/Eq",
     "target_class": "native_statement"
@@ -758,8 +758,8 @@
     "profile": "HexadecimalOperations",
     "certificate": "NativeBridge.Incremental.Hexadecimal.signed_int_dec_bl_native",
     "kind": "STATEMENT_FULL_NATIVE",
-    "target": "\u2200 (x y : Bool \u00d7 List (Fin 16)), (x == y) = true \u2192 x = y",
-    "native_expression": "\u2200 (x y : Bool \u00d7 List (Fin 16)), (x == y) = true \u2192 x = y",
+    "target": "∀ (x y : Bool × List (Fin 16)), (x == y) = true → x = y",
+    "native_expression": "∀ (x y : Bool × List (Fin 16)), (x == y) = true → x = y",
     "original_statement_proof": "NativeBridge.Incremental.Hexadecimal.signed_int_dec_bl_proved",
     "scope": "all representations, including empty, leading-zero and signed-zero cases; native target uses only Bool/List/Fin/Prod/BEq/Eq",
     "target_class": "native_statement"
@@ -769,8 +769,8 @@
     "profile": "HexadecimalOperations",
     "certificate": "NativeBridge.Incremental.Hexadecimal.signed_int_dec_lb_native",
     "kind": "STATEMENT_FULL_NATIVE",
-    "target": "\u2200 (x y : Bool \u00d7 List (Fin 16)), x = y \u2192 (x == y) = true",
-    "native_expression": "\u2200 (x y : Bool \u00d7 List (Fin 16)), x = y \u2192 (x == y) = true",
+    "target": "∀ (x y : Bool × List (Fin 16)), x = y → (x == y) = true",
+    "native_expression": "∀ (x y : Bool × List (Fin 16)), x = y → (x == y) = true",
     "original_statement_proof": "NativeBridge.Incremental.Hexadecimal.signed_int_dec_lb_proved",
     "scope": "all representations, including empty, leading-zero and signed-zero cases; native target uses only Bool/List/Fin/Prod/BEq/Eq",
     "target_class": "native_statement"
@@ -789,7 +789,7 @@
     "profile": "DependentElimination",
     "certificate": "NativeBridge.Incremental.subtype2Iso",
     "kind": "TYPE_ISO",
-    "target": "Subtype (fun x => P x \u2227 Q x)",
+    "target": "Subtype (fun x => P x ∧ Q x)",
     "scope": "full source Sort universes; broadens an already-covered root without adding a type root",
     "target_class": "native_representation"
   },
@@ -825,7 +825,7 @@
     "profile": "DependentElimination",
     "certificate": "NativeBridge.Incremental.prod_of_sigT_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "PSigma components \u2192 PProd",
+    "target": "PSigma components → PProd",
     "scope": "full Sort carrier/family universes; dependent native motive retained; *_rec motive ends in Type, *_rect in Sort",
     "target_class": "native_expression"
   },
@@ -834,7 +834,7 @@
     "profile": "DependentElimination",
     "certificate": "NativeBridge.Incremental.sigT_of_prod_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "PProd components \u2192 PSigma",
+    "target": "PProd components → PSigma",
     "scope": "full Sort carrier/family universes; dependent native motive retained; *_rec motive ends in Type, *_rect in Sort",
     "target_class": "native_expression"
   },
@@ -933,7 +933,7 @@
     "profile": "DependentElimination",
     "certificate": "NativeBridge.Incremental.sigT_of_sig_closed_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "Subtype \u2192 PSigma proof pair",
+    "target": "Subtype → PSigma proof pair",
     "scope": "Sort carrier; Prop predicates; all extracted proof parameters explicitly instantiated with checked closed witnesses",
     "target_class": "native_expression",
     "closed_wrapper": "NativeBridge.Incremental.sigTOfSigClosed",
@@ -949,7 +949,7 @@
     "profile": "DependentElimination",
     "certificate": "NativeBridge.Incremental.sig_of_sigT_closed_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "PSigma proof pair \u2192 Subtype",
+    "target": "PSigma proof pair → Subtype",
     "scope": "Sort carrier; Prop predicates; all extracted proof parameters explicitly instantiated with checked closed witnesses",
     "target_class": "native_expression",
     "closed_wrapper": "NativeBridge.Incremental.sigOfSigTClosed",
@@ -965,7 +965,7 @@
     "profile": "DependentElimination",
     "certificate": "NativeBridge.Incremental.sig_of_sig2_closed_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "Subtype (P \u2227 Q) \u2192 Subtype P",
+    "target": "Subtype (P ∧ Q) → Subtype P",
     "scope": "Sort carrier; Prop predicates; all extracted proof parameters explicitly instantiated with checked closed witnesses",
     "target_class": "native_expression",
     "closed_wrapper": "NativeBridge.Incremental.sigOfSig2Closed",
@@ -981,7 +981,7 @@
     "profile": "DependentElimination",
     "certificate": "NativeBridge.Incremental.sigT2_of_sig2_closed_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "Subtype (P \u2227 Q) \u2192 PSigma (fun x => PProd (P x) (Q x))",
+    "target": "Subtype (P ∧ Q) → PSigma (fun x => PProd (P x) (Q x))",
     "scope": "Sort carrier; Prop predicates; all extracted proof parameters explicitly instantiated with checked closed witnesses",
     "target_class": "native_expression",
     "closed_wrapper": "NativeBridge.Incremental.sigT2OfSig2Closed",
@@ -1006,7 +1006,7 @@
     "certificate": "NativeBridge.Incremental.fixF2_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
     "target": "WellFounded.fixF on native Prod",
-    "scope": "A : Type u, B : Type v, P : A \u2192 B \u2192 Type w; native relation pulled back through prodTo; native step; both component universes and dependent result family retained",
+    "scope": "A : Type u, B : Type v, P : A → B → Type w; native relation pulled back through prodTo; native step; both component universes and dependent result family retained",
     "target_class": "existing_api"
   },
   {
@@ -1015,7 +1015,7 @@
     "certificate": "NativeBridge.Incremental.well_founded_induction_type_2_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
     "target": "WellFounded.fix on native Prod",
-    "scope": "A : Type u, B : Type v, P : A \u2192 B \u2192 Type w; native relation pulled back through prodTo; native step; both component universes and dependent result family retained",
+    "scope": "A : Type u, B : Type v, P : A → B → Type w; native relation pulled back through prodTo; native step; both component universes and dependent result family retained",
     "target_class": "existing_api"
   },
   {
@@ -1194,7 +1194,7 @@
     "profile": "DatatypeElimination",
     "certificate": "NativeBridge.Incremental.datatypes_curry_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "fun f a b => f \u27e8a,b\u27e9 with PProd",
+    "target": "fun f a b => f ⟨a,b⟩ with PProd",
     "scope": "A/B/C : Sort",
     "target_class": "native_expression"
   },
@@ -1221,7 +1221,7 @@
     "profile": "DatatypeElimination",
     "certificate": "NativeBridge.Incremental.datatypes_ID_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "(A : Type u) \u2192 A \u2192 A",
+    "target": "(A : Type u) → A → A",
     "scope": "exact equality of types",
     "target_class": "native_expression"
   },
@@ -1230,7 +1230,7 @@
     "profile": "DatatypeElimination",
     "certificate": "NativeBridge.Incremental.datatypes_IDProp_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 A : Prop, A \u2192 A",
+    "target": "∀ A : Prop, A → A",
     "scope": "iff of predicates",
     "target_class": "native_expression"
   },
@@ -1544,7 +1544,7 @@
     "profile": "RelationDefinitions",
     "certificate": "NativeBridge.Incremental.RD.relationIso",
     "kind": "TYPE_ISO",
-    "target": "A \u2192 A \u2192 Prop",
+    "target": "A → A → Prop",
     "scope": "A : Type u, arbitrary Prop-valued relation; proof structures use proof irrelevance for inverse laws",
     "target_class": "native_representation"
   },
@@ -1562,7 +1562,7 @@
     "profile": "RelationDefinitions",
     "certificate": "NativeBridge.Incremental.RD.preorderIso",
     "kind": "TYPE_ISO",
-    "target": "(\u2200 x, R x x) \u2227 (\u2200 x y z, R x y \u2192 R y z \u2192 R x z)",
+    "target": "(∀ x, R x x) ∧ (∀ x y z, R x y → R y z → R x z)",
     "scope": "A : Type u, arbitrary Prop-valued relation; proof structures use proof irrelevance for inverse laws",
     "target_class": "native_representation"
   },
@@ -1571,7 +1571,7 @@
     "profile": "RelationDefinitions",
     "certificate": "NativeBridge.Incremental.RD.orderIso",
     "kind": "TYPE_ISO",
-    "target": "NativePreorder R \u2227 (\u2200 x y, R x y \u2192 R y x \u2192 x = y)",
+    "target": "NativePreorder R ∧ (∀ x y, R x y → R y x → x = y)",
     "scope": "A : Type u, arbitrary Prop-valued relation; proof structures use proof irrelevance for inverse laws",
     "target_class": "native_representation"
   },
@@ -1580,7 +1580,7 @@
     "profile": "RelationDefinitions",
     "certificate": "NativeBridge.Incremental.RD.perIso",
     "kind": "TYPE_ISO",
-    "target": "symmetry \u2227 transitivity",
+    "target": "symmetry ∧ transitivity",
     "scope": "A : Type u, arbitrary Prop-valued relation; proof structures use proof irrelevance for inverse laws",
     "target_class": "native_representation"
   },
@@ -1589,7 +1589,7 @@
     "profile": "RelationDefinitions",
     "certificate": "NativeBridge.Incremental.RD.reflexive_native",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 x, R x x",
+    "target": "∀ x, R x x",
     "scope": "A : Type u; iff of relation predicates",
     "target_class": "native_expression"
   },
@@ -1598,7 +1598,7 @@
     "profile": "RelationDefinitions",
     "certificate": "NativeBridge.Incremental.RD.symmetric_native",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 x y, R x y \u2192 R y x",
+    "target": "∀ x y, R x y → R y x",
     "scope": "A : Type u; iff of relation predicates",
     "target_class": "native_expression"
   },
@@ -1607,7 +1607,7 @@
     "profile": "RelationDefinitions",
     "certificate": "NativeBridge.Incremental.RD.transitive_native",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 x y z, R x y \u2192 R y z \u2192 R x z",
+    "target": "∀ x y z, R x y → R y z → R x z",
     "scope": "A : Type u; iff of relation predicates",
     "target_class": "native_expression"
   },
@@ -1616,7 +1616,7 @@
     "profile": "RelationDefinitions",
     "certificate": "NativeBridge.Incremental.RD.antisymmetric_native",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 x y, R x y \u2192 R y x \u2192 x = y",
+    "target": "∀ x y, R x y → R y x → x = y",
     "scope": "A : Type u; iff of relation predicates",
     "target_class": "native_expression"
   },
@@ -1634,7 +1634,7 @@
     "profile": "RelationDefinitions",
     "certificate": "NativeBridge.Incremental.RD.same_relation_native",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 x y, R x y \u2194 S x y",
+    "target": "∀ x y, R x y ↔ S x y",
     "scope": "A : Type u; iff of relation predicates",
     "target_class": "native_expression"
   },
@@ -1643,7 +1643,7 @@
     "profile": "RelationDefinitions",
     "certificate": "NativeBridge.Incremental.RD.commut_native",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 x y, R y x \u2192 \u2200 z, S z y \u2192 \u2203 t, S t x \u2227 R z t",
+    "target": "∀ x y, R y x → ∀ z, S z y → ∃ t, S t x ∧ R z t",
     "scope": "A : Type u; iff of relation predicates",
     "target_class": "native_expression"
   },
@@ -1816,7 +1816,7 @@
     "profile": "RelationClasses",
     "certificate": "NativeBridge.Incremental.RC.unaryOperationIso",
     "kind": "TYPE_ISO",
-    "target": "A \u2192 A",
+    "target": "A → A",
     "scope": "A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion",
     "target_class": "native_representation"
   },
@@ -1825,7 +1825,7 @@
     "profile": "RelationClasses",
     "certificate": "NativeBridge.Incremental.RC.binaryOperationIso",
     "kind": "TYPE_ISO",
-    "target": "A \u2192 A \u2192 A",
+    "target": "A → A → A",
     "scope": "A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion",
     "target_class": "native_representation"
   },
@@ -1834,7 +1834,7 @@
     "profile": "RelationClasses",
     "certificate": "NativeBridge.Incremental.RC.ternaryOperationIso",
     "kind": "TYPE_ISO",
-    "target": "A \u2192 A \u2192 A \u2192 A",
+    "target": "A → A → A → A",
     "scope": "A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion",
     "target_class": "native_representation"
   },
@@ -1843,7 +1843,7 @@
     "profile": "RelationClasses",
     "certificate": "NativeBridge.Incremental.RC.unaryPredicateIso",
     "kind": "TYPE_ISO",
-    "target": "A \u2192 Prop",
+    "target": "A → Prop",
     "scope": "A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion",
     "target_class": "native_representation"
   },
@@ -1852,7 +1852,7 @@
     "profile": "RelationClasses",
     "certificate": "NativeBridge.Incremental.RC.binaryRelationIso",
     "kind": "TYPE_ISO",
-    "target": "A \u2192 A \u2192 Prop",
+    "target": "A → A → Prop",
     "scope": "A : Type u; unary_predicate additionally preserves both independent source universe parameters through explicit PULift conversion",
     "target_class": "native_representation"
   },
@@ -1861,7 +1861,7 @@
     "profile": "RelationClasses",
     "certificate": "NativeBridge.Incremental.RC.reflexive_native",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 x, R x x",
+    "target": "∀ x, R x x",
     "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
     "target_class": "native_expression"
   },
@@ -1870,7 +1870,7 @@
     "profile": "RelationClasses",
     "certificate": "NativeBridge.Incremental.RC.symmetric_native",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 x y, R x y \u2192 R y x",
+    "target": "∀ x y, R x y → R y x",
     "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
     "target_class": "native_expression"
   },
@@ -1879,7 +1879,7 @@
     "profile": "RelationClasses",
     "certificate": "NativeBridge.Incremental.RC.transitive_native",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 x y z, R x y \u2192 R y z \u2192 R x z",
+    "target": "∀ x y z, R x y → R y z → R x z",
     "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
     "target_class": "native_expression"
   },
@@ -1888,7 +1888,7 @@
     "profile": "RelationClasses",
     "certificate": "NativeBridge.Incremental.RC.complement_native",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u00ac R x y",
+    "target": "¬ R x y",
     "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
     "target_class": "native_expression"
   },
@@ -1897,7 +1897,7 @@
     "profile": "RelationClasses",
     "certificate": "NativeBridge.Incremental.RC.irreflexive_native",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 x, \u00ac R x x",
+    "target": "∀ x, ¬ R x x",
     "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
     "target_class": "native_expression"
   },
@@ -1906,7 +1906,7 @@
     "profile": "RelationClasses",
     "certificate": "NativeBridge.Incremental.RC.asymmetric_native",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 x y, R x y \u2192 \u00ac R y x",
+    "target": "∀ x y, R x y → ¬ R y x",
     "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
     "target_class": "native_expression"
   },
@@ -1924,7 +1924,7 @@
     "profile": "RelationClasses",
     "certificate": "NativeBridge.Incremental.RC.conjunction_native",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "R x y \u2227 S x y",
+    "target": "R x y ∧ S x y",
     "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
     "target_class": "native_expression"
   },
@@ -1933,7 +1933,7 @@
     "profile": "RelationClasses",
     "certificate": "NativeBridge.Incremental.RC.disjunction_native",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "R x y \u2228 S x y",
+    "target": "R x y ∨ S x y",
     "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
     "target_class": "native_expression"
   },
@@ -1942,7 +1942,7 @@
     "profile": "RelationClasses",
     "certificate": "NativeBridge.Incremental.RC.relation_equivalence_native",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 x y, R x y \u2194 S x y",
+    "target": "∀ x y, R x y ↔ S x y",
     "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
     "target_class": "native_expression"
   },
@@ -1951,7 +1951,7 @@
     "profile": "RelationClasses",
     "certificate": "NativeBridge.Incremental.RC.antisymmetric_native",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 x y, R x y \u2192 R y x \u2192 E x y",
+    "target": "∀ x y, R x y → R y x → E x y",
     "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
     "target_class": "native_expression"
   },
@@ -1960,7 +1960,7 @@
     "profile": "RelationClasses",
     "certificate": "NativeBridge.Incremental.RC.partialOrder_native",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 x y, E x y \u2194 R x y \u2227 R y x",
+    "target": "∀ x y, E x y ↔ R x y ∧ R y x",
     "scope": "A : Type u; relation E remains an arbitrary native equivalence; PartialOrder retains native equivalence and preorder premises, not identified with equality-based Lean PartialOrder",
     "target_class": "native_expression"
   },
@@ -1978,7 +1978,7 @@
     "profile": "VariadicPredicates",
     "certificate": "NativeBridge.Incremental.Variadic.arrowsIso",
     "kind": "TYPE_ISO",
-    "target": "Arguments (typesTo ts) \u2192 B",
+    "target": "Arguments (typesTo ts) → B",
     "scope": "arbitrary universe u and finite heterogeneous Type u argument list; B : Type u; explicit curry/uncurry inverse proofs",
     "target_class": "native_representation"
   },
@@ -2014,7 +2014,7 @@
     "profile": "VariadicPredicates",
     "certificate": "NativeBridge.Incremental.Variadic.pointwise_lifting_native",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 args, op (f args) (g args)",
+    "target": "∀ args, op (f args) (g args)",
     "scope": "all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v",
     "target_class": "native_expression"
   },
@@ -2023,7 +2023,7 @@
     "profile": "VariadicPredicates",
     "certificate": "NativeBridge.Incremental.Variadic.predicate_all_native",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 args, f args",
+    "target": "∀ args, f args",
     "scope": "all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v",
     "target_class": "native_expression"
   },
@@ -2032,7 +2032,7 @@
     "profile": "VariadicPredicates",
     "certificate": "NativeBridge.Incremental.Variadic.predicate_exists_native",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2203 args, f args",
+    "target": "∃ args, f args",
     "scope": "all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v",
     "target_class": "native_expression"
   },
@@ -2041,7 +2041,7 @@
     "profile": "VariadicPredicates",
     "certificate": "NativeBridge.Incremental.Variadic.predicate_equivalence_native",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 args, f args \u2194 g args",
+    "target": "∀ args, f args ↔ g args",
     "scope": "all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v",
     "target_class": "native_expression"
   },
@@ -2050,7 +2050,7 @@
     "profile": "VariadicPredicates",
     "certificate": "NativeBridge.Incremental.Variadic.predicate_implication_native",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 args, f args \u2192 g args",
+    "target": "∀ args, f args → g args",
     "scope": "all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v",
     "target_class": "native_expression"
   },
@@ -2059,7 +2059,7 @@
     "profile": "VariadicPredicates",
     "certificate": "NativeBridge.Incremental.Variadic.predicate_intersection_native",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "fun args => f args \u2227 g args",
+    "target": "fun args => f args ∧ g args",
     "scope": "all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v",
     "target_class": "native_expression"
   },
@@ -2068,7 +2068,7 @@
     "profile": "VariadicPredicates",
     "certificate": "NativeBridge.Incremental.Variadic.predicate_union_native",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "fun args => f args \u2228 g args",
+    "target": "fun args => f args ∨ g args",
     "scope": "all finite Type u lists; tuple argument representation; PULift Prop is explicitly removed for native predicates; Tlist_rect native motive Type v",
     "target_class": "native_expression"
   },
@@ -2234,8 +2234,8 @@
     "profile": "Morphisms",
     "certificate": "NativeBridge.Incremental.Morphisms.forallDefIso",
     "kind": "TYPE_ISO",
-    "target": "(a : A) \u2192 P a",
-    "scope": "A : Type u; P : A \u2192 Type u",
+    "target": "(a : A) → P a",
+    "scope": "A : Type u; P : A → Type u",
     "target_class": "native_representation"
   },
   {
@@ -2297,7 +2297,7 @@
     "profile": "Morphisms",
     "certificate": "NativeBridge.Incremental.Morphisms.reflexiveProxy_native",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 x, R x x",
+    "target": "∀ x, R x x",
     "scope": "A : Type u",
     "target_class": "native_expression"
   },
@@ -2306,7 +2306,7 @@
     "profile": "Morphisms",
     "certificate": "NativeBridge.Incremental.Morphisms.respectful_native",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 x y, R x y \u2192 S (f x) (g y)",
+    "target": "∀ x y, R x y → S (f x) (g y)",
     "scope": "A, B : Type u as in the mechanical signature",
     "target_class": "native_expression"
   },
@@ -2315,7 +2315,7 @@
     "profile": "Morphisms",
     "certificate": "NativeBridge.Incremental.Morphisms.respectful_hetero_native",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 x y, R x y \u2192 S x y (f x) (g y)",
+    "target": "∀ x y, R x y → S x y (f x) (g y)",
     "scope": "independent Sort u/v carriers and Sort w/z dependent codomains",
     "target_class": "native_expression"
   },
@@ -2324,7 +2324,7 @@
     "profile": "Morphisms",
     "certificate": "NativeBridge.Incremental.Morphisms.pointwise_relation_native",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 x, R (f x) (g x)",
+    "target": "∀ x, R (f x) (g x)",
     "scope": "A : Type u, B : Type v with independent universes",
     "target_class": "native_expression"
   },
@@ -2333,8 +2333,8 @@
     "profile": "Morphisms",
     "certificate": "NativeBridge.Incremental.Morphisms.forall_relation_native",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 x, R x (f x) (g x)",
-    "scope": "A : Type u and dependent P : A \u2192 Type u",
+    "target": "∀ x, R x (f x) (g x)",
+    "scope": "A : Type u and dependent P : A → Type u",
     "target_class": "native_expression"
   },
   {
@@ -2342,7 +2342,7 @@
     "profile": "Morphisms",
     "certificate": "NativeBridge.Incremental.Morphisms.normalizes_native",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 x y, R x y \u2194 S x y",
+    "target": "∀ x y, R x y ↔ S x y",
     "scope": "A : Type u; logical relation equivalence, not a runtime normalization algorithm",
     "target_class": "native_expression"
   },
@@ -2369,7 +2369,7 @@
     "profile": "EquivalenceBridge",
     "certificate": "NativeBridge.Incremental.EquivalenceBridge.respectingIso",
     "kind": "TYPE_ISO",
-    "target": "{f : A \u2192 B // \u2200 x y, R x y \u2192 S (f x) (f y)}",
+    "target": "{f : A → B // ∀ x y, R x y → S (f x) (f y)}",
     "scope": "A, B : Type u as in source signature; arbitrary native equivalence relations and explicit converted evidence",
     "target_class": "native_representation"
   },
@@ -2550,7 +2550,7 @@
     "profile": "NumericWrite",
     "certificate": "NativeBridge.Incremental.NumericWrite.numberSignedIso",
     "kind": "TYPE_ISO",
-    "target": "Sum (Bool \u00d7 List (Fin 10)) (Bool \u00d7 List (Fin 16))",
+    "target": "Sum (Bool × List (Fin 10)) (Bool × List (Fin 16))",
     "target_class": "native_representation",
     "scope": "Radix, sign tag, empty representation and redundant zeros retained. Not a bijection to Int."
   },
@@ -2667,7 +2667,7 @@
     "kind": "OPERATION_CORRESPONDENCE",
     "target": "Native Nat division/remainder with explicit quotient and countdown accumulator adapter",
     "target_class": "existing_api",
-    "scope": "All four Nat parameters, including initial countdown u > y. If x \u2264 u returns (q,u-x); otherwise t=x-(u+1)+(q+1)*(y+1), result (t/(y+1),y-t%(y+1))."
+    "scope": "All four Nat parameters, including initial countdown u > y. If x ≤ u returns (q,u-x); otherwise t=x-(u+1)+(q+1)*(y+1), result (t/(y+1),y-t%(y+1))."
   },
   {
     "source": "Corelib.Init.Nat.sqrt_iter",
@@ -2782,7 +2782,7 @@
     "profile": "BinaryOrder",
     "certificate": "NativeBridge.Incremental.BinaryOrder.positive_leb_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "decide (n \u2264 m) : Bool",
+    "target": "decide (n ≤ m) : Bool",
     "target_class": "existing_api",
     "scope": "All values of the mechanical numeric input types; no extra hypotheses."
   },
@@ -2800,7 +2800,7 @@
     "profile": "BinaryOrder",
     "certificate": "NativeBridge.Incremental.BinaryOrder.n_leb_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "decide (n \u2264 m) : Bool",
+    "target": "decide (n ≤ m) : Bool",
     "target_class": "existing_api",
     "scope": "All values of the mechanical numeric input types; no extra hypotheses."
   },
@@ -2926,7 +2926,7 @@
     "profile": "BinaryInt",
     "certificate": "NativeBridge.Incremental.BinaryInt.z_le_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "Int \u2264",
+    "target": "Int ≤",
     "target_class": "existing_api",
     "scope": "All values of the mechanical numeric input types; no extra hypotheses."
   },
@@ -2935,7 +2935,7 @@
     "profile": "BinaryInt",
     "certificate": "NativeBridge.Incremental.BinaryInt.z_ge_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "Int \u2265",
+    "target": "Int ≥",
     "target_class": "existing_api",
     "scope": "All values of the mechanical numeric input types; no extra hypotheses."
   },
@@ -2953,7 +2953,7 @@
     "profile": "BinaryInt",
     "certificate": "NativeBridge.Incremental.BinaryInt.z_leb_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "decide (x \u2264 y) : Bool",
+    "target": "decide (x ≤ y) : Bool",
     "target_class": "existing_api",
     "scope": "All values of the mechanical numeric input types; no extra hypotheses."
   },
@@ -2971,7 +2971,7 @@
     "profile": "BinaryInt",
     "certificate": "NativeBridge.Incremental.BinaryInt.z_max_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "max : Int \u2192 Int \u2192 Int",
+    "target": "max : Int → Int → Int",
     "target_class": "existing_api",
     "scope": "All values of the mechanical numeric input types; no extra hypotheses."
   },
@@ -2980,7 +2980,7 @@
     "profile": "BinaryInt",
     "certificate": "NativeBridge.Incremental.BinaryInt.z_min_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "min : Int \u2192 Int \u2192 Int",
+    "target": "min : Int → Int → Int",
     "target_class": "existing_api",
     "scope": "All values of the mechanical numeric input types; no extra hypotheses."
   },
@@ -2991,14 +2991,14 @@
     "kind": "TYPE_ISO",
     "target": "Option Nat",
     "target_class": "native_representation",
-    "scope": "IsNeg \u2194 none, IsNul \u2194 some 0, IsPos p \u2194 some (positiveTo p); both inverse laws, all values. Negative magnitude was not stored by source mask."
+    "scope": "IsNeg ↔ none, IsNul ↔ some 0, IsPos p ↔ some (positiveTo p); both inverse laws, all values. Negative magnitude was not stored by source mask."
   },
   {
     "source": "Corelib.BinNums.PosDef.Pos.double_mask",
     "profile": "BinaryMask",
     "certificate": "NativeBridge.Incremental.BinaryMask.double_mask_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "Option.map (2*\u00b7)",
+    "target": "Option.map (2*·)",
     "target_class": "existing_api",
     "scope": "All masks."
   },
@@ -3025,7 +3025,7 @@
     "profile": "BinaryMask",
     "certificate": "NativeBridge.Incremental.BinaryMask.sub_mask_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "if m \u2264 n then some (n-m) else none",
+    "target": "if m ≤ n then some (n-m) else none",
     "target_class": "native_expression",
     "scope": "All positive inputs; negative result distinguished from zero."
   },
@@ -3034,7 +3034,7 @@
     "profile": "BinaryMask",
     "certificate": "NativeBridge.Incremental.BinaryMask.sub_mask_carry_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "if m+1 \u2264 n then some (n-(m+1)) else none",
+    "target": "if m+1 ≤ n then some (n-(m+1)) else none",
     "target_class": "native_expression",
     "scope": "All positive inputs; includes explicit borrow."
   },
@@ -3151,7 +3151,7 @@
     "profile": "DatatypeNormalization",
     "certificate": "NativeBridge.Incremental.DatatypeNormalization.reflectIso",
     "kind": "TYPE_ISO",
-    "target": "PLift (if b then P else \u00acP)",
+    "target": "PLift (if b then P else ¬P)",
     "target_class": "native_representation",
     "scope": "All P : Prop and boolean indices; indexed bridge in addition to the existing reflect correspondence."
   },
@@ -3271,7 +3271,7 @@
     "profile": "LogicNormalization",
     "certificate": "NativeBridge.Incremental.LogicNormalization.unique_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "P x \u2227 \u2200 y, P y \u2192 x = y",
+    "target": "P x ∧ ∀ y, P y → x = y",
     "scope": "full source Sort parameters; heterogeneous source/target for subrelation",
     "target_class": "native_expression"
   },
@@ -3280,7 +3280,7 @@
     "profile": "LogicNormalization",
     "certificate": "NativeBridge.Incremental.LogicNormalization.uniqueness_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 x y, P x \u2192 P y \u2192 x = y",
+    "target": "∀ x y, P x → P y → x = y",
     "scope": "full source Sort parameters; heterogeneous source/target for subrelation",
     "target_class": "native_expression"
   },
@@ -3289,7 +3289,7 @@
     "profile": "LogicNormalization",
     "certificate": "NativeBridge.Incremental.LogicNormalization.subrelation_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 x y, R x y \u2192 S x y",
+    "target": "∀ x y, R x y → S x y",
     "scope": "full source Sort parameters; heterogeneous source/target for subrelation",
     "target_class": "native_expression"
   },
@@ -4250,7 +4250,7 @@
     "certificate": "NativeBridge.Incremental.SpecifOperations.choice_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
     "target": "nativeChoice: dependent pointwise selection and its proof",
-    "scope": "S,T : Type, R : S \u2192 T \u2192 Prop; explicit dependent selections supplied",
+    "scope": "S,T : Type, R : S → T → Prop; explicit dependent selections supplied",
     "target_class": "native_expression",
     "closed_wrapper": "NativeBridge.Incremental.SpecifOperations.choiceClosed",
     "condition_discharges": [
@@ -4266,7 +4266,7 @@
     "certificate": "NativeBridge.Incremental.SpecifOperations.choice2_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
     "target": "nativeChoice2: PSigma distributes over a dependent function",
-    "scope": "S,T : Type; R : S \u2192 T \u2192 Type; explicit dependent selections supplied",
+    "scope": "S,T : Type; R : S → T → Type; explicit dependent selections supplied",
     "target_class": "native_expression"
   },
   {
@@ -4274,8 +4274,8 @@
     "profile": "SpecifOperations",
     "certificate": "NativeBridge.Incremental.SpecifOperations.sig2_of_sigT2_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "PSigma of two proofs \u2192 Subtype of conjunction",
-    "scope": "A : Sort u; P,Q : A \u2192 Prop",
+    "target": "PSigma of two proofs → Subtype of conjunction",
+    "scope": "A : Sort u; P,Q : A → Prop",
     "target_class": "native_expression",
     "closed_wrapper": "NativeBridge.Incremental.SpecifOperations.sig2OfSigT2Closed",
     "condition_discharges": [
@@ -4367,7 +4367,7 @@
     "certificate": "NativeBridge.Incremental.SpecifChoice.bool_choice_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
     "target": "nativeBoolChoice: Bool-valued choice with native disjunctive certificate",
-    "scope": "S : Type, P,Q : S \u2192 Prop; supplied pointwise PSum evidence; no choice axiom",
+    "scope": "S : Type, P,Q : S → Prop; supplied pointwise PSum evidence; no choice axiom",
     "target_class": "native_expression",
     "closed_wrapper": "NativeBridge.Incremental.SpecifChoice.boolChoiceClosed",
     "condition_discharges": [
@@ -4383,7 +4383,7 @@
     "certificate": "NativeBridge.Incremental.SpecifChoice.dependent_choice_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
     "target": "nativeDependentChoice: Nat.rec iteration with adjacent-step certificates",
-    "scope": "X : Sort u; R : X \u2192 X \u2192 Prop; supplied successor-selection function",
+    "scope": "X : Sort u; R : X → X → Prop; supplied successor-selection function",
     "target_class": "native_expression",
     "closed_wrapper": "NativeBridge.Incremental.SpecifChoice.dependentChoiceClosed",
     "condition_discharges": [
@@ -5754,8 +5754,8 @@
     "profile": "SSRFunPredicates",
     "certificate": "NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.all_equal_to.correspondence",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "fun T x0 => \u2200 (x : T), x = x0",
-    "native_expression": "fun T x0 => \u2200 (x : T), x = x0",
+    "target": "fun T x0 => ∀ (x : T), x = x0",
+    "native_expression": "fun T x0 => ∀ (x : T), x = x0",
     "scope": "all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols",
     "target_class": "native_expression"
   },
@@ -5764,8 +5764,8 @@
     "profile": "SSRFunPredicates",
     "certificate": "NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.homomorphism_1.correspondence",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "fun aT rT f aP rP => \u2200 (x : aT), aP x \u2192 rP (f x)",
-    "native_expression": "fun aT rT f aP rP => \u2200 (x : aT), aP x \u2192 rP (f x)",
+    "target": "fun aT rT f aP rP => ∀ (x : aT), aP x → rP (f x)",
+    "native_expression": "fun aT rT f aP rP => ∀ (x : aT), aP x → rP (f x)",
     "scope": "all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols",
     "target_class": "native_expression"
   },
@@ -5774,8 +5774,8 @@
     "profile": "SSRFunPredicates",
     "certificate": "NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.homomorphism_2.correspondence",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "fun aT rT f aR rR => \u2200 (x y : aT), aR x y \u2192 rR (f x) (f y)",
-    "native_expression": "fun aT rT f aR rR => \u2200 (x y : aT), aR x y \u2192 rR (f x) (f y)",
+    "target": "fun aT rT f aR rR => ∀ (x y : aT), aR x y → rR (f x) (f y)",
+    "native_expression": "fun aT rT f aR rR => ∀ (x y : aT), aR x y → rR (f x) (f y)",
     "scope": "all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols",
     "target_class": "native_expression"
   },
@@ -5784,8 +5784,8 @@
     "profile": "SSRFunPredicates",
     "certificate": "NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.idempotent_fun.correspondence",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "fun U f => f \u2218 f = f",
-    "native_expression": "fun U f => f \u2218 f = f",
+    "target": "fun U f => f ∘ f = f",
+    "native_expression": "fun U f => f ∘ f = f",
     "scope": "all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols",
     "target_class": "native_expression"
   },
@@ -5794,8 +5794,8 @@
     "profile": "SSRFunPredicates",
     "certificate": "NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.idempotent_op.correspondence",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "fun S op => \u2200 (x : S), op x x = x",
-    "native_expression": "fun S op => \u2200 (x : S), op x x = x",
+    "target": "fun S op => ∀ (x : S), op x x = x",
+    "native_expression": "fun S op => ∀ (x : S), op x x = x",
     "scope": "all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols",
     "target_class": "native_expression"
   },
@@ -5804,8 +5804,8 @@
     "profile": "SSRFunPredicates",
     "certificate": "NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.injective2.correspondence",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "fun rT aT1 aT2 f => \u2200 (x1 x2 : aT1) (y1 y2 : aT2), f x1 y1 = f x2 y2 \u2192 x1 = x2 \u2227 y1 = y2",
-    "native_expression": "fun rT aT1 aT2 f => \u2200 (x1 x2 : aT1) (y1 y2 : aT2), f x1 y1 = f x2 y2 \u2192 x1 = x2 \u2227 y1 = y2",
+    "target": "fun rT aT1 aT2 f => ∀ (x1 x2 : aT1) (y1 y2 : aT2), f x1 y1 = f x2 y2 → x1 = x2 ∧ y1 = y2",
+    "native_expression": "fun rT aT1 aT2 f => ∀ (x1 x2 : aT1) (y1 y2 : aT2), f x1 y1 = f x2 y2 → x1 = x2 ∧ y1 = y2",
     "scope": "all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols",
     "target_class": "native_expression"
   },
@@ -5814,8 +5814,8 @@
     "profile": "SSRFunPredicates",
     "certificate": "NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.interchange.correspondence",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "fun S op1 op2 => \u2200 (x y z t : S), op1 (op2 x y) (op2 z t) = op2 (op1 x z) (op1 y t)",
-    "native_expression": "fun S op1 op2 => \u2200 (x y z t : S), op1 (op2 x y) (op2 z t) = op2 (op1 x z) (op1 y t)",
+    "target": "fun S op1 op2 => ∀ (x y z t : S), op1 (op2 x y) (op2 z t) = op2 (op1 x z) (op1 y t)",
+    "native_expression": "fun S op1 op2 => ∀ (x y z t : S), op1 (op2 x y) (op2 z t) = op2 (op1 x z) (op1 y t)",
     "scope": "all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols",
     "target_class": "native_expression"
   },
@@ -5824,8 +5824,8 @@
     "profile": "SSRFunPredicates",
     "certificate": "NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.left_commutative.correspondence",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "fun S T op => \u2200 (x y : S) (z : T), op x (op y z) = op y (op x z)",
-    "native_expression": "fun S T op => \u2200 (x y : S) (z : T), op x (op y z) = op y (op x z)",
+    "target": "fun S T op => ∀ (x y : S) (z : T), op x (op y z) = op y (op x z)",
+    "native_expression": "fun S T op => ∀ (x y : S) (z : T), op x (op y z) = op y (op x z)",
     "scope": "all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols",
     "target_class": "native_expression"
   },
@@ -5834,8 +5834,8 @@
     "profile": "SSRFunPredicates",
     "certificate": "NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.left_distributive.correspondence",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "fun S T op add => \u2200 (x y : S) (z : T), op (add x y) z = add (op x z) (op y z)",
-    "native_expression": "fun S T op add => \u2200 (x y : S) (z : T), op (add x y) z = add (op x z) (op y z)",
+    "target": "fun S T op add => ∀ (x y : S) (z : T), op (add x y) z = add (op x z) (op y z)",
+    "native_expression": "fun S T op add => ∀ (x y : S) (z : T), op (add x y) z = add (op x z) (op y z)",
     "scope": "all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols",
     "target_class": "native_expression"
   },
@@ -5844,8 +5844,8 @@
     "profile": "SSRFunPredicates",
     "certificate": "NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.left_injective.correspondence",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "fun S T R op => \u2200 (x : T) (x_1 y : S), op x_1 x = op y x \u2192 x_1 = y",
-    "native_expression": "fun S T R op => \u2200 (x : T) (x_1 y : S), op x_1 x = op y x \u2192 x_1 = y",
+    "target": "fun S T R op => ∀ (x : T) (x_1 y : S), op x_1 x = op y x → x_1 = y",
+    "native_expression": "fun S T R op => ∀ (x : T) (x_1 y : S), op x_1 x = op y x → x_1 = y",
     "scope": "all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols",
     "target_class": "native_expression"
   },
@@ -5854,8 +5854,8 @@
     "profile": "SSRFunPredicates",
     "certificate": "NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.left_inverse.correspondence",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "fun S T R e inv op => \u2200 (x : T), op (inv x) x = e",
-    "native_expression": "fun S T R e inv op => \u2200 (x : T), op (inv x) x = e",
+    "target": "fun S T R e inv op => ∀ (x : T), op (inv x) x = e",
+    "native_expression": "fun S T R e inv op => ∀ (x : T), op (inv x) x = e",
     "scope": "all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols",
     "target_class": "native_expression"
   },
@@ -5864,8 +5864,8 @@
     "profile": "SSRFunPredicates",
     "certificate": "NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.left_loop.correspondence",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "fun S T inv op => \u2200 (x : S) (x_1 : T), op (inv x) (op x x_1) = x_1",
-    "native_expression": "fun S T inv op => \u2200 (x : S) (x_1 : T), op (inv x) (op x x_1) = x_1",
+    "target": "fun S T inv op => ∀ (x : S) (x_1 : T), op (inv x) (op x x_1) = x_1",
+    "native_expression": "fun S T inv op => ∀ (x : S) (x_1 : T), op (inv x) (op x x_1) = x_1",
     "scope": "all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols",
     "target_class": "native_expression"
   },
@@ -5874,8 +5874,8 @@
     "profile": "SSRFunPredicates",
     "certificate": "NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.left_zero.correspondence",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "fun S T z op => \u2200 (x : T), op z x = z",
-    "native_expression": "fun S T z op => \u2200 (x : T), op z x = z",
+    "target": "fun S T z op => ∀ (x : T), op z x = z",
+    "native_expression": "fun S T z op => ∀ (x : T), op z x = z",
     "scope": "all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols",
     "target_class": "native_expression"
   },
@@ -5884,8 +5884,8 @@
     "profile": "SSRFunPredicates",
     "certificate": "NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.monomorphism_1.correspondence",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "fun aT rT sT f aP rP => \u2200 (x : aT), rP (f x) = aP x",
-    "native_expression": "fun aT rT sT f aP rP => \u2200 (x : aT), rP (f x) = aP x",
+    "target": "fun aT rT sT f aP rP => ∀ (x : aT), rP (f x) = aP x",
+    "native_expression": "fun aT rT sT f aP rP => ∀ (x : aT), rP (f x) = aP x",
     "scope": "all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols",
     "target_class": "native_expression"
   },
@@ -5894,8 +5894,8 @@
     "profile": "SSRFunPredicates",
     "certificate": "NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.monomorphism_2.correspondence",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "fun aT rT sT f aR rR => \u2200 (x y : aT), rR (f x) (f y) = aR x y",
-    "native_expression": "fun aT rT sT f aR rR => \u2200 (x y : aT), rR (f x) (f y) = aR x y",
+    "target": "fun aT rT sT f aR rR => ∀ (x y : aT), rR (f x) (f y) = aR x y",
+    "native_expression": "fun aT rT sT f aR rR => ∀ (x y : aT), rR (f x) (f y) = aR x y",
     "scope": "all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols",
     "target_class": "native_expression"
   },
@@ -5904,8 +5904,8 @@
     "profile": "SSRFunPredicates",
     "certificate": "NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.morphism_1.correspondence",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "fun aT rT f aF rF => \u2200 (x : aT), f (aF x) = rF (f x)",
-    "native_expression": "fun aT rT f aF rF => \u2200 (x : aT), f (aF x) = rF (f x)",
+    "target": "fun aT rT f aF rF => ∀ (x : aT), f (aF x) = rF (f x)",
+    "native_expression": "fun aT rT f aF rF => ∀ (x : aT), f (aF x) = rF (f x)",
     "scope": "all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols",
     "target_class": "native_expression"
   },
@@ -5914,8 +5914,8 @@
     "profile": "SSRFunPredicates",
     "certificate": "NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.morphism_2.correspondence",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "fun aT rT f aOp rOp => \u2200 (x y : aT), f (aOp x y) = rOp (f x) (f y)",
-    "native_expression": "fun aT rT f aOp rOp => \u2200 (x y : aT), f (aOp x y) = rOp (f x) (f y)",
+    "target": "fun aT rT f aOp rOp => ∀ (x y : aT), f (aOp x y) = rOp (f x) (f y)",
+    "native_expression": "fun aT rT f aOp rOp => ∀ (x y : aT), f (aOp x y) = rOp (f x) (f y)",
     "scope": "all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols",
     "target_class": "native_expression"
   },
@@ -5924,8 +5924,8 @@
     "profile": "SSRFunPredicates",
     "certificate": "NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.rev_left_loop.correspondence",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "fun S T inv op => \u2200 (x : S) (x_1 : T), op x (op (inv x) x_1) = x_1",
-    "native_expression": "fun S T inv op => \u2200 (x : S) (x_1 : T), op x (op (inv x) x_1) = x_1",
+    "target": "fun S T inv op => ∀ (x : S) (x_1 : T), op x (op (inv x) x_1) = x_1",
+    "native_expression": "fun S T inv op => ∀ (x : S) (x_1 : T), op x (op (inv x) x_1) = x_1",
     "scope": "all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols",
     "target_class": "native_expression"
   },
@@ -5934,8 +5934,8 @@
     "profile": "SSRFunPredicates",
     "certificate": "NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.rev_right_loop.correspondence",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "fun S T inv op => \u2200 (y : T) (x : S), op (op x (inv y)) y = x",
-    "native_expression": "fun S T inv op => \u2200 (y : T) (x : S), op (op x (inv y)) y = x",
+    "target": "fun S T inv op => ∀ (y : T) (x : S), op (op x (inv y)) y = x",
+    "native_expression": "fun S T inv op => ∀ (y : T) (x : S), op (op x (inv y)) y = x",
     "scope": "all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols",
     "target_class": "native_expression"
   },
@@ -5944,8 +5944,8 @@
     "profile": "SSRFunPredicates",
     "certificate": "NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.right_commutative.correspondence",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "fun S T op => \u2200 (x : S) (y z : T), op (op x y) z = op (op x z) y",
-    "native_expression": "fun S T op => \u2200 (x : S) (y z : T), op (op x y) z = op (op x z) y",
+    "target": "fun S T op => ∀ (x : S) (y z : T), op (op x y) z = op (op x z) y",
+    "native_expression": "fun S T op => ∀ (x : S) (y z : T), op (op x y) z = op (op x z) y",
     "scope": "all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols",
     "target_class": "native_expression"
   },
@@ -5954,8 +5954,8 @@
     "profile": "SSRFunPredicates",
     "certificate": "NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.right_distributive.correspondence",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "fun S T op add => \u2200 (x : S) (y z : T), op x (add y z) = add (op x y) (op x z)",
-    "native_expression": "fun S T op add => \u2200 (x : S) (y z : T), op x (add y z) = add (op x y) (op x z)",
+    "target": "fun S T op add => ∀ (x : S) (y z : T), op x (add y z) = add (op x y) (op x z)",
+    "native_expression": "fun S T op add => ∀ (x : S) (y z : T), op x (add y z) = add (op x y) (op x z)",
     "scope": "all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols",
     "target_class": "native_expression"
   },
@@ -5964,8 +5964,8 @@
     "profile": "SSRFunPredicates",
     "certificate": "NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.right_id.correspondence",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "fun S T e op => \u2200 (x : S), op x e = x",
-    "native_expression": "fun S T e op => \u2200 (x : S), op x e = x",
+    "target": "fun S T e op => ∀ (x : S), op x e = x",
+    "native_expression": "fun S T e op => ∀ (x : S), op x e = x",
     "scope": "all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols",
     "target_class": "native_expression"
   },
@@ -5974,8 +5974,8 @@
     "profile": "SSRFunPredicates",
     "certificate": "NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.right_injective.correspondence",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "fun S T R op => \u2200 (y : S) (x y_1 : T), op y x = op y y_1 \u2192 x = y_1",
-    "native_expression": "fun S T R op => \u2200 (y : S) (x y_1 : T), op y x = op y y_1 \u2192 x = y_1",
+    "target": "fun S T R op => ∀ (y : S) (x y_1 : T), op y x = op y y_1 → x = y_1",
+    "native_expression": "fun S T R op => ∀ (y : S) (x y_1 : T), op y x = op y y_1 → x = y_1",
     "scope": "all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols",
     "target_class": "native_expression"
   },
@@ -5984,8 +5984,8 @@
     "profile": "SSRFunPredicates",
     "certificate": "NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.right_inverse.correspondence",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "fun S T R e inv op => \u2200 (x : S), op x (inv x) = e",
-    "native_expression": "fun S T R e inv op => \u2200 (x : S), op x (inv x) = e",
+    "target": "fun S T R e inv op => ∀ (x : S), op x (inv x) = e",
+    "native_expression": "fun S T R e inv op => ∀ (x : S), op x (inv x) = e",
     "scope": "all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols",
     "target_class": "native_expression"
   },
@@ -5994,8 +5994,8 @@
     "profile": "SSRFunPredicates",
     "certificate": "NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.right_loop.correspondence",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "fun S T inv op => \u2200 (y : T) (x : S), op (op x y) (inv y) = x",
-    "native_expression": "fun S T inv op => \u2200 (y : T) (x : S), op (op x y) (inv y) = x",
+    "target": "fun S T inv op => ∀ (y : T) (x : S), op (op x y) (inv y) = x",
+    "native_expression": "fun S T inv op => ∀ (y : T) (x : S), op (op x y) (inv y) = x",
     "scope": "all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols",
     "target_class": "native_expression"
   },
@@ -6004,8 +6004,8 @@
     "profile": "SSRFunPredicates",
     "certificate": "NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.right_zero.correspondence",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "fun S T z op => \u2200 (x : S), op x z = z",
-    "native_expression": "fun S T z op => \u2200 (x : S), op x z = z",
+    "target": "fun S T z op => ∀ (x : S), op x z = z",
+    "native_expression": "fun S T z op => ∀ (x : S), op x z = z",
     "scope": "all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols",
     "target_class": "native_expression"
   },
@@ -6014,8 +6014,8 @@
     "profile": "SSRFunPredicates",
     "certificate": "NativeBridge.Incremental.SSRFunPredicates.Rocq.Corelib.ssr.ssrfun.self_inverse.correspondence",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "fun S T e op => \u2200 (x : S), op x x = e",
-    "native_expression": "fun S T e op => \u2200 (x : S), op x x = e",
+    "target": "fun S T e op => ∀ (x : S), op x x = e",
+    "native_expression": "fun S T e op => ∀ (x : S), op x x = e",
     "scope": "all exported Sort parameters; pointwise predicate iff; native definition body and binder types contain no source symbols",
     "target_class": "native_expression"
   },
@@ -6033,7 +6033,7 @@
     "profile": "SSRNonProp",
     "certificate": "NativeBridge.Incremental.SSRNonProp.iso",
     "kind": "TYPE_ISO",
-    "target": "Bool \u00d7 Type u",
+    "target": "Bool × Type u",
     "scope": "all exported universe parameters; both inverse laws; boolean metadata retained",
     "target_class": "native_representation"
   },
@@ -6205,7 +6205,7 @@
     "certificate": "NativeBridge.Incremental.SSRFunData.s2val_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
     "target": "Subtype.val",
-    "scope": "A : Sort u; P,Q : A \u2192 Prop",
+    "scope": "A : Sort u; P,Q : A → Prop",
     "target_class": "existing_api"
   },
   {
@@ -6222,7 +6222,7 @@
     "profile": "SSRFunData",
     "certificate": "NativeBridge.Incremental.SSRFunData.phant_id_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "True \u2192 True",
+    "target": "True → True",
     "scope": "full Sort parameters; source phantom has one proof constructor",
     "target_class": "native_expression"
   },
@@ -6231,7 +6231,7 @@
     "profile": "SSRFunData",
     "certificate": "NativeBridge.Incremental.SSRFunData.pcancel_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 x, g (f x) = some (PLift.up x)",
+    "target": "∀ x, g (f x) = some (PLift.up x)",
     "scope": "full Sort parameters; native Option(PLift A) inputs with inverse conversion",
     "target_class": "native_expression"
   },
@@ -6240,7 +6240,7 @@
     "profile": "SSRFunData",
     "certificate": "NativeBridge.Incremental.SSRFunData.ocancel_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 x, (g x).elim x (fun a => h a.down) = x",
+    "target": "∀ x, (g x).elim x (fun a => h a.down) = x",
     "scope": "full Sort parameters; native Option(PLift A) inputs with inverse conversion",
     "target_class": "native_expression"
   },
@@ -6290,7 +6290,7 @@
     "profile": "SSRFunConditions",
     "certificate": "NativeBridge.Incremental.SSRFunConditions.esym_agrees",
     "kind": "STATEMENT_FULL_NATIVE",
-    "target": "\u2200 (T : Sort u) (x y : T) (h : x = y), h.symm.symm = h",
+    "target": "∀ (T : Sort u) (x y : T) (h : x = y), h.symm.symm = h",
     "scope": "all explicit prerequisites discharged; source universe parameters preserved",
     "target_class": "native_expression",
     "closed_wrapper": "NativeBridge.Incremental.SSRFunConditions.esymClosed",
@@ -6304,7 +6304,7 @@
         "proof": "NativeBridge.Incremental.SSRFunConditions.esymWitness2"
       }
     ],
-    "native_expression": "\u2200 (T : Sort u) (x y : T) (h : x = y), h.symm.symm = h",
+    "native_expression": "∀ (T : Sort u) (x y : T) (h : x = y), h.symm.symm = h",
     "original_statement_proof": "NativeBridge.Incremental.SSRFunConditions.esym_proof"
   },
   {
@@ -6312,7 +6312,7 @@
     "profile": "SSRFunConditions",
     "certificate": "NativeBridge.Incremental.SSRFunConditions.etrans_agrees",
     "kind": "STATEMENT_FULL_NATIVE",
-    "target": "\u2200 (T : Sort u) (x y : T) (h : x = y), h.trans rfl = h",
+    "target": "∀ (T : Sort u) (x y : T) (h : x = y), h.trans rfl = h",
     "scope": "all explicit prerequisites discharged; source universe parameters preserved",
     "target_class": "native_expression",
     "closed_wrapper": "NativeBridge.Incremental.SSRFunConditions.etransClosed",
@@ -6322,7 +6322,7 @@
         "proof": "NativeBridge.Incremental.SSRFunConditions.etransWitness"
       }
     ],
-    "native_expression": "\u2200 (T : Sort u) (x y : T) (h : x = y), h.trans rfl = h",
+    "native_expression": "∀ (T : Sort u) (x y : T) (h : x = y), h.trans rfl = h",
     "original_statement_proof": "NativeBridge.Incremental.SSRFunConditions.etrans_proof"
   },
   {
@@ -6330,7 +6330,7 @@
     "profile": "SSRBoolData",
     "certificate": "NativeBridge.Incremental.SSRBoolData.simplPredIso",
     "kind": "TYPE_ISO",
-    "target": "A \u2192 Bool",
+    "target": "A → Bool",
     "scope": "A : Type u; both inverse laws",
     "target_class": "native_representation"
   },
@@ -6339,7 +6339,7 @@
     "profile": "SSRBoolData",
     "certificate": "NativeBridge.Incremental.SSRBoolData.simplRelIso",
     "kind": "TYPE_ISO",
-    "target": "A \u2192 A \u2192 Bool",
+    "target": "A → A → Bool",
     "scope": "A : Type u; both inverse laws",
     "target_class": "native_representation"
   },
@@ -6348,7 +6348,7 @@
     "profile": "SSRBoolData",
     "certificate": "NativeBridge.Incremental.SSRBoolData.memIso",
     "kind": "TYPE_ISO",
-    "target": "A \u2192 Bool",
+    "target": "A → Bool",
     "scope": "A : Type u; both inverse laws",
     "target_class": "native_representation"
   },
@@ -6366,7 +6366,7 @@
     "profile": "SSRBoolData",
     "certificate": "NativeBridge.Incremental.SSRBoolData.predTypeIso",
     "kind": "TYPE_ISO",
-    "target": "Sigma (fun S : Type u => S \u2192 A \u2192 Bool)",
+    "target": "Sigma (fun S : Type u => S → A → Bool)",
     "scope": "A : Type v; independent carrier universe u; both inverse laws",
     "target_class": "native_representation"
   },
@@ -6375,7 +6375,7 @@
     "profile": "SSRBoolData",
     "certificate": "NativeBridge.Incremental.SSRBoolData.impliesIso",
     "kind": "TYPE_ISO",
-    "target": "P \u2192 Q",
+    "target": "P → Q",
     "scope": "P : Sort u; Q : Sort v; both inverse laws",
     "target_class": "native_representation"
   },
@@ -6402,7 +6402,7 @@
     "profile": "SSRBoolData",
     "certificate": "NativeBridge.Incremental.SSRBoolData.simplPred_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "id on A \u2192 Bool",
+    "target": "id on A → Bool",
     "scope": "Type parameters with source universe levels preserved",
     "target_class": "existing_api"
   },
@@ -6411,7 +6411,7 @@
     "profile": "SSRBoolData",
     "certificate": "NativeBridge.Incremental.SSRBoolData.simplRel_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "id on A \u2192 A \u2192 Bool",
+    "target": "id on A → A → Bool",
     "scope": "Type parameters with source universe levels preserved",
     "target_class": "existing_api"
   },
@@ -6420,7 +6420,7 @@
     "profile": "SSRBoolData",
     "certificate": "NativeBridge.Incremental.SSRBoolData.fun_of_pred_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "id on A \u2192 Bool",
+    "target": "id on A → Bool",
     "scope": "Type parameters with source universe levels preserved",
     "target_class": "existing_api"
   },
@@ -6429,7 +6429,7 @@
     "profile": "SSRBoolData",
     "certificate": "NativeBridge.Incremental.SSRBoolData.fun_of_rel_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "id on A \u2192 A \u2192 Bool",
+    "target": "id on A → A → Bool",
     "scope": "Type parameters with source universe levels preserved",
     "target_class": "existing_api"
   },
@@ -6528,7 +6528,7 @@
     "profile": "SSRBoolData",
     "certificate": "NativeBridge.Incremental.SSRBoolData.pred_of_mem_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "id on A \u2192 Bool",
+    "target": "id on A → Bool",
     "scope": "Type parameters with source universe levels preserved",
     "target_class": "existing_api"
   },
@@ -6546,7 +6546,7 @@
     "profile": "SSRBoolData",
     "certificate": "NativeBridge.Incremental.SSRBoolData.simpl_of_mem_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "id on A \u2192 Bool",
+    "target": "id on A → Bool",
     "scope": "Type parameters with source universe levels preserved",
     "target_class": "existing_api"
   },
@@ -6582,7 +6582,7 @@
     "profile": "SSRBoolData",
     "certificate": "NativeBridge.Incremental.SSRBoolData.unless_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "Nonempty P \u2228 Nonempty Q",
+    "target": "Nonempty P ∨ Nonempty Q",
     "scope": "full Sort parameters; constructive equivalence; no classical axiom",
     "target_class": "native_expression"
   },
@@ -6591,7 +6591,7 @@
     "profile": "SSRBoolData",
     "certificate": "NativeBridge.Incremental.SSRBoolData.classically_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u00ac\u00ac Nonempty P",
+    "target": "¬¬ Nonempty P",
     "scope": "full Sort parameters; constructive equivalence; no classical axiom",
     "target_class": "native_expression"
   },
@@ -6699,7 +6699,7 @@
     "profile": "SSRBoolLogic",
     "certificate": "NativeBridge.Incremental.SSRBoolLogic.collectiveIso",
     "kind": "TYPE_ISO",
-    "target": "A \u2192 Bool",
+    "target": "A → Bool",
     "scope": "A : Type u; both inverse laws",
     "target_class": "native_representation"
   },
@@ -6708,7 +6708,7 @@
     "profile": "SSRBoolLogic",
     "certificate": "NativeBridge.Incremental.SSRBoolLogic.applicativeIso",
     "kind": "TYPE_ISO",
-    "target": "A \u2192 Bool",
+    "target": "A → Bool",
     "scope": "A : Type u; both inverse laws",
     "target_class": "native_representation"
   },
@@ -6717,7 +6717,7 @@
     "profile": "SSRBoolLogic",
     "certificate": "NativeBridge.Incremental.SSRBoolLogic.coerce_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "id on A \u2192 Bool",
+    "target": "id on A → Bool",
     "scope": "A : Type u; native Bool-valued predicates",
     "target_class": "native_expression"
   },
@@ -6726,7 +6726,7 @@
     "profile": "SSRBoolLogic",
     "certificate": "NativeBridge.Incremental.SSRBoolLogic.pre_symmetric_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 x y, r x y = true \u2192 r y x = true",
+    "target": "∀ x y, r x y = true → r y x = true",
     "scope": "A : Type u; native Bool-valued predicates",
     "target_class": "native_expression"
   },
@@ -6735,7 +6735,7 @@
     "profile": "SSRBoolLogic",
     "certificate": "NativeBridge.Incremental.SSRBoolLogic.left_transitive_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 x y, r x y = true \u2192 \u2200 z, r x z = r y z",
+    "target": "∀ x y, r x y = true → ∀ z, r x z = r y z",
     "scope": "A : Type u; native Bool-valued predicates",
     "target_class": "native_expression"
   },
@@ -6744,7 +6744,7 @@
     "profile": "SSRBoolLogic",
     "certificate": "NativeBridge.Incremental.SSRBoolLogic.right_transitive_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 x y, r x y = true \u2192 \u2200 z, r z x = r z y",
+    "target": "∀ x y, r x y = true → ∀ z, r z x = r z y",
     "scope": "A : Type u; native Bool-valued predicates",
     "target_class": "native_expression"
   },
@@ -6753,7 +6753,7 @@
     "profile": "SSRBoolLogic",
     "certificate": "NativeBridge.Incremental.SSRBoolLogic.equivalence_rel_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 x y z, r z z = true \u2227 (r x y = true \u2192 r x z = r y z)",
+    "target": "∀ x y z, r z z = true ∧ (r x y = true → r x z = r y z)",
     "scope": "A : Type u; native Bool-valued predicates",
     "target_class": "native_expression"
   },
@@ -6798,7 +6798,7 @@
     "profile": "SSRBoolPackaging",
     "certificate": "NativeBridge.Incremental.SSRBoolPackaging.qualifierIso",
     "kind": "TYPE_ISO",
-    "target": "A \u2192 Bool",
+    "target": "A → Bool",
     "scope": "source Type and independent metadata universe parameters preserved; both inverse laws; fixed external predicate/key/index parameters retained",
     "target_class": "native_representation"
   },
@@ -6834,7 +6834,7 @@
     "profile": "SSRBoolPackaging",
     "certificate": "NativeBridge.Incremental.SSRBoolPackaging.collective_pred_of_simpl_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "id on A \u2192 Bool",
+    "target": "id on A → Bool",
     "scope": "source Type and independent metadata universe parameters preserved; fixed external predicate/key/index parameters retained",
     "target_class": "native_expression"
   },
@@ -6843,7 +6843,7 @@
     "profile": "SSRBoolPackaging",
     "certificate": "NativeBridge.Incremental.SSRBoolPackaging.applicative_pred_of_simpl_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "id on A \u2192 Bool",
+    "target": "id on A → Bool",
     "scope": "source Type and independent metadata universe parameters preserved; fixed external predicate/key/index parameters retained",
     "target_class": "native_expression"
   },
@@ -6852,7 +6852,7 @@
     "profile": "SSRBoolPackaging",
     "certificate": "NativeBridge.Incremental.SSRBoolPackaging.rel_of_simpl_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "id on A \u2192 A \u2192 Bool",
+    "target": "id on A → A → Bool",
     "scope": "source Type and independent metadata universe parameters preserved; fixed external predicate/key/index parameters retained",
     "target_class": "native_expression"
   },
@@ -6933,7 +6933,7 @@
     "profile": "SSRBoolPackaging",
     "certificate": "NativeBridge.Incremental.SSRBoolPackaging.sub_mem_agrees",
     "kind": "OPERATION_CORRESPONDENCE",
-    "target": "\u2200 x, p x = true \u2192 q x = true",
+    "target": "∀ x, p x = true → q x = true",
     "scope": "source Type and independent metadata universe parameters preserved; fixed external predicate/key/index parameters retained",
     "target_class": "native_expression"
   },
@@ -6952,7 +6952,7 @@
     "certificate": "NativeBridge.Incremental.SSRBoolRemainingStatements.ifArgCorrespondence",
     "kind": "STATEMENT_FULL_NATIVE",
     "target": "native Bool conditional applied to an argument",
-    "native_expression": "\u2200 (A : Sort u) (B : Sort v) (x : A) (b : Bool) (fT fF : A \u2192 B), (if b then fT else fF) x = if b then fT x else fF x",
+    "native_expression": "∀ (A : Sort u) (B : Sort v) (x : A) (b : Bool) (fT fF : A → B), (if b then fT else fF) x = if b then fT x else fF x",
     "scope": "full independent Sort parameters; separate original-statement proof",
     "original_statement_proof": "NativeBridge.Incremental.SSRBoolRemainingStatements.ifArgProof",
     "target_class": "native_statement"
@@ -9068,7 +9068,7 @@
     "profile": "CRelationStatements",
     "certificate": "NativeBridge.Incremental.CRelationStatements.RewriteRelation_instance_2_agrees",
     "kind": "STATEMENT_FULL_NATIVE",
-    "target": "\u2200 (A : Type u), True",
+    "target": "∀ (A : Type u), True",
     "target_class": "native_statement",
     "scope": "original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs",
     "native_target": "NativeBridge.Incremental.CRelationStatements.rewriteRelationsNative",
@@ -9079,7 +9079,7 @@
     "profile": "CRelationStatements",
     "certificate": "NativeBridge.Incremental.CRelationStatements.StrictOrder_Asymmetric_agrees",
     "kind": "STATEMENT_FULL_NATIVE",
-    "target": "\u2200 (A : Type u) (R : A \u2192 A \u2192 Type w) (h : strictOrderNative A R), asymmetricNative A R",
+    "target": "∀ (A : Type u) (R : A → A → Type w) (h : strictOrderNative A R), asymmetricNative A R",
     "target_class": "native_statement",
     "scope": "original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs",
     "native_target": "NativeBridge.Incremental.CRelationStatements.strictAsymmetricNative",
@@ -9090,7 +9090,7 @@
     "profile": "CRelationStatements",
     "certificate": "NativeBridge.Incremental.CRelationStatements.StrictOrder_Irreflexive_agrees",
     "kind": "STATEMENT_FULL_NATIVE",
-    "target": "\u2200 (A : Type u) (R : A \u2192 A \u2192 Type v) (h : strictOrderNative A R), irreflexiveNative A R",
+    "target": "∀ (A : Type u) (R : A → A → Type v) (h : strictOrderNative A R), irreflexiveNative A R",
     "target_class": "native_statement",
     "scope": "original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs",
     "native_target": "NativeBridge.Incremental.CRelationStatements.strictIrreflexiveNative",
@@ -9101,7 +9101,7 @@
     "profile": "CRelationStatements",
     "certificate": "NativeBridge.Incremental.CRelationStatements.asymmetry_agrees",
     "kind": "STATEMENT_FULL_NATIVE",
-    "target": "\u2200 (A : Type u) (R : A \u2192 A \u2192 Type w) (h : asymmetricNative A R), asymmetricNative A R",
+    "target": "∀ (A : Type u) (R : A → A → Type w) (h : asymmetricNative A R), asymmetricNative A R",
     "target_class": "native_statement",
     "scope": "original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs",
     "native_target": "NativeBridge.Incremental.CRelationStatements.asymmetryNative",
@@ -9112,7 +9112,7 @@
     "profile": "CRelationStatements",
     "certificate": "NativeBridge.Incremental.CRelationStatements.complement_Irreflexive_agrees",
     "kind": "STATEMENT_FULL_NATIVE",
-    "target": "\u2200 (A : Type u) (R : A \u2192 A \u2192 Type v) (h : reflexiveNative A R) (x : A), (R x x \u2192 False) \u2192 False",
+    "target": "∀ (A : Type u) (R : A → A → Type v) (h : reflexiveNative A R) (x : A), (R x x → False) → False",
     "target_class": "native_statement",
     "scope": "original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs",
     "native_target": "NativeBridge.Incremental.CRelationStatements.complementIrreflexiveNative",
@@ -9123,7 +9123,7 @@
     "profile": "CRelationStatements",
     "certificate": "NativeBridge.Incremental.CRelationStatements.complement_Symmetric_agrees",
     "kind": "STATEMENT_FULL_NATIVE",
-    "target": "\u2200 (A : Type u) (R : A \u2192 A \u2192 Type v) (h : symmetricNative A R) (x y : A), (R x y \u2192 False) \u2192 R y x \u2192 False",
+    "target": "∀ (A : Type u) (R : A → A → Type v) (h : symmetricNative A R) (x y : A), (R x y → False) → R y x → False",
     "target_class": "native_statement",
     "scope": "original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs",
     "native_target": "NativeBridge.Incremental.CRelationStatements.complementSymmetricNative",
@@ -9134,7 +9134,7 @@
     "profile": "CRelationStatements",
     "certificate": "NativeBridge.Incremental.CRelationStatements.equivalence_rewrite_crelation_agrees",
     "kind": "STATEMENT_FULL_NATIVE",
-    "target": "\u2200 (A : Type u) (R : A \u2192 A \u2192 Type v) (h : equivalenceNative A R), True",
+    "target": "∀ (A : Type u) (R : A → A → Type v) (h : equivalenceNative A R), True",
     "target_class": "native_statement",
     "scope": "original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs",
     "native_target": "NativeBridge.Incremental.CRelationStatements.equivalenceRewriteNative",
@@ -9145,7 +9145,7 @@
     "profile": "CRelationStatements",
     "certificate": "NativeBridge.Incremental.CRelationStatements.flip_Asymmetric_agrees",
     "kind": "STATEMENT_FULL_NATIVE",
-    "target": "\u2200 (A : Type u) (R : A \u2192 A \u2192 Type z), asymmetricNative A R \u2192 asymmetricNative A (fun x y => R y x)",
+    "target": "∀ (A : Type u) (R : A → A → Type z), asymmetricNative A R → asymmetricNative A (fun x y => R y x)",
     "target_class": "native_statement",
     "scope": "original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs",
     "native_target": "NativeBridge.Incremental.CRelationStatements.flipAsymmetricNative",
@@ -9156,7 +9156,7 @@
     "profile": "CRelationStatements",
     "certificate": "NativeBridge.Incremental.CRelationStatements.impl_Reflexive_agrees",
     "kind": "STATEMENT_FULL_NATIVE",
-    "target": "\u2200 P : Prop, P \u2192 P",
+    "target": "∀ P : Prop, P → P",
     "target_class": "native_statement",
     "scope": "original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs",
     "native_target": "NativeBridge.Incremental.CRelationStatements.implReflexiveNative",
@@ -9167,7 +9167,7 @@
     "profile": "CRelationStatements",
     "certificate": "NativeBridge.Incremental.CRelationStatements.impl_Reflexive_obligation_1_agrees",
     "kind": "STATEMENT_FULL_NATIVE",
-    "target": "\u2200 P : Prop, P \u2192 P",
+    "target": "∀ P : Prop, P → P",
     "target_class": "native_statement",
     "scope": "original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs",
     "native_target": "NativeBridge.Incremental.CRelationStatements.implReflexiveNative",
@@ -9178,7 +9178,7 @@
     "profile": "CRelationStatements",
     "certificate": "NativeBridge.Incremental.CRelationStatements.impl_Transitive_agrees",
     "kind": "STATEMENT_FULL_NATIVE",
-    "target": "\u2200 P Q R : Prop, (P \u2192 Q) \u2192 (Q \u2192 R) \u2192 P \u2192 R",
+    "target": "∀ P Q R : Prop, (P → Q) → (Q → R) → P → R",
     "target_class": "native_statement",
     "scope": "original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs",
     "native_target": "NativeBridge.Incremental.CRelationStatements.implTransitiveNative",
@@ -9189,7 +9189,7 @@
     "profile": "CRelationStatements",
     "certificate": "NativeBridge.Incremental.CRelationStatements.impl_Transitive_obligation_1_agrees",
     "kind": "STATEMENT_FULL_NATIVE",
-    "target": "\u2200 P Q R : Prop, (P \u2192 Q) \u2192 (Q \u2192 R) \u2192 P \u2192 R",
+    "target": "∀ P Q R : Prop, (P → Q) → (Q → R) → P → R",
     "target_class": "native_statement",
     "scope": "original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs",
     "native_target": "NativeBridge.Incremental.CRelationStatements.implTransitiveNative",
@@ -9200,7 +9200,7 @@
     "profile": "CRelationStatements",
     "certificate": "NativeBridge.Incremental.CRelationStatements.irreflexivity_agrees",
     "kind": "STATEMENT_FULL_NATIVE",
-    "target": "\u2200 (A : Type u) (R : A \u2192 A \u2192 Type v) (h : irreflexiveNative A R), irreflexiveNative A R",
+    "target": "∀ (A : Type u) (R : A → A → Type v) (h : irreflexiveNative A R), irreflexiveNative A R",
     "target_class": "native_statement",
     "scope": "original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs",
     "native_target": "NativeBridge.Incremental.CRelationStatements.irreflexivityNative",
@@ -10647,5 +10647,649 @@
         "proof": "NativeBridge.Incremental.NumberRepresentation.number_eq_obligation_4"
       }
     ]
+  },
+  {
+    "source": "Corelib.Init.Byte.to_bits",
+    "profile": "ByteOperations",
+    "certificate": "NativeBridge.Incremental.ByteOperations.to_bits_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.ByteOperations.byteBits",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.ByteOperations.byteBits",
+    "scope": "All 256 bytes; eight native Bool fields from BitVec.getLsbD, least significant bit first."
+  },
+  {
+    "source": "Corelib.Init.Byte.of_bits",
+    "profile": "ByteOperations",
+    "certificate": "NativeBridge.Incremental.ByteOperations.of_bits_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.ByteOperations.bitsByte",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.ByteOperations.bitsByte",
+    "scope": "All 256 combinations of eight bits; native weighted sum through BitVec.ofNat 8, result Fin 256."
+  },
+  {
+    "source": "Corelib.Init.Byte.byte_of_byte",
+    "profile": "ByteOperations",
+    "certificate": "NativeBridge.Incremental.ByteOperations.byte_of_byte_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id",
+    "target_class": "existing_api",
+    "native_target": "id",
+    "scope": "Identity on Fin 256."
+  },
+  {
+    "source": "Corelib.Init.Byte.of_bits_to_bits",
+    "profile": "ByteOperations",
+    "certificate": "NativeBridge.Incremental.ByteOperations.of_bits_to_bits_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.ByteOperations.byteRoundtrip",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.ByteOperations.byteRoundtrip",
+    "scope": "Full byte roundtrip; original statement independently proved by all constructor cases.",
+    "original_statement_proof": "NativeBridge.Incremental.ByteOperations.of_bits_to_bits_proof"
+  },
+  {
+    "source": "Corelib.Init.Byte.to_bits_of_bits",
+    "profile": "ByteOperations",
+    "certificate": "NativeBridge.Incremental.ByteOperations.to_bits_of_bits_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.ByteOperations.bitsRoundtrip",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.ByteOperations.bitsRoundtrip",
+    "scope": "Full eight-bit tuple roundtrip; all boolean combinations checked in the original statement proof.",
+    "original_statement_proof": "NativeBridge.Incremental.ByteOperations.to_bits_of_bits_proof"
+  },
+  {
+    "source": "Corelib.Init.Byte.byte_rec",
+    "profile": "ByteElimination",
+    "certificate": "NativeBridge.Incremental.ByteElimination.byte_rec_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.ByteElimination.finByteRec",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.ByteElimination.finByteRec",
+    "scope": "All 256 branch values and dependent native motives; Type-valued source recursor, native nested Fin.cases."
+  },
+  {
+    "source": "Corelib.Init.Byte.byte_rect",
+    "profile": "ByteElimination",
+    "certificate": "NativeBridge.Incremental.ByteElimination.byte_rect_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.ByteElimination.finByteRec",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.ByteElimination.finByteRec",
+    "scope": "All 256 branch values and dependent native motives over any Sort, including Prop; native nested Fin.cases."
+  },
+  {
+    "source": "Corelib.Init.Byte.byte_ind",
+    "profile": "ByteElimination",
+    "certificate": "NativeBridge.Incremental.ByteElimination.byte_ind_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.ByteElimination.byteInduction",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.ByteElimination.byteInduction",
+    "scope": "Complete 256-premise induction statement over Fin 256; original statement independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.ByteElimination.byte_ind_proof"
+  },
+  {
+    "source": "Corelib.Init.Byte.byte_sind",
+    "profile": "ByteElimination",
+    "certificate": "NativeBridge.Incremental.ByteElimination.byte_sind_correspondence",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "NativeBridge.Incremental.ByteElimination.byteInduction",
+    "target_class": "native_statement",
+    "native_target": "NativeBridge.Incremental.ByteElimination.byteInduction",
+    "scope": "Complete 256-premise induction statement over Fin 256; original statement independently proved.",
+    "original_statement_proof": "NativeBridge.Incremental.ByteElimination.byte_sind_proof"
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.CarryType.carry",
+    "profile": "WordOperations",
+    "certificate": "NativeBridge.Incremental.WordOperations.carryIso",
+    "kind": "TYPE_ISO",
+    "target": "NativeBridge.Incremental.WordOperations.CarryNative",
+    "target_class": "native_representation",
+    "native_target": "NativeBridge.Incremental.WordOperations.CarryNative",
+    "scope": "Every Sort-valued payload; PProd Bool A with C0=false and C1=true; both inverse laws."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.PrimInt63.pos_neg_int63",
+    "profile": "WordOperations",
+    "certificate": "NativeBridge.Incremental.WordOperations.signedWordIso",
+    "kind": "TYPE_ISO",
+    "target": "NativeBridge.Incremental.WordOperations.SignedWordNative",
+    "target_class": "native_representation",
+    "native_target": "NativeBridge.Incremental.WordOperations.SignedWordNative",
+    "scope": "Sign flag and all 63-bit words; preserves negative zero and format sign independently of two-complement interpretation."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.PrimInt63.addc",
+    "profile": "WordOperations",
+    "certificate": "NativeBridge.Incremental.WordOperations.addc_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.WordOperations.addCarry",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.WordOperations.addCarry",
+    "scope": "All words; modulo-2^63 sum and overflow flag."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.PrimInt63.addcarryc",
+    "profile": "WordOperations",
+    "certificate": "NativeBridge.Incremental.WordOperations.addcarryc_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.WordOperations.addCarryOne",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.WordOperations.addCarryOne",
+    "scope": "All words; sum plus one and overflow flag."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.PrimInt63.subc",
+    "profile": "WordOperations",
+    "certificate": "NativeBridge.Incremental.WordOperations.subc_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.WordOperations.subCarry",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.WordOperations.subCarry",
+    "scope": "All words; modular difference and borrow flag."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.PrimInt63.subcarryc",
+    "profile": "WordOperations",
+    "certificate": "NativeBridge.Incremental.WordOperations.subcarryc_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.WordOperations.subCarryOne",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.WordOperations.subCarryOne",
+    "scope": "All words; modular difference minus one and borrow flag."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.PrimInt63.mulc",
+    "profile": "WordOperations",
+    "certificate": "NativeBridge.Incremental.WordOperations.mulc_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.WordOperations.mulWide",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.WordOperations.mulWide",
+    "scope": "All words; high and low halves of the 126-bit product."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.PrimInt63.diveucl",
+    "profile": "WordOperations",
+    "certificate": "NativeBridge.Incremental.WordOperations.diveucl_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.WordOperations.divRem",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.WordOperations.divRem",
+    "scope": "All words including zero divisor; native BitVec unsigned division and remainder pair."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.PrimInt63.diveucl_21",
+    "profile": "WordOperations",
+    "certificate": "NativeBridge.Incremental.WordOperations.diveucl_21_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.WordOperations.divDouble",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.WordOperations.divDouble",
+    "scope": "All words; two-word dividend division only when high half < divisor, otherwise (0,0), preserving the source guard."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.PrimInt63.divs",
+    "profile": "WordOperations",
+    "certificate": "NativeBridge.Incremental.WordOperations.divs_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.WordOperations.signedDiv",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.WordOperations.signedDiv",
+    "scope": "All words; Int.tdiv on signed values then BitVec.ofInt 63 reduction, including zero divisor and overflow."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.PrimInt63.mods",
+    "profile": "WordOperations",
+    "certificate": "NativeBridge.Incremental.WordOperations.mods_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.WordOperations.signedRem",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.WordOperations.signedRem",
+    "scope": "All words; Int.tmod on signed values then BitVec.ofInt 63 reduction."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.PrimInt63.asr",
+    "profile": "WordOperations",
+    "certificate": "NativeBridge.Incremental.WordOperations.asr_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.WordOperations.arithmeticShift",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.WordOperations.arithmeticShift",
+    "scope": "All words; signed-negative shift amount yields zero, otherwise signed shift by min(amount,63)."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.PrimInt63.addmuldiv",
+    "profile": "WordOperations",
+    "certificate": "NativeBridge.Incremental.WordOperations.addmuldiv_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.WordOperations.funnelShift",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.WordOperations.funnelShift",
+    "scope": "All words; native BitVec logical shifts and OR. The complementary shift count is modular 63-p, not unbounded Nat subtraction."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.PrimInt63.parser",
+    "profile": "WordOperations",
+    "certificate": "NativeBridge.Incremental.WordOperations.parser_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.WordOperations.parseWord",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.WordOperations.parseWord",
+    "scope": "All sign/word inputs; negative sign always rejected, including negative zero."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.PrimInt63.printer",
+    "profile": "WordOperations",
+    "certificate": "NativeBridge.Incremental.WordOperations.printer_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.WordOperations.printWord",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.WordOperations.printWord",
+    "scope": "Every source wrapper; preserves word and emits positive sign."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.PrimInt63.int_wrap",
+    "profile": "WordOperations",
+    "certificate": "NativeBridge.Incremental.WordOperations.int_wrap_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id",
+    "target_class": "existing_api",
+    "native_target": "id",
+    "scope": "Every source wrapper; native identity after the established wrapper Iso."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.PrimInt63.head0",
+    "profile": "WordOperations",
+    "certificate": "NativeBridge.Incremental.WordOperations.head0_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "BitVec.clz",
+    "target_class": "existing_api",
+    "native_target": "BitVec.clz",
+    "scope": "All words; proved against native BitVec.clz using the logarithmic characterization of the source count, with zero returning 63."
+  },
+  {
+    "source": "Corelib.Numbers.Cyclic.Int63.PrimInt63.tail0",
+    "profile": "WordOperations",
+    "certificate": "NativeBridge.Incremental.WordOperations.tail0_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "BitVec.ctz",
+    "target_class": "existing_api",
+    "native_target": "BitVec.ctz",
+    "scope": "All words; proved against native BitVec.ctz using the first set bit and all preceding zero bits; zero returns 63."
+  },
+  {
+    "source": "Corelib.Strings.PrimString.char63",
+    "profile": "PrimitiveStrings",
+    "certificate": "NativeBridge.Incremental.PrimitiveStrings.charIso",
+    "kind": "TYPE_ISO",
+    "target": "NativeBridge.Incremental.PrimitiveStrings.Word",
+    "target_class": "native_representation",
+    "native_target": "NativeBridge.Incremental.PrimitiveStrings.Word",
+    "scope": "All values; explicit two-sided inverse. Byte strings preserve arbitrary bytes and embedded NUL, with bounded length; char63 retains the full 63-bit domain."
+  },
+  {
+    "source": "Corelib.Strings.PrimString.char63_wrapper",
+    "profile": "PrimitiveStrings",
+    "certificate": "NativeBridge.Incremental.PrimitiveStrings.charWrapperIso",
+    "kind": "TYPE_ISO",
+    "target": "NativeBridge.Incremental.PrimitiveStrings.Word",
+    "target_class": "native_representation",
+    "native_target": "NativeBridge.Incremental.PrimitiveStrings.Word",
+    "scope": "All values; explicit two-sided inverse. Byte strings preserve arbitrary bytes and embedded NUL, with bounded length; char63 retains the full 63-bit domain."
+  },
+  {
+    "source": "Corelib.Strings.PrimString.PStringNotations.string_wrapper",
+    "profile": "PrimitiveStrings",
+    "certificate": "NativeBridge.Incremental.PrimitiveStrings.stringWrapperIso",
+    "kind": "TYPE_ISO",
+    "target": "NativeBridge.Incremental.PrimitiveStrings.Bytes",
+    "target_class": "native_representation",
+    "native_target": "NativeBridge.Incremental.PrimitiveStrings.Bytes",
+    "scope": "All values; explicit two-sided inverse. Byte strings preserve arbitrary bytes and embedded NUL, with bounded length; char63 retains the full 63-bit domain."
+  },
+  {
+    "source": "Corelib.Strings.PrimString.make",
+    "profile": "PrimitiveStrings",
+    "certificate": "NativeBridge.Incremental.PrimitiveStrings.make_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimitiveStrings.repeatByte",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.PrimitiveStrings.repeatByte",
+    "scope": "All 63-bit sizes and characters; native Vector.replicate, length clipped at 16777211 and character reduced modulo 256."
+  },
+  {
+    "source": "Corelib.Strings.PrimString.sub",
+    "profile": "PrimitiveStrings",
+    "certificate": "NativeBridge.Incremental.PrimitiveStrings.sub_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimitiveStrings.sliceBytes",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.PrimitiveStrings.sliceBytes",
+    "scope": "All byte strings and offsets/lengths; clipped native vector slice, including out-of-range empty results."
+  },
+  {
+    "source": "Corelib.Strings.PrimString.cat",
+    "profile": "PrimitiveStrings",
+    "certificate": "NativeBridge.Incremental.PrimitiveStrings.cat_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimitiveStrings.appendBytes",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.PrimitiveStrings.appendBytes",
+    "scope": "All byte strings; native vector concatenation with total length clipped at 16777211."
+  },
+  {
+    "source": "Corelib.Strings.PrimString.compare",
+    "profile": "PrimitiveStrings",
+    "certificate": "NativeBridge.Incremental.PrimitiveStrings.compare_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimitiveStrings.compareBytes",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.PrimitiveStrings.compareBytes",
+    "scope": "All byte strings; source-free bytewise lexicographic comparison expressed using native vectors and Nat order. Not yet identified with the existing List.compareLex API."
+  },
+  {
+    "source": "Corelib.Strings.PrimString.eqb",
+    "profile": "PrimitiveStrings",
+    "certificate": "NativeBridge.Incremental.PrimitiveStrings.eqb_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimitiveStrings.equalBytes",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.PrimitiveStrings.equalBytes",
+    "scope": "All byte strings; equality branch of the proved source-free native lexicographic comparison."
+  },
+  {
+    "source": "Corelib.Strings.PrimString.max_length",
+    "profile": "PrimitiveStrings",
+    "certificate": "NativeBridge.Incremental.PrimitiveStrings.max_length_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimitiveStrings.capacity",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.PrimitiveStrings.capacity",
+    "scope": "Exact primitive capacity 16777211 as BitVec 63."
+  },
+  {
+    "source": "Corelib.Strings.PrimString.Char63Notations.parse",
+    "profile": "PrimitiveStrings",
+    "certificate": "NativeBridge.Incremental.PrimitiveStrings.parse_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimitiveStrings.parseChar",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.PrimitiveStrings.parseChar",
+    "scope": "All byte strings; accepts exactly one byte, including NUL, and widens it to BitVec 63."
+  },
+  {
+    "source": "Corelib.Strings.PrimString.Char63Notations.print",
+    "profile": "PrimitiveStrings",
+    "certificate": "NativeBridge.Incremental.PrimitiveStrings.print_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.PrimitiveStrings.printChar",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.PrimitiveStrings.printChar",
+    "scope": "All 63-bit character wrappers; accepts values below 256, rejects larger values rather than silently truncating."
+  },
+  {
+    "source": "Corelib.Strings.PrimString.char63_wrap",
+    "profile": "PrimitiveStrings",
+    "certificate": "NativeBridge.Incremental.PrimitiveStrings.char_wrap_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id",
+    "target_class": "existing_api",
+    "native_target": "id",
+    "scope": "Every source input; identity after the explicit representation or wrapper Iso."
+  },
+  {
+    "source": "Corelib.Strings.PrimString.PStringNotations.string_wrap",
+    "profile": "PrimitiveStrings",
+    "certificate": "NativeBridge.Incremental.PrimitiveStrings.string_wrap_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id",
+    "target_class": "existing_api",
+    "native_target": "id",
+    "scope": "Every source input; identity after the explicit representation or wrapper Iso."
+  },
+  {
+    "source": "Corelib.Strings.PrimString.PStringNotations.id_string",
+    "profile": "PrimitiveStrings",
+    "certificate": "NativeBridge.Incremental.PrimitiveStrings.id_string_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id",
+    "target_class": "existing_api",
+    "native_target": "id",
+    "scope": "Every source input; identity after the explicit representation or wrapper Iso."
+  },
+  {
+    "source": "Corelib.Init.Equality.Has_refl",
+    "profile": "GenericEquality",
+    "certificate": "NativeBridge.Incremental.GenericEquality.reflIso",
+    "kind": "TYPE_ISO",
+    "target": "NativeBridge.Incremental.GenericEquality.Refl",
+    "target_class": "native_representation",
+    "native_target": "NativeBridge.Incremental.GenericEquality.Refl",
+    "scope": "All universe parameters of the mechanically translated Type-valued generic relation; two-sided identity Iso to a source-free dependent function type. Does not assert that an arbitrary relation is Lean Eq."
+  },
+  {
+    "source": "Corelib.Init.Equality.Has_J",
+    "profile": "GenericEquality",
+    "certificate": "NativeBridge.Incremental.GenericEquality.jIso",
+    "kind": "TYPE_ISO",
+    "target": "NativeBridge.Incremental.GenericEquality.J",
+    "target_class": "native_representation",
+    "native_target": "NativeBridge.Incremental.GenericEquality.J",
+    "scope": "All universe parameters of the mechanically translated Type-valued generic relation; two-sided identity Iso to a source-free dependent function type. Does not assert that an arbitrary relation is Lean Eq."
+  },
+  {
+    "source": "Corelib.Init.Equality.Has_J_forward",
+    "profile": "GenericEquality",
+    "certificate": "NativeBridge.Incremental.GenericEquality.jBackwardIso",
+    "kind": "TYPE_ISO",
+    "target": "NativeBridge.Incremental.GenericEquality.JBackward",
+    "target_class": "native_representation",
+    "native_target": "NativeBridge.Incremental.GenericEquality.JBackward",
+    "scope": "All universe parameters of the mechanically translated Type-valued generic relation; two-sided identity Iso to a source-free dependent function type. Does not assert that an arbitrary relation is Lean Eq."
+  },
+  {
+    "source": "Corelib.Init.Equality.Has_J_r",
+    "profile": "GenericEquality",
+    "certificate": "NativeBridge.Incremental.GenericEquality.jRightIso",
+    "kind": "TYPE_ISO",
+    "target": "NativeBridge.Incremental.GenericEquality.JRight",
+    "target_class": "native_representation",
+    "native_target": "NativeBridge.Incremental.GenericEquality.JRight",
+    "scope": "All universe parameters of the mechanically translated Type-valued generic relation; two-sided identity Iso to a source-free dependent function type. Does not assert that an arbitrary relation is Lean Eq."
+  },
+  {
+    "source": "Corelib.Init.Equality.Has_J_r_forward",
+    "profile": "GenericEquality",
+    "certificate": "NativeBridge.Incremental.GenericEquality.jRightBackwardIso",
+    "kind": "TYPE_ISO",
+    "target": "NativeBridge.Incremental.GenericEquality.JRightBackward",
+    "target_class": "native_representation",
+    "native_target": "NativeBridge.Incremental.GenericEquality.JRightBackward",
+    "scope": "All universe parameters of the mechanically translated Type-valued generic relation; two-sided identity Iso to a source-free dependent function type. Does not assert that an arbitrary relation is Lean Eq."
+  },
+  {
+    "source": "Corelib.Init.Equality.Has_Leibniz",
+    "profile": "GenericEquality",
+    "certificate": "NativeBridge.Incremental.GenericEquality.leibnizIso",
+    "kind": "TYPE_ISO",
+    "target": "NativeBridge.Incremental.GenericEquality.Leibniz",
+    "target_class": "native_representation",
+    "native_target": "NativeBridge.Incremental.GenericEquality.Leibniz",
+    "scope": "All universe parameters of the mechanically translated Type-valued generic relation; two-sided identity Iso to a source-free dependent function type. Does not assert that an arbitrary relation is Lean Eq."
+  },
+  {
+    "source": "Corelib.Init.Equality.Has_Leibniz_r",
+    "profile": "GenericEquality",
+    "certificate": "NativeBridge.Incremental.GenericEquality.leibnizRightIso",
+    "kind": "TYPE_ISO",
+    "target": "NativeBridge.Incremental.GenericEquality.LeibnizRight",
+    "target_class": "native_representation",
+    "native_target": "NativeBridge.Incremental.GenericEquality.LeibnizRight",
+    "scope": "All universe parameters of the mechanically translated Type-valued generic relation; two-sided identity Iso to a source-free dependent function type. Does not assert that an arbitrary relation is Lean Eq."
+  },
+  {
+    "source": "Corelib.Init.Equality.Has_J_Has_J_forward",
+    "profile": "GenericEquality",
+    "certificate": "NativeBridge.Incremental.GenericEquality.jToBackward_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.GenericEquality.jToBackward",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.GenericEquality.jToBackward",
+    "scope": "All generic relations and explicitly supplied reflexivity/elimination functions, with original universes retained. Native function composition is proved definitionally equal. ap/sym additionally have checked PLift Eq client instances using congrArg/Eq.symm."
+  },
+  {
+    "source": "Corelib.Init.Equality._Has_J_Has_J_forward",
+    "profile": "GenericEquality",
+    "certificate": "NativeBridge.Incremental.GenericEquality.jToBackward_internal_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.GenericEquality.jToBackward",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.GenericEquality.jToBackward",
+    "scope": "All generic relations and explicitly supplied reflexivity/elimination functions, with original universes retained. Native function composition is proved definitionally equal. ap/sym additionally have checked PLift Eq client instances using congrArg/Eq.symm."
+  },
+  {
+    "source": "Corelib.Init.Equality.Has_J_r_Has_J_r_forward",
+    "profile": "GenericEquality",
+    "certificate": "NativeBridge.Incremental.GenericEquality.jRightToBackward_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.GenericEquality.jRightToBackward",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.GenericEquality.jRightToBackward",
+    "scope": "All generic relations and explicitly supplied reflexivity/elimination functions, with original universes retained. Native function composition is proved definitionally equal. ap/sym additionally have checked PLift Eq client instances using congrArg/Eq.symm."
+  },
+  {
+    "source": "Corelib.Init.Equality._Has_J_r_Has_J_r_forward",
+    "profile": "GenericEquality",
+    "certificate": "NativeBridge.Incremental.GenericEquality.jRightToBackward_internal_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.GenericEquality.jRightToBackward",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.GenericEquality.jRightToBackward",
+    "scope": "All generic relations and explicitly supplied reflexivity/elimination functions, with original universes retained. Native function composition is proved definitionally equal. ap/sym additionally have checked PLift Eq client instances using congrArg/Eq.symm."
+  },
+  {
+    "source": "Corelib.Init.Equality.Has_J_Has_Leibniz",
+    "profile": "GenericEquality",
+    "certificate": "NativeBridge.Incremental.GenericEquality.jToLeibniz_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.GenericEquality.jToLeibniz",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.GenericEquality.jToLeibniz",
+    "scope": "All generic relations and explicitly supplied reflexivity/elimination functions, with original universes retained. Native function composition is proved definitionally equal. ap/sym additionally have checked PLift Eq client instances using congrArg/Eq.symm."
+  },
+  {
+    "source": "Corelib.Init.Equality.J_no_dep",
+    "profile": "GenericEquality",
+    "certificate": "NativeBridge.Incremental.GenericEquality.jNoDep_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.GenericEquality.jToLeibniz",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.GenericEquality.jToLeibniz",
+    "scope": "All generic relations and explicitly supplied reflexivity/elimination functions, with original universes retained. Native function composition is proved definitionally equal. ap/sym additionally have checked PLift Eq client instances using congrArg/Eq.symm."
+  },
+  {
+    "source": "Corelib.Init.Equality.ap",
+    "profile": "GenericEquality",
+    "certificate": "NativeBridge.Incremental.GenericEquality.ap_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.GenericEquality.ap",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.GenericEquality.ap",
+    "scope": "All generic relations and explicitly supplied reflexivity/elimination functions, with original universes retained. Native function composition is proved definitionally equal. ap/sym additionally have checked PLift Eq client instances using congrArg/Eq.symm."
+  },
+  {
+    "source": "Corelib.Init.Equality.sym",
+    "profile": "GenericEquality",
+    "certificate": "NativeBridge.Incremental.GenericEquality.sym_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.GenericEquality.sym",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.GenericEquality.sym",
+    "scope": "All generic relations and explicitly supplied reflexivity/elimination functions, with original universes retained. Native function composition is proved definitionally equal. ap/sym additionally have checked PLift Eq client instances using congrArg/Eq.symm."
+  },
+  {
+    "source": "Corelib.Init.Equality.refl",
+    "profile": "GenericEquality",
+    "certificate": "NativeBridge.Incremental.GenericEquality.refl_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id",
+    "target_class": "existing_api",
+    "native_target": "id",
+    "scope": "All supplied generic eliminators; the source operation is native identity on the corresponding dependent function space."
+  },
+  {
+    "source": "Corelib.Init.Equality.J_eliminator",
+    "profile": "GenericEquality",
+    "certificate": "NativeBridge.Incremental.GenericEquality.jEliminator_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id",
+    "target_class": "existing_api",
+    "native_target": "id",
+    "scope": "All supplied generic eliminators; the source operation is native identity on the corresponding dependent function space."
+  },
+  {
+    "source": "Corelib.Init.Equality.J_forward",
+    "profile": "GenericEquality",
+    "certificate": "NativeBridge.Incremental.GenericEquality.jForward_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id",
+    "target_class": "existing_api",
+    "native_target": "id",
+    "scope": "All supplied generic eliminators; the source operation is native identity on the corresponding dependent function space."
+  },
+  {
+    "source": "Corelib.Init.Equality.J_r_eliminator",
+    "profile": "GenericEquality",
+    "certificate": "NativeBridge.Incremental.GenericEquality.jRightEliminator_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id",
+    "target_class": "existing_api",
+    "native_target": "id",
+    "scope": "All supplied generic eliminators; the source operation is native identity on the corresponding dependent function space."
+  },
+  {
+    "source": "Corelib.Init.Equality.J_r_forward",
+    "profile": "GenericEquality",
+    "certificate": "NativeBridge.Incremental.GenericEquality.jRightForward_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id",
+    "target_class": "existing_api",
+    "native_target": "id",
+    "scope": "All supplied generic eliminators; the source operation is native identity on the corresponding dependent function space."
+  },
+  {
+    "source": "Corelib.Init.Equality.leibniz",
+    "profile": "GenericEquality",
+    "certificate": "NativeBridge.Incremental.GenericEquality.leibniz_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id",
+    "target_class": "existing_api",
+    "native_target": "id",
+    "scope": "All supplied generic eliminators; the source operation is native identity on the corresponding dependent function space."
+  },
+  {
+    "source": "Corelib.Init.Equality.leibniz_r",
+    "profile": "GenericEquality",
+    "certificate": "NativeBridge.Incremental.GenericEquality.leibnizRight_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "id",
+    "target_class": "existing_api",
+    "native_target": "id",
+    "scope": "All supplied generic eliminators; the source operation is native identity on the corresponding dependent function space."
+  },
+  {
+    "source": "Corelib.Array.PrimArray.max_length",
+    "profile": "ArrayCapacity",
+    "certificate": "NativeBridge.Incremental.ArrayCapacity.max_length_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.ArrayCapacity.capacity",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.ArrayCapacity.capacity",
+    "scope": "Exact primitive array maximum length as native BitVec 63; no array allocation required."
   }
 ]

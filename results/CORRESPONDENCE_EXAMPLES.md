@@ -183,3 +183,15 @@ Decimal.decimal 对应“带符号整数数字、小数数字、可选带符号�
 [十进制证明](../experiments/incremental-correspondence-20261019/proofs/DecimalRepresentation.lean)、
 [十六进制证明](../experiments/incremental-correspondence-20261019/proofs/HexadecimalRepresentation.lean)、
 [格式组合证明](../experiments/incremental-correspondence-20261019/proofs/NumberRepresentation.lean)。
+
+## 15. 63 位计数与溢出
+
+[WordOperations.lean](../experiments/incremental-correspondence-20261019/proofs/WordOperations.lean) 对任意 x : BitVec 63 证明机械 head0 x = x.clz、tail0 x = x.ctz。例：head0 1 = 62，tail0 8 = 3，零的两种计数都是 63。addc 最大值 1 对应 (true, 0)，同时保留进位标志。
+
+## 16. 字节序列并非 Unicode 文本
+
+[PrimitiveStrings.lean](../experiments/incremental-correspondence-20261019/proofs/PrimitiveStrings.lean)：机械 make 1 256 的字节取模后，parse 得到 some 0；而字符 print 256 返回 none。这两个接口的输入约定不同，证明保留了差异。所有字节，包括 NUL，均无损保留。
+
+## 17. 通用关系接口实例化为 Lean Eq
+
+[GenericEquality.lean](../experiments/incremental-correspondence-20261019/proofs/GenericEquality.lean) 用 PLift (x = y) 满足源 Type 值关系的要求。实例化机械 ap 后得到 PLift (congrArg f h)，实例化 sym 后得到 PLift h.symm，两项都由 kernel 验证。任意关系的接口对应和这一特定 Eq 实例分别陈述。

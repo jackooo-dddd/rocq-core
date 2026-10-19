@@ -197,3 +197,9 @@ SSR Bool 的 314 个依赖/原陈述目标已有闭合证明，覆盖 271 / 275 
 101 个 profile 验证通过；92 个覆盖 profile、1475 份证书共同导入。详见 [结果](BATCH40_43_RESULTS.md)。
 
 下一步处理 Init.Byte 的 9 根：先建立八位布尔元组与 Fin 256 / BitVec 8 的对应，再处理 of_bits/to_bits、依赖消去及两个往返陈述。保留实际位序；全域枚举的证明由 kernel 检查，不用样本测试代替。
+
+## 第四十四至四十八批：字节与原生数据操作
+
+新增 64 根，当前 1795 / 2180。Byte 10/10、PrimInt63 37/37、CarryType 1/1、PrimString 17/17、Init.Equality 22/22、PrimArray 8/8。107 个 profile 验证，98 个覆盖 profile / 1539 份证书共同导入通过。详见 [结果](BATCH44_48_RESULTS.md)。
+
+下一步：Init.Wf 的 10 个无条件陈述先原生化并独立证明，再处理 Acc_inv_dep 的显式条件。复用已有 Acc/WellFounded Iso 和 Fix/Fix_F 对应，保留原始声明的外延性前提和 universe 范围。随后推进 Program.Wf、SSR 重写接口与浮点表示；opaque 数据缺口仍需计算证据。

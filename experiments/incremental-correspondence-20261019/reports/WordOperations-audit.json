@@ -1,0 +1,468 @@
+[{"type": "∀ (k n w i : Nat), i < k → ¬i + 1 < k + 1 → False",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.WordOperations.trailingZeros_first._proof_1_7",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "∀ (x y : NativeBridge.Incremental.WordOperations.Word),\n  NativeBridge.Incremental.WordOperations.wordCarryTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.subcarryc x y) =\n    NativeBridge.Incremental.WordOperations.subCarryOne x y",
+  "source_references":
+  ["Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.subcarryc"],
+  "name": "NativeBridge.Incremental.WordOperations.subcarryc_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.pos_neg_int63 → Bool × NativeBridge.Incremental.WordOperations.Word",
+  "source_references":
+  ["Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.pos_neg_int63"],
+  "name": "NativeBridge.Incremental.WordOperations.signedWordTo",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "NativeBridge.Incremental.WordOperations.wordOptionTo\n    (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.parser\n      (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.pos_neg_int63.Neg 0)) =\n  none",
+  "source_references":
+  ["Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.parser",
+   "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.pos_neg_int63.Neg"],
+  "name": "NativeBridge.Incremental.WordOperations.negative_zero_parse_example",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Sort u → Sort (max 1 u)",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.WordOperations.CarryNative",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Init.Datatypes.option NativeBridge.Incremental.WordOperations.Word →\n  Option NativeBridge.Incremental.WordOperations.Word",
+  "source_references": ["Rocq.Corelib.Init.Datatypes.option"],
+  "name": "NativeBridge.Incremental.WordOperations.wordOptionTo",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "{A : Sort u_1} →\n  (motive : Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry A → Sort u_2) →\n    (x : Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry A) →\n      ((a : A) → motive (Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry.C0 A a)) →\n        ((a : A) → motive (Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry.C1 A a)) → motive x",
+  "source_references":
+  ["Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry",
+   "Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry.C0",
+   "Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry.C1"],
+  "name": "NativeBridge.Incremental.WordOperations.carryTo.match_1",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "NativeBridge.Incremental.WordOperations.wordPairTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.diveucl_21 1 3 1) =\n  (0, 0)",
+  "source_references":
+  ["Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.diveucl_21"],
+  "name":
+  "NativeBridge.Incremental.WordOperations.division_double_invalid_example",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "NativeBridge.Incremental.WordOperations.Word →\n  NativeBridge.Incremental.WordOperations.Word →\n    NativeBridge.Incremental.WordOperations.Word × NativeBridge.Incremental.WordOperations.Word",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.WordOperations.divRem",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type":
+  "NativeBridge.Incremental.WordOperations.wordCarryTo\n    (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.addc (BitVec.ofNat 63 (2 ^ 63 - 1)) 1) =\n  (true, 0)",
+  "source_references": ["Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.addc"],
+  "name": "NativeBridge.Incremental.WordOperations.addition_overflow_example",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry NativeBridge.Incremental.WordOperations.Word →\n  Bool × NativeBridge.Incremental.WordOperations.Word",
+  "source_references": ["Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry"],
+  "name": "NativeBridge.Incremental.WordOperations.wordCarryTo",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (A : Sort u_1) (x : Bool ×' A),\n  NativeBridge.Incremental.WordOperations.carryTo (NativeBridge.Incremental.WordOperations.carryOf x) = x",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.WordOperations.carryIso._proof_2",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "NativeBridge.Incremental.WordOperations.wordCarryTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.subc 0 1) =\n  (true, BitVec.ofNat 63 (2 ^ 63 - 1))",
+  "source_references": ["Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.subc"],
+  "name": "NativeBridge.Incremental.WordOperations.subtraction_borrow_example",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (p x y : NativeBridge.Incremental.WordOperations.Word),\n  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.addmuldiv p x y =\n    NativeBridge.Incremental.WordOperations.funnelShift p x y",
+  "source_references":
+  ["Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int",
+   "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.addmuldiv"],
+  "name": "NativeBridge.Incremental.WordOperations.addmuldiv_agrees",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "NativeBridge.Incremental.WordOperations.Word →\n  NativeBridge.Incremental.WordOperations.Word → NativeBridge.Incremental.WordOperations.Word",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.WordOperations.signedRem",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type": "∀ (w : Nat), Rocq2Lean.PrimInt63.trailingZeros w 0 = w",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.WordOperations.trailingZeros_zero",
+  "kind": "theorem",
+  "axioms": ["propext", "Classical.choice", "Quot.sound"]},
+ {"type":
+  "∀ (x y : NativeBridge.Incremental.WordOperations.Word),\n  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.asr x y = NativeBridge.Incremental.WordOperations.arithmeticShift x y",
+  "source_references":
+  ["Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int",
+   "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.asr"],
+  "name": "NativeBridge.Incremental.WordOperations.asr_agrees",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "Bool × NativeBridge.Incremental.WordOperations.Word → Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.pos_neg_int63",
+  "source_references":
+  ["Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.pos_neg_int63"],
+  "name": "NativeBridge.Incremental.WordOperations.signedWordOf",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "NativeBridge.Incremental.WordOperations.Word →\n  NativeBridge.Incremental.WordOperations.Word →\n    NativeBridge.Incremental.WordOperations.Word × NativeBridge.Incremental.WordOperations.Word",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.WordOperations.mulWide",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (w : Nat) (z : Int), Rocq2Lean.PrimInt63.ofSigned w z = BitVec.ofInt w z",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.WordOperations.ofSigned_agrees",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "{A : Sort u} → Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry A → Bool ×' A",
+  "source_references": ["Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry"],
+  "name": "NativeBridge.Incremental.WordOperations.carryTo",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "NativeBridge.Incremental.WordOperations.Word →\n  NativeBridge.Incremental.WordOperations.Word → Bool × NativeBridge.Incremental.WordOperations.Word",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.WordOperations.subCarry",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (k w n : Nat),\n  k < w → (∀ (i : Nat), i < k → n.testBit i = false) → n.testBit k = true → Rocq2Lean.PrimInt63.trailingZeros w n = k",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.WordOperations.trailingZeros_first",
+  "kind": "theorem",
+  "axioms": ["propext", "Classical.choice", "Quot.sound"]},
+ {"type":
+  "NativeBridge.Incremental.WordOperations.Word →\n  NativeBridge.Incremental.WordOperations.Word →\n    NativeBridge.Incremental.WordOperations.Word → NativeBridge.Incremental.WordOperations.Word",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.WordOperations.funnelShift",
+  "kind": "definition",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "(motive :\n    Rocq.Corelib.Init.Datatypes.prod NativeBridge.Incremental.WordOperations.Word\n        NativeBridge.Incremental.WordOperations.Word →\n      Sort u_1) →\n  (x :\n      Rocq.Corelib.Init.Datatypes.prod NativeBridge.Incremental.WordOperations.Word\n        NativeBridge.Incremental.WordOperations.Word) →\n    ((a b : NativeBridge.Incremental.WordOperations.Word) →\n        motive\n          (Rocq.Corelib.Init.Datatypes.prod.pair NativeBridge.Incremental.WordOperations.Word\n            NativeBridge.Incremental.WordOperations.Word a b)) →\n      motive x",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.prod", "Rocq.Corelib.Init.Datatypes.prod.pair"],
+  "name": "NativeBridge.Incremental.WordOperations.wordPairTo.match_1",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "(motive : Rocq.Corelib.Init.Datatypes.option NativeBridge.Incremental.WordOperations.Word → Sort u_1) →\n  (x : Rocq.Corelib.Init.Datatypes.option NativeBridge.Incremental.WordOperations.Word) →\n    ((n : NativeBridge.Incremental.WordOperations.Word) →\n        motive (Rocq.Corelib.Init.Datatypes.option.Some NativeBridge.Incremental.WordOperations.Word n)) →\n      (Unit → motive (Rocq.Corelib.Init.Datatypes.option.None NativeBridge.Incremental.WordOperations.Word)) → motive x",
+  "source_references":
+  ["Rocq.Corelib.Init.Datatypes.option",
+   "Rocq.Corelib.Init.Datatypes.option.Some",
+   "Rocq.Corelib.Init.Datatypes.option.None"],
+  "name": "NativeBridge.Incremental.WordOperations.wordOptionTo.match_1",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "(motive : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.pos_neg_int63 → Sort u_1) →\n  (x : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.pos_neg_int63) →\n    ((n : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int) →\n        motive (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.pos_neg_int63.Pos n)) →\n      ((n : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int) →\n          motive (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.pos_neg_int63.Neg n)) →\n        motive x",
+  "source_references":
+  ["Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.pos_neg_int63",
+   "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int",
+   "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.pos_neg_int63.Pos",
+   "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.pos_neg_int63.Neg"],
+  "name": "NativeBridge.Incremental.WordOperations.signedWordTo.match_1",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (hi lo y : NativeBridge.Incremental.WordOperations.Word),\n  NativeBridge.Incremental.WordOperations.wordPairTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.diveucl_21 hi lo y) =\n    NativeBridge.Incremental.WordOperations.divDouble hi lo y",
+  "source_references":
+  ["Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.diveucl_21"],
+  "name": "NativeBridge.Incremental.WordOperations.diveucl_21_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.tail0 8 = 3",
+  "source_references":
+  ["Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int",
+   "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.tail0"],
+  "name": "NativeBridge.Incremental.WordOperations.trailing_eight_example",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (n w : Nat), n.log2 < w → ¬w - 1 - n.log2 + 1 = w + 1 - 1 - n.log2 → False",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.WordOperations.leadingZeros_formula._proof_1_4",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "NativeBridge.Iso Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.pos_neg_int63\n  NativeBridge.Incremental.WordOperations.SignedWordNative",
+  "source_references":
+  ["Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.pos_neg_int63"],
+  "name": "NativeBridge.Incremental.WordOperations.signedWordIso",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (x : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int_wrapper),\n  NativeBridge.Incremental.WordOperations.signedWordTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.printer x) =\n    NativeBridge.Incremental.WordOperations.printWord (NativeBridge.int63WrapperIso.to x)",
+  "source_references":
+  ["Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int_wrapper",
+   "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.printer"],
+  "name": "NativeBridge.Incremental.WordOperations.printer_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "NativeBridge.Incremental.WordOperations.Word →\n  NativeBridge.Incremental.WordOperations.Word →\n    NativeBridge.Incremental.WordOperations.Word →\n      NativeBridge.Incremental.WordOperations.Word × NativeBridge.Incremental.WordOperations.Word",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.WordOperations.divDouble",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "NativeBridge.Incremental.WordOperations.Word →\n  NativeBridge.Incremental.WordOperations.Word → NativeBridge.Incremental.WordOperations.Word",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.WordOperations.signedDiv",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (x y : NativeBridge.Incremental.WordOperations.Word),\n  NativeBridge.Incremental.WordOperations.wordPairTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.diveucl x y) =\n    NativeBridge.Incremental.WordOperations.divRem x y",
+  "source_references": ["Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.diveucl"],
+  "name": "NativeBridge.Incremental.WordOperations.diveucl_agrees",
+  "kind": "theorem",
+  "axioms": ["propext"]},
+ {"type":
+  "NativeBridge.Incremental.WordOperations.Word →\n  NativeBridge.Incremental.WordOperations.Word → Bool × NativeBridge.Incremental.WordOperations.Word",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.WordOperations.subCarryOne",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "NativeBridge.Incremental.WordOperations.SignedWordNative → Option NativeBridge.Incremental.WordOperations.Word",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.WordOperations.parseWord",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (x : NativeBridge.Incremental.WordOperations.Word), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.head0 x = BitVec.clz x",
+  "source_references":
+  ["Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int",
+   "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.head0"],
+  "name": "NativeBridge.Incremental.WordOperations.head0_agrees",
+  "kind": "theorem",
+  "axioms": ["propext", "Classical.choice", "Quot.sound"]},
+ {"type":
+  "∀ (x y : NativeBridge.Incremental.WordOperations.Word),\n  NativeBridge.Incremental.WordOperations.wordPairTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.mulc x y) =\n    NativeBridge.Incremental.WordOperations.mulWide x y",
+  "source_references": ["Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.mulc"],
+  "name": "NativeBridge.Incremental.WordOperations.mulc_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (x : NativeBridge.Incremental.WordOperations.Word),\n  (BitVec.clz x).toNat < 63 →\n    (BitVec.toNat x).log2 = 62 - (BitVec.clz x).toNat → ¬63 - 1 - (BitVec.toNat x).log2 = (BitVec.clz x).toNat → False",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.WordOperations.head0_agrees._proof_1_2",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "∀ (w n : Nat), n < 2 ^ w → Rocq2Lean.PrimInt63.leadingZeros w n = if n = 0 then w else w - 1 - n.log2",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.WordOperations.leadingZeros_formula",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type": "Type",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.WordOperations.SignedWordNative",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.tail0 0 = 63",
+  "source_references":
+  ["Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int",
+   "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.tail0"],
+  "name": "NativeBridge.Incremental.WordOperations.trailing_zero_example",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Type",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.WordOperations.Word",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (x : NativeBridge.Incremental.WordOperations.Word), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.tail0 x = BitVec.ctz x",
+  "source_references":
+  ["Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int",
+   "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.tail0"],
+  "name": "NativeBridge.Incremental.WordOperations.tail0_agrees",
+  "kind": "theorem",
+  "axioms": ["propext", "Classical.choice", "Quot.sound"]},
+ {"type":
+  "∀ (x y : NativeBridge.Incremental.WordOperations.Word),\n  NativeBridge.Incremental.WordOperations.wordCarryTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.addc x y) =\n    NativeBridge.Incremental.WordOperations.addCarry x y",
+  "source_references": ["Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.addc"],
+  "name": "NativeBridge.Incremental.WordOperations.addc_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "∀ (k w : Nat), ¬0 < k + 1 → False",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.WordOperations.trailingZeros_first._proof_1_6",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "∀ (x : NativeBridge.Incremental.WordOperations.Word),\n  (BitVec.clz x).toNat < 63 → ¬63 - (BitVec.clz x).toNat = 62 - (BitVec.clz x).toNat + 1 → False",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.WordOperations.head0_agrees._proof_1_1",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type": "∀ (k n w : Nat), k + 1 < w + 1 → ¬k < w → False",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.WordOperations.trailingZeros_first._proof_1_8",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "∀ (x y : NativeBridge.Incremental.WordOperations.Word),\n  NativeBridge.Incremental.WordOperations.wordCarryTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.addcarryc x y) =\n    NativeBridge.Incremental.WordOperations.addCarryOne x y",
+  "source_references":
+  ["Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.addcarryc"],
+  "name": "NativeBridge.Incremental.WordOperations.addcarryc_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.head0 1 = 62",
+  "source_references":
+  ["Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int",
+   "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.head0"],
+  "name": "NativeBridge.Incremental.WordOperations.leading_one_example",
+  "kind": "theorem",
+  "axioms": []},
+ {"type": "∀ (n w : Nat), ¬n < 2 ^ w → ¬2 ^ w ≤ n → False",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.WordOperations.leadingZeros_formula._proof_1_6",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type": "∀ (k : Nat), k + 1 < 0 → False",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.WordOperations.trailingZeros_first._proof_1_5",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "∀ (x : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.pos_neg_int63),\n  NativeBridge.Incremental.WordOperations.wordOptionTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.parser x) =\n    NativeBridge.Incremental.WordOperations.parseWord (NativeBridge.Incremental.WordOperations.signedWordTo x)",
+  "source_references":
+  ["Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.pos_neg_int63",
+   "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.parser"],
+  "name": "NativeBridge.Incremental.WordOperations.parser_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "NativeBridge.Incremental.WordOperations.Word →\n  NativeBridge.Incremental.WordOperations.Word → Bool × NativeBridge.Incremental.WordOperations.Word",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.WordOperations.addCarry",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "NativeBridge.Incremental.WordOperations.Word →\n  NativeBridge.Incremental.WordOperations.Word → NativeBridge.Incremental.WordOperations.Word",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.WordOperations.arithmeticShift",
+  "kind": "definition",
+  "axioms": ["propext"]},
+ {"type":
+  "∀ (x : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int_wrapper),\n  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int_wrap x = id (NativeBridge.int63WrapperIso.to x)",
+  "source_references":
+  ["Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int_wrapper",
+   "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int",
+   "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int_wrap"],
+  "name": "NativeBridge.Incremental.WordOperations.int_wrap_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "{A : Sort u} → Bool ×' A → Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry A",
+  "source_references": ["Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry"],
+  "name": "NativeBridge.Incremental.WordOperations.carryOf",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (x y : NativeBridge.Incremental.WordOperations.Word),\n  NativeBridge.Incremental.WordOperations.wordCarryTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.subc x y) =\n    NativeBridge.Incremental.WordOperations.subCarry x y",
+  "source_references": ["Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.subc"],
+  "name": "NativeBridge.Incremental.WordOperations.subc_agrees",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "NativeBridge.Incremental.WordOperations.Word → NativeBridge.Incremental.WordOperations.SignedWordNative",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.WordOperations.printWord",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (A : Sort u_1) (x : Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry A),\n  NativeBridge.Incremental.WordOperations.carryOf (NativeBridge.Incremental.WordOperations.carryTo x) = x",
+  "source_references": ["Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry"],
+  "name": "NativeBridge.Incremental.WordOperations.carryIso._proof_1",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "(A : Sort u) → NativeBridge.Iso (Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry A) (Bool ×' A)",
+  "source_references": ["Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry"],
+  "name": "NativeBridge.Incremental.WordOperations.carryIso",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "∀ (n w : Nat), n < 2 ^ (w + 1) → ¬n < 2 ^ w → n = 0 → False",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.WordOperations.leadingZeros_formula._proof_1_5",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type": "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.head0 0 = 63",
+  "source_references":
+  ["Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int",
+   "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.head0"],
+  "name": "NativeBridge.Incremental.WordOperations.leading_zero_example",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (x y : NativeBridge.Incremental.WordOperations.Word),\n  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.mods x y = NativeBridge.Incremental.WordOperations.signedRem x y",
+  "source_references":
+  ["Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int",
+   "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.mods"],
+  "name": "NativeBridge.Incremental.WordOperations.mods_agrees",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "NativeBridge.Incremental.WordOperations.Word →\n  NativeBridge.Incremental.WordOperations.Word → Bool × NativeBridge.Incremental.WordOperations.Word",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.WordOperations.addCarryOne",
+  "kind": "definition",
+  "axioms": []},
+ {"type": "0 < 0 → False",
+  "source_references": [],
+  "name":
+  "NativeBridge.Incremental.WordOperations.trailingZeros_first._proof_1_1",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "∀ (x : NativeBridge.Incremental.WordOperations.SignedWordNative),\n  NativeBridge.Incremental.WordOperations.signedWordTo (NativeBridge.Incremental.WordOperations.signedWordOf x) = x",
+  "source_references": [],
+  "name": "NativeBridge.Incremental.WordOperations.signedWordIso._proof_2",
+  "kind": "theorem",
+  "axioms": []},
+ {"type":
+  "∀ (x y : NativeBridge.Incremental.WordOperations.Word),\n  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.divs x y = NativeBridge.Incremental.WordOperations.signedDiv x y",
+  "source_references":
+  ["Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int",
+   "Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.divs"],
+  "name": "NativeBridge.Incremental.WordOperations.divs_agrees",
+  "kind": "theorem",
+  "axioms": ["propext", "Quot.sound"]},
+ {"type":
+  "Rocq.Corelib.Init.Datatypes.prod NativeBridge.Incremental.WordOperations.Word\n    NativeBridge.Incremental.WordOperations.Word →\n  NativeBridge.Incremental.WordOperations.Word × NativeBridge.Incremental.WordOperations.Word",
+  "source_references": ["Rocq.Corelib.Init.Datatypes.prod"],
+  "name": "NativeBridge.Incremental.WordOperations.wordPairTo",
+  "kind": "definition",
+  "axioms": []},
+ {"type":
+  "∀ (x : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.pos_neg_int63),\n  NativeBridge.Incremental.WordOperations.signedWordOf (NativeBridge.Incremental.WordOperations.signedWordTo x) = x",
+  "source_references":
+  ["Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.pos_neg_int63"],
+  "name": "NativeBridge.Incremental.WordOperations.signedWordIso._proof_1",
+  "kind": "theorem",
+  "axioms": []}]

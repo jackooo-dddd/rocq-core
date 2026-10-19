@@ -1,0 +1,18 @@
+NATIVE_TARGET {"name":"BitVec.clz","native_expression":"fun {w} x => x.clzAuxRec (w - 1)","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"BitVec.ctz","native_expression":"fun {w} x => x.reverse.clz","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.WordOperations.CarryNative","native_expression":"fun A => Bool ×' A","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.WordOperations.SignedWordNative","native_expression":"Bool × NativeBridge.Incremental.WordOperations.Word","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.WordOperations.addCarry","native_expression":"fun x y => if BitVec.toNat x + BitVec.toNat y < 2 ^ 63 then (false, x + y) else (true, x + y)","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.WordOperations.addCarryOne","native_expression":"fun x y =>\n  have z := BitVec.ofNat 63 (BitVec.toNat x + BitVec.toNat y + 1);\n  if BitVec.toNat x + BitVec.toNat y + 1 < 2 ^ 63 then (false, z) else (true, z)","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.WordOperations.arithmeticShift","native_expression":"fun x y => if BitVec.toInt y < 0 then 0 else BitVec.ofInt 63 ((BitVec.toInt x).shiftRight (min (BitVec.toNat y) 63))","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.WordOperations.divDouble","native_expression":"fun hi lo y =>\n  if BitVec.toNat hi < BitVec.toNat y then\n    have n := BitVec.toNat hi * 2 ^ 63 + BitVec.toNat lo;\n    (BitVec.ofNat 63 (n / BitVec.toNat y), BitVec.ofNat 63 (n % BitVec.toNat y))\n  else (0, 0)","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.WordOperations.divRem","native_expression":"fun x y => (x / y, x % y)","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.WordOperations.funnelShift","native_expression":"fun p x y => x <<< BitVec.toNat p ||| y >>> BitVec.toNat (63 - p)","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.WordOperations.mulWide","native_expression":"fun x y =>\n  (BitVec.ofNat 63 (BitVec.toNat x * BitVec.toNat y / 2 ^ 63), BitVec.ofNat 63 (BitVec.toNat x * BitVec.toNat y))","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.WordOperations.parseWord","native_expression":"fun p => if p.fst = true then none else some p.snd","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.WordOperations.printWord","native_expression":"fun n => (false, n)","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.WordOperations.signedDiv","native_expression":"fun x y => BitVec.ofInt 63 ((BitVec.toInt x).tdiv (BitVec.toInt y))","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.WordOperations.signedRem","native_expression":"fun x y => BitVec.ofInt 63 ((BitVec.toInt x).tmod (BitVec.toInt y))","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.WordOperations.subCarry","native_expression":"fun x y => if BitVec.toNat y ≤ BitVec.toNat x then (false, x - y) else (true, x - y)","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.WordOperations.subCarryOne","native_expression":"fun x y => if BitVec.toNat y < BitVec.toNat x then (false, x - y - 1) else (true, x - y - 1)","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"id","native_expression":"fun {α} a => a","remaining_source_symbols":[]}

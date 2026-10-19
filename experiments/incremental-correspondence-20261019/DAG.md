@@ -471,3 +471,27 @@ flowchart TD
 ```
 
 虚线表示代码生成时复用证明文本，实际源模块闭包分别验证；不表示不同 Rocq2LeanOut 模块直接导入。位序和完整表示保存是下一批 Byte 的基础。
+
+## 第四十四至四十八批及下一依赖
+
+```mermaid
+flowchart TD
+  ByteIso --> ByteOperations
+  ByteOperations --> ByteElimination
+  Int63Iso --> WordOperations
+  NativeClzCtz[BitVec clz/ctz characterizations] --> WordOperations
+  ByteStringIso --> PrimitiveStrings
+  NativeDependentFunctions --> GenericEquality
+  GenericEquality --> LiftedEqConsumer[PLift Eq: congrArg and Eq.symm]
+  NativeArrayIso --> ArrayCapacity
+  ByteElimination --> ImportAll48[98 profiles / 1539 certificates]
+  WordOperations --> ImportAll48
+  PrimitiveStrings --> ImportAll48
+  GenericEquality --> ImportAll48
+  ArrayCapacity --> ImportAll48
+  AccIso --> WellFoundedStatements
+  FixCorrespondence --> WellFoundedStatements
+  WellFoundedStatements --> AccInvDep[dependent accessibility condition]
+```
+
+字节串比较暂为原生组合表达式，未宣称对应现成 List.compareLex。通用 J 接口保留显式关系参数；PLift Eq 只是一个经过验证的客户实例。

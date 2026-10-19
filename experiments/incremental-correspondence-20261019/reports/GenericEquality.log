@@ -1,0 +1,13 @@
+NATIVE_TARGET {"name":"NativeBridge.Incremental.GenericEquality.J","native_expression":"fun R r => (A : Type u) → (x : A) → (P : (y : A) → R A x y → Type w) → P x (r A x) → (y : A) → (e : R A x y) → P y e","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.GenericEquality.JBackward","native_expression":"fun R r => (A : Type u) → (x : A) → (P : (y : A) → R A x y → Type w) → (y : A) → (e : R A x y) → P y e → P x (r A x)","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.GenericEquality.JRight","native_expression":"fun R r => (A : Type u) → (x : A) → (P : (y : A) → R A y x → Type w) → P x (r A x) → (y : A) → (e : R A y x) → P y e","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.GenericEquality.JRightBackward","native_expression":"fun R r => (A : Type u) → (x : A) → (P : (y : A) → R A y x → Type w) → (y : A) → (e : R A y x) → P y e → P x (r A x)","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.GenericEquality.Leibniz","native_expression":"fun R => (A : Type u) → (x : A) → (P : A → Type w) → P x → (y : A) → R A x y → P y","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.GenericEquality.LeibnizRight","native_expression":"fun R => (A : Type u) → (x : A) → (P : A → Type w) → P x → (y : A) → R A y x → P y","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.GenericEquality.Refl","native_expression":"fun R => (A : Type u) → (x : A) → R A x x","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.GenericEquality.ap","native_expression":"fun R S r l A B f x y e => l A x (fun y => S B (f x) (f y)) (r B (f x)) y e","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.GenericEquality.jRightToBackward","native_expression":"fun R r j A x P y e => j A x (fun z h => P z h → P x (r A x)) id y e","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.GenericEquality.jToBackward","native_expression":"fun R r j A x P y e => j A x (fun z h => P z h → P x (r A x)) id y e","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.GenericEquality.jToLeibniz","native_expression":"fun R r j A x P px y e => j A x (fun z x => P z) px y e","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"NativeBridge.Incremental.GenericEquality.sym","native_expression":"fun R A r l x y e => l A x (fun y => R A y x) (r A x) y e","remaining_source_symbols":[]}
+NATIVE_TARGET {"name":"id","native_expression":"fun {α} a => a","remaining_source_symbols":[]}

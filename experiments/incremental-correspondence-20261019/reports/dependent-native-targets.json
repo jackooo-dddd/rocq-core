@@ -1163,5 +1163,235 @@
     "name": "NativeBridge.Incremental.NumberRepresentation.nativeEqual",
     "native_expression": "fun {A} [BEq A] x y => x == y",
     "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.ByteOperations.bitsByte",
+    "native_expression": "fun x =>\n  match x with\n  | (a, b, c, d, e, f, g, h) =>\n    (BitVec.ofNat 8\n        (a.toNat + 2 * b.toNat + 4 * c.toNat + 8 * d.toNat + 16 * e.toNat + 32 * f.toNat + 64 * g.toNat +\n          128 * h.toNat)).toFin",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.ByteOperations.bitsRoundtrip",
+    "native_expression": "∀ (x : NativeBridge.Incremental.ByteOperations.Bits),\n  NativeBridge.Incremental.ByteOperations.byteBits (NativeBridge.Incremental.ByteOperations.bitsByte x) = x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.ByteOperations.byteBits",
+    "native_expression": "fun b =>\n  have v := { toFin := b };\n  (v.getLsbD 0, v.getLsbD 1, v.getLsbD 2, v.getLsbD 3, v.getLsbD 4, v.getLsbD 5, v.getLsbD 6, v.getLsbD 7)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.ByteOperations.byteRoundtrip",
+    "native_expression": "∀ (b : Fin 256),\n  NativeBridge.Incremental.ByteOperations.bitsByte (NativeBridge.Incremental.ByteOperations.byteBits b) = b",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.ByteElimination.byteInduction",
+    "native_expression": "∀ (P : Fin 256 → Prop),\n  P 0 →\n    P 1 →\n      P 2 →\n        P 3 →\n          P 4 →\n            P 5 →\n              P 6 →\n                P 7 →\n                  P 8 →\n                    P 9 →\n                      P 10 →\n                        P 11 →\n                          P 12 →\n                            P 13 →\n                              P 14 →\n                                P 15 →\n                                  P 16 →\n                                    P 17 →\n                                      P 18 →\n                                        P 19 →\n                                          P 20 →\n                                            P 21 →\n                                              P 22 →\n                                                P 23 →\n                                                  P 24 →\n                                                    P 25 →\n                                                      P 26 →\n                                                        P 27 →\n                                                          P 28 →\n                                                            P 29 →\n                                                              P 30 →\n                                                                P 31 →\n                                                                  P 32 →\n                                                                    P 33 →\n                                                                      P 34 →\n                                                                        P 35 →\n                                                                          P 36 →\n                                                                            P 37 →\n                                                                              P 38 →\n                                                                                P 39 →\n                                                                                  P 40 →\n                                                                                    P 41 →\n                                                                                      P 42 →\n                                                                                        P 43 →\n                                                                                          P 44 →\n                                                                                            P 45 →\n                                                                                              P 46 →\n                                                                                                P 47 → P 48 → P 49 → ⋯",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.ByteElimination.finByteRec",
+    "native_expression": "fun P h0 h1 h2 h3 h4 h5 h6 h7 h8 h9 h10 h11 h12 h13 h14 h15 h16 h17 h18 h19 h20 h21 h22 h23 h24 h25 h26 h27 h28 h29 h30\n    h31 h32 h33 h34 h35 h36 h37 h38 h39 h40 h41 h42 h43 h44 h45 h46 h47 h48 h49 h50 h51 h52 h53 h54 h55 h56 h57 h58 h59\n    h60 h61 h62 h63 h64 h65 h66 h67 h68 h69 h70 h71 h72 h73 h74 h75 h76 h77 h78 h79 h80 h81 h82 h83 h84 h85 h86 h87 h88\n    h89 h90 h91 h92 h93 h94 h95 h96 h97 h98 h99 h100 h101 h102 h103 h104 h105 h106 h107 h108 h109 h110 h111 h112 h113\n    h114 h115 h116 h117 h118 h119 h120 h121 h122 h123 h124 h125 h126 h127 h128 h129 h130 h131 h132 h133 h134 h135 h136\n    h137 h138 h139 h140 h141 h142 h143 h144 h145 h146 h147 h148 h149 h150 h151 h152 h153 h154 h155 h156 h157 h158 h159\n    h160 h161 h162 h163 h164 h165 h166 h167 h168 h169 h170 h171 h172 h173 h174 h175 h176 h177 h178 h179 h180 h181 h182\n    h183 h184 h185 h186 h187 h188 h189 h190 h191 h192 h193 h194 h195 h196 h197 h198 h199 h200 h201 h202 h203 h204 h205\n    h206 h207 h208 h209 h210 h211 h212 h213 h214 h215 h216 h217 h218 h219 h220 h221 h222 h223 h224 h225 h226 h227 h228\n    h229 h230 h231 h232 h233 h234 h235 h236 h237 h238 h239 h240 h241 h242 h243 h244 h245 h246 h247 h248 h249 h250 h251\n    h252 h253 h254 h255 b =>\n  (fun i =>\n      Fin.cases h0\n        (fun i =>\n          Fin.cases h1\n            (fun i =>\n              Fin.cases h2\n                (fun i =>\n                  Fin.cases h3\n                    (fun i =>\n                      Fin.cases h4\n                        (fun i =>\n                          Fin.cases h5\n                            (fun i =>\n                              Fin.cases h6\n                                (fun i =>\n                                  Fin.cases h7\n                                    (fun i =>\n                                      Fin.cases h8\n                                        (fun i =>\n                                          Fin.cases h9\n                                            (fun i =>\n                                              Fin.cases h10\n                                                (fun i =>\n                                                  Fin.cases h11\n                                                    (fun i =>\n                                                      Fin.cases h12\n                                                        (fun i =>\n                                                          Fin.cases h13\n                                                            (fun i =>\n                                                              Fin.cases h14\n                                                                (fun i =>\n                                                                  Fin.cases h15\n                                                                    (fun i =>\n                                                                      Fin.cases h16\n                                                                        (fun i =>\n                                                                          Fin.cases h17\n                                                                            (fun i =>\n                                                                              Fin.cases h18\n                                                                                (fun i =>\n                                                                                  Fin.cases h19\n                                                                                    (fun i =>\n                                                                                      Fin.cases h20\n                                                                                        (fun i =>\n                                                                                          Fin.cases h21\n                                                                                            (fun i =>\n                                                                                              Fin.cases h22\n                                                                                                (fun i =>\n                                                                                                  Fin.cases h23\n                                                                                                    (fun i => ⋯) i)\n                                                                                                i)\n                                                                                            i)\n                                                                                        i)\n                                                                                    i)\n                                                                                i)\n                                                                            i)\n                                                                        i)\n                                                                    i)\n                                                                i)\n                                                            i)\n                                                        i)\n                                                    i)\n                                                i)\n                                            i)\n                                        i)\n                                    i)\n                                i)\n                            i)\n                        i)\n                    i)\n                i)\n            i)\n        i)\n    b",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "BitVec.clz",
+    "native_expression": "fun {w} x => x.clzAuxRec (w - 1)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "BitVec.ctz",
+    "native_expression": "fun {w} x => x.reverse.clz",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.WordOperations.CarryNative",
+    "native_expression": "fun A => Bool ×' A",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.WordOperations.SignedWordNative",
+    "native_expression": "Bool × NativeBridge.Incremental.WordOperations.Word",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.WordOperations.addCarry",
+    "native_expression": "fun x y => if BitVec.toNat x + BitVec.toNat y < 2 ^ 63 then (false, x + y) else (true, x + y)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.WordOperations.addCarryOne",
+    "native_expression": "fun x y =>\n  have z := BitVec.ofNat 63 (BitVec.toNat x + BitVec.toNat y + 1);\n  if BitVec.toNat x + BitVec.toNat y + 1 < 2 ^ 63 then (false, z) else (true, z)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.WordOperations.arithmeticShift",
+    "native_expression": "fun x y => if BitVec.toInt y < 0 then 0 else BitVec.ofInt 63 ((BitVec.toInt x).shiftRight (min (BitVec.toNat y) 63))",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.WordOperations.divDouble",
+    "native_expression": "fun hi lo y =>\n  if BitVec.toNat hi < BitVec.toNat y then\n    have n := BitVec.toNat hi * 2 ^ 63 + BitVec.toNat lo;\n    (BitVec.ofNat 63 (n / BitVec.toNat y), BitVec.ofNat 63 (n % BitVec.toNat y))\n  else (0, 0)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.WordOperations.divRem",
+    "native_expression": "fun x y => (x / y, x % y)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.WordOperations.funnelShift",
+    "native_expression": "fun p x y => x <<< BitVec.toNat p ||| y >>> BitVec.toNat (63 - p)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.WordOperations.mulWide",
+    "native_expression": "fun x y =>\n  (BitVec.ofNat 63 (BitVec.toNat x * BitVec.toNat y / 2 ^ 63), BitVec.ofNat 63 (BitVec.toNat x * BitVec.toNat y))",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.WordOperations.parseWord",
+    "native_expression": "fun p => if p.fst = true then none else some p.snd",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.WordOperations.printWord",
+    "native_expression": "fun n => (false, n)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.WordOperations.signedDiv",
+    "native_expression": "fun x y => BitVec.ofInt 63 ((BitVec.toInt x).tdiv (BitVec.toInt y))",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.WordOperations.signedRem",
+    "native_expression": "fun x y => BitVec.ofInt 63 ((BitVec.toInt x).tmod (BitVec.toInt y))",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.WordOperations.subCarry",
+    "native_expression": "fun x y => if BitVec.toNat y ≤ BitVec.toNat x then (false, x - y) else (true, x - y)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.WordOperations.subCarryOne",
+    "native_expression": "fun x y => if BitVec.toNat y < BitVec.toNat x then (false, x - y - 1) else (true, x - y - 1)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimitiveStrings.Bytes",
+    "native_expression": "NativeBridge.NativeByteString",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimitiveStrings.Word",
+    "native_expression": "BitVec 63",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimitiveStrings.appendBytes",
+    "native_expression": "fun a b =>\n  ⟨NativeBridge.Incremental.PrimitiveStrings.bounded (↑a.fst + ↑b.fst),\n    Vector.ofFn fun i =>\n      if ↑i < ↑a.fst then NativeBridge.Incremental.PrimitiveStrings.readByte a ↑i\n      else NativeBridge.Incremental.PrimitiveStrings.readByte b (↑i - ↑a.fst)⟩",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimitiveStrings.capacity",
+    "native_expression": "16777211",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimitiveStrings.compareBytes",
+    "native_expression": "fun a b => NativeBridge.Incremental.PrimitiveStrings.compareRange a b (min ↑a.fst ↑b.fst) 0",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimitiveStrings.equalBytes",
+    "native_expression": "fun a b => NativeBridge.Incremental.PrimitiveStrings.compareBytes a b == Ordering.eq",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimitiveStrings.parseChar",
+    "native_expression": "fun s =>\n  if ↑s.fst = 1 then some (BitVec.ofNat 63 (NativeBridge.Incremental.PrimitiveStrings.readByte s 0).toNat) else none",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimitiveStrings.printChar",
+    "native_expression": "fun c => if BitVec.toNat c < 256 then some (NativeBridge.Incremental.PrimitiveStrings.repeatByte 1 c) else none",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimitiveStrings.repeatByte",
+    "native_expression": "fun n c =>\n  ⟨NativeBridge.Incremental.PrimitiveStrings.bounded (BitVec.toNat n),\n    Vector.replicate (↑(NativeBridge.Incremental.PrimitiveStrings.bounded (BitVec.toNat n)))\n      (BitVec.ofNat 8 (BitVec.toNat c))⟩",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.PrimitiveStrings.sliceBytes",
+    "native_expression": "fun s off len =>\n  ⟨NativeBridge.Incremental.PrimitiveStrings.bounded (min (BitVec.toNat len) (↑s.fst - BitVec.toNat off)),\n    Vector.ofFn fun i => NativeBridge.Incremental.PrimitiveStrings.readByte s (BitVec.toNat off + ↑i)⟩",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.GenericEquality.J",
+    "native_expression": "fun R r => (A : Type u) → (x : A) → (P : (y : A) → R A x y → Type w) → P x (r A x) → (y : A) → (e : R A x y) → P y e",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.GenericEquality.JBackward",
+    "native_expression": "fun R r => (A : Type u) → (x : A) → (P : (y : A) → R A x y → Type w) → (y : A) → (e : R A x y) → P y e → P x (r A x)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.GenericEquality.JRight",
+    "native_expression": "fun R r => (A : Type u) → (x : A) → (P : (y : A) → R A y x → Type w) → P x (r A x) → (y : A) → (e : R A y x) → P y e",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.GenericEquality.JRightBackward",
+    "native_expression": "fun R r => (A : Type u) → (x : A) → (P : (y : A) → R A y x → Type w) → (y : A) → (e : R A y x) → P y e → P x (r A x)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.GenericEquality.Leibniz",
+    "native_expression": "fun R => (A : Type u) → (x : A) → (P : A → Type w) → P x → (y : A) → R A x y → P y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.GenericEquality.LeibnizRight",
+    "native_expression": "fun R => (A : Type u) → (x : A) → (P : A → Type w) → P x → (y : A) → R A y x → P y",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.GenericEquality.Refl",
+    "native_expression": "fun R => (A : Type u) → (x : A) → R A x x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.GenericEquality.ap",
+    "native_expression": "fun R S r l A B f x y e => l A x (fun y => S B (f x) (f y)) (r B (f x)) y e",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.GenericEquality.jRightToBackward",
+    "native_expression": "fun R r j A x P y e => j A x (fun z h => P z h → P x (r A x)) id y e",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.GenericEquality.jToBackward",
+    "native_expression": "fun R r j A x P y e => j A x (fun z h => P z h → P x (r A x)) id y e",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.GenericEquality.jToLeibniz",
+    "native_expression": "fun R r j A x P px y e => j A x (fun z x => P z) px y e",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.GenericEquality.sym",
+    "native_expression": "fun R A r l x y e => l A x (fun y => R A y x) (r A x) y e",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.ArrayCapacity.capacity",
+    "native_expression": "4194303",
+    "remaining_source_symbols": []
   }
 ]

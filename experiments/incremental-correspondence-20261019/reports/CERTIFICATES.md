@@ -11131,6 +11131,864 @@ NativeBridge.Incremental.NumberRepresentation.number_eq_dec_agrees
 
 公理闭包：propext
 
+## Corelib.Init.Byte.to_bits
+
+NativeBridge.Incremental.ByteOperations.to_bits_agrees
+
+目标：NativeBridge.Incremental.ByteOperations.byteBits；范围：All 256 bytes; eight native Bool fields from BitVec.getLsbD, least significant bit first.
+
+```lean
+∀ (b : Rocq.Corelib.Init.Byte.byte),
+  NativeBridge.Incremental.ByteOperations.bitsTo (Rocq.Corelib.Init.Byte.to_bits b) =
+    NativeBridge.Incremental.ByteOperations.byteBits (NativeBridge.byteTo b)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Byte.of_bits
+
+NativeBridge.Incremental.ByteOperations.of_bits_agrees
+
+目标：NativeBridge.Incremental.ByteOperations.bitsByte；范围：All 256 combinations of eight bits; native weighted sum through BitVec.ofNat 8, result Fin 256.
+
+```lean
+∀ (x : NativeBridge.Incremental.ByteOperations.RBits),
+  NativeBridge.byteTo (Rocq.Corelib.Init.Byte.of_bits x) =
+    NativeBridge.Incremental.ByteOperations.bitsByte (NativeBridge.Incremental.ByteOperations.bitsTo x)
+```
+
+公理闭包：空
+
+## Corelib.Init.Byte.byte_of_byte
+
+NativeBridge.Incremental.ByteOperations.byte_of_byte_agrees
+
+目标：id；范围：Identity on Fin 256.
+
+```lean
+∀ (b : Rocq.Corelib.Init.Byte.byte),
+  NativeBridge.byteTo (Rocq.Corelib.Init.Byte.byte_of_byte b) = id (NativeBridge.byteTo b)
+```
+
+公理闭包：空
+
+## Corelib.Init.Byte.of_bits_to_bits
+
+NativeBridge.Incremental.ByteOperations.of_bits_to_bits_correspondence
+
+目标：NativeBridge.Incremental.ByteOperations.byteRoundtrip；范围：Full byte roundtrip; original statement independently proved by all constructor cases.
+
+```lean
+Rocq.Corelib.Init.Byte.of_bits_to_bits.statement ↔ NativeBridge.Incremental.ByteOperations.byteRoundtrip
+```
+
+公理闭包：propext
+
+## Corelib.Init.Byte.to_bits_of_bits
+
+NativeBridge.Incremental.ByteOperations.to_bits_of_bits_correspondence
+
+目标：NativeBridge.Incremental.ByteOperations.bitsRoundtrip；范围：Full eight-bit tuple roundtrip; all boolean combinations checked in the original statement proof.
+
+```lean
+Rocq.Corelib.Init.Byte.to_bits_of_bits.statement ↔ NativeBridge.Incremental.ByteOperations.bitsRoundtrip
+```
+
+公理闭包：propext
+
+## Corelib.Init.Byte.byte_rec
+
+NativeBridge.Incremental.ByteElimination.byte_rec_agrees
+
+目标：NativeBridge.Incremental.ByteElimination.finByteRec；范围：All 256 branch values and dependent native motives; Type-valued source recursor, native nested Fin.cases.
+
+```lean
+∀ (P : Fin 256 → Type) (h0 : P 0) (h1 : P 1) (h2 : P 2) (h3 : P 3) (h4 : P 4) (h5 : P 5) (h6 : P 6) (h7 : P 7)
+  (h8 : P 8) (h9 : P 9) (h10 : P 10) (h11 : P 11) (h12 : P 12) (h13 : P 13) (h14 : P 14) (h15 : P 15) (h16 : P 16)
+  (h17 : P 17) (h18 : P 18) (h19 : P 19) (h20 : P 20) (h21 : P 21) (h22 : P 22) (h23 : P 23) (h24 : P 24) (h25 : P 25)
+  (h26 : P 26) (h27 : P 27) (h28 : P 28) (h29 : P 29) (h30 : P 30) (h31 : P 31) (h32 : P 32) (h33 : P 33) (h34 : P 34)
+  (h35 : P 35) (h36 : P 36) (h37 : P 37) (h38 : P 38) (h39 : P 39) (h40 : P 40) (h41 : P 41) (h42 : P 42) (h43 : P 43)
+  (h44 : P 44) (h45 : P 45) (h46 : P 46) (h47 : P 47) (h48 : P 48) (h49 : P 49), ⋯
+```
+
+公理闭包：propext
+
+## Corelib.Init.Byte.byte_rect
+
+NativeBridge.Incremental.ByteElimination.byte_rect_agrees
+
+目标：NativeBridge.Incremental.ByteElimination.finByteRec；范围：All 256 branch values and dependent native motives over any Sort, including Prop; native nested Fin.cases.
+
+```lean
+∀ (P : Fin 256 → Sort u) (h0 : P 0) (h1 : P 1) (h2 : P 2) (h3 : P 3) (h4 : P 4) (h5 : P 5) (h6 : P 6) (h7 : P 7)
+  (h8 : P 8) (h9 : P 9) (h10 : P 10) (h11 : P 11) (h12 : P 12) (h13 : P 13) (h14 : P 14) (h15 : P 15) (h16 : P 16)
+  (h17 : P 17) (h18 : P 18) (h19 : P 19) (h20 : P 20) (h21 : P 21) (h22 : P 22) (h23 : P 23) (h24 : P 24) (h25 : P 25)
+  (h26 : P 26) (h27 : P 27) (h28 : P 28) (h29 : P 29) (h30 : P 30) (h31 : P 31) (h32 : P 32) (h33 : P 33) (h34 : P 34)
+  (h35 : P 35) (h36 : P 36) (h37 : P 37) (h38 : P 38) (h39 : P 39) (h40 : P 40) (h41 : P 41) (h42 : P 42) (h43 : P 43)
+  (h44 : P 44) (h45 : P 45) (h46 : P 46) (h47 : P 47) (h48 : P 48) (h49 : P 49), ⋯
+```
+
+公理闭包：propext
+
+## Corelib.Init.Byte.byte_ind
+
+NativeBridge.Incremental.ByteElimination.byte_ind_correspondence
+
+目标：NativeBridge.Incremental.ByteElimination.byteInduction；范围：Complete 256-premise induction statement over Fin 256; original statement independently proved.
+
+```lean
+Rocq.Corelib.Init.Byte.byte_ind.statement ↔ NativeBridge.Incremental.ByteElimination.byteInduction
+```
+
+公理闭包：propext
+
+## Corelib.Init.Byte.byte_sind
+
+NativeBridge.Incremental.ByteElimination.byte_sind_correspondence
+
+目标：NativeBridge.Incremental.ByteElimination.byteInduction；范围：Complete 256-premise induction statement over Fin 256; original statement independently proved.
+
+```lean
+Rocq.Corelib.Init.Byte.byte_sind.statement ↔ NativeBridge.Incremental.ByteElimination.byteInduction
+```
+
+公理闭包：propext
+
+## Corelib.Numbers.Cyclic.Int63.CarryType.carry
+
+NativeBridge.Incremental.WordOperations.carryIso
+
+目标：NativeBridge.Incremental.WordOperations.CarryNative；范围：Every Sort-valued payload; PProd Bool A with C0=false and C1=true; both inverse laws.
+
+```lean
+(A : Sort u) → NativeBridge.Iso (Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry A) (Bool ×' A)
+```
+
+公理闭包：空
+
+## Corelib.Numbers.Cyclic.Int63.PrimInt63.pos_neg_int63
+
+NativeBridge.Incremental.WordOperations.signedWordIso
+
+目标：NativeBridge.Incremental.WordOperations.SignedWordNative；范围：Sign flag and all 63-bit words; preserves negative zero and format sign independently of two-complement interpretation.
+
+```lean
+NativeBridge.Iso Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.pos_neg_int63
+  NativeBridge.Incremental.WordOperations.SignedWordNative
+```
+
+公理闭包：空
+
+## Corelib.Numbers.Cyclic.Int63.PrimInt63.addc
+
+NativeBridge.Incremental.WordOperations.addc_agrees
+
+目标：NativeBridge.Incremental.WordOperations.addCarry；范围：All words; modulo-2^63 sum and overflow flag.
+
+```lean
+∀ (x y : NativeBridge.Incremental.WordOperations.Word),
+  NativeBridge.Incremental.WordOperations.wordCarryTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.addc x y) =
+    NativeBridge.Incremental.WordOperations.addCarry x y
+```
+
+公理闭包：空
+
+## Corelib.Numbers.Cyclic.Int63.PrimInt63.addcarryc
+
+NativeBridge.Incremental.WordOperations.addcarryc_agrees
+
+目标：NativeBridge.Incremental.WordOperations.addCarryOne；范围：All words; sum plus one and overflow flag.
+
+```lean
+∀ (x y : NativeBridge.Incremental.WordOperations.Word),
+  NativeBridge.Incremental.WordOperations.wordCarryTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.addcarryc x y) =
+    NativeBridge.Incremental.WordOperations.addCarryOne x y
+```
+
+公理闭包：空
+
+## Corelib.Numbers.Cyclic.Int63.PrimInt63.subc
+
+NativeBridge.Incremental.WordOperations.subc_agrees
+
+目标：NativeBridge.Incremental.WordOperations.subCarry；范围：All words; modular difference and borrow flag.
+
+```lean
+∀ (x y : NativeBridge.Incremental.WordOperations.Word),
+  NativeBridge.Incremental.WordOperations.wordCarryTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.subc x y) =
+    NativeBridge.Incremental.WordOperations.subCarry x y
+```
+
+公理闭包：空
+
+## Corelib.Numbers.Cyclic.Int63.PrimInt63.subcarryc
+
+NativeBridge.Incremental.WordOperations.subcarryc_agrees
+
+目标：NativeBridge.Incremental.WordOperations.subCarryOne；范围：All words; modular difference minus one and borrow flag.
+
+```lean
+∀ (x y : NativeBridge.Incremental.WordOperations.Word),
+  NativeBridge.Incremental.WordOperations.wordCarryTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.subcarryc x y) =
+    NativeBridge.Incremental.WordOperations.subCarryOne x y
+```
+
+公理闭包：空
+
+## Corelib.Numbers.Cyclic.Int63.PrimInt63.mulc
+
+NativeBridge.Incremental.WordOperations.mulc_agrees
+
+目标：NativeBridge.Incremental.WordOperations.mulWide；范围：All words; high and low halves of the 126-bit product.
+
+```lean
+∀ (x y : NativeBridge.Incremental.WordOperations.Word),
+  NativeBridge.Incremental.WordOperations.wordPairTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.mulc x y) =
+    NativeBridge.Incremental.WordOperations.mulWide x y
+```
+
+公理闭包：空
+
+## Corelib.Numbers.Cyclic.Int63.PrimInt63.diveucl
+
+NativeBridge.Incremental.WordOperations.diveucl_agrees
+
+目标：NativeBridge.Incremental.WordOperations.divRem；范围：All words including zero divisor; native BitVec unsigned division and remainder pair.
+
+```lean
+∀ (x y : NativeBridge.Incremental.WordOperations.Word),
+  NativeBridge.Incremental.WordOperations.wordPairTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.diveucl x y) =
+    NativeBridge.Incremental.WordOperations.divRem x y
+```
+
+公理闭包：propext
+
+## Corelib.Numbers.Cyclic.Int63.PrimInt63.diveucl_21
+
+NativeBridge.Incremental.WordOperations.diveucl_21_agrees
+
+目标：NativeBridge.Incremental.WordOperations.divDouble；范围：All words; two-word dividend division only when high half < divisor, otherwise (0,0), preserving the source guard.
+
+```lean
+∀ (hi lo y : NativeBridge.Incremental.WordOperations.Word),
+  NativeBridge.Incremental.WordOperations.wordPairTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.diveucl_21 hi lo y) =
+    NativeBridge.Incremental.WordOperations.divDouble hi lo y
+```
+
+公理闭包：空
+
+## Corelib.Numbers.Cyclic.Int63.PrimInt63.divs
+
+NativeBridge.Incremental.WordOperations.divs_agrees
+
+目标：NativeBridge.Incremental.WordOperations.signedDiv；范围：All words; Int.tdiv on signed values then BitVec.ofInt 63 reduction, including zero divisor and overflow.
+
+```lean
+∀ (x y : NativeBridge.Incremental.WordOperations.Word),
+  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.divs x y = NativeBridge.Incremental.WordOperations.signedDiv x y
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.PrimInt63.mods
+
+NativeBridge.Incremental.WordOperations.mods_agrees
+
+目标：NativeBridge.Incremental.WordOperations.signedRem；范围：All words; Int.tmod on signed values then BitVec.ofInt 63 reduction.
+
+```lean
+∀ (x y : NativeBridge.Incremental.WordOperations.Word),
+  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.mods x y = NativeBridge.Incremental.WordOperations.signedRem x y
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.PrimInt63.asr
+
+NativeBridge.Incremental.WordOperations.asr_agrees
+
+目标：NativeBridge.Incremental.WordOperations.arithmeticShift；范围：All words; signed-negative shift amount yields zero, otherwise signed shift by min(amount,63).
+
+```lean
+∀ (x y : NativeBridge.Incremental.WordOperations.Word),
+  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.asr x y = NativeBridge.Incremental.WordOperations.arithmeticShift x y
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.PrimInt63.addmuldiv
+
+NativeBridge.Incremental.WordOperations.addmuldiv_agrees
+
+目标：NativeBridge.Incremental.WordOperations.funnelShift；范围：All words; native BitVec logical shifts and OR. The complementary shift count is modular 63-p, not unbounded Nat subtraction.
+
+```lean
+∀ (p x y : NativeBridge.Incremental.WordOperations.Word),
+  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.addmuldiv p x y =
+    NativeBridge.Incremental.WordOperations.funnelShift p x y
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.PrimInt63.parser
+
+NativeBridge.Incremental.WordOperations.parser_agrees
+
+目标：NativeBridge.Incremental.WordOperations.parseWord；范围：All sign/word inputs; negative sign always rejected, including negative zero.
+
+```lean
+∀ (x : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.pos_neg_int63),
+  NativeBridge.Incremental.WordOperations.wordOptionTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.parser x) =
+    NativeBridge.Incremental.WordOperations.parseWord (NativeBridge.Incremental.WordOperations.signedWordTo x)
+```
+
+公理闭包：空
+
+## Corelib.Numbers.Cyclic.Int63.PrimInt63.printer
+
+NativeBridge.Incremental.WordOperations.printer_agrees
+
+目标：NativeBridge.Incremental.WordOperations.printWord；范围：Every source wrapper; preserves word and emits positive sign.
+
+```lean
+∀ (x : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int_wrapper),
+  NativeBridge.Incremental.WordOperations.signedWordTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.printer x) =
+    NativeBridge.Incremental.WordOperations.printWord (NativeBridge.int63WrapperIso.to x)
+```
+
+公理闭包：空
+
+## Corelib.Numbers.Cyclic.Int63.PrimInt63.int_wrap
+
+NativeBridge.Incremental.WordOperations.int_wrap_agrees
+
+目标：id；范围：Every source wrapper; native identity after the established wrapper Iso.
+
+```lean
+∀ (x : Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int_wrapper),
+  Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int_wrap x = id (NativeBridge.int63WrapperIso.to x)
+```
+
+公理闭包：空
+
+## Corelib.Numbers.Cyclic.Int63.PrimInt63.head0
+
+NativeBridge.Incremental.WordOperations.head0_agrees
+
+目标：BitVec.clz；范围：All words; proved against native BitVec.clz using the logarithmic characterization of the source count, with zero returning 63.
+
+```lean
+∀ (x : NativeBridge.Incremental.WordOperations.Word), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.head0 x = BitVec.clz x
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Numbers.Cyclic.Int63.PrimInt63.tail0
+
+NativeBridge.Incremental.WordOperations.tail0_agrees
+
+目标：BitVec.ctz；范围：All words; proved against native BitVec.ctz using the first set bit and all preceding zero bits; zero returns 63.
+
+```lean
+∀ (x : NativeBridge.Incremental.WordOperations.Word), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.tail0 x = BitVec.ctz x
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Strings.PrimString.char63
+
+NativeBridge.Incremental.PrimitiveStrings.charIso
+
+目标：NativeBridge.Incremental.PrimitiveStrings.Word；范围：All values; explicit two-sided inverse. Byte strings preserve arbitrary bytes and embedded NUL, with bounded length; char63 retains the full 63-bit domain.
+
+```lean
+NativeBridge.Iso Rocq.Corelib.Strings.PrimString.char63 NativeBridge.Incremental.PrimitiveStrings.Word
+```
+
+公理闭包：空
+
+## Corelib.Strings.PrimString.char63_wrapper
+
+NativeBridge.Incremental.PrimitiveStrings.charWrapperIso
+
+目标：NativeBridge.Incremental.PrimitiveStrings.Word；范围：All values; explicit two-sided inverse. Byte strings preserve arbitrary bytes and embedded NUL, with bounded length; char63 retains the full 63-bit domain.
+
+```lean
+NativeBridge.Iso Rocq.Corelib.Strings.PrimString.char63_wrapper NativeBridge.Incremental.PrimitiveStrings.Word
+```
+
+公理闭包：空
+
+## Corelib.Strings.PrimString.PStringNotations.string_wrapper
+
+NativeBridge.Incremental.PrimitiveStrings.stringWrapperIso
+
+目标：NativeBridge.Incremental.PrimitiveStrings.Bytes；范围：All values; explicit two-sided inverse. Byte strings preserve arbitrary bytes and embedded NUL, with bounded length; char63 retains the full 63-bit domain.
+
+```lean
+NativeBridge.Iso Rocq.Corelib.Strings.PrimString.PStringNotations.string_wrapper
+  NativeBridge.Incremental.PrimitiveStrings.Bytes
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Strings.PrimString.make
+
+NativeBridge.Incremental.PrimitiveStrings.make_agrees
+
+目标：NativeBridge.Incremental.PrimitiveStrings.repeatByte；范围：All 63-bit sizes and characters; native Vector.replicate, length clipped at 16777211 and character reduced modulo 256.
+
+```lean
+∀ (n c : NativeBridge.Incremental.PrimitiveStrings.Word),
+  NativeBridge.byteStringTo (Rocq.Corelib.Strings.PrimString.make n c) =
+    NativeBridge.Incremental.PrimitiveStrings.repeatByte n c
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Strings.PrimString.sub
+
+NativeBridge.Incremental.PrimitiveStrings.sub_agrees
+
+目标：NativeBridge.Incremental.PrimitiveStrings.sliceBytes；范围：All byte strings and offsets/lengths; clipped native vector slice, including out-of-range empty results.
+
+```lean
+∀ (s : Rocq.Corelib.Strings.PrimString.string) (off len : NativeBridge.Incremental.PrimitiveStrings.Word),
+  NativeBridge.byteStringTo (Rocq.Corelib.Strings.PrimString.sub s off len) =
+    NativeBridge.Incremental.PrimitiveStrings.sliceBytes (NativeBridge.byteStringTo s) off len
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Strings.PrimString.cat
+
+NativeBridge.Incremental.PrimitiveStrings.cat_agrees
+
+目标：NativeBridge.Incremental.PrimitiveStrings.appendBytes；范围：All byte strings; native vector concatenation with total length clipped at 16777211.
+
+```lean
+∀ (a b : Rocq.Corelib.Strings.PrimString.string),
+  NativeBridge.byteStringTo (Rocq.Corelib.Strings.PrimString.cat a b) =
+    NativeBridge.Incremental.PrimitiveStrings.appendBytes (NativeBridge.byteStringTo a) (NativeBridge.byteStringTo b)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Strings.PrimString.compare
+
+NativeBridge.Incremental.PrimitiveStrings.compare_agrees
+
+目标：NativeBridge.Incremental.PrimitiveStrings.compareBytes；范围：All byte strings; source-free bytewise lexicographic comparison expressed using native vectors and Nat order. Not yet identified with the existing List.compareLex API.
+
+```lean
+∀ (a b : Rocq.Corelib.Strings.PrimString.string),
+  NativeBridge.comparisonTo (Rocq.Corelib.Strings.PrimString.compare a b) =
+    NativeBridge.Incremental.PrimitiveStrings.compareBytes (NativeBridge.byteStringTo a) (NativeBridge.byteStringTo b)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Strings.PrimString.eqb
+
+NativeBridge.Incremental.PrimitiveStrings.eqb_agrees
+
+目标：NativeBridge.Incremental.PrimitiveStrings.equalBytes；范围：All byte strings; equality branch of the proved source-free native lexicographic comparison.
+
+```lean
+∀ (a b : Rocq.Corelib.Strings.PrimString.string),
+  NativeBridge.boolTo (Rocq.Corelib.Strings.PrimString.eqb a b) =
+    NativeBridge.Incremental.PrimitiveStrings.equalBytes (NativeBridge.byteStringTo a) (NativeBridge.byteStringTo b)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Strings.PrimString.max_length
+
+NativeBridge.Incremental.PrimitiveStrings.max_length_agrees
+
+目标：NativeBridge.Incremental.PrimitiveStrings.capacity；范围：Exact primitive capacity 16777211 as BitVec 63.
+
+```lean
+Rocq.Corelib.Strings.PrimString.max_length = NativeBridge.Incremental.PrimitiveStrings.capacity
+```
+
+公理闭包：空
+
+## Corelib.Strings.PrimString.Char63Notations.parse
+
+NativeBridge.Incremental.PrimitiveStrings.parse_agrees
+
+目标：NativeBridge.Incremental.PrimitiveStrings.parseChar；范围：All byte strings; accepts exactly one byte, including NUL, and widens it to BitVec 63.
+
+```lean
+∀ (s : Rocq.Corelib.Strings.PrimString.string),
+  Option.map NativeBridge.Incremental.PrimitiveStrings.charTo
+      (NativeBridge.optionTo (Rocq.Corelib.Strings.PrimString.Char63Notations.parse s)) =
+    NativeBridge.Incremental.PrimitiveStrings.parseChar (NativeBridge.byteStringTo s)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Strings.PrimString.Char63Notations.print
+
+NativeBridge.Incremental.PrimitiveStrings.print_agrees
+
+目标：NativeBridge.Incremental.PrimitiveStrings.printChar；范围：All 63-bit character wrappers; accepts values below 256, rejects larger values rather than silently truncating.
+
+```lean
+∀ (c : Rocq.Corelib.Strings.PrimString.char63_wrapper),
+  Option.map NativeBridge.byteStringTo
+      (NativeBridge.optionTo (Rocq.Corelib.Strings.PrimString.Char63Notations.print c)) =
+    NativeBridge.Incremental.PrimitiveStrings.printChar (NativeBridge.Incremental.PrimitiveStrings.charTo c)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.Strings.PrimString.char63_wrap
+
+NativeBridge.Incremental.PrimitiveStrings.char_wrap_agrees
+
+目标：id；范围：Every source input; identity after the explicit representation or wrapper Iso.
+
+```lean
+∀ (c : Rocq.Corelib.Strings.PrimString.char63_wrapper),
+  Rocq.Corelib.Strings.PrimString.char63_wrap c = id (NativeBridge.Incremental.PrimitiveStrings.charTo c)
+```
+
+公理闭包：空
+
+## Corelib.Strings.PrimString.PStringNotations.string_wrap
+
+NativeBridge.Incremental.PrimitiveStrings.string_wrap_agrees
+
+目标：id；范围：Every source input; identity after the explicit representation or wrapper Iso.
+
+```lean
+∀ (s : Rocq.Corelib.Strings.PrimString.PStringNotations.string_wrapper),
+  NativeBridge.byteStringTo (Rocq.Corelib.Strings.PrimString.PStringNotations.string_wrap s) =
+    id (NativeBridge.Incremental.PrimitiveStrings.stringTo s)
+```
+
+公理闭包：propext
+
+## Corelib.Strings.PrimString.PStringNotations.id_string
+
+NativeBridge.Incremental.PrimitiveStrings.id_string_agrees
+
+目标：id；范围：Every source input; identity after the explicit representation or wrapper Iso.
+
+```lean
+∀ (s : Rocq.Corelib.Strings.PrimString.string),
+  NativeBridge.byteStringTo (Rocq.Corelib.Strings.PrimString.PStringNotations.id_string s) =
+    id (NativeBridge.byteStringTo s)
+```
+
+公理闭包：propext
+
+## Corelib.Init.Equality.Has_refl
+
+NativeBridge.Incremental.GenericEquality.reflIso
+
+目标：NativeBridge.Incremental.GenericEquality.Refl；范围：All universe parameters of the mechanically translated Type-valued generic relation; two-sided identity Iso to a source-free dependent function type. Does not assert that an arbitrary relation is Lean Eq.
+
+```lean
+(R : NativeBridge.Incremental.GenericEquality.RelationFamily) →
+  NativeBridge.Iso (Rocq.Corelib.Init.Equality.Has_refl R) (NativeBridge.Incremental.GenericEquality.Refl R)
+```
+
+公理闭包：空
+
+## Corelib.Init.Equality.Has_J
+
+NativeBridge.Incremental.GenericEquality.jIso
+
+目标：NativeBridge.Incremental.GenericEquality.J；范围：All universe parameters of the mechanically translated Type-valued generic relation; two-sided identity Iso to a source-free dependent function type. Does not assert that an arbitrary relation is Lean Eq.
+
+```lean
+(R : NativeBridge.Incremental.GenericEquality.RelationFamily) →
+  (r : NativeBridge.Incremental.GenericEquality.Refl R) →
+    NativeBridge.Iso (Rocq.Corelib.Init.Equality.Has_J R r) (NativeBridge.Incremental.GenericEquality.J R r)
+```
+
+公理闭包：空
+
+## Corelib.Init.Equality.Has_J_forward
+
+NativeBridge.Incremental.GenericEquality.jBackwardIso
+
+目标：NativeBridge.Incremental.GenericEquality.JBackward；范围：All universe parameters of the mechanically translated Type-valued generic relation; two-sided identity Iso to a source-free dependent function type. Does not assert that an arbitrary relation is Lean Eq.
+
+```lean
+(R : NativeBridge.Incremental.GenericEquality.RelationFamily) →
+  (r : NativeBridge.Incremental.GenericEquality.Refl R) →
+    NativeBridge.Iso (Rocq.Corelib.Init.Equality.Has_J_forward R r)
+      (NativeBridge.Incremental.GenericEquality.JBackward R r)
+```
+
+公理闭包：空
+
+## Corelib.Init.Equality.Has_J_r
+
+NativeBridge.Incremental.GenericEquality.jRightIso
+
+目标：NativeBridge.Incremental.GenericEquality.JRight；范围：All universe parameters of the mechanically translated Type-valued generic relation; two-sided identity Iso to a source-free dependent function type. Does not assert that an arbitrary relation is Lean Eq.
+
+```lean
+(R : NativeBridge.Incremental.GenericEquality.RelationFamily) →
+  (r : NativeBridge.Incremental.GenericEquality.Refl R) →
+    NativeBridge.Iso (Rocq.Corelib.Init.Equality.Has_J_r R r) (NativeBridge.Incremental.GenericEquality.JRight R r)
+```
+
+公理闭包：空
+
+## Corelib.Init.Equality.Has_J_r_forward
+
+NativeBridge.Incremental.GenericEquality.jRightBackwardIso
+
+目标：NativeBridge.Incremental.GenericEquality.JRightBackward；范围：All universe parameters of the mechanically translated Type-valued generic relation; two-sided identity Iso to a source-free dependent function type. Does not assert that an arbitrary relation is Lean Eq.
+
+```lean
+(R : NativeBridge.Incremental.GenericEquality.RelationFamily) →
+  (r : NativeBridge.Incremental.GenericEquality.Refl R) →
+    NativeBridge.Iso (Rocq.Corelib.Init.Equality.Has_J_r_forward R r)
+      (NativeBridge.Incremental.GenericEquality.JRightBackward R r)
+```
+
+公理闭包：空
+
+## Corelib.Init.Equality.Has_Leibniz
+
+NativeBridge.Incremental.GenericEquality.leibnizIso
+
+目标：NativeBridge.Incremental.GenericEquality.Leibniz；范围：All universe parameters of the mechanically translated Type-valued generic relation; two-sided identity Iso to a source-free dependent function type. Does not assert that an arbitrary relation is Lean Eq.
+
+```lean
+(R : NativeBridge.Incremental.GenericEquality.RelationFamily) →
+  NativeBridge.Iso (Rocq.Corelib.Init.Equality.Has_Leibniz R) (NativeBridge.Incremental.GenericEquality.Leibniz R)
+```
+
+公理闭包：空
+
+## Corelib.Init.Equality.Has_Leibniz_r
+
+NativeBridge.Incremental.GenericEquality.leibnizRightIso
+
+目标：NativeBridge.Incremental.GenericEquality.LeibnizRight；范围：All universe parameters of the mechanically translated Type-valued generic relation; two-sided identity Iso to a source-free dependent function type. Does not assert that an arbitrary relation is Lean Eq.
+
+```lean
+(R : NativeBridge.Incremental.GenericEquality.RelationFamily) →
+  NativeBridge.Iso (Rocq.Corelib.Init.Equality.Has_Leibniz_r R)
+    (NativeBridge.Incremental.GenericEquality.LeibnizRight R)
+```
+
+公理闭包：空
+
+## Corelib.Init.Equality.Has_J_Has_J_forward
+
+NativeBridge.Incremental.GenericEquality.jToBackward_agrees
+
+目标：NativeBridge.Incremental.GenericEquality.jToBackward；范围：All generic relations and explicitly supplied reflexivity/elimination functions, with original universes retained. Native function composition is proved definitionally equal. ap/sym additionally have checked PLift Eq client instances using congrArg/Eq.symm.
+
+```lean
+∀ (R : NativeBridge.Incremental.GenericEquality.RelationFamily) (r : NativeBridge.Incremental.GenericEquality.Refl R),
+  Rocq.Corelib.Init.Equality.Has_J_Has_J_forward R r = NativeBridge.Incremental.GenericEquality.jToBackward R r
+```
+
+公理闭包：空
+
+## Corelib.Init.Equality._Has_J_Has_J_forward
+
+NativeBridge.Incremental.GenericEquality.jToBackward_internal_agrees
+
+目标：NativeBridge.Incremental.GenericEquality.jToBackward；范围：All generic relations and explicitly supplied reflexivity/elimination functions, with original universes retained. Native function composition is proved definitionally equal. ap/sym additionally have checked PLift Eq client instances using congrArg/Eq.symm.
+
+```lean
+∀ (R : NativeBridge.Incremental.GenericEquality.RelationFamily) (r : NativeBridge.Incremental.GenericEquality.Refl R),
+  Rocq.Corelib.Init.Equality._Has_J_Has_J_forward R r = NativeBridge.Incremental.GenericEquality.jToBackward R r
+```
+
+公理闭包：空
+
+## Corelib.Init.Equality.Has_J_r_Has_J_r_forward
+
+NativeBridge.Incremental.GenericEquality.jRightToBackward_agrees
+
+目标：NativeBridge.Incremental.GenericEquality.jRightToBackward；范围：All generic relations and explicitly supplied reflexivity/elimination functions, with original universes retained. Native function composition is proved definitionally equal. ap/sym additionally have checked PLift Eq client instances using congrArg/Eq.symm.
+
+```lean
+∀ (R : NativeBridge.Incremental.GenericEquality.RelationFamily) (r : NativeBridge.Incremental.GenericEquality.Refl R),
+  Rocq.Corelib.Init.Equality.Has_J_r_Has_J_r_forward R r = NativeBridge.Incremental.GenericEquality.jRightToBackward R r
+```
+
+公理闭包：空
+
+## Corelib.Init.Equality._Has_J_r_Has_J_r_forward
+
+NativeBridge.Incremental.GenericEquality.jRightToBackward_internal_agrees
+
+目标：NativeBridge.Incremental.GenericEquality.jRightToBackward；范围：All generic relations and explicitly supplied reflexivity/elimination functions, with original universes retained. Native function composition is proved definitionally equal. ap/sym additionally have checked PLift Eq client instances using congrArg/Eq.symm.
+
+```lean
+∀ (R : NativeBridge.Incremental.GenericEquality.RelationFamily) (r : NativeBridge.Incremental.GenericEquality.Refl R),
+  Rocq.Corelib.Init.Equality._Has_J_r_Has_J_r_forward R r =
+    NativeBridge.Incremental.GenericEquality.jRightToBackward R r
+```
+
+公理闭包：空
+
+## Corelib.Init.Equality.Has_J_Has_Leibniz
+
+NativeBridge.Incremental.GenericEquality.jToLeibniz_agrees
+
+目标：NativeBridge.Incremental.GenericEquality.jToLeibniz；范围：All generic relations and explicitly supplied reflexivity/elimination functions, with original universes retained. Native function composition is proved definitionally equal. ap/sym additionally have checked PLift Eq client instances using congrArg/Eq.symm.
+
+```lean
+∀ (R : NativeBridge.Incremental.GenericEquality.RelationFamily) (r : NativeBridge.Incremental.GenericEquality.Refl R),
+  Rocq.Corelib.Init.Equality.Has_J_Has_Leibniz R r = NativeBridge.Incremental.GenericEquality.jToLeibniz R r
+```
+
+公理闭包：空
+
+## Corelib.Init.Equality.J_no_dep
+
+NativeBridge.Incremental.GenericEquality.jNoDep_agrees
+
+目标：NativeBridge.Incremental.GenericEquality.jToLeibniz；范围：All generic relations and explicitly supplied reflexivity/elimination functions, with original universes retained. Native function composition is proved definitionally equal. ap/sym additionally have checked PLift Eq client instances using congrArg/Eq.symm.
+
+```lean
+∀ (R : NativeBridge.Incremental.GenericEquality.RelationFamily) (r : NativeBridge.Incremental.GenericEquality.Refl R),
+  Rocq.Corelib.Init.Equality.J_no_dep R r = NativeBridge.Incremental.GenericEquality.jToLeibniz R r
+```
+
+公理闭包：空
+
+## Corelib.Init.Equality.ap
+
+NativeBridge.Incremental.GenericEquality.ap_agrees
+
+目标：NativeBridge.Incremental.GenericEquality.ap；范围：All generic relations and explicitly supplied reflexivity/elimination functions, with original universes retained. Native function composition is proved definitionally equal. ap/sym additionally have checked PLift Eq client instances using congrArg/Eq.symm.
+
+```lean
+∀ (R : NativeBridge.Incremental.GenericEquality.RelationFamily)
+  (S : NativeBridge.Incremental.GenericEquality.RelationFamily),
+  Rocq.Corelib.Init.Equality.ap R S = NativeBridge.Incremental.GenericEquality.ap R S
+```
+
+公理闭包：空
+
+## Corelib.Init.Equality.sym
+
+NativeBridge.Incremental.GenericEquality.sym_agrees
+
+目标：NativeBridge.Incremental.GenericEquality.sym；范围：All generic relations and explicitly supplied reflexivity/elimination functions, with original universes retained. Native function composition is proved definitionally equal. ap/sym additionally have checked PLift Eq client instances using congrArg/Eq.symm.
+
+```lean
+∀ (R : NativeBridge.Incremental.GenericEquality.RelationFamily),
+  Rocq.Corelib.Init.Equality.sym R = NativeBridge.Incremental.GenericEquality.sym R
+```
+
+公理闭包：空
+
+## Corelib.Init.Equality.refl
+
+NativeBridge.Incremental.GenericEquality.refl_agrees
+
+目标：id；范围：All supplied generic eliminators; the source operation is native identity on the corresponding dependent function space.
+
+```lean
+∀ (R : NativeBridge.Incremental.GenericEquality.RelationFamily), Rocq.Corelib.Init.Equality.refl R = id
+```
+
+公理闭包：空
+
+## Corelib.Init.Equality.J_eliminator
+
+NativeBridge.Incremental.GenericEquality.jEliminator_agrees
+
+目标：id；范围：All supplied generic eliminators; the source operation is native identity on the corresponding dependent function space.
+
+```lean
+∀ (R : NativeBridge.Incremental.GenericEquality.RelationFamily) (r : NativeBridge.Incremental.GenericEquality.Refl R),
+  Rocq.Corelib.Init.Equality.J_eliminator R r = id
+```
+
+公理闭包：空
+
+## Corelib.Init.Equality.J_forward
+
+NativeBridge.Incremental.GenericEquality.jForward_agrees
+
+目标：id；范围：All supplied generic eliminators; the source operation is native identity on the corresponding dependent function space.
+
+```lean
+∀ (R : NativeBridge.Incremental.GenericEquality.RelationFamily) (r : NativeBridge.Incremental.GenericEquality.Refl R),
+  Rocq.Corelib.Init.Equality.J_forward R r = id
+```
+
+公理闭包：空
+
+## Corelib.Init.Equality.J_r_eliminator
+
+NativeBridge.Incremental.GenericEquality.jRightEliminator_agrees
+
+目标：id；范围：All supplied generic eliminators; the source operation is native identity on the corresponding dependent function space.
+
+```lean
+∀ (R : NativeBridge.Incremental.GenericEquality.RelationFamily) (r : NativeBridge.Incremental.GenericEquality.Refl R),
+  Rocq.Corelib.Init.Equality.J_r_eliminator R r = id
+```
+
+公理闭包：空
+
+## Corelib.Init.Equality.J_r_forward
+
+NativeBridge.Incremental.GenericEquality.jRightForward_agrees
+
+目标：id；范围：All supplied generic eliminators; the source operation is native identity on the corresponding dependent function space.
+
+```lean
+∀ (R : NativeBridge.Incremental.GenericEquality.RelationFamily) (r : NativeBridge.Incremental.GenericEquality.Refl R),
+  Rocq.Corelib.Init.Equality.J_r_forward R r = id
+```
+
+公理闭包：空
+
+## Corelib.Init.Equality.leibniz
+
+NativeBridge.Incremental.GenericEquality.leibniz_agrees
+
+目标：id；范围：All supplied generic eliminators; the source operation is native identity on the corresponding dependent function space.
+
+```lean
+∀ (R : NativeBridge.Incremental.GenericEquality.RelationFamily), Rocq.Corelib.Init.Equality.leibniz R = id
+```
+
+公理闭包：空
+
+## Corelib.Init.Equality.leibniz_r
+
+NativeBridge.Incremental.GenericEquality.leibnizRight_agrees
+
+目标：id；范围：All supplied generic eliminators; the source operation is native identity on the corresponding dependent function space.
+
+```lean
+∀ (R : NativeBridge.Incremental.GenericEquality.RelationFamily), Rocq.Corelib.Init.Equality.leibniz_r R = id
+```
+
+公理闭包：空
+
+## Corelib.Array.PrimArray.max_length
+
+NativeBridge.Incremental.ArrayCapacity.max_length_agrees
+
+目标：NativeBridge.Incremental.ArrayCapacity.capacity；范围：Exact primitive array maximum length as native BitVec 63; no array allocation required.
+
+```lean
+Rocq.Corelib.Array.PrimArray.max_length = NativeBridge.Incremental.ArrayCapacity.capacity
+```
+
+公理闭包：空
+
 ## Corelib.ssr.ssrbool.canLR_in
 
 NativeBridge.Incremental.SSRBoolClosedStatements.RocqPending.Corelib.ssr.ssrbool.canLR_in.statement.correspondence
