@@ -1,0 +1,86 @@
+{
+  "run": "minimal-r1-without-result-sort-probe",
+  "disabled": [
+    "carrier-copies",
+    "implicit-discovery",
+    "instance-hypotheses",
+    "joint-levels",
+    "occurrence-levels",
+    "operand-split",
+    "phantom-sort",
+    "result-sort",
+    "set-delta"
+  ],
+  "modules_requested": [
+    "Corelib.Init.Datatypes"
+  ],
+  "started": 1792411454.029619,
+  "implementation": "3d47a7cfc30950d5b91f07c4ee19d664d989e600d81853b078d31ec9bb659fa3",
+  "prerequisite_policy": "no new identities; reductions need all independent checks",
+  "records": [
+    {
+      "module": "Corelib.Init.Datatypes",
+      "disabled": [
+        "carrier-copies",
+        "implicit-discovery",
+        "instance-hypotheses",
+        "joint-levels",
+        "occurrence-levels",
+        "operand-split",
+        "phantom-sort",
+        "result-sort",
+        "set-delta"
+      ],
+      "roots": 110,
+      "passed": false,
+      "translation": {
+        "exit": 0,
+        "seconds": 0.667,
+        "log": ".work/runs/minimal-r1-without-result-sort-probe/Corelib/Init/Datatypes/translate.log"
+      },
+      "counts": {
+        "TRANSLATED_AND_CHECKED": 65,
+        "STATEMENT_KERNEL_CHECKED": 42,
+        "BLOCKED_DEPENDENCY": 1,
+        "INTERFACE_REJECTED": 1,
+        "PENDING_KERNEL_CHECKED": 1
+      },
+      "failure": {
+        "stage": "translation",
+        "first_failure": [
+          {
+            "source": "Corelib.Init.Datatypes.CompSpecT",
+            "status": "INTERFACE_REJECTED",
+            "message": "protected public declaration: statement specialization refused (R2B-S result-sort levels #[Corelib.Init.Datatypes.259], R2B-P statement levels #[]) [plain attempt: UNIVERSE_REJECTED: proof-local level Corelib.Init.Datatypes.259 solved as (some 0): native fact Set lt Corelib.Init.Datatypes.259 does not hold for the solution [last tier: UNIVERSE_REJECTED: configuration disabled: result-sort]]",
+            "blocked_by": [],
+            "path": []
+          }
+        ],
+        "failed_roots": [
+          {
+            "source": "Corelib.Init.Datatypes.CompSpec2Type",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Datatypes.CompSpecT]",
+            "blocked_by": [
+              "Corelib.Init.Datatypes.CompSpecT"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Datatypes.CompSpecT",
+            "status": "INTERFACE_REJECTED",
+            "message": "protected public declaration: statement specialization refused (R2B-S result-sort levels #[Corelib.Init.Datatypes.259], R2B-P statement levels #[]) [plain attempt: UNIVERSE_REJECTED: proof-local level Corelib.Init.Datatypes.259 solved as (some 0): native fact Set lt Corelib.Init.Datatypes.259 does not hold for the solution [last tier: UNIVERSE_REJECTED: configuration disabled: result-sort]]",
+            "blocked_by": [],
+            "path": []
+          }
+        ],
+        "failed_root_count": 2
+      }
+    }
+  ],
+  "finished": 1792411454.703905,
+  "passed": false,
+  "full_scope": false,
+  "root_count": 110,
+  "target_changed_declarations": 0
+}

@@ -1,0 +1,1241 @@
+{
+  "status": "TRANSLATION_VALIDATED",
+  "seed": "selection.json",
+  "disabled": [
+    "carrier-copies",
+    "implicit-discovery",
+    "instance-hypotheses",
+    "joint-levels",
+    "occurrence-levels",
+    "operand-split",
+    "phantom-sort",
+    "set-delta"
+  ],
+  "decisions": [
+    {
+      "mechanism": "fact-reduce",
+      "round": 1,
+      "trial": "minimal-r1-without-fact-reduce-probe",
+      "removed": false
+    },
+    {
+      "mechanism": "fact-interpretation",
+      "round": 1,
+      "trial": "minimal-r1-without-fact-interpretation-probe",
+      "removed": false
+    },
+    {
+      "mechanism": "motive-sort",
+      "round": 1,
+      "trial": "minimal-r1-without-motive-sort-probe",
+      "removed": false
+    },
+    {
+      "mechanism": "cumulativity",
+      "round": 1,
+      "trial": "minimal-r1-without-cumulativity-probe",
+      "removed": false
+    },
+    {
+      "mechanism": "reference-lowering",
+      "round": 1,
+      "trial": "minimal-r1-without-reference-lowering-probe",
+      "removed": false
+    },
+    {
+      "mechanism": "result-sort",
+      "round": 1,
+      "trial": "minimal-r1-without-result-sort-probe",
+      "removed": false
+    },
+    {
+      "mechanism": "prop-lift",
+      "round": 1,
+      "trial": "minimal-r1-without-prop-lift-probe",
+      "removed": false
+    },
+    {
+      "mechanism": "type-lift",
+      "round": 1,
+      "trial": "minimal-r1-without-type-lift-probe",
+      "removed": false
+    },
+    {
+      "mechanism": "alias-delta",
+      "round": 1,
+      "trial": "minimal-r1-without-alias-delta-probe",
+      "removed": false
+    },
+    {
+      "mechanism": "source-compute",
+      "round": 1,
+      "trial": "minimal-r1-without-source-compute-probe",
+      "removed": false
+    },
+    {
+      "mechanism": "template-sort",
+      "round": 1,
+      "trial": "minimal-r1-without-template-sort-probe",
+      "removed": false
+    },
+    {
+      "mechanism": "poly-model",
+      "round": 1,
+      "trial": "minimal-r1-without-poly-model-probe",
+      "removed": false
+    },
+    {
+      "mechanism": "wf-obligations",
+      "round": 1,
+      "trial": "minimal-r1-without-wf-obligations-probe",
+      "removed": false
+    }
+  ],
+  "round": 1,
+  "witnesses": {
+    "fact-reduce": {
+      "report": "reports/minimal-r1-without-fact-reduce-probe.json",
+      "module": "Corelib.Classes.RelationClasses",
+      "failure": {
+        "stage": "audit",
+        "message": "AUDIT_REJECTED (1 problem(s))\n",
+        "details": [
+          {
+            "detector": "structure",
+            "message": "Corelib.Classes.RelationClasses.inverse_impl_rewrite_relation: ['body', 'arg1', 'lift', 'lam.ty']: sort mismatch"
+          }
+        ]
+      }
+    },
+    "fact-interpretation": {
+      "report": "reports/minimal-r1-without-fact-interpretation-probe.json",
+      "module": "Corelib.Classes.CMorphisms",
+      "failure": {
+        "stage": "translation",
+        "first_failure": [
+          {
+            "source": "Corelib.Classes.CMorphisms.PartialOrder_StrictOrder",
+            "status": "TRANSLATION_FAILED",
+            "message": "default cast annotation is not convertible in Lean [last tier: UNIVERSE_REJECTED: configuration disabled: instance-hypotheses]",
+            "blocked_by": [],
+            "path": [
+              "body",
+              "lam",
+              "b",
+              "lam",
+              "b",
+              "lam",
+              "b",
+              "lam",
+              "b",
+              "lam",
+              "b",
+              "lam",
+              "b",
+              "app",
+              "arg3",
+              "cast"
+            ]
+          }
+        ],
+        "failed_roots": [
+          {
+            "source": "Corelib.Classes.CMorphisms.PartialOrder_StrictOrder",
+            "status": "TRANSLATION_FAILED",
+            "message": "default cast annotation is not convertible in Lean [last tier: UNIVERSE_REJECTED: configuration disabled: instance-hypotheses]",
+            "blocked_by": [],
+            "path": [
+              "body",
+              "lam",
+              "b",
+              "lam",
+              "b",
+              "lam",
+              "b",
+              "lam",
+              "b",
+              "lam",
+              "b",
+              "lam",
+              "b",
+              "app",
+              "arg3",
+              "cast"
+            ]
+          },
+          {
+            "source": "Corelib.Classes.CMorphisms.respectful_morphism",
+            "status": "TRANSLATION_FAILED",
+            "message": "default cast annotation is not convertible in Lean [last tier: UNIVERSE_REJECTED: configuration disabled: instance-hypotheses]",
+            "blocked_by": [],
+            "path": [
+              "body",
+              "lam",
+              "b",
+              "lam",
+              "b",
+              "cast",
+              "t",
+              "lam",
+              "b",
+              "lam",
+              "b",
+              "lam",
+              "b",
+              "cast",
+              "t",
+              "lam",
+              "b",
+              "lam",
+              "b",
+              "lam",
+              "b",
+              "cast",
+              "t",
+              "lam",
+              "b",
+              "lam",
+              "b",
+              "cast",
+              "t",
+              "cast"
+            ]
+          }
+        ],
+        "failed_root_count": 2
+      }
+    },
+    "motive-sort": {
+      "report": "reports/minimal-r1-without-motive-sort-probe.json",
+      "module": "Corelib.Init.Logic",
+      "failure": {
+        "stage": "translation",
+        "first_failure": [
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_rect",
+            "status": "KERNEL_REJECTED",
+            "message": "(kernel) application type mismatch\n  @Rocq.Corelib.Init.Logic.eq_rect A\nargument has type\n  Prop\nbut function has type\n  (A : Type u_Corelib_Init_Logic_21) →\n    (x : A) → (P : A → Type u_Corelib_Init_Logic_20) → P x → (a : A) → @Rocq.Corelib.Init.Logic.eq A x a → P a [last tier: UNIVERSE_REJECTED: configuration disabled: instance-hypotheses]",
+            "blocked_by": [],
+            "path": []
+          }
+        ],
+        "failed_roots": [
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_rec",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex2_rect]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex2_rect"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_rec_uncurried",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex2_rect_uncurried]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex2_rect_uncurried"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_rect",
+            "status": "KERNEL_REJECTED",
+            "message": "(kernel) application type mismatch\n  @Rocq.Corelib.Init.Logic.eq_rect A\nargument has type\n  Prop\nbut function has type\n  (A : Type u_Corelib_Init_Logic_21) →\n    (x : A) → (P : A → Type u_Corelib_Init_Logic_20) → P x → (a : A) → @Rocq.Corelib.Init.Logic.eq A x a → P a [last tier: UNIVERSE_REJECTED: configuration disabled: instance-hypotheses]",
+            "blocked_by": [],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_rect_ex_intro2",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex2_rect]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex2_rect"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_rect_ex_intro2_l",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex2_rect]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex2_rect"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_rect_ex_intro2_r",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex2_rect]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex2_rect"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_rect_uncurried",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex2_rect]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex2_rect"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex_rec",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex_rect]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex_rect"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex_rec_uncurried",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex_rect_uncurried]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex_rect_uncurried"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex_rect",
+            "status": "KERNEL_REJECTED",
+            "message": "(kernel) application type mismatch\n  @Rocq.Corelib.Init.Logic.eq_rect A\nargument has type\n  Prop\nbut function has type\n  (A : Type u_Corelib_Init_Logic_21) →\n    (x : A) → (P : A → Type u_Corelib_Init_Logic_20) → P x → (a : A) → @Rocq.Corelib.Init.Logic.eq A x a → P a [last tier: UNIVERSE_REJECTED: configuration disabled: instance-hypotheses]",
+            "blocked_by": [],
+            "path": []
+          }
+        ],
+        "failed_root_count": 18
+      }
+    },
+    "cumulativity": {
+      "report": "reports/minimal-r1-without-cumulativity-probe.json",
+      "module": "Corelib.ssr.ssreflect_rw",
+      "failure": {
+        "stage": "translation",
+        "first_failure": [
+          {
+            "source": "Corelib.ssr.ssreflect_rw.nary_congruence_statement",
+            "status": "UNIVERSE_REJECTED",
+            "message": "defaulted universe level(s) [u_residual_0] not justified: the declaration is not valid for every value ((kernel) application type mismatch\n  k (A → B)\nargument has type\n  Type (max u_residual_0 u_Corelib_ssr_ssreflect_rw_124)\nbut function has type\n  (B : Type u_Corelib_ssr_ssreflect_rw_124) → (B → B → Prop) → Prop) [last tier: UNIVERSE_REJECTED: configuration disabled: cumulativity]",
+            "blocked_by": [],
+            "path": []
+          }
+        ],
+        "failed_roots": [
+          {
+            "source": "Corelib.ssr.ssreflect_rw.nary_congruence",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.ssr.ssreflect_rw.nary_congruence_statement]",
+            "blocked_by": [
+              "Corelib.ssr.ssreflect_rw.nary_congruence_statement"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.ssr.ssreflect_rw.nary_congruence_statement",
+            "status": "UNIVERSE_REJECTED",
+            "message": "defaulted universe level(s) [u_residual_0] not justified: the declaration is not valid for every value ((kernel) application type mismatch\n  k (A → B)\nargument has type\n  Type (max u_residual_0 u_Corelib_ssr_ssreflect_rw_124)\nbut function has type\n  (B : Type u_Corelib_ssr_ssreflect_rw_124) → (B → B → Prop) → Prop) [last tier: UNIVERSE_REJECTED: configuration disabled: cumulativity]",
+            "blocked_by": [],
+            "path": []
+          }
+        ],
+        "failed_root_count": 2
+      }
+    },
+    "reference-lowering": {
+      "report": "reports/minimal-r1-without-reference-lowering-probe.json",
+      "module": "Corelib.ssr.ssrbool",
+      "failure": {
+        "stage": "translation",
+        "first_failure": [
+          {
+            "source": "Corelib.ssr.ssrbool.keyed_pred",
+            "status": "KERNEL_REJECTED",
+            "message": "(kernel) application type mismatch\n  @Rocq.Corelib.ssr.ssrbool.pred_sort T (@Rocq.Corelib.ssr.ssrbool.predPredType T)\nargument has type\n  @Rocq.Corelib.ssr.ssrbool.predType T\nbut function has type\n  @Rocq.Corelib.ssr.ssrbool.predType T → Type (max u_Corelib_ssr_ssrbool_1110 u_Corelib_ssr_ssrbool_1345) [R3↓ attempt: UNIVERSE_REJECTED: configuration disabled: reference-lowering] [δ-inlined #[Corelib.ssr.ssrbool.eq_mem, Corelib.ssr.ssrbool.pred_sort]: UNIVERSE_REJECTED: reference to Rocq.Corelib.ssr.ssrbool.predType: coherence: source level Corelib.ssr.ssrbool.1110 is a proof-local level of the referring declaration, solved as max u_Corelib_ssr_ssrbool_1110 u_Corelib_ssr_ssrbool_1345; the argument must be the same, not u_Corelib_ssr_ssrbool_1345 [R3↓ attempt: UNIVERSE_REJECTED: configuration disabled: reference-lowering]]",
+            "blocked_by": [],
+            "path": []
+          }
+        ],
+        "failed_roots": [
+          {
+            "source": "Corelib.ssr.ssrbool/DefaultKeying.default_keyed_pred",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.ssr.ssrbool.keyed_pred, Corelib.ssr.ssrbool.KeyedPred]",
+            "blocked_by": [
+              "Corelib.ssr.ssrbool.keyed_pred",
+              "Corelib.ssr.ssrbool.KeyedPred"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.ssr.ssrbool.KeyedPred",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.ssr.ssrbool.keyed_pred, Corelib.ssr.ssrbool.keyed_pred]",
+            "blocked_by": [
+              "Corelib.ssr.ssrbool.keyed_pred",
+              "Corelib.ssr.ssrbool.keyed_pred"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.ssr.ssrbool.keyed_mem",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.ssr.ssrbool.keyed_pred, Corelib.ssr.ssrbool.keyed_mem__rocq2lean_obligation_1, Corelib.ssr.ssrbool.keyed_pred, Corelib.ssr.ssrbool.unkey_pred]",
+            "blocked_by": [
+              "Corelib.ssr.ssrbool.keyed_pred",
+              "Corelib.ssr.ssrbool.keyed_mem__rocq2lean_obligation_1",
+              "Corelib.ssr.ssrbool.keyed_pred",
+              "Corelib.ssr.ssrbool.unkey_pred"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.ssr.ssrbool.keyed_mem_simpl",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.ssr.ssrbool.keyed_pred, Corelib.ssr.ssrbool.keyed_mem_simpl__rocq2lean_obligation_1, Corelib.ssr.ssrbool.keyed_pred, Corelib.ssr.ssrbool.unkey_pred]",
+            "blocked_by": [
+              "Corelib.ssr.ssrbool.keyed_pred",
+              "Corelib.ssr.ssrbool.keyed_mem_simpl__rocq2lean_obligation_1",
+              "Corelib.ssr.ssrbool.keyed_pred",
+              "Corelib.ssr.ssrbool.unkey_pred"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.ssr.ssrbool.keyed_pred",
+            "status": "KERNEL_REJECTED",
+            "message": "(kernel) application type mismatch\n  @Rocq.Corelib.ssr.ssrbool.pred_sort T (@Rocq.Corelib.ssr.ssrbool.predPredType T)\nargument has type\n  @Rocq.Corelib.ssr.ssrbool.predType T\nbut function has type\n  @Rocq.Corelib.ssr.ssrbool.predType T → Type (max u_Corelib_ssr_ssrbool_1110 u_Corelib_ssr_ssrbool_1345) [R3↓ attempt: UNIVERSE_REJECTED: configuration disabled: reference-lowering] [δ-inlined #[Corelib.ssr.ssrbool.eq_mem, Corelib.ssr.ssrbool.pred_sort]: UNIVERSE_REJECTED: reference to Rocq.Corelib.ssr.ssrbool.predType: coherence: source level Corelib.ssr.ssrbool.1110 is a proof-local level of the referring declaration, solved as max u_Corelib_ssr_ssrbool_1110 u_Corelib_ssr_ssrbool_1345; the argument must be the same, not u_Corelib_ssr_ssrbool_1345 [R3↓ attempt: UNIVERSE_REJECTED: configuration disabled: reference-lowering]]",
+            "blocked_by": [],
+            "path": []
+          },
+          {
+            "source": "Corelib.ssr.ssrbool.keyed_predE",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.ssr.ssrbool.keyed_pred, Corelib.ssr.ssrbool.unkey_pred]",
+            "blocked_by": [
+              "Corelib.ssr.ssrbool.keyed_pred",
+              "Corelib.ssr.ssrbool.unkey_pred"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.ssr.ssrbool.keyed_qualifier_keyed",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.ssr.ssrbool.keyed_pred, Corelib.ssr.ssrbool.keyed_pred, Corelib.ssr.ssrbool.keyed_qualifier_keyed__rocq2lean_obligation_1]",
+            "blocked_by": [
+              "Corelib.ssr.ssrbool.keyed_pred",
+              "Corelib.ssr.ssrbool.keyed_pred",
+              "Corelib.ssr.ssrbool.keyed_qualifier_keyed__rocq2lean_obligation_1"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.ssr.ssrbool.keyed_qualifier_suproof",
+            "status": "UNIVERSE_REJECTED",
+            "message": "reference to Rocq.Corelib.ssr.ssrbool.mem: coherence: source level Corelib.ssr.ssrbool.1110 is shared with the referring declaration, so its argument must be u_Corelib.ssr.ssrbool.1110, not u_Corelib_ssr_ssrbool_1348 [last tier: UNIVERSE_REJECTED: configuration disabled: reference-lowering]",
+            "blocked_by": [],
+            "path": []
+          },
+          {
+            "source": "Corelib.ssr.ssrbool.mem_topred",
+            "status": "UNIVERSE_REJECTED",
+            "message": "reference to Rocq.Corelib.ssr.ssrbool.mem: coherence: source level Corelib.ssr.ssrbool.1110 is shared with the referring declaration, so its argument must be u_Corelib.ssr.ssrbool.1110, not u_Corelib_ssr_ssrbool_1253 [last tier: UNIVERSE_REJECTED: configuration disabled: reference-lowering]",
+            "blocked_by": [],
+            "path": []
+          },
+          {
+            "source": "Corelib.ssr.ssrbool.unkey_pred",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.ssr.ssrbool.keyed_pred, Corelib.ssr.ssrbool.keyed_pred]",
+            "blocked_by": [
+              "Corelib.ssr.ssrbool.keyed_pred",
+              "Corelib.ssr.ssrbool.keyed_pred"
+            ],
+            "path": []
+          }
+        ],
+        "failed_root_count": 10
+      }
+    },
+    "result-sort": {
+      "report": "reports/minimal-r1-without-result-sort-probe.json",
+      "module": "Corelib.Init.Datatypes",
+      "failure": {
+        "stage": "translation",
+        "first_failure": [
+          {
+            "source": "Corelib.Init.Datatypes.CompSpecT",
+            "status": "INTERFACE_REJECTED",
+            "message": "protected public declaration: statement specialization refused (R2B-S result-sort levels #[Corelib.Init.Datatypes.259], R2B-P statement levels #[]) [plain attempt: UNIVERSE_REJECTED: proof-local level Corelib.Init.Datatypes.259 solved as (some 0): native fact Set lt Corelib.Init.Datatypes.259 does not hold for the solution [last tier: UNIVERSE_REJECTED: configuration disabled: result-sort]]",
+            "blocked_by": [],
+            "path": []
+          }
+        ],
+        "failed_roots": [
+          {
+            "source": "Corelib.Init.Datatypes.CompSpec2Type",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Datatypes.CompSpecT]",
+            "blocked_by": [
+              "Corelib.Init.Datatypes.CompSpecT"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Datatypes.CompSpecT",
+            "status": "INTERFACE_REJECTED",
+            "message": "protected public declaration: statement specialization refused (R2B-S result-sort levels #[Corelib.Init.Datatypes.259], R2B-P statement levels #[]) [plain attempt: UNIVERSE_REJECTED: proof-local level Corelib.Init.Datatypes.259 solved as (some 0): native fact Set lt Corelib.Init.Datatypes.259 does not hold for the solution [last tier: UNIVERSE_REJECTED: configuration disabled: result-sort]]",
+            "blocked_by": [],
+            "path": []
+          }
+        ],
+        "failed_root_count": 2
+      }
+    },
+    "prop-lift": {
+      "report": "reports/minimal-r1-without-prop-lift-probe.json",
+      "module": "Corelib.Classes.CRelationClasses",
+      "failure": {
+        "stage": "translation",
+        "first_failure": [
+          {
+            "source": "Corelib.Classes.CRelationClasses.complement",
+            "status": "KERNEL_REJECTED",
+            "message": "(kernel) declaration type mismatch, 'Rocq.Corelib.Classes.CRelationClasses.complement' has type\n  (A : Type v_0) → @Rocq.Corelib.Classes.CRelationClasses.crelation A → A → A → Prop\nbut it is expected to have type\n  (A : Type v_0) →\n    @Rocq.Corelib.Classes.CRelationClasses.crelation A → @Rocq.Corelib.Classes.CRelationClasses.crelation A [last tier: UNIVERSE_REJECTED: configuration disabled: instance-hypotheses]",
+            "blocked_by": [],
+            "path": []
+          }
+        ],
+        "failed_roots": [
+          {
+            "source": "Corelib.Classes.CRelationClasses.Asymmetric",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CRelationClasses.complement]",
+            "blocked_by": [
+              "Corelib.Classes.CRelationClasses.complement"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CRelationClasses.Irreflexive",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CRelationClasses.complement]",
+            "blocked_by": [
+              "Corelib.Classes.CRelationClasses.complement"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CRelationClasses.StrictOrder",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "dependencies missing #[] / failed #[Corelib.Classes.CRelationClasses.Irreflexive]",
+            "blocked_by": [
+              "Corelib.Classes.CRelationClasses.Irreflexive"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CRelationClasses.StrictOrder_Asymmetric",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CRelationClasses.StrictOrder]",
+            "blocked_by": [
+              "Corelib.Classes.CRelationClasses.StrictOrder"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CRelationClasses.StrictOrder_Irreflexive",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CRelationClasses.StrictOrder]",
+            "blocked_by": [
+              "Corelib.Classes.CRelationClasses.StrictOrder"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CRelationClasses.StrictOrder_Transitive",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CRelationClasses.StrictOrder, Corelib.Classes.CRelationClasses.StrictOrder]",
+            "blocked_by": [
+              "Corelib.Classes.CRelationClasses.StrictOrder",
+              "Corelib.Classes.CRelationClasses.StrictOrder"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CRelationClasses.asymmetry",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CRelationClasses.Asymmetric]",
+            "blocked_by": [
+              "Corelib.Classes.CRelationClasses.Asymmetric"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CRelationClasses.complement",
+            "status": "KERNEL_REJECTED",
+            "message": "(kernel) declaration type mismatch, 'Rocq.Corelib.Classes.CRelationClasses.complement' has type\n  (A : Type v_0) → @Rocq.Corelib.Classes.CRelationClasses.crelation A → A → A → Prop\nbut it is expected to have type\n  (A : Type v_0) →\n    @Rocq.Corelib.Classes.CRelationClasses.crelation A → @Rocq.Corelib.Classes.CRelationClasses.crelation A [last tier: UNIVERSE_REJECTED: configuration disabled: instance-hypotheses]",
+            "blocked_by": [],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CRelationClasses.complement_Irreflexive",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CRelationClasses.complement]",
+            "blocked_by": [
+              "Corelib.Classes.CRelationClasses.complement"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CRelationClasses.complement_Symmetric",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CRelationClasses.complement]",
+            "blocked_by": [
+              "Corelib.Classes.CRelationClasses.complement"
+            ],
+            "path": []
+          }
+        ],
+        "failed_root_count": 15
+      }
+    },
+    "type-lift": {
+      "report": "reports/minimal-r1-without-type-lift-probe.json",
+      "module": "Corelib.Classes.CMorphisms",
+      "failure": {
+        "stage": "translation",
+        "first_failure": [
+          {
+            "source": "Corelib.Classes.CRelationClasses.relation_equivalence",
+            "status": "KERNEL_REJECTED",
+            "message": "(kernel) application type mismatch\n  @Rocq.Corelib.Classes.CRelationClasses.crelation (@Rocq.Corelib.Classes.CRelationClasses.crelation A)\nargument has type\n  Type (max v_0 (v_3 + 1))\nbut function has type\n  Type v_1 → Type (max v_1 (v_2 + 1)) [last tier: UNIVERSE_REJECTED: configuration disabled: instance-hypotheses]",
+            "blocked_by": [],
+            "path": []
+          }
+        ],
+        "failed_roots": [
+          {
+            "source": "Corelib.Classes.CMorphisms.Normalizes",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CRelationClasses.relation_equivalence]",
+            "blocked_by": [
+              "Corelib.Classes.CRelationClasses.relation_equivalence"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CMorphisms.PER_type_morphism",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CMorphisms.respectful, Corelib.Classes.CMorphisms.PER_type_morphism_obligation_1]",
+            "blocked_by": [
+              "Corelib.Classes.CMorphisms.respectful",
+              "Corelib.Classes.CMorphisms.PER_type_morphism_obligation_1"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CMorphisms.PER_type_morphism_obligation_1",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CMorphisms.respectful]",
+            "blocked_by": [
+              "Corelib.Classes.CMorphisms.respectful"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CMorphisms.PartialOrder_StrictOrder",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CRelationClasses.PartialOrder, Corelib.Classes.CRelationClasses.relation_conjunction, Corelib.Classes.CMorphisms.PartialOrder_StrictOrder__rocq2lean_obligation_1, Corelib.Classes.CMorphisms.PartialOrder_StrictOrder__rocq2lean_obligation_2, Corelib.Classes.CRelationClasses.PartialOrder, Corelib.Classes.CRelationClasses.relation_conjunction]",
+            "blocked_by": [
+              "Corelib.Classes.CRelationClasses.PartialOrder",
+              "Corelib.Classes.CRelationClasses.relation_conjunction",
+              "Corelib.Classes.CMorphisms.PartialOrder_StrictOrder__rocq2lean_obligation_1",
+              "Corelib.Classes.CMorphisms.PartialOrder_StrictOrder__rocq2lean_obligation_2",
+              "Corelib.Classes.CRelationClasses.PartialOrder",
+              "Corelib.Classes.CRelationClasses.relation_conjunction"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CMorphisms.PartialOrder_proper_type",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CMorphisms.respectful, Corelib.Classes.CRelationClasses.PartialOrder, Corelib.Classes.CMorphisms.proper_sym_arrow_iffT_2, Corelib.Classes.CMorphisms.respectful, Corelib.Classes.CRelationClasses.PartialOrder, Corelib.Classes.CRelationClasses.partial_order_equivalence, Corelib.Classes.CRelationClasses.relation_conjunction]",
+            "blocked_by": [
+              "Corelib.Classes.CMorphisms.respectful",
+              "Corelib.Classes.CRelationClasses.PartialOrder",
+              "Corelib.Classes.CMorphisms.proper_sym_arrow_iffT_2",
+              "Corelib.Classes.CMorphisms.respectful",
+              "Corelib.Classes.CRelationClasses.PartialOrder",
+              "Corelib.Classes.CRelationClasses.partial_order_equivalence",
+              "Corelib.Classes.CRelationClasses.relation_conjunction"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CMorphisms.Reflexive_partial_app_morphism",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CMorphisms.respectful, Corelib.Classes.CMorphisms.respectful]",
+            "blocked_by": [
+              "Corelib.Classes.CMorphisms.respectful",
+              "Corelib.Classes.CMorphisms.respectful"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CMorphisms.StrictOrder_PartialOrder",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CMorphisms.StrictOrder_PreOrder, Corelib.Classes.CMorphisms.respectful, Corelib.Classes.CRelationClasses.PartialOrder, Corelib.Classes.CRelationClasses.relation_disjunction, Corelib.Classes.CMorphisms.StrictOrder_PartialOrder__rocq2lean_obligation_1, Corelib.Classes.CMorphisms.StrictOrder_PreOrder, Corelib.Classes.CMorphisms.respectful, Corelib.Classes.CRelationClasses.PartialOrder, Corelib.Classes.CRelationClasses.relation_conjunction, Corelib.Classes.CRelationClasses.relation_disjunction]",
+            "blocked_by": [
+              "Corelib.Classes.CMorphisms.StrictOrder_PreOrder",
+              "Corelib.Classes.CMorphisms.respectful",
+              "Corelib.Classes.CRelationClasses.PartialOrder",
+              "Corelib.Classes.CRelationClasses.relation_disjunction",
+              "Corelib.Classes.CMorphisms.StrictOrder_PartialOrder__rocq2lean_obligation_1",
+              "Corelib.Classes.CMorphisms.StrictOrder_PreOrder",
+              "Corelib.Classes.CMorphisms.respectful",
+              "Corelib.Classes.CRelationClasses.PartialOrder",
+              "Corelib.Classes.CRelationClasses.relation_conjunction",
+              "Corelib.Classes.CRelationClasses.relation_disjunction"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CMorphisms.StrictOrder_PreOrder",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CMorphisms.respectful, Corelib.Classes.CRelationClasses.relation_disjunction, Corelib.Classes.CMorphisms.respectful, Corelib.Classes.CRelationClasses.relation_disjunction]",
+            "blocked_by": [
+              "Corelib.Classes.CMorphisms.respectful",
+              "Corelib.Classes.CRelationClasses.relation_disjunction",
+              "Corelib.Classes.CMorphisms.respectful",
+              "Corelib.Classes.CRelationClasses.relation_disjunction"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CMorphisms.compose_proper",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CMorphisms.respectful, Corelib.Classes.CMorphisms.compose_proper_obligation_1]",
+            "blocked_by": [
+              "Corelib.Classes.CMorphisms.respectful",
+              "Corelib.Classes.CMorphisms.compose_proper_obligation_1"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CMorphisms.compose_proper_obligation_1",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CMorphisms.respectful, Corelib.Classes.CMorphisms.respectful]",
+            "blocked_by": [
+              "Corelib.Classes.CMorphisms.respectful",
+              "Corelib.Classes.CMorphisms.respectful"
+            ],
+            "path": []
+          }
+        ],
+        "failed_root_count": 55
+      }
+    },
+    "alias-delta": {
+      "report": "reports/minimal-r1-without-alias-delta-probe.json",
+      "module": "Corelib.Classes.CMorphisms",
+      "failure": {
+        "stage": "translation",
+        "first_failure": [
+          {
+            "source": "Corelib.Classes.CRelationClasses.relation_equivalence",
+            "status": "KERNEL_REJECTED",
+            "message": "(kernel) application type mismatch\n  @Rocq.Corelib.Classes.CRelationClasses.crelation (@Rocq.Corelib.Classes.CRelationClasses.crelation A)\nargument has type\n  Type (max v_0 (v_3 + 1))\nbut function has type\n  Type v_1 → Type (max v_1 (v_2 + 1)) [last tier: UNIVERSE_REJECTED: configuration disabled: instance-hypotheses]",
+            "blocked_by": [],
+            "path": []
+          }
+        ],
+        "failed_roots": [
+          {
+            "source": "Corelib.Classes.CMorphisms.Normalizes",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CRelationClasses.relation_equivalence]",
+            "blocked_by": [
+              "Corelib.Classes.CRelationClasses.relation_equivalence"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CMorphisms.PER_type_morphism",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CMorphisms.respectful, Corelib.Classes.CMorphisms.PER_type_morphism_obligation_1]",
+            "blocked_by": [
+              "Corelib.Classes.CMorphisms.respectful",
+              "Corelib.Classes.CMorphisms.PER_type_morphism_obligation_1"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CMorphisms.PER_type_morphism_obligation_1",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CMorphisms.respectful]",
+            "blocked_by": [
+              "Corelib.Classes.CMorphisms.respectful"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CMorphisms.PartialOrder_StrictOrder",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CRelationClasses.PartialOrder, Corelib.Classes.CRelationClasses.StrictOrder, Corelib.Classes.CRelationClasses.complement, Corelib.Classes.CRelationClasses.relation_conjunction, Corelib.Classes.CMorphisms.PartialOrder_StrictOrder__rocq2lean_obligation_1, Corelib.Classes.CMorphisms.PartialOrder_StrictOrder__rocq2lean_obligation_2, Corelib.Classes.CRelationClasses.PartialOrder, Corelib.Classes.CRelationClasses.StrictOrder, Corelib.Classes.CRelationClasses.complement, Corelib.Classes.CRelationClasses.relation_conjunction]",
+            "blocked_by": [
+              "Corelib.Classes.CRelationClasses.PartialOrder",
+              "Corelib.Classes.CRelationClasses.StrictOrder",
+              "Corelib.Classes.CRelationClasses.complement",
+              "Corelib.Classes.CRelationClasses.relation_conjunction",
+              "Corelib.Classes.CMorphisms.PartialOrder_StrictOrder__rocq2lean_obligation_1",
+              "Corelib.Classes.CMorphisms.PartialOrder_StrictOrder__rocq2lean_obligation_2",
+              "Corelib.Classes.CRelationClasses.PartialOrder",
+              "Corelib.Classes.CRelationClasses.StrictOrder",
+              "Corelib.Classes.CRelationClasses.complement",
+              "Corelib.Classes.CRelationClasses.relation_conjunction"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CMorphisms.PartialOrder_proper_type",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CMorphisms.respectful, Corelib.Classes.CRelationClasses.PartialOrder, Corelib.Classes.CMorphisms.proper_sym_arrow_iffT_2, Corelib.Classes.CMorphisms.respectful, Corelib.Classes.CRelationClasses.PartialOrder, Corelib.Classes.CRelationClasses.partial_order_equivalence, Corelib.Classes.CRelationClasses.relation_conjunction]",
+            "blocked_by": [
+              "Corelib.Classes.CMorphisms.respectful",
+              "Corelib.Classes.CRelationClasses.PartialOrder",
+              "Corelib.Classes.CMorphisms.proper_sym_arrow_iffT_2",
+              "Corelib.Classes.CMorphisms.respectful",
+              "Corelib.Classes.CRelationClasses.PartialOrder",
+              "Corelib.Classes.CRelationClasses.partial_order_equivalence",
+              "Corelib.Classes.CRelationClasses.relation_conjunction"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CMorphisms.Reflexive_partial_app_morphism",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CMorphisms.respectful, Corelib.Classes.CMorphisms.respectful]",
+            "blocked_by": [
+              "Corelib.Classes.CMorphisms.respectful",
+              "Corelib.Classes.CMorphisms.respectful"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CMorphisms.StrictOrder_PartialOrder",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CMorphisms.StrictOrder_PreOrder, Corelib.Classes.CMorphisms.respectful, Corelib.Classes.CRelationClasses.PartialOrder, Corelib.Classes.CRelationClasses.StrictOrder, Corelib.Classes.CRelationClasses.relation_disjunction, Corelib.Classes.CMorphisms.StrictOrder_PartialOrder__rocq2lean_obligation_1, Corelib.Classes.CMorphisms.StrictOrder_PreOrder, Corelib.Classes.CMorphisms.respectful, Corelib.Classes.CRelationClasses.PartialOrder, Corelib.Classes.CRelationClasses.StrictOrder, Corelib.Classes.CRelationClasses.relation_conjunction, Corelib.Classes.CRelationClasses.relation_disjunction]",
+            "blocked_by": [
+              "Corelib.Classes.CMorphisms.StrictOrder_PreOrder",
+              "Corelib.Classes.CMorphisms.respectful",
+              "Corelib.Classes.CRelationClasses.PartialOrder",
+              "Corelib.Classes.CRelationClasses.StrictOrder",
+              "Corelib.Classes.CRelationClasses.relation_disjunction",
+              "Corelib.Classes.CMorphisms.StrictOrder_PartialOrder__rocq2lean_obligation_1",
+              "Corelib.Classes.CMorphisms.StrictOrder_PreOrder",
+              "Corelib.Classes.CMorphisms.respectful",
+              "Corelib.Classes.CRelationClasses.PartialOrder",
+              "Corelib.Classes.CRelationClasses.StrictOrder",
+              "Corelib.Classes.CRelationClasses.relation_conjunction",
+              "Corelib.Classes.CRelationClasses.relation_disjunction"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CMorphisms.StrictOrder_PreOrder",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CMorphisms.respectful, Corelib.Classes.CRelationClasses.StrictOrder, Corelib.Classes.CRelationClasses.relation_disjunction, Corelib.Classes.CMorphisms.respectful, Corelib.Classes.CRelationClasses.StrictOrder, Corelib.Classes.CRelationClasses.StrictOrder_Transitive, Corelib.Classes.CRelationClasses.relation_disjunction]",
+            "blocked_by": [
+              "Corelib.Classes.CMorphisms.respectful",
+              "Corelib.Classes.CRelationClasses.StrictOrder",
+              "Corelib.Classes.CRelationClasses.relation_disjunction",
+              "Corelib.Classes.CMorphisms.respectful",
+              "Corelib.Classes.CRelationClasses.StrictOrder",
+              "Corelib.Classes.CRelationClasses.StrictOrder_Transitive",
+              "Corelib.Classes.CRelationClasses.relation_disjunction"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CMorphisms.compose_proper",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CMorphisms.respectful, Corelib.Classes.CMorphisms.compose_proper_obligation_1]",
+            "blocked_by": [
+              "Corelib.Classes.CMorphisms.respectful",
+              "Corelib.Classes.CMorphisms.compose_proper_obligation_1"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CMorphisms.compose_proper_obligation_1",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CMorphisms.respectful, Corelib.Classes.CMorphisms.respectful]",
+            "blocked_by": [
+              "Corelib.Classes.CMorphisms.respectful",
+              "Corelib.Classes.CMorphisms.respectful"
+            ],
+            "path": []
+          }
+        ],
+        "failed_root_count": 54
+      }
+    },
+    "source-compute": {
+      "report": "reports/minimal-r1-without-source-compute-probe.json",
+      "module": "Corelib.Classes.Morphisms",
+      "failure": {
+        "stage": "translation",
+        "first_failure": [
+          {
+            "source": "Corelib.Classes.Morphisms.flip_arrow",
+            "status": "UNIVERSE_REJECTED",
+            "message": "statement specialization refused: binder levels Corelib.Classes.Morphisms.138 ≤ Corelib.Classes.Morphisms.139 would be forced by the translation (max (max u_Corelib_Classes_RelationClasses_72 u_Corelib_Classes_RelationClasses_74) u_Corelib_Classes_RelationClasses_75 ≤ max (max u_Corelib_Classes_RelationClasses_72 u_Corelib_Classes_RelationClasses_74) u_Corelib_Classes_RelationClasses_75), not by the source [last tier: UNIVERSE_REJECTED: configuration disabled: instance-hypotheses]",
+            "blocked_by": [],
+            "path": []
+          }
+        ],
+        "failed_roots": [
+          {
+            "source": "Corelib.Classes.Morphisms.flip_arrow",
+            "status": "UNIVERSE_REJECTED",
+            "message": "statement specialization refused: binder levels Corelib.Classes.Morphisms.138 ≤ Corelib.Classes.Morphisms.139 would be forced by the translation (max (max u_Corelib_Classes_RelationClasses_72 u_Corelib_Classes_RelationClasses_74) u_Corelib_Classes_RelationClasses_75 ≤ max (max u_Corelib_Classes_RelationClasses_72 u_Corelib_Classes_RelationClasses_74) u_Corelib_Classes_RelationClasses_75), not by the source [last tier: UNIVERSE_REJECTED: configuration disabled: instance-hypotheses]",
+            "blocked_by": [],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.Morphisms.flip_forall",
+            "status": "UNIVERSE_REJECTED",
+            "message": "statement specialization refused: binder levels Corelib.Classes.Morphisms.144 ≤ Corelib.Classes.Morphisms.145 would be forced by the translation (max (max u_Corelib_Classes_RelationClasses_72 u_Corelib_Classes_RelationClasses_74) u_Corelib_Classes_RelationClasses_75 ≤ max (max u_Corelib_Classes_RelationClasses_72 u_Corelib_Classes_RelationClasses_74) u_Corelib_Classes_RelationClasses_75), not by the source [last tier: UNIVERSE_REJECTED: configuration disabled: instance-hypotheses]",
+            "blocked_by": [],
+            "path": []
+          }
+        ],
+        "failed_root_count": 2
+      }
+    },
+    "template-sort": {
+      "report": "reports/minimal-r1-without-template-sort-probe.json",
+      "module": "Corelib.Init.Logic",
+      "failure": {
+        "stage": "translation",
+        "first_failure": [
+          {
+            "source": "Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1",
+            "status": "UNSUPPORTED_FEATURE",
+            "message": "template inductive Corelib.Init.Logic.ex instantiated at quality Prop: parameter 0 receives a proposition (a Prop instance, or Rocq's Prop ≤ Type cumulativity), which Lean cannot express without a lift",
+            "blocked_by": [],
+            "path": [
+              "body",
+              "prod",
+              "b",
+              "prod",
+              "b",
+              "prod",
+              "ty",
+              "app",
+              "f"
+            ]
+          }
+        ],
+        "failed_roots": [
+          {
+            "source": "Corelib.Init.Logic.eq_ex",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex2",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1, Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1",
+              "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_eta",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_hprop",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex2_hprop__rocq2lean_obligation_1, Corelib.Init.Logic.eq_ex2_hprop__rocq2lean_obligation_2]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex2_hprop__rocq2lean_obligation_1",
+              "Corelib.Init.Logic.eq_ex2_hprop__rocq2lean_obligation_2"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_hprop_iff",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex2_hprop_iff__rocq2lean_obligation_1, Corelib.Init.Logic.eq_ex2_hprop_iff__rocq2lean_obligation_2]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex2_hprop_iff__rocq2lean_obligation_1",
+              "Corelib.Init.Logic.eq_ex2_hprop_iff__rocq2lean_obligation_2"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_ind",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_1, Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_2, Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_3]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_1",
+              "Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_2",
+              "Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_3"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_ind_uncurried",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_1, Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_2, Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_3]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_1",
+              "Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_2",
+              "Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_3"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_nondep",
+            "status": "UNSUPPORTED_FEATURE",
+            "message": "template inductive Corelib.Init.Logic.ex2 instantiated at quality Prop: parameter 0 receives a proposition (a Prop instance, or Rocq's Prop ≤ Type cumulativity), which Lean cannot express without a lift",
+            "blocked_by": [],
+            "path": [
+              "body",
+              "prod",
+              "b",
+              "prod",
+              "b",
+              "prod",
+              "b",
+              "prod",
+              "ty",
+              "app",
+              "f"
+            ]
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_rec",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex2, Corelib.Init.Logic.eq_ex2_rect]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex2",
+              "Corelib.Init.Logic.eq_ex2_rect"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_rec_uncurried",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex2, Corelib.Init.Logic.eq_ex2_rect_uncurried]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex2",
+              "Corelib.Init.Logic.eq_ex2_rect_uncurried"
+            ],
+            "path": []
+          }
+        ],
+        "failed_root_count": 74
+      }
+    },
+    "poly-model": {
+      "report": "reports/minimal-r1-without-poly-model-probe.json",
+      "module": "Corelib.Classes.CMorphisms",
+      "failure": {
+        "stage": "translation",
+        "first_failure": [
+          {
+            "source": "Corelib.Classes.CRelationClasses.relation_equivalence",
+            "status": "KERNEL_REJECTED",
+            "message": "(kernel) application type mismatch\n  @Rocq.Corelib.Classes.CRelationClasses.crelation (@Rocq.Corelib.Classes.CRelationClasses.crelation A)\nargument has type\n  Type (max v_0 (v_3 + 1))\nbut function has type\n  Type v_1 → Type (max v_1 (v_2 + 1)) [last tier: UNIVERSE_REJECTED: configuration disabled: instance-hypotheses]",
+            "blocked_by": [],
+            "path": []
+          }
+        ],
+        "failed_roots": [
+          {
+            "source": "Corelib.Classes.CMorphisms.Normalizes",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CRelationClasses.relation_equivalence]",
+            "blocked_by": [
+              "Corelib.Classes.CRelationClasses.relation_equivalence"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CMorphisms.PER_type_morphism",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CMorphisms.respectful, Corelib.Classes.CMorphisms.PER_type_morphism_obligation_1]",
+            "blocked_by": [
+              "Corelib.Classes.CMorphisms.respectful",
+              "Corelib.Classes.CMorphisms.PER_type_morphism_obligation_1"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CMorphisms.PER_type_morphism_obligation_1",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CMorphisms.respectful]",
+            "blocked_by": [
+              "Corelib.Classes.CMorphisms.respectful"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CMorphisms.PartialOrder_StrictOrder",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CRelationClasses.PartialOrder, Corelib.Classes.CRelationClasses.relation_conjunction, Corelib.Classes.CMorphisms.PartialOrder_StrictOrder__rocq2lean_obligation_1, Corelib.Classes.CMorphisms.PartialOrder_StrictOrder__rocq2lean_obligation_2, Corelib.Classes.CRelationClasses.PartialOrder, Corelib.Classes.CRelationClasses.relation_conjunction]",
+            "blocked_by": [
+              "Corelib.Classes.CRelationClasses.PartialOrder",
+              "Corelib.Classes.CRelationClasses.relation_conjunction",
+              "Corelib.Classes.CMorphisms.PartialOrder_StrictOrder__rocq2lean_obligation_1",
+              "Corelib.Classes.CMorphisms.PartialOrder_StrictOrder__rocq2lean_obligation_2",
+              "Corelib.Classes.CRelationClasses.PartialOrder",
+              "Corelib.Classes.CRelationClasses.relation_conjunction"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CMorphisms.PartialOrder_proper_type",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CMorphisms.respectful, Corelib.Classes.CRelationClasses.PartialOrder, Corelib.Classes.CMorphisms.proper_sym_arrow_iffT_2, Corelib.Classes.CMorphisms.respectful, Corelib.Classes.CRelationClasses.PartialOrder, Corelib.Classes.CRelationClasses.partial_order_equivalence, Corelib.Classes.CRelationClasses.relation_conjunction]",
+            "blocked_by": [
+              "Corelib.Classes.CMorphisms.respectful",
+              "Corelib.Classes.CRelationClasses.PartialOrder",
+              "Corelib.Classes.CMorphisms.proper_sym_arrow_iffT_2",
+              "Corelib.Classes.CMorphisms.respectful",
+              "Corelib.Classes.CRelationClasses.PartialOrder",
+              "Corelib.Classes.CRelationClasses.partial_order_equivalence",
+              "Corelib.Classes.CRelationClasses.relation_conjunction"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CMorphisms.Reflexive_partial_app_morphism",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CMorphisms.respectful, Corelib.Classes.CMorphisms.respectful]",
+            "blocked_by": [
+              "Corelib.Classes.CMorphisms.respectful",
+              "Corelib.Classes.CMorphisms.respectful"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CMorphisms.StrictOrder_PartialOrder",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CMorphisms.StrictOrder_PreOrder, Corelib.Classes.CMorphisms.respectful, Corelib.Classes.CRelationClasses.PartialOrder, Corelib.Classes.CRelationClasses.relation_disjunction, Corelib.Classes.CMorphisms.StrictOrder_PartialOrder__rocq2lean_obligation_1, Corelib.Classes.CMorphisms.StrictOrder_PreOrder, Corelib.Classes.CMorphisms.respectful, Corelib.Classes.CRelationClasses.PartialOrder, Corelib.Classes.CRelationClasses.relation_conjunction, Corelib.Classes.CRelationClasses.relation_disjunction]",
+            "blocked_by": [
+              "Corelib.Classes.CMorphisms.StrictOrder_PreOrder",
+              "Corelib.Classes.CMorphisms.respectful",
+              "Corelib.Classes.CRelationClasses.PartialOrder",
+              "Corelib.Classes.CRelationClasses.relation_disjunction",
+              "Corelib.Classes.CMorphisms.StrictOrder_PartialOrder__rocq2lean_obligation_1",
+              "Corelib.Classes.CMorphisms.StrictOrder_PreOrder",
+              "Corelib.Classes.CMorphisms.respectful",
+              "Corelib.Classes.CRelationClasses.PartialOrder",
+              "Corelib.Classes.CRelationClasses.relation_conjunction",
+              "Corelib.Classes.CRelationClasses.relation_disjunction"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CMorphisms.StrictOrder_PreOrder",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CMorphisms.respectful, Corelib.Classes.CRelationClasses.relation_disjunction, Corelib.Classes.CMorphisms.respectful, Corelib.Classes.CRelationClasses.relation_disjunction]",
+            "blocked_by": [
+              "Corelib.Classes.CMorphisms.respectful",
+              "Corelib.Classes.CRelationClasses.relation_disjunction",
+              "Corelib.Classes.CMorphisms.respectful",
+              "Corelib.Classes.CRelationClasses.relation_disjunction"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CMorphisms.compose_proper",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CMorphisms.respectful, Corelib.Classes.CMorphisms.compose_proper_obligation_1]",
+            "blocked_by": [
+              "Corelib.Classes.CMorphisms.respectful",
+              "Corelib.Classes.CMorphisms.compose_proper_obligation_1"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Classes.CMorphisms.compose_proper_obligation_1",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Classes.CMorphisms.respectful, Corelib.Classes.CMorphisms.respectful]",
+            "blocked_by": [
+              "Corelib.Classes.CMorphisms.respectful",
+              "Corelib.Classes.CMorphisms.respectful"
+            ],
+            "path": []
+          }
+        ],
+        "failed_root_count": 55
+      }
+    },
+    "wf-obligations": {
+      "report": "reports/minimal-r1-without-wf-obligations-probe.json",
+      "module": "Corelib.Init.Nat",
+      "failure": {
+        "stage": "translation",
+        "first_failure": [
+          {
+            "source": "Corelib.Init.Nat.gcd",
+            "status": "UNIVERSE_REJECTED",
+            "message": "configuration disabled: wf-obligations [last tier: UNIVERSE_REJECTED: configuration disabled: instance-hypotheses]",
+            "blocked_by": [],
+            "path": []
+          }
+        ],
+        "failed_roots": [
+          {
+            "source": "Corelib.Init.Nat.gcd",
+            "status": "UNIVERSE_REJECTED",
+            "message": "configuration disabled: wf-obligations [last tier: UNIVERSE_REJECTED: configuration disabled: instance-hypotheses]",
+            "blocked_by": [],
+            "path": []
+          }
+        ],
+        "failed_root_count": 1
+      }
+    }
+  },
+  "enabled": [
+    "fact-reduce",
+    "fact-interpretation",
+    "motive-sort",
+    "cumulativity",
+    "reference-lowering",
+    "result-sort",
+    "prop-lift",
+    "type-lift",
+    "alias-delta",
+    "source-compute",
+    "template-sort",
+    "poly-model",
+    "wf-obligations"
+  ],
+  "final_report": "reports/selected.json",
+  "scope_roots": 2180,
+  "scope_modules": 67,
+  "finished": 1792411509.7831829,
+  "minimality": "single-deletion fixed point among 21 optional entry mechanisms; fixed core not minimized"
+}

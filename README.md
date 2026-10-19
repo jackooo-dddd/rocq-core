@@ -1,5 +1,7 @@
 # Rocq Corelib → Lean
 
+- [已验证的可执行规则集合](results/CORELIB_RULE_SET.md)：独立配置、全量回归、可选机制删减及必要性见证。
+
 - [实际使用规则清单](results/USED_RULES.md)：仅列当前机械基线有使用证据的条目及原语映射。
 - [Nat 完整案例](results/casestudy/README.md)：源类型与58项运算、逐声明译文/过程、导出文件解释及原生对应证明。
 

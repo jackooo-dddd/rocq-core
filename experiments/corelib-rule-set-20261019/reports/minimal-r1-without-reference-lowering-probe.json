@@ -1,0 +1,168 @@
+{
+  "run": "minimal-r1-without-reference-lowering-probe",
+  "disabled": [
+    "carrier-copies",
+    "implicit-discovery",
+    "instance-hypotheses",
+    "joint-levels",
+    "occurrence-levels",
+    "operand-split",
+    "phantom-sort",
+    "reference-lowering",
+    "set-delta"
+  ],
+  "modules_requested": [
+    "Corelib.ssr.ssrbool"
+  ],
+  "started": 1792411451.1187038,
+  "implementation": "3d47a7cfc30950d5b91f07c4ee19d664d989e600d81853b078d31ec9bb659fa3",
+  "prerequisite_policy": "no new identities; reductions need all independent checks",
+  "records": [
+    {
+      "module": "Corelib.ssr.ssrbool",
+      "disabled": [
+        "carrier-copies",
+        "implicit-discovery",
+        "instance-hypotheses",
+        "joint-levels",
+        "occurrence-levels",
+        "operand-split",
+        "phantom-sort",
+        "reference-lowering",
+        "set-delta"
+      ],
+      "roots": 451,
+      "passed": false,
+      "translation": {
+        "exit": 0,
+        "seconds": 2.827,
+        "log": ".work/runs/minimal-r1-without-reference-lowering-probe/Corelib/ssr/ssrbool/translate.log"
+      },
+      "counts": {
+        "PENDING_KERNEL_CHECKED": 50,
+        "BLOCKED_DEPENDENCY": 7,
+        "TRANSLATED_AND_CHECKED": 103,
+        "STATEMENT_KERNEL_CHECKED": 215,
+        "STATEMENT_PENDING_KERNEL_CHECKED": 73,
+        "KERNEL_REJECTED": 1,
+        "UNIVERSE_REJECTED": 2
+      },
+      "failure": {
+        "stage": "translation",
+        "first_failure": [
+          {
+            "source": "Corelib.ssr.ssrbool.keyed_pred",
+            "status": "KERNEL_REJECTED",
+            "message": "(kernel) application type mismatch\n  @Rocq.Corelib.ssr.ssrbool.pred_sort T (@Rocq.Corelib.ssr.ssrbool.predPredType T)\nargument has type\n  @Rocq.Corelib.ssr.ssrbool.predType T\nbut function has type\n  @Rocq.Corelib.ssr.ssrbool.predType T → Type (max u_Corelib_ssr_ssrbool_1110 u_Corelib_ssr_ssrbool_1345) [R3↓ attempt: UNIVERSE_REJECTED: configuration disabled: reference-lowering] [δ-inlined #[Corelib.ssr.ssrbool.eq_mem, Corelib.ssr.ssrbool.pred_sort]: UNIVERSE_REJECTED: reference to Rocq.Corelib.ssr.ssrbool.predType: coherence: source level Corelib.ssr.ssrbool.1110 is a proof-local level of the referring declaration, solved as max u_Corelib_ssr_ssrbool_1110 u_Corelib_ssr_ssrbool_1345; the argument must be the same, not u_Corelib_ssr_ssrbool_1345 [R3↓ attempt: UNIVERSE_REJECTED: configuration disabled: reference-lowering]]",
+            "blocked_by": [],
+            "path": []
+          }
+        ],
+        "failed_roots": [
+          {
+            "source": "Corelib.ssr.ssrbool/DefaultKeying.default_keyed_pred",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.ssr.ssrbool.keyed_pred, Corelib.ssr.ssrbool.KeyedPred]",
+            "blocked_by": [
+              "Corelib.ssr.ssrbool.keyed_pred",
+              "Corelib.ssr.ssrbool.KeyedPred"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.ssr.ssrbool.KeyedPred",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.ssr.ssrbool.keyed_pred, Corelib.ssr.ssrbool.keyed_pred]",
+            "blocked_by": [
+              "Corelib.ssr.ssrbool.keyed_pred",
+              "Corelib.ssr.ssrbool.keyed_pred"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.ssr.ssrbool.keyed_mem",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.ssr.ssrbool.keyed_pred, Corelib.ssr.ssrbool.keyed_mem__rocq2lean_obligation_1, Corelib.ssr.ssrbool.keyed_pred, Corelib.ssr.ssrbool.unkey_pred]",
+            "blocked_by": [
+              "Corelib.ssr.ssrbool.keyed_pred",
+              "Corelib.ssr.ssrbool.keyed_mem__rocq2lean_obligation_1",
+              "Corelib.ssr.ssrbool.keyed_pred",
+              "Corelib.ssr.ssrbool.unkey_pred"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.ssr.ssrbool.keyed_mem_simpl",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.ssr.ssrbool.keyed_pred, Corelib.ssr.ssrbool.keyed_mem_simpl__rocq2lean_obligation_1, Corelib.ssr.ssrbool.keyed_pred, Corelib.ssr.ssrbool.unkey_pred]",
+            "blocked_by": [
+              "Corelib.ssr.ssrbool.keyed_pred",
+              "Corelib.ssr.ssrbool.keyed_mem_simpl__rocq2lean_obligation_1",
+              "Corelib.ssr.ssrbool.keyed_pred",
+              "Corelib.ssr.ssrbool.unkey_pred"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.ssr.ssrbool.keyed_pred",
+            "status": "KERNEL_REJECTED",
+            "message": "(kernel) application type mismatch\n  @Rocq.Corelib.ssr.ssrbool.pred_sort T (@Rocq.Corelib.ssr.ssrbool.predPredType T)\nargument has type\n  @Rocq.Corelib.ssr.ssrbool.predType T\nbut function has type\n  @Rocq.Corelib.ssr.ssrbool.predType T → Type (max u_Corelib_ssr_ssrbool_1110 u_Corelib_ssr_ssrbool_1345) [R3↓ attempt: UNIVERSE_REJECTED: configuration disabled: reference-lowering] [δ-inlined #[Corelib.ssr.ssrbool.eq_mem, Corelib.ssr.ssrbool.pred_sort]: UNIVERSE_REJECTED: reference to Rocq.Corelib.ssr.ssrbool.predType: coherence: source level Corelib.ssr.ssrbool.1110 is a proof-local level of the referring declaration, solved as max u_Corelib_ssr_ssrbool_1110 u_Corelib_ssr_ssrbool_1345; the argument must be the same, not u_Corelib_ssr_ssrbool_1345 [R3↓ attempt: UNIVERSE_REJECTED: configuration disabled: reference-lowering]]",
+            "blocked_by": [],
+            "path": []
+          },
+          {
+            "source": "Corelib.ssr.ssrbool.keyed_predE",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.ssr.ssrbool.keyed_pred, Corelib.ssr.ssrbool.unkey_pred]",
+            "blocked_by": [
+              "Corelib.ssr.ssrbool.keyed_pred",
+              "Corelib.ssr.ssrbool.unkey_pred"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.ssr.ssrbool.keyed_qualifier_keyed",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.ssr.ssrbool.keyed_pred, Corelib.ssr.ssrbool.keyed_pred, Corelib.ssr.ssrbool.keyed_qualifier_keyed__rocq2lean_obligation_1]",
+            "blocked_by": [
+              "Corelib.ssr.ssrbool.keyed_pred",
+              "Corelib.ssr.ssrbool.keyed_pred",
+              "Corelib.ssr.ssrbool.keyed_qualifier_keyed__rocq2lean_obligation_1"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.ssr.ssrbool.keyed_qualifier_suproof",
+            "status": "UNIVERSE_REJECTED",
+            "message": "reference to Rocq.Corelib.ssr.ssrbool.mem: coherence: source level Corelib.ssr.ssrbool.1110 is shared with the referring declaration, so its argument must be u_Corelib.ssr.ssrbool.1110, not u_Corelib_ssr_ssrbool_1348 [last tier: UNIVERSE_REJECTED: configuration disabled: reference-lowering]",
+            "blocked_by": [],
+            "path": []
+          },
+          {
+            "source": "Corelib.ssr.ssrbool.mem_topred",
+            "status": "UNIVERSE_REJECTED",
+            "message": "reference to Rocq.Corelib.ssr.ssrbool.mem: coherence: source level Corelib.ssr.ssrbool.1110 is shared with the referring declaration, so its argument must be u_Corelib.ssr.ssrbool.1110, not u_Corelib_ssr_ssrbool_1253 [last tier: UNIVERSE_REJECTED: configuration disabled: reference-lowering]",
+            "blocked_by": [],
+            "path": []
+          },
+          {
+            "source": "Corelib.ssr.ssrbool.unkey_pred",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.ssr.ssrbool.keyed_pred, Corelib.ssr.ssrbool.keyed_pred]",
+            "blocked_by": [
+              "Corelib.ssr.ssrbool.keyed_pred",
+              "Corelib.ssr.ssrbool.keyed_pred"
+            ],
+            "path": []
+          }
+        ],
+        "failed_root_count": 10
+      }
+    }
+  ],
+  "finished": 1792411454.02907,
+  "passed": false,
+  "full_scope": false,
+  "root_count": 451,
+  "target_changed_declarations": 0
+}

@@ -1,0 +1,190 @@
+{
+  "run": "minimal-r1-without-template-sort-probe",
+  "disabled": [
+    "carrier-copies",
+    "implicit-discovery",
+    "instance-hypotheses",
+    "joint-levels",
+    "occurrence-levels",
+    "operand-split",
+    "phantom-sort",
+    "set-delta",
+    "template-sort"
+  ],
+  "modules_requested": [
+    "Corelib.Init.Logic"
+  ],
+  "started": 1792411458.1732767,
+  "implementation": "3d47a7cfc30950d5b91f07c4ee19d664d989e600d81853b078d31ec9bb659fa3",
+  "prerequisite_policy": "no new identities; reductions need all independent checks",
+  "records": [
+    {
+      "module": "Corelib.Init.Logic",
+      "disabled": [
+        "carrier-copies",
+        "implicit-discovery",
+        "instance-hypotheses",
+        "joint-levels",
+        "occurrence-levels",
+        "operand-split",
+        "phantom-sort",
+        "set-delta",
+        "template-sort"
+      ],
+      "roots": 176,
+      "passed": false,
+      "translation": {
+        "exit": 0,
+        "seconds": 0.768,
+        "log": ".work/runs/minimal-r1-without-template-sort-probe/Corelib/Init/Logic/translate.log"
+      },
+      "counts": {
+        "TRANSLATED_AND_CHECKED": 28,
+        "STATEMENT_KERNEL_CHECKED": 63,
+        "BLOCKED_DEPENDENCY": 52,
+        "UNSUPPORTED_FEATURE": 22,
+        "PENDING_KERNEL_CHECKED": 2,
+        "STATEMENT_PENDING_KERNEL_CHECKED": 9
+      },
+      "failure": {
+        "stage": "translation",
+        "first_failure": [
+          {
+            "source": "Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1",
+            "status": "UNSUPPORTED_FEATURE",
+            "message": "template inductive Corelib.Init.Logic.ex instantiated at quality Prop: parameter 0 receives a proposition (a Prop instance, or Rocq's Prop ≤ Type cumulativity), which Lean cannot express without a lift",
+            "blocked_by": [],
+            "path": [
+              "body",
+              "prod",
+              "b",
+              "prod",
+              "b",
+              "prod",
+              "ty",
+              "app",
+              "f"
+            ]
+          }
+        ],
+        "failed_roots": [
+          {
+            "source": "Corelib.Init.Logic.eq_ex",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex__rocq2lean_obligation_1"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex2",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1, Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_1",
+              "Corelib.Init.Logic.eq_ex2__rocq2lean_obligation_2"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_eta",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex2_eta__rocq2lean_obligation_1"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_hprop",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex2_hprop__rocq2lean_obligation_1, Corelib.Init.Logic.eq_ex2_hprop__rocq2lean_obligation_2]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex2_hprop__rocq2lean_obligation_1",
+              "Corelib.Init.Logic.eq_ex2_hprop__rocq2lean_obligation_2"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_hprop_iff",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex2_hprop_iff__rocq2lean_obligation_1, Corelib.Init.Logic.eq_ex2_hprop_iff__rocq2lean_obligation_2]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex2_hprop_iff__rocq2lean_obligation_1",
+              "Corelib.Init.Logic.eq_ex2_hprop_iff__rocq2lean_obligation_2"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_ind",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_1, Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_2, Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_3]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_1",
+              "Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_2",
+              "Corelib.Init.Logic.eq_ex2_ind__rocq2lean_obligation_3"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_ind_uncurried",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_1, Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_2, Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_3]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_1",
+              "Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_2",
+              "Corelib.Init.Logic.eq_ex2_ind_uncurried__rocq2lean_obligation_3"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_nondep",
+            "status": "UNSUPPORTED_FEATURE",
+            "message": "template inductive Corelib.Init.Logic.ex2 instantiated at quality Prop: parameter 0 receives a proposition (a Prop instance, or Rocq's Prop ≤ Type cumulativity), which Lean cannot express without a lift",
+            "blocked_by": [],
+            "path": [
+              "body",
+              "prod",
+              "b",
+              "prod",
+              "b",
+              "prod",
+              "b",
+              "prod",
+              "ty",
+              "app",
+              "f"
+            ]
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_rec",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex2, Corelib.Init.Logic.eq_ex2_rect]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex2",
+              "Corelib.Init.Logic.eq_ex2_rect"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_rec_uncurried",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex2, Corelib.Init.Logic.eq_ex2_rect_uncurried]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex2",
+              "Corelib.Init.Logic.eq_ex2_rect_uncurried"
+            ],
+            "path": []
+          }
+        ],
+        "failed_root_count": 74
+      }
+    }
+  ],
+  "finished": 1792411459.001397,
+  "passed": false,
+  "full_scope": false,
+  "root_count": 176,
+  "target_changed_declarations": 0
+}

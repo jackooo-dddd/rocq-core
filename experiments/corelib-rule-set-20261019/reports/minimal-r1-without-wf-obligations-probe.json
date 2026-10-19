@@ -1,0 +1,74 @@
+{
+  "run": "minimal-r1-without-wf-obligations-probe",
+  "disabled": [
+    "carrier-copies",
+    "implicit-discovery",
+    "instance-hypotheses",
+    "joint-levels",
+    "occurrence-levels",
+    "operand-split",
+    "phantom-sort",
+    "set-delta",
+    "wf-obligations"
+  ],
+  "modules_requested": [
+    "Corelib.Init.Nat"
+  ],
+  "started": 1792411459.7851214,
+  "implementation": "3d47a7cfc30950d5b91f07c4ee19d664d989e600d81853b078d31ec9bb659fa3",
+  "prerequisite_policy": "no new identities; reductions need all independent checks",
+  "records": [
+    {
+      "module": "Corelib.Init.Nat",
+      "disabled": [
+        "carrier-copies",
+        "implicit-discovery",
+        "instance-hypotheses",
+        "joint-levels",
+        "occurrence-levels",
+        "operand-split",
+        "phantom-sort",
+        "set-delta",
+        "wf-obligations"
+      ],
+      "roots": 58,
+      "passed": false,
+      "translation": {
+        "exit": 0,
+        "seconds": 0.616,
+        "log": ".work/runs/minimal-r1-without-wf-obligations-probe/Corelib/Init/Nat/translate.log"
+      },
+      "counts": {
+        "TRANSLATED_AND_CHECKED": 57,
+        "UNIVERSE_REJECTED": 1
+      },
+      "failure": {
+        "stage": "translation",
+        "first_failure": [
+          {
+            "source": "Corelib.Init.Nat.gcd",
+            "status": "UNIVERSE_REJECTED",
+            "message": "configuration disabled: wf-obligations [last tier: UNIVERSE_REJECTED: configuration disabled: instance-hypotheses]",
+            "blocked_by": [],
+            "path": []
+          }
+        ],
+        "failed_roots": [
+          {
+            "source": "Corelib.Init.Nat.gcd",
+            "status": "UNIVERSE_REJECTED",
+            "message": "configuration disabled: wf-obligations [last tier: UNIVERSE_REJECTED: configuration disabled: instance-hypotheses]",
+            "blocked_by": [],
+            "path": []
+          }
+        ],
+        "failed_root_count": 1
+      }
+    }
+  ],
+  "finished": 1792411460.4097645,
+  "passed": false,
+  "full_scope": false,
+  "root_count": 58,
+  "target_changed_declarations": 0
+}

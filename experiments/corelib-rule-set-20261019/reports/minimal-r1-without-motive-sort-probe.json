@@ -1,0 +1,157 @@
+{
+  "run": "minimal-r1-without-motive-sort-probe",
+  "disabled": [
+    "carrier-copies",
+    "implicit-discovery",
+    "instance-hypotheses",
+    "joint-levels",
+    "motive-sort",
+    "occurrence-levels",
+    "operand-split",
+    "phantom-sort",
+    "set-delta"
+  ],
+  "modules_requested": [
+    "Corelib.Init.Logic"
+  ],
+  "started": 1792411448.9514525,
+  "implementation": "3d47a7cfc30950d5b91f07c4ee19d664d989e600d81853b078d31ec9bb659fa3",
+  "prerequisite_policy": "no new identities; reductions need all independent checks",
+  "records": [
+    {
+      "module": "Corelib.Init.Logic",
+      "disabled": [
+        "carrier-copies",
+        "implicit-discovery",
+        "instance-hypotheses",
+        "joint-levels",
+        "motive-sort",
+        "occurrence-levels",
+        "operand-split",
+        "phantom-sort",
+        "set-delta"
+      ],
+      "roots": 176,
+      "passed": false,
+      "translation": {
+        "exit": 0,
+        "seconds": 1.52,
+        "log": ".work/runs/minimal-r1-without-motive-sort-probe/Corelib/Init/Logic/translate.log"
+      },
+      "counts": {
+        "TRANSLATED_AND_CHECKED": 28,
+        "STATEMENT_KERNEL_CHECKED": 72,
+        "STATEMENT_PENDING_KERNEL_CHECKED": 55,
+        "BLOCKED_DEPENDENCY": 14,
+        "KERNEL_REJECTED": 4,
+        "PENDING_KERNEL_CHECKED": 3
+      },
+      "failure": {
+        "stage": "translation",
+        "first_failure": [
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_rect",
+            "status": "KERNEL_REJECTED",
+            "message": "(kernel) application type mismatch\n  @Rocq.Corelib.Init.Logic.eq_rect A\nargument has type\n  Prop\nbut function has type\n  (A : Type u_Corelib_Init_Logic_21) →\n    (x : A) → (P : A → Type u_Corelib_Init_Logic_20) → P x → (a : A) → @Rocq.Corelib.Init.Logic.eq A x a → P a [last tier: UNIVERSE_REJECTED: configuration disabled: instance-hypotheses]",
+            "blocked_by": [],
+            "path": []
+          }
+        ],
+        "failed_roots": [
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_rec",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex2_rect]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex2_rect"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_rec_uncurried",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex2_rect_uncurried]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex2_rect_uncurried"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_rect",
+            "status": "KERNEL_REJECTED",
+            "message": "(kernel) application type mismatch\n  @Rocq.Corelib.Init.Logic.eq_rect A\nargument has type\n  Prop\nbut function has type\n  (A : Type u_Corelib_Init_Logic_21) →\n    (x : A) → (P : A → Type u_Corelib_Init_Logic_20) → P x → (a : A) → @Rocq.Corelib.Init.Logic.eq A x a → P a [last tier: UNIVERSE_REJECTED: configuration disabled: instance-hypotheses]",
+            "blocked_by": [],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_rect_ex_intro2",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex2_rect]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex2_rect"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_rect_ex_intro2_l",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex2_rect]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex2_rect"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_rect_ex_intro2_r",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex2_rect]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex2_rect"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex2_rect_uncurried",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex2_rect]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex2_rect"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex_rec",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex_rect]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex_rect"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex_rec_uncurried",
+            "status": "BLOCKED_DEPENDENCY",
+            "message": "failed dependencies: #[Corelib.Init.Logic.eq_ex_rect_uncurried]",
+            "blocked_by": [
+              "Corelib.Init.Logic.eq_ex_rect_uncurried"
+            ],
+            "path": []
+          },
+          {
+            "source": "Corelib.Init.Logic.eq_ex_rect",
+            "status": "KERNEL_REJECTED",
+            "message": "(kernel) application type mismatch\n  @Rocq.Corelib.Init.Logic.eq_rect A\nargument has type\n  Prop\nbut function has type\n  (A : Type u_Corelib_Init_Logic_21) →\n    (x : A) → (P : A → Type u_Corelib_Init_Logic_20) → P x → (a : A) → @Rocq.Corelib.Init.Logic.eq A x a → P a [last tier: UNIVERSE_REJECTED: configuration disabled: instance-hypotheses]",
+            "blocked_by": [],
+            "path": []
+          }
+        ],
+        "failed_root_count": 18
+      }
+    }
+  ],
+  "finished": 1792411450.5467596,
+  "passed": false,
+  "full_scope": false,
+  "root_count": 176,
+  "target_changed_declarations": 0
+}
