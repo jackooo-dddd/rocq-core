@@ -1,3 +1,5 @@
+> 历史快照：main75 bootstrap 基线，非当前实现。这里的 T06 = 2 / 2 仅描述旧运行；现行 T06 已停用且为 0 / 0。请使用[当前完整规则清单](../corelib-complete/ALL_RULES.md)和[当前统计](../corelib-complete/RULE_USAGE.md)。历史数据保留用于比较。
+
 main75 逐规则使用统计
 
 [完整清单](ALL_RULES.md)。2180原始根去重；左数为主表示，右数含该根 quality 分支。

@@ -156,21 +156,59 @@ def main():
  for v in rs.values():
   if v['primary_roots'] is not None:
    assert v['primary_roots']==len(v['names']) and v['family_roots']>=v['primary_roots']
+ # Evidence categories describe what is measured, never the strength of a proof.
+ categories={
+  '源端元数据':'E02 E04 E11 T09 Q01 Q05 Q06 N01 N02 N03 N04 N05',
+  '产物结构':'E03 E08 E09 E12 T01 T02 T03 T07 U02 U03 U08 U10 U11',
+  '处理范围':'E01 U01 V01 V03 V04 V06 V09 S01',
+  '模块验证结果':'V07 V08',
+  '尝试记录':'S02 S04',
+  '策略标志':'U28',
+  '部分子机制':'T11 U35 N06',
+  '本次未启用':'E14 T06 V02',
+ }
+ assigned=set()
+ for label,ids in categories.items():
+  for k in ids.split():
+   assert k not in assigned
+   assert rs[k]['primary_roots'] is not None
+   assigned.add(k);rs[k]['precision']=label
+ for k,v in rs.items():
+  if k not in assigned and v['primary_roots'] is not None:
+   v['precision']='结果报告字段'
+  v['unit']='去重原始根声明'
+  v['execution_count']=None
+  v['status']='retired' if k=='T06' else 'retained'
+  v['same_predicate_as']={'Q06':'Q05','V05':'U06','V02':'T06'}.get(k)
+  v['evidence_file']='rule-usage-evidence.json'
+  v['limitation']='该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。'
+  if v['precision']=='部分子机制':
+   v['limitation']='只计 basis 指明的子机制；整个复合条目的使用根数未知。'
+  if v['precision']=='未单独记录':
+   v['limitation']='缺少该子规则的独立记录；null 表示未知，不能解释为零。'
+  if v['same_predicate_as']:
+   v['limitation']+=' 与 '+v['same_predicate_as']+' 使用同一统计条件，不能视为两组独立使用证据。'
+ rs['T06']['basis']='已停用；当前 bootstrapRules=#[]，报告 bootstrap/ 根数为 0。源 nat/eq 均走 T07。'
+ rs['V02']['basis']='当前 bootstrap 表为空，本次没有 bootstrap 签名适配对象。'
+ rs['E14']['basis']='本次运行未装配外部证明；0 描述实验配置，非条件装配函数调用计数。'
  counts=dict(Counter(v['precision'] for v in rs.values()))
- ledger={'root_count':2180,'entry_count':118,'measurement_counts':counts,'rules':list(rs.values()),
+ ledger={'schema_version':2,'baseline':'mechanical-nat-eq-20261019/full-v1',
+         'root_count':2180,'entry_count':118,'retired_entry_ids':['T06'],
+         'count_semantics':'Each number counts unique roots satisfying basis. Not execution counts. Categories count review entries.',
+         'measurement_counts':counts,'rules':list(rs.values()),
          'primitives':primitives,'attempt_flags':attempts,'reported_features':features,
          'quality_family_roots':sum(x['source']['quality_family'] for x in xs),
          'quality_family_instances':sum(x['source']['quality_members'] for x in xs)}
  (o/'RULE_USAGE.json').write_text(json.dumps(ledger,ensure_ascii=False,indent=2)+'\n')
  with (o/'RULE_USAGE.csv').open('w',newline='') as f:
-  cols=['id','name','precision','primary_roots','family_roots','basis'];w=csv.DictWriter(f,fieldnames=cols,lineterminator='\n');w.writeheader()
+  cols=['id','name','status','precision','unit','primary_roots','family_roots','execution_count','same_predicate_as','basis','limitation'];w=csv.DictWriter(f,fieldnames=cols,lineterminator='\n');w.writeheader()
   w.writerows({k:v[k] for k in cols} for v in rs.values())
  for k,e in es.items():e['usage']=rs[k]
  for op,v in zip(cat['primitive_operations'],primitives):op['usage']={k:x for k,x in v.items() if k not in ['source','target','usage']}
  (o/'ALL_RULES.json').write_text(json.dumps(cat,ensure_ascii=False,indent=2)+'\n')
  def display(v):
   if v['primary_roots'] is None:return '未单独记录'
-  pre='≥' if v['precision']=='下界' else ''
+  pre=''
   return f"{pre}{v['primary_roots']} / {pre}{v['family_roots']}（{v['precision']}）"
  text=(o/'ALL_RULES.md').read_text();lines=[]
  for line in text.splitlines():
@@ -183,7 +221,7 @@ def main():
   lines.append(line)
  text='\n'.join(lines)+'\n'
  marker='<!-- usage-method-start -->';end='<!-- usage-method-end -->'
- method=marker+'\n\n**使用次数口径**\n\n分母为2180个原始根。左数为主表示命中；右数将该根附带 quality 分支纳入后去重。依赖闭包的重复出现不重复计数。报告命中是明确字段记录；覆盖仅指处理范围或结构出现；≥是复合条目的可确认下界；未单独记录不等于零。历史日志无法恢复所有内部子规则调用次数，需要另一次带事件埋点的运行才能补全。命中次数不表示规则不可替代。\n\n失败重试的开关启用单列在 [RULE_USAGE.md](RULE_USAGE.md)，不混入最终命中。全部声明名单见 [RULE_USAGE.json](RULE_USAGE.json)，筛选表见 [RULE_USAGE.csv](RULE_USAGE.csv)。\n\n'+end
+ method=marker+'\n\n**使用次数口径**\n\n分母为2180个原始根。左数是主表示满足统计条件的根数；右数将附带 quality 分支纳入后按根去重。它们都不是函数调用次数。源端元数据、产物结构、处理范围、模块验证结果、尝试记录、策略标志、结果报告字段分别标明；结果字段非空不自动意味着发生一次改写。部分子机制只统计依据中指明的部分，整个条目的使用数仍未知；未单独记录用 null，不以 0 代替。T06 已停用，保留编号仅供历史比较。每条的计数单位、限制、重复统计条件和完整名单见 JSON／CSV。Q05/Q06、U06/V05 等共用证据，不得相加。\n\n失败重试的开关启用单列在 [RULE_USAGE.md](RULE_USAGE.md)，不混入最终命中。全部声明名单见 [RULE_USAGE.json](RULE_USAGE.json)，筛选表见 [RULE_USAGE.csv](RULE_USAGE.csv)。\n\n'+end
  if marker in text:text=re.sub(re.escape(marker)+'.*?'+re.escape(end),lambda m:method,text,flags=re.S)
  else:text=text.replace('**E：',method+'\n\n**E：',1)
  text=re.sub(r'^\| 源操作 \| Lean 目标 \|.*$', '| 源操作 | Lean 目标 | 原生映射根数 | 目标直接引用根数 |',text,flags=re.M)
@@ -194,10 +232,13 @@ def main():
  text=text.replace('| 原生映射根数 | 目标直接引用根数 |\n|---|---|\n','| 原生映射根数 | 目标直接引用根数 |\n|---|---|---:|---:|\n')
  (o/'ALL_RULES.md').write_text(text)
  md=['机械 nat／eq 基线逐规则使用统计','','[完整清单](ALL_RULES.md)。2180原始根去重；左数为主表示，右数含该根 quality 分支。','',
-     '118项统计精度：'+str(counts)+'。未单独记录不等于零，覆盖不等于内部调用次数。',
+     '以下按证据类别统计审阅条目数（不是规则使用次数），共118项，含已停用T06。所有逐项数字的单位都是去重根声明。执行调用次数未独立采集。', '',
+     '| 证据类别 | 审阅条目数 |','|---|---:|',
+     *[f'| {label} | {n} |' for label,n in counts.items()],
+     '', '部分子机制不再写作整个规则的下界。Q05/Q06、U06/V05、T06/V02 使用相同条件；跨行数字不能相加。0 表示该条件未命中或本次未启用；未知用 null／未单独记录。',
      '','| 编号 | 规则 | 主项 / 含分支根数 | 依据 |','|---|---|---|---|']
  for v in rs.values():md.append(f"| {v['id']} | {v['name']} | {display(v)} | {v['basis']} |")
- md+=['','**独立字段及项级计数器**','','| 字段 | 命中根数 | 计数器总和 |','|---|---:|---:|']
+ md+=['','**独立字段及报告计数器**','','这些是报告已有计数器的主表示总和，不是新增的逐规则执行事件审计。', '', '| 字段 | 命中根数 | 主表示计数器总和 |','|---|---:|---:|']
  for k,v in features.items():md.append(f"| {k} | {v['roots']} | {v.get('event_total','—')} |")
  md+=['','**重试开关启用**','','这是开关启用次数，不是内部规则执行次数。成功候选也可能被后续候选替代。c:pl 是 Prop lift，i:pl 是 plain levels；ul 是 Type lift，un 是逐出现统一。',
       '','| 开关 | 根数 | 尝试数 | 成功候选 | 发现 | 失败 |','|---|---:|---:|---:|---:|---:|']
