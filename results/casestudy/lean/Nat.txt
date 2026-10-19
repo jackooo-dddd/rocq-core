@@ -1,0 +1,389 @@
+rocq2lean: 58 root(s) TRANSLATED_AND_CHECKED; summary {"bootstrap_resolved":0,"generated_helpers":0,"not_ok":3,"roots":58,"translated_dependencies":30}
+def Rocq.Corelib.Init.Nat.add : Rocq.Corelib.Init.Datatypes.nat →
+  Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat :=
+fun n m =>
+  Rocq.Corelib.Init.Datatypes.nat.rec.{1} (motive := fun n =>
+    Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat) (fun m => m) (fun a _ih m => (_ih m).S) n m
+def Rocq.Corelib.Init.Nat.bitwise : (Rocq.Corelib.Init.Datatypes.bool →
+    Rocq.Corelib.Init.Datatypes.bool → Rocq.Corelib.Init.Datatypes.bool) →
+  Rocq.Corelib.Init.Datatypes.nat →
+    Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat :=
+fun op n a b =>
+  Rocq.Corelib.Init.Datatypes.nat.rec.{1} (motive := fun n =>
+    Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat)
+    (fun a b => Rocq.Corelib.Init.Datatypes.nat.O)
+    (fun a _ih a_1 b =>
+      Rocq.Corelib.Init.Nat.add
+        (Rocq.Corelib.Init.Datatypes.bool.rec.{1} Rocq.Corelib.Init.Datatypes.nat.O.S Rocq.Corelib.Init.Datatypes.nat.O
+          (op (Rocq.Corelib.Init.Nat.odd a_1) (Rocq.Corelib.Init.Nat.odd b)))
+        (Rocq.Corelib.Init.Nat.mul Rocq.Corelib.Init.Datatypes.nat.O.S.S
+          (_ih (Rocq.Corelib.Init.Nat.div2 a_1) (Rocq.Corelib.Init.Nat.div2 b))))
+    n a b
+def Rocq.Corelib.Init.Nat.compare : Rocq.Corelib.Init.Datatypes.nat →
+  Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.comparison :=
+fun n m =>
+  Rocq.Corelib.Init.Datatypes.nat.rec.{1} (motive := fun n =>
+    Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.comparison)
+    (fun m =>
+      Rocq.Corelib.Init.Datatypes.nat.rec.{1} Rocq.Corelib.Init.Datatypes.comparison.Eq
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.comparison.Lt) m)
+    (fun a _ih m =>
+      Rocq.Corelib.Init.Datatypes.nat.rec.{1} Rocq.Corelib.Init.Datatypes.comparison.Gt (fun a _ih_1 => _ih a) m)
+    n m
+def Rocq.Corelib.Init.Nat.div : Rocq.Corelib.Init.Datatypes.nat →
+  Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat :=
+fun x y =>
+  Rocq.Corelib.Init.Datatypes.nat.rec.{1} y
+    (fun a _ih =>
+      Rocq.Corelib.Init.Datatypes.fst.{1, 1} Rocq.Corelib.Init.Datatypes.nat Rocq.Corelib.Init.Datatypes.nat
+        (Rocq.Corelib.Init.Nat.divmod x a Rocq.Corelib.Init.Datatypes.nat.O a))
+    y
+def Rocq.Corelib.Init.Nat.div2 : Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat :=
+fun n =>
+  (Rocq.Corelib.Init.Datatypes.nat.rec.{1} ⟨Rocq.Corelib.Init.Datatypes.nat.O, PUnit.unit.{1}⟩
+      (fun a _ih =>
+        ⟨Rocq.Corelib.Init.Datatypes.nat.rec.{1} (motive := fun z =>
+            PProd.{1, 1} Rocq.Corelib.Init.Datatypes.nat
+                (Rocq.Corelib.Init.Datatypes.nat.rec.{2} PUnit.{1}
+                  (fun a _ih => PProd.{1, 1} (PProd.{1, 1} Rocq.Corelib.Init.Datatypes.nat _ih) PUnit.{1}) z) →
+              Rocq.Corelib.Init.Datatypes.nat)
+            (fun x => Rocq.Corelib.Init.Datatypes.nat.O) (fun a _ih x => x.2.1.1.S) a _ih,
+          _ih, PUnit.unit.{1}⟩)
+      n).1
+def Rocq.Corelib.Init.Nat.divmod : Rocq.Corelib.Init.Datatypes.nat →
+  Rocq.Corelib.Init.Datatypes.nat →
+    Rocq.Corelib.Init.Datatypes.nat →
+      Rocq.Corelib.Init.Datatypes.nat →
+        Rocq.Corelib.Init.Datatypes.prod.{1, 1} Rocq.Corelib.Init.Datatypes.nat Rocq.Corelib.Init.Datatypes.nat :=
+fun x y q u =>
+  Rocq.Corelib.Init.Datatypes.nat.rec.{1} (motive := fun x =>
+    Rocq.Corelib.Init.Datatypes.nat →
+      Rocq.Corelib.Init.Datatypes.nat →
+        Rocq.Corelib.Init.Datatypes.nat →
+          Rocq.Corelib.Init.Datatypes.prod.{1, 1} Rocq.Corelib.Init.Datatypes.nat Rocq.Corelib.Init.Datatypes.nat)
+    (fun y q u =>
+      Rocq.Corelib.Init.Datatypes.prod.pair.{1, 1} Rocq.Corelib.Init.Datatypes.nat Rocq.Corelib.Init.Datatypes.nat q u)
+    (fun a _ih y q u => Rocq.Corelib.Init.Datatypes.nat.rec.{1} (_ih y q.S y) (fun a _ih_1 => _ih y q a) u) x y q u
+def Rocq.Corelib.Init.Nat.double : Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat :=
+fun n => Rocq.Corelib.Init.Nat.add n n
+def Rocq.Corelib.Init.Nat.eqb : Rocq.Corelib.Init.Datatypes.nat →
+  Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.bool :=
+fun n m =>
+  Rocq.Corelib.Init.Datatypes.nat.rec.{1} (motive := fun n =>
+    Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.bool)
+    (fun m =>
+      Rocq.Corelib.Init.Datatypes.nat.rec.{1} Rocq.Corelib.Init.Datatypes.bool.true
+        (fun a _ih => Rocq.Corelib.Init.Datatypes.bool.false) m)
+    (fun a _ih m =>
+      Rocq.Corelib.Init.Datatypes.nat.rec.{1} Rocq.Corelib.Init.Datatypes.bool.false (fun a _ih_1 => _ih a) m)
+    n m
+def Rocq.Corelib.Init.Nat.even : Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.bool :=
+fun n =>
+  (Rocq.Corelib.Init.Datatypes.nat.rec.{1} ⟨Rocq.Corelib.Init.Datatypes.bool.true, PUnit.unit.{1}⟩
+      (fun a _ih =>
+        ⟨Rocq.Corelib.Init.Datatypes.nat.rec.{1} (motive := fun z =>
+            PProd.{1, 1} Rocq.Corelib.Init.Datatypes.bool
+                (Rocq.Corelib.Init.Datatypes.nat.rec.{2} PUnit.{1}
+                  (fun a _ih => PProd.{1, 1} (PProd.{1, 1} Rocq.Corelib.Init.Datatypes.bool _ih) PUnit.{1}) z) →
+              Rocq.Corelib.Init.Datatypes.bool)
+            (fun x => Rocq.Corelib.Init.Datatypes.bool.false) (fun a _ih x => x.2.1.1) a _ih,
+          _ih, PUnit.unit.{1}⟩)
+      n).1
+def RocqPending.Corelib.Init.Nat.gcd : {h_Corelib_Init_Nat_gcd__rocq2lean_termination_1 :
+    Rocq.Corelib.Init.Nat.gcd__rocq2lean_termination_1.statement} →
+  Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat :=
+fun {h_Corelib_Init_Nat_gcd__rocq2lean_termination_1} a b =>
+  Acc.rec.{1, 1} (motive := fun s acc => Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat)
+    (fun s h ih b =>
+      Rocq.Corelib.Init.Datatypes.nat.rec.{1} (motive := fun t => Eq.{1} s t → Rocq.Corelib.Init.Datatypes.nat)
+        (fun h => b) (fun a _ih h => ih (Rocq.Corelib.Init.Nat.modulo b a.S) ⋯ a.S) s ⋯)
+    ⋯ b
+def Rocq.Corelib.Init.Nat.gcd__rocq2lean_termination_1.statement : Prop :=
+∀ (s : Rocq.Corelib.Init.Datatypes.nat),
+  Acc.{1}
+    (fun y s =>
+      Exists.{1} fun b => Exists.{1} fun a => Exists.{0} fun h => Eq.{1} y (Rocq.Corelib.Init.Nat.modulo b a.S))
+    s
+def Rocq.Corelib.Init.Nat.iter.{u_Corelib_Init_Nat_149} : Rocq.Corelib.Init.Datatypes.nat →
+  (A : Sort u_Corelib_Init_Nat_149) → (A → A) → A → A :=
+fun n A f x => Rocq.Corelib.Init.Datatypes.nat_rect.{u_Corelib_Init_Nat_149} (fun n => A) x (fun n => f) n
+def Rocq.Corelib.Init.Nat.land : Rocq.Corelib.Init.Datatypes.nat →
+  Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat :=
+fun a b => Rocq.Corelib.Init.Nat.bitwise Rocq.Corelib.Init.Datatypes.andb a a b
+def Rocq.Corelib.Init.Nat.ldiff : Rocq.Corelib.Init.Datatypes.nat →
+  Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat :=
+fun a b =>
+  Rocq.Corelib.Init.Nat.bitwise (fun b b' => Rocq.Corelib.Init.Datatypes.andb b (Rocq.Corelib.Init.Datatypes.negb b')) a
+    a b
+def Rocq.Corelib.Init.Nat.leb : Rocq.Corelib.Init.Datatypes.nat →
+  Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.bool :=
+fun n m =>
+  Rocq.Corelib.Init.Datatypes.nat.rec.{1} (motive := fun n =>
+    Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.bool) (fun m => Rocq.Corelib.Init.Datatypes.bool.true)
+    (fun a _ih m =>
+      Rocq.Corelib.Init.Datatypes.nat.rec.{1} Rocq.Corelib.Init.Datatypes.bool.false (fun a _ih_1 => _ih a) m)
+    n m
+def Rocq.Corelib.Init.Nat.log2 : Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat :=
+fun n =>
+  Rocq.Corelib.Init.Nat.log2_iter (Rocq.Corelib.Init.Nat.pred n) Rocq.Corelib.Init.Datatypes.nat.O
+    Rocq.Corelib.Init.Datatypes.nat.O.S Rocq.Corelib.Init.Datatypes.nat.O
+def Rocq.Corelib.Init.Nat.log2_iter : Rocq.Corelib.Init.Datatypes.nat →
+  Rocq.Corelib.Init.Datatypes.nat →
+    Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat :=
+fun k p q r =>
+  Rocq.Corelib.Init.Datatypes.nat.rec.{1} (motive := fun k =>
+    Rocq.Corelib.Init.Datatypes.nat →
+      Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat)
+    (fun p q r => p)
+    (fun a _ih p q r => Rocq.Corelib.Init.Datatypes.nat.rec.{1} (_ih p.S q.S q) (fun a _ih_1 => _ih p q.S a) r) k p q r
+def Rocq.Corelib.Init.Nat.lor : Rocq.Corelib.Init.Datatypes.nat →
+  Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat :=
+fun a b => Rocq.Corelib.Init.Nat.bitwise Rocq.Corelib.Init.Datatypes.orb (Rocq.Corelib.Init.Nat.max a b) a b
+def Rocq.Corelib.Init.Nat.ltb : Rocq.Corelib.Init.Datatypes.nat →
+  Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.bool :=
+fun n m => Rocq.Corelib.Init.Nat.leb n.S m
+def Rocq.Corelib.Init.Nat.lxor : Rocq.Corelib.Init.Datatypes.nat →
+  Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat :=
+fun a b => Rocq.Corelib.Init.Nat.bitwise Rocq.Corelib.Init.Datatypes.xorb (Rocq.Corelib.Init.Nat.max a b) a b
+def Rocq.Corelib.Init.Nat.max : Rocq.Corelib.Init.Datatypes.nat →
+  Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat :=
+fun n m =>
+  Rocq.Corelib.Init.Datatypes.nat.rec.{1} (motive := fun n =>
+    Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat) (fun m => m)
+    (fun a _ih m => Rocq.Corelib.Init.Datatypes.nat.rec.{1} a.S (fun a _ih_1 => (_ih a).S) m) n m
+def Rocq.Corelib.Init.Nat.min : Rocq.Corelib.Init.Datatypes.nat →
+  Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat :=
+fun n m =>
+  Rocq.Corelib.Init.Datatypes.nat.rec.{1} (motive := fun n =>
+    Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat) (fun m => Rocq.Corelib.Init.Datatypes.nat.O)
+    (fun a _ih m =>
+      Rocq.Corelib.Init.Datatypes.nat.rec.{1} Rocq.Corelib.Init.Datatypes.nat.O (fun a _ih_1 => (_ih a).S) m)
+    n m
+def Rocq.Corelib.Init.Nat.modulo : Rocq.Corelib.Init.Datatypes.nat →
+  Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat :=
+fun x y =>
+  Rocq.Corelib.Init.Datatypes.nat.rec.{1} x
+    (fun a _ih =>
+      Rocq.Corelib.Init.Nat.sub a
+        (Rocq.Corelib.Init.Datatypes.snd.{1, 1} Rocq.Corelib.Init.Datatypes.nat Rocq.Corelib.Init.Datatypes.nat
+          (Rocq.Corelib.Init.Nat.divmod x a Rocq.Corelib.Init.Datatypes.nat.O a)))
+    y
+def Rocq.Corelib.Init.Nat.mul : Rocq.Corelib.Init.Datatypes.nat →
+  Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat :=
+fun n m =>
+  Rocq.Corelib.Init.Datatypes.nat.rec.{1} (motive := fun n =>
+    Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat) (fun m => Rocq.Corelib.Init.Datatypes.nat.O)
+    (fun a _ih m => Rocq.Corelib.Init.Nat.add m (_ih m)) n m
+def Rocq.Corelib.Init.Nat.odd : Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.bool :=
+fun n => Rocq.Corelib.Init.Datatypes.negb (Rocq.Corelib.Init.Nat.even n)
+def Rocq.Corelib.Init.Nat.of_hex_int : Rocq.Corelib.Init.Hexadecimal.signed_int →
+  Rocq.Corelib.Init.Datatypes.option.{1} Rocq.Corelib.Init.Datatypes.nat :=
+fun d =>
+  Rocq.Corelib.Init.Hexadecimal.signed_int.rec.{1}
+    (fun d =>
+      Rocq.Corelib.Init.Datatypes.option.Some.{1} Rocq.Corelib.Init.Datatypes.nat (Rocq.Corelib.Init.Nat.of_hex_uint d))
+    (fun d => Rocq.Corelib.Init.Datatypes.option.None.{1} Rocq.Corelib.Init.Datatypes.nat)
+    (Rocq.Corelib.Init.Hexadecimal.norm d)
+def Rocq.Corelib.Init.Nat.of_hex_uint : Rocq.Corelib.Init.Hexadecimal.uint → Rocq.Corelib.Init.Datatypes.nat :=
+fun d => Rocq.Corelib.Init.Nat.of_hex_uint_acc d Rocq.Corelib.Init.Datatypes.nat.O
+def Rocq.Corelib.Init.Nat.of_hex_uint_acc : Rocq.Corelib.Init.Hexadecimal.uint →
+  Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat :=
+fun d acc =>
+  Rocq.Corelib.Init.Hexadecimal.uint.rec.{1} (motive := fun d =>
+    Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat) (fun acc => acc)
+    (fun a _ih acc =>
+      _ih (Rocq.Corelib.Init.Nat.tail_mul Rocq.Corelib.Init.Datatypes.nat.O.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S acc))
+    (fun a _ih acc =>
+      _ih (Rocq.Corelib.Init.Nat.tail_mul Rocq.Corelib.Init.Datatypes.nat.O.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S acc).S)
+    (fun a _ih acc =>
+      _ih (Rocq.Corelib.Init.Nat.tail_mul Rocq.Corelib.Init.Datatypes.nat.O.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S acc).S.S)
+    (fun a _ih acc =>
+      _ih (Rocq.Corelib.Init.Nat.tail_mul Rocq.Corelib.Init.Datatypes.nat.O.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S acc).S.S.S)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul Rocq.Corelib.Init.Datatypes.nat.O.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S acc).S.S.S.S)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul Rocq.Corelib.Init.Datatypes.nat.O.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S
+                    acc).S.S.S.S.S)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul Rocq.Corelib.Init.Datatypes.nat.O.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S
+                      acc).S.S.S.S.S.S)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul Rocq.Corelib.Init.Datatypes.nat.O.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S
+                        acc).S.S.S.S.S.S.S)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul Rocq.Corelib.Init.Datatypes.nat.O.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S
+                          acc).S.S.S.S.S.S.S.S)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul Rocq.Corelib.Init.Datatypes.nat.O.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S
+                            acc).S.S.S.S.S.S.S.S.S)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul Rocq.Corelib.Init.Datatypes.nat.O.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S
+                              acc).S.S.S.S.S.S.S.S.S.S)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul Rocq.Corelib.Init.Datatypes.nat.O.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S
+                                acc).S.S.S.S.S.S.S.S.S.S.S)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul Rocq.Corelib.Init.Datatypes.nat.O.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S
+                                  acc).S.S.S.S.S.S.S.S.S.S.S.S)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul Rocq.Corelib.Init.Datatypes.nat.O.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S
+                                    acc).S.S.S.S.S.S.S.S.S.S.S.S.S)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul Rocq.Corelib.Init.Datatypes.nat.O.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S
+                                      acc).S.S.S.S.S.S.S.S.S.S.S.S.S.S)
+    (fun a _ih acc =>
+      _ih
+        (Rocq.Corelib.Init.Nat.tail_mul Rocq.Corelib.Init.Datatypes.nat.O.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S.S
+                                        acc).S.S.S.S.S.S.S.S.S.S.S.S.S.S.S)
+    d acc
+def Rocq.Corelib.Init.Nat.of_int : Rocq.Corelib.Init.Decimal.signed_int →
+  Rocq.Corelib.Init.Datatypes.option.{1} Rocq.Corelib.Init.Datatypes.nat :=
+fun d =>
+  Rocq.Corelib.Init.Decimal.signed_int.rec.{1}
+    (fun d =>
+      Rocq.Corelib.Init.Datatypes.option.Some.{1} Rocq.Corelib.Init.Datatypes.nat (Rocq.Corelib.Init.Nat.of_uint d))
+    (fun d => Rocq.Corelib.Init.Datatypes.option.None.{1} Rocq.Corelib.Init.Datatypes.nat)
+    (Rocq.Corelib.Init.Decimal.norm d)
+def Rocq.Corelib.Init.Nat.of_num_int : Rocq.Corelib.Init.Number.signed_int →
+  Rocq.Corelib.Init.Datatypes.option.{1} Rocq.Corelib.Init.Datatypes.nat :=
+fun d =>
+  Rocq.Corelib.Init.Number.signed_int.rec.{1} (fun i => Rocq.Corelib.Init.Nat.of_int i)
+    (fun i => Rocq.Corelib.Init.Nat.of_hex_int i) d
+def Rocq.Corelib.Init.Nat.of_num_uint : Rocq.Corelib.Init.Number.uint → Rocq.Corelib.Init.Datatypes.nat :=
+fun d =>
+  Rocq.Corelib.Init.Number.uint.rec.{1} (fun u => Rocq.Corelib.Init.Nat.of_uint u)
+    (fun u => Rocq.Corelib.Init.Nat.of_hex_uint u) d
+def Rocq.Corelib.Init.Nat.of_uint : Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Datatypes.nat :=
+fun d => Rocq.Corelib.Init.Nat.of_uint_acc d Rocq.Corelib.Init.Datatypes.nat.O
+def Rocq.Corelib.Init.Nat.of_uint_acc : Rocq.Corelib.Init.Decimal.uint →
+  Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat :=
+fun d acc =>
+  Rocq.Corelib.Init.Decimal.uint.rec.{1} (motive := fun d =>
+    Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat) (fun acc => acc)
+    (fun a _ih acc => _ih (Rocq.Corelib.Init.Nat.tail_mul Rocq.Corelib.Init.Datatypes.nat.O.S.S.S.S.S.S.S.S.S.S acc))
+    (fun a _ih acc => _ih (Rocq.Corelib.Init.Nat.tail_mul Rocq.Corelib.Init.Datatypes.nat.O.S.S.S.S.S.S.S.S.S.S acc).S)
+    (fun a _ih acc =>
+      _ih (Rocq.Corelib.Init.Nat.tail_mul Rocq.Corelib.Init.Datatypes.nat.O.S.S.S.S.S.S.S.S.S.S acc).S.S)
+    (fun a _ih acc =>
+      _ih (Rocq.Corelib.Init.Nat.tail_mul Rocq.Corelib.Init.Datatypes.nat.O.S.S.S.S.S.S.S.S.S.S acc).S.S.S)
+    (fun a _ih acc =>
+      _ih (Rocq.Corelib.Init.Nat.tail_mul Rocq.Corelib.Init.Datatypes.nat.O.S.S.S.S.S.S.S.S.S.S acc).S.S.S.S)
+    (fun a _ih acc =>
+      _ih (Rocq.Corelib.Init.Nat.tail_mul Rocq.Corelib.Init.Datatypes.nat.O.S.S.S.S.S.S.S.S.S.S acc).S.S.S.S.S)
+    (fun a _ih acc =>
+      _ih (Rocq.Corelib.Init.Nat.tail_mul Rocq.Corelib.Init.Datatypes.nat.O.S.S.S.S.S.S.S.S.S.S acc).S.S.S.S.S.S)
+    (fun a _ih acc =>
+      _ih (Rocq.Corelib.Init.Nat.tail_mul Rocq.Corelib.Init.Datatypes.nat.O.S.S.S.S.S.S.S.S.S.S acc).S.S.S.S.S.S.S)
+    (fun a _ih acc =>
+      _ih (Rocq.Corelib.Init.Nat.tail_mul Rocq.Corelib.Init.Datatypes.nat.O.S.S.S.S.S.S.S.S.S.S acc).S.S.S.S.S.S.S.S)
+    (fun a _ih acc =>
+      _ih (Rocq.Corelib.Init.Nat.tail_mul Rocq.Corelib.Init.Datatypes.nat.O.S.S.S.S.S.S.S.S.S.S acc).S.S.S.S.S.S.S.S.S)
+    d acc
+def Rocq.Corelib.Init.Nat.one : Rocq.Corelib.Init.Datatypes.nat :=
+Rocq.Corelib.Init.Datatypes.nat.O.S
+def Rocq.Corelib.Init.Nat.pow : Rocq.Corelib.Init.Datatypes.nat →
+  Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat :=
+fun n m =>
+  Rocq.Corelib.Init.Datatypes.nat.rec.{1} Rocq.Corelib.Init.Datatypes.nat.O.S
+    (fun a _ih => Rocq.Corelib.Init.Nat.mul n _ih) m
+def Rocq.Corelib.Init.Nat.pred : Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat :=
+fun n => Rocq.Corelib.Init.Datatypes.nat.rec.{1} n (fun a _ih => a) n
+def Rocq.Corelib.Init.Nat.shiftl : (fun a => Rocq.Corelib.Init.Datatypes.nat) Rocq.Corelib.Init.Datatypes.nat.O →
+  (n : Rocq.Corelib.Init.Datatypes.nat) → (fun a => Rocq.Corelib.Init.Datatypes.nat) n :=
+fun a =>
+  Rocq.Corelib.Init.Datatypes.nat_rect.{1} (fun a => Rocq.Corelib.Init.Datatypes.nat) a fun n =>
+    Rocq.Corelib.Init.Nat.double
+def Rocq.Corelib.Init.Nat.shiftr : (fun a => Rocq.Corelib.Init.Datatypes.nat) Rocq.Corelib.Init.Datatypes.nat.O →
+  (n : Rocq.Corelib.Init.Datatypes.nat) → (fun a => Rocq.Corelib.Init.Datatypes.nat) n :=
+fun a =>
+  Rocq.Corelib.Init.Datatypes.nat_rect.{1} (fun a => Rocq.Corelib.Init.Datatypes.nat) a fun n =>
+    Rocq.Corelib.Init.Nat.div2
+def Rocq.Corelib.Init.Nat.sqrt : Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat :=
+fun n =>
+  Rocq.Corelib.Init.Nat.sqrt_iter n Rocq.Corelib.Init.Datatypes.nat.O Rocq.Corelib.Init.Datatypes.nat.O
+    Rocq.Corelib.Init.Datatypes.nat.O
+def Rocq.Corelib.Init.Nat.sqrt_iter : Rocq.Corelib.Init.Datatypes.nat →
+  Rocq.Corelib.Init.Datatypes.nat →
+    Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat :=
+fun k p q r =>
+  Rocq.Corelib.Init.Datatypes.nat.rec.{1} (motive := fun k =>
+    Rocq.Corelib.Init.Datatypes.nat →
+      Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat)
+    (fun p q r => p)
+    (fun a _ih p q r => Rocq.Corelib.Init.Datatypes.nat.rec.{1} (_ih p.S q.S.S q.S.S) (fun a _ih_1 => _ih p q a) r) k p
+    q r
+def Rocq.Corelib.Init.Nat.square : Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat :=
+fun n => Rocq.Corelib.Init.Nat.mul n n
+def Rocq.Corelib.Init.Nat.sub : Rocq.Corelib.Init.Datatypes.nat →
+  Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat :=
+fun n m =>
+  Rocq.Corelib.Init.Datatypes.nat.rec.{1} (motive := fun n =>
+    Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat) (fun m => Rocq.Corelib.Init.Datatypes.nat.O)
+    (fun a _ih m => Rocq.Corelib.Init.Datatypes.nat.rec.{1} a.S (fun a _ih_1 => _ih a) m) n m
+def Rocq.Corelib.Init.Nat.succ : Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat :=
+Rocq.Corelib.Init.Datatypes.nat.S
+def Rocq.Corelib.Init.Nat.t : Type :=
+Rocq.Corelib.Init.Datatypes.nat
+def Rocq.Corelib.Init.Nat.tail_add : Rocq.Corelib.Init.Datatypes.nat →
+  Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat :=
+fun n m =>
+  Rocq.Corelib.Init.Datatypes.nat.rec.{1} (motive := fun n =>
+    Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat) (fun m => m) (fun a _ih m => _ih m.S) n m
+def Rocq.Corelib.Init.Nat.tail_addmul : Rocq.Corelib.Init.Datatypes.nat →
+  Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat :=
+fun r n m =>
+  Rocq.Corelib.Init.Datatypes.nat.rec.{1} (motive := fun n =>
+    Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat) (fun r m => r)
+    (fun a _ih r m => _ih (Rocq.Corelib.Init.Nat.tail_add m r) m) n r m
+def Rocq.Corelib.Init.Nat.tail_mul : Rocq.Corelib.Init.Datatypes.nat →
+  Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.nat :=
+fun n m => Rocq.Corelib.Init.Nat.tail_addmul Rocq.Corelib.Init.Datatypes.nat.O n m
+def Rocq.Corelib.Init.Nat.testbit : Rocq.Corelib.Init.Datatypes.nat →
+  Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.bool :=
+fun a n =>
+  Rocq.Corelib.Init.Datatypes.nat.rec.{1} (motive := fun n =>
+    Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.bool) (fun a => Rocq.Corelib.Init.Nat.odd a)
+    (fun a _ih a_1 => _ih (Rocq.Corelib.Init.Nat.div2 a_1)) n a
+def Rocq.Corelib.Init.Nat.to_hex_int : Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Hexadecimal.signed_int :=
+fun n => Rocq.Corelib.Init.Hexadecimal.signed_int.Pos (Rocq.Corelib.Init.Nat.to_hex_uint n)
+def Rocq.Corelib.Init.Nat.to_hex_uint : Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Hexadecimal.uint :=
+fun n =>
+  Rocq.Corelib.Init.Hexadecimal.rev
+    (Rocq.Corelib.Init.Nat.to_little_hex_uint n Rocq.Corelib.Init.Hexadecimal.uint.Nil.D0)
+def Rocq.Corelib.Init.Nat.to_int : Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Decimal.signed_int :=
+fun n => Rocq.Corelib.Init.Decimal.signed_int.Pos (Rocq.Corelib.Init.Nat.to_uint n)
+def Rocq.Corelib.Init.Nat.to_little_hex_uint : Rocq.Corelib.Init.Datatypes.nat →
+  Rocq.Corelib.Init.Hexadecimal.uint → Rocq.Corelib.Init.Hexadecimal.uint :=
+fun n acc =>
+  Rocq.Corelib.Init.Datatypes.nat.rec.{1} (motive := fun n =>
+    Rocq.Corelib.Init.Hexadecimal.uint → Rocq.Corelib.Init.Hexadecimal.uint) (fun acc => acc)
+    (fun a _ih acc => _ih (Rocq.Corelib.Init.Hexadecimal.Little.succ acc)) n acc
+def Rocq.Corelib.Init.Nat.to_little_uint : Rocq.Corelib.Init.Datatypes.nat →
+  Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.uint :=
+fun n acc =>
+  Rocq.Corelib.Init.Datatypes.nat.rec.{1} (motive := fun n =>
+    Rocq.Corelib.Init.Decimal.uint → Rocq.Corelib.Init.Decimal.uint) (fun acc => acc)
+    (fun a _ih acc => _ih (Rocq.Corelib.Init.Decimal.Little.succ acc)) n acc
+def Rocq.Corelib.Init.Nat.to_num_hex_uint : Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Number.uint :=
+fun n => Rocq.Corelib.Init.Number.uint.UIntHexadecimal (Rocq.Corelib.Init.Nat.to_hex_uint n)
+def Rocq.Corelib.Init.Nat.to_num_int : Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Number.signed_int :=
+fun n => Rocq.Corelib.Init.Number.signed_int.IntDecimal (Rocq.Corelib.Init.Nat.to_int n)
+def Rocq.Corelib.Init.Nat.to_num_uint : Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Number.uint :=
+fun n => Rocq.Corelib.Init.Number.uint.UIntDecimal (Rocq.Corelib.Init.Nat.to_uint n)
+def Rocq.Corelib.Init.Nat.to_uint : Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Decimal.uint :=
+fun n => Rocq.Corelib.Init.Decimal.rev (Rocq.Corelib.Init.Nat.to_little_uint n Rocq.Corelib.Init.Decimal.uint.Nil.D0)
+def Rocq.Corelib.Init.Nat.two : Rocq.Corelib.Init.Datatypes.nat :=
+Rocq.Corelib.Init.Datatypes.nat.O.S.S
+def Rocq.Corelib.Init.Nat.zero : Rocq.Corelib.Init.Datatypes.nat :=
+Rocq.Corelib.Init.Datatypes.nat.O

@@ -1,0 +1,540 @@
+{
+  "source_name": "Corelib.Init.Nat.iter",
+  "mechanical_record": {
+    "source": "Corelib.Init.Nat.iter",
+    "canonical": "Corelib.Init.Nat.iter",
+    "result": {
+      "canonical": "Corelib.Init.Nat.iter",
+      "status": "TRANSLATED_AND_CHECKED",
+      "message": "",
+      "target": "Rocq.Corelib.Init.Nat.iter",
+      "blocked_by": []
+    },
+    "meaning": "完整定义／数据类型，无待证参数",
+    "source_ir": {
+      "kind": "constant",
+      "name": "Corelib.Init.Nat.iter",
+      "mp": {
+        "file": [
+          "Corelib",
+          "Init",
+          "Nat"
+        ]
+      },
+      "id": "iter",
+      "type": {
+        "k": "prod",
+        "n": {
+          "n": "n",
+          "r": "R"
+        },
+        "ty": {
+          "k": "ind",
+          "ind": {
+            "mind": "Corelib.Init.Datatypes.nat",
+            "i": 0
+          },
+          "u": []
+        },
+        "b": {
+          "k": "prod",
+          "n": {
+            "n": "A",
+            "r": "R"
+          },
+          "ty": {
+            "k": "sort",
+            "s": {
+              "k": "type",
+              "u": [
+                {
+                  "l": {
+                    "k": "global",
+                    "n": "Corelib.Init.Nat.149"
+                  },
+                  "n": 0
+                }
+              ]
+            }
+          },
+          "b": {
+            "k": "prod",
+            "n": {
+              "n": "f",
+              "r": "R"
+            },
+            "ty": {
+              "k": "prod",
+              "n": {
+                "n": null,
+                "r": "R"
+              },
+              "ty": {
+                "k": "rel",
+                "i": 0
+              },
+              "b": {
+                "k": "rel",
+                "i": 1
+              }
+            },
+            "b": {
+              "k": "prod",
+              "n": {
+                "n": "x",
+                "r": "R"
+              },
+              "ty": {
+                "k": "rel",
+                "i": 1
+              },
+              "b": {
+                "k": "rel",
+                "i": 2
+              }
+            }
+          }
+        }
+      },
+      "body": {
+        "k": "lam",
+        "n": {
+          "n": "n",
+          "r": "R"
+        },
+        "ty": {
+          "k": "ind",
+          "ind": {
+            "mind": "Corelib.Init.Datatypes.nat",
+            "i": 0
+          },
+          "u": []
+        },
+        "b": {
+          "k": "lam",
+          "n": {
+            "n": "A",
+            "r": "R"
+          },
+          "ty": {
+            "k": "sort",
+            "s": {
+              "k": "type",
+              "u": [
+                {
+                  "l": {
+                    "k": "global",
+                    "n": "Corelib.Init.Nat.149"
+                  },
+                  "n": 0
+                }
+              ]
+            }
+          },
+          "b": {
+            "k": "lam",
+            "n": {
+              "n": "f",
+              "r": "R"
+            },
+            "ty": {
+              "k": "prod",
+              "n": {
+                "n": null,
+                "r": "R"
+              },
+              "ty": {
+                "k": "rel",
+                "i": 0
+              },
+              "b": {
+                "k": "rel",
+                "i": 1
+              }
+            },
+            "b": {
+              "k": "lam",
+              "n": {
+                "n": "x",
+                "r": "R"
+              },
+              "ty": {
+                "k": "rel",
+                "i": 1
+              },
+              "b": {
+                "k": "app",
+                "f": {
+                  "k": "const",
+                  "c": "Corelib.Init.Datatypes.nat_rect",
+                  "u": []
+                },
+                "args": [
+                  {
+                    "k": "lam",
+                    "n": {
+                      "n": "n",
+                      "r": "R"
+                    },
+                    "ty": {
+                      "k": "ind",
+                      "ind": {
+                        "mind": "Corelib.Init.Datatypes.nat",
+                        "i": 0
+                      },
+                      "u": []
+                    },
+                    "b": {
+                      "k": "rel",
+                      "i": 3
+                    }
+                  },
+                  {
+                    "k": "rel",
+                    "i": 0
+                  },
+                  {
+                    "k": "lam",
+                    "n": {
+                      "n": "n",
+                      "r": "R"
+                    },
+                    "ty": {
+                      "k": "ind",
+                      "ind": {
+                        "mind": "Corelib.Init.Datatypes.nat",
+                        "i": 0
+                      },
+                      "u": []
+                    },
+                    "b": {
+                      "k": "rel",
+                      "i": 2
+                    }
+                  },
+                  {
+                    "k": "rel",
+                    "i": 3
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "body_state": "transparent",
+      "universes": {
+        "k": "monomorphic"
+      },
+      "relevance": "R",
+      "deps": {
+        "type": [
+          "Corelib.Init.Datatypes.nat"
+        ],
+        "body": [
+          "Corelib.Init.Datatypes.nat",
+          "Corelib.Init.Datatypes.nat_rect"
+        ]
+      },
+      "native": {
+        "body_kind": "transparent",
+        "prepared": {
+          "sealed_implementation": false,
+          "lowered_ssr_have_upoly": false
+        },
+        "polymorphic": false,
+        "private_universes": "none",
+        "typing_flags": {
+          "check_guarded": true,
+          "check_positive": true,
+          "check_universes": true,
+          "check_eliminations": true,
+          "indices_matter": false,
+          "impredicative_set": false,
+          "sprop_allowed": true,
+          "allow_uip": false
+        }
+      }
+    },
+    "target_report": {
+      "universe_residuals": null,
+      "universe_poly_params": 0,
+      "universe_minimal_levels": 0,
+      "universe_lowered": false,
+      "universe_level_defaults": 0,
+      "universe_diagnostics": [],
+      "universe_cumulativity": false,
+      "universe_checks": 1,
+      "type_lift_coercions": 0,
+      "type_lift": null,
+      "template_sort": false,
+      "template_params": [],
+      "template": false,
+      "target_value": {
+        "t": {
+          "u": [],
+          "n": "Rocq.Corelib.Init.Datatypes.nat",
+          "k": "const"
+        },
+        "n": "n",
+        "k": "lam",
+        "b": {
+          "t": {
+            "l": {
+              "n": "u_Corelib_Init_Nat_149",
+              "k": "param"
+            },
+            "k": "sort"
+          },
+          "n": "A",
+          "k": "lam",
+          "b": {
+            "t": {
+              "t": {
+                "k": "bvar",
+                "i": 0
+              },
+              "n": "[anonymous]",
+              "k": "forall",
+              "b": {
+                "k": "bvar",
+                "i": 1
+              }
+            },
+            "n": "f",
+            "k": "lam",
+            "b": {
+              "t": {
+                "k": "bvar",
+                "i": 1
+              },
+              "n": "x",
+              "k": "lam",
+              "b": {
+                "k": "app",
+                "f": {
+                  "k": "app",
+                  "f": {
+                    "k": "app",
+                    "f": {
+                      "k": "app",
+                      "f": {
+                        "u": [
+                          {
+                            "n": "u_Corelib_Init_Nat_149",
+                            "k": "param"
+                          }
+                        ],
+                        "n": "Rocq.Corelib.Init.Datatypes.nat_rect",
+                        "k": "const"
+                      },
+                      "a": {
+                        "t": {
+                          "u": [],
+                          "n": "Rocq.Corelib.Init.Datatypes.nat",
+                          "k": "const"
+                        },
+                        "n": "n",
+                        "k": "lam",
+                        "b": {
+                          "k": "bvar",
+                          "i": 3
+                        }
+                      }
+                    },
+                    "a": {
+                      "k": "bvar",
+                      "i": 0
+                    }
+                  },
+                  "a": {
+                    "t": {
+                      "u": [],
+                      "n": "Rocq.Corelib.Init.Datatypes.nat",
+                      "k": "const"
+                    },
+                    "n": "n",
+                    "k": "lam",
+                    "b": {
+                      "k": "bvar",
+                      "i": 2
+                    }
+                  }
+                },
+                "a": {
+                  "k": "bvar",
+                  "i": 3
+                }
+              }
+            }
+          }
+        }
+      },
+      "target_type": {
+        "t": {
+          "u": [],
+          "n": "Rocq.Corelib.Init.Datatypes.nat",
+          "k": "const"
+        },
+        "n": "n",
+        "k": "forall",
+        "b": {
+          "t": {
+            "l": {
+              "n": "u_Corelib_Init_Nat_149",
+              "k": "param"
+            },
+            "k": "sort"
+          },
+          "n": "A",
+          "k": "forall",
+          "b": {
+            "t": {
+              "t": {
+                "k": "bvar",
+                "i": 0
+              },
+              "n": "[anonymous]",
+              "k": "forall",
+              "b": {
+                "k": "bvar",
+                "i": 1
+              }
+            },
+            "n": "f",
+            "k": "forall",
+            "b": {
+              "t": {
+                "k": "bvar",
+                "i": 1
+              },
+              "n": "x",
+              "k": "forall",
+              "b": {
+                "k": "bvar",
+                "i": 2
+              }
+            }
+          }
+        }
+      },
+      "target_kind": "def",
+      "target_ctors": [],
+      "target": "Rocq.Corelib.Init.Nat.iter",
+      "status": "TRANSLATED_AND_CHECKED",
+      "source_computed": [],
+      "source": "Corelib.Init.Nat.iter",
+      "sort_lowered_levels": [],
+      "sort_interp": false,
+      "sort_fact_reduced": false,
+      "solved_levels": [],
+      "rule": "constant/transparent",
+      "result_sort_inherited": false,
+      "result_sort_implicit_levels": [],
+      "r2bp_levels": [],
+      "quality_prop": null,
+      "protected": true,
+      "prop_lift_unfold": [],
+      "prop_lift_coercions": 0,
+      "prop_lift": null,
+      "primitive_record": false,
+      "poly_level_interp": [],
+      "plain_levels": false,
+      "phantom_lowered": [],
+      "pending_hypotheses": [],
+      "path": [],
+      "num_params": 0,
+      "message": "",
+      "level_split": [],
+      "level_params": [
+        "u_Corelib_Init_Nat_149"
+      ],
+      "level_interp": [],
+      "level_copies": [],
+      "kind": "constant",
+      "implicit_levels": [],
+      "delta_inlined": [],
+      "coinductive_as_inductive": false,
+      "blocked_by": [],
+      "admitting_levels": [
+        "Corelib.Init.Nat.149"
+      ]
+    },
+    "quality_variants": [],
+    "prerequisite_declarations": [],
+    "attempts": {
+      "source": "Corelib.Init.Nat.iter",
+      "status": "TRANSLATED_AND_CHECKED",
+      "tier_times": [
+        [
+          "c[ad]",
+          0,
+          "TRANSLATED_AND_CHECKED"
+        ]
+      ],
+      "time_ms": 0
+    },
+    "baseline": {
+      "result": {
+        "canonical": "Corelib.Init.Nat.iter",
+        "status": "TRANSLATED_AND_CHECKED",
+        "message": "",
+        "target": "Rocq.Corelib.Init.Nat.iter",
+        "blocked_by": []
+      },
+      "stage": "基线已有结果",
+      "path": [],
+      "message": "",
+      "native_diagnostics": []
+    },
+    "module_validation": {
+      "roundtrip_exit": 0,
+      "roundtrip": "OK",
+      "translate_exit": 0,
+      "consumer_exit": 0,
+      "audit_exit": 0,
+      "consumer": "OK",
+      "audit": "OK"
+    },
+    "evidence_directory": "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Init/Nat"
+  },
+  "correspondence": {
+    "source": "Corelib.Init.Nat.iter",
+    "module": "Corelib.Init.Nat",
+    "source_kind": "constant",
+    "source_body_state": "transparent",
+    "status": "TRANSLATED_AND_CHECKED",
+    "target": "Rocq.Corelib.Init.Nat.iter",
+    "prerequisites": "0",
+    "quality_variants": "0",
+    "baseline_status": "TRANSLATED_AND_CHECKED",
+    "baseline_message": "",
+    "rules": "{\"admitting_levels\": [\"Corelib.Init.Nat.149\"]}",
+    "final_tier": "c[ad]",
+    "bridge_status": "TRANSPORT_INTERFACE_ONLY",
+    "bridge_certificates": "",
+    "statement_certificate": "",
+    "native_statement": "",
+    "remaining_source_symbols": "",
+    "interface_certificate": "NativeBridge.Interfaces.Rocq.Corelib.Init.Nat.iter.roundtrip",
+    "interface_type_specialized": "False",
+    "interface_skip_reason": "",
+    "interpretation": "已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。"
+  },
+  "available_certificate_types": [
+    {
+      "type": "(NativeBridge.natIso.functions\n        (NativeBridge.Iso.piSame fun A =>\n          ((NativeBridge.identityIso A).functions (NativeBridge.identityIso A)).functions\n            ((NativeBridge.identityIso A).functions (NativeBridge.identityIso A)))).of\n    ((NativeBridge.natIso.functions\n          (NativeBridge.Iso.piSame fun A =>\n            ((NativeBridge.identityIso A).functions (NativeBridge.identityIso A)).functions\n              ((NativeBridge.identityIso A).functions (NativeBridge.identityIso A)))).to\n      Rocq.Corelib.Init.Nat.iter) =\n  Rocq.Corelib.Init.Nat.iter",
+      "source_references": [
+        "Rocq.Corelib.Init.Nat.iter"
+      ],
+      "remaining_source_symbols": [],
+      "native_body": "",
+      "name": "NativeBridge.Interfaces.Rocq.Corelib.Init.Nat.iter.roundtrip",
+      "kind": "theorem",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    }
+  ]
+}

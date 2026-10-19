@@ -1,0 +1,367 @@
+{
+  "source_name": "Corelib.Init.Nat.log2",
+  "mechanical_record": {
+    "source": "Corelib.Init.Nat.log2",
+    "canonical": "Corelib.Init.Nat.log2",
+    "result": {
+      "canonical": "Corelib.Init.Nat.log2",
+      "status": "TRANSLATED_AND_CHECKED",
+      "message": "",
+      "target": "Rocq.Corelib.Init.Nat.log2",
+      "blocked_by": []
+    },
+    "meaning": "完整定义／数据类型，无待证参数",
+    "source_ir": {
+      "kind": "constant",
+      "name": "Corelib.Init.Nat.log2",
+      "mp": {
+        "file": [
+          "Corelib",
+          "Init",
+          "Nat"
+        ]
+      },
+      "id": "log2",
+      "type": {
+        "k": "prod",
+        "n": {
+          "n": "n",
+          "r": "R"
+        },
+        "ty": {
+          "k": "ind",
+          "ind": {
+            "mind": "Corelib.Init.Datatypes.nat",
+            "i": 0
+          },
+          "u": []
+        },
+        "b": {
+          "k": "ind",
+          "ind": {
+            "mind": "Corelib.Init.Datatypes.nat",
+            "i": 0
+          },
+          "u": []
+        }
+      },
+      "body": {
+        "k": "lam",
+        "n": {
+          "n": "n",
+          "r": "R"
+        },
+        "ty": {
+          "k": "ind",
+          "ind": {
+            "mind": "Corelib.Init.Datatypes.nat",
+            "i": 0
+          },
+          "u": []
+        },
+        "b": {
+          "k": "app",
+          "f": {
+            "k": "const",
+            "c": "Corelib.Init.Nat.log2_iter",
+            "u": []
+          },
+          "args": [
+            {
+              "k": "app",
+              "f": {
+                "k": "const",
+                "c": "Corelib.Init.Nat.pred",
+                "u": []
+              },
+              "args": [
+                {
+                  "k": "rel",
+                  "i": 0
+                }
+              ]
+            },
+            {
+              "k": "construct",
+              "ind": {
+                "mind": "Corelib.Init.Datatypes.nat",
+                "i": 0
+              },
+              "c": 0,
+              "u": []
+            },
+            {
+              "k": "app",
+              "f": {
+                "k": "construct",
+                "ind": {
+                  "mind": "Corelib.Init.Datatypes.nat",
+                  "i": 0
+                },
+                "c": 1,
+                "u": []
+              },
+              "args": [
+                {
+                  "k": "construct",
+                  "ind": {
+                    "mind": "Corelib.Init.Datatypes.nat",
+                    "i": 0
+                  },
+                  "c": 0,
+                  "u": []
+                }
+              ]
+            },
+            {
+              "k": "construct",
+              "ind": {
+                "mind": "Corelib.Init.Datatypes.nat",
+                "i": 0
+              },
+              "c": 0,
+              "u": []
+            }
+          ]
+        }
+      },
+      "body_state": "transparent",
+      "universes": {
+        "k": "monomorphic"
+      },
+      "relevance": "R",
+      "deps": {
+        "type": [
+          "Corelib.Init.Datatypes.nat"
+        ],
+        "body": [
+          "Corelib.Init.Datatypes.nat",
+          "Corelib.Init.Nat.log2_iter",
+          "Corelib.Init.Nat.pred"
+        ]
+      },
+      "native": {
+        "body_kind": "transparent",
+        "prepared": {
+          "sealed_implementation": false,
+          "lowered_ssr_have_upoly": false
+        },
+        "polymorphic": false,
+        "private_universes": "none",
+        "typing_flags": {
+          "check_guarded": true,
+          "check_positive": true,
+          "check_universes": true,
+          "check_eliminations": true,
+          "indices_matter": false,
+          "impredicative_set": false,
+          "sprop_allowed": true,
+          "allow_uip": false
+        }
+      }
+    },
+    "target_report": {
+      "universe_residuals": null,
+      "universe_poly_params": 0,
+      "universe_minimal_levels": 0,
+      "universe_lowered": false,
+      "universe_level_defaults": 0,
+      "universe_diagnostics": [],
+      "universe_cumulativity": false,
+      "universe_checks": 0,
+      "type_lift_coercions": 0,
+      "type_lift": null,
+      "template_sort": false,
+      "template_params": [],
+      "template": false,
+      "target_value": {
+        "t": {
+          "u": [],
+          "n": "Rocq.Corelib.Init.Datatypes.nat",
+          "k": "const"
+        },
+        "n": "n",
+        "k": "lam",
+        "b": {
+          "k": "app",
+          "f": {
+            "k": "app",
+            "f": {
+              "k": "app",
+              "f": {
+                "k": "app",
+                "f": {
+                  "u": [],
+                  "n": "Rocq.Corelib.Init.Nat.log2_iter",
+                  "k": "const"
+                },
+                "a": {
+                  "k": "app",
+                  "f": {
+                    "u": [],
+                    "n": "Rocq.Corelib.Init.Nat.pred",
+                    "k": "const"
+                  },
+                  "a": {
+                    "k": "bvar",
+                    "i": 0
+                  }
+                }
+              },
+              "a": {
+                "u": [],
+                "n": "Rocq.Corelib.Init.Datatypes.nat.O",
+                "k": "const"
+              }
+            },
+            "a": {
+              "k": "app",
+              "f": {
+                "u": [],
+                "n": "Rocq.Corelib.Init.Datatypes.nat.S",
+                "k": "const"
+              },
+              "a": {
+                "u": [],
+                "n": "Rocq.Corelib.Init.Datatypes.nat.O",
+                "k": "const"
+              }
+            }
+          },
+          "a": {
+            "u": [],
+            "n": "Rocq.Corelib.Init.Datatypes.nat.O",
+            "k": "const"
+          }
+        }
+      },
+      "target_type": {
+        "t": {
+          "u": [],
+          "n": "Rocq.Corelib.Init.Datatypes.nat",
+          "k": "const"
+        },
+        "n": "n",
+        "k": "forall",
+        "b": {
+          "u": [],
+          "n": "Rocq.Corelib.Init.Datatypes.nat",
+          "k": "const"
+        }
+      },
+      "target_kind": "def",
+      "target_ctors": [],
+      "target": "Rocq.Corelib.Init.Nat.log2",
+      "status": "TRANSLATED_AND_CHECKED",
+      "source_computed": [],
+      "source": "Corelib.Init.Nat.log2",
+      "sort_lowered_levels": [],
+      "sort_interp": false,
+      "sort_fact_reduced": false,
+      "solved_levels": [],
+      "rule": "constant/transparent",
+      "result_sort_inherited": false,
+      "result_sort_implicit_levels": [],
+      "r2bp_levels": [],
+      "quality_prop": null,
+      "protected": true,
+      "prop_lift_unfold": [],
+      "prop_lift_coercions": 0,
+      "prop_lift": null,
+      "primitive_record": false,
+      "poly_level_interp": [],
+      "plain_levels": false,
+      "phantom_lowered": [],
+      "pending_hypotheses": [],
+      "path": [],
+      "num_params": 0,
+      "message": "",
+      "level_split": [],
+      "level_params": [],
+      "level_interp": [],
+      "level_copies": [],
+      "kind": "constant",
+      "implicit_levels": [],
+      "delta_inlined": [],
+      "coinductive_as_inductive": false,
+      "blocked_by": [],
+      "admitting_levels": []
+    },
+    "quality_variants": [],
+    "prerequisite_declarations": [],
+    "attempts": {
+      "source": "Corelib.Init.Nat.log2",
+      "status": "TRANSLATED_AND_CHECKED",
+      "tier_times": [
+        [
+          "c[]",
+          0,
+          "TRANSLATED_AND_CHECKED"
+        ]
+      ],
+      "time_ms": 0
+    },
+    "baseline": {
+      "result": {
+        "canonical": "Corelib.Init.Nat.log2",
+        "status": "TRANSLATED_AND_CHECKED",
+        "message": "",
+        "target": "Rocq.Corelib.Init.Nat.log2",
+        "blocked_by": []
+      },
+      "stage": "基线已有结果",
+      "path": [],
+      "message": "",
+      "native_diagnostics": []
+    },
+    "module_validation": {
+      "roundtrip_exit": 0,
+      "roundtrip": "OK",
+      "translate_exit": 0,
+      "consumer_exit": 0,
+      "audit_exit": 0,
+      "consumer": "OK",
+      "audit": "OK"
+    },
+    "evidence_directory": "/home/shunqwang4/research/rocq-core/experiments/mechanical-nat-eq-20261019/runs/full-v1/Corelib/Init/Nat"
+  },
+  "correspondence": {
+    "source": "Corelib.Init.Nat.log2",
+    "module": "Corelib.Init.Nat",
+    "source_kind": "constant",
+    "source_body_state": "transparent",
+    "status": "TRANSLATED_AND_CHECKED",
+    "target": "Rocq.Corelib.Init.Nat.log2",
+    "prerequisites": "0",
+    "quality_variants": "0",
+    "baseline_status": "TRANSLATED_AND_CHECKED",
+    "baseline_message": "",
+    "rules": "{}",
+    "final_tier": "c[]",
+    "bridge_status": "TRANSPORT_INTERFACE_ONLY",
+    "bridge_certificates": "",
+    "statement_certificate": "",
+    "native_statement": "",
+    "remaining_source_symbols": "",
+    "interface_certificate": "NativeBridge.Interfaces.Rocq.Corelib.Init.Nat.log2.roundtrip",
+    "interface_type_specialized": "False",
+    "interface_skip_reason": "",
+    "interpretation": "已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。"
+  },
+  "available_certificate_types": [
+    {
+      "type": "(NativeBridge.natIso.functions NativeBridge.natIso).of\n    ((NativeBridge.natIso.functions NativeBridge.natIso).to Rocq.Corelib.Init.Nat.log2) =\n  Rocq.Corelib.Init.Nat.log2",
+      "source_references": [
+        "Rocq.Corelib.Init.Nat.log2"
+      ],
+      "remaining_source_symbols": [],
+      "native_body": "",
+      "name": "NativeBridge.Interfaces.Rocq.Corelib.Init.Nat.log2.roundtrip",
+      "kind": "theorem",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    }
+  ]
+}

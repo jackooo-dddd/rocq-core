@@ -1,5 +1,7 @@
 # Rocq Corelib → Lean
 
+- [Nat 完整案例](results/casestudy/README.md)：源类型与58项运算、逐声明译文/过程、导出文件解释及原生对应证明。
+
 当前基线：**先机械翻译，后证明与 Lean 原生对象的 correspondence**。
 
 - 67 个模块、2180 个根声明：0 受阻，0 验证失败。

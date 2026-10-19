@@ -25,7 +25,7 @@
 
 分母为2180个原始根。左数是主表示满足统计条件的根数；右数将附带 quality 分支纳入后按根去重。它们都不是函数调用次数。源端元数据、产物结构、处理范围、模块验证结果、尝试记录、策略标志、结果报告字段分别标明；结果字段非空不自动意味着发生一次改写。部分子机制只统计依据中指明的部分，整个条目的使用数仍未知；未单独记录用 null，不以 0 代替。T06 已停用，保留编号仅供历史比较。每条的计数单位、限制、重复统计条件和完整名单见 JSON／CSV。Q05/Q06、U06/V05 等共用证据，不得相加。
 
-失败重试的开关启用单列在 [RULE_USAGE.md](RULE_USAGE.md)，不混入最终命中。全部声明名单见 [RULE_USAGE.json](RULE_USAGE.json)，筛选表见 [RULE_USAGE.csv](RULE_USAGE.csv)。
+各证据类别的含义、如何理解次数及例子见 [RULE_USAGE.md 开头的解释表](RULE_USAGE.md)。失败重试的开关启用也单列在那里，不混入最终命中。全部声明名单见 [RULE_USAGE.json](RULE_USAGE.json)，筛选表见 [RULE_USAGE.csv](RULE_USAGE.csv)。
 
 <!-- usage-method-end -->
 

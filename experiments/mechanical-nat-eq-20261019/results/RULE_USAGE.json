@@ -19,6 +19,58 @@
     "模块验证结果": 2,
     "尝试记录": 2
   },
+  "measurement_definitions": {
+    "处理范围": {
+      "meaning": "该检查或流程所覆盖的声明集合，不要求每项触发特殊转换。",
+      "count_reading": "例如2180表示2180个根在覆盖范围内，不是执行2180次改写。",
+      "example": "E01 导出范围；V03 生成声明的内核检查范围。"
+    },
+    "源端元数据": {
+      "meaning": "根据源 IR 的种类、标志或字段筛选声明。",
+      "count_reading": "统计具有该源特征的根，不能据此确认某目标转换分支实际执行。",
+      "example": "T09 的 npars > nparams_rec；E04 自身带 obligations。"
+    },
+    "产物结构": {
+      "meaning": "根据最终目标的声明种类、AST 或可见属性筛选。",
+      "count_reading": "统计出现该产物特征的根；同一根出现多次结构仍只计1。",
+      "example": "T07 最终生成 inductive；U08 目标 AST 直接含原生 Lean Eq。"
+    },
+    "未单独记录": {
+      "meaning": "现有证据没有该子机制独立、可归属的记录。",
+      "count_reading": "使用根数及调用次数未知（null），不能当成0，也不能用父机制数量代替。",
+      "example": "M03 没有独立路径事件；源有 fix 只算相关结构证据。"
+    },
+    "结果报告字段": {
+      "meaning": "最终报告中相应字段非空、非零或满足所列条件。",
+      "count_reading": "统计满足字段条件的根；字段可能记录策略或求解结果，不统一等价于改写次数。",
+      "example": "U15 的 implicit_levels；L02 的 prop_lift_coercions 非零。"
+    },
+    "本次未启用": {
+      "meaning": "本次配置没有使用该机制，或其历史路径已经停用。",
+      "count_reading": "当前为0；不意味着机制不存在或任何输入下都不需要。T06 则已明确停用。",
+      "example": "T06 bootstrap 表为空；E14 本次没有装配外部证明。"
+    },
+    "部分子机制": {
+      "meaning": "复合条目只有一部分子机制有可识别证据。",
+      "count_reading": "数字只属于依据栏指出的部分；整个条目的使用数未知，不作为调用次数下界。",
+      "example": "T11 仅记录带条件归纳部分，未独立统计嵌套归纳。"
+    },
+    "策略标志": {
+      "meaning": "报告标明采用的尝试策略，但不记录其内部具体转换事件。",
+      "count_reading": "统计带策略标志的根；启用策略不等于发生相应抬升或转换。",
+      "example": "U28 的 universe_lowered / universe_cumulativity。"
+    },
+    "模块验证结果": {
+      "meaning": "声明所属模块的独立检查有明确通过结果。",
+      "count_reading": "统计通过模块中覆盖的根，不是逐规则证明数或检查调用次数。",
+      "example": "V07 consumer=OK；V08 audit=OK。"
+    },
+    "尝试记录": {
+      "meaning": "该声明存在 tier_times，或其中出现指定类型的尝试。",
+      "count_reading": "主表统计有此记录的根；每根尝试几次另见重试开关表。",
+      "example": "S02 有 tier_times；S04 有归纳块 i[...] 尝试。"
+    }
+  },
   "rules": [
     {
       "id": "E01",
