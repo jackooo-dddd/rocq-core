@@ -385,3 +385,7 @@ graph TD
 ```
 
 下一层复用 E/F 处理 CRelationClasses 剩余陈述；携带数据的 opaque 输出需要独立计算证据，不能套用仅适用于证明对象的无关性。
+
+## 第三十二批
+
+CRelationData 的反自反性 Iso → StrictOrder 的类型 Iso → StrictOrder_Transitive 对应；同一批复用关系数据表示证明 15 个原生陈述 iff，并给出原陈述证明。累计 1353 份覆盖证书已共同导入。

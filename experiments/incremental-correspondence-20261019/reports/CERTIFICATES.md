@@ -9088,6 +9088,230 @@ NativeBridge.Incremental.CRelationData.arrow_Transitive_obligation_1_agrees
 
 公理闭包：空
 
+## Corelib.Classes.CRelationClasses.StrictOrder
+
+NativeBridge.Incremental.CRelationStatements.strictOrderIso
+
+目标：PLift of irreflexivity paired with a transitivity function；范围：all carrier/relation universes; transitivity witness data preserved
+
+```lean
+(A : Type u) →
+  (R : A → A → Type v) →
+    NativeBridge.Iso (Rocq.Corelib.Classes.CRelationClasses.StrictOrder A R)
+      (NativeBridge.Incremental.CRelationStatements.strictOrderNative A R)
+```
+
+公理闭包：Quot.sound
+
+## Corelib.Classes.CRelationClasses.StrictOrder_Transitive
+
+NativeBridge.Incremental.CRelationStatements.strictTransitive_agrees
+
+目标：second projection from native strict order representation；范围：all carrier/relation universes; arbitrary native strict-order witnesses
+
+```lean
+∀ (A : Type u) (R : A → A → Type v) (h : NativeBridge.Incremental.CRelationStatements.strictOrderNative A R),
+  Rocq.Corelib.Classes.CRelationClasses.StrictOrder_Transitive A R
+      ((NativeBridge.Incremental.CRelationStatements.strictOrderIso A R).of h) =
+    NativeBridge.Incremental.CRelationStatements.strictTransitiveNative A R h
+```
+
+公理闭包：Quot.sound
+
+## Corelib.Classes.CRelationClasses.RewriteRelation_instance_0
+
+NativeBridge.Incremental.CRelationStatements.RewriteRelation_instance_0_agrees
+
+目标：True；范围：original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs
+
+```lean
+Rocq.Corelib.Classes.CRelationClasses.RewriteRelation_instance_0.statement ↔
+  NativeBridge.Incremental.CRelationStatements.markerNative
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.RewriteRelation_instance_1
+
+NativeBridge.Incremental.CRelationStatements.RewriteRelation_instance_1_agrees
+
+目标：True；范围：original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs
+
+```lean
+Rocq.Corelib.Classes.CRelationClasses.RewriteRelation_instance_1.statement ↔
+  NativeBridge.Incremental.CRelationStatements.markerNative
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.RewriteRelation_instance_2
+
+NativeBridge.Incremental.CRelationStatements.RewriteRelation_instance_2_agrees
+
+目标：∀ (A : Type u), True；范围：original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs
+
+```lean
+Rocq.Corelib.Classes.CRelationClasses.RewriteRelation_instance_2.statement ↔
+  NativeBridge.Incremental.CRelationStatements.rewriteRelationsNative
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.StrictOrder_Asymmetric
+
+NativeBridge.Incremental.CRelationStatements.StrictOrder_Asymmetric_agrees
+
+目标：∀ (A : Type u) (R : A → A → Type w) (h : strictOrderNative A R), asymmetricNative A R；范围：original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs
+
+```lean
+Rocq.Corelib.Classes.CRelationClasses.StrictOrder_Asymmetric.statement ↔
+  NativeBridge.Incremental.CRelationStatements.strictAsymmetricNative
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.StrictOrder_Irreflexive
+
+NativeBridge.Incremental.CRelationStatements.StrictOrder_Irreflexive_agrees
+
+目标：∀ (A : Type u) (R : A → A → Type v) (h : strictOrderNative A R), irreflexiveNative A R；范围：original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs
+
+```lean
+Rocq.Corelib.Classes.CRelationClasses.StrictOrder_Irreflexive.statement ↔
+  NativeBridge.Incremental.CRelationStatements.strictIrreflexiveNative
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.asymmetry
+
+NativeBridge.Incremental.CRelationStatements.asymmetry_agrees
+
+目标：∀ (A : Type u) (R : A → A → Type w) (h : asymmetricNative A R), asymmetricNative A R；范围：original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs
+
+```lean
+Rocq.Corelib.Classes.CRelationClasses.asymmetry.statement ↔ NativeBridge.Incremental.CRelationStatements.asymmetryNative
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.complement_Irreflexive
+
+NativeBridge.Incremental.CRelationStatements.complement_Irreflexive_agrees
+
+目标：∀ (A : Type u) (R : A → A → Type v) (h : reflexiveNative A R) (x : A), (R x x → False) → False；范围：original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs
+
+```lean
+Rocq.Corelib.Classes.CRelationClasses.complement_Irreflexive.statement ↔
+  NativeBridge.Incremental.CRelationStatements.complementIrreflexiveNative
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.complement_Symmetric
+
+NativeBridge.Incremental.CRelationStatements.complement_Symmetric_agrees
+
+目标：∀ (A : Type u) (R : A → A → Type v) (h : symmetricNative A R) (x y : A), (R x y → False) → R y x → False；范围：original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs
+
+```lean
+Rocq.Corelib.Classes.CRelationClasses.complement_Symmetric.statement ↔
+  NativeBridge.Incremental.CRelationStatements.complementSymmetricNative
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.equivalence_rewrite_crelation
+
+NativeBridge.Incremental.CRelationStatements.equivalence_rewrite_crelation_agrees
+
+目标：∀ (A : Type u) (R : A → A → Type v) (h : equivalenceNative A R), True；范围：original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs
+
+```lean
+Rocq.Corelib.Classes.CRelationClasses.equivalence_rewrite_crelation.statement ↔
+  NativeBridge.Incremental.CRelationStatements.equivalenceRewriteNative
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.flip_Asymmetric
+
+NativeBridge.Incremental.CRelationStatements.flip_Asymmetric_agrees
+
+目标：∀ (A : Type u) (R : A → A → Type z), asymmetricNative A R → asymmetricNative A (fun x y => R y x)；范围：original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs
+
+```lean
+Rocq.Corelib.Classes.CRelationClasses.flip_Asymmetric.statement ↔
+  NativeBridge.Incremental.CRelationStatements.flipAsymmetricNative
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.impl_Reflexive
+
+NativeBridge.Incremental.CRelationStatements.impl_Reflexive_agrees
+
+目标：∀ P : Prop, P → P；范围：original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs
+
+```lean
+Rocq.Corelib.Classes.CRelationClasses.impl_Reflexive.statement ↔
+  NativeBridge.Incremental.CRelationStatements.implReflexiveNative
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.impl_Reflexive_obligation_1
+
+NativeBridge.Incremental.CRelationStatements.impl_Reflexive_obligation_1_agrees
+
+目标：∀ P : Prop, P → P；范围：original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs
+
+```lean
+Rocq.Corelib.Classes.CRelationClasses.impl_Reflexive_obligation_1.statement ↔
+  NativeBridge.Incremental.CRelationStatements.implReflexiveNative
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.impl_Transitive
+
+NativeBridge.Incremental.CRelationStatements.impl_Transitive_agrees
+
+目标：∀ P Q R : Prop, (P → Q) → (Q → R) → P → R；范围：original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs
+
+```lean
+Rocq.Corelib.Classes.CRelationClasses.impl_Transitive.statement ↔
+  NativeBridge.Incremental.CRelationStatements.implTransitiveNative
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.impl_Transitive_obligation_1
+
+NativeBridge.Incremental.CRelationStatements.impl_Transitive_obligation_1_agrees
+
+目标：∀ P Q R : Prop, (P → Q) → (Q → R) → P → R；范围：original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs
+
+```lean
+Rocq.Corelib.Classes.CRelationClasses.impl_Transitive_obligation_1.statement ↔
+  NativeBridge.Incremental.CRelationStatements.implTransitiveNative
+```
+
+公理闭包：空
+
+## Corelib.Classes.CRelationClasses.irreflexivity
+
+NativeBridge.Incremental.CRelationStatements.irreflexivity_agrees
+
+目标：∀ (A : Type u) (R : A → A → Type v) (h : irreflexiveNative A R), irreflexiveNative A R；范围：original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs
+
+```lean
+Rocq.Corelib.Classes.CRelationClasses.irreflexivity.statement ↔
+  NativeBridge.Incremental.CRelationStatements.irreflexivityNative
+```
+
+公理闭包：空
+
 ## Corelib.ssr.ssrbool.canLR_in
 
 NativeBridge.Incremental.SSRBoolClosedStatements.RocqPending.Corelib.ssr.ssrbool.canLR_in.statement.correspondence

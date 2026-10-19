@@ -9020,5 +9020,190 @@
     "target_class": "native_expression",
     "scope": "Type-valued relations preserve witness data; source lift and phantom universes explicitly retained where present; iffT is two functions without inverse laws, not Equiv",
     "native_target": "NativeBridge.Incremental.CRelationData.arrowTransitiveNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.StrictOrder",
+    "profile": "CRelationStatements",
+    "certificate": "NativeBridge.Incremental.CRelationStatements.strictOrderIso",
+    "kind": "TYPE_ISO",
+    "target": "PLift of irreflexivity paired with a transitivity function",
+    "target_class": "native_representation",
+    "scope": "all carrier/relation universes; transitivity witness data preserved",
+    "native_target": "NativeBridge.Incremental.CRelationStatements.strictOrderNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.StrictOrder_Transitive",
+    "profile": "CRelationStatements",
+    "certificate": "NativeBridge.Incremental.CRelationStatements.strictTransitive_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "second projection from native strict order representation",
+    "target_class": "native_expression",
+    "scope": "all carrier/relation universes; arbitrary native strict-order witnesses",
+    "native_target": "NativeBridge.Incremental.CRelationStatements.strictTransitiveNative"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.RewriteRelation_instance_0",
+    "profile": "CRelationStatements",
+    "certificate": "NativeBridge.Incremental.CRelationStatements.RewriteRelation_instance_0_agrees",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "True",
+    "target_class": "native_statement",
+    "scope": "original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs",
+    "native_target": "NativeBridge.Incremental.CRelationStatements.markerNative",
+    "original_statement_proof": "NativeBridge.Incremental.CRelationStatements.RewriteRelation_instance_0_source"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.RewriteRelation_instance_1",
+    "profile": "CRelationStatements",
+    "certificate": "NativeBridge.Incremental.CRelationStatements.RewriteRelation_instance_1_agrees",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "True",
+    "target_class": "native_statement",
+    "scope": "original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs",
+    "native_target": "NativeBridge.Incremental.CRelationStatements.markerNative",
+    "original_statement_proof": "NativeBridge.Incremental.CRelationStatements.RewriteRelation_instance_1_source"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.RewriteRelation_instance_2",
+    "profile": "CRelationStatements",
+    "certificate": "NativeBridge.Incremental.CRelationStatements.RewriteRelation_instance_2_agrees",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "∀ (A : Type u), True",
+    "target_class": "native_statement",
+    "scope": "original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs",
+    "native_target": "NativeBridge.Incremental.CRelationStatements.rewriteRelationsNative",
+    "original_statement_proof": "NativeBridge.Incremental.CRelationStatements.RewriteRelation_instance_2_source"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.StrictOrder_Asymmetric",
+    "profile": "CRelationStatements",
+    "certificate": "NativeBridge.Incremental.CRelationStatements.StrictOrder_Asymmetric_agrees",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "∀ (A : Type u) (R : A → A → Type w) (h : strictOrderNative A R), asymmetricNative A R",
+    "target_class": "native_statement",
+    "scope": "original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs",
+    "native_target": "NativeBridge.Incremental.CRelationStatements.strictAsymmetricNative",
+    "original_statement_proof": "NativeBridge.Incremental.CRelationStatements.StrictOrder_Asymmetric_source"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.StrictOrder_Irreflexive",
+    "profile": "CRelationStatements",
+    "certificate": "NativeBridge.Incremental.CRelationStatements.StrictOrder_Irreflexive_agrees",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "∀ (A : Type u) (R : A → A → Type v) (h : strictOrderNative A R), irreflexiveNative A R",
+    "target_class": "native_statement",
+    "scope": "original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs",
+    "native_target": "NativeBridge.Incremental.CRelationStatements.strictIrreflexiveNative",
+    "original_statement_proof": "NativeBridge.Incremental.CRelationStatements.StrictOrder_Irreflexive_source"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.asymmetry",
+    "profile": "CRelationStatements",
+    "certificate": "NativeBridge.Incremental.CRelationStatements.asymmetry_agrees",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "∀ (A : Type u) (R : A → A → Type w) (h : asymmetricNative A R), asymmetricNative A R",
+    "target_class": "native_statement",
+    "scope": "original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs",
+    "native_target": "NativeBridge.Incremental.CRelationStatements.asymmetryNative",
+    "original_statement_proof": "NativeBridge.Incremental.CRelationStatements.asymmetry_source"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.complement_Irreflexive",
+    "profile": "CRelationStatements",
+    "certificate": "NativeBridge.Incremental.CRelationStatements.complement_Irreflexive_agrees",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "∀ (A : Type u) (R : A → A → Type v) (h : reflexiveNative A R) (x : A), (R x x → False) → False",
+    "target_class": "native_statement",
+    "scope": "original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs",
+    "native_target": "NativeBridge.Incremental.CRelationStatements.complementIrreflexiveNative",
+    "original_statement_proof": "NativeBridge.Incremental.CRelationStatements.complement_Irreflexive_source"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.complement_Symmetric",
+    "profile": "CRelationStatements",
+    "certificate": "NativeBridge.Incremental.CRelationStatements.complement_Symmetric_agrees",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "∀ (A : Type u) (R : A → A → Type v) (h : symmetricNative A R) (x y : A), (R x y → False) → R y x → False",
+    "target_class": "native_statement",
+    "scope": "original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs",
+    "native_target": "NativeBridge.Incremental.CRelationStatements.complementSymmetricNative",
+    "original_statement_proof": "NativeBridge.Incremental.CRelationStatements.complement_Symmetric_source"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.equivalence_rewrite_crelation",
+    "profile": "CRelationStatements",
+    "certificate": "NativeBridge.Incremental.CRelationStatements.equivalence_rewrite_crelation_agrees",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "∀ (A : Type u) (R : A → A → Type v) (h : equivalenceNative A R), True",
+    "target_class": "native_statement",
+    "scope": "original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs",
+    "native_target": "NativeBridge.Incremental.CRelationStatements.equivalenceRewriteNative",
+    "original_statement_proof": "NativeBridge.Incremental.CRelationStatements.equivalence_rewrite_crelation_source"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.flip_Asymmetric",
+    "profile": "CRelationStatements",
+    "certificate": "NativeBridge.Incremental.CRelationStatements.flip_Asymmetric_agrees",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "∀ (A : Type u) (R : A → A → Type z), asymmetricNative A R → asymmetricNative A (fun x y => R y x)",
+    "target_class": "native_statement",
+    "scope": "original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs",
+    "native_target": "NativeBridge.Incremental.CRelationStatements.flipAsymmetricNative",
+    "original_statement_proof": "NativeBridge.Incremental.CRelationStatements.flip_Asymmetric_source"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.impl_Reflexive",
+    "profile": "CRelationStatements",
+    "certificate": "NativeBridge.Incremental.CRelationStatements.impl_Reflexive_agrees",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "∀ P : Prop, P → P",
+    "target_class": "native_statement",
+    "scope": "original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs",
+    "native_target": "NativeBridge.Incremental.CRelationStatements.implReflexiveNative",
+    "original_statement_proof": "NativeBridge.Incremental.CRelationStatements.impl_Reflexive_source"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.impl_Reflexive_obligation_1",
+    "profile": "CRelationStatements",
+    "certificate": "NativeBridge.Incremental.CRelationStatements.impl_Reflexive_obligation_1_agrees",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "∀ P : Prop, P → P",
+    "target_class": "native_statement",
+    "scope": "original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs",
+    "native_target": "NativeBridge.Incremental.CRelationStatements.implReflexiveNative",
+    "original_statement_proof": "NativeBridge.Incremental.CRelationStatements.impl_Reflexive_obligation_1_source"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.impl_Transitive",
+    "profile": "CRelationStatements",
+    "certificate": "NativeBridge.Incremental.CRelationStatements.impl_Transitive_agrees",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "∀ P Q R : Prop, (P → Q) → (Q → R) → P → R",
+    "target_class": "native_statement",
+    "scope": "original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs",
+    "native_target": "NativeBridge.Incremental.CRelationStatements.implTransitiveNative",
+    "original_statement_proof": "NativeBridge.Incremental.CRelationStatements.impl_Transitive_source"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.impl_Transitive_obligation_1",
+    "profile": "CRelationStatements",
+    "certificate": "NativeBridge.Incremental.CRelationStatements.impl_Transitive_obligation_1_agrees",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "∀ P Q R : Prop, (P → Q) → (Q → R) → P → R",
+    "target_class": "native_statement",
+    "scope": "original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs",
+    "native_target": "NativeBridge.Incremental.CRelationStatements.implTransitiveNative",
+    "original_statement_proof": "NativeBridge.Incremental.CRelationStatements.impl_Transitive_obligation_1_source"
+  },
+  {
+    "source": "Corelib.Classes.CRelationClasses.irreflexivity",
+    "profile": "CRelationStatements",
+    "certificate": "NativeBridge.Incremental.CRelationStatements.irreflexivity_agrees",
+    "kind": "STATEMENT_FULL_NATIVE",
+    "target": "∀ (A : Type u) (R : A → A → Type v) (h : irreflexiveNative A R), irreflexiveNative A R",
+    "target_class": "native_statement",
+    "scope": "original carrier and relation universe levels preserved explicitly; independently checked native and original statement proofs",
+    "native_target": "NativeBridge.Incremental.CRelationStatements.irreflexivityNative",
+    "original_statement_proof": "NativeBridge.Incremental.CRelationStatements.irreflexivity_source"
   }
 ]

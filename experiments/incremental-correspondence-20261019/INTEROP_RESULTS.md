@@ -1,6 +1,6 @@
 # 跨模块导入与 Mathlib 消费结果
 
-当前共同导入验收通过：79 个含增量覆盖证书的 profile、1336 份覆盖证书，连同原陈述证明和闭合包装函数，共 1803 个导出入口，在同一 Lean 文件中导入并审计。复制依赖声明 11977 个；这些副本不增加 correspondence 覆盖数量。
+当前共同导入验收通过：80 个含增量覆盖证书的 profile、1353 份覆盖证书，连同原陈述证明和闭合包装函数，共 1835 个导出入口，在同一 Lean 文件中导入并审计。复制依赖声明 12111 个；这些副本不增加 correspondence 覆盖数量。
 
 ## 具体可以怎样使用
 
@@ -30,7 +30,7 @@ Lean 版本 4.33.1。复用远程已安装的 Mathlib，提交为 `0df444a360eaa
 - `interop/pack_profiles.py`、`check_consumer.py`：三个独立模块及 Mathlib 消费例。
 - `interop/check_rejection.py`：新公理拒绝测试。
 - `reports/interop/all/import-all-validation.json`：共同导入证据。
-- `reports/interop/coverage-manifest.json`：当前 1336 份覆盖证书的固定清单。
+- `reports/interop/coverage-manifest.json`：当前 1353 份覆盖证书的固定清单。
 - `reports/interop/consumer-validation.json`：实际 Mathlib 提交、工具链和消费结果。
 
 在工作区依次执行 pack_all.py、check_all.py，以及 pack_profiles.py、check_consumer.py、check_rejection.py。编译缓存和生成的打包源码位于 .work/interop，仅远程保存。脚本需要先完成原 profile 编译；它们不下载依赖。
@@ -66,3 +66,5 @@ opaque 支持的独立验证见 interop/check_opaque.py 与 reports/interop/opaq
 第二十七批扩展后：74 个覆盖 profile、1264 份覆盖证书共同导入通过，1722 个入口、11260 个依赖副本。新增 SSRBoolReflection、SSRBoolProofFunctions，opaque 函数保持原种类。
 
 第二十八至三十一批扩展后：新增 SSRBoolIndexed、SSRBoolRestrictions、BinaryPower、SumboolBridge、CRelationData；79 个覆盖 profile、1336 份证书共同导入通过，1803 个入口、11977 个依赖副本。新证明的原生目标不残留源符号。旧 Mathlib 消费例本轮未重跑；共同导入检查仍包含 Mathlib 模块。
+
+第三十二批扩展后：新增 CRelationStatements；80 个覆盖 profile、1353 份证书共同导入，1835 个入口、12111 个依赖副本。

@@ -20,9 +20,9 @@
 | P3a | Program.Basics 组合器及 SSR Option、simpl_fun | P2、Option Iso、Eq 桥接 | 类型往返、运算等式分别登记，Lean kernel 和公理闭包检查 | 首批已验证：6 Basics + 17 SSR 运算/谓词 + 1 SSR 类型；详见证书表 |
 | P3b | 数值、比较、数字表示及其转换 | Nat/N/Z/Bool Iso、表示类型桥接 | 明确原生目标、规范形式和参数范围 | Nat.iter；数字表示/读取/比较/规范化已推进；写出与进位语义已证明；七种顶层打印已对应 Mathlib Nat.digits；有符号读取待继续 |
 | P4 | 依赖函数、Sigma/Subtype、Eq transport、Acc | P2、依赖消去对应 | 保持索引/证明依赖及实际 universe 范围 | 已开始：Acc 与 7 项良基递归/谓词；完整 Sort 的 Sigma/Subtype、二元良基递归、基本容器消去；Eq/布尔等式已推进，剩余依赖陈述继续 |
-| P5 | 将 375 项接口逐步升级到运算对应 | P3/P4 的证书 | 对指定原生运算的等式/iff，不把接口往返混算 | 三十一批推进；当前仅接口 138 项 |
+| P5 | 将 375 项接口逐步升级到运算对应 | P3/P4 的证书 | 对指定原生运算的等式/iff，不把接口往返混算 | 三十二批推进；当前仅接口 138 项 |
 | P6 | 再处理 702 项部分陈述和共享证明义务 | 运算证书、依赖转换 | 原生陈述 iff；未解决的证明条件继续显式保留 | SSRBool 升级 141 项；数字比较再升级并证明 8 项；291 个条件根已闭合实例化并完成对应，本层剩余 40 |
-| P7 | 统一导入与 Lean/Mathlib 组合使用 | 已验收证书 | 跨模块使用，记录实际测试边界和剩余失败 | 首批验收通过：79 覆盖 profile / 1336 证书共同导入；Nat + SSR + Setoid 组合、Mathlib Nat.prime_two 消费通过；见 INTEROP_RESULTS.md |
+| P7 | 统一导入与 Lean/Mathlib 组合使用 | 已验收证书 | 跨模块使用，记录实际测试边界和剩余失败 | 首批验收通过：80 覆盖 profile / 1353 证书共同导入；Nat + SSR + Setoid 组合、Mathlib Nat.prime_two 消费通过；见 INTEROP_RESULTS.md |
 
 P2/P3a 采用小步循环：先实现最小可复用机制，再在具体函数上验证，补证书后回到机制层。
 首批选 Program.Basics、SSR Option/函数包装和 Nat.iter；不把同一声明的多份证书重复计入根数。
@@ -165,3 +165,7 @@ SSR Bool 的 314 个依赖/原陈述目标已有闭合证明，覆盖 271 / 275 
 第三十一批完成 CRelationClasses 的 18 个类型对应与 20 个投影／组合运算，累计 1597。Type 值关系保留其数据，不与普通 Prop 类型类混同；iffT 只要求两个方向的函数，不要求双向逆。
 
 88 个增量 profile 当前验证通过；79 个覆盖 profile、1336 份证书共同导入检查通过。详细证据见 BATCH28_31_RESULTS.md，具体用例见 ../../results/CORRESPONDENCE_EXAMPLES.md。下一步先复用 CRelationData 的类型桥接推进剩余陈述，并继续二进制运算／数字表示；opaque 数据函数仍需独立计算证据。
+
+## 第三十二批执行记录
+
+复用 Type 值关系桥接，新增 StrictOrder 类型及投影、15 个完整原生陈述，共 17 根，累计 1614 / 2180；15 项另有原陈述证明。CRelationClasses 达到 63 / 81。89 个验证 profile、80 个覆盖 profile 的 1353 份证书共同导入通过。下一步处理 PartialOrder 的数据表示、剩余二进制运算和数据不透明性缺口；详见 CRELATION_STATEMENTS_RESULTS.md。

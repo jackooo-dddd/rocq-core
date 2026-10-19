@@ -668,5 +668,75 @@
     "name": "NativeBridge.Incremental.BinaryPower.zPowNative",
     "native_expression": "fun x y => if y < 0 then 0 else x ^ y.toNat",
     "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationStatements.asymmetryNative",
+    "native_expression": "∀ (A : Type u) (R : A → A → Type w),\n  NativeBridge.Incremental.CRelationData.asymmetricNative A R →\n    NativeBridge.Incremental.CRelationData.asymmetricNative A R",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationStatements.complementIrreflexiveNative",
+    "native_expression": "∀ (A : Type u) (R : A → A → Type v) (h : NativeBridge.Incremental.CRelationData.reflexiveNative A R) (x : A),\n  (∀ (a : R x x), False) → False",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationStatements.complementSymmetricNative",
+    "native_expression": "∀ (A : Type u) (R : A → A → Type v) (h : NativeBridge.Incremental.CRelationData.symmetricNative A R) (x y : A),\n  (∀ (a : R x y), False) → ∀ (a : R y x), False",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationStatements.equivalenceRewriteNative",
+    "native_expression": "∀ (A : Type u) (R : A → A → Type v) (h : NativeBridge.Incremental.CRelationData.equivalenceNative A R), True",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationStatements.flipAsymmetricNative",
+    "native_expression": "∀ (A : Type u) (R : A → A → Type z),\n  NativeBridge.Incremental.CRelationData.asymmetricNative A R →\n    NativeBridge.Incremental.CRelationData.asymmetricNative A fun x y => R y x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationStatements.implReflexiveNative",
+    "native_expression": "∀ (P : Prop), P → P",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationStatements.implTransitiveNative",
+    "native_expression": "∀ (P Q R : Prop), (P → Q) → (Q → R) → P → R",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationStatements.irreflexivityNative",
+    "native_expression": "∀ (A : Type u) (R : A → A → Type v),\n  NativeBridge.Incremental.CRelationData.irreflexiveNative A R →\n    NativeBridge.Incremental.CRelationData.irreflexiveNative A R",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationStatements.markerNative",
+    "native_expression": "True",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationStatements.rewriteRelationsNative",
+    "native_expression": "∀ (A : Type u), True",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationStatements.strictAsymmetricNative",
+    "native_expression": "∀ (A : Type u) (R : A → A → Type w) (h : NativeBridge.Incremental.CRelationStatements.strictOrderNative A R),\n  NativeBridge.Incremental.CRelationData.asymmetricNative A R",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationStatements.strictIrreflexiveNative",
+    "native_expression": "∀ (A : Type u) (R : A → A → Type v) (h : NativeBridge.Incremental.CRelationStatements.strictOrderNative A R),\n  NativeBridge.Incremental.CRelationData.irreflexiveNative A R",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationStatements.strictOrderNative",
+    "native_expression": "fun A R =>\n  PLift (NativeBridge.Incremental.CRelationData.irreflexiveNative A R) ×\n    NativeBridge.Incremental.CRelationData.transitiveNative A R",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.CRelationStatements.strictTransitiveNative",
+    "native_expression": "fun A R h => h.snd",
+    "remaining_source_symbols": []
   }
 ]
