@@ -307,3 +307,19 @@ flowchart TD
 ```
 
 本批 46 个陈述 iff 不增加业务定理证明数。剩余符号逐项保存在 reports/ssrbool-extended-statement-candidates.json。
+
+## 第二十五批：固定参数的单值包装
+
+```mermaid
+flowchart TD
+  A["机械 Eq / 函数外延性"] --> B["包装等式强制保存值"]
+  B --> C["manifest / keyed 到 Unit 的双向逆"]
+  D["Bool / Nat 对应"] --> E["qualifier 和 key"]
+  C --> F["量词转换的直接引理应用"]
+  E --> F
+  F --> G["28 个自动完整原生陈述"]
+  H["按 Bool 分支证明 if_arg"] --> I["if_arg 陈述及独立原陈述证明"]
+  J["master_key : unit 的单构造器消去"] --> K["locked 等于 id；最后一个陈述完成"]
+```
+
+Unit 只表示固定外部谓词/qualifier 参数后的包装；外部参数未被擦除。每次量词替换都携带 kernel 可检查的 iff/propext 证明。

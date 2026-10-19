@@ -74,7 +74,14 @@ partial def copyConstant (source base : Environment) (packPrefix : Name)
       copyConstant source base packPrefix seen done d
     addDecl (.thmDecl {v with name := rn n, type := re v.type, value := re v.value, all := v.all.map rn})
     done.modify (·.push n)
-  | .opaqueInfo _ => throwError "Opaque declaration needs separate support: {n}"
+  | .opaqueInfo v =>
+    -- Preserve opacity. Checking and copying the body does not expose an
+    -- equation between the opaque constant and its body.
+    seen.modify (·.insert n)
+    for d in v.type.getUsedConstants ++ v.value.getUsedConstants do
+      copyConstant source base packPrefix seen done d
+    addDecl (.opaqueDecl {v with name := rn n, type := re v.type, value := re v.value, all := v.all.map rn})
+    done.modify (·.push n)
   | .axiomInfo _ => throwError "A new axiom cannot be packed: {n}"
   | .quotInfo _ => throwError "Quotient primitives must come from base imports"
 

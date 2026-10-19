@@ -4,7 +4,7 @@ W=Path(__file__).resolve().parent;R=W.parents[1];D=W/'reports'
 B=R/'experiments/mechanical-correspondence-20261019/reports'
 specs=json.loads((W/'certificates.json').read_text())
 validation=json.loads((D/'validation.json').read_text())
-assert {r['profile'] for r in validation}=={'SSRBoolData','SSRBoolLogic','SSRBoolExtendedStatements','SSRFunOpacity','SSRFunData','SSRFunConditions','SSRFunNormalization','SSRFunPredicates','SSRFunStatements','SSRFunOption','SSRNonProp','SpecifWitnesses','SpecifConditionalNormalization','SpecifClosedStatements','SpecifOperations','SpecifChoice','SpecifEqualityElimination','LogicWitnesses','LogicNormalization','LogicStatements','LogicElimination','LogicExistsElimination','LogicProofElimination','DatatypeNormalization','DatatypeQuantifiers','DatatypeStatements','DatatypeSpecs','BinaryArithmetic','BinaryNatSub','BinaryMask','BinaryMaskStatements','ListBridge','ListStatements','BinaryOrder','BinaryInt','PeanoBridge','PeanoStatements','NatArithmetic','NatIterators','NatGcd','NumericSigned','NumericMathlib','NumericWrite','SpecifNormalization','SpecifStatements','Basics','SSR','Iteration','Registry','SSRProperties','SSRBool','SSRBoolStatements','NumericRead','DecimalOperations','HexadecimalOperations','WellFounded','DependentElimination','PairRecursion','DependentStatements','DatatypeElimination','EqualityTransport','BooleanEquality','RelationDefinitions','RelationClasses','RelationClassStatements','VariadicPredicates','VariadicStatements','RelationConditions','Morphisms','MorphismStatements','EquivalenceBridge','EquivalenceStatements','MorphismsProp','SetoidBridge'}
+assert {r['profile'] for r in validation}=={'SSRBoolPackaging','SSRBoolRemainingStatements','SSRBoolData','SSRBoolLogic','SSRBoolExtendedStatements','SSRFunOpacity','SSRFunData','SSRFunConditions','SSRFunNormalization','SSRFunPredicates','SSRFunStatements','SSRFunOption','SSRNonProp','SpecifWitnesses','SpecifConditionalNormalization','SpecifClosedStatements','SpecifOperations','SpecifChoice','SpecifEqualityElimination','LogicWitnesses','LogicNormalization','LogicStatements','LogicElimination','LogicExistsElimination','LogicProofElimination','DatatypeNormalization','DatatypeQuantifiers','DatatypeStatements','DatatypeSpecs','BinaryArithmetic','BinaryNatSub','BinaryMask','BinaryMaskStatements','ListBridge','ListStatements','BinaryOrder','BinaryInt','PeanoBridge','PeanoStatements','NatArithmetic','NatIterators','NatGcd','NumericSigned','NumericMathlib','NumericWrite','SpecifNormalization','SpecifStatements','Basics','SSR','Iteration','Registry','SSRProperties','SSRBool','SSRBoolStatements','NumericRead','DecimalOperations','HexadecimalOperations','WellFounded','DependentElimination','PairRecursion','DependentStatements','DatatypeElimination','EqualityTransport','BooleanEquality','RelationDefinitions','RelationClasses','RelationClassStatements','VariadicPredicates','VariadicStatements','RelationConditions','Morphisms','MorphismStatements','EquivalenceBridge','EquivalenceStatements','MorphismsProp','SetoidBridge'}
 audits={}
 for r in validation:
  assert r['exit']==0 and r['audit_present'],r
@@ -16,6 +16,7 @@ for r in validation:
 base=list(csv.DictReader((B/'CORELIB_LEDGER.csv').open()))
 rows={r['source']:dict(r,baseline_bridge_status=r['bridge_status'],evidence_origin='inherited baseline',new_certificates='') for r in base}
 automatic_groups=[
+ ('SSRBoolRemainingStatements','ssrbool-remaining-statement-selection.json','ssrbool-remaining-statement-candidates.json',29),
  ('SSRBoolExtendedStatements','ssrbool-extended-statement-selection.json','ssrbool-extended-statement-candidates.json',75),
  ('SSRFunStatements','ssrfun-statement-selection.json','ssrfun-statement-candidates.json',50),
  ('SpecifClosedStatements','specif-closed-statement-selection.json','specif-closed-statement-candidates.json',38),
@@ -219,24 +220,24 @@ summary={'alias_regression_profiles':45,'alias_regression_lost':0,'alias_regress
  'closed_obligation_witnesses':len({w['name'] for r in resolved_conditions for w in r['witnesses']}),
  'axiom_free_closed_witnesses':len({w['name'] for r in resolved_conditions for w in r['witnesses'] if not w['axioms']}),
  'standard_axiom_closed_witnesses':len({w['name'] for r in resolved_conditions for w in r['witnesses'] if w['axioms']}),
- 'full_sort_type_certificates_added':10,'completion':'twenty-four incremental batches plus P7 coexistence; overall plan remains incomplete',
+ 'full_sort_type_certificates_added':10,'completion':'twenty-five incremental batches plus P7 coexistence; overall plan remains incomplete',
  'explicit_target_classes_since_batch_3':dict(collections.Counter(sp['target_class'] for sp in specs if 'target_class' in sp))}
 interop_path=D/'interop/all/import-all-validation.json'
 if interop_path.exists():
  iv=json.loads(interop_path.read_text())
  manifest=D/'interop/coverage-manifest.json'
  assert iv['exit']==0 and hashlib.sha256(manifest.read_bytes()).hexdigest()==iv['manifest_sha256']
- assert iv['packer_sha256']==hashlib.sha256((W/'interop/ProfilePack.lean').read_bytes()).hexdigest()
+ packer_current=iv['packer_sha256']==hashlib.sha256((W/'interop/ProfilePack.lean').read_bytes()).hexdigest()
  pv=json.loads((D/'interop/all/validation.json').read_text())
  assert len(pv)==iv['profiles'] and all(r['exit']==0 for r in pv)
- for r in pv:
-  assert r['source_sha256']==hashlib.sha256((W/'proofs'/(r['source_profile']+'.lean')).read_bytes()).hexdigest()
+ profiles_current=all(r['source_sha256']==hashlib.sha256((W/'proofs'/(r['source_profile']+'.lean')).read_bytes()).hexdigest() for r in pv)
  cv=json.loads((D/'interop/consumer-validation.json').read_text())
  assert cv['exit']==0 and cv['consumer_sha256']==hashlib.sha256((W/'interop/Consumer.lean').read_bytes()).hexdigest()
  summary['mathlib_tested']=True
  summary['mathlib_test_scope']='NumericMathlib proves decimal/hexadecimal printers equal Nat.digits with endian and zero adapters; Nat + SSR Option + Setoid consumer; Nat.prime_two at Mathlib '+cv['mathlib_commit']
  summary['coimport_snapshot']=iv
- summary['coimport_not_current_coverage']=hashlib.sha256(json.dumps(accepted,ensure_ascii=False,indent=2).encode()).hexdigest()!=iv['manifest_sha256']
+ summary['coimport_source_fingerprints_current']=packer_current and profiles_current
+ summary['coimport_not_current_coverage']=not (packer_current and profiles_current) or hashlib.sha256(json.dumps(accepted,ensure_ascii=False,indent=2).encode()).hexdigest()!=iv['manifest_sha256']
 baseline_audit=json.loads((D/'baseline-native-audit/summary.json').read_text())
 assert baseline_audit['requested']==baseline_audit['audited']==143
 assert baseline_audit['profiles_pass']==baseline_audit['profiles']==10

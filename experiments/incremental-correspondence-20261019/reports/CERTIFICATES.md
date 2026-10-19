@@ -7062,6 +7062,754 @@ NativeBridge.Incremental.SSRBoolLogic.equivalence_rel_agrees
 
 公理闭包：propext, Quot.sound
 
+## Corelib.ssr.ssrbool.manifest_simpl_pred
+
+NativeBridge.Incremental.SSRBoolPackaging.manifestSimplIso
+
+目标：Unit；范围：source Type and independent metadata universe parameters preserved; both inverse laws; fixed external predicate/key/index parameters retained
+
+```lean
+(A : Type u) →
+  (p : Rocq.Corelib.ssr.ssrbool.pred A) → NativeBridge.Iso (Rocq.Corelib.ssr.ssrbool.manifest_simpl_pred A p) Unit
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrbool.registered_applicative_pred
+
+NativeBridge.Incremental.SSRBoolPackaging.registeredIso
+
+目标：Unit；范围：source Type and independent metadata universe parameters preserved; both inverse laws; fixed external predicate/key/index parameters retained
+
+```lean
+(A : Type u) →
+  (p : Rocq.Corelib.ssr.ssrbool.pred A) →
+    NativeBridge.Iso (Rocq.Corelib.ssr.ssrbool.registered_applicative_pred A p) Unit
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrbool.manifest_mem_pred
+
+NativeBridge.Incremental.SSRBoolPackaging.manifestMemIso
+
+目标：Unit；范围：source Type and independent metadata universe parameters preserved; both inverse laws; fixed external predicate/key/index parameters retained
+
+```lean
+(A : Type u) →
+  (p : Rocq.Corelib.ssr.ssrbool.pred A) → NativeBridge.Iso (Rocq.Corelib.ssr.ssrbool.manifest_mem_pred A p) Unit
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrbool.applicative_mem_pred
+
+NativeBridge.Incremental.SSRBoolPackaging.applicativeMemIso
+
+目标：Unit；范围：source Type and independent metadata universe parameters preserved; both inverse laws; fixed external predicate/key/index parameters retained
+
+```lean
+(A : Type u) →
+  (p : Rocq.Corelib.ssr.ssrbool.pred A) → NativeBridge.Iso (Rocq.Corelib.ssr.ssrbool.applicative_mem_pred A p) Unit
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrbool.qualifier
+
+NativeBridge.Incremental.SSRBoolPackaging.qualifierIso
+
+目标：A → Bool；范围：source Type and independent metadata universe parameters preserved; both inverse laws; fixed external predicate/key/index parameters retained
+
+```lean
+(n : Rocq.Corelib.Init.Datatypes.nat) →
+  (A : Type u) → NativeBridge.Iso (Rocq.Corelib.ssr.ssrbool.qualifier n A) (A → Bool)
+```
+
+公理闭包：Quot.sound
+
+## Corelib.ssr.ssrbool.pred_key
+
+NativeBridge.Incremental.SSRBoolPackaging.predKeyIso
+
+目标：True；范围：source Type and independent metadata universe parameters preserved; both inverse laws; fixed external predicate/key/index parameters retained
+
+```lean
+(A : Type u) → (p : Rocq.Corelib.ssr.ssrbool.pred A) → NativeBridge.Iso (Rocq.Corelib.ssr.ssrbool.pred_key A p) True
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrbool.keyed_pred
+
+NativeBridge.Incremental.SSRBoolPackaging.keyedPredIso
+
+目标：Unit；范围：source Type and independent metadata universe parameters preserved; both inverse laws; fixed external predicate/key/index parameters retained
+
+```lean
+(A : Type u) →
+  (p : Rocq.Corelib.ssr.ssrbool.pred A) →
+    (k : Rocq.Corelib.ssr.ssrbool.pred_key A p) → NativeBridge.Iso (Rocq.Corelib.ssr.ssrbool.keyed_pred A p k) Unit
+```
+
+公理闭包：Quot.sound
+
+## Corelib.ssr.ssrbool.keyed_qualifier
+
+NativeBridge.Incremental.SSRBoolPackaging.keyedQualifierIso
+
+目标：Unit；范围：source Type and independent metadata universe parameters preserved; both inverse laws; fixed external predicate/key/index parameters retained
+
+```lean
+(A : Type u) →
+  (n : Rocq.Corelib.Init.Datatypes.nat) →
+    (q : Rocq.Corelib.ssr.ssrbool.qualifier n A) →
+      (k : Rocq.Corelib.ssr.ssrbool.pred_key A (Rocq.Corelib.ssr.ssrbool.has_quality n A q)) →
+        NativeBridge.Iso (Rocq.Corelib.ssr.ssrbool.keyed_qualifier A n q k) Unit
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrbool.collective_pred_of_simpl
+
+NativeBridge.Incremental.SSRBoolPackaging.collective_pred_of_simpl_agrees
+
+目标：id on A → Bool；范围：source Type and independent metadata universe parameters preserved; fixed external predicate/key/index parameters retained
+
+```lean
+∀ (A : Type u) (p : Rocq.Corelib.ssr.ssrbool.simpl_pred A),
+  NativeBridge.Incremental.SSRBoolData.predTo (Rocq.Corelib.ssr.ssrbool.collective_pred_of_simpl A p) =
+    (NativeBridge.Incremental.SSRBoolData.simplPredIso A).to p
+```
+
+公理闭包：Quot.sound
+
+## Corelib.ssr.ssrbool.applicative_pred_of_simpl
+
+NativeBridge.Incremental.SSRBoolPackaging.applicative_pred_of_simpl_agrees
+
+目标：id on A → Bool；范围：source Type and independent metadata universe parameters preserved; fixed external predicate/key/index parameters retained
+
+```lean
+∀ (A : Type u) (p : Rocq.Corelib.ssr.ssrbool.simpl_pred A),
+  NativeBridge.Incremental.SSRBoolData.predTo (Rocq.Corelib.ssr.ssrbool.applicative_pred_of_simpl A p) =
+    (NativeBridge.Incremental.SSRBoolData.simplPredIso A).to p
+```
+
+公理闭包：Quot.sound
+
+## Corelib.ssr.ssrbool.rel_of_simpl
+
+NativeBridge.Incremental.SSRBoolPackaging.rel_of_simpl_agrees
+
+目标：id on A → A → Bool；范围：source Type and independent metadata universe parameters preserved; fixed external predicate/key/index parameters retained
+
+```lean
+∀ (A : Type u) (r : Rocq.Corelib.ssr.ssrbool.simpl_rel A),
+  (fun x y => NativeBridge.boolTo (Rocq.Corelib.ssr.ssrbool.rel_of_simpl A r x y)) =
+    (NativeBridge.Incremental.SSRBoolData.simplRelIso A).to r
+```
+
+公理闭包：Quot.sound
+
+## Corelib.ssr.ssrbool.simpl_pred_value
+
+NativeBridge.Incremental.SSRBoolPackaging.simpl_pred_value_agrees
+
+目标：constant native predicate specified by the parameter；范围：source Type and independent metadata universe parameters preserved; fixed external predicate/key/index parameters retained
+
+```lean
+∀ (A : Type u) (p : Rocq.Corelib.ssr.ssrbool.pred A) (x : Rocq.Corelib.ssr.ssrbool.manifest_simpl_pred A p),
+  (NativeBridge.Incremental.SSRBoolData.simplPredIso A).to (Rocq.Corelib.ssr.ssrbool.simpl_pred_value A p x) =
+    NativeBridge.Incremental.SSRBoolData.predTo p
+```
+
+公理闭包：Quot.sound
+
+## Corelib.ssr.ssrbool.applicative_pred_value
+
+NativeBridge.Incremental.SSRBoolPackaging.applicative_pred_value_agrees
+
+目标：constant native predicate specified by the parameter；范围：source Type and independent metadata universe parameters preserved; fixed external predicate/key/index parameters retained
+
+```lean
+∀ (A : Type u) (p : Rocq.Corelib.ssr.ssrbool.pred A) (x : Rocq.Corelib.ssr.ssrbool.registered_applicative_pred A p),
+  NativeBridge.Incremental.SSRBoolData.predTo (Rocq.Corelib.ssr.ssrbool.applicative_pred_value A p x) =
+    NativeBridge.Incremental.SSRBoolData.predTo p
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrbool.mem_pred_value
+
+NativeBridge.Incremental.SSRBoolPackaging.mem_pred_value_agrees
+
+目标：constant native predicate specified by the parameter；范围：source Type and independent metadata universe parameters preserved; fixed external predicate/key/index parameters retained
+
+```lean
+∀ (A : Type u) (p : Rocq.Corelib.ssr.ssrbool.pred A) (x : Rocq.Corelib.ssr.ssrbool.manifest_mem_pred A p),
+  (NativeBridge.Incremental.SSRBoolData.memIso A).to (Rocq.Corelib.ssr.ssrbool.mem_pred_value A p x) =
+    NativeBridge.Incremental.SSRBoolData.predTo p
+```
+
+公理闭包：Quot.sound
+
+## Corelib.ssr.ssrbool.applicative_mem_pred_value
+
+NativeBridge.Incremental.SSRBoolPackaging.applicative_mem_pred_value_agrees
+
+目标：id on Unit；范围：source Type and independent metadata universe parameters preserved; fixed external predicate/key/index parameters retained
+
+```lean
+∀ (A : Type u) (p : Rocq.Corelib.ssr.ssrbool.pred A) (x : Rocq.Corelib.ssr.ssrbool.applicative_mem_pred A p),
+  (NativeBridge.Incremental.SSRBoolPackaging.manifestMemIso A p).to
+      (Rocq.Corelib.ssr.ssrbool.applicative_mem_pred_value A p x) =
+    id ((NativeBridge.Incremental.SSRBoolPackaging.applicativeMemIso A p).to x)
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrbool.has_quality
+
+NativeBridge.Incremental.SSRBoolPackaging.has_quality_agrees
+
+目标：native predicate projection；范围：source Type and independent metadata universe parameters preserved; fixed external predicate/key/index parameters retained
+
+```lean
+∀ (n : Rocq.Corelib.Init.Datatypes.nat) (A : Type u) (x : Rocq.Corelib.ssr.ssrbool.qualifier n A),
+  NativeBridge.Incremental.SSRBoolData.predTo (Rocq.Corelib.ssr.ssrbool.has_quality n A x) =
+    (NativeBridge.Incremental.SSRBoolPackaging.qualifierIso n A).to x
+```
+
+公理闭包：Quot.sound
+
+## Corelib.ssr.ssrbool.unkey_pred
+
+NativeBridge.Incremental.SSRBoolPackaging.unkey_pred_agrees
+
+目标：constant native predicate specified by the parameter；范围：source Type and independent metadata universe parameters preserved; fixed external predicate/key/index parameters retained
+
+```lean
+∀ (A : Type u) (p : Rocq.Corelib.ssr.ssrbool.pred A) (k : Rocq.Corelib.ssr.ssrbool.pred_key A p)
+  (x : Rocq.Corelib.ssr.ssrbool.keyed_pred A p k),
+  NativeBridge.Incremental.SSRBoolData.predTo (Rocq.Corelib.ssr.ssrbool.unkey_pred A p k x) =
+    NativeBridge.Incremental.SSRBoolData.predTo p
+```
+
+公理闭包：Quot.sound
+
+## Corelib.ssr.ssrbool.unkey_qualifier
+
+NativeBridge.Incremental.SSRBoolPackaging.unkey_qualifier_agrees
+
+目标：constant native predicate specified by the qualifier parameter；范围：source Type and independent metadata universe parameters preserved; fixed external predicate/key/index parameters retained
+
+```lean
+∀ (A : Type u) (n : Rocq.Corelib.Init.Datatypes.nat) (q : Rocq.Corelib.ssr.ssrbool.qualifier n A)
+  (k : Rocq.Corelib.ssr.ssrbool.pred_key A (Rocq.Corelib.ssr.ssrbool.has_quality n A q))
+  (x : Rocq.Corelib.ssr.ssrbool.keyed_qualifier A n q k),
+  (NativeBridge.Incremental.SSRBoolPackaging.qualifierIso n A).to (Rocq.Corelib.ssr.ssrbool.unkey_qualifier A n q k x) =
+    (NativeBridge.Incremental.SSRBoolPackaging.qualifierIso n A).to q
+```
+
+公理闭包：Quot.sound
+
+## Corelib.ssr.ssrbool.eq_mem
+
+NativeBridge.Incremental.SSRBoolPackaging.eq_mem_agrees
+
+目标：native function equality；范围：source Type and independent metadata universe parameters preserved; fixed external predicate/key/index parameters retained
+
+```lean
+∀ (A : Type u) (p q : Rocq.Corelib.ssr.ssrbool.mem_pred A),
+  Rocq.Corelib.ssr.ssrbool.eq_mem A p q ↔
+    (NativeBridge.Incremental.SSRBoolData.memIso A).to p = (NativeBridge.Incremental.SSRBoolData.memIso A).to q
+```
+
+公理闭包：Quot.sound
+
+## Corelib.ssr.ssrbool.sub_mem
+
+NativeBridge.Incremental.SSRBoolPackaging.sub_mem_agrees
+
+目标：∀ x, p x = true → q x = true；范围：source Type and independent metadata universe parameters preserved; fixed external predicate/key/index parameters retained
+
+```lean
+∀ (A : Type u) (p q : Rocq.Corelib.ssr.ssrbool.mem_pred A),
+  Rocq.Corelib.ssr.ssrbool.sub_mem A p q ↔
+    ∀ (x : A),
+      (NativeBridge.Incremental.SSRBoolData.memIso A).to p x = true →
+        (NativeBridge.Incremental.SSRBoolData.memIso A).to q x = true
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.mem
+
+NativeBridge.Incremental.SSRBoolPackaging.mem_agrees
+
+目标：native Sigma interpretation function applied to its carrier element；范围：source Type and independent metadata universe parameters preserved; fixed external predicate/key/index parameters retained
+
+```lean
+∀ (A : Type v) (pT : NativeBridge.Incremental.SSRBoolData.nativePredType A) (p : pT.fst),
+  (NativeBridge.Incremental.SSRBoolData.memIso A).to
+      (Rocq.Corelib.ssr.ssrbool.mem A (NativeBridge.Incremental.SSRBoolData.predTypeOf A pT) p) =
+    pT.snd p
+```
+
+公理闭包：Quot.sound
+
+## Corelib.ssr.ssrbool.if_arg
+
+NativeBridge.Incremental.SSRBoolRemainingStatements.ifArgCorrespondence
+
+目标：native Bool conditional applied to an argument；范围：full independent Sort parameters; separate original-statement proof
+
+```lean
+Rocq.Corelib.ssr.ssrbool.if_arg.statement ↔ NativeBridge.Incremental.SSRBoolRemainingStatements.nativeIfArg
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.locked
+
+NativeBridge.Incremental.SSRBoolPackaging.locked_agrees
+
+目标：id；范围：full Sort result parameter for locked; master_key remains opaque; proof uses the single-constructor unit type
+
+```lean
+∀ (A : Sort u) (x : A), Rocq.Corelib.ssr.ssreflect_rw.locked A x = id x
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssreflect_rw.master_key
+
+NativeBridge.Incremental.SSRBoolPackaging.master_key_agrees
+
+目标：Unit.unit；范围：full Sort result parameter for locked; master_key remains opaque; proof uses the single-constructor unit type
+
+```lean
+NativeBridge.Incremental.SSRBoolPackaging.unitTo Rocq.Corelib.ssr.ssreflect_rw.master_key = ()
+```
+
+公理闭包：空
+
+## Corelib.ssr.ssrbool.app_predE
+
+NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.app_predE.statement.correspondence
+
+目标：native statement: ∀ (T : Type u_Corelib_ssr_ssrbool_1253) (x : T) (f : T → Bool) (x_1 : Unit), f x = f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrbool.app_predE.statement ↔
+  NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.app_predE.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.classic_EM
+
+NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.classic_EM.statement.correspondence
+
+目标：native statement: ∀ (P : Prop), ¬¬Nonempty (Decidable P)；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrbool.classic_EM.statement ↔
+  NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.classic_EM.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.classic_pick
+
+NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.classic_pick.statement.correspondence
+
+目标：native statement: ∀ (T : Sort u_Corelib_ssr_ssrbool_458) (P : T → Prop), ¬¬((∃ x, P x) ∨ Nonempty (∀ (x : T), ¬P x))；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrbool.classic_pick.statement ↔
+  NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.classic_pick.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.classic_sigW
+
+NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.classic_sigW.statement.correspondence
+
+目标：native statement: ∀ (T : Sort u_Corelib_ssr_ssrbool_498) (P : T → Prop), ¬¬Nonempty (∃ x, P x) ↔ ¬¬∃ x, P x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrbool.classic_sigW.statement ↔
+  NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.classic_sigW.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.inE
+
+NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.inE.statement.correspondence
+
+目标：native statement: ∀ (T : Type u_Corelib_ssr_ssrbool_1253),
+  ((∀ (x : T) (f : T → Bool) (x_1 : Unit), f x = f x) ∧ ∀ (x : T) (f : T → Bool) (x_1 : Unit), f x = f x) ∧
+    ∀ (f : T → Bool) (x : T), f x = f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrbool.inE.statement ↔
+  NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.inE.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.in_applicative
+
+NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.in_applicative.statement.correspondence
+
+目标：native statement: ∀ (T : Type u_Corelib_ssr_ssrbool_1253) (x : T) (f : T → Bool) (x_1 : Unit), f x = f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrbool.in_applicative.statement ↔
+  NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.in_applicative.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.in_collective
+
+NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.in_collective.statement.correspondence
+
+目标：native statement: ∀ (T : Type u_Corelib_ssr_ssrbool_1253) (x : T) (f : T → Bool) (x_1 : Unit), f x = f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrbool.in_collective.statement ↔
+  NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.in_collective.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.in_simpl
+
+NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.in_simpl.statement.correspondence
+
+目标：native statement: ∀ (T : Type u_Corelib_ssr_ssrbool_1253) (x : T) (f : T → Bool) (x_1 : Unit), f x = f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrbool.in_simpl.statement ↔
+  NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.in_simpl.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.is_true_locked_true
+
+NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.is_true_locked_true.statement.correspondence
+
+目标：native statement: true = true；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrbool.is_true_locked_true.statement ↔
+  NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.is_true_locked_true.statement.native
+```
+
+公理闭包：propext
+
+## Corelib.ssr.ssrbool.keyed_predE
+
+NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.keyed_predE.statement.correspondence
+
+目标：native statement: ∀ (T : Type u_Corelib_ssr_ssrbool_1345) (f : T → Bool), True → ∀ (x : Unit) (x : T), f x = f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrbool.keyed_predE.statement ↔
+  NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.keyed_predE.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.keyed_qualifier_suproof
+
+NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.keyed_qualifier_suproof.statement.correspondence
+
+目标：native statement: ∀ (T : Type u_Corelib_ssr_ssrbool_1348) (x : Nat) (x : T → Bool), True → ∀ (x_2 : Unit) (x_3 : T), x x_3 = x x_3；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrbool.keyed_qualifier_suproof.statement ↔
+  NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.keyed_qualifier_suproof.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.memE
+
+NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.memE.statement.correspondence
+
+目标：native statement: ∀ (T : Type u_Corelib_ssr_ssrbool_1253) (x : T → Bool) (x_1 : T), x x_1 = x x_1；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrbool.memE.statement ↔
+  NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.memE.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.mem_mem
+
+NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.mem_mem.statement.correspondence
+
+目标：native statement: ∀ (T : Type u_Corelib_ssr_ssrbool_1253) (x : T → Bool), (x = x ∧ x = x) ∧ x = x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrbool.mem_mem.statement ↔
+  NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.mem_mem.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.mem_simpl
+
+NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.mem_simpl.statement.correspondence
+
+目标：native statement: ∀ (T : Type u_Corelib_ssr_ssrbool_1253) (x : T → Bool) (x_1 : T), x x_1 = x x_1；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrbool.mem_simpl.statement ↔
+  NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.mem_simpl.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.mem_topred
+
+NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.mem_topred.statement.correspondence
+
+目标：native statement: ∀ (T : Type u_Corelib_ssr_ssrbool_1253) (x : NativeBridge.Incremental.SSRBoolData.nativePredType T) (pp : x.fst),
+  x.snd pp = x.snd pp；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrbool.mem_topred.statement ↔
+  NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.mem_topred.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.qualifE
+
+NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.qualifE.statement.correspondence
+
+目标：native statement: ∀ (x : Nat) (T : Type u_Corelib_ssr_ssrbool_1343) (f : T → Bool) (x : T), f x = f x；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrbool.qualifE.statement ↔
+  NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.qualifE.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.sub_in1
+
+NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.sub_in1.statement.correspondence
+
+目标：native statement: ∀ (T1 : Type u_Corelib_ssr_ssrbool_1169) (x x_1 : T1 → Bool) (P1 : T1 → Prop),
+  (∀ (x_2 : T1), x x_2 = true → x_1 x_2 = true) →
+    True → (∀ (x : T1), x_1 x = true → P1 x) → ∀ (x_2 : T1), x x_2 = true → P1 x_2；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrbool.sub_in1.statement ↔
+  NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.sub_in1.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.sub_in11
+
+NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.sub_in11.statement.correspondence
+
+目标：native statement: ∀ (T1 : Type u_Corelib_ssr_ssrbool_1169__c0) (T2 : Type u_Corelib_ssr_ssrbool_1169__c1) (x x_1 : T1 → Bool)
+  (x_2 x_3 : T2 → Bool) (P2 : T1 → T2 → Prop),
+  (∀ (x_4 : T1), x x_4 = true → x_1 x_4 = true) →
+    (∀ (x : T2), x_2 x = true → x_3 x = true) →
+      True →
+        (∀ (x : T1) (y : T2), x_1 x = true → x_3 y = true → P2 x y) →
+          ∀ (x_4 : T1) (y : T2), x x_4 = true → x_2 y = true → P2 x_4 y；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrbool.sub_in11.statement ↔
+  NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.sub_in11.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.sub_in111
+
+NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.sub_in111.statement.correspondence
+
+目标：native statement: ∀ (T1 : Type u_Corelib_ssr_ssrbool_1169__c0) (T2 : Type u_Corelib_ssr_ssrbool_1169__c1)
+  (T3 : Type u_Corelib_ssr_ssrbool_1169__c2) (x x_1 : T1 → Bool) (x_2 x_3 : T2 → Bool) (x_4 x_5 : T3 → Bool)
+  (P3 : T1 → T2 → T3 → Prop),
+  (∀ (x_6 : T1), x x_6 = true → x_1 x_6 = true) →
+    (∀ (x : T2), x_2 x = true → x_3 x = true) →
+      (∀ (x : T3), x_4 x = true → x_5 x = true) →
+        True →
+          (∀ (x : T1) (y : T2) (z : T3), x_1 x = true → x_3 y = true → x_5 z = true → P3 x y z) →
+            ∀ (x_6 : T1) (y : T2) (z : T3), x x_6 = true → x_2 y = true → x_4 z = true → P3 x_6 y z；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrbool.sub_in111.statement ↔
+  NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.sub_in111.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.sub_in12
+
+NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.sub_in12.statement.correspondence
+
+目标：native statement: ∀ (T1 : Type u_Corelib_ssr_ssrbool_2134) (T : Type u_Corelib_ssr_ssrbool_2135) (x x_1 : T1 → Bool) (x_2 x_3 : T → Bool)
+  (P : T1 → T → T → Prop),
+  (∀ (x_4 : T1), x x_4 = true → x_1 x_4 = true) →
+    (∀ (x : T), x_2 x = true → x_3 x = true) →
+      True →
+        (∀ (x : T1) (y z : T), x_1 x = true → x_3 y = true → x_3 z = true → P x y z) →
+          ∀ (x_4 : T1) (y z : T), x x_4 = true → x_2 y = true → x_2 z = true → P x_4 y z；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrbool.sub_in12.statement ↔
+  NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.sub_in12.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.sub_in2
+
+NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.sub_in2.statement.correspondence
+
+目标：native statement: ∀ (T : Type u_Corelib_ssr_ssrbool_2112) (x x_1 : T → Bool) (P : T → T → Prop),
+  (∀ (x_2 : T), x x_2 = true → x_1 x_2 = true) →
+    True → (∀ (x y : T), x_1 x = true → x_1 y = true → P x y) → ∀ (x_2 y : T), x x_2 = true → x y = true → P x_2 y；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrbool.sub_in2.statement ↔
+  NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.sub_in2.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.sub_in21
+
+NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.sub_in21.statement.correspondence
+
+目标：native statement: ∀ (T : Type u_Corelib_ssr_ssrbool_2150) (T3 : Type u_Corelib_ssr_ssrbool_2151) (x x_1 : T → Bool) (x_2 x_3 : T3 → Bool)
+  (P : T → T → T3 → Prop),
+  (∀ (x_4 : T), x x_4 = true → x_1 x_4 = true) →
+    (∀ (x : T3), x_2 x = true → x_3 x = true) →
+      True →
+        (∀ (x y : T) (z : T3), x_1 x = true → x_1 y = true → x_3 z = true → P x y z) →
+          ∀ (x_4 y : T) (z : T3), x x_4 = true → x y = true → x_2 z = true → P x_4 y z；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrbool.sub_in21.statement ↔
+  NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.sub_in21.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.sub_in3
+
+NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.sub_in3.statement.correspondence
+
+目标：native statement: ∀ (T : Type u_Corelib_ssr_ssrbool_2121) (x x_1 : T → Bool) (P : T → T → T → Prop),
+  (∀ (x_2 : T), x x_2 = true → x_1 x_2 = true) →
+    True →
+      (∀ (x y z : T), x_1 x = true → x_1 y = true → x_1 z = true → P x y z) →
+        ∀ (x_2 y z : T), x x_2 = true → x y = true → x z = true → P x_2 y z；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrbool.sub_in3.statement ↔
+  NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.sub_in3.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.sub_refl
+
+NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.sub_refl.statement.correspondence
+
+目标：native statement: ∀ (T : Type u_Corelib_ssr_ssrbool_1226) (x : T → Bool) (x_1 : T), x x_1 = true → x x_1 = true；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrbool.sub_refl.statement ↔
+  NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.sub_refl.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.subon1
+
+NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.subon1.statement.correspondence
+
+目标：native statement: ∀ (T1 : Type u_Corelib_ssr_ssrbool_1169__c0) (T2 : Type u_Corelib_ssr_ssrbool_1169__c1) (x x_1 : T2 → Bool)
+  (f : T1 → T2) (Q1 : (T1 → T2) → T1 → Prop),
+  (∀ (x_2 : T2), x x_2 = true → x_1 x_2 = true) →
+    True → True → (∀ (x : T1), x_1 (f x) = true → Q1 f x) → ∀ (x_2 : T1), x (f x_2) = true → Q1 f x_2；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrbool.subon1.statement ↔
+  NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.subon1.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.subon1l
+
+NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.subon1l.statement.correspondence
+
+目标：native statement: ∀ (T1 : Type u_Corelib_ssr_ssrbool_1169__c0) (T2 : Type u_Corelib_ssr_ssrbool_1169__c1)
+  (T3 : Type u_Corelib_ssr_ssrbool_1169__c2) (x x_1 : T2 → Bool) (f : T1 → T2) (h : T3)
+  (Q1l : (T1 → T2) → T3 → T1 → Prop),
+  (∀ (x_2 : T2), x x_2 = true → x_1 x_2 = true) →
+    True → True → (∀ (x : T1), x_1 (f x) = true → Q1l f h x) → ∀ (x_2 : T1), x (f x_2) = true → Q1l f h x_2；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrbool.subon1l.statement ↔
+  NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.subon1l.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.subon2
+
+NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.subon2.statement.correspondence
+
+目标：native statement: ∀ (T1 : Type u_Corelib_ssr_ssrbool_1169__c0) (T2 : Type u_Corelib_ssr_ssrbool_1169__c1) (x x_1 : T2 → Bool)
+  (f : T1 → T2) (Q2 : (T1 → T2) → T1 → T1 → Prop),
+  (∀ (x_2 : T2), x x_2 = true → x_1 x_2 = true) →
+    True →
+      True →
+        (∀ (x y : T1), x_1 (f x) = true → x_1 (f y) = true → Q2 f x y) →
+          ∀ (x_2 y : T1), x (f x_2) = true → x (f y) = true → Q2 f x_2 y；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrbool.subon2.statement ↔
+  NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.subon2.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.ssr.ssrbool.topredE
+
+NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.topredE.statement.correspondence
+
+目标：native statement: ∀ (T : Type u_Corelib_ssr_ssrbool_1253) (x : NativeBridge.Incremental.SSRBoolData.nativePredType T) (x_1 : T)
+  (pp : x.fst), x.snd pp x_1 = x.snd pp x_1；范围：unconditional original statement; source-free body including NativeBridge alias expansion
+
+```lean
+Rocq.Corelib.ssr.ssrbool.topredE.statement ↔
+  NativeBridge.Incremental.SSRBoolRemainingStatements.Rocq.Corelib.ssr.ssrbool.topredE.statement.native
+```
+
+公理闭包：propext, Quot.sound
+
 ## Corelib.ssr.ssrbool.addIb
 
 NativeBridge.Incremental.SSRBoolExtendedStatements.Rocq.Corelib.ssr.ssrbool.addIb.statement.correspondence
