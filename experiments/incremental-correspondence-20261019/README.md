@@ -21,7 +21,7 @@
 
 ## 本轮新增
 
-第二十八至三十三批共新增 **95 个根、96 份覆盖证书**，从 1526 推进到 1621。详情见 [第二十八至三十一批](BATCH28_31_RESULTS.md) 及 [第三十三批](CRELATION_STATEMENTS_RESULTS.md)。
+第二十八至三十三批共新增 **95 个根、96 份覆盖证书**，从 1526 推进到 1621。详情见 [第二十八至三十一批](BATCH28_31_RESULTS.md) 及 [第三十二批](CRELATION_STATEMENTS_RESULTS.md) 和 [第三十三批](CRELATION_ORDER_RESULTS.md)。
 
 - SSR 索引类型与函数：20 根；ssrbool 当前 440 / 451。
 - 二进制迭代、整数幂、奇偶性和有符号移位：6 根；Pos.iter 有两份不同范围的证书，仅计一个根。
