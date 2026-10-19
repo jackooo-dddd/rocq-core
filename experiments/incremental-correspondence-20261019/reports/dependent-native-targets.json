@@ -883,5 +883,85 @@
     "name": "Nat.ldiff",
     "native_expression": "Nat.bitwise fun a b => a && !b",
     "remaining_source_symbols": []
+  },
+  {
+    "name": "Int.fdiv",
+    "native_expression": "fun x x_1 =>\n  match x, x_1 with\n  | 0, x => 0\n  | Int.ofNat m, Int.ofNat n => Int.ofNat (m / n)\n  | Int.ofNat m.succ, Int.negSucc n => Int.negSucc (m / n.succ)\n  | Int.negSucc a, 0 => 0\n  | Int.negSucc m, Int.ofNat n.succ => Int.negSucc (m / n.succ)\n  | Int.negSucc m, Int.negSucc n => Int.ofNat (m.succ / n.succ)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "Int.fmod",
+    "native_expression": "fun x x_1 =>\n  match x, x_1 with\n  | 0, x => 0\n  | Int.ofNat m, Int.ofNat n => Int.ofNat (m % n)\n  | Int.ofNat m.succ, Int.negSucc n => Int.subNatNat (m % n.succ) n\n  | Int.negSucc m, Int.ofNat n => Int.subNatNat n (m % n).succ\n  | Int.negSucc m, Int.negSucc n => -Int.ofNat (m.succ % n.succ)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "Int.tdiv",
+    "native_expression": "fun x x_1 =>\n  match x, x_1 with\n  | Int.ofNat m, Int.ofNat n => Int.ofNat (m / n)\n  | Int.ofNat m, Int.negSucc n => -Int.ofNat (m / n.succ)\n  | Int.negSucc m, Int.ofNat n => -Int.ofNat (m.succ / n)\n  | Int.negSucc m, Int.negSucc n => Int.ofNat (m.succ / n.succ)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "Int.tmod",
+    "native_expression": "fun x x_1 =>\n  match x, x_1 with\n  | Int.ofNat m, Int.ofNat n => Int.ofNat (m % n)\n  | Int.ofNat m, Int.negSucc n => Int.ofNat (m % n.succ)\n  | Int.negSucc m, Int.ofNat n => -Int.ofNat (m.succ % n)\n  | Int.negSucc m, Int.negSucc n => -Int.ofNat (m.succ % n.succ)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.BinaryDivision.floorPairNative",
+    "native_expression": "fun a b => (a.fdiv b, a.fmod b)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.BinaryDivision.nPosDivNative",
+    "native_expression": "fun p b => if b = 0 then (2 ^ p.log2 - 1, p) else (p / b, p % b)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.BinaryDivision.quotremNative",
+    "native_expression": "fun x y => (x.tdiv y, x.tmod y)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.BinaryDivision.zPosDivNative",
+    "native_expression": "fun p b => if 0 < b then (↑p / b, ↑p % b) else NativeBridge.Incremental.BinaryDivision.badPosDivNative p b",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "Nat.sqrt",
+    "native_expression": "fun n => if n ≤ 1 then n else Nat.sqrt.iter n (1 <<< (n.log2 / 2 + 1))",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.BinarySqrtRem.sqrtStepNative",
+    "native_expression": "fun f g x =>\n  match x.snd with\n  | none => (2 * x.fst, NativeBridge.Incremental.BinaryNatSub.checkedSub (g (f 1)) 4)\n  | some r =>\n    if r = 0 then (2 * x.fst, NativeBridge.Incremental.BinaryNatSub.checkedSub (g (f 1)) 4)\n    else\n      if 4 * x.fst + 1 ≤ g (f r) then\n        (2 * x.fst + 1, NativeBridge.Incremental.BinaryNatSub.checkedSub (g (f r)) (4 * x.fst + 1))\n      else (2 * x.fst, some (g (f r)))",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.BinarySqrtRem.sqrtRemNative",
+    "native_expression": "fun n => (n.sqrt, some (n - n.sqrt * n.sqrt))",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.BinarySqrtRem.zSqrtRemNative",
+    "native_expression": "fun z => (Int.ofNat z.toNat.sqrt, Int.ofNat (z.toNat - z.toNat.sqrt * z.toNat.sqrt))",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "NativeBridge.Incremental.BinaryIterOp.iterOpNative",
+    "native_expression": "fun {A} op n a => NativeBridge.Incremental.BinaryIterOp.iterOpNative._unary op ⟨n, a⟩",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "Nat.mul",
+    "native_expression": "fun x x_1 => Nat.brecOn (motive := fun x => Nat → Nat) x_1 Nat.mul._f x",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "Nat.pow",
+    "native_expression": "fun m x => Nat.brecOn x (Nat.pow._f m)",
+    "remaining_source_symbols": []
+  },
+  {
+    "name": "List.foldr",
+    "native_expression": "fun {α} {β} f init x => List.brecOn x (List.foldr._f f init)",
+    "remaining_source_symbols": []
   }
 ]

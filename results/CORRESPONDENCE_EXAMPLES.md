@@ -139,3 +139,31 @@ positive / N 的对应先通过二进制构造器归纳证明；Z 复用这些�
 这展示了已经可以使用 Lean 原生定理证明机械对象的性质。通用证明、四个实例和交换律见 [BinaryIntBitwise.lean](../experiments/incremental-correspondence-20261019/proofs/BinaryIntBitwise.lean)。
 
 完整签名、假设和公理依赖见 [证书报告](../experiments/incremental-correspondence-20261019/reports/CERTIFICATES.md)；当前总数见 [工作区摘要](../experiments/incremental-correspondence-20261019/reports/summary.json)。原生表达式对应与现成 Lean／Mathlib API 直接对应分别登记。
+
+## 10. 两种整数除法不能混同
+
+    toInt (R.Z.div a b) = Int.fdiv (toInt a) (toInt b)
+    toInt (R.Z.quot a b) = Int.tdiv (toInt a) (toInt b)
+
+-7 除以 3，前者为 -3，后者为 -2；对应余数为 2 和 -1。负除数及零除数都在通用证明范围内。内部 N.pos_div_eucl(5,0) 返回 (3,5)，内部 Z.pos_div_eucl(5,0) 返回 (7,1)，因此不能把内部辅助函数无条件替换为普通除法。
+
+这些具体边界例子均已编译。[证明](../experiments/incremental-correspondence-20261019/proofs/BinaryDivision.lean)。
+
+## 11. 二进制平方根和余数
+
+    sqrtPairTo (R.Pos.sqrtrem p)
+      = (Nat.sqrt n, some (n - Nat.sqrt n * Nat.sqrt n))
+    -- n = positiveTo p
+
+从每步保持 n=s*s+r、r<2*s+1 证明结果与现成 Nat.sqrt 一致。12345 得到 (111,some 24)；整数负输入得到 (0,0)。这些例子已通过 kernel 检查，还直接用 Nat.sqrt_le 证明机械输出的平方不超过输入。
+
+[证明](../experiments/incremental-correspondence-20261019/proofs/BinarySqrtRem.lean)。
+
+## 12. 高阶迭代：结合律决定能否改成线性 fold
+
+    R.Pos.iter_op Nat Nat.add p a = positiveTo p * a
+    R.Pos.iter_op Nat Nat.mul p a = a ^ positiveTo p
+
+任意满足结合律的 op 还对应 List.foldr op a (List.replicate (positiveTo p-1) a)。没有结合律时只保证保留二进制括号的原生版本；已验证 op(a,b)=a+2b 对四份 5 给出 45，而线性 fold 给出 75。
+
+[证明](../experiments/incremental-correspondence-20261019/proofs/BinaryIterOp.lean)。同一 iter_op 根的四份证书不重复计根。

@@ -1,17 +1,17 @@
 # 增量 correspondence 工作区
 
-当前完成 **1651 / 2180 个去重源根**，经过三十六批增量工作。计划：[PLAN.md](PLAN.md)；依赖图：[DAG.md](DAG.md)；[具体例子](../../results/CORRESPONDENCE_EXAMPLES.md)。
+当前完成 **1664 / 2180 个去重源根**，经过三十九批增量工作。计划：[PLAN.md](PLAN.md)；依赖图：[DAG.md](DAG.md)；[具体例子](../../results/CORRESPONDENCE_EXAMPLES.md)。
 
 “完成”表示已经证明明示范围内的类型双向逆、指定原生运算对应或原生陈述 iff。只有接口、部分原生陈述或尚未闭合的对应不计入。
 
 | 主分类 | 冻结基线 | 当前 |
 |---|---:|---:|
 | 类型对应 | 29 | 127 |
-| 运算／谓词对应 | 114 | 638 |
+| 运算／谓词对应 | 114 | 651 |
 | 完全原生陈述 | 143 | 886 |
-| 只有接口 | 375 | 121 |
+| 只有接口 | 375 | 111 |
 | 部分原生陈述 | 702 | 134 |
-| 尚无证书 | 485 | 236 |
+| 尚无证书 | 485 | 233 |
 | 条件根尚未完成对应 | 331 | 38 |
 | 非 Prop 特殊陈述尚未处理 | 1 | 0 |
 
@@ -21,19 +21,17 @@
 
 ## 本轮新增
 
-[第三十四至三十六批](BATCH34_36_RESULTS.md) 新增 **30 个根、32 份覆盖证书**，从 1621 推进到 1651：
+[第三十七至三十九批](BATCH37_39_RESULTS.md) 新增 **13 个根、16 份证书**，从 1651 推进到 1664。
 
-- CMorphisms：19 根，包括关系保持、依赖逐点关系、标记类型，以及 flip_arrow 的 Type 值陈述对应；模块当前 24 / 78。
-- positive / N：8 个按位运算，与 Nat 的与、或、异或和位差对应。
-- Z：3 个按位运算，与 Mathlib Int.land / Int.lor / Int.xor 对应，覆盖负数。
-- Pos.ldiff / N.ldiff 另外各补一份 Mathlib Nat.ldiff 证书，不重复计根。
-- 已检查四个负数例子，并复用 Nat.and_comm 证明机械 N.land 的交换律。
+- 二进制除法：8 根，完整区分 floor 与 truncation，包括零／负除数。
+- 二进制平方根：4 根，对应 Nat.sqrt 及原生余数表达式。
+- Pos.iter_op：1 根、4 份证书；任意运算保留括号，结合律下对应 List.foldr，加法／乘法对应 Nat.mul／Nat.pow。
 
-[前一轮 28–31 批](BATCH28_31_RESULTS.md)、[32 批](CRELATION_STATEMENTS_RESULTS.md)、[33 批](CRELATION_ORDER_RESULTS.md) 保留历史结果。其余批次见 PLAN.md。尚未完成的 529 根继续逐项处理，不把未找到证明解释为不可能对应。
+BinNums.PosDef、NatDef、IntDef 三个模块的 **86 / 86** 根全部完成明示范围内的对应。Numbers.BinNums 的 12 个消去器／归纳陈述继续处理；全范围仍有 516 根未完成。历史批次见 PLAN.md。
 
 ## 验证范围
 
-93 个增量 Lean profile 有与当前源码和依赖产物匹配的成功验证记录。1392 份增量覆盖证书已共同导入检查，见 [共同导入记录](reports/interop/all/import-all-validation.json)。
+97 个增量 Lean profile 有与当前源码和依赖产物匹配的成功验证记录。1408 份增量覆盖证书已共同导入检查，见 [共同导入记录](reports/interop/all/import-all-validation.json)。
 
 新证明检查公理闭包。指定原生目标递归检查类型、正文及 NativeBridge 辅助定义，不允许隐藏源符号。限制范围或函数对应假设在证书 scope 和完整类型中保留。
 
@@ -58,4 +56,4 @@
     python3 interop/check_all.py
     python3 make_report.py
 
-Mathlib profile 使用远程已经安装的相同 Lean 工具链与库。以上命令会完整重检；本轮只重编译三个新 profile，并执行全体共同导入检查。
+Mathlib profile 使用远程已经安装的相同 Lean 工具链与库。以上命令会完整重检；本轮只重编译四个新 profile，并执行全体共同导入检查。

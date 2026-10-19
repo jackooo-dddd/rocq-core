@@ -9887,6 +9887,233 @@ NativeBridge.Incremental.BinaryIntBitwise.z_lxor_agrees
 
 公理闭包：propext, Classical.choice, Quot.sound
 
+## Corelib.BinNums.NatDef.N.pos_div_eucl
+
+NativeBridge.Incremental.BinaryDivision.n_pos_div_eucl_agrees
+
+目标：NativeBridge.Incremental.BinaryDivision.nPosDivNative；范围：All positive dividends and N divisors; divisor zero explicitly returns (2^log2(p)-1,p), not Nat.div/mod at zero.
+
+```lean
+∀ (p : NativeBridge.RPositive) (b : NativeBridge.RNatBinary),
+  NativeBridge.Incremental.BinaryDivision.nPairTo (Rocq.Corelib.BinNums.NatDef.N.pos_div_eucl p b) =
+    NativeBridge.Incremental.BinaryDivision.nPosDivNative (NativeBridge.positiveTo p) (NativeBridge.binaryNatTo b)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.pos_div_eucl
+
+NativeBridge.Incremental.BinaryDivision.z_pos_div_eucl_agrees
+
+目标：NativeBridge.Incremental.BinaryDivision.zPosDivNative；范围：All positive dividends and arbitrary signed divisors; positive divisor gives Int ediv/emod, nonpositive divisor has an explicit log2/power expression, not standard division.
+
+```lean
+∀ (p : NativeBridge.RPositive) (b : NativeBridge.RIntBinary),
+  NativeBridge.Incremental.BinaryDivision.zPairTo (Rocq.Corelib.BinNums.IntDef.Z.pos_div_eucl p b) =
+    NativeBridge.Incremental.BinaryDivision.zPosDivNative (NativeBridge.positiveTo p) (NativeBridge.binaryIntTo b)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.quotrem
+
+NativeBridge.Incremental.BinaryDivision.z_quotrem_agrees
+
+目标：NativeBridge.Incremental.BinaryDivision.quotremNative；范围：All signed inputs including zero divisor; native Int.tdiv and Int.tmod pair.
+
+```lean
+∀ (x y : NativeBridge.RIntBinary),
+  NativeBridge.Incremental.BinaryDivision.zPairTo (Rocq.Corelib.BinNums.IntDef.Z.quotrem x y) =
+    NativeBridge.Incremental.BinaryDivision.quotremNative (NativeBridge.binaryIntTo x) (NativeBridge.binaryIntTo y)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.quot
+
+NativeBridge.Incremental.BinaryDivision.z_quot_agrees
+
+目标：Int.tdiv；范围：All signed inputs including zero divisor; truncation toward zero.
+
+```lean
+∀ (x y : NativeBridge.RIntBinary),
+  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.quot x y) =
+    (NativeBridge.binaryIntTo x).tdiv (NativeBridge.binaryIntTo y)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.rem
+
+NativeBridge.Incremental.BinaryDivision.z_rem_agrees
+
+目标：Int.tmod；范围：All signed inputs including zero divisor; remainder has dividend sign when nonzero.
+
+```lean
+∀ (x y : NativeBridge.RIntBinary),
+  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.rem x y) =
+    (NativeBridge.binaryIntTo x).tmod (NativeBridge.binaryIntTo y)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.div_eucl
+
+NativeBridge.Incremental.BinaryDivision.z_div_eucl_agrees
+
+目标：NativeBridge.Incremental.BinaryDivision.floorPairNative；范围：All signed inputs including zero divisor; native Int.fdiv and Int.fmod pair, distinct from Lean ediv/emod with a negative divisor.
+
+```lean
+∀ (x y : NativeBridge.RIntBinary),
+  NativeBridge.Incremental.BinaryDivision.zPairTo (Rocq.Corelib.BinNums.IntDef.Z.div_eucl x y) =
+    NativeBridge.Incremental.BinaryDivision.floorPairNative (NativeBridge.binaryIntTo x) (NativeBridge.binaryIntTo y)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.div
+
+NativeBridge.Incremental.BinaryDivision.z_div_agrees
+
+目标：Int.fdiv；范围：All signed inputs including zero divisor; floor division.
+
+```lean
+∀ (x y : NativeBridge.RIntBinary),
+  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.div x y) =
+    (NativeBridge.binaryIntTo x).fdiv (NativeBridge.binaryIntTo y)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.modulo
+
+NativeBridge.Incremental.BinaryDivision.z_modulo_agrees
+
+目标：Int.fmod；范围：All signed inputs including zero divisor; remainder follows divisor sign when nonzero.
+
+```lean
+∀ (x y : NativeBridge.RIntBinary),
+  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.modulo x y) =
+    (NativeBridge.binaryIntTo x).fmod (NativeBridge.binaryIntTo y)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.PosDef.Pos.sqrtrem_step
+
+NativeBridge.Incremental.BinarySqrtRem.sqrtrem_step_agrees
+
+目标：NativeBridge.Incremental.BinarySqrtRem.sqrtStepNative；范围：All source pair/mask values, including IsNeg. Arbitrary higher-order f/g with explicit operation correspondence hypotheses; no associativity or bit-constructor restriction.
+
+```lean
+∀ (f g : NativeBridge.RPositive → NativeBridge.RPositive) (F G : Nat → Nat),
+  (∀ (p : NativeBridge.RPositive), NativeBridge.positiveTo (f p) = F (NativeBridge.positiveTo p)) →
+    (∀ (p : NativeBridge.RPositive), NativeBridge.positiveTo (g p) = G (NativeBridge.positiveTo p)) →
+      ∀ (x : NativeBridge.Incremental.BinarySqrtRem.SqrtPair),
+        NativeBridge.Incremental.BinarySqrtRem.sqrtPairTo (Rocq.Corelib.BinNums.PosDef.Pos.sqrtrem_step f g x) =
+          NativeBridge.Incremental.BinarySqrtRem.sqrtStepNative F G
+            (NativeBridge.Incremental.BinarySqrtRem.sqrtPairTo x)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.PosDef.Pos.sqrtrem
+
+NativeBridge.Incremental.BinarySqrtRem.sqrtrem_agrees
+
+目标：NativeBridge.Incremental.BinarySqrtRem.sqrtRemNative；范围：All positive inputs; exact Nat.sqrt and nonnegative remainder n-sqrt(n)^2, with mask result proved to be some.
+
+```lean
+∀ (p : NativeBridge.RPositive),
+  NativeBridge.Incremental.BinarySqrtRem.sqrtPairTo (Rocq.Corelib.BinNums.PosDef.Pos.sqrtrem p) =
+    NativeBridge.Incremental.BinarySqrtRem.sqrtRemNative (NativeBridge.positiveTo p)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.IntDef.Z.sqrtrem
+
+NativeBridge.Incremental.BinarySqrtRem.z_sqrtrem_agrees
+
+目标：NativeBridge.Incremental.BinarySqrtRem.zSqrtRemNative；范围：All signed inputs; Nat.sqrt on Int.toNat, negative input returns (0,0), not a negative remainder.
+
+```lean
+∀ (z : NativeBridge.RIntBinary),
+  NativeBridge.Incremental.BinaryDivision.zPairTo (Rocq.Corelib.BinNums.IntDef.Z.sqrtrem z) =
+    NativeBridge.Incremental.BinarySqrtRem.zSqrtRemNative (NativeBridge.binaryIntTo z)
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.PosDef.Pos.sqrt
+
+NativeBridge.Incremental.BinaryPositiveSqrt.positive_sqrt_agrees
+
+目标：Nat.sqrt；范围：All positive inputs; independently checked against the actual PosDef source closure, which exports the sqrt root omitted by IntDef.
+
+```lean
+∀ (p : NativeBridge.RPositive),
+  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.sqrt p) = (NativeBridge.positiveTo p).sqrt
+```
+
+公理闭包：propext, Classical.choice, Quot.sound
+
+## Corelib.BinNums.PosDef.Pos.iter_op
+
+NativeBridge.Incremental.BinaryIterOp.iter_op_agrees
+
+目标：NativeBridge.Incremental.BinaryIterOp.iterOpNative；范围：All Sort-valued carriers and arbitrary binary operations; exact binary parenthesization, no associativity assumed.
+
+```lean
+∀ {A : Sort u} (op : A → A → A) (p : NativeBridge.RPositive) (a : A),
+  Rocq.Corelib.BinNums.PosDef.Pos.iter_op A op p a =
+    NativeBridge.Incremental.BinaryIterOp.iterOpNative op (NativeBridge.positiveTo p) a
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.PosDef.Pos.iter_op
+
+NativeBridge.Incremental.BinaryIterOp.iter_op_nat_add
+
+目标：Nat.mul；范围：Specialization to Nat.add: iter_op p a = positiveTo(p)*a. General arbitrary-operation certificate is registered separately; not another root.
+
+```lean
+∀ (p : NativeBridge.RPositive) (a : Nat),
+  Rocq.Corelib.BinNums.PosDef.Pos.iter_op Nat Nat.add p a = NativeBridge.positiveTo p * a
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.PosDef.Pos.iter_op
+
+NativeBridge.Incremental.BinaryIterOp.iter_op_nat_mul
+
+目标：Nat.pow；范围：Specialization to Nat.mul: iter_op p a = a^positiveTo(p). Not another root.
+
+```lean
+∀ (p : NativeBridge.RPositive) (a : Nat),
+  Rocq.Corelib.BinNums.PosDef.Pos.iter_op Nat Nat.mul p a = a ^ NativeBridge.positiveTo p
+```
+
+公理闭包：propext, Quot.sound
+
+## Corelib.BinNums.PosDef.Pos.iter_op
+
+NativeBridge.Incremental.BinaryIterOp.iter_op_foldr
+
+目标：List.foldr；范围：Any Type-valued carrier and associative operation: native foldr over replicate(p-1,a). Associativity is an explicit hypothesis, essential for this linear-fold target. Not another root.
+
+```lean
+∀ {A : Type u} (op : A → A → A),
+  (∀ (x y z : A), op (op x y) z = op x (op y z)) →
+    ∀ (p : NativeBridge.RPositive) (a : A),
+      Rocq.Corelib.BinNums.PosDef.Pos.iter_op A op p a =
+        List.foldr op a (List.replicate (NativeBridge.positiveTo p - 1) a)
+```
+
+公理闭包：propext, Quot.sound
+
 ## Corelib.ssr.ssrbool.canLR_in
 
 NativeBridge.Incremental.SSRBoolClosedStatements.RocqPending.Corelib.ssr.ssrbool.canLR_in.statement.correspondence

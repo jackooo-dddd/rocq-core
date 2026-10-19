@@ -12172,6 +12172,274 @@
     ]
   },
   {
+    "source": "Corelib.BinNums.NatDef.N.pos_div_eucl",
+    "profile": "BinaryDivision",
+    "certificate": "NativeBridge.Incremental.BinaryDivision.n_pos_div_eucl_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.BinaryDivision.nPosDivNative",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.BinaryDivision.nPosDivNative",
+    "scope": "All positive dividends and N divisors; divisor zero explicitly returns (2^log2(p)-1,p), not Nat.div/mod at zero.",
+    "native_expression": "fun p b => if b = 0 then (2 ^ p.log2 - 1, p) else (p / b, p % b)",
+    "type": "∀ (p : NativeBridge.RPositive) (b : NativeBridge.RNatBinary),\n  NativeBridge.Incremental.BinaryDivision.nPairTo (Rocq.Corelib.BinNums.NatDef.N.pos_div_eucl p b) =\n    NativeBridge.Incremental.BinaryDivision.nPosDivNative (NativeBridge.positiveTo p) (NativeBridge.binaryNatTo b)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.pos_div_eucl",
+    "profile": "BinaryDivision",
+    "certificate": "NativeBridge.Incremental.BinaryDivision.z_pos_div_eucl_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.BinaryDivision.zPosDivNative",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.BinaryDivision.zPosDivNative",
+    "scope": "All positive dividends and arbitrary signed divisors; positive divisor gives Int ediv/emod, nonpositive divisor has an explicit log2/power expression, not standard division.",
+    "native_expression": "fun p b => if 0 < b then (↑p / b, ↑p % b) else NativeBridge.Incremental.BinaryDivision.badPosDivNative p b",
+    "type": "∀ (p : NativeBridge.RPositive) (b : NativeBridge.RIntBinary),\n  NativeBridge.Incremental.BinaryDivision.zPairTo (Rocq.Corelib.BinNums.IntDef.Z.pos_div_eucl p b) =\n    NativeBridge.Incremental.BinaryDivision.zPosDivNative (NativeBridge.positiveTo p) (NativeBridge.binaryIntTo b)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.quotrem",
+    "profile": "BinaryDivision",
+    "certificate": "NativeBridge.Incremental.BinaryDivision.z_quotrem_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.BinaryDivision.quotremNative",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.BinaryDivision.quotremNative",
+    "scope": "All signed inputs including zero divisor; native Int.tdiv and Int.tmod pair.",
+    "native_expression": "fun x y => (x.tdiv y, x.tmod y)",
+    "type": "∀ (x y : NativeBridge.RIntBinary),\n  NativeBridge.Incremental.BinaryDivision.zPairTo (Rocq.Corelib.BinNums.IntDef.Z.quotrem x y) =\n    NativeBridge.Incremental.BinaryDivision.quotremNative (NativeBridge.binaryIntTo x) (NativeBridge.binaryIntTo y)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.quot",
+    "profile": "BinaryDivision",
+    "certificate": "NativeBridge.Incremental.BinaryDivision.z_quot_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Int.tdiv",
+    "target_class": "existing_api",
+    "native_target": "Int.tdiv",
+    "scope": "All signed inputs including zero divisor; truncation toward zero.",
+    "native_expression": "fun x x_1 =>\n  match x, x_1 with\n  | Int.ofNat m, Int.ofNat n => Int.ofNat (m / n)\n  | Int.ofNat m, Int.negSucc n => -Int.ofNat (m / n.succ)\n  | Int.negSucc m, Int.ofNat n => -Int.ofNat (m.succ / n)\n  | Int.negSucc m, Int.negSucc n => Int.ofNat (m.succ / n.succ)",
+    "type": "∀ (x y : NativeBridge.RIntBinary),\n  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.quot x y) =\n    (NativeBridge.binaryIntTo x).tdiv (NativeBridge.binaryIntTo y)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.rem",
+    "profile": "BinaryDivision",
+    "certificate": "NativeBridge.Incremental.BinaryDivision.z_rem_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Int.tmod",
+    "target_class": "existing_api",
+    "native_target": "Int.tmod",
+    "scope": "All signed inputs including zero divisor; remainder has dividend sign when nonzero.",
+    "native_expression": "fun x x_1 =>\n  match x, x_1 with\n  | Int.ofNat m, Int.ofNat n => Int.ofNat (m % n)\n  | Int.ofNat m, Int.negSucc n => Int.ofNat (m % n.succ)\n  | Int.negSucc m, Int.ofNat n => -Int.ofNat (m.succ % n)\n  | Int.negSucc m, Int.negSucc n => -Int.ofNat (m.succ % n.succ)",
+    "type": "∀ (x y : NativeBridge.RIntBinary),\n  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.rem x y) =\n    (NativeBridge.binaryIntTo x).tmod (NativeBridge.binaryIntTo y)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.div_eucl",
+    "profile": "BinaryDivision",
+    "certificate": "NativeBridge.Incremental.BinaryDivision.z_div_eucl_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.BinaryDivision.floorPairNative",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.BinaryDivision.floorPairNative",
+    "scope": "All signed inputs including zero divisor; native Int.fdiv and Int.fmod pair, distinct from Lean ediv/emod with a negative divisor.",
+    "native_expression": "fun a b => (a.fdiv b, a.fmod b)",
+    "type": "∀ (x y : NativeBridge.RIntBinary),\n  NativeBridge.Incremental.BinaryDivision.zPairTo (Rocq.Corelib.BinNums.IntDef.Z.div_eucl x y) =\n    NativeBridge.Incremental.BinaryDivision.floorPairNative (NativeBridge.binaryIntTo x) (NativeBridge.binaryIntTo y)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.div",
+    "profile": "BinaryDivision",
+    "certificate": "NativeBridge.Incremental.BinaryDivision.z_div_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Int.fdiv",
+    "target_class": "existing_api",
+    "native_target": "Int.fdiv",
+    "scope": "All signed inputs including zero divisor; floor division.",
+    "native_expression": "fun x x_1 =>\n  match x, x_1 with\n  | 0, x => 0\n  | Int.ofNat m, Int.ofNat n => Int.ofNat (m / n)\n  | Int.ofNat m.succ, Int.negSucc n => Int.negSucc (m / n.succ)\n  | Int.negSucc a, 0 => 0\n  | Int.negSucc m, Int.ofNat n.succ => Int.negSucc (m / n.succ)\n  | Int.negSucc m, Int.negSucc n => Int.ofNat (m.succ / n.succ)",
+    "type": "∀ (x y : NativeBridge.RIntBinary),\n  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.div x y) =\n    (NativeBridge.binaryIntTo x).fdiv (NativeBridge.binaryIntTo y)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.modulo",
+    "profile": "BinaryDivision",
+    "certificate": "NativeBridge.Incremental.BinaryDivision.z_modulo_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Int.fmod",
+    "target_class": "existing_api",
+    "native_target": "Int.fmod",
+    "scope": "All signed inputs including zero divisor; remainder follows divisor sign when nonzero.",
+    "native_expression": "fun x x_1 =>\n  match x, x_1 with\n  | 0, x => 0\n  | Int.ofNat m, Int.ofNat n => Int.ofNat (m % n)\n  | Int.ofNat m.succ, Int.negSucc n => Int.subNatNat (m % n.succ) n\n  | Int.negSucc m, Int.ofNat n => Int.subNatNat n (m % n).succ\n  | Int.negSucc m, Int.negSucc n => -Int.ofNat (m.succ % n.succ)",
+    "type": "∀ (x y : NativeBridge.RIntBinary),\n  NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.modulo x y) =\n    (NativeBridge.binaryIntTo x).fmod (NativeBridge.binaryIntTo y)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.sqrtrem_step",
+    "profile": "BinarySqrtRem",
+    "certificate": "NativeBridge.Incremental.BinarySqrtRem.sqrtrem_step_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.BinarySqrtRem.sqrtStepNative",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.BinarySqrtRem.sqrtStepNative",
+    "scope": "All source pair/mask values, including IsNeg. Arbitrary higher-order f/g with explicit operation correspondence hypotheses; no associativity or bit-constructor restriction.",
+    "native_expression": "fun f g x =>\n  match x.snd with\n  | none => (2 * x.fst, NativeBridge.Incremental.BinaryNatSub.checkedSub (g (f 1)) 4)\n  | some r =>\n    if r = 0 then (2 * x.fst, NativeBridge.Incremental.BinaryNatSub.checkedSub (g (f 1)) 4)\n    else\n      if 4 * x.fst + 1 ≤ g (f r) then\n        (2 * x.fst + 1, NativeBridge.Incremental.BinaryNatSub.checkedSub (g (f r)) (4 * x.fst + 1))\n      else (2 * x.fst, some (g (f r)))",
+    "type": "∀ (f g : NativeBridge.RPositive → NativeBridge.RPositive) (F G : Nat → Nat),\n  (∀ (p : NativeBridge.RPositive), NativeBridge.positiveTo (f p) = F (NativeBridge.positiveTo p)) →\n    (∀ (p : NativeBridge.RPositive), NativeBridge.positiveTo (g p) = G (NativeBridge.positiveTo p)) →\n      ∀ (x : NativeBridge.Incremental.BinarySqrtRem.SqrtPair),\n        NativeBridge.Incremental.BinarySqrtRem.sqrtPairTo (Rocq.Corelib.BinNums.PosDef.Pos.sqrtrem_step f g x) =\n          NativeBridge.Incremental.BinarySqrtRem.sqrtStepNative F G\n            (NativeBridge.Incremental.BinarySqrtRem.sqrtPairTo x)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.sqrtrem",
+    "profile": "BinarySqrtRem",
+    "certificate": "NativeBridge.Incremental.BinarySqrtRem.sqrtrem_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.BinarySqrtRem.sqrtRemNative",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.BinarySqrtRem.sqrtRemNative",
+    "scope": "All positive inputs; exact Nat.sqrt and nonnegative remainder n-sqrt(n)^2, with mask result proved to be some.",
+    "native_expression": "fun n => (n.sqrt, some (n - n.sqrt * n.sqrt))",
+    "type": "∀ (p : NativeBridge.RPositive),\n  NativeBridge.Incremental.BinarySqrtRem.sqrtPairTo (Rocq.Corelib.BinNums.PosDef.Pos.sqrtrem p) =\n    NativeBridge.Incremental.BinarySqrtRem.sqrtRemNative (NativeBridge.positiveTo p)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.IntDef.Z.sqrtrem",
+    "profile": "BinarySqrtRem",
+    "certificate": "NativeBridge.Incremental.BinarySqrtRem.z_sqrtrem_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.BinarySqrtRem.zSqrtRemNative",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.BinarySqrtRem.zSqrtRemNative",
+    "scope": "All signed inputs; Nat.sqrt on Int.toNat, negative input returns (0,0), not a negative remainder.",
+    "native_expression": "fun z => (Int.ofNat z.toNat.sqrt, Int.ofNat (z.toNat - z.toNat.sqrt * z.toNat.sqrt))",
+    "type": "∀ (z : NativeBridge.RIntBinary),\n  NativeBridge.Incremental.BinaryDivision.zPairTo (Rocq.Corelib.BinNums.IntDef.Z.sqrtrem z) =\n    NativeBridge.Incremental.BinarySqrtRem.zSqrtRemNative (NativeBridge.binaryIntTo z)",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.sqrt",
+    "profile": "BinaryPositiveSqrt",
+    "certificate": "NativeBridge.Incremental.BinaryPositiveSqrt.positive_sqrt_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Nat.sqrt",
+    "target_class": "existing_api",
+    "native_target": "Nat.sqrt",
+    "scope": "All positive inputs; independently checked against the actual PosDef source closure, which exports the sqrt root omitted by IntDef.",
+    "native_expression": "fun n => if n ≤ 1 then n else Nat.sqrt.iter n (1 <<< (n.log2 / 2 + 1))",
+    "type": "∀ (p : NativeBridge.RPositive),\n  NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.sqrt p) = (NativeBridge.positiveTo p).sqrt",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.iter_op",
+    "profile": "BinaryIterOp",
+    "certificate": "NativeBridge.Incremental.BinaryIterOp.iter_op_agrees",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "NativeBridge.Incremental.BinaryIterOp.iterOpNative",
+    "target_class": "native_expression",
+    "native_target": "NativeBridge.Incremental.BinaryIterOp.iterOpNative",
+    "scope": "All Sort-valued carriers and arbitrary binary operations; exact binary parenthesization, no associativity assumed.",
+    "native_expression": "fun {A} op n a => NativeBridge.Incremental.BinaryIterOp.iterOpNative._unary op ⟨n, a⟩",
+    "type": "∀ {A : Sort u} (op : A → A → A) (p : NativeBridge.RPositive) (a : A),\n  Rocq.Corelib.BinNums.PosDef.Pos.iter_op A op p a =\n    NativeBridge.Incremental.BinaryIterOp.iterOpNative op (NativeBridge.positiveTo p) a",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.iter_op",
+    "profile": "BinaryIterOp",
+    "certificate": "NativeBridge.Incremental.BinaryIterOp.iter_op_nat_add",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Nat.mul",
+    "target_class": "existing_api",
+    "native_target": "Nat.mul",
+    "scope": "Specialization to Nat.add: iter_op p a = positiveTo(p)*a. General arbitrary-operation certificate is registered separately; not another root.",
+    "native_expression": "fun x x_1 => Nat.brecOn (motive := fun x => Nat → Nat) x_1 Nat.mul._f x",
+    "type": "∀ (p : NativeBridge.RPositive) (a : Nat),\n  Rocq.Corelib.BinNums.PosDef.Pos.iter_op Nat Nat.add p a = NativeBridge.positiveTo p * a",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.iter_op",
+    "profile": "BinaryIterOp",
+    "certificate": "NativeBridge.Incremental.BinaryIterOp.iter_op_nat_mul",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "Nat.pow",
+    "target_class": "existing_api",
+    "native_target": "Nat.pow",
+    "scope": "Specialization to Nat.mul: iter_op p a = a^positiveTo(p). Not another root.",
+    "native_expression": "fun m x => Nat.brecOn x (Nat.pow._f m)",
+    "type": "∀ (p : NativeBridge.RPositive) (a : Nat),\n  Rocq.Corelib.BinNums.PosDef.Pos.iter_op Nat Nat.mul p a = a ^ NativeBridge.positiveTo p",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
+    "source": "Corelib.BinNums.PosDef.Pos.iter_op",
+    "profile": "BinaryIterOp",
+    "certificate": "NativeBridge.Incremental.BinaryIterOp.iter_op_foldr",
+    "kind": "OPERATION_CORRESPONDENCE",
+    "target": "List.foldr",
+    "target_class": "existing_api",
+    "native_target": "List.foldr",
+    "scope": "Any Type-valued carrier and associative operation: native foldr over replicate(p-1,a). Associativity is an explicit hypothesis, essential for this linear-fold target. Not another root.",
+    "native_expression": "fun {α} {β} f init x => List.brecOn x (List.foldr._f f init)",
+    "type": "∀ {A : Type u} (op : A → A → A),\n  (∀ (x y z : A), op (op x y) z = op x (op y z)) →\n    ∀ (p : NativeBridge.RPositive) (a : A),\n      Rocq.Corelib.BinNums.PosDef.Pos.iter_op A op p a =\n        List.foldr op a (List.replicate (NativeBridge.positiveTo p - 1) a)",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ]
+  },
+  {
     "source": "Corelib.ssr.ssrbool.canLR_in",
     "profile": "SSRBoolClosedStatements",
     "certificate": "NativeBridge.Incremental.SSRBoolClosedStatements.RocqPending.Corelib.ssr.ssrbool.canLR_in.statement.correspondence",

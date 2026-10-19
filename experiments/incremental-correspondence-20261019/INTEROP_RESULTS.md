@@ -1,6 +1,6 @@
 # 跨模块导入与 Mathlib 消费结果
 
-当前共同导入验收通过：84 个含增量覆盖证书的 profile、1392 份覆盖证书，连同原陈述证明和闭合包装函数，共 1877 个导出入口，在同一 Lean 文件中导入并审计。复制依赖声明 12493 个；这些副本不增加 correspondence 覆盖数量。
+当前共同导入验收通过：88 个含增量覆盖证书的 profile、1408 份覆盖证书，连同原陈述证明和闭合包装函数，共 1893 个导出入口，在同一 Lean 文件中导入并审计。复制依赖声明 13257 个；这些副本不增加 correspondence 覆盖数量。
 
 ## 具体可以怎样使用
 
@@ -30,7 +30,7 @@ Lean 版本 4.33.1。复用远程已安装的 Mathlib，提交为 `0df444a360eaa
 - `interop/pack_profiles.py`、`check_consumer.py`：三个独立模块及 Mathlib 消费例。
 - `interop/check_rejection.py`：新公理拒绝测试。
 - `reports/interop/all/import-all-validation.json`：共同导入证据。
-- `reports/interop/coverage-manifest.json`：当前 1353 份覆盖证书的固定清单。
+- `reports/interop/coverage-manifest.json`：当前 1408 份覆盖证书的固定清单。
 - `reports/interop/consumer-validation.json`：实际 Mathlib 提交、工具链和消费结果。
 
 在工作区依次执行 pack_all.py、check_all.py，以及 pack_profiles.py、check_consumer.py、check_rejection.py。编译缓存和生成的打包源码位于 .work/interop，仅远程保存。脚本需要先完成原 profile 编译；它们不下载依赖。
@@ -72,3 +72,5 @@ opaque 支持的独立验证见 interop/check_opaque.py 与 reports/interop/opaq
 第三十三批加入 CRelationOrder 后，81 个覆盖 profile、1360 份证书共同导入通过；1844 个导出入口、12229 个依赖声明。新增目标涵盖保留 Type 数据的偏序表示，以及 Lean Equivalence Eq/Iff。该批共同导入包括既有 Mathlib 导入检查，未重跑旧消费例。
 
 第三十四至三十六批：新增 CMorphismData、BinaryBitwise、BinaryIntBitwise。后者实际导入 Mathlib.Data.Int.Bitwise，证明 Z.land/lor/lxor 与现成 Int API 对应，另有四个负数例子；通过 Nat.and_comm 证明机械 N.land 的交换律。共同导入为 84 个覆盖 profile、1392 份证书。编译使用相同 Mathlib 提交；旧消费例未在本批重新编译。新例子与交换律在原 profile 中检查，未额外注册为 Corelib 覆盖根。
+
+第三十七至三十九批：新增 BinaryDivision、BinarySqrtRem、BinaryPositiveSqrt、BinaryIterOp。88 个覆盖 profile、1408 份证书共同导入通过，1893 个入口、13257 个副本。额外导入 Init.Data.Nat.Log2 / Sqrt.Lemmas 保持原生声明身份；未重跑旧 Mathlib 消费例。

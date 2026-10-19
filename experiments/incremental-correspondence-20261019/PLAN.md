@@ -181,3 +181,11 @@ SSR Bool 的 314 个依赖/原陈述目标已有闭合证明，覆盖 271 / 275 
 93 个 profile 有当前验证记录，84 个覆盖 profile / 1392 份证书共同导入通过。四个负数输入例子与从 Nat.and_comm 推回机械 N.land 的交换律均实际编译。详见 [结果](BATCH34_36_RESULTS.md)。
 
 下一步：IntDef 剩余 8 项（div、div_eucl、modulo、pos_div_eucl、quot、quotrem、rem、sqrtrem），先分清向下取整和向零取整，再证明正数除法核心及有符号组合；继续复用既有数值 Iso、比较、减法和递归不变量。CMorphisms 剩余 54 项，其中部分透明外层仍依赖 opaque_data 内部计算，不将这种外层误判为已经能证明原生实现等式。
+
+## 第三十七至三十九批：二进制运算模块完成
+
+新增 13 根、16 份证书，累计 1664 / 2180。除法 8 根、平方根 4 根、iter_op 1 根；后者分别提供无条件二进制括号对应、结合律下 foldr 对应，以及 Nat.add/mul 特例。BinNums.PosDef 36/36、NatDef 11/11、IntDef 39/39。
+
+97 个 profile 有当前验证记录；88 个覆盖 profile、1408 份证书共同导入通过。详见 [结果](BATCH37_39_RESULTS.md)。
+
+下一步按依赖推进 Numbers.BinNums 的 6 个依赖消去器和 6 个归纳陈述：先建立完整原生递归目标，再证明实际源消去器计算相符，最后原生化归纳陈述。其余数值表示和 opaque 数据计算缺口继续保留，不能从签名猜测实现等式。

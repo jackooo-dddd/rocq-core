@@ -428,3 +428,25 @@ flowchart TD
 ```
 
 按位运算的子目标都已证明。后三个 profile 的 Lean 导入边由 verify.py 记录，图中其余边表示实际用到的定理依赖。数学库代码沿用已安装版本，指纹在验证记录中。
+
+## 第三十七至三十九批：二进制除法／平方根／迭代
+
+```mermaid
+flowchart TD
+  BinaryNatSub --> BinaryDivision
+  BinaryPower --> BinaryDivision
+  BinaryDivision --> BinarySqrtRem
+  NativeSqrtBounds[Nat.sqrt lower and upper bounds] --> BinarySqrtRem
+  BinaryMask --> BinaryPositiveSqrt
+  SharedProofText[generate_positive_sqrt.py] --> BinaryPositiveSqrt
+  BinarySqrtRem -. shared proof text independently checked .-> SharedProofText
+  BinaryPower --> BinaryIterOp
+  Associativity[explicit associativity hypothesis] --> FoldrCorrespondence
+  BinaryIterOp --> FoldrCorrespondence
+  BinaryDivision --> ImportAll39[88 profiles / 1408 certificates]
+  BinarySqrtRem --> ImportAll39
+  BinaryPositiveSqrt --> ImportAll39
+  BinaryIterOp --> ImportAll39
+```
+
+IntDef 与 PosDef 的源闭包分别验证，统一导入经命名空间打包。下一依赖节点为 Numbers.BinNums 消去器：positive/N/Z 类型 Iso → 原生依赖递归目标 → 计算对应 → 原生归纳陈述。
