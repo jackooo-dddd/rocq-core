@@ -4,7 +4,7 @@ W=Path(__file__).resolve().parent;R=W.parents[1];D=W/'reports'
 B=R/'experiments/mechanical-correspondence-20261019/reports'
 specs=json.loads((W/'certificates.json').read_text())
 validation=json.loads((D/'validation.json').read_text())
-assert {r['profile'] for r in validation}=={'SSRBoolPackaging','SSRBoolRemainingStatements','SSRBoolData','SSRBoolLogic','SSRBoolExtendedStatements','SSRFunOpacity','SSRFunData','SSRFunConditions','SSRFunNormalization','SSRFunPredicates','SSRFunStatements','SSRFunOption','SSRNonProp','SpecifWitnesses','SpecifConditionalNormalization','SpecifClosedStatements','SpecifOperations','SpecifChoice','SpecifEqualityElimination','LogicWitnesses','LogicNormalization','LogicStatements','LogicElimination','LogicExistsElimination','LogicProofElimination','DatatypeNormalization','DatatypeQuantifiers','DatatypeStatements','DatatypeSpecs','BinaryArithmetic','BinaryNatSub','BinaryMask','BinaryMaskStatements','ListBridge','ListStatements','BinaryOrder','BinaryInt','PeanoBridge','PeanoStatements','NatArithmetic','NatIterators','NatGcd','NumericSigned','NumericMathlib','NumericWrite','SpecifNormalization','SpecifStatements','Basics','SSR','Iteration','Registry','SSRProperties','SSRBool','SSRBoolStatements','NumericRead','DecimalOperations','HexadecimalOperations','WellFounded','DependentElimination','PairRecursion','DependentStatements','DatatypeElimination','EqualityTransport','BooleanEquality','RelationDefinitions','RelationClasses','RelationClassStatements','VariadicPredicates','VariadicStatements','RelationConditions','Morphisms','MorphismStatements','EquivalenceBridge','EquivalenceStatements','MorphismsProp','SetoidBridge'}
+assert {r['profile'] for r in validation}=={'SSRBoolClosedOperations','SSRBoolWitnesses','SSRBoolClosedStatements','SSRBoolConditionalNormalization','SSRBoolPackaging','SSRBoolRemainingStatements','SSRBoolData','SSRBoolLogic','SSRBoolExtendedStatements','SSRFunOpacity','SSRFunData','SSRFunConditions','SSRFunNormalization','SSRFunPredicates','SSRFunStatements','SSRFunOption','SSRNonProp','SpecifWitnesses','SpecifConditionalNormalization','SpecifClosedStatements','SpecifOperations','SpecifChoice','SpecifEqualityElimination','LogicWitnesses','LogicNormalization','LogicStatements','LogicElimination','LogicExistsElimination','LogicProofElimination','DatatypeNormalization','DatatypeQuantifiers','DatatypeStatements','DatatypeSpecs','BinaryArithmetic','BinaryNatSub','BinaryMask','BinaryMaskStatements','ListBridge','ListStatements','BinaryOrder','BinaryInt','PeanoBridge','PeanoStatements','NatArithmetic','NatIterators','NatGcd','NumericSigned','NumericMathlib','NumericWrite','SpecifNormalization','SpecifStatements','Basics','SSR','Iteration','Registry','SSRProperties','SSRBool','SSRBoolStatements','NumericRead','DecimalOperations','HexadecimalOperations','WellFounded','DependentElimination','PairRecursion','DependentStatements','DatatypeElimination','EqualityTransport','BooleanEquality','RelationDefinitions','RelationClasses','RelationClassStatements','VariadicPredicates','VariadicStatements','RelationConditions','Morphisms','MorphismStatements','EquivalenceBridge','EquivalenceStatements','MorphismsProp','SetoidBridge'}
 audits={}
 for r in validation:
  assert r['exit']==0 and r['audit_present'],r
@@ -16,6 +16,7 @@ for r in validation:
 base=list(csv.DictReader((B/'CORELIB_LEDGER.csv').open()))
 rows={r['source']:dict(r,baseline_bridge_status=r['bridge_status'],evidence_origin='inherited baseline',new_certificates='') for r in base}
 automatic_groups=[
+ ('SSRBoolClosedStatements','ssrbool-closed-statement-selection.json','ssrbool-closed-statement-candidates.json',73),
  ('SSRBoolRemainingStatements','ssrbool-remaining-statement-selection.json','ssrbool-remaining-statement-candidates.json',29),
  ('SSRBoolExtendedStatements','ssrbool-extended-statement-selection.json','ssrbool-extended-statement-candidates.json',75),
  ('SSRFunStatements','ssrfun-statement-selection.json','ssrfun-statement-candidates.json',50),
@@ -71,6 +72,17 @@ for sp in specs:
  expected=logic_book[sp['source']]
  sp['condition_discharges']=[dict(source=h,proof='NativeBridge.Incremental.SpecifWitnesses.closed.'+expected['obligation_targets'][h]) for h in expected['pending_hypotheses']]
  sp['scope']='all explicit prerequisites discharged; source-free native statement body including proof terms and NativeBridge aliases; source universe parameters preserved'
+# SSRBool statements close every source prerequisite before normalizing.
+ssrb_witnesses={r['target']:r for r in json.loads((W/'ssrbool-witness-selection.json').read_text())}
+for sp in specs:
+ if sp['profile']!='SSRBoolClosedStatements':continue
+ source_target=rows[sp['source']]['target']
+ if source_target in ssrb_witnesses:
+  sp['original_statement_proof']=ssrb_witnesses[source_target]['closed']
+ sp['closed_wrapper']='NativeBridge.Incremental.SSRBoolClosedStatements.closed.'+source_target
+ expected=logic_book[sp['source']]
+ sp['condition_discharges']=[dict(source=h,proof='NativeBridge.Incremental.SSRBoolWitnesses.closed.'+expected['obligation_targets'][h]) for h in expected['pending_hypotheses']]
+ sp['scope']='all explicit prerequisites discharged; source-free native statement body including NativeBridge alias expansion; source universes preserved'
 predicate_records=[json.loads(l.split('NATIVE_PREDICATE ',1)[1]) for l in (D/'SSRFunPredicates.log').read_text().splitlines() if 'NATIVE_PREDICATE ' in l]
 assert len(predicate_records)==27 and all(not r['remaining_source_symbols'] for r in predicate_records)
 predicate_by_cert={r['certificate']:r for r in predicate_records}
@@ -99,13 +111,16 @@ for item in [condition_book]+condition_book.get('additional_inputs',[]):
  assert hashlib.sha256(path.read_bytes()).hexdigest()==item['report_sha256']
  assert hashlib.sha256((R/item['source_ir']).read_bytes()).hexdigest()==item['source_ir_sha256']
  assert json.loads(path.read_text())['input_sha256']==item['source_ir_sha256']
- condition_reports.append({r['source']:r for r in json.loads(path.read_text())['results']})
+ raw_results=json.loads(path.read_text())['results']
+ normalized={r['source'].replace('/','.'):r for r in raw_results}
+ assert len(normalized)==len(raw_results),('source normalization collision',path)
+ condition_reports.append(normalized)
 for source,expected in condition_inputs.items():
  matches=[]
  for report in condition_reports:
   if source not in report:continue
   actual=report[source];pending=actual['pending_hypotheses']
-  matches.append(dict(target=actual['target'],pending_hypotheses=pending,obligation_targets={h:report[h]['target'] for h in pending})==expected)
+  matches.append(dict(target=actual['target'],pending_hypotheses=pending,obligation_targets={h:report[h.replace('/','.')]['target'] for h in pending})==expected)
  assert any(matches),('condition input metadata mismatch',source)
 for sp in specs:
  cert=audits[sp['profile']][sp['certificate']]
@@ -220,7 +235,7 @@ summary={'alias_regression_profiles':45,'alias_regression_lost':0,'alias_regress
  'closed_obligation_witnesses':len({w['name'] for r in resolved_conditions for w in r['witnesses']}),
  'axiom_free_closed_witnesses':len({w['name'] for r in resolved_conditions for w in r['witnesses'] if not w['axioms']}),
  'standard_axiom_closed_witnesses':len({w['name'] for r in resolved_conditions for w in r['witnesses'] if w['axioms']}),
- 'full_sort_type_certificates_added':10,'completion':'twenty-five incremental batches plus P7 coexistence; overall plan remains incomplete',
+ 'full_sort_type_certificates_added':10,'completion':'twenty-six incremental batches plus P7 coexistence; overall plan remains incomplete',
  'explicit_target_classes_since_batch_3':dict(collections.Counter(sp['target_class'] for sp in specs if 'target_class' in sp))}
 interop_path=D/'interop/all/import-all-validation.json'
 if interop_path.exists():

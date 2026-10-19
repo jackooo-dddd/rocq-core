@@ -323,3 +323,22 @@ flowchart TD
 ```
 
 Unit 只表示固定外部谓词/qualifier 参数后的包装；外部参数未被擦除。每次量词替换都携带 kernel 可检查的 iff/propext 证明。
+
+## 第二十六批：SSR Bool 条件与对应
+
+```mermaid
+graph TD
+  A[275 个前置声明] --> B[271 个闭合证明]
+  A --> X[4 个未证前置声明]
+  B --> C[124 根的全部条件齐备]
+  C --> D[73 个原生陈述 iff]
+  C --> E[10 个原生运算对应]
+  C --> F[41 根待建立运算对应]
+  G[43 个原陈述证明] --> D
+  H[Bool Option Subtype 双射桥接] --> D
+  H --> E
+  D --> I[1228 份累计证书共同导入]
+  E --> I
+```
+
+精确依赖及逐根状态见 reports/ssrbool-condition-dag.json。314 个证明=271 个前置声明+43 个新增原陈述；不把证明数量当作新增对应根数。
