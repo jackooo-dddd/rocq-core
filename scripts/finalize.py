@@ -11,13 +11,13 @@ before=read(B/'summary.json');after=read(B/'improved/summary.json')
 assert (before['complete'],before['pending'],before['blocked'])==(574,75,190)
 assert (after['complete'],after['pending'],after['blocked'])==(569,81,189)
 notes={
-'proof-cache-trial':'相同完整上下文中的证明子项复用：没有增加通过项，未保留。',
-'normalization-trial':'抽取前 β/ι/ζ 化简：源端结构 roundtrip 失败；下面计数只是诊断，不能计为认证结果，拒绝。',
-'binder-context-trial':'使用重写后的绑定类型：增加 1 项带条件陈述，另 5 项新增条件；候选核心。',
-'minimal-obligations-trial':'缩减义务上下文并复用同型条件：3 项原可检查陈述变为受阻，拒绝。',
-'minimal-binder-trial':'缩减上下文与绑定修补组合：2 项越过抽取阶段但仍被依赖阻塞；仍有上述 3 项退步，拒绝。',
-'binder-statement-cache-trial':'同型条件复用 + 绑定修补：没有超过单独绑定修补，未保留额外缓存。',
-'candidate-final':'最终隔离候选：绑定上下文修补 + 源端详细错误 + 可选 Lean 线程数。'}
+'proof-cache-trial':'Reuse of proof subterms in the same complete context: no pass terms added, no retention.',
+'normalization-trial':'Simplification of β/ι/ζ before extraction: source structure roundtrip failed; the following count is only for diagnosis and cannot be counted as authentication results, so it is rejected.',
+'binder-context-trial':'Use the rewritten binding type: add item 1 with conditional statement, and add item 5 with new conditions; candidate core.',
+'minimal-obligations-trial':'Reduce the obligation context and reuse the same type of conditions: 3 item originally checkable statement becomes blocked and rejected.',
+'minimal-binder-trial':'Reduce context and binding patch combination: 2 item passed the extraction stage but is still blocked by dependencies; there is still the above 3 item that is regressed and rejected.',
+'binder-statement-cache-trial':'Same-type conditional reuse + binding patching: no more than separate binding patching, no additional cache retained.',
+'candidate-final':'Final quarantine candidate: Binding context patching + source-side verbose errors + optional Lean thread count.'}
 trials=[]
 for name,note in notes.items():
  d=B/'experiments'/name;r=read(d/'translation_report.json')
@@ -35,13 +35,13 @@ suite=read(B/'experiments/statement-suite-result.json');assert suite['exit']==0
 patch=subprocess.check_output(['git','diff','--','rocq/exporter/src/r2l_export.ml','tools/rocq2lean.py'],cwd=B/'translator',text=True)
 (B/'candidate.patch').write_text(patch)
 rules=[
-('SProp / irrelevant 绑定',40,40,'需定义 SProp 的表示及消去限制，不能删除拒绝检查。','未采用新的表示策略。'),
-('证明抽取与依赖计算',52,52,'构造子证明作为依赖索引时，抽取后分支类型与消去器要求的构造子索引不同。需保持索引一致；补充前提不能恢复源端转换。','测试缓存、化简、上下文缩减和绑定修补；保留逐项实际错误。'),
-('quality / sort 多态导出',22,22,'MetaRocq 引用前端缺少 quality 多态上下文的完整表示及传递；还未进入 Lean。','固定工具链下仍受阻。'),
-('模板归纳类型的 Prop 实例',20,18,'需统一处理 Prop 参数的类型、构造子、recursor、投影和调用点；可能涉及 Sort 泛化或 lift 表示。','2 项改为依赖受阻，仍未成功；未更改表示策略。'),
-('宇宙求解及一致性',2,1,'bool_eq_rec 仍有 proof-local 宇宙约束冲突；不能放松源宇宙一致性检查。','eq_existT_curried_congr 成为带条件的可检查陈述。'),
-('抽取后的证明递归',4,4,'需重建结构递归依据或产生可检查的良基终止性义务，不能假定终止性。','保持受阻，没有生成原库证明。'),
-('依赖阻塞',50,52,'逐项报告递归追踪上游根因；先修上游，再重测。','增加包含失败阶段变化，不是新增 2 个失败根声明。')]
+('SProp / irrelevant binding',40,40,'The representation and elimination restrictions of SProp need to be defined, and the rejection check cannot be deleted.','No new presentation strategies were adopted.'),
+('Proof Extraction and Dependency Computation',52,52,'When the constructor proof is used as a dependent index, the branch type after extraction is different from the constructor index required by the eliminator. The index needs to be kept consistent; the supplementary premise cannot restore the source conversion.','Test caching, reduction, context reduction, and binding patching; keep case-by-case actual errors.'),
+('quality / sort polymorphic export',22,22,'The MetaRocq reference front-end lacks the complete representation and delivery of the quality polymorphic context; Lean has not yet been entered.','Fixed toolchain still blocked.'),
+('Prop instance of template inductive type',20,18,'The type, constructor, recursor, projection and call point of Prop parameters need to be processed uniformly; Sort generalization or lift representation may be involved.','The 2 item was changed to dependency blocked, but still failed; the representation strategy was not changed.'),
+('Universe solution and consistency',2,1,'bool_eq_rec still has proof-local universe constraint conflict; source universe consistency check cannot be relaxed.','eq_existT_curried_congr becomes a conditionally checkable statement.'),
+('Proof recursion after extraction',4,4,'Terminability cannot be assumed if a structural recursive basis needs to be reconstructed or a checkable well-founded termination obligation arises.','Remain blocked, no original library proof is generated.'),
+('Dependency blocking',50,52,'Item-by-item reporting recursively tracks upstream root causes; fix upstream first, then retest.','The addition includes failure stage changes, instead of adding 2 failure root statements.')]
 save(B/'rule-assessment.json',[dict(rule=r,before=x,after=y,missing=m,action=a) for r,x,y,m,a in rules])
 candidate=read(B/'experiments/candidate-final/translation_report.json')
 h=next(json.loads(l) for l in (B/'experiments/candidate-final/source.ndjson').open() if json.loads(l).get('kind')=='header')
@@ -75,54 +75,19 @@ for name in ['rocq-core-by-file-20261018.log','rocq-core-repair-views.log','core
  p=Path.home()/'logs'/name
  if p.exists():shutil.copy2(p,ld/name)
 shutil.copy2(B/'translator/reports/statement_only/test_statement.json',B/'experiments/test_statement.json')
-intro="""范围：此前基础模块的 24 个 Corelib 文件、839 项声明，不是所有已安装 Corelib 文件。
-原项目未修改，未提交或推送。
-基线：574 无额外条件，75 带条件，190 受阻。
-隔离候选：569 无额外条件，81 带条件，189 受阻。
-可检查项由 649 增至 650；新增的只是定理陈述 eq_existT_curried_congr，仍有 3 个显式前提，并未得到定理证明。
-普通数据类型和函数没有新增成功项。另 5 项原本无额外条件的定理陈述新增条件，因此这是有代价的候选，未集成原项目。
-
-目录：
-index.html / improved/index.html：基线 / 候选逐文件入口。
-rule-improvements.html / .txt：六组实验、最终候选、逐项变化、后续缺失能力。
-Corelib/.../X.v：源文件副本。
-Corelib/.../X.lean：实际翻译入口，用 #rocq2lean_import 生成内核声明。
-Corelib/.../X.kernel.txt：实际 Lean #print 定义。
-Corelib/.../X.report.html / .txt：每项成功/失败与翻译过程。
-Corelib/.../X.json：模块完整机器可读结果。
-Corelib/.../X/records/0000.json：单项完整源 IR、目标 AST、全部尝试与条件。
-Corelib/.../X/：导出、roundtrip、consumer、audit、日志和 olean。
-improved/Corelib/...：同结构候选结果。
-translator/：基线 3c79203 加未提交候选；candidate.patch 是精确代码差异。
-experiments/：各组试验、差异和测试证据。
-source-extraction-errors.json：52 项抽取失败的实际检查阶段与类型错误。
-artifact-validation.json：产物和检查结果。
-
-使用：
-每个 .lean 带自己的依赖闭包，应作为独立单元使用，不可直接把 24 个文件同时 import。
-.lean 是翻译器的可执行入口，不是脱离翻译器的手写源码；可读定义在 kernel.txt 和逐项报告。
-Equality.lean 明确报导出失败。Ltac、Notations、Tauto 没有计入内核声明，不代表策略/记号已经翻译。
-定理只输出 .statement : Prop；pending 是显式假设，不能当作已有证明或无条件结论。
-过程来自真实 IR、tier 尝试与内核输出；AST 节点映射为静态说明，不冒充逐指令执行轨迹。
-
-验证：
-Lean 4.33.1 / Rocq 9.3.0。20 个有可导出声明的模块在基线与候选下分别通过源端 roundtrip、Lean consumer、未修改的独立 audit、内核输出及入口编译。
-statement 套件通过：包括证明变化不影响输出、确定性、陈述篡改负例及拒绝 sorry/axiom 的提交负例。
-本轮未重跑完整 4,474 个 Prosa 保护根；保护清单未改。候选代码保持隔离。
-复现脚本位于 scripts/，读取现有冻结 census 输入及已安装工具链；所有本轮输出在本目录。
-"""
+intro='Scope: 24 Corelib files, 839 declarations of previous base modules, not all installed Corelib files.\nThe original project has not been modified, submitted or pushed.\nBaseline: 574 without additional conditions, 75 with conditions, 190 blocked.\nIsolation candidates: 569 without additional conditions, 81 with conditions, 189 blocked.\nThe checkable items have been increased from 649 to 650; the new addition is only the theorem statement eq_existT_curried_congr, there are still 3 explicit premises, and no theorem proof has been obtained.\nThere are no new success items for common data types and functions. In addition, the theorem statement 5 that originally had no additional conditions has a new condition, so it is a costly candidate and has not been integrated into the original project.\n\nDirectory:\nindex.html/improved/index.html: baseline/candidate file-by-file entry.\nrule-improvements.html / .txt: six groups of experiments, final candidates, item-by-item changes, and subsequent missing abilities.\nCorelib/.../X.v: Copy of source file.\nCorelib/.../X.lean: Actual translation entry, use #rocq2lean_import to generate kernel declaration.\nCorelib/.../X.kernel.txt: actual Lean #print definition.\nCorelib/.../X.report.html / .txt: Each success/failure and translation process.\nCorelib/.../X.json: Complete machine-readable result of the module.\nCorelib/.../X/records/0000.json: Single complete source IR, target AST, all attempts and conditions.\nCorelib/.../X/: export, roundtrip, consumer, audit, log and olean.\nimproved/Corelib/...: Candidate results with the same structure.\ntranslator/: Baseline 3c79203 plus uncommitted candidate; candidate.patch is the exact code difference.\nexperiments/: Groups of trials, differences and test evidence.\nsource-extraction-errors.json: 52 item extraction failed with actual check phase and type error.\nartifact-validation.json: product and inspection results.\n\nUse:\nEach .lean has its own dependency closure and should be used as an independent unit. 24 files cannot be directly import at the same time.\n.lean is the executable entry of the translator, not the handwritten source code separated from the translator; readable definition is in kernel.txt and itemized report.\nEquality.lean explicitly reports export failure. Ltac, Notations, and Tauto are not included in the kernel declaration, which does not mean that the strategy/notation has been translated.\nThe theorem only outputs .statement : Prop; pending is an explicit assumption and cannot be regarded as a proven proof or unconditional conclusion.\nThe process comes from real IR, tier attempts and kernel output; AST node mapping is a static description and does not pretend to be an instruction-by-instruction execution track.\n\nVerification:\nLean 4.33.1 / Rocq 9.3.0. 20 modules with exportable declarations were compiled through source roundtrip, Lean consumer, unmodified standalone audit, kernel output and entry under baseline and candidate respectively.\nThe statement suite passed: including proof that changes do not affect the output, certainty, statement tampering negative examples, and rejecting the submitted negative examples of sorry/axiom.\nThis round has not re-run the complete 4, 474 and Prosa protection roots; the protection list has not been changed. Candidate code remains isolated.\nThe reproduction script is located in scripts/ and reads the existing frozen census input and installed tool chains; all current round output is in this directory.\n'
 (B/'README.txt').write_text(intro)
-body='<h1>核心规则修补：实际结果与代价</h1><p><a href="index.html">基线</a> · <a href="improved/index.html">候选</a> · <a href="candidate.patch">补丁</a> · <a href="README.txt">使用说明</a></p><pre>'+esc(intro.split('目录：')[0])+'</pre>'
-body+='<h2>六组试验与最终候选</h2><table><tr><th>试验</th><th>无条件</th><th>带条件</th><th>受阻</th><th>检查</th><th>解释</th></tr>'
+body='<h1>Core Rules Fixes: Real Results and Costs</h1><p><a href="index.html">baseline</a> · <a href="improved/index.html">candidate</a> · <a href="candidate.patch">patch</a> · <a href="README.txt">Instructions for use</a></p><pre>'+esc(intro.split('Directory:')[0])+'</pre>'
+body+='<h2>Six sets of trials and final candidates</h2><table><tr><th>test</th><th>unconditionally</th><th>With conditions</th><th>Blocked</th><th>Check</th><th>explain</th></tr>'
 for t in trials:body+='<tr>'+''.join('<td>'+esc(t[k])+'</td>' for k in ['experiment','complete','pending','blocked','validation','note'])+'</tr>'
-body+='</table><p>除 normalization-trial 的源端 roundtrip 失败外，其余试验均通过三项检查。化简试验的计数仅作诊断。中途线程资源错误与重试日志均保留。</p><h2>全部根声明状态变化</h2><p>8 项：1 项新增可检查、5 项新增条件、2 项改变受阻阶段。</p><pre>'+esc(json.dumps(deltas,ensure_ascii=False,indent=2))+'</pre>'
-body+='<h2>逐类规则：做了什么、还缺什么</h2><table><tr><th>规则类</th><th>基线受阻</th><th>候选受阻</th><th>缺少能力</th><th>本轮行动</th></tr>'
+body+='</table><p>Except for the source roundtrip of normalization-trial that failed, the remaining tests passed all three checks. Counts for simplified tests are for diagnostic purposes only. Midway thread resource errors and retry logs are retained.</p><h2>All root declaration status changes</h2><p>Item 8: Item 1 is newly available for inspection, item 5 is newly added with conditions, and item 2 is in the blocked stage of change.</p><pre>'+esc(json.dumps(deltas,ensure_ascii=False,indent=2))+'</pre>'
+body+='<h2>Category-by-category rules: what has been done and what is still missing</h2><table><tr><th>Rule class</th><th>Baseline blocked</th><th>Candidate blocked</th><th>lack of ability</th><th>This round of action</th></tr>'
 for row in rules:body+='<tr>'+''.join('<td>'+esc(x)+'</td>' for x in row)+'</tr>'
-body+='</table><h2>源端失败实例</h2><pre>'+esc(source_errors['Corelib.Init.Datatypes.eq_true_rew_dep'])+'</pre><p><a href="source-extraction-errors.json">全部 52 项实际源端错误</a></p><h2>验证范围</h2><pre>'+esc(json.dumps(read(B/'artifact-validation.json'),ensure_ascii=False,indent=2))+'</pre>'
+body+='</table><h2>Source failure instance</h2><pre>'+esc(source_errors['Corelib.Init.Datatypes.eq_true_rew_dep'])+'</pre><p><a href="source-extraction-errors.json">All 52 actual source errors</a></p><h2>Validation scope</h2><pre>'+esc(json.dumps(read(B/'artifact-validation.json'),ensure_ascii=False,indent=2))+'</pre>'
 style='body{font:15px/1.7 system-ui;max-width:1300px;margin:32px auto;padding:0 24px;color:#23303b}table{border-collapse:collapse;width:100%}td,th{padding:9px;border:1px solid #dbe2e8;text-align:left;vertical-align:top}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f1f5f9;padding:16px}td{overflow-wrap:anywhere}h1{font-size:26px}h2{font-size:20px}a{color:#175fa6}'
-(B/'rule-improvements.html').write_text('<!doctype html><html lang="zh"><meta charset="utf-8"><title>规则修补对比</title><style>'+style+'</style><body>'+body+'</body></html>')
-(B/'rule-improvements.txt').write_text(intro+'\n实验\n'+json.dumps(trials,ensure_ascii=False,indent=2)+'\n逐项变化\n'+json.dumps(deltas,ensure_ascii=False,indent=2)+'\n规则评估\n'+json.dumps(read(B/'rule-assessment.json'),ensure_ascii=False,indent=2))
-for base,nav in [(B,'<p><a href="rule-improvements.html">修补对比：649 → 650，但 5 项新增条件</a> · <a href="improved/index.html">候选结果</a> · <a href="README.txt">使用说明</a></p>'),(B/'improved','<p><a href="../rule-improvements.html">规则修补对比</a> · <a href="../index.html">基线</a></p>')]:
+(B/'rule-improvements.html').write_text('<!doctype html><html lang="en"><meta charset="utf-8"><title>Rule patch comparison</title><style>'+style+'</style><body>'+body+'</body></html>')
+(B/'rule-improvements.txt').write_text(intro+'\nexperiment\n'+json.dumps(trials,ensure_ascii=False,indent=2)+'\nChanges one by one\n'+json.dumps(deltas,ensure_ascii=False,indent=2)+'\nRule evaluation\n'+json.dumps(read(B/'rule-assessment.json'),ensure_ascii=False,indent=2))
+for base,nav in [(B,'<p><a href="rule-improvements.html">Repair comparison: 649 → 650, but 5 new conditions</a> · <a href="improved/index.html">Candidate results</a> · <a href="README.txt">Instructions for use</a></p>'),(B/'improved','<p><a href="../rule-improvements.html">Rule patch comparison</a> · <a href="../index.html">baseline</a></p>')]:
  p=base/'index.html';p.write_text(p.read_text().replace('<body>','<body>'+nav,1))
 broken=[]
 for base in [B,B/'improved']:

@@ -1,57 +1,57 @@
-# 第七十一至七十五批：基础标记与符号浮点
+# Batch 71 to 75: Basic markers and symbolic floating point
 
-新增 **50 个去重根、50 份证书**，1950 → **2000 / 2180**。SpecFloat 已完成 **38/55**；这里的目标是无源符号的精确符号表示和整数算法，不是 Lean 运行时 Float。
+Added **50 deduplication roots, 50 certificates**, 1950 → **2000 / 2180**. SpecFloat Completed **38/55**; the goal here is accurate symbolic representation of passive symbols and integer arithmetic, not Lean runtime Float.
 
-## 基础项：12 根
+## Basic item: 12 root
 
-| Profile | 根数 | 对应 |
+| Profile | Roots | Correspond |
 |---|---:|---|
-| PreludeCoercions | 3 | 两个类型别名对应原类型；reverse_coercion 返回传入的第一个值 |
-| UnconvertibleMarker | 2 | Unconvertible 对应 Unit；unconvertible 是恒等函数 |
-| FixPrototype | 1 | fix_proto 对应 id，保留完整 Sort universe |
-| DecisionTactics | 2 | decide_left/right 的原生 Decidable 分支消去陈述，并独立证明机械原陈述 |
-| DefaultRelationMarker | 3 | DefaultRelation 是 True 标记；default_relation 返回原关系；equivalence_default 原陈述独立证明 |
-| SSRSetoidCompatibility | 1 | 两套 Reflexive 都表示 ∀ x, R x x；兼容陈述及原证明 |
+| PreludeCoercions | 3 | The two type aliases correspond to the original type; reverse_coercion returns the first value passed in |
+| UnconvertibleMarker | 2 | Unconvertible corresponds to Unit; unconvertible is the identity function |
+| FixPrototype | 1 | fix_proto corresponds to id and remains intact Sort universe |
+| DecisionTactics | 2 | The native Decidable branch of decide_left/right eliminates the statement and independently proves the mechanical original statement |
+| DefaultRelationMarker | 3 | DefaultRelation is the mark of True; default_relation returns the original relationship; equivalence_default is an independent proof of the original statement |
+| SSRSetoidCompatibility | 1 | Both sets of Reflexive represent ∀ x, R x x; compatibility statement and original certificate |
 
-Unconvertible 不是 a ≠ b 的证明。DefaultRelation 本身没有装入等价关系证明；它是一个无字段标记。保留定义的实际含义，不按名称增加性质。
+Proof that Unconvertible is not a ≠ b. DefaultRelation itself does not contain an equivalence proof; it is a fieldless tag. Keep the actual meaning of the definition and do not add properties by name.
 
-## 符号浮点：38 根
+## Symbol floating point: 38 root
 
-[SpecFloatRepresentation.lean](proofs/SpecFloatRepresentation.lean) 的 14 根：
+[SpecFloatRepresentation.lean](proofs/SpecFloatRepresentation.lean)'s 14 root:
 
-- spec_float 双向对应 SpecValue：带符号零、带符号无穷、单个 NaN，以及 Bool × 正 Nat 有效数字 × Int 指数的有限值。
-- location 对应 Option Ordering；shr_record 对应 Int × Bool × Bool，后两位是舍入位和 sticky 位。
-- 绝对值、取负、三项投影、location/shift 状态转换，以及四项 location 消去/归纳声明。
-- 保留所有源结构，包括不满足 valid_binary 的有限值；不先过滤无效输入。
+- spec_float corresponds to SpecValue in both directions: signed zero, signed infinity, single NaN, and finite values of Bool × positive Nat significant digits × Int exponent.
+- location corresponds to Option Ordering; shr_record corresponds to Int × Bool × Bool. The last two digits are the rounding bit and the sticky bit.
+- Absolute value, negation, three-term projection, location/shift state transition, and four-term location elimination/induction statement.
+- All source structures are retained, including finite values that do not satisfy valid_binary; invalid input is not filtered first.
 
-[SpecFloatRounding.lean](proofs/SpecFloatRounding.lean) 的 12 根：
+[SpecFloatRounding.lean](proofs/SpecFloatRounding.lean)'s 12 root:
 
-- cond_Zopp、emin、fexp：条件取负、3−emax−prec、max(e−prec, emin)。
-- digits2_pos、Zdigits2：正数的 log2+1；整数零为 0，非零按绝对值计算。
-- canonical_mantissa、bounded、valid_binary：显式原生 Bool 判定。
-- round_nearest_even：低于半单位不加一，高于半单位加一，恰好一半时按整数奇偶决定。
-- new_location_even/odd/new_location：以原生 Int 比较构造准确的舍入位置。
+- cond_Zopp, emin, fexp: negative condition, 3−emax−prec, max(e−prec, emin).
+- digits2_pos, Zdigits2: log2+1 for positive numbers; integer zero is 0, non-zero is calculated as an absolute value.
+- canonical_mantissa, bounded, valid_binary: Explicit native Bool determination.
+- round_nearest_even: If the value is less than half a unit, one will not be added. If the value is more than half a unit, one will be added. When it is exactly half the value, it is determined by the integer odd or even number.
+- new_location_even/odd/new_location: Constructs accurate rounding position with native Int comparison.
 
-[SpecFloatShift.lean](proofs/SpecFloatShift.lean) 的 5 根：
+[SpecFloatShift.lean](proofs/SpecFloatShift.lean)'s 5 root:
 
-- iter_pos 对应 Nat 次函数迭代，保留任意 Sort。
-- shr_1 使用 Int.tdiv 2，即向零取整；新舍入位取绝对值的低位，新 sticky 位是旧两位之 OR。
-- shr 对正移位量迭代并增加指数；零或负移位量保持输入。
-- shr_fexp 组合已经证明的位数、指数和移位转换。
-- shl_align 对更小目标指数用 2 的幂放大有效数字；其他情况保持原值和指数。
+- iter_pos corresponds to Nat function iterations, and any Sort is reserved.
+- shr_1 uses Int.tdiv 2, which means rounding to zero; the new rounding bit takes the lower bit of the absolute value, and the new sticky bit is OR of the old two bits.
+- shr Iterates over positive shifts and increments the exponent; zero or negative shifts remain input.
+- shr_fexp combines proven bit, exponent and shift conversions.
+- shl_align uses the power of 2 to amplify the significant digits for a smaller target index; otherwise, keep the original value and index.
 
-[SpecFloatNormalize.lean](proofs/SpecFloatNormalize.lean) 的 7 根：
+[SpecFloatNormalize.lean](proofs/SpecFloatNormalize.lean)'s 7 root:
 
-- binary_round_aux 连接两次指数移位及中间的最近偶数舍入，保留零、有限值、溢出无穷和负结果 NaN 分支。
-- binary_round 先对齐再舍入；binary_normalize 对整数符号分支并保留零的指定符号。
-- SFone、SFldexp、SFnormfr_mantissa、SFclassify 通过上述对应组合。分类使用已经桥接的 Fin 9 编码，顺序为正/负正规数、正/负非正规数、正/负零、正/负无穷、NaN。
+- binary_round_aux concatenates two exponential shifts with the nearest even rounding in between, preserving zeros, finite values, overflowing to infinity, and negative results NaN branch.
+- binary_round aligns first and then rounds; binary_normalize branches the integer sign and retains the specified sign of zero.
+- SFone, SFldexp, SFnormfr_mantissa, SFclassify pass the above corresponding combinations. The classification uses the bridged Fin 9 encoding, and the order is positive/negative normal numbers, positive/negative irregular numbers, positive/negative zero, positive/negative infinity, and NaN.
 
-[SpecFloatArithmeticSupport.lean](proofs/SpecFloatArithmeticSupport.lean) 只提供本源闭包重新检查的二进制整数证明，不增加覆盖数。表示别名用 abbrev，保持定义相等，也避免后续组合证明的类型透明度障碍。
+[SpecFloatArithmeticSupport.lean](proofs/SpecFloatArithmeticSupport.lean) only provides a binary integer proof of origin closure rechecking without increasing the coverage number. Use abbrev to represent the alias, maintaining definition equality and avoiding type transparency barriers in subsequent combination proofs.
 
-## 统计和检查
+## Statistics and checks
 
-161 类型根、835 运算根、1004 完全原生陈述，共 **2000**。剩余 **180**：132 尚无证书、24 部分陈述、7 仅接口、17 条件根。独立原陈述证明共 318。
+161 type root, 835 operation root, 1004 complete native statement, total **2000**. Remaining **180**: 132 no certificate yet, 24 partial statement, 7 interface only, 17 conditional root. Independent original statement certified total 318.
 
-145 个 profile 验证通过；130 个覆盖 profile / 1748 份增量证书共同导入，2372 个入口、21186 个复制声明。所有新目标递归检查无源符号，证明公理闭包通过检查；没有新增公理。
+145 profile verification passed; 130 incremental certificates covering profile / 1748 were jointly imported, 2372 entrances, and 21186 copy statements. All new goals recursively check sourceless symbols and prove that axiom closure passes the check; no new axioms are added.
 
-还有 17 项 SpecFloat 运算未完成，主要为比较、加减乘除、开方、相邻浮点值及 frexp/ulp 等；PrimFloat 和 FloatAxioms 的整体对应尚未完成。CMorphisms 的许多剩余项是 opaque 的 Type 值计算，不能仅根据签名证明它们等于某个新写的算法。下一步继续符号浮点运算，并保留此区别。
+There are also 17 items and SpecFloat operations that have not been completed, mainly comparison, addition, subtraction, multiplication and division, square root, adjacent floating point values and frexp/ulp, etc.; the overall correspondence between PrimFloat and FloatAxioms has not been completed. Many of the remainders of CMorphisms are calculations of the Type value of opaque, and it cannot be proven based on the signature alone that they are equal to some newly written algorithm. The next step continues with symbolic floating point arithmetic and preserves this distinction.

@@ -1,297 +1,297 @@
 # Corelib.Floats.PrimFloat
 
-每项对应机械翻译基线中的一个 root。完整 native statement / interface 类型在总 JSON 文件中。
+Each entry corresponds to one root in the mechanical translation baseline. The complete native statement / interface types are in the aggregate JSON file.
 
 
 
 ## Corelib.Floats.PrimFloat.Leibniz.eqb
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.Leibniz.eqb
+Original target: Rocq.Corelib.Floats.PrimFloat.Leibniz.eqb
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep
 
 ## Corelib.Floats.PrimFloat.abs
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.abs
+Original target: Rocq.Corelib.Floats.PrimFloat.abs
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep
 
 ## Corelib.Floats.PrimFloat.add
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.add
+Original target: Rocq.Corelib.Floats.PrimFloat.add
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep
 
 ## Corelib.Floats.PrimFloat.classify
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.classify
+Original target: Rocq.Corelib.Floats.PrimFloat.classify
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep
 
 ## Corelib.Floats.PrimFloat.compare
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.compare
+Original target: Rocq.Corelib.Floats.PrimFloat.compare
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep
 
 ## Corelib.Floats.PrimFloat.div
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.div
+Original target: Rocq.Corelib.Floats.PrimFloat.div
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep
 
 ## Corelib.Floats.PrimFloat.eqb
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.eqb
+Original target: Rocq.Corelib.Floats.PrimFloat.eqb
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep
 
 ## Corelib.Floats.PrimFloat.float
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.float
+Original target: Rocq.Corelib.Floats.PrimFloat.float
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Floats.PrimFloat.float.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Floats.PrimFloat.float.roundtrip
 
 ## Corelib.Floats.PrimFloat.float_comparison
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.float_comparison
+Original target: Rocq.Corelib.Floats.PrimFloat.float_comparison
 
 ## Corelib.Floats.PrimFloat.float_wrap
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.float_wrap
+Original target: Rocq.Corelib.Floats.PrimFloat.float_wrap
 
-接口未覆盖原因：No registered type bijection for Rocq.Corelib.Floats.PrimFloat.float_wrapper
+Reason for interface not covered: No registered type bijection for Rocq.Corelib.Floats.PrimFloat.float_wrapper
 
 ## Corelib.Floats.PrimFloat.float_wrapper
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.float_wrapper
+Original target: Rocq.Corelib.Floats.PrimFloat.float_wrapper
 
 ## Corelib.Floats.PrimFloat.frshiftexp
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.frshiftexp
+Original target: Rocq.Corelib.Floats.PrimFloat.frshiftexp
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep
 
 ## Corelib.Floats.PrimFloat.get_sign
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.get_sign
+Original target: Rocq.Corelib.Floats.PrimFloat.get_sign
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep
 
 ## Corelib.Floats.PrimFloat.infinity
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.infinity
+Original target: Rocq.Corelib.Floats.PrimFloat.infinity
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep
 
 ## Corelib.Floats.PrimFloat.is_finite
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.is_finite
+Original target: Rocq.Corelib.Floats.PrimFloat.is_finite
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep
 
 ## Corelib.Floats.PrimFloat.is_infinity
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.is_infinity
+Original target: Rocq.Corelib.Floats.PrimFloat.is_infinity
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep
 
 ## Corelib.Floats.PrimFloat.is_nan
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.is_nan
+Original target: Rocq.Corelib.Floats.PrimFloat.is_nan
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep
 
 ## Corelib.Floats.PrimFloat.is_zero
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.is_zero
+Original target: Rocq.Corelib.Floats.PrimFloat.is_zero
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep
 
 ## Corelib.Floats.PrimFloat.ldshiftexp
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.ldshiftexp
+Original target: Rocq.Corelib.Floats.PrimFloat.ldshiftexp
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep
 
 ## Corelib.Floats.PrimFloat.leb
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.leb
+Original target: Rocq.Corelib.Floats.PrimFloat.leb
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep
 
 ## Corelib.Floats.PrimFloat.ltb
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.ltb
+Original target: Rocq.Corelib.Floats.PrimFloat.ltb
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep
 
 ## Corelib.Floats.PrimFloat.mul
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.mul
+Original target: Rocq.Corelib.Floats.PrimFloat.mul
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep
 
 ## Corelib.Floats.PrimFloat.nan
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.nan
+Original target: Rocq.Corelib.Floats.PrimFloat.nan
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep
 
 ## Corelib.Floats.PrimFloat.neg_infinity
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.neg_infinity
+Original target: Rocq.Corelib.Floats.PrimFloat.neg_infinity
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep
 
 ## Corelib.Floats.PrimFloat.neg_zero
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.neg_zero
+Original target: Rocq.Corelib.Floats.PrimFloat.neg_zero
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep
 
 ## Corelib.Floats.PrimFloat.next_down
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.next_down
+Original target: Rocq.Corelib.Floats.PrimFloat.next_down
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep
 
 ## Corelib.Floats.PrimFloat.next_up
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.next_up
+Original target: Rocq.Corelib.Floats.PrimFloat.next_up
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep
 
 ## Corelib.Floats.PrimFloat.normfr_mantissa
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.normfr_mantissa
+Original target: Rocq.Corelib.Floats.PrimFloat.normfr_mantissa
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep
 
 ## Corelib.Floats.PrimFloat.of_uint63
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.of_uint63
+Original target: Rocq.Corelib.Floats.PrimFloat.of_uint63
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep
 
 ## Corelib.Floats.PrimFloat.one
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.one
+Original target: Rocq.Corelib.Floats.PrimFloat.one
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep
 
 ## Corelib.Floats.PrimFloat.opp
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.opp
+Original target: Rocq.Corelib.Floats.PrimFloat.opp
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep
 
 ## Corelib.Floats.PrimFloat.parser
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.parser
+Original target: Rocq.Corelib.Floats.PrimFloat.parser
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep
 
 ## Corelib.Floats.PrimFloat.printer
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.printer
+Original target: Rocq.Corelib.Floats.PrimFloat.printer
 
-接口未覆盖原因：No registered type bijection for Rocq.Corelib.Floats.PrimFloat.float_wrapper
+Reason for interface not covered: No registered type bijection for Rocq.Corelib.Floats.PrimFloat.float_wrapper
 
 ## Corelib.Floats.PrimFloat.sqrt
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.sqrt
+Original target: Rocq.Corelib.Floats.PrimFloat.sqrt
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep
 
 ## Corelib.Floats.PrimFloat.sub
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.sub
+Original target: Rocq.Corelib.Floats.PrimFloat.sub
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep
 
 ## Corelib.Floats.PrimFloat.two
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.two
+Original target: Rocq.Corelib.Floats.PrimFloat.two
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep
 
 ## Corelib.Floats.PrimFloat.zero
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Floats.PrimFloat.zero
+Original target: Rocq.Corelib.Floats.PrimFloat.zero
 
-接口未覆盖原因：No registered type bijection for Rocq2Lean.PrimFloat.Rep
+Reason for interface not covered: No registered type bijection for Rocq2Lean.PrimFloat.Rep

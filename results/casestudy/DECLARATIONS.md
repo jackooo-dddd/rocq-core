@@ -1,8 +1,8 @@
-# Nat 逐声明前后对照
+# Nat Comparison before and after each statement
 
-99 个专题根：Datatypes 中 nat 及四个消去声明（5）、Init.Nat（58）、Init.Peano（36）。O/S 属于 nat 归纳块，不额外计根。Datatypes 完整副本中的其他类型不计入本专题分母。
+99 topic roots: nat in Datatypes and four elimination statements (5), Init.Nat (58), Init.Peano (36). O/S belongs to the nat inductive block and does not count additional roots. Other types in the complete copy of Datatypes are not included in the denominator of this topic.
 
-| 声明（点击查看译文及过程） | 机械状态 | 条件数 | 对应状态 |
+| Statement (click to view translation and process) | mechanical condition | condition number | Corresponding status |
 |---|---|---|---|
 | [Corelib.Init.Datatypes.nat](declarations/Corelib.Init.Datatypes.nat.md) | TRANSLATED_AND_CHECKED | 0 | TYPE_ISO |
 | [Corelib.Init.Datatypes.nat_ind](declarations/Corelib.Init.Datatypes.nat_ind.md) | STATEMENT_KERNEL_CHECKED | 0 | STATEMENT_FULL_NATIVE |

@@ -1,25 +1,25 @@
-# Datatypes 对应：第十九批
+# Datatypes corresponds to: the 19th batch
 
-Init.Datatypes 的 110 个根均已获得明示范围内对应：14 类型、54 运算/谓词、42 完全原生陈述。本批新增 48 个完成根（2 类型、9 运算、37 陈述），以及 4 份既有类型根的补充证书。全项目完成类别 985 / 2180；51 个增量 profile 当前检查通过，718 份覆盖证书共同导入通过。
+The 110 roots of Init.Datatypes have obtained explicit range correspondences: 14 type, 54 operation/predicate, 42 completely native statement. This batch adds 48 completion roots (2 type, 9 operation, 37 statement), and 4 supplementary certificates for existing type roots. Full project completion category 985 / 2180; 51 increments profile passed the current inspection, and 718 coverage certificates were jointly imported and passed.
 
-## 完整 Sort 的容器类型
+## Complete container type for Sort
 
-Rocq 的 List/Option/Result 可接受 Sort 参数，而 Lean List/Option/Except 的元素参数为 Type。本批建立 List (PLift A)、Option (PLift A)、Except (PLift E) (PLift A) 的双向逆，覆盖任意 Sort 参数。PLift 只出现在 correspondence 的原生表示层；没有修改机械翻译，也没有重新启用机械翻译器的 ULift 规则。
+List/Option/Result for Rocq can accept the Sort parameter, while Lean and List/Option/Except have the element parameter Type. This batch of establishment List (PLift A), Option (PLift A), Except (PLift E) (PLift A) The bidirectional inverse of , covering any Sort parameters. PLift only appears in the native presentation layer of correspondence; the mechanical translation is not modified, nor is the ULift rule of the mechanical translator re-enabled.
 
-当 A/E 是 Type 时，移除 PLift 包装后的结果，已证明恰好等于旧 List A / Option A / Except E A 转换。原先的原生 API 使用方式仍有效。此次完整 Sort 扩展覆盖新类型对应和新陈述；旧容器运算证书原有的 Type 参数范围没有被自动扩大。
+The result after removing the PLift wrapper, when A/E is Type, has been shown to be exactly equal to the old List A / Option A / Except E A conversion. The original native API usage still works. This complete Sort extension covers new type correspondence and new statements; the original Type parameter range of the old container computing certificate has not been automatically expanded.
 
-## 比较规格与反射
+## Compare Specs vs. Reflection
 
-BoolSpec、CompareSpec、CompSpec 对应由 Bool/Ordering 选择的普通命题。CompareSpecT、CompSpecT 与携带该命题证明的 PLift 建立 Iso。reflect 补充固定 Bool 索引下的同类 Iso。四项 rec/rect 对应原生 Bool/Ordering 和 PLift 的分支消去，分别记录 Type / Sort motive 范围。
+BoolSpec, CompareSpec, and CompSpec correspond to the ordinary propositions selected by Bool/Ordering. CompareSpecT, CompSpecT and PLift carrying the proof of this proposition establish Iso. reflect supplements the similar Iso under the fixed Bool index. The four rec/rect branches corresponding to the native Bool/Ordering and PLift are eliminated, and the Type / Sort and motive ranges are recorded respectively.
 
-两个 CompareSpec2Type 转换共同使用 3 个闭合义务证明，全部已实例化。原始机械产物依然含显式条件；correspondence 层闭合根增至 18，剩余 313。17 个独立义务见证中 16 个公理闭包为空，另 1 个是既有 gcd 的标准 Lean 公理见证。条件输入记录现在明确区分 source IR 与 translation report 哈希，并逐项核对实际 pending 元数据。
+The two CompareSpec2Type transformations jointly use 3 closure obligation proofs, all instantiated. The original mechanical product still contains explicit conditions; the closed root of correspondence layer increases to 18, leaving 313. Among the 17 independent task witnesses, 16 axiom closures are empty, and the other 1 are standard Lean axiom witnesses of the existing gcd. Conditional input records now clearly distinguish source IR from translation report hashes, and are checked against actual pending metadata.
 
-## 37 个原生陈述
+## 37 native statements
 
-包括 Bool、比较、列表、Option、积/和、Result、Unit/Empty 的归纳陈述，比较规格、reflect 的带证明参数归纳陈述，以及依赖等式对 pair 的搬运。不是把陈述替换成 True：先证明类型/索引/依赖函数的转换，再由已证 iff 规则生成对应原生陈述。
+Including inductive statements of Bool, comparison, list, Option, product/sum, Result, Unit/Empty, comparative specifications, inductive statements with proof parameters of reflect, and the transfer of dependent equations to pair. Instead of replacing the statement with True: first prove the conversion of the type/index/dependent function, and then generate the corresponding native statement from the proven iff rule.
 
-simp 不遍历某些证明实参，因此专用规范化器仅在以下条件同时满足时，用局部原生证明替换含源符号的证明项：二者都是证明、命题类型不含源符号、命题类型定义相等、证明项定义相等；最后检查整个陈述定义相等。这个步骤使用 Lean 的证明无关性，生成的 iff 仍经 kernel 检查。最终目标递归展开 NativeBridge 别名后均无源符号。
+simp does not iterate over some proof arguments, so the dedicated normalizer replaces proof terms with source symbols with local native proofs only if both are proofs, the proposition type does not contain source symbols, the proposition type definitions are equal, the proof terms definitions are equal, and finally the entire statement is checked for equality by definition. This step uses the proven independence of Lean, and the generated iff is still checked by kernel. The final target recursively expands the NativeBridge alias without source symbols.
 
-本批 37 个是陈述等价证书，不增加原业务定理证明计数；新增原陈述证明累计仍为 43。
+37 in this batch are statement equivalence certificates, which do not increase the original original theorem proof count; the cumulative number of new original statement certificates is still 43.
 
-证据入口：reports/datatype-module-coverage.json、reports/datatype-statement-candidates.json、reports/certificates.json；证明文件 DatatypeNormalization/DatatypeQuantifiers/DatatypeStatements/DatatypeSpecs.lean。
+Evidence entrance: reports/datatype-module-coverage.json, reports/datatype-statement-candidates.json, reports/certificates.json; supporting document DatatypeNormalization/DatatypeQuantifiers/DatatypeStatements/DatatypeSpecs.lean.

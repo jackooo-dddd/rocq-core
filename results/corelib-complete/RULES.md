@@ -1,27 +1,27 @@
-规则与精简结果
+Rules and simplification results
 
-本页按机制归类，分类数量不等于代码中的规则/开关数量。逐声明实际规则、所有尝试标签、宇宙实例、转换及条件见同名 JSON/MD。
+This page is categorized by mechanism. The number of categories is not equal to the number of rules/switches in the code. Declaration-by-declaration of the actual rules, all attempt labels, universe instances, transformations and conditions is given in the eponymous JSON/MD.
 
-1. 源端分类和证明条件：按实际归约后的 Prop/SProp 结果分类，保留局部假设的应用；证明实现抽取成显式条件，支持多态条件的不同实例。最终 pending 状态依据实际剩余条件 telescope。
-2. 宇宙约束与解释：完整导出并重查原生事实；显式参数、模板 Sort 参数、局部约束闭包与必要的实例对应保留。带全局上界的局部解释只处理受检查的向外约束片段；公开参数、原生约束和引用检查没有省略。
-3. SProp/Prop/Type quality：23 个原始根以原生检查过的完整 quality family 表示，共603种实例（23个主项加580个额外分支）。不把23个原始根从统计范围删除。
-4. 精确源转换：透明别名的实际实例替换、beta/delta/zeta 化简、已知构造器驱动的受限递归求值。独立审计重建每次展开；不任意展开 opaque 证明。
-5. 显式累积表示：PULift up/down，函数参数和结果的组合转换，以及非递归、单构造器、无索引记录的逐字段转换。保留字段次序、载荷、全部依赖类型及公共条件。
-6. 递归与消去：结构递归、真实内核 recursor、accessibility/well-founded 对应和受检查的 deferred guard 处理；终止性所需条件保持显式。
-7. 原语模型：kernel-registered Int63→BitVec63；有界数组；字节串；保留符号零/无穷/NaN的 binary64 模型。操作身份、大小界限、构造器角色、源端原语与目标载荷分别核查。
-8. 机械归纳与后续对应：源 nat、eq 使用普通归纳规则生成独立类型；bootstrap 表为空。与 Lean Nat/Eq 的双向对应在翻译完成后单独证明，见 CORRESPONDENCE.md。
+1. Source-side classification and proof conditions: Classify according to the actual reduced Prop/SProp results, retaining the application of local assumptions; the proof implementation is extracted into explicit conditions, supporting different instances of polymorphic conditions. The final pending status is based on the actual remaining condition telescope.
+2. Universe constraints and explanations: Completely export and recheck native facts; explicit parameters, template Sort parameters, local constraint closures, and necessary instance correspondences are retained. Local interpretation with global upper bounds only handles checked outwardly constrained fragments; public parameters, native constraints, and reference checks are not omitted.
+3. SProp/Prop/Type quality: 23 original roots are represented by natively checked complete quality family, for a total of 603 instances (23 primary items plus 580 additional branches). Do not delete 23 original roots from the statistical range.
+4. Exact source transformations: actual instance replacement for transparent aliases, beta/delta/zeta reduction, restricted recursive evaluation driven by known constructors. Independently audited reconstruction of each deployment; no arbitrary deployment of opaque certified.
+5. Explicit cumulative representation: PULift up/down, combined conversion of function arguments and results, and non-recursive, single-constructor, field-by-field conversion of unindexed records. Preserves field order, payloads, all dependency types, and public conditions.
+6. Recursion and elimination: Structural recursion, real kernel recursor, accessibility/well-founded correspondence and checked deferred guard processing; conditions required for terminability remain explicit.
+7. Primitive model: kernel-registered Int63→BitVec63; bounded array; byte string; binary64 model that preserves signed zero/infinity/NaN. Operation identity, size limits, constructor roles, source primitives and target payloads are checked separately.
+8. Mechanical induction and subsequent correspondence: Sources nat, eq use ordinary induction rules to generate independent types; the bootstrap table is empty. Bidirectional correspondence to Lean Nat/Eq is proven separately after translation, see CORRESPONDENCE.md.
 
-检查配套包括源端 roundtrip、独立 Lean consumer/内核检查、独立结构审计、公共接口/宇宙检查及错误注入测试。定理陈述不是定理证明；待证条件没有被藏成 axiom 或 sorry。
+The inspection package includes source-side roundtrip, independent Lean consumer/ kernel inspection, independent structural audit, public interface/universe inspection and error injection testing. Theorem statements are not theorem proofs; the conditions to be proved are not hidden as axiom or sorry.
 
-历史精简 main74→main75（取消 bootstrap 前的对照）：
-- liftCoerceValue 的 Type 路径不再先走独立 direct up/down，再走组合 up/down；统一由递归组合规则处理，直接转换是其基本情况。
-- 两处失败回滚合并为 tryLiftConversion，同时恢复 elaborator 状态与转换计数。
-- 保留 Prop-only 早期路径的限制；不删除独立校验、不改变源范围。
-- 全2180项覆盖保持0受阻，完整回归和所有 campaign 检查通过。
-- 包含依赖、辅助声明及 quality 分支的全部 4314 条逐模块声明出现，其状态、名称、目标种类、类型、正文、构造器、宇宙参数及待证条件均与精简前完全一致（结构 JSON 比较，不是仅比较成功率）。
+History simplification main74→main75 (control before canceling bootstrap):
+- The Type path of liftCoerceValue no longer takes the independent direct up/down first, and then the combination up/down; it is unified and processed by recursive combination rules, and direct conversion is its basic situation.
+- The two failed rollbacks are merged into tryLiftConversion, and the elaborator status and conversion count are restored at the same time.
+- Retain the limitations of the Prop-only early path; do not delete the independent check and do not change the source range.
+- Full 2180 entry coverage keeps 0 blocked, full regression and all campaign checks passed.
+- All 4314 module-by-module declarations including dependencies, auxiliary declarations and quality branches appear, and their status, name, target type, type, body, constructor, universe parameters and unproven conditions are completely consistent with those before streamlining (the structure JSON is compared, not just the success rate).
 
-这是一轮经验证的重复机制合并，不是“规则数量已达到数学上的全局最小值”的证明。保留未能证明冗余的通用规则，尤其不能仅凭2180个根的命中次数删除其依赖或MathComp可能需要的路径。
+This is a round of proven iterative mechanism merging, not proof that the number of rules has reached a mathematical global minimum. Retain the general rule of failing to prove redundancy, in particular not to remove 2180 roots based solely on the number of hits they depend on or the paths that MathComp may require.
 
-规则命中统计见 rule-usage.json；精简补丁见 simplification.patch；全声明比较见 simplification-artifacts.json。早期失败实验留在 work/snapshots 和 work/tests 中，不作为成功证据。
+For rule hit statistics, see rule-usage.json; for streamlined patches, see simplification.patch; for full statement comparison, see simplification-artifacts.json. Early failed experiments are left in work/snapshots and work/tests and are not used as evidence of success.
 
-当前机械基线只移除两项 bootstrap，不新增翻译规则；规则覆盖与次数已从新的 full-v1 重算。旧精简补丁及比较是历史证据，不表示新旧目标 AST 完全相同。
+The current mechanical baseline only removes two items of bootstrap and does not add new translation rules; the rule coverage and times have been recalculated from the new full-v1. The old stripped-down patches and comparisons are historical evidence and do not imply that the old and new target AST are identical.

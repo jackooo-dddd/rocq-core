@@ -1,38 +1,38 @@
-# 翻译后的 Lean 原生对应
+# Correspondence with native Lean objects
 
-当前有两套分别统计的结果。机械 nat/eq 均为独立归纳结构；先机械翻译，再证明与 Lean 原生对象的关系。
+Two versions are counted separately. Mechanical nat/eq are independent inductive structures: translation comes first, followed by proofs connecting them to native Lean objects.
 
-| 产物 | 类型对应 | 运算对应 | 原生陈述 iff | 有证书的根 | 尚未对应 |
+| Artifact | Type correspondences | Operation correspondences | Native statement iff | Certified roots | Remaining |
 |---|---:|---:|---:|---:|---:|
-| 原冻结机械版本 | 164 | 908 | 1028 | 2100 / 2180 | 80 |
-| 计算透明变体 | 164 | 988 | 1028 | 2180 / 2180 | 0 |
+| Original frozen mechanical version | 164 | 908 | 1028 | 2100 / 2180 | 80 |
+| Computationally transparent variant | 164 | 988 | 1028 | 2180 / 2180 | 0 |
 
-[完整变体结果](../../experiments/incremental-correspondence-20261019/transparent-data/README.md) · [2180 根逐项证书](../../experiments/incremental-correspondence-20261019/transparent-data/reports/FULL_VARIANT_LEDGER.json) · [验证摘要](../../experiments/incremental-correspondence-20261019/transparent-data/reports/FULL_VARIANT_SUMMARY.json) · [原冻结版本账本](../../experiments/incremental-correspondence-20261019/reports/CORELIB_LEDGER.csv)。
+[Full variant results](../../experiments/incremental-correspondence-20261019/transparent-data/README.md) · [Per-root certificates for all 2180 roots](../../experiments/incremental-correspondence-20261019/transparent-data/reports/FULL_VARIANT_LEDGER.json) · [Validation summary](../../experiments/incremental-correspondence-20261019/transparent-data/reports/FULL_VARIANT_SUMMARY.json) · [Original frozen ledger](../../experiments/incremental-correspondence-20261019/reports/CORELIB_LEDGER.csv).
 
-## 变体改变了什么
+## What the variant changes
 
-原剩余 80 根中，69 个是非 Prop opaque 数据声明，11 个是依赖它们的透明包装。正文仍保留在已检查的 Lean 环境中。变体将源声明复制到独立命名空间，仅把非 Prop opaque 数据声明改成 def；类型、universe 参数与正文只做一致改名，重新交给 kernel 检查。
+Of the original 80 remaining roots, 69 are non-Prop opaque data declarations and 11 are transparent wrappers depending on them. Their bodies remain in the checked Lean environment. The variant copies declarations into independent namespaces and changes only non-Prop opaque data declarations to def. Types, universe parameters, and bodies are preserved modulo consistent renaming and checked again by the kernel.
 
-由此完成 CRelationClasses 11、CMorphisms 54、ssrbool 6、ssrfun 4、ssreflect_rw 3、Program.Wf 2 项的运算对应。原有 2100 根的证明也按此策略重新检查：173 组既有 profile 与 6 组新证明、消费示例共同导入通过，标准公理以外的依赖被拒绝。
+This completes operation correspondences for CRelationClasses 11, CMorphisms 54, ssrbool 6, ssrfun 4, ssreflect_rw 3, and Program.Wf 2. Proofs for all original 2100 roots are rechecked under the same policy. The 173 existing profiles, 6 new proof groups, and consumer examples import together successfully; dependencies on nonstandard axioms are rejected.
 
-这不是旧 opaque 常量与新 def 的值等式。正式 translator/ 的机械产物未被这些实验改写；原冻结版本的 80 项缺口仍保留。
+These are not value equalities between old opaque constants and new def declarations. The production translator/ and its mechanical artifacts are not rewritten by these experiments. The original frozen version still has its 80-root gap.
 
-## 如何理解“对应”
+## What correspondence means
 
-- 类型对应提供明示参数范围内的双向转换及往返恒等。
-- 运算对应证明转换机械结果等于指定原生结果；目标可能是现成 Lean/Mathlib API，也可能是由原生类型、函数构成的组合表达式。
-- 原生陈述 iff 证明命题等价，不等于源业务定理已被证明。另有 318 份独立的原陈述 Prop 证明，单独统计。
-- 2180 是去重根数。沿用每份证书的参数、universe、质量分支和前提范围，不据根数宣称覆盖所有可能的实例。
-- 浮点等目标包含精确符号表示；尚未据此证明等于运行时 Float API。Type 值关系数据有时对应 Prod/Sum 等记录表示，不自动成为 Lean 的 Prop 值 typeclass 实例。
+- Type correspondences provide bidirectional conversions and both round-trip identities within their explicit parameter scope.
+- Operation correspondences prove that converting a mechanical result gives the specified native result. The target may be an existing Lean/Mathlib API or an expression composed of native types and functions.
+- A native statement iff proves equivalence of propositions; it does not prove the original source theorem. Another 318 independent Prop proofs establish original statements and are counted separately.
+- 2180 counts distinct roots. Each certificate retains its parameter, universe, quality-branch, and prerequisite scope; a root count does not establish coverage of every possible instance.
+- Some floating-point targets use exact symbolic representations; equality with the runtime Float API has not been proved. Type-valued relation data may correspond to Prod/Sum records and does not automatically become a Prop-valued Lean typeclass instance.
 
-## Nat、Eq 与实际使用
+## Nat, Eq, and concrete use
 
-natIso 连接机械 nat 与 Nat；eqIso 连接机械相等与 Lean Eq。依赖 Nat 消去与 Eq transport 均有对应。主 Nat/Eq 对应的公理闭包为空。
+natIso connects mechanical nat to Nat; eqIso connects mechanical equality to Lean Eq. Dependent Nat elimination and Eq transport also have correspondences. The main Nat/Eq correspondence proofs have empty axiom closures.
 
-[主证明](../../experiments/mechanical-correspondence-20261019/NatEq.lean) · [Nat 运算](../../experiments/mechanical-correspondence-20261019/Nat.lean) · [依赖 Nat](../../experiments/mechanical-correspondence-20261019/DependentNat.lean) · [依赖 Eq](../../experiments/mechanical-correspondence-20261019/DependentEq.lean)。
+[Main proofs](../../experiments/mechanical-correspondence-20261019/NatEq.lean) · [Nat operations](../../experiments/mechanical-correspondence-20261019/Nat.lean) · [Dependent Nat](../../experiments/mechanical-correspondence-20261019/DependentNat.lean) · [Dependent Eq](../../experiments/mechanical-correspondence-20261019/DependentEq.lean).
 
-新增[消费例](../../experiments/incremental-correspondence-20261019/transparent-data/Consumer.lean)证明机械良基消去产生的依赖 Fin 数据，并把机械条件选择得到的素数证据交给 Mathlib Prime.two_le。[跨模块组合](../../experiments/incremental-correspondence-20261019/transparent-data/Composition.lean)进一步连接机械 nat.iter、原生 Nat、SSR 选择和 Mathlib。
+The new [consumer examples](../../experiments/incremental-correspondence-20261019/transparent-data/Consumer.lean) establish properties of dependent Fin data produced by mechanical well-founded elimination and pass prime evidence obtained through mechanical conditional selection to Mathlib Prime.two_le. [Cross-module composition](../../experiments/incremental-correspondence-20261019/transparent-data/Composition.lean) further connects mechanical nat.iter, native Nat, SSR selection, and Mathlib.
 
-[自动组合器](../../experiments/incremental-correspondence-20261019/transparent-data/AutoCompose.lean)可以从给定表达式及已证明的 correspondence 生成原生定义和等式证明。它拒绝仍有源符号、条件未满足或依赖额外公理的结果；这是基于提供的证明做组合，不是自动搜索所有 Lean/Mathlib 对应目标。
+The [automatic composition command](../../experiments/incremental-correspondence-20261019/transparent-data/AutoCompose.lean) generates native definitions and equality proofs from given expressions and proved correspondences. It rejects results containing source symbols, undischarged conditions, or additional axioms. It composes supplied proofs; it does not search automatically for all possible Lean/Mathlib targets.
 
-历史批次及最初预估保留在[工作区计划](../../experiments/incremental-correspondence-20261019/PLAN.md)。
+Historical batches and initial estimates are retained in the [workspace plan](../../experiments/incremental-correspondence-20261019/PLAN.md).

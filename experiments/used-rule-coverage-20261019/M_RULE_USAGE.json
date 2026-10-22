@@ -566,8 +566,8 @@
   "rules": [
     {
       "id": "M01",
-      "name": "M3b：依赖 match",
-      "description": "用真实 Lean recursor；由源 predicate 构造 motive，并按内核字段和 IH 布置分支。",
+      "name": "M3b: dependent match",
+      "description": "Use real Lean recursor; construct motive from source predicate and lay out branches by kernel fields and IH.",
       "surviving_events_including_repeated_dependencies": 2944,
       "distinct_declarations": [
         "Corelib.Array.ArrayAxioms.length_make",
@@ -1544,8 +1544,8 @@
     },
     {
       "id": "M02",
-      "name": "非均匀 match",
-      "description": "受限非均匀参数片段使用 convoy／Eq.rec；已知构造器的 match 优先做 ι 归约。",
+      "name": "Non-uniform match",
+      "description": "Restricted non-uniform parameter fragments use convoy/Eq.rec; match with a known constructor is reduced to ι first.",
       "surviving_events_including_repeated_dependencies": 12,
       "distinct_declarations": [
         "Corelib.Init.Wf.Fix_F",
@@ -1578,8 +1578,8 @@
     },
     {
       "id": "M03",
-      "name": "单函数结构递归",
-      "description": "递减参数改写为 recursor；递减参数之后的实参可变化。",
+      "name": "Single-function structural recursion",
+      "description": "The decrementing parameter is rewritten as recursor; the actual parameter after the decrementing parameter can be changed.",
       "surviving_events_including_repeated_dependencies": 195,
       "distinct_declarations": [
         "Corelib.BinNums.IntDef.Z.pos_div_eucl",
@@ -1796,8 +1796,8 @@
     },
     {
       "id": "M04",
-      "name": "变化前置参数泛化",
-      "description": "在保留参数的类型不依赖其变化的条件下，将变化的前置参数移入 motive。",
+      "name": "Generalization of changing leading parameters",
+      "description": "Move the changed preparameter into motive while retaining the type of the parameter and not relying on its change.",
       "surviving_events_including_repeated_dependencies": 41,
       "distinct_declarations": [
         "Corelib.BinNums.IntDef.Z.pos_sub",
@@ -1844,8 +1844,8 @@
     },
     {
       "id": "M05",
-      "name": "索引与函数递归字段",
-      "description": "泛化索引；函数形递归字段产生带相应参数的归纳假设。",
+      "name": "Indices and function-valued recursive fields",
+      "description": "Generalization index; a functional recursive field produces an inductive hypothesis with corresponding parameters.",
       "surviving_events_including_repeated_dependencies": 12,
       "distinct_declarations": [
         "Corelib.Init.Wf.Acc_rec",
@@ -1871,8 +1871,8 @@
     },
     {
       "id": "M06",
-      "name": "ι 泛化递归",
-      "description": "外层 match 不在递减参数上时，对整个函数体代入递减构造器再归约；不任意重排 match。",
+      "name": "ι-generalized recursion",
+      "description": "When the outer layer match is not on the decreasing parameter, the entire function body is substituted into the decreasing constructor and then reduced; match is not rearranged arbitrarily.",
       "surviving_events_including_repeated_dependencies": 34,
       "distinct_declarations": [
         "Corelib.BinNums.IntDef.Z.pos_sub",
@@ -1918,8 +1918,8 @@
     },
     {
       "id": "M07",
-      "name": "结构互递归",
-      "description": "对同一归纳类型、相同递减位置及兼容前置类型的函数，构造联合 PProd 递归结果再投影。",
+      "name": "Structural mutual recursion",
+      "description": "For functions of the same inductive type, the same decrement position and compatible prefix types, construct the union PProd and reproject the recursive result.",
       "surviving_events_including_repeated_dependencies": 19,
       "distinct_declarations": [
         "Corelib.BinNums.PosDef.Pos.add",
@@ -1959,8 +1959,8 @@
     },
     {
       "id": "M08",
-      "name": "递归暴露",
-      "description": "ζ 展开递归 let，限定地展开透明辅助调用，使递归使用显露出来。",
+      "name": "Exposing recursion",
+      "description": "ζ Unfolds recursive let, which unwinds transparent auxiliary calls in a limited manner so that recursive usage is exposed.",
       "surviving_events_including_repeated_dependencies": 0,
       "distinct_declarations": [],
       "distinct_declaration_count": 0,
@@ -1972,7 +1972,7 @@
     {
       "id": "M09",
       "name": "Course-of-values",
-      "description": "特定非直接递归字段调用失败后，用 below／PProd 缓存；受索引、非均匀和嵌套形状限制。",
+      "description": "Cache with below/PProd after specific non-direct recursive field call fails; subject to index, non-uniform and nested shape limitations.",
       "surviving_events_including_repeated_dependencies": 6,
       "distinct_declarations": [
         "Corelib.BinNums.PosDef.Pos.sqrtrem",
@@ -1997,8 +1997,8 @@
     },
     {
       "id": "M10",
-      "name": "Accessibility 转换",
-      "description": "特定从 Prop 递归产生数据的情形，构造调用关系及源 guard 支持的良基证书。",
+      "name": "Accessibility conversion",
+      "description": "In the specific case of recursively generating data from Prop, construct the calling relationship and the good foundation certificate supported by the source guard.",
       "surviving_events_including_repeated_dependencies": 0,
       "distinct_declarations": [],
       "distinct_declaration_count": 0,
@@ -2009,8 +2009,8 @@
     },
     {
       "id": "M11",
-      "name": "显式良基回退",
-      "description": "statement 模式下可用 Acc.rec，并把未解决的良基性／展开等式证明列为显式任务。",
+      "name": "Explicit well-founded fallback",
+      "description": "Acc.rec is available in statement mode and lists the unsolved well-foundedness/expanded equation proofs as an explicit task.",
       "surviving_events_including_repeated_dependencies": 1,
       "distinct_declarations": [
         "Corelib.Init.Nat.gcd"
@@ -2027,8 +2027,8 @@
     },
     {
       "id": "M12",
-      "name": "构造器形索引",
-      "description": "支持限定的非递归单构造器记录索引，以字段投影恢复不同的早期实参；拒绝重复叶子等不支持形状。",
+      "name": "Constructor-shaped indices",
+      "description": "Support qualified non-recursive single constructor record index, restore different early arguments with field projection; reject duplicate leaves, etc. Shapes are not supported.",
       "surviving_events_including_repeated_dependencies": 1,
       "distinct_declarations": [
         "Corelib.Init.Wf.Fix_F_2"
@@ -2045,8 +2045,8 @@
     },
     {
       "id": "M13",
-      "name": "递归 cast 修复",
-      "description": "通过病例分析与等式 transport 处理需要展开 fix 才成立的转换；不是任意强制转换。",
+      "name": "Recursive cast repair",
+      "description": "Handle conversions that require expansion of fix through case analysis and equation transport; not arbitrary coercion.",
       "surviving_events_including_repeated_dependencies": 0,
       "distinct_declarations": [],
       "distinct_declaration_count": 0,

@@ -34,24 +34,24 @@ def render():
         add(key, name or e["name"], description or e["description"], predicate, basis, key)
     for key, kind in [("E03", "statement"), ("E08", "def"), ("E09", "opaque"), ("T07", "inductive")]:
         entry(key, lambda x, t, kind=kind: t.get("target_kind") == kind,
-              "最终 target_kind=" + kind)
+              'Final target_kind=' + kind)
     entry("E04", lambda x, t: bool(x["source"]["obligations"]),
-          "导出 IR 已产生具名 obligations，且对应根译文检查通过。",
-          description="证明片段抽成具名 obligation；只确认抽取结果，不声称已证明这些条件。")
+          'Exporting IR has generated the named obligations, and the corresponding root translation check has passed.',
+          description='Extract proof fragments as named obligations. This confirms extraction, not proofs of those obligations.')
     entry("E12", lambda x, t: bool(t.get("pending_hypotheses")),
-          "最终 pending_hypotheses 非空。",
-          name="显式前提参数", description="译文保留尚未装配的证明参数；不据此统计条件合并或删除。")
-    entry("T01", lambda x, t: bool(t["ast"].get("bvar")), "最终 AST 存在 bvar。")
+          'Finally pending_hypotheses is not empty.',
+          name='Explicit prerequisite parameters', description='Retain proof parameters awaiting assembly; this count does not measure prerequisite merging or elimination.')
+    entry("T01", lambda x, t: bool(t["ast"].get("bvar")), 'Eventually AST exists bvar.')
     entry("T02", lambda x, t: any(t["ast"].get(k) for k in ["forall", "lam", "let", "app"]),
-          "最终 AST 存在 forall / lam / let / app；此处作为一个结构类，不拆分次数。")
-    entry("T03", lambda x, t: bool(t["consts"]), "最终 AST 有常量引用，含辅助声明。")
+          'Finally, AST exists forall / lam / let / app; here it is used as a structural class and does not split times.')
+    entry("T03", lambda x, t: bool(t["consts"]), 'Finally AST has a constant reference, including auxiliary declarations.')
     entry("U02", lambda x, t: bool(t["ast"].get("sort")),
-          "最终 AST 存在 Sort；只确认 sort 表示，不将此数归给每一种 sort 子规则。")
+          'Eventually AST exists in Sort; only the sort representation is confirmed, and this number is not assigned to each sort sub-rule.')
     entry("U03", lambda x, t: any(n.startswith("u_") for n in t.get("level_params", [])),
-          "最终公开参数出现 u_ 层级。")
+          'The final public parameters appear at the u_ level.')
     for key, kind in [("U10", "constant"), ("U11", "inductive")]:
         entry(key, lambda x, t, kind=kind: t.get("kind") == kind and t.get("universe_poly_params", 0) > 0,
-              "最终声明有显式多态宇宙参数。")
+              'The final statement has explicit polymorphic universe parameters.')
     fields = [
         ("T10", "coinductive_as_inductive"), ("U04", "solved_levels"),
         ("U06", "universe_checks"), ("U07", "universe_residuals"),
@@ -62,26 +62,26 @@ def render():
         ("C06", "source_computed"), ("L02", "prop_lift_coercions"),
         ("Q02", "template_sort"), ("Q03", "quality_prop")]
     notes = {
-        "U04": "记录具体层级解；公开与正文局部求解不再细分。",
-        "U06": "记录已执行的引用宇宙检查；这是接受条件，不是改写。",
-        "U07": "只确认 residual 实例处理，不把两个历史命名子规则分别计数。",
-        "U09": "只计模板块本身，不计下游每次实例化。",
-        "U31": "记录最终采用结果 sort 继承。",
-        "Q03": "最终产物包含 quality_prop 分支。"}
+        "U04": 'Record specific hierarchical solutions; public and body local solutions will not be subdivided.',
+        "U06": 'Records the reference universe check that was performed; this is an acceptance condition, not an override.',
+        "U07": 'Only the residual instance processing is confirmed, and the two historical naming sub-rules are not counted separately.',
+        "U09": 'Only the template block itself is counted, not each downstream instantiation.',
+        "U31": 'Record the final adoption result sort inheritance.',
+        "Q03": 'The final product contains the quality_prop branch.'}
     for key, field in fields:
         entry(key, lambda x, t, field=field: bool(t.get(field)),
-              "最终 " + field + " 非空／非零。" + notes.get(key, ""))
+              'Final ' + field + ' is nonempty/nonzero.' + notes.get(key, ""))
     entry("L01", lambda x, t: t.get("prop_lift") is not None,
-          "最终 prop_lift 给出提升深度（深度 0 也有效）。")
+          'Finally prop_lift gives the boost depth (depth 0 is also valid).')
     entry("L03", lambda x, t: t.get("type_lift") is not None or t.get("type_lift_coercions", 0) > 0,
-          "最终 type_lift 给出深度，或 type_lift_coercions > 0；不拆分内部转换路径。")
-    add("C-整体", "透明 δβ 展开", "按源可转换性展开透明定义；未归因到各别名子机制。",
-        lambda x, t: bool(t.get("delta_inlined")), "最终 delta_inlined 列出实际展开的名称。")
+          'Eventually type_lift gives the depth, or type_lift_coercions > 0; internal conversion paths are not split.')
+    add('C-aggregate', 'Transparent δβ unfolding', 'Unfold transparent definitions according to source convertibility; usage is not attributed to individual alias submechanisms.',
+        lambda x, t: bool(t.get("delta_inlined")), 'The final delta_inlined field lists the names actually unfolded.')
     def family_present(x, t):
         return bool(x["source"]["quality_family"]) and (
             len(x["variants"]) + 1 == x["source"]["quality_members"])
     entry("Q05", family_present,
-          "除源 quality_family 元数据外，已核对全部分支的数量及成功状态；同根只计一次。")
+          'In addition to the source quality_family metadata, the number and success status of all branches have been checked; the same root is only counted once.')
     # These mappings must occur in the mapped root's own accepted AST, not elsewhere.
     primitive_rows = []
     for p in usage["primitives"]:
@@ -145,39 +145,39 @@ def render():
     link = "../experiments/mechanical-nat-eq-20261019/results/"
     mlink = "../experiments/used-rule-coverage-20261019/"
     lines = [
-        "# 当前 Corelib 翻译中有使用证据的规则", "",
-        f"当前共 **{count} 个有使用证据的翻译／宇宙处理条目 = {len(rules)} 个原有条目 + {len(mrules)} 个实测 M 类条目**。"
-        f"另列 **{len(type_rows)} 个原语类型映射、{len(primitive_rows)} 个原语操作映射**；映射实例与机制条目粒度不同，分别统计。", "",
-        f"范围：当前 Corelib 清单的 **{scope['modules']} 个模块、{scope['roots']} 个去重根声明**。"
-        "原有条目依据机械 nat／eq 基线 mechanical-nat-eq-20261019/full-v1 的导出产物、最终译文与报告；"
-        "M 类依据 used-rule-coverage-20261019 的成功路径记录及同范围重跑。重跑目标声明与原基线一致。"
-        "本文件不汇总历史运行的命中，也不包含后续 correspondence 证明规则。", "",
-        "源 nat、eq 均生成独立的机械归纳类型，计入 T07；没有启用将这两个根直接替换为 Lean Nat、Eq 的旧 T06 bootstrap。", "",
-        "**如何读数量和证据**", "",
-        "本表只纳入能由当前产物或最终保留路径确认的条目。规则有实现、开关打开、源端出现某种语法，"
-        "或失败尝试曾经过某分支，都不能单独算作使用证据。", "",
-        "| 计数列 | 单位与含义 |",
+        '# Rules with confirmed usage in the current Corelib translation', "",
+        f"The current inventory contains **{count} translation/universe processing entries with evidence of use = {len(rules)} original entries + {len(mrules)} measured M entries**. "
+        f"Also listed are **{len(type_rows)} primitive type mappings and {len(primitive_rows)} primitive operation mappings**; mapping instances and mechanism entries have different granularities and are counted separately.", "",
+        f"Scope: **{scope['modules']} modules, {scope['roots']} distinct root declarations** in the current Corelib scope. "
+        'The original entries use export artifacts, accepted translations, and reports from the mechanical nat/eq baseline mechanical-nat-eq-20261019/full-v1. '
+        'M entries use accepted-path traces and a same-scope rerun in used-rule-coverage-20261019. Target declarations in the rerun match the original baseline. '
+        'This file does not summarize hits from historical runs, nor does it contain subsequent correspondence proof rules.', "",
+        'Sources nat, eq each generate independent mechanical inductive types, counting towards T07; the old T06 bootstrap that directly replaces these two roots with Lean Nat, Eq is not enabled.', "",
+        '**How to read quantities and evidence**', "",
+        'Only entries confirmed by current artifacts or final retained paths are included. An implementation, an enabled switch, or source syntax is insufficient on its own. '
+        'A branch reached only by a failed attempt is also insufficient.', "",
+        '| Count column | Unit and meaning |',
         "|---|---|",
-        "| 主表示根数 | 检查每个根的主译文；符合该行证据条件的根按源名称去重。 |",
-        "| 含 quality 分支根数 | 同时检查主译文和该根的 quality 分支；任一表示命中即计该根一次。 |",
-        "| M 直接根数 | 本次保留记录归属到请求根本身的声明数；不把仅在其依赖中命中的规则归给该根。 |",
-        "| M 全部声明数 | 本次保留记录涉及的全部源声明，含根、依赖和辅助声明；跨模块重复出现按名称去重。 |",
-        "| 映射根数 | 该原语映射涉及的去重源根；已检查这些根自身的目标 AST。 |", "",
-        "这些列均不是执行调用次数，也不是成功率。同一声明可命中多条规则，各行不能相加。"
-        "M 的“全部声明数”与“含 quality 分支根数”统计对象不同，不能互换。"
-        "M 原始 JSON 另有含重复依赖的保留事件数，本文没有把它当作独立声明数或尝试总次数。", "",
-        "| 证据类别 | 具体检查了什么 |",
+        '| Primary roots | The main translation of each root is checked; roots that meet the evidence conditions of the row are deduplicated by source name. |',
+        '| Roots including quality branches | Check both the main translation and the quality branch of that root; a hit in either representation counts that root once. |',
+        '| M direct roots | Distinct requested roots with retained events attributed to the root itself; dependency-only hits are not attributed to that root. |',
+        '| M total declarations | All source declarations in retained events, including roots, dependencies, and auxiliaries; repeated names across modules count once. |',
+        '| Mapping roots | Distinct source roots using the primitive mapping, verified against the target AST of each root itself. |', "",
+        'None of these columns measures invocations or success rates. A declaration may use several rules, so rows cannot be added together. '
+        'M total declarations and roots including quality branches count different populations and are not interchangeable. '
+        'The M JSON also records retained events with repeated dependencies; this file does not treat that count as distinct declarations or total attempts.', "",
+        '| Evidence category | What exactly was checked? |',
         "|---|---|",
-        "| 产物结构 | 在最终通过检查的目标 AST 中找到变量、绑定结构、引用或 Sort 等对应结构。 |",
-        "| 导出产物 | 导出 IR 已实际产生具名 obligation，且对应根译文通过检查；不只是源端有证明语法。 |",
-        "| 结果报告字段 | 最终接受结果有对应字段和值，例如实际展开名称、层级解或提升信息；逐行说明判断条件。 |",
-        "| 分支核对 | 源 quality 家族成员数与全部已通过检查的译文分支一致。 |",
-        "| 成功路径记录 | M 转换实际生效，且其记录留在最终接受环境中；被回滚或返回失败状态的尝试不计。 |",
-        "| 原语目标引用 | 映射根自身的最终 AST 实际引用指定目标表示或操作。 |", "",
-        f"**翻译、导出与宇宙处理：{len(rules)} 项**", "",
-        "保留原编号便于追溯；编号不连续表示其他目录项没有列入本次已确认清单。"
-        "U06 等条目属于接受条件检查，因此这里使用“处理条目”，不把所有条目都称作语义改写。", "",
-        "| 原编号 | 规则／机制 | 实际作用 | 主表示根数 | 含 quality 分支根数 | 证据类别及判断条件 | 命中实例 |",
+        '| Artifact structure | Find corresponding structures such as variables, binding structures, references, or Sort in the target AST that finally passes the check. |',
+        '| Export artifacts | Named obligations actually occur in the exported IR and the corresponding root translation passes checking; source proof syntax alone is insufficient. |',
+        '| Result report fields | The accepted result records fields and values such as unfolded names, solved levels, or lift information. Each row states its criterion. |',
+        '| Branch cross-check | The number of source quality family members is consistent with all translation branches that have passed the check. |',
+        '| Accepted-path trace | The M transformation takes effect and its record remains in the accepted environment. Rolled-back attempts and attempts returning failure are excluded. |',
+        '| Primitive target reference | The final AST of the mapping root itself actually references the specified target representation or operation. |', "",
+        f"**Translation, export, and universe processing: {len(rules)}**", "",
+        'Original identifiers are retained for traceability. Gaps identify catalog entries excluded from this confirmed inventory. '
+        'Entries such as U06 check acceptance conditions; therefore these are processing entries, not all semantic rewrites.', "",
+        '| Original ID | Rule / mechanism | Behavior | Primary roots | Roots including quality branches | Evidence category and criterion | Example root |',
         "|---|---|---|---:|---:|---|---|"]
     def esc(s):
         return str(s).replace("|", "&#124;").replace("\n", " ")
@@ -187,73 +187,73 @@ def render():
         if key == "T07":
             example = "Corelib.Init.Datatypes.nat；Corelib.Init.Logic.eq"
             assert all(n in family for n in example.split("；"))
-        category = ("产物结构" if key in ast_rules else "导出产物" if key == "E04"
-                    else "分支核对" if key == "Q05" else "结果报告字段")
+        category = ('Artifact structure' if key in ast_rules else 'Export artifacts' if key == "E04"
+                    else 'Branch cross-check' if key == "Q05" else 'Result report fields')
         cells = [key, name, desc, len(primary), len(family), category + "：" + basis, example]
         lines.append("| " + " | ".join(esc(x) for x in cells) + " |")
-    lines += ["", f"**匹配与递归转换：{len(mrules)} 项 M 规则**", "",
-              "以下每项都有独立的成功路径记录。记录随环境 saveState／restore 回滚；"
-              "重试正常返回失败状态时也会清除该次记录。只进入转换函数、产生后又被丢弃的候选结果不计入。", "",
-              "| 编号 | 规则 | 实际作用 | 直接根数 | 全部声明数（含依赖／辅助声明） | 命中实例 |",
+    lines += ["", f"**Matching and recursive transformation: {len(mrules)} M rules**", "",
+              'Each entry below has an independent accepted-path trace. Events roll back with environment saveState/restore; '
+              'A retry returning failure normally also clears its events. Merely entering a lowering function or generating a discarded candidate does not count.', "",
+              '| ID | Rule | Behavior | Direct roots | All declarations (including dependencies/auxiliaries) | Example root |',
               "|---|---|---|---:|---:|---|"]
     for r in mrules:
         examples = r["direct_roots"] or r["distinct_declarations"]
         lines.append("| " + " | ".join(map(esc, [
             r["id"], r["name"], r["description"], r["direct_root_count"],
             r["distinct_declaration_count"], examples[0]])) + " |")
-    lines += ["", "各行的全部命中名称见 [M 类逐项统计](" + mlink + "M_RULE_USAGE.json)。"
-              "M11 的显式良基回退仍可能引入待证明条件；命中不表示良基性证明已完成。", "",
-              f"**原语类型映射：{len(type_rows)} 项**", "",
-              "证据类别为“原语目标引用”：已检查映射根自身的最终 AST。"
-              "这里列的是 Rocq 原语的表示选择；机械 nat、eq 不属于这四项原语映射。", "",
-              "| 源类型根 | 目标表示 | 映射根数 |", "|---|---|---:|"]
+    lines += ["", 'For the complete name lists, see [per-rule M statistics](' + mlink + "M_RULE_USAGE.json)。"
+              'The M11 fallback may introduce proof obligations; a hit does not mean that well-foundedness has been proved.', "",
+              f"**Primitive type mapping: {len(type_rows)} item**", "",
+              'The evidence category is Primitive target reference: the final AST of each mapped root has been inspected. '
+              'Listed here are the representation options for the Rocq primitive; mechanical nat and eq do not belong to these four primitive mappings.', "",
+              '| source type root | target representation | Number of mapping roots |', "|---|---|---:|"]
     for name, target in type_rows:
         lines.append(f"| {name} | {target} | 1 |")
-    lines += ["", f"**原语操作映射：{len(primitive_rows)} 项**", "",
-              "证据类别同为“原语目标引用”：下列源根自身实际引用指定 Lean 目标。"
-              "每个操作单独列出，不重复加入原语家族汇总项。"
-              "目标可以是 Rocq2Lean 适配实现；此证据不等于已证明该操作与 Lean／Mathlib 现成运算的 correspondence。", "",
-              "| 源操作标识 | Lean 目标 | 映射根数 | 源声明 |", "|---|---|---:|---|"]
+    lines += ["", f"**Primitive operation mapping: {len(primitive_rows)} item**", "",
+              'The evidence category is also Primitive target reference: each source root itself refers to the specified Lean target. '
+              'Each operation is listed separately; primitive-family totals are not counted again. '
+              'The target may be a Rocq2Lean adapter. This evidence is not a correspondence proof with an existing Lean/Mathlib operation.', "",
+              '| Source operation identifier | Lean Target | Number of mapping roots | source statement |', "|---|---|---:|---|"]
     for source, target, names in primitive_rows:
         lines.append("| " + " | ".join(map(esc, [source, target, len(names), "；".join(names)])) + " |")
-    lines += ["", "**全库验证结果与清单的适用范围**", "",
-              f"同范围重跑覆盖 {scope['modules']} 个模块，其中 {populated} 个含请求根，"
-              f"{scope['modules'] - populated} 个在此层面没有请求根。"
-              f"{scope['roots']} 个根的结果如下；有请求根的模块均通过源端 roundtrip、独立 Lean consumer 和结构 audit。", "",
-              "| 最终状态 | 根数 | 通过检查意味着什么 |", "|---|---:|---|"]
+    lines += ["", '**Full-library validation and inventory scope**', "",
+              f"The same range rerun covers {scope['modules']} modules, of which {populated} contain request roots."
+              f"{scope['modules'] - populated} have no request roots at this level."
+              f"The results for {scope['roots']} roots are as follows; modules with requested roots all pass source roundtrip, independent Lean consumer and structure audit.", "",
+              '| Final status | Roots | Meaning of a successful check |', "|---|---:|---|"]
     status_meanings = [
-        ("TRANSLATED_AND_CHECKED", "译文通过检查，未携带待装配证明前提。"),
-        ("STATEMENT_KERNEL_CHECKED", "定理等声明的陈述通过内核检查，未携带待装配证明前提；不表示源证明已翻译。"),
-        ("PENDING_KERNEL_CHECKED", "带显式证明前提的译文通过检查；这些前提尚待证明或装配。"),
-        ("STATEMENT_PENDING_KERNEL_CHECKED", "带显式证明前提的陈述通过内核检查；源证明及前提不能据此视为已完成。")]
+        ("TRANSLATED_AND_CHECKED", 'The translation passes checking with no proof premises awaiting assembly.'),
+        ("STATEMENT_KERNEL_CHECKED", 'The statement passes kernel checking with no proof premises awaiting assembly; this does not mean that the source proof has been translated.'),
+        ("PENDING_KERNEL_CHECKED", 'The translation passes checking with explicit proof premises that still require proof or assembly.'),
+        ("STATEMENT_PENDING_KERNEL_CHECKED", 'The statement passes kernel checking with explicit proof premises; neither the source proof nor those premises is thereby completed.')]
     for status, meaning in status_meanings:
         lines.append(f"| {status} | {statuses[status]} | {meaning} |")
     pending = statuses["PENDING_KERNEL_CHECKED"] + statuses["STATEMENT_PENDING_KERNEL_CHECKED"]
     disabled = "、".join(scope["disabled_M_rules"])
-    lines += ["", f"合计 {sum(statuses.values())} 根；受阻 {scope['blocked_roots']}，验证失败 "
-              f"{len(scope['validation_failures'])}。其中 {pending} 根带显式待证明前提。", "",
-              f"M 测量中的零命中项 {disabled} 未收入上面的使用清单；"
-              "已关闭这些路径并完成同范围重跑，目标类型、正文、构造器、宇宙与前提保持不变。"
-              "[禁用重跑记录](" + mlink + "M_PRUNING_VALIDATION.json) 保存逐模块结果。", "",
-              f"这支持当前配置完成上述 Corelib 范围的机械翻译，及这 {len(unused_m)} 条 M 路径在本范围可以禁用。"
-              f"**{count} 是当前证据粒度下的清单条目数，不是已证明最小且穷尽所有实现分支的规则数。**"
-              "原有 C-整体、L03、U04 等仍合并了内部子机制；非 M 路径尚未逐项关闭验证。"
-              "未列出的非 M 子机制不能据此判为未使用，完整合并口径见 [非 M 范围说明](" + mlink + "NON_M_SCOPE.md)。", "",
-              "**证据文件与复现**", "",
-              "| 文件 | 内容与用途 |", "|---|---|",
-              f"| [逐根产物证据]({link}rule-usage-evidence.json) | source、primary、variants 及检查结果；用于原有条目的筛选。 |",
-              f"| [原有条目的命中名单]({link}RULE_USAGE.json) | 原编号的 names／family_names；C-整体直接筛选 delta_inlined。 |",
-              f"| [M 成功路径统计]({mlink}M_RULE_USAGE.json) | 每条 M 规则的根名单、全部声明名单和保留事件数。 |",
-              f"| [M 禁用后的全库验证]({mlink}M_PRUNING_VALIDATION.json) | 同范围重跑、逐模块检查、状态计数和目标不变结果。 |",
-              f"| [记录可靠性测试]({mlink}INSTRUMENTATION_TESTS.json) | 验证接受路径保留记录、禁用路径拒绝、回滚和正常返回失败均不留下命中。 |",
-              f"| [完整规则目录]({link}ALL_RULES.md) | 追溯历史编号与规则说明；目录成员不自动视为本次已使用。 |",
-              "| [本文生成脚本](../scripts/used_translation_rules.py) | 从上述证据生成全文，核对名单、计数、成功状态、原语引用及 M 验证的一致性。 |", "",
-              "在仓库根生成或检查本文：", "",
+    lines += ["", f"Total {sum(statuses.values())} root; blocked {scope['blocked_roots']}, verification failed "
+              f"{len(scope['validation_failures'])}. Among them, {pending} has an explicit premise to be proven.", "",
+              f"M Zero hits in measurement {disabled} is not included in the usage list above;"
+              'These paths were disabled and the same scope was rerun, preserving target types, bodies, constructors, universes, and premises. '
+              '[Disable rerun recording](' + mlink + 'M_PRUNING_VALIDATION.json) Save module-by-module results.', "",
+              f"This supports the current configuration to complete the mechanical translation of the above Corelib range, and the {len(unused_m)} M paths can be disabled in this range."
+              f"**{count} is the number of manifest entries under the current evidence granularity, not the number of rules that have been proven to be the smallest and exhaustive of all implementation branches. **"
+              'C-aggregate, L03, and U04 still combine internal submechanisms; non-M paths have not been disabled and tested individually. '
+              'Unlisted non-M submechanisms cannot therefore be classified as unused. See the [non-M scope description](' + mlink + "NON_M_SCOPE.md)。", "",
+              '**Evidence files and reproduction**', "",
+              '| File | Content and purpose |', "|---|---|",
+              f"| [Product evidence by root ]({link}rule-usage-evidence.json) | source, primary, variants and inspection results; used for filtering original entries. |",
+              f"| [Hit list of original entry ]({link}RULE_USAGE.json) | The names/family_names lists for original identifiers; C-aggregate filters delta_inlined directly. |",
+              f"| [M Successful path statistics ]({mlink}M_RULE_USAGE.json) | Root names, all declaration names, and retained-event counts for each M rule. |",
+              f"| [M Full library verification after disabling ]({mlink}M_PRUNING_VALIDATION.json) | Rerun within the same scope, module-by-module inspection, status counting and target unchanged results. |",
+              f"| [Record reliability test ]({mlink}INSTRUMENTATION_TESTS.json) | Verify event retention on accepted paths, rejection of disabled paths, and absence of retained hits after rollback or normal failure returns. |",
+              f"| [Complete rules catalog ]({link}ALL_RULES.md) | Trace historical numbers and rule descriptions; directory members are not automatically considered to have been used this time. |",
+              '| [Generator script](../scripts/used_translation_rules.py) | Generate full text from the above evidence, checking lists, counts, success statuses, primitive references, and M validation for consistency. |', "",
+              'Generate or check this file at the repository root:', "",
               "    python3 scripts/used_translation_rules.py",
               "    python3 scripts/used_translation_rules.py --check", "",
-              "上述命令读取已保存证据，不重新编译或翻译 Corelib。"
-              "完整测量、编译和重跑步骤见 [M 工作区说明](" + mlink + "README.md)。"
-              "原始导出、编译文件及日志保留在远程 .work/used-rule-coverage-20261019/，不提交到 Git。", ""]
+              'These commands read saved evidence without rebuilding or retranslating Corelib. '
+              'For complete measurement, compilation and re-running steps, see [M workspace description](' + mlink + "README.md)。"
+              'The original export, compiled files and logs are kept in the remote .work/used-rule-coverage-20261019/ and are not submitted to Git.', ""]
     # The introduction, table sizes and CLI summary share the same counts.
     assert sum(line.startswith("| " + key + " |") for key in ids for line in lines) == count
     return "\n".join(lines), count

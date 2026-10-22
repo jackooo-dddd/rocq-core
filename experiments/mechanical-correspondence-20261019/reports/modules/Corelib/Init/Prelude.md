@@ -1,29 +1,29 @@
 # Corelib.Init.Prelude
 
-每项对应机械翻译基线中的一个 root。完整 native statement / interface 类型在总 JSON 文件中。
+Each entry corresponds to one root in the mechanical translation baseline. The complete native statement / interface types are in the aggregate JSON file.
 
 
 
 ## Corelib.Init.Prelude.ReverseCoercionSource
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.Init.Prelude.ReverseCoercionSource
+Original target: Rocq.Corelib.Init.Prelude.ReverseCoercionSource
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Init.Prelude.ReverseCoercionSource.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Init.Prelude.ReverseCoercionSource.roundtrip
 
 ## Corelib.Init.Prelude.ReverseCoercionTarget
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.Init.Prelude.ReverseCoercionTarget
+Original target: Rocq.Corelib.Init.Prelude.ReverseCoercionTarget
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Init.Prelude.ReverseCoercionTarget.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Init.Prelude.ReverseCoercionTarget.roundtrip
 
 ## Corelib.Init.Prelude.reverse_coercion
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.Init.Prelude.reverse_coercion
+Original target: Rocq.Corelib.Init.Prelude.reverse_coercion
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Init.Prelude.reverse_coercion.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Init.Prelude.reverse_coercion.roundtrip

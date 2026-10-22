@@ -1,26 +1,26 @@
-目标 Lean 接口的 universe 复杂度
+universe complexity of target Lean interface
 
-统计来源：最终 main75 全量运行的目标 AST；2180个原始根，另排除原生 Nat/Eq 两个 bootstrap 项，参数分布统计2178个生成根。额外 quality 分支不当作新根重复计数。陈述取其命题正文，定义取类型，归纳类型还检查构造器类型。
+Statistical source: The final main75 target of full operation is AST; 2180 original roots, and the two bootstrap items of the original Nat/Eq are excluded. The parameter distribution statistics are 2178 generated roots. Extra quality branches are not counted as new root repeats. Statements take their propositional body, definitions take types, and inductive types also check the constructor type.
 
-| 宇宙参数个数 | 根声明数 |
+| Number of universe parameters | Number of root declarations |
 |---|---:|
 | 0 | 948 |
 | 1 | 625 |
 | 2–3 | 519 |
-| 4及以上 | 86 |
+| 4 and above | 86 |
 
-2092/2178≈96.05%最多3个参数；1230项带至少一个参数，最多16个。
-227项接口显式包含max/imax；29项接口显式包含PULift；49项的类型或正文中显式出现PULift。26项报告非平凡局部宇宙解释，66项报告level copies。各项会重叠，不能相加。
-这里只数显式语法，不展开透明别名，所以29不是“所有可能经依赖遇到PULift的声明”的数量。
+2092/2178≈96.05% has at most 3 parameters; 1230 has at least one parameter and at most 16.
+The 227 item interface explicitly contains max/imax; the 29 item interface explicitly contains PULift; PULift appears explicitly in the type or body of the 49 item. Entry 26 reports non-trivial local universe explanations, entry 66 reports level copies. The items will overlap and cannot be added.
+Only explicit syntax is counted here, transparent aliases are not expanded, so 29 is not the number of "all declarations that may encounter PULift through dependencies".
 
-复杂实例：
-- CMorphisms.compose_proper：16个参数，源Rocq显式多态context也有16个；目标本项接口没有显式max/PULift。
-- CMorphisms.respectful_morphism：16个参数，源端也有16个；目标局部解释产生嵌套max，接口包含PULift。
-- CMorphisms.PartialOrder_StrictOrder：6个参数，接口含PULift；仍有两个显式待证条件。
-- 29个显式PULift接口都出现在Classes的RelationClasses/CRelationClasses/CMorphisms，详见JSON筛选。
+Complex example:
+- CMorphisms.compose_proper: 16 parameters, source Rocq explicit polymorphism context also has 16; the target interface does not have explicit max/PULift.
+- CMorphisms.respectful_morphism: 16 parameters, the source also has 16; the target local interpretation produces nested max, and the interface contains PULift.
+- CMorphisms.PartialOrder_StrictOrder: 6 parameters, the interface contains PULift; there are still two explicit conditions to be verified.
+- 29 explicit PULift interfaces all appear in RelationClasses/CRelationClasses/CMorphisms of Classes. For details, see JSON filtering.
 
-判断：已经通过源端原生事实、公共接口、独立结构审计与Lean内核检查；不能把“复杂”称为“宇宙不合法”。但可用性确实不完全等同手写Lean。尤其PULift改变了表示，需要up/down或桥接，而max参数化增加了签名阅读成本。v_0/u_Corelib_...是稳定的机械命名，不是友好的公开API命名。
+Judgment: It has passed the source-end native facts, public interfaces, independent structure audits and Lean kernel checks; "complex" cannot be called "universely illegal". But the usability is indeed not exactly the same as handwriting Lean. In particular, PULift changes the representation and requires up/down or bridging, while max parameterization increases the signature reading cost. v_0/u_Corelib_... is a stable mechanical designation, not the friendly public designation API.
 
-Lean可以从很多实参推断宇宙，但不保证每项都无需显式实例：幽灵参数、复杂依赖和提升表示可能需要注解。现有native clients已实证若干高风险接口和基础Nat/List互操作；尚未对2180项分别写完整手工用户程序。零阻塞不等于全部接口已具备理想交互体验。
+Lean can infer the universe from many actual parameters, but there is no guarantee that each will not require an explicit instance: ghost parameters, complex dependencies, and boosted representations may require annotations. The existing native clients has demonstrated interoperability between several high-risk interfaces and basic Nat/List; complete manual user programs have not yet been written for the 2180 items. Zero blocking does not mean that all interfaces have an ideal interactive experience.
 
-适合后续API整理的是语义化参数命名、可证明冗余的max表达式归一化、经过核查的表示转换封装。不得把独立宇宙强行并成一个，或用固定Type 0隐藏问题；也不能把PULift包装的值无证明地当成原类型。
+Suitable for subsequent API organization are semantic parameter naming, provably redundant max expression normalization, and verified representation conversion encapsulation. Do not forcibly combine independent universes into one, or use fixed Type 0 to hide problems; nor can you treat the value packaged by PULift as the original type without proof.

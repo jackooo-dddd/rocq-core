@@ -8,74 +8,74 @@
   ],
   "count_semantics": "Each number counts unique roots satisfying basis. Not execution counts. Categories count review entries.",
   "measurement_counts": {
-    "处理范围": 8,
-    "源端元数据": 12,
-    "产物结构": 13,
-    "未单独记录": 46,
-    "结果报告字段": 28,
-    "本次未启用": 3,
-    "部分子机制": 3,
-    "策略标志": 1,
-    "模块验证结果": 2,
-    "尝试记录": 2
+    "Processing scope": 8,
+    "Source metadata": 12,
+    "Artifact structure": 13,
+    "Not separately recorded": 46,
+    "Result report fields": 28,
+    "Not enabled in this run": 3,
+    "Partial submechanisms": 3,
+    "Policy flag": 1,
+    "Module validation results": 2,
+    "Attempt records": 2
   },
   "measurement_definitions": {
-    "处理范围": {
-      "meaning": "该检查或流程所覆盖的声明集合，不要求每项触发特殊转换。",
-      "count_reading": "例如2180表示2180个根在覆盖范围内，不是执行2180次改写。",
-      "example": "E01 导出范围；V03 生成声明的内核检查范围。"
+    "Processing scope": {
+      "meaning": "Declarations covered by a check or processing stage; not every declaration must trigger a special transformation.",
+      "count_reading": "For example, 2180 means that 2180 roots are covered, not that 2180 rewrites occurred.",
+      "example": "E01: export scope; V03: kernel checks of generated declarations."
     },
-    "源端元数据": {
-      "meaning": "根据源 IR 的种类、标志或字段筛选声明。",
-      "count_reading": "统计具有该源特征的根，不能据此确认某目标转换分支实际执行。",
-      "example": "T09 的 npars > nparams_rec；E04 自身带 obligations。"
+    "Source metadata": {
+      "meaning": "Declarations selected by source IR kind, flags, or fields.",
+      "count_reading": "Counts roots with that source feature; it does not confirm execution of a target transformation branch.",
+      "example": "T09: npars > nparams_rec; E04: obligations on the root itself."
     },
-    "产物结构": {
-      "meaning": "根据最终目标的声明种类、AST 或可见属性筛选。",
-      "count_reading": "统计出现该产物特征的根；同一根出现多次结构仍只计1。",
-      "example": "T07 最终生成 inductive；U08 目标 AST 直接含原生 Lean Eq。"
+    "Artifact structure": {
+      "meaning": "Selection by the final target declaration kind, AST, or visible attributes.",
+      "count_reading": "Counts distinct roots with the artifact feature; repeated occurrences in one root count as 1.",
+      "example": "T07: target kind inductive; U08: native Lean Eq directly in the target AST."
     },
-    "未单独记录": {
-      "meaning": "现有证据没有该子机制独立、可归属的记录。",
-      "count_reading": "使用根数及调用次数未知（null），不能当成0，也不能用父机制数量代替。",
-      "example": "M03 没有独立路径事件；源有 fix 只算相关结构证据。"
+    "Not separately recorded": {
+      "meaning": "Available evidence has no independent record attributable to this submechanism.",
+      "count_reading": "Both root usage and invocation counts are unknown (null), not 0; parent-mechanism counts cannot substitute.",
+      "example": "M03 has no independent path events in this historical report; a source fix is only related structural evidence."
     },
-    "结果报告字段": {
-      "meaning": "最终报告中相应字段非空、非零或满足所列条件。",
-      "count_reading": "统计满足字段条件的根；字段可能记录策略或求解结果，不统一等价于改写次数。",
-      "example": "U15 的 implicit_levels；L02 的 prop_lift_coercions 非零。"
+    "Result report fields": {
+      "meaning": "Final report fields are nonempty, nonzero, or satisfy the stated conditions.",
+      "count_reading": "Counts roots meeting those conditions. A field may record a policy or a solution, so it is not necessarily a rewrite count.",
+      "example": "U15: implicit_levels; L02: nonzero prop_lift_coercions."
     },
-    "本次未启用": {
-      "meaning": "本次配置没有使用该机制，或其历史路径已经停用。",
-      "count_reading": "当前为0；不意味着机制不存在或任何输入下都不需要。T06 则已明确停用。",
-      "example": "T06 bootstrap 表为空；E14 本次没有装配外部证明。"
+    "Not enabled in this run": {
+      "meaning": "The current configuration does not use the mechanism, or its historical path has been disabled.",
+      "count_reading": "The current count is 0; this does not imply that the mechanism is absent or unnecessary for every input. T06 is explicitly disabled.",
+      "example": "T06: empty bootstrap table; E14: no externally supplied proofs assembled in this run."
     },
-    "部分子机制": {
-      "meaning": "复合条目只有一部分子机制有可识别证据。",
-      "count_reading": "数字只属于依据栏指出的部分；整个条目的使用数未知，不作为调用次数下界。",
-      "example": "T11 仅记录带条件归纳部分，未独立统计嵌套归纳。"
+    "Partial submechanisms": {
+      "meaning": "Only part of a composite entry has identifiable evidence.",
+      "count_reading": "The count covers only the part named in basis. Total entry usage remains unknown, and this is not a lower bound on invocation count.",
+      "example": "T11 records conditional inductive subcases, not nested inductive types separately."
     },
-    "策略标志": {
-      "meaning": "报告标明采用的尝试策略，但不记录其内部具体转换事件。",
-      "count_reading": "统计带策略标志的根；启用策略不等于发生相应抬升或转换。",
-      "example": "U28 的 universe_lowered / universe_cumulativity。"
+    "Policy flag": {
+      "meaning": "The report records a policy that was tried, without the individual conversions inside it.",
+      "count_reading": "Counts roots with the flag. Enabling a policy does not show that a corresponding raising or conversion occurred.",
+      "example": "U28: universe_lowered / universe_cumulativity."
     },
-    "模块验证结果": {
-      "meaning": "声明所属模块的独立检查有明确通过结果。",
-      "count_reading": "统计通过模块中覆盖的根，不是逐规则证明数或检查调用次数。",
-      "example": "V07 consumer=OK；V08 audit=OK。"
+    "Module validation results": {
+      "meaning": "The module containing the declaration has an explicit successful independent validation result.",
+      "count_reading": "Counts roots covered by validated modules, not per-rule proofs or check invocations.",
+      "example": "V07: consumer=OK; V08: audit=OK."
     },
-    "尝试记录": {
-      "meaning": "该声明存在 tier_times，或其中出现指定类型的尝试。",
-      "count_reading": "主表统计有此记录的根；每根尝试几次另见重试开关表。",
-      "example": "S02 有 tier_times；S04 有归纳块 i[...] 尝试。"
+    "Attempt records": {
+      "meaning": "A declaration has tier_times, or a specified attempt kind occurs in that record.",
+      "count_reading": "The main table counts roots with such records; the retry-switch table separately gives attempt totals.",
+      "example": "S02: tier_times exists; S04: an inductive i[...] attempt."
     }
   },
   "rules": [
     {
       "id": "E01",
-      "name": "依赖闭包导出",
-      "precision": "处理范围",
+      "name": "Dependency closure export",
+      "precision": "Processing scope",
       "primary_roots": 2180,
       "family_roots": 2180,
       "names": [
@@ -4442,19 +4442,19 @@
         "Corelib.ssr.ssrunder.Under_rel.over_rel_done",
         "Corelib.ssr.ssrunder.Under_rel.under_rel_done"
       ],
-      "basis": "原始根的导出覆盖；非函数调用次数。",
+      "basis": "Export override of original root; non-function call count.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "E02",
-      "name": "归约后分类",
-      "precision": "源端元数据",
+      "name": "Classification after reduction",
+      "precision": "Source metadata",
       "primary_roots": 2070,
       "family_roots": 2070,
       "names": [
@@ -8601,19 +8601,19 @@
         "Corelib.ssr.ssrunder.Under_rel.over_rel_done",
         "Corelib.ssr.ssrunder.Under_rel.under_rel_done"
       ],
-      "basis": "参与声明分类的常量；未拆分归约分支。",
+      "basis": "Constants participating in declaration classification; reduction branch not split.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "E03",
-      "name": "普通定理／公理的 statement 模式",
-      "precision": "产物结构",
+      "name": "statement mode for ordinary theorems/axioms",
+      "precision": "Artifact structure",
       "primary_roots": 1029,
       "family_roots": 1029,
       "names": [
@@ -10678,19 +10678,19 @@
         "Corelib.ssr.ssrunder.Under_rel.over_rel_done",
         "Corelib.ssr.ssrunder.Under_rel.under_rel_done"
       ],
-      "basis": "最终陈述产物。",
+      "basis": "Final presentation product.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "E04",
-      "name": "嵌入证明抽取",
-      "precision": "源端元数据",
+      "name": "Embedded proof extraction",
+      "precision": "Source metadata",
       "primary_roots": 244,
       "family_roots": 244,
       "names": [
@@ -11185,70 +11185,70 @@
         "Corelib.ssr.ssrfun.sig_of_sig2",
         "Corelib.ssr.ssrfun.tag_of_sig"
       ],
-      "basis": "自身源 IR 带 obligations；不等于所有继承待证条件的根。",
+      "basis": "Self source IR with obligations; not equal to the root of all inherited unproven conditions.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "E05",
-      "name": "局部证明应用保留",
-      "precision": "未单独记录",
+      "name": "Local proof application preservation",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "E06",
-      "name": "证明结构保留重试",
-      "precision": "未单独记录",
+      "name": "Retry preserving proof structure",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "E07",
-      "name": "中性证明投影保留",
-      "precision": "未单独记录",
+      "name": "Neutral proof projection preservation",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "E08",
-      "name": "透明计算定义",
-      "precision": "产物结构",
+      "name": "Transparent computational definitions",
+      "precision": "Artifact structure",
       "primary_roots": 934,
       "family_roots": 934,
       "names": [
@@ -13123,19 +13123,19 @@
         "Corelib.ssr.ssrunder.Under_rel.Over_rel",
         "Corelib.ssr.ssrunder.Under_rel.Under_rel"
       ],
-      "basis": "最终 def 产物覆盖。",
+      "basis": "The final def product coverage.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "E09",
-      "name": "不透明数据定义",
-      "precision": "产物结构",
+      "name": "Opaque data definitions",
+      "precision": "Artifact structure",
       "primary_roots": 107,
       "family_roots": 107,
       "names": [
@@ -13356,36 +13356,36 @@
         "Corelib.ssr.ssrfun.all_tag",
         "Corelib.ssr.ssrfun.all_tag2"
       ],
-      "basis": "最终 opaque 产物覆盖，含 quality family。",
+      "basis": "The final opaque product coverage includes quality and family.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "E10",
-      "name": "不透明接口策略",
-      "precision": "结果报告字段",
+      "name": "Opaque interface policy",
+      "precision": "Result report fields",
       "primary_roots": 0,
       "family_roots": 0,
       "names": [],
       "family_names": [],
-      "basis": "原始根最终采用 opaque_interface。",
+      "basis": "The original root ended up being opaque_interface.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "E11",
-      "name": "封装实现准备",
-      "precision": "源端元数据",
+      "name": "Sealed implementation preparation",
+      "precision": "Source metadata",
       "primary_roots": 7,
       "family_roots": 7,
       "names": [
@@ -13406,19 +13406,19 @@
         "Corelib.ssr.ssrunder.Under_rel.over_rel_done",
         "Corelib.ssr.ssrunder.Under_rel.under_rel_done"
       ],
-      "basis": "源准备 sealed_implementation=true。",
+      "basis": "Source preparation sealed_implementation=true.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "E12",
-      "name": "多态条件与状态",
-      "precision": "产物结构",
+      "name": "Polymorphic prerequisites and state",
+      "precision": "Artifact structure",
       "primary_roots": 331,
       "family_roots": 331,
       "names": [
@@ -14087,53 +14087,53 @@
         "Corelib.ssr.ssrfun.sig_of_sig2",
         "Corelib.ssr.ssrfun.tag_of_sig"
       ],
-      "basis": "最终有显式条件；条件合并／消除的内部次数未单列。",
+      "basis": "Finally there are explicit conditions; internal times of conditional merging/elimination are not listed separately.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "E13",
-      "name": "延后 guard 处理",
-      "precision": "未单独记录",
+      "name": "Deferred guard handling",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "E14",
-      "name": "条件装配",
-      "precision": "本次未启用",
+      "name": "Prerequisite assembly",
+      "precision": "Not enabled in this run",
       "primary_roots": 0,
       "family_roots": 0,
       "names": [],
       "family_names": [],
-      "basis": "本次运行未装配外部证明；0 描述实验配置，非条件装配函数调用计数。",
+      "basis": "No external proofs are assembled in this census; 0 describes the configuration, not prerequisite-assembly invocation counts.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "T01",
-      "name": "变量和绑定",
-      "precision": "产物结构",
+      "name": "Variables and bindings",
+      "precision": "Artifact structure",
       "primary_roots": 1982,
       "family_roots": 1982,
       "names": [
@@ -18104,19 +18104,19 @@
         "Corelib.ssr.ssrunder.Under_rel.over_rel_done",
         "Corelib.ssr.ssrunder.Under_rel.under_rel_done"
       ],
-      "basis": "最终 AST 含 bvar；不是 rel 转换调用次数。",
+      "basis": "Ultimately AST contains bvar; not rel conversion call count.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "T02",
-      "name": "Π、λ、let、应用",
-      "precision": "产物结构",
+      "name": "Π, λ, let, and application",
+      "precision": "Artifact structure",
       "primary_roots": 2155,
       "family_roots": 2155,
       "names": [
@@ -22433,19 +22433,19 @@
         "Corelib.ssr.ssrunder.Under_rel.over_rel_done",
         "Corelib.ssr.ssrunder.Under_rel.under_rel_done"
       ],
-      "basis": "最终 AST 含绑定／应用结构。",
+      "basis": "Final AST with binding/application structure.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "T03",
-      "name": "常量、归纳类型与构造器引用",
-      "precision": "产物结构",
+      "name": "References to constants, inductive types, and constructors",
+      "precision": "Artifact structure",
       "primary_roots": 2090,
       "family_roots": 2097,
       "names": [
@@ -26639,27 +26639,27 @@
         "Corelib.ssr.ssrunder.Under_rel.over_rel_done",
         "Corelib.ssr.ssrunder.Under_rel.under_rel_done"
       ],
-      "basis": "最终 AST 含常量引用，含辅助引用。",
+      "basis": "Finally, AST contains constant references and auxiliary references.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "T04",
       "name": "cast",
-      "precision": "未单独记录",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [
         {
-          "basis": "源 IR 含 cast，不等于使用 cast 修复。",
+          "basis": "Source IR contains cast, which is not equivalent to using cast to repair.",
           "roots": 97,
           "names": [
             "Corelib.Classes.CMorphisms.PartialOrder_StrictOrder",
@@ -26762,25 +26762,25 @@
           ]
         }
       ],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "T05",
       "name": "SP：SProp → Prop",
-      "precision": "未单独记录",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [
         {
-          "basis": "主源 IR 含 SProp；未记录全部动态转换。",
+          "basis": "Main source IR contains SProp; not all dynamic conversions are recorded.",
           "roots": 48,
           "names": [
             "Corelib.BinNums.PosDef.Pos.mask_sind",
@@ -26834,34 +26834,34 @@
           ]
         }
       ],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "T06",
-      "name": "旧 Bootstrap nat／eq（已停用）",
-      "precision": "本次未启用",
+      "name": "Old Bootstrap nat/eq (disabled)",
+      "precision": "Not enabled in this run",
       "primary_roots": 0,
       "family_roots": 0,
       "names": [],
       "family_names": [],
-      "basis": "已停用；当前 bootstrapRules=#[]，报告 bootstrap/ 根数为 0。源 nat/eq 均走 T07。",
+      "basis": "Disabled: bootstrapRules=#[], with 0 reported bootstrap/ roots. Source nat/eq use T07.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retired",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "T07",
-      "name": "普通单体归纳块",
-      "precision": "产物结构",
+      "name": "Ordinary single inductive blocks",
+      "precision": "Artifact structure",
       "primary_roots": 110,
       "family_roots": 110,
       "names": [
@@ -27088,36 +27088,36 @@
         "Corelib.ssr.ssrfun.simpl_fun",
         "Corelib.ssr.ssrfun.wrapped"
       ],
-      "basis": "最终生成归纳块的覆盖。",
+      "basis": "The final coverage of the inductive block is generated.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "T08",
-      "name": "原生记录及投影",
-      "precision": "结果报告字段",
+      "name": "Native records and projections",
+      "precision": "Result report fields",
       "primary_roots": 0,
       "family_roots": 0,
       "names": [],
       "family_names": [],
-      "basis": "最终报告 primitive_record 非空／非零。",
+      "basis": "final report primitive_record is nonempty/nonzero.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "T09",
-      "name": "非均匀参数",
-      "precision": "源端元数据",
+      "name": "Non-uniform parameters",
+      "precision": "Source metadata",
       "primary_roots": 1,
       "family_roots": 1,
       "names": [
@@ -27126,19 +27126,19 @@
       "family_names": [
         "Corelib.Init.Wf.Acc"
       ],
-      "basis": "原生 npars>nparams_rec 的非均匀块。",
+      "basis": "Non-uniform blocks of native npars>nparams_rec.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "T10",
-      "name": "T：非递归 coinductive",
-      "precision": "结果报告字段",
+      "name": "T: non-recursive coinductive types",
+      "precision": "Result report fields",
       "primary_roots": 4,
       "family_roots": 4,
       "names": [
@@ -27153,44 +27153,44 @@
         "Corelib.Classes.Morphisms.apply_subrelation",
         "Corelib.Classes.Morphisms.normalization_done"
       ],
-      "basis": "最终报告 coinductive_as_inductive 非空／非零。",
+      "basis": "final report coinductive_as_inductive is nonempty/nonzero.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "T11",
-      "name": "受限嵌套归纳与带条件归纳",
-      "precision": "部分子机制",
+      "name": "Restricted nested and conditional inductive types",
+      "precision": "Partial submechanisms",
       "primary_roots": 0,
       "family_roots": 0,
       "names": [],
       "family_names": [],
-      "basis": "只确认带条件归纳子项；嵌套归纳未单列。",
+      "basis": "Only the sub-items of conditional induction are confirmed; nested induction is not listed separately.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "只计 basis 指明的子机制；整个复合条目的使用根数未知。"
+      "limitation": "Only the sub-mechanism specified by basis is counted; the number of used roots for the entire composite entry is unknown."
     },
     {
       "id": "M01",
-      "name": "M3b：依赖 match",
-      "precision": "未单独记录",
+      "name": "M3b: dependent match",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [
         {
-          "basis": "源 IR 含 case；只是结构证据。",
+          "basis": "Source IR contains case; Just structural evidence.",
           "roots": 509,
           "names": [
             "Corelib.Array.ArrayAxioms.length_make",
@@ -27705,42 +27705,42 @@
           ]
         }
       ],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "M02",
-      "name": "非均匀 match",
-      "precision": "未单独记录",
+      "name": "Non-uniform match",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "M03",
-      "name": "单函数结构递归",
-      "precision": "未单独记录",
+      "name": "Single-function structural recursion",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [
         {
-          "basis": "源 IR single_fix；不是已确认的递归转换路径。",
+          "basis": "Source IR single_fix; is not a confirmed recursive transformation path.",
           "roots": 93,
           "names": [
             "Corelib.BinNums.IntDef.Z.pos_div_eucl",
@@ -27839,76 +27839,76 @@
           ]
         }
       ],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "M04",
-      "name": "变化前置参数泛化",
-      "precision": "未单独记录",
+      "name": "Generalization of changing leading parameters",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "M05",
-      "name": "索引与函数递归字段",
-      "precision": "未单独记录",
+      "name": "Indices and function-valued recursive fields",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "M06",
-      "name": "ι 泛化递归",
-      "precision": "未单独记录",
+      "name": "ι-generalized recursion",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "M07",
-      "name": "结构互递归",
-      "precision": "未单独记录",
+      "name": "Structural mutual recursion",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [
         {
-          "basis": "源 IR mutual_fix；不是已确认的递归转换路径。",
+          "basis": "Source IR mutual_fix; is not a confirmed recursive transformation path.",
           "roots": 8,
           "names": [
             "Corelib.BinNums.PosDef.Pos.add",
@@ -27922,125 +27922,125 @@
           ]
         }
       ],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "M08",
-      "name": "递归暴露",
-      "precision": "未单独记录",
+      "name": "Exposing recursion",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [
         {
-          "basis": "源 IR 含 letin；只是结构证据。",
+          "basis": "Source IR contains letin; Just structural evidence.",
           "roots": 0,
           "names": []
         }
       ],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "M09",
       "name": "Course-of-values",
-      "precision": "未单独记录",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "M10",
-      "name": "Accessibility 转换",
-      "precision": "未单独记录",
+      "name": "Accessibility conversion",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "M11",
-      "name": "显式良基回退",
-      "precision": "未单独记录",
+      "name": "Explicit well-founded fallback",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "M12",
-      "name": "构造器形索引",
-      "precision": "未单独记录",
+      "name": "Constructor-shaped indices",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "M13",
-      "name": "递归 cast 修复",
-      "precision": "未单独记录",
+      "name": "Recursive cast repair",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "U01",
-      "name": "R0：原生事实",
-      "precision": "处理范围",
+      "name": "R0: Native universe facts",
+      "precision": "Processing scope",
       "primary_roots": 2180,
       "family_roots": 2180,
       "names": [
@@ -32407,19 +32407,19 @@
         "Corelib.ssr.ssrunder.Under_rel.over_rel_done",
         "Corelib.ssr.ssrunder.Under_rel.under_rel_done"
       ],
-      "basis": "原生宇宙上下文检查覆盖；不是每根都有非平凡约束。",
+      "basis": "Native universe context check override; not every root has non-trivial constraints.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "U02",
-      "name": "R1：基础 sort 映射",
-      "precision": "产物结构",
+      "name": "R1: Basic sort mapping",
+      "precision": "Artifact structure",
       "primary_roots": 1782,
       "family_roots": 1782,
       "names": [
@@ -35990,19 +35990,19 @@
         "Corelib.ssr.ssrunder.Under_rel.over_rel_done",
         "Corelib.ssr.ssrunder.Under_rel.under_rel_done"
       ],
-      "basis": "最终 AST 含 Sort，未区分普通读取和 R8。",
+      "basis": "The final AST contains Sort, without distinguishing between normal reading and R8.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "U03",
-      "name": "R2／R2T：宇宙参数化",
-      "precision": "产物结构",
+      "name": "R2/R2T: Universe parameterization",
+      "precision": "Artifact structure",
       "primary_roots": 1031,
       "family_roots": 1031,
       "names": [
@@ -38071,19 +38071,19 @@
         "Corelib.ssr.ssrunder.Under_rel.over_rel_done",
         "Corelib.ssr.ssrunder.Under_rel.under_rel_done"
       ],
-      "basis": "最终公开 u_ 层级参数覆盖，排除显式 v_i。",
+      "basis": "Finally, the u_ level parameter coverage is disclosed, excluding explicit v_i.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "U04",
-      "name": "R2S：公开层级求解",
-      "precision": "结果报告字段",
+      "name": "R2S: Public level solving",
+      "precision": "Result report fields",
       "primary_roots": 129,
       "family_roots": 129,
       "names": [
@@ -38348,36 +38348,36 @@
         "Corelib.ssr.ssrunder.Under_rel.Under_rel_from_rel",
         "Corelib.ssr.ssrunder.Under_rel.over_rel"
       ],
-      "basis": "最终报告 solved_levels 非空／非零。 公开与正文局部求解未独立拆分。",
+      "basis": "final report solved_levels is nonempty/nonzero. The public and body local solutions are not separated independently.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "U05",
-      "name": "R2B：正文局部层级",
-      "precision": "未单独记录",
+      "name": "R2B: Body-local levels",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "U06",
-      "name": "R3：引用一致性与不抬高",
-      "precision": "结果报告字段",
+      "name": "R3: Reference coherence and no raising",
+      "precision": "Result report fields",
       "primary_roots": 867,
       "family_roots": 867,
       "names": [
@@ -40118,19 +40118,19 @@
         "Corelib.ssr.ssrunder.Under_rel.over_rel_done",
         "Corelib.ssr.ssrunder.Under_rel.under_rel_done"
       ],
-      "basis": "最终报告 universe_checks 非空／非零。",
+      "basis": "final report universe_checks is nonempty/nonzero.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "U07",
-      "name": "R3′／R3″：残留实例",
-      "precision": "结果报告字段",
+      "name": "R3′/R3″: Residual instances",
+      "precision": "Result report fields",
       "primary_roots": 1,
       "family_roots": 1,
       "names": [
@@ -40139,19 +40139,19 @@
       "family_names": [
         "Corelib.ssr.ssrbool.all_sig_cond_dep"
       ],
-      "basis": "最终报告 universe_residuals 非空／非零。",
+      "basis": "final report universe_residuals is nonempty/nonzero.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "U08",
-      "name": "R4：Lean 内部 Eq 层级检查",
-      "precision": "产物结构",
+      "name": "R4: Level checks for internal Lean Eq",
+      "precision": "Artifact structure",
       "primary_roots": 6,
       "family_roots": 6,
       "names": [
@@ -40170,19 +40170,19 @@
         "Corelib.Program.Wf.Fix_F_sub_rect",
         "Corelib.Program.Wf.Fix_sub_rect"
       ],
-      "basis": "最终 AST 直接含原生 Lean Eq（包括内部辅助证明）；不是源 eq 原生映射次数。",
+      "basis": "The final AST directly contains the native Lean Eq (including internal auxiliary proof); it is not the number of native mappings of the source eq.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "U09",
-      "name": "R5／R5S：模板层级",
-      "precision": "结果报告字段",
+      "name": "R5/R5S: Template levels",
+      "precision": "Result report fields",
       "primary_roots": 27,
       "family_roots": 27,
       "names": [
@@ -40243,19 +40243,19 @@
         "Corelib.ssr.ssrfun.simpl_fun",
         "Corelib.ssr.ssrfun.wrapped"
       ],
-      "basis": "最终报告 template 非空／非零。 统计模板块本身，下游实例化另属引用。",
+      "basis": "final report template is nonempty/nonzero. The statistics template block itself, downstream instantiation is a separate reference.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "U10",
-      "name": "R6：显式多态常量",
-      "precision": "产物结构",
+      "name": "R6: Explicitly polymorphic constants",
+      "precision": "Artifact structure",
       "primary_roots": 194,
       "family_roots": 194,
       "names": [
@@ -40650,19 +40650,19 @@
         "Corelib.Init.Prelude.reverse_coercion",
         "Corelib.ssr.ssreflect_rw.ssr_have_upoly"
       ],
-      "basis": "对应声明有显式多态宇宙参数。",
+      "basis": "The corresponding declaration has explicit polymorphic universe parameters.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "U11",
-      "name": "多态归纳块",
-      "precision": "产物结构",
+      "name": "Polymorphic inductive blocks",
+      "precision": "Artifact structure",
       "primary_roots": 6,
       "family_roots": 6,
       "names": [
@@ -40681,19 +40681,19 @@
         "Corelib.Classes.CRelationClasses.RewriteRelation",
         "Corelib.Classes.CRelationClasses.StrictOrder"
       ],
-      "basis": "对应声明有显式多态宇宙参数。",
+      "basis": "The corresponding declaration has explicit polymorphic universe parameters.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "U12",
-      "name": "R2⁺：事实化简",
-      "precision": "结果报告字段",
+      "name": "R2⁺: Fact reduction",
+      "precision": "Result report fields",
       "primary_roots": 1,
       "family_roots": 1,
       "names": [
@@ -40702,19 +40702,19 @@
       "family_names": [
         "Corelib.Relations.Relation_Definitions.relation"
       ],
-      "basis": "最终报告 sort_fact_reduced 非空／非零。",
+      "basis": "final report sort_fact_reduced is nonempty/nonzero.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "U13",
-      "name": "R2F／R2F-c：约束解释",
-      "precision": "结果报告字段",
+      "name": "R2F/R2F-c: Constraint interpretation",
+      "precision": "Result report fields",
       "primary_roots": 1,
       "family_roots": 1,
       "names": [
@@ -40723,36 +40723,36 @@
       "family_names": [
         "Corelib.Classes.RelationClasses.unary_predicate"
       ],
-      "basis": "最终报告 level_interp 非空／非零。",
+      "basis": "final report level_interp is nonempty/nonzero.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "U14",
-      "name": "R3-P：局部与全局联合蕴含",
-      "precision": "未单独记录",
+      "name": "R3-P: Joint local/global entailment",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "U15",
-      "name": "R3G：隐含层级发现",
-      "precision": "结果报告字段",
+      "name": "R3G: Implicit level discovery",
+      "precision": "Result report fields",
       "primary_roots": 227,
       "family_roots": 227,
       "names": [
@@ -41213,36 +41213,36 @@
         "Corelib.ssr.ssrunder.Under_rel.Under_rel_from_rel",
         "Corelib.ssr.ssrunder.Under_rel.over_rel"
       ],
-      "basis": "最终报告 implicit_levels 非空／非零。",
+      "basis": "final report implicit_levels is nonempty/nonzero.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "U16",
-      "name": "R3G-F：结果 sort 层级",
-      "precision": "结果报告字段",
+      "name": "R3G-F: Result-sort levels",
+      "precision": "Result report fields",
       "primary_roots": 0,
       "family_roots": 0,
       "names": [],
       "family_names": [],
-      "basis": "最终报告 result_sort_implicit_levels 非空／非零。",
+      "basis": "final report result_sort_implicit_levels is nonempty/nonzero.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "U17",
-      "name": "R8：Sort 化",
-      "precision": "结果报告字段",
+      "name": "R8: Generalization to Sort",
+      "precision": "Result report fields",
       "primary_roots": 598,
       "family_roots": 598,
       "names": [
@@ -42445,36 +42445,36 @@
         "Corelib.ssr.ssrunder.Under_rel.Under_rel_from_rel",
         "Corelib.ssr.ssrunder.Under_rel.over_rel"
       ],
-      "basis": "最终报告 admitting_levels 非空／非零。",
+      "basis": "final report admitting_levels is nonempty/nonzero.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "U18",
       "name": "R-CARRIER P1",
-      "precision": "未单独记录",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "U19",
       "name": "R-CARRIER P2",
-      "precision": "结果报告字段",
+      "precision": "Result report fields",
       "primary_roots": 66,
       "family_roots": 66,
       "names": [
@@ -42613,104 +42613,104 @@
         "Corelib.ssr.ssrbool.subon2",
         "Corelib.ssr.ssrbool.subon_bij"
       ],
-      "basis": "最终报告 level_copies 非空／非零。",
+      "basis": "final report level_copies is nonempty/nonzero.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "U20",
       "name": "R-CARRIER P3",
-      "precision": "未单独记录",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "U21",
       "name": "R-SPLIT",
-      "precision": "结果报告字段",
+      "precision": "Result report fields",
       "primary_roots": 0,
       "family_roots": 0,
       "names": [],
       "family_names": [],
-      "basis": "最终报告 level_split 非空／非零。",
+      "basis": "final report level_split is nonempty/nonzero.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "U22",
-      "name": "Rule R：语义一致性",
-      "precision": "未单独记录",
+      "name": "Rule R: Semantic coherence",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "U23",
-      "name": "Rule H：条件实例",
-      "precision": "未单独记录",
+      "name": "Rule H: Prerequisite instances",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "U24",
-      "name": "逐出现层级／unify",
-      "precision": "未单独记录",
+      "name": "Per-occurrence levels / unify",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "U25",
       "name": "sort_interp",
-      "precision": "结果报告字段",
+      "precision": "Result report fields",
       "primary_roots": 5,
       "family_roots": 5,
       "names": [
@@ -42727,53 +42727,53 @@
         "Corelib.ssr.ssrbool.manifest_simpl_pred",
         "Corelib.ssr.ssrbool.registered_applicative_pred"
       ],
-      "basis": "最终报告 sort_interp 非空／非零。",
+      "basis": "final report sort_interp is nonempty/nonzero.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "U26",
-      "name": "求解器 P2／joint",
-      "precision": "未单独记录",
+      "name": "Solver P2 / joint",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "U27",
-      "name": "求解器 P3／hypExact",
-      "precision": "未单独记录",
+      "name": "Solver P3 / hypExact",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "U28",
       "name": "R3↑／R3↓",
-      "precision": "策略标志",
+      "precision": "Policy flag",
       "primary_roots": 22,
       "family_roots": 22,
       "names": [
@@ -42824,19 +42824,19 @@
         "Corelib.ssr.ssrbool.unkey_pred",
         "Corelib.ssr.ssreflect_rw.nary_congruence_statement"
       ],
-      "basis": "lowered 或 cumulativity 标志；策略标志不能拆成实际抬升次数。",
+      "basis": "lowered or cumulativity flag; the strategy flag cannot be broken down into the actual number of lifts.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "U29",
       "name": "R2B-P",
-      "precision": "结果报告字段",
+      "precision": "Result report fields",
       "primary_roots": 1,
       "family_roots": 1,
       "names": [
@@ -42845,19 +42845,19 @@
       "family_names": [
         "Corelib.ssr.ssreflect_rw.nary_congruence_statement"
       ],
-      "basis": "最终报告 r2bp_levels 非空／非零。",
+      "basis": "final report r2bp_levels is nonempty/nonzero.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "U30",
       "name": "R2B-S",
-      "precision": "结果报告字段",
+      "precision": "Result report fields",
       "primary_roots": 1,
       "family_roots": 1,
       "names": [
@@ -42866,19 +42866,19 @@
       "family_names": [
         "Corelib.Init.Datatypes.CompSpecT"
       ],
-      "basis": "最终报告 sort_lowered_levels 非空／非零。",
+      "basis": "final report sort_lowered_levels is nonempty/nonzero.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "U31",
       "name": "R2B-V",
-      "precision": "结果报告字段",
+      "precision": "Result report fields",
       "primary_roots": 1,
       "family_roots": 1,
       "names": [
@@ -42887,19 +42887,19 @@
       "family_names": [
         "Corelib.Init.Datatypes.CompSpecT"
       ],
-      "basis": "最终报告 result_sort_inherited 非空／非零。",
+      "basis": "final report result_sort_inherited is nonempty/nonzero.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "U32",
-      "name": "局部多态约束解释／polyUniverseInterpretation",
-      "precision": "结果报告字段",
+      "name": "Local polymorphic constraint interpretation / polyUniverseInterpretation",
+      "precision": "Result report fields",
       "primary_roots": 26,
       "family_roots": 33,
       "names": [
@@ -42965,53 +42965,53 @@
         "Corelib.Init.Equality.Has_Leibniz_r",
         "Corelib.Init.Equality.Has_refl"
       ],
-      "basis": "最终报告 poly_level_interp 非空／非零。",
+      "basis": "final report poly_level_interp is nonempty/nonzero.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "U33",
-      "name": "带全局上界的片段",
-      "precision": "未单独记录",
+      "name": "Fragment with global upper bounds",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "U34",
-      "name": "精确 R6 回退与等层级归并",
-      "precision": "未单独记录",
+      "name": "Exact R6 fallback and equal-level merging",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "U35",
-      "name": "最小默认与有界 max 求解",
-      "precision": "部分子机制",
+      "name": "Minimal defaults and bounded max solving",
+      "precision": "Partial submechanisms",
       "primary_roots": 1,
       "family_roots": 1,
       "names": [
@@ -43020,44 +43020,44 @@
       "family_names": [
         "Corelib.ssr.ssrbool.all_sig_cond_dep"
       ],
-      "basis": "仅确认报告的默认／residual 子机制；max 求解未单列。",
+      "basis": "Only the reported Default/residual submechanism is confirmed; the max solution is not listed separately.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "只计 basis 指明的子机制；整个复合条目的使用根数未知。"
+      "limitation": "Only the sub-mechanism specified by basis is counted; the number of used roots for the entire composite entry is unknown."
     },
     {
       "id": "U36",
       "name": "Q-a：phantom sort",
-      "precision": "结果报告字段",
+      "precision": "Result report fields",
       "primary_roots": 0,
       "family_roots": 0,
       "names": [],
       "family_names": [],
-      "basis": "最终报告 phantom_lowered 非空／非零。",
+      "basis": "final report phantom_lowered is nonempty/nonzero.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "C01",
-      "name": "别名前缀",
-      "precision": "未单独记录",
+      "name": "Alias prefixes",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [
         {
-          "basis": "透明展开父机制合计，不能拆分到各别名形状。",
+          "basis": "Transparent expansion parent mechanism total, cannot be split into individual alias shapes.",
           "roots": 156,
           "names": [
             "Corelib.Classes.CMorphisms.Normalizes",
@@ -43219,25 +43219,25 @@
           ]
         }
       ],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "C02",
-      "name": "透明引用别名",
-      "precision": "未单独记录",
+      "name": "Transparent reference aliases",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [
         {
-          "basis": "透明展开父机制合计，不能拆分到各别名形状。",
+          "basis": "Transparent expansion parent mechanism total, cannot be split into individual alias shapes.",
           "roots": 156,
           "names": [
             "Corelib.Classes.CMorphisms.Normalizes",
@@ -43399,25 +43399,25 @@
           ]
         }
       ],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "C03",
-      "name": "纯绑定变量组合子",
-      "precision": "未单独记录",
+      "name": "Pure bound-variable combinators",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [
         {
-          "basis": "透明展开父机制合计，不能拆分到各别名形状。",
+          "basis": "Transparent expansion parent mechanism total, cannot be split into individual alias shapes.",
           "roots": 156,
           "names": [
             "Corelib.Classes.CMorphisms.Normalizes",
@@ -43579,25 +43579,25 @@
           ]
         }
       ],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "C04",
-      "name": "类型缩写闭包",
-      "precision": "未单独记录",
+      "name": "Type abbreviation closure",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [
         {
-          "basis": "透明展开父机制合计，不能拆分到各别名形状。",
+          "basis": "Transparent expansion parent mechanism total, cannot be split into individual alias shapes.",
           "roots": 156,
           "names": [
             "Corelib.Classes.CMorphisms.Normalizes",
@@ -43759,25 +43759,25 @@
           ]
         }
       ],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "C05",
-      "name": "精确实例替换",
-      "precision": "未单独记录",
+      "name": "Exact instance substitution",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [
         {
-          "basis": "透明展开父机制合计，不能拆分到各别名形状。",
+          "basis": "Transparent expansion parent mechanism total, cannot be split into individual alias shapes.",
           "roots": 156,
           "names": [
             "Corelib.Classes.CMorphisms.Normalizes",
@@ -43939,17 +43939,17 @@
           ]
         }
       ],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "C06",
-      "name": "已知构造器驱动计算",
-      "precision": "结果报告字段",
+      "name": "Known-constructor-driven computation",
+      "precision": "Result report fields",
       "primary_roots": 8,
       "family_roots": 8,
       "names": [
@@ -43972,27 +43972,27 @@
         "Corelib.Classes.Morphisms_Prop.Acc_rel_morphism",
         "Corelib.Classes.Morphisms_Prop.well_founded_morphism"
       ],
-      "basis": "最终报告 source_computed 非空／非零。",
+      "basis": "final report source_computed is nonempty/nonzero.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "C07",
-      "name": "Set-motive 展开",
-      "precision": "未单独记录",
+      "name": "Set-motive unfolding",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [
         {
-          "basis": "透明展开父机制合计，不能拆分到各别名形状。",
+          "basis": "Transparent expansion parent mechanism total, cannot be split into individual alias shapes.",
           "roots": 156,
           "names": [
             "Corelib.Classes.CMorphisms.Normalizes",
@@ -44154,17 +44154,17 @@
           ]
         }
       ],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "L01",
-      "name": "Rule P：命题载荷提升",
-      "precision": "结果报告字段",
+      "name": "Rule P: Proposition payload lifting",
+      "precision": "Result report fields",
       "primary_roots": 1,
       "family_roots": 1,
       "names": [
@@ -44173,19 +44173,19 @@
       "family_names": [
         "Corelib.Classes.CRelationClasses.complement"
       ],
-      "basis": "prop_lift 非 null；深度 0 也算命中。",
+      "basis": "prop_lift is not null; depth 0 is also a hit.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "L02",
       "name": "Prop up／down",
-      "precision": "结果报告字段",
+      "precision": "Result report fields",
       "primary_roots": 2,
       "family_roots": 2,
       "names": [
@@ -44196,19 +44196,19 @@
         "Corelib.Classes.CRelationClasses.Asymmetric",
         "Corelib.Classes.CRelationClasses.flip_Asymmetric"
       ],
-      "basis": "最终报告 prop_lift_coercions 非空／非零。",
+      "basis": "final report prop_lift_coercions is nonempty/nonzero.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "L03",
       "name": "Type up／down",
-      "precision": "结果报告字段",
+      "precision": "Result report fields",
       "primary_roots": 46,
       "family_roots": 53,
       "names": [
@@ -44314,27 +44314,27 @@
         "Corelib.Init.Sumbool.bool_eq_rec",
         "Corelib.ssr.ssrbool.all_sig_cond_dep"
       ],
-      "basis": "type_lift 非 null 或 type_lift_coercions>0。",
+      "basis": "type_lift is not null or type_lift_coercions>0.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "L04",
-      "name": "函数 η 转换",
-      "precision": "未单独记录",
+      "name": "Function η-conversion",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [
         {
-          "basis": "Type lift 父机制合计；未拆分内部路径。",
+          "basis": "Type lift Parent mechanism total; internal paths not split.",
           "roots": 46,
           "names": [
             "Corelib.Classes.CMorphisms.Normalizes",
@@ -44386,25 +44386,25 @@
           ]
         }
       ],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "L05",
-      "name": "类型位置解包",
-      "precision": "未单独记录",
+      "name": "Unpacking in type positions",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [
         {
-          "basis": "Type lift 父机制合计；未拆分内部路径。",
+          "basis": "Type lift Parent mechanism total; internal paths not split.",
           "roots": 46,
           "names": [
             "Corelib.Classes.CMorphisms.Normalizes",
@@ -44456,25 +44456,25 @@
           ]
         }
       ],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "L06",
-      "name": "包装函数应用",
-      "precision": "未单独记录",
+      "name": "Wrapper function application",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [
         {
-          "basis": "Type lift 父机制合计；未拆分内部路径。",
+          "basis": "Type lift Parent mechanism total; internal paths not split.",
           "roots": 46,
           "names": [
             "Corelib.Classes.CMorphisms.Normalizes",
@@ -44526,25 +44526,25 @@
           ]
         }
       ],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "L07",
-      "name": "同记录逐字段转换",
-      "precision": "未单独记录",
+      "name": "Fieldwise conversion within the same record",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [
         {
-          "basis": "Type lift 父机制合计；未拆分内部路径。",
+          "basis": "Type lift Parent mechanism total; internal paths not split.",
           "roots": 46,
           "names": [
             "Corelib.Classes.CMorphisms.Normalizes",
@@ -44596,25 +44596,25 @@
           ]
         }
       ],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "L08",
-      "name": "组合转换",
-      "precision": "未单独记录",
+      "name": "Composed conversions",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [
         {
-          "basis": "Type lift 父机制合计；未拆分内部路径。",
+          "basis": "Type lift Parent mechanism total; internal paths not split.",
           "roots": 46,
           "names": [
             "Corelib.Classes.CMorphisms.Normalizes",
@@ -44666,25 +44666,25 @@
           ]
         }
       ],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "L09",
-      "name": "延迟不确定模板转换",
-      "precision": "未单独记录",
+      "name": "Deferring unresolved template conversions",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [
         {
-          "basis": "Type lift 父机制合计；未拆分内部路径。",
+          "basis": "Type lift Parent mechanism total; internal paths not split.",
           "roots": 46,
           "names": [
             "Corelib.Classes.CMorphisms.Normalizes",
@@ -44736,34 +44736,34 @@
           ]
         }
       ],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "L10",
-      "name": "提升命题的陈述视图",
-      "precision": "结果报告字段",
+      "name": "Statement view of lifted propositions",
+      "precision": "Result report fields",
       "primary_roots": 0,
       "family_roots": 0,
       "names": [],
       "family_names": [],
-      "basis": "最终报告 prop_lift_unfold 非空／非零。",
+      "basis": "final report prop_lift_unfold is nonempty/nonzero.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "Q01",
-      "name": "原生 quality 绑定",
-      "precision": "源端元数据",
+      "name": "Native quality bindings",
+      "precision": "Source metadata",
       "primary_roots": 50,
       "family_roots": 50,
       "names": [
@@ -44870,19 +44870,19 @@
         "Corelib.ssr.ssrfun.simpl_fun",
         "Corelib.ssr.ssrfun.wrapped"
       ],
-      "basis": "原生 template_info 或 quality_family 覆盖。",
+      "basis": "Native template_info or quality_family override.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "Q02",
-      "name": "模板 Sort 参数",
-      "precision": "结果报告字段",
+      "name": "Template Sort parameters",
+      "precision": "Result report fields",
       "primary_roots": 22,
       "family_roots": 22,
       "names": [
@@ -44933,19 +44933,19 @@
         "Corelib.ssr.ssreflect_rw.unlockable",
         "Corelib.ssr.ssrfun.simpl_fun"
       ],
-      "basis": "最终报告 template_sort 非空／非零。",
+      "basis": "final report template_sort is nonempty/nonzero.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "Q03",
-      "name": "共享 quality 模板族",
-      "precision": "结果报告字段",
+      "name": "Shared-quality template families",
+      "precision": "Result report fields",
       "primary_roots": 5,
       "family_roots": 5,
       "names": [
@@ -44962,27 +44962,27 @@
         "Corelib.Init.Specif.sigT",
         "Corelib.Init.Specif.sigT2"
       ],
-      "basis": "最终报告 quality_prop 非空／非零。",
+      "basis": "final report quality_prop is nonempty/nonzero.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "Q04",
-      "name": "按源注解分派",
-      "precision": "未单独记录",
+      "name": "Dispatch by source annotation",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [
         {
-          "basis": "目标引用 qualityProp 分支，非唯一的分派路径证据。",
+          "basis": "Target references branch qualityProp, evidence of non-unique dispatch path.",
           "roots": 20,
           "names": [
             "Corelib.Init.Specif.eq_exist2_uncurried",
@@ -45008,17 +45008,17 @@
           ]
         }
       ],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "Q05",
-      "name": "原生有限 quality family",
-      "precision": "源端元数据",
+      "name": "Native finite quality families",
+      "precision": "Source metadata",
       "primary_roots": 23,
       "family_roots": 23,
       "names": [
@@ -45071,19 +45071,19 @@
         "Corelib.Init.Equality.sym",
         "Corelib.ssr.ssreflect_rw.ssr_have_upoly"
       ],
-      "basis": "原生 quality_family 根；同一根的所有分支完整检查。",
+      "basis": "Native quality_family root; all branches of the same root are fully checked.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "Q06",
-      "name": "原生重检查及实现保留",
-      "precision": "源端元数据",
+      "name": "Native rechecking and implementation preservation",
+      "precision": "Source metadata",
       "primary_roots": 23,
       "family_roots": 23,
       "names": [
@@ -45136,42 +45136,42 @@
         "Corelib.Init.Equality.sym",
         "Corelib.ssr.ssreflect_rw.ssr_have_upoly"
       ],
-      "basis": "原生 quality_family 根；同一根的所有分支完整检查。",
+      "basis": "Native quality_family root; all branches of the same root are fully checked.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": "Q05",
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。 与 Q05 使用同一统计条件，不能视为两组独立使用证据。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable. with Q05 Using the same statistical conditions cannot be regarded as two independent sets of evidence."
     },
     {
       "id": "Q07",
-      "name": "封闭 quality 引用",
-      "precision": "未单独记录",
+      "name": "Closed quality references",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [
         {
-          "basis": "目标显式引用原生 quality 分支。",
+          "basis": "The target explicitly references the native quality branch.",
           "roots": 0,
           "names": []
         }
       ],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "N01",
       "name": "Int63",
-      "precision": "源端元数据",
+      "precision": "Source metadata",
       "primary_roots": 31,
       "family_roots": 31,
       "names": [
@@ -45240,19 +45240,19 @@
         "Corelib.Numbers.Cyclic.Int63.PrimInt63.subcarryc",
         "Corelib.Numbers.Cyclic.Int63.PrimInt63.tail0"
       ],
-      "basis": "该族原生类型／操作根；下游包装调用不当成重新映射。",
+      "basis": "Native type/operation root of this family; downstream wrapper calls do not constitute remapping.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "N02",
       "name": "Array",
-      "precision": "源端元数据",
+      "precision": "Source metadata",
       "primary_roots": 7,
       "family_roots": 7,
       "names": [
@@ -45273,19 +45273,19 @@
         "Corelib.Array.PrimArray.make",
         "Corelib.Array.PrimArray.set"
       ],
-      "basis": "该族原生类型／操作根；下游包装调用不当成重新映射。",
+      "basis": "Native type/operation root of this family; downstream wrapper calls do not constitute remapping.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "N03",
       "name": "String",
-      "precision": "源端元数据",
+      "precision": "Source metadata",
       "primary_roots": 7,
       "family_roots": 7,
       "names": [
@@ -45306,19 +45306,19 @@
         "Corelib.Strings.PrimString.string",
         "Corelib.Strings.PrimString.sub"
       ],
-      "basis": "该族原生类型／操作根；下游包装调用不当成重新映射。",
+      "basis": "Native type/operation root of this family; downstream wrapper calls do not constitute remapping.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "N04",
       "name": "Float",
-      "precision": "源端元数据",
+      "precision": "Source metadata",
       "primary_roots": 20,
       "family_roots": 20,
       "names": [
@@ -45365,19 +45365,19 @@
         "Corelib.Floats.PrimFloat.sqrt",
         "Corelib.Floats.PrimFloat.sub"
       ],
-      "basis": "该族原生类型／操作根；下游包装调用不当成重新映射。",
+      "basis": "Native type/operation root of this family; downstream wrapper calls do not constitute remapping.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "N05",
-      "name": "结构结果适配",
-      "precision": "源端元数据",
+      "name": "Structural result adaptation",
+      "precision": "Source metadata",
       "primary_roots": 22,
       "family_roots": 22,
       "names": [
@@ -45428,19 +45428,19 @@
         "Corelib.Numbers.Cyclic.Int63.PrimInt63.subcarryc",
         "Corelib.Strings.PrimString.compare"
       ],
-      "basis": "需源构造器适配的原语操作根。",
+      "basis": "The primitive operation root that needs to be adapted by the source constructor.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "N06",
-      "name": "字面量、身份与原语公理",
-      "precision": "部分子机制",
+      "name": "Literals, identity, and primitive axioms",
+      "precision": "Partial submechanisms",
       "primary_roots": 65,
       "family_roots": 65,
       "names": [
@@ -45577,19 +45577,19 @@
         "Corelib.Strings.PrimString.string",
         "Corelib.Strings.PrimString.sub"
       ],
-      "basis": "只确认原语身份子机制；字面量和公理子机制未单列。",
+      "basis": "Only the primitive identity sub-mechanism is confirmed; the literal and axiom sub-mechanisms are not listed separately.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "只计 basis 指明的子机制；整个复合条目的使用根数未知。"
+      "limitation": "Only the sub-mechanism specified by basis is counted; the number of used roots for the entire composite entry is unknown."
     },
     {
       "id": "V01",
-      "name": "源内核检查",
-      "precision": "处理范围",
+      "name": "Source kernel checking",
+      "precision": "Processing scope",
       "primary_roots": 2180,
       "family_roots": 2180,
       "names": [
@@ -49956,36 +49956,36 @@
         "Corelib.ssr.ssrunder.Under_rel.over_rel_done",
         "Corelib.ssr.ssrunder.Under_rel.under_rel_done"
       ],
-      "basis": "本次处理／校验覆盖全部原始根；非内部执行次数。",
+      "basis": "This processing/verification covers all original roots; not internal execution times.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "V02",
-      "name": "Bootstrap 签名检查",
-      "precision": "本次未启用",
+      "name": "Bootstrap signature checking",
+      "precision": "Not enabled in this run",
       "primary_roots": 0,
       "family_roots": 0,
       "names": [],
       "family_names": [],
-      "basis": "当前 bootstrap 表为空，本次没有 bootstrap 签名适配对象。",
+      "basis": "The current bootstrap table is empty, and there is no bootstrap signature adaptation object this time.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": "T06",
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。 与 T06 使用同一统计条件，不能视为两组独立使用证据。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable. with T06 Using the same statistical conditions cannot be regarded as two independent sets of evidence."
     },
     {
       "id": "V03",
-      "name": "Lean 内核检查",
-      "precision": "处理范围",
+      "name": "Lean kernel checking",
+      "precision": "Processing scope",
       "primary_roots": 2180,
       "family_roots": 2180,
       "names": [
@@ -54352,19 +54352,19 @@
         "Corelib.ssr.ssrunder.Under_rel.over_rel_done",
         "Corelib.ssr.ssrunder.Under_rel.under_rel_done"
       ],
-      "basis": "生成声明的内核检查覆盖；bootstrap 复用已有目标。",
+      "basis": "Generate declared kernel check coverage; bootstrap reuses an existing target.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "V04",
-      "name": "P0 与陈述一般性",
-      "precision": "处理范围",
+      "name": "P0 and statement generality",
+      "precision": "Processing scope",
       "primary_roots": 2056,
       "family_roots": 2056,
       "names": [
@@ -58483,19 +58483,19 @@
         "Corelib.ssr.ssrunder.Under_rel.over_rel_done",
         "Corelib.ssr.ssrunder.Under_rel.under_rel_done"
       ],
-      "basis": "protected 或 statement 检查范围。",
+      "basis": "protected or statement inspection range.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "V05",
-      "name": "宇宙事实与引用检查",
-      "precision": "结果报告字段",
+      "name": "Universe fact and reference checking",
+      "precision": "Result report fields",
       "primary_roots": 867,
       "family_roots": 867,
       "names": [
@@ -60236,19 +60236,19 @@
         "Corelib.ssr.ssrunder.Under_rel.over_rel_done",
         "Corelib.ssr.ssrunder.Under_rel.under_rel_done"
       ],
-      "basis": "最终报告 universe_checks 非空／非零。",
+      "basis": "final report universe_checks is nonempty/nonzero.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": "U06",
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。 与 U06 使用同一统计条件，不能视为两组独立使用证据。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable. with U06 Using the same statistical conditions cannot be regarded as two independent sets of evidence."
     },
     {
       "id": "V06",
-      "name": "依赖与条件完整性",
-      "precision": "处理范围",
+      "name": "Dependency and prerequisite completeness",
+      "precision": "Processing scope",
       "primary_roots": 2180,
       "family_roots": 2180,
       "names": [
@@ -64615,19 +64615,19 @@
         "Corelib.ssr.ssrunder.Under_rel.over_rel_done",
         "Corelib.ssr.ssrunder.Under_rel.under_rel_done"
       ],
-      "basis": "本次处理／校验覆盖全部原始根；非内部执行次数。",
+      "basis": "This processing/verification covers all original roots; not internal execution times.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "V07",
-      "name": "独立 consumer",
-      "precision": "模块验证结果",
+      "name": "Independent consumer",
+      "precision": "Module validation results",
       "primary_roots": 2180,
       "family_roots": 2180,
       "names": [
@@ -68994,19 +68994,19 @@
         "Corelib.ssr.ssrunder.Under_rel.over_rel_done",
         "Corelib.ssr.ssrunder.Under_rel.under_rel_done"
       ],
-      "basis": "所属模块 consumer=OK 的根覆盖。",
+      "basis": "Belonging module consumer=OK root coverage.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "V08",
-      "name": "独立结构审计",
-      "precision": "模块验证结果",
+      "name": "Independent structural audit",
+      "precision": "Module validation results",
       "primary_roots": 2180,
       "family_roots": 2180,
       "names": [
@@ -73373,19 +73373,19 @@
         "Corelib.ssr.ssrunder.Under_rel.over_rel_done",
         "Corelib.ssr.ssrunder.Under_rel.under_rel_done"
       ],
-      "basis": "所属模块 audit=OK 的根覆盖。",
+      "basis": "Belonging module audit=OK root coverage.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "V09",
-      "name": "覆盖与资源失败",
-      "precision": "处理范围",
+      "name": "Coverage and resource failures",
+      "precision": "Processing scope",
       "primary_roots": 2180,
       "family_roots": 2180,
       "names": [
@@ -77752,19 +77752,19 @@
         "Corelib.ssr.ssrunder.Under_rel.over_rel_done",
         "Corelib.ssr.ssrunder.Under_rel.under_rel_done"
       ],
-      "basis": "本次处理／校验覆盖全部原始根；非内部执行次数。",
+      "basis": "This processing/verification covers all original roots; not internal execution times.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "S01",
-      "name": "固定声明分派",
-      "precision": "处理范围",
+      "name": "Fixed declaration dispatch",
+      "precision": "Processing scope",
       "primary_roots": 2180,
       "family_roots": 2180,
       "names": [
@@ -82131,19 +82131,19 @@
         "Corelib.ssr.ssrunder.Under_rel.over_rel_done",
         "Corelib.ssr.ssrunder.Under_rel.under_rel_done"
       ],
-      "basis": "本次处理／校验覆盖全部原始根；非内部执行次数。",
+      "basis": "This processing/verification covers all original roots; not internal execution times.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "S02",
-      "name": "有门槛的阶梯",
-      "precision": "尝试记录",
+      "name": "Gated tier ladder",
+      "precision": "Attempt records",
       "primary_roots": 2175,
       "family_roots": 2175,
       "names": [
@@ -86500,42 +86500,42 @@
         "Corelib.ssr.ssrunder.Under_rel.over_rel_done",
         "Corelib.ssr.ssrunder.Under_rel.under_rel_done"
       ],
-      "basis": "具有 tier_times 的根覆盖。",
+      "basis": "Has root coverage of tier_times.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "S03",
-      "name": "提前转换与一般性重试",
-      "precision": "未单独记录",
+      "name": "Early conversion and generality retries",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [
         {
-          "basis": "至少两个成功候选；最终选用不能只看最后一次尝试。",
+          "basis": "At least two successful candidates; final selection cannot be based solely on the last attempt.",
           "roots": 0,
           "names": []
         }
       ],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     },
     {
       "id": "S04",
-      "name": "归纳块自己的阶梯",
-      "precision": "尝试记录",
+      "name": "Inductive-specific tier ladder",
+      "precision": "Attempt records",
       "primary_roots": 105,
       "family_roots": 105,
       "names": [
@@ -86752,27 +86752,27 @@
         "Corelib.ssr.ssrfun.simpl_fun",
         "Corelib.ssr.ssrfun.wrapped"
       ],
-      "basis": "具有归纳块 tier_times 的根覆盖。",
+      "basis": "Root coverage with inductive block tier_times.",
       "related": [],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。"
+      "limitation": "This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable."
     },
     {
       "id": "S05",
-      "name": "失败回滚与预算",
-      "precision": "未单独记录",
+      "name": "Failure rollback and budgets",
+      "precision": "Not separately recorded",
       "primary_roots": null,
       "family_roots": null,
       "names": [],
       "family_names": [],
-      "basis": "历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。",
+      "basis": "Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.",
       "related": [
         {
-          "basis": "至少一次失败尝试；不是回滚内部调用数。",
+          "basis": "At least one failed attempt; not a rollback internal call count.",
           "roots": 401,
           "names": [
             "Corelib.Classes.CMorphisms.Normalizes",
@@ -87179,12 +87179,12 @@
           ]
         }
       ],
-      "unit": "去重原始根声明",
+      "unit": "Distinct original root declarations",
       "execution_count": null,
       "status": "retained",
       "same_predicate_as": null,
       "evidence_file": "rule-usage-evidence.json",
-      "limitation": "缺少该子规则的独立记录；null 表示未知，不能解释为零。"
+      "limitation": "A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero."
     }
   ],
   "primitives": [

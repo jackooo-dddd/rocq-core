@@ -1,6 +1,6 @@
-# 已验证的类型双射
+# Verified type bijection
 
-每个 Iso 同时包含 to、of、of_to、to_of；不是只有单向转换。具体 universe 范围由下面的完整类型限定。
+Each Iso also contains to, of, of_to, and to_of; not only one-way conversion. The specific universe range is limited by the full type below.
 
 
 
@@ -12,7 +12,7 @@
 (A : Type u) → NativeBridge.Iso (Rocq.Corelib.Array.PrimArray.array A) (NativeBridge.NativeArray A)
 ```
 
-公理闭包：propext, Classical.choice, Quot.sound
+Axiom closure: propext, Classical.choice, Quot.sound
 
 
 
@@ -24,7 +24,7 @@
 NativeBridge.Iso Rocq.Corelib.Floats.FloatClass.float_class (Fin 9)
 ```
 
-公理闭包：propext
+Axiom closure: propext
 
 
 
@@ -36,7 +36,7 @@ NativeBridge.Iso Rocq.Corelib.Floats.FloatClass.float_class (Fin 9)
 NativeBridge.Iso Rocq.Corelib.Init.Byte.byte (Fin 256)
 ```
 
-公理闭包：propext
+Axiom closure: propext
 
 
 
@@ -48,7 +48,7 @@ NativeBridge.Iso Rocq.Corelib.Init.Byte.byte (Fin 256)
 NativeBridge.Iso Rocq.Corelib.Init.Datatypes.Empty_set Empty
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 
 
@@ -60,7 +60,7 @@ NativeBridge.Iso Rocq.Corelib.Init.Datatypes.Empty_set Empty
 NativeBridge.Iso NativeBridge.RBool Bool
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 
 
@@ -72,7 +72,7 @@ NativeBridge.Iso NativeBridge.RBool Bool
 NativeBridge.Iso NativeBridge.RComparison Ordering
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 
 
@@ -84,7 +84,7 @@ NativeBridge.Iso NativeBridge.RComparison Ordering
 (A : Type u) → NativeBridge.Iso (NativeBridge.RList A) (List A)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 
 
@@ -96,7 +96,7 @@ NativeBridge.Iso NativeBridge.RComparison Ordering
 NativeBridge.Iso NativeBridge.MN Nat
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 
 
@@ -108,7 +108,7 @@ NativeBridge.Iso NativeBridge.MN Nat
 (A : Type u) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.option A) (Option A)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 
 
@@ -120,7 +120,7 @@ NativeBridge.Iso NativeBridge.MN Nat
 (A : Type u) → (B : Type v) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.prod A B) (A × B)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 
 
@@ -132,7 +132,7 @@ NativeBridge.Iso NativeBridge.MN Nat
 (A : Type u) → (E : Type v) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.result A E) (Except E A)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 
 
@@ -144,7 +144,7 @@ NativeBridge.Iso NativeBridge.MN Nat
 (A : Type u) → (B : Type v) → NativeBridge.Iso (Rocq.Corelib.Init.Datatypes.sum A B) (A ⊕ B)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 
 
@@ -156,7 +156,7 @@ NativeBridge.Iso NativeBridge.MN Nat
 NativeBridge.Iso Rocq.Corelib.Init.Datatypes.unit Unit
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 
 
@@ -168,7 +168,7 @@ NativeBridge.Iso Rocq.Corelib.Init.Datatypes.unit Unit
 NativeBridge.Iso Rocq.Corelib.Init.Decimal.uint (List (Fin 10))
 ```
 
-公理闭包：propext
+Axiom closure: propext
 
 
 
@@ -180,7 +180,7 @@ NativeBridge.Iso Rocq.Corelib.Init.Decimal.uint (List (Fin 10))
 NativeBridge.Iso Rocq.Corelib.Init.Hexadecimal.uint (List (Fin 16))
 ```
 
-公理闭包：propext
+Axiom closure: propext
 
 
 
@@ -192,7 +192,7 @@ NativeBridge.Iso Rocq.Corelib.Init.Hexadecimal.uint (List (Fin 16))
 {A : Sort u} → (a b : A) → NativeBridge.Iso (NativeBridge.ME A a b) (a = b)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 
 
@@ -204,7 +204,7 @@ NativeBridge.Iso Rocq.Corelib.Init.Hexadecimal.uint (List (Fin 16))
 NativeBridge.Iso Rocq.Corelib.Init.Nat.t Nat
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 
 
@@ -216,7 +216,7 @@ NativeBridge.Iso Rocq.Corelib.Init.Nat.t Nat
 (A : Type u) → (P : A → Prop) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sig A P) (Subtype P)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 
 
@@ -228,7 +228,7 @@ NativeBridge.Iso Rocq.Corelib.Init.Nat.t Nat
 (A : Type u) → (P Q : A → Prop) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sig2 A P Q) { x // P x ∧ Q x }
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 
 
@@ -240,7 +240,7 @@ NativeBridge.Iso Rocq.Corelib.Init.Nat.t Nat
 (A : Type u) → (P : A → Type v) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sigT A P) (Sigma P)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 
 
@@ -253,7 +253,7 @@ NativeBridge.Iso Rocq.Corelib.Init.Nat.t Nat
   (P : A → Type v) → (Q : A → Type w) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sigT2 A P Q) ((x : A) × P x × Q x)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 
 
@@ -265,7 +265,7 @@ NativeBridge.Iso Rocq.Corelib.Init.Nat.t Nat
 (P Q : Prop) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sumbool P Q) (P ⊕' Q)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 
 
@@ -277,7 +277,7 @@ NativeBridge.Iso Rocq.Corelib.Init.Nat.t Nat
 (P : Prop) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sumbool P ¬P) (Decidable P)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 
 
@@ -289,7 +289,7 @@ NativeBridge.Iso Rocq.Corelib.Init.Nat.t Nat
 (A : Type u) → (P : Prop) → NativeBridge.Iso (Rocq.Corelib.Init.Specif.sumor A P) (A ⊕' P)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 
 
@@ -301,7 +301,7 @@ NativeBridge.Iso Rocq.Corelib.Init.Nat.t Nat
 NativeBridge.Iso NativeBridge.RNatBinary Nat
 ```
 
-公理闭包：propext, Classical.choice, Quot.sound
+Axiom closure: propext, Classical.choice, Quot.sound
 
 
 
@@ -313,7 +313,7 @@ NativeBridge.Iso NativeBridge.RNatBinary Nat
 NativeBridge.Iso NativeBridge.RIntBinary Int
 ```
 
-公理闭包：propext, Classical.choice, Quot.sound
+Axiom closure: propext, Classical.choice, Quot.sound
 
 
 
@@ -325,7 +325,7 @@ NativeBridge.Iso NativeBridge.RIntBinary Int
 NativeBridge.Iso NativeBridge.RPositive { n // 0 < n }
 ```
 
-公理闭包：propext, Classical.choice, Quot.sound
+Axiom closure: propext, Classical.choice, Quot.sound
 
 
 
@@ -337,7 +337,7 @@ NativeBridge.Iso NativeBridge.RPositive { n // 0 < n }
 NativeBridge.Iso Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int (BitVec 63)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 
 
@@ -349,7 +349,7 @@ NativeBridge.Iso Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int (BitVec 63)
 NativeBridge.Iso Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int_wrapper (BitVec 63)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 
 
@@ -361,5 +361,5 @@ NativeBridge.Iso Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.int_wrapper (BitVec
 NativeBridge.Iso Rocq.Corelib.Strings.PrimString.string NativeBridge.NativeByteString
 ```
 
-公理闭包：propext, Classical.choice, Quot.sound
+Axiom closure: propext, Classical.choice, Quot.sound
 

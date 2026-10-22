@@ -1,65 +1,65 @@
-# 计算透明正文实验
+# Computationally transparent body experiment
 
-## 问题与计数约定
+## Questions and Counting Conventions
 
-冻结基线已完成 2100/2180。余下 80 根的正文保留在 Lean 环境，69 根是 opaque、11 根是其透明包装。opaque Type 值不能通过证明无关性展开。
+Freeze baseline completed 2100/2180. The remaining body of the 80 root remains in the Lean environment, the 69 root is opaque, and the 11 root is its transparent packaging. opaque Type The value cannot be expanded by proving irrelevance.
 
-本实验重新导出同一批已机械翻译的正文：所有源声明改名到独立命名空间；仅对源端非 Prop opaque 数据声明使用普通 def，类型、universe、正文表达式只做一致改名。所有声明仍逐项交给 Lean kernel 检查，禁止新 axiom/sorry/unsafe。
+This experiment re-exports the same batch of mechanically translated texts: all source declarations are renamed to independent namespaces; only non-Prop opaque data declarations at the source end use ordinary def, and the type, universe, and body expressions are only renamed consistently. All statements are still submitted to Lean kernel for inspection item by item, and new axiom/sorry/unsafe are prohibited.
 
-这是计算透明变体的 correspondence，不是冻结基线 opaque 常量的等式证明。变体覆盖与冻结基线 2100/2180 分开统计。不会通过重命名或接口运输把旧基线剩余数消掉。
+This is a proof of equality that computes the transparent variant of correspondence, not the frozen baseline opaque constant. Variant coverage and frozen baseline 2100/2180 are counted separately. The remainder of the old baseline will not be eliminated through renaming or porting.
 
-## 步骤
+## steps
 
-1. [完成] 逐根检查原基线剩余项，保存种类、类型、保留正文状态和最近 opaque 依赖。
-2. [完成] 实现隔离导出器；保留原生 Lean 常量，重新检查所有源依赖；输出每个曝光声明的清单。
-3. [完成 11/11] CRelationClasses：11 个关系数据组合器，依赖已有关系记录 Iso。
-4. [完成 54/54] CMorphisms：54 个根，优先投影、翻转、组合与逐点关系，然后处理带显式条件的六根。
-5. [完成 13/13] SSR：13 个根，依赖 Sigma/PSigma/谓词和相等转换；保持条件及选择数据。
-6. [完成 2/2] Program.Wf：2 个 Type 值消去函数；检查依赖返回值和递归规律。
-7. [完成] 共同导入、原生目标闭包及公理审计；记录是否还缺额外性质。更新结果并同步 Git/Mac。
+1. [Complete] Check the remaining items of the original baseline root by root, save the category, type, retain body status and the latest opaque dependency.
+2. [Done] Implement isolation exporter; retain native Lean constants, recheck all source dependencies; output a manifest of each exposure statement.
+3. [Complete 11/11] CRelationClasses: 11 relational data combinators, relying on existing relation record Iso.
+4. [Complete 54/54] CMorphisms: 54 roots, prioritizing projection, flipping, combination and point-by-point relationships, then processing six roots with explicit conditions.
+5. [Complete 13/13] SSR: 13 roots, dependent on Sigma/PSigma/ predicate and equality conversion; maintain conditions and selection data.
+6. [Complete 2/2] Program.Wf: 2 Type value elimination function; check dependency return values and recursion rules.
+7. [Done] Co-import, native target closure and axiom audit; record whether additional properties are missing. Update results and synchronize Git/Mac.
 
 ~~~mermaid
 flowchart TD
- A[冻结机械 IR / 已检查 Lean 正文] --> B[独立命名空间重导出]
- B --> C[仅源非 Prop opaque 转为 def]
- C --> D[逐项 kernel 检查与曝光清单]
+ A[Freeze Mechanical IR / Checked Lean body] --> B[Independent namespace re-export]
+ B --> C [Only if the source is not Prop opaque is converted to def]
+ C --> D[Item-by-item kernel inspection and exposure list]
  D --> E[CRelationClasses 11]
  E --> F[CMorphisms 54]
  D --> G[SSR 13]
  D --> H[Program.Wf 2]
- E --> I[类型 Iso / 运算对应 / 条件证明]
+ E --> I[Type Iso / Operation correspondence / Condition proof]
  F --> I
  G --> I
  H --> I
- I --> J[变体共同导入与独立覆盖报告]
+ I --> J[Variant co-import and independent coverage report]
 ~~~
 
-若正文暴露后仍有依赖消去、计算规则或条件问题，逐项保留，不能新增等式公理补齐。后续是否将此导出策略推广到正式翻译器，要以本实验验证为依据。
+If there are still problems with dependency elimination, calculation rules or conditions after the body is exposed, keep them one by one, and you cannot add new equations and axioms to complete them. Whether this export strategy will be extended to the official translator in the future will be based on this experimental verification.
 
-## 兼容性回归
+## Compatibility regression
 
-8. [完成] 对当前已完成的 2100 根，按同一透明策略复制并重新检查既有证书及依赖闭包；既有增量 profile 与早期基线 profile 均纳入。逐根清单及结果写入 reports/regression。
-9. [完成] 将回归通过的既有证明与本次 80 份新证书共同导入；核验无额外公理并生成独立的全库变体账本。保留原冻结基线账本及其 80 项缺口。
-10. [完成] 根据完整回归结果提供消费示例；现成 API、组合原生表达式、类型表示和陈述 iff 分开解释。
+8. [Complete] For the currently completed 2100 root, copy and recheck the existing certificates and dependency closures according to the same transparent policy; the existing incremental profile and early baseline profile are included. Write the root-by-root list and results to reports/regression.
+9. [Complete] Import the existing proof that passed the regression together with the 80 new certificates this time; verify that there are no additional axioms and generate an independent full-database variant ledger. Retain the original frozen baseline ledger and its 80 item gap.
+10. [Done] Provide consumption examples based on full regression results; out-of-the-box API, combined native expressions, type representations, and statement iff are explained separately.
 
-## 依赖数据与组合的证明 DAG
+## Proof of dependence on data and combination DAG
 
 ~~~mermaid
 flowchart TD
- Value[机械递归值 = WellFounded.fix 的值] --> Cast[依赖返回类型的相等运输]
- Cast --> Callback[递归回调双向逆]
+ Value[Mechanical recursion value = value of WellFounded.fix] --> Cast[Equal transport dependent on return type]
+ Cast --> Callback[recursive callback two-way reverse]
  Callback --> RectF[Fix_F_sub_rect]
  RectF --> RectSub[Fix_sub_rect]
- RectF --> Fin[依赖 Fin 消费例]
- BoolIso[机械 Bool / Eq / Sigma / Subtype 对应] --> Choice[依赖条件选择]
- Choice --> Prime[原生 Nat.Prime 证据]
+ RectF --> Fin [depending on Fin consumption example]
+ BoolIso [Mechanical Bool / Eq / Sigma / Subtype corresponding] --> Choice [Dependent condition selection]
+ Choice --> Prime[native Nat.Prime evidence]
  Prime --> Mathlib[Mathlib Prime.two_le]
- NatIter[旧 nat.iter 证书按透明策略重检] --> NativeNat[Lean Nat]
+ NatIter[Old nat.iter certificate rechecked according to transparent policy] --> NativeNat[Lean Nat]
  NativeNat --> Choice
 ~~~
 
-上述新证明及两个消费文件已通过检查；它们不增加 80 项以外的根数。
+The above new certificate and the two consumption documents have passed the check; they do not increase the root number beyond the 80 item.
 
-11. [完成] 基于给定 correspondence 的自动组合：生成原生函数及等式证明；内核检查、可执行示例和三类拒绝测试通过。不自动搜索任意库函数对应。
+11. [Done] Automatic composition based on a given correspondence: generates native functions and proofs of equality; kernel checks, executable examples and three-category rejection tests pass. Does not automatically search for any library function correspondence.
 
-最终：原冻结版本 2100/2180；计算透明变体 2180/2180。见 reports/FULL_VARIANT_SUMMARY.json 与逐根账本。
+Final: original frozen version 2100/2180; calculated transparent variant 2180/2180. See reports/FULL_VARIANT_SUMMARY.json and root-by-root ledger.

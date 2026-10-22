@@ -1,6 +1,6 @@
-# 指定原生操作的对应证书
+# Specify the corresponding certificate for native operations
 
-这里列的是实际等式/iff，不把通用包装接口算成 Lean 同名 API 的实现一致性。
+What is listed here is the actual equation/iff, and the common packaging interface is not counted as the implementation consistency of Lean with the same name API.
 
 ## NativeBridge.all_agrees
 
@@ -8,7 +8,7 @@
 ∀ {A : Sort u} (P : A → Prop), Rocq.Corelib.Init.Logic.all A P ↔ ∀ (x : A), P x
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.and_agrees
 
@@ -16,7 +16,7 @@
 ∀ (P Q : Prop), Rocq.Corelib.Init.Logic.and P Q ↔ P ∧ Q
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.andb_agrees
 
@@ -25,7 +25,7 @@
   NativeBridge.boolTo (Rocq.Corelib.Init.Datatypes.andb a b) = (NativeBridge.boolTo a && NativeBridge.boolTo b)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.append_agrees
 
@@ -34,7 +34,7 @@
   NativeBridge.listTo (Rocq.Corelib.Init.Datatypes.app A xs ys) = NativeBridge.listTo xs ++ NativeBridge.listTo ys
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.array_copy_agrees
 
@@ -43,7 +43,7 @@
   NativeBridge.arrayTo (Rocq.Corelib.Array.PrimArray.copy A a) = NativeBridge.arrayTo a
 ```
 
-公理闭包：propext
+Axiom closure: propext
 
 ## NativeBridge.array_default_agrees
 
@@ -52,7 +52,7 @@
   Rocq.Corelib.Array.PrimArray.default A a = (NativeBridge.arrayTo a).snd.snd
 ```
 
-公理闭包：propext
+Axiom closure: propext
 
 ## NativeBridge.array_get_agrees
 
@@ -63,7 +63,7 @@
     else (NativeBridge.arrayTo a).snd.snd
 ```
 
-公理闭包：propext, Classical.choice, Quot.sound
+Axiom closure: propext, Classical.choice, Quot.sound
 
 ## NativeBridge.array_length_agrees
 
@@ -72,7 +72,7 @@
   Rocq.Corelib.Array.PrimArray.length A a = BitVec.ofNat 63 ↑(NativeBridge.arrayTo a).fst
 ```
 
-公理闭包：propext
+Axiom closure: propext
 
 ## NativeBridge.array_make_length_agrees
 
@@ -81,7 +81,7 @@
   ↑(NativeBridge.arrayTo (Rocq.Corelib.Array.PrimArray.make A n x)).fst = min n.toNat 4194303
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.array_make_values_agrees
 
@@ -91,7 +91,7 @@
     Vector.replicate (↑(NativeBridge.arrayTo (Rocq.Corelib.Array.PrimArray.make A n x)).fst) x
 ```
 
-公理闭包：propext, Classical.choice, Quot.sound
+Axiom closure: propext, Classical.choice, Quot.sound
 
 ## NativeBridge.array_set_agrees
 
@@ -102,7 +102,7 @@
       ((NativeBridge.arrayTo a).snd.fst.setIfInBounds i.toNat x, (NativeBridge.arrayTo a).snd.snd)⟩
 ```
 
-公理闭包：propext, Classical.choice, Quot.sound
+Axiom closure: propext, Classical.choice, Quot.sound
 
 ## NativeBridge.byteString_get_agrees
 
@@ -113,7 +113,7 @@
       (if h : i.toNat < ↑(NativeBridge.byteStringTo s).fst then (NativeBridge.byteStringTo s).snd[i.toNat] else 0).toNat
 ```
 
-公理闭包：propext, Classical.choice, Quot.sound
+Axiom closure: propext, Classical.choice, Quot.sound
 
 ## NativeBridge.byteString_length_agrees
 
@@ -122,7 +122,7 @@
   Rocq.Corelib.Strings.PrimString.length s = BitVec.ofNat 63 ↑(NativeBridge.byteStringTo s).fst
 ```
 
-公理闭包：propext
+Axiom closure: propext
 
 ## NativeBridge.compOpp_agrees
 
@@ -131,7 +131,7 @@
   NativeBridge.comparisonTo (Rocq.Corelib.Init.Datatypes.CompOpp c) = (NativeBridge.comparisonTo c).swap
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.ex2_agrees
 
@@ -139,7 +139,7 @@
 ∀ {A : Sort u} (P Q : A → Prop), Rocq.Corelib.Init.Logic.ex2 A P Q ↔ ∃ x, P x ∧ Q x
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.ex_agrees
 
@@ -147,7 +147,7 @@
 ∀ {A : Sort u} (P : A → Prop), Rocq.Corelib.Init.Logic.ex A P ↔ ∃ x, P x
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.false_agrees
 
@@ -155,7 +155,7 @@
 Rocq.Corelib.Init.Logic.False ↔ False
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.firstn_agrees
 
@@ -165,7 +165,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
     List.take (NativeBridge.natTo n) (NativeBridge.listTo xs)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.forall_list_agrees
 
@@ -174,7 +174,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
   Rocq.Corelib.Lists.ListDef.Forall A P xs ↔ ∀ (x : A), x ∈ NativeBridge.listTo xs → P x
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.fst_agrees
 
@@ -183,7 +183,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
   Rocq.Corelib.Init.Datatypes.fst A B x = (NativeBridge.prodTo x).fst
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.iff_agrees
 
@@ -191,7 +191,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
 ∀ (P Q : Prop), Rocq.Corelib.Init.Logic.iff P Q ↔ (P ↔ Q)
 ```
 
-公理闭包：propext
+Axiom closure: propext
 
 ## NativeBridge.implb_agrees
 
@@ -200,7 +200,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
   NativeBridge.boolTo (Rocq.Corelib.Init.Datatypes.implb a b) = (!NativeBridge.boolTo a || NativeBridge.boolTo b)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.inhabited_agrees
 
@@ -208,7 +208,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
 ∀ (A : Sort u), Rocq.Corelib.Init.Logic.inhabited A ↔ Nonempty A
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.int63_add_agrees
 
@@ -216,7 +216,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
 ∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.add x y = x + y
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.int63_compare_agrees
 
@@ -226,7 +226,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
     if x.toNat < y.toNat then Ordering.lt else if y.toNat < x.toNat then Ordering.gt else Ordering.eq
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.int63_compares_agrees
 
@@ -236,7 +236,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
     if x.toInt < y.toInt then Ordering.lt else if y.toInt < x.toInt then Ordering.gt else Ordering.eq
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.int63_div_agrees
 
@@ -244,7 +244,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
 ∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.div x y = x / y
 ```
 
-公理闭包：propext
+Axiom closure: propext
 
 ## NativeBridge.int63_eqb_agrees
 
@@ -252,7 +252,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
 ∀ (x y : BitVec 63), NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.eqb x y) = (x.toNat == y.toNat)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.int63_id_agrees
 
@@ -260,7 +260,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
 ∀ (x : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.id_int x = x
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.int63_land_agrees
 
@@ -268,7 +268,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
 ∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.land x y = x &&& y
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.int63_leb_agrees
 
@@ -277,7 +277,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
   NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.leb x y) = decide (x.toNat ≤ y.toNat)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.int63_lesb_agrees
 
@@ -286,7 +286,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
   NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lesb x y) = decide (x.toInt ≤ y.toInt)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.int63_lor_agrees
 
@@ -294,7 +294,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
 ∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lor x y = x ||| y
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.int63_lsl_agrees
 
@@ -302,7 +302,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
 ∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lsl x y = x <<< y.toNat
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.int63_lsr_agrees
 
@@ -310,7 +310,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
 ∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lsr x y = x >>> y.toNat
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.int63_ltb_agrees
 
@@ -319,7 +319,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
   NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.ltb x y) = decide (x.toNat < y.toNat)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.int63_ltsb_agrees
 
@@ -328,7 +328,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
   NativeBridge.boolTo (Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.ltsb x y) = decide (x.toInt < y.toInt)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.int63_lxor_agrees
 
@@ -336,7 +336,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
 ∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.lxor x y = x ^^^ y
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.int63_mod_agrees
 
@@ -344,7 +344,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
 ∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.mod x y = x % y
 ```
 
-公理闭包：propext
+Axiom closure: propext
 
 ## NativeBridge.int63_mul_agrees
 
@@ -352,7 +352,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
 ∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.mul x y = x * y
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.int63_sub_agrees
 
@@ -360,7 +360,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
 ∀ (x y : BitVec 63), Rocq.Corelib.Numbers.Cyclic.Int63.PrimInt63.sub x y = x - y
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.int_mul_agrees
 
@@ -370,7 +370,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
     NativeBridge.binaryIntTo x * NativeBridge.binaryIntTo y
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.int_of_binary_nat_agrees
 
@@ -379,7 +379,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
   NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.of_N n) = ↑(NativeBridge.binaryNatTo n)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.int_of_nat_agrees
 
@@ -387,7 +387,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
 ∀ (n : NativeBridge.MN), NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.of_nat n) = ↑(NativeBridge.natTo n)
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.int_opp_agrees
 
@@ -396,7 +396,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
   NativeBridge.binaryIntTo (Rocq.Corelib.BinNums.IntDef.Z.opp x) = -NativeBridge.binaryIntTo x
 ```
 
-公理闭包：propext
+Axiom closure: propext
 
 ## NativeBridge.int_to_nat_agrees
 
@@ -405,7 +405,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
   NativeBridge.natTo (Rocq.Corelib.BinNums.IntDef.Z.to_nat z) = (NativeBridge.binaryIntTo z).toNat
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.is_true_agrees
 
@@ -413,7 +413,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
 ∀ (a : NativeBridge.RBool), Rocq.Corelib.Init.Datatypes.is_true a ↔ NativeBridge.boolTo a = true
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.length_agrees
 
@@ -422,7 +422,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
   NativeBridge.natTo (Rocq.Corelib.Init.Datatypes.length A xs) = (NativeBridge.listTo xs).length
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.map_agrees
 
@@ -431,7 +431,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
   NativeBridge.listTo (Rocq.Corelib.Lists.ListDef.map A B f xs) = List.map f (NativeBridge.listTo xs)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.nat_add_agrees
 
@@ -440,7 +440,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
   NativeBridge.natTo (Rocq.Corelib.Init.Nat.add n m) = NativeBridge.natTo n + NativeBridge.natTo m
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.nat_bitwise_agrees
 
@@ -453,7 +453,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
           Nat.bitwise f (NativeBridge.natTo a) (NativeBridge.natTo b) % 2 ^ NativeBridge.natTo n
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.nat_compare_agrees
 
@@ -462,7 +462,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
   NativeBridge.comparisonTo (Rocq.Corelib.Init.Nat.compare n m) = compare (NativeBridge.natTo n) (NativeBridge.natTo m)
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.nat_dependent_rec_agrees
 
@@ -471,7 +471,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
   Rocq.Corelib.Init.Datatypes.nat.rec z (fun k r => s (NativeBridge.natTo k) r) n = Nat.rec z s (NativeBridge.natTo n)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.nat_div2_agrees
 
@@ -479,7 +479,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
 ∀ (n : NativeBridge.MN), NativeBridge.natTo (Rocq.Corelib.Init.Nat.div2 n) = NativeBridge.natTo n / 2
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.nat_div_agrees
 
@@ -488,7 +488,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
   NativeBridge.natTo (Rocq.Corelib.Init.Nat.div x y) = NativeBridge.natTo x / NativeBridge.natTo y
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.nat_div_native_agrees
 
@@ -496,7 +496,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
 ∀ (x y : Nat), NativeBridge.natTo (Rocq.Corelib.Init.Nat.div (NativeBridge.natOf x) (NativeBridge.natOf y)) = x / y
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.nat_double_agrees
 
@@ -504,7 +504,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
 ∀ (n : NativeBridge.MN), NativeBridge.natTo (Rocq.Corelib.Init.Nat.double n) = 2 * NativeBridge.natTo n
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.nat_eqb_agrees
 
@@ -513,7 +513,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
   NativeBridge.boolTo (Rocq.Corelib.Init.Nat.eqb n m) = (NativeBridge.natTo n == NativeBridge.natTo m)
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.nat_even_agrees
 
@@ -521,7 +521,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
 ∀ (n : NativeBridge.MN), NativeBridge.boolTo (Rocq.Corelib.Init.Nat.even n) = decide (NativeBridge.natTo n % 2 = 0)
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.nat_land_agrees
 
@@ -530,7 +530,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
   NativeBridge.natTo (Rocq.Corelib.Init.Nat.land a b) = NativeBridge.natTo a &&& NativeBridge.natTo b
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.nat_ldiff_agrees
 
@@ -540,7 +540,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
     Nat.bitwise (fun x y => x && !y) (NativeBridge.natTo a) (NativeBridge.natTo b)
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.nat_leb_agrees
 
@@ -549,7 +549,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
   NativeBridge.boolTo (Rocq.Corelib.Init.Nat.leb n m) = decide (NativeBridge.natTo n ≤ NativeBridge.natTo m)
 ```
 
-公理闭包：propext
+Axiom closure: propext
 
 ## NativeBridge.nat_lor_agrees
 
@@ -558,7 +558,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
   NativeBridge.natTo (Rocq.Corelib.Init.Nat.lor a b) = NativeBridge.natTo a ||| NativeBridge.natTo b
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.nat_ltb_agrees
 
@@ -567,7 +567,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
   NativeBridge.boolTo (Rocq.Corelib.Init.Nat.ltb n m) = decide (NativeBridge.natTo n < NativeBridge.natTo m)
 ```
 
-公理闭包：propext
+Axiom closure: propext
 
 ## NativeBridge.nat_lxor_agrees
 
@@ -576,7 +576,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
   NativeBridge.natTo (Rocq.Corelib.Init.Nat.lxor a b) = NativeBridge.natTo a ^^^ NativeBridge.natTo b
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.nat_max_agrees
 
@@ -585,7 +585,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
   NativeBridge.natTo (Rocq.Corelib.Init.Nat.max n m) = max (NativeBridge.natTo n) (NativeBridge.natTo m)
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.nat_min_agrees
 
@@ -594,7 +594,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
   NativeBridge.natTo (Rocq.Corelib.Init.Nat.min n m) = min (NativeBridge.natTo n) (NativeBridge.natTo m)
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.nat_modulo_agrees
 
@@ -603,7 +603,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
   NativeBridge.natTo (Rocq.Corelib.Init.Nat.modulo x y) = NativeBridge.natTo x % NativeBridge.natTo y
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.nat_modulo_native_agrees
 
@@ -611,7 +611,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
 ∀ (x y : Nat), NativeBridge.natTo (Rocq.Corelib.Init.Nat.modulo (NativeBridge.natOf x) (NativeBridge.natOf y)) = x % y
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.nat_mul_agrees
 
@@ -620,7 +620,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
   NativeBridge.natTo (Rocq.Corelib.Init.Nat.mul n m) = NativeBridge.natTo n * NativeBridge.natTo m
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.nat_odd_agrees
 
@@ -628,7 +628,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
 ∀ (n : NativeBridge.MN), NativeBridge.boolTo (Rocq.Corelib.Init.Nat.odd n) = decide (NativeBridge.natTo n % 2 = 1)
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.nat_one_agrees
 
@@ -636,7 +636,7 @@ Rocq.Corelib.Init.Logic.False ↔ False
 NativeBridge.natTo Rocq.Corelib.Init.Nat.one = 1
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.nat_pow_agrees
 
@@ -645,7 +645,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.one = 1
   NativeBridge.natTo (Rocq.Corelib.Init.Nat.pow n m) = NativeBridge.natTo n ^ NativeBridge.natTo m
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.nat_pred_agrees
 
@@ -653,7 +653,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.one = 1
 ∀ (n : NativeBridge.MN), NativeBridge.natTo (Rocq.Corelib.Init.Nat.pred n) = NativeBridge.natTo n - 1
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.nat_rec_agrees
 
@@ -662,7 +662,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.one = 1
   Rocq.Corelib.Init.Datatypes.nat.rec z (fun k r => s (NativeBridge.natTo k) r) n = Nat.rec z s (NativeBridge.natTo n)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.nat_shiftl_agrees
 
@@ -671,7 +671,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.one = 1
   NativeBridge.natTo (Rocq.Corelib.Init.Nat.shiftl n k) = NativeBridge.natTo n <<< NativeBridge.natTo k
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.nat_shiftr_agrees
 
@@ -680,7 +680,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.one = 1
   NativeBridge.natTo (Rocq.Corelib.Init.Nat.shiftr n k) = NativeBridge.natTo n >>> NativeBridge.natTo k
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.nat_square_agrees
 
@@ -689,7 +689,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.one = 1
   NativeBridge.natTo (Rocq.Corelib.Init.Nat.square n) = NativeBridge.natTo n * NativeBridge.natTo n
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.nat_sub_agrees
 
@@ -698,7 +698,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.one = 1
   NativeBridge.natTo (Rocq.Corelib.Init.Nat.sub n m) = NativeBridge.natTo n - NativeBridge.natTo m
 ```
 
-公理闭包：propext
+Axiom closure: propext
 
 ## NativeBridge.nat_succ_agrees
 
@@ -706,7 +706,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.one = 1
 ∀ (n : NativeBridge.MN), NativeBridge.natTo (Rocq.Corelib.Init.Nat.succ n) = NativeBridge.natTo n + 1
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.nat_tail_add_agrees
 
@@ -715,7 +715,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.one = 1
   NativeBridge.natTo (Rocq.Corelib.Init.Nat.tail_add n m) = NativeBridge.natTo n + NativeBridge.natTo m
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.nat_tail_addmul_agrees
 
@@ -725,7 +725,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.one = 1
     NativeBridge.natTo r + NativeBridge.natTo n * NativeBridge.natTo m
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.nat_tail_mul_agrees
 
@@ -734,7 +734,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.one = 1
   NativeBridge.natTo (Rocq.Corelib.Init.Nat.tail_mul n m) = NativeBridge.natTo n * NativeBridge.natTo m
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.nat_testbit_agrees
 
@@ -743,7 +743,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.one = 1
   NativeBridge.boolTo (Rocq.Corelib.Init.Nat.testbit a n) = (NativeBridge.natTo a).testBit (NativeBridge.natTo n)
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.nat_two_agrees
 
@@ -751,7 +751,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.one = 1
 NativeBridge.natTo Rocq.Corelib.Init.Nat.two = 2
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.nat_zero_agrees
 
@@ -759,7 +759,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.two = 2
 NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.negb_agrees
 
@@ -767,7 +767,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
 ∀ (a : NativeBridge.RBool), NativeBridge.boolTo (Rocq.Corelib.Init.Datatypes.negb a) = !NativeBridge.boolTo a
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.notT_agrees
 
@@ -775,7 +775,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
 ∀ (A : Sort u), Rocq.Corelib.Init.Logic.notT A ↔ ∀ (a : A), False
 ```
 
-公理闭包：propext
+Axiom closure: propext
 
 ## NativeBridge.not_agrees
 
@@ -783,7 +783,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
 ∀ (P : Prop), Rocq.Corelib.Init.Logic.not P ↔ ¬P
 ```
 
-公理闭包：propext
+Axiom closure: propext
 
 ## NativeBridge.nth_agrees
 
@@ -792,7 +792,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
   Rocq.Corelib.Lists.ListDef.nth A n xs d = (NativeBridge.listTo xs)[NativeBridge.natTo n]?.getD d
 ```
 
-公理闭包：propext
+Axiom closure: propext
 
 ## NativeBridge.option_map_agrees
 
@@ -801,7 +801,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
   NativeBridge.optionTo (Rocq.Corelib.Init.Datatypes.option_map A B f x) = Option.map f (NativeBridge.optionTo x)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.or_agrees
 
@@ -809,7 +809,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
 ∀ (P Q : Prop), Rocq.Corelib.Init.Logic.or P Q ↔ P ∨ Q
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.orb_agrees
 
@@ -818,7 +818,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
   NativeBridge.boolTo (Rocq.Corelib.Init.Datatypes.orb a b) = (NativeBridge.boolTo a || NativeBridge.boolTo b)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.peano_ge_agrees
 
@@ -826,7 +826,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
 ∀ (n m : NativeBridge.MN), Rocq.Corelib.Init.Peano.ge n m ↔ NativeBridge.natTo n ≥ NativeBridge.natTo m
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.peano_gt_agrees
 
@@ -834,7 +834,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
 ∀ (n m : NativeBridge.MN), Rocq.Corelib.Init.Peano.gt n m ↔ NativeBridge.natTo n > NativeBridge.natTo m
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.peano_le_agrees
 
@@ -842,7 +842,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
 ∀ (n m : NativeBridge.MN), Rocq.Corelib.Init.Peano.le n m ↔ NativeBridge.natTo n ≤ NativeBridge.natTo m
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.peano_lt_agrees
 
@@ -850,7 +850,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
 ∀ (n m : NativeBridge.MN), Rocq.Corelib.Init.Peano.lt n m ↔ NativeBridge.natTo n < NativeBridge.natTo m
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.positive_add_agrees
 
@@ -860,7 +860,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
     NativeBridge.positiveTo p + NativeBridge.positiveTo q
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.positive_add_carry_agrees
 
@@ -870,7 +870,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
     NativeBridge.positiveTo p + NativeBridge.positiveTo q + 1
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.positive_mul_agrees
 
@@ -880,7 +880,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
     NativeBridge.positiveTo p * NativeBridge.positiveTo q
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.positive_of_succ_nat_agrees
 
@@ -889,7 +889,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
   NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.of_succ_nat n) = NativeBridge.natTo n + 1
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.positive_pred_double_agrees
 
@@ -898,7 +898,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
   NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.pred_double p) = 2 * NativeBridge.positiveTo p - 1
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.positive_succ_agrees
 
@@ -907,7 +907,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
   NativeBridge.positiveTo (Rocq.Corelib.BinNums.PosDef.Pos.succ p) = NativeBridge.positiveTo p + 1
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.positive_to_nat_agrees
 
@@ -916,7 +916,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
   NativeBridge.natTo (Rocq.Corelib.BinNums.PosDef.Pos.to_nat p) = NativeBridge.positiveTo p
 ```
 
-公理闭包：propext, Quot.sound
+Axiom closure: propext, Quot.sound
 
 ## NativeBridge.proj1_sig_agrees
 
@@ -925,7 +925,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
   Rocq.Corelib.Init.Specif.proj1_sig A P x = (NativeBridge.sigTo x).val
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.projT1_agrees
 
@@ -934,7 +934,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
   Rocq.Corelib.Init.Specif.projT1 A P x = (NativeBridge.sigmaTo x).fst
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.projT2_agrees
 
@@ -943,7 +943,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
   Rocq.Corelib.Init.Specif.projT2 A P x ≍ (NativeBridge.sigmaTo x).snd
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.repeat_agrees
 
@@ -952,7 +952,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
   NativeBridge.listTo (Rocq.Corelib.Lists.ListDef.repeat A a n) = List.replicate (NativeBridge.natTo n) a
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.seq_agrees
 
@@ -962,7 +962,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
     List.range' (NativeBridge.natTo start) (NativeBridge.natTo len)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.skipn_agrees
 
@@ -972,7 +972,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
     List.drop (NativeBridge.natTo n) (NativeBridge.listTo xs)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.snd_agrees
 
@@ -981,7 +981,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
   Rocq.Corelib.Init.Datatypes.snd A B x = (NativeBridge.prodTo x).snd
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.source_eq_rect_agrees
 
@@ -990,7 +990,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
   Rocq.Corelib.Init.Logic.eq_rect A x P z y h = ⋯ ▸ z
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.source_eq_rew_dep_agrees
 
@@ -999,7 +999,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
   Rocq.Corelib.Init.Logic.eq_rew_dep A x (fun a e => P a ⋯) z y h = NativeBridge.nativeEqRewDep P z ⋯
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.source_eq_rew_fwd_dep_agrees
 
@@ -1008,7 +1008,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
   Rocq.Corelib.Init.Logic.eq_rew_fwd_dep A x y h (fun a e => P a ⋯) z = NativeBridge.nativeEqFwdDep ⋯ P z
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.source_eq_rew_fwd_r_dep_agrees
 
@@ -1017,7 +1017,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
   Rocq.Corelib.Init.Logic.eq_rew_fwd_r_dep A x y h (fun a e => P a ⋯) z = NativeBridge.nativeEqFwdRDep ⋯ P z
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.source_nat_rec_agrees
 
@@ -1027,7 +1027,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
     Nat.rec z s (NativeBridge.natTo n)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.source_nat_rect_agrees
 
@@ -1037,7 +1037,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
     Nat.rec z s (NativeBridge.natTo n)
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.true_agrees
 
@@ -1045,7 +1045,7 @@ NativeBridge.natTo Rocq.Corelib.Init.Nat.zero = 0
 Rocq.Corelib.Init.Logic.True ↔ True
 ```
 
-公理闭包：空
+Axiom closure: empty
 
 ## NativeBridge.xorb_agrees
 
@@ -1054,4 +1054,4 @@ Rocq.Corelib.Init.Logic.True ↔ True
   NativeBridge.boolTo (Rocq.Corelib.Init.Datatypes.xorb a b) = (NativeBridge.boolTo a ^^ NativeBridge.boolTo b)
 ```
 
-公理闭包：空
+Axiom closure: empty

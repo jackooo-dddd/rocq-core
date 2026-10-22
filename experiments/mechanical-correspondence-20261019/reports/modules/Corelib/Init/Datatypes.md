@@ -1,22 +1,22 @@
 # Corelib.Init.Datatypes
 
-每项对应机械翻译基线中的一个 root。完整 native statement / interface 类型在总 JSON 文件中。
+Each entry corresponds to one root in the mechanical translation baseline. The complete native statement / interface types are in the aggregate JSON file.
 
 
 
 ## Corelib.Init.Datatypes.BoolSpec
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.BoolSpec
+Original target: Rocq.Corelib.Init.Datatypes.BoolSpec
 
 ## Corelib.Init.Datatypes.BoolSpec_ind
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.BoolSpec_ind.statement
+Original target: Rocq.Corelib.Init.Datatypes.BoolSpec_ind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.BoolSpec_ind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.BoolSpec_ind.statement.correspondence
 
 ```lean
 ∀ (P Q : Prop) (P0 : Rocq.Corelib.Init.Datatypes.bool → Prop),
@@ -25,15 +25,15 @@
       ∀ (b : Rocq.Corelib.Init.Datatypes.bool), Rocq.Corelib.Init.Datatypes.BoolSpec P Q b → P0 b
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.bool;Rocq.Corelib.Init.Datatypes.bool.true;Rocq.Corelib.Init.Datatypes.bool.false;Rocq.Corelib.Init.Datatypes.BoolSpec
+Residual source symbols: Rocq.Corelib.Init.Datatypes.bool;Rocq.Corelib.Init.Datatypes.bool.true;Rocq.Corelib.Init.Datatypes.bool.false;Rocq.Corelib.Init.Datatypes.BoolSpec
 
 ## Corelib.Init.Datatypes.BoolSpec_sind
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.BoolSpec_sind.statement
+Original target: Rocq.Corelib.Init.Datatypes.BoolSpec_sind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.BoolSpec_sind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.BoolSpec_sind.statement.correspondence
 
 ```lean
 ∀ (P Q : Prop) (P0 : Rocq.Corelib.Init.Datatypes.bool → Prop),
@@ -42,110 +42,110 @@
       ∀ (b : Rocq.Corelib.Init.Datatypes.bool), Rocq.Corelib.Init.Datatypes.BoolSpec P Q b → P0 b
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.bool;Rocq.Corelib.Init.Datatypes.bool.true;Rocq.Corelib.Init.Datatypes.bool.false;Rocq.Corelib.Init.Datatypes.BoolSpec
+Residual source symbols: Rocq.Corelib.Init.Datatypes.bool;Rocq.Corelib.Init.Datatypes.bool.true;Rocq.Corelib.Init.Datatypes.bool.false;Rocq.Corelib.Init.Datatypes.BoolSpec
 
 ## Corelib.Init.Datatypes.CompOpp
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.Init.Datatypes.CompOpp
+Original target: Rocq.Corelib.Init.Datatypes.CompOpp
 
-操作/类型证书：NativeBridge.compOpp_agrees
+Operation/Type Certificate: NativeBridge.compOpp_agrees
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.CompOpp.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.CompOpp.roundtrip
 
 ## Corelib.Init.Datatypes.CompOpp_iff
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.CompOpp_iff.statement
+Original target: Rocq.Corelib.Init.Datatypes.CompOpp_iff.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.CompOpp_iff.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.CompOpp_iff.statement.correspondence
 
 ```lean
 ∀ (c c' : Rocq.Corelib.Init.Datatypes.comparison),
   Rocq.Corelib.Init.Datatypes.CompOpp c = c' ↔ c = Rocq.Corelib.Init.Datatypes.CompOpp c'
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.comparison;Rocq.Corelib.Init.Datatypes.CompOpp
+Residual source symbols: Rocq.Corelib.Init.Datatypes.comparison;Rocq.Corelib.Init.Datatypes.CompOpp
 
 ## Corelib.Init.Datatypes.CompOpp_inj
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.CompOpp_inj.statement
+Original target: Rocq.Corelib.Init.Datatypes.CompOpp_inj.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.CompOpp_inj.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.CompOpp_inj.statement.correspondence
 
 ```lean
 ∀ (c c' : Rocq.Corelib.Init.Datatypes.comparison),
   Rocq.Corelib.Init.Datatypes.CompOpp c = Rocq.Corelib.Init.Datatypes.CompOpp c' → c = c'
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.comparison;Rocq.Corelib.Init.Datatypes.CompOpp
+Residual source symbols: Rocq.Corelib.Init.Datatypes.comparison;Rocq.Corelib.Init.Datatypes.CompOpp
 
 ## Corelib.Init.Datatypes.CompOpp_involutive
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.CompOpp_involutive.statement
+Original target: Rocq.Corelib.Init.Datatypes.CompOpp_involutive.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.CompOpp_involutive.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.CompOpp_involutive.statement.correspondence
 
 ```lean
 ∀ (c : Rocq.Corelib.Init.Datatypes.comparison),
   Rocq.Corelib.Init.Datatypes.CompOpp (Rocq.Corelib.Init.Datatypes.CompOpp c) = c
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.comparison;Rocq.Corelib.Init.Datatypes.CompOpp
+Residual source symbols: Rocq.Corelib.Init.Datatypes.comparison;Rocq.Corelib.Init.Datatypes.CompOpp
 
 ## Corelib.Init.Datatypes.CompSpec
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.Init.Datatypes.CompSpec
+Original target: Rocq.Corelib.Init.Datatypes.CompSpec
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.CompSpec.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.CompSpec.roundtrip
 
 ## Corelib.Init.Datatypes.CompSpec2Type
 
-状态：EXPLICIT_PROOF_PARAMETERS。原翻译仍带显式证明参数；此轮未消去或假定它们。
+Status: EXPLICIT_PROOF_PARAMETERS. The original translation still has explicit proof parameters; this batch neither discharges nor assumes them.
 
-原始目标：RocqPending.Corelib.Init.Datatypes.CompSpec2Type
+Original target: RocqPending.Corelib.Init.Datatypes.CompSpec2Type
 
 ## Corelib.Init.Datatypes.CompSpecT
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.Init.Datatypes.CompSpecT
+Original target: Rocq.Corelib.Init.Datatypes.CompSpecT
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.CompSpecT.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.CompSpecT.roundtrip
 
 ## Corelib.Init.Datatypes.CompareSpec
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.CompareSpec
+Original target: Rocq.Corelib.Init.Datatypes.CompareSpec
 
 ## Corelib.Init.Datatypes.CompareSpec2Type
 
-状态：EXPLICIT_PROOF_PARAMETERS。原翻译仍带显式证明参数；此轮未消去或假定它们。
+Status: EXPLICIT_PROOF_PARAMETERS. The original translation still has explicit proof parameters; this batch neither discharges nor assumes them.
 
-原始目标：RocqPending.Corelib.Init.Datatypes.CompareSpec2Type
+Original target: RocqPending.Corelib.Init.Datatypes.CompareSpec2Type
 
 ## Corelib.Init.Datatypes.CompareSpecT
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.CompareSpecT
+Original target: Rocq.Corelib.Init.Datatypes.CompareSpecT
 
 ## Corelib.Init.Datatypes.CompareSpecT_ind
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.CompareSpecT_ind.statement
+Original target: Rocq.Corelib.Init.Datatypes.CompareSpecT_ind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.CompareSpecT_ind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.CompareSpecT_ind.statement.correspondence
 
 ```lean
 ∀ (Peq Plt Pgt : Prop)
@@ -161,15 +161,15 @@
           P c c0
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.comparison;Rocq.Corelib.Init.Datatypes.CompareSpecT;Rocq.Corelib.Init.Datatypes.comparison.Eq;Rocq.Corelib.Init.Datatypes.CompareSpecT.CompEqT;Rocq.Corelib.Init.Datatypes.comparison.Lt;Rocq.Corelib.Init.Datatypes.CompareSpecT.CompLtT;Rocq.Corelib.Init.Datatypes.comparison.Gt;Rocq.Corelib.Init.Datatypes.CompareSpecT.CompGtT
+Residual source symbols: Rocq.Corelib.Init.Datatypes.comparison;Rocq.Corelib.Init.Datatypes.CompareSpecT;Rocq.Corelib.Init.Datatypes.comparison.Eq;Rocq.Corelib.Init.Datatypes.CompareSpecT.CompEqT;Rocq.Corelib.Init.Datatypes.comparison.Lt;Rocq.Corelib.Init.Datatypes.CompareSpecT.CompLtT;Rocq.Corelib.Init.Datatypes.comparison.Gt;Rocq.Corelib.Init.Datatypes.CompareSpecT.CompGtT
 
 ## Corelib.Init.Datatypes.CompareSpecT_rec
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.CompareSpecT_rec
+Original target: Rocq.Corelib.Init.Datatypes.CompareSpecT_rec
 
-接口未覆盖原因：No registered type bijection for (P :
+Reason for interface not covered: No registered type bijection for (P:
     (c : Rocq.Corelib.Init.Datatypes.comparison) → Rocq.Corelib.Init.Datatypes.CompareSpecT Peq Plt Pgt c → Type) →
   ((p : Peq) →
       P Rocq.Corelib.Init.Datatypes.comparison.Eq (Rocq.Corelib.Init.Datatypes.CompareSpecT.CompEqT Peq Plt Pgt p)) →
@@ -183,11 +183,11 @@
 
 ## Corelib.Init.Datatypes.CompareSpecT_rect
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.CompareSpecT_rect
+Original target: Rocq.Corelib.Init.Datatypes.CompareSpecT_rect
 
-接口未覆盖原因：No registered type bijection for (P :
+Reason for interface not covered: No registered type bijection for (P:
     (c : Rocq.Corelib.Init.Datatypes.comparison) →
       Rocq.Corelib.Init.Datatypes.CompareSpecT Peq Plt Pgt c → Type u_Corelib_Init_Datatypes_250) →
   ((p : Peq) →
@@ -202,11 +202,11 @@
 
 ## Corelib.Init.Datatypes.CompareSpecT_sind
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.CompareSpecT_sind.statement
+Original target: Rocq.Corelib.Init.Datatypes.CompareSpecT_sind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.CompareSpecT_sind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.CompareSpecT_sind.statement.correspondence
 
 ```lean
 ∀ (Peq Plt Pgt : Prop)
@@ -222,15 +222,15 @@
           P c c0
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.comparison;Rocq.Corelib.Init.Datatypes.CompareSpecT;Rocq.Corelib.Init.Datatypes.comparison.Eq;Rocq.Corelib.Init.Datatypes.CompareSpecT.CompEqT;Rocq.Corelib.Init.Datatypes.comparison.Lt;Rocq.Corelib.Init.Datatypes.CompareSpecT.CompLtT;Rocq.Corelib.Init.Datatypes.comparison.Gt;Rocq.Corelib.Init.Datatypes.CompareSpecT.CompGtT
+Residual source symbols: Rocq.Corelib.Init.Datatypes.comparison;Rocq.Corelib.Init.Datatypes.CompareSpecT;Rocq.Corelib.Init.Datatypes.comparison.Eq;Rocq.Corelib.Init.Datatypes.CompareSpecT.CompEqT;Rocq.Corelib.Init.Datatypes.comparison.Lt;Rocq.Corelib.Init.Datatypes.CompareSpecT.CompLtT;Rocq.Corelib.Init.Datatypes.comparison.Gt;Rocq.Corelib.Init.Datatypes.CompareSpecT.CompGtT
 
 ## Corelib.Init.Datatypes.CompareSpec_ind
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.CompareSpec_ind.statement
+Original target: Rocq.Corelib.Init.Datatypes.CompareSpec_ind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.CompareSpec_ind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.CompareSpec_ind.statement.correspondence
 
 ```lean
 ∀ (Peq Plt Pgt : Prop) (P : Rocq.Corelib.Init.Datatypes.comparison → Prop),
@@ -240,15 +240,15 @@
         ∀ (c : Rocq.Corelib.Init.Datatypes.comparison), Rocq.Corelib.Init.Datatypes.CompareSpec Peq Plt Pgt c → P c
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.comparison;Rocq.Corelib.Init.Datatypes.comparison.Eq;Rocq.Corelib.Init.Datatypes.comparison.Lt;Rocq.Corelib.Init.Datatypes.comparison.Gt;Rocq.Corelib.Init.Datatypes.CompareSpec
+Residual source symbols: Rocq.Corelib.Init.Datatypes.comparison;Rocq.Corelib.Init.Datatypes.comparison.Eq;Rocq.Corelib.Init.Datatypes.comparison.Lt;Rocq.Corelib.Init.Datatypes.comparison.Gt;Rocq.Corelib.Init.Datatypes.CompareSpec
 
 ## Corelib.Init.Datatypes.CompareSpec_sind
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.CompareSpec_sind.statement
+Original target: Rocq.Corelib.Init.Datatypes.CompareSpec_sind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.CompareSpec_sind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.CompareSpec_sind.statement.correspondence
 
 ```lean
 ∀ (Peq Plt Pgt : Prop) (P : Rocq.Corelib.Init.Datatypes.comparison → Prop),
@@ -258,95 +258,95 @@
         ∀ (c : Rocq.Corelib.Init.Datatypes.comparison), Rocq.Corelib.Init.Datatypes.CompareSpec Peq Plt Pgt c → P c
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.comparison;Rocq.Corelib.Init.Datatypes.comparison.Eq;Rocq.Corelib.Init.Datatypes.comparison.Lt;Rocq.Corelib.Init.Datatypes.comparison.Gt;Rocq.Corelib.Init.Datatypes.CompareSpec
+Residual source symbols: Rocq.Corelib.Init.Datatypes.comparison;Rocq.Corelib.Init.Datatypes.comparison.Eq;Rocq.Corelib.Init.Datatypes.comparison.Lt;Rocq.Corelib.Init.Datatypes.comparison.Gt;Rocq.Corelib.Init.Datatypes.CompareSpec
 
 ## Corelib.Init.Datatypes.Empty_set
 
-状态：TYPE_ISO。已证明双向逆；具体参数、Type/Sort 范围见证书类型。
+Status: TYPE_ISO. Proven bidirectional inversion; specific parameters, Type/Sort range witness certificate type.
 
-原始目标：Rocq.Corelib.Init.Datatypes.Empty_set
+Original target: Rocq.Corelib.Init.Datatypes.Empty_set
 
-操作/类型证书：NativeBridge.emptyIso
+Operation/Type Certificate: NativeBridge.emptyIso
 
 ## Corelib.Init.Datatypes.Empty_set_ind
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.Empty_set_ind.statement
+Original target: Rocq.Corelib.Init.Datatypes.Empty_set_ind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.Empty_set_ind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.Empty_set_ind.statement.correspondence
 
 ```lean
 ∀ (P : Rocq.Corelib.Init.Datatypes.Empty_set → Prop) (e : Rocq.Corelib.Init.Datatypes.Empty_set), P e
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.Empty_set
+Residual source symbols: Rocq.Corelib.Init.Datatypes.Empty_set
 
 ## Corelib.Init.Datatypes.Empty_set_rec
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.Empty_set_rec
+Original target: Rocq.Corelib.Init.Datatypes.Empty_set_rec
 
-接口未覆盖原因：No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.Empty_set → Type) →
+Reason for interface not covered: No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.Empty_set → Type) →
   (e : Rocq.Corelib.Init.Datatypes.Empty_set) → P e
 
 ## Corelib.Init.Datatypes.Empty_set_rect
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.Empty_set_rect
+Original target: Rocq.Corelib.Init.Datatypes.Empty_set_rect
 
-接口未覆盖原因：No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.Empty_set → Type u_Corelib_Init_Datatypes_5) →
+Reason for interface not covered: No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.Empty_set → Type u_Corelib_Init_Datatypes_5) →
   (e : Rocq.Corelib.Init.Datatypes.Empty_set) → P e
 
 ## Corelib.Init.Datatypes.Empty_set_sind
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.Empty_set_sind.statement
+Original target: Rocq.Corelib.Init.Datatypes.Empty_set_sind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.Empty_set_sind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.Empty_set_sind.statement.correspondence
 
 ```lean
 ∀ (P : Rocq.Corelib.Init.Datatypes.Empty_set → Prop) (e : Rocq.Corelib.Init.Datatypes.Empty_set), P e
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.Empty_set
+Residual source symbols: Rocq.Corelib.Init.Datatypes.Empty_set
 
 ## Corelib.Init.Datatypes.ID
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.Init.Datatypes.ID
+Original target: Rocq.Corelib.Init.Datatypes.ID
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.ID.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.ID.roundtrip
 
 ## Corelib.Init.Datatypes.IDProp
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.Init.Datatypes.IDProp
+Original target: Rocq.Corelib.Init.Datatypes.IDProp
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.IDProp.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.IDProp.roundtrip
 
 ## Corelib.Init.Datatypes.andb
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.Init.Datatypes.andb
+Original target: Rocq.Corelib.Init.Datatypes.andb
 
-操作/类型证书：NativeBridge.andb_agrees
+Operation/Type Certificate: NativeBridge.andb_agrees
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.andb.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.andb.roundtrip
 
 ## Corelib.Init.Datatypes.andb_prop
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.andb_prop.statement
+Original target: Rocq.Corelib.Init.Datatypes.andb_prop.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.andb_prop.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.andb_prop.statement.correspondence
 
 ```lean
 ∀ (a b : Rocq.Corelib.Init.Datatypes.bool),
@@ -354,15 +354,15 @@
     a = Rocq.Corelib.Init.Datatypes.bool.true ∧ b = Rocq.Corelib.Init.Datatypes.bool.true
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.bool;Rocq.Corelib.Init.Datatypes.andb;Rocq.Corelib.Init.Datatypes.bool.true
+Residual source symbols: Rocq.Corelib.Init.Datatypes.bool;Rocq.Corelib.Init.Datatypes.andb;Rocq.Corelib.Init.Datatypes.bool.true
 
 ## Corelib.Init.Datatypes.andb_true_intro
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.andb_true_intro.statement
+Original target: Rocq.Corelib.Init.Datatypes.andb_true_intro.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.andb_true_intro.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.andb_true_intro.statement.correspondence
 
 ```lean
 ∀ (b1 b2 : Rocq.Corelib.Init.Datatypes.bool),
@@ -370,35 +370,35 @@
     Rocq.Corelib.Init.Datatypes.andb b1 b2 = Rocq.Corelib.Init.Datatypes.bool.true
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.bool;Rocq.Corelib.Init.Datatypes.bool.true;Rocq.Corelib.Init.Datatypes.andb
+Residual source symbols: Rocq.Corelib.Init.Datatypes.bool;Rocq.Corelib.Init.Datatypes.bool.true;Rocq.Corelib.Init.Datatypes.andb
 
 ## Corelib.Init.Datatypes.app
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.Init.Datatypes.app
+Original target: Rocq.Corelib.Init.Datatypes.app
 
-操作/类型证书：NativeBridge.append_agrees
+Operation/Type Certificate: NativeBridge.append_agrees
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.app.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.app.roundtrip
 
-接口只覆盖 Type 宇宙实例；未声称覆盖原始裸 Sort 的 Prop 分支。
+The interface only covers the Type universe instance; no Prop branch is claimed to cover the original bare Sort.
 
 ## Corelib.Init.Datatypes.bool
 
-状态：TYPE_ISO。已证明双向逆；具体参数、Type/Sort 范围见证书类型。
+Status: TYPE_ISO. Proven bidirectional inversion; specific parameters, Type/Sort range witness certificate type.
 
-原始目标：Rocq.Corelib.Init.Datatypes.bool
+Original target: Rocq.Corelib.Init.Datatypes.bool
 
-操作/类型证书：NativeBridge.boolIso
+Operation/Type Certificate: NativeBridge.boolIso
 
 ## Corelib.Init.Datatypes.bool_ind
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.bool_ind.statement
+Original target: Rocq.Corelib.Init.Datatypes.bool_ind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.bool_ind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.bool_ind.statement.correspondence
 
 ```lean
 ∀ (P : Rocq.Corelib.Init.Datatypes.bool → Prop),
@@ -406,35 +406,35 @@
     P Rocq.Corelib.Init.Datatypes.bool.false → ∀ (b : Rocq.Corelib.Init.Datatypes.bool), P b
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.bool;Rocq.Corelib.Init.Datatypes.bool.true;Rocq.Corelib.Init.Datatypes.bool.false
+Residual source symbols: Rocq.Corelib.Init.Datatypes.bool;Rocq.Corelib.Init.Datatypes.bool.true;Rocq.Corelib.Init.Datatypes.bool.false
 
 ## Corelib.Init.Datatypes.bool_rec
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.bool_rec
+Original target: Rocq.Corelib.Init.Datatypes.bool_rec
 
-接口未覆盖原因：No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.bool → Type) →
+Reason for interface not covered: No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.bool → Type) →
   P Rocq.Corelib.Init.Datatypes.bool.true →
     P Rocq.Corelib.Init.Datatypes.bool.false → (b : Rocq.Corelib.Init.Datatypes.bool) → P b
 
 ## Corelib.Init.Datatypes.bool_rect
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.bool_rect
+Original target: Rocq.Corelib.Init.Datatypes.bool_rect
 
-接口未覆盖原因：No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.bool → Type u_Corelib_Init_Datatypes_7) →
+Reason for interface not covered: No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.bool → Type u_Corelib_Init_Datatypes_7) →
   P Rocq.Corelib.Init.Datatypes.bool.true →
     P Rocq.Corelib.Init.Datatypes.bool.false → (b : Rocq.Corelib.Init.Datatypes.bool) → P b
 
 ## Corelib.Init.Datatypes.bool_sind
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.bool_sind.statement
+Original target: Rocq.Corelib.Init.Datatypes.bool_sind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.bool_sind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.bool_sind.statement.correspondence
 
 ```lean
 ∀ (P : Rocq.Corelib.Init.Datatypes.bool → Prop),
@@ -442,37 +442,37 @@
     P Rocq.Corelib.Init.Datatypes.bool.false → ∀ (b : Rocq.Corelib.Init.Datatypes.bool), P b
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.bool;Rocq.Corelib.Init.Datatypes.bool.true;Rocq.Corelib.Init.Datatypes.bool.false
+Residual source symbols: Rocq.Corelib.Init.Datatypes.bool;Rocq.Corelib.Init.Datatypes.bool.true;Rocq.Corelib.Init.Datatypes.bool.false
 
 ## Corelib.Init.Datatypes.comparison
 
-状态：TYPE_ISO。已证明双向逆；具体参数、Type/Sort 范围见证书类型。
+Status: TYPE_ISO. Proven bidirectional inversion; specific parameters, Type/Sort range witness certificate type.
 
-原始目标：Rocq.Corelib.Init.Datatypes.comparison
+Original target: Rocq.Corelib.Init.Datatypes.comparison
 
-操作/类型证书：NativeBridge.comparisonIso
+Operation/Type Certificate: NativeBridge.comparisonIso
 
 ## Corelib.Init.Datatypes.comparison_eq_stable
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.comparison_eq_stable.statement
+Original target: Rocq.Corelib.Init.Datatypes.comparison_eq_stable.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.comparison_eq_stable.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.comparison_eq_stable.statement.correspondence
 
 ```lean
 ∀ (c c' : Rocq.Corelib.Init.Datatypes.comparison), ¬¬c = c' → c = c'
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.comparison
+Residual source symbols: Rocq.Corelib.Init.Datatypes.comparison
 
 ## Corelib.Init.Datatypes.comparison_ind
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.comparison_ind.statement
+Original target: Rocq.Corelib.Init.Datatypes.comparison_ind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.comparison_ind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.comparison_ind.statement.correspondence
 
 ```lean
 ∀ (P : Rocq.Corelib.Init.Datatypes.comparison → Prop),
@@ -481,37 +481,37 @@
       P Rocq.Corelib.Init.Datatypes.comparison.Gt → ∀ (c : Rocq.Corelib.Init.Datatypes.comparison), P c
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.comparison;Rocq.Corelib.Init.Datatypes.comparison.Eq;Rocq.Corelib.Init.Datatypes.comparison.Lt;Rocq.Corelib.Init.Datatypes.comparison.Gt
+Residual source symbols: Rocq.Corelib.Init.Datatypes.comparison;Rocq.Corelib.Init.Datatypes.comparison.Eq;Rocq.Corelib.Init.Datatypes.comparison.Lt;Rocq.Corelib.Init.Datatypes.comparison.Gt
 
 ## Corelib.Init.Datatypes.comparison_rec
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.comparison_rec
+Original target: Rocq.Corelib.Init.Datatypes.comparison_rec
 
-接口未覆盖原因：No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.comparison → Type) →
+Reason for interface not covered: No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.comparison → Type) →
   P Rocq.Corelib.Init.Datatypes.comparison.Eq →
     P Rocq.Corelib.Init.Datatypes.comparison.Lt →
       P Rocq.Corelib.Init.Datatypes.comparison.Gt → (c : Rocq.Corelib.Init.Datatypes.comparison) → P c
 
 ## Corelib.Init.Datatypes.comparison_rect
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.comparison_rect
+Original target: Rocq.Corelib.Init.Datatypes.comparison_rect
 
-接口未覆盖原因：No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.comparison → Type u_Corelib_Init_Datatypes_210) →
+Reason for interface not covered: No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.comparison → Type u_Corelib_Init_Datatypes_210) →
   P Rocq.Corelib.Init.Datatypes.comparison.Eq →
     P Rocq.Corelib.Init.Datatypes.comparison.Lt →
       P Rocq.Corelib.Init.Datatypes.comparison.Gt → (c : Rocq.Corelib.Init.Datatypes.comparison) → P c
 
 ## Corelib.Init.Datatypes.comparison_sind
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.comparison_sind.statement
+Original target: Rocq.Corelib.Init.Datatypes.comparison_sind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.comparison_sind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.comparison_sind.statement.correspondence
 
 ```lean
 ∀ (P : Rocq.Corelib.Init.Datatypes.comparison → Prop),
@@ -520,31 +520,31 @@
       P Rocq.Corelib.Init.Datatypes.comparison.Gt → ∀ (c : Rocq.Corelib.Init.Datatypes.comparison), P c
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.comparison;Rocq.Corelib.Init.Datatypes.comparison.Eq;Rocq.Corelib.Init.Datatypes.comparison.Lt;Rocq.Corelib.Init.Datatypes.comparison.Gt
+Residual source symbols: Rocq.Corelib.Init.Datatypes.comparison;Rocq.Corelib.Init.Datatypes.comparison.Eq;Rocq.Corelib.Init.Datatypes.comparison.Lt;Rocq.Corelib.Init.Datatypes.comparison.Gt
 
 ## Corelib.Init.Datatypes.curry
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.Init.Datatypes.curry
+Original target: Rocq.Corelib.Init.Datatypes.curry
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.curry.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.curry.roundtrip
 
-接口只覆盖 Type 宇宙实例；未声称覆盖原始裸 Sort 的 Prop 分支。
+The interface only covers the Type universe instance; no Prop branch is claimed to cover the original bare Sort.
 
 ## Corelib.Init.Datatypes.eq_true
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.eq_true
+Original target: Rocq.Corelib.Init.Datatypes.eq_true
 
 ## Corelib.Init.Datatypes.eq_true_ind
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.eq_true_ind.statement
+Original target: Rocq.Corelib.Init.Datatypes.eq_true_ind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.eq_true_ind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.eq_true_ind.statement.correspondence
 
 ```lean
 ∀ (P : Rocq.Corelib.Init.Datatypes.bool → Prop),
@@ -552,91 +552,91 @@
     ∀ (b : Rocq.Corelib.Init.Datatypes.bool), Rocq.Corelib.Init.Datatypes.eq_true b → P b
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.bool;Rocq.Corelib.Init.Datatypes.bool.true;Rocq.Corelib.Init.Datatypes.eq_true
+Residual source symbols: Rocq.Corelib.Init.Datatypes.bool;Rocq.Corelib.Init.Datatypes.bool.true;Rocq.Corelib.Init.Datatypes.eq_true
 
 ## Corelib.Init.Datatypes.eq_true_ind_r
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.eq_true_ind_r.statement
+Original target: Rocq.Corelib.Init.Datatypes.eq_true_ind_r.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.eq_true_ind_r.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.eq_true_ind_r.statement.correspondence
 
 ```lean
 ∀ (P : Rocq.Corelib.Init.Datatypes.bool → Prop) (b : Rocq.Corelib.Init.Datatypes.bool),
   P b → Rocq.Corelib.Init.Datatypes.eq_true b → P Rocq.Corelib.Init.Datatypes.bool.true
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.bool;Rocq.Corelib.Init.Datatypes.eq_true;Rocq.Corelib.Init.Datatypes.bool.true
+Residual source symbols: Rocq.Corelib.Init.Datatypes.bool;Rocq.Corelib.Init.Datatypes.eq_true;Rocq.Corelib.Init.Datatypes.bool.true
 
 ## Corelib.Init.Datatypes.eq_true_rec
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.eq_true_rec
+Original target: Rocq.Corelib.Init.Datatypes.eq_true_rec
 
-接口未覆盖原因：No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.bool → Type) →
+Reason for interface not covered: No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.bool → Type) →
   P Rocq.Corelib.Init.Datatypes.bool.true →
     (b : Rocq.Corelib.Init.Datatypes.bool) → Rocq.Corelib.Init.Datatypes.eq_true b → P b
 
 ## Corelib.Init.Datatypes.eq_true_rec_r
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.eq_true_rec_r
+Original target: Rocq.Corelib.Init.Datatypes.eq_true_rec_r
 
-接口未覆盖原因：No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.bool → Type) →
+Reason for interface not covered: No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.bool → Type) →
   (b : Rocq.Corelib.Init.Datatypes.bool) →
     P b → Rocq.Corelib.Init.Datatypes.eq_true b → P Rocq.Corelib.Init.Datatypes.bool.true
 
 ## Corelib.Init.Datatypes.eq_true_rect
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.eq_true_rect
+Original target: Rocq.Corelib.Init.Datatypes.eq_true_rect
 
-接口未覆盖原因：No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.bool → Type u_Corelib_Init_Datatypes_24) →
+Reason for interface not covered: No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.bool → Type u_Corelib_Init_Datatypes_24) →
   P Rocq.Corelib.Init.Datatypes.bool.true →
     (b : Rocq.Corelib.Init.Datatypes.bool) → Rocq.Corelib.Init.Datatypes.eq_true b → P b
 
 ## Corelib.Init.Datatypes.eq_true_rect_r
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.eq_true_rect_r
+Original target: Rocq.Corelib.Init.Datatypes.eq_true_rect_r
 
-接口未覆盖原因：No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.bool → Type u_Corelib_Init_Datatypes_32) →
+Reason for interface not covered: No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.bool → Type u_Corelib_Init_Datatypes_32) →
   (b : Rocq.Corelib.Init.Datatypes.bool) →
     P b → Rocq.Corelib.Init.Datatypes.eq_true b → P Rocq.Corelib.Init.Datatypes.bool.true
 
 ## Corelib.Init.Datatypes.eq_true_rew
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.eq_true_rew
+Original target: Rocq.Corelib.Init.Datatypes.eq_true_rew
 
-接口未覆盖原因：No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.bool → Type u_Corelib_Init_Datatypes_25) →
+Reason for interface not covered: No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.bool → Type u_Corelib_Init_Datatypes_25) →
   P Rocq.Corelib.Init.Datatypes.bool.true →
     (b : Rocq.Corelib.Init.Datatypes.bool) → Rocq.Corelib.Init.Datatypes.eq_true b → P b
 
 ## Corelib.Init.Datatypes.eq_true_rew_dep
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.eq_true_rew_dep
+Original target: Rocq.Corelib.Init.Datatypes.eq_true_rew_dep
 
-接口未覆盖原因：No registered type bijection for (P :
+Reason for interface not covered: No registered type bijection for (P:
     (b : Rocq.Corelib.Init.Datatypes.bool) → Rocq.Corelib.Init.Datatypes.eq_true b → Type u_Corelib_Init_Datatypes_26) →
   P Rocq.Corelib.Init.Datatypes.bool.true Rocq.Corelib.Init.Datatypes.eq_true.is_eq_true →
     (b : Rocq.Corelib.Init.Datatypes.bool) → (e : Rocq.Corelib.Init.Datatypes.eq_true b) → P b e
 
 ## Corelib.Init.Datatypes.eq_true_rew_fwd_dep
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.eq_true_rew_fwd_dep
+Original target: Rocq.Corelib.Init.Datatypes.eq_true_rew_fwd_dep
 
-接口未覆盖原因：No registered type bijection for (b : Rocq.Corelib.Init.Datatypes.bool) →
+Reason for interface not covered: No registered type bijection for (b : Rocq.Corelib.Init.Datatypes.bool) →
   (H : Rocq.Corelib.Init.Datatypes.eq_true b) →
     (P :
         (b : Rocq.Corelib.Init.Datatypes.bool) →
@@ -645,21 +645,21 @@
 
 ## Corelib.Init.Datatypes.eq_true_rew_r
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.eq_true_rew_r
+Original target: Rocq.Corelib.Init.Datatypes.eq_true_rew_r
 
-接口未覆盖原因：No registered type bijection for (b : Rocq.Corelib.Init.Datatypes.bool) →
+Reason for interface not covered: No registered type bijection for (b : Rocq.Corelib.Init.Datatypes.bool) →
   (P : Rocq.Corelib.Init.Datatypes.bool → Type u_Corelib_Init_Datatypes_28) →
     P b → Rocq.Corelib.Init.Datatypes.eq_true b → P Rocq.Corelib.Init.Datatypes.bool.true
 
 ## Corelib.Init.Datatypes.eq_true_sind
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.eq_true_sind.statement
+Original target: Rocq.Corelib.Init.Datatypes.eq_true_sind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.eq_true_sind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.eq_true_sind.statement.correspondence
 
 ```lean
 ∀ (P : Rocq.Corelib.Init.Datatypes.bool → Prop),
@@ -667,59 +667,59 @@
     ∀ (b : Rocq.Corelib.Init.Datatypes.bool), Rocq.Corelib.Init.Datatypes.eq_true b → P b
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.bool;Rocq.Corelib.Init.Datatypes.bool.true;Rocq.Corelib.Init.Datatypes.eq_true
+Residual source symbols: Rocq.Corelib.Init.Datatypes.bool;Rocq.Corelib.Init.Datatypes.bool.true;Rocq.Corelib.Init.Datatypes.eq_true
 
 ## Corelib.Init.Datatypes.fst
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.Init.Datatypes.fst
+Original target: Rocq.Corelib.Init.Datatypes.fst
 
-操作/类型证书：NativeBridge.fst_agrees
+Operation/Type Certificate: NativeBridge.fst_agrees
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.fst.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.fst.roundtrip
 
-接口只覆盖 Type 宇宙实例；未声称覆盖原始裸 Sort 的 Prop 分支。
+The interface only covers the Type universe instance; no Prop branch is claimed to cover the original bare Sort.
 
 ## Corelib.Init.Datatypes.id
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.Init.Datatypes.id
+Original target: Rocq.Corelib.Init.Datatypes.id
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.id.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.id.roundtrip
 
 ## Corelib.Init.Datatypes.idProp
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.idProp.statement
+Original target: Rocq.Corelib.Init.Datatypes.idProp.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.idProp.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.idProp.statement.correspondence
 
 ```lean
 Rocq.Corelib.Init.Datatypes.IDProp
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.IDProp
+Residual source symbols: Rocq.Corelib.Init.Datatypes.IDProp
 
 ## Corelib.Init.Datatypes.implb
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.Init.Datatypes.implb
+Original target: Rocq.Corelib.Init.Datatypes.implb
 
-操作/类型证书：NativeBridge.implb_agrees
+Operation/Type Certificate: NativeBridge.implb_agrees
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.implb.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.implb.roundtrip
 
 ## Corelib.Init.Datatypes.injective_projections
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.injective_projections.statement
+Original target: Rocq.Corelib.Init.Datatypes.injective_projections.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.injective_projections.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.injective_projections.statement.correspondence
 
 ```lean
 ∀ (A : Sort u_Corelib_Init_Datatypes_116) (B : Sort u_Corelib_Init_Datatypes_117)
@@ -728,45 +728,45 @@ Rocq.Corelib.Init.Datatypes.IDProp
     Rocq.Corelib.Init.Datatypes.snd A B p1 = Rocq.Corelib.Init.Datatypes.snd A B p2 → p1 = p2
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.prod;Rocq.Corelib.Init.Datatypes.fst;Rocq.Corelib.Init.Datatypes.snd
+Residual source symbols: Rocq.Corelib.Init.Datatypes.prod;Rocq.Corelib.Init.Datatypes.fst;Rocq.Corelib.Init.Datatypes.snd
 
 ## Corelib.Init.Datatypes.is_true
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.Init.Datatypes.is_true
+Original target: Rocq.Corelib.Init.Datatypes.is_true
 
-操作/类型证书：NativeBridge.is_true_agrees
+Operation/Type Certificate: NativeBridge.is_true_agrees
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.is_true.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.is_true.roundtrip
 
 ## Corelib.Init.Datatypes.length
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.Init.Datatypes.length
+Original target: Rocq.Corelib.Init.Datatypes.length
 
-操作/类型证书：NativeBridge.length_agrees
+Operation/Type Certificate: NativeBridge.length_agrees
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.length.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.length.roundtrip
 
-接口只覆盖 Type 宇宙实例；未声称覆盖原始裸 Sort 的 Prop 分支。
+The interface only covers the Type universe instance; no Prop branch is claimed to cover the original bare Sort.
 
 ## Corelib.Init.Datatypes.list
 
-状态：TYPE_ISO。已证明双向逆；具体参数、Type/Sort 范围见证书类型。
+Status: TYPE_ISO. Proven bidirectional inversion; specific parameters, Type/Sort range witness certificate type.
 
-原始目标：Rocq.Corelib.Init.Datatypes.list
+Original target: Rocq.Corelib.Init.Datatypes.list
 
-操作/类型证书：NativeBridge.listIso
+Operation/Type Certificate: NativeBridge.listIso
 
 ## Corelib.Init.Datatypes.list_ind
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.list_ind.statement
+Original target: Rocq.Corelib.Init.Datatypes.list_ind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.list_ind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.list_ind.statement.correspondence
 
 ```lean
 ∀ (A : Sort u_Corelib_Init_Datatypes_194) (P : Rocq.Corelib.Init.Datatypes.list A → Prop),
@@ -775,37 +775,37 @@ Rocq.Corelib.Init.Datatypes.IDProp
       ∀ (l : Rocq.Corelib.Init.Datatypes.list A), P l
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.list;Rocq.Corelib.Init.Datatypes.list.nil;Rocq.Corelib.Init.Datatypes.list.cons
+Residual source symbols: Rocq.Corelib.Init.Datatypes.list;Rocq.Corelib.Init.Datatypes.list.nil;Rocq.Corelib.Init.Datatypes.list.cons
 
 ## Corelib.Init.Datatypes.list_rec
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.list_rec
+Original target: Rocq.Corelib.Init.Datatypes.list_rec
 
-接口未覆盖原因：No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.list A → Type) →
+Reason for interface not covered: No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.list A → Type) →
   P (Rocq.Corelib.Init.Datatypes.list.nil A) →
     ((a : A) → (l : Rocq.Corelib.Init.Datatypes.list A) → P l → P (Rocq.Corelib.Init.Datatypes.list.cons A a l)) →
       (l : Rocq.Corelib.Init.Datatypes.list A) → P l
 
 ## Corelib.Init.Datatypes.list_rect
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.list_rect
+Original target: Rocq.Corelib.Init.Datatypes.list_rect
 
-接口未覆盖原因：No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.list A → Type u_Corelib_Init_Datatypes_192) →
+Reason for interface not covered: No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.list A → Type u_Corelib_Init_Datatypes_192) →
   P (Rocq.Corelib.Init.Datatypes.list.nil A) →
     ((a : A) → (l : Rocq.Corelib.Init.Datatypes.list A) → P l → P (Rocq.Corelib.Init.Datatypes.list.cons A a l)) →
       (l : Rocq.Corelib.Init.Datatypes.list A) → P l
 
 ## Corelib.Init.Datatypes.list_sind
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.list_sind.statement
+Original target: Rocq.Corelib.Init.Datatypes.list_sind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.list_sind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.list_sind.statement.correspondence
 
 ```lean
 ∀ (A : Sort u_Corelib_Init_Datatypes_196) (P : Rocq.Corelib.Init.Datatypes.list A → Prop),
@@ -814,23 +814,23 @@ Rocq.Corelib.Init.Datatypes.IDProp
       ∀ (l : Rocq.Corelib.Init.Datatypes.list A), P l
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.list;Rocq.Corelib.Init.Datatypes.list.nil;Rocq.Corelib.Init.Datatypes.list.cons
+Residual source symbols: Rocq.Corelib.Init.Datatypes.list;Rocq.Corelib.Init.Datatypes.list.nil;Rocq.Corelib.Init.Datatypes.list.cons
 
 ## Corelib.Init.Datatypes.nat
 
-状态：TYPE_ISO。已证明双向逆；具体参数、Type/Sort 范围见证书类型。
+Status: TYPE_ISO. Proven bidirectional inversion; specific parameters, Type/Sort range witness certificate type.
 
-原始目标：Rocq.Corelib.Init.Datatypes.nat
+Original target: Rocq.Corelib.Init.Datatypes.nat
 
-操作/类型证书：NativeBridge.natIso
+Operation/Type Certificate: NativeBridge.natIso
 
 ## Corelib.Init.Datatypes.nat_ind
 
-状态：STATEMENT_FULL_NATIVE。陈述已得到 iff，结果无 Rocq/RocqPending/Rocq2Lean 符号；未证明业务定理本身。
+Status: STATEMENT_FULL_NATIVE. A statement iff has been proved, and the result contains no Rocq/RocqPending/Rocq2Lean symbols; the original theorem itself has not been proved.
 
-原始目标：Rocq.Corelib.Init.Datatypes.nat_ind.statement
+Original target: Rocq.Corelib.Init.Datatypes.nat_ind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.nat_ind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.nat_ind.statement.correspondence
 
 ```lean
 ∀ (f : Nat → Prop), f 0 → (∀ (n : Nat), f n → f n.succ) → ∀ (n : Nat), f n
@@ -838,35 +838,35 @@ Rocq.Corelib.Init.Datatypes.IDProp
 
 ## Corelib.Init.Datatypes.nat_rec
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.Init.Datatypes.nat_rec
+Original target: Rocq.Corelib.Init.Datatypes.nat_rec
 
-操作/类型证书：NativeBridge.source_nat_rec_agrees
+Operation/Type Certificate: NativeBridge.source_nat_rec_agrees
 
-接口未覆盖原因：No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.nat → Type) →
+Reason for interface not covered: No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.nat → Type) →
   P Rocq.Corelib.Init.Datatypes.nat.O →
     ((n : Rocq.Corelib.Init.Datatypes.nat) → P n → P n.S) → (n : Rocq.Corelib.Init.Datatypes.nat) → P n
 
 ## Corelib.Init.Datatypes.nat_rect
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.Init.Datatypes.nat_rect
+Original target: Rocq.Corelib.Init.Datatypes.nat_rect
 
-操作/类型证书：NativeBridge.source_nat_rect_agrees
+Operation/Type Certificate: NativeBridge.source_nat_rect_agrees
 
-接口未覆盖原因：No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.nat → Type u_Corelib_Init_Datatypes_33) →
+Reason for interface not covered: No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.nat → Type u_Corelib_Init_Datatypes_33) →
   P Rocq.Corelib.Init.Datatypes.nat.O →
     ((n : Rocq.Corelib.Init.Datatypes.nat) → P n → P n.S) → (n : Rocq.Corelib.Init.Datatypes.nat) → P n
 
 ## Corelib.Init.Datatypes.nat_sind
 
-状态：STATEMENT_FULL_NATIVE。陈述已得到 iff，结果无 Rocq/RocqPending/Rocq2Lean 符号；未证明业务定理本身。
+Status: STATEMENT_FULL_NATIVE. A statement iff has been proved, and the result contains no Rocq/RocqPending/Rocq2Lean symbols; the original theorem itself has not been proved.
 
-原始目标：Rocq.Corelib.Init.Datatypes.nat_sind.statement
+Original target: Rocq.Corelib.Init.Datatypes.nat_sind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.nat_sind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.nat_sind.statement.correspondence
 
 ```lean
 ∀ (f : Nat → Prop), f 0 → (∀ (n : Nat), f n → f n.succ) → ∀ (n : Nat), f n
@@ -874,29 +874,29 @@ Rocq.Corelib.Init.Datatypes.IDProp
 
 ## Corelib.Init.Datatypes.negb
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.Init.Datatypes.negb
+Original target: Rocq.Corelib.Init.Datatypes.negb
 
-操作/类型证书：NativeBridge.negb_agrees
+Operation/Type Certificate: NativeBridge.negb_agrees
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.negb.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.negb.roundtrip
 
 ## Corelib.Init.Datatypes.option
 
-状态：TYPE_ISO。已证明双向逆；具体参数、Type/Sort 范围见证书类型。
+Status: TYPE_ISO. Proven bidirectional inversion; specific parameters, Type/Sort range witness certificate type.
 
-原始目标：Rocq.Corelib.Init.Datatypes.option
+Original target: Rocq.Corelib.Init.Datatypes.option
 
-操作/类型证书：NativeBridge.optionIso
+Operation/Type Certificate: NativeBridge.optionIso
 
 ## Corelib.Init.Datatypes.option_ind
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.option_ind.statement
+Original target: Rocq.Corelib.Init.Datatypes.option_ind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.option_ind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.option_ind.statement.correspondence
 
 ```lean
 ∀ (A : Sort u_Corelib_Init_Datatypes_38) (P : Rocq.Corelib.Init.Datatypes.option A → Prop),
@@ -904,47 +904,47 @@ Rocq.Corelib.Init.Datatypes.IDProp
     P (Rocq.Corelib.Init.Datatypes.option.None A) → ∀ (o : Rocq.Corelib.Init.Datatypes.option A), P o
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.option;Rocq.Corelib.Init.Datatypes.option.Some;Rocq.Corelib.Init.Datatypes.option.None
+Residual source symbols: Rocq.Corelib.Init.Datatypes.option;Rocq.Corelib.Init.Datatypes.option.Some;Rocq.Corelib.Init.Datatypes.option.None
 
 ## Corelib.Init.Datatypes.option_map
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.Init.Datatypes.option_map
+Original target: Rocq.Corelib.Init.Datatypes.option_map
 
-操作/类型证书：NativeBridge.option_map_agrees
+Operation/Type Certificate: NativeBridge.option_map_agrees
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.option_map.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.option_map.roundtrip
 
-接口只覆盖 Type 宇宙实例；未声称覆盖原始裸 Sort 的 Prop 分支。
+The interface only covers the Type universe instance; no Prop branch is claimed to cover the original bare Sort.
 
 ## Corelib.Init.Datatypes.option_rec
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.option_rec
+Original target: Rocq.Corelib.Init.Datatypes.option_rec
 
-接口未覆盖原因：No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.option A → Type) →
+Reason for interface not covered: No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.option A → Type) →
   ((a : A) → P (Rocq.Corelib.Init.Datatypes.option.Some A a)) →
     P (Rocq.Corelib.Init.Datatypes.option.None A) → (o : Rocq.Corelib.Init.Datatypes.option A) → P o
 
 ## Corelib.Init.Datatypes.option_rect
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.option_rect
+Original target: Rocq.Corelib.Init.Datatypes.option_rect
 
-接口未覆盖原因：No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.option A → Type u_Corelib_Init_Datatypes_36) →
+Reason for interface not covered: No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.option A → Type u_Corelib_Init_Datatypes_36) →
   ((a : A) → P (Rocq.Corelib.Init.Datatypes.option.Some A a)) →
     P (Rocq.Corelib.Init.Datatypes.option.None A) → (o : Rocq.Corelib.Init.Datatypes.option A) → P o
 
 ## Corelib.Init.Datatypes.option_sind
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.option_sind.statement
+Original target: Rocq.Corelib.Init.Datatypes.option_sind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.option_sind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.option_sind.statement.correspondence
 
 ```lean
 ∀ (A : Sort u_Corelib_Init_Datatypes_40) (P : Rocq.Corelib.Init.Datatypes.option A → Prop),
@@ -952,48 +952,48 @@ Rocq.Corelib.Init.Datatypes.IDProp
     P (Rocq.Corelib.Init.Datatypes.option.None A) → ∀ (o : Rocq.Corelib.Init.Datatypes.option A), P o
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.option;Rocq.Corelib.Init.Datatypes.option.Some;Rocq.Corelib.Init.Datatypes.option.None
+Residual source symbols: Rocq.Corelib.Init.Datatypes.option;Rocq.Corelib.Init.Datatypes.option.Some;Rocq.Corelib.Init.Datatypes.option.None
 
 ## Corelib.Init.Datatypes.orb
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.Init.Datatypes.orb
+Original target: Rocq.Corelib.Init.Datatypes.orb
 
-操作/类型证书：NativeBridge.orb_agrees
+Operation/Type Certificate: NativeBridge.orb_agrees
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.orb.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.orb.roundtrip
 
 ## Corelib.Init.Datatypes.pair_equal_spec
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.pair_equal_spec.statement
+Original target: Rocq.Corelib.Init.Datatypes.pair_equal_spec.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.pair_equal_spec.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.pair_equal_spec.statement.correspondence
 
 ```lean
 ∀ (A : Sort u_Corelib_Init_Datatypes_126) (B : Sort u_Corelib_Init_Datatypes_127) (a1 a2 : A) (b1 b2 : B),
   Rocq.Corelib.Init.Datatypes.prod.pair A B a1 b1 = Rocq.Corelib.Init.Datatypes.prod.pair A B a2 b2 ↔ a1 = a2 ∧ b1 = b2
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.prod;Rocq.Corelib.Init.Datatypes.prod.pair
+Residual source symbols: Rocq.Corelib.Init.Datatypes.prod;Rocq.Corelib.Init.Datatypes.prod.pair
 
 ## Corelib.Init.Datatypes.prod
 
-状态：TYPE_ISO。已证明双向逆；具体参数、Type/Sort 范围见证书类型。
+Status: TYPE_ISO. Proven bidirectional inversion; specific parameters, Type/Sort range witness certificate type.
 
-原始目标：Rocq.Corelib.Init.Datatypes.prod
+Original target: Rocq.Corelib.Init.Datatypes.prod
 
-操作/类型证书：NativeBridge.prodIso
+Operation/Type Certificate: NativeBridge.prodIso
 
 ## Corelib.Init.Datatypes.prod_ind
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.prod_ind.statement
+Original target: Rocq.Corelib.Init.Datatypes.prod_ind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.prod_ind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.prod_ind.statement.correspondence
 
 ```lean
 ∀ (A : Sort u_Corelib_Init_Datatypes_80) (B : Sort u_Corelib_Init_Datatypes_81)
@@ -1002,35 +1002,35 @@ Rocq.Corelib.Init.Datatypes.IDProp
     ∀ (p : Rocq.Corelib.Init.Datatypes.prod A B), P p
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.prod;Rocq.Corelib.Init.Datatypes.prod.pair
+Residual source symbols: Rocq.Corelib.Init.Datatypes.prod;Rocq.Corelib.Init.Datatypes.prod.pair
 
 ## Corelib.Init.Datatypes.prod_rec
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.prod_rec
+Original target: Rocq.Corelib.Init.Datatypes.prod_rec
 
-接口未覆盖原因：No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.prod A B → Type) →
+Reason for interface not covered: No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.prod A B → Type) →
   ((a : A) → (b : B) → P (Rocq.Corelib.Init.Datatypes.prod.pair A B a b)) →
     (p : Rocq.Corelib.Init.Datatypes.prod A B) → P p
 
 ## Corelib.Init.Datatypes.prod_rect
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.prod_rect
+Original target: Rocq.Corelib.Init.Datatypes.prod_rect
 
-接口未覆盖原因：No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.prod A B → Type u_Corelib_Init_Datatypes_77) →
+Reason for not covering the interface: No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.prod A B → Type u_Corelib_Init_Datatypes_77) →
   ((a : A) → (b : B) → P (Rocq.Corelib.Init.Datatypes.prod.pair A B a b)) →
     (p : Rocq.Corelib.Init.Datatypes.prod A B) → P p
 
 ## Corelib.Init.Datatypes.prod_sind
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.prod_sind.statement
+Original target: Rocq.Corelib.Init.Datatypes.prod_sind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.prod_sind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.prod_sind.statement.correspondence
 
 ```lean
 ∀ (A : Sort u_Corelib_Init_Datatypes_84) (B : Sort u_Corelib_Init_Datatypes_85)
@@ -1039,21 +1039,21 @@ Rocq.Corelib.Init.Datatypes.IDProp
     ∀ (p : Rocq.Corelib.Init.Datatypes.prod A B), P p
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.prod;Rocq.Corelib.Init.Datatypes.prod.pair
+Residual source symbols: Rocq.Corelib.Init.Datatypes.prod;Rocq.Corelib.Init.Datatypes.prod.pair
 
 ## Corelib.Init.Datatypes.reflect
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.reflect
+Original target: Rocq.Corelib.Init.Datatypes.reflect
 
 ## Corelib.Init.Datatypes.reflect_ind
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.reflect_ind.statement
+Original target: Rocq.Corelib.Init.Datatypes.reflect_ind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.reflect_ind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.reflect_ind.statement.correspondence
 
 ```lean
 ∀ (P : Prop) (P0 : (b : Rocq.Corelib.Init.Datatypes.bool) → Rocq.Corelib.Init.Datatypes.reflect P b → Prop),
@@ -1062,15 +1062,15 @@ Rocq.Corelib.Init.Datatypes.IDProp
       ∀ (b : Rocq.Corelib.Init.Datatypes.bool) (r : Rocq.Corelib.Init.Datatypes.reflect P b), P0 b r
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.bool;Rocq.Corelib.Init.Datatypes.reflect;Rocq.Corelib.Init.Datatypes.bool.true;Rocq.Corelib.Init.Datatypes.reflect.ReflectT;Rocq.Corelib.Init.Datatypes.bool.false;Rocq.Corelib.Init.Datatypes.reflect.ReflectF;Rocq.Corelib.Init.Logic.not
+Residual source symbols: Rocq.Corelib.Init.Datatypes.bool;Rocq.Corelib.Init.Datatypes.reflect;Rocq.Corelib.Init.Datatypes.bool.true;Rocq.Corelib.Init.Datatypes.reflect.ReflectT;Rocq.Corelib.Init.Datatypes.bool.false;Rocq.Corelib.Init.Datatypes.reflect.ReflectF;Rocq.Corelib.Init.Logic.not
 
 ## Corelib.Init.Datatypes.reflect_rec
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.reflect_rec
+Original target: Rocq.Corelib.Init.Datatypes.reflect_rec
 
-接口未覆盖原因：No registered type bijection for (P0 :
+Reason for interface not covered: No registered type bijection for (P0:
     (b : Rocq.Corelib.Init.Datatypes.bool) → Rocq.Corelib.Init.Datatypes.reflect P b → Type) →
   ((p : P) → P0 Rocq.Corelib.Init.Datatypes.bool.true (Rocq.Corelib.Init.Datatypes.reflect.ReflectT P p)) →
     ((n : Rocq.Corelib.Init.Logic.not P) →
@@ -1079,11 +1079,11 @@ Rocq.Corelib.Init.Datatypes.IDProp
 
 ## Corelib.Init.Datatypes.reflect_rect
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.reflect_rect
+Original target: Rocq.Corelib.Init.Datatypes.reflect_rect
 
-接口未覆盖原因：No registered type bijection for (P0 :
+Reason for interface not covered: No registered type bijection for (P0:
     (b : Rocq.Corelib.Init.Datatypes.bool) →
       Rocq.Corelib.Init.Datatypes.reflect P b → Type u_Corelib_Init_Datatypes_8) →
   ((p : P) → P0 Rocq.Corelib.Init.Datatypes.bool.true (Rocq.Corelib.Init.Datatypes.reflect.ReflectT P p)) →
@@ -1093,11 +1093,11 @@ Rocq.Corelib.Init.Datatypes.IDProp
 
 ## Corelib.Init.Datatypes.reflect_sind
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.reflect_sind.statement
+Original target: Rocq.Corelib.Init.Datatypes.reflect_sind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.reflect_sind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.reflect_sind.statement.correspondence
 
 ```lean
 ∀ (P : Prop) (P0 : (b : Rocq.Corelib.Init.Datatypes.bool) → Rocq.Corelib.Init.Datatypes.reflect P b → Prop),
@@ -1106,23 +1106,23 @@ Rocq.Corelib.Init.Datatypes.IDProp
       ∀ (b : Rocq.Corelib.Init.Datatypes.bool) (r : Rocq.Corelib.Init.Datatypes.reflect P b), P0 b r
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.bool;Rocq.Corelib.Init.Datatypes.reflect;Rocq.Corelib.Init.Datatypes.bool.true;Rocq.Corelib.Init.Datatypes.reflect.ReflectT;Rocq.Corelib.Init.Datatypes.bool.false;Rocq.Corelib.Init.Datatypes.reflect.ReflectF;Rocq.Corelib.Init.Logic.not
+Residual source symbols: Rocq.Corelib.Init.Datatypes.bool;Rocq.Corelib.Init.Datatypes.reflect;Rocq.Corelib.Init.Datatypes.bool.true;Rocq.Corelib.Init.Datatypes.reflect.ReflectT;Rocq.Corelib.Init.Datatypes.bool.false;Rocq.Corelib.Init.Datatypes.reflect.ReflectF;Rocq.Corelib.Init.Logic.not
 
 ## Corelib.Init.Datatypes.result
 
-状态：TYPE_ISO。已证明双向逆；具体参数、Type/Sort 范围见证书类型。
+Status: TYPE_ISO. Proven bidirectional inversion; specific parameters, Type/Sort range witness certificate type.
 
-原始目标：Rocq.Corelib.Init.Datatypes.result
+Original target: Rocq.Corelib.Init.Datatypes.result
 
-操作/类型证书：NativeBridge.resultIso
+Operation/Type Certificate: NativeBridge.resultIso
 
 ## Corelib.Init.Datatypes.result_ind
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.result_ind.statement
+Original target: Rocq.Corelib.Init.Datatypes.result_ind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.result_ind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.result_ind.statement.correspondence
 
 ```lean
 ∀ (A : Sort u_Corelib_Init_Datatypes_68) (E : Sort u_Corelib_Init_Datatypes_69)
@@ -1132,35 +1132,35 @@ Rocq.Corelib.Init.Datatypes.IDProp
       ∀ (r : Rocq.Corelib.Init.Datatypes.result A E), P r
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.result;Rocq.Corelib.Init.Datatypes.result.Ok;Rocq.Corelib.Init.Datatypes.result.Error
+Residual source symbols: Rocq.Corelib.Init.Datatypes.result;Rocq.Corelib.Init.Datatypes.result.Ok;Rocq.Corelib.Init.Datatypes.result.Error
 
 ## Corelib.Init.Datatypes.result_rec
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.result_rec
+Original target: Rocq.Corelib.Init.Datatypes.result_rec
 
-接口未覆盖原因：No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.result A E → Type) →
+Reason for interface not covered: No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.result A E → Type) →
   ((a : A) → P (Rocq.Corelib.Init.Datatypes.result.Ok A E a)) →
     ((e : E) → P (Rocq.Corelib.Init.Datatypes.result.Error A E e)) → (r : Rocq.Corelib.Init.Datatypes.result A E) → P r
 
 ## Corelib.Init.Datatypes.result_rect
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.result_rect
+Original target: Rocq.Corelib.Init.Datatypes.result_rect
 
-接口未覆盖原因：No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.result A E → Type u_Corelib_Init_Datatypes_65) →
+Reason for not covering the interface: No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.result A E → Type u_Corelib_Init_Datatypes_65) →
   ((a : A) → P (Rocq.Corelib.Init.Datatypes.result.Ok A E a)) →
     ((e : E) → P (Rocq.Corelib.Init.Datatypes.result.Error A E e)) → (r : Rocq.Corelib.Init.Datatypes.result A E) → P r
 
 ## Corelib.Init.Datatypes.result_sind
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.result_sind.statement
+Original target: Rocq.Corelib.Init.Datatypes.result_sind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.result_sind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.result_sind.statement.correspondence
 
 ```lean
 ∀ (A : Sort u_Corelib_Init_Datatypes_72) (E : Sort u_Corelib_Init_Datatypes_73)
@@ -1170,15 +1170,15 @@ Rocq.Corelib.Init.Datatypes.IDProp
       ∀ (r : Rocq.Corelib.Init.Datatypes.result A E), P r
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.result;Rocq.Corelib.Init.Datatypes.result.Ok;Rocq.Corelib.Init.Datatypes.result.Error
+Residual source symbols: Rocq.Corelib.Init.Datatypes.result;Rocq.Corelib.Init.Datatypes.result.Ok;Rocq.Corelib.Init.Datatypes.result.Error
 
 ## Corelib.Init.Datatypes.rew_pair
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.rew_pair.statement
+Original target: Rocq.Corelib.Init.Datatypes.rew_pair.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.rew_pair.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.rew_pair.statement.correspondence
 
 ```lean
 ∀ (A : Sort u_Corelib_Init_Datatypes_174) (P : A → Sort u_Corelib_Init_Datatypes_175)
@@ -1189,35 +1189,35 @@ Rocq.Corelib.Init.Datatypes.IDProp
       (Rocq.Corelib.Init.Datatypes.prod.pair (P x1) (Q x1) y1 y2) x2 ⋯
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.prod;Rocq.Corelib.Init.Datatypes.prod.pair;Rocq.Corelib.Init.Logic.eq_rect;Rocq.Corelib.Init.Logic.eq
+Residual source symbols: Rocq.Corelib.Init.Datatypes.prod;Rocq.Corelib.Init.Datatypes.prod.pair;Rocq.Corelib.Init.Logic.eq_rect;Rocq.Corelib.Init.Logic.eq
 
 ## Corelib.Init.Datatypes.snd
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.Init.Datatypes.snd
+Original target: Rocq.Corelib.Init.Datatypes.snd
 
-操作/类型证书：NativeBridge.snd_agrees
+Operation/Type Certificate: NativeBridge.snd_agrees
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.snd.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.snd.roundtrip
 
-接口只覆盖 Type 宇宙实例；未声称覆盖原始裸 Sort 的 Prop 分支。
+The interface only covers the Type universe instance; no Prop branch is claimed to cover the original bare Sort.
 
 ## Corelib.Init.Datatypes.sum
 
-状态：TYPE_ISO。已证明双向逆；具体参数、Type/Sort 范围见证书类型。
+Status: TYPE_ISO. Proven bidirectional inversion; specific parameters, Type/Sort range witness certificate type.
 
-原始目标：Rocq.Corelib.Init.Datatypes.sum
+Original target: Rocq.Corelib.Init.Datatypes.sum
 
-操作/类型证书：NativeBridge.sumIso
+Operation/Type Certificate: NativeBridge.sumIso
 
 ## Corelib.Init.Datatypes.sum_ind
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.sum_ind.statement
+Original target: Rocq.Corelib.Init.Datatypes.sum_ind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.sum_ind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.sum_ind.statement.correspondence
 
 ```lean
 ∀ (A : Sort u_Corelib_Init_Datatypes_54) (B : Sort u_Corelib_Init_Datatypes_55)
@@ -1226,35 +1226,35 @@ Rocq.Corelib.Init.Datatypes.IDProp
     (∀ (b : B), P (Rocq.Corelib.Init.Datatypes.sum.inr A B b)) → ∀ (s : Rocq.Corelib.Init.Datatypes.sum A B), P s
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.sum;Rocq.Corelib.Init.Datatypes.sum.inl;Rocq.Corelib.Init.Datatypes.sum.inr
+Residual source symbols: Rocq.Corelib.Init.Datatypes.sum;Rocq.Corelib.Init.Datatypes.sum.inl;Rocq.Corelib.Init.Datatypes.sum.inr
 
 ## Corelib.Init.Datatypes.sum_rec
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.sum_rec
+Original target: Rocq.Corelib.Init.Datatypes.sum_rec
 
-接口未覆盖原因：No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.sum A B → Type) →
+Reason for interface not covered: No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.sum A B → Type) →
   ((a : A) → P (Rocq.Corelib.Init.Datatypes.sum.inl A B a)) →
     ((b : B) → P (Rocq.Corelib.Init.Datatypes.sum.inr A B b)) → (s : Rocq.Corelib.Init.Datatypes.sum A B) → P s
 
 ## Corelib.Init.Datatypes.sum_rect
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.sum_rect
+Original target: Rocq.Corelib.Init.Datatypes.sum_rect
 
-接口未覆盖原因：No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.sum A B → Type u_Corelib_Init_Datatypes_51) →
+Reason for not covering the interface: No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.sum A B → Type u_Corelib_Init_Datatypes_51) →
   ((a : A) → P (Rocq.Corelib.Init.Datatypes.sum.inl A B a)) →
     ((b : B) → P (Rocq.Corelib.Init.Datatypes.sum.inr A B b)) → (s : Rocq.Corelib.Init.Datatypes.sum A B) → P s
 
 ## Corelib.Init.Datatypes.sum_sind
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.sum_sind.statement
+Original target: Rocq.Corelib.Init.Datatypes.sum_sind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.sum_sind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.sum_sind.statement.correspondence
 
 ```lean
 ∀ (A : Sort u_Corelib_Init_Datatypes_58) (B : Sort u_Corelib_Init_Datatypes_59)
@@ -1263,15 +1263,15 @@ Rocq.Corelib.Init.Datatypes.IDProp
     (∀ (b : B), P (Rocq.Corelib.Init.Datatypes.sum.inr A B b)) → ∀ (s : Rocq.Corelib.Init.Datatypes.sum A B), P s
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.sum;Rocq.Corelib.Init.Datatypes.sum.inl;Rocq.Corelib.Init.Datatypes.sum.inr
+Residual source symbols: Rocq.Corelib.Init.Datatypes.sum;Rocq.Corelib.Init.Datatypes.sum.inl;Rocq.Corelib.Init.Datatypes.sum.inr
 
 ## Corelib.Init.Datatypes.surjective_pairing
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.surjective_pairing.statement
+Original target: Rocq.Corelib.Init.Datatypes.surjective_pairing.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.surjective_pairing.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.surjective_pairing.statement.correspondence
 
 ```lean
 ∀ (A : Sort u_Corelib_Init_Datatypes_108) (B : Sort u_Corelib_Init_Datatypes_109)
@@ -1281,80 +1281,80 @@ Rocq.Corelib.Init.Datatypes.IDProp
       (Rocq.Corelib.Init.Datatypes.snd A B p)
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.prod;Rocq.Corelib.Init.Datatypes.prod.pair;Rocq.Corelib.Init.Datatypes.fst;Rocq.Corelib.Init.Datatypes.snd
+Residual source symbols: Rocq.Corelib.Init.Datatypes.prod;Rocq.Corelib.Init.Datatypes.prod.pair;Rocq.Corelib.Init.Datatypes.fst;Rocq.Corelib.Init.Datatypes.snd
 
 ## Corelib.Init.Datatypes.uncurry
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.Init.Datatypes.uncurry
+Original target: Rocq.Corelib.Init.Datatypes.uncurry
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.uncurry.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.uncurry.roundtrip
 
-接口只覆盖 Type 宇宙实例；未声称覆盖原始裸 Sort 的 Prop 分支。
+The interface only covers the Type universe instance; no Prop branch is claimed to cover the original bare Sort.
 
 ## Corelib.Init.Datatypes.unit
 
-状态：TYPE_ISO。已证明双向逆；具体参数、Type/Sort 范围见证书类型。
+Status: TYPE_ISO. Proven bidirectional inversion; specific parameters, Type/Sort range witness certificate type.
 
-原始目标：Rocq.Corelib.Init.Datatypes.unit
+Original target: Rocq.Corelib.Init.Datatypes.unit
 
-操作/类型证书：NativeBridge.unitIso
+Operation/Type Certificate: NativeBridge.unitIso
 
 ## Corelib.Init.Datatypes.unit_ind
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.unit_ind.statement
+Original target: Rocq.Corelib.Init.Datatypes.unit_ind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.unit_ind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.unit_ind.statement.correspondence
 
 ```lean
 ∀ (P : Rocq.Corelib.Init.Datatypes.unit → Prop),
   P Rocq.Corelib.Init.Datatypes.unit.tt → ∀ (u : Rocq.Corelib.Init.Datatypes.unit), P u
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.unit;Rocq.Corelib.Init.Datatypes.unit.tt
+Residual source symbols: Rocq.Corelib.Init.Datatypes.unit;Rocq.Corelib.Init.Datatypes.unit.tt
 
 ## Corelib.Init.Datatypes.unit_rec
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.unit_rec
+Original target: Rocq.Corelib.Init.Datatypes.unit_rec
 
-接口未覆盖原因：No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.unit → Type) →
+Reason for interface not covered: No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.unit → Type) →
   P Rocq.Corelib.Init.Datatypes.unit.tt → (u : Rocq.Corelib.Init.Datatypes.unit) → P u
 
 ## Corelib.Init.Datatypes.unit_rect
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Init.Datatypes.unit_rect
+Original target: Rocq.Corelib.Init.Datatypes.unit_rect
 
-接口未覆盖原因：No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.unit → Type u_Corelib_Init_Datatypes_6) →
+Reason for interface not covered: No registered type bijection for (P : Rocq.Corelib.Init.Datatypes.unit → Type u_Corelib_Init_Datatypes_6) →
   P Rocq.Corelib.Init.Datatypes.unit.tt → (u : Rocq.Corelib.Init.Datatypes.unit) → P u
 
 ## Corelib.Init.Datatypes.unit_sind
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Init.Datatypes.unit_sind.statement
+Original target: Rocq.Corelib.Init.Datatypes.unit_sind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.unit_sind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Init.Datatypes.unit_sind.statement.correspondence
 
 ```lean
 ∀ (P : Rocq.Corelib.Init.Datatypes.unit → Prop),
   P Rocq.Corelib.Init.Datatypes.unit.tt → ∀ (u : Rocq.Corelib.Init.Datatypes.unit), P u
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.unit;Rocq.Corelib.Init.Datatypes.unit.tt
+Residual source symbols: Rocq.Corelib.Init.Datatypes.unit;Rocq.Corelib.Init.Datatypes.unit.tt
 
 ## Corelib.Init.Datatypes.xorb
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.Init.Datatypes.xorb
+Original target: Rocq.Corelib.Init.Datatypes.xorb
 
-操作/类型证书：NativeBridge.xorb_agrees
+Operation/Type Certificate: NativeBridge.xorb_agrees
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.xorb.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Init.Datatypes.xorb.roundtrip

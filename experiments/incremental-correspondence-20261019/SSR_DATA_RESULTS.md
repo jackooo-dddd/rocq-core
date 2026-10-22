@@ -1,51 +1,51 @@
-# SSR 包装类型、依赖数据与条件声明（第二十三批）
+# SSR Packaging type, dependency data and condition statement (23rd batch)
 
-新增 23 个完成根：1 个类型、20 个运算、2 个完整原生陈述。全项目当前完成类别为 1261 / 2180（70 类型、470 运算、721 陈述）；ssrfun 的 128 根中已有 124 根完成，剩余四项见下文。所有数目按去重源根统计，范围以证书完整类型为准。
+Added 23 completion roots: 1 types, 20 operations, 2 complete native statements. The current completion category of the entire project is 1261 / 2180 (70 type, 470 operation, 721 statement); 124 root has been completed in the 128 root of ssrfun, and the remaining four items are shown below. All numbers are counted based on the deduplication source root, and the range is based on the complete type of the certificate.
 
-## 对应结果
+## Corresponding result
 
-| 源声明 | 原生目标 |
+| source statement | native target |
 |---|---|
-| wrapped、wrap、unwrap | A、id；wrappedIso 证明双向逆，A : Type u |
+| wrapped、wrap、unwrap | A, id; wrappedIso proves the two-way inverse, A: Type u |
 | SimplFunDelta | fun x => f x x |
-| Tagged、Tagged2 | PSigma.mk；第二种负载使用 PProd |
+| Tagged、Tagged2 | PSigma.mk; the second load uses PProd |
 | tag、tag2 | PSigma.fst |
-| tagged、tagged2、tagged2' | PSigma.snd 及负载的 PProd 投影 |
-| tag_of_tag2 | PSigma (fun a => PProd (P a) (Q a)) 上的 id |
-| all_pair | 将依赖函数对拆成两个依赖函数的原生表达式 |
+| tagged、tagged2、tagged2' | PSigma.snd and load PProd projection |
+| tag_of_tag2 | id on PSigma (fun a => PProd (P a) (Q a)) |
+| all_pair | Split the dependent function pair into two native expressions of the dependent function |
 | s2val | Subtype.val |
 | of_void | Empty.elim |
-| phant_id | True → True；两侧 phantom 都只有一个证明构造器 |
-| pcancel、ocancel | 原生 Option 等式定义的部分取消律 |
+| phant_id | True → True; both sides phantom have only one proof constructor |
+| pcancel、ocancel | The partial cancellation law defined by the native Option equation |
 | pcomp | Option.bind |
 | tag_of_sig | fun (x : Subtype P) => PSigma.mk x.val x.property |
-| sig_of_sig2 | Subtype (fun a => P a ∧ Q a) 上的 id |
-| esymK、etrans_id | 原生相等证明的二次对称律、右单位传递律 |
+| sig_of_sig2 | id on Subtype (fun a => P a ∧ Q a) |
+| esymK、etrans_id | Quadratic symmetry law and right unit transitive law of original equality proof |
 
-除 wrapped 的 Type 限制外，数据适配使用完整 Sort 参数；Option 使用 Option (PLift A)。依赖投影以原生 PSigma 输入证明等式，并提供输入转换的双向逆，因此不是只证明一个特例。原生组合表达式与已有 API 在 certificates.json 的 target_class 中区分。
+Data adaptation uses the full Sort parameters, except for the Type limitations of wrapped; Option uses Option (PLift A). The dependent projection proves the equation with native PSigma input and provides the bidirectional inverse of the input transformation, so it is not just a special case that is proved. Native combined expressions are differentiated from target_class in certificates.json by existing API.
 
-tag_of_sig、sig_of_sig2、esymK、etrans_id 的 5 个不同前置声明均给出闭合证明，原机械声明不变。esymK、etrans_id 还另有原陈述的独立证明，不只登记 iff。新增五个前置见证和这两个原陈述证明的公理闭包均为空。
+Closure proofs are given for 5 different pre-declarations of tag_of_sig, sig_of_sig2, esymK and etrans_id, and the original mechanical declaration remains unchanged. esymK and etrans_id also have independent proof of the original statement, not just iff. The axiom closures proved by the five new predicate witnesses and the two original statements are all empty.
 
-## 四项剩余：当前产物不暴露计算等式
+## Four remainders: the current product does not expose the calculation equation
 
-| 声明 | 当前形态 | 已有原生候选 |
+| Statement | Current form | There are native candidates |
 |---|---|---|
-| all_tag | opaque，无显式条件 | PSigma 依赖选择：函数取 fst，证据函数取 snd |
-| all_tag2 | opaque，无显式条件 | PSigma / PProd 的依赖选择 |
-| all_sig | opaque，1 个显式条件 | Subtype 依赖选择 |
-| all_sig2 | opaque，4 个显式条件 | Subtype 合取谓词的依赖选择 |
+| all_tag | opaque, no explicit condition | PSigma depends on selection: the function takes fst, the evidence function takes snd |
+| all_tag2 | opaque, no explicit condition | Dependency selection for PSigma / PProd |
+| all_sig | opaque, 1 explicit conditions | Subtype depends on selection |
+| all_sig2 | opaque, 4 explicit conditions | Subtype Dependent selection of conjunction predicate |
 
-这些候选尚未登记为已证明运算对应。SSRFunOpacity 读取当前编译环境并执行同步 kernel 检查：四个声明确实是 opaque、内部 body 存在，但以 rfl 证明“声明 = body”均被 kernel 以 declTypeMismatch 拒绝。当前导入环境中也没有类型直接提及这些函数的 theorem 声明。仅能读取 body，不能据此假定它与 opaque 常量相等；复制 body 成为新 def 也不构成该等式的证明。
+These candidates have not yet been registered as proven operational correspondences. SSRFunOpacity reads the current compilation environment and performs a synchronized kernel check: the four claims are indeed opaque, internal body exists, but rfl proves "claim = body" are all rejected by kernel with declTypeMismatch. There is also no theorem declaration of type directly mentioning these functions in the current import environment. Only body can be read, and it cannot be assumed to be equal to the opaque constant; copying body to become a new def does not constitute a proof of the equation.
 
-下一步需要在独立的机械产物扩展中，为计算性 opaque 声明提供经过核验的透明实现/计算方程及其源端联系，再接这里的原生候选。不能把旧 opaque 常量直接重命名成新 def 后声称旧对应已经成立。all_sig2 还须闭合其前置证明；其依赖 all_sig，而 all_sig 的实现使用 all_tag。
+The next step is to provide verified transparent implementation/computational equations and their source connections for the computational opaque claim in a separate mechanical product extension, and then pick up the native candidate here. You cannot directly rename the old opaque constant to the new def and then claim that the old correspondence has been established. all_sig2 must also close its prefix proof; it depends on all_sig, and the implementation of all_sig uses all_tag.
 
-## 验证
+## Verify
 
-- SSRFunData、SSRFunConditions：23 份新增对应证书，Lean kernel 和公理闭包检查通过。
-- SSRFunOpacity：4 个不透明计算的精确失败诊断，不增加覆盖数。
-- 当前 71 个验证 profile 均匹配源码与依赖指纹。
-- 当前 999 份增量覆盖证书，经 65 个覆盖 profile 重新封装，共同导入通过；1294 个入口、8015 个依赖声明副本。
-- 没有重跑全部机械翻译，也没有重编译全部旧基线证明。
-- 编译缓存及临时探测仅留在远程 .work。
+- SSRFunData, SSRFunConditions: 23 newly added corresponding certificates, Lean kernel and the axiom closure check passed.
+- SSRFunOpacity: Exact failure diagnosis of 4 opaque calculations without increasing the coverage number.
+- The current 71 verifications profile all match the source code and dependency fingerprints.
+- There are currently 999 incremental coverage certificates, which have been repackaged by 65 coverage profile and imported together; 1294 entries and 8015 dependency statement copies.
+- There is no rerun of all machine translations, nor recompiling of all old baseline proofs.
+- Compilation cache and temporary probes only remain in remote .work.
 
-文件：proofs/SSRFunData.lean、proofs/SSRFunConditions.lean、proofs/SSRFunOpacity.lean；逐项证书见 reports/CERTIFICATES.md；不透明诊断见 reports/ssrfun-opacity.json。
+Documents: proofs/SSRFunData.lean, proofs/SSRFunConditions.lean, proofs/SSRFunOpacity.lean; itemized certificates see reports/CERTIFICATES.md; opaque diagnostics see reports/ssrfun-opacity.json.

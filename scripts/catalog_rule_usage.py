@@ -46,88 +46,88 @@ def main():
  cat=json.loads((o/'ALL_RULES.json').read_text())
  for op in cat['primitive_operations']:op.pop('usage',None)
  es={e['id']:e for g in cat['groups'] for e in g['entries']}
- rs={k:{'id':k,'name':e['name'],'precision':'未单独记录','primary_roots':None,'family_roots':None,'names':[],'family_names':[],
-         'basis':'历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。','related':[]} for k,e in es.items()}
- def put(k,p,b,precision='报告命中',src=False):
+ rs={k:{'id':k,'name':e['name'],'precision':'Not separately recorded','primary_roots':None,'family_roots':None,'names':[],'family_names':[],
+         'basis':'Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence.','related':[]} for k,e in es.items()}
+ def put(k,p,b,precision='Report evidence',src=False):
   names=[x['name'] for x in xs if p(x,x['primary'])]
   family=names if src else [x['name'] for x in xs if any(p(x,t) for t in [x['primary']]+x['variants'])]
   rs[k].update(precision=precision,primary_roots=len(names),family_roots=len(family),names=names,family_names=family,basis=b)
  def field(k,f,b=None):
-  put(k,lambda x,t:bool(t.get(f)),b or '最终报告 '+f+' 非空／非零。')
- def source(k,p,b,precision='报告命中'):put(k,lambda x,t:p(x['source']),b,precision,True)
+  put(k,lambda x,t:bool(t.get(f)),b or 'final report '+f+' is nonempty/nonzero.')
+ def source(k,p,b,precision='Report evidence'):put(k,lambda x,t:p(x['source']),b,precision,True)
  def relate(k,p,b):
   names=[x['name'] for x in xs if p(x)];rs[k]['related'].append({'basis':b,'roots':len(names),'names':names})
- put('E01',lambda x,t:True,'原始根的导出覆盖；非函数调用次数。','覆盖')
- source('E02',lambda s:s['kind']=='constant','参与声明分类的常量；未拆分归约分支。','覆盖')
- put('E03',lambda x,t:t.get('target_kind')=='statement','最终陈述产物。')
- source('E04',lambda s:bool(s['obligations']),'自身源 IR 带 obligations；不等于所有继承待证条件的根。')
- put('E08',lambda x,t:t.get('target_kind')=='def','最终 def 产物覆盖。','覆盖')
- put('E09',lambda x,t:t.get('target_kind')=='opaque','最终 opaque 产物覆盖，含 quality family。','覆盖')
- put('E10',lambda x,t:t.get('rule')=='constant/opaque_interface','原始根最终采用 opaque_interface。')
- source('E11',lambda s:bool((s['prepared'] or {}).get('sealed_implementation')),'源准备 sealed_implementation=true。')
- field('E12','pending_hypotheses','最终有显式条件；条件合并／消除的内部次数未单列。')
- put('E14',lambda x,t:False,'本次 census 未装配外部提供的证明。')
- put('T01',lambda x,t:bool(t['ast'].get('bvar')),'最终 AST 含 bvar；不是 rel 转换调用次数。','覆盖')
- put('T02',lambda x,t:any(t['ast'].get(k) for k in ['forall','lam','let','app']),'最终 AST 含绑定／应用结构。','覆盖')
- put('T03',lambda x,t:bool(t['consts']),'最终 AST 含常量引用，含辅助引用。','覆盖')
- relate('T04',lambda x:bool(x['source']['ast'].get('cast')),'源 IR 含 cast，不等于使用 cast 修复。')
- relate('T05',lambda x:bool(x['source']['sorts'].get('sprop')),'主源 IR 含 SProp；未记录全部动态转换。')
- put('T06',lambda x,t:t.get('rule','').startswith('bootstrap/'),'已停用的 nat/eq bootstrap；当前应为零，源 nat/eq 由普通归纳生成。')
- put('T07',lambda x,t:t.get('target_kind')=='inductive','最终生成归纳块的覆盖。','覆盖')
+ put('E01',lambda x,t:True,'Export override of original root; non-function call count.','Coverage')
+ source('E02',lambda s:s['kind']=='constant','Constants participating in declaration classification; reduction branch not split.','Coverage')
+ put('E03',lambda x,t:t.get('target_kind')=='statement','Final presentation product.')
+ source('E04',lambda s:bool(s['obligations']),'Self source IR with obligations; not equal to the root of all inherited unproven conditions.')
+ put('E08',lambda x,t:t.get('target_kind')=='def','The final def product coverage.','Coverage')
+ put('E09',lambda x,t:t.get('target_kind')=='opaque','The final opaque product coverage includes quality and family.','Coverage')
+ put('E10',lambda x,t:t.get('rule')=='constant/opaque_interface','The original root ended up being opaque_interface.')
+ source('E11',lambda s:bool((s['prepared'] or {}).get('sealed_implementation')),'Source preparation sealed_implementation=true.')
+ field('E12','pending_hypotheses','Finally there are explicit conditions; internal times of conditional merging/elimination are not listed separately.')
+ put('E14',lambda x,t:False,'This census is not assembled with externally provided certificates.')
+ put('T01',lambda x,t:bool(t['ast'].get('bvar')),'Ultimately AST contains bvar; not rel conversion call count.','Coverage')
+ put('T02',lambda x,t:any(t['ast'].get(k) for k in ['forall','lam','let','app']),'Final AST with binding/application structure.','Coverage')
+ put('T03',lambda x,t:bool(t['consts']),'Finally, AST contains constant references and auxiliary references.','Coverage')
+ relate('T04',lambda x:bool(x['source']['ast'].get('cast')),'Source IR contains cast, which is not equivalent to using cast to repair.')
+ relate('T05',lambda x:bool(x['source']['sorts'].get('sprop')),'Main source IR contains SProp; not all dynamic conversions are recorded.')
+ put('T06',lambda x,t:t.get('rule','').startswith('bootstrap/'),'Deactivated nat/eq bootstrap; should currently be zero, source nat/eq generated by normal induction.')
+ put('T07',lambda x,t:t.get('target_kind')=='inductive','The final coverage of the inductive block is generated.','Coverage')
  field('T08','primitive_record')
- source('T09',lambda s:s['kind']=='inductive' and s['npars']>s['nparams_rec'],'原生 npars>nparams_rec 的非均匀块。')
+ source('T09',lambda s:s['kind']=='inductive' and s['npars']>s['nparams_rec'],'Non-uniform blocks of native npars>nparams_rec.')
  field('T10','coinductive_as_inductive')
- put('T11',lambda x,t:t.get('target_kind')=='inductive' and bool(t.get('pending_hypotheses')),'只确认带条件归纳子项；嵌套归纳未单列。','下界')
+ put('T11',lambda x,t:t.get('target_kind')=='inductive' and bool(t.get('pending_hypotheses')),'Only the sub-items of conditional induction are confirmed; nested induction is not listed separately.','Lower bound')
  for k,sk in [('M01','case'),('M08','letin')]:
-  relate(k,lambda x,sk=sk:bool(x['source']['ast'].get(sk)),'源 IR 含 '+sk+'；只是结构证据。')
+  relate(k,lambda x,sk=sk:bool(x['source']['ast'].get(sk)),'Source IR contains '+sk+'; Just structural evidence.')
  for k,sk in [('M03','single_fix'),('M07','mutual_fix')]:
-  relate(k,lambda x,sk=sk:bool(x['source'][sk]),'源 IR '+sk+'；不是已确认的递归转换路径。')
- put('U01',lambda x,t:True,'原生宇宙上下文检查覆盖；不是每根都有非平凡约束。','覆盖')
- put('U02',lambda x,t:bool(t['ast'].get('sort')),'最终 AST 含 Sort，未区分普通读取和 R8。','覆盖')
- put('U03',lambda x,t:any(n.startswith('u_') for n in t.get('level_params',[])),'最终公开 u_ 层级参数覆盖，排除显式 v_i。','覆盖')
+  relate(k,lambda x,sk=sk:bool(x['source'][sk]),'Source IR '+sk+'; is not a confirmed recursive transformation path.')
+ put('U01',lambda x,t:True,'Native universe context check override; not every root has non-trivial constraints.','Coverage')
+ put('U02',lambda x,t:bool(t['ast'].get('sort')),'The final AST contains Sort, without distinguishing between normal reading and R8.','Coverage')
+ put('U03',lambda x,t:any(n.startswith('u_') for n in t.get('level_params',[])),'Finally, the u_ level parameter coverage is disclosed, excluding explicit v_i.','Coverage')
  for k,f in [('U04','solved_levels'),('U06','universe_checks'),('U07','universe_residuals'),
              ('U09','template'),('U12','sort_fact_reduced'),('U13','level_interp'),('U15','implicit_levels'),
              ('U16','result_sort_implicit_levels'),('U17','admitting_levels'),('U19','level_copies'),('U21','level_split'),
              ('U25','sort_interp'),('U29','r2bp_levels'),('U30','sort_lowered_levels'),('U31','result_sort_inherited'),
              ('U32','poly_level_interp'),('U36','phantom_lowered'),('C06','source_computed'),
              ('L02','prop_lift_coercions'),('L10','prop_lift_unfold'),('Q02','template_sort'),('Q03','quality_prop'),('V05','universe_checks')]:field(k,f)
- rs['U04']['basis']+=' 公开与正文局部求解未独立拆分。'
- rs['U09']['basis']+=' 统计模板块本身，下游实例化另属引用。'
- put('U08',lambda x,t:'Eq' in t['consts'],'最终 AST 直接含原生 Lean Eq（包括内部辅助证明）；不是源 eq 原生映射次数。','覆盖')
+ rs['U04']['basis']+=' The public and body local solutions are not separated independently.'
+ rs['U09']['basis']+=' The statistics template block itself, downstream instantiation is a separate reference.'
+ put('U08',lambda x,t:'Eq' in t['consts'],'The final AST directly contains the native Lean Eq (including internal auxiliary proof); it is not the number of native mappings of the source eq.','Coverage')
  for k,kind in [('U10','constant'),('U11','inductive')]:
-  put(k,lambda x,t,kind=kind:t.get('kind')==kind and t.get('universe_poly_params',0)>0,'对应声明有显式多态宇宙参数。')
- put('U28',lambda x,t:bool(t.get('universe_lowered') or t.get('universe_cumulativity')),'lowered 或 cumulativity 标志；策略标志不能拆成实际抬升次数。')
- put('U35',lambda x,t:bool(t.get('universe_level_defaults') or t.get('universe_minimal_levels') or t.get('universe_residuals')),'仅确认报告的默认／residual 子机制；max 求解未单列。','下界')
+  put(k,lambda x,t,kind=kind:t.get('kind')==kind and t.get('universe_poly_params',0)>0,'The corresponding declaration has explicit polymorphic universe parameters.')
+ put('U28',lambda x,t:bool(t.get('universe_lowered') or t.get('universe_cumulativity')),'lowered or cumulativity flag; the strategy flag cannot be broken down into the actual number of lifts.')
+ put('U35',lambda x,t:bool(t.get('universe_level_defaults') or t.get('universe_minimal_levels') or t.get('universe_residuals')),'Only the reported Default/residual submechanism is confirmed; the max solution is not listed separately.','Lower bound')
  for k in ['C01','C02','C03','C04','C05','C07']:
-  relate(k,lambda x:bool(x['primary'].get('delta_inlined')),'透明展开父机制合计，不能拆分到各别名形状。')
- put('L01',lambda x,t:t.get('prop_lift') is not None,'prop_lift 非 null；深度 0 也算命中。')
- put('L03',lambda x,t:t.get('type_lift') is not None or t.get('type_lift_coercions',0)>0,'type_lift 非 null 或 type_lift_coercions>0。')
+  relate(k,lambda x:bool(x['primary'].get('delta_inlined')),'Transparent expansion parent mechanism total, cannot be split into individual alias shapes.')
+ put('L01',lambda x,t:t.get('prop_lift') is not None,'prop_lift is not null; depth 0 is also a hit.')
+ put('L03',lambda x,t:t.get('type_lift') is not None or t.get('type_lift_coercions',0)>0,'type_lift is not null or type_lift_coercions>0.')
  for k in ['L04','L05','L06','L07','L08','L09']:
-  relate(k,lambda x:x['primary'].get('type_lift') is not None or x['primary'].get('type_lift_coercions',0)>0,'Type lift 父机制合计；未拆分内部路径。')
- source('Q01',lambda s:s['template_info'] or s['quality_family'],'原生 template_info 或 quality_family 覆盖。','覆盖')
- for k in ['Q05','Q06']:source(k,lambda s:s['quality_family'],'原生 quality_family 根；同一根的所有分支完整检查。')
- relate('Q04',lambda x:any('.qualityProp' in n for n in x['primary']['consts']),'目标引用 qualityProp 分支，非唯一的分派路径证据。')
- relate('Q07',lambda x:any('__rocq2lean_quality_' in n for n in x['primary']['consts']),'目标显式引用原生 quality 分支。')
+  relate(k,lambda x:x['primary'].get('type_lift') is not None or x['primary'].get('type_lift_coercions',0)>0,'Type lift Parent mechanism total; internal paths not split.')
+ source('Q01',lambda s:s['template_info'] or s['quality_family'],'Native template_info or quality_family override.','Coverage')
+ for k in ['Q05','Q06']:source(k,lambda s:s['quality_family'],'Native quality_family root; all branches of the same root are fully checked.')
+ relate('Q04',lambda x:any('.qualityProp' in n for n in x['primary']['consts']),'Target references branch qualityProp, evidence of non-unique dispatch path.')
+ relate('Q07',lambda x:any('__rocq2lean_quality_' in n for n in x['primary']['consts']),'The target explicitly references the native quality branch.')
  families={}
  for op in cat['primitive_operations']:
   fam='Int63' if op['target'].startswith(('BitVec.','PrimInt63.')) else op['target'].split('.')[0].removeprefix('Prim')
   families.setdefault(fam,set()).add(op['source'])
  for k,fam,typ in [('N01','Int63','int63'),('N02','Array','array'),('N03','String','string'),('N04','Float','float64')]:
-  source(k,lambda s,fam=fam,typ=typ:s['primitive_type']==typ or s['primitive_operator'] in families[fam],'该族原生类型／操作根；下游包装调用不当成重新映射。')
+  source(k,lambda s,fam=fam,typ=typ:s['primitive_type']==typ or s['primitive_operator'] in families[fam],'Native type/operation root of this family; downstream wrapper calls do not constitute remapping.')
  structured={'eq','lt','le','lts','les','compare','compares','addc','addCarryC','subc','subCarryC','mulc','diveucl','div21','string_compare','feq','fequal','flt','fle','fcompare','fclassify','frshiftexp'}
- source('N05',lambda s:s['primitive_operator'] in structured,'需源构造器适配的原语操作根。')
- source('N06',lambda s:bool(s['primitive_type'] or s['primitive_operator']),'只确认原语身份子机制；字面量和公理子机制未单列。','下界')
- for k in ['V01','V06','V09','S01']:put(k,lambda x,t:True,'本次处理／校验覆盖全部原始根；非内部执行次数。','覆盖')
- put('V02',lambda x,t:t.get('rule','').startswith('bootstrap/'),'Bootstrap 签名检查覆盖。')
- put('V03',lambda x,t:not t.get('rule','').startswith('bootstrap/'),'生成声明的内核检查覆盖；bootstrap 复用已有目标。','覆盖')
- put('V04',lambda x,t:t.get('protected') or t.get('target_kind')=='statement','protected 或 statement 检查范围。','覆盖')
+ source('N05',lambda s:s['primitive_operator'] in structured,'The primitive operation root that needs to be adapted by the source constructor.')
+ source('N06',lambda s:bool(s['primitive_type'] or s['primitive_operator']),'Only the primitive identity sub-mechanism is confirmed; the literal and axiom sub-mechanisms are not listed separately.','Lower bound')
+ for k in ['V01','V06','V09','S01']:put(k,lambda x,t:True,'This processing/verification covers all original roots; not internal execution times.','Coverage')
+ put('V02',lambda x,t:t.get('rule','').startswith('bootstrap/'),'Bootstrap signature check coverage.')
+ put('V03',lambda x,t:not t.get('rule','').startswith('bootstrap/'),'Generate declared kernel check coverage; bootstrap reuses an existing target.','Coverage')
+ put('V04',lambda x,t:t.get('protected') or t.get('target_kind')=='statement','protected or statement inspection range.','Coverage')
  for k,v in [('V07','consumer'),('V08','audit')]:
-  put(k,lambda x,t,v=v:x['validation'].get(v)=='OK','所属模块 '+v+'=OK 的根覆盖。','覆盖')
- put('S02',lambda x,t:bool(x['attempts']),'具有 tier_times 的根覆盖。','覆盖')
- put('S04',lambda x,t:any(z[0].startswith('i[') for z in x['attempts']),'具有归纳块 tier_times 的根覆盖。','覆盖')
+  put(k,lambda x,t,v=v:x['validation'].get(v)=='OK','Belonging module '+v+'=OK root coverage.','Coverage')
+ put('S02',lambda x,t:bool(x['attempts']),'Has root coverage of tier_times.','Coverage')
+ put('S04',lambda x,t:any(z[0].startswith('i[') for z in x['attempts']),'Root coverage with inductive block tier_times.','Coverage')
  success={'TRANSLATED_AND_CHECKED','PENDING_KERNEL_CHECKED','STATEMENT_KERNEL_CHECKED','STATEMENT_PENDING_KERNEL_CHECKED'}
- relate('S03',lambda x:sum(z[2] in success for z in x['attempts'])>=2,'至少两个成功候选；最终选用不能只看最后一次尝试。')
- relate('S05',lambda x:any(z[2] not in success|{'DISCOVERED'} for z in x['attempts']),'至少一次失败尝试；不是回滚内部调用数。')
+ relate('S03',lambda x:sum(z[2] in success for z in x['attempts'])>=2,'At least two successful candidates; final selection cannot be based solely on the last attempt.')
+ relate('S05',lambda x:any(z[2] not in success|{'DISCOVERED'} for z in x['attempts']),'At least one failed attempt; not a rollback internal call count.')
  attempts={}
  for x in xs:
   for tier,ms,status in x['attempts']:
@@ -158,14 +158,14 @@ def main():
    assert v['primary_roots']==len(v['names']) and v['family_roots']>=v['primary_roots']
  # Evidence categories describe what is measured, never the strength of a proof.
  categories={
-  '源端元数据':'E02 E04 E11 T09 Q01 Q05 Q06 N01 N02 N03 N04 N05',
-  '产物结构':'E03 E08 E09 E12 T01 T02 T03 T07 U02 U03 U08 U10 U11',
-  '处理范围':'E01 U01 V01 V03 V04 V06 V09 S01',
-  '模块验证结果':'V07 V08',
-  '尝试记录':'S02 S04',
-  '策略标志':'U28',
-  '部分子机制':'T11 U35 N06',
-  '本次未启用':'E14 T06 V02',
+  'Source metadata':'E02 E04 E11 T09 Q01 Q05 Q06 N01 N02 N03 N04 N05',
+  'Artifact structure':'E03 E08 E09 E12 T01 T02 T03 T07 U02 U03 U08 U10 U11',
+  'Processing scope':'E01 U01 V01 V03 V04 V06 V09 S01',
+  'Module validation results':'V07 V08',
+  'Attempt records':'S02 S04',
+  'Policy flag':'U28',
+  'Partial submechanisms':'T11 U35 N06',
+  'Not enabled in this run':'E14 T06 V02',
  }
  assigned=set()
  for label,ids in categories.items():
@@ -175,23 +175,23 @@ def main():
    assigned.add(k);rs[k]['precision']=label
  for k,v in rs.items():
   if k not in assigned and v['primary_roots'] is not None:
-   v['precision']='结果报告字段'
-  v['unit']='去重原始根声明'
+   v['precision']='Result report fields'
+  v['unit']='Distinct original root declarations'
   v['execution_count']=None
   v['status']='retired' if k=='T06' else 'retained'
   v['same_predicate_as']={'Q06':'Q05','V05':'U06','V02':'T06'}.get(k)
   v['evidence_file']='rule-usage-evidence.json'
-  v['limitation']='该数统计符合所列条件的根，不是规则调用次数，也不证明规则不可替代。'
-  if v['precision']=='部分子机制':
-   v['limitation']='只计 basis 指明的子机制；整个复合条目的使用根数未知。'
-  if v['precision']=='未单独记录':
-   v['limitation']='缺少该子规则的独立记录；null 表示未知，不能解释为零。'
+  v['limitation']='This counts roots satisfying the listed conditions, not rule invocations; it does not prove that the rule is indispensable.'
+  if v['precision']=='Partial submechanisms':
+   v['limitation']='Only the sub-mechanism specified by basis is counted; the number of used roots for the entire composite entry is unknown.'
+  if v['precision']=='Not separately recorded':
+   v['limitation']='A separate record for this subrule is missing; null means unknown and cannot be interpreted as zero.'
   if v['same_predicate_as']:
-   v['limitation']+=' 与 '+v['same_predicate_as']+' 使用同一统计条件，不能视为两组独立使用证据。'
- rs['T06']['basis']='已停用；当前 bootstrapRules=#[]，报告 bootstrap/ 根数为 0。源 nat/eq 均走 T07。'
- rs['V02']['basis']='当前 bootstrap 表为空，本次没有 bootstrap 签名适配对象。'
- rs['E14']['basis']='本次运行未装配外部证明；0 描述实验配置，非条件装配函数调用计数。'
- definitions={'处理范围': {'meaning': '该检查或流程所覆盖的声明集合，不要求每项触发特殊转换。', 'count_reading': '例如2180表示2180个根在覆盖范围内，不是执行2180次改写。', 'example': 'E01 导出范围；V03 生成声明的内核检查范围。'}, '源端元数据': {'meaning': '根据源 IR 的种类、标志或字段筛选声明。', 'count_reading': '统计具有该源特征的根，不能据此确认某目标转换分支实际执行。', 'example': 'T09 的 npars > nparams_rec；E04 自身带 obligations。'}, '产物结构': {'meaning': '根据最终目标的声明种类、AST 或可见属性筛选。', 'count_reading': '统计出现该产物特征的根；同一根出现多次结构仍只计1。', 'example': 'T07 最终生成 inductive；U08 目标 AST 直接含原生 Lean Eq。'}, '未单独记录': {'meaning': '现有证据没有该子机制独立、可归属的记录。', 'count_reading': '使用根数及调用次数未知（null），不能当成0，也不能用父机制数量代替。', 'example': 'M03 没有独立路径事件；源有 fix 只算相关结构证据。'}, '结果报告字段': {'meaning': '最终报告中相应字段非空、非零或满足所列条件。', 'count_reading': '统计满足字段条件的根；字段可能记录策略或求解结果，不统一等价于改写次数。', 'example': 'U15 的 implicit_levels；L02 的 prop_lift_coercions 非零。'}, '本次未启用': {'meaning': '本次配置没有使用该机制，或其历史路径已经停用。', 'count_reading': '当前为0；不意味着机制不存在或任何输入下都不需要。T06 则已明确停用。', 'example': 'T06 bootstrap 表为空；E14 本次没有装配外部证明。'}, '部分子机制': {'meaning': '复合条目只有一部分子机制有可识别证据。', 'count_reading': '数字只属于依据栏指出的部分；整个条目的使用数未知，不作为调用次数下界。', 'example': 'T11 仅记录带条件归纳部分，未独立统计嵌套归纳。'}, '策略标志': {'meaning': '报告标明采用的尝试策略，但不记录其内部具体转换事件。', 'count_reading': '统计带策略标志的根；启用策略不等于发生相应抬升或转换。', 'example': 'U28 的 universe_lowered / universe_cumulativity。'}, '模块验证结果': {'meaning': '声明所属模块的独立检查有明确通过结果。', 'count_reading': '统计通过模块中覆盖的根，不是逐规则证明数或检查调用次数。', 'example': 'V07 consumer=OK；V08 audit=OK。'}, '尝试记录': {'meaning': '该声明存在 tier_times，或其中出现指定类型的尝试。', 'count_reading': '主表统计有此记录的根；每根尝试几次另见重试开关表。', 'example': 'S02 有 tier_times；S04 有归纳块 i[...] 尝试。'}}
+   v['limitation']+=' with '+v['same_predicate_as']+' Using the same statistical conditions cannot be regarded as two independent sets of evidence.'
+ rs['T06']['basis']='Disabled: bootstrapRules=#[], with 0 reported bootstrap/ roots. Source nat/eq use T07.'
+ rs['V02']['basis']='The current bootstrap table is empty, and there is no bootstrap signature adaptation object this time.'
+ rs['E14']['basis']='No external proofs are assembled in this census; 0 describes the configuration, not prerequisite-assembly invocation counts.'
+ definitions={'Processing scope': {'meaning': 'Declarations covered by a check or processing stage; not every declaration must trigger a special transformation.', 'count_reading': 'For example, 2180 means that 2180 roots are covered, not that 2180 rewrites occurred.', 'example': 'E01: export scope; V03: kernel checks of generated declarations.'}, 'Source metadata': {'meaning': 'Declarations selected by source IR kind, flags, or fields.', 'count_reading': 'Counts roots with that source feature; it does not confirm execution of a target transformation branch.', 'example': 'T09: npars > nparams_rec; E04: obligations on the root itself.'}, 'Artifact structure': {'meaning': 'Selection by the final target declaration kind, AST, or visible attributes.', 'count_reading': 'Counts distinct roots with the artifact feature; repeated occurrences in one root count as 1.', 'example': 'T07: target kind inductive; U08: native Lean Eq directly in the target AST.'}, 'Not separately recorded': {'meaning': 'Available evidence has no independent record attributable to this submechanism.', 'count_reading': 'Both root usage and invocation counts are unknown (null), not 0; parent-mechanism counts cannot substitute.', 'example': 'M03 has no independent path events in this historical report; a source fix is only related structural evidence.'}, 'Result report fields': {'meaning': 'Final report fields are nonempty, nonzero, or satisfy the stated conditions.', 'count_reading': 'Counts roots meeting those conditions. A field may record a policy or a solution, so it is not necessarily a rewrite count.', 'example': 'U15: implicit_levels; L02: nonzero prop_lift_coercions.'}, 'Not enabled in this run': {'meaning': 'The current configuration does not use the mechanism, or its historical path has been disabled.', 'count_reading': 'The current count is 0; this does not imply that the mechanism is absent or unnecessary for every input. T06 is explicitly disabled.', 'example': 'T06: empty bootstrap table; E14: no externally supplied proofs assembled in this run.'}, 'Partial submechanisms': {'meaning': 'Only part of a composite entry has identifiable evidence.', 'count_reading': 'The count covers only the part named in basis. Total entry usage remains unknown, and this is not a lower bound on invocation count.', 'example': 'T11 records conditional inductive subcases, not nested inductive types separately.'}, 'Policy flag': {'meaning': 'The report records a policy that was tried, without the individual conversions inside it.', 'count_reading': 'Counts roots with the flag. Enabling a policy does not show that a corresponding raising or conversion occurred.', 'example': 'U28: universe_lowered / universe_cumulativity.'}, 'Module validation results': {'meaning': 'The module containing the declaration has an explicit successful independent validation result.', 'count_reading': 'Counts roots covered by validated modules, not per-rule proofs or check invocations.', 'example': 'V07: consumer=OK; V08: audit=OK.'}, 'Attempt records': {'meaning': 'A declaration has tier_times, or a specified attempt kind occurs in that record.', 'count_reading': 'The main table counts roots with such records; the retry-switch table separately gives attempt totals.', 'example': 'S02: tier_times exists; S04: an inductive i[...] attempt.'}}
  counts=dict(Counter(v['precision'] for v in rs.values()))
  ledger={'schema_version':2,'baseline':'mechanical-nat-eq-20261019/full-v1',
          'root_count':2180,'entry_count':118,'retired_entry_ids':['T06'],
@@ -208,12 +208,12 @@ def main():
  for op,v in zip(cat['primitive_operations'],primitives):op['usage']={k:x for k,x in v.items() if k not in ['source','target','usage']}
  (o/'ALL_RULES.json').write_text(json.dumps(cat,ensure_ascii=False,indent=2)+'\n')
  def display(v):
-  if v['primary_roots'] is None:return '未单独记录'
+  if v['primary_roots'] is None:return 'Not separately recorded'
   pre=''
   return f"{pre}{v['primary_roots']} / {pre}{v['family_roots']}（{v['precision']}）"
  text=(o/'ALL_RULES.md').read_text();lines=[]
  for line in text.splitlines():
-  if line.startswith('| 审阅编号 |'):line='| 审阅编号 | 规则／机制 | 行为与边界 | 主项 / 含分支根数 | 统计依据 |'
+  if line.startswith('| Review number |'):line='| Review number | Rule / mechanism | behavior and boundaries | Main item / including number of branches | Statistical basis |'
   elif line=='|---|---|---|':line='|---|---|---|---|---|'
   else:
    m=re.match(r'^\| ([A-Z]\d{2}) \|',line)
@@ -222,31 +222,31 @@ def main():
   lines.append(line)
  text='\n'.join(lines)+'\n'
  marker='<!-- usage-method-start -->';end='<!-- usage-method-end -->'
- method=marker+'\n\n**使用次数口径**\n\n分母为2180个原始根。左数是主表示满足统计条件的根数；右数将附带 quality 分支纳入后按根去重。它们都不是函数调用次数。源端元数据、产物结构、处理范围、模块验证结果、尝试记录、策略标志、结果报告字段分别标明；结果字段非空不自动意味着发生一次改写。部分子机制只统计依据中指明的部分，整个条目的使用数仍未知；未单独记录用 null，不以 0 代替。T06 已停用，保留编号仅供历史比较。每条的计数单位、限制、重复统计条件和完整名单见 JSON／CSV。Q05/Q06、U06/V05 等共用证据，不得相加。\n\n各证据类别的含义、如何理解次数及例子见 [RULE_USAGE.md 开头的解释表](RULE_USAGE.md)。失败重试的开关启用也单列在那里，不混入最终命中。全部声明名单见 [RULE_USAGE.json](RULE_USAGE.json)，筛选表见 [RULE_USAGE.csv](RULE_USAGE.csv)。\n\n'+end
+ method=marker+'\n\n**Number of times used**\n\nThe population is 2180 original roots. The left count selects roots by their primary representation; the right includes quality branches and deduplicates by root. Neither measures invocations. Evidence is classified as source metadata, artifact structure, processing scope, module validation, attempt records, policy flags, or result report fields. A nonempty field does not automatically show a rewrite. Partial-submechanism counts cover only the part specified in basis; total entry usage remains unknown. Missing independent records are null, not 0. T06 is disabled and retained for historical comparison. JSON/CSV records give units, limitations, shared predicates, and full name lists. Shared evidence such as Q05/Q06 and U06/V05 cannot be added together.\n\nFor the meaning of each evidence category, how to understand the number and examples, please see the [explanation table at the beginning of RULE_USAGE.md](RULE_USAGE.md). The switch enable for failed retries is also listed there separately and is not mixed in with the final hit. See [RULE_USAGE.json](RULE_USAGE.json) for the full declaration list, and see [RULE_USAGE.csv](RULE_USAGE.csv) for the screening list.\n\n'+end
  if marker in text:text=re.sub(re.escape(marker)+'.*?'+re.escape(end),lambda m:method,text,flags=re.S)
  else:text=text.replace('**E：',method+'\n\n**E：',1)
- text=re.sub(r'^\| 源操作 \| Lean 目标 \|.*$', '| 源操作 | Lean 目标 | 原生映射根数 | 目标直接引用根数 |',text,flags=re.M)
+ text=re.sub('^\\| Source operations \\| Lean Target \\|.*$', '| source operation | Lean Target | Number of native mapping roots | The target directly refers to the root number |',text,flags=re.M)
  for v in primitives:
   pattern=r'^\| '+re.escape(chr(96)+v['source']+chr(96))+r' \|.*$'
   line='| '+chr(96)+v['source']+chr(96)+' | '+chr(96)+v['target']+chr(96)+f" | {v['mapped_roots']} | {v['direct_target_roots']} |"
   text=re.sub(pattern,lambda m,line=line:line,text,flags=re.M)
- text=text.replace('| 原生映射根数 | 目标直接引用根数 |\n|---|---|\n','| 原生映射根数 | 目标直接引用根数 |\n|---|---|---:|---:|\n')
+ text=text.replace('| Number of native mapping roots | The target directly refers to the root number |\n|---|---|\n','| Number of native mapping roots | The target directly refers to the root number |\n|---|---|---:|---:|\n')
  (o/'ALL_RULES.md').write_text(text)
- md=['机械 nat／eq 基线逐规则使用统计','','[完整清单](ALL_RULES.md)。2180原始根去重；左数为主表示，右数含该根 quality 分支。','',
-     '以下按证据类别统计审阅条目数（不是规则使用次数），共118项，含已停用T06。所有逐项数字的单位都是去重根声明。执行调用次数未独立采集。', '',
-     '| 证据类别 | 审阅条目数 | 含义 | 怎样理解次数（含例子） |','|---|---:|---|---|',
+ md=['Mechanical nat/eq baseline rule-by-rule usage statistics','','[Full catalog](ALL_RULES.md). Counts use 2180 distinct original roots: the left count checks the primary representation; the right also includes quality branches, deduplicated by root.','',
+     'The table groups 118 review entries by evidence category, including disabled T06. These are entry counts, not rule usage counts. Per-rule figures count distinct roots; execution invocations were not independently collected.', '',
+     '| Evidence category | Review entries | Meaning | How to read the count (with examples) |','|---|---:|---|---|',
      *[f"| {label} | {n} | {definitions[label]['meaning']} | {definitions[label]['count_reading']} {definitions[label]['example']} |" for label,n in counts.items()],
-     '', '部分子机制不再写作整个规则的下界。Q05/Q06、U06/V05、T06/V02 使用相同条件；跨行数字不能相加。0 表示该条件未命中或本次未启用；未知用 null／未单独记录。',
-     '','| 编号 | 规则 | 主项 / 含分支根数 | 依据 |','|---|---|---|---|']
+     '', 'Partial-submechanism evidence is not labeled as a lower bound for the whole rule. Q05/Q06, U06/V05, and T06/V02 share predicates; their counts cannot be added. 0 means no qualifying hit or not enabled in this run; null means unknown/not separately recorded.',
+     '','| ID | Rule | Main item / including number of branches | Basis |','|---|---|---|---|']
  for v in rs.values():md.append(f"| {v['id']} | {v['name']} | {display(v)} | {v['basis']} |")
- md+=['','**独立字段及报告计数器**','','这些是报告已有计数器的主表示总和，不是新增的逐规则执行事件审计。', '', '| 字段 | 命中根数 | 主表示计数器总和 |','|---|---:|---:|']
+ md+=['','**Independent fields and report counters**','','These are report sums of the main representation of existing counters, not new per-rule execution event auditing.', '', '| Field | Number of hits | Main represents counter sum |','|---|---:|---:|']
  for k,v in features.items():md.append(f"| {k} | {v['roots']} | {v.get('event_total','—')} |")
- md+=['','**重试开关启用**','','这是开关启用次数，不是内部规则执行次数。成功候选也可能被后续候选替代。c:pl 是 Prop lift，i:pl 是 plain levels；ul 是 Type lift，un 是逐出现统一。',
-      '','| 开关 | 根数 | 尝试数 | 成功候选 | 发现 | 失败 |','|---|---:|---:|---:|---:|---:|']
+ md+=['','**Retry switch activations**','','This is the number of switch enablements, not the number of internal rule executions. Successful candidates may also be replaced by subsequent candidates. c:pl is Prop lift, i:pl is plain levels; ul is Type lift, un is unified by appearance.',
+      '','| switch | Roots | number of attempts | successful candidate | discover | failed |','|---|---:|---:|---:|---:|---:|']
  for k,v in sorted(attempts.items()):md.append(f"| {k} | {v['roots']} | {v['attempts']} | {v['successful_candidates']} | {v['discovery']} | {v['failed_attempts']} |")
- md+=['','**复现**','','在仓库根运行：','','    python3 scripts/catalog_rule_usage.py','',
-      '读取已提交的紧凑证据 rule-usage-evidence.json；不运行翻译器。远程完整报告在场时加 --extract 可重新提取。'
-      '证据类别定义保存在 RULE_USAGE.json 的 measurement_definitions。完整命中名单和结构关联证据在 RULE_USAGE.json。对未记录项必须另加执行事件埋点，不能靠当前材料推算。','']
+ md+=['','**Reproduction**','','Run at the repository root:','','    python3 scripts/catalog_rule_usage.py','',
+      'Read submitted compact evidence rule-usage-evidence.json; do not run translator. The remote full report can be re-extracted by adding --extract when present.'
+      'The evidence class definition is stored in measurement_definitions in RULE_USAGE.json. The complete hit list and evidence of structural association is at RULE_USAGE.json. Unrecorded mechanisms require additional execution-event instrumentation; their usage cannot be inferred from current evidence.','']
  (o/'RULE_USAGE.md').write_text('\n'.join(md))
  print(json.dumps({'entries':118,'roots':2180,'precision':counts,'primitive_operations':61,'quality_instances':ledger['quality_family_instances']},ensure_ascii=False))
 if __name__=='__main__':main()

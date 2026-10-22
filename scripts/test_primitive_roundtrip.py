@@ -59,7 +59,7 @@ for tag in ['zero-sign','byte-content','array-element','array-default']:
  elif tag=='array-element':next(find(bad,'array'))['elems'][0]['v']='8'
  else:next(find(bad,'array'))['default']['v']='6'
  rc,rep=run(bad,tag,flags);assert rc!=0 and rep.get('status')=='EXPORT_VALIDATION_FAILED',tag
-for node in [{'k':'string','bytes':[True]},{'k':'string','bytes':[-1]},{'k':'string','bytes':[256]},{'k':'string','v':'水'},{'k':'float','v':'0; Set Guard Checking.'}]:
+for node in [{'k':'string','bytes':[True]},{'k':'string','bytes':[-1]},{'k':'string','bytes':[256]},{'k':'string','v':'\u6c34'},{'k':'float','v':'0; Set Guard Checking.'}]:
  try:roundtrip.Dec({}).term(node)
  except roundtrip.Unsupported:pass
  else:raise AssertionError(('accepted-invalid',node))

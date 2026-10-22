@@ -1,54 +1,54 @@
-# 最终覆盖的规划预估
+# Planning estimates of final coverage
 
-实测更新：原冻结版本 2100/2180；计算透明变体经全量回归达到 2180/2180。以下保留最初规划与逐批校准，不代表当前完成数。见 [最终变体结果](transparent-data/README.md)。
+Actual measurement update: The original frozen version 2100/2180; the calculated transparent variant reaches 2180/2180 after full regression. The following retains the initial planning and batch-by-batch calibration, and does not represent the current completion number. See [Final variant result ](transparent-data/README.md).
 
-这是 2026-10-19 第二批开始前的主观工程预估，不是已验证结果或统计置信区间。预计约 1500 个根，规划范围约 1300–1700 / 2180（约 60%–78%）。
+This is a subjective engineering estimate prior to the start of the second batch of 2026-10-19 and is not a verified result or statistical confidence interval. It is estimated that there will be about 1500 roots, and the planning range will be about 1300–1700 / 2180 (about 60%–78%).
 
-口径：TYPE_ISO、OPERATION_CORRESPONDENCE、STATEMENT_FULL_NATIVE 三类去重根；每份证书按其实际参数、universe 和前提范围解释。
-不计只有包装接口或仍残留源符号的陈述；不把待证明条件当成已消去。陈述等价不代表业务定理已证。
-原生目标允许指定的 Lean 组合表达式；严格限定“Lean/Mathlib 现成 API”的数量尚未逐项建立清单，不能给可靠比例。
+Caliber: TYPE_ISO, OPERATION_CORRESPONDENCE, STATEMENT_FULL_NATIVE three types of deduplication roots; each certificate is explained according to its actual parameters, universe and premise scope.
+Ignore statements that only have packaging interfaces or still have source symbols remaining; do not treat unproven conditions as eliminated. Statement equivalence does not imply that the original theorem has been proven.
+The native target allows the specified Lean combination expression; the strictly limited number of "Lean/Mathlib ready-made API" has not been established item by item, and a reliable ratio cannot be given.
 
-| 开始第二批时的分类 | 根数 | 假设最终新增完成数 | 预估依据 |
+| Classification when starting second batch | Roots | Assume that the final number of new completions | Estimate basis |
 |---|---:|---:|---|
-| 已有类型/运算/完全原生陈述 | 311 | 已完成基数 | 30 + 138 + 143 |
-| 只有接口 | 352 | 280–330 | 大多已有参数/结果转换，尚缺指定运算的语义等式；部分高阶/表示语义更困难 |
-| 部分原生陈述 | 702 | 500–650 | 预期共享 Bool/Eq/关系/依赖结构桥接可重复应用；需要运行后修订 |
-| 尚无证书 | 483 | 200–300 | 包含生成器缺口与复杂表示，不能全部假设可一对一对应 |
-| 带待证明条件 | 331 | 0–80 | 暂不乐观计入；需要独立证明和消除条件 |
-| 非 Prop 特殊陈述 | 1 | 0–1 | 需结构对应 |
+| Existing type/operation/complete native statement | 311 | Completed base | 30 + 138 + 143 |
+| only interface | 352 | 280–330 | Most of them already have parameter/result conversions, but there is still a lack of semantic equations for specifying operations; some high-order/representation semantics are more difficult |
+| Partial native statement | 702 | 500–650 | Expected sharing Bool/Eq/ relationship/dependency structure bridging reusable application; requires post-run revision |
+| No certificate yet | 483 | 200–300 | Contains generator gaps and complex representations, not all of which can be assumed to have one-to-one correspondence |
+| With conditions to be proven | 331 | 0–80 | Not optimistic yet; need independent verification and elimination of conditions |
+| Non-Prop special statement | 1 | 0–1 | Need structural correspondence |
 
-上述假设合计约 1291–1672，取整为 1300–1700。各区间不是抽样测得，不表示至少可达到下界。
-如果 331 项条件完全不消去，则至多 1849 个根能在当前分类口径下进入无待证明条件的完成类别；这只是算术范围，不是达到 1849 的可行性证明。
-P2 的生成器推广、P3 的数字表示和 P4 的依赖转换完成后应重新估计。不能通过把所有源实现包装成一个自定义 Lean 函数来提高这个统计。
+The above assumptions total approximately 1291–1672, rounded to 1300–1700. Each interval is not measured by sampling, and does not mean that at least the lower limit can be reached.
+If 331 conditions are not eliminated at all, then at most 1849 roots can enter the completion category with no unproven conditions under the current classification caliber; this is only an arithmetic range, not a feasibility proof to reach 1849.
+The generator generalization of P2, the numeric representation of P3, and the dependent transformation of P4 should be re-estimated after completion. This statistic cannot be improved by wrapping all source implementations into a custom Lean function.
 
-## 第二批实测更新
+## Second batch of actual test updates
 
-本批将 SSRBool 中选定的 216 项部分陈述中的 141 项（约 65%）转为完全原生陈述；这是有针对性的子集，不能把成功率直接外推全部 Corelib。三类完成总数达到 467。暂保留上述规划区间，等待数字表示和依赖类型批次给出更有代表性的证据。
+This batch converts the 141 items (approximately 65%) of the partial statements of the selected 216 items in SSRBool into completely native statements; this is a targeted subset, and the success rate cannot be directly extrapolated to all Corelib. The total number of completions in the third category reached 467. The above planning interval is temporarily reserved, waiting for more representative evidence from digital representation and dependent type batches.
 
-## 第三、四批校准
+## The third and fourth batch of calibration
 
-数字与良基递归新增 48 个完成根，总数 515。出现 del_head 超长度约定和数字读取非单射等具体边界；已找到保留表示信息的目标，而非强行对应 Nat/Int。仍保留原规划区间；本批不能支持将完成率外推到浮点、依赖 Sigma、全部条件义务或完整 Mathlib 互操作。
+Numbers and good bases recursively add 48 completion roots, for a total of 515. Specific boundaries such as the del_head overlength convention and the non-injective nature of digital readings appear; a target has been found to preserve the representation information, rather than forcing the corresponding Nat/Int. The original planning interval is still retained; this batch cannot support extrapolation of completion rates to floating point, reliance on Sigma, full conditional obligations, or full Mathlib interoperability.
 
-## 第五批校准
+## The fifth batch of calibration
 
-再完成 16 个运算根，总完成 531；另扩展 5 个既有类型桥接的 universe 范围，不增加根数。已有 4 个条件根被实际闭合实例化，说明其中部分义务只是可直接证明的投影性质；不能据此假设剩余 327 个都同样容易。预估区间暂不调整。
+After completing 16 operational roots, the total number of 531 is completed; in addition, the universe range of 5 existing type bridges is expanded without increasing the number of roots. 4 conditional roots have been instantiated by actual closure, indicating that some of the obligations are just directly provable projective properties; it cannot be assumed that the remaining 327 are equally easy. The estimated range will not be adjusted for the time being.
 
-## 第六批校准
+## The sixth batch of calibration
 
-新完成 30 根，总数 561；同一义务证明复用到 5 个下游陈述，本层未处理条件根降至 322。新增的容器消去器按明示 universe 范围计根；本轮没有证明所有容器的 Prop 元素实例都可直接使用普通 Lean List/Option/Except。保持原预估，不把本批成功率外推到全部剩余根。
+Newly completed 30 roots, totaling 561; the same task certificate is reused to 5 downstream statements, and the unprocessed condition roots of this layer are reduced to 322. The newly added container eliminator is based on the explicit universe range; this round does not prove that all container Prop element instances can directly use ordinary Lean List/Option/Except. Keep the original estimate and do not extrapolate the success rate of this batch to all remaining roots.
 
-## 第七批校准
+## The seventh batch of calibration
 
-Eq/Bool 新增 19 个完成根，累计 580。4 个条件根闭合后剩余 318。证明参数相等利用证明无关性；不据此外推数据运算或其它条件。保留原规划预估。
+Eq/Bool adds 19 completion roots, totaling 580. After 4 conditional roots are closed, 318 remains. Proving parameter equality utilizes proving irrelevance; data operations or other conditions are not extrapolated based on this. Keep original planning estimates.
 
-## 第八、九批校准
+## The eighth and ninth batches of calibration
 
-两个关系模块 126 根均完成明示范围内对应，累计 706；本层条件根剩余 316。相同语义的关系定义便于共享证明，但不能据此推断 Type 值关系、Morphisms、浮点等也有相同完成率。原主观估计暂不调整。
+The 126 roots of the two relationship modules have completed the correspondence within the explicit range, accumulating 706; the remaining conditional roots of this layer are 316. Relationship definitions with the same semantics facilitate sharing proofs, but it cannot be inferred that Type value relationships, Morphisms, floating point, etc. also have the same completion rate. The original subjective estimate will not be adjusted for the time being.
 
-## 第十批校准
+## The tenth batch of calibration
 
-Morphisms 再完成 68 根，累计 774。55 个被选中的部分陈述全部原生化，但它们主要由已有关系组合构成；不能外推到 Type 值关系和数值边界实现。规划区间暂不调整。
+Morphisms then completes the 68 root, accumulating 774. 55 selected partial statements are all native, but they are mainly composed of existing relationship combinations; they cannot be extrapolated to Type value relationships and numerical boundary implementations. The planning interval will not be adjusted for the time being.
 
-## 第十一批校准
+## Eleventh batch of calibrations
 
-累计完成 814 根。Equivalence/Morphisms_Prop/Setoid 再复用已有关系、Subtype、Acc 桥接，新增 40 根；尚未改变 Type 值关系与复杂数值实现的可行性估计。P7 统一导入需单独验证，仍不声称全部证明可共同导入。
+A total of 814 roots have been completed. Equivalence/Morphisms_Prop/Setoid reuses the existing relationship, Subtype, and Acc bridges, and adds the 40 root; the feasibility estimate of the Type value relationship and complex numerical implementation has not yet been changed. The unified import of P7 requires separate verification, and it still does not claim that all certificates can be imported together.

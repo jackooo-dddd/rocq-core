@@ -1,15 +1,15 @@
-# 原 34 条的范围
+# The range of the original 34 bar
 
-原表是从成功产物确认的 34 个条目，而不是 34 个互不重叠的代码分支。M 类没有独立归因是一个明显缺口；其余条目仍有合并粒度。
+The original table is 34 entries confirmed from successful products, not 34 non-overlapping code branches. The lack of independent attribution for class M is an obvious gap; the remaining entries still have merge granularity.
 
-| 原条目 | 已有证据确认的范围 | 尚未分开的内容 |
+| Original article | Scope confirmed by existing evidence | Content that has not yet been separated |
 |---|---|---|
-| C-整体 | 最终 delta_inlined 中实际展开的透明定义 | 别名前缀、透明引用、组合子、闭包发现、实例替换等各子路径 |
-| L03 | Type 提升／转换最终生效 | 函数 η、类型位置解包、包装函数应用、记录字段转换及组合转换 |
-| U04 | 最终 solved_levels 中有具体解 | 公开层级与正文局部层级，以及求解器内部步骤 |
-| E04 | 已导出具名证明条件 | 局部证明应用保留、构造器保留重试、中性证明投影等源准备细节 |
-| Q03、Q05 | 共享 quality 模板族及全部原生有限 family 分支 | 分支选择、引用改写等内部步骤 |
+| C-aggregate | Transparent definition of actual expansion in final delta_inlined | Alias prefix, transparent reference, combinator, closure discovery, instance replacement and other sub-paths |
+| L03 | Type upgrade/conversion finally takes effect | Function η, type position unpacking, wrapper function application, record field conversion and combination conversion |
+| U04 | Finally, there is a specific solution in solved_levels | Public and body local levels, and solver internal steps |
+| E04 | Exported named certification conditions | Source preparation details such as local proof application retention, constructor retention retry, neutral proof projection, etc. |
+| Q03、Q05 | Share the quality template family and all native limited family branches | Internal steps such as branch selection and reference rewriting |
 
-因此，“主要的非 M 机制已有条目”有依据；“除 M 外已经穷尽全部需要的独立规则”尚不能从旧表推出。
+Therefore, "the main non-M mechanisms already have entries" is valid; "except for M, all required independent rules have been exhausted" cannot yet be deduced from the old table.
 
-当前先保持原表的粒度，补 M 的成功路径记录。零命中 M 项单独禁用重跑；这个实验只验证 M 的排除，不把它说成对全部非 M 机制的禁用实验。未独立统计的子机制不新增到 USED_RULES，也不以统计缺失为理由宣称它从未使用。
+Currently, the granularity of the original table is maintained and the successful path record of M is added. The zero-hit M item alone disables reruns; this experiment only verifies the exclusion of M, and does not call it a disabling experiment for all non-M mechanisms. Sub-mechanisms that are not independently counted will not be added to USED_RULES, nor will the lack of statistics be used as an excuse to claim that it has never been used.

@@ -1,24 +1,24 @@
 # Corelib.Classes.Equivalence
 
-每项对应机械翻译基线中的一个 root。完整 native statement / interface 类型在总 JSON 文件中。
+Each entry corresponds to one root in the mechanical translation baseline. The complete native statement / interface types are in the aggregate JSON file.
 
 
 
 ## Corelib.Classes.Equivalence.equiv
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Classes.Equivalence.equiv
+Original target: Rocq.Corelib.Classes.Equivalence.equiv
 
-接口未覆盖原因：No registered type bijection for Rocq.Corelib.Classes.RelationClasses.Equivalence A R
+Reason for interface not covered: No registered type bijection for Rocq.Corelib.Classes.RelationClasses.Equivalence A R
 
 ## Corelib.Classes.Equivalence.equiv_reflexive
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Classes.Equivalence.equiv_reflexive.statement
+Original target: Rocq.Corelib.Classes.Equivalence.equiv_reflexive.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Classes.Equivalence.equiv_reflexive.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Classes.Equivalence.equiv_reflexive.statement.correspondence
 
 ```lean
 ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A)
@@ -26,30 +26,30 @@
   Rocq.Corelib.Classes.RelationClasses.Reflexive A (Rocq.Corelib.Classes.Equivalence.equiv A R sa)
 ```
 
-残留源符号：Rocq.Corelib.Relations.Relation_Definitions.relation;Rocq.Corelib.Classes.RelationClasses.Equivalence;Rocq.Corelib.Classes.RelationClasses.Reflexive;Rocq.Corelib.Classes.Equivalence.equiv
+Residual source symbols: Rocq.Corelib.Relations.Relation_Definitions.relation;Rocq.Corelib.Classes.RelationClasses.Equivalence;Rocq.Corelib.Classes.RelationClasses.Reflexive;Rocq.Corelib.Classes.Equivalence.equiv
 
 ## Corelib.Classes.Equivalence.equiv_reflexive_obligation_1
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Classes.Equivalence.equiv_reflexive_obligation_1.statement
+Original target: Rocq.Corelib.Classes.Equivalence.equiv_reflexive_obligation_1.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Classes.Equivalence.equiv_reflexive_obligation_1.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Classes.Equivalence.equiv_reflexive_obligation_1.statement.correspondence
 
 ```lean
 ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A)
   (sa : Rocq.Corelib.Classes.RelationClasses.Equivalence A R) (x : A), Rocq.Corelib.Classes.Equivalence.equiv A R sa x x
 ```
 
-残留源符号：Rocq.Corelib.Relations.Relation_Definitions.relation;Rocq.Corelib.Classes.RelationClasses.Equivalence;Rocq.Corelib.Classes.Equivalence.equiv
+Residual source symbols: Rocq.Corelib.Relations.Relation_Definitions.relation;Rocq.Corelib.Classes.RelationClasses.Equivalence;Rocq.Corelib.Classes.Equivalence.equiv
 
 ## Corelib.Classes.Equivalence.equiv_symmetric
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Classes.Equivalence.equiv_symmetric.statement
+Original target: Rocq.Corelib.Classes.Equivalence.equiv_symmetric.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Classes.Equivalence.equiv_symmetric.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Classes.Equivalence.equiv_symmetric.statement.correspondence
 
 ```lean
 ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A)
@@ -57,15 +57,15 @@
   Rocq.Corelib.Classes.RelationClasses.Symmetric A (Rocq.Corelib.Classes.Equivalence.equiv A R sa)
 ```
 
-残留源符号：Rocq.Corelib.Relations.Relation_Definitions.relation;Rocq.Corelib.Classes.RelationClasses.Equivalence;Rocq.Corelib.Classes.RelationClasses.Symmetric;Rocq.Corelib.Classes.Equivalence.equiv
+Residual source symbols: Rocq.Corelib.Relations.Relation_Definitions.relation;Rocq.Corelib.Classes.RelationClasses.Equivalence;Rocq.Corelib.Classes.RelationClasses.Symmetric;Rocq.Corelib.Classes.Equivalence.equiv
 
 ## Corelib.Classes.Equivalence.equiv_symmetric_obligation_1
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Classes.Equivalence.equiv_symmetric_obligation_1.statement
+Original target: Rocq.Corelib.Classes.Equivalence.equiv_symmetric_obligation_1.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Classes.Equivalence.equiv_symmetric_obligation_1.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Classes.Equivalence.equiv_symmetric_obligation_1.statement.correspondence
 
 ```lean
 ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A)
@@ -73,15 +73,15 @@
   Rocq.Corelib.Classes.Equivalence.equiv A R sa x y → Rocq.Corelib.Classes.Equivalence.equiv A R sa y x
 ```
 
-残留源符号：Rocq.Corelib.Relations.Relation_Definitions.relation;Rocq.Corelib.Classes.RelationClasses.Equivalence;Rocq.Corelib.Classes.Equivalence.equiv
+Residual source symbols: Rocq.Corelib.Relations.Relation_Definitions.relation;Rocq.Corelib.Classes.RelationClasses.Equivalence;Rocq.Corelib.Classes.Equivalence.equiv
 
 ## Corelib.Classes.Equivalence.equiv_transitive
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Classes.Equivalence.equiv_transitive.statement
+Original target: Rocq.Corelib.Classes.Equivalence.equiv_transitive.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Classes.Equivalence.equiv_transitive.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Classes.Equivalence.equiv_transitive.statement.correspondence
 
 ```lean
 ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A)
@@ -89,15 +89,15 @@
   Rocq.Corelib.Classes.RelationClasses.Transitive A (Rocq.Corelib.Classes.Equivalence.equiv A R sa)
 ```
 
-残留源符号：Rocq.Corelib.Relations.Relation_Definitions.relation;Rocq.Corelib.Classes.RelationClasses.Equivalence;Rocq.Corelib.Classes.RelationClasses.Transitive;Rocq.Corelib.Classes.Equivalence.equiv
+Residual source symbols: Rocq.Corelib.Relations.Relation_Definitions.relation;Rocq.Corelib.Classes.RelationClasses.Equivalence;Rocq.Corelib.Classes.RelationClasses.Transitive;Rocq.Corelib.Classes.Equivalence.equiv
 
 ## Corelib.Classes.Equivalence.equiv_transitive_obligation_1
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Classes.Equivalence.equiv_transitive_obligation_1.statement
+Original target: Rocq.Corelib.Classes.Equivalence.equiv_transitive_obligation_1.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Classes.Equivalence.equiv_transitive_obligation_1.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Classes.Equivalence.equiv_transitive_obligation_1.statement.correspondence
 
 ```lean
 ∀ (A : Type u_Corelib_Relations_Relation_Definitions_21) (R : Rocq.Corelib.Relations.Relation_Definitions.relation A)
@@ -106,23 +106,23 @@
     Rocq.Corelib.Classes.Equivalence.equiv A R sa y z → Rocq.Corelib.Classes.Equivalence.equiv A R sa x z
 ```
 
-残留源符号：Rocq.Corelib.Relations.Relation_Definitions.relation;Rocq.Corelib.Classes.RelationClasses.Equivalence;Rocq.Corelib.Classes.Equivalence.equiv
+Residual source symbols: Rocq.Corelib.Relations.Relation_Definitions.relation;Rocq.Corelib.Classes.RelationClasses.Equivalence;Rocq.Corelib.Classes.Equivalence.equiv
 
 ## Corelib.Classes.Equivalence.pequiv
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Classes.Equivalence.pequiv
+Original target: Rocq.Corelib.Classes.Equivalence.pequiv
 
-接口未覆盖原因：No registered type bijection for Rocq.Corelib.Classes.RelationClasses.PER A R
+Reason for interface not covered: No registered type bijection for Rocq.Corelib.Classes.RelationClasses.PER A R
 
 ## Corelib.Classes.Equivalence.pointwise_equivalence
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Classes.Equivalence.pointwise_equivalence.statement
+Original target: Rocq.Corelib.Classes.Equivalence.pointwise_equivalence.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Classes.Equivalence.pointwise_equivalence.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Classes.Equivalence.pointwise_equivalence.statement.correspondence
 
 ```lean
 ∀ (A : Type u_Corelib_Classes_Morphisms_39) (B : Type u_Corelib_Classes_Morphisms_38)
@@ -131,15 +131,15 @@
     Rocq.Corelib.Classes.RelationClasses.Equivalence (A → B) (Rocq.Corelib.Classes.Morphisms.pointwise_relation A B eqB)
 ```
 
-残留源符号：Rocq.Corelib.Relations.Relation_Definitions.relation;Rocq.Corelib.Classes.RelationClasses.Equivalence;Rocq.Corelib.Classes.Morphisms.pointwise_relation
+Residual source symbols: Rocq.Corelib.Relations.Relation_Definitions.relation;Rocq.Corelib.Classes.RelationClasses.Equivalence;Rocq.Corelib.Classes.Morphisms.pointwise_relation
 
 ## Corelib.Classes.Equivalence.pointwise_reflexive
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Classes.Equivalence.pointwise_reflexive.statement
+Original target: Rocq.Corelib.Classes.Equivalence.pointwise_reflexive.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Classes.Equivalence.pointwise_reflexive.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Classes.Equivalence.pointwise_reflexive.statement.correspondence
 
 ```lean
 ∀ (A : Type u_Corelib_Classes_Morphisms_39) (B : Type u_Corelib_Classes_Morphisms_38)
@@ -148,15 +148,15 @@
     Rocq.Corelib.Classes.RelationClasses.Reflexive (A → B) (Rocq.Corelib.Classes.Morphisms.pointwise_relation A B eqB)
 ```
 
-残留源符号：Rocq.Corelib.Relations.Relation_Definitions.relation;Rocq.Corelib.Classes.RelationClasses.Reflexive;Rocq.Corelib.Classes.Morphisms.pointwise_relation
+Residual source symbols: Rocq.Corelib.Relations.Relation_Definitions.relation;Rocq.Corelib.Classes.RelationClasses.Reflexive;Rocq.Corelib.Classes.Morphisms.pointwise_relation
 
 ## Corelib.Classes.Equivalence.pointwise_symmetric
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Classes.Equivalence.pointwise_symmetric.statement
+Original target: Rocq.Corelib.Classes.Equivalence.pointwise_symmetric.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Classes.Equivalence.pointwise_symmetric.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Classes.Equivalence.pointwise_symmetric.statement.correspondence
 
 ```lean
 ∀ (A : Type u_Corelib_Classes_Morphisms_39) (B : Type u_Corelib_Classes_Morphisms_38)
@@ -165,15 +165,15 @@
     Rocq.Corelib.Classes.RelationClasses.Symmetric (A → B) (Rocq.Corelib.Classes.Morphisms.pointwise_relation A B eqB)
 ```
 
-残留源符号：Rocq.Corelib.Relations.Relation_Definitions.relation;Rocq.Corelib.Classes.RelationClasses.Symmetric;Rocq.Corelib.Classes.Morphisms.pointwise_relation
+Residual source symbols: Rocq.Corelib.Relations.Relation_Definitions.relation;Rocq.Corelib.Classes.RelationClasses.Symmetric;Rocq.Corelib.Classes.Morphisms.pointwise_relation
 
 ## Corelib.Classes.Equivalence.pointwise_transitive
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Classes.Equivalence.pointwise_transitive.statement
+Original target: Rocq.Corelib.Classes.Equivalence.pointwise_transitive.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Classes.Equivalence.pointwise_transitive.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Classes.Equivalence.pointwise_transitive.statement.correspondence
 
 ```lean
 ∀ (A : Type u_Corelib_Classes_Morphisms_39) (B : Type u_Corelib_Classes_Morphisms_38)
@@ -182,23 +182,23 @@
     Rocq.Corelib.Classes.RelationClasses.Transitive (A → B) (Rocq.Corelib.Classes.Morphisms.pointwise_relation A B eqB)
 ```
 
-残留源符号：Rocq.Corelib.Relations.Relation_Definitions.relation;Rocq.Corelib.Classes.RelationClasses.Transitive;Rocq.Corelib.Classes.Morphisms.pointwise_relation
+Residual source symbols: Rocq.Corelib.Relations.Relation_Definitions.relation;Rocq.Corelib.Classes.RelationClasses.Transitive;Rocq.Corelib.Classes.Morphisms.pointwise_relation
 
 ## Corelib.Classes.Equivalence.respecting
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Classes.Equivalence.respecting
+Original target: Rocq.Corelib.Classes.Equivalence.respecting
 
-接口未覆盖原因：No registered type bijection for Rocq.Corelib.Classes.RelationClasses.Equivalence A R
+Reason for interface not covered: No registered type bijection for Rocq.Corelib.Classes.RelationClasses.Equivalence A R
 
 ## Corelib.Classes.Equivalence.respecting_equiv
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Classes.Equivalence.respecting_equiv.statement
+Original target: Rocq.Corelib.Classes.Equivalence.respecting_equiv.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Classes.Equivalence.respecting_equiv.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Classes.Equivalence.respecting_equiv.statement.correspondence
 
 ```lean
 ∀ (A : Type u_Corelib_Classes_Equivalence_46) (R : A → A → Prop),
@@ -216,15 +216,15 @@
                   y)
 ```
 
-残留源符号：Rocq.Corelib.Classes.RelationClasses.Equivalence;Rocq.Corelib.Init.Specif.sig;Rocq.Corelib.Init.Specif.proj1_sig
+Residual source symbols: Rocq.Corelib.Classes.RelationClasses.Equivalence;Rocq.Corelib.Init.Specif.sig;Rocq.Corelib.Init.Specif.proj1_sig
 
 ## Corelib.Classes.Equivalence.respecting_equiv_obligation_1
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Classes.Equivalence.respecting_equiv_obligation_1.statement
+Original target: Rocq.Corelib.Classes.Equivalence.respecting_equiv_obligation_1.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Classes.Equivalence.respecting_equiv_obligation_1.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Classes.Equivalence.respecting_equiv_obligation_1.statement.correspondence
 
 ```lean
 ∀ (A : Type u_Corelib_Classes_Equivalence_46) (R : A → A → Prop),
@@ -241,15 +241,15 @@
                 y)
 ```
 
-残留源符号：Rocq.Corelib.Classes.RelationClasses.Equivalence;Rocq.Corelib.Init.Specif.sig;Rocq.Corelib.Init.Specif.proj1_sig
+Residual source symbols: Rocq.Corelib.Classes.RelationClasses.Equivalence;Rocq.Corelib.Init.Specif.sig;Rocq.Corelib.Init.Specif.proj1_sig
 
 ## Corelib.Classes.Equivalence.respecting_equiv_obligation_2
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Classes.Equivalence.respecting_equiv_obligation_2.statement
+Original target: Rocq.Corelib.Classes.Equivalence.respecting_equiv_obligation_2.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Classes.Equivalence.respecting_equiv_obligation_2.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Classes.Equivalence.respecting_equiv_obligation_2.statement.correspondence
 
 ```lean
 ∀ (A : Type u_Corelib_Classes_Equivalence_46) (R : A → A → Prop),
@@ -273,15 +273,15 @@
                     x y_1)
 ```
 
-残留源符号：Rocq.Corelib.Classes.RelationClasses.Equivalence;Rocq.Corelib.Init.Specif.sig;Rocq.Corelib.Init.Specif.proj1_sig
+Residual source symbols: Rocq.Corelib.Classes.RelationClasses.Equivalence;Rocq.Corelib.Init.Specif.sig;Rocq.Corelib.Init.Specif.proj1_sig
 
 ## Corelib.Classes.Equivalence.respecting_equiv_obligation_3
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Classes.Equivalence.respecting_equiv_obligation_3.statement
+Original target: Rocq.Corelib.Classes.Equivalence.respecting_equiv_obligation_3.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Classes.Equivalence.respecting_equiv_obligation_3.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Classes.Equivalence.respecting_equiv_obligation_3.statement.correspondence
 
 ```lean
 ∀ (A : Type u_Corelib_Classes_Equivalence_46) (R : A → A → Prop),
@@ -312,4 +312,4 @@
                       (fun morph => ∀ (x y : A), R x y → R' (morph x) (morph y)) z y)
 ```
 
-残留源符号：Rocq.Corelib.Classes.RelationClasses.Equivalence;Rocq.Corelib.Init.Specif.sig;Rocq.Corelib.Init.Specif.proj1_sig
+Residual source symbols: Rocq.Corelib.Classes.RelationClasses.Equivalence;Rocq.Corelib.Init.Specif.sig;Rocq.Corelib.Init.Specif.proj1_sig

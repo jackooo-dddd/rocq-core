@@ -55,15 +55,15 @@ for cfg in interfaces:
 assert len(statements)==845
 assert all(s in roots for s in iface)
 meaning={
- 'TYPE_ISO':'已证明双向逆；具体参数、Type/Sort 范围见证书类型。',
- 'BOOTSTRAP_EQ':'翻译器已复用 Lean Eq；并非另建相等关系。',
- 'OPERATION_CORRESPONDENCE':'已证明与指定原生运算/谓词一致；前提以证书类型为准。',
- 'STATEMENT_FULL_NATIVE':'陈述已得到 iff，结果无 Rocq/RocqPending/Rocq2Lean 符号；未证明业务定理本身。',
- 'STATEMENT_PARTIAL':'已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。',
- 'EXPLICIT_PROOF_PARAMETERS':'原翻译仍带显式证明参数；此轮未消去或假定它们。',
- 'TYPE_VALUED_STATEMENT':'结果不是 Prop；不能用 Prop iff 扫描处理，需类型对应。',
- 'TRANSPORT_INTERFACE_ONLY':'已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。',
- 'NOT_YET_BRIDGED':'尚无本轮证书；不代表数学上不存在对应。'}
+ 'TYPE_ISO':'Both inverse laws have been proved; see the certificate type for the exact parameters and Type/Sort scope.',
+ 'BOOTSTRAP_EQ':'The translator has reused Lean Eq; it is not a new equality relationship.',
+ 'OPERATION_CORRESPONDENCE':'Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.',
+ 'STATEMENT_FULL_NATIVE':'A statement iff has been proved, and the result contains no Rocq/RocqPending/Rocq2Lean symbols; the original theorem itself has not been proved.',
+ 'STATEMENT_PARTIAL':'An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.',
+ 'EXPLICIT_PROOF_PARAMETERS':'The original translation still has explicit proof parameters; this batch neither discharges nor assumes them.',
+ 'TYPE_VALUED_STATEMENT':'The result is not Prop; it cannot be scanned and processed with Prop iff, and the type must be corresponding.',
+ 'TRANSPORT_INTERFACE_ONLY':'Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.',
+ 'NOT_YET_BRIDGED':'No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.'}
 ledger=[]
 for r in rows:
  source=r['source'];s=statements.get(r['target'])
@@ -106,27 +106,27 @@ summary={'root_declarations':len(rows),'source_files':len(load(R/'experiments/me
 (D/'summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2))
 tick=chr(96);fence=tick*3
 def block(s):return fence+'lean\n'+s+'\n'+fence
-out=['# 已验证的类型双射','每个 Iso 同时包含 to、of、of_to、to_of；不是只有单向转换。具体 universe 范围由下面的完整类型限定。','']
+out=['# Verified type bijection','Each Iso also contains to, of, of_to, and to_of; not only one-way conversion. The specific universe range is limited by the full type below.','']
 for r in sorted(isos,key=lambda r:r['source']):
- out+=['## '+r['source'],tick+r['name']+tick,block(r['type']),'公理闭包：'+(', '.join(r['axioms']) or '空'),'']
+ out+=['## '+r['source'],tick+r['name']+tick,block(r['type']),'Axiom closure: '+(', '.join(r['axioms']) or 'Empty'),'']
 (D/'ISOMORPHISMS.md').write_text('\n\n'.join(out))
-out=['# 指定原生操作的对应证书','这里列的是实际等式/iff，不把通用包装接口算成 Lean 同名 API 的实现一致性。']
+out=['# Specify the corresponding certificate for native operations','What is listed here is the actual equation/iff, and the common packaging interface is not counted as the implementation consistency of Lean with the same name API.']
 for r in sorted(operations,key=lambda r:r['name']):
- out+=['## '+r['name'],block(r['type']),'公理闭包：'+(', '.join(r['axioms']) or '空')]
+ out+=['## '+r['name'],block(r['type']),'Axiom closure: '+(', '.join(r['axioms']) or 'Empty')]
 (D/'OPERATIONS.md').write_text('\n\n'.join(out))
 mods=collections.defaultdict(list)
 for r in ledger:mods[r['module']].append(r)
 for mod in load(R/'experiments/mechanical-nat-eq-20261019/runs/full-v1/manifest.json')['modules']:mods.setdefault(mod,[])
 for mod,rs in mods.items():
  dest=D/'modules'/Path(*mod.split('.')).with_suffix('.md');dest.parent.mkdir(parents=True,exist_ok=True)
- text=['# '+mod,'每项对应机械翻译基线中的一个 root。完整 native statement / interface 类型在总 JSON 文件中。','']
- if not rs:text.append('本基线中没有独立 kernel root 声明（例如 notation、tactic、兼容性导入或导出配置）。这不是翻译失败。')
+ text=['# '+mod,'Each entry corresponds to one root in the mechanical translation baseline. The complete native statement / interface types are in the aggregate JSON file.','']
+ if not rs:text.append('There are no independent kernel root declarations (such as notation, tactic, compatibility import or export configurations) in this baseline. This is not a translation failure.')
  for r in rs:
-  text+=['## '+r['source'],'状态：'+r['bridge_status']+'。'+r['interpretation']]
-  for label,key in [('原始目标','target'),('操作/类型证书','bridge_certificates'),('陈述证书','statement_certificate'),('接口往返证书','interface_certificate'),('接口未覆盖原因','interface_skip_reason')]:
+  text+=['## '+r['source'],'Status:'+r['bridge_status']+'。'+r['interpretation']]
+  for label,key in [('original target','target'),('Operation/Type Certificate','bridge_certificates'),('Certificate of presentation','statement_certificate'),('Interface round trip certificate','interface_certificate'),('The reason why the interface is not covered','interface_skip_reason')]:
    if r[key]:text.append(label+'：'+r[key])
-  if r['interface_type_specialized'] is True:text.append('接口只覆盖 Type 宇宙实例；未声称覆盖原始裸 Sort 的 Prop 分支。')
+  if r['interface_type_specialized'] is True:text.append('The interface only covers the Type universe instance; no Prop branch is claimed to cover the original bare Sort.')
   if r['native_statement']:text.append(block(r['native_statement']))
-  if r['remaining_source_symbols']:text.append('残留源符号：'+r['remaining_source_symbols'])
+  if r['remaining_source_symbols']:text.append('Residual source symbols: '+r['remaining_source_symbols'])
  dest.write_text('\n\n'.join(text))
 print(json.dumps(summary,ensure_ascii=False,indent=2))

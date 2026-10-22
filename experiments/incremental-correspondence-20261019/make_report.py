@@ -161,12 +161,12 @@ for sp in specs:
   r['statement_certificate']=sp['certificate']
   r['native_statement']=sp['native_expression']
   r['remaining_source_symbols']=''
-  r['interpretation']=('新增原生陈述 iff；另有独立闭合的原陈述证明：'+sp['original_statement_proof']) if sp.get('original_statement_proof') else '新增原生陈述 iff；目标体及 NativeBridge 别名展开后无源端符号；不是业务定理证明。'
+  r['interpretation']=('New original statement iff; there is also an independent closed original statement proof:'+sp['original_statement_proof']) if sp.get('original_statement_proof') else 'New native statement iff; the target body contains no source symbols after unfolding NativeBridge aliases. This is not a proof of the original theorem.'
  else:
-  r['interpretation']='新增已检查的'+('类型双向逆。' if sp['kind']=='TYPE_ISO' else '指定原生运算/表达式/谓词对应。')+'适用范围见增量证书完整类型。'
+  r['interpretation']='Add checked'+('Type bidirectional inverse.' if sp['kind']=='TYPE_ISO' else 'Specify native operation/expression/predicate correspondence.')+'For the applicable scope, see the complete type of incremental certificate.'
 
  if sp.get('closed_wrapper'):
-  r['interpretation']='原始机械声明仍有显式条件；本桥接已用闭合证明实例化全部 '+str(r['prerequisites'])+' 项，使用 '+sp['closed_wrapper']+'。没有假定义务成立。'
+  r['interpretation']='The original mechanical declaration still has explicit conditions; this bridge instantiates all with closed proofs '+str(r['prerequisites'])+' item, use '+sp['closed_wrapper']+'. No obligation is presumed to be established.'
 
 # A root may still lack operation correspondence after every source prerequisite is proved.
 ssrb_all_witnesses={r['source']:r for r in json.loads((W/'ssrbool-witness-selection.json').read_text())+json.loads((W/'ssrbool-final-witness-selection.json').read_text())}
@@ -180,7 +180,7 @@ for h in ssrb_prerequisites:
  assert expected_targets <= set(witness['source_references'])
 for source in ssrb_conditions:
  if rows[source]['bridge_status']=='EXPLICIT_PROOF_PARAMETERS':
-  rows[source]['interpretation']='本桥接已证明全部源端前置条件；该根的运算对应仍未完成。沿用条件根分类不表示前置证明仍缺失。'
+  rows[source]['interpretation']='This bridge has proven all source preconditions; the computational correspondence of this root is not yet complete. Following the conditional root classification does not mean that the prerequisite proof is still missing.'
 
 reg=audits['Registry']
 newinterface='NativeBridge.IncrementalInterfaces.Rocq.Corelib.ssr.ssrfun.fun_of_simpl.roundtrip'
@@ -298,8 +298,8 @@ for t in tasks:
  r=rows[t['source']];t['current_status']=r['bridge_status'];t['progress']='checked_incremental' if r['new_certificates'] else 'baseline_only'
 writecsv(W/'tasks.csv',tasks)
 tick=chr(96);fence=tick*3
-text='# 本轮 correspondence 证书\n\n按显式 source → certificate 清单计数，不把类型中提到的其他根算作已覆盖。\n'
+text='# Correspondence certificates for this batch\n\nCounted as explicit source → certificate list, other roots mentioned in the type are not counted as covered.\n'
 for s in accepted:
- text+='\n## '+s['source']+'\n\n'+s['certificate']+'\n\n目标：'+s['target']+'；范围：'+s['scope']+'\n\n'+fence+'lean\n'+s['type']+'\n'+fence+'\n\n公理闭包：'+(', '.join(s['axioms']) or '空')+'\n'
+ text+='\n## '+s['source']+'\n\n'+s['certificate']+'\n\nTarget: '+s['target']+'; Scope: '+s['scope']+'\n\n'+fence+'lean\n'+s['type']+'\n'+fence+'\n\nAxiom closure: '+(', '.join(s['axioms']) or 'Empty')+'\n'
 (D/'CERTIFICATES.md').write_text(text)
 print(json.dumps(summary,ensure_ascii=False))

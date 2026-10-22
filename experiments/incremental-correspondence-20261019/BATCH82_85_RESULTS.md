@@ -1,24 +1,24 @@
-# 第八十二至八十五批：原语浮点对应
+# Batch 82 to 85: Primitive floating point correspondence
 
-PrimFloat 完成 **37/37**；总覆盖 **2054/2180**，含 164 类型、886 运算、1004 完整原生陈述。本批增加 3 类型根和 34 运算根。原陈述独立 Prop 证明仍为 318。
+PrimFloat completes **37/37**; total coverage **2054/2180**, including 164 type, 886 operation, 1004 complete native statement. This batch adds 3 type roots and 34 operation roots. The original statement independent of Prop proves to be still 318.
 
-| 批次 | profile | 根 | 证明内容 |
+| batch | profile | root | Proof content |
 |---|---|---:|---|
-| 82 | PrimFloatRepresentation | 26 | float、wrapper、comparison 双向逆；常量、比较、分类、符号变换、谓词、parser/printer 包装 |
-| 83 | PrimFloatArithmetic | 5 | 加减乘除、get_sign；复用完整最近偶数舍入 |
-| 84 | PrimFloatExponent | 5 | uint63 转换、带偏移指数的分解/缩放、上下相邻值 |
-| 85 | PrimFloatSqrt | 1 | 完整开方；内部逐位算法另外证明等于 Nat.sqrt |
+| 82 | PrimFloatRepresentation | 26 | float, wrapper, comparison bidirectional inverse; constant, comparison, classification, symbol transformation, predicate, parser/printer packaging |
+| 83 | PrimFloatArithmetic | 5 | Addition, subtraction, multiplication and division, get_sign; reuse complete nearest even number rounding |
+| 84 | PrimFloatExponent | 5 | uint63 conversion, decomposition/scaling with offset index, upper and lower adjacent values |
+| 85 | PrimFloatSqrt | 1 | Complete square root; internal bitwise arithmetic additionally proves equal to Nat.sqrt |
 
-## 表示和范围
+## Representation and scope
 
-原生表示为 Option ((Bool × Fin 2047 × BitVec 52) ⊕ Bool)。none 表示唯一 NaN；左支保存有限值的符号、指数和 fraction 字段；右支表示带符号无穷。有限字段包括 subnormal 和正负零。这是 Lean 原生类型组合，未声称与运行时 Float 双向对应。
+The native representation is Option ((Bool × Fin 2047 × BitVec 52) ⊕ Bool). none represents the unique NaN; the left branch holds the sign, exponent and fraction fields of finite values; the right branch represents signed infinity. Limited fields include subnormal and positive and negative zero. This is the Lean native type combination and is not claimed to correspond bidirectionally to the runtime Float.
 
-普通 eqb 与 Leibniz.eqb 分别保留 IEEE 风格相等和规范位相等：前者正负零相等且 NaN 不等于自身；后者比较规范位表示。parser 是源端已解析值的恒等函数，printer 是 wrapper 的投影，不把这两项宣称为字符串解析或格式化。
+Ordinary eqb and Leibniz.eqb retain IEEE style equality and canonical bit equality respectively: the former's positive and negative zeros are equal and NaN is not equal to itself; the latter compares canonical bit representation. parser is the identity function of the parsed value at the source, and printer is the projection of wrapper. These two items are not declared as string parsing or formatting.
 
-算术目标是源符号算法在该原生表示上的精确实现。nearest-even、上下溢、NaN、无穷、正负零及指数截断均保留。它们仍归类 native_expression，不冒充 existing_api。PrimFloatSqrt 的辅助定理 integerSqrt_agrees 则对每个 Nat 证明源 base-four 算法等于现成 Nat.sqrt；完整浮点开方使用这个现成 API，但没有声称等于 Float.sqrt。
+The arithmetic goal is an exact implementation of the source symbolic algorithm on this native representation. nearest-even, overflow and underflow, NaN, infinity, positive and negative zero and exponential truncation are retained. They are still classified as native_expression and do not pass off as existing_api. The auxiliary theorem integerSqrt_agrees of PrimFloatSqrt proves for each Nat that the source base-four algorithm is equal to the off-the-shelf Nat.sqrt; the complete floating-point square root uses this off-the-shelf API, but does not claim to be equal to Float.sqrt.
 
-## 验证
+## Verify
 
-158 个 profile 有当前源码及依赖的通过记录。140 个覆盖 profile、1802 份增量证书共同导入，2426 个入口、23746 个副本。类型双向逆、运算等式、公理闭包、递归原生目标审计均通过。没有新增 sorry 或公理；编译产物留在远程 .work。
+158 profile have passing records of the current source code and dependencies. 140 incremental certificates covering profile and 1802 are imported together, 2426 entrances, and 23746 copies. Type bidirectional inverse, operational equations, axiomatic closures, and recursive native target audits all passed. No new sorry or axioms are added; the compiled product remains in remote .work.
 
-剩余 126 根：尚无证书 79、部分原生陈述 24、仅接口 6、显式条件 17。继续 FloatOps 与 FloatAxioms；opaque Type 值计算保持未完成分类。
+Remaining 126 root: no certificate yet 79, partial native statement 24, interface only 6, explicit condition 17. Continue FloatOps and FloatAxioms; opaque Type value calculation remains unfinished classification.

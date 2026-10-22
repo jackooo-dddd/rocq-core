@@ -1,13 +1,13 @@
-> 此目录的实例来自历史 main75 bootstrap 基线，保留作为对照。当前机械 nat/eq 统一互操作示例请看 [UseNative.lean](../../../experiments/mechanical-correspondence-20261019/UseNative.lean) 和 [说明](../../../experiments/mechanical-correspondence-20261019/README.md)。
+> Instances of this directory are from the historical main75 bootstrap baseline and are retained as controls. For current mechanical nat/eq unified interoperability examples please see [UseNative.lean](../../../experiments/mechanical-correspondence-20261019/UseNative.lean) and [Description ](../../../experiments/mechanical-correspondence-20261019/README.md).
 
-Lean 互操作实证
+Lean interoperability demonstration
 
-Nat.lean：翻译后的 Rocq add 直接接收／返回 Lean Nat。对任意 n,m，用 Lean 归纳证明 add n m = n+m；另有两个闭项计算等式。
+Nat.lean: The translated Rocq add directly receives/returns Lean Nat. For any n, m, use Lean to inductively prove that add n m = n+m; there are also two closed term calculation equations.
 
-List.lean：翻译后的 Rocq list 是单独的数据类型。显式 fromLean/toLean 双向转换；证明两个方向的往返恒等、length 与 Lean List.length 一致、app 与 Lean List.append 一致，均对任意元素宇宙有效。
+List.lean: Translated Rocq list is a separate data type. Explicit fromLean/toLean bidirectional conversion; prove that the round-trip identity in both directions, length is consistent with Lean List.length, app is consistent with Lean List.append, are valid for any element universe.
 
-五个定理的 axiom closure 均为空。这里使用的是最终 main75 的实际翻译结果，不是手写一个类似的替代实现。源测试第一次误以为 Lean 0+m 与 m 定义相等，已改用 Nat.zero_add；原失败日志保留在 work/tests/basic-interop75。
+axiom closure of the five theorems are all empty. What is used here is the actual translation result of the final main75, rather than hand-writing a similar alternative implementation. The source test mistakenly thought that Lean 0+m was defined equal to m for the first time, and Nat.zero_add was used instead; the original failure log was retained in work/tests/basic-interop75.
 
-当前 importer 注册内核声明，并未为新归纳类型运行 Lean 编译器。List 的两个桥接定义因此标记 noncomputable：保留可归约的内核定义，不生成运行时代码；并非加入公理，也不影响上述证明。编译可执行程序属于额外打包工作。
+Currently importer registers kernel declarations and is not running the Lean compiler for the new inductive type. The two bridging definitions of List are therefore marked noncomputable: retaining the reducible kernel definition and generating no runtime code; not adding an axiom, nor affecting the above proof. Compiling an executable program is additional packaging work.
 
-复跑：python3 interop/run.py（完整仓库中）。
+Rerun: python3 interop/run.py (complete in warehouse).

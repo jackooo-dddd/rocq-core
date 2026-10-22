@@ -1,42 +1,42 @@
-# SSR Bool 不透明证明结果的对应：第二十七批
+# SSR Bool Correspondence of opaque certification results: the twenty-seventh batch
 
-本批新增 **36 个运算根**，累计完成类别 **1526 / 2180**：92 个类型、565 个运算/谓词、869 个完整原生陈述。ssrbool 完成 **420 / 451**。
+This batch has added **36 operational roots**, and the total completed categories are **1526 / 2180**: 92 types, 565 operations/predicates, and 869 complete native statements. ssrbool Complete **420 / 451**.
 
-本模块 128 个原带条件根的 **275 个不同前置声明现已全部证明**；其中 119 根已经完成对应，另 9 根还没有。全部 318 个闭合证明由 275 个前置声明和 43 个新增原陈述组成；227 个空公理闭包，其余 91 个仅使用允许的 Lean 标准公理。
+The **275 different pre-statements of the 128 original conditional roots of this module have now been proven**; among them, the 119 root has completed the correspondence, and the other 9 root has not yet. All 318 closed proofs consist of 275 predeclarations and 43 new original statements; 227 empty axiom closures, and the remaining 91 only use the allowed Lean standard axioms.
 
-## 新对应的 36 根
+## New corresponding 36 root
 
-| 分组 | 数量 | 指定原生目标 |
+| Group | Quantity | Specify native target |
 |---|---:|---|
-| addbP、andP/and3P/and4P/and5P、idP/idPn、implyP、nandP、negP/negPf/negPn、norP、orP/or3P/or4P | 16 | 独立构造的原生 Bool 逻辑性质证明 |
-| andPP、orPP、negPP、implyPP、iffP、equivP、introP | 7 | 接收原生 iff/蕴含证明，组合出原生反射性质的证明 |
-| all_and2/3/4/5 | 4 | 原生合取的逐项投影函数 |
-| unlessL、unlessR、unless_sym、bind_unless、unless_contra | 5 | Nonempty / Or 上的原生构造与组合 |
-| keyed_mem、keyed_mem_simpl、keyed_qualifier_keyed | 3 | 固定外部谓词/键后的 Unit 恒等函数 |
-| decP | 1 | 根据 Bool 及其反射 iff 构造的 Lean Decidable P |
+| addbP、andP/and3P/and4P/and5P、idP/idPn、implyP、nandP、negP/negPf/negPn、norP、orP/or3P/or4P | 16 | Independently constructed native Bool logical property proof |
+| andPP、orPP、negPP、implyPP、iffP、equivP、introP | 7 | Receive the original iff/ implication proof and combine the proof of the original reflection property |
+| all_and2/3/4/5 | 4 | Termwise projection function for primitive conjunctions |
+| unlessL、unlessR、unless_sym、bind_unless、unless_contra | 5 | Native construction and combination on Nonempty / Or |
+| keyed_mem、keyed_mem_simpl、keyed_qualifier_keyed | 3 | Unit identity function after fixed external predicate/key |
+| decP | 1 | Lean Decidable P constructed from Bool and its reflection iff |
 
-反射函数使用已有 reflect Iso 把机械结果转换成原生命题的证明，再证明等于一个**独立构造的原生证明**。输出是证明对象时可使用证明无关性；Decidable P 则使用其单值性质。没有展开 opaque 源函数，也没有生成其定义体方程。
+The reflection function uses the existing reflect Iso to convert the mechanical result into a proof of the native proposition, and then the proof is equal to an **independently constructed native proof**. Proof independence can be used when the output is a proof object; Decidable P uses its single-valued property. The opaque source function is not expanded, and its defining volume equation is not generated.
 
-这解决的是证明对象/逻辑函数的语义对应，不是任意数据算法的计算方程。原生目标和独立原生证明均检查类型与定义体，递归展开 NativeBridge 中透明定义、定理及 opaque 辅助声明，拒绝残留源符号。23 个反射目标由同一受检查适配器构建；参数转换不匹配即失败。
+This solves the problem of proving the semantic correspondence of objects/logical functions, not the calculation equations of arbitrary data algorithms. Both the native target and the independent native proof check the type and definition body, recursively expand the transparent definition, theorem and auxiliary declaration of opaque in NativeBridge, and reject residual source symbols. 23 reflection targets were built from the same inspected adapter; parameter conversions failed if they did not match.
 
-## 四个前置条件
+## Four preconditions
 
-bind_unless、keyed_mem、keyed_mem_simpl、keyed_qualifier_keyed 的前置条件在 SSRBoolFinalWitnesses.lean 中手工证明，均无公理依赖。键包装按构造器内等式消去，bind_unless 用既有 Nonempty / Or 对应组合。
+The preconditions of bind_unless, keyed_mem, keyed_mem_simpl, and keyed_qualifier_keyed are proved manually in SSRBoolFinalWitnesses.lean, and they have no axiom dependence. The key packaging is eliminated according to the equation in the constructor, and bind_unless uses the existing Nonempty / Or corresponding combination.
 
-三个 keyed 函数的原始输入包装具有两个独立 universe；结果包装在原始翻译中使用元素 universe 的对角实例。证明保留该签名，未把输入两个 universe 强行合并。
+The original input wrapper of the three keyed functions has two independent universe; the resulting wrapper uses a diagonal instance of the element universe in the original translation. Prove that the signature is retained and the two input universe are not forcibly merged.
 
-## 验证与文件
+## Verification and Documentation
 
-- SSRBoolFinalWitnesses.lean：四个闭合前置证明。
-- SSRBoolReflection.lean、ssrbool-reflection-selection.json：23 个反射运算的原生目标、输入/输出转换和等式。
-- SSRBoolProofFunctions.lean、ssrbool-proof-function-selection.json：13 个逻辑/判定/包装运算。
-- reports/ssrbool-condition-dag.json：128 根的精确依赖和当前状态。
-- reports/certificates.json、condition-discharges.json：逐根证据。
+- SSRBoolFinalWitnesses.lean: four closed prefix proofs.
+- SSRBoolReflection.lean, ssrbool-reflection-selection.json: Native targets, input/output transformations and equations for 23 reflection operations.
+- SSRBoolProofFunctions.lean, ssrbool-proof-function-selection.json: 13 logic/decision/packaging operations.
+- reports/ssrbool-condition-dag.json: The exact dependencies and current state of the 128 root.
+- reports/certificates.json, condition-discharges.json: Evidence by evidence.
 
-83 个 profile 的当前源码及依赖指纹验证通过。74 个覆盖 profile、1264 份覆盖证书共同导入，1722 个入口、11260 个依赖副本。未重新运行整个机械翻译、旧基线或 Mathlib 消费例。编译和探索中间产物只在远程 .work。
+The current source code and dependency fingerprint verification of 83 profile passed. 74 coverage certificates profile and 1264 are imported together, 1722 entrances, and 11260 dependent copies. The entire mechanical translation, old baseline, or Mathlib consumption case was not rerun. Compile and explore intermediates only on remote .work.
 
-## 剩余
+## Remaining
 
-ssrbool 剩余 31 根：9 个尚未完成对应的条件根、20 个尚无对应根、2 个仅有接口根。
+ssrbool Remaining 31 roots: 9 conditional roots that have not yet completed corresponding, 20 that have no corresponding roots, and 2 that only have interface roots.
 
-9 个条件根为 all_sig2_cond、all_sig_cond、all_sig_cond_dep、all_tag_cond、all_tag_cond_dep、altP、boolP、ifP、ifPn。前五个返回任意选择数据，当前 opaque 结果还缺少计算/等式证据；后四个依赖 alt_spec / if_spec 的索引类型对应，下一批继续处理。这里的剩余条件类别表示桥接尚未完成，**不是前置证明仍缺失**。
+The 9 conditional roots are all_sig2_cond, all_sig_cond, all_sig_cond_dep, all_tag_cond, all_tag_cond_dep, altP, boolP, ifP, ifPn. The first five return arbitrary selection data, and the current opaque result still lacks calculation/equation evidence; the last four rely on the index type correspondence of alt_spec / if_spec, and the next batch continues to be processed. The remaining condition category here means that the bridge has not yet been completed, **not that the prerequisite proof is still missing**.

@@ -1,53 +1,53 @@
-# 机械 Rocq → Lean 的 correspondence 实例
+# Mechanical Rocq → correspondence instance of Lean
 
-这些是已经通过 Lean kernel 检查的通用证明，不是仅测试几个输入。下文为阅读省略长命名空间：R 表示机械函数，toNat／toInt 表示已证往返的数值类型转换。具体数字示例若未单独标注，是通用定理的实例说明，不是声称执行过机械代码的 #eval。
+These are general proofs that have passed the Lean kernel check, not just testing a few inputs. The long namespace is omitted for reading below: R represents mechanical functions, toNat/toInt represents certified round-trip numeric type conversion. Specific numerical examples, if not separately noted, are practical illustrations of general theorems and are not #eval claiming to have executed mechanical code.
 
-## 1. gcd：先证明条件，再得到原生运算
+## 1. gcd: Prove the condition first, and then get the native operation
 
     toNat (gcdClosed a b) = Nat.gcd (toNat a) (toNat b)
 
-gcdClosed 用已证明的终止条件实例化原始机械 gcd。证明利用余数对应和 Nat.mod_lt；最终等式覆盖所有自然数输入。因此可以用 Lean 的 gcd 定理推导机械结果的性质。
+gcdClosed instantiates the primitive machine gcd with proven termination conditions. Prove using the remainder correspondence and Nat.mod_lt; the final equation covers all natural number inputs. Therefore the properties of the mechanical results can be derived using the gcd theorem of Lean.
 
-证书：gcd_agrees；[证明源码](../experiments/incremental-correspondence-20261019/proofs/NatGcd.lean)。
+Certificate: gcd_agrees; [Proof source code ](../experiments/incremental-correspondence-20261019/proofs/NatGcd.lean).
 
-## 2. sqrt：内部迭代不是简单重命名
+## 2. sqrt: Internal iteration is not a simple rename
 
     toNat (R.Nat.sqrt n) = Nat.sqrt (toNat n)
 
-通过迭代状态不变量及平方根的区间刻画证明，例如输入 15 的结果是 3。内部 sqrt_iter 对任意状态先对应独立的原生状态递归函数；只有满足不变量的状态才可解释成平方根。顶层初始化满足不变量，所以顶层定理无额外输入条件。
+It is proved through the interval characterization of iterative state invariants and square roots. For example, the result of inputting 15 is 3. Internally, sqrt_iter first corresponds to an independent native state recursive function for any state; only states that satisfy invariants can be interpreted as square roots. The top-level initialization satisfies the invariants, so the top-level theorem has no additional input conditions.
 
-证书：sqrt_agrees；[证明源码](../experiments/incremental-correspondence-20261019/proofs/NatIterators.lean)。
+Certificate: sqrt_agrees; [Proof source code ](../experiments/incremental-correspondence-20261019/proofs/NatIterators.lean).
 
-## 3. positive、N 的减法边界不同
+## 3. positive and N have different subtraction boundaries.
 
     positiveTo (R.Pos.sub p q) = max 1 (positiveTo p - positiveTo q)
     binaryNatTo (R.N.sub n m) = binaryNatTo n - binaryNatTo m
 
-positive 不含零，因此它的 3−5 得到 1；N 含零，3−5 得到 0。二者都能对应原生表达式，但不能不加适配地替换成同一个运算。
+positive does not contain zeros, so its 3−5 yields 1; N contains zeros, and 3−5 yields 0. Both can correspond to native expressions, but cannot be replaced by the same operation without adaptation.
 
-[positive 减法证明](../experiments/incremental-correspondence-20261019/proofs/BinaryMask.lean)；
-[N 减法证明](../experiments/incremental-correspondence-20261019/proofs/BinaryNatSub.lean)。
+[positive subtraction proof ](../experiments/incremental-correspondence-20261019/proofs/BinaryMask.lean);
+[N Subtraction proof ](../experiments/incremental-correspondence-20261019/proofs/BinaryNatSub.lean).
 
-## 4. mask 与 Option Nat：无损保留源信息
+## 4. mask and Option Nat: Preserve source information losslessly
 
-| 机械构造器 | 原生值 |
+| mechanical constructor | native value |
 |---|---|
 | IsNeg | none |
 | IsNul | some 0 |
 | IsPos p | some (positiveTo p) |
 
-maskIso 包含两条往返定理。还有运算对应：
+maskIso contains two round trip theorems. There are also corresponding operations:
 
     maskTo (R.Pos.sub_mask p q)
       = if positiveTo q ≤ positiveTo p
         then some (positiveTo p - positiveTo q)
         else none
 
-IsNeg 本身没有携带负差的绝对值，所以这里的 none 没有丢失原类型存储的数据。不是把有信息损失的数值解释冒充双射。
+IsNeg itself does not carry the absolute value of the negative difference, so none here does not lose the data stored in the original type. It is not about pretending that numerical interpretation with information loss is a bijection.
 
-[类型与运算证明](../experiments/incremental-correspondence-20261019/proofs/BinaryMask.lean)。
+[Type and operation proof ](../experiments/incremental-correspondence-20261019/proofs/BinaryMask.lean).
 
-## 5. 有符号幂与移位：必须保留约定
+## 5. Signed exponentiation and shifting: conventions must be preserved
 
     toInt (R.Z.pow x y)
       = if toInt y < 0 then 0 else (toInt x) ^ (toInt y).toNat
@@ -58,255 +58,255 @@ IsNeg 本身没有携带负差的绝对值，所以这里的 none 没有丢失�
     toInt (R.Z.shiftr x n)
       = shiftLeftNative (toInt x) (-toInt n)
 
-Z.pow_pos 直接对应原生 Int 的自然数次幂；Z.pow 另有负指数返回零的约定。移位的除数总是正的 2 的幂，负被除数采用向下取整。
+Z.pow_pos directly corresponds to the natural power of the original Int; Z.pow also has the convention of returning zero for negative exponents. The shifted divisor is always a positive power of 2, and the negative dividend is rounded down.
 
-下面四个实例另有已检查证明：
+The following four examples have been additionally verified:
 
-| 机械运算的数值输入 | 转换后结果 | 实例定理 |
+| Numerical input for mechanical operations | Conversion result | Instance theorem |
 |---|---:|---|
 | Z.pow (-2) (-3) | 0 | example_negative_exponent |
 | Z.pow_pos (-2) 3 | -8 | example_negative_base |
 | Z.shiftr (-3) 1 | -2 | example_negative_right_shift |
 | Z.shiftl 3 (-1) | 1 | example_negative_shift_count |
 
-[通用证明与四个实例](../experiments/incremental-correspondence-20261019/proofs/BinaryPower.lean)。
+[General proof with four examples ](../experiments/incremental-correspondence-20261019/proofs/BinaryPower.lean).
 
-## 6. if_spec：对应依赖索引中的信息
+## 6. if_spec: Corresponds to the information in the dependent index
 
-固定 A、b、vTrue、vFalse、notB 后，机械 if_spec 在索引 c、x 处对应：
+After fixing A, b, vTrue, vFalse, notB, the mechanical if_spec corresponds to the index c, x:
 
     PLift (if c then b = true ∧ x = vTrue
                 else notB ∧ x = vFalse)
 
-b、c 已转换为原生 Bool；A 保留任意导出 Type 宇宙。这个表示保存分支证据和结果值等式。ifIso 证明双向往返；ifP_agrees、ifPn_agrees 证明源函数输出经转换后等于独立构造的原生证据。证明保持源函数 opaque。
+b, c have been converted to native Bool; A retains any exported Type universe. This representation holds the branch evidence and the resulting value equation. ifIso proves a two-way round trip; ifP_agrees and ifPn_agrees prove that the source function output is equivalent to the original evidence of independent construction after conversion. Prove that the source function opaque remains.
 
-[索引类型及函数证明](../experiments/incremental-correspondence-20261019/proofs/SSRBoolIndexed.lean)。
+[Index type and function proof ](../experiments/incremental-correspondence-20261019/proofs/SSRBoolIndexed.lean).
 
-## 7. Type 值关系：保留数据，而非只留一个命题
+## 7. Type Value relationship: retain data instead of just a proposition
 
-对于 R : A → A → Type v，机械 CRelationClasses.Equivalence 的原生表示是：
+For R : A → A → Type v, the native representation of mechanical CRelationClasses.Equivalence is:
 
     ((x : A) → R x x)
       × (((x y : A) → R x y → R y x)
           × ((x y z : A) → R x y → R y z → R x z))
 
-EquivalenceIso 给出双向逆，三个字段投影也有对应等式。这里的函数可能有不同计算行为，不能压成普通 Prop 的自反／对称／传递断言。
+EquivalenceIso gives the two-way inverse, and the three field projections also have corresponding equations. The functions here may have different calculation behaviors and cannot be reduced to the reflexive/symmetric/transitive assertions of ordinary Prop.
 
-同模块的 iffT A B 对应：
+iffT A B of the same module corresponds to:
 
     (A → B) × (B → A)
 
-它不要求两个函数互为逆，所以不是 Equiv A B。对应到的是原生函数和乘积的组合，而非同名的现成类型类。
+It does not require that the two functions be inverses of each other, so it is not Equiv A B. What corresponds to is a combination of native functions and products, not a ready-made type class with the same name.
 
-[Type 值关系证明](../experiments/incremental-correspondence-20261019/proofs/CRelationData.lean)。
+[Type value relationship proves ](../experiments/incremental-correspondence-20261019/proofs/CRelationData.lean).
 
 
-## 8. Eq / Iff 的等价关系记录：对应到现成的 Lean 命题
+## 8. Equivalence relationship record of Eq / Iff: corresponding to the ready-made Lean proposition
 
-机械 CRelationClasses.eq_equivalence 的关系值是 PULift (机械 eq x y)。通过已证的机械 Eq ↔ Lean Eq，得到：
+The related value of mechanical CRelationClasses.eq_equivalence is PULift (mechanical eq x y). Through the certified machinery Eq ↔ Lean Eq, we get:
 
     equalityEquivalenceIso.to (eqEquivalenceClosed A)
       = equalityEquivalenceNative A
 
-右侧的类型为 Lean 的 Equivalence (@Eq A)，三个字段分别是 Eq.refl、Eq.symm、Eq.trans。equalityEquivalenceIso 还证明正反两条转换互为逆。三个源端前置条件已经证明，不作为用户额外假设。
+The type on the right is Equivalence (@Eq A) of Lean, and the three fields are Eq.refl, Eq.symm, and Eq.trans. equalityEquivalenceIso also proves that the two transformations, positive and negative, are inverse to each other. The three source-side preconditions have been proven and are not used as additional assumptions by the user.
 
-同理，iff_equivalence 从 PULift Prop 上的机械 iff 转换到 Prop 上的 Equivalence Iff，也有两个逆律。这两个具体关系的值仅为证明；这正是它们可以转成 Prop 中的原生记录，而上一节任意 Type 值关系需要保留计算数据的原因。
+In the same way, there are two inverse laws when iff_equivalence is converted from mechanical iff on PULift Prop to Equivalence Iff on Prop. The values ​​of these two specific relationships are for proof only; this is why they can be converted into native records in Prop, while any Type-valued relationship in the previous section needs to retain the calculated data.
 
-[Eq / Iff 与 PartialOrder 的证明](../experiments/incremental-correspondence-20261019/proofs/CRelationOrder.lean)。
+[Proof ](../experiments/incremental-correspondence-20261019/proofs/CRelationOrder.lean) of Eq / Iff and PartialOrder.
 
 
-## 9. 按位运算：直接对应 Mathlib，并把原生定理推回机械对象
+## 9. Bitwise operation: directly corresponds to Mathlib, and pushes the native theorem back to the mechanical object
 
     binaryIntTo (R.Z.land x y) = Int.land (binaryIntTo x) (binaryIntTo y)
     binaryIntTo (R.Z.lor x y)  = Int.lor  (binaryIntTo x) (binaryIntTo y)
     binaryIntTo (R.Z.lxor x y) = Int.xor  (binaryIntTo x) (binaryIntTo y)
 
-这里的目标是 Mathlib 已有的 Int 运算，覆盖任意正负整数，不需要选定机器字长。四个另外检查的实例为：
+The target here is the existing Int operation of Mathlib, covering any positive and negative integers without selecting the machine word length. Four examples of additional checks are:
 
-| 机械输入 | 转换后结果 |
+| mechanical input | Conversion result |
 |---|---:|
 | Z.land (-3) 6 | 4 |
 | Z.lor (-3) (-6) | -1 |
 | Z.lxor (-3) 6 | -5 |
 | Z.lxor (-3) (-6) | 7 |
 
-positive / N 的对应先通过二进制构造器归纳证明；Z 复用这些结果处理符号。Pos.ldiff、N.ldiff 也已证明等于 Mathlib 的 Nat.ldiff。
+The correspondence of positive / N is first proved inductively through the binary constructor; Z reuses these result processing symbols. Pos.ldiff, N.ldiff have also been proven to be equal to Nat.ldiff of Mathlib.
 
-在同一文件中，binaryNat_land_comm 把 Nat.and_comm 通过对应等式和 binaryNatIso 的单射性推回，证明：
+In the same document, binaryNat_land_comm pushes back Nat.and_comm through the corresponding equations and the injectivity of binaryNatIso, proving:
 
     R.N.land m n = R.N.land n m
 
-这展示了已经可以使用 Lean 原生定理证明机械对象的性质。通用证明、四个实例和交换律见 [BinaryIntBitwise.lean](../experiments/incremental-correspondence-20261019/proofs/BinaryIntBitwise.lean)。
+This shows that it is already possible to prove the properties of mechanical objects using the Lean native theorem. For a general proof, four examples and the commutative law see [BinaryIntBitwise.lean](../experiments/incremental-correspondence-20261019/proofs/BinaryIntBitwise.lean).
 
-完整签名、假设和公理依赖见 [证书报告](../experiments/incremental-correspondence-20261019/reports/CERTIFICATES.md)；当前总数见 [工作区摘要](../experiments/incremental-correspondence-20261019/reports/summary.json)。原生表达式对应与现成 Lean／Mathlib API 直接对应分别登记。
+The complete signature, assumptions, and axiom dependencies can be found in [Certificate Report ](../experiments/incremental-correspondence-20261019/reports/CERTIFICATES.md); the current total can be found in [Workspace Summary ](../experiments/incremental-correspondence-20261019/reports/summary.json). The native expression corresponds directly to the ready-made Lean/Mathlib API and is registered separately.
 
-## 10. 两种整数除法不能混同
+## 10. Two integer division methods cannot be confused
 
     toInt (R.Z.div a b) = Int.fdiv (toInt a) (toInt b)
     toInt (R.Z.quot a b) = Int.tdiv (toInt a) (toInt b)
 
--7 除以 3，前者为 -3，后者为 -2；对应余数为 2 和 -1。负除数及零除数都在通用证明范围内。内部 N.pos_div_eucl(5,0) 返回 (3,5)，内部 Z.pos_div_eucl(5,0) 返回 (7,1)，因此不能把内部辅助函数无条件替换为普通除法。
+When -7 is divided by 3, the former is -3 and the latter is -2; the corresponding remainders are 2 and -1. Negative divisors and zero divisors are both within the scope of the general proof. Internal N.pos_div_eucl(5,0) returns (3,5), internal Z.pos_div_eucl(5,0) returns (7,1), so the internal auxiliary function cannot be unconditionally replaced by ordinary division.
 
-这些具体边界例子均已编译。[证明](../experiments/incremental-correspondence-20261019/proofs/BinaryDivision.lean)。
+These specific boundary examples are compiled. [Proof ](../experiments/incremental-correspondence-20261019/proofs/BinaryDivision.lean).
 
-## 11. 二进制平方根和余数
+## 11. Binary square root and remainder
 
     sqrtPairTo (R.Pos.sqrtrem p)
       = (Nat.sqrt n, some (n - Nat.sqrt n * Nat.sqrt n))
     -- n = positiveTo p
 
-从每步保持 n=s*s+r、r<2*s+1 证明结果与现成 Nat.sqrt 一致。12345 得到 (111,some 24)；整数负输入得到 (0,0)。这些例子已通过 kernel 检查，还直接用 Nat.sqrt_le 证明机械输出的平方不超过输入。
+Keeping n=s*s+r, r<2*s+1 from each step proves that the result is consistent with the off-the-shelf Nat.sqrt. 12345 gets (111, some 24); negative integer input gets (0, 0). These examples have been checked by kernel and also directly proved by Nat.sqrt_le that the square of the mechanical output does not exceed the input.
 
-[证明](../experiments/incremental-correspondence-20261019/proofs/BinarySqrtRem.lean)。
+[Proof ](../experiments/incremental-correspondence-20261019/proofs/BinarySqrtRem.lean).
 
-## 12. 高阶迭代：结合律决定能否改成线性 fold
+## 12. High-order iteration: associative law determines whether it can be changed to linear fold
 
     R.Pos.iter_op Nat Nat.add p a = positiveTo p * a
     R.Pos.iter_op Nat Nat.mul p a = a ^ positiveTo p
 
-任意满足结合律的 op 还对应 List.foldr op a (List.replicate (positiveTo p-1) a)。没有结合律时只保证保留二进制括号的原生版本；已验证 op(a,b)=a+2b 对四份 5 给出 45，而线性 fold 给出 75。
+Any op that satisfies the associative law also corresponds to List.foldr op a (List.replicate (positiveTo p-1) a). Without associativity only the native version of the binary bracket is guaranteed to be preserved; it has been verified that op(a,b)=a+2b gives 45 for quadruplicate 5, and linear fold gives 75.
 
-[证明](../experiments/incremental-correspondence-20261019/proofs/BinaryIterOp.lean)。同一 iter_op 根的四份证书不重复计根。
+[Proof ](../experiments/incremental-correspondence-20261019/proofs/BinaryIterOp.lean). Four certificates with the same iter_op root will not count as duplicate roots.
 
-## 13. 返回类型也依赖数值的递归
+## 13. The return type also depends on the recursion of the value
 
-N_rect 的对应允许原生 motive P : Nat → Sort u。已检查的例子取 P(n)=Fin(n+1)，因此输入改变时返回类型也改变；positive_rect 和 Z_rect 同样保留依赖返回类型。
+The mapping of N_rect allows native motive P : Nat → Sort u. The checked example takes P(n)=Fin(n+1), so the return type changes when the input changes; positive_rect and Z_rect also retain dependent return types.
 
-[证明及例子](../experiments/incremental-correspondence-20261019/proofs/BinaryElimination.lean)。
+[Proof and example ](../experiments/incremental-correspondence-20261019/proofs/BinaryElimination.lean).
 
-## 14. 数字表示不能丢掉负零和格式
+## 14. Numerical representation cannot discard negative zeros and format
 
-Decimal.decimal 对应“带符号整数数字、小数数字、可选带符号指数”的原生元组。Hexadecimal.hexadecimal 的指数仍是十进制数字。Number.number 在外层再保留 Decimal/Hexadecimal 的 Sum 标签。
+Decimal.decimal corresponds to the native tuple of "signed integer number, decimal number, and optionally signed exponent". The exponent of Hexadecimal.hexadecimal is still a decimal number. Number.number retains the Sum label of Decimal/Hexadecimal on the outer layer.
 
-所以这些是无损表示 Iso，结构相等判定保留负零／正零、前导零和指数是否出现的区别。9 个原本带条件的 eq_dec 函数已通过闭合前置证明，对应完整原生 Decidable equality。
+So these are lossless representations of Iso, and the structural equality decision preserves the difference between negative/positive zeros, leading zeros, and the presence of exponents. 9 original conditional eq_dec functions have passed the closed prefix proof, corresponding to the complete native Decidable equality.
 
-[十进制证明](../experiments/incremental-correspondence-20261019/proofs/DecimalRepresentation.lean)、
-[十六进制证明](../experiments/incremental-correspondence-20261019/proofs/HexadecimalRepresentation.lean)、
-[格式组合证明](../experiments/incremental-correspondence-20261019/proofs/NumberRepresentation.lean)。
+[Decimal proof ](../experiments/incremental-correspondence-20261019/proofs/DecimalRepresentation.lean),
+[Hex proof ](../experiments/incremental-correspondence-20261019/proofs/HexadecimalRepresentation.lean),
+[Format combination proof ](../experiments/incremental-correspondence-20261019/proofs/NumberRepresentation.lean).
 
-## 15. 63 位计数与溢出
+## 15. 63 bit counting and overflow
 
-[WordOperations.lean](../experiments/incremental-correspondence-20261019/proofs/WordOperations.lean) 对任意 x : BitVec 63 证明机械 head0 x = x.clz、tail0 x = x.ctz。例：head0 1 = 62，tail0 8 = 3，零的两种计数都是 63。addc 最大值 1 对应 (true, 0)，同时保留进位标志。
+[WordOperations.lean](../experiments/incremental-correspondence-20261019/proofs/WordOperations.lean) for any x : BitVec 63 proves mechanically head0 x = x.clz, tail0 x = x.ctz. Example: head0 1 = 62, tail0 8 = 3, both counts of zero are 63. The maximum value of addc corresponds to 1 (true, 0), while retaining the carry flag.
 
-## 16. 字节序列并非 Unicode 文本
+## 16. Byte sequence is not Unicode text
 
-[PrimitiveStrings.lean](../experiments/incremental-correspondence-20261019/proofs/PrimitiveStrings.lean)：机械 make 1 256 的字节取模后，parse 得到 some 0；而字符 print 256 返回 none。这两个接口的输入约定不同，证明保留了差异。所有字节，包括 NUL，均无损保留。
+[PrimitiveStrings.lean](../experiments/incremental-correspondence-20261019/proofs/PrimitiveStrings.lean): After taking the byte modulo of mechanical make 1 256, parse gets some 0; while the character print 256 returns none. The two interfaces have different input conventions, proving that the differences are preserved. All bytes, including NUL, are preserved losslessly.
 
-## 17. 通用关系接口实例化为 Lean Eq
+## 17. The general relational interface is instantiated as Lean Eq
 
-[GenericEquality.lean](../experiments/incremental-correspondence-20261019/proofs/GenericEquality.lean) 用 PLift (x = y) 满足源 Type 值关系的要求。实例化机械 ap 后得到 PLift (congrArg f h)，实例化 sym 后得到 PLift h.symm，两项都由 kernel 验证。任意关系的接口对应和这一特定 Eq 实例分别陈述。
+[GenericEquality.lean](../experiments/incremental-correspondence-20261019/proofs/GenericEquality.lean) uses PLift (x = y) to meet the requirements of the source Type value relationship. After instantiating the machine ap, we get PLift (congrArg f h), and after instantiating sym, we get PLift h.symm, both of which are verified by kernel. The interface corresponding to any relationship is stated separately for this particular Eq instance.
 
-## 18. Program.Wf 的子类型递归
+## 18. Subtype recursion of Program.Wf
 
-[ProgramWellFounded.lean](../experiments/incremental-correspondence-20261019/proofs/ProgramWellFounded.lean) 把源函数收到的机械 sig 输入转为 Lean Subtype {y // R y x}，递归结果等于 WellFounded.fix 的结果。两个回调转换器证明互为逆；proj2_sig 等前提已经给出闭合证明，不需要用户再提供。
+[ProgramWellFounded.lean](../experiments/incremental-correspondence-20261019/proofs/ProgramWellFounded.lean) Convert the mechanical sig input received by the source function into Lean Subtype {y // R y x}, and the recursive result is equal to the result of WellFounded.fix. The two callback converters prove to be inverse to each other; premises such as proj2_sig have already given closed proofs and do not need to be provided by the user.
 
-## 19. 任意元数的合同性
+## 19. Contractuality of any number
 
-[SSRRewriteData.lean](../experiments/incremental-correspondence-20261019/proofs/SSRRewriteData.lean) 对所有机械 n 证明 nary_congruence_statement n k 等价于原生 Nat 上的递归谓词；每层函数参数使用 Lean Eq。随后 [SSRRewriteStatements.lean](../experiments/incremental-correspondence-20261019/proofs/SSRRewriteStatements.lean) 对所有 arity 用归纳证明完整合同性陈述，既有对应证书，也有原陈述证明。
+[SSRRewriteData.lean](../experiments/incremental-correspondence-20261019/proofs/SSRRewriteData.lean) proves that nary_congruence_statement n k is equivalent to the recursive predicate on the native Nat for all mechanical n; each layer of function parameters uses Lean Eq. Subsequently [SSRRewriteStatements.lean](../experiments/incremental-correspondence-20261019/proofs/SSRRewriteStatements.lean) proves the complete contractual representation by induction for all arity, with both corresponding certificates and proof of the original representation.
 
-## 20. 把 SSR 自反性作为原生实例使用
+## 20. Use SSR reflexivity as a native instance
 
-[SSRClasses.lean](../experiments/incremental-correspondence-20261019/proofs/SSRClasses.lean) 证明源 Reflexive A R ↔ Std.Refl R。转换后的证据可用于 Lean 的 Std.Refl.refl；Eq 和 Iff 的两个原陈述也都有独立证明。
+[SSRClasses.lean](../experiments/incremental-correspondence-20261019/proofs/SSRClasses.lean) Proof Source Reflexive A R ↔ Std.Refl R. The converted evidence can be used for Std.Refl.refl of Lean; the two original statements of Eq and Iff also have independent proof.
 
-## 21. 带截断位数的整数转换
+## 21. Integer conversion with digit truncation
 
-[Uint63Conversions.lean](../experiments/incremental-correspondence-20261019/proofs/Uint63Conversions.lean) 对所有 n 和 positive p 证明 of_pos_rec n p 对应 BitVec.ofNat 63 (p % 2^n)。例如 n=3、p=13 时保留低三位得到 5；完整 of_pos 使用 n=63。of_Z 的负整数分支对应 BitVec.ofInt 63，-1 的结果为 2^63-1。
+[Uint63Conversions.lean](../experiments/incremental-correspondence-20261019/proofs/Uint63Conversions.lean) for all n and positive p prove that of_pos_rec n p corresponds to BitVec.ofNat 63 (p % 2^n). For example, for n=3 and p=13, keep the lower three bits to get 5; for complete of_pos, use n=63. The negative integer branch of of_Z corresponds to BitVec.ofInt 63, and the result of -1 is 2^63-1.
 
-反向 to_Z_rec n x 对应 Int.ofNat (x.toNat % 2^n)，完整 to_Z 返回无符号整数值。以上结论来自全域证明，而非只验证示例输入。
+The reverse to_Z_rec n x corresponds to Int.ofNat (x.toNat % 2^n), and the complete to_Z returns an unsigned integer value. The above conclusion comes from the full domain proof, rather than just verifying the sample input.
 
-## 22. 两种位测试的统一语义
+## 22. Unified semantics of two bit tests
 
-[Uint63Operations.lean](../experiments/incremental-correspondence-20261019/proofs/Uint63Operations.lean) 分别证明 get_digit 与 bit 等于 BitVec.getLsbD，尽管两者的机械实现分别使用掩码和移位／零判定。set_digit 0 62 true 设置最高位，set_digit 5 63 true 保持 5；越界行为也保留在对应证明中。
+[Uint63Operations.lean](../experiments/incremental-correspondence-20261019/proofs/Uint63Operations.lean) proves that get_digit and bit are equal to BitVec.getLsbD, respectively, although their mechanical implementations use masks and shift/zero decisions respectively. set_digit 0 62 true sets the highest bit, set_digit 5 63 true keeps 5; out-of-bounds behavior is also retained in the corresponding proof.
 
-## 23. 从原生位运算性质回到机械定理
+## 23. From the properties of native bit operations back to mechanical theorems
 
-[Uint63Statements.lean](../experiments/incremental-correspondence-20261019/proofs/Uint63Statements.lean) 使用 BitVec.getLsbD 的 AND／OR／XOR 方程，结合已经证明的 bit 与原语运算对应，构造源 land_spec／lor_spec／lxor_spec 的证明。源结论仍使用机械 bool 与机械 Eq；通过对应转换回去，不把它们直接替换成原生类型。
+[Uint63Statements.lean](../experiments/incremental-correspondence-20261019/proofs/Uint63Statements.lean) uses the AND/OR/XOR equations of BitVec.getLsbD, combined with the proven correspondence between bit and primitive operations, to construct the proof of the source land_spec/lor_spec/lxor_spec. The source conclusion still uses mechanical bool and mechanical Eq; they are converted back through correspondence and are not directly replaced with native types.
 
-同一文件证明 of_Z (to_Z x) = x，对所有 63 位输入成立。[Uint63OrderSpecs.lean](../experiments/incremental-correspondence-20261019/proofs/Uint63OrderSpecs.lean) 则把源 Z 比较转到原生 Int 顺序，证明 ltb_spec／leb_spec。
+The same document proves that of_Z (to_Z x) = x, which holds for all 63 bit inputs. [Uint63OrderSpecs.lean](../experiments/incremental-correspondence-20261019/proofs/Uint63OrderSpecs.lean) transfers the source Z comparison to the native Int sequence to prove ltb_spec/leb_spec.
 
-## 24. 把位计数规格证明回机械 Z
+## 24. Prove the bit count specification back to the machine Z
 
-[Uint63CountSpecs.lean](../experiments/incremental-correspondence-20261019/proofs/Uint63CountSpecs.lean) 对非零 x 证明 x = (2*y+1)*2^ctz(x)，并显式把原生 Nat 见证 y 转为机械 Z，构造源 exists 证明。例如 x=40 时 ctz=3、y=2；证明覆盖所有输入，并未依靠此例枚举。
+[Uint63CountSpecs.lean](../experiments/incremental-correspondence-20261019/proofs/Uint63CountSpecs.lean) proves x = (2*y+1)*2^ctz(x) for non-zero x, and explicitly converts the native Nat witness y into a mechanical Z, construction source exists proof. For example, x=40 is ctz=3, y=2; the proof covers all inputs and does not rely on this example for enumeration.
 
-同一文件证明前导零给出的正规化范围 2^62 ≤ 2^clz(x)*x < 2^63。两项都复用已经完成的位计数、Z 算术、幂和顺序对应。
+The same document demonstrates that leading zeros give the normalized range 2^62 ≤ 2^clz(x)*x < 2^63. Both reuse the already completed bit counting, Z arithmetic, power and order correspondences.
 
-## 25. 有符号除法直接使用 BitVec API
+## 25. Use signed division directly BitVec API
 
-[Sint63Specs.lean](../experiments/incremental-correspondence-20261019/proofs/Sint63Specs.lean) 对所有 63 位字证明源 divs x y = x.sdiv y、mods x y = x.srem y。整数值规格进一步保留原有溢出例外：除法须排除 min_int / -1；余数没有该额外前提。
+[Sint63Specs.lean](../experiments/incremental-correspondence-20261019/proofs/Sint63Specs.lean) Proof source for all 63 bits divs x y = x.sdiv y, mods x y = x.srem y. The integer value specification further preserves the original overflow exception: division must exclude min_int / -1; remainder does not have this additional condition.
 
-算术右移对非负移位量等于 sshiftRight，包括超过字宽的移位；若移位量按有符号整数解释为负，则保持源函数返回零的行为。
+Arithmetic right shift equals sshiftRight for nonnegative shift amounts, including shifts beyond the word width; if the shift amount is interpreted as a negative signed integer, the behavior of the source function returning zero is maintained.
 
-## 26. 双字除法的商为什么能直接使用
+## 26. Why can the quotient of double word division be used directly?
 
-[Uint63WideSpecs.lean](../experiments/incremental-correspondence-20261019/proofs/Uint63WideSpecs.lean) 对 n = hi*2^63+lo，在 hi < divisor 时证明 n/divisor < 2^63，余数也小于 2^63。因此把商／余数装入 BitVec 63 不丢信息，源返回的两个机械 Z 值分别等于原生精确商和余数。
+[Uint63WideSpecs.lean](../experiments/incremental-correspondence-20261019/proofs/Uint63WideSpecs.lean) for n = hi*2^63+lo, when hi < divisor it is proved that n/divisor < 2^63, the remainder is also less than 2^63. Therefore loading the quotient/remainder into BitVec 63 does not lose information, and the two mechanical Z values ​​returned by the source are equal to the native exact quotient and remainder respectively.
 
-## 27. 数组的默认值参与外延性
+## 27. The default value of the array participates in extensionality
 
-[ArraySpecs.lean](../experiments/incremental-correspondence-20261019/proofs/ArraySpecs.lean) 证明有效元素、长度和默认值相同就得到原数组相等。越界读取使用默认值，因此不能只比较 Vector 内容。更新某个有效位置后，其他位置及默认值保持不变。
+[ArraySpecs.lean](../experiments/incremental-correspondence-20261019/proofs/ArraySpecs.lean) Prove that the valid elements, lengths and default values are the same and the original arrays are equal. Out-of-bounds reads use default values, so you cannot just compare the contents of Vector. After updating a valid location, other locations and default values ​​remain unchanged.
 
-## 28. 从字节串转换中得到完整往返
+## 28. Get full round trip from byte string conversion
 
-[StringRoundtrip.lean](../experiments/incremental-correspondence-20261019/proofs/StringRoundtrip.lean) 证明机械 of_list (to_list s) = s。原生一侧通过 Vector → List → 有界字节串，保留每个字节及长度，包括零字节。make i 256 的每个字节是 0；这项低 8 位行为在 makeSpec 中明确保留。
+[StringRoundtrip.lean](../experiments/incremental-correspondence-20261019/proofs/StringRoundtrip.lean) proves mechanical of_list (to_list s) = s. The native side passes Vector → List → bounded byte string, retaining every byte and length, including zero bytes. Each byte of make i 256 is 0; this low 8 bit behavior is explicitly retained in makeSpec.
 
-## 29. 字节串比较对应现成 List.compareLex
+## 29. Byte string comparison corresponds to ready-made List.compareLex
 
-[StringComparison.lean](../experiments/incremental-correspondence-20261019/proofs/StringComparison.lean) 的 primitiveCompare_agrees 将机械 compare 直接对应到 List.compareLex，以字节的无符号数值比较。长度不同但前缀相等时，较短串较小。证明对任意有界字节串成立，没有依赖有限样例枚举，也没有把原串解释成 Unicode。
+[primitiveCompare_agrees of StringComparison.lean](../experiments/incremental-correspondence-20261019/proofs/StringComparison.lean) directly corresponds to mechanical compare to List.compareLex, comparing the unsigned numerical values of bytes. When the lengths are different but the prefixes are equal, the shorter string is smaller. The proof holds for any bounded byte string without relying on a finite enumeration of examples or interpreting the original string as Unicode.
 
-## 30. 最近偶数舍入和负数右移
+## 30. Rounding to the nearest even number and right shift of negative numbers
 
-[SpecFloatRounding.lean](../experiments/incremental-correspondence-20261019/proofs/SpecFloatRounding.lean) 的 nearestEven_agrees 证明原机械舍入函数等于显式整数规则：恰好半单位时，3 增加到 4，4 保持 4；低于半单位不增加，高于半单位增加。
+[nearestEven_agrees of SpecFloatRounding.lean](../experiments/incremental-correspondence-20261019/proofs/SpecFloatRounding.lean) proves that the original mechanical rounding function is equal to the explicit integer rule: at exactly half a unit, 3 increases to 4, and 4 remains 4; below half a unit there is no increase, above half a unit it increases.
 
-[SpecFloatShift.lean](../experiments/incremental-correspondence-20261019/proofs/SpecFloatShift.lean) 的 shiftOne_agrees 对所有整数有效数字成立。例如有效数字 −3 单次右移得到 −1，同时记录低位为 1；这里使用 Int.tdiv，不把它误写成向下取整的 −2。
+[SpecFloatShift.lean](../experiments/incremental-correspondence-20261019/proofs/SpecFloatShift.lean) of shiftOne_agrees holds for all integer significant digits. For example, the effective digit −3 is shifted to the right once to obtain −1, and the low bit recorded is 1; Int.tdiv is used here, and it is not mistakenly written as −2 which is rounded down.
 
-## 31. 完整浮点舍入由已有对应组合
+## 31. Complete floating point rounding is composed of existing corresponding combinations
 
-[SpecFloatNormalize.lean](../experiments/incremental-correspondence-20261019/proofs/SpecFloatNormalize.lean) 证明 binary_round 的“对齐 → 指数调整 → 最近偶数舍入 → 溢出/零处理”完整链。输入精度和指数仍取原定义允许的所有整数值。目标是无 Rocq 符号的 SpecValue/Int/Nat 算法，并非 Lean 运行时 Float。
+[SpecFloatNormalize.lean](../experiments/incremental-correspondence-20261019/proofs/SpecFloatNormalize.lean) Complete chain of "alignment → index adjustment → nearest even rounding → overflow/zero handling" proving binary_round. The input precision and exponent still take all integer values ​​allowed by the original definition. The target is the SpecValue/Int/Nat algorithm without Rocq notation, not the Lean runtime Float.
 
-## 32. 符号浮点除法和平方根
+## 32. Signed floating point division and square roots
 
-[SpecFloatDivision.lean](../experiments/incremental-correspondence-20261019/proofs/SpecFloatDivision.lean) 的 divisionCore_agrees 将机械商与余数转换为 Int.fdiv/fmod；division_agrees 再接入完整 roundAux。NaN、无穷、零除及符号分支均覆盖。
+[divisionCore_agrees of SpecFloatDivision.lean](../experiments/incremental-correspondence-20261019/proofs/SpecFloatDivision.lean) converts the mechanical quotient and remainder to Int.fdiv/fmod; division_agrees then connects to the complete roundAux. NaN, infinity, division by zero and sign branches are covered.
 
-[SpecFloatSqrt.lean](../experiments/incremental-correspondence-20261019/proofs/SpecFloatSqrt.lean) 的 sqrtCore_agrees 将整数开方转换为 Nat.sqrt，同时证明余数以及 Exact/Lt/Gt 舍入位置；squareRoot_agrees 组合完整浮点开方，包括保留负零与负数返回 NaN。目标是原生精确符号算法，尚非 Lean Float.sqrt 的等价定理。
+[sqrtCore_agrees of SpecFloatSqrt.lean](../experiments/incremental-correspondence-20261019/proofs/SpecFloatSqrt.lean) converts the integer square root to Nat.sqrt while proving the remainder and Exact/Lt/Gt rounding position; squareRoot_agrees combines the full floating point square root, including retaining negative zeros and negative numbers to return NaN. The goal is a native exact symbolic algorithm, not yet an equivalence theorem for Lean Float.sqrt.
 
-## 33. 规范 binary64 的双向对应与整数开方
+## 33. Specify the bidirectional correspondence and integer square root of binary64
 
-[PrimFloatRepresentation.lean](../experiments/incremental-correspondence-20261019/proofs/PrimFloatRepresentation.lean) 中 floatIso 证明机械原语浮点与 Option ((Bool × Fin 2047 × BitVec 52) ⊕ Bool) 双向逆。正负零可区分，所有 NaN 按原语表示合为一个值。
+[PrimFloatRepresentation.lean](../experiments/incremental-correspondence-20261019/proofs/PrimFloatRepresentation.lean) in floatIso proves the bidirectional inverse of the mechanical primitive floating point and Option ((Bool × Fin 2047 × BitVec 52) ⊕ Bool). Positive and negative zeros can be distinguished, and all NaN are combined into one value according to the primitive representation.
 
-[PrimFloatSqrt.lean](../experiments/incremental-correspondence-20261019/proofs/PrimFloatSqrt.lean) 中 integerSqrt_agrees 对任意 n 证明源逐位开方 = Nat.sqrt n。证明先按 fuel 归纳建立 r*r ≤ n < (r+1)*(r+1)，再用 log2 确定足够的位数；squareRoot_agrees 用它组合完整符号浮点舍入。这不是 Float.sqrt 的等价证明。
+[PrimFloatSqrt.lean](../experiments/incremental-correspondence-20261019/proofs/PrimFloatSqrt.lean) integerSqrt_agrees for any n prove source bit-wise square root = Nat.sqrt n. It is proved that r*r ≤ n < (r+1)*(r+1) is first established by induction according to fuel, and then log2 is used to determine enough digits; squareRoot_agrees is used to combine the complete signed floating point rounding. This is not a proof of equivalence for Float.sqrt.
 
-## 34. 浮点表示转换和保留前提的规格陈述
+## 34. Specification statement for floating-point representation conversion and retention prerequisites
 
-[FloatOperations.lean](../experiments/incremental-correspondence-20261019/proofs/FloatOperations.lean) 的 fromSpec_agrees、toSpec_agrees 证明机械 SF2Prim、Prim2SF 等于原生字段表示上的具体转换算法。
+[fromSpec_agrees, toSpec_agrees of FloatOperations.lean](../experiments/incremental-correspondence-20261019/proofs/FloatOperations.lean) prove that mechanical SF2Prim, Prim2SF are equal to the specific conversion algorithm on the native field representation.
 
-[FloatStatements.lean](../experiments/incremental-correspondence-20261019/proofs/FloatStatements.lean) 的 specificationRoundtrip_correspondence 将源陈述完整对应为：
+[FloatStatements.lean](../experiments/incremental-correspondence-20261019/proofs/FloatStatements.lean)’s specificationRoundtrip_correspondence completely corresponds to the source statement as:
 ```lean
 ∀ x : nativeSpec, valid x = true → toSpec (fromSpec x) = x
 ```
-这里证明的是源陈述与此命题等价，保留了 valid 前提；尚未由这个证书独立证明该往返命题为真。primitiveRoundtrip、加法/除法/开方规格等也严格作同样区分。
+What is proved here is that the source statement is equivalent to this proposition, retaining the premise valid; the truth of this round-trip proposition has not been independently proven by this certificate. primitiveRoundtrip, addition/division/square root specifications, etc. are also strictly distinguished in the same way.
 
-## 35. SSR predicate package：对应包括承载类型
+## 35. SSR predicate package: Corresponding to the bearer type
 
-memPredType A 的载体是机械 mem_pred；原生载体是 A → Bool。先用 memIso 建立载体双向逆，再将 package 的谓词字段沿该 Iso 运输，得到：
+The carrier of memPredType A is mechanical mem_pred; the native carrier is A → Bool. First use memIso to establish the bidirectional inverse of the carrier, and then transport the predicate field of package along the Iso to get:
 
 ~~~lean
 rebase (predTypeTo A (Rocq.Corelib.ssr.ssrbool.memPredType A))
   (A → Bool) (memIso A) = predicates A
 ~~~
 
-predicates A = ⟨A → Bool, id⟩。这证明了转换后 package 的值等式；没有把两个不同 carrier 的原 package 直接视为相等。见 [完整证明](../experiments/incremental-correspondence-20261019/proofs/SSRPredicatePackages.lean)。
+predicates A = ⟨A → Bool, id　. This proves the value equality of the converted package; two different carriers of the original package are not directly considered equal. See [Full proof ](../experiments/incremental-correspondence-20261019/proofs/SSRPredicatePackages.lean).
 
-## 计算透明变体：依赖 Fin 与 Mathlib 素数定理
+## Computing transparent variants: relying on the Fin and Mathlib prime number theorems
 
-这两个例子仅针对独立透明定义版本。完整代码见 [Consumer.lean](../experiments/incremental-correspondence-20261019/transparent-data/Consumer.lean)，原冻结 opaque 声明没有被改写。
+These two examples are only for the standalone transparent definition version. The complete code can be found at [Consumer.lean](../experiments/incremental-correspondence-20261019/transparent-data/Consumer.lean), the original frozen opaque statement has not been rewritten.
 
-**良基递归返回依赖数据。** countdownStep 递归计算 n；机械 Fix_F_sub_rect 返回 Fin (机械递归结果 + 1)。通过递归值的对应等式运输后，它成为 Lean 的 Fin (原生递归结果 + 1)，并证明返回值等于 n、满足小于 n+1 的原生范围性质。Q 的取值是 Fin 数据类型，这里并非只处理 Prop 证明。
+**Liangji recursively returns dependent data. ** countdownStep recursively calculates n; mechanical Fix_F_sub_rect returns Fin (mechanical recursive result + 1). After being transported through the corresponding equation of the recursive value, it becomes Fin (the native recursive result + 1) of Lean, and it is proved that the return value is equal to n and satisfies the native range property of being less than n+1. The value of Q is the Fin data type. This is not just the Prop proof.
 
-**机械条件选择结果直接交给 Mathlib。** all_sig_cond_dep 在输入 n 为偶数时取提供的素数 2，否则保留默认值 0。转换后的结果具有原生类型：
+**The mechanical condition selection results are directly given to Mathlib. ** all_sig_cond_dep takes the supplied prime number 2 when the input n is even, otherwise the default value 0 is retained. The converted result has native type:
 
 ~~~lean
 {g : Nat → Nat // ∀ n, primeCondition n = true → Nat.Prime (g n)}
 ~~~
 
-mechanicalPrimeSelection_value 证明该函数等于 if n % 2 = 0 then 2 else 0。机械选择得到的素数证据经过转换后，直接调用 Mathlib 已有的 Prime.two_le，得到 2 ≤ g n；条件为假时不声称默认值 0 是素数。
+mechanicalPrimeSelection_value Show that this function is equal to if n % 2 = 0 then 2 else 0. After the prime number evidence obtained by mechanical selection is converted, the existing Prime.two_le of Mathlib is directly called to obtain 2 ≤ g n; when the condition is false, the default value 0 is not claimed to be a prime number.
 
-这两个消费例均已通过 kernel 和公理依赖检查，不增加源声明覆盖数。
+Both consumption cases have passed the kernel and axiom dependency checks without increasing the source declaration coverage count.

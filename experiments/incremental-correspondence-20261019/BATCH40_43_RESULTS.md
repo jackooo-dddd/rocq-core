@@ -1,52 +1,52 @@
-# 第四十至四十三批：依赖消去与数字表示
+# Batch 40 to 43: Dependency Elimination and Numerical Representation
 
-新增 **67 个去重根、67 份证书**，累计 **1731 / 2180**：130 类型根、695 运算根、906 完整原生陈述。其余为 100 只有接口、114 部分陈述、206 尚无证书、29 条件对应未完成。
+Added **67 deduplication roots, 67 certificates**, accumulative **1731 / 2180**: 130 type root, 695 operation root, 906 complete native statement. The rest are 100 with only interface, 114 with partial statements, 206 with no certificate yet, and 29 with incomplete condition correspondence.
 
-| 本批完成的模块 | 新增根 | 当前完成 / 总数 |
+| Modules completed in this batch | Add new root | Current completion / total |
 |---|---:|---:|
 | Numbers.BinNums | 12 | 15 / 15 |
 | Init.Decimal | 21 | 40 / 40 |
 | Init.Hexadecimal | 19 | 38 / 38 |
 | Init.Number | 15 | 17 / 17 |
 
-## 依赖消去器与归纳原则
+## Dependency Eliminator and Induction Principle
 
-[BinaryElimination.lean](proofs/BinaryElimination.lean) 的 6 个消去器证明覆盖随输入变化的返回类型：positive 对应正自然数 subtype 上的二进制递归，N 对应 Nat 的零／正数分支，Z 对应 Int 的零／正／负分支。
+[The 6 eliminator proofs of BinaryElimination.lean](proofs/BinaryElimination.lean) cover return types that vary with input: positive corresponds to binary recursion on positive natural numbers subtype, N corresponds to the zero/positive branch of Nat, and Z corresponds Zero/positive/negative branch of Int.
 
-rect 保留任意 Sort，rec 保留原 Type 范围。原生 motive 沿已证明的 Iso 拉回源类型。一个已检查的例子返回 Fin (n+1)，因此不是只证明常量返回类型。
+rect retains any Sort, and rec retains the original Type range. The native motive pulls back the source type along with the proven Iso. A checked example returns Fin (n+1), thus not just demonstrating a constant return type.
 
-6 个 ind/sind 陈述对应完整原生归纳／分支原则，同时各自有源陈述闭合证明。继上一批后，二进制类型和运算四个模块合计 101 / 101 根完成。
+6 ind/sind statements correspond to complete native induction/branching principles, and each has a source statement closed proofs. Following the previous batch, the four modules of binary type and operation totaling 101 / 101 are completed.
 
-## 数字表示的完整信息
+## Complete information represented by numbers
 
 [DecimalRepresentation.lean](proofs/DecimalRepresentation.lean)、[HexadecimalRepresentation.lean](proofs/HexadecimalRepresentation.lean)、[NumberRepresentation.lean](proofs/NumberRepresentation.lean)。
 
-| 源类型 | 原生表示 |
+| Source type | Native representation |
 |---|---|
-| Decimal.decimal | 带符号十进制整数数字 × 小数数字 × 可选带符号十进制指数 |
-| Hexadecimal.hexadecimal | 带符号十六进制整数数字 × 小数数字 × 可选带符号十进制指数 |
-| Number.number | 上述两个原生记录的 Sum，保留格式标签 |
+| Decimal.decimal | signed decimal integer number × decimal number × optional signed decimal exponent |
+| Hexadecimal.hexadecimal | signed hexadecimal integer number × decimal number × optional signed decimal exponent |
+| Number.number | Sum of the above two native records, retaining format tags |
 
-每项都证明两个逆律。前导零、空数字串、负零、是否显式写指数以及格式标签都保留。十六进制字面量的指数部分仍用十进制表示，不能统一替换成十六进制数字。
+Each proves two converse laws. Leading zeros, empty numeric strings, negative zeros, whether to write exponents explicitly, and format tags are all preserved. The exponent part of a hexadecimal literal is still expressed in decimal and cannot be uniformly replaced with hexadecimal numbers.
 
-完成的运算包括结构相等测试、首尾删除、尾零消除及计数、小端 double/succ_double、身份函数、依赖消去器、相等判定。目标使用 List、Fin、Bool、Prod、Option、Sum 和 Decidable 及其组合表达式。
+The completed operations include structural equality testing, head and tail deletion, tail zero elimination and counting, little endian double/succ_double, identity function, dependency eliminator, and equality determination. The target uses List, Fin, Bool, Prod, Option, Sum and Decidable and their combined expressions.
 
-源 del_head 在删去恰好全部数字时得到 []，超出长度时得到 [0]；del_head_int 丢弃符号，而 del_tail_int 保留符号。对应证明覆盖这些区别。十进制 12300 的尾零消除得到 ([1,2,3],2)；小端 [5,9] 加倍得到 [0,9,1]。负零和正零在表示上仍不同。这些例子均编译检查。
+Source del_head gets [] when exactly all the digits are deleted, and [0] when the length is exceeded; del_head_int drops the symbols, and del_tail_int keeps the symbols. Correspondence proofs cover these distinctions. Eliminating the trailing zeros of decimal 12300 gives ([1, 2, 3], 2); doubling little endian [5, 9] gives [0, 9, 1]. Negative zero and positive zero are still represented differently. These examples are compiled and checked.
 
-十六进制与 Number 的生成脚本只复用证明文本，分别在实际源模块闭包中重新检查，不新增或替换 Rocq 源声明。复用的辅助类型 Iso 不额外计根。
+The generation scripts for HEX and Number only reuse the proof text and recheck it in the actual source module closure respectively, without adding or replacing the Rocq source declaration. The multiplexed auxiliary type Iso does not count additional roots.
 
-## 相等判定的证明前提
+## Proof premise of equality judgment
 
-三个表示模块的 9 个 eq_dec 函数共 36 个前提均已给出闭合证明，并显式实例化原始 RocqPending 函数。证书陈述直接引用实际源函数；闭合包装函数另行审计。
+Closure proofs have been given for 9 eq_dec functions and a total of 36 premises of the three representation modules, and the original RocqPending function has been instantiated explicitly. Certificate statements directly reference the actual source function; closed wrapped functions are audited separately.
 
-输出 sumbool 转为原生 Decidable equality，并证明等于原生判定。原生比较的是完整表示，不是把字符串求数值后比较。机械产物的 331 个条件根不变，correspondence 层已完成其中 302 个，剩余 29 个。
+The output sumbool is converted to native Decidable equality, and proven to be equal to the native determination. The native comparison is the complete representation, not the numerical value of the string and then comparison. The 331 conditions of the mechanical product remain unchanged. The correspondence layer has completed 302, leaving 29.
 
-本批新增 20 份原陈述独立 Prop 证明，总数 220；没有把原生陈述 iff 直接当作原定理已证明。
+This batch adds 20 independent proofs of the original statement Prop, totaling 220; the original statement iff is not directly regarded as proven the original theorem.
 
-## 验证与下一步
+## Verification and next steps
 
-101 个增量 profile 有当前验证；92 个覆盖 profile、1475 份证书共同导入通过。1989 个导出入口、14200 个依赖副本。新目标递归检查无源符号，公理闭包均通过。
+101 increments profile have current verification; 92 certificates covering profile and 1475 have been jointly imported and passed. 1989 export entries and 14200 dependency copies. The new goal recursively checks sourceless symbols and axiomatic closures all pass.
 
-共同导入的检查入口增长后触发了审计代码的默认递归深度；check_all.py 将 maxRecDepth 显式设为 16384 后重新通过。检查内容与允许公理集合没有减少。
+The increase in the jointly imported check entry triggers the default recursion depth of the audit code; check_all.py re-passes after explicitly setting maxRecDepth to 16384. Check that the set of content and allowed axioms is not reduced.
 
-下一步继续 Init.Byte 的 9 个剩余根，再按共享依赖处理其他尚未完成模块。剩余 449 根不等于 449 个不可能对应的对象。
+The next step is to continue the 9 remaining roots of Init.Byte, and then process other unfinished modules according to shared dependencies. The remaining 449 roots are not equal to 449 objects that cannot be corresponding.

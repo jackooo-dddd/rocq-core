@@ -1,39 +1,39 @@
-# 第五十五至五十六批：63 位整数定义与转换
+# Batch 55 to 56: 63 digit integer definition and conversion
 
-新增 22 个去重根、22 份运算证书，1871 → **1893 / 2180**。Uint63Axioms 的 22 个透明定义全部完成；26 个规格陈述尚待后续批次。
+Added 22 deduplication roots, 22 operation certificates, 1871 → **1893 / 2180**. 22 transparent definitions of Uint63Axioms are all completed; 26 specification statements are pending for subsequent batches.
 
-## 定义对应（16 根）
+## Define corresponding (16 root)
 
-[Uint63Operations.lean](proofs/Uint63Operations.lean) 覆盖 digits、size、max_int、addcarry、addc_def、addcarryc_def、subc_def、subcarryc_def、diveucl_def、compare_def、is_zero、addmuldiv_def、is_even、get_digit、bit、set_digit。
+[Uint63Operations.lean](proofs/Uint63Operations.lean) coverage digits, size, max_int, addcarry, addc_def, addcarryc_def, subc_def, subcarryc_def, diveucl_def, compare_def, is_zero, addmuldiv_def, is_even, get_digit, bit, set_digit.
 
-- 加法／减法保留 63 位模运算；额外加一／减一的进位借位条件分别证明。
-- addc_def / subc_def 的标志对应 BitVec.uaddOverflow / usubOverflow。
-- get_digit 和 bit 都等于 getLsbD，索引超过 62 时仍有全域证明。
-- set_digit 只在索引小于 63 时更新；索引 63 保持原值，顶位 62 可设置。
-- addmuldiv_def 保留原函数使用的模 63 位减法计算移位量，未擅自换成自然数饱和减法。
-- compare_def 对应无符号 toNat 的 compare。
+- Addition/subtraction retains the 63 bit modulus operation; additional carry and borrow conditions for addition/subtraction by one are proven separately.
+- The logo of addc_def / subc_def corresponds to BitVec.uaddOverflow / usubOverflow.
+- get_digit and bit are both equal to getLsbD, and there is still a global proof when the index exceeds 62.
+- set_digit is only updated when the index is less than 63; the index 63 maintains the original value, and the top bit 62 can be set.
+- addmuldiv_def retains the modulus 63 bit subtraction used by the original function to calculate the shift amount, and does not replace it with natural number saturated subtraction without authorization.
+- compare_def corresponds to compare of unsigned toNat.
 
-## 数值转换（6 根）
+## Numeric conversion (6 root)
 
 [Uint63Conversions.lean](proofs/Uint63Conversions.lean)：
 
-| 源定义 | 已证明的原生结果 |
+| source definition | Proven native results |
 |---|---|
 | of_pos_rec n p | BitVec.ofNat 63 (positiveTo p % 2^(natTo n)) |
 | of_pos p | BitVec.ofNat 63 (positiveTo p) |
 | of_Z z | BitVec.ofInt 63 (zTo z) |
-| wB | 整数 2^63 |
+| wB | Integer 2^63 |
 | to_Z_rec n x | Int.ofNat (x.toNat % 2^(natTo n)) |
 | to_Z x | Int.ofNat x.toNat |
 
-两个递归证明覆盖任意 fuel，不仅是最终调用的 63；of_Z 包括任意负整数。机械 positive/Z/nat 本身保持独立结构，转换等式单独证明。
+The two recursive proofs cover any fuel, not just the final call of 63; of_Z includes any negative integer. The mechanical positive/Z/nat itself maintains an independent structure, and the conversion equation is proved separately.
 
-证明通过逐位归纳和低位模数分解完成。to_Z_rec 的递归器 motive 显式保持源类型写法，避免检查时因类型别名引发昂贵定义展开；没有提高信任范围或加入公理。
+The proof is done by bitwise induction and low-bit modular decomposition. The recurser motive of to_Z_rec explicitly maintains the source type writing to avoid expensive definition expansion caused by type aliases during checking; it does not increase the trust scope or add axioms.
 
-## 统计与检查
+## Statistics and Inspection
 
-154 个类型根、793 个运算根、946 个完整原生陈述，共 1893。剩余：27 仅接口、82 部分陈述、161 尚无证书、17 条件根未完成，共 287。
+154 type roots, 793 operation roots, 946 complete native statements, totaling 1893. Remaining: 27 interface only, 82 partial statement, 161 no certificate yet, 17 conditional root incomplete, total 287.
 
-115 个 profile 验证通过，1637 份增量证书通过公理闭包与原生目标检查。106 个覆盖 profile 共同导入成功，共 2203 个入口、16332 个依赖副本；入口／副本数不是去重根数。独立原陈述证明仍为 260，条件剩余仍为 17。
+115 profile certificates passed the verification, and 1637 incremental certificates passed the axiom closure and native target checks. 106 covering profile were jointly imported successfully, with a total of 2203 entries and 16332 dependent copies; the number of entries/copies is not the number of deduplication roots. The independent original statement certificate is still 260, and the remaining condition is still 17.
 
-本批没有重跑全部机械翻译或所有冻结基线证明。编译产物和中间探测仍只在远程 .work。下一步独立证明位运算、相等判断和整数转换往返规格，再处理剩余算术与有符号规格。
+This batch does not rerun all mechanical translations or all frozen baseline proofs. Compile products and intermediate probes are still only on remote .work. The next step is to independently prove bitwise operations, equality judgments, and integer conversion round-trip specifications, and then deal with remaining arithmetic and signed specifications.

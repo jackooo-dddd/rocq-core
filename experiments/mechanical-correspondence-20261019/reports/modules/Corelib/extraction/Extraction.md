@@ -1,7 +1,7 @@
 # Corelib.extraction.Extraction
 
-每项对应机械翻译基线中的一个 root。完整 native statement / interface 类型在总 JSON 文件中。
+Each entry corresponds to one root in the mechanical translation baseline. The complete native statement / interface types are in the aggregate JSON file.
 
 
 
-本基线中没有独立 kernel root 声明（例如 notation、tactic、兼容性导入或导出配置）。这不是翻译失败。
+There are no independent kernel root declarations (such as notation, tactic, compatibility import or export configurations) in this baseline. This is not a translation failure.

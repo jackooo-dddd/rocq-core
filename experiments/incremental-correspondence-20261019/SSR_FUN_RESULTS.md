@@ -1,46 +1,46 @@
-# SSR 函数谓词与陈述原生化
+# SSR Function predicate and statement nativeization
 
-本批新增 **79 个完成根**：27 个谓词、50 个完整原生陈述、2 个类型对应。另为已完成的 5 个 SSR Option 运算补充完整 Sort 参数的证明，不重复增加完成根。本批共新增 84 份覆盖证书。
+This batch adds **79 completion roots**: 27 predicates, 50 complete native statements, and 2 type correspondences. In addition, the proof of the complete Sort parameters is supplemented for the completed 5 SSR Option operations without repeatedly adding completion roots. A total of 84 coverage certificates were added in this batch.
 
-ssrfun 的 128 根中，目前 101 根属于完成类别：2 类型、44 运算、55 完全原生陈述；仍有 27 根待处理（11 只有接口、10 尚无证书、6 带条件）。本批另一个新类型根 NonPropType.type 属于 ssreflect_rw。
+Among the 128 roots of ssrfun, currently the 101 root belongs to the completion category: 2 type, 44 operation, 55 fully native statement; there are still 27 roots to be processed (11 only interface, 10 No certificate yet, 6 with conditions). Another new type root NonPropType.type in this batch belongs to ssreflect_rw.
 
-**27 个谓词**
+**27 predicates**
 
-同态、运算保持、分配律、交换律、左右逆、左右消去、左右零元、幂等性、二元单射等，均转成只含 Lean 原生类型变量、函数应用、Eq、量词、蕴含及 And 的谓词。逐项完整表达式见 [谓词结果](reports/ssrfun-predicate-candidates.json)。
+Homomorphism, operation preservation, distributive law, commutative law, left and right inverse, left and right elimination, left and right zero elements, idempotence, binary injectivity, etc., are all converted into predicates containing only Lean primitive type variables, function application, Eq, quantifiers, implication and And. For the item-by-item complete expression, see [predicate result ](reports/ssrfun-predicate-candidates.json).
 
-#ssr_predicate 对指定的透明谓词读取实际定义体，实例化参数后使用已证 iff 归一化，生成原生函数及逐点 iff。原生函数体和参数类型均检查源符号，证书由 kernel 接受。这覆盖当前 27 个谓词的自动目标生成，不代表任意计算函数的原生目标自动合成。它们归入“原生组合表达式”，没有冒充同名 Mathlib API。
+#ssr_predicate reads the actual definition body of the specified transparent predicate, instantiates the parameters and uses the proven iff normalization to generate the native function and point-wise iff. Both native function bodies and parameter types are checked for source symbols, and certificates are accepted by kernel. This overrides the automatic target generation of the current 27 predicates and does not represent the automatic target synthesis of any compute function. They fall under "native combination expressions" and do not pretend to have the same names Mathlib API.
 
-**2 个类型对应**
+**2 types corresponding**
 
-| 源类型／命题 | 原生对应 | 范围 |
+| source type/proposition | Native correspondence | Scope |
 |---|---|---|
-| ssrfun.bijective A B f | 存在逆函数 g，并满足两边的取消律 | A、B : Type；命题 Iso 的两个方向均证明；不是任意函数都双射 |
-| ssreflect_rw.NonPropType.type | Bool × Type u | 保留布尔元数据以及载体类型；两个逆律均证明 |
+| ssrfun.bijective A B f | The inverse function g exists and satisfies the cancellation laws on both sides | A, B: Type; Proposition Iso is proved in both directions; not any function is bijective |
+| ssreflect_rw.NonPropType.type | Bool × Type u | Preserves Boolean metadata as well as carrier type; both inverse laws prove |
 
-NonPropType 不能在保持双向逆的同时简单丢掉布尔字段。本批保留该字段；Some_inj 的陈述随后在这个原生表示上归一化。
+NonPropType You cannot simply drop the boolean field while maintaining the bidirectional inverse. This field is retained in this batch; the representation of Some_inj is then normalized on this native representation.
 
-**Option 与 50 个陈述**
+**Option and 50 statements**
 
-原有 Option 运算证书主要覆盖 Type 参数。源导出允许 Sort 参数，因此本批使用 Option (PLift A)：
-- map、bind、apply、default、lift 分别对应原生 Option.map、bind、elim、getD、some，载荷的 PLift.up/down 显式出现。
-- 量词和返回 Option 的函数参数通过双向转换搬运；函数相等先化为逐点相等。
-- 转换与 Option.elim 的交换引理使同一规则覆盖多个陈述。
-- 源 Sum 对应 PSum；sig/sig2 的量词和投影使用 Subtype；unit 使用 Unit。
-- 空域上的全称命题可化为 True，依据 Empty_set 没有构造器的通用证明；没有把任意源定理替换成 True。
+The original Option calculation certificate mainly covers Type parameters. Source export allows Sort parameters, so this batch uses Option (PLift A):
+- map, bind, apply, default, and lift respectively correspond to the native Option.map, bind, elim, getD, and some, and the loaded PLift.up/down appear explicitly.
+- Quantifiers and function parameters returning Option are transported through bidirectional conversion; function equality is first converted to point-by-point equality.
+- Transformation with the commutative lemma of Option.elim enables the same rule to cover multiple statements.
+- The source Sum corresponds to PSum; the quantifiers and projections of sig/sig2 use Subtype; unit uses Unit.
+- The universal proposition in the air domain can be reduced to True. According to Empty_set, there is no general proof of constructor; there is no replacement of the arbitrary source theorem with True.
 
-选取的 50 个原部分陈述均得到无源符号的原生目标和 kernel 检查的 iff，见 [逐陈述结果](reports/ssrfun-statement-candidates.json)。这是陈述对应；本批没有新增这 50 个业务定理的独立证明，也没有关闭剩余 6 个条件根。
+The selected original part statements 50 all got native targets of unsourced symbols and kernel checked for iff, see [statement-by-statement result ](reports/ssrfun-statement-candidates.json). This is statement correspondence; this batch does not add independent proofs of these 50 original theorem, nor does it close the remaining 6 conditional roots.
 
-**文件与验证**
+**Documentation and Verification**
 
-- proofs/SSRFunNormalization.lean：bijective、逻辑、Subtype、Sum 与 unit 的对应。
-- proofs/SSRFunPredicates.lean、ssrfun-predicate-command.lean.inc：谓词目标生成和证明。
-- proofs/SSRFunOption.lean：完整 Sort 的 Option 桥接与原生 API 等式。
-- proofs/SSRNonProp.lean：NonPropType 的无损表示。
-- proofs/SSRFunStatements.lean：50 个陈述的归一化及 iff。
-- reports/ssrfun-module-coverage.json：模块分类与剩余 27 根。
+- proofs/SSRFunNormalization.lean: Correspondence of bijective, logic, Subtype, Sum and unit.
+- proofs/SSRFunPredicates.lean, ssrfun-predicate-command.lean.inc: Predicate target generation and proof.
+- proofs/SSRFunOption.lean: Option bridge of complete Sort and native API equations.
+- proofs/SSRNonProp.lean: Lossless representation of NonPropType.
+- proofs/SSRFunStatements.lean: Normalization of 50 statements and iff.
+- reports/ssrfun-module-coverage.json: Module classification with remaining 27 root.
 
-复查这批时执行 verify.py SSRFunNormalization SSRFunPredicates SSRFunOption SSRNonProp SSRFunStatements，再运行 make_report.py、对应五个 profile 的 interop/pack_all.py、interop/check_all.py 和 make_report.py。复用原 pinned Lean 和机械快照，不安装依赖，不重跑整个旧基线。临时探测和构建文件留在远程 .work。
+When reviewing this batch, execute verify.py SSRFunNormalization SSRFunPredicates SSRFunOption SSRNonProp SSRFunStatements, then run make_report.py, interop/pack_all.py, interop/check_all.py and make_report.py corresponding to five profile. Reuse the original pinned Lean and mechanical snapshots without installing dependencies or rerunning the entire old baseline. Temporary probe and build files are left on the remote .work.
 
-当前全项目完成类别为 **1238 / 2180**：69 类型、450 运算、719 完全原生陈述。本批之后仍需继续处理剩余包装类型、条件义务和其它模块。
+The current full project completion category is **1238 / 2180**: 69 type, 450 operation, 719 completely native statement. The remaining packaging types, conditional obligations and other modules will still need to be processed after this batch.
 
-本批共同导入通过：63 个覆盖 profile 中的全部 976 份当前覆盖证书；全工作区 68 个验证 profile 有与源码和依赖一致的成功记录。
+This batch of joint imports passed: 63 covering all 976 current coverage certificates in profile; 68 verification profile in the entire workspace has a successful record consistent with the source code and dependencies.

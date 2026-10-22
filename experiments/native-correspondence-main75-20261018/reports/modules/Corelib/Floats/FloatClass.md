@@ -1,13 +1,13 @@
 # Corelib.Floats.FloatClass
 
-每项对应机械翻译基线中的一个 root。完整 native statement / interface 类型在总 JSON 文件中。
+Each entry corresponds to one root in the mechanical translation baseline. The complete native statement / interface types are in the aggregate JSON file.
 
 
 
 ## Corelib.Floats.FloatClass.float_class
 
-状态：TYPE_ISO。已证明双向逆；具体参数、Type/Sort 范围见证书类型。
+Status: TYPE_ISO. Proven bidirectional inversion; specific parameters, Type/Sort range witness certificate type.
 
-原始目标：Rocq.Corelib.Floats.FloatClass.float_class
+Original target: Rocq.Corelib.Floats.FloatClass.float_class
 
-操作/类型证书：NativeBridge.floatClassIso
+Operation/Type Certificate: NativeBridge.floatClassIso

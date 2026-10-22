@@ -1,40 +1,40 @@
-# Nat 机械翻译案例
+# Nat mechanical translation case
 
-后续增量：Init.Nat 的 58 个根现均有明示范围内的对应，gcd 条件已闭合，sqrt/log2 与七种数字打印已对应原生 API，见 [Nat 最新结果](../../experiments/incremental-correspondence-20261019/NAT_COMPLETION_RESULTS.md)。本案例逐项表保留构建时的证明快照，最新状态以 [增量账本](../../experiments/incremental-correspondence-20261019/reports/CORELIB_LEDGER.csv) 为准。
+Subsequent increments: 58 roots of Init.Nat now have correspondences within the explicit range, gcd conditions have been closed, sqrt/log2 and seven digital prints have corresponded to the native API, see [Nat latest result ](../../experiments/incremental-correspondence-20261019/NAT_COMPLETION_RESULTS.md). The item-by-item table in this case retains the proof snapshot at the time of construction, and the latest status is based on [incremental ledger ](../../experiments/incremental-correspondence-20261019/reports/CORELIB_LEDGER.csv)].
 
-本案例收录 Rocq Corelib 中 Nat 的源定义、函数、翻译过程证据、Lean 实际输出及现有 correspondence 证明。基线为 mechanical-nat-eq-20261019/full-v1：源 nat/eq 都生成独立归纳类型，bootstrap 表为空。
+This case includes the source definition, function, translation process evidence of Nat in Rocq Corelib, the actual output of Lean and the existing correspondence certificate. Baseline is mechanical-nat-eq-20261019/full-v1: Source nat/eq all generate independent inductive types, bootstrap table is empty.
 
-## 从哪里开始
+## where to start
 
-1. [类型、构造器和加法的翻译流程](TRANSLATION_FLOW.md)：先看具体例子。
-2. [99 个声明的前后对照](DECLARATIONS.md)：点击每项查看实际 Lean 正文、尝试与对应证书；另有 [CSV](DECLARATIONS.csv)。
-3. [原生 Nat 对应证明与缺口](CORRESPONDENCE.md)：区分类型双射、运算对应、接口往返和陈述 iff。
-4. [文件阅读指南](FILES.md)及[每一个导出文件的解释](EXPORT_FILES.md)。
-5. [全 Corelib 范围演变](SCOPE.md)：709 → 839 → 2180。
+1. [Translation process of types, constructors and addition ](TRANSLATION_FLOW.md): Let’s look at specific examples first.
+2. [99 before and after statements ](DECLARATIONS.md): click on each item to view the actual Lean body, attempts and corresponding certificates; and [CSV](DECLARATIONS.csv).
+3. [Native Nat correspondence proof and gap ](CORRESPONDENCE.md): Distinguish type bijection, operational correspondence, interface round trip, and statement iff.
+4. [File reading guide ](FILES.md) and [Explanation of each exported file ](EXPORT_FILES.md).
+5. [Full Corelib range evolution ](SCOPE.md): 709 → 839 → 2180.
 
-## 收录范围
+## Inclusion range
 
-| 来源 | 专题根数 | 内容 |
+| Source | Number of topics | content |
 |---|---:|---|
-| Init.Datatypes | 5 | nat、nat_ind、nat_rec、nat_rect、nat_sind；O/S 随归纳块记录 |
-| Init.Nat | 58 | 常量、算术、比较、递归辅助、除法、位操作、数字表示转换 |
-| Init.Peano | 36 | 大小关系、消去辅助及定理陈述 |
-| 合计 | 99 | 不是整个2180根范围，也不是 Nat 的所有传递客户端 |
+| Init.Datatypes | 5 | nat, nat_ind, nat_rec, nat_rect, nat_sind; O/S recorded with inductive block |
+| Init.Nat | 58 | Constants, arithmetic, comparison, recursive auxiliary, division, bit operations, numerical representation conversion |
+| Init.Peano | 36 | Large and small relations, elimination aids and theorem statements |
+| Total | 99 | Not the entire 2180 root range, nor all passing clients of Nat |
 
-为保留源码上下文，source/、records/ 和 lean/ 中放的是三个完整模块，其中 Datatypes 还包含其他类型。专题统计只选择上述99项。
-另有 [CORELIB_NAT_REFERENCES.csv](CORELIB_NAT_REFERENCES.csv)：整个2180根范围中，最终目标 AST 直接引用机械 nat/其构造器与消去器或 Init.Nat 运算的149个根（含 quality 分支后去重）。这不是传递依赖闭包，不等于“所有与自然数相关的声明”。
+To preserve source code context, source/, records/ and lean/ contain three complete modules, of which Datatypes also contains other types. Only the above-mentioned 99 items are selected for thematic statistics.
+There is also [CORELIB_NAT_REFERENCES.csv](CORELIB_NAT_REFERENCES.csv): In the entire 2180 root range, the final target AST directly references the 149 roots of the mechanical nat/ and its constructor and eliminator or the Init.Nat operation (including quality deduplication after the branch). This is not a transitive dependency closure, which is not equivalent to "all declarations related to natural numbers".
 
-机械结果：65项完整定义/数据类型、33项定理/公理陈述、1项带条件定义（gcd），0项受阻。33项陈述检查通过不等于定理证明已迁移。详见 [summary.json](summary.json)。
+Mechanical results: 65 item complete definition/data type, 33 item theorem/axiom statement, 1 item with conditional definition (gcd), 0 item blocked. The 33 item statement check has been migrated through the inequality theorem proof. See [summary.json](summary.json) for details.
 
-## 阅读和运行
+## read and run
 
-Mac 上可直接阅读本目录全部文本、JSON和证明源码。Lean 入口仍引用远程冻结运行的绝对路径，不能当成已打包的可同时 import 的便携库。
+You can directly read the entire text of this catalog, JSON and the certification source code on Mac. The Lean entry still refers to the absolute path of the remote freeze run, and cannot be regarded as a packaged portable library that can simultaneously run import.
 
-在远程仓库根运行：
+Run at the root of the remote repository:
 
     python3 results/casestudy/build.py
     python3 results/casestudy/verify.py
 
-build.py 从已有冻结证据重建索引和副本，不重新翻译。verify.py 核对副本并重新检查主要对应证明及一个机械加法例子；结果写 VALIDATION.json，缓存和完整新日志只写被忽略的 .work/。需要既有远程 Lean 工具链和生成模块缓存。
+build.py Rebuild the index and copy from the existing frozen evidence without re-translation. verify.py checks the copy and rechecks the main correspondence proof and a mechanical addition example; the result is written VALIDATION.json, and the cached and complete new log only writes the ignored .work/. Requires existing remote Lean toolchain and build module cache.
 
-Nat 对应证明是翻译后的独立步骤，不参与机械翻译选择规则。这里没有新增 Mathlib 互操作验证，也不承诺生成类型支持 #eval；计算例子使用内核归约与 rfl。
+Nat correspondence proof is an independent step after translation and does not participate in the mechanical translation selection rules. There is no new Mathlib interoperability verification, nor is there any commitment to generate type support for #eval; the calculation example uses kernel reduction with rfl.

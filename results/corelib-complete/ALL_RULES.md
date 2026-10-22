@@ -1,227 +1,227 @@
-机械 nat／eq 基线：当前规则与机制完整审阅清单
+Mechanical nat/eq Baseline: Complete Review Checklist of Current Rules and Mechanisms
 
-依据：experiments/mechanical-nat-eq-20261019/translator 的冻结源码。范围：当前实现中可独立说明的翻译、源准备、表示转换、求解、检查和调度机制；不逐一复制每个程序分支。
+Basis: frozen source code of experiments/mechanical-nat-eq-20261019/translator. Scope: The translation, source preparation, representation conversion, solving, inspection, and scheduling mechanisms in the current implementation are independently accountable; each program branch is not copied one by one.
 
-本清单保留 118 个审阅条目（T06 是已停用的历史编号，当前其余 117 个条目仍包含校验与调度机制），另附从 Translate.lean 自动提取的 61 个原语操作映射。E/T/M/U/C/L/Q/N/V/S 是本次整理编号，不是原代码新增规则编号，也不是形式化最小规则集的计数。原有 R…、P… 名称保留。不同 ladder 开关组合不重复计为规则；代码中保留的机制也不保证都在本次 Corelib 根声明中命中。
+This list retains 118 review entries (T06 is a deactivated historical number, and the remaining 117 entries currently still contain verification and scheduling mechanisms), and 61 primitive operation mappings automatically extracted from Translate.lean are attached. E/T/M/U/C/L/Q/N/V/S is the number of this arrangement, not the number of new rules in the original code, nor the count of the formal minimum rule set. The original R…, P… names are retained. Different ladder switch combinations are not counted repeatedly as rules; the mechanisms retained in the code are not guaranteed to be hit in this Corelib root statement.
 
-对应结果：67 个源模块、2180 个原始根声明，当前固定范围 0 受阻。这里的成功包含陈述和带条件的定义；普通定理陈述不是定理证明。这个范围通过不意味着任意 Rocq 程序都可翻译。
+Corresponding results: 67 source modules, 2180 original root declarations, the current fixed range 0 is blocked. Success here includes statements and conditional definitions; ordinary theorem statements are not theorem proofs. This scope does not mean that any Rocq program can be translated.
 
-| 组 | 内容 | 条目数 |
+| group | content | Number of entries |
 |---|---|---:|
-| E | 声明、导出与证明条件 | 14 |
-| T | 基本项与数据类型 | 11 |
-| M | 匹配、递归和计算转换 | 13 |
-| U | 宇宙解释与求解 | 36 |
-| C | 源端可转换展开 | 7 |
-| L | 显式表示转换 | 10 |
-| Q | Sort quality 多态 | 7 |
-| N | 原语表示与适配 | 6 |
-| V | 接受条件与独立验证（不是产生译文的改写规则） | 9 |
-| S | 尝试调度与状态管理（不另算语义规则） | 5 |
+| E | Declaration, derivation and proof conditions | 14 |
+| T | Basic items and data types | 11 |
+| M | Matching, recursion and calculation transformations | 13 |
+| U | Universe explanation and solution | 36 |
+| C | Source-side convertible expansion | 7 |
+| L | explicit conversion | 10 |
+| Q | Sort quality polymorphic | 7 |
+| N | Primitive representation and adaptation | 6 |
+| V | Acceptance conditions and independent verification (not rewriting rules that produce translations) | 9 |
+| S | Try scheduling and state management (not counting semantic rules) | 5 |
 
 <!-- usage-method-start -->
 
-**使用次数口径**
+**Number of times used**
 
-分母为2180个原始根。左数是主表示满足统计条件的根数；右数将附带 quality 分支纳入后按根去重。它们都不是函数调用次数。源端元数据、产物结构、处理范围、模块验证结果、尝试记录、策略标志、结果报告字段分别标明；结果字段非空不自动意味着发生一次改写。部分子机制只统计依据中指明的部分，整个条目的使用数仍未知；未单独记录用 null，不以 0 代替。T06 已停用，保留编号仅供历史比较。每条的计数单位、限制、重复统计条件和完整名单见 JSON／CSV。Q05/Q06、U06/V05 等共用证据，不得相加。
+The population is 2180 original roots. The left count selects roots by their primary representation; the right includes quality branches and deduplicates by root. Neither measures invocations. Evidence is classified as source metadata, artifact structure, processing scope, module validation, attempt records, policy flags, or result report fields. A nonempty field does not automatically show a rewrite. Partial-submechanism counts cover only the part specified in basis; total entry usage remains unknown. Missing independent records are null, not 0. T06 is disabled and retained for historical comparison. JSON/CSV records give units, limitations, shared predicates, and full name lists. Shared evidence such as Q05/Q06 and U06/V05 cannot be added together.
 
-各证据类别的含义、如何理解次数及例子见 [RULE_USAGE.md 开头的解释表](RULE_USAGE.md)。失败重试的开关启用也单列在那里，不混入最终命中。全部声明名单见 [RULE_USAGE.json](RULE_USAGE.json)，筛选表见 [RULE_USAGE.csv](RULE_USAGE.csv)。
+For the meaning of each evidence category, how to understand the number and examples, please see the [explanation table at the beginning of RULE_USAGE.md](RULE_USAGE.md). The switch enable for failed retries is also listed there separately and is not mixed in with the final hit. See [RULE_USAGE.json](RULE_USAGE.json) for the full declaration list, and see [RULE_USAGE.csv](RULE_USAGE.csv) for the screening list.
 
 <!-- usage-method-end -->
 
-**E：声明、导出与证明条件**
+**E: Declaration, Export and Proof Conditions**
 
-源码位置（相对冻结 translator）：rocq/exporter/src/r2l_export.ml；Rocq2Lean/Emit.lean；Rocq2Lean/Assemble.lean。
+Source code location (relatively frozen translator): rocq/exporter/src/r2l_export.ml; Rocq2Lean/Emit.lean; Rocq2Lean/Assemble.lean.
 
-| 审阅编号 | 规则／机制 | 行为与边界 | 主项 / 含分支根数 | 统计依据 |
+| Review number | Rule / mechanism | behavior and boundaries | Main item / including number of branches | Statistical basis |
 |---|---|---|---|---|
-| E01 | 依赖闭包导出 | 导出声明及依赖，记录原生宇宙事实、实例、透明性、quality、relevance 和 body_state；按依赖顺序处理。 | 2180 / 2180（处理范围） | 原始根的导出覆盖；非函数调用次数。 |
-| E02 | 归约后分类 | 沿类型的乘积和透明归约识别最终 Prop/SProp；不能仅凭未归约的表面 Type 分类。 | 2070 / 2070（源端元数据） | 参与声明分类的常量；未拆分归约分支。 |
-| E03 | 普通定理／公理的 statement 模式 | 翻译命题为 Prop 的定义，不把原公理变成 Lean axiom，也不默认搬运普通定理证明。 | 1029 / 1029（产物结构） | 最终陈述产物。 |
-| E04 | 嵌入证明抽取 | 计算定义中的证明片段抽成命名 obligation；需要时在目标声明前增加显式假设参数。 | 244 / 244（源端元数据） | 自身源 IR 带 obligations；不等于所有继承待证条件的根。 |
-| E05 | 局部证明应用保留 | 以局部假设为头的证明应用保留；其中构造出的证明参数仍按源端准备规则处理。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| E06 | 证明结构保留重试 | 准备失败时，可保留构造器形证明及引用的证明应用结构；所需全局证明仍作为明确前提。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| E07 | 中性证明投影保留 | 单构造器 proof 的投影／取字段 match 可保留；透明头仅在符合限定形状时展开。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| E08 | 透明计算定义 | 源定义的类型及正文均翻译，注册为 Lean def。 | 934 / 934（产物结构） | 最终 def 产物覆盖。 |
-| E09 | 不透明数据定义 | opaque_data 的准备后正文仍检查并注册为 Lean opaque，保持不透明性。 | 107 / 107（产物结构） | 最终 opaque 产物覆盖，含 quality family。 |
-| E10 | 不透明接口策略 | opaque_interface 策略仅导出类型接口和数据任务；不能与保留实现的 opaque_data 混为一谈。 | 0 / 0（结果报告字段） | 原始根最终采用 opaque_interface。 |
-| E11 | 封装实现准备 | 准备 sealed module／锁定实现时保留源端重新检查，不能把解封装作为不受检查的改写。 | 7 / 7（源端元数据） | 源准备 sealed_implementation=true。 |
-| E12 | 多态条件与状态 | 条件按所需宇宙实例使用；最终 pending 状态依据实际剩余假设，源转换后不用的条件可消除。 | 331 / 331（产物结构） | 最终有显式条件；条件合并／消除的内部次数未单列。 |
-| E13 | 延后 guard 处理 | 源准备可将某些 guard 问题交给后续结构／良基转换；延后本身不等于终止性证明。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| E14 | 条件装配 | Assemble 可使用经检查的外部证明填充任务、重译依赖并保留 opaque；不是自动证明器。 | 0 / 0（本次未启用） | 本次运行未装配外部证明；0 描述实验配置，非条件装配函数调用计数。 |
+| E01 | Dependency closure export | Export declarations and dependencies, record native universe facts, instances, transparency, quality, relevance and body_state; processed in dependency order. | 2180 / 2180（Processing scope） | Export override of original root; non-function call count. |
+| E02 | Classification after reduction | The product and transparent reduction along the types identify the final Prop/SProp; the unreduced surface Type cannot be classified alone. | 2070 / 2070（Source metadata） | Constants participating in declaration classification; reduction branch not split. |
+| E03 | statement mode for ordinary theorems/axioms | Translate the proposition as a Prop-valued definition; do not turn source axioms into Lean axioms or transfer ordinary theorem proofs by default. | 1029 / 1029（Artifact structure） | Final presentation product. |
+| E04 | Embedded proof extraction | The proof fragment in the calculation definition is named obligation; if necessary, add explicit assumption parameters before the target statement. | 244 / 244（Source metadata） | Self source IR with obligations; not equal to the root of all inherited unproven conditions. |
+| E05 | Local proof application preservation | Proofs starting with local assumptions should be retained; the proof parameters constructed therein are still processed according to the source preparation rules. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| E06 | Retry preserving proof structure | When preparation fails, the constructor-shaped proof and the referenced proof application structure may be retained; the required global proof remains as an explicit prerequisite. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| E07 | Neutral proof projection preservation | The projection/getting field match of the single constructor proof can be retained; the transparent header is only expanded when it conforms to the defined shape. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| E08 | Transparent computational definitions | The type and body of the source definition are translated and registered as Lean def. | 934 / 934（Artifact structure） | The final def product coverage. |
+| E09 | Opaque data definitions | The prepared body of opaque_data is still checked and registered as Lean opaque, maintaining opacity. | 107 / 107（Artifact structure） | The final opaque product coverage includes quality and family. |
+| E10 | Opaque interface policy | The opaque_interface policy exports only the type interface and data tasks; it cannot be confused with the implementation-preserving opaque_data. | 0 / 0（Result report fields） | The original root ended up being opaque_interface. |
+| E11 | Sealed implementation preparation | Preparation sealed module/Lock implementation preserves source-side rechecking and cannot treat decapsulation as an unchecked override. | 7 / 7（Source metadata） | Source preparation sealed_implementation=true. |
+| E12 | Polymorphic prerequisites and state | Conditions are used as required for the universe instance; the final pending state is based on realistic residual assumptions, and unused conditions can be eliminated after source conversion. | 331 / 331（Artifact structure） | Finally there are explicit conditions; internal times of conditional merging/elimination are not listed separately. |
+| E13 | Deferred guard handling | Source preparation can defer certain guard problems to subsequent structure/base transformations; deferral does not in itself amount to finality proof. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| E14 | Prerequisite assembly | Assemble can populate tasks with checked external proofs, retranslate dependencies, and preserve opaque; not an automatic prover. | 0 / 0（Not enabled in this run） | No external proofs are assembled in this census; 0 describes the configuration, not prerequisite-assembly invocation counts. |
 
-**T：基本项与数据类型**
+**T: Basic items and data types**
 
-源码位置（相对冻结 translator）：Rocq2Lean/Translate.lean；Rocq2Lean/Emit.lean；Rocq2Lean/Bootstrap.lean。
+Source code location (relatively frozen translator): Rocq2Lean/Translate.lean; Rocq2Lean/Emit.lean; Rocq2Lean/Bootstrap.lean.
 
-| 审阅编号 | 规则／机制 | 行为与边界 | 主项 / 含分支根数 | 统计依据 |
+| Review number | Rule / mechanism | behavior and boundaries | Main item / including number of branches | Statistical basis |
 |---|---|---|---|---|
-| T01 | 变量和绑定 | rel 映射为对应绑定变量，保持作用域和 de Bruijn 对应。 | 1982 / 1982（产物结构） | 最终 AST 含 bvar；不是 rel 转换调用次数。 |
-| T02 | Π、λ、let、应用 | 分别生成 forall、lambda、let 和 application；保留类型注解并进行类型检查。 | 2155 / 2155（产物结构） | 最终 AST 含绑定／应用结构。 |
-| T03 | 常量、归纳类型与构造器引用 | 引用已注册目标，并附对应的宇宙实例；不按名字相似程度猜测对应。 | 2090 / 2097（产物结构） | 最终 AST 含常量引用，含辅助引用。 |
-| T04 | cast | 源可转换的 cast 可消去；不直接可转换时必须走受检查的修复或显式表示转换。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| T05 | SP：SProp → Prop | 目标采用 Lean Prop；保留源端消去和 relevance 检查，不把 SProp 约束任意放宽。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| T06 | 旧 Bootstrap nat／eq（已停用） | 空 bootstrap 表；源 nat、eq 均由 T07 生成独立归纳类型。保留编号用于历史比较，当前命中 0；correspondence 在翻译后单独证明。 | 0 / 0（本次未启用） | 已停用；当前 bootstrapRules=#[]，报告 bootstrap/ 根数为 0。源 nat/eq 均走 T07。 |
-| T07 | 普通单体归纳块 | 保留参数、索引、构造器顺序；通过 Lean 内核的归纳声明检查。 | 110 / 110（产物结构） | 最终生成归纳块的覆盖。 |
-| T08 | 原生记录及投影 | 符合单构造器、无索引、非递归形状的 primitive record 可用结构表示及 Expr.proj。 | 0 / 0（结果报告字段） | 最终报告 primitive_record 非空／非零。 |
-| T09 | 非均匀参数 | 源 nparams_rec 之后不保持均匀的参数转为 Lean 索引。 | 1 / 1（源端元数据） | 原生 npars>nparams_rec 的非均匀块。 |
-| T10 | T：非递归 coinductive | 符合条件的非递归单体 coinductive 转为普通 inductive；递归 cofix 不因此获得支持。 | 4 / 4（结果报告字段） | 最终报告 coinductive_as_inductive 非空／非零。 |
-| T11 | 受限嵌套归纳与带条件归纳 | 支持限定的单体嵌套匹配／结构递归；归纳目标必要时带前置证明条件，不等于任意互归纳支持。 | 0 / 0（部分子机制） | 只确认带条件归纳子项；嵌套归纳未单列。 |
+| T01 | Variables and bindings | rel is mapped to the corresponding bind variable, keeping the scope corresponding to de Bruijn. | 1982 / 1982（Artifact structure） | Ultimately AST contains bvar; not rel conversion call count. |
+| T02 | Π, λ, let, and application | Generate forall, lambda, let and application respectively; retain type annotations and perform type checking. | 2155 / 2155（Artifact structure） | Final AST with binding/application structure. |
+| T03 | References to constants, inductive types, and constructors | Reference the registered target and attach the corresponding universe instance; do not guess the correspondence based on the similarity of the names. | 2090 / 2097（Artifact structure） | Finally, AST contains constant references and auxiliary references. |
+| T04 | cast | Source convertible cast can be eliminated; when not directly convertible, a checked repair or explicit representation of the conversion must be performed. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| T05 | SP：SProp → Prop | The target uses Lean Prop; retain source elimination and relevance inspection, and do not relax the SProp constraint arbitrarily. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| T06 | Old Bootstrap nat/eq (disabled) | Empty bootstrap table; sources nat and eq are all generated independent inductive types by T07. Numbers reserved for historical comparison, current hit 0; correspondence independently proven after translation. | 0 / 0（Not enabled in this run） | Disabled: bootstrapRules=#[], with 0 reported bootstrap/ roots. Source nat/eq use T07. |
+| T07 | Ordinary single inductive blocks | Preserve parameters, indices, and constructor order; check the inductive declaration in the Lean kernel. | 110 / 110（Artifact structure） | The final coverage of the inductive block is generated. |
+| T08 | Native records and projections | A primitive record with a single constructor, no indices, and no recursion can use a structure representation and Expr.proj. | 0 / 0（Result report fields） | final report primitive_record is nonempty/nonzero. |
+| T09 | Non-uniform parameters | Parameters that do not remain uniform after source nparams_rec are indexed to Lean. | 1 / 1（Source metadata） | Non-uniform blocks of native npars>nparams_rec. |
+| T10 | T: non-recursive coinductive types | Qualified non-recursive monomer coinductive is converted into ordinary inductive; recursive cofix is not supported for this reason. | 4 / 4（Result report fields） | final report coinductive_as_inductive is nonempty/nonzero. |
+| T11 | Restricted nested and conditional inductive types | Supports limited monomer nested matching/structural recursion; the induction target has pre-proof conditions when necessary, which does not equal arbitrary mutual induction support. | 0 / 0（Partial submechanisms） | Only the sub-items of conditional induction are confirmed; nested induction is not listed separately. |
 
-**M：匹配、递归和计算转换**
+**M: Matching, recursive and computational transformations**
 
-源码位置（相对冻结 translator）：Rocq2Lean/Translate.lean：transCase、transCaseNU、transFix、transFix1、transFixAcc、transFixWf、transFixMutual。
+Source code location (relatively frozen translator): Rocq2Lean/Translate.lean: transCase, transCaseNU, transFix, transFix1, transFixAcc, transFixWf, transFixMutual.
 
-| 审阅编号 | 规则／机制 | 行为与边界 | 主项 / 含分支根数 | 统计依据 |
+| Review number | Rule / mechanism | behavior and boundaries | Main item / including number of branches | Statistical basis |
 |---|---|---|---|---|
-| M01 | M3b：依赖 match | 用真实 Lean recursor；由源 predicate 构造 motive，并按内核字段和 IH 布置分支。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| M02 | 非均匀 match | 受限非均匀参数片段使用 convoy／Eq.rec；已知构造器的 match 优先做 ι 归约。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| M03 | 单函数结构递归 | 递减参数改写为 recursor；递减参数之后的实参可变化。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| M04 | 变化前置参数泛化 | 在保留参数的类型不依赖其变化的条件下，将变化的前置参数移入 motive。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| M05 | 索引与函数递归字段 | 泛化索引；函数形递归字段产生带相应参数的归纳假设。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| M06 | ι 泛化递归 | 外层 match 不在递减参数上时，对整个函数体代入递减构造器再归约；不任意重排 match。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| M07 | 结构互递归 | 对同一归纳类型、相同递减位置及兼容前置类型的函数，构造联合 PProd 递归结果再投影。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| M08 | 递归暴露 | ζ 展开递归 let，限定地展开透明辅助调用，使递归使用显露出来。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| M09 | Course-of-values | 特定非直接递归字段调用失败后，用 below／PProd 缓存；受索引、非均匀和嵌套形状限制。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| M10 | Accessibility 转换 | 特定从 Prop 递归产生数据的情形，构造调用关系及源 guard 支持的良基证书。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| M11 | 显式良基回退 | statement 模式下可用 Acc.rec，并把未解决的良基性／展开等式证明列为显式任务。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| M12 | 构造器形索引 | 支持限定的非递归单构造器记录索引，以字段投影恢复不同的早期实参；拒绝重复叶子等不支持形状。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| M13 | 递归 cast 修复 | 通过病例分析与等式 transport 处理需要展开 fix 才成立的转换；不是任意强制转换。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
+| M01 | M3b: dependent match | Use real Lean recursor; construct motive from source predicate and lay out branches by kernel fields and IH. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| M02 | Non-uniform match | Restricted non-uniform parameter fragments use convoy/Eq.rec; match with a known constructor is reduced to ι first. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| M03 | Single-function structural recursion | The decrementing parameter is rewritten as recursor; the actual parameter after the decrementing parameter can be changed. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| M04 | Generalization of changing leading parameters | Move the changed preparameter into motive while retaining the type of the parameter and not relying on its change. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| M05 | Indices and function-valued recursive fields | Generalization index; a functional recursive field produces an inductive hypothesis with corresponding parameters. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| M06 | ι-generalized recursion | When the outer layer match is not on the decreasing parameter, the entire function body is substituted into the decreasing constructor and then reduced; match is not rearranged arbitrarily. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| M07 | Structural mutual recursion | For functions of the same inductive type, the same decrement position and compatible prefix types, construct the union PProd and reproject the recursive result. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| M08 | Exposing recursion | ζ Unfolds recursive let, which unwinds transparent auxiliary calls in a limited manner so that recursive usage is exposed. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| M09 | Course-of-values | Cache with below/PProd after specific non-direct recursive field call fails; subject to index, non-uniform and nested shape limitations. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| M10 | Accessibility conversion | In the specific case of recursively generating data from Prop, construct the calling relationship and the good foundation certificate supported by the source guard. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| M11 | Explicit well-founded fallback | Acc.rec is available in statement mode and lists the unsolved well-foundedness/expanded equation proofs as an explicit task. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| M12 | Constructor-shaped indices | Support qualified non-recursive single constructor record index, restore different early arguments with field projection; reject duplicate leaves, etc. Shapes are not supported. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| M13 | Recursive cast repair | Handle conversions that require expansion of fix through case analysis and equation transport; not arbitrary coercion. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
 
-**U：宇宙解释与求解**
+**U: Universe Explanation and Solution**
 
-源码位置（相对冻结 translator）：Rocq2Lean/Translate.lean；Rocq2Lean/Emit.lean；Rocq2Lean/Split.lean。
+Source code location (relatively frozen translator): Rocq2Lean/Translate.lean; Rocq2Lean/Emit.lean; Rocq2Lean/Split.lean.
 
-| 审阅编号 | 规则／机制 | 行为与边界 | 主项 / 含分支根数 | 统计依据 |
+| Review number | Rule / mechanism | behavior and boundaries | Main item / including number of branches | Statistical basis |
 |---|---|---|---|---|
-| U01 | R0：原生事实 | 从源内核获得并复核全局及多态上下文中的宇宙约束。 | 2180 / 2180（处理范围） | 原生宇宙上下文检查覆盖；不是每根都有非平凡约束。 |
-| U02 | R1：基础 sort 映射 | Prop 映射 Sort 0；一般 Type(l+n) 映射 Sort(I(l)+n+1)，max 分量逐项解释；R8 是特定例外。 | 1782 / 1782（产物结构） | 最终 AST 含 Sort，未区分普通读取和 R8。 |
-| U03 | R2／R2T：宇宙参数化 | 将常量接口以及归纳块 arity／构造器中的相应全局层级参数化。 | 1031 / 1031（产物结构） | 最终公开 u_ 层级参数覆盖，排除显式 v_i。 |
-| U04 | R2S：公开层级求解 | 自己的层级先作 metavariable，经类型统一后检查原生约束；自由的公开层级泛化。 | 129 / 129（结果报告字段） | 最终报告 solved_levels 非空／非零。 公开与正文局部求解未独立拆分。 |
-| U05 | R2B：正文局部层级 | 只在正文出现的局部层级可求解或取受约束的最小模型。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| U06 | R3：引用一致性与不抬高 | 共享层级复用或受检查地重新实例化；所有引用实例必须满足源界限与一致性要求。 | 867 / 867（结果报告字段） | 最终报告 universe_checks 非空／非零。 |
-| U07 | R3′／R3″：残留实例 | 未解层级不能当通配符；一般化及默认零均有适用条件与后续检查。 | 1 / 1（结果报告字段） | 最终报告 universe_residuals 非空／非零。 |
-| U08 | R4：Lean 内部 Eq 层级检查 | 辅助转换证明中原生 Lean Eq 的参数层级由实参类型决定并重查；这不是源 eq→Lean Eq 的直接映射。源 eq 现在使用普通模板归纳块规则。 | 6 / 6（产物结构） | 最终 AST 直接含原生 Lean Eq（包括内部辅助证明）；不是源 eq 原生映射次数。 |
-| U09 | R5／R5S：模板层级 | 模板层级依原生模板绑定及实参类型实例化；非模板附加层级由构造器等约束求解。 | 27 / 27（结果报告字段） | 最终报告 template 非空／非零。 统计模板块本身，下游实例化另属引用。 |
-| U10 | R6：显式多态常量 | 保留原显式宇宙参数和每次引用的原实例；不能静默丢弃约束。 | 194 / 194（产物结构） | 对应声明有显式多态宇宙参数。 |
-| U11 | 多态归纳块 | 同样保留显式宇宙参数及实例；源码／文档的 R6-I 标记存在重用，须结合机制阅读。 | 6 / 6（产物结构） | 对应声明有显式多态宇宙参数。 |
-| U12 | R2⁺：事实化简 | 用原生可证的大小关系删除 max 中被支配的项。 | 1 / 1（结果报告字段） | 最终报告 sort_fact_reduced 非空／非零。 |
-| U13 | R2F／R2F-c：约束解释 | 以 max(u_l, 下界的解释+偏移) 表示层级，使受支持的约束对解释后的参数成立。 | 1 / 1（结果报告字段） | 最终报告 level_interp 非空／非零。 |
-| U14 | R3-P：局部与全局联合蕴含 | 引用检查同时使用局部多态约束及原生全局图。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| U15 | R3G：隐含层级发现 | 由实际引用的自由层级类发现必要的公开参数；保留引用证据，去掉未使用的发现项。 | 227 / 227（结果报告字段） | 最终报告 implicit_levels 非空／非零。 |
-| U16 | R3G-F：结果 sort 层级 | 对符合来源条件的字段／结果-sort 隐含层级使用受限读取；不能借此改变 carrier。 | 0 / 0（结果报告字段） | 最终报告 result_sort_implicit_levels 非空／非零。 |
-| U17 | R8：Sort 化 | 仅在限定 arity／motive 等位置，将 Type 层级改作可含 Prop 的 Sort 参数；跨引用处理相应 +1 偏移。 | 598 / 598（结果报告字段） | 最终报告 admitting_levels 非空／非零。 |
-| U18 | R-CARRIER P1 | R2F 中不让 carrier 因同块的特定其他层级被抬高；依据被识别的层级对，非删除所有下界。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| U19 | R-CARRIER P2 | 对类型中确实独立的隐含操作数层级类生成独立副本；类型统一要求相同的类不拆开。 | 66 / 66（结果报告字段） | 最终报告 level_copies 非空／非零。 |
-| U20 | R-CARRIER P3 | 证明局部层级不能充当公开操作数宇宙类的代表。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| U21 | R-SPLIT | 仅对符合出现位置条件的共享源层级拆分参数副本；结果使用 max，保留对角实例及引用界限；可回退不拆分。 | 0 / 0（结果报告字段） | 最终报告 level_split 非空／非零。 |
-| U22 | Rule R：语义一致性 | 在源事实的所有模型下比较层级解释，而非仅比较表达式字符串；每个分量仍过 R3。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| U23 | Rule H：条件实例 | 待证命题可在所需较低实例使用，避免提前锁死公开 carrier；仍检查不抬高。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| U24 | 逐出现层级／unify | 引用发生处先分配新 metavariable，求解后重绑定共享自由层级并检查一致性。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| U25 | sort_interp | 归纳块参数保持普通读取，仅结果 sort 使用约束解释。 | 5 / 5（结果报告字段） | 最终报告 sort_interp 非空／非零。 |
-| U26 | 求解器 P2／joint | 有限尝试联合出现的 max 层级变量；定义的后续重试按更少不必要默认化等条件选择。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| U27 | 求解器 P3／hypExact | 每次使用先保留精确条件实例；宇宙求解后只合并同一叶子且类型一致的条件。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| U28 | R3↑／R3↓ | 在受原生事实检查的片段使用累积抬升或较低引用实例；不是无限制改层级。 | 22 / 22（策略标志） | lowered 或 cumulativity 标志；策略标志不能拆成实际抬升次数。 |
-| U29 | R2B-P | 受限 Prop 相关局部解释需源端 CheckInstance；当前 statement 路径拒绝这类特殊化，不能用于缩窄定理。 | 1 / 1（结果报告字段） | 最终报告 r2bp_levels 非空／非零。 |
-| U30 | R2B-S | 只允许符合条件的结果 sort 降低，不能降低 binder 层级；受保护接口及 statement 检查约束。 | 1 / 1（结果报告字段） | 最终报告 sort_lowered_levels 非空／非零。 |
-| U31 | R2B-V | 从 Type-valued 正文继承实际结果 sort，仅限结果位置；不改公开 binder，不从 Prop 任意扩展。 | 1 / 1（结果报告字段） | 最终报告 result_sort_inherited 非空／非零。 |
-| U32 | 局部多态约束解释／polyUniverseInterpretation | 对受支持的带偏移约束闭包生成 max 解释，保留原显式参数及源允许实例；不接受正环等不支持情形。 | 26 / 33（结果报告字段） | 最终报告 poly_level_interp 非空／非零。 |
-| U33 | 带全局上界的片段 | 只处理受检查的向外 local／Set→global 约束；逐项检查原生条件，不宣称任意目标参数满足全局界限。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| U34 | 精确 R6 回退与等层级归并 | 局部解释不可用时保留精确实例；Type transport 前可合并原生相等的全局层级。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| U35 | 最小默认与有界 max 求解 | 只在限定的解释／Type 转换路径提前默认封闭正文局部层级；候选须经统一、原生事实、R3 和内核检查。 | 1 / 1（部分子机制） | 仅确认报告的默认／residual 子机制；max 求解未单列。 |
-| U36 | Q-a：phantom sort | 只处理识别出的 phantom 形状，将相应 sort 实参改写为配对的值／类型表示并清理消失的专属层级；一般 Q-b 未实现。 | 0 / 0（结果报告字段） | 最终报告 phantom_lowered 非空／非零。 |
+| U01 | R0: Native universe facts | Obtain and review universe constraints in global and polymorphic contexts from the source kernel. | 2180 / 2180（Processing scope） | Native universe context check override; not every root has non-trivial constraints. |
+| U02 | R1: Basic sort mapping | Map Prop to Sort 0 and general Type(l+n) to Sort(I(l)+n+1), interpreting max components individually; R8 provides a specific exception. | 1782 / 1782（Artifact structure） | The final AST contains Sort, without distinguishing between normal reading and R8. |
+| U03 | R2/R2T: Universe parameterization | Parameterize the relevant global levels in constant interfaces and inductive arities/constructors. | 1031 / 1031（Artifact structure） | Finally, the u_ level parameter coverage is disclosed, excluding explicit v_i. |
+| U04 | R2S: Public level solving | Represent own levels as metavariables, solve them by type unification, then check native constraints; generalize free public levels. | 129 / 129（Result report fields） | final report solved_levels is nonempty/nonzero. The public and body local solutions are not separated independently. |
+| U05 | R2B: Body-local levels | Only local levels appearing in the body can be solved or constrained minimum models can be taken. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| U06 | R3: Reference coherence and no raising | Reuse shared levels or reinstantiate them under checks; every reference instance must satisfy source bounds and coherence requirements. | 867 / 867（Result report fields） | final report universe_checks is nonempty/nonzero. |
+| U07 | R3′/R3″: Residual instances | Unsolved levels are not wildcards; generalization and defaulting to zero have applicability conditions and subsequent checks. | 1 / 1（Result report fields） | final report universe_residuals is nonempty/nonzero. |
+| U08 | R4: Level checks for internal Lean Eq | The parameter hierarchy of the native Lean Eq in the auxiliary conversion proof is determined by the argument type and rechecked; this is not a direct mapping of the source eq→Lean Eq. Source eq now uses normal template inductive block rules. | 6 / 6（Artifact structure） | The final AST directly contains the native Lean Eq (including internal auxiliary proof); it is not the number of native mappings of the source eq. |
+| U09 | R5/R5S: Template levels | Instantiate template levels from native template bindings and argument types; solve extra nontemplate levels using constructor and other constraints. | 27 / 27（Result report fields） | final report template is nonempty/nonzero. The statistics template block itself, downstream instantiation is a separate reference. |
+| U10 | R6: Explicitly polymorphic constants | Preserve explicit source universe parameters and the original instance at every reference; constraints cannot be silently discarded. | 194 / 194（Artifact structure） | The corresponding declaration has explicit polymorphic universe parameters. |
+| U11 | Polymorphic inductive blocks | Explicit universe parameters and instances are also retained; the R6-I tag in the source code/document is reused and must be read in conjunction with the mechanism. | 6 / 6（Artifact structure） | The corresponding declaration has explicit polymorphic universe parameters. |
+| U12 | R2⁺: Fact reduction | Delete the dominated items in max using natively provable size relationships. | 1 / 1（Result report fields） | final report sort_fact_reduced is nonempty/nonzero. |
+| U13 | R2F/R2F-c: Constraint interpretation | Interpret each level as max(u_l, interpreted lower bound + offset), so supported constraints hold for the interpreted parameters. | 1 / 1（Result report fields） | final report level_interp is nonempty/nonzero. |
+| U14 | R3-P: Joint local/global entailment | Reference checking uses both local polymorphic constraints and the native global graph. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| U15 | R3G: Implicit level discovery | Discover required public parameters from free level classes in actual references; retain reference evidence and remove unused discoveries. | 227 / 227（Result report fields） | final report implicit_levels is nonempty/nonzero. |
+| U16 | R3G-F: Result-sort levels | Use restricted reads on fields/results that match the source condition - sort implicit level; carrier cannot be altered thereby. | 0 / 0（Result report fields） | final report result_sort_implicit_levels is nonempty/nonzero. |
+| U17 | R8: Generalization to Sort | At restricted arity/motive positions, replace Type levels with Sort parameters that can include Prop; handle the corresponding +1 offset across references. | 598 / 598（Result report fields） | final report admitting_levels is nonempty/nonzero. |
+| U18 | R-CARRIER P1 | Within R2F, prevent carrier from being raised by certain other levels in the same block. This uses identified level pairs; it does not remove all lower bounds. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| U19 | R-CARRIER P2 | Create separate copies of genuinely independent implicit operand level classes in the type; do not split classes that type unification requires to coincide. | 66 / 66（Result report fields） | final report level_copies is nonempty/nonzero. |
+| U20 | R-CARRIER P3 | Show that local hierarchies cannot serve as representatives of public operand universe classes. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| U21 | R-SPLIT | Only the parameter copies are split at the shared source level that meets the occurrence position conditions; the result is max, and the diagonal instances and reference boundaries are retained; it can be rolled back without splitting. | 0 / 0（Result report fields） | final report level_split is nonempty/nonzero. |
+| U22 | Rule R: Semantic coherence | Compares hierarchical interpretations across all models of the source fact, rather than just expression strings; each component still passes R3. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| U23 | Rule H: Prerequisite instances | The proposition to be proved can be used in lower-required instances to avoid early locking of the public carrier; it is still checked and not raised. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| U24 | Per-occurrence levels / unify | First allocate new metavariable where the reference occurs, rebind the shared free level after solving and check the consistency. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| U25 | sort_interp | The inductive block parameters remain a normal read and only the result sort is interpreted using constraints. | 5 / 5（Result report fields） | final report sort_interp is nonempty/nonzero. |
+| U26 | Solver P2 / joint | Limited attempts to jointly occur max level variables; subsequent retries defined are selected by conditions such as fewer unnecessary defaults. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| U27 | Solver P3 / hypExact | The exact condition instance will be retained for each use; after the universe is solved, only conditions with the same leaf and the same type will be merged. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| U28 | R3↑／R3↓ | Use cumulative elevation or lower reference instances in fragments subject to native fact checking; not unlimited leveling. | 22 / 22（Policy flag） | lowered or cumulativity flag; the strategy flag cannot be broken down into the actual number of lifts. |
+| U29 | R2B-P | Restricted Prop-related local interpretations require source CheckInstance. The current statement path rejects this specialization, preventing theorem narrowing. | 1 / 1（Result report fields） | final report r2bp_levels is nonempty/nonzero. |
+| U30 | R2B-S | Lower only eligible result sorts, never binder levels; protected-interface and statement checks constrain this rule. | 1 / 1（Result report fields） | final report sort_lowered_levels is nonempty/nonzero. |
+| U31 | R2B-V | Inherit the actual result sort from a Type-valued body only at the result position; do not change public binders or generalize arbitrarily from Prop. | 1 / 1（Result report fields） | final report result_sort_inherited is nonempty/nonzero. |
+| U32 | Local polymorphic constraint interpretation / polyUniverseInterpretation | Build max interpretations for supported offset-constraint closures, preserving original explicit parameters and source-allowed instances; reject unsupported cases such as positive cycles. | 26 / 33（Result report fields） | final report poly_level_interp is nonempty/nonzero. |
+| U33 | Fragment with global upper bounds | Only processed outbound local/Set→global constraints are checked; native conditions are checked individually and no global bounds are claimed for any target parameters. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| U34 | Exact R6 fallback and equal-level merging | Preserve exact instances when local interpretation is not available; natively equal global hierarchies can be merged before Type transport. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| U35 | Minimal defaults and bounded max solving | Only in limited interpretation/Type conversion paths are closed body local levels advanced by default; candidates are subject to unified, native fact, R3 and kernel checks. | 1 / 1（Partial submechanisms） | Only the reported Default/residual submechanism is confirmed; the max solution is not listed separately. |
+| U36 | Q-a：phantom sort | Only handles recognized phantom shapes, rewriting corresponding sort arguments to paired value/type representations and cleaning up missing proprietary hierarchies; generally Q-b is not implemented. | 0 / 0（Result report fields） | final report phantom_lowered is nonempty/nonzero. |
 
-**C：源端可转换展开**
+**C: The source end can be converted and expanded**
 
-源码位置（相对冻结 translator）：Rocq2Lean/Emit.lean；Rocq2Lean/Translate.lean；rocq/exporter/src/r2l_export.ml。
+Source code location (relatively frozen translator): Rocq2Lean/Emit.lean; Rocq2Lean/Translate.lean; rocq/exporter/src/r2l_export.ml.
 
-| 审阅编号 | 规则／机制 | 行为与边界 | 主项 / 含分支根数 | 统计依据 |
+| Review number | Rule / mechanism | behavior and boundaries | Main item / including number of branches | Statistical basis |
 |---|---|---|---|---|
-| C01 | 别名前缀 | 处理限定 let／lambda 前缀中的 ζ 转换。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| C02 | 透明引用别名 | 展开符合条件的常量头引用、部分应用及无 lambda 的透明别名。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| C03 | 纯绑定变量组合子 | lambda 前缀之后仅由绑定变量及应用组成的透明组合子可展开；不扩成任意项。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| C04 | 类型缩写闭包 | 透明多态／类型别名与计算类型的可用性做联合闭包，只有已知可转换项才参与。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| C05 | 精确实例替换 | 展开时在 sort、case、fix、原语等位置精确代入源宇宙实例，保持绑定。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| C06 | 已知构造器驱动计算 | 限定单 fix、已知递减构造器的 βδιζ 计算；有界执行，不任意展开 opaque／deferred guard 正文。 | 8 / 8（结果报告字段） | 最终报告 source_computed 非空／非零。 |
-| C07 | Set-motive 展开 | 对符合条件的透明常量展开以恢复可用于 Prop 的 motive；逐应用记录转换，裸引用不必一律展开。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
+| C01 | Alias prefixes | Handles ζ conversions in qualified let/lambda prefixes. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| C02 | Transparent reference aliases | Expand qualifying constant header references, partial applications, and transparent aliases without lambda. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| C03 | Pure bound-variable combinators | After the lambda prefix, only transparent combinators consisting of bind variables and applications can be expanded; they cannot be expanded to any items. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| C04 | Type abbreviation closure | Transparent polymorphism/type aliasing and the availability of computed types make joint closures, and only known convertible items participate. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| C05 | Exact instance substitution | When expanding, accurately substitute the source universe instances at sort, case, fix, primitives, etc., and keep the binding. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| C06 | Known-constructor-driven computation | Bounded βδιζ computation for a single fixpoint with a known decreasing constructor; opaque/deferred-guard bodies are not unfolded arbitrarily. | 8 / 8（Result report fields） | final report source_computed is nonempty/nonzero. |
+| C07 | Set-motive unfolding | Unwrap eligible transparent constants to recover motive available for Prop; record conversion is applied on a per-app basis, bare references do not have to be unwound. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
 
-**L：显式表示转换**
+**L: Explicit representation of conversion**
 
-源码位置（相对冻结 translator）：Rocq2Lean/Translate.lean：liftCoerce、liftCoerceValue、transportBranchResult、transportTypePosition、tryLiftConversion。
+Source code location (relatively frozen translator): Rocq2Lean/Translate.lean: liftCoerce, liftCoerceValue, transportBranchResult, transportTypePosition, tryLiftConversion.
 
-| 审阅编号 | 规则／机制 | 行为与边界 | 主项 / 含分支根数 | 统计依据 |
+| Review number | Rule / mechanism | behavior and boundaries | Main item / including number of branches | Statistical basis |
 |---|---|---|---|---|
-| L01 | Rule P：命题载荷提升 | 用可容纳 Prop 的 PULift 包装命题／证明载荷，使其达到所声明的 Type 表示。 | 1 / 1（结果报告字段） | prop_lift 非 null；深度 0 也算命中。 |
-| L02 | Prop up／down | 在实参、结果和 cast 位置按需求使用构造／投影；保持 let 和 cast 的声明上界。 | 2 / 2（结果报告字段） | 最终报告 prop_lift_coercions 非空／非零。 |
-| L03 | Type up／down | 对受支持的较低 Type 载荷用 PULift 达到公开上界，保留所需公开参数。 | 46 / 53（结果报告字段） | type_lift 非 null 或 type_lift_coercions>0。 |
-| L04 | 函数 η 转换 | 递归转换参数和结果；输入逆向适配，输出正向适配，不改变源参数顺序。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| L05 | 类型位置解包 | 包装的值被当作类型使用时，先恢复其中的实际类型。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| L06 | 包装函数应用 | 有限次解开外层 PULift 后，对适配后的实参执行应用。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| L07 | 同记录逐字段转换 | 仅同一非递归、单构造器、无索引记录；使用真实 recursor 保留字段次序及依赖类型。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| L08 | 组合转换 | 外层 PULift 可与内部函数／记录转换组合；main75 中直接 Type up/down 是这条递归机制的基本情况。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| L09 | 延迟不确定模板转换 | 模板 Sort 还可能为 Prop 时，先普通统一，再决定是否适用 Type lift。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| L10 | 提升命题的陈述视图 | 符合条件且未受保护的 lifted Prop 头部可沿透明链恢复命题视图；仍检查接口与 up 对应。 | 0 / 0（结果报告字段） | 最终报告 prop_lift_unfold 非空／非零。 |
+| L01 | Rule P: Proposition payload lifting | Use Prop-capable PULift to wrap proposition/proof payloads at the declared Type representation. | 1 / 1（Result report fields） | prop_lift is not null; depth 0 is also a hit. |
+| L02 | Prop up／down | Use construction/projection as required on arguments, results, and cast positions; maintain declared upper bounds on let and cast. | 2 / 2（Result report fields） | final report prop_lift_coercions is nonempty/nonzero. |
+| L03 | Type up／down | Reach the public upper bound with PULift for the lower supported Type payloads, preserving the required public parameters. | 46 / 53（Result report fields） | type_lift is not null or type_lift_coercions>0. |
+| L04 | Function η-conversion | Recursively convert parameters and results; input reverse adaptation and output forward adaptation without changing the order of source parameters. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| L05 | Unpacking in type positions | When a wrapped value is used as a type, the actual type is restored first. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| L06 | Wrapper function application | After unlocking the outer layer PULift for a limited number of times, perform the application on the adapted actual parameters. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| L07 | Fieldwise conversion within the same record | Only the same non-recursive, single constructor, no index record; use real recursor to preserve field order and dependent types. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| L08 | Composed conversions | The outer layer PULift can be combined with the inner function/record conversion; the direct Type up/down in main75 is the basic case of this recursive mechanism. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| L09 | Deferring unresolved template conversions | When the template Sort may also be Prop, first unify it normally, and then decide whether to apply Type lift. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| L10 | Statement view of lifted propositions | A qualified and unprotected lifted Prop header restores the proposition view along the transparent chain; the interface is still checked to correspond to up. | 0 / 0（Result report fields） | final report prop_lift_unfold is nonempty/nonzero. |
 
-**Q：Sort quality 多态**
+**Q: Sort quality Polymorphic**
 
-源码位置（相对冻结 translator）：Rocq2Lean/Quality.lean；Rocq2Lean/QualitySource.lean；Rocq2Lean/Emit.lean；rocq/exporter/src/r2l_export.ml。
+Source code location (relatively frozen translator): Rocq2Lean/Quality.lean; Rocq2Lean/QualitySource.lean; Rocq2Lean/Emit.lean; rocq/exporter/src/r2l_export.ml.
 
-| 审阅编号 | 规则／机制 | 行为与边界 | 主项 / 含分支根数 | 统计依据 |
+| Review number | Rule / mechanism | behavior and boundaries | Main item / including number of branches | Statistical basis |
 |---|---|---|---|---|
-| Q01 | 原生 quality 绑定 | 保留共享 quality 变量，以及它在参数、结果中的原生绑定关系。 | 50 / 50（源端元数据） | 原生 template_info 或 quality_family 覆盖。 |
-| Q02 | 模板 Sort 参数 | 固定 Prop／Type 模板可生成 Sort 参数，固定 Type 的最低层级要求仍保留；失败时可回退旧 Type 路径。 | 22 / 22（结果报告字段） | 最终报告 template_sort 非空／非零。 |
-| Q03 | 共享 quality 模板族 | 限定的单体、非递归、均匀无索引模板族生成 Prop／Type 两种表示，全部检查后才接受。 | 5 / 5（结果报告字段） | 最终报告 quality_prop 非空／非零。 |
-| Q04 | 按源注解分派 | 使用源实参注解、局部 let、声明结果与源 case 上下文选择分支，不仅猜测目标项的 sort。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| Q05 | 原生有限 quality family | 对受支持的无约束 quality 变量覆盖 SProp／Prop／Type 的全部 3^q 组合；本次 23 根对应 603 个分支实例。 | 23 / 23（源端元数据） | 原生 quality_family 根；同一根的所有分支完整检查。 |
-| Q06 | 原生重检查及实现保留 | 每个 quality 分支实例化原类型和正文并重检查；这类有来源证明的 family 连 Prop 分支也保留实现，是普通 statement 策略的专门例外。 | 23 / 23（源端元数据） | 原生 quality_family 根；同一根的所有分支完整检查。 |
-| Q07 | 封闭 quality 引用 | 含裸引用及部分应用，使用精确实例分派；未解 quality 不能默认为全 Type。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
+| Q01 | Native quality bindings | Retain the shared quality variable and its native binding relationships in parameters and results. | 50 / 50（Source metadata） | Native template_info or quality_family override. |
+| Q02 | Template Sort parameters | Allow fixed Prop/Type templates to generate Sort parameters while retaining the minimum level required by fixed Type; fall back to the old Type path on failure. | 22 / 22（Result report fields） | final report template_sort is nonempty/nonzero. |
+| Q03 | Shared-quality template families | Generate Prop and Type representations for restricted single, nonrecursive, uniform, unindexed template families; accept only after every representation checks. | 5 / 5（Result report fields） | final report quality_prop is nonempty/nonzero. |
+| Q04 | Dispatch by source annotation | Use the source argument annotation, local let, declaration result and source case context selection branch to not only guess the sort of the target item. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| Q05 | Native finite quality families | Cover all 3^q combinations of SProp/Prop/Type for supported unconstrained quality variables; this run has 23 roots and 603 branch instances. | 23 / 23（Source metadata） | Native quality_family root; all branches of the same root are fully checked. |
+| Q06 | Native rechecking and implementation preservation | The original type and body of each quality branch instantiation are double-checked; this type of family with proven provenance also retains the implementation of the Prop branch, which is a special exception to the ordinary statement policy. | 23 / 23（Source metadata） | Native quality_family root; all branches of the same root are fully checked. |
+| Q07 | Closed quality references | Contains naked references and partial applications, using precise instance dispatch; unresolved quality cannot default to full Type. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
 
-**N：原语表示与适配**
+**N: Primitive representation and adaptation**
 
-源码位置（相对冻结 translator）：Rocq2Lean/Translate.lean；Rocq2Lean/PrimInt63.lean；Rocq2Lean/PrimArray.lean；Rocq2Lean/PrimString.lean；Rocq2Lean/PrimFloat.lean。
+Source code location (relatively frozen translator): Rocq2Lean/Translate.lean; Rocq2Lean/PrimInt63.lean; Rocq2Lean/PrimArray.lean; Rocq2Lean/PrimString.lean; Rocq2Lean/PrimFloat.lean.
 
-| 审阅编号 | 规则／机制 | 行为与边界 | 主项 / 含分支根数 | 统计依据 |
+| Review number | Rule / mechanism | behavior and boundaries | Main item / including number of branches | Statistical basis |
 |---|---|---|---|---|
-| N01 | Int63 | 类型使用 BitVec 63；保留无符号／有符号及模 2^63 语义，字面量检查范围。 | 31 / 31（源端元数据） | 该族原生类型／操作根；下游包装调用不当成重新映射。 |
-| N02 | Array | 有界持久数组，保留元素类型、顺序、default 与原生大小上界。 | 7 / 7（源端元数据） | 该族原生类型／操作根；下游包装调用不当成重新映射。 |
-| N03 | String | 有界字节串，保留 NUL 和非 UTF 字节；不是直接改成 Unicode String。 | 7 / 7（源端元数据） | 该族原生类型／操作根；下游包装调用不当成重新映射。 |
-| N04 | Float | 二进制 64 位模型，保留舍入、符号零、无穷与 NaN 表示策略；不能以未经核查的宿主 Float 替代。 | 20 / 20（源端元数据） | 该族原生类型／操作根；下游包装调用不当成重新映射。 |
-| N05 | 结构结果适配 | 布尔、比较、carry、pair、float classification 按源内核注册的构造器角色重建。 | 22 / 22（源端元数据） | 需源构造器适配的原语操作根。 |
-| N06 | 字面量、身份与原语公理 | 检查原生操作身份、字面量载荷和模板实例；原语性质的源公理仍按命题陈述处理，不新增 Lean 公理。 | 65 / 65（部分子机制） | 只确认原语身份子机制；字面量和公理子机制未单列。 |
+| N01 | Int63 | The type uses BitVec 63; retains unsigned/signed and modulo 2^63 semantics, and literal check range. | 31 / 31（Source metadata） | Native type/operation root of this family; downstream wrapper calls do not constitute remapping. |
+| N02 | Array | Bounded persistent array, preserving element type, order, default, and native size upper bound. | 7 / 7（Source metadata） | Native type/operation root of this family; downstream wrapper calls do not constitute remapping. |
+| N03 | String | Bounded byte string, retaining NUL and non-UTF bytes; not directly changed to Unicode String. | 7 / 7（Source metadata） | Native type/operation root of this family; downstream wrapper calls do not constitute remapping. |
+| N04 | Float | Binary 64 bit model, preserving rounding, signed zero, infinity, and NaN representation policies; cannot be overridden by the unchecked host Float. | 20 / 20（Source metadata） | Native type/operation root of this family; downstream wrapper calls do not constitute remapping. |
+| N05 | Structural result adaptation | Boolean, comparison, carry, pair, float classification Rebuilt by the constructor role registered by the source kernel. | 22 / 22（Source metadata） | The primitive operation root that needs to be adapted by the source constructor. |
+| N06 | Literals, identity, and primitive axioms | Check the native operation identity, literal load and template instance; the source axiom of primitive nature is still processed as a proposition statement, and the Lean axiom is not added. | 65 / 65（Partial submechanisms） | Only the primitive identity sub-mechanism is confirmed; the literal and axiom sub-mechanisms are not listed separately. |
 
-**V：接受条件与独立验证（不是产生译文的改写规则）**
+**V: Acceptance conditions and independent verification (not rewriting rules to generate translations)**
 
-源码位置（相对冻结 translator）：Rocq2Lean/Verify.lean；Rocq2Lean/Kernel.lean；Rocq2Lean/Emit.lean；tools/audit.py。
+Source code location (relatively frozen translator): Rocq2Lean/Verify.lean; Rocq2Lean/Kernel.lean; Rocq2Lean/Emit.lean; tools/audit.py.
 
-| 审阅编号 | 规则／机制 | 行为与边界 | 主项 / 含分支根数 | 统计依据 |
+| Review number | Rule / mechanism | behavior and boundaries | Main item / including number of branches | Statistical basis |
 |---|---|---|---|---|
-| V01 | 源内核检查 | 复核 source flags、guard、positivity、宇宙、消去与 relevance，按所用转换核查源实例。 | 2180 / 2180（处理范围） | 本次处理／校验覆盖全部原始根；非内部执行次数。 |
-| V02 | Bootstrap 签名检查 | 已有目标必须匹配源身份、类型和构造器适配。 | 0 / 0（本次未启用） | 当前 bootstrap 表为空，本次没有 bootstrap 签名适配对象。 |
-| V03 | Lean 内核检查 | 注册实际目标声明；不得留下未解 metavariable；声明必须在公开宇宙参数下合法。 | 2180 / 2180（处理范围） | 生成声明的内核检查覆盖；bootstrap 复用已有目标。 |
-| V04 | P0 与陈述一般性 | 保护指定接口；freeLevelPin、binder independence 等防止通过锁死公开参数取得成功。 | 2056 / 2056（处理范围） | protected 或 statement 检查范围。 |
-| V05 | 宇宙事实与引用检查 | 原生约束、R3 引用界限及一致性是独立接受条件。 | 867 / 867（结果报告字段） | 最终报告 universe_checks 非空／非零。 |
-| V06 | 依赖与条件完整性 | 缺依赖则阻塞；目标类型、namespace、pending 状态必须与实际前提一致。 | 2180 / 2180（处理范围） | 本次处理／校验覆盖全部原始根；非内部执行次数。 |
-| V07 | 独立 consumer | 重新导入实际目标，检查种类、正文、不透明性、构造器、依赖、宇宙及公理闭包。 | 2180 / 2180（模块验证结果） | 所属模块 consumer=OK 的根覆盖。 |
-| V08 | 独立结构审计 | 重建源展开与 recursor／η／lift／字段对应；仅内核类型正确还不够。 | 2180 / 2180（模块验证结果） | 所属模块 audit=OK 的根覆盖。 |
-| V09 | 覆盖与资源失败 | quality 分支及根声明必须完整；超时、预算耗尽和异常不计成功。 | 2180 / 2180（处理范围） | 本次处理／校验覆盖全部原始根；非内部执行次数。 |
+| V01 | Source kernel checking | Review source flags, guard, positivity, Universe, Elimination and relevance, checking the source instances by the transformation used. | 2180 / 2180（Processing scope） | This processing/verification covers all original roots; not internal execution times. |
+| V02 | Bootstrap signature checking | The existing target must match the source identity, type, and constructor adaptation. | 0 / 0（Not enabled in this run） | The current bootstrap table is empty, and there is no bootstrap signature adaptation object this time. |
+| V03 | Lean kernel checking | Register actual target statement; must not leave metavariable unsolved; statement must be legal under public universe parameters. | 2180 / 2180（Processing scope） | Generate declared kernel check coverage; bootstrap reuses an existing target. |
+| V04 | P0 and statement generality | Protect specified interfaces; freeLevelPin, binder, independence, etc. prevent success by locking exposed parameters. | 2056 / 2056（Processing scope） | protected or statement inspection range. |
+| V05 | Universe fact and reference checking | Native constraints, R3 reference bounds, and consistency are independent acceptance conditions. | 867 / 867（Result report fields） | final report universe_checks is nonempty/nonzero. |
+| V06 | Dependency and prerequisite completeness | If the dependency is missing, it will block; the target type, namespace, and pending status must be consistent with the actual premise. | 2180 / 2180（Processing scope） | This processing/verification covers all original roots; not internal execution times. |
+| V07 | Independent consumer | Re-import actual target, check kind, body, opacity, constructor, dependencies, universe and axiomatic closures. | 2180 / 2180（Module validation results） | Belonging module consumer=OK root coverage. |
+| V08 | Independent structural audit | The reconstructed source expansion corresponds to the recursor/η/lift/ field; it is not enough that the kernel type is correct. | 2180 / 2180（Module validation results） | Belonging module audit=OK root coverage. |
+| V09 | Coverage and resource failures | quality Branch and root declarations must be complete; timeouts, budget exhaustion, and exceptions do not count towards success. | 2180 / 2180（Processing scope） | This processing/verification covers all original roots; not internal execution times. |
 
-**S：尝试调度与状态管理（不另算语义规则）**
+**S: Attempt scheduling and state management (not counting semantic rules)**
 
-源码位置（相对冻结 translator）：Rocq2Lean/Emit.lean。
+Source code location (relatively frozen translator): Rocq2Lean/Emit.lean.
 
-| 审阅编号 | 规则／机制 | 行为与边界 | 主项 / 含分支根数 | 统计依据 |
+| Review number | Rule / mechanism | behavior and boundaries | Main item / including number of branches | Statistical basis |
 |---|---|---|---|---|
-| S01 | 固定声明分派 | 按 inductive／constant、template、statement、Type-valued、split、protected 等属性选择处理路径。 | 2180 / 2180（处理范围） | 本次处理／校验覆盖全部原始根；非内部执行次数。 |
-| S02 | 有门槛的阶梯 | 按固定顺序尝试不同开关组合；之前的错误及适用条件限制后续尝试，不是穷举所有组合。 | 2175 / 2175（尝试记录） | 具有 tier_times 的根覆盖。 |
-| S03 | 提前转换与一般性重试 | 部分 Type transport 提前尝试；定义首次通过后仍可能比较更少默认化的候选，故不总是第一次通过即最终结束。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| S04 | 归纳块自己的阶梯 | 普通参数、事实解释、隐含层级、sort_interp、源展开等分别有受控尝试。 | 105 / 105（尝试记录） | 具有归纳块 tier_times 的根覆盖。 |
-| S05 | 失败回滚与预算 | 失败时恢复 Meta 状态及转换计数；分层和声明级资源限制。一次局部预算耗尽不应概括为必然终止全部阶梯。 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
+| S01 | Fixed declaration dispatch | Select the processing path according to attributes such as inductive/constant, template, statement, Type-valued, split, and protected. | 2180 / 2180（Processing scope） | This processing/verification covers all original roots; not internal execution times. |
+| S02 | Gated tier ladder | Try different switch combinations in a fixed order; previous errors and applicable conditions limit subsequent attempts and do not exhaust all combinations. | 2175 / 2175（Attempt records） | Has root coverage of tier_times. |
+| S03 | Early conversion and generality retries | Some Type transport try early; there may still be fewer default candidates after the first pass of the definition, so it is not always the first pass that ends. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| S04 | Inductive-specific tier ladder | Ordinary parameters, fact explanation, implicit level, sort_interp, source expansion, etc. have controlled attempts respectively. | 105 / 105（Attempt records） | Root coverage with inductive block tier_times. |
+| S05 | Failure rollback and budgets | Restore Meta state and transition count on failure; hierarchical and statement-level resource limits. One local budget exhaustion should not be generalized as a necessary end to the entire ladder. | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
 
-**原语操作的完整映射**
+**Full mapping of primitive operations**
 
-下表直接从冻结源码的操作分派表提取，共 61 项：Int63 30 项、Array 6 项、String 6 项、Float 19 项。结构结果的源构造器适配仍由 N05 负责。
+The following table is directly extracted from the operation dispatch table of the frozen source code, with a total of 61 items: Int63 30 items, Array 6 items, String 6 items, Float 19 items. Source constructor adaptation of structure results is still the responsibility of N05.
 
-| 源操作 | Lean 目标 | 原生映射根数 | 目标直接引用根数 |
+| source operation | Lean Target | Number of native mapping roots | The target directly refers to the root number |
 |---|---|---:|---:|
 | `add` | `BitVec.add` | 1 | 1 |
 | `sub` | `BitVec.sub` | 1 | 1 |
@@ -285,16 +285,16 @@
 | `fclassify` | `PrimFloat.classify` | 1 | 2 |
 | `frshiftexp` | `PrimFloat.frshiftexp` | 1 | 3 |
 
-**名称歧义、未实现范围与历史项**
+**Name Ambiguity, Unimplemented Scope and History Items**
 
-- R-CARRIER P1/P2/P3 是 carrier 独立性机制；求解器 P2（joint）和 P3（hypExact）不是相同规则。Rule P 指 PULift 相关表示转换，P0 是保护检查。
-- 当前 polyUniverseInterpretation 的注释使用 R6-I；旧文档也用该标签讨论多态归纳块。应按源码机制区分，不按标签字符串合并。
-- main75 未发现独立命名的 R-OCC 或 eqLower 开关；逐出现引用处理对应 unify 等已有机制。不能把先前对 ladder 的口头概述当作当前精确开关表。
-- 一般 Q-b phantom lowering、递归 cofix、任意互归纳／嵌套互递归不在当前通用支持范围；不因本次 Corelib 为零受阻而声称支持。
-- 旧的 ssr_have_upolyrest／step 名字特判已由 quality family 机制取代，不列为现行规则。
-- main74→main75 合并了直接 Type up/down 与组合转换中的重复路径，并统一失败回滚；不是删除源检查、隐藏条件或把失败项移出统计。
-- 该目录中的 RULES.md 是机制摘要与精简证据；本文件是详细审阅清单。逐声明实际使用与尝试见各 Corelib 模块的 JSON/MD，汇总命中记录见 rule-usage.json。
+- R-CARRIER P1/P2/P3 is a carrier independent mechanism; solvers P2 (joint) and P3 (hypExact) are not of the same rule. Rule P refers to PULift related representation conversion, P0 is protection check.
+- The current annotation for polyUniverseInterpretation uses R6-I; older documentation also used this tag to discuss polymorphic inductive blocks. They should be distinguished by source code mechanism and not merged by tag strings.
+- main75 No independently named R-OCC or eqLower switches were found; the occurrence-by-occurrence reference processing corresponds to existing mechanisms such as unify. The previous verbal overview of the ladder cannot be taken as a current accurate switching table.
+- Generally, Q-b phantom lowering, recursion cofix, and arbitrary mutual induction/nested mutual recursion are not within the current general support scope; no support is claimed because Corelib is zero blocked this time.
+- The old ssr_have_upolyrest/step name special rules have been replaced by the quality family mechanism and are not listed as current rules.
+- main74→main75 merges the duplicate paths in direct Type up/down and combined transformations, and unifies failure rollback; instead of deleting source checks, hiding conditions, or moving failed items out of statistics.
+- RULES.md in this directory is the mechanism summary and condensed evidence; this document is the detailed review checklist. See JSON/MD of each Corelib module for statement-by-statement actual usage and attempts, and see rule-usage.json for summary hit records.
 
-**翻译后的对应证明**
+**Translated correspondence certificate**
 
-nat、eq 不再作为 bootstrap 映射。其双向对应、依赖消去、运算保持和旧证书迁移结果见 [CORRESPONDENCE.md](CORRESPONDENCE.md)。这些证明不是新的 AST 翻译规则，也不计入上述 118 个审阅编号。普通归纳规则已覆盖新的 nat／eq，无需增加翻译规则。
+nat, eq are no longer mapped as bootstrap. The results of its two-way correspondence, dependency elimination, operation retention and old certificate migration are shown in [CORRESPONDENCE.md](CORRESPONDENCE.md). These certifications are not new AST translation rules and do not count toward the 118 review numbers listed above. Ordinary induction rules have covered the new nat/eq, and there is no need to add translation rules.

@@ -1,83 +1,83 @@
 # Corelib.Array.PrimArray
 
-每项对应机械翻译基线中的一个 root。完整 native statement / interface 类型在总 JSON 文件中。
+Each entry corresponds to one root in the mechanical translation baseline. The complete native statement / interface types are in the aggregate JSON file.
 
 
 
 ## Corelib.Array.PrimArray.array
 
-状态：TYPE_ISO。已证明双向逆；具体参数、Type/Sort 范围见证书类型。
+Status: TYPE_ISO. Proven bidirectional inversion; specific parameters, Type/Sort range witness certificate type.
 
-原始目标：Rocq.Corelib.Array.PrimArray.array
+Original target: Rocq.Corelib.Array.PrimArray.array
 
-操作/类型证书：NativeBridge.arrayIso
+Operation/Type Certificate: NativeBridge.arrayIso
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Array.PrimArray.array.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Array.PrimArray.array.roundtrip
 
 ## Corelib.Array.PrimArray.copy
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.Array.PrimArray.copy
+Original target: Rocq.Corelib.Array.PrimArray.copy
 
-操作/类型证书：NativeBridge.array_copy_agrees
+Operation/Type Certificate: NativeBridge.array_copy_agrees
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Array.PrimArray.copy.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Array.PrimArray.copy.roundtrip
 
 ## Corelib.Array.PrimArray.default
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.Array.PrimArray.default
+Original target: Rocq.Corelib.Array.PrimArray.default
 
-操作/类型证书：NativeBridge.array_default_agrees
+Operation/Type Certificate: NativeBridge.array_default_agrees
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Array.PrimArray.default.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Array.PrimArray.default.roundtrip
 
 ## Corelib.Array.PrimArray.get
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.Array.PrimArray.get
+Original target: Rocq.Corelib.Array.PrimArray.get
 
-操作/类型证书：NativeBridge.array_get_agrees
+Operation/Type Certificate: NativeBridge.array_get_agrees
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Array.PrimArray.get.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Array.PrimArray.get.roundtrip
 
 ## Corelib.Array.PrimArray.length
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.Array.PrimArray.length
+Original target: Rocq.Corelib.Array.PrimArray.length
 
-操作/类型证书：NativeBridge.array_length_agrees
+Operation/Type Certificate: NativeBridge.array_length_agrees
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Array.PrimArray.length.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Array.PrimArray.length.roundtrip
 
 ## Corelib.Array.PrimArray.make
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.Array.PrimArray.make
+Original target: Rocq.Corelib.Array.PrimArray.make
 
-操作/类型证书：NativeBridge.array_make_length_agrees;NativeBridge.array_make_values_agrees
+Operation/type certificate: NativeBridge.array_make_length_agrees; NativeBridge.array_make_values_agrees
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Array.PrimArray.make.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Array.PrimArray.make.roundtrip
 
 ## Corelib.Array.PrimArray.max_length
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.Array.PrimArray.max_length
+Original target: Rocq.Corelib.Array.PrimArray.max_length
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Array.PrimArray.max_length.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Array.PrimArray.max_length.roundtrip
 
 ## Corelib.Array.PrimArray.set
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.Array.PrimArray.set
+Original target: Rocq.Corelib.Array.PrimArray.set
 
-操作/类型证书：NativeBridge.array_set_agrees
+Operation/Type Certificate: NativeBridge.array_set_agrees
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Array.PrimArray.set.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Array.PrimArray.set.roundtrip

@@ -1,327 +1,327 @@
 # Corelib.BinNums.IntDef
 
-每项对应机械翻译基线中的一个 root。完整 native statement / interface 类型在总 JSON 文件中。
+Each entry corresponds to one root in the mechanical translation baseline. The complete native statement / interface types are in the aggregate JSON file.
 
 
 
 ## Corelib.BinNums.IntDef.Z.add
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.add
+Original target: Rocq.Corelib.BinNums.IntDef.Z.add
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.add.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.add.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.compare
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.compare
+Original target: Rocq.Corelib.BinNums.IntDef.Z.compare
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.compare.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.compare.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.div
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.div
+Original target: Rocq.Corelib.BinNums.IntDef.Z.div
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.div.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.div.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.div2
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.div2
+Original target: Rocq.Corelib.BinNums.IntDef.Z.div2
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.div2.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.div2.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.div_eucl
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.div_eucl
+Original target: Rocq.Corelib.BinNums.IntDef.Z.div_eucl
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.div_eucl.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.div_eucl.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.double
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.double
+Original target: Rocq.Corelib.BinNums.IntDef.Z.double
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.double.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.double.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.eqb
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.eqb
+Original target: Rocq.Corelib.BinNums.IntDef.Z.eqb
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.eqb.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.eqb.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.even
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.even
+Original target: Rocq.Corelib.BinNums.IntDef.Z.even
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.even.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.even.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.ge
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.ge
+Original target: Rocq.Corelib.BinNums.IntDef.Z.ge
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.ge.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.ge.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.gt
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.gt
+Original target: Rocq.Corelib.BinNums.IntDef.Z.gt
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.gt.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.gt.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.land
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.land
+Original target: Rocq.Corelib.BinNums.IntDef.Z.land
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.land.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.land.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.le
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.le
+Original target: Rocq.Corelib.BinNums.IntDef.Z.le
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.le.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.le.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.leb
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.leb
+Original target: Rocq.Corelib.BinNums.IntDef.Z.leb
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.leb.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.leb.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.lor
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.lor
+Original target: Rocq.Corelib.BinNums.IntDef.Z.lor
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.lor.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.lor.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.lt
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.lt
+Original target: Rocq.Corelib.BinNums.IntDef.Z.lt
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.lt.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.lt.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.ltb
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.ltb
+Original target: Rocq.Corelib.BinNums.IntDef.Z.ltb
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.ltb.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.ltb.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.lxor
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.lxor
+Original target: Rocq.Corelib.BinNums.IntDef.Z.lxor
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.lxor.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.lxor.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.max
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.max
+Original target: Rocq.Corelib.BinNums.IntDef.Z.max
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.max.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.max.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.min
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.min
+Original target: Rocq.Corelib.BinNums.IntDef.Z.min
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.min.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.min.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.modulo
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.modulo
+Original target: Rocq.Corelib.BinNums.IntDef.Z.modulo
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.modulo.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.modulo.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.mul
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.mul
+Original target: Rocq.Corelib.BinNums.IntDef.Z.mul
 
-操作/类型证书：NativeBridge.int_mul_agrees
+Operation/Type Certificate: NativeBridge.int_mul_agrees
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.mul.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.mul.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.of_N
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.of_N
+Original target: Rocq.Corelib.BinNums.IntDef.Z.of_N
 
-操作/类型证书：NativeBridge.int_of_binary_nat_agrees
+Operation/Type Certificate: NativeBridge.int_of_binary_nat_agrees
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.of_N.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.of_N.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.of_nat
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.of_nat
+Original target: Rocq.Corelib.BinNums.IntDef.Z.of_nat
 
-操作/类型证书：NativeBridge.int_of_nat_agrees
+Operation/Type Certificate: NativeBridge.int_of_nat_agrees
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.of_nat.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.of_nat.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.opp
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.opp
+Original target: Rocq.Corelib.BinNums.IntDef.Z.opp
 
-操作/类型证书：NativeBridge.int_opp_agrees
+Operation/Type Certificate: NativeBridge.int_opp_agrees
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.opp.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.opp.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.pos_div_eucl
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.pos_div_eucl
+Original target: Rocq.Corelib.BinNums.IntDef.Z.pos_div_eucl
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.pos_div_eucl.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.pos_div_eucl.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.pos_sub
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.pos_sub
+Original target: Rocq.Corelib.BinNums.IntDef.Z.pos_sub
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.pos_sub.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.pos_sub.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.pow
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.pow
+Original target: Rocq.Corelib.BinNums.IntDef.Z.pow
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.pow.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.pow.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.pow_pos
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.pow_pos
+Original target: Rocq.Corelib.BinNums.IntDef.Z.pow_pos
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.pow_pos.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.pow_pos.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.pred_double
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.pred_double
+Original target: Rocq.Corelib.BinNums.IntDef.Z.pred_double
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.pred_double.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.pred_double.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.quot
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.quot
+Original target: Rocq.Corelib.BinNums.IntDef.Z.quot
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.quot.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.quot.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.quotrem
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.quotrem
+Original target: Rocq.Corelib.BinNums.IntDef.Z.quotrem
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.quotrem.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.quotrem.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.rem
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.rem
+Original target: Rocq.Corelib.BinNums.IntDef.Z.rem
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.rem.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.rem.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.shiftl
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.shiftl
+Original target: Rocq.Corelib.BinNums.IntDef.Z.shiftl
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.shiftl.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.shiftl.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.shiftr
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.shiftr
+Original target: Rocq.Corelib.BinNums.IntDef.Z.shiftr
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.shiftr.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.shiftr.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.sqrtrem
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.sqrtrem
+Original target: Rocq.Corelib.BinNums.IntDef.Z.sqrtrem
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.sqrtrem.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.sqrtrem.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.sub
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.sub
+Original target: Rocq.Corelib.BinNums.IntDef.Z.sub
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.sub.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.sub.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.succ_double
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.succ_double
+Original target: Rocq.Corelib.BinNums.IntDef.Z.succ_double
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.succ_double.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.succ_double.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.to_nat
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.to_nat
+Original target: Rocq.Corelib.BinNums.IntDef.Z.to_nat
 
-操作/类型证书：NativeBridge.int_to_nat_agrees
+Operation/Type Certificate: NativeBridge.int_to_nat_agrees
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.to_nat.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.to_nat.roundtrip
 
 ## Corelib.BinNums.IntDef.Z.to_pos
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.BinNums.IntDef.Z.to_pos
+Original target: Rocq.Corelib.BinNums.IntDef.Z.to_pos
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.to_pos.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.BinNums.IntDef.Z.to_pos.roundtrip

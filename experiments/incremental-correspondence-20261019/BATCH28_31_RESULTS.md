@@ -1,60 +1,60 @@
-# Correspondence 第二十八至三十一批
+# Correspondence Twenty-eighth to thirty-first batch
 
-本轮在原有 1526 个完成根上新增 **71 个去重根、72 份覆盖证书**，达到 **1597 / 2180**。额外的一份证书是 Pos.iter 的载体转换版本，不重复计根。机械翻译产物及 nat/eq 的独立归纳结构保持原样。
+In this round, **71 deduplication roots and 72 coverage certificates** were added to the original 1526 completed roots, reaching **1597 / 2180**. The additional certificate is the carrier conversion version of Pos.iter, without repeated root counting. The mechanical translation product and the independent induction structure of nat/eq remain intact.
 
-| 批次 | 新增根 | 新增证书 | 内容 |
+| batch | Add new root | Add new certificate | content |
 |---|---:|---:|---|
-| 28 | 20 | 20 | SSR：2 个索引类型，18 个分支、反射、限制域谓词及包装操作 |
+| 28 | 20 | 20 | SSR: 2 index types, 18 branch, reflection, restricted domain predicate and wrapper operations |
 | 29 | 6 | 7 | Pos.iter、Z.pow_pos、Z.pow、Z.even、Z.shiftl、Z.shiftr |
-| 30 | 7 | 7 | Init.Sumbool 全模块：6 个运算、1 个原生陈述 iff，并证明原陈述 |
-| 31 | 38 | 38 | CRelationClasses：18 个类型对应、20 个投影／组合操作 |
+| 30 | 7 | 7 | Init.Sumbool full module: 6 operations, 1 original statements iff, and prove the original statement |
+| 31 | 38 | 38 | CRelationClasses: 18 types corresponding, 20 projection/combination operations |
 
-## 索引与不透明性
+## Indexing and opacity
 
-[SSRBoolIndexed.lean](proofs/SSRBoolIndexed.lean) 将 alt_spec、if_spec 对应到 PLift 包装的原生条件命题，分别保留布尔索引、分支证据和值索引。两种类型都有完整的往返证明。
+[SSRBoolIndexed.lean](proofs/SSRBoolIndexed.lean) maps alt_spec and if_spec to the native conditional propositions packaged by PLift, retaining the Boolean index, branch evidence and value index respectively. Both types come with full round-trip proof.
 
-altP、boolP、ifP、ifPn 的全部前置条件均用已有闭合证明实例化。对应目标由原生 Bool 独立构造；转换后输出属于单值类型，利用其单值性证明相等。没有展开原来的 opaque 函数，也没有给它们补假定的计算方程。
+All preconditions of altP, boolP, ifP, and ifPn are instantiated using existing closed proofs. The corresponding target is constructed independently from the native Bool; the output after conversion is of a single-value type, and its single-value nature is used to prove equality. The original opaque functions were not expanded, nor were they supplemented with assumed calculation equations.
 
-[SSRBoolRestrictions.lean](proofs/SSRBoolRestrictions.lean) 新增左右分支判断、10 个限制域／应用谓词、sumboolP 和成员包装转换。phantom 证明参数可以任意取，目标表达式忽略这些参数；mem_pred 经已证 memIso 转换成原生 Bool 谓词。is_inleft 保留 Sort 参数。
+[SSRBoolRestrictions.lean](proofs/SSRBoolRestrictions.lean) adds left and right branch judgments, 10 restricted fields/application predicates, sumboolP and member packaging transformations. phantom proves that the parameters can be chosen arbitrarily, and the target expression ignores these parameters; mem_pred has been proved that memIso is converted into the native Bool predicate. is_inleft retains Sort parameters.
 
-ssrbool 目前完成 440 / 451。剩余 11 项包括 5 个 opaque 数据选择函数、impliesP、clone_pred 和 4 个携带载体的 predType 包。五个条件根的前置证明已齐备，但仍未得到结果对应，不把它们算作已完成。
+ssrbool is currently completed 440 / 451. The remaining 11 items include 5 opaque data selection functions, impliesP, clone_pred and 4 predType packages carrying carriers. The prerequisite proofs of the five conditional roots are complete, but the corresponding results have not yet been obtained, and they are not counted as completed.
 
-## 数值运算
+## Numerical operations
 
-[BinaryPower.lean](proofs/BinaryPower.lean) 证明二进制迭代与 Nat.rec 迭代一致，覆盖任意 Sort 载体。进一步给出转换函数的组合版本：必须显式提供步函数的对应证明。
+[BinaryPower.lean](proofs/BinaryPower.lean) proves that the binary iteration is consistent with the Nat.rec iteration, covering any Sort vector. Further giving the combinatorial version of the transformation function: the corresponding proof of the step function must be provided explicitly.
 
-- Z.pow_pos 对应 Int 的自然数指数幂。
-- Z.pow 对应负指数返回零、非负指数计算自然数次幂的表达式。
-- Z.even 对应整数模 2 等于零的 Bool 判定。
-- Z.shiftl 对应正移位乘 2 的幂、负移位做整数除法。
-- Z.shiftr 对应反向移位；负数除法采用 Lean 的欧几里得除法，对正的 2 的幂即向下取整。
+- Z.pow_pos corresponds to the natural number exponent power of Int.
+- Z.pow corresponds to an expression whose negative exponent returns zero and non-negative exponent is calculated to the power of a natural number.
+- Z.even corresponds to the Bool judgment that the integer modulo 2 is equal to zero.
+- Z.shiftl corresponds to positive shift multiplied by the power of 2 and negative shift to perform integer division.
+- Z.shiftr corresponds to reverse shift; negative division uses the Euclidean division of Lean, and the positive power of 2 is rounded down.
 
-四个具体例子也在该文件中通过 kernel：(-2)^(-3)=0、(-2)^3=-8、(-3) 右移 1 位=-2、3 左移 -1 位=1。这里的幂和移位均指机械 Rocq 运算经转换后的结果。
+Four specific examples also pass kernel in this document: (-2)^(-3)=0, (-2)^3=-8, (-3) Shift right 1 Bit=-2, 3 left shift -1 Bit=1. The power and shift here refer to the converted result of the mechanical Rocq operation.
 
 ## Sumbool
 
-[SumboolBridge.lean](proofs/SumboolBridge.lean) 证明了本模块全部 7 个根。12 个前置 obligation 给出闭合证明，4 个原带条件根完成对应。bool_eq_ind 既有原生陈述 iff，也有独立的原陈述证明。
+[SumboolBridge.lean](proofs/SumboolBridge.lean) proves all 7 roots of this module. 12 prefixes obligation give closed proofs, and 4 original conditional roots complete the correspondence. bool_eq_ind has both the original statement iff and independent proof of the original statement.
 
-sumbool_and、sumbool_or 对应 PSum 的分支组合，覆盖任意 A、B、C、D；不要求 B=¬A、D=¬C。bool_of_sumbool 的目标保留 Bool 标签及分支证明，不能仅丢掉证明返回 Bool。bool_eq_rec 的对应保持导出签名中的 Type-valued motive，不宣称已扩展成任意宇宙的消去器。
+sumbool_and, sumbool_or corresponds to the branch combination of PSum, covering any A, B, C, D; not required B=¬A, D=¬C. The target of bool_of_sumbool retains the Bool label and branch certificate, and cannot just throw away the certificate and return to Bool. The correspondence of bool_eq_rec remains Type-valued motive in the derived signature, and does not claim to have been extended to the eliminator of any universe.
 
-## Type 值关系
+## Type value relationship
 
-[CRelationData.lean](proofs/CRelationData.lean) 保留关系值中的数据及其函数操作。
+[CRelationData.lean](proofs/CRelationData.lean) retains the data in the relationship value and its function operations.
 
-PreOrder、PER、Equivalence 对应原生函数的乘积；iffT 对应两个方向的函数，没有附加互逆条件，因此不等于 Lean Equiv。relation_conjunction、relation_disjunction 分别对应 Prod 和 Sum，并对原机械 PULift 的额外宇宙给出双向转换。
+PreOrder, PER, and Equivalence correspond to the product of native functions; iffT corresponds to functions in two directions without additional reciprocal conditions, so it is not equal to Lean Equiv. relation_conjunction and relation_disjunction correspond to Prod and Sum respectively, and give two-way conversion to the extra universe of the original machine PULift.
 
-complement、Irreflexive、Asymmetric 的载荷本身只包含反证，证明其到原生命题的 Iso；这不等于将任意 Type 值关系压成 Prop。RewriteRelation 是无数据的逻辑标记，对应 True。
+The payloads of complement, Irreflexive, and Asymmetric only contain counterevidence to prove that they lead to the original proposition Iso; this does not mean that any Type value relationship is compressed into Prop. RewriteRelation is a logical tag without data, corresponding to True.
 
-本模块当前 46 / 81 个根完成。带实际函数数据的 opaque 结果，不能只靠证明无关性建立计算对应；剩余条目继续按源码透明性及输出数据逐项处理。
+This module is currently completed with 46 / 81 roots. For opaque results with actual function data, calculation correspondence cannot be established solely by proving irrelevance; the remaining entries continue to be processed one by one based on source code transparency and output data.
 
-## 验证
+## Verify
 
-5 个新增 profile 的证明均编译并通过公理闭包检查，允许范围仅为 Lean 标准公理；没有新增公理或 sorry。每个指定原生目标的类型与定义体都递归检查 NativeBridge 辅助定义，不残留源端符号。
+5 The proofs of the new profile are compiled and pass the axiom closure check, and the allowed range is only Lean standard axioms; there are no new axioms or sorry. The type and definition body of each specified native target are recursively checked for the NativeBridge auxiliary definition, leaving no source symbols.
 
-全部 88 个增量 profile 有匹配当前源码和依赖的成功记录；79 个覆盖 profile 的 1336 份覆盖证书共同导入通过。本轮重新编译新增证明及受影响依赖，并重新执行共同导入；没有重跑所有旧基线证明或 Corelib 机械翻译，也没有重跑旧 Mathlib 消费示例。
+All 88 increments profile have successful records matching the current source code and dependencies; 79 covering 1336 coverage certificates covering profile have been jointly imported and passed. This round recompiles the new proofs and affected dependencies, and re-executes the co-import; there is no re-running of all old baseline proofs or Corelib mechanical translations, nor is there re-running of the old Mathlib consumption examples.
 
-精确证书类型及公理依赖见 [证书报告](reports/CERTIFICATES.md)，逐根状态见 [覆盖账本](reports/CORELIB_LEDGER.csv)，共同导入见 [验证记录](reports/interop/all/import-all-validation.json)。编译缓存和探索脚本仅保存在远程 .work。
+For the exact certificate type and axiom dependency, see [Certificate Report ](reports/CERTIFICATES.md), for root-by-root status, see [Covering Ledger ](reports/CORELIB_LEDGER.csv), and for common import, see [Verification Record ](reports/interop/all/import-all-validation.json). Compile cache and exploration scripts are only saved in remote .work.
 
-## 后续顺序
+## subsequent sequence
 
-继续 P3/P4/P5/P6：优先复用 Type 值关系的类型桥接处理剩余陈述，再推进二进制位运算、除法与数字表示。对 opaque 函数区分可由输出类型唯一确定的结果，以及仍需计算等式的任意数据结果。当前剩余 583 根尚未达到完成类别，不能由未找到证明推断不存在对应。
+Continue with P3/P4/P5/P6: Prioritize reusing the type bridge of the Type value relationship to process the remaining statements, and then advance binary bit operations, division and digital representation. The opaque function distinguishes between results that can be uniquely determined by the output type, and arbitrary data results that still require the equation to be evaluated. The current remaining 583 roots have not yet reached the completion category, and the absence of a correspondence cannot be inferred from the not-found proof.

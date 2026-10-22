@@ -1,48 +1,48 @@
-# SSR 包装消除与剩余陈述（第二十五批）
+# SSR Packaging elimination and remaining statement (25th batch)
 
-新增 52 个完成根：8 个类型、15 个运算、29 个完整原生陈述。当前全项目完成类别为 1407 / 2180（约 64.5%）：92 类型、519 运算、796 陈述。每项证书仍有明确的 universe 与参数适用范围。
+Added 52 completion roots: 8 types, 15 operations, 29 complete native statements. The current full project completion category is 1407 / 2180 (approximately 64.5%): 92 type, 519 operation, 796 statement. Each certificate still has a clear scope of application for universe and parameters.
 
-ssrbool 的 451 根中已有 301 根完成（24 类型、59 运算、218 陈述）。剩余 150 根：128 个显式条件根、20 个未桥接根、2 个仅接口；没有剩余部分陈述。
+There is already a 301 root completion in the 451 root of ssrbool (24 type, 59 operation, 218 statement). 150 roots remaining: 128 explicit conditional roots, 20 unbridged roots, 2 interfaces only; no remaining partial statements.
 
-## 为什么有些包装可以对应 Unit
+## Why some packages can correspond to Unit
 
-manifest_simpl_pred、registered_applicative_pred、manifest_mem_pred、applicative_mem_pred、keyed_pred、keyed_qualifier 的参数已经指定目标谓词或 qualifier；它们存储的值还附有等式或逐点等价证明。因此在固定外部参数后，这些包装各自只有一个值，已证明与 Unit 的双向逆。
+The parameters of manifest_simpl_pred, registered_applicative_pred, manifest_mem_pred, applicative_mem_pred, keyed_pred, keyed_qualifier have specified target predicates or qualifier; their stored values are also accompanied by equality or point-by-point equivalence proofs. Therefore after fixing the external parameters, these packages each have only one value, proven bidirectional inverse of Unit.
 
-这里没有删除任意数据：谓词和 qualifier 仍是外部参数；逆转换重新构造指定值，并使用原字段中的等式证明往返。keyed_pred 的逐点等价经函数外延性得到函数相等。不同外部参数之间没有声称相等。
+No arbitrary data is deleted here: the predicate and qualifier are still external parameters; the inverse transformation reconstructs the specified value and proves the round trip using the equality in the original field. The point-wise equivalence of keyed_pred results in function equality via function extensionality. There is no claim of equality between different external parameters.
 
-另有 qualifier n A ↔ (A → Bool) 与 pred_key A p ↔ True 的双向对应。qualifier 的 n 是固定的机械 Nat 索引；其原生目标不额外保存已由类型参数指定的索引。后续陈述中的 Nat 量词通过已有 natIso 转换。
+There are also qualifier n A ↔ (A → Bool) and pred_key A p ↔ True bidirectional correspondence. n of qualifier is a fixed mechanical Nat index; its native target does not additionally save the index already specified by the type parameter. The Nat quantifier in the subsequent statement is converted by the existing natIso.
 
-## 15 个运算
+## 15 operations
 
-- collective_pred_of_simpl、applicative_pred_of_simpl、rel_of_simpl：包装中的原生布尔函数。
-- simpl_pred_value、applicative_pred_value、mem_pred_value：返回参数指定的谓词。
-- applicative_mem_pred_value：Unit 上的 id。
-- has_quality：取得 qualifier 的原生谓词。
-- unkey_pred、unkey_qualifier：取得参数指定的谓词或 qualifier 的解释。
-- eq_mem：原生函数相等。
-- sub_mem：逐点布尔蕴含。
-- mem：应用原生 Sigma 中的解释函数。
+- collective_pred_of_simpl, applicative_pred_of_simpl, rel_of_simpl: native boolean functions in wrappers.
+- simpl_pred_value, applicative_pred_value, mem_pred_value: Return the predicate specified by the parameter.
+- applicative_mem_pred_value: id on Unit.
+- has_quality: Get the native predicate of qualifier.
+- unkey_pred, unkey_qualifier: Get the predicate specified by the parameter or the explanation of qualifier.
+- eq_mem: Native functions are equal.
+- sub_mem: Pointwise Boolean implication.
+- mem: Apply the interpretation function in native Sigma.
 
-这些等式证明沿用全部源端 Type 参数和相关独立元数据 universe；没有只验证若干具体谓词。
+These equality proofs inherit all source-side Type parameters and associated independent metadata universe; they do not just verify a few specific predicates.
 
-## 29 个剩余部分陈述全部完成
+## 29 remaining statements are all completed
 
-28 个陈述自动完成原生化。新机制对包装量词直接构造已证明的转换引理应用，检查左端与当前表达式定义相等，再由 propext 构造等式；适配器展开与后续归一化均保留证明。这样避免了依赖包装和 universe 参数导致的普通 simp 匹配缺口。
+28 statements are automatically nativeized. The new mechanism directly constructs the proven conversion lemma application to the wrapped quantifier, checks that the left end is equal to the definition of the current expression, and then constructs the equation from propext; the adapter expansion and subsequent normalization both retain the proof. This avoids common simp matching gaps caused by reliance on packaging and universe parameters.
 
-if_arg 另给出原生 Bool 条件函数应用陈述、对应 iff，以及原机械陈述的闭合证明；不把它替换成 True。新增原陈述证明总数为 140。
+if_arg also gives the original Bool conditional function application statement, the corresponding iff, and the closed proofs of the original mechanical statement; it is not replaced by True. The total number of new original statement certificates is 140.
 
-进一步检查表明 locked 本身是透明定义，只依赖不透明的 master_key : unit。对只有一个构造器的 unit 消去即可证明 locked A x = x，不需要展开 master_key。新增 locked → id、master_key → Unit.unit 两个运算对应，并完成 is_true_locked_true 的原生陈述。这个单值类型论证不适用于任意 opaque 函数。
+Further inspection shows that locked itself is a transparent definition, relying only on the opaque master_key : unit. Elimination of unit, which has only one constructor, can prove that locked A x = x, and there is no need to expand master_key. Added two new operations corresponding to locked → id, master_key → Unit.unit, and completed the native statement of is_true_locked_true. This single value type argument does not apply to any opaque function.
 
-## 验证
+## Verify
 
-- SSRBoolPackaging、SSRBoolRemainingStatements 通过 Lean kernel 与公理闭包检查。
-- 当前 76 个验证 profile 与源码及依赖指纹一致。
-- 1145 份增量覆盖证书经 70 个覆盖 profile 共同导入通过：1441 个入口、9167 个依赖声明副本。
-- 本批未改变机械翻译，不增加翻译规则，没有重跑全部机械结果或旧基线证明；因打包器支持发生变化，70 个覆盖 profile 全部重新打包核验。
-- .work 中的编译缓存与探测文件只留在远程。
+- SSRBoolPackaging, SSRBoolRemainingStatements pass Lean kernel and axiom closure check.
+- The current 76 verification profile is consistent with the source code and dependency fingerprints.
+- 1145 incremental coverage certificates are co-imported by 70 coverage profile through: 1441 entries, 9167 dependency statement copies.
+- This batch does not change the mechanical translation, does not add translation rules, and does not rerun all mechanical results or old baseline proofs; due to changes in packager support, 70 covers profile and all are repackaged for verification.
+- The compilation cache and probe files in .work only remain on the remote.
 
-下一步处理 128 个条件根的共享前置证明和其余数据操作。对于带载体类型的包，需要保持“载体可双向转换”和“两个包在 Lean 中相等”的区别；已有类型 Iso 不自动提供载体类型的等式。
+The next step is to process the shared prefix proofs and remaining data operations for 128 conditional roots. For packages with carrier types, it is necessary to maintain the distinction between "the carrier can be converted in both directions" and "the two packages are equal in Lean"; the existing type Iso does not automatically provide the equation for the carrier type.
 
-证明与逐项结果：proofs/SSRBoolPackaging.lean、proofs/SSRBoolRemainingStatements.lean、reports/ssrbool-remaining-statement-candidates.json、reports/CERTIFICATES.md。
+Proof and itemized results: proofs/SSRBoolPackaging.lean, proofs/SSRBoolRemainingStatements.lean, reports/ssrbool-remaining-statement-candidates.json, reports/CERTIFICATES.md.
 
-共同导入工具新增 opaque 支持：保留声明种类，复制并核验定义体及其依赖。fixture 证实任意 opaque Nat 仍无法用 rfl 展开，单值类型上的证明可以导入；直接新增公理及藏在 opaque body 内的新公理都被拒绝。
+The co-import tool adds opaque support: retain declaration types, copy and verify the definition body and its dependencies. fixture proves that any opaque Nat still cannot be expanded with rfl, and proofs on single value types can be imported; directly added axioms and new axioms hidden in opaque body are rejected.

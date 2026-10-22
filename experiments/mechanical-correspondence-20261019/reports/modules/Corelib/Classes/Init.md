@@ -1,21 +1,21 @@
 # Corelib.Classes.Init
 
-每项对应机械翻译基线中的一个 root。完整 native statement / interface 类型在总 JSON 文件中。
+Each entry corresponds to one root in the mechanical translation baseline. The complete native statement / interface types are in the aggregate JSON file.
 
 
 
 ## Corelib.Classes.Init.Unconvertible
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.Classes.Init.Unconvertible
+Original target: Rocq.Corelib.Classes.Init.Unconvertible
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Classes.Init.Unconvertible.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Classes.Init.Unconvertible.roundtrip
 
 ## Corelib.Classes.Init.unconvertible
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.Classes.Init.unconvertible
+Original target: Rocq.Corelib.Classes.Init.unconvertible
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Classes.Init.unconvertible.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Classes.Init.unconvertible.roundtrip

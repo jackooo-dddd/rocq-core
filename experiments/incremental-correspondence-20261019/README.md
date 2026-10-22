@@ -1,52 +1,52 @@
-# 增量 correspondence 工作区
+# Increment correspondence workspace
 
-原冻结机械版本完成 **2100 / 2180 个去重源根**，经过九十批增量工作；[计算透明变体](transparent-data/README.md)已完成 **2180 / 2180**，并通过全量回归和共同导入。下表统计原冻结版本。计划：[PLAN.md](PLAN.md)；依赖图：[DAG.md](DAG.md)；[具体例子](../../results/CORRESPONDENCE_EXAMPLES.md)。
+The original frozen mechanical version has completed **2100 / 2180 deduplicated source roots**, after ninety batches of incremental work; [calculation of the transparent variant ](transparent-data/README.md) has been completed **2180 / 2180**, and passed full regression and co-import. The following table counts the original frozen versions. Plan: [PLAN.md](PLAN.md); Dependency graph: [DAG.md](DAG.md); [Specific example ](../../results/CORRESPONDENCE_EXAMPLES.md).
 
-“完成”表示已经证明明示范围内的类型双向逆、指定原生运算对应或原生陈述 iff。只有接口、部分原生陈述或尚未闭合的对应不计入。
+"Complete" means that the bidirectional inverse of the type in the explicit scope, the specified native operation correspondence, or the native statement iff has been proved. Only interfaces, partial native statements, or correspondences that have not yet been closed are not counted.
 
-| 主分类 | 冻结基线 | 当前 |
+| Main category | freeze baseline | current |
 |---|---:|---:|
-| 类型对应 | 29 | 164 |
-| 运算／谓词对应 | 114 | 908 |
-| 完全原生陈述 | 143 | 1028 |
-| 只有接口 | 375 | 6 |
-| 部分原生陈述 | 702 | 0 |
-| 尚无证书 | 485 | 57 |
-| 条件根尚未完成对应 | 331 | 17 |
-| 非 Prop 特殊陈述尚未处理 | 1 | 0 |
+| Type correspondence | 29 | 164 |
+| Operation/predicate correspondence | 114 | 908 |
+| completely native statement | 143 | 1028 |
+| only interface | 375 | 6 |
+| Partial native statement | 702 | 0 |
+| No certificate yet | 485 | 57 |
+| The conditional root has not yet completed its correspondence | 331 | 17 |
+| Non-Prop special statements have not been processed yet | 1 | 0 |
 
-类型数统计源根，包括类型别名、类型构造函数和已桥接的 Type 值陈述，不等于不同 datatype 的数量。原生目标分为现成 API、原生组合表达式和原生表示，见证书 target_class。陈述 iff 不自动证明原定理；另有 318 份原陈述的独立 Prop 证明。
+The type count measures source roots, including type aliases, type constructors, and bridged Type-valued statements; it is not the number of distinct datatype. Native targets are classified as existing API, composed native expressions, and native representations; see certificate field target_class. A statement iff does not automatically prove the original theorem; 318 separate Prop proofs establish original statements.
 
-机械导出仍有 331 个带显式条件根；correspondence 层已用闭合证明实例化其中 314 个并完成对应。剩余 17 个条件类别根不全缺前置证明：例如 ssrbool 的 5 个数据选择函数已证明前置条件，仍缺结果对应。
+Mechanically derived, there are still 331 with explicit conditional roots; the correspondence layer has instantiated 314 of them with closed proofs and completed the correspondence. The remaining 17 condition categories are incomplete and lack prerequisite proofs: for example, the 5 data selection functions of ssrbool have proven preconditions, but still lack corresponding results.
 
-## 本轮新增
+## New in this round
 
-[第九十批](BATCH90_RESULTS.md) 完成 5 个透明 SSR predicate package。boolfunPredType、predPredType、memPredType、simplPredType 经明确的承载类型双向转换后，谓词字段与原生 (A → Bool, id) 相等；clone_pred 对应原生 Sigma 包装。没有要求不同承载类型直接相等。
+[The 90th batch of ](BATCH90_RESULTS.md) completed 5 transparent SSR predicate package. After clear bidirectional conversion of the bearer type, the predicate field of boolfunPredType, predPredType, memPredType, and simplPredType is equal to the native (A → Bool, id); clone_pred corresponds to the native Sigma packaging. There is no requirement that different bearer types be directly equal.
 
-当前 **2100 / 2180**，剩余 80 根。逐根检查发现 69 个 opaque 根及 11 个依赖 opaque 的透明包装，均为非 Prop 值；实际计算正文仍保留在 Lean 环境。见 [正文审查](reports/REMAINING_BODY_AUDIT.json)。这本身不是这些常量不能对应的证明，但提供了下一步具体方向。
+Currently **2100 / 2180**, 80 roots remain. Root-by-root inspection found 69 opaque roots and 11 transparent packages that depended on opaque, all of which were non-Prop values; the actual calculation body still remained in the Lean environment. See [Text review ](reports/REMAINING_BODY_AUDIT.json). This in itself is not proof that these constants cannot correspond, but it provides specific directions for the next step.
 
-[独立计算透明实验](transparent-data/PLAN.md) 将保留的机械正文在新命名空间导出为可展开定义，再证明对应。现已完成 80/80 个候选根，六组证明通过共同导入；既有 2100 根也已通过 173 个 profile 的回归，与 6 个新 profile 共同导入成功。结果单独统计，不改写旧 opaque 常量，不混入原基线覆盖。
+[Independent computational transparency experiment ](transparent-data/PLAN.md) exports the retained mechanical body as an expandable definition in the new namespace, and then proves the correspondence. 80/80 candidate roots have been completed, and six groups of proofs have been jointly imported; the existing 2100 roots have also passed the regression of 173 profile, and were jointly imported successfully with 6 new profile. The results are counted separately without overwriting the old opaque constant and not mixing into the original baseline coverage.
 
-## 验证范围
+## Validation scope
 
-166 个增量 Lean profile 有与当前源码和依赖产物匹配的成功验证记录。1848 份增量覆盖证书已共同导入检查，见 [共同导入记录](reports/interop/all/import-all-validation.json)。
+166 increments Lean profile have successful verification records matching the current source code and dependent products. 1848 incremental coverage certificates have been co-imported for inspection, see [Co-import record ](reports/interop/all/import-all-validation.json).
 
-新证明检查公理闭包。指定原生目标递归检查类型、正文及 NativeBridge 辅助定义，不允许隐藏源符号。限制范围或函数对应假设在证书 scope 和完整类型中保留。
+New proof checks axiom closure. Specifies the native target recursion check type, body, and NativeBridge auxiliary definition, and does not allow hidden source symbols. Restricted scope or function correspondence is assumed to be preserved in certificate scope and the complete type.
 
-机械 nat/eq 不变。旧基线证明沿用既有验证结果；本轮没有重跑全部机械翻译或全部旧证明。新 Mathlib 位运算对应实际编译；旧数字打印及 Nat/SSR/Setoid 消费例沿用既有验证。详见 [跨模块消费](INTEROP_RESULTS.md)。
+Mechanical nat/eq remains unchanged. The old baseline proof uses the existing verification results; this round does not rerun all mechanical translations or all old proofs. The new Mathlib bit operations correspond to actual compilation; the old digital printing and Nat/SSR/Setoid consumption examples follow the existing verification. For details, see [Cross-module consumption ](INTEROP_RESULTS.md).
 
-## 产物
+## product
 
-- [逐根覆盖账本](reports/CORELIB_LEDGER.csv)、[摘要](reports/summary.json)、[任务表](tasks.csv)。
-- [完整证书类型和公理闭包](reports/CERTIFICATES.md)、[机器可读证书](reports/certificates.json)。
-- certificates.json：明确的源根 → 证书注册表；make_report.py 只计通过检查的注册项。
-- proofs/：完整 Lean 对应证明；[CMorphisms 模块账本](reports/cmorphisms-module-coverage.json)。
-- [条件闭合证据](reports/condition-discharges.json)、[逐 profile 验证](reports/validation.json)。
-- 编译文件、探测脚本及临时输出只在远程 .work，不同步到 Git 或 Mac。
+- [Cover the ledger ](reports/CORELIB_LEDGER.csv), [Abstract ](reports/summary.json), [Task list ](tasks.csv)] root by root.
+- [Complete certificate type and axiom closure ](reports/CERTIFICATES.md), [Machine-readable certificate ](reports/certificates.json).
+- certificates.json: Clear source root → certificate registry; make_report.py only counts registration items that pass the check.
+- proofs/: Complete Lean corresponding certificate; [CMorphisms module ledger ](reports/cmorphisms-module-coverage.json).
+- [Conditional closure evidence ](reports/condition-discharges.json), [Verify ](reports/validation.json) one by one profile.
+- Compile files, detection scripts and temporary output are only in remote .work and are not synchronized to Git or Mac.
 
-## 复现
+## Recurrence
 
-在本目录执行：
+Execute in this directory:
 
     python3 verify.py
     python3 make_report.py
@@ -54,4 +54,4 @@
     python3 interop/check_all.py
     python3 make_report.py
 
-Mathlib profile 使用远程已经安装的相同 Lean 工具链与库。以上命令会完整重检；第八十六至八十九批增量编译四个覆盖 profile 及三个依赖支持 profile，并执行全体共同导入检查。
+Mathlib profile uses the same Lean toolchain and libraries that are already installed remotely. The above command will be completely rechecked; batches 86 to 89 will incrementally compile four files covering profile and three dependencies to support profile, and perform all common import checks.

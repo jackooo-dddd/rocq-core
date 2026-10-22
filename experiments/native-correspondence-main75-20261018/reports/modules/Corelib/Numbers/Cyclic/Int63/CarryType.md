@@ -1,11 +1,11 @@
 # Corelib.Numbers.Cyclic.Int63.CarryType
 
-每项对应机械翻译基线中的一个 root。完整 native statement / interface 类型在总 JSON 文件中。
+Each entry corresponds to one root in the mechanical translation baseline. The complete native statement / interface types are in the aggregate JSON file.
 
 
 
 ## Corelib.Numbers.Cyclic.Int63.CarryType.carry
 
-状态：NOT_YET_BRIDGED。尚无本轮证书；不代表数学上不存在对应。
+Status: NOT_YET_BRIDGED. No certificate in this batch yet; this does not imply that a correspondence is mathematically impossible.
 
-原始目标：Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry
+Original target: Rocq.Corelib.Numbers.Cyclic.Int63.CarryType.carry

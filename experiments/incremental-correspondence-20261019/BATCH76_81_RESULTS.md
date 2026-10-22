@@ -1,8 +1,8 @@
-# 第七十六至八十一批：符号浮点运算完成
+# Batch 76 to 81: Symbolic floating point operations completed
 
-新增 17 个去重源根，全部为运算对应。总覆盖 **2017 / 2180**：161 类型、852 运算、1004 完整原生陈述；原陈述另有 318 个独立 Prop 证明，本批未新增该类证明。
+Added 17 deduplication source roots, all corresponding to operations. Total coverage **2017 / 2180**: 161 type, 852 operation, 1004 complete original statement; the original statement also has 318 independent Prop proofs, and no such proofs are added in this batch.
 
-| 批次 | profile | 新根 | 对应内容 |
+| batch | profile | new roots | Corresponding content |
 |---|---|---:|---|
 | 76 | SpecFloatComparison | 4 | SFcompare、SFeqb、SFltb、SFleb |
 | 77 | SpecFloatArithmetic | 3 | SFadd、SFsub、SFmul |
@@ -11,18 +11,18 @@
 | 80 | SpecFloatDivision | 2 | SFdiv_core_binary、SFdiv |
 | 81 | SpecFloatSqrt | 2 | SFsqrt_core_binary、SFsqrt |
 
-## 证明范围
+## Proof scope
 
-SpecFloat 已完成 **55 / 55**。NativeBridge.Incremental.SpecFloatRepresentation.SpecValue 保存正负零、无穷、单一 NaN、带符号正有效数字及整数指数。运算目标由 Bool/Nat/Int、Option Ordering 和该表示构成；没有残留 Rocq/Rocq2Lean 符号，尚未证明等于 Lean 运行时 Float 运算。
+SpecFloat Completed **55 / 55**. NativeBridge.Incremental.SpecFloatRepresentation.SpecValue stores positive and negative zero, infinity, single NaN, signed positive significant digits and integer exponents. The target of the operation consists of Bool/Nat/Int, Option, Ordering, and this representation; there is no residual Rocq/Rocq2Lean symbol and it has not been proven to be equal to Lean when running the Float operation.
 
-所有证明保留原定义的任意输入范围，不加 valid_binary 假设。比较对任意有限符号值按原算法比较指数与有效数字；未经有效性证明，不把这种比较宣称为任意表示下的数值比较。
+All proofs retain the original defined arbitrary input range without adding the valid_binary assumption. The comparison compares exponents and significant figures according to the original algorithm for any finite symbolic value; without proof of validity, this comparison is not declared to be a numerical comparison under any representation.
 
-除法使用 Int.fdiv/fmod，证明商余数以及符号规则；平方根使用 Nat.sqrt，并证明整数余数。两者复用已证明的完整最近偶数舍入。前驱、后继保留边界有效数字、无穷和正负零分支。frexp 的非有限值返回原算法规定的指数标记。
+Use Int.fdiv/fmod for division and prove the quotient remainder and the sign rule; use Nat.sqrt for square roots and prove the integer remainder. Both reuse the proven complete nearest even rounding. Precursor and successor preserve boundary significant digits, infinity and positive and negative zero branches. Non-finite values ​​of frexp return the index signature specified by the original algorithm.
 
-## 依赖与验证
+## Dependency and verification
 
-新增 SpecFloatMaskSupport、SpecFloatDivisionSupport、SpecFloatSqrtSupport 三个支持 profile；它们不重复计根。整数证明在 SpecFloat 实际依赖闭包中重新检查。平方根的减法借位辅助项取自机械 sub_mask 的同一个互递归项第二投影，并经 Lean 内核检查。
+Three new ones, SpecFloatMaskSupport, SpecFloatDivisionSupport, and SpecFloatSqrtSupport, are added to support profile; they do not count repeatedly. Integer proof rechecked in SpecFloat actual dependency closure. The subtractive borrow auxiliary term of the square root is taken from the second projection of the same mutual recursive term of the mechanical sub_mask and checked by the Lean kernel.
 
-154 个 profile 当前源码与依赖验证通过；136 个覆盖 profile、1765 份增量证书共同导入。指定原生目标递归审计、公理闭包及证书直接关联源根检查均通过。没有新增 sorry 或公理。编译产物、临时探测和日志运行目录保留在远程 .work。
+154 profile current source code and dependency verification passed; 136 incremental certificates covering profile and 1765 were imported together. The specified native target recursive audit, axiom closure and certificate directly related to the source root check all passed. There are no new sorry or axioms. Compile products, temporary probes, and log run directories remain in remote .work.
 
-剩余 163 根：尚无证书 115、部分原生陈述 24、仅接口 7、显式条件 17。下一步处理 PrimFloat / FloatOps / FloatAxioms；opaque Type 值数据不会仅凭类型包装计为运算对应。
+Remaining 163 root: no certificate yet 115, partial native statement 24, interface only 7, explicit condition 17. The next step is to process PrimFloat / FloatOps / FloatAxioms; opaque Type value data will not be counted as operation correspondence based on type packaging alone.

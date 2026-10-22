@@ -1,56 +1,56 @@
 # Corelib.ssr.ssrclasses
 
-每项对应机械翻译基线中的一个 root。完整 native statement / interface 类型在总 JSON 文件中。
+Each entry corresponds to one root in the mechanical translation baseline. The complete native statement / interface types are in the aggregate JSON file.
 
 
 
 ## Corelib.ssr.ssrclasses.Reflexive
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.ssr.ssrclasses.Reflexive
+Original target: Rocq.Corelib.ssr.ssrclasses.Reflexive
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.ssr.ssrclasses.Reflexive.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.ssr.ssrclasses.Reflexive.roundtrip
 
 ## Corelib.ssr.ssrclasses.eq_Reflexive
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.ssr.ssrclasses.eq_Reflexive.statement
+Original target: Rocq.Corelib.ssr.ssrclasses.eq_Reflexive.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.ssr.ssrclasses.eq_Reflexive.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.ssr.ssrclasses.eq_Reflexive.statement.correspondence
 
 ```lean
 ∀ (A : Sort u_Corelib_ssr_ssrclasses_23), Rocq.Corelib.ssr.ssrclasses.Reflexive A (Rocq.Corelib.Init.Logic.eq A)
 ```
 
-残留源符号：Rocq.Corelib.ssr.ssrclasses.Reflexive;Rocq.Corelib.Init.Logic.eq
+Residual source symbols: Rocq.Corelib.ssr.ssrclasses.Reflexive;Rocq.Corelib.Init.Logic.eq
 
 ## Corelib.ssr.ssrclasses.iff_Reflexive
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.ssr.ssrclasses.iff_Reflexive.statement
+Original target: Rocq.Corelib.ssr.ssrclasses.iff_Reflexive.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.ssr.ssrclasses.iff_Reflexive.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.ssr.ssrclasses.iff_Reflexive.statement.correspondence
 
 ```lean
 Rocq.Corelib.ssr.ssrclasses.Reflexive Prop Rocq.Corelib.Init.Logic.iff
 ```
 
-残留源符号：Rocq.Corelib.ssr.ssrclasses.Reflexive;Rocq.Corelib.Init.Logic.iff
+Residual source symbols: Rocq.Corelib.ssr.ssrclasses.Reflexive;Rocq.Corelib.Init.Logic.iff
 
 ## Corelib.ssr.ssrclasses.reflexivity
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.ssr.ssrclasses.reflexivity.statement
+Original target: Rocq.Corelib.ssr.ssrclasses.reflexivity.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.ssr.ssrclasses.reflexivity.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.ssr.ssrclasses.reflexivity.statement.correspondence
 
 ```lean
 ∀ (A : Sort u_Corelib_ssr_ssrclasses_21) (R : A → A → Prop),
   Rocq.Corelib.ssr.ssrclasses.Reflexive A R → ∀ (x : A), R x x
 ```
 
-残留源符号：Rocq.Corelib.ssr.ssrclasses.Reflexive
+Residual source symbols: Rocq.Corelib.ssr.ssrclasses.Reflexive

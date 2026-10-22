@@ -1,24 +1,24 @@
-# 数字写出与进位对应
+# Number writing corresponds to carry
 
-新增 11 个运算根、1 个类型根，全部由 Lean kernel 检查。本批初步完成时总完成类别 875 / 2180。数字读取及规范化的旧结果另见 NUMERIC_WF_RESULTS.md。
+Added 11 operation roots and 1 type roots, all checked by Lean kernel. The total completion category of this batch is 875 / 2180. See also NUMERIC_WF_RESULTS.md for old results of digital reading and normalization.
 
-| 源声明 | 已证明的原生目标 |
+| source statement | Proven native target |
 |---|---|
-| Decimal.Little.succ / Hexadecimal.Little.succ | List (Fin 10/16) 上的原生进位函数 increment |
-| Nat.to_little_uint / to_little_hex_uint | Nat.rec 对上述进位函数的迭代，保留任意输入累积器 |
-| Nat.to_uint / to_hex_uint | 从 [0] 迭代后反转得到的大端数字列表 printDigits |
-| Nat.to_int / to_hex_int | 正号标签与 printDigits 的乘积 |
-| Nat.to_num_uint / to_num_hex_uint / to_num_int | 保留十进制/十六进制标签的 Sum 包装 |
-| Number.signed_int | Sum (Bool × List (Fin 10)) (Bool × List (Fin 16)) 的双向逆 |
+| Decimal.Little.succ / Hexadecimal.Little.succ | Native carry function increment on List (Fin 10/16) |
+| Nat.to_little_uint / to_little_hex_uint | Nat.rec Iteration of the carry function above, retaining any input accumulator |
+| Nat.to_uint / to_hex_uint | List of big-endian numbers printDigits obtained by inverting iterations from [0] |
+| Nat.to_int / to_hex_int | The product of the positive label and printDigits |
+| Nat.to_num_uint / to_num_hex_uint / to_num_int | Sum packaging that retains decimal/hex labels |
+| Number.signed_int | The bidirectional inverse of Sum (Bool × List (Fin 10)) (Bool × List (Fin 16)) |
 
-这些是完全由原生数据和函数组成的指定表达式，并非机械函数的包装。其中七个顶层打印函数另外都已证明对应 Mathlib 现成的 Nat.digits，新增证书 target_class 为 existing_api，并显式保留反转顺序、符号/进制标签和零值适配。原始递归表达式证书仍为 native_expression；不会合并或重复计源根。Mathlib 的零为 []，Rocq 打印的零为 [0]，对应式明确使用 if n = 0 then [0] else (Nat.digits b n).reverse。
+These are specified expressions composed entirely of native data and functions, not wrappers for mechanical functions. Seven of the top-level printing functions have additionally been certified to correspond to Mathlib off-the-shelf Nat.digits, with the new certificate target_class being existing_api, and explicitly preserving reverse order, sign/base labeling, and zero value adaptation. The original recursive expression certificate is still native_expression; the source root will not be merged or duplicated. The zero of Mathlib is [], the zero printed by Rocq is [0], the corresponding formula is clearly used if n = 0 then [0] else (Nat.digits b n).reverse.
 
-另外证明了通用的进位数值性质 value(increment ds) = value(ds) + 1、迭代数值性质 value(iterate n ds) = value(ds) + n，以及两种机械 Nat 打印的数值均恰为 natTo n。这里 value 是原生小端位权折叠，打印结果反转后使用；不是仅以有限样例检查。
+In addition, it is proved that the general carry numerical property value(increment ds) = value(ds) + 1, and the iterative numerical property value(iterate n ds) = value(ds) + n, and the values printed by the two machines Nat are exactly natTo n. Here value is the native little-endian weight folding, and the printed result is used after inversion; it is not just checked with a limited sample.
 
-符号和进制标签、前导零都属于表示信息，不把 signed_int 的表示 Iso 冒充到原生 Int 的双射。十进制/十六进制 signed_int 的辅助 Iso 在 Nat 导出闭包重检，已有源根不重复登记。
+Symbols, base labels, and leading zeros are all representation information, and the representation Iso of signed_int is not masqueraded as a bijection of the native Int. The auxiliary Iso of decimal/hexadecimal signed_int is rechecked in the export closure of Nat, and the existing source root is not registered repeatedly.
 
-证明：proofs/NumericWrite.lean。核验与公理闭包：reports/NumericWrite-audit.json。新增原生类型根 1、运算根 11；原陈述证明数不变。该批已纳入最新 P7 共同导入快照。
+Proof: proofs/NumericWrite.lean. Verification and axiom closure: reports/NumericWrite-audit.json. Newly added native type root 1 and operational root 11; the proof number of the original statement remains unchanged. This batch has been included in the latest P7 co-import snapshot.
 
-## Mathlib 现成 API 对应
+## Mathlib Ready-made API corresponding
 
-proofs/NumericMathlib.lean 证明进位保持末位非零的规范性、打印值正确，再调用 Nat.digits_ofDigits 得到唯一的 Mathlib 数字序列。七个顶层打印分别有独立的等式证书。总完成根仍为 875；增量证书 604 份，33 个 profile 已验证。Mathlib 提交和 Digits/Defs.olean 指纹记录于 reports/validation.json。
+proofs/NumericMathlib.lean proves that the carry keeps the last bit non-zero and the printed value is correct. Then call Nat.digits_ofDigits to get the unique Mathlib digital sequence. Each of the seven top-level prints has its own independent equation certificate. The total completion root is still 875; incremental certificates 604 copies, 33 profile copies have been verified. Mathlib was submitted and Digits/Defs.olean fingerprint was recorded on reports/validation.json.

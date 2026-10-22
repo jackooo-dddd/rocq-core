@@ -1,58 +1,58 @@
-# SSR Bool：谓词包装、逻辑数据和陈述（第二十四批）
+# SSR Bool: Predicate packaging, logical data and statements (24th batch)
 
-本批新增 94 个完成根：14 个类型、34 个运算、46 个完整原生陈述。全项目当前完成类别为 1355 / 2180（约 62.2%）：84 类型、504 运算、767 陈述。所有计数按去重源根统计；每个证书的适用范围见完整类型。
+This batch adds 94 completion roots: 14 types, 34 operations, and 46 complete native statements. The current completion category of the entire project is 1355 / 2180 (approximately 62.2%): 84 type, 504 operation, 767 statement. All counts are based on deduplicated source roots; see the complete type for the applicable scope of each certificate.
 
-ssrbool 模块共有 451 根，本批后完成 251 根（16 类型、46 运算、189 陈述）。其余 200 根分别为 128 个带显式条件、41 个未桥接、29 个部分陈述和 2 个仅接口；它们没有混入完成数。
+The ssrbool module has a total of 451 roots. After this batch, the 251 roots (16 type, 46 operation, 189 statement) are completed. The remaining 200 roots are 128 with explicit conditionals, 41 unbridged, 29 partial statements, and 2 interfaces only; they have no completions mixed in.
 
-## 类型对应
+## Type correspondence
 
-| 源类型 | 原生表示 |
+| Source type | Native representation |
 |---|---|
 | simpl_pred、mem_pred、collective_pred、applicative_pred | A → Bool |
 | simpl_rel | A → A → Bool |
 | predArgType | Type u |
 | predType | Sigma (fun S : Type u => S → A → Bool) |
-| implies | P → Q；P、Q 保留独立 Sort 参数 |
+| implies | P → Q; P and Q retain independent Sort parameters |
 | decidable | Decidable P |
-| and3、and4、and5 | 原生 And 的右结合嵌套 |
-| or3、or4 | 原生 Or 的右结合嵌套 |
+| and3、and4、and5 | Right associative nesting of native And |
+| or3、or4 | Right associative nesting of native Or |
 
-全部提供双向逆。predType 保留载体 S 与其解释函数，并非擦除封装只剩一个谓词。pred/simpl_pred/mem_pred 等沿用源声明的 Type 参数范围，不声称覆盖源声明本来不支持的任意 Sort。
+All provide two-way reverse. predType reserved carrier S and its interpretation function are not erasure encapsulation, leaving only one predicate. pred/simpl_pred/mem_pred, etc. follow the Type parameter range declared by the source, and do not claim to cover any Sort that the source declaration does not originally support.
 
-## 运算对应
+## Operation correspondence
 
-34 个运算包括：
-- SimplPred、SimplRel、fun_of_pred、fun_of_rel 及谓词/成员包装的投影。
-- pred0、predT、predI、predU、predC、predD：常布尔函数以及逐点 and/or/not。
-- preim、relpre、relU：原生函数组合、关系拉回、逐点析取。
+34 operations include:
+- Projections of SimplPred, SimplRel, fun_of_pred, fun_of_rel and predicate/member wrappers.
+- pred0, predT, predI, predU, predC, predD: constant Boolean functions and pointwise and/or/not.
+- preim, relpre, relU: native function combination, relationship pullback, point-by-point extraction.
 - pred_oapp：Option.any。
-- pred_sort、topred：原生 Sigma 的载体和解释函数投影。
-- and3/4/5 的 rec/rect：把分支函数应用到原生合取的各个证明参数；rec 返回 Type，rect 返回 Sort u。
-- pre_symmetric、left_transitive、right_transitive、equivalence_rel：保留定义次序和参数的原生布尔关系性质。
+- pred_sort, topred: vector and interpretation function projections of the native Sigma.
+- rec/rect of and3/4/5: applies the branch function to each proof parameter of the original conjunction; rec returns Type, rect returns Sort u.
+- pre_symmetric, left_transitive, right_transitive, equivalence_rel: Preserve the definition order and the native Boolean relationship properties of the parameters.
 - unless P Q ↔ Nonempty P ∨ Nonempty Q。
 - classically P ↔ ¬¬ Nonempty P。
 
-最后两项对 Sort 参数成立，证明不使用经典选择。classically 的本批目标保留双重否定；不以名字相近为由直接将其改成 P。
+The last two terms hold for the Sort parameters, proving that classical selection is not used. The target of this batch of classically retains the double negative; it is not directly changed to P on the grounds that the names are similar.
 
-目标中的 Function.comp、Option.any、Sigma 投影、id 等与自定义原生组合表达式在 certificates.json 中分别标明。类型可互转不自动代表任意上层函数已经等于某个 Mathlib API。
+The Function.comp, Option.any, Sigma projection, id, etc. in the target and the custom native combination expression are marked in certificates.json respectively. Types that can be converted to each other do not automatically mean that any upper-layer function is already equal to a certain Mathlib API.
 
-## 46 个陈述升级
+## 46 statements upgraded
 
-对剩余 75 个部分陈述重新归一化，46 个得到完全不含源端符号的目标。包括 and/or 的归纳陈述、布尔分配律、classicP/W/bind/ex/imply、部分同态/单态组合与关系性质。
+Renormalizing the remaining 75 partial statements, 46 results in targets that contain no source symbols at all. Includes inductive statements of and/or, Boolean distributive law, classicP/W/bind/ex/imply, partial homomorphism/monomorphic combinations and relational properties.
 
-归一化组合已证明的 iff 和转换规则，必要时继续处理新暴露的子表达式，每步保留等式证明。目标检查递归展开 NativeBridge 别名，最终 iff 由 Lean kernel 检查。29 个仍含源符号的候选仅记作部分陈述，没有提升覆盖。
+Normalize combines the proven iff and transformation rules, continuing with newly exposed subexpressions if necessary, preserving the equality proof at each step. The target check recursively expands the NativeBridge alias, and Final iff is checked by Lean kernel. The 29 candidates that still contain source symbols are only counted as partial statements and have no boost coverage.
 
-本批没有增加独立业务定理证明；上述 46 项是陈述 iff。原有 139 份新增原陈述证明数量不变。
+There is no independent original theorem proof added in this batch; the above 46 item is statement iff. The number of original 139 copies of new original statement certificates remains unchanged.
 
-## 验证与后续依赖
+## Verification and subsequent dependencies
 
-三个新增 profile 均通过：SSRBoolData、SSRBoolLogic、SSRBoolExtendedStatements。当前 74 个验证 profile 匹配源码和依赖；1093 份增量覆盖证书经 68 个覆盖 profile 共同导入通过，1388 个入口、8655 个依赖声明副本。没有重跑全部机械翻译或全部旧基线证明。
+Three new profile passed: SSRBoolData, SSRBoolLogic, SSRBoolExtendedStatements. Currently 74 verifications profile match source code and dependencies; 1093 incremental coverage certificates have been imported and passed by 68 coverage profile, 1388 entries, and 8655 copies of dependency declarations. There is no re-running all mechanical translations or all old baseline proofs.
 
-下一步依赖为：manifest/keyed 包装的无损表示 → mem / prop_in / prop_on 的原生化 → 剩余 29 个部分陈述；另按共享依赖处理 128 个条件根。impliesP 等计算性 opaque 声明与上一批四个 ssrfun 函数有同类计算等式问题，不能只凭读取内部 body 就记为完成。
+The next dependency is: lossless representation of manifest/keyed package → mem / prop_in / prop_on native → remaining 29 partial statements; in addition, 128 conditional roots are processed according to shared dependencies. Computational opaque statements such as impliesP have the same computational equation issues as the previous batch of four ssrfun functions, and cannot be counted as complete just by reading the internal body.
 
-入口：
+Entrance:
 - proofs/SSRBoolData.lean、proofs/SSRBoolLogic.lean
 - proofs/SSRBoolExtendedStatements.lean
 - ssrbool-extended-statement-selection.json
 - reports/ssrbool-extended-statement-candidates.json
-- reports/CERTIFICATES.md 与 reports/CORELIB_LEDGER.csv
+- reports/CERTIFICATES.md and reports/CORELIB_LEDGER.csv

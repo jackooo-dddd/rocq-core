@@ -27,62 +27,11 @@ R=O.parents[2]
 sys.exit(subprocess.call([sys.executable,str(R/"scripts/test_basic_interop.py"),
  str(R/"work/snapshots/quality-main75/translator"),str(R/"work/runs/quality-main75-full"),str(O)]))
 """)
-(I/"README.md").write_text("""Lean 互操作实证
-
-Nat.lean：翻译后的 Rocq add 直接接收／返回 Lean Nat。对任意 n,m，用 Lean 归纳证明 add n m = n+m；另有两个闭项计算等式。
-
-List.lean：翻译后的 Rocq list 是单独的数据类型。显式 fromLean/toLean 双向转换；证明两个方向的往返恒等、length 与 Lean List.length 一致、app 与 Lean List.append 一致，均对任意元素宇宙有效。
-
-五个定理的 axiom closure 均为空。这里使用的是最终 main75 的实际翻译结果，不是手写一个类似的替代实现。源测试第一次误以为 Lean 0+m 与 m 定义相等，已改用 Nat.zero_add；原失败日志保留在 work/tests/basic-interop75。
-
-当前 importer 注册内核声明，并未为新归纳类型运行 Lean 编译器。List 的两个桥接定义因此标记 noncomputable：保留可归约的内核定义，不生成运行时代码；并非加入公理，也不影响上述证明。编译可执行程序属于额外打包工作。
-
-复跑：python3 interop/run.py（完整仓库中）。
-""")
+(I/"README.md").write_text('Lean interoperability demonstration\n\nNat.lean: The translated Rocq add directly receives/returns Lean Nat. For any n, m, use Lean to inductively prove that add n m = n+m; there are also two closed term calculation equations.\n\nList.lean: Translated Rocq list is a separate data type. Explicit fromLean/toLean bidirectional conversion; prove that the round-trip identity in both directions, length is consistent with Lean List.length, app is consistent with Lean List.append, are valid for any element universe.\n\naxiom closure of the five theorems are all empty. What is used here is the actual translation result of the final main75, rather than hand-writing a similar alternative implementation. The source test mistakenly thought that Lean 0+m was defined equal to m for the first time, and Nat.zero_add was used instead; the original failure log was retained in work/tests/basic-interop75.\n\nCurrently importer registers kernel declarations and is not running the Lean compiler for the new inductive type. The two bridging definitions of List are therefore marked noncomputable: retaining the reducible kernel definition and generating no runtime code; not adding an axiom, nor affecting the above proof. Compiling an executable program is additional packaging work.\n\nRerun: python3 interop/run.py (complete in warehouse).\n')
 a=(R/"work/snapshots/quality-main74/translator/Rocq2Lean/Translate.lean").read_text().splitlines(True)
 b=(T/"Rocq2Lean/Translate.lean").read_text().splitlines(True)
 (O/"simplification.patch").write_text("".join(difflib.unified_diff(a,b,fromfile="main74/Translate.lean",tofile="main75/Translate.lean")))
 d=json.loads((O/"simplification-artifacts.json").read_text())
-(O/"RULES.md").write_text("""规则与精简结果
-
-本页按机制归类，分类数量不等于代码中的规则/开关数量。逐声明实际规则、所有尝试标签、宇宙实例、转换及条件见同名 JSON/MD。
-
-1. 源端分类和证明条件：按实际归约后的 Prop/SProp 结果分类，保留局部假设的应用；证明实现抽取成显式条件，支持多态条件的不同实例。最终 pending 状态依据实际剩余条件 telescope。
-2. 宇宙约束与解释：完整导出并重查原生事实；显式参数、模板 Sort 参数、局部约束闭包与必要的实例对应保留。带全局上界的局部解释只处理受检查的向外约束片段；公开参数、原生约束和引用检查没有省略。
-3. SProp/Prop/Type quality：23 个原始根以原生检查过的完整 quality family 表示，共603种实例（23个主项加580个额外分支）。不把23个原始根从统计范围删除。
-4. 精确源转换：透明别名的实际实例替换、beta/delta/zeta 化简、已知构造器驱动的受限递归求值。独立审计重建每次展开；不任意展开 opaque 证明。
-5. 显式累积表示：PULift up/down，函数参数和结果的组合转换，以及非递归、单构造器、无索引记录的逐字段转换。保留字段次序、载荷、全部依赖类型及公共条件。
-6. 递归与消去：结构递归、真实内核 recursor、accessibility/well-founded 对应和受检查的 deferred guard 处理；终止性所需条件保持显式。
-7. 原语模型：kernel-registered Int63→BitVec63；有界数组；字节串；保留符号零/无穷/NaN的 binary64 模型。操作身份、大小界限、构造器角色、源端原语与目标载荷分别核查。
-8. 原生对应：nat→Lean Nat，eq→Lean Eq；其他数据类型按报告生成，不能自动声称与 Lean 同名类型可互换。
-
-检查配套包括源端 roundtrip、独立 Lean consumer/内核检查、独立结构审计、公共接口/宇宙检查及错误注入测试。定理陈述不是定理证明；待证条件没有被藏成 axiom 或 sorry。
-
-最后一轮精简 main74→main75：
-- liftCoerceValue 的 Type 路径不再先走独立 direct up/down，再走组合 up/down；统一由递归组合规则处理，直接转换是其基本情况。
-- 两处失败回滚合并为 tryLiftConversion，同时恢复 elaborator 状态与转换计数。
-- 保留 Prop-only 早期路径的限制；不删除独立校验、不改变源范围。
-- 全2180项覆盖保持0受阻，完整回归和所有 campaign 检查通过。
-- 包含依赖、辅助声明及 quality 分支的全部 """+str(d["declaration_occurrences"])+""" 条逐模块声明出现，其状态、名称、目标种类、类型、正文、构造器、宇宙参数及待证条件均与精简前完全一致（结构 JSON 比较，不是仅比较成功率）。
-
-这是一轮经验证的重复机制合并，不是“规则数量已达到数学上的全局最小值”的证明。保留未能证明冗余的通用规则，尤其不能仅凭2180个根的命中次数删除其依赖或MathComp可能需要的路径。
-
-规则命中统计见 rule-usage.json；精简补丁见 simplification.patch；全声明比较见 simplification-artifacts.json。早期失败实验留在 work/snapshots 和 work/tests 中，不作为成功证据。
-""")
-(R/"RESULTS.md").write_text("""已完成的 Corelib 全量翻译
-
-最终版本：work/snapshots/quality-main75/translator
-最终运行：work/runs/quality-main75-full
-范围：67个源文件，2180个原始根声明；0受阻、0模块验证失败。
-main74达到零阻塞；main75合并重复Type提升路径和失败回滚逻辑，完整回归无退步。
-
-[逐文件结果入口](results/corelib-complete/README.md)
-[规则与精简证据](results/corelib-complete/RULES.md)
-[Lean实际互操作示例](results/corelib-complete/interop/README.md)
-[2180项总表](results/corelib-complete/declarations.csv)
-
-分类：1001完整定义/数据类型，2已有Lean对应，846无条件陈述，148带条件定义，183带条件陈述。陈述不是证明；条件仍须提供。结果支持Lean内核使用，非自动打包好的原生可执行库。
-
-旧根目录README.txt及improved等文件夹是历史839项快照，保留不覆盖；请以本页及WORK_STATE.json为当前进度。
-""")
+(O/"RULES.md").write_text('Rules and simplification results\n\nThis page is categorized by mechanism. The number of categories is not equal to the number of rules/switches in the code. Declaration-by-declaration of the actual rules, all attempt labels, universe instances, transformations and conditions is given in the eponymous JSON/MD.\n\n1. Source-side classification and proof conditions: Classify according to the actual reduced Prop/SProp results, retaining the application of local assumptions; the proof implementation is extracted into explicit conditions, supporting different instances of polymorphic conditions. The final pending status is based on the actual remaining condition telescope.\n2. Universe constraints and explanations: Completely export and recheck native facts; explicit parameters, template Sort parameters, local constraint closures, and necessary instance correspondences are retained. Local interpretation with global upper bounds only handles checked outwardly constrained fragments; public parameters, native constraints, and reference checks are not omitted.\n3. SProp/Prop/Type quality: 23 original roots are represented by natively checked complete quality family, for a total of 603 instances (23 primary items plus 580 additional branches). Do not delete 23 original roots from the statistical range.\n4. Exact source transformations: actual instance replacement for transparent aliases, beta/delta/zeta reduction, restricted recursive evaluation driven by known constructors. Independently audited reconstruction of each deployment; no arbitrary deployment of opaque certified.\n5. Explicit cumulative representation: PULift up/down, combined conversion of function arguments and results, and non-recursive, single-constructor, field-by-field conversion of unindexed records. Preserves field order, payloads, all dependency types, and public conditions.\n6. Recursion and elimination: Structural recursion, real kernel recursor, accessibility/well-founded correspondence and checked deferred guard processing; conditions required for terminability remain explicit.\n7. Primitive model: kernel-registered Int63→BitVec63; bounded array; byte string; binary64 model that preserves signed zero/infinity/NaN. Operation identity, size limits, constructor roles, source primitives and target payloads are checked separately.\n8. Native correspondence: nat→Lean Nat, eq→Lean Eq; other data types are generated according to reports and cannot automatically claim to be interchangeable with Lean types with the same name.\n\nThe inspection package includes source-side roundtrip, independent Lean consumer/ kernel inspection, independent structural audit, public interface/universe inspection and error injection testing. Theorem statements are not theorem proofs; the conditions to be proved are not hidden as axiom or sorry.\n\nThe final round of streamlining main74→main75:\n- The Type path of liftCoerceValue no longer takes the independent direct up/down first, and then the combination up/down; it is unified and processed by recursive combination rules, and direct conversion is its basic situation.\n- The two failed rollbacks are merged into tryLiftConversion, and the elaborator status and conversion count are restored at the same time.\n- Retain the limitations of the Prop-only early path; do not delete the independent check and do not change the source range.\n- Full 2180 entry coverage keeps 0 blocked, full regression and all campaign checks passed.\n- Contains dependencies, auxiliary declarations and all quality branches '+str(d["declaration_occurrences"])+' Module declarations appear one by one, and their status, name, target type, type, body, constructor, universe parameters, and conditions to be proven are all exactly the same as before streamlining (structure JSON is compared, not just the success rate).\n\nThis is a round of proven iterative mechanism merging, not proof that the number of rules has reached a mathematical global minimum. Retain the general rule of failing to prove redundancy, in particular not to remove 2180 roots based solely on the number of hits they depend on or the paths that MathComp may require.\n\nFor rule hit statistics, see rule-usage.json; for streamlined patches, see simplification.patch; for full statement comparison, see simplification-artifacts.json. Early failed experiments are left in work/snapshots and work/tests and are not used as evidence of success.\n')
+(R/"RESULTS.md").write_text('Completed Corelib full translation\n\nFinal version: work/snapshots/quality-main75/translator\nFinal run: work/runs/quality-main75-full\nScope: 67 source files, 2180 original root declarations; 0 blocked, 0 module verification failed.\nmain74 achieves zero blocking; main75 merges and duplicates the Type promotion path and failed rollback logic, and returns completely without regression.\n\n[File-by-file result entry ](results/corelib-complete/README.md)\n[Rules and streamlined evidence ](results/corelib-complete/RULES.md)\n[LeanActual interoperability example](results/corelib-complete/interop/README.md)\n[2180 item summary list](results/corelib-complete/declarations.csv)\n\nCategory: 1001 complete definition/data type, 2 already corresponds to Lean, 846 has an unconditional statement, 148 has a conditional definition, and 183 has a conditional statement. Statements are not proof; conditions must still be provided. The result supports the use of Lean kernel, non-automatically packaged native executable library.\n\nFolders such as the old root directory README.txt and improved are snapshots of historical 839 items and are retained without overwriting; please take this page and WORK_STATE.json as the current progress.\n')
 print("FINAL_ARTIFACTS_COMPLETE",flush=True)

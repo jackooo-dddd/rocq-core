@@ -48,9 +48,9 @@ csvwrite(W/'source-dependencies.csv',edge_rows)
 out={'source':'full-v1 source.ndjson deps (type/body/etc), module-own root record','edge_direction':'dependency -> user','root_count':len(roots),'source_edges':len(edge_rows),'scc_count':len(components),'recursive_components':[c for c in components if len(c)>1 or c[0] in adj[c[0]]],'components':components,'dag_edges':edges,'topological_order':order,'top_direct_users':sorted(((n,len(u)) for n,u in users.items()),key=lambda x:(-x[1],x[0]))[:30],'not_a_correspondence_prerequisite_proof':True}
 (W/'dependency-graph.json').write_text(json.dumps(out,ensure_ascii=False,indent=2))
 p=W/'DAG.md';text=p.read_text().split('<!-- generated -->')[0]
-text+='<!-- generated -->\n\n## 实际源依赖检查\n\n'
-text+=f'覆盖 {len(roots)} 根；{len(edge_rows)} 条带类别的依赖记录；收缩后 {len(components)} 个 SCC、{len(edges)} 条 DAG 边。已通过拓扑排序检查。\n'
-text+='\n依赖源为 IR 的 deps 字段。递归分量和外部辅助依赖均保留；不能由这些边直接推断对应证明一定依赖哪些 Iso。\n\n| 被依赖根 | 直接使用者数 |\n|---|---:|\n'
+text+='<!-- generated -->\n\n## Actual source dependency checks\n\n'
+text+=f'Covering the {len(roots)} root; dependent records of the {len(edge_rows)} stripe category; {len(components)} SCC, {len(edges)} DAG edges after shrinkage. Passed topological sort check.\n'
+text+='\nThe dependent source is the deps field of IR. Both recursive components and external auxiliary dependencies are preserved; it cannot be directly inferred from these edges which Iso the corresponding proof must depend on.\n\n| dependent root | Number of direct users |\n|---|---:|\n'
 for n,count in out['top_direct_users'][:15]:text+=f'| {n} | {count} |\n'
 p.write_text(text)
 print(json.dumps({k:v for k,v in out.items() if k in ['root_count','source_edges','scc_count','recursive_components']}))

@@ -1,45 +1,45 @@
 # Corelib.Init.Nat.odd
 
-[总索引](../DECLARATIONS.md) · [源模块](../source/Nat.v) · [完整记录](Corelib.Init.Nat.odd.json)
+[Index](../DECLARATIONS.md) · [Source module](../source/Nat.v) · [Complete record](Corelib.Init.Nat.odd.json)
 
-机械结果：TRANSLATED_AND_CHECKED；分派：constant/transparent；待证参数：0。
+Mechanical result: TRANSLATED_AND_CHECKED; dispatch: constant/transparent; proof parameters to discharge: 0.
 
-## 源端信息
+## Source information
 
-源 IR 类型、正文/归纳块在同名 JSON 的 mechanical_record.source_ir；原始源码在完整 .v 中。
+The source IR type and body/inductive block are in field mechanical_record.source_ir of the corresponding JSON file; the original source is in the complete .v file.
 
-## Lean 实际打印结果
+## Actual Lean printed output
 
 ```lean
 def Rocq.Corelib.Init.Nat.odd : Rocq.Corelib.Init.Datatypes.nat → Rocq.Corelib.Init.Datatypes.bool :=
 fun n => Rocq.Corelib.Init.Datatypes.negb (Rocq.Corelib.Init.Nat.even n)
 ```
 
-## 翻译过程记录
+## Translation trace
 
-| 尝试标签 | 耗时 ms | 结果 |
+| Attempt label | Elapsed time (ms) | Result |
 |---|---|---|
 | c[] | 0 | TRANSLATED_AND_CHECKED |
 
-标签表示尝试配置；不是逐 AST 步骤日志。0 ms 是计时精度下的记录，不表示没有执行。
+Labels identify attempt configurations, not a per-AST step log. 0 ms reflects the timing resolution and does not mean that no execution occurred.
 
-待证参数：[]。
+Parameters to be verified: [].
 
-完整 target_report 保留宇宙字段、目标 AST 与分支；prerequisite_declarations 保留条件声明。报告字段与开关不能直接换算为规则调用次数。源 roundtrip、consumer、audit 结果见 module_validation。
+The complete target_report preserves universe fields, the target AST, and branches; prerequisite_declarations preserves prerequisite declarations. Report fields and switches cannot be converted directly into rule invocation counts. See module_validation for source roundtrip, consumer, and audit results.
 
-## 与原生 Lean 的对应
+## Correspondence to native Lean
 
-覆盖类别：OPERATION_CORRESPONDENCE。
+Coverage category: OPERATION_CORRESPONDENCE.
 
-类型/运算证书：NativeBridge.nat_odd_agrees。
+Type/operation certificate: NativeBridge.nat_odd_agrees.
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Init.Nat.odd.roundtrip。
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Init.Nat.odd.roundtrip.
 
-陈述 iff 证书：未记录。
+Statement iff Certificate: Not documented.
 
-陈述 iff 不证明命题本身；接口往返不自动证明等于 Lean 同名运算。
+A statement iff does not prove the proposition itself; interface round-trip laws do not automatically prove equality with the corresponding Lean operation.
 
-## 已收录证书的实际类型
+## Full types of the registered certificates
 
 NativeBridge.Interfaces.Rocq.Corelib.Init.Nat.odd.roundtrip
 
@@ -49,7 +49,7 @@ NativeBridge.Interfaces.Rocq.Corelib.Init.Nat.odd.roundtrip
   Rocq.Corelib.Init.Nat.odd
 ```
 
-公理依赖：['propext', 'Quot.sound']。
+Axiom dependencies: ['propext', 'Quot.sound'].
 
 NativeBridge.nat_odd_agrees
 
@@ -57,6 +57,6 @@ NativeBridge.nat_odd_agrees
 ∀ (n : NativeBridge.MN), NativeBridge.boolTo (Rocq.Corelib.Init.Nat.odd n) = decide (NativeBridge.natTo n % 2 = 1)
 ```
 
-公理依赖：['propext', 'Quot.sound']。
+Axiom dependencies: ['propext', 'Quot.sound'].
 
-[对应证明说明](../CORRESPONDENCE.md)
+[Correspondence proof description](../CORRESPONDENCE.md)

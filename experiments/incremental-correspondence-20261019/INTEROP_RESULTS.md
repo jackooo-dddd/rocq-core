@@ -1,100 +1,100 @@
-# 跨模块导入与 Mathlib 消费结果
+# Cross-module import and Mathlib consumption results
 
-当前共同导入验收通过：130 个含增量覆盖证书的 profile、1748 份覆盖证书，连同原陈述证明和闭合包装函数，共 2372 个导出入口，在同一 Lean 文件中导入并审计。复制依赖声明 21186 个；这些副本不增加 correspondence 覆盖数量。
+The current joint import acceptance has passed: 130 profile and 1748 coverage certificates containing incremental coverage certificates, together with the original statement certificate and closed packaging function, a total of 2372 export entries, are imported and audited in the same Lean file. Duplicate dependency declarations 21186; these copies do not increase the correspondence coverage quantity.
 
-## 具体可以怎样使用
+## How to use it specifically
 
-`interop/Consumer.lean` 同时使用三个原来不能直接并存导入的机械闭包：
+`interop/Consumer.lean` simultaneously uses three mechanical closures that cannot be imported directly at the same time:
 
-- Init.Nat 的机械 Nat、加法及其对应证明；
-- SSR 的机械 Option.map，容器元素使用前一个模块的机械 Nat；
-- Setoid_Theory 与 Lean Equivalence 的转换，用于原生 Setoid / Quotient。
+- Mechanical Nat, addition and corresponding proof of Init.Nat;
+- The mechanism of SSR is Option.map, and the container element uses the mechanism of the previous module Nat;
+- Conversion of Setoid_Theory to Lean Equivalence for native Setoid / Quotient.
 
-已证明转换后的 Option.map 等于原生加一 map，并把结果放进原生 Quotient；另证明机械加法转换结果可用 Nat.add_comm。Mathlib 消费例用现成的 `Nat.prime_two` 证明机械 `1 + 1` 转换结果为素数。
+It has been proved that the converted Option.map is equal to the original plus one map, and the result is put into the original Quotient; it is also proved that the mechanical addition conversion result can be used as Nat.add_comm. The Mathlib consumer example uses the ready-made `Nat.prime_two` to prove that the mechanical `1 + 1` conversion result is a prime number.
 
-Lean 版本 4.33.1。复用远程已安装的 Mathlib，提交为 `0df444a360eaa60ab8c11dca51a86af692955474`；无新安装。实际验证包括上述四份消费证明，以及 NumericMathlib 中七个打印函数到 Nat.digits 的对应，不代表整个 Mathlib 均已兼容。
+Lean version 4.33.1. Reuse the remotely installed Mathlib and submit it as `0df444a360eaa60ab8c11dca51a86af692955474`; no new installation. Actual verification includes the above four consumption certificates, as well as the correspondence of the seven printing functions in NumericMathlib to Nat.digits, which does not mean that the entire Mathlib is compatible.
 
-## 实现和边界
+## implementation and boundaries
 
-原 profile 都引用名为 Rocq2LeanOut 的不同模块，并有重复的 NativeBridge 名称。ProfilePack 从已编译环境读取指定证书的依赖闭包，在独立命名空间重新建立声明；每个声明再次经过 Lean kernel。保持 universe 参数、定义体、证明体和结构投影信息，不修改原始机械翻译，不把 Nat/Eq 映射成原生类型。
+The original profile both referenced a different module named Rocq2LeanOut, and had a duplicate NativeBridge name. ProfilePack reads the dependency closure of the specified certificate from the compiled environment and re-creates the declarations in a separate namespace; each declaration passes through Lean kernel again. Keep the parameters, definition body, proof body and structure projection information of universe, do not modify the original mechanical translation, and do not map Nat/Eq to native types.
 
-每个 profile 的机械类型仍有独立身份；这是带命名空间的共同导入。跨闭包通过已证明的原生接口组合，尚未把所有机械类型合成单一规范命名空间。打包器也未生成计算用的 native code，当前验收是证明消费，不是运行性能。
+Each profile mechanical type still has an independent identity; this is a common import with a namespace. Composable across closures via proven native interfaces, all mechanical types have yet to be synthesized into a single canonical namespace. The packager also did not generate native code for calculation. The current acceptance is to prove consumption, not running performance.
 
-目前显式拒绝新增公理、不安全声明、嵌套归纳组和有继承字段的结构。opaque 声明以原有种类复制，其定义体和依赖同样核验；不将它改成透明 def。负向 fixture 证实新公理不能进入输出。允许的公理闭包仅 propext、Quot.sound、Classical.choice；实际各入口闭包在 JSON 中逐项列出。
+New axioms, unsafe declarations, nested induction groups, and structures with inherited fields are currently explicitly rejected. opaque declares to copy the original type, and its definition body and dependencies are also verified; do not change it to transparent def. Negative fixture confirms that the new axiom cannot enter the output. The only allowed axiom closures are propext, Quot.sound, and Classical.choice; the actual entry closures are listed one by one in JSON.
 
-## 文件与复现
+## Documentation and reproduction
 
-- `interop/ProfilePack.lean`：声明复制及 kernel / 公理检查。
-- `interop/pack_all.py`：选取增量覆盖清单及附加证明入口。
-- `interop/check_all.py`：一次性导入所有 PackedAll 模块，检查入口及公理。
-- `interop/pack_profiles.py`、`check_consumer.py`：三个独立模块及 Mathlib 消费例。
-- `interop/check_rejection.py`：新公理拒绝测试。
-- `reports/interop/all/import-all-validation.json`：共同导入证据。
-- `reports/interop/coverage-manifest.json`：当前 1748 份覆盖证书的固定清单。
-- `reports/interop/consumer-validation.json`：实际 Mathlib 提交、工具链和消费结果。
+- `interop/ProfilePack.lean`: Statement duplication and kernel/axiom checking.
+- `interop/pack_all.py`: Select the incremental coverage list and additional proof entry.
+- `interop/check_all.py`: Import all PackedAll modules at one time and check the entries and axioms.
+- `interop/pack_profiles.py`, `check_consumer.py`: three independent modules and Mathlib consumption example.
+- `interop/check_rejection.py`: New axiom rejection test.
+- `reports/interop/all/import-all-validation.json`: Jointly import evidence.
+- `reports/interop/coverage-manifest.json`: A fixed list of the current 1748 coverage certificates.
+- `reports/interop/consumer-validation.json`: Actual Mathlib commit, toolchain and consumption results.
 
-在工作区依次执行 pack_all.py、check_all.py，以及 pack_profiles.py、check_consumer.py、check_rejection.py。编译缓存和生成的打包源码位于 .work/interop，仅远程保存。脚本需要先完成原 profile 编译；它们不下载依赖。
+Execute pack_all.py, check_all.py, and pack_profiles.py, check_consumer.py, check_rejection.py in sequence in the work area. The compilation cache and generated packaging source code are located in .work/interop and are only saved remotely. The scripts need to complete the original profile compilation first; they do not download dependencies.
 
-第十五批历史快照包含当时全部 613 份增量覆盖证书，包括 Specif、数字写出/读取、Mathlib digits、gcd、divmod、sqrt/log2。Registry 是机制验证模块，不产生覆盖根，所以 37 个验证 profile 对应 36 个覆盖模块。
+The fifteenth batch of historical snapshots contains all 613 incremental coverage certificates at that time, including Specif, digital write/read, Mathlib, digits, gcd, divmod, and sqrt/log2. Registry is a mechanism verification module and does not generate coverage roots, so 37 verification profile corresponds to 36 coverage modules.
 
-NumericMathlib 的打包模块显式导入 Mathlib.Data.Nat.Digits.Defs，保留原生 Mathlib 常量身份；NatIterators 导入对应 Init 算术引理。pack_all.py 可传 profile 名，仅重建改变的模块；继承部分逐项核对源码、打包器和证书入口集合，最后仍执行全部模块的共同导入检查。
+The packaging module of NumericMathlib explicitly imports Mathlib.Data.Nat.Digits.Defs, retaining the identity of the native Mathlib constants; NatIterators imports the corresponding Init arithmetic lemma. pack_all.py can pass the profile name, and only the changed modules will be rebuilt; the inherited part will check the source code, packager and certificate entry set item by item, and finally still perform a common import check for all modules.
 
-Peano 扩展后：38 个含覆盖证书的 profile、619 份覆盖证书共同导入通过。实际入口和依赖副本数见 reports/interop/all/import-all-validation.json。
+After Peano expansion: 38 profile and 619 coverage certificates containing coverage certificates were imported and passed. For the actual number of entries and dependent copies, see reports/interop/all/import-all-validation.json.
 
-第十七批扩展后：42 个包含覆盖证书的 profile、651 份覆盖证书共同导入通过；对应全部当前增量覆盖。
+After the seventeenth batch of expansions: 42 profile and 651 coverage certificates containing coverage certificates were jointly imported and passed; corresponding to all current incremental coverage.
 
-第十八批扩展后：46 个包含覆盖证书的 profile、666 份覆盖证书全部共同导入通过。
+After the eighteenth batch of extensions: 46 profile and 666 coverage certificates containing coverage certificates were all imported and passed.
 
-第十九批扩展后：49 个包含覆盖证书的 profile、718 份覆盖证书共同导入通过。DatatypeQuantifiers 和 Registry 是无独立覆盖条目的验证模块，所需依赖随证书闭包封装。
+After the nineteenth batch of extensions: 49 profile and 718 coverage certificates containing coverage certificates were jointly imported and passed. DatatypeQuantifiers and Registry are verification modules without independent coverage entries, and the required dependencies are encapsulated with the certificate closure.
 
-第二十批扩展后：54 个包含覆盖证书的 profile、812 份覆盖证书共同导入通过。LogicWitnesses 是共享证明依赖模块，其证明随用户证书的依赖闭包封装，不单独增加覆盖根。
+After the twentieth batch of extensions: 54 profile and 812 coverage certificates containing coverage certificates were jointly imported and passed. LogicWitnesses is a shared proof dependency module. Its proof is encapsulated with the dependency closure of the user certificate and does not add a separate coverage root.
 
-第二十一批扩展后：58 个包含覆盖证书的 profile、892 份覆盖证书共同导入通过。新增 SpecifOperations、SpecifChoice、SpecifEqualityElimination、SpecifClosedStatements；共享见证及归一化模块随依赖闭包纳入。当前清单与 certificates.json 一致，coimport_not_current_coverage=false。
+After the twenty-first batch of expansions: 58 profile and 892 coverage certificates containing coverage certificates were jointly imported and passed. Added SpecifOperations, SpecifChoice, SpecifEqualityElimination, and SpecifClosedStatements; shared witness and normalization modules are included with dependency closures. Current listing is consistent with certificates.json, coimport_not_current_coverage=false.
 
-第二十二批扩展后：63 个覆盖 profile、976 份覆盖证书共同导入通过，1265 个入口、7828 个依赖声明副本。新增 SSRFunNormalization、SSRFunPredicates、SSRFunOption、SSRNonProp、SSRFunStatements。
+After the twenty-second batch of expansion: 63 coverage certificates profile and 976 coverage certificates were jointly imported and passed, 1265 entries, and 7828 copies of dependency declarations. Added SSRFunNormalization, SSRFunPredicates, SSRFunOption, SSRNonProp, SSRFunStatements.
 
-第二十三批扩展后：65 个覆盖 profile、999 份覆盖证书共同导入通过，1294 个入口、8015 个依赖声明副本。SSRFunOpacity 只作诊断，不产生覆盖入口。
+After the twenty-third batch of expansions: 65 coverage certificates profile and 999 coverage certificates were jointly imported and passed, 1294 entries, and 8015 copies of dependency declarations. SSRFunOpacity is only used for diagnosis and does not generate coverage entries.
 
-第二十四批扩展后：68 个覆盖 profile、1093 份覆盖证书共同导入通过，1388 个入口、8655 个依赖声明副本。新增 SSRBoolData、SSRBoolLogic、SSRBoolExtendedStatements。
+After the twenty-fourth batch of expansions: 68 coverage certificates profile and 1093 coverage certificates were jointly imported and passed, 1388 entries, and 8655 copies of dependency declarations. Added SSRBoolData, SSRBoolLogic, SSRBoolExtendedStatements.
 
-第二十五批扩展后：70 个覆盖 profile、1145 份覆盖证书共同导入通过，1441 个入口、9167 个依赖声明副本。新增 SSRBoolPackaging、SSRBoolRemainingStatements。
+After the twenty-fifth batch of expansions: 70 coverage certificates profile and 1145 coverage certificates were jointly imported and passed, 1441 entries, and 9167 copies of dependency declarations. Added SSRBoolPackaging, SSRBoolRemainingStatements.
 
-opaque 支持的独立验证见 interop/check_opaque.py 与 reports/interop/opaque-preservation.json：种类保留，任意 opaque Nat 的 body 等式被同步 kernel 拒绝，unit 单值证明可用。check_rejection.py 同时验证直接新公理和 opaque body 中的新公理都被拒绝。
+Independent verification supported by opaque see interop/check_opaque.py and reports/interop/opaque-preservation.json: kind reserved, body equation of any opaque Nat is rejected by synchronization kernel, unit single value proof is available. check_rejection.py Both the direct new axioms and the new axioms in opaque body are rejected.
 
-第二十六批扩展后：72 个覆盖 profile、1228 份覆盖证书共同导入通过，1650 个入口、10315 个依赖副本。新增 SSRBoolClosedStatements、SSRBoolClosedOperations。
+After the twenty-sixth batch of expansions: 72 coverage certificates covering profile and 1228 certificates were jointly imported and passed, 1650 entries, and 10315 dependent copies. Added SSRBoolClosedStatements, SSRBoolClosedOperations.
 
-第二十七批扩展后：74 个覆盖 profile、1264 份覆盖证书共同导入通过，1722 个入口、11260 个依赖副本。新增 SSRBoolReflection、SSRBoolProofFunctions，opaque 函数保持原种类。
+After the twenty-seventh batch of expansions: 74 coverage certificates profile and 1264 coverage certificates were jointly imported and passed, 1722 entrances, and 11260 dependent copies. Added SSRBoolReflection and SSRBoolProofFunctions, and the opaque function maintains its original type.
 
-第二十八至三十一批扩展后：新增 SSRBoolIndexed、SSRBoolRestrictions、BinaryPower、SumboolBridge、CRelationData；79 个覆盖 profile、1336 份证书共同导入通过，1803 个入口、11977 个依赖副本。新证明的原生目标不残留源符号。旧 Mathlib 消费例本轮未重跑；共同导入检查仍包含 Mathlib 模块。
+After the 28th to 30th batch of expansions: Added SSRBoolIndexed, SSRBoolRestrictions, BinaryPower, SumboolBridge, CRelationData; 79 certificates covering profile, 1336 were jointly imported and passed, 1803 entrances, 11977 dependent copies. Newly certified native targets retain no source symbols. The old Mathlib consumption example has not been rerun this round; the common import check still contains the Mathlib module.
 
-第三十二批扩展后：新增 CRelationStatements；80 个覆盖 profile、1353 份证书共同导入，1835 个入口、12111 个依赖副本。
+After the 32nd batch of expansion: CRelationStatements is added; 80 certificates covering profile and 1353 are imported together, 1835 entrances, and 12111 dependent copies.
 
-第三十三批加入 CRelationOrder 后，81 个覆盖 profile、1360 份证书共同导入通过；1844 个导出入口、12229 个依赖声明。新增目标涵盖保留 Type 数据的偏序表示，以及 Lean Equivalence Eq/Iff。该批共同导入包括既有 Mathlib 导入检查，未重跑旧消费例。
+After the thirty-third batch of CRelationOrder was added, 81 certificates covering profile and 1360 were jointly imported and passed; 1844 export entrances and 12229 dependency statements. New goals cover preserving the partially ordered representation of the Type data, as well as Lean Equivalence Eq/Iff. This batch of joint import includes the existing Mathlib import check, and the old consumption cases are not rerun.
 
-第三十四至三十六批：新增 CMorphismData、BinaryBitwise、BinaryIntBitwise。后者实际导入 Mathlib.Data.Int.Bitwise，证明 Z.land/lor/lxor 与现成 Int API 对应，另有四个负数例子；通过 Nat.and_comm 证明机械 N.land 的交换律。共同导入为 84 个覆盖 profile、1392 份证书。编译使用相同 Mathlib 提交；旧消费例未在本批重新编译。新例子与交换律在原 profile 中检查，未额外注册为 Corelib 覆盖根。
+Batch 34 to 36: Added CMorphismData, BinaryBitwise, BinaryIntBitwise. The latter actually imports Mathlib.Data.Int.Bitwise, proving that Z.land/lor/lxor corresponds to the ready-made Int API, and there are four negative examples; it proves the commutative law of mechanical N.land through Nat.and_comm. The joint import is 84 certificates covering profile and 1392. Compiled using the same Mathlib submission; the old consumer example was not recompiled in this batch. The new examples and commutative properties are checked in the original profile, without additional registration as the Corelib overlay root.
 
-第三十七至三十九批：新增 BinaryDivision、BinarySqrtRem、BinaryPositiveSqrt、BinaryIterOp。88 个覆盖 profile、1408 份证书共同导入通过，1893 个入口、13257 个副本。额外导入 Init.Data.Nat.Log2 / Sqrt.Lemmas 保持原生声明身份；未重跑旧 Mathlib 消费例。
+Batch 37 to 39: Newly added BinaryDivision, BinarySqrtRem, BinaryPositiveSqrt, BinaryIterOp. 88 certificates covering profile and 1408 were jointly imported and passed, 1893 entrances, and 13257 copies. Additional import of Init.Data.Nat.Log2 / Sqrt.Lemmas maintains the original claim identity; the old Mathlib consumption example is not re-run.
 
-第四十至四十三批：新增 BinaryElimination、DecimalRepresentation、HexadecimalRepresentation、NumberRepresentation。92 个覆盖 profile、1475 份证书共同导入通过；1989 个入口、16091 个副本。检查程序对增长的入口清单设置 maxRecDepth=16384，未减少任何检查。
+Batch 40 to 43: Added BinaryElimination, DecimalRepresentation, HexadecimalRepresentation, NumberRepresentation. 92 certificates covering profile and 1475 were jointly imported and passed; 1989 entrances and 16091 copies. The checker sets maxRecDepth=16384 on the growing entry list without reducing any checks.
 
-第五十五至五十六批：新增 Uint63Operations、Uint63Conversions，106 个覆盖 profile、1637 份证书共同导入通过；2203 个入口、16332 个依赖副本。BitVec.Lemmas 保持原生声明身份，当前 manifest 与注册表一致。
+Batch 55 to 56: New Uint63Operations, Uint63Conversions, 106 certificates covering profile, 1637 were jointly imported and passed; 2203 entrances, 16332 dependent copies. BitVec.Lemmas maintains the native claim identity, and currently manifest is consistent with the registry.
 
-第五十七至五十九批：新增 Uint63Statements、Uint63DefinitionSpecs、Uint63OrderSpecs。109 个覆盖 profile、1652 份证书共同导入，2233 个入口、16814 个依赖副本。新增 15 个原陈述证明随证书依赖闭包封装，当前 coverage manifest 一致。
+Batch 57 to 59: Added Uint63Statements, Uint63DefinitionSpecs, Uint63OrderSpecs. 109 certificates covering profile and 1652 are imported together, 2233 entrances, and 16814 dependent copies. Added 15 original statement certificates with certificate dependency closure encapsulation, currently coverage manifest are consistent.
 
-第六十至六十二批：Uint63ArithmeticSpecs、Uint63ShiftSpecs、Uint63CountSpecs 及其重检的算术依赖。112 个覆盖 profile、1661 份证书共同导入，2251 个入口、17904 个依赖副本。共享 Uint63ArithmeticSupport 不单独增加覆盖根。
+Batch 60 to 62: Uint63ArithmeticSpecs, Uint63ShiftSpecs, Uint63CountSpecs and their rechecked arithmetic dependencies. 112 certificates covering profile and 1661 are imported together, 2251 entrances, and 17904 dependent copies. Sharing Uint63ArithmeticSupport does not increase coverage roots individually.
 
-第六十三至六十五批：Uint63WideSpecs、Sint63Operations、Sint63Specs 及重检支持。115 个覆盖 profile、1674 份证书共同导入，2272 个入口、18986 个副本。BitVec.Bitblast 作为库导入，新增两份现成 sdiv/srem API 证书及一份带负计数分支的右移证书，不重复计源根。
+Batch 63 to 65: Uint63WideSpecs, Sint63Operations, Sint63Specs and re-inspection support. 115 certificates covering profile and 1674 are imported together, 2272 entrances, and 18986 copies. BitVec.Bitblast is imported as a library, and two ready-made sdiv/srem API certificates and a right-shift certificate with a negative count branch are added, without duplicating the source root.
 
-第六十六至七十批：ArraySpecs、StringOperations、StringSpecs、StringRoundtrip、StringComparison。120 个覆盖 profile、1698 份证书共同导入，2316 个入口、19997 个副本。字节串比较使用原生 List.compareLex；数组保留默认值，字节串保留容量及字节截断。
+Batch 66 to 70: ArraySpecs, StringOperations, StringSpecs, StringRoundtrip, StringComparison. 120 certificates covering profile and 1698 are imported together, 2316 entrances, and 19997 copies. Byte string comparison uses native List.compareLex; arrays retain default values, byte strings retain capacity and byte truncation.
 
-第七十一至七十五批：六个基础标记/决策/兼容 profile 与四个符号浮点覆盖 profile。130 个覆盖 profile / 1748 份证书共同导入，2372 个入口、21186 个副本。浮点目标为精确符号算法，未宣称对应运行时 Float；支持 profile 不单独计根。
+Batch 71 to 75: six base markers/decisions/compatible profile with four symbol floating point overlays profile. 130 certificates covering profile / 1748 are imported together, 2372 entrances, and 21186 copies. The floating point target is an exact symbolic arithmetic and is not declared to correspond to the runtime Float; support for profile is not counted separately.
 
-第七十六至八十一批：六个符号浮点覆盖 profile；136 个覆盖 profile、1765 份证书共同导入，2389 个入口、23420 个依赖副本。Nat.Sqrt.Lemmas 显式导入，保留平方根原生声明身份。未重跑旧 Mathlib 消费例；符号浮点目标不等于已证明运行时 Float 对应。
+Batch 76 to 81: six symbolic floating point coverage profile; 136 coverage profile, 1765 certificates are imported together, 2389 entries, 23420 dependent copies. Nat.Sqrt.Lemmas is imported explicitly, retaining the square root native declaration identity. The old Mathlib consumer example was not rerun; the symbolic floating point target was not equivalent to the proven runtime Float counterpart.
 
-第八十二至八十五批：PrimFloatRepresentation、PrimFloatArithmetic、PrimFloatExponent、PrimFloatSqrt；140 个覆盖 profile、1802 份证书共同导入，2426 个入口、23746 个副本。新增类型目标由现成 Option/Sum/Fin/BitVec 组成；开方保留 Nat.sqrt 原生身份。
+Batch 82 to 85: PrimFloatRepresentation, PrimFloatArithmetic, PrimFloatExponent, PrimFloatSqrt; 140 certificates covering profile, 1802 are imported together, 2426 entrances, 23746 copies. The new type target consists of the ready-made Option/Sum/Fin/BitVec; the original identity of Nat.sqrt is retained by the formula.
 
-第八十六至八十九批：FloatOperations、Float64Operations、FloatStatements、FloatUlp；144 个覆盖 profile、1843 份证书共同导入，2467 个入口、26442 个副本。不同浮点闭包的证明通过重新检查及独立封装共存；24 项规格仅注册陈述 iff，没有原定理证明计数增长。
+Batch 86 to 89: FloatOperations, Float64Operations, FloatStatements, FloatUlp; 144 certificates covering profile, 1843 are imported together, 2467 entrances, 26442 copies. Proofs of different floating-point closures coexist through re-examination and independent packaging; the 24 specification only registers statement iff, without the original theorem proof count increment.
 
-第九十批：SSRPredicatePackages；145 个覆盖 profile、1848 份证书共同导入通过，2472 个入口、26507 个副本。计算透明变体另行做共同导入检查，见 [独立结果](transparent-data/README.md)，不混入本基线。
+The 90th batch: SSRPredicatePackages; 145 certificates covering profile and 1848 were jointly imported and passed, 2472 entrances, and 26507 copies. Calculate transparent variants and do a separate joint import check, see [independent result ](transparent-data/README.md), not mixed into this baseline.
 
-计算透明分支最终检查：173 个既有 profile 覆盖原有 2100 根，6 个新 profile 覆盖 80 根；2752 个既有证书/辅助入口及 28608 个依赖副本经过重新检查。与新证明、Consumer 和 Composition 共同导入成功。原冻结统计不变。自动生成的原生函数也与完整变体共同导入通过；详见 [完整变体结果](transparent-data/README.md)。
+Compute transparent branch final check: 173 existing profile covering the original 2100 root, 6 new profile covering the 80 root; 2752 existing certificates/auxiliary entries and 28608 dependent copies re-examined. Successfully imported with new proofs, Consumer and Composition. The original frozen statistics remain unchanged. Automatically generated native functions are also imported together with the full variant; see [Full variant result ](transparent-data/README.md)] for details.

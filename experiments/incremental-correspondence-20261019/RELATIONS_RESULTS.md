@@ -1,53 +1,53 @@
-# 关系、Classes 与可变参数谓词（第八、九批）
+# Relationship, Classes and variable parameter predicate (eighth and ninth batches)
 
-第八批新增 101 个完成根，第九批再新增 25 个。两个模块合计 126 根全部进入明示范围内的完成类别，未通过扩大模块范围改变分母。
+The eighth batch added 101 completion roots, and the ninth batch added 25. The total of the two modules 126 all enters the completion category within the express range, and the denominator is not changed by expanding the module range.
 
-| 模块 | 根数 | 类型对应 | 运算对应 | 完整原生陈述 |
+| module | Roots | Type correspondence | Operation correspondence | Fully native statement |
 |---|---:|---:|---:|---:|
 | Relations.Relation_Definitions | 23 | 5 | 8 | 10 |
 | Classes.RelationClasses | 103 | 12 | 24 | 67 |
 
-全库累计 706 / 2180：55 类型、273 运算、378 完整原生陈述；尚有 475 部分陈述、284 仅接口、398 尚无证书、316 尚带条件、1 特殊 Type 值陈述。类型对应类别包括归纳类型、类型别名、函数类型及证明结构，并非全是新的数据类型。
+Total database 706 / 2180: 55 type, 273 operation, 378 complete native statement; 475 partial statement, 284 only interface, 398 no certificate yet, 316 Still with conditions, 1 special Type value statement. Type correspondence categories include inductive types, type aliases, function types and proof structures, not all of which are new data types.
 
-## 原生目标与使用
+## Native goals and usage
 
-- relation、unary/binary/ternary_operation、unary_predicate、binary_relation 对应普通 Lean 函数类型。unary_predicate 的两项独立 universe 参数均保留，经显式 PULift 转换后得到 A → Prop。
-- equivalence/Equivalence 对应 Lean 现成 Equivalence。relation inclusion/subrelation 对应 Subrelation。
-- preorder、PER、StrictOrder 等对应原生量词和 And 组成的精确性质。没有将“与原生逻辑表达式等价”误标成 Lean 现成类的实例。
-- RewriteRelation 的源构造器没有字段，是一个标记；对应 True。这个对应本身不赋予关系自反、对称等性质。
-- Classes.PartialOrder 的等价关系 E 仍是参数，精确目标为 ∀ x y, E x y ↔ R x y ∧ R y x，并保留 E 的等价性和 R 的预序前提。没有假定 E 是 Lean Eq。
-- 已证明一个真实消费例：机械 equivalence → 原生 Setoid → Quotient.sound。示例允许 Lean 原生商类型 API 使用机械侧提供的关系证据；示例不额外计 Corelib 根。
+- relation, unary/binary/ternary_operation, unary_predicate, binary_relation correspond to the ordinary Lean function type. The two independent universe parameters of unary_predicate are retained, and after explicit PULift conversion, A → Prop is obtained.
+- equivalence/Equivalence corresponds to Lean and ready-made Equivalence. relation inclusion/subrelation corresponds to Subrelation.
+- preorder, PER, StrictOrder, etc. correspond to the precise properties composed of native quantifiers and And. "Equivalent to native logical expression" is not mislabeled as an instance of the Lean ready-made class.
+- The source constructor of RewriteRelation has no fields and is a tag; corresponding to True. This correspondence itself does not endow the relationship with properties such as reflexivity or symmetry.
+- The equivalent relationship of Classes.PartialOrder E is still a parameter, the precise target is ∀ x y, E x y ↔ R x y ∧ R y x, while retaining the equivalence of E and the preorder premise of R. There is no assumption that E is Lean Eq.
+- A real consumption example has been proven: Mechanical equivalence → Native Setoid → Quotient.sound. The example allows the Lean native quotient type API to use the relationship evidence provided by the machine side; the example does not count the Corelib root.
 
-## Tlist 与可变参数运算
+## Tlist and variable parameter operation
 
-Tlist.{u} 与 List (Type u) 双向互逆。Arguments 将原生类型列表解释为嵌套参数元组：空列表为 PUnit，非空列表为 A × Arguments tail。
+Tlist.{u} and List (Type u) are bidirectional and inverse. Arguments interprets native type lists as nested parameter tuples: PUnit for an empty list, A × Arguments tail for a non-empty list.
 
-arrows ts B 经显式 curry/uncurry 对应 Arguments (typesTo ts) → B，两个方向均有往返证明。谓词进一步去掉 PULift Prop，成为 Arguments (...) → Prop。
+arrows ts B is shown to correspond to curry/uncurry Arguments (typesTo ts) → B, with round-trip proof in both directions. The predicate further removes PULift Prop and becomes Arguments (...) → Prop.
 
-12 个运算对应均已检查：Tlist_rec/rect → List.rec；pointwise_extension → 对同一参数元组逐点运算；pointwise_lifting → 对元组全称量化；predicate_all/exists → ∀/∃；predicate_equivalence/implication → 逐点 iff/蕴含；predicate_intersection/union → 逐点 And/Or；true/false_predicate → 常量 True/False。
+12 operation correspondences have been checked: Tlist_rec/rect → List.rec; pointwise_extension → operates point by point on the same parameter tuple; pointwise_lifting → quantizes the full name of the tuple; predicate_all/exists → ∀/∃; predicate_equivalence/implication → point by point iff/ contains; predicate_intersection/union → point by point And/Or; true/false_predicate → constant True/False.
 
-这不是只包装源函数：右侧运算只用指定的原生逻辑/函数表达式；转换函数是已证互逆的参数表示。
+This is not just a wrapper of the source function: the right-hand side operation only uses the specified native logical/functional expression; the transformation function is a parameter representation with proven reciprocity.
 
-## 陈述与条件
+## Statements and Conditions
 
-RelationClassStatements 使用既有证书自动重新规范化 65 项基线部分陈述，56 项完全原生化。候选报告仍如实记录另外 9 项在这次自动阶段未完成；之后 VariadicStatements 为这 9 项提供了手写目标及证明，当前逐根账本中不再残留。
+RelationClassStatements automatically re-normalizes the baseline partial statement of the 65 item using existing certificates, and fully nativeizes the 56 item. The candidate report still faithfully records that the other 9 items were not completed during this automatic phase; later VariadicStatements provided handwritten goals and proofs for this 9 item, and it no longer remains in the current ledger.
 
-这 9 项是 Tlist 的两个归纳陈述和可变参数谓词关系的七个性质。每项精确原生陈述与原陈述都独立证明，iff 由两份证明构成；操作级转换另外由 VariadicPredicates 证明。没有把 iff 的存在冒充任意陈述的通用证明翻译算法。
+The 9 term is the two inductive statements of Tlist and the seven properties of the variable-argument predicate relation. Each accurate native statement is independently proved from the original statement, iff consists of two proofs; the operational level transformation is additionally proved by VariadicPredicates. There is no universal proof translation algorithm that passes off the existence of iff as an arbitrary statement.
 
-本批另外闭合两个条件根：PartialOrder_inverse 和 subrelation_partial_order，使用三份空公理闭包的见证，分别证明反向预序、逐点 iff 的等价性、子关系的预序性。原始条件清单从 Classes/RelationClasses/translation_report.json 抽取并核对。
+This batch also closes two conditional roots: PartialOrder_inverse and subrelation_partial_order, using three witnesses of empty axiomatic closures to prove reverse preordering, point-wise equivalence of iff, and preordering of subrelations respectively. Original condition list extracted from Classes/RelationClasses/translation_report.json and checked.
 
-全库机械产物仍保留 331 个条件根；本层累计闭合 15 个（7 定义、8 陈述），使用 13 个不同闭合见证，剩余 316。累计新增原陈述证明为 38 份；本批增加 21 份（10 个关系投影、9 个可变参数性质、2 个条件陈述）。自动得到的 56 份 iff 不单独声称已经证明其原陈述。
+The entire database of mechanical products still retains 331 conditional roots; this layer has accumulated 15 closures (7 definition, 8 statement), uses 13 different closure witnesses, and the remaining 316. The cumulative number of new original statement certificates is 38; this batch adds 21 copies (10 relational projections, 9 variable parameter properties, 2 conditional statements). The automatically obtained copies of 56 iff do not independently claim to have proven their original representations.
 
-## 文件与验证
+## Documentation and verification
 
 - proofs/RelationDefinitions.lean、RelationClasses.lean、RelationClassStatements.lean。
 - proofs/VariadicPredicates.lean、VariadicStatements.lean、RelationConditions.lean。
-- build_relation_statements.py：从冻结基线选择 65 项并重建自动陈述 profile。
-- reports/relations-module-coverage.json：两个模块的逐根类别核对结果。
-- reports/relation-statement-candidates.json：56 成功、9 自动阶段残留，后者由手写证书覆盖。
-- reports/CERTIFICATES.md、CORELIB_LEDGER.csv：每一源根的完整证明类型及原生目标。
-- reports/condition-discharges.json、original-statement-proofs.json：条件与原陈述证明分别记录。
+- build_relation_statements.py: Select the item 65 from the frozen baseline and reconstruct the automatic statement profile.
+- reports/relations-module-coverage.json: Root-by-category verification results of the two modules.
+- reports/relation-statement-candidates.json: 56 successful, 9 automatic phase residual, the latter covered by a handwritten certificate.
+- reports/CERTIFICATES.md, CORELIB_LEDGER.csv: The complete proof type and native target of each source root.
+- reports/condition-discharges.json, original-statement-proofs.json: Conditions and original statement proof are recorded separately.
 
-六个新增 profile 均通过 Lean 4.33.1 kernel 及公理闭包审计，累计 23 个 profile 的源码哈希与成功记录一致。真实商类型例使用标准 Quot.sound；条件见证的公理闭包为空。
+The six new profile all passed the Lean 4.33.1 kernel and axiom closure audits, and the source code hashes of the cumulative 23 profile are consistent with the success record. Real quotient examples use standard Quot.sound; the axiom closure of the conditional witness is empty.
 
-此结论只覆盖上述两个模块，不包括 CRelationClasses、Morphisms、CMorphisms 等全部 Classes 文件。统一跨模块导入和 Mathlib 集成尚未完成；继续按 PLAN.md 执行。
+This conclusion only covers the above two modules, and does not include all Classes files such as CRelationClasses, Morphisms, CMorphisms. Unified cross-module import and Mathlib integration are not yet complete; continue with PLAN.md.

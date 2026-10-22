@@ -1,150 +1,150 @@
-机械 nat／eq 基线逐规则使用统计
+Mechanical nat/eq baseline rule-by-rule usage statistics
 
-[完整清单](ALL_RULES.md)。2180原始根去重；左数为主表示，右数含该根 quality 分支。
+[Full catalog](ALL_RULES.md). Counts use 2180 distinct original roots: the left count checks the primary representation; the right also includes quality branches, deduplicated by root.
 
-以下按证据类别统计审阅条目数（不是规则使用次数），共118项，含已停用T06。所有逐项数字的单位都是去重根声明。执行调用次数未独立采集。
+The table groups 118 review entries by evidence category, including disabled T06. These are entry counts, not rule usage counts. Per-rule figures count distinct roots; execution invocations were not independently collected.
 
-| 证据类别 | 审阅条目数 | 含义 | 怎样理解次数（含例子） |
+| Evidence category | Review entries | Meaning | How to read the count (with examples) |
 |---|---:|---|---|
-| 处理范围 | 8 | 该检查或流程所覆盖的声明集合，不要求每项触发特殊转换。 | 例如2180表示2180个根在覆盖范围内，不是执行2180次改写。 E01 导出范围；V03 生成声明的内核检查范围。 |
-| 源端元数据 | 12 | 根据源 IR 的种类、标志或字段筛选声明。 | 统计具有该源特征的根，不能据此确认某目标转换分支实际执行。 T09 的 npars > nparams_rec；E04 自身带 obligations。 |
-| 产物结构 | 13 | 根据最终目标的声明种类、AST 或可见属性筛选。 | 统计出现该产物特征的根；同一根出现多次结构仍只计1。 T07 最终生成 inductive；U08 目标 AST 直接含原生 Lean Eq。 |
-| 未单独记录 | 46 | 现有证据没有该子机制独立、可归属的记录。 | 使用根数及调用次数未知（null），不能当成0，也不能用父机制数量代替。 M03 没有独立路径事件；源有 fix 只算相关结构证据。 |
-| 结果报告字段 | 28 | 最终报告中相应字段非空、非零或满足所列条件。 | 统计满足字段条件的根；字段可能记录策略或求解结果，不统一等价于改写次数。 U15 的 implicit_levels；L02 的 prop_lift_coercions 非零。 |
-| 本次未启用 | 3 | 本次配置没有使用该机制，或其历史路径已经停用。 | 当前为0；不意味着机制不存在或任何输入下都不需要。T06 则已明确停用。 T06 bootstrap 表为空；E14 本次没有装配外部证明。 |
-| 部分子机制 | 3 | 复合条目只有一部分子机制有可识别证据。 | 数字只属于依据栏指出的部分；整个条目的使用数未知，不作为调用次数下界。 T11 仅记录带条件归纳部分，未独立统计嵌套归纳。 |
-| 策略标志 | 1 | 报告标明采用的尝试策略，但不记录其内部具体转换事件。 | 统计带策略标志的根；启用策略不等于发生相应抬升或转换。 U28 的 universe_lowered / universe_cumulativity。 |
-| 模块验证结果 | 2 | 声明所属模块的独立检查有明确通过结果。 | 统计通过模块中覆盖的根，不是逐规则证明数或检查调用次数。 V07 consumer=OK；V08 audit=OK。 |
-| 尝试记录 | 2 | 该声明存在 tier_times，或其中出现指定类型的尝试。 | 主表统计有此记录的根；每根尝试几次另见重试开关表。 S02 有 tier_times；S04 有归纳块 i[...] 尝试。 |
+| Processing scope | 8 | Declarations covered by a check or processing stage; not every declaration must trigger a special transformation. | For example, 2180 means that 2180 roots are covered, not that 2180 rewrites occurred. E01: export scope; V03: kernel checks of generated declarations. |
+| Source metadata | 12 | Declarations selected by source IR kind, flags, or fields. | Counts roots with that source feature; it does not confirm execution of a target transformation branch. T09: npars > nparams_rec; E04: obligations on the root itself. |
+| Artifact structure | 13 | Selection by the final target declaration kind, AST, or visible attributes. | Counts distinct roots with the artifact feature; repeated occurrences in one root count as 1. T07: target kind inductive; U08: native Lean Eq directly in the target AST. |
+| Not separately recorded | 46 | Available evidence has no independent record attributable to this submechanism. | Both root usage and invocation counts are unknown (null), not 0; parent-mechanism counts cannot substitute. M03 has no independent path events in this historical report; a source fix is only related structural evidence. |
+| Result report fields | 28 | Final report fields are nonempty, nonzero, or satisfy the stated conditions. | Counts roots meeting those conditions. A field may record a policy or a solution, so it is not necessarily a rewrite count. U15: implicit_levels; L02: nonzero prop_lift_coercions. |
+| Not enabled in this run | 3 | The current configuration does not use the mechanism, or its historical path has been disabled. | The current count is 0; this does not imply that the mechanism is absent or unnecessary for every input. T06 is explicitly disabled. T06: empty bootstrap table; E14: no externally supplied proofs assembled in this run. |
+| Partial submechanisms | 3 | Only part of a composite entry has identifiable evidence. | The count covers only the part named in basis. Total entry usage remains unknown, and this is not a lower bound on invocation count. T11 records conditional inductive subcases, not nested inductive types separately. |
+| Policy flag | 1 | The report records a policy that was tried, without the individual conversions inside it. | Counts roots with the flag. Enabling a policy does not show that a corresponding raising or conversion occurred. U28: universe_lowered / universe_cumulativity. |
+| Module validation results | 2 | The module containing the declaration has an explicit successful independent validation result. | Counts roots covered by validated modules, not per-rule proofs or check invocations. V07: consumer=OK; V08: audit=OK. |
+| Attempt records | 2 | A declaration has tier_times, or a specified attempt kind occurs in that record. | The main table counts roots with such records; the retry-switch table separately gives attempt totals. S02: tier_times exists; S04: an inductive i[...] attempt. |
 
-部分子机制不再写作整个规则的下界。Q05/Q06、U06/V05、T06/V02 使用相同条件；跨行数字不能相加。0 表示该条件未命中或本次未启用；未知用 null／未单独记录。
+Partial-submechanism evidence is not labeled as a lower bound for the whole rule. Q05/Q06, U06/V05, and T06/V02 share predicates; their counts cannot be added. 0 means no qualifying hit or not enabled in this run; null means unknown/not separately recorded.
 
-| 编号 | 规则 | 主项 / 含分支根数 | 依据 |
+| ID | Rule | Main item / including number of branches | Basis |
 |---|---|---|---|
-| E01 | 依赖闭包导出 | 2180 / 2180（处理范围） | 原始根的导出覆盖；非函数调用次数。 |
-| E02 | 归约后分类 | 2070 / 2070（源端元数据） | 参与声明分类的常量；未拆分归约分支。 |
-| E03 | 普通定理／公理的 statement 模式 | 1029 / 1029（产物结构） | 最终陈述产物。 |
-| E04 | 嵌入证明抽取 | 244 / 244（源端元数据） | 自身源 IR 带 obligations；不等于所有继承待证条件的根。 |
-| E05 | 局部证明应用保留 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| E06 | 证明结构保留重试 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| E07 | 中性证明投影保留 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| E08 | 透明计算定义 | 934 / 934（产物结构） | 最终 def 产物覆盖。 |
-| E09 | 不透明数据定义 | 107 / 107（产物结构） | 最终 opaque 产物覆盖，含 quality family。 |
-| E10 | 不透明接口策略 | 0 / 0（结果报告字段） | 原始根最终采用 opaque_interface。 |
-| E11 | 封装实现准备 | 7 / 7（源端元数据） | 源准备 sealed_implementation=true。 |
-| E12 | 多态条件与状态 | 331 / 331（产物结构） | 最终有显式条件；条件合并／消除的内部次数未单列。 |
-| E13 | 延后 guard 处理 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| E14 | 条件装配 | 0 / 0（本次未启用） | 本次运行未装配外部证明；0 描述实验配置，非条件装配函数调用计数。 |
-| T01 | 变量和绑定 | 1982 / 1982（产物结构） | 最终 AST 含 bvar；不是 rel 转换调用次数。 |
-| T02 | Π、λ、let、应用 | 2155 / 2155（产物结构） | 最终 AST 含绑定／应用结构。 |
-| T03 | 常量、归纳类型与构造器引用 | 2090 / 2097（产物结构） | 最终 AST 含常量引用，含辅助引用。 |
-| T04 | cast | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| T05 | SP：SProp → Prop | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| T06 | 旧 Bootstrap nat／eq（已停用） | 0 / 0（本次未启用） | 已停用；当前 bootstrapRules=#[]，报告 bootstrap/ 根数为 0。源 nat/eq 均走 T07。 |
-| T07 | 普通单体归纳块 | 110 / 110（产物结构） | 最终生成归纳块的覆盖。 |
-| T08 | 原生记录及投影 | 0 / 0（结果报告字段） | 最终报告 primitive_record 非空／非零。 |
-| T09 | 非均匀参数 | 1 / 1（源端元数据） | 原生 npars>nparams_rec 的非均匀块。 |
-| T10 | T：非递归 coinductive | 4 / 4（结果报告字段） | 最终报告 coinductive_as_inductive 非空／非零。 |
-| T11 | 受限嵌套归纳与带条件归纳 | 0 / 0（部分子机制） | 只确认带条件归纳子项；嵌套归纳未单列。 |
-| M01 | M3b：依赖 match | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| M02 | 非均匀 match | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| M03 | 单函数结构递归 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| M04 | 变化前置参数泛化 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| M05 | 索引与函数递归字段 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| M06 | ι 泛化递归 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| M07 | 结构互递归 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| M08 | 递归暴露 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| M09 | Course-of-values | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| M10 | Accessibility 转换 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| M11 | 显式良基回退 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| M12 | 构造器形索引 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| M13 | 递归 cast 修复 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| U01 | R0：原生事实 | 2180 / 2180（处理范围） | 原生宇宙上下文检查覆盖；不是每根都有非平凡约束。 |
-| U02 | R1：基础 sort 映射 | 1782 / 1782（产物结构） | 最终 AST 含 Sort，未区分普通读取和 R8。 |
-| U03 | R2／R2T：宇宙参数化 | 1031 / 1031（产物结构） | 最终公开 u_ 层级参数覆盖，排除显式 v_i。 |
-| U04 | R2S：公开层级求解 | 129 / 129（结果报告字段） | 最终报告 solved_levels 非空／非零。 公开与正文局部求解未独立拆分。 |
-| U05 | R2B：正文局部层级 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| U06 | R3：引用一致性与不抬高 | 867 / 867（结果报告字段） | 最终报告 universe_checks 非空／非零。 |
-| U07 | R3′／R3″：残留实例 | 1 / 1（结果报告字段） | 最终报告 universe_residuals 非空／非零。 |
-| U08 | R4：Lean 内部 Eq 层级检查 | 6 / 6（产物结构） | 最终 AST 直接含原生 Lean Eq（包括内部辅助证明）；不是源 eq 原生映射次数。 |
-| U09 | R5／R5S：模板层级 | 27 / 27（结果报告字段） | 最终报告 template 非空／非零。 统计模板块本身，下游实例化另属引用。 |
-| U10 | R6：显式多态常量 | 194 / 194（产物结构） | 对应声明有显式多态宇宙参数。 |
-| U11 | 多态归纳块 | 6 / 6（产物结构） | 对应声明有显式多态宇宙参数。 |
-| U12 | R2⁺：事实化简 | 1 / 1（结果报告字段） | 最终报告 sort_fact_reduced 非空／非零。 |
-| U13 | R2F／R2F-c：约束解释 | 1 / 1（结果报告字段） | 最终报告 level_interp 非空／非零。 |
-| U14 | R3-P：局部与全局联合蕴含 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| U15 | R3G：隐含层级发现 | 227 / 227（结果报告字段） | 最终报告 implicit_levels 非空／非零。 |
-| U16 | R3G-F：结果 sort 层级 | 0 / 0（结果报告字段） | 最终报告 result_sort_implicit_levels 非空／非零。 |
-| U17 | R8：Sort 化 | 598 / 598（结果报告字段） | 最终报告 admitting_levels 非空／非零。 |
-| U18 | R-CARRIER P1 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| U19 | R-CARRIER P2 | 66 / 66（结果报告字段） | 最终报告 level_copies 非空／非零。 |
-| U20 | R-CARRIER P3 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| U21 | R-SPLIT | 0 / 0（结果报告字段） | 最终报告 level_split 非空／非零。 |
-| U22 | Rule R：语义一致性 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| U23 | Rule H：条件实例 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| U24 | 逐出现层级／unify | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| U25 | sort_interp | 5 / 5（结果报告字段） | 最终报告 sort_interp 非空／非零。 |
-| U26 | 求解器 P2／joint | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| U27 | 求解器 P3／hypExact | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| U28 | R3↑／R3↓ | 22 / 22（策略标志） | lowered 或 cumulativity 标志；策略标志不能拆成实际抬升次数。 |
-| U29 | R2B-P | 1 / 1（结果报告字段） | 最终报告 r2bp_levels 非空／非零。 |
-| U30 | R2B-S | 1 / 1（结果报告字段） | 最终报告 sort_lowered_levels 非空／非零。 |
-| U31 | R2B-V | 1 / 1（结果报告字段） | 最终报告 result_sort_inherited 非空／非零。 |
-| U32 | 局部多态约束解释／polyUniverseInterpretation | 26 / 33（结果报告字段） | 最终报告 poly_level_interp 非空／非零。 |
-| U33 | 带全局上界的片段 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| U34 | 精确 R6 回退与等层级归并 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| U35 | 最小默认与有界 max 求解 | 1 / 1（部分子机制） | 仅确认报告的默认／residual 子机制；max 求解未单列。 |
-| U36 | Q-a：phantom sort | 0 / 0（结果报告字段） | 最终报告 phantom_lowered 非空／非零。 |
-| C01 | 别名前缀 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| C02 | 透明引用别名 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| C03 | 纯绑定变量组合子 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| C04 | 类型缩写闭包 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| C05 | 精确实例替换 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| C06 | 已知构造器驱动计算 | 8 / 8（结果报告字段） | 最终报告 source_computed 非空／非零。 |
-| C07 | Set-motive 展开 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| L01 | Rule P：命题载荷提升 | 1 / 1（结果报告字段） | prop_lift 非 null；深度 0 也算命中。 |
-| L02 | Prop up／down | 2 / 2（结果报告字段） | 最终报告 prop_lift_coercions 非空／非零。 |
-| L03 | Type up／down | 46 / 53（结果报告字段） | type_lift 非 null 或 type_lift_coercions>0。 |
-| L04 | 函数 η 转换 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| L05 | 类型位置解包 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| L06 | 包装函数应用 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| L07 | 同记录逐字段转换 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| L08 | 组合转换 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| L09 | 延迟不确定模板转换 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| L10 | 提升命题的陈述视图 | 0 / 0（结果报告字段） | 最终报告 prop_lift_unfold 非空／非零。 |
-| Q01 | 原生 quality 绑定 | 50 / 50（源端元数据） | 原生 template_info 或 quality_family 覆盖。 |
-| Q02 | 模板 Sort 参数 | 22 / 22（结果报告字段） | 最终报告 template_sort 非空／非零。 |
-| Q03 | 共享 quality 模板族 | 5 / 5（结果报告字段） | 最终报告 quality_prop 非空／非零。 |
-| Q04 | 按源注解分派 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| Q05 | 原生有限 quality family | 23 / 23（源端元数据） | 原生 quality_family 根；同一根的所有分支完整检查。 |
-| Q06 | 原生重检查及实现保留 | 23 / 23（源端元数据） | 原生 quality_family 根；同一根的所有分支完整检查。 |
-| Q07 | 封闭 quality 引用 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| N01 | Int63 | 31 / 31（源端元数据） | 该族原生类型／操作根；下游包装调用不当成重新映射。 |
-| N02 | Array | 7 / 7（源端元数据） | 该族原生类型／操作根；下游包装调用不当成重新映射。 |
-| N03 | String | 7 / 7（源端元数据） | 该族原生类型／操作根；下游包装调用不当成重新映射。 |
-| N04 | Float | 20 / 20（源端元数据） | 该族原生类型／操作根；下游包装调用不当成重新映射。 |
-| N05 | 结构结果适配 | 22 / 22（源端元数据） | 需源构造器适配的原语操作根。 |
-| N06 | 字面量、身份与原语公理 | 65 / 65（部分子机制） | 只确认原语身份子机制；字面量和公理子机制未单列。 |
-| V01 | 源内核检查 | 2180 / 2180（处理范围） | 本次处理／校验覆盖全部原始根；非内部执行次数。 |
-| V02 | Bootstrap 签名检查 | 0 / 0（本次未启用） | 当前 bootstrap 表为空，本次没有 bootstrap 签名适配对象。 |
-| V03 | Lean 内核检查 | 2180 / 2180（处理范围） | 生成声明的内核检查覆盖；bootstrap 复用已有目标。 |
-| V04 | P0 与陈述一般性 | 2056 / 2056（处理范围） | protected 或 statement 检查范围。 |
-| V05 | 宇宙事实与引用检查 | 867 / 867（结果报告字段） | 最终报告 universe_checks 非空／非零。 |
-| V06 | 依赖与条件完整性 | 2180 / 2180（处理范围） | 本次处理／校验覆盖全部原始根；非内部执行次数。 |
-| V07 | 独立 consumer | 2180 / 2180（模块验证结果） | 所属模块 consumer=OK 的根覆盖。 |
-| V08 | 独立结构审计 | 2180 / 2180（模块验证结果） | 所属模块 audit=OK 的根覆盖。 |
-| V09 | 覆盖与资源失败 | 2180 / 2180（处理范围） | 本次处理／校验覆盖全部原始根；非内部执行次数。 |
-| S01 | 固定声明分派 | 2180 / 2180（处理范围） | 本次处理／校验覆盖全部原始根；非内部执行次数。 |
-| S02 | 有门槛的阶梯 | 2175 / 2175（尝试记录） | 具有 tier_times 的根覆盖。 |
-| S03 | 提前转换与一般性重试 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
-| S04 | 归纳块自己的阶梯 | 105 / 105（尝试记录） | 具有归纳块 tier_times 的根覆盖。 |
-| S05 | 失败回滚与预算 | 未单独记录 | 历史报告未独立记录此子机制；不能以父规则计数或开关启用次数代替。 |
+| E01 | Dependency closure export | 2180 / 2180（Processing scope） | Export override of original root; non-function call count. |
+| E02 | Classification after reduction | 2070 / 2070（Source metadata） | Constants participating in declaration classification; reduction branch not split. |
+| E03 | statement mode for ordinary theorems/axioms | 1029 / 1029（Artifact structure） | Final presentation product. |
+| E04 | Embedded proof extraction | 244 / 244（Source metadata） | Self source IR with obligations; not equal to the root of all inherited unproven conditions. |
+| E05 | Local proof application preservation | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| E06 | Retry preserving proof structure | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| E07 | Neutral proof projection preservation | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| E08 | Transparent computational definitions | 934 / 934（Artifact structure） | The final def product coverage. |
+| E09 | Opaque data definitions | 107 / 107（Artifact structure） | The final opaque product coverage includes quality and family. |
+| E10 | Opaque interface policy | 0 / 0（Result report fields） | The original root ended up being opaque_interface. |
+| E11 | Sealed implementation preparation | 7 / 7（Source metadata） | Source preparation sealed_implementation=true. |
+| E12 | Polymorphic prerequisites and state | 331 / 331（Artifact structure） | Finally there are explicit conditions; internal times of conditional merging/elimination are not listed separately. |
+| E13 | Deferred guard handling | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| E14 | Prerequisite assembly | 0 / 0（Not enabled in this run） | No external proofs are assembled in this census; 0 describes the configuration, not prerequisite-assembly invocation counts. |
+| T01 | Variables and bindings | 1982 / 1982（Artifact structure） | Ultimately AST contains bvar; not rel conversion call count. |
+| T02 | Π, λ, let, and application | 2155 / 2155（Artifact structure） | Final AST with binding/application structure. |
+| T03 | References to constants, inductive types, and constructors | 2090 / 2097（Artifact structure） | Finally, AST contains constant references and auxiliary references. |
+| T04 | cast | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| T05 | SP：SProp → Prop | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| T06 | Old Bootstrap nat/eq (disabled) | 0 / 0（Not enabled in this run） | Disabled: bootstrapRules=#[], with 0 reported bootstrap/ roots. Source nat/eq use T07. |
+| T07 | Ordinary single inductive blocks | 110 / 110（Artifact structure） | The final coverage of the inductive block is generated. |
+| T08 | Native records and projections | 0 / 0（Result report fields） | final report primitive_record is nonempty/nonzero. |
+| T09 | Non-uniform parameters | 1 / 1（Source metadata） | Non-uniform blocks of native npars>nparams_rec. |
+| T10 | T: non-recursive coinductive types | 4 / 4（Result report fields） | final report coinductive_as_inductive is nonempty/nonzero. |
+| T11 | Restricted nested and conditional inductive types | 0 / 0（Partial submechanisms） | Only the sub-items of conditional induction are confirmed; nested induction is not listed separately. |
+| M01 | M3b: dependent match | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| M02 | Non-uniform match | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| M03 | Single-function structural recursion | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| M04 | Generalization of changing leading parameters | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| M05 | Indices and function-valued recursive fields | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| M06 | ι-generalized recursion | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| M07 | Structural mutual recursion | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| M08 | Exposing recursion | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| M09 | Course-of-values | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| M10 | Accessibility conversion | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| M11 | Explicit well-founded fallback | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| M12 | Constructor-shaped indices | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| M13 | Recursive cast repair | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| U01 | R0: Native universe facts | 2180 / 2180（Processing scope） | Native universe context check override; not every root has non-trivial constraints. |
+| U02 | R1: Basic sort mapping | 1782 / 1782（Artifact structure） | The final AST contains Sort, without distinguishing between normal reading and R8. |
+| U03 | R2/R2T: Universe parameterization | 1031 / 1031（Artifact structure） | Finally, the u_ level parameter coverage is disclosed, excluding explicit v_i. |
+| U04 | R2S: Public level solving | 129 / 129（Result report fields） | final report solved_levels is nonempty/nonzero. The public and body local solutions are not separated independently. |
+| U05 | R2B: Body-local levels | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| U06 | R3: Reference coherence and no raising | 867 / 867（Result report fields） | final report universe_checks is nonempty/nonzero. |
+| U07 | R3′/R3″: Residual instances | 1 / 1（Result report fields） | final report universe_residuals is nonempty/nonzero. |
+| U08 | R4: Level checks for internal Lean Eq | 6 / 6（Artifact structure） | The final AST directly contains the native Lean Eq (including internal auxiliary proof); it is not the number of native mappings of the source eq. |
+| U09 | R5/R5S: Template levels | 27 / 27（Result report fields） | final report template is nonempty/nonzero. The statistics template block itself, downstream instantiation is a separate reference. |
+| U10 | R6: Explicitly polymorphic constants | 194 / 194（Artifact structure） | The corresponding declaration has explicit polymorphic universe parameters. |
+| U11 | Polymorphic inductive blocks | 6 / 6（Artifact structure） | The corresponding declaration has explicit polymorphic universe parameters. |
+| U12 | R2⁺: Fact reduction | 1 / 1（Result report fields） | final report sort_fact_reduced is nonempty/nonzero. |
+| U13 | R2F/R2F-c: Constraint interpretation | 1 / 1（Result report fields） | final report level_interp is nonempty/nonzero. |
+| U14 | R3-P: Joint local/global entailment | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| U15 | R3G: Implicit level discovery | 227 / 227（Result report fields） | final report implicit_levels is nonempty/nonzero. |
+| U16 | R3G-F: Result-sort levels | 0 / 0（Result report fields） | final report result_sort_implicit_levels is nonempty/nonzero. |
+| U17 | R8: Generalization to Sort | 598 / 598（Result report fields） | final report admitting_levels is nonempty/nonzero. |
+| U18 | R-CARRIER P1 | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| U19 | R-CARRIER P2 | 66 / 66（Result report fields） | final report level_copies is nonempty/nonzero. |
+| U20 | R-CARRIER P3 | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| U21 | R-SPLIT | 0 / 0（Result report fields） | final report level_split is nonempty/nonzero. |
+| U22 | Rule R: Semantic coherence | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| U23 | Rule H: Prerequisite instances | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| U24 | Per-occurrence levels / unify | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| U25 | sort_interp | 5 / 5（Result report fields） | final report sort_interp is nonempty/nonzero. |
+| U26 | Solver P2 / joint | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| U27 | Solver P3 / hypExact | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| U28 | R3↑／R3↓ | 22 / 22（Policy flag） | lowered or cumulativity flag; the strategy flag cannot be broken down into the actual number of lifts. |
+| U29 | R2B-P | 1 / 1（Result report fields） | final report r2bp_levels is nonempty/nonzero. |
+| U30 | R2B-S | 1 / 1（Result report fields） | final report sort_lowered_levels is nonempty/nonzero. |
+| U31 | R2B-V | 1 / 1（Result report fields） | final report result_sort_inherited is nonempty/nonzero. |
+| U32 | Local polymorphic constraint interpretation / polyUniverseInterpretation | 26 / 33（Result report fields） | final report poly_level_interp is nonempty/nonzero. |
+| U33 | Fragment with global upper bounds | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| U34 | Exact R6 fallback and equal-level merging | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| U35 | Minimal defaults and bounded max solving | 1 / 1（Partial submechanisms） | Only the reported Default/residual submechanism is confirmed; the max solution is not listed separately. |
+| U36 | Q-a：phantom sort | 0 / 0（Result report fields） | final report phantom_lowered is nonempty/nonzero. |
+| C01 | Alias prefixes | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| C02 | Transparent reference aliases | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| C03 | Pure bound-variable combinators | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| C04 | Type abbreviation closure | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| C05 | Exact instance substitution | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| C06 | Known-constructor-driven computation | 8 / 8（Result report fields） | final report source_computed is nonempty/nonzero. |
+| C07 | Set-motive unfolding | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| L01 | Rule P: Proposition payload lifting | 1 / 1（Result report fields） | prop_lift is not null; depth 0 is also a hit. |
+| L02 | Prop up／down | 2 / 2（Result report fields） | final report prop_lift_coercions is nonempty/nonzero. |
+| L03 | Type up／down | 46 / 53（Result report fields） | type_lift is not null or type_lift_coercions>0. |
+| L04 | Function η-conversion | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| L05 | Unpacking in type positions | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| L06 | Wrapper function application | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| L07 | Fieldwise conversion within the same record | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| L08 | Composed conversions | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| L09 | Deferring unresolved template conversions | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| L10 | Statement view of lifted propositions | 0 / 0（Result report fields） | final report prop_lift_unfold is nonempty/nonzero. |
+| Q01 | Native quality bindings | 50 / 50（Source metadata） | Native template_info or quality_family override. |
+| Q02 | Template Sort parameters | 22 / 22（Result report fields） | final report template_sort is nonempty/nonzero. |
+| Q03 | Shared-quality template families | 5 / 5（Result report fields） | final report quality_prop is nonempty/nonzero. |
+| Q04 | Dispatch by source annotation | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| Q05 | Native finite quality families | 23 / 23（Source metadata） | Native quality_family root; all branches of the same root are fully checked. |
+| Q06 | Native rechecking and implementation preservation | 23 / 23（Source metadata） | Native quality_family root; all branches of the same root are fully checked. |
+| Q07 | Closed quality references | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| N01 | Int63 | 31 / 31（Source metadata） | Native type/operation root of this family; downstream wrapper calls do not constitute remapping. |
+| N02 | Array | 7 / 7（Source metadata） | Native type/operation root of this family; downstream wrapper calls do not constitute remapping. |
+| N03 | String | 7 / 7（Source metadata） | Native type/operation root of this family; downstream wrapper calls do not constitute remapping. |
+| N04 | Float | 20 / 20（Source metadata） | Native type/operation root of this family; downstream wrapper calls do not constitute remapping. |
+| N05 | Structural result adaptation | 22 / 22（Source metadata） | The primitive operation root that needs to be adapted by the source constructor. |
+| N06 | Literals, identity, and primitive axioms | 65 / 65（Partial submechanisms） | Only the primitive identity sub-mechanism is confirmed; the literal and axiom sub-mechanisms are not listed separately. |
+| V01 | Source kernel checking | 2180 / 2180（Processing scope） | This processing/verification covers all original roots; not internal execution times. |
+| V02 | Bootstrap signature checking | 0 / 0（Not enabled in this run） | The current bootstrap table is empty, and there is no bootstrap signature adaptation object this time. |
+| V03 | Lean kernel checking | 2180 / 2180（Processing scope） | Generate declared kernel check coverage; bootstrap reuses an existing target. |
+| V04 | P0 and statement generality | 2056 / 2056（Processing scope） | protected or statement inspection range. |
+| V05 | Universe fact and reference checking | 867 / 867（Result report fields） | final report universe_checks is nonempty/nonzero. |
+| V06 | Dependency and prerequisite completeness | 2180 / 2180（Processing scope） | This processing/verification covers all original roots; not internal execution times. |
+| V07 | Independent consumer | 2180 / 2180（Module validation results） | Belonging module consumer=OK root coverage. |
+| V08 | Independent structural audit | 2180 / 2180（Module validation results） | Belonging module audit=OK root coverage. |
+| V09 | Coverage and resource failures | 2180 / 2180（Processing scope） | This processing/verification covers all original roots; not internal execution times. |
+| S01 | Fixed declaration dispatch | 2180 / 2180（Processing scope） | This processing/verification covers all original roots; not internal execution times. |
+| S02 | Gated tier ladder | 2175 / 2175（Attempt records） | Has root coverage of tier_times. |
+| S03 | Early conversion and generality retries | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
+| S04 | Inductive-specific tier ladder | 105 / 105（Attempt records） | Root coverage with inductive block tier_times. |
+| S05 | Failure rollback and budgets | Not separately recorded | Historical reports did not record this submechanism separately; parent-rule counts or switch activations cannot substitute for that evidence. |
 
-**独立字段及报告计数器**
+**Independent fields and report counters**
 
-这些是报告已有计数器的主表示总和，不是新增的逐规则执行事件审计。
+These are report sums of the main representation of existing counters, not new per-rule execution event auditing.
 
-| 字段 | 命中根数 | 主表示计数器总和 |
+| Field | Number of hits | Main represents counter sum |
 |---|---:|---:|
 | admitting_levels | 598 | — |
 | pending_hypotheses | 331 | — |
@@ -158,11 +158,11 @@
 | level_interp | 1 | — |
 | result_sort_inherited | 1 | — |
 
-**重试开关启用**
+**Retry switch activations**
 
-这是开关启用次数，不是内部规则执行次数。成功候选也可能被后续候选替代。c:pl 是 Prop lift，i:pl 是 plain levels；ul 是 Type lift，un 是逐出现统一。
+This is the number of switch enablements, not the number of internal rule executions. Successful candidates may also be replaced by subsequent candidates. c:pl is Prop lift, i:pl is plain levels; ul is Type lift, un is unified by appearance.
 
-| 开关 | 根数 | 尝试数 | 成功候选 | 发现 | 失败 |
+| switch | Roots | number of attempts | successful candidate | discover | failed |
 |---|---:|---:|---:|---:|---:|
 | c:ad | 879 | 879 | 598 | 0 | 281 |
 | c:cu | 166 | 900 | 17 | 0 | 883 |
@@ -183,10 +183,10 @@
 | i:pl | 105 | 117 | 104 | 0 | 13 |
 | i:un | 6 | 17 | 5 | 0 | 12 |
 
-**复现**
+**Reproduction**
 
-在仓库根运行：
+Run at the repository root:
 
     python3 scripts/catalog_rule_usage.py
 
-读取已提交的紧凑证据 rule-usage-evidence.json；不运行翻译器。远程完整报告在场时加 --extract 可重新提取。证据类别定义保存在 RULE_USAGE.json 的 measurement_definitions。完整命中名单和结构关联证据在 RULE_USAGE.json。对未记录项必须另加执行事件埋点，不能靠当前材料推算。
+Read submitted compact evidence rule-usage-evidence.json; do not run translator. The remote full report can be re-extracted by adding --extract when present.The evidence class definition is stored in measurement_definitions in RULE_USAGE.json. The complete hit list and evidence of structural association is at RULE_USAGE.json. Unrecorded mechanisms require additional execution-event instrumentation; their usage cannot be inferred from current evidence.

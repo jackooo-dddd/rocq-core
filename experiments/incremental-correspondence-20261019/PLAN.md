@@ -1,269 +1,269 @@
-# Correspondence 后续计划
+# Correspondence follow-up plan
 
-状态：2026-10-19 开始；先建立计划和依赖图，再执行证明。此目录是新增工作区，旧实验作为不可变基线。
+Status: 2026-10-19 Start; first build the plan and dependency graph, and then execute the proof. This directory is a new workspace, with old experiments as an immutable baseline.
 
-目标：在机械翻译之后，证明与指定 Lean 原生类型、运算的对应，并让已有证书可被后续声明复用。机械 nat/eq 不回退为 bootstrap。
+Goal: After mechanical translation, prove the correspondence with the specified Lean native type and operation, and allow existing certificates to be reused by subsequent claims. Mechanical nat/eq does not fall back to bootstrap.
 
-## 基线
+## baseline
 
-2180 个去重根：TYPE_ISO 29，OPERATION_CORRESPONDENCE 114，STATEMENT_FULL_NATIVE 143，STATEMENT_PARTIAL 702，TRANSPORT_INTERFACE_ONLY 375，NOT_YET_BRIDGED 485，EXPLICIT_PROOF_PARAMETERS 331，TYPE_VALUED_STATEMENT 1。
-来源：../mechanical-correspondence-20261019/reports/CORELIB_LEDGER.csv。
-历史证书不因新实验而重新宣称已执行；本轮新增证明独立验证，汇总时标明基线继承。
+2180 deduplication roots: TYPE_ISO 29, OPERATION_CORRESPONDENCE 114, STATEMENT_FULL_NATIVE 143, STATEMENT_PARTIAL 702, TRANSPORT_INTERFACE_ONLY 375, NOT_YET_BRIDGED 485, EXPLICIT_PROOF_PARAMETERS 331, TYPE_VALUED_STATEMENT 1.
+Source: ../mechanical-correspondence-20261019/reports/CORELIB_LEDGER.csv.
+Historical certificates will not be re-claimed as executed due to new experiments; new certificates added in this round are independently verified, and baseline inheritance is indicated when summarizing.
 
-## 执行顺序和验收
+## Execution sequence and acceptance
 
-| 步骤 | 工作 | 前置依赖 | 验收 | 状态 |
+| steps | work | pre-dependency | Acceptance | Status |
 |---|---|---|---|---|
-| P0 | 仓库归档、保留源码与关键结果 | 远程归档验证 | Mac 清理前确认可恢复；不删除远程运行环境 | 已完成：归档验证记录见 ../../docs/STORAGE_CLEANUP.json |
-| P1 | 2180 项基线任务表、源依赖图和桥接任务 DAG | 原始 IR、覆盖账本 | 节点可追踪，区分来源事实与规划依赖，检查 DAG | 已完成：tasks.csv、dependency-graph.json，2180 根 / 9457 条依赖 |
-| P2 | 已有证书复用及函数组合机制 | Nat/Bool/Option/函数 Iso | 在真实导入上组合证书；未知操作不误报成功 | 首批已验证：Registry、transport_comp、两项自动组合；通用化继续 |
-| P3a | Program.Basics 组合器及 SSR Option、simpl_fun | P2、Option Iso、Eq 桥接 | 类型往返、运算等式分别登记，Lean kernel 和公理闭包检查 | 首批已验证：6 Basics + 17 SSR 运算/谓词 + 1 SSR 类型；详见证书表 |
-| P3b | 数值、比较、数字表示及其转换 | Nat/N/Z/Bool Iso、表示类型桥接 | 明确原生目标、规范形式和参数范围 | Nat.iter；数字表示/读取/比较/规范化已推进；写出与进位语义已证明；七种顶层打印已对应 Mathlib Nat.digits；positive/N/Z 按位运算已对应；有符号读取待继续 |
-| P4 | 依赖函数、Sigma/Subtype、Eq transport、Acc | P2、依赖消去对应 | 保持索引/证明依赖及实际 universe 范围 | 已开始：Acc 与 7 项良基递归/谓词；完整 Sort 的 Sigma/Subtype、二元良基递归、基本容器消去；Eq/布尔等式已推进，剩余依赖陈述继续 |
-| P5 | 将 375 项接口逐步升级到运算对应 | P3/P4 的证书 | 对指定原生运算的等式/iff，不把接口往返混算 | 三十六批推进；当前仅接口 121 项 |
-| P6 | 再处理 702 项部分陈述和共享证明义务 | 运算证书、依赖转换 | 原生陈述 iff；未解决的证明条件继续显式保留 | SSRBool 升级 141 项；数字比较再升级并证明 8 项；293 个条件根已闭合实例化并完成对应，本层剩余 38 |
-| P7 | 统一导入与 Lean/Mathlib 组合使用 | 已验收证书 | 跨模块使用，记录实际测试边界和剩余失败 | 首批验收通过：84 覆盖 profile / 1392 证书共同导入；Nat + SSR + Setoid 组合、Mathlib Nat.prime_two 消费通过；见 INTEROP_RESULTS.md |
+| P0 | Warehouse archiving, retaining source code and key results | Remote archive verification | Mac Confirm recovery before cleaning; do not delete the remote operating environment | Completed: Archive verification records are available at ../../docs/STORAGE_CLEANUP.json |
+| P1 | 2180 baseline task list, source dependency graph, and bridging tasks DAG | Original IR, covering ledger | Nodes are traceable, distinguishing source facts from planning dependencies, check DAG | Completed: tasks.csv, dependency-graph.json, 2180 root / 9457 dependencies |
+| P2 | Existing certificate reuse and function combination mechanisms | Nat/Bool/Option/ function Iso | Combine certificates on real import; unknown operations do not falsely report success | The first batch has been verified: Registry, transport_comp, two automatic combinations; generalization continues |
+| P3a | Program.Basics combiner and SSR Option, simpl_fun | P2, Option Iso, Eq bridge | Type round trip, operation equation are registered separately, Lean kernel and axiom closure check | The first batch has been verified: 6 Basics + 17 SSR operation/predicate + 1 SSR type; see the certificate table for details |
+| P3b | Numeric values, comparisons, numerical representations and their conversions | Nat/N/Z/Bool Iso, representation type bridge | Clarify the native target, specification form and parameter range | Nat.iter; digital representation/reading/comparison/normalization has been advanced; writing and carry semantics have been proven; seven top-level printings have been mapped Mathlib Nat.digits; positive/N/Z bitwise operations have been mapped; signed reading is to be continued |
+| P4 | Dependent functions, Sigma/Subtype, Eq transport, Acc | P2, dependency elimination corresponding | Keep index/proof dependencies and actual universe range | Started: Acc and 7 term well-founded recursion/predicate; complete Sort's Sigma/Subtype, binary well-founded recursion, basic container elimination; Eq/ Boolean equality advanced, remaining dependency statements continued |
+| P5 | Gradually upgrade the 375 interface to the computing interface | Certificate of P3/P4 | For equations/iff that specify native operations, interface round-trips are not mixed | Thirty-six batches are advanced; currently only the 121 item is interfaced |
+| P6 | Reprocessing Partial Statements and Shared Proof Obligations for Item 702 | Operation certificate, dependency conversion | Native statement iff; unresolved proof conditions continue to be explicitly retained | SSRBool upgrades 141 items; digital comparison upgrades and proves 8 items; 293 conditional roots have been closed and instantiated and corresponding, and the remaining 38 in this layer |
+| P7 | Unified import is used in combination with Lean/Mathlib | Acceptance certificate | Used across modules to log actual test boundaries and remaining failures | The first batch of acceptance passes: 84 covers profile / 1392 certificates are jointly imported; Nat + SSR + Setoid combination, Mathlib Nat.prime_two consumption passes; see INTEROP_RESULTS.md |
 
-P2/P3a 采用小步循环：先实现最小可复用机制，再在具体函数上验证，补证书后回到机制层。
-首批选 Program.Basics、SSR Option/函数包装和 Nat.iter；不把同一声明的多份证书重复计入根数。
-Classes 的关系性质可在基础桥接后推进；Type 值关系不能擅自压成 Prop。浮点、数组边界约定作为单独语义专题。
+P2/P3a adopts a small step cycle: first implement the minimum reusable mechanism, then verify on specific functions, and return to the mechanism layer after supplementing the certificate.
+The first batch selects Program.Basics, SSR, Option/ function packaging and Nat.iter; multiple certificates with the same declaration will not be counted repeatedly in the root number.
+The relational nature of Classes can be advanced after basic bridging; the value relation of Type cannot be compressed into Prop without authorization. Floating point and array boundary conventions are treated as separate semantic topics.
 
-## 每步产物
+## Product of each step
 
-- PLAN.md：步骤状态、完成证据与下一步。
-- DAG.md：可读的任务依赖图；dependency-graph.json / source-dependencies.csv：实际源依赖和 SCC 信息。
-- tasks.csv：每根的基线状态、源依赖和本轮进度。
-- proofs/：手写通用对应；生成的完整证明文件、脚本及注册表。
-- reports/：kernel 验证、公理闭包、显式源根到证书映射、更新后的覆盖账本。
-- .work/：编译缓存、探测、临时输出，仅远程保留。
+- PLAN.md: Step status, completion evidence and next step.
+- DAG.md: human-readable task dependency graph; dependency-graph.json / source-dependencies.csv: actual source dependency and SCC information.
+- tasks.csv: Each root’s baseline status, source dependencies and current round progress.
+- proofs/: universal correspondence for handwriting; complete certification documents, scripts and registration forms generated.
+- reports/: kernel validation, axiom closure, explicit source root to certificate mapping, updated coverage ledger.
+- .work/: Compilation cache, detection, temporary output, only retained remotely.
 
-## 计数与正确性
+## Counting and Correctness
 
-新证书必须显式登记所证明的源声明，不能仅因定理类型提到某声明就记为覆盖。
-区分类型双向逆、原生接口往返、运算一致性、陈述 iff；带额外假设必须保留。
-不能由“生成器未找到桥接”推断数学上不可能。不能把规范化/单向解释冒充 bijection。
-原生目标可以是指定 Lean 组合表达式，但必须与现成 API 的直接对应分别标记。
-每一轮只更新实际通过验证的条目；未完成步骤继续列出，不标为完成。
+The new certificate must explicitly register the proven source statement, and cannot be counted as a coverage just because the theorem type mentions a statement.
+Distinguishing types bidirectional inverse, native interface round trip, operation consistency, statement iff; with additional assumptions must be retained.
+Mathematical impossibility cannot be inferred from "generator not found bridge". Canonicalization/one-way interpretation cannot be passed off as bijection.
+The native target can be a combination expression specifying Lean, but must be marked separately from the direct correspondence of the ready-made API.
+In each round, only the items that actually passed the verification are updated; unfinished steps continue to be listed and are not marked as completed.
 
-## 第一批执行记录
+## The first batch of execution records
 
-P0/P1 已完成。P2/P3a 首批 5 个 profile 全部通过，新增 1 个类型根、24 个运算/谓词根（含 Nat.iter）。P3b 已开始 Nat.iter，其余数值工作待继续。P4/P6/P7 尚未开始。P5 本批升级了 23 个接口根，另补 1 个此前无证书的运算根；还有 352 个仅接口根。
+P0/P1 completed. P2/P3a The first batch of 5 and profile all passed, adding 1 type roots and 24 operation/predicate roots (including Nat.iter). P3b has started Nat.iter, and the remaining numerical work is to be continued. P4/P6/P7 has not started yet. P5 In this batch, 23 interface roots have been upgraded, and 1 operation roots without certificates have been supplemented; there are also 352 interface-only roots.
 
-代码检查发现类型别名可能绕过桥接查找；新生成器在 identityIso 判定前执行弱头正规化，并用机械 Bool 的 simpl_fun 参数验证自动得到原生 Bool 函数接口。该修改尚未推广验证全部旧接口。
+Code inspection found that type aliases may bypass bridge lookups; the new generator performs weak-head normalization before identityIso determination, and automatically obtains the native Bool function interface with mechanical Bool's simpl_fun parameter validation. This modification has not yet been rolled out to verify all old interfaces.
 
-## 第二批执行记录
+## Second batch of execution records
 
-SSR Bool/关系谓词、pred/rel 类型对应和 reflect 的原生逻辑对应已通过局部 kernel 检查；已将这些规则应用于 216 项部分原生化陈述，141 项无源符号，75 项继续保留为部分对应。预计覆盖数量见 ESTIMATE.md（主观规划预估，不作已证结果）。
+The SSR Bool/ relational predicate, pred/rel type correspondence, and reflect's native logical correspondence have passed the partial kernel check; these rules have been applied to the 216 partial native statement, the 141 unsourced symbol, and the 75 entry continues to remain a partial correspondence. For the estimated coverage quantity, see ESTIMATE.md (subjective planning estimate, not a proven result).
 
-第二批新增 3 个类型根（pred、rel、reflect），12 个运算/谓词根，141 个完全原生陈述根。七个证明 profile 全部通过。完整计数以 reports/summary.json 为准。
+The second batch adds 3 type roots (pred, rel, reflect), 12 operation/predicate roots, and 141 complete native statement roots. All seven certificates profile passed. The complete count is based on reports/summary.json.
 
-生成器回归暴露出过早 whnf 会越过数组/字符串已登记桥接；调整为先匹配已登记桥接，再在 identityIso 之前展开未知别名。45 个旧接口 profile 的检查记录在 reports/alias-regression.json，最终 45 个 profile 全部通过，旧接口无丢失/新增，方可发布。
+Generator regression exposing premature whnf crossing array/string registered bridges; adjusted to match registered bridges first, then expand unknown aliases before identityIso. The inspection of 45 old interfaces profile is recorded in reports/alias-regression.json. Finally, 45 and profile all pass, and no old interfaces are lost/added before they can be released.
 
-## 第三、四批执行记录
+## The third and fourth batch of execution records
 
-新增 4 类型、36 运算/谓词、8 完全原生陈述；后 8 项另有原陈述证明。累计完成类别 515 / 2180，11 个 profile 验证记录通过。数字表示及边界、Acc/WellFounded/Fix 与原生定理复用的具体结果见 NUMERIC_WF_RESULTS.md。P3b/P4/P5/P6 均继续，P7 尚未完成。
+Added 4 type, 36 operation/predicate, 8 completely native statement; the latter 8 item has original statement proof. A total of 515 / 2180, 11 and profile verification records have been completed in total. The specific results of digital representation and boundary, Acc/WellFounded/Fix and native theorem reuse are shown in NUMERIC_WF_RESULTS.md. P3b/P4/P5/P6 are all continued, P7 is not yet completed.
 
-## 第五批执行记录
+## The fifth batch of execution records
 
-完整 Sort 的 sig/sig2/sigT/sigT2/prod 类型桥接新增 5 份证书，类型根不重复计数；新增 16 个运算根。5 个空公理闭包见证实际实例化了 4 个条件根；本层剩余 327，原始机械导出仍为 331。当前完成类别 531 根，12 个增量 profile 有成功记录。详见 DEPENDENT_RESULTS.md。
+The sig/sig2/sigT/sigT2/prod type bridge of complete Sort adds 5 certificates, and the type roots are not counted repeatedly; 16 new operation roots are added. 5 empty axiom closures witness that 4 conditional roots are actually instantiated; 327 remain in this layer, and the original mechanical derivation is still 331. The current completion category 531 root, 12 increments profile has a successful record. See DEPENDENT_RESULTS.md for details.
 
-## 第六批执行记录
+## The sixth batch of execution records
 
-新增 2 个二元良基递归、23 个基本 datatype 运算/消去器、5 个闭合条件后的原生陈述，共 30 根，总完成 561。5 个新陈述均有原陈述证明，复用既有义务见证；独立见证仍是 5 个，已实例化条件根为 9。新增 PSum 的完整 Sort 类型证书不重复计根。15 个 profile 有成功记录。见 RECURSION_STATEMENTS_RESULTS.md。
+Added 2 binary well-founded recursions, 23 basic datatype operators/eliminators, and 5 native statements after closing conditions, totaling 30 roots, totaling 561. The 5 new statements are all proved by the original statements, and the existing obligatory witnesses are reused; the independent witnesses are still 5, and the instantiated conditional root is 9. Added PSum's complete Sort type certificate without duplicate root counting. 15 profile have successful records. See RECURSION_STATEMENTS_RESULTS.md.
 
-## 第七批执行记录
+## The seventh batch of execution records
 
-Eq transport 与布尔等式新增 19 根，总完成 580。17 个 profile 验证记录通过；本层条件根剩余 318。新增 4 个完整原生陈述均另有原陈述证明。详情见 EQUALITY_RESULTS.md。
+Eq transport and Boolean equation add 19 root, totaling 580. 17 profile verification records passed; the remaining conditional roots of this layer are 318. The newly added 4 complete original statements are accompanied by original statement certificates. See EQUALITY_RESULTS.md for details.
 
-## 第八、九批执行记录
+## The eighth and ninth batches of execution records
 
-两个关系模块共 126 根全部得到明示范围内证书，新增 17 类型、32 运算、77 完整原生陈述；其中 21 份另有原陈述证明。Tlist/变参谓词和两个条件根已处理。累计完成 706，23 个增量 profile 记录通过。详见 RELATIONS_RESULTS.md。
+A total of 126 roots of the two relationship modules have all obtained certificates within the express scope, and the 17 type, 32 operation, and 77 complete original statements have been added; among them, 21 copies have original statement certificates. Tlist/ variable parameter predicate and two conditional roots have been processed. The cumulative completion of 706, 23 increments profile records passed. See RELATIONS_RESULTS.md for details.
 
-## 第十批执行记录
+## The tenth batch of execution records
 
-Morphisms 新增 5 类型/标记、8 运算、55 完整原生陈述，共 68 根；该模块 87 根全部有明示范围内对应。累计完成 774；25 个增量 profile 验证记录通过，新增原陈述证明仍为 38。详见 MORPHISMS_RESULTS.md。
+Morphisms adds 5 type/tag, 8 operation, and 55 complete native statement, totaling 68 roots; all 87 roots of this module have explicit correspondence within the scope. The cumulative completion of 774; 25 incremental profile verification records passed, and the new original statement certificate is still 38. See MORPHISMS_RESULTS.md for details.
 
-## 第十一批执行记录
+## The eleventh batch of execution records
 
-新增 Equivalence / Morphisms_Prop / Setoid 的 40 个完成根，总完成 814；这三个模块共 52 根有明示范围内证书。29 个 profile 记录通过，新增原陈述证明为 43。见 EQUIVALENCE_SETOID_RESULTS.md。下一步检查 P7 的统一导入，同时保持剩余对应任务。
+Added 40 completed roots of Equivalence / Morphisms_Prop / Setoid, totaling 814; these three modules have a total of 52 roots with express scope certificates. 29 profile records passed, and the new original statement certificate was 43. See EQUIVALENCE_SETOID_RESULTS.md. Next check the unified import of P7 while keeping the remaining corresponding tasks.
 
-## P7 首批执行记录
+## P7 first batch of execution records
 
-28 个 profile 的 535 份增量覆盖证书及附加证明，共 585 入口 / 2967 依赖声明副本，共同导入成功。原始机械类型身份保留，通过原生接口跨闭包组合。Mathlib 消费与新增公理拒绝测试通过；覆盖根数仍为 814。详见 INTEROP_RESULTS.md。
+28 535 incremental coverage certificates and additional certificates of profile, totaling 585 entry/2967 dependency statement copies, were imported successfully. The original mechanical type identity is preserved and composed across closures through native interfaces. Mathlib consumption and new axiom rejection test passed; the coverage root number is still 814. See INTEROP_RESULTS.md for details.
 
-## 第十二批执行记录
+## The twelfth batch of execution records
 
-Init.Specif 的 49 个部分陈述中，49 个均已证明等价于无源符号的原生陈述。新增 Subtype / PSigma 量词、函数族、等式及投影规则；不新增原陈述证明。累计完成 863 根，31 个 profile 验证通过。见 SPECIF_STATEMENTS_RESULTS.md。
+Of the 49 partial statements of Init.Specif, 49 have been shown to be equivalent to native statements of passive symbols. Added Subtype / PSigma quantifiers, function families, equations and projection rules; no new proof of the original statement will be added. A total of 863 roots have been completed, and 31 profile verifications have passed. See SPECIF_STATEMENTS_RESULTS.md.
 
-## 第十三批执行记录
+## The thirteenth batch of execution records
 
-数字写出新增 1 类型、11 运算，累计完成 875 根。通用进位、迭代以及机械打印结果的数值性质均已证明。32 个 profile 有当前源码的成功记录；七种顶层打印随后已补充现成 Nat.digits 的适配等式。见 NUMERIC_WRITE_RESULTS.md。
+The new 1 type and 11 operation are added to digital writing, and 875 roots are accumulated. Universal carry, iteration, and numerical properties of mechanically printed results are demonstrated. 32 and profile have successful records with current source code; seven top-level prints have subsequently been supplemented with the adaptation equations for ready-made Nat.digits. See NUMERIC_WRITE_RESULTS.md.
 
-## 第十四、十五批执行记录
+## Execution records of the 14th and 15th batches
 
-有符号读取新增 3 根；Nat 的 gcd、divmod、sqrt/log2 与两个内部迭代器再新增 6 根。Init.Nat 的 58 根均有明示范围内证书。全项目完成类别 884，37 个 profile 验证通过，全部 613 份覆盖证书共同导入通过。gcd 的终止条件由标准 Lean 公理下的闭合证明处理，剩余条件根 315。见 SIGNED_READ_RESULTS.md 与 NAT_COMPLETION_RESULTS.md。
+Signed read adds 3 root; gcd, divmod, sqrt/log2 and two internal iterators of Nat add 6 root. Init.Nat's 58 roots have express in-scope certificates. All project completion categories 884, 37 and profile passed the verification, and all 613 coverage certificates were jointly imported and passed. The terminating condition of gcd is handled by a closed proofs under the standard Lean axioms, with the remaining conditional root 315. See SIGNED_READ_RESULTS.md and NAT_COMPLETION_RESULTS.md.
 
-## 第十六批执行记录
+## The sixteenth batch of execution records
 
-Peano 新增 1 运算、5 完全原生陈述；模块 36 根全部有范围明确的证书。31 个 Peano 陈述全部检查，26 个既有完成根不重复计数。按账本实际选用模块复查旧 143 个完全原生目标，全部通过。累计完成 890；39 个 profile、619 份增量覆盖证书共同导入通过。下一步继续基础消去器、List 与二进制数运算。见 PEANO_RESULTS.md。
+Peano adds 1 operations and 5 complete native statements; module 36 roots all have certificates with clear scope. 31 Peano statements are all checked, and 26 existing completion roots are not counted repeatedly. The old 143 completely native targets were reviewed according to the actual selection module of the ledger, and all passed. A total of 890; 39 profile and 619 incremental coverage certificates have been imported and passed. The next step continues with the basic eliminator, List and binary number operations. See PEANO_RESULTS.md.
 
-## 第十七批执行记录
+## The seventeenth batch of execution records
 
-List 剩余 3 根及二进制数比较/倍增/折半等 29 根通过，总完成 922；43 个 profile，651 份覆盖证书共同导入通过。下一步：Pos.mask 的无损表示、减法的双递归不变量，再组合 N/Z 减法和加法。见 LIST_BINARY_RESULTS.md。
+List The remaining 3 roots and binary number comparison/multiplication/halving, etc. 29 root passed, and the total 922 was completed; 43 profile, and 651 coverage certificates were jointly imported and passed. Next step: Lossless representation of Pos.mask, double recursive invariant of subtraction, combined with N/Z subtraction and addition. See LIST_BINARY_RESULTS.md.
 
-## 第十八批执行记录
+## The eighteenth batch of execution records
 
-mask 的无损 Iso、两项消去器、两个归纳陈述及减法不变量已经证明，并完成 N.sub、Z.pos_sub/add/sub。新增 15 根，累计完成 937。47 个增量 profile 重编译通过，666 份覆盖证书共同导入通过。下一步补 Datatypes 的原生陈述和完整 Sort 参数对应，继续二进制数未完成的位运算/迭代。见 BINARY_MASK_RESULTS.md。
+The lossless Iso, two-term eliminator, two induction statements and subtraction invariants of mask have been proved, and N.sub and Z.pos_sub/add/sub have been completed. Added 15 root, and completed 937 in total. 47 increments profile were recompiled and 666 coverage certificates were jointly imported and passed. The next step is to add the native statement of Datatypes corresponding to the complete Sort parameter, and continue the unfinished bit operation/iteration of the binary number. See BINARY_MASK_RESULTS.md.
 
-## 第十九批执行记录
+## The nineteenth batch of execution records
 
-Datatypes 37 个剩余部分陈述全部原生化，4 个索引消去器及 2 个条件转换已处理；模块 110 根均有范围明确的对应。新增完成根 48，累计 985；51 个 profile、718 份覆盖证书共同导入通过。完整 Sort 容器对应在桥接层使用 PLift，Type 情况与原桥接兼容；机械规则不变。下一步继续 Init.Logic / Specif 的共享证明义务和剩余消去操作。见 DATATYPE_COMPLETION_RESULTS.md。
+Datatypes 37 remaining statements are all native, 4 index eliminators and 2 conditional transformations have been processed; module 110 roots have clear range correspondences. The newly added root 48 and a total of 985; 51 profile and 718 coverage certificates were imported and passed. The complete Sort container corresponds to the use of PLift at the bridge layer, and the Type case is compatible with the original bridge; the mechanical rules remain unchanged. The next step continues the shared proof obligation and remaining elimination operations of Init.Logic / Specif. See DATATYPE_COMPLETION_RESULTS.md.
 
-## 第二十批执行记录
+## The twentieth batch of execution records
 
-Init.Logic 的 151 个共享依赖/原陈述目标已有空公理闭包的闭合证明。72 个条件根（18 定义、54 陈述）实际完成对应，另升级 13 个部分陈述和 9 个运算；新增 94 根。模块 176 根全部有明示范围内证书，总完成类别 1079。57 个验证 profile、812 份覆盖证书共同导入通过。下一步继续 Init.Specif 的共享依赖、依赖数据消去和相等消去。见 LOGIC_COMPLETION_RESULTS.md。
+151 shared dependencies/original statement targets of Init.Logic have closed proofs of empty axiomatic closures. 72 conditional roots (18 definition, 54 statement) are actually corresponding, and 13 partial statements and 9 operations are upgraded; 94 root is added. Module 176 root all has express scope certificates, total completion category 1079. 57 verification profile and 812 coverage certificates were jointly imported and passed. The next step continues Init.Specif’s shared dependency, dependent data elimination and equality elimination. See LOGIC_COMPLETION_RESULTS.md.
 
-## 第二十一批执行记录
+## The twenty-first batch of execution records
 
-Init.Specif 的 140 个共享依赖/原陈述目标已有空公理闭包的闭合证明，70 个条件根实际完成对应。新增 1 类型、41 运算、38 完全原生陈述，共 80 根；模块 159 根均有明示范围内证书，累计完成类别 1159。63 个验证 profile；当前 892 份覆盖证书已共同导入通过。下一步继续其它模块的条件闭合与原生运算等式。见 SPECIF_COMPLETION_RESULTS.md。
+140 shared dependencies/original statement targets of Init.Specif have closed proofs of empty axiom closures, and 70 conditional roots actually complete the correspondence. Added 1 type, 41 operation, 38 complete native statement, totaling 80 roots; module 159 roots all have explicit certificates within the scope, and the cumulative completion category is 1159. 63 verification profile; currently 892 coverage certificates have been jointly imported and passed. The next step is to continue the conditional closure and native operation equations of other modules. See SPECIF_COMPLETION_RESULTS.md.
 
-## 第二十二批执行记录
+## Twenty-second batch of execution records
 
-SSR 新增 27 个谓词、50 个完全原生陈述、bijective 与 NonPropType.type 两个类型对应；5 个 Option 运算补充完整 Sort 证明。新增完成根 79，累计 1238，68 个 profile 验证通过。ssrfun 仍有 27 根未完成，下一步处理包装类型、数据投影与六个条件根。见 SSR_FUN_RESULTS.md。
+SSR adds 27 predicates, 50 complete native statements, bijective and NonPropType.type two types corresponding; 5 Option operations supplement the complete Sort proof. The newly added root 79, a total of 1238, 68 and profile have passed the verification. ssrfun still has the 27 root unfinished. The next step is to process the packaging type, data projection and six conditional roots. See SSR_FUN_RESULTS.md.
 
-## 第二十三批执行记录
+## The twenty-third batch of execution records
 
-SSR 包装类型、依赖数据与部分函数新增 23 根，总完成 1261。71 个验证 profile、999 份增量证书共同导入通过；ssrfun 剩余四个 opaque 计算函数，需额外计算方程，不能只读 body 后视为对应。接下来在记录该依赖缺口后继续 ssrbool 等透明操作与证明条件闭合；不改变冻结机械产物的声明含义。见 SSR_DATA_RESULTS.md。
+SSR packaging type, dependent data and some functions are added with 23 root, and 1261 is completed. 71 verification profile and 999 incremental certificates are jointly imported and passed; the remaining four opaque calculation functions of ssrfun require additional calculation equations and cannot be regarded as corresponding after only reading body. Next, after recording the dependency gap, continue transparent operations such as ssrbool and prove that the conditions are closed; the declared meaning of the frozen mechanical product will not be changed. See SSR_DATA_RESULTS.md.
 
-## 第二十四批执行记录
+## Twenty-fourth batch of execution records
 
-SSR Bool 新增 14 类型、34 运算、46 完整原生陈述，共 94 根，总完成 1355。模块 451 根完成 251 根；75 个部分陈述中 46 个完成，29 个继续保留源符号。74 个验证 profile、1093 份覆盖证书共同导入通过。下一步补 manifest/keyed 包装、mem/prop_in/prop_on 依赖及共享证明条件。计算性 opaque 的方程缺口单独保留，不以 body 副本冒充对应证明。见 SSR_BOOL_DATA_RESULTS.md。
+SSR Bool adds 14 type, 34 operation, 46 complete native statement, totaling 94 roots, and total 1355 is completed. Module 451 root completes 251 root; 46 of 75 partial statements are completed, 29 continue to retain source symbols. 74 verification profile and 1093 coverage certificates were jointly imported and passed. The next step is to add manifest/keyed packaging, mem/prop_in/prop_on dependency and sharing proof conditions. The computational gaps in the equations of opaque are kept alone, and no copies of body are passed off as corresponding proofs. See SSR_BOOL_DATA_RESULTS.md.
 
-## 第二十五批执行记录
+## The twenty-fifth batch of execution records
 
-SSR 包装及 locked/master_key 新增 8 类型、15 运算；29 个剩余部分陈述中 28 个自动原生化，if_arg 用独立自然目标及原陈述证明完成。总新增 52 根，总完成 1407。ssrbool 完成 301 / 451，原有部分陈述全部完成；其余未完成主要是 128 个条件根。76 个验证 profile、1145 份覆盖证书；打包器新增保留 opacity 的支持后，70 个覆盖 profile 全部重新打包并共同导入通过。后续按共享依赖闭合条件，并保留计算性 opaque 和携带载体类型的包之间的等式限制。见 SSR_PACKAGING_RESULTS.md。
+SSR packaging and locked/master_key add 8 type and 15 operation; among 29 remaining statements, 28 are automatically nativeized, and if_arg is completed with independent natural targets and original statement proofs. Total new 52 roots, total completion 1407. ssrbool completes 301 / 451, and all the original statements are completed; the remaining unfinished ones are mainly 128 conditional roots. 76 certificates covering profile and 1145 were verified; after the packager added support for retaining opacity, 70 certificates covering profile were all repackaged and imported together. Subsequent closure conditions by shared dependency preserve the equality constraints between computational opaque and packages carrying carrier types. See SSR_PACKAGING_RESULTS.md.
 
-下一批 128 个 ssrbool 条件根中，73 个是陈述、55 个是定义；直接依赖共 275 个不同前置声明。DefaultKeying 两个导出源名使用斜杠，而账本使用点，后续须显式归一化并保留原始来源，避免漏计。
+Among the next batch of 128 ssrbool conditional roots, 73 are statements and 55 are definitions; they directly depend on a total of 275 different predeclarations. DefaultKeying The two export source names use slashes, and the ledger uses points. Subsequent normalization must be explicitly performed and the original sources retained to avoid omissions.
 
-## 第二十六批执行记录
+## Twenty-sixth batch of execution records
 
-SSR Bool 的 314 个依赖/原陈述目标已有闭合证明，覆盖 271 / 275 个前置声明；124 个条件根的全部前置证明已齐备。完成对应 83 根（73 陈述、10 运算），总完成 1490；80 个验证 profile，1228 份证书共同导入通过。仍有四个共享前置声明未证明，以及已闭合但未对应的 opaque 结果。下一步先处理四个缺口，再利用 reflect 等输出的单值性质推进不透明证明包装；任意数据选择函数的计算等式仍单独处理。见 SSR_CONDITIONS_RESULTS.md。
+SSR Bool's 314 dependency/original statement targets have closed proofs, covering 271 / 275 pre-statements; all pre-proofs of 124 conditional roots are complete. The corresponding 83 root (73 statement, 10 operation) is completed, and 1490; 80 verifications profile and 1228 certificates are jointly imported and passed. There are still four shared prestatements that are unproven, as well as the closed but uncorresponding opaque result. The next step is to deal with the four gaps first, and then use the single-value nature of outputs such as reflect to advance the opaque proof packaging; the calculation equations for arbitrary data selection functions are still handled separately. See SSR_CONDITIONS_RESULTS.md.
 
-## 第二十七批执行记录
+## Twenty-seventh batch of execution records
 
-补齐 ssrbool 最后四个共享前置证明，275 个前置声明全部闭合。23 个 reflect 函数及 13 个逻辑/判定/包装函数完成对应，均保持源函数原有 opacity。累计完成 1526，83 个验证 profile，1264 份证书共同导入。ssrbool 剩余 31 根；下一步处理 alt_spec / if_spec 索引类型、剩余限制域谓词与容器判别。五个数据选择函数仍需独立计算证据。见 SSR_REFLECTION_RESULTS.md。
+Complete the last four shared prerequisite proofs of ssrbool, and all 275 predicate statements are closed. 23 reflect functions and 13 logic/judgment/packaging functions complete the correspondence, all of which maintain the original opacity of the source function. A total of 1526, 83 verification certificates profile, 1264 certificates have been imported together. ssrbool remaining 31 root; next step processing alt_spec / if_spec index type, remaining restricted domain predicate and container discrimination. The five data selection functions still require independent computational evidence. See SSR_REFLECTION_RESULTS.md.
 
 
-## 第二十八至三十一批执行记录
+## Execution records from the 28th to the 30th batch
 
-第二十八批补齐 alt_spec / if_spec 类型往返及四个下游函数，又完成限制域谓词和容器分支判别，共新增 20 根（2 类型、18 运算），累计 1546。
+The 28th batch completed the alt_spec / if_spec type round trip and four downstream functions, and completed the restricted domain predicate and container branch determination. A total of 20 roots (2 type, 18 operation) were added, with a total of 1546.
 
-第二十九批证明二进制迭代对应 Nat.rec，并组合乘法、除以二的证书完成整数幂、奇偶性和有符号移位。新增 6 根、7 份证书，累计 1552；负指数返回零、负移位量反转方向、负数右移向下取整的约定均保留。
+The twenty-ninth batch proves that the binary iteration corresponds to Nat.rec and combines certificates for multiplication and division by two to complete integer powers, parity, and signed shifts. Added 6 root and 7 certificates, accumulating 1552; the conventions of returning zero for negative exponents, reversing direction for negative shifts, and rounding down for negative numbers are all retained.
 
-第三十批完成 Init.Sumbool 的全部 7 根，累计 1559；12 个闭合前置证明处理 4 个原条件根。bool_eq_ind 另有原陈述证明。与／或操作覆盖任意四个命题，不限定成 Decidable 的互补情形。
+The 30th batch completed all 7 roots of Init.Sumbool, accumulating 1559; 12 closed precondition proofs and processed 4 original conditional roots. bool_eq_ind has additional proof of original statement. The AND/OR operation covers any four propositions and is not limited to the complementary case of Decidable.
 
-第三十一批完成 CRelationClasses 的 18 个类型对应与 20 个投影／组合运算，累计 1597。Type 值关系保留其数据，不与普通 Prop 类型类混同；iffT 只要求两个方向的函数，不要求双向逆。
+The thirty-first batch completed 18 types of CRelationClasses corresponding to 20 projection/combination operations, accumulating 1597. The Type value relationship retains its data and is not confused with the ordinary Prop type class; iffT only requires functions in two directions and does not require bidirectional inversion.
 
-88 个增量 profile 当前验证通过；79 个覆盖 profile、1336 份证书共同导入检查通过。详细证据见 BATCH28_31_RESULTS.md，具体用例见 ../../results/CORRESPONDENCE_EXAMPLES.md。下一步先复用 CRelationData 的类型桥接推进剩余陈述，并继续二进制运算／数字表示；opaque 数据函数仍需独立计算证据。
+88 increments profile currently pass the verification; 79 certificates covering profile and 1336 pass the joint import check. See BATCH28_31_RESULTS.md for detailed evidence and ../../results/CORRESPONDENCE_EXAMPLES.md for specific use cases. The next step is to reuse the type bridge of CRelationData to advance the remaining statements and continue binary operations/number representation; the opaque data function still needs to calculate the evidence independently.
 
-## 第三十二批执行记录
+## The thirty-second batch of execution records
 
-复用 Type 值关系桥接，新增 StrictOrder 类型及投影、15 个完整原生陈述，共 17 根，累计 1614 / 2180；15 项另有原陈述证明。CRelationClasses 达到 63 / 81。89 个验证 profile、80 个覆盖 profile 的 1353 份证书共同导入通过。下一步处理 PartialOrder 的数据表示、剩余二进制运算和数据不透明性缺口；详见 CRELATION_STATEMENTS_RESULTS.md。
+Reusing the bridge for Type-valued relations adds StrictOrder types and projections and 15 fully native statements: 17 new roots, for 1614 / 2180 overall. 15 items also have proofs of the original statement. CRelationClasses reaches 63 / 81. Validation covers 89 profile, and the 1353 certificates from 80 coverage profile import together successfully. Next are the data representation of PartialOrder, the remaining binary operations, and gaps caused by data opacity; see CRELATION_STATEMENTS_RESULTS.md.
 
-## 第三十三批：偏序与相等／逻辑等价关系
+## Batch 33: Partial ordering and equality/logical equivalence
 
-新增 7 根，当前 1621 / 2180；CRelationClasses 为 70 / 81。PartialOrder 保留 Type 值关系中的双向函数；eq_equivalence、iff_equivalence 转为 Lean Equivalence Eq/Iff，并证明两个逆律及六个前置条件。90 个 profile、1360 份覆盖证书验证，81 个覆盖 profile 共同导入通过。详见 [结果](CRELATION_ORDER_RESULTS.md)。剩余 11 个 CRelationClasses 根均为 opaque_data，先保留为缺结果刻画，再推进其他模块中透明运算与可原生化陈述。
+Added 7 root, currently 1621 / 2180; CRelationClasses is 70 / 81. PartialOrder retains the two-way function in the value relationship of Type; eq_equivalence and iff_equivalence are converted to Lean Equivalence Eq/Iff, and two inverse laws and six preconditions are proved. 90 profile and 1360 coverage certificates were verified, and 81 coverage certificates profile were jointly imported and passed. For details, see [Result ](CRELATION_ORDER_RESULTS.md). The remaining 11 CRelationClasses roots are all opaque_data. They are first reserved as missing result descriptions, and then promoted to transparent operations and nativeizable statements in other modules.
 
-## 第三十四至三十六批：关系保持与按位运算
+## Batch 34 to 36: Relational Preservation and Bitwise Operations
 
-新增 30 根，当前 1651 / 2180。CMorphisms 的 19 根覆盖透明关系接口、标记、Type 值陈述与计算函数；positive/N 的 8 根和 Z 的 3 根证明与 Nat/Mathlib Int 按位运算一致。位差另补两份 Mathlib API 证书，根数不重复计算。
+Added 30 root, currently 1651 / 2180. The 19 root of CMorphisms covers transparent relational interfaces, tags, Type value statements and calculation functions; the 8 root of positive/N and the 3 root of Z prove to be consistent with Nat/Mathlib Int bitwise operations. Two additional Mathlib and API certificates will be added for the difference, and the number of roots will not be repeated.
 
-93 个 profile 有当前验证记录，84 个覆盖 profile / 1392 份证书共同导入通过。四个负数输入例子与从 Nat.and_comm 推回机械 N.land 的交换律均实际编译。详见 [结果](BATCH34_36_RESULTS.md)。
+93 profile have current verification records, and 84 certificates covering profile / 1392 are jointly imported and passed. The four negative input examples and the commutative law pushing back the machine N.land from Nat.and_comm actually compile. For details, see [Result ](BATCH34_36_RESULTS.md).
 
-下一步：IntDef 剩余 8 项（div、div_eucl、modulo、pos_div_eucl、quot、quotrem、rem、sqrtrem），先分清向下取整和向零取整，再证明正数除法核心及有符号组合；继续复用既有数值 Iso、比较、减法和递归不变量。CMorphisms 剩余 54 项，其中部分透明外层仍依赖 opaque_data 内部计算，不将这种外层误判为已经能证明原生实现等式。
+Next step: IntDef Remaining 8 Items (div, div_eucl, modulo, pos_div_eucl, quot, quotrem, rem, sqrtrem), first distinguish between rounding down and rounding towards zero, then prove the core of positive division and signed combination; continue to reuse existing values Iso, comparison, subtraction and recursive invariants. CMorphisms The remaining 54 items, some of which are transparent outer layers, still rely on opaque_data internal calculations, and this outer layer is not misjudged as having been able to prove the native implementation equation.
 
-## 第三十七至三十九批：二进制运算模块完成
+## Batch 37 to 39: Binary operation module completed
 
-新增 13 根、16 份证书，累计 1664 / 2180。除法 8 根、平方根 4 根、iter_op 1 根；后者分别提供无条件二进制括号对应、结合律下 foldr 对应，以及 Nat.add/mul 特例。BinNums.PosDef 36/36、NatDef 11/11、IntDef 39/39。
+Added 13 root and 16 certificates, totaling 1664 / 2180. Division 8 roots, square roots 4 roots, iter_op 1 roots; the latter respectively provide unconditional binary bracket correspondence, associative law foldr correspondence, and Nat.add/mul special case. BinNums.PosDef 36/36, NatDef 11/11, IntDef 39/39.
 
-97 个 profile 有当前验证记录；88 个覆盖 profile、1408 份证书共同导入通过。详见 [结果](BATCH37_39_RESULTS.md)。
+97 profile have current verification records; 88 certificates covering profile and 1408 are jointly imported and passed. For details, see [Result ](BATCH37_39_RESULTS.md).
 
-下一步按依赖推进 Numbers.BinNums 的 6 个依赖消去器和 6 个归纳陈述：先建立完整原生递归目标，再证明实际源消去器计算相符，最后原生化归纳陈述。其余数值表示和 opaque 数据计算缺口继续保留，不能从签名猜测实现等式。
+The next step is to advance 6 dependency eliminators and 6 induction statements of Numbers.BinNums by dependency: first establish a complete native recursive target, then prove that the actual source eliminator calculation is consistent, and finally nativeize the induction statement. The rest of the numerical representation and the opaque data calculation gap continue to remain, and the equation cannot be realized from the signature guess.
 
-## 第四十至四十三批：依赖消去和数字表示完成
+## Batch 40 to 43: Dependency elimination and digital representation completed
 
-新增 67 根，当前 1731 / 2180。Numbers.BinNums 15/15、Init.Decimal 40/40、Init.Hexadecimal 38/38、Init.Number 17/17 全部完成明示范围内的对应。9 个相等判定函数的 36 个前置证明闭合；条件对应剩余 29。原陈述独立证明新增 20，总数 220。
+Added 67 root, currently 1731 / 2180. Numbers.BinNums 15/15, Init.Decimal 40/40, Init.Hexadecimal 38/38, Init.Number 17/17 All correspondence within the stated range has been completed. The 36 prefix proofs of 9 equality determination functions are closed; the condition corresponds to the remaining 29. The original statement was independently verified and 20 was added, totaling 220.
 
-101 个 profile 验证通过；92 个覆盖 profile、1475 份证书共同导入。详见 [结果](BATCH40_43_RESULTS.md)。
+101 profile certificates passed the verification; 92 certificates covering profile and 1475 certificates were imported together. For details, see [Result ](BATCH40_43_RESULTS.md).
 
-下一步处理 Init.Byte 的 9 根：先建立八位布尔元组与 Fin 256 / BitVec 8 的对应，再处理 of_bits/to_bits、依赖消去及两个往返陈述。保留实际位序；全域枚举的证明由 kernel 检查，不用样本测试代替。
+The next step is to process the 9 root of Init.Byte: first establish the correspondence between the eight-bit Boolean tuple and Fin 256 / BitVec 8, and then process of_bits/to_bits, dependency elimination and two round-trip statements. Actual bit ordering is preserved; proof of global enumeration is checked by kernel and is not replaced by sample testing.
 
-## 第四十四至四十八批：字节与原生数据操作
+## Batch 44 to 48: Byte and native data operations
 
-新增 64 根，当前 1795 / 2180。Byte 10/10、PrimInt63 37/37、CarryType 1/1、PrimString 17/17、Init.Equality 22/22、PrimArray 8/8。107 个 profile 验证，98 个覆盖 profile / 1539 份证书共同导入通过。详见 [结果](BATCH44_48_RESULTS.md)。
+Added 64 root, currently 1795 / 2180. Byte 10/10, PrimInt63 37/37, CarryType 1/1, PrimString 17/17, Init.Equality 22/22, PrimArray 8/8. 107 profile certificates were verified, and 98 certificates covering profile / 1539 certificates were jointly imported and passed. For details, see [Result ](BATCH44_48_RESULTS.md).
 
-下一步：Init.Wf 的 10 个无条件陈述先原生化并独立证明，再处理 Acc_inv_dep 的显式条件。复用已有 Acc/WellFounded Iso 和 Fix/Fix_F 对应，保留原始声明的外延性前提和 universe 范围。随后推进 Program.Wf、SSR 重写接口与浮点表示；opaque 数据缺口仍需计算证据。
+Next step: 10 unconditional statements of Init.Wf are first generated and proved independently, and then the explicit conditions of Acc_inv_dep are processed. Reuse the existing Acc/WellFounded Iso and Fix/Fix_F correspondences, retaining the extensional premise and universe scope of the original declaration. Subsequently, Program.Wf and SSR were promoted to rewrite the interface and floating point representation; the opaque data gap still needs to be calculated and evidenced.
 
-## 第四十九至五十四批：良基递归与 SSR 重写
+## Batch 49 to 54: Well-founded recursion and SSR rewriting
 
-新增 76 根，当前 1871 / 2180；Init.Wf 21/21、Program.Wf 10/12、ssreflect_rw 52/55、ssrclasses 4/4、ssrunder 7/7。314 个原有条件根已闭合并完成对应，剩余 17；原陈述独立证明 260。113 个 profile 验证，104 个覆盖 profile / 1615 份证书共同导入通过。详见 [结果](BATCH49_54_RESULTS.md)。
+Added 76 root, currently 1871/2180; Init.Wf 21/21, Program.Wf 10/12, ssreflect_rw 52/55, ssrclasses 4/4, ssrunder 7/7. 314 original conditional roots have been closed and corresponding, leaving 17; the original statement is independently proven 260. 113 profile certificates were verified, and 104 certificates covering profile / 1615 certificates were jointly imported and passed. For details, see [Result ](BATCH49_54_RESULTS.md).
 
-下一步：Uint63Axioms / Sint63Axioms。先桥接其透明定义（进位定义、比较、位测试、to_Z、位宽），再依赖已有机器整数和二进制整数对应处理规格陈述。规格 iff 和原规格证明分别统计。浮点模型、opaque 数据计算及剩余类接口继续按账本保留。
+Next step: Uint63Axioms / Sint63Axioms. First bridge its transparent definition (carry definition, comparison, bit test, to_Z, bit width), and then rely on the existing machine integer and binary integer corresponding processing specification statements. Specification iff and original specification certificate are counted separately. The floating point model, opaque data calculation and remaining class interfaces will continue to be retained according to the ledger.
 
-## 第五十五至五十六批：Uint63 透明定义完成
+## Batch 55 to 56: Uint63 transparent definition completed
 
-新增 22 个根，当前 1893 / 2180。Uint63Operations 16 项，Uint63Conversions 6 项；任意递归 fuel、负整数、越界位索引均覆盖。115 个 profile 验证，106 个覆盖 profile / 1637 份证书共同导入通过。详见 [结果](BATCH55_56_RESULTS.md)。
+Added 22 roots, currently 1893 / 2180. Uint63Operations 16 items, Uint63Conversions 6 items; any recursive fuel, negative integer, out-of-bounds index are covered. 115 profile certificates were verified, and 106 certificates covering profile / 1637 certificates were jointly imported and passed. For details, see [Result ](BATCH55_56_RESULTS.md).
 
-下一步：Uint63Statements，先证明位运算、eqb、of_to_Z 的源陈述和原生对应，再利用整数算术／比较桥接处理余下规格。
+Next step: Uint63Statements, first prove the bitwise operations, source statements and native correspondences of eqb, of_to_Z, and then use integer arithmetic/comparison bridging to handle the remaining specifications.
 
-## 第五十七至五十九批：Uint63 规格
+## Batch 57 to 59: Uint63 specifications
 
-新增 15 个根，1908 / 2180；Uint63Axioms 37/48。15 项均独立证明源陈述，完整原生命题证书同时通过。118 个 profile 验证；109 个覆盖 profile、1652 份证书共同导入。详见 [结果](BATCH57_59_RESULTS.md)。
+Added 15 roots, 1908/2180; Uint63Axioms 37/48. 15 items are all independently proven source statements, and the complete original proposition certificate is passed at the same time. 118 profile certificates are verified; 109 certificates covering profile and 1652 certificates are imported together. For details, see [Result ](BATCH57_59_RESULTS.md).
 
-下一步处理 11 个余下规格，先在本模块实际依赖闭包中重检 Z 算术和除法证明；该闭包不含 N/mask，因此仅复用所需 Z 路径。之后推进 Sint63Axioms 与其余模块。
+The next step to process the remaining specifications of 11 is to recheck the arithmetic and division proofs of Z in the actual dependency closure of this module; this closure does not contain N/mask, so only the required Z path is reused. Then push Sint63Axioms and the rest of the modules.
 
-## 第六十至六十二批：算术与位计数规格
+## Batch 60 to 62: Arithmetic and bit counting specifications
 
-新增 9 根，1917 / 2180；Uint63Axioms 46/48。加减乘除模、左右移位、clz/ctz 规格全部独立证明。122 个 profile 验证；112 个覆盖 profile、1661 份证书共同导入。见 [结果](BATCH60_62_RESULTS.md)。
+Added 9 root, 1917/2180; Uint63Axioms 46/48. Addition, subtraction, multiplication and division, left and right shifts, and clz/ctz specifications are all independently proven. 122 profile certificates are verified; 112 certificates covering profile and 1661 certificates are imported together. See [results](BATCH60_62_RESULTS.md).
 
-继续 Uint63WideSpecs：mulc 的宽乘法等式已单独通过；diveucl_21 正在处理商的范围界限和源 product 返回值的转换。该 profile 整体通过后再登记两根。
+Continuing with Uint63WideSpecs: The wide multiplication equation for mulc has been passed alone; diveucl_21 is handling the range bounds of the quotient and the conversion of the source product return value. After the profile is passed as a whole, two more pieces will be registered.
 
-## 第六十三至六十五批：机器整数规格完成
+## Batch 63 to 65: Machine integer specifications completed
 
-新增 10 根、13 份证书，1927 / 2180。Uint63Axioms 48/48，Sint63Axioms 8/8；所有原始前提保留，规格均独立证明。128 个 profile 验证，115 个覆盖 profile / 1674 份证书共同导入。见 [结果](BATCH63_65_RESULTS.md)。
+Added 10 root, 13 certificates, 1927 / 2180. Uint63Axioms 48/48, Sint63Axioms 8/8; All original premises retained and specifications independently proven. 128 profile certificates are verified, and 115 certificates covering profile / 1674 certificates are imported together. See [results](BATCH63_65_RESULTS.md).
 
-下一步：ArrayAxioms 11 项。保留有界长度、默认值和越界读取／更新语义，先证明普通 get/set/make/copy 规格，再证明数组外延性；随后 PrimStringAxioms 12 项。
+Next step: ArrayAxioms 11 items. Retaining bounded length, default values, and out-of-bounds read/update semantics, first prove the normal get/set/make/copy specification, then prove array extension; then PrimStringAxioms 12 terms.
 
-## 第六十六至七十批：容器规格完成
+## Batch 66 to 70: Container specifications completed
 
-新增 23 根、24 份证书，1950 / 2180。ArrayAxioms 11/11、PrimStringAxioms 12/12。20 项规格均独立证明源陈述；PrimString.compare 额外对应 List.compareLex。134 个 profile 验证，120 个覆盖 profile / 1698 份证书共同导入。见 [结果](BATCH66_70_RESULTS.md)。
+Added 23 root, 24 certificates, 1950 / 2180. ArrayAxioms 11/11, PrimStringAxioms 12/12. 20 specifications are independently proven source statements; PrimString.compare additionally corresponds to List.compareLex. 134 profile certificates are verified, and 120 certificates covering profile / 1698 certificates are imported together. See [results](BATCH66_70_RESULTS.md).
 
-下一步：先闭合 Prelude/Classes.Init 标记、决策辅助和 DefaultRelation；再处理 CMorphisms 可计算数据与可证明陈述。浮点目标必须保留二进制格式、NaN、无穷和舍入；不可将精确表示未经证明称为 Lean Float。不可由 opaque Type 值常量签名猜测其计算结果。
+Next step: first close Prelude/Classes.Init tags, decision aids and DefaultRelation; then process CMorphisms computable data and provable statements. Floating-point targets must preserve binary format, NaN, infinity, and rounding; the exact representation must not be called Lean Float without proof. The calculation result cannot be guessed from the opaque Type value constant signature.
 
-## 第七十一至七十五批：基础标记与符号浮点
+## Batch 71 to 75: Basic markers and symbolic floating point
 
-新增 50 根，2000 / 2180。SpecFloat 38/55，基础标记/决策/关系兼容六模块完成 12 根。145 个验证 profile、130 个覆盖 profile / 1748 份证书共同导入。见 [结果](BATCH71_75_RESULTS.md)。下一步继续 SpecFloat 剩余 17 项、PrimFloat 表示与运算、FloatOps 转换；浮点公理要保留有效性与比较等原前提，不能因符号算法对应就宣称已支持 Lean Float。
+Added 50 root, 2000 / 2180. SpecFloat 38/55, base mark/decision/relationship compatible six modules complete 12 root. 145 verification certificates profile and 130 covering profile / 1748 certificates are imported together. See [results](BATCH71_75_RESULTS.md). The next step continues SpecFloat with the remaining 17 items, PrimFloat representing the AND operation, and FloatOps conversion; the floating point axioms must retain the original premises such as validity and comparison, and cannot claim to support Lean Float just because the symbolic algorithm corresponds.
 
-## 第七十六至八十一批：符号浮点完成
+## Batch 76 to 81: Symbolic floating point completion
 
-新增 17 根，2017 / 2180；SpecFloat 55/55。154 个验证 profile，136 个覆盖 profile / 1765 份增量证书共同导入。详见 [结果](BATCH76_81_RESULTS.md)。接着处理 PrimFloat 规范二进制表示及运算、FloatOps 的表示转换，再逐项处理浮点规格；与运行时 Float API 的等价尚未证明。
+Added 17 root, 2017/2180; SpecFloat 55/55. 154 verification profile, 136 incremental certificates covering profile / 1765 are imported together. For details, see [Result ](BATCH76_81_RESULTS.md). Next, the PrimFloat specification binary representation and operation, FloatOps representation conversion, and then the floating point specifications are processed item by item; the equivalence with runtime Float API has not yet been proven.
 
-## 第八十二至八十五批：PrimFloat 完成
+## Batch 82 to 85: PrimFloat completed
 
-新增 37 根，2054 / 2180；PrimFloat 37/37。158 个验证 profile，140 个覆盖 profile / 1802 份证书共同导入。见 [结果](BATCH82_85_RESULTS.md)。继续在 FloatAxioms 实际闭包中重检依赖，随后证明 FloatOps 的 8 项和 FloatAxioms 的 33 项原生对应；原规格的独立证明另行区分。
+Added 37 root, 2054/2180; PrimFloat 37/37. 158 certificates profile and 140 certificates covering profile / 1802 are imported together. See [results](BATCH82_85_RESULTS.md). Continue to recheck the dependency in the actual closure of FloatAxioms, and then prove that the 8 item of FloatOps and the 33 item of FloatAxioms natively correspond; the independent proof of the original specification is separately distinguished.
 
-## 第八十六至八十九批：浮点转换和规格陈述完成
+## Batch 86 to 89: Floating point conversion and specification statement completed
 
-新增 41 根，2095 / 2180。FloatOps 8/8，FloatAxioms 33/33；其中 24 项为陈述 iff，原陈述独立证明仍为 318。165 个验证 profile，144 个覆盖 profile / 1843 份证书共同导入。见 [结果](BATCH86_89_RESULTS.md)。下一步审查 SSR predicate package 的承载类型双向对应及谓词字段，继而处理剩余 Type 值数据。
+Added 41 root, 2095 / 2180. FloatOps 8/8, FloatAxioms 33/33; among them, item 24 is the statement iff, and the independent proof of the original statement is still 318. 165 certificates profile and 144 covering profile / 1843 certificates are imported together. See [results](BATCH86_89_RESULTS.md). The next step is to review the bidirectional correspondence and predicate fields of the bearer type SSR predicate package, and then process the remaining Type value data.
 
-## 第九十批：predicate package 及 opacity 审查
+## Batch 90: predicate package and opacity review
 
-5 个 package 的完整对应通过，冻结基线 2100/2180。166 个 profile / 1848 份证书通过验证和共同导入。剩余 80 根经逐模块环境检查，69 个直接 opaque、11 个透明包装，均为非 Prop 值。
+The complete correspondence of 5 package passes, freezing the baseline 2100/2180. 166 profile / 1848 certificates passed verification and joint import. The remaining 80 roots have been inspected module by module. 69 direct opaque and 11 transparent packages are all non-Prop values.
 
-下一步在 [transparent-data](transparent-data/PLAN.md) 建立保留正文的计算透明实验。原环境不修改；新命名空间的可展开机械定义与原生操作对应单独统计。原 opaque 常量 ↔ 新定义的值等式仍需独立证据，不能从同一正文或同一签名推出。先处理 CRelationClasses，再处理 CMorphisms、SSR、Program.Wf。
+The next step is to establish a computationally transparent experiment preserving the body in [transparent-data](transparent-data/PLAN.md). The original environment is not modified; the expandable machine definition of the new namespace and the native operation correspond to separate statistics. The newly defined value equation of the original opaque constant ↔ still requires independent evidence and cannot be deduced from the same body or the same signature. Process CRelationClasses first, then CMorphisms, SSR, and Program.Wf.
 
-## 计算透明分支完成
+## Compute transparent branch completed
 
-新增 80 根证明全部通过，原有 2100 根在 173 个 profile 中重新检查；与 6 个新 profile、依赖 Fin 及 Mathlib 消费例共同导入成功。变体达到 2180/2180：164 类型、988 运算、1028 原生陈述 iff。原冻结版本仍为 2100/2180。
+The newly added 80 root certificates all passed, and the original 2100 root was rechecked in 173 profile; it was successfully imported together with 6 new profile, dependent Fin and Mathlib consumer cases. Variants up to 2180/2180: 164 type, 988 operation, 1028 native statement iff. The original frozen version is still 2100/2180.
 
-已实现给定 correspondence 的自动组合，自动生成原生函数和等式证明；缺少规则、条件未满足或额外公理均拒绝。具体范围、复现和完整账本见 [透明分支](transparent-data/README.md)。
+Automatic composition of a given correspondence has been implemented, automatically generating native functions and proofs of equality; missing rules, unsatisfied conditions, or extra axioms are rejected. For the specific scope, recurrence and complete ledger, see [Transparent Branch ](transparent-data/README.md).

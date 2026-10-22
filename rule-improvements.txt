@@ -1,42 +1,42 @@
 CURRENT UPDATE 2026-10-19: This file below describes a historical 839-root/early baseline. Current 2180-root mechanical nat/eq results and correspondence proofs are indexed in README.md, RESULTS.md and results/corelib-complete/ALL_RULES.md.
 
-范围：此前基础模块的 24 个 Corelib 文件、839 项声明，不是所有已安装 Corelib 文件。
-原项目未修改，未提交或推送。
-基线：574 无额外条件，75 带条件，190 受阻。
-隔离候选：569 无额外条件，81 带条件，189 受阻。
-可检查项由 649 增至 650；新增的只是定理陈述 eq_existT_curried_congr，仍有 3 个显式前提，并未得到定理证明。
-普通数据类型和函数没有新增成功项。另 5 项原本无额外条件的定理陈述新增条件，因此这是有代价的候选，未集成原项目。
+Scope: 24 Corelib files, 839 declarations of previous base modules, not all installed Corelib files.
+The original project has not been modified, submitted or pushed.
+Baseline: 574 without additional conditions, 75 with conditions, 190 blocked.
+Isolation candidates: 569 without additional conditions, 81 with conditions, 189 blocked.
+The checkable items have been increased from 649 to 650; the new addition is only the theorem statement eq_existT_curried_congr, there are still 3 explicit premises, and no theorem proof has been obtained.
+There are no new success items for common data types and functions. In addition, the theorem statement 5 that originally had no additional conditions has a new condition, so it is a costly candidate and has not been integrated into the original project.
 
-目录：
-index.html / improved/index.html：基线 / 候选逐文件入口。
-rule-improvements.html / .txt：六组实验、最终候选、逐项变化、后续缺失能力。
-Corelib/.../X.v：源文件副本。
-Corelib/.../X.lean：实际翻译入口，用 #rocq2lean_import 生成内核声明。
-Corelib/.../X.kernel.txt：实际 Lean #print 定义。
-Corelib/.../X.report.html / .txt：每项成功/失败与翻译过程。
-Corelib/.../X.json：模块完整机器可读结果。
-Corelib/.../X/records/0000.json：单项完整源 IR、目标 AST、全部尝试与条件。
-Corelib/.../X/：导出、roundtrip、consumer、audit、日志和 olean。
-improved/Corelib/...：同结构候选结果。
-translator/：基线 3c79203 加未提交候选；candidate.patch 是精确代码差异。
-experiments/：各组试验、差异和测试证据。
-source-extraction-errors.json：52 项抽取失败的实际检查阶段与类型错误。
-artifact-validation.json：产物和检查结果。
+Directory:
+index.html/improved/index.html: baseline/candidate file-by-file entry.
+rule-improvements.html / .txt: six groups of experiments, final candidates, item-by-item changes, and subsequent missing abilities.
+Corelib/.../X.v: Copy of source file.
+Corelib/.../X.lean: Actual translation entry, use #rocq2lean_import to generate kernel declaration.
+Corelib/.../X.kernel.txt: actual Lean #print definition.
+Corelib/.../X.report.html / .txt: Each success/failure and translation process.
+Corelib/.../X.json: Complete machine-readable result of the module.
+Corelib/.../X/records/0000.json: Single complete source IR, target AST, all attempts and conditions.
+Corelib/.../X/: export, roundtrip, consumer, audit, log and olean.
+improved/Corelib/...: Candidate results with the same structure.
+translator/: Baseline 3c79203 plus uncommitted candidate; candidate.patch is the exact code difference.
+experiments/: Groups of trials, differences and test evidence.
+source-extraction-errors.json: 52 item extraction failed with actual check phase and type error.
+artifact-validation.json: product and inspection results.
 
-使用：
-每个 .lean 带自己的依赖闭包，应作为独立单元使用，不可直接把 24 个文件同时 import。
-.lean 是翻译器的可执行入口，不是脱离翻译器的手写源码；可读定义在 kernel.txt 和逐项报告。
-Equality.lean 明确报导出失败。Ltac、Notations、Tauto 没有计入内核声明，不代表策略/记号已经翻译。
-定理只输出 .statement : Prop；pending 是显式假设，不能当作已有证明或无条件结论。
-过程来自真实 IR、tier 尝试与内核输出；AST 节点映射为静态说明，不冒充逐指令执行轨迹。
+Use:
+Each .lean has its own dependency closure and should be used as an independent unit. 24 files cannot be directly import at the same time.
+.lean is the executable entry of the translator, not the handwritten source code separated from the translator; readable definition is in kernel.txt and itemized report.
+Equality.lean explicitly reports export failure. Ltac, Notations, and Tauto are not included in the kernel declaration, which does not mean that the strategy/notation has been translated.
+The theorem only outputs .statement : Prop; pending is an explicit assumption and cannot be regarded as a proven proof or unconditional conclusion.
+The process comes from real IR, tier attempts and kernel output; AST node mapping is a static description and does not pretend to be an instruction-by-instruction execution track.
 
-验证：
-Lean 4.33.1 / Rocq 9.3.0。20 个有可导出声明的模块在基线与候选下分别通过源端 roundtrip、Lean consumer、未修改的独立 audit、内核输出及入口编译。
-statement 套件通过：包括证明变化不影响输出、确定性、陈述篡改负例及拒绝 sorry/axiom 的提交负例。
-本轮未重跑完整 4,474 个 Prosa 保护根；保护清单未改。候选代码保持隔离。
-复现脚本位于 scripts/，读取现有冻结 census 输入及已安装工具链；所有本轮输出在本目录。
+Verification:
+Lean 4.33.1 / Rocq 9.3.0. 20 modules with exportable declarations were compiled through source roundtrip, Lean consumer, unmodified standalone audit, kernel output and entry under baseline and candidate respectively.
+The statement suite passed: including proof that changes do not affect the output, certainty, statement tampering negative examples, and rejecting the submitted negative examples of sorry/axiom.
+This round has not re-run the complete 4, 474 and Prosa protection roots; the protection list has not been changed. Candidate code remains isolated.
+The reproduction script is located in scripts/ and reads the existing frozen census input and installed tool chains; all current round output is in this directory.
 
-实验
+experiment
 [
   {
     "experiment": "proof-cache-trial",
@@ -49,7 +49,7 @@ statement 套件通过：包括证明变化不影响输出、确定性、陈述�
       "audit.json": "OK",
       "consumer_result.json": "OK"
     },
-    "note": "相同完整上下文中的证明子项复用：没有增加通过项，未保留。"
+    "note": "Reuse of proof subitems in the same complete context: no passing items added, no retention."
   },
   {
     "experiment": "normalization-trial",
@@ -62,7 +62,7 @@ statement 套件通过：包括证明变化不影响输出、确定性、陈述�
       "audit.json": "OK",
       "consumer_result.json": "OK"
     },
-    "note": "抽取前 β/ι/ζ 化简：源端结构 roundtrip 失败；下面计数只是诊断，不能计为认证结果，拒绝。"
+    "note": "β/ι/ζ simplification before extraction: source structure roundtrip failed; the following count is only for diagnosis and cannot be counted as authentication results, so it is rejected."
   },
   {
     "experiment": "binder-context-trial",
@@ -75,7 +75,7 @@ statement 套件通过：包括证明变化不影响输出、确定性、陈述�
       "audit.json": "OK",
       "consumer_result.json": "OK"
     },
-    "note": "使用重写后的绑定类型：增加 1 项带条件陈述，另 5 项新增条件；候选核心。"
+    "note": "Use the rewritten binding type: add 1 item with conditional statement, and add 5 item with new conditions; candidate core."
   },
   {
     "experiment": "minimal-obligations-trial",
@@ -88,7 +88,7 @@ statement 套件通过：包括证明变化不影响输出、确定性、陈述�
       "audit.json": "OK",
       "consumer_result.json": "OK"
     },
-    "note": "缩减义务上下文并复用同型条件：3 项原可检查陈述变为受阻，拒绝。"
+    "note": "Reducing the task context and reusing the same type of conditions: 3 item's original checkable statement becomes blocked and rejected."
   },
   {
     "experiment": "minimal-binder-trial",
@@ -101,7 +101,7 @@ statement 套件通过：包括证明变化不影响输出、确定性、陈述�
       "audit.json": "OK",
       "consumer_result.json": "OK"
     },
-    "note": "缩减上下文与绑定修补组合：2 项越过抽取阶段但仍被依赖阻塞；仍有上述 3 项退步，拒绝。"
+    "note": "Combined reduction context and binding patching: 2 items passed the extraction stage but are still blocked by dependencies; there are still above 3 items that are regressed and rejected."
   },
   {
     "experiment": "binder-statement-cache-trial",
@@ -114,7 +114,7 @@ statement 套件通过：包括证明变化不影响输出、确定性、陈述�
       "audit.json": "OK",
       "consumer_result.json": "OK"
     },
-    "note": "同型条件复用 + 绑定修补：没有超过单独绑定修补，未保留额外缓存。"
+    "note": "Same type conditional reuse + binding patching: no more than single binding patching, no additional cache retained."
   },
   {
     "experiment": "candidate-final",
@@ -127,10 +127,10 @@ statement 套件通过：包括证明变化不影响输出、确定性、陈述�
       "audit.json": "OK",
       "consumer_result.json": "OK"
     },
-    "note": "最终隔离候选：绑定上下文修补 + 源端详细错误 + 可选 Lean 线程数。"
+    "note": "Final quarantine candidate: Binding context patching + origin verbose errors + optional Lean thread count."
   }
 ]
-逐项变化
+Changes one by one
 [
   {
     "source": "Corelib.Init.Logic.eq_ex_intro",
@@ -205,59 +205,59 @@ statement 套件通过：包括证明变化不影响输出、确定性、陈述�
     ]
   }
 ]
-规则评估
+Rule evaluation
 [
   {
-    "rule": "SProp / irrelevant 绑定",
+    "rule": "SProp / irrelevant binding",
     "before": 40,
     "after": 40,
-    "missing": "需定义 SProp 的表示及消去限制，不能删除拒绝检查。",
-    "action": "未采用新的表示策略。"
+    "missing": "It is necessary to define the representation and elimination restrictions of SProp, and the rejection check cannot be deleted.",
+    "action": "The new presentation strategy is not adopted."
   },
   {
-    "rule": "证明抽取与依赖计算",
+    "rule": "Proof extraction and dependency calculation",
     "before": 52,
     "after": 52,
-    "missing": "构造子证明作为依赖索引时，抽取后分支类型与消去器要求的构造子索引不同。需保持索引一致；补充前提不能恢复源端转换。",
-    "action": "测试缓存、化简、上下文缩减和绑定修补；保留逐项实际错误。"
+    "missing": "When the constructor proof is used as a dependent index, the branch type after extraction is different from the constructor index required by the eliminator. The index needs to be kept consistent; the supplementary premise cannot restore the source conversion.",
+    "action": "Test caching, reduction, context reduction, and binding patching; retain case-by-case actual errors."
   },
   {
-    "rule": "quality / sort 多态导出",
+    "rule": "quality / sort polymorphic export",
     "before": 22,
     "after": 22,
-    "missing": "MetaRocq 引用前端缺少 quality 多态上下文的完整表示及传递；还未进入 Lean。",
-    "action": "固定工具链下仍受阻。"
+    "missing": "The MetaRocq reference front-end lacks the complete representation and delivery of the quality polymorphic context; it has not yet entered Lean.",
+    "action": "Still blocked under the fixed tool chain."
   },
   {
-    "rule": "模板归纳类型的 Prop 实例",
+    "rule": "Prop instance of template inductive type",
     "before": 20,
     "after": 18,
-    "missing": "需统一处理 Prop 参数的类型、构造子、recursor、投影和调用点；可能涉及 Sort 泛化或 lift 表示。",
-    "action": "2 项改为依赖受阻，仍未成功；未更改表示策略。"
+    "missing": "The type, constructor, recursor, projection and call point of Prop parameters need to be processed uniformly; Sort generalization or lift representation may be involved.",
+    "action": "The 2 item was changed to dependency blocking, but still failed; the representation policy was not changed."
   },
   {
-    "rule": "宇宙求解及一致性",
+    "rule": "Universe solution and consistency",
     "before": 2,
     "after": 1,
-    "missing": "bool_eq_rec 仍有 proof-local 宇宙约束冲突；不能放松源宇宙一致性检查。",
-    "action": "eq_existT_curried_congr 成为带条件的可检查陈述。"
+    "missing": "bool_eq_rec still has a proof-local universe constraint conflict; the source universe consistency check cannot be relaxed.",
+    "action": "eq_existT_curried_congr becomes a conditionally checkable statement."
   },
   {
-    "rule": "抽取后的证明递归",
+    "rule": "Proof recursion after extraction",
     "before": 4,
     "after": 4,
-    "missing": "需重建结构递归依据或产生可检查的良基终止性义务，不能假定终止性。",
-    "action": "保持受阻，没有生成原库证明。"
+    "missing": "It is necessary to reconstruct the structural recursion basis or generate a checkable good-founded termination obligation, and termination cannot be assumed.",
+    "action": "Stay blocked, no original library certificate is generated."
   },
   {
-    "rule": "依赖阻塞",
+    "rule": "Dependency blocking",
     "before": 50,
     "after": 52,
-    "missing": "逐项报告递归追踪上游根因；先修上游，再重测。",
-    "action": "增加包含失败阶段变化，不是新增 2 个失败根声明。"
+    "missing": "Item-by-item reporting recursively tracks upstream root causes; fix upstream first, then retest.",
+    "action": "Add changes including failure stages, not add 2 failure root statements."
   }
 ]
-另有 6 项原本已经带条件的陈述改变了条件清单（4 项条件数增加、1 项减少、1 项数量相同但条件变化）；完整前后对比见 experiments/root-obligation-delta.json。
+In addition, the conditional statement of item 6 has changed the list of conditions (the condition number of item 4 has increased, the number of items in 1 has decreased, and the number of items in 1 has been the same but the conditions have changed); see experiments/root-obligation-delta.json for a complete comparison before and after.
 [
   {
     "source": "Corelib.Init.Logic.eq_ex_intro",

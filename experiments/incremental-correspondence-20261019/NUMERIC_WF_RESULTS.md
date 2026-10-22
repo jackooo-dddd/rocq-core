@@ -1,78 +1,78 @@
-# 数字表示与良基递归：第三、四批结果
+# Numerical Representation and Well-founded recursion: The Third and Fourth Batch of Results
 
-本文件保留这两批完成时的计数；最新总计与条件实例化见 README.md、DEPENDENT_RESULTS.md。
+This file retains the count at the completion of both batches; see README.md, DEPENDENT_RESULTS.md for the latest totals and condition instantiations.
 
-本批新增 48 个去重根的 correspondence：4 个类型、36 个运算/谓词、8 个完全原生陈述。总完成数 467 → 515（37 类型 + 186 运算 + 292 完全原生陈述）。仅接口 319，尚无证书 461，部分陈述 553，带条件 331，非 Prop 特殊陈述 1。
+This batch adds 48 correspondence with deduplicated roots: 4 types, 36 operations/predicates, and 8 complete native statements. Total completions 467 → 515 (37 type + 186 operation + 292 fully native statement). Only interface 319, no certificate yet 461, partial statement 553, with condition 331, non-Prop special statement 1.
 
-新增覆盖证书 48 份；另有 8 份原陈述证明，不重复计根。累计增量覆盖证书 230 份。11 个 profile 有成功的 kernel/公理闭包检查及对应源码摘要；本批只重验新增/修改的 4 个 profile，沿用另外 7 个的成功记录和 45 个接口回归记录。没有重跑整套机械翻译或 Mathlib 集成。
+Added 48 coverage certificates; 8 original statement certificates, no duplicate root counting. The cumulative incremental coverage certificate is 230. 11 profile have successful kernel/ axiom closure checks and corresponding source code summaries; this batch only rechecks the newly added/modified 4 profile, and uses the other 7 success records and 45 interface regression records. There is no need to rerun the entire set of mechanical translations or Mathlib integration.
 
-## 数字表示与操作
+## Digital representation and manipulation
 
-| 源类型 | 原生表示 | 保留的信息 |
+| Source type | Native representation | retained information |
 |---|---|---|
-| Decimal.signed_int | Bool × List (Fin 10) | 符号、前导零、负零 |
-| Hexadecimal.signed_int | Bool × List (Fin 16) | 符号、前导零、负零 |
-| Number.uint | Sum (List (Fin 10)) (List (Fin 16)) | 进制标签及全部数字 |
+| Decimal.signed_int | Bool × List (Fin 10) | sign, leading zero, negative zero |
+| Hexadecimal.signed_int | Bool × List (Fin 16) | sign, leading zero, negative zero |
+| Number.uint | Sum (List (Fin 10)) (List (Fin 16)) | Base label and all numbers |
 
-已有 uint ↔ List (Fin radix) 的桥接在本批对应 profile 中复用，不重复记新类型。
+The existing bridges of uint ↔ List (Fin radix) are reused in the corresponding profile in this batch, and new types are not recorded repeatedly.
 
-Decimal、Hexadecimal 各新增 12 项运算对应：
+Decimal and Hexadecimal each add 12 operation corresponding to:
 - revapp、rev、app → reverse/append；
 - nb_digits → List.length；
 - nzhead → List.dropWhile；
-- unorm → 去前导零后将空串规范为 [0]；
-- abs、opp、app_int → 符号/数字 pair 的投影、符号翻转、拼接；
-- uint_beq、signed_int_beq → 原生 List/Prod 的 BEq；
-- norm → 去前导零，并把两种符号的零都规范为正零。
+- unorm → After removing leading zeros, the empty string is normalized to [0];
+- Projection, symbol flipping and splicing of abs, opp, app_int → symbols/digits pair;
+- uint_beq, signed_int_beq → BEq of native List/Prod;
+- norm → removes leading zeros and normalizes zeros in both symbols to positive zeros.
 
-Nat 新增 5 项：
+Nat Added 5 item:
 of_uint_acc、of_uint、of_hex_uint_acc、of_hex_uint → List.foldl（acc ↦ radix * acc + digit）；
-of_num_uint → 按 Sum 进制标签选择上述 fold。
+of_num_uint → Press the Sum base label to select the above fold.
 
-36 项新增运算中，25 项以现成 Lean API 为目标，11 项以明确的原生组合表达式为目标。类型对应另计，不把组合表达式说成同名现成 API。逐项 target_class 和完整适用范围见 certificates.json。
+Among the new operations of the 36 item, the 25 item targets the ready-made Lean API, and the 11 item targets the explicit native combinatorial expression. The type correspondence is separate, and the combined expression is not described as ready-made with the same name API. For itemized target_class and complete scope of application, see certificates.json.
 
-## 原生定理实际复用
+## Practical reuse of native theorems
 
-两个数字模块各有 uint 和 signed_int 的比较健全性、完备性，共 8 个陈述：
-- 比较结果为 true ⇒ 两个表示相等；
-- 两个表示相等 ⇒ 比较结果为 true。
+The two digital modules each have the comparative soundness and completeness of uint and signed_int, with a total of 8 statements:
+- The comparison result is true ⇒ both means they are equal;
+- The two expressions are equal ⇒ The comparison result is true.
 
-先证明源陈述与原生 BEq 陈述的 iff，再用 Lean 的 eq_of_beq 和自反比较证明原生陈述，最后经 iff 得到原陈述的证明。不是只有接口，也不是仅把原陈述包装进新的名字。
+First prove iff between the source statement and the original BEq statement, then use eq_of_beq of Lean and reflexive comparison to prove the original statement, and finally get the proof of the original statement through iff. It's not just an interface, it's not just wrapping the original statement into a new name.
 
-证据：proofs/DecimalOperations.lean、proofs/HexadecimalOperations.lean，及 reports/original-statement-proofs.json。
-这些是先前无条件陈述的证明；尚未据此实例化并消除 eq_dec 等声明的显式义务，331 项带条件计数保持不变。
+Evidence: proofs/DecimalOperations.lean, proofs/HexadecimalOperations.lean, and reports/original-statement-proofs.json.
+These are proofs of a previous unconditional statement; the conditional count of the 331 term remains unchanged since it has not been instantiated thereby and eliminates the explicit obligation of statements such as eq_dec.
 
-## 已证边界
+## certified boundary
 
-- 数字串到 Nat 的读取不是单射：空串与一位零都读成零。两个进制分别有反例定理。
-- del_head 1 Nil 返回一位零；List.drop 1 [] 返回空列表。两个进制分别有不相等证明。del_head/del_tail 因而尚未登记为 List.drop/take 的无条件对应。
-- signed_int 与 Bool × digits 的 Iso 保留负零，不能替换成 signed_int ↔ Int 的双向逆。
-- Hexadecimal.hexadecimal 的指数使用 Decimal.signed_int；后续表示桥接必须保留这个跨进制依赖。
+- The reading of the digital string to Nat is not injective: both the empty string and one zero are read as zero. There are counterexample theorems for each of the two bases.
+- del_head 1 Nil returns one zero; List.drop 1 [] returns an empty list. There are proofs of inequality between the two bases. del_head/del_tail has therefore not been registered as an unconditional counterpart of List.drop/take.
+- signed_int and Iso of Bool × digits retain negative zero and cannot be replaced by the bidirectional inverse of signed_int ↔ Int.
+- The index of Hexadecimal.hexadecimal uses Decimal.signed_int; subsequent representation bridges must retain this spanning dependency.
 
-这些边界是已证明的语义差异，不是翻译失败，也不表示不存在其他恰当目标。
+These boundaries are demonstrated semantic differences, not a failure of translation or an indication that other appropriate targets do not exist.
 
-## 良基递归
+## Well-founded recursion
 
-- Acc A R x ↔ Lean Acc R x：双向转换与逆律。
+- Acc A R x ↔ Lean Acc R x: Bidirectional conversion and inverse law.
 - well_founded A R ↔ WellFounded R。
 - Fix_F、Fix → WellFounded.fixF、WellFounded.fix。
-- Acc_rect、Acc_rec → Acc.rec；注册的是接受原生回调的版本，前驱可达性证明在边界转换。
+- Acc_rect, Acc_rec → Acc.rec; the registered version accepts native callbacks, and the precursor reachability is proved to be converted at the boundary.
 - well_founded_induction_type、well_founded_induction → WellFounded.fix。
 
-A 的范围是 Type u；递归结果按源签名为 Type v，Acc_rec 和非 type 后缀版本为 Type。没有额外假设 well-foundedness 成立：原 API 要求的证明显式传入并转换。
+The range of A is Type u; the recursive result is Type v by source signature, Acc_rec and non-type suffix versions are Type. well-foundedness holds without additional assumptions: the proof required by the original API is passed in explicitly and converted.
 
-两个使用例不计 Corelib 根：
-1. 用 Lean 的 InvImage.wf 和 natTo 为机械 Nat 上的度量关系构造源端 well_founded 证明；
-2. 把原生 Nat 的良基性传给机械 Fix，复用原生递归正确性证明，得到倒计数函数结果等于输入。
+Two use cases excluding the Corelib root:
+1. Use InvImage.wf and natTo of Lean to construct the source-side well_founded proof for the metric relationship on the machine Nat;
+2. Pass the sound foundation of the original Nat to the mechanical Fix, reuse the original recursive correctness proof, and get the countdown function result equal to the input.
 
-证据：proofs/WellFounded.lean。以上不代表已经完成任意载体/依赖 motive 的自动转换。
+Evidence: proofs/WellFounded.lean. The above does not mean that the automatic conversion of any carrier/dependency motive has been completed.
 
-## 接下来
+## Next
 
-1. 数字 Little.succ 与进位语义 → to_little_uint/to_little_hex_uint → to_uint/to_hex_uint 及读写性质。
-2. 精确刻画 del_head 超出长度时的行为，再处理 del_tail；不强套 List.drop。
-3. prodIso 与 Acc 转换 → Fix_F_2、well_founded_induction_type_2。
-4. Sigma/Subtype 与 Eq transport；再把新证书用于剩余陈述。
-5. 检查已证比较性质能否构造具体 eq_dec 义务；只有实际实例化、验证并更新产物后才减少带条件计数。
+1. Number Little.succ and carry semantics → to_little_uint/to_little_hex_uint → to_uint/to_hex_uint and read and write properties.
+2. Accurately describe the behavior of del_head when it exceeds the length, and then process del_tail; do not forcefully apply List.drop.
+3. prodIso and Acc convert → Fix_F_2, well_founded_induction_type_2.
+4. Sigma/Subtype and Eq transport; then use the new certificate for the remaining statements.
+5. Check whether the proven comparison property can construct the concrete eq_dec task; only increment the conditional count after the product is actually instantiated, verified and updated.
 
-完整计划仍未完成；统一导入和 Mathlib 组合测试仍待进行。
+The full plan is still not complete; unified import and Mathlib combination testing is still pending.

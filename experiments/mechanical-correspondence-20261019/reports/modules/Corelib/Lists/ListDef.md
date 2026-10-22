@@ -1,24 +1,24 @@
 # Corelib.Lists.ListDef
 
-每项对应机械翻译基线中的一个 root。完整 native statement / interface 类型在总 JSON 文件中。
+Each entry corresponds to one root in the mechanical translation baseline. The complete native statement / interface types are in the aggregate JSON file.
 
 
 
 ## Corelib.Lists.ListDef.Forall
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.Lists.ListDef.Forall
+Original target: Rocq.Corelib.Lists.ListDef.Forall
 
-操作/类型证书：NativeBridge.forall_list_agrees
+Operation/Type Certificate: NativeBridge.forall_list_agrees
 
 ## Corelib.Lists.ListDef.Forall_ind
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Lists.ListDef.Forall_ind.statement
+Original target: Rocq.Corelib.Lists.ListDef.Forall_ind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Lists.ListDef.Forall_ind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Lists.ListDef.Forall_ind.statement.correspondence
 
 ```lean
 ∀ (A : Type u_Corelib_Lists_ListDef_53) (P : A → Prop) (P_1 : Rocq.Corelib.Init.Datatypes.list A → Prop),
@@ -28,15 +28,15 @@
       ∀ (l : Rocq.Corelib.Init.Datatypes.list A), Rocq.Corelib.Lists.ListDef.Forall A P l → P_1 l
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.list;Rocq.Corelib.Init.Datatypes.list.nil;Rocq.Corelib.Lists.ListDef.Forall;Rocq.Corelib.Init.Datatypes.list.cons
+Residual source symbols: Rocq.Corelib.Init.Datatypes.list;Rocq.Corelib.Init.Datatypes.list.nil;Rocq.Corelib.Lists.ListDef.Forall;Rocq.Corelib.Init.Datatypes.list.cons
 
 ## Corelib.Lists.ListDef.Forall_sind
 
-状态：STATEMENT_PARTIAL。已有 iff，但结果仍含源端类型、函数或辅助模型；不是完整原生化。
+Status: STATEMENT_PARTIAL. An iff has been proved, but the result still contains source types, functions, or auxiliary models; it is not fully expressed in native terms.
 
-原始目标：Rocq.Corelib.Lists.ListDef.Forall_sind.statement
+Original target: Rocq.Corelib.Lists.ListDef.Forall_sind.statement
 
-陈述证书：NativeBridge.Statements.Rocq.Corelib.Lists.ListDef.Forall_sind.statement.correspondence
+Statement certificate: NativeBridge.Statements.Rocq.Corelib.Lists.ListDef.Forall_sind.statement.correspondence
 
 ```lean
 ∀ (A : Type u_Corelib_Lists_ListDef_53) (P : A → Prop) (P_1 : Rocq.Corelib.Init.Datatypes.list A → Prop),
@@ -46,84 +46,84 @@
       ∀ (l : Rocq.Corelib.Init.Datatypes.list A), Rocq.Corelib.Lists.ListDef.Forall A P l → P_1 l
 ```
 
-残留源符号：Rocq.Corelib.Init.Datatypes.list;Rocq.Corelib.Init.Datatypes.list.nil;Rocq.Corelib.Lists.ListDef.Forall;Rocq.Corelib.Init.Datatypes.list.cons
+Residual source symbols: Rocq.Corelib.Init.Datatypes.list;Rocq.Corelib.Init.Datatypes.list.nil;Rocq.Corelib.Lists.ListDef.Forall;Rocq.Corelib.Init.Datatypes.list.cons
 
 ## Corelib.Lists.ListDef.firstn
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.Lists.ListDef.firstn
+Original target: Rocq.Corelib.Lists.ListDef.firstn
 
-操作/类型证书：NativeBridge.firstn_agrees
+Operation/Type Certificate: NativeBridge.firstn_agrees
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Lists.ListDef.firstn.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Lists.ListDef.firstn.roundtrip
 
-接口只覆盖 Type 宇宙实例；未声称覆盖原始裸 Sort 的 Prop 分支。
+The interface only covers the Type universe instance; no Prop branch is claimed to cover the original bare Sort.
 
 ## Corelib.Lists.ListDef.list_compare
 
-状态：TRANSPORT_INTERFACE_ONLY。已证明原生类型接口的往返性质；尚未证明等于 Lean 的同名现成函数。
+Status: TRANSPORT_INTERFACE_ONLY. Round-trip laws for the native-type interface have been proved; equality with the corresponding existing Lean function has not yet been proved.
 
-原始目标：Rocq.Corelib.Lists.ListDef.list_compare
+Original target: Rocq.Corelib.Lists.ListDef.list_compare
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Lists.ListDef.list_compare.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Lists.ListDef.list_compare.roundtrip
 
-接口只覆盖 Type 宇宙实例；未声称覆盖原始裸 Sort 的 Prop 分支。
+The interface only covers the Type universe instance; no Prop branch is claimed to cover the original bare Sort.
 
 ## Corelib.Lists.ListDef.map
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.Lists.ListDef.map
+Original target: Rocq.Corelib.Lists.ListDef.map
 
-操作/类型证书：NativeBridge.map_agrees
+Operation/Type Certificate: NativeBridge.map_agrees
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Lists.ListDef.map.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Lists.ListDef.map.roundtrip
 
-接口只覆盖 Type 宇宙实例；未声称覆盖原始裸 Sort 的 Prop 分支。
+The interface only covers the Type universe instance; no Prop branch is claimed to cover the original bare Sort.
 
 ## Corelib.Lists.ListDef.nth
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.Lists.ListDef.nth
+Original target: Rocq.Corelib.Lists.ListDef.nth
 
-操作/类型证书：NativeBridge.nth_agrees
+Operation/Type Certificate: NativeBridge.nth_agrees
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Lists.ListDef.nth.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Lists.ListDef.nth.roundtrip
 
-接口只覆盖 Type 宇宙实例；未声称覆盖原始裸 Sort 的 Prop 分支。
+The interface only covers the Type universe instance; no Prop branch is claimed to cover the original bare Sort.
 
 ## Corelib.Lists.ListDef.repeat
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.Lists.ListDef.repeat
+Original target: Rocq.Corelib.Lists.ListDef.repeat
 
-操作/类型证书：NativeBridge.repeat_agrees
+Operation/Type Certificate: NativeBridge.repeat_agrees
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Lists.ListDef.repeat.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Lists.ListDef.repeat.roundtrip
 
-接口只覆盖 Type 宇宙实例；未声称覆盖原始裸 Sort 的 Prop 分支。
+The interface only covers the Type universe instance; no Prop branch is claimed to cover the original bare Sort.
 
 ## Corelib.Lists.ListDef.seq
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.Lists.ListDef.seq
+Original target: Rocq.Corelib.Lists.ListDef.seq
 
-操作/类型证书：NativeBridge.seq_agrees
+Operation/Type Certificate: NativeBridge.seq_agrees
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Lists.ListDef.seq.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Lists.ListDef.seq.roundtrip
 
 ## Corelib.Lists.ListDef.skipn
 
-状态：OPERATION_CORRESPONDENCE。已证明与指定原生运算/谓词一致；前提以证书类型为准。
+Status: OPERATION_CORRESPONDENCE. Agreement with the specified native operation/predicate has been proved; the certificate type specifies the premises.
 
-原始目标：Rocq.Corelib.Lists.ListDef.skipn
+Original target: Rocq.Corelib.Lists.ListDef.skipn
 
-操作/类型证书：NativeBridge.skipn_agrees
+Operation/Type Certificate: NativeBridge.skipn_agrees
 
-接口往返证书：NativeBridge.Interfaces.Rocq.Corelib.Lists.ListDef.skipn.roundtrip
+Interface round-trip certificate: NativeBridge.Interfaces.Rocq.Corelib.Lists.ListDef.skipn.roundtrip
 
-接口只覆盖 Type 宇宙实例；未声称覆盖原始裸 Sort 的 Prop 分支。
+The interface only covers the Type universe instance; no Prop branch is claimed to cover the original bare Sort.

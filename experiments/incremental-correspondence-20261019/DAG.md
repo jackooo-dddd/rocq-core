@@ -1,53 +1,53 @@
-# Correspondence 依赖 DAG
+# Correspondence depends on DAG
 
-这是计划的机制依赖图；箭头表示前者可支持后者，不表示这些任务都已完成。
+This is the mechanism dependency diagram of the plan; the arrows indicate that the former can support the latter, but do not indicate that these tasks have been completed.
 
 ```mermaid
 flowchart TD
-  Ledger["P1: 2180 项账本 + 源依赖分析"] --> Register["P2: 类型/运算证书注册与组合"]
-  Existing["已有 Nat/Eq/Bool/List/Option/N/Z Iso"] --> Register
-  Register --> Functions["函数组合 / Program.Basics"]
-  Register --> SSR["SSR simpl_fun / Option / 布尔谓词"]
-  Register --> Numeric["数值、比较、数字表示"]
-  Existing --> Dep["P4: 依赖函数 / Sigma / Eq transport"]
-  Dep --> Acc["Acc / 良基递归"]
-  Functions --> Operations["P5: 指定原生运算一致性"]
+  Ledger["P1: 2180 item ledger + source dependency analysis"] --> Register["P2: type/operation certificate registration and combination"]
+  Existing["Already have Nat/Eq/Bool/List/Option/N/Z Iso"] --> Register
+  Register --> Functions["Function combination / Program.Basics"]
+  Register --> SSR["SSR simpl_fun / Option / Boolean predicate"]
+  Register --> Numeric["Numerical value, comparison, digital representation"]
+  Existing --> Dep["P4: dependent function / Sigma / Eq transport"]
+  Dep --> Acc["Acc / Well-founded recursion"]
+  Functions --> Operations["P5: specifies native operation consistency"]
   SSR --> Operations
   Numeric --> Operations
   Dep --> Operations
-  Register --> Classes["Classes: 关系性质 / 数据关系"]
-  Classes --> Statements["P6: 下游陈述原生化"]
+  Register --> Classes["Classes: relationship nature/data relationship"]
+  Classes --> Statements["P6: downstream statement nativeization"]
   Operations --> Statements
-  Acc --> Obligations["独立证明共享义务"]
+  Acc --> Obligations["Independent Proof of Sharing Obligations"]
   Obligations --> Statements
-  Statements --> Integration["P7: 统一导入 / 原生定理复用"]
+  Statements --> Integration["P7: unified import/original theorem reuse"]
   Operations --> Integration
 ```
 
-## 两种依赖不能混淆
+## The two dependencies cannot be confused
 
-1. **源声明依赖（事实）**：来自 full-v1/source.ndjson 中的 deps 字段。源声明引用某类型，并不自动意味着必须先证明该类型与原生对象的 Iso；有时可以局部展开或使用关系证明。
-2. **桥接任务依赖（规划）**：例如 SSR Option.map 的容器转换用 Option Iso，元素转换可能再用 Nat Iso；运算组合使用函数 correspondence。它们是所选方案需要的证书，不冒充源 IR 边。
+1. **Source Statement Dependency (Fact)**: From the deps field in full-v1/source.ndjson. Just because a source declaration refers to a type does not automatically mean that the type must first be proved to be Iso to the native object; sometimes this can be partially expanded or a relational proof can be used.
+2. **Bridge task dependency (planning)**: For example, the container conversion of SSR Option.map uses Option Iso, and the element conversion may use Nat Iso; the operation combination uses function correspondence. They are the certificates required for the chosen scenario and do not impersonate the source IR side.
 
-完整源图若含自递归或互递归，应收缩强连通分量（SCC）后得到 DAG。边方向统一为“依赖 → 使用者”。图外未被这 2180 根收录的辅助声明保留在外部依赖字段，不悄悄丢弃。
+If the complete source graph contains self-recursion or mutual recursion, the strongly connected component (SCC) should be shrunk to obtain DAG. The edge direction is unified as "depending on the → user". Auxiliary declarations outside the diagram that are not included in this 2180 root are retained in the external dependency field and are not quietly discarded.
 
-首批：
+First batch:
 - Option Iso → SSR Option.map/bind/default/apply/lift
-- 函数结构 → Program.Basics、SSR comp/catcomp/idfun
-- simpl_fun 构造器 → simpl_fun Iso → fun_of_simpl 对应
-- Nat Iso + 递归器对应 → Nat.iter
-- 上述运算证书 → 高阶/复合函数自动证明
+- Function structure → Program.Basics, SSR comp/catcomp/idfun
+- simpl_fun constructor → simpl_fun Iso → fun_of_simpl corresponding
+- Nat Iso + recurser corresponds to → Nat.iter
+- The above operation certificate → high-order/composite function automatic proof
 
-这些边将在实际证明中验证；当前不声称完整数学依赖已自动发现。
+These edges will be verified in actual proofs; there is currently no claim that the complete mathematical dependence has been discovered automatically.
 <!-- generated -->
 
-## 实际源依赖检查
+## Actual source dependency checks
 
-覆盖 2180 根；9457 条带类别的依赖记录；收缩后 2180 个 SCC、7230 条 DAG 边。已通过拓扑排序检查。
+Covering the 2180 root; dependent records of the 9457 stripe category; 2180 SCC, 7230 DAG edges after shrinkage. Passed topological sort check.
 
-依赖源为 IR 的 deps 字段。递归分量和外部辅助依赖均保留；不能由这些边直接推断对应证明一定依赖哪些 Iso。
+The dependent source is the deps field of IR. Both recursive components and external auxiliary dependencies are preserved; it cannot be directly inferred from these edges which Iso the corresponding proof must depend on.
 
-| 被依赖根 | 直接使用者数 |
+| dependent root | Number of direct users |
 |---|---:|
 | Corelib.Init.Logic.eq | 588 |
 | Corelib.Init.Datatypes.bool | 423 |
@@ -65,30 +65,30 @@ flowchart TD
 | Corelib.Init.Datatypes.negb | 87 |
 | Corelib.Init.Logic.eq_rect | 86 |
 
-## 桥接证明依赖与本轮状态
+## Bridging proof dependency and current round state
 
-| 对应任务 | 使用的桥接/设施 | 状态 |
+| Corresponding tasks | bridge/facilities used | Status |
 |---|---|---|
-| SSR Option 五项操作 | 已有 optionTo/optionIso；元素转换组合 Iso.functions / Iso.options | 五项运算已证；map 的元素转换有独立定理 |
-| simpl_fun → 函数 | 源构造器与 fun_of_simpl；双向逆 | 已证，已接入新生成器 |
-| simpl_fun Bool Bool 原生接口 | simplFunIso → functions(boolIso, boolIso)；类型别名正规化 | 自动生成与往返通过，另证结果为 f true |
-| SSR 关系性质 | 机械 Eq ↔ Lean Eq；函数外延性用于 eqfun/eqrel | 八项谓词对应已证 |
-| Nat.iter | natTo；源递归器；载体 Iso 与步函数对应假设 | 普通与转换载体两份证明通过 |
-| 复合 Option / 函数表达式 | Option.map/bind 对应 + comp 对应 | 两例自动组合通过；目标表达式仍显式提供 |
-| 数字表示进一步运算 | uint ↔ List Fin；Nat 算术；符号 pair 与进制 Sum | 读取、比较、规范化已证；写出待继续 |
-| 依赖类型/Acc | Acc 转换 + 递归步骤对应 + 原生良基性 | Acc 与 7 项递归/谓词已证；Sigma/Subtype 已推进，二元递归已证，Eq/剩余条件待继续 |
+| SSR Option Five operations | Already have optionTo/optionIso; element conversion combination Iso.functions / Iso.options | Five operations have been proved; the element conversion of map has an independent theorem |
+| simpl_fun → function | Source constructor and fun_of_simpl; bidirectional inverse | Certified and connected to the new generator |
+| simpl_fun Bool Bool native interface | simplFunIso → functions(boolIso, boolIso); type alias normalization | Automatic generation and round-trip pass, the additional certification result is f true |
+| SSR Relationship nature | Mechanical Eq ↔ Lean Eq; Function epitaxy is used for eqfun/eqrel | Eight predicates correspond to proven |
+| Nat.iter | natTo; source recurser; carrier Iso and step function corresponding hypothesis | Passed two certificates of ordinary and converted carriers |
+| Compound Option / function expression | Option.map/bind corresponding + comp corresponding | The two examples automatically combine to pass; the target expression is still provided explicitly |
+| Numbers represent further operations | uint ↔ List Fin; Nat arithmetic; symbol pair and base Sum | Read, compare, normalize proven; write to be continued |
+| Dependency type/Acc | Acc conversion + recursive step correspondence + native good foundation | The term recursion/predicate of Acc and 7 has been proved; Sigma/Subtype has been advanced, the binary recursion has been proved, and the remaining conditions of Eq/ need to be continued. |
 
-## 第二批：证书复用到下游陈述
+## Second batch: Certificate reuse to downstream statements
 
-    Bool Iso + 函数 Iso → pred/rel Iso
-    Bool 构造器 + 源逻辑否定 → reflect Iso → Decidable P
-    Eq Iso + Bool 运算 → SSR 布尔关系性质
-    Bool 量词/高阶函数/消去器转换 + 上述证书 → 216 个陈述的重新规范化
-    规范化 + 原陈述 iff + 递归检查桥接别名 → 141 个完全原生陈述
+    Bool Iso + function Iso → pred/rel Iso
+    Bool constructor + source logic negation → reflect Iso → Decidable P
+    Eq Iso + Bool operation → SSR Boolean relational properties
+    Bool quantifier/higher-order function/eliminator transformation + above certificate → 216 renormalization of statements
+    Normalization + raw statements iff + recursively checking bridge aliases → 141 fully raw statements
 
-75 个候选仍残留源符号，主要涉及 mem_pred/mem、phantom、classically、部分高阶函数及依赖 Bool 消去；未计作完全对应。详细记录见 reports/statement-candidates.json。
+75 candidates still have source symbols remaining, mainly involving mem_pred/mem, phantom, classically, some high-order functions and dependency Bool elimination; not counted as complete correspondence. See reports/statement-candidates.json for detailed records.
 
-## 第三、四批：已检查的桥接依赖
+## Batch 3 and 4: Checked bridging dependencies
 
     uint ↔ List (Fin radix) → reverse/append/length/dropWhile/BEq
     digit representation + sign Bool → signed_int Iso → signed BEq / norm / abs / opp
@@ -100,314 +100,314 @@ flowchart TD
     Acc conversion + recursion induction → Fix_F / Fix / Acc recursors
     native InvImage.wf + natTo → source well-foundedness of a mechanical Nat measure
 
-接下来的依赖仍是规划：Little.succ → 数字写出；prodIso + Acc → 二元良基递归；Sigma/Subtype + Eq transport → 依赖函数。没有将反例定理或使用示例计成额外 Corelib 根。
+The next dependencies are still planning: Little.succ → digital writing; prodIso + Acc → binary base recursion; Sigma/Subtype + Eq transport → dependency function. Counterexample theorems or usage examples are not counted as additional Corelib roots.
 
-## 第五批：完整 Sort 与条件证明 DAG
+## The fifth batch: complete Sort and condition proof DAG
 
-    sig ↔ Subtype / sigT ↔ PSigma / prod ↔ PProd → 依赖 motive 的 8 个消去器
+    sig ↔ Subtype / sigT ↔ PSigma / prod ↔ PProd → depends on 8 of motive eliminator
     sigT2 ↔ PSigma(PProd) → projT3 / sigT_of_sigT2
-    sig 的投影证明 → sigT_of_sig 的闭合实例化
-    sigT 的投影证明 → sig_of_sigT 的闭合实例化
-    sig2 的第一投影证明 → sig_of_sig2 的闭合实例化
-    sig_of_sig2 的闭合实例化 + sig2 的两个属性 → sigT2_of_sig2 的两份义务
-    上述三份证明 → sigT2_of_sig2 的闭合实例化 → 原生构造对应
+    The projection of sig proves the closed instantiation of → sigT_of_sig
+    The projection of sigT proves the closed instantiation of → sig_of_sigT
+    The first projection of sig2 proves the closed instantiation of → sig_of_sig2
+    Closed instantiation of sig_of_sig2 + two properties of sig2 → Two tasks of sigT2_of_sig2
+    The above three proofs correspond to the closed instantiation of → sigT2_of_sig2 and the native construction of →
 
-5 个不同见证、4 个源根；前驱义务复用不等于自动覆盖所有依赖它的下游声明。
+5 different witnesses and 4 source roots; the reuse of predecessor obligations does not mean automatically covering all downstream statements that depend on it.
 
-## 第六批：依赖复用的实际结果
+## Batch 6: Actual results of dependency reuse
 
     prodIso + source Acc ↔ native Acc → pairAccTo/pairAccOf
-    pair Acc + 原生关系的拉回 + 依赖返回族 → Fix_F_2
+    pair Acc + pull back of original relationship + dependent return family → Fix_F_2
     pair WellFounded + Fix_F_2 → well_founded_induction_type_2
-    native sum measure + native recursion theorem → 机械二元倒计数正确性
-    sig_of_sig2 的已证义务 → 五个下游陈述的实际闭合实例化
-    Subtype Iso + Eq + 投影转换 → 五个原生 iff → 五个原陈述证明
-    类型 Iso + 原生依赖 motive → 18 个基本 rec/rect 对应
-    完整 Sort 的 sum ↔ PSum → sum_rec/sum_rect
+    native sum measure + native recursion theorem → Mechanical binary countdown correctness
+    Proven obligation of sig_of_sig2 Actual closed instantiation of the five downstream statements of →
+    Subtype Iso + Eq + projection conversion → Five original iff → Five original statement certificates
+    Type Iso + native dependency motive → 18 corresponds to basic rec/rect
+    Complete Sort of sum ↔ PSum → sum_rec/sum_rect
 
-条件依赖集合从原始 translation_report 抽取并逐项核对；计数由实例化后的 kernel 检查和显式证书清单决定。
+The set of conditional dependencies is extracted from the original translation_report and checked item by item; the count is determined by checking the kernel after instantiation and the explicit certificate manifest.
 
-## 第七批：Eq 与 Bool 索引命题
+## The seventh batch: Eq and Bool index propositions
 
-    机械 Eq ↔ Eq → Eq.ndrec 的正向与反向对应
-    机械 Eq 对称性 → eq_rec_r / eq_rect_r 义务 → 两个闭合运算
-    eq_sym + 恒等义务 + 证明无关性 → eq_sym_involutive → eq_rew_r_dep
-    Bool Iso + eq_true 构造器 → eq_true ↔ (b = true) → 八个消去器
-    Bool 谓词的双向搬运 + eq_true Iso → 三个原生陈述 iff → 原陈述证明
+    Mechanical forward and reverse correspondence of Eq ↔ Eq → Eq.ndrec
+    Mechanical Eq Symmetry → eq_rec_r / eq_rect_r Obligation → Two closing operations
+    eq_sym + Identity Obligation + Prove Irrelevance → eq_sym_involutive → eq_rew_r_dep
+    Bool Iso + eq_true Constructor → eq_true ↔ (b = true) → Eight Eliminators
+    Bool Bidirectional transfer of predicate + eq_true Iso → Three original statements iff → Original statement proof
 
-这些是已检查的桥接证明依赖；源 IR 的 9457 条依赖未修改。
+These are the checked bridge-proof dependencies; the 9457 dependencies of source IR have not been modified.
 
-## 第八、九批：关系与可变参数证明 DAG
+## Batch 8 and 9: Proof of Relationship and Variable Parameters DAG
 
-    Eq/And/Or/iff 对应 → 关系性质 → Equivalence Iso → Setoid → Quotient.sound
-    类关系转换 + 函数整体转换 → 65 个陈述自动重写 → 56 完整原生 iff
+    Eq/And/Or/iff corresponds to → relationship property → Equivalence Iso → Setoid → Quotient.sound
+    Class relationship conversion + overall function conversion → 65 statements automatically rewritten → 56 complete native iff
     Tlist ↔ List (Type u) → Arguments → arrows curry/uncurry Iso
-    arrows Iso + PULift Prop 转换 → 原生元组谓词 → 12 个变参运算
-    变参运算对应 + 原生逻辑性质 → 剩余 9 个原陈述证明与原生 iff
-    原生关系转换 + 3 个无公理义务 → 2 个条件陈述闭合
+    arrows Iso + PULift Prop conversion → native tuple predicate → 12 variable parameter operation
+    Correspondence to variable parameter operation + original logical properties → The remaining 9 original statement proofs and original iff
+    Native relation conversion + 3 axiom-free obligations → 2 conditional statement closure
 
-两个模块的 126 根覆盖由逐根账本核对；这里不表示其他 Classes 模块已完成。
+The 126 root coverage of the two modules is checked by root-by-root ledger; this does not mean that other Classes modules have been completed.
 
-## 第十批：关系保持与 Morphisms
+## Batch 10: Maintaining relationship with Morphisms
 
-    关系桥接 + 原生函数量词 → Proper / respectful / pointwise / forall relation
-    四个空标记构造器 → True 的 Iso
-    上述证书 + compose/impl/pointwise 整体函数等式 → 55 个完整原生陈述
-    载体 Iso + 显式运算对应 + 原生保持关系证明 → 机械 Proper
+    Relational bridging + native function quantifier → Proper / respectful / pointwise / forall relation
+    Four empty tag constructors → True Iso
+    The above certificate + compose/impl/pointwise overall function equation → 55 complete native statements
+    Carrier Iso + Explicit operation correspondence + Native proof of maintaining relationship → Mechanical Proper
 
-重复关系辅助证明在 Morphisms 导出闭包内重检，不重复计入源根。
+The auxiliary proof of repeated relationships is rechecked in the Morphisms export closure and is not repeatedly counted into the source root.
 
-## 第十一批：关系包、Subtype 与可达性
+## Batch 11: Relationship package, Subtype and reachability
 
-    Equivalence/PER 证据转换 → equiv/pequiv 原关系
-    Subtype Iso + respectful → respecting 函数包 → 原生复合示例
-    Subtype 量词/投影转换 + 关系性质 → 14 个完全原生陈述
-    Acc Iso + 原生逻辑整体函数等式 → Morphisms_Prop 的 17 个原生 iff
-    Equivalence Iso → Setoid_Theory → 5 个 iff 与原陈述证明
+    Equivalence/PER evidence conversion → equiv/pequiv original relationship
+    Subtype Iso + respectful → respecting function package → native composite example
+    Subtype quantifier/projection transformation + relational property → 14 completely native statements
+    Acc Iso + native logical global function equation → Morphisms_Prop of 17 native iff
+    Equivalence Iso → Setoid_Theory → 5 iff certified with the original statement
 
-## P7：跨闭包消费
+## P7: Cross-closure consumption
 
-    已检查的 profile 证书 → 依赖闭包 → 命名空间重建 → kernel 重检
-    28 个重建模块 → 同一文件导入 → 585 入口公理审计
-    Nat 运算对应 + SSR Option.map 对应 + Setoid Iso → 原生 Quotient 消费
-    Nat.add 对应 → Mathlib Nat.prime_two → 机械加法结果的原生素数性质
+    Checked profile certificate → dependency closure → namespace reconstruction → kernel recheck
+    28 reconstruction modules → same file import → 585 entrance axiom audit
+    Nat operation corresponding + SSR Option.map corresponding + Setoid Iso → native Quotient consumption
+    Nat.add corresponds to → Mathlib Nat.prime_two → The native prime number property of the mechanical addition result
 
-本次共同导入覆盖清单独立固定于 reports/interop/coverage-manifest.json；后续新增证书需另行验收。
+The coverage list for this joint import is independently fixed at reports/interop/coverage-manifest.json; subsequent new certificates must be subject to separate acceptance.
 
-## 第十二批：Specif 陈述
+## Batch 12: Specif Statement
 
-    完整 Sort 的 Subtype / PSigma Iso → 量词与函数族双向搬运
-    Eq 对应 + 构造器/投影对应 + 逻辑存在量词 → 49 候选重写
-    原生目标体递归检查 + kernel iff → 49 个完整原生陈述
-    qualityProp → 原生存在量词；机械 Eq 证明量词 → 原生 Eq 证明量词
-    明确的证明往返/cast → isDefEq 清理 → kernel 再检
+    Complete Sort's Subtype / PSigma Iso → two-way transfer of quantifiers and function families
+    Eq correspondence + constructor/projection correspondence + logical existential quantifier → 49 candidate rewrite
+    Native target recursive check + kernel iff → 49 complete native statements
+    qualityProp → native existence quantifier; mechanical Eq proof quantifier → native Eq proof quantifier
+    Clear proof of round trip/cast → isDefEq Cleanup → kernel Reinspection
 
-49 个无条件候选均通过；带条件的 Specif 声明仍在后续计划。
+All 49 unconditional candidates were approved; the conditional Specif declaration is still planned in the future.
 
-## 第十三批：数字写出
+## Batch 13: Writing numbers
 
-    digits Iso → 原生 increment → 两种 Little.succ 对应
-    Nat Iso + increment → 两种 to_little_uint 对应 → reverse → to_uint
-    increment 数值 + Nat.rec → 打印数值正确
-    sign × digits + Sum 进制标签 → Number.signed_int Iso → 五种带标签的打印
+    digits Iso → native increment → two kinds of Little.succ corresponding
+    Nat Iso + increment → Two types to_little_uint corresponds to → reverse → to_uint
+    increment value + Nat.rec → printed value is correct
+    sign × digits + Sum Hexadecimal label → Number.signed_int Iso → Five types of label printing
 
-进位保持规范性 + 打印数值 + Mathlib Nat.digits_ofDigits → 七种顶层打印的现成 API 对应。零与字节序均显式适配。
+Carry maintains canonicity + print value + Mathlib Nat.digits_ofDigits → Ready-made API correspondence for seven top-level prints. Both zero and endianness are explicitly adapted.
 
-## 第十四、十五批：数值语义闭合
+## Batch 14 and 15: Numerical Semantic Closure
 
-    原生去前导零 + 零值判定 → Int 数值 → 三种有符号读取
-    modulo 对应 + natTo 下降量 → gcd 终止见证 → Nat.gcd
-    divmod 不变量 + 首次计数器归零分支 → 全参数原生 div/mod
-    原生状态迭代 + 平方区间不变量 → Nat.sqrt
-    原生状态迭代 + 二次幂区间不变量 → Nat.log2
+    Native leading zero removal + zero value determination → Int value → three signed reads
+    modulo corresponds to + natTo decrease amount → gcd terminates witness → Nat.gcd
+    divmod invariant + first counter zeroing branch → full parameter native div/mod
+    Native state iteration + square interval invariant → Nat.sqrt
+    Native state iteration + quadratic power interval invariant → Nat.log2
 
-这些证明未修改原始机械翻译。
+These proofs are unmodified from the original mechanical translation.
 
-Peano 本批实证依赖：机械 Nat Iso → pred/add/迭代器辅助对应 → 5 个新完全原生陈述；IsSucc → 原生 Nat 正性。旧原生目标审计依据 statement ledger → 实际 Auto profile → 展开别名后的目标体，不以手写同名 profile 替代。
+Peano This batch of empirical evidence relies on: mechanical Nat Iso → pred/add/ iterator-assisted correspondence → 5 new completely native statements; IsSucc → native Nat positive. Old native target audit basis statement ledger → Actual Auto profile → The target body after the alias is expanded will not be replaced by the handwritten name profile.
 
-第十七批实证依赖：List Iso → 任意比较器适配 → List.compareLex；List 家族量词转换 → Forall 归纳陈述。positive 数值转换 → compare_cont → Pos.compare → N.compare / Z.compare → 大小关系、布尔比较、min/max。positive 的进位/前驱辅助对应 → 倍增、折半和边界适配。
+The seventeenth batch of empirical dependencies: List Iso → Arbitrary comparator adaptation → List.compareLex; List family quantifier conversion → Forall Inductive statement. positive Numeric conversion → compare_cont → Pos.compare → N.compare / Z.compare → Size relationship, Boolean comparison, min/max. The carry/precursor assist of positive corresponds to → doubling, halving and boundary adaptation.
 
-第十八批实证依赖：positive Iso → mask/Option Nat Iso → 倍增 mask → sub_mask/sub_mask_carry 联合不变量 → Pos.sub、N.sub；Z.double/succ_double/pred_double → Z.pos_sub → Z.add（另依赖 Pos.add）→ Z.sub。mask Iso → motive/量词转换 → 2 个纯原生归纳陈述。
+The eighteenth batch of empirical dependencies: positive Iso → mask/Option Nat Iso → multiplication mask → sub_mask/sub_mask_carry joint invariant → Pos.sub, N.sub; Z.double/succ_double/pred_double → Z.pos_sub → Z.add (also depends on Pos.add) → Z.sub. mask Iso → motive/ quantifier conversion → 2 pure native inductive statements.
 
-第十九批实证依赖：完整 Sort 容器 Iso → 量词/函数族转换 → 容器归纳陈述；Bool/Ordering 索引 Iso + 每个索引的 PLift 纤维 Iso → 依赖函数族转换 → CompareSpecT/reflect 归纳陈述；CompareSpec iff → 3 个闭合见证 → CompareSpec2Type/CompSpec2Type。Eq transport + PProd 映射 → rew_pair。
+The nineteenth batch of empirical dependencies: complete Sort container Iso → quantifier/function family transformation → container induction statement; Bool/Ordering index Iso + PLift fiber per index Iso → dependent function family transformation → CompareSpecT/reflect summary statement; CompareSpec iff → 3 closed witness → CompareSpec2Type/CompSpec2Type. Eq transport + PProd maps → rew_pair.
 
-## 第二十批：Init.Logic 共享证明与原生化
+## Batch 20: Init.Logic shared certification and nativeization
 
 ```mermaid
 flowchart TD
-  A["机械声明的前置条件"] --> B["151 个条件证明"]
-  B --> C["按真实依赖 DAG 实例化为闭合证明"]
-  C --> D["18 个带条件消去定义"]
-  C --> E["54 个带条件陈述"]
-  F["逻辑 iff、证明参数量词、Eq transport"] --> G["67 个完整原生陈述"]
+  A["Preconditions for mechanical declaration"] --> B["151 condition proof"]
+  B --> C["According to the real dependency DAG, instantiate it as a closed proofs"]
+  C --> D["18 conditional elimination definitions"]
+  C --> E["54 conditional statements"]
+  F["Logic iff, proof parameter quantifier, Eq transport"] --> G["67 complete native statements"]
   E --> G
-  H["原生 Exists 的命题见证 + proof irrelevance"] --> D
-  I["False/True/And 消去 + 3 个谓词"] --> J["27 个运算对应"]
+  H["Proposition testimony of native Exists + proof irrelevance"] --> D
+  I["False/True/And eliminates + 3 predicates"] --> J["27 operations corresponds to"]
   D --> J
-  G --> K["共同导入及公理闭包检查"]
+  G --> K["Common import and axiom closure check"]
   J --> K
 ```
 
-真实证明节点和边见 reports/logic-witness-dag.json；每条边来自冻结翻译报告 pending_hypotheses。此图的 151 个证明节点不是 151 个新增完成根。
+Real proof nodes and edges see reports/logic-witness-dag.json; each edge comes from frozen translation report pending_hypotheses. The 151 proof nodes of this graph are not the 151 new completion roots.
 
-## 第二十一批：Init.Specif 依赖数据与相等
+## Batch 21: Init.Specif dependent data and equality
 
 ```mermaid
 flowchart TD
-  A["70 个条件根 / 116 个不同前置声明"] --> B["140 个条件证明及闭合见证"]
-  B --> C["32 个带条件运算"]
-  B --> D["38 个带条件陈述"]
-  E["Subtype / PSigma / PSum 的完整 Sort 对应"] --> C
-  E --> F["原生端点的相等 motive 与 Exists 相等条件"]
+  A["70 conditional roots / 116 different predeclarations"] --> B["140 conditional proofs and closure witnesses"]
+  B --> C["32 conditional operations"]
+  B --> D["38 conditional statements"]
+  E["Complete Sort correspondence of Subtype / PSigma / PSum"] --> C
+  E --> F["Equality conditions for native endpoints motive and Exists"]
   F --> D
-  G["Eq.rec 转换自然性 + 原生证明参数"] --> D
+  G["Eq.rec conversion naturalness + native proof parameters"] --> D
   H["Nat Iso + Nat.rec"] --> I["dependent_choice"]
   C --> I
-  J["Option / False.elim / PSum.rec"] --> K["其余 10 根"]
-  D --> L["原生体检查与 kernel iff"]
-  C --> M["运算等式及共同导入"]
+  J["Option / False.elim / PSum.rec"] --> K["The remaining 10 roots"]
+  D --> L["Primary body examination and kernel iff"]
+  C --> M["Operation equations and common import"]
   K --> M
   L --> M
 ```
 
-逐节点依赖来自 reports/specif-witness-dag.json，与冻结报告 pending_hypotheses 核对；不是根据规则名猜测依赖。140 个证明目标不重复计作对应根。
+Node-by-node dependencies are from reports/specif-witness-dag.json, checked against freeze report pending_hypotheses; dependencies are not guessed based on rule names. 140 proof targets are not repeatedly counted as corresponding roots.
 
-## 第二十二批：SSR 函数、谓词与容器陈述
+## Batch 22: SSR function, predicate and container statements
 
 ```mermaid
 flowchart TD
-  A["机械 Eq 对应 + 原生函数应用"] --> B["27 个原生谓词及逐点 iff"]
-  C["bijective 构造器与取消律"] --> D["存在双向逆的命题 Iso"]
-  E["NonPropType 字段"] --> F["Bool × Type u 双向逆"]
-  G["完整 Sort 的 Option / PLift 表示"] --> H["五个原生 Option API 等式"]
-  G --> I["量词与函数相等转换"]
-  H --> J["转换穿过 Option.elim"]
-  B --> K["50 个完整原生陈述"]
+  A["Mechanical Eq correspondence + native function application"] --> B["27 native predicates and point-by-point iff"]
+  C["bijective Constructor and Cancellation Law"] --> D["The proposition that there is a bidirectional inverse Iso"]
+  E["NonPropType field"] --> F["Bool × Type u bidirectional inverse"]
+  G["Option / PLift representation of complete Sort"] --> H["Five native Option API equations"]
+  G --> I["Quantifier and function equality conversion"]
+  H --> J["Convert through Option.elim"]
+  B --> K["50 complete native statements"]
   D --> K
   F --> K
   I --> K
   J --> K
-  L["Subtype / PSum / Unit 转换"] --> K
-  K --> M["共同导入与公理闭包检查"]
+  L["Subtype / PSum / Unit conversion"] --> K
+  K --> M["Common import and axiom closure checking"]
 ```
 
-本批不增加业务定理的独立证明；只登记对应证书。对应关系被重复用到不重复计源根。
+This batch does not add independent proofs of original theorem; only the corresponding certificates are registered. The corresponding relationship is reused until the source root is not repeated.
 
-## 第二十三批：数据接口与不透明计算缺口
+## Batch 23: Data interfaces and opaque computing gaps
 
 ```mermaid
 flowchart TD
-  A["PSigma / PProd 双向转换"] --> B["依赖构造与投影"]
-  C["Option / PLift 双向转换"] --> D["pcancel / ocancel / pcomp"]
-  E["五个闭合前置见证"] --> F["四个带条件根完成"]
-  B --> G["23 个新完成根与共同导入"]
+  A["PSigma / PProd bidirectional conversion"] --> B["Dependency construction and projection"]
+  C["Option / PLift bidirectional conversion"] --> D["pcancel / ocancel / pcomp"]
+  E["Five closed pre-witnesses"] --> F["Four complete with conditional roots"]
+  B --> G["23 new completion roots and co-imports"]
   D --> G
   F --> G
-  H["all_tag 的可核验计算方程：尚缺"] --> I["all_tag2 / all_sig"]
+  H["Verifiable calculation equation for all_tag: missing"] --> I["all_tag2 / all_sig"]
   I --> J["all_sig2"]
-  K["all_sig2 的额外前置见证"] --> J
+  K["Additional pre-witness of all_sig2"] --> J
 ```
 
-不透明函数的 body 存在不提供声明与 body 的等式。同步 kernel 的 rfl 拒绝及实际前置条件分别见 reports/ssrfun-opacity.json 与冻结翻译报告；这四项没有加入完成数。
+The existence of an opaque function for body does not provide a statement of equality with body. The rfl rejection and actual preconditions of synchronized kernel can be found in the reports/ssrfun-opacity.json and frozen translation reports respectively; these four items are not added to the completion number.
 
-## 第二十四批：谓词包装支撑陈述原生化
+## Batch 24: Predicate packaging supports statement nativeization
 
 ```mermaid
 flowchart TD
-  A["机械 Bool 双向逆"] --> B["simpl_pred / simpl_rel / mem_pred"]
-  B --> C["逐点布尔运算与 Option.any"]
-  A --> D["predType 的载体及解释函数 Sigma"]
-  E["And / Or 与 Decidable 的双向逆"] --> F["消去器及量词对应"]
-  G["classically 双重否定 / unless 析取"] --> H["46 个完整原生陈述"]
+  A["Mechanical Bool Bidirectional Reverse"] --> B["simpl_pred / simpl_rel / mem_pred"]
+  B --> C["Point-wise Boolean operation and Option.any"]
+  A --> D["predType's carrier and interpretation function Sigma"]
+  E["Bidirectional inverse of And / Or and Decidable"] --> F["Correspondence between eliminator and quantifier"]
+  G["classically double negation / unless disjunction"] --> H["46 complete native statements"]
   C --> H
   D --> H
   F --> H
-  I["manifest / keyed 等包装：尚未完成"] --> J["其余 29 个部分陈述"]
-  K["128 个条件根的共享前置证明"] --> L["后续条件闭合"]
+  I["manifest / keyed and other packaging: not yet completed"] --> J["The remaining 29 partial statements"]
+  K["Shared prerequisite proof of 128 conditional roots"] --> L["Subsequent conditional closure"]
 ```
 
-本批 46 个陈述 iff 不增加业务定理证明数。剩余符号逐项保存在 reports/ssrbool-extended-statement-candidates.json。
+This batch of 46 statements iff does not increase the number of original theorem proofs. The remaining symbols are stored item by item in reports/ssrbool-extended-statement-candidates.json.
 
-## 第二十五批：固定参数的单值包装
+## Batch 25: Single value packaging of fixed parameters
 
 ```mermaid
 flowchart TD
-  A["机械 Eq / 函数外延性"] --> B["包装等式强制保存值"]
-  B --> C["manifest / keyed 到 Unit 的双向逆"]
-  D["Bool / Nat 对应"] --> E["qualifier 和 key"]
-  C --> F["量词转换的直接引理应用"]
+  A["Mechanical Eq / Function extension"] --> B["Packaging equation forces to save value"]
+  B --> C["Bidirectional inverse of manifest / keyed to Unit"]
+  D["Bool / Nat corresponding"] --> E["qualifier and key"]
+  C --> F["Direct lemma application of quantifier conversion"]
   E --> F
-  F --> G["28 个自动完整原生陈述"]
-  H["按 Bool 分支证明 if_arg"] --> I["if_arg 陈述及独立原陈述证明"]
-  J["master_key : unit 的单构造器消去"] --> K["locked 等于 id；最后一个陈述完成"]
+  F --> G["28 automatic complete native statements"]
+  H["Proof according to Bool branch if_arg"] --> I["Proof of if_arg statement and independent original statement"]
+  J["master_key : Single constructor elimination of unit"] --> K["locked is equal to id; the last statement is completed"]
 ```
 
-Unit 只表示固定外部谓词/qualifier 参数后的包装；外部参数未被擦除。每次量词替换都携带 kernel 可检查的 iff/propext 证明。
+Unit only represents the wrapper after the fixed external predicate/qualifier parameter; the external parameters are not erased. Each quantifier substitution carries a kernel checkable proof of iff/propext.
 
-## 第二十六批：SSR Bool 条件与对应
+## Batch 26: SSR Bool Conditions and Correspondence
 
 ```mermaid
 graph TD
-  A[275 个前置声明] --> B[271 个闭合证明]
-  A --> X[4 个未证前置声明]
-  B --> C[124 根的全部条件齐备]
-  C --> D[73 个原生陈述 iff]
-  C --> E[10 个原生运算对应]
-  C --> F[41 根待建立运算对应]
-  G[43 个原陈述证明] --> D
-  H[Bool Option Subtype 双射桥接] --> D
+  A[275 predeclarations] --> B[271 closed proofs]
+  A --> X[4 unsubstantiated pre-statements]
+  B --> C[All conditions for 124 root are complete]
+  C --> D[73 native statements iff]
+  C --> E[10 native operations corresponding]
+  C --> F[41 base operation correspondence to be established]
+  G[43 original statement proof] --> D
+  H[Bool Option Subtype dual-shot bridge] --> D
   H --> E
-  D --> I[1228 份累计证书共同导入]
+  D --> I[1228 cumulative certificates are imported together]
   E --> I
 ```
 
-精确依赖及逐根状态见 reports/ssrbool-condition-dag.json。314 个证明=271 个前置声明+43 个新增原陈述；不把证明数量当作新增对应根数。
+See reports/ssrbool-condition-dag.json for precise dependencies and root-by-root status. 314 proofs = 271 prestatements + 43 new original statements; the number of proofs is not regarded as the number of new corresponding roots.
 
-## 第二十七批：证明结果与计算结果分流
+## Batch 27: Separation of proof results and calculation results
 
 ```mermaid
 graph TD
- A[275 个前置声明全部闭合] --> B[128 根可闭合实例化]
- B --> C[119 根已完成对应]
- B --> D[9 根尚未完成对应]
- E[reflect Iso] --> F[23 个反射运算]
- G[逻辑 Iso 与单值性质] --> H[13 个逻辑/判定/包装运算]
+ A[275 predeclarations are all closed] --> B[128 root can be closed instantiated]
+ B --> C[119 root has been mapped]
+ B --> D[9 root has not yet completed the correspondence]
+ E[reflect Iso] --> F[23 reflection operations]
+ G[Logical Iso and single value properties] --> H[13 logical/decision/packaging operations]
  F --> C
  H --> C
- D --> I[alt_spec / if_spec 的 4 个下游运算]
- D --> J[5 个 opaque 数据选择函数]
+ D --> I[4 downstream operations of alt_spec / if_spec]
+ D --> J[5 opaque data selection function]
 ```
 
-既有机械 opacity 保留。证明对象可利用证明无关性；任意数据选择函数不据此认定计算结果相等。
+The existing machine opacity is retained. The proof object can be used to prove irrelevance; arbitrary data selection functions do not assume that the calculation results are equal.
 
 
-## 第二十八至三十一批：本轮新增证书依赖
+## Twenty-eighth to thirty-first batch: New certificate dependencies in this round
 
-以下是证明任务依赖；完整源码声明依赖仍见 dependency-graph.json。
+The following is the proof task dependency; for the complete source code declaration dependency, see dependency-graph.json.
 
 ```mermaid
 graph TD
-  A[Bool / Eq / reflect 既有 Iso] --> B[alt_spec / if_spec 双向逆]
-  W[既有 275 个 SSR 前置证明] --> C[altP boolP ifP ifPn 闭合实例]
+  A[Bool / Eq / reflect existing Iso] --> B[alt_spec / if_spec bidirectional reverse]
+  W[Existing 275 SSR pre-proofs] --> C[altP boolP ifP ifPn closed instance]
   B --> C
-  M[memIso / sumboolIso] --> D[限制域谓词与容器分支]
-  I[Pos.iter 结构递归] --> J[Nat.rec 迭代对应]
-  J --> K[整数幂与有符号移位]
-  L[乘法 / div2 对应] --> K
-  S[12 个 Sumbool 前置证明] --> T[6 运算和 1 陈述对应]
-  R[Type 值关系函数与 Prod / Sum] --> E[18 个类型双向逆]
-  E --> F[20 个投影与组合运算]
-  C --> P[1336 份覆盖证书共同导入]
+  M[memIso / sumboolIso] --> D[Restricted domain predicates and container branches]
+  I[Pos.iter structure recursion] --> J[Nat.rec iteration correspondence]
+  J --> K[integer power and signed shift]
+  L [Multiplication / div2 corresponding] --> K
+  S[12 pre-proofs of Sumbool] --> T[6 operations correspond to 1 statements]
+  R[Type value relationship function and Prod / Sum] --> E[18 type bidirectional inverse]
+  E --> F[20 projections and combination operations]
+  C --> P[1336 coverage certificates are imported together]
   D --> P
   K --> P
   T --> P
   F --> P
 ```
 
-下一层复用 E/F 处理 CRelationClasses 剩余陈述；携带数据的 opaque 输出需要独立计算证据，不能套用仅适用于证明对象的无关性。
+The next layer reuses E/F to process the remaining statements of CRelationClasses; the opaque output carrying data requires independent calculation of evidence and cannot be applied only to prove the irrelevance of the object.
 
-## 第三十二批
+## Batch 32
 
-CRelationData 的反自反性 Iso → StrictOrder 的类型 Iso → StrictOrder_Transitive 对应；同一批复用关系数据表示证明 15 个原生陈述 iff，并给出原陈述证明。累计 1353 份覆盖证书已共同导入。
+The anti-reflexivity of CRelationData corresponds to the type of Iso → StrictOrder Iso → StrictOrder_Transitive; the same batch of reused relational data represents and proves 15 native statements iff, and the original statement proof is given. A total of 1353 coverage certificates have been imported together.
 
-## 第三十三批：已验证的复用关系
+## Batch 33: Verified reuse relationships
 
 ```mermaid
 flowchart LR
   CRelationData --> CRelationOrder
   CRelationOrder --> PartialOrderIso
   MechanicalEqIso --> equalityEquivalenceIso
-  EqWitnesses[3 个 Eq 前置证明] --> eq_equivalence_agrees
+  EqWitnesses[3 Eq pre-certification] --> eq_equivalence_agrees
   equalityEquivalenceIso --> eq_equivalence_agrees
-  IffWitnesses[3 个 Iff 前置证明] --> iff_equivalence_agrees
+  IffWitnesses[3 Iff pre-certification] --> iff_equivalence_agrees
   iffEquivalenceIso --> iff_equivalence_agrees
   CRelationOrder --> PackedAll_CRelationOrder
   PackedAll_CRelationOrder --> ImportAll[81 profiles / 1360 certificates]
 ```
 
-图中后两项等价关系对应有双向逆，且六个前置证明已闭合；完整 Lean 依赖仍由审计记录。Type 值偏序只对应函数／积类型表示。
+The last two equivalence relationships in the figure correspond to bidirectional inverses, and the six prerequisite proofs are closed; the complete Lean dependency is still recorded by the audit. Type value partial order only corresponds to function/product type representation.
 
-## 第三十四至三十六批：已检查的证明依赖
+## Batch 34 to 36: Checked certified dependencies
 
 ```mermaid
 flowchart TD
@@ -427,9 +427,9 @@ flowchart TD
   BinaryIntBitwise --> ImportAll36
 ```
 
-按位运算的子目标都已证明。后三个 profile 的 Lean 导入边由 verify.py 记录，图中其余边表示实际用到的定理依赖。数学库代码沿用已安装版本，指纹在验证记录中。
+The subgoals for bitwise operations have been proven. The last three Lean import edges of profile are recorded by verify.py, and the remaining edges in the graph represent the actually used theorem dependencies. The math library code inherits from the installed version, and the fingerprint is in the verification record.
 
-## 第三十七至三十九批：二进制除法／平方根／迭代
+## Batch 37 to 39: Binary Division/Square Root/Iteration
 
 ```mermaid
 flowchart TD
@@ -449,9 +449,9 @@ flowchart TD
   BinaryIterOp --> ImportAll39
 ```
 
-IntDef 与 PosDef 的源闭包分别验证，统一导入经命名空间打包。下一依赖节点为 Numbers.BinNums 消去器：positive/N/Z 类型 Iso → 原生依赖递归目标 → 计算对应 → 原生归纳陈述。
+The source closures of IntDef and PosDef are verified separately and imported into namespace packaging in a unified manner. The next dependency node is Numbers.BinNums eliminator: positive/N/Z type Iso → native dependency recursive target → calculation corresponding to → native inductive statement.
 
-## 第四十至四十三批：数据表示与闭合相等判定
+## Batch 40 to 43: Data representation and closed equality determination
 
 ```mermaid
 flowchart TD
@@ -470,9 +470,9 @@ flowchart TD
   NumberRepresentation --> ImportAll43
 ```
 
-虚线表示代码生成时复用证明文本，实际源模块闭包分别验证；不表示不同 Rocq2LeanOut 模块直接导入。位序和完整表示保存是下一批 Byte 的基础。
+The dotted line indicates that the proof text is reused during code generation, and the actual source module closures are verified separately; it does not mean that different Rocq2LeanOut modules are directly imported. Bit order and complete representation preservation are the basis for the next batch of Byte.
 
-## 第四十四至四十八批及下一依赖
+## Batch 44 to 48 and the next dependency
 
 ```mermaid
 flowchart TD
@@ -494,9 +494,9 @@ flowchart TD
   WellFoundedStatements --> AccInvDep[dependent accessibility condition]
 ```
 
-字节串比较暂为原生组合表达式，未宣称对应现成 List.compareLex。通用 J 接口保留显式关系参数；PLift Eq 只是一个经过验证的客户实例。
+Byte string comparison is currently a native combination expression and is not claimed to correspond to ready-made List.compareLex. The generic J interface retains explicit relationship parameters; PLift Eq is just an authenticated client instance.
 
-## 第四十九至五十四批与机器整数规格
+## Batch and machine integer specifications from 49th to 54th
 
 ```mermaid
 flowchart TD
@@ -518,9 +518,9 @@ flowchart TD
   Uint63Definitions --> Sint63Specifications
 ```
 
-Program.Wf 的两个 Type 值 opaque 消去器，以及 ssreflect_rw 的三个 Type 值 opaque 计算函数，仍需额外计算证据。它们不阻止透明整数定义和规格对应继续推进。
+The two Type values of Program.Wf, the opaque eliminator, and the three Type values of ssreflect_rw, the opaque calculation function, still require additional computational evidence. They do not prevent transparent integer definitions and specification correspondence from moving forward.
 
-## 第五十五至五十六批：位操作与整数转换
+## Batch 55 to 56: Bit operations and integer conversion
 
 ```mermaid
 flowchart TD
@@ -535,9 +535,9 @@ flowchart TD
   Uint63Statements --> RemainingUint63Specifications
 ```
 
-Uint63Operations 与 Uint63Conversions 已验证；Uint63Statements 为下一批。跨源闭包的旧证明通过文本复用后重新检查，不直接混合不同 Rocq2LeanOut。
+Uint63Operations and Uint63Conversions have been verified; Uint63Statements is the next batch. Old proofs of cross-source closures are rechecked after textual reuse without directly mixing different Rocq2LeanOut.
 
-## 第五十七至五十九批及算术规格
+## Batch 57 to 59 and arithmetic specifications
 
 ```mermaid
 flowchart TD
@@ -550,9 +550,9 @@ flowchart TD
   Uint63ArithmeticSupport --> Remaining11Specs
 ```
 
-前三个规格 profile 已验证，算术支持及剩余 11 项仍在进行。
+The first three specifications profile have been verified, arithmetic support and the remaining 11 items are still in progress.
 
-## 第六十至六十二批及宽运算
+## Sixtieth to sixty-second batch and wide operations
 
 ```mermaid
 flowchart TD
@@ -566,9 +566,9 @@ flowchart TD
   DoubleDivisionBounds --> Uint63WideSpecs
 ```
 
-算术、移位、计数 profile 已通过审计。该快照时宽运算尚在进行；第六十三批已完成并计入。
+Arithmetic, shifting, counting profile passed audit. The snapshot time width calculation is still in progress; the sixty-third batch has been completed and included.
 
-## 第六十三至六十五批及容器规格
+## Batch 63 to 65 and container specifications
 
 ```mermaid
 flowchart TD
@@ -584,41 +584,41 @@ flowchart TD
   NativeByteStringRepresentation --> StringAxiomsSpecs
 ```
 
-整数节点已验证；容器规格节点于第六十六至七十批完成。不同源闭包中的同名声明通过重新检查来使用，不直接混合。
+Integer nodes have been verified; container specification nodes were completed in batches 66 to 70. Declarations with the same name in closures from different sources are used through rechecking and are not mixed directly.
 
-## 第六十六至七十批：已验证容器依赖
+## Batch 66 to 70: Container dependencies verified
 
 ```mermaid
 flowchart TD
-  ArrayIso[有界数组与默认值] --> ArraySpecs
-  VectorGetSet[Vector 读取与更新] --> ArraySpecs
+  ArrayIso[bounded array and default value] --> ArraySpecs
+  VectorGetSet[Vector read and update] --> ArraySpecs
   StringUnsignedSupport --> StringOperations
-  NatZConversions[本闭包 Nat/Z 转换重检] --> StringOperations
+  NatZConversions[This closure Nat/Z conversion recheck] --> StringOperations
   StringOperations --> StringSpecs
   StringSpecs --> StringRoundtrip
   StringRoundtrip --> StringComparison
   ListCompareLex[Lean List.compareLex] --> StringComparison
-  StringComparison --> PrimitiveCompare[PrimString.compare 现成 API 证书]
+  StringComparison --> PrimitiveCompare[PrimString.compare ready API certificate]
 ```
 
-上述节点均已检查并共同导入。StringRoundtrip 先证明列表视图单射，再证明构造与读取往返；StringComparison 按比较剩余长度归纳，处理相等前缀和空串。
+The above nodes have all been checked and co-imported. StringRoundtrip first proves the list view injection, and then proves the construction and reading round trip; StringComparison summarizes by comparing the remaining length, and handles equal prefixes and empty strings.
 
-## 第七十一至七十五批：已验证浮点依赖
+## Batch 71 to 75: Floating point dependency verified
 
 ```mermaid
 flowchart TD
-  NativeIntPositive[机械 Z/positive 对应] --> SpecFloatRepresentation
+  NativeIntPositive [Mechanical Z/positive corresponding] --> SpecFloatRepresentation
   SpecFloatRepresentation --> SpecFloatArithmeticSupport
   SpecFloatArithmeticSupport --> SpecFloatRounding
   SpecFloatRounding --> SpecFloatShift
   SpecFloatShift --> SpecFloatNormalize
-  SpecFloatNormalize --> FloatArithmeticNext[后续 加减乘除和开方]
-  SpecFloatRepresentation --> FloatPrimitiveNext[后续 PrimFloat 表示]
+  SpecFloatNormalize --> FloatArithmeticNext[Subsequent addition, subtraction, multiplication, division and square root]
+  SpecFloatRepresentation --> FloatPrimitiveNext[followed by PrimFloat]
 ```
 
-前五个节点已完成，后两个节点待处理。nearest-even 的半单位分支和 shr_1 的向零取整均显式保留。基础标记证明独立成模块，不依赖浮点链。
+The first five nodes have been completed and the last two nodes are pending. The half-unit branch of nearest-even and the rounding toward zero of shr_1 are both explicitly preserved. Basic markup proofs are independent modules and do not rely on floating point chains.
 
-## 第七十六至八十一批：浮点运算依赖已完成
+## Batch 76 to 81: Floating point operation dependency has been completed
 
 ```mermaid
 flowchart TD
@@ -632,13 +632,13 @@ flowchart TD
   SpecFloatDivisionSupport --> SpecFloatDivision
   SpecFloatArithmetic --> SpecFloatDivision
   SpecFloatDivision --> SpecFloatSqrtSupport
-  NatSqrt[Lean Nat.sqrt 与余数唯一性] --> SpecFloatSqrtSupport
+  NatSqrt[Lean Nat.sqrt and remainder uniqueness] --> SpecFloatSqrtSupport
   SpecFloatSqrtSupport --> SpecFloatSqrt
 ```
 
-本图节点均已验证。上节的浮点算术待办已完成；PrimFloat 表示及其与 SpecFloat 的转换继续处理。
+All nodes in this graph have been verified. The floating-point arithmetic backlog of the previous section is completed; processing of the PrimFloat representation and its conversion to SpecFloat continues.
 
-## 第八十二至八十五批：规范 binary64 依赖已完成
+## Batch 82 to 85: Specification binary64 dependency has been completed
 
 ```mermaid
 flowchart TD
@@ -646,49 +646,49 @@ flowchart TD
   PrimFloatRepresentation --> PrimFloatArithmetic
   PrimFloatArithmetic --> PrimFloatExponent
   PrimFloatArithmetic --> PrimFloatSqrt
-  NatSqrt[Lean Nat.sqrt] --> IntegerSqrtProof[逐位算法的平方界限与唯一性]
+  NatSqrt[Lean Nat.sqrt] --> IntegerSqrtProof[Square bounds and uniqueness of bit-by-bit algorithm]
   IntegerSqrtProof --> PrimFloatSqrt
-  PrimFloatExponent --> FloatOpsNext[待完成 FloatOps]
+  PrimFloatExponent --> FloatOpsNext[To be completed FloatOps]
   SpecFloatShift --> FloatOpsNext
 ```
 
-PrimFloat 的全部节点已验证；下一阶段在统一 FloatAxioms 源闭包重检这些证明。源闭包未导出的 parser、wrapper、消去器等不需要导入下一阶段支持文件。
+All nodes of PrimFloat have been verified; these proofs will be rechecked in the next phase by unifying the FloatAxioms source closure. parser, wrapper, eliminators, etc. that are not exported by the source closure do not need to be imported into the next stage support files.
 
-## 第八十六至八十九批：转换和规格依赖已完成
+## Batch 86 to 89: Conversion and specification dependencies completed
 
 ```mermaid
 flowchart TD
-  Symbolic[SpecFloat 已证明链] --> FloatClosureSupport
-  Primitive[PrimFloat 已证明链] --> FloatClosureSupport
+  Symbolic[SpecFloat proven chain] --> FloatClosureSupport
+  Primitive[PrimFloat proven chain] --> FloatClosureSupport
   FloatClosureSupport --> FloatWordSupport
   FloatWordSupport --> FloatOperations
   FloatOperations --> Float64Operations
   Float64Operations --> FloatStatements
-  FloatOpsClosure[FloatOps 独立源闭包] --> FloatUlpSupport
+  FloatOpsClosure[FloatOps independent source closure] --> FloatUlpSupport
   FloatUlpSupport --> FloatUlp
 ```
 
-所有节点已通过。FloatStatements 的边表示组合陈述等价所需的运算对应，不表示这些规格已经独立证明为真。
+All nodes passed. The edges of FloatStatements represent the correspondences of operations required to combine statements for equivalence, and do not represent that these specifications have been independently proven to be true.
 
-## 第九十批及计算透明分支
+## The 90th batch and calculation transparent branch
 
 ~~~mermaid
 flowchart TD
  SSRBoolPackaging --> SSRPredicatePackages
- SSRPredicatePackages --> Frozen2100[原基线 2100/2180]
- Retained[原基线保留的 opaque 正文] --> TransparentPack
- TransparentPack --> CRelationVariant[CRelation 11 个对应]
- TransparentPack --> CMorphismVariant[CMorphism 54 个对应]
- CRelationVariant --> VariantAudit[变体独立审计与共同导入]
+ SSRPredicatePackages --> Frozen2100[original baseline 2100/2180]
+ Retained[opaque body with original baseline retained] --> TransparentPack
+ TransparentPack --> CRelationVariant[CRelation 11 corresponding]
+ TransparentPack --> CMorphismVariant[CMorphism 54 corresponding]
+ CRelationVariant --> VariantAudit[Variation independent audit and joint import]
  CMorphismVariant --> VariantAudit
- TransparentPack --> SSRVariant[SSR 13 个对应]
- TransparentPack --> ProgramWfVariant[Program.Wf 2 个对应]
+ TransparentPack --> SSRVariant[SSR 13 corresponding]
+ TransparentPack --> ProgramWfVariant[Program.Wf 2 corresponding]
  SSRVariant --> VariantAudit
  ProgramWfVariant --> VariantAudit
- VariantAudit --> Variant80[剩余候选 80/80]
- Frozen2100 --> Recheck[2100 根 / 173 profile 回归通过]
- Variant80 --> Combined[2180 根完整变体共同导入通过]
+ VariantAudit --> Variant80[remaining candidates 80/80]
+ Frozen2100 --> Recheck[2100 root / 173 profile return passed]
+ Variant80 --> Combined[2180 root complete variant co-import passed]
  Recheck --> Combined
 ~~~
 
-透明分支不回写原声明，也不计入 Frozen2100。详见 [变体结果](transparent-data/README.md)。
+Transparent branches do not write back the original statement and are not counted in Frozen2100. See [Variant result ](transparent-data/README.md) for details.
